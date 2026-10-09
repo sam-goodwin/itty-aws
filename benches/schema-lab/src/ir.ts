@@ -38,7 +38,11 @@ export interface Corpus {
   /** Named shapes, in dependency order where possible. */
   readonly shapes: Record<string, Ref>;
   /** Operation input/output shape names. */
-  readonly operations: ReadonlyArray<{ readonly name: string; readonly input: string; readonly output: string }>;
+  readonly operations: ReadonlyArray<{
+    readonly name: string;
+    readonly input: string;
+    readonly output: string;
+  }>;
 }
 
 const IGNORED = new Set(["identifier", "jsonSchema", "title", "description", "documentation"]);
@@ -48,7 +52,14 @@ const metaOf = (ast: any): Meta | undefined => {
   if (!ann) return undefined;
   const out: Meta = {};
   const add = (key: string, value: unknown) => {
-    if (IGNORED.has(key) || key.startsWith("~") || key.startsWith("to") || key === "expected" || key === "representation") return;
+    if (
+      IGNORED.has(key) ||
+      key.startsWith("~") ||
+      key.startsWith("to") ||
+      key === "expected" ||
+      key === "representation"
+    )
+      return;
     if (typeof value === "function" || typeof value === "symbol") value = true;
     try {
       JSON.stringify(value);
@@ -131,13 +142,18 @@ export const extract = (service: string, mod: Record<string, unknown>): Corpus =
             }
             const inner = ref(t);
             const merged = meta || inner.meta ? { ...inner.meta, ...meta } : undefined;
-            return { name: String(p.name), optional, type: merged ? { node: inner.node, meta: merged } : { node: inner.node } };
+            return {
+              name: String(p.name),
+              optional,
+              type: merged ? { node: inner.node, meta: merged } : { node: inner.node },
+            };
           }),
         };
       }
       case "Union": {
         const real = (ast.types as any[]).filter((m) => !isUndefinedish(m));
-        if (real.every((m) => m._tag === "Literal")) return { k: "literal", v: real.map((m) => m.literal) };
+        if (real.every((m) => m._tag === "Literal"))
+          return { k: "literal", v: real.map((m) => m.literal) };
         if (real.length === 1) return ref(real[0]).node;
         return { k: "union", members: real.map(ref) };
       }
@@ -159,7 +175,8 @@ export const extract = (service: string, mod: Record<string, unknown>): Corpus =
     const op = value as any;
     if (typeof op === "function" && !S.isSchema(op) && op.input && op.output) {
       const id = (s: any) => s.ast?.annotations?.identifier as string | undefined;
-      const input = id(op.input), output = id(op.output);
+      const input = id(op.input),
+        output = id(op.output);
       if (input && output) operations.push({ name, input, output });
     }
   }

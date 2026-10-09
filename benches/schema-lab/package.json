@@ -7,9 +7,9 @@
   },
   "dependencies": {
     "@distilled.cloud/aws": "workspace:*",
+    "@distilled.cloud/cloudflare": "workspace:*",
     "@distilled.cloud/core": "workspace:*",
     "@distilled.cloud/stripe": "workspace:*",
-    "@distilled.cloud/cloudflare": "workspace:*",
     "effect": "catalog:",
     "rolldown": "catalog:",
     "typebox": "1.0.81",

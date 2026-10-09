@@ -16,14 +16,29 @@ const keyOf = (r: Ref, classOf: (name: string) => string): string => {
   const n: Node = r.node;
   let body: string;
   switch (n.k) {
-    case "ref": body = `@${classOf(n.name)}`; break;
-    case "array": body = `[${keyOf(n.item, classOf)}]`; break;
-    case "record": body = `{${keyOf(n.value, classOf)}}`; break;
-    case "union": body = `(${n.members.map((m) => keyOf(m, classOf)).join("|")})`; break;
-    case "struct": body = `<${n.fields.map((f) => `${f.name}${f.optional ? "?" : ""}:${keyOf(f.type, classOf)}`).join(",")}>`; break;
-    case "literal": body = `L${JSON.stringify(n.v)}`; break;
-    case "date": body = `D${n.wire}`; break;
-    default: body = n.k;
+    case "ref":
+      body = `@${classOf(n.name)}`;
+      break;
+    case "array":
+      body = `[${keyOf(n.item, classOf)}]`;
+      break;
+    case "record":
+      body = `{${keyOf(n.value, classOf)}}`;
+      break;
+    case "union":
+      body = `(${n.members.map((m) => keyOf(m, classOf)).join("|")})`;
+      break;
+    case "struct":
+      body = `<${n.fields.map((f) => `${f.name}${f.optional ? "?" : ""}:${keyOf(f.type, classOf)}`).join(",")}>`;
+      break;
+    case "literal":
+      body = `L${JSON.stringify(n.v)}`;
+      break;
+    case "date":
+      body = `D${n.wire}`;
+      break;
+    default:
+      body = n.k;
   }
   return meta ? `${body}#${meta}` : body;
 };
@@ -73,15 +88,21 @@ export const applyDedupe = (corpus: Corpus, { canonical }: DedupeResult): Corpus
     else if (n.k === "array") node = { k: "array", item: remap(n.item) };
     else if (n.k === "record") node = { k: "record", value: remap(n.value) };
     else if (n.k === "union") node = { k: "union", members: n.members.map(remap) };
-    else if (n.k === "struct") node = { k: "struct", fields: n.fields.map((f) => ({ ...f, type: remap(f.type) })) };
+    else if (n.k === "struct")
+      node = { k: "struct", fields: n.fields.map((f) => ({ ...f, type: remap(f.type) })) };
     return r.meta ? { node, meta: r.meta } : { node };
   };
   const shapes: Record<string, Ref> = {};
-  for (const [name, r] of Object.entries(corpus.shapes)) if (canonical.get(name) === name) shapes[name] = remap(r);
+  for (const [name, r] of Object.entries(corpus.shapes))
+    if (canonical.get(name) === name) shapes[name] = remap(r);
   return {
     service: corpus.service,
     shapes,
-    operations: corpus.operations.map((o) => ({ ...o, input: canonical.get(o.input) ?? o.input, output: canonical.get(o.output) ?? o.output })),
+    operations: corpus.operations.map((o) => ({
+      ...o,
+      input: canonical.get(o.input) ?? o.input,
+      output: canonical.get(o.output) ?? o.output,
+    })),
   };
 };
 
@@ -100,7 +121,13 @@ export const inlineDuplicates = (corpus: Corpus) => {
     if (n.k === "struct") n.fields.forEach((f) => walk(f.type, false));
   };
   Object.values(corpus.shapes).forEach((r) => walk(r, true));
-  let total = 0, dupes = 0, distinct = 0;
-  for (const c of seen.values()) { total += c; distinct++; if (c > 1) dupes += c - 1; }
+  let total = 0,
+    dupes = 0,
+    distinct = 0;
+  for (const c of seen.values()) {
+    total += c;
+    distinct++;
+    if (c > 1) dupes += c - 1;
+  }
   return { inlineStructs: total, distinct, removable: dupes };
 };

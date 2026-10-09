@@ -17,12 +17,12 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { gzipSync } from "node:zlib";
-import { rolldown } from "rolldown";
 import { annotateNestedCalls } from "@distilled.cloud/core/codegen/pure";
+import { rolldown } from "rolldown";
+import { applyDedupe, dedupe } from "./src/dedupe.ts";
 import { CANDIDATES, emit, type Candidate } from "./src/emit.ts";
 import type { Corpus } from "./src/ir.ts";
 import { broken, sample } from "./src/samples.ts";
-import { applyDedupe, dedupe } from "./src/dedupe.ts";
 const DEDUPE = process.argv.includes("--dedupe");
 
 const LAB = import.meta.dirname;
@@ -94,9 +94,22 @@ for (const corpusName of names) {
   // One mid-sized operation for the bundle test: the op whose output reaches the median number of shapes.
   const bundleOp = ops[Math.floor(ops.length / 2)]!;
 
-  console.log(`\n== ${corpusName}: ${Object.keys(corpus.shapes).length} shapes, ${samples.length} sampled outputs, bundle op ${bundleOp.name} -> ${bundleOp.output}`);
   console.log(
-    ["candidate".padEnd(14), "source", "gzip", "import heap", "import ms", "1st-use heap", "1st ms", "µs/validate", "correct", "1-op bundle gz"]
+    `\n== ${corpusName}: ${Object.keys(corpus.shapes).length} shapes, ${samples.length} sampled outputs, bundle op ${bundleOp.name} -> ${bundleOp.output}`,
+  );
+  console.log(
+    [
+      "candidate".padEnd(14),
+      "source",
+      "gzip",
+      "import heap",
+      "import ms",
+      "1st-use heap",
+      "1st ms",
+      "µs/validate",
+      "correct",
+      "1-op bundle gz",
+    ]
       .map((h, i) => (i ? h.padStart(13) : h))
       .join(""),
   );
@@ -110,12 +123,31 @@ for (const corpusName of names) {
     try {
       const out = execFileSync(
         "node",
-        ["--conditions=bun", "--expose-gc", "--max-old-space-size=8000", join(LAB, "src", "probe.ts"), modPath, samplesPath],
-        { cwd: LAB, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], env: { ...process.env, FORCE_COLOR: "", NO_COLOR: "1" } },
+        [
+          "--conditions=bun",
+          "--expose-gc",
+          "--max-old-space-size=8000",
+          join(LAB, "src", "probe.ts"),
+          modPath,
+          samplesPath,
+        ],
+        {
+          cwd: LAB,
+          encoding: "utf8",
+          stdio: ["ignore", "pipe", "pipe"],
+          env: { ...process.env, FORCE_COLOR: "", NO_COLOR: "1" },
+        },
       );
       probe = JSON.parse(out.trim().split("\n").at(-1)!);
     } catch (e: any) {
-      probe = { error: String(e.stderr ?? e).split("\n").filter((l: string) => /Error|error/.test(l)).slice(0, 2).join(" | ").slice(0, 200) };
+      probe = {
+        error: String(e.stderr ?? e)
+          .split("\n")
+          .filter((l: string) => /Error|error/.test(l))
+          .slice(0, 2)
+          .join(" | ")
+          .slice(0, 200),
+      };
     }
     const entryPath = join(dir, `entry-${cand}.js`);
     writeFileSync(entryPath, entryFor(cand, modPath, bundleOp.output));
@@ -149,4 +181,7 @@ for (const corpusName of names) {
     );
   }
 }
-writeFileSync(join(OUT, DEDUPE ? "results-dedupe.json" : "results.json"), JSON.stringify(results, null, 2));
+writeFileSync(
+  join(OUT, DEDUPE ? "results-dedupe.json" : "results.json"),
+  JSON.stringify(results, null, 2),
+);

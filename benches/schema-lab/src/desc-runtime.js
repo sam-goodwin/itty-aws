@@ -5,11 +5,19 @@ const isObj = (v) => typeof v === "object" && v !== null && !Array.isArray(v);
 
 const prim = (code, v) => {
   switch (code) {
-    case "s": case "t": case "x": return typeof v === "string";
-    case "n": case "T": return typeof v === "number";
-    case "b": return typeof v === "boolean";
-    case "z": return v === null;
-    default: return true; // "u", "y"
+    case "s":
+    case "t":
+    case "x":
+      return typeof v === "string";
+    case "n":
+    case "T":
+      return typeof v === "number";
+    case "b":
+      return typeof v === "boolean";
+    case "z":
+      return v === null;
+    default:
+      return true; // "u", "y"
   }
 };
 
@@ -59,7 +67,8 @@ const parsed = new WeakMap();
 
 const split = (text, sep) => {
   const out = [];
-  let depth = 0, start = 0;
+  let depth = 0,
+    start = 0;
   for (let i = 0; i < text.length; i++) {
     const c = text[i];
     if (c === "[" || c === "{" || c === "(" || c === "<") depth++;
@@ -98,7 +107,12 @@ const parseStruct = (text, deps) => {
     const bar = rest.indexOf("|");
     let meta;
     if (bar >= 0) {
-      meta = Object.fromEntries(rest.slice(bar + 1).split(",").map((kv) => kv.split("=").map(decodeURIComponent)));
+      meta = Object.fromEntries(
+        rest
+          .slice(bar + 1)
+          .split(",")
+          .map((kv) => kv.split("=").map(decodeURIComponent)),
+      );
       rest = rest.slice(0, bar);
     }
     const optional = rest.endsWith("?");

@@ -5,17 +5,31 @@ export const sample = (corpus: Corpus, name: string, maxDepth = 6): unknown => {
   const value = (r: Ref, depth: number): unknown => {
     const n: Node = r.node;
     switch (n.k) {
-      case "string": return "value";
-      case "number": return 42;
-      case "boolean": return true;
-      case "null": return null;
-      case "unknown": case "stream": return { any: 1 };
-      case "blob": return "AAECAw==";
-      case "date": return n.wire === "number" ? 1700000000 : "2026-10-08T00:00:00.000Z";
-      case "literal": return n.v[0];
-      case "array": return depth >= maxDepth ? [] : [value(n.item, depth + 1), value(n.item, depth + 1)];
-      case "record": return depth >= maxDepth ? {} : { a: value(n.value, depth + 1), b: value(n.value, depth + 1) };
-      case "union": return value(n.members[0]!, depth);
+      case "string":
+        return "value";
+      case "number":
+        return 42;
+      case "boolean":
+        return true;
+      case "null":
+        return null;
+      case "unknown":
+      case "stream":
+        return { any: 1 };
+      case "blob":
+        return "AAECAw==";
+      case "date":
+        return n.wire === "number" ? 1700000000 : "2026-10-08T00:00:00.000Z";
+      case "literal":
+        return n.v[0];
+      case "array":
+        return depth >= maxDepth ? [] : [value(n.item, depth + 1), value(n.item, depth + 1)];
+      case "record":
+        return depth >= maxDepth
+          ? {}
+          : { a: value(n.value, depth + 1), b: value(n.value, depth + 1) };
+      case "union":
+        return value(n.members[0]!, depth);
       case "ref": {
         const s = corpus.shapes[n.name];
         return s ? value(s, depth + 1) : {};
@@ -43,7 +57,8 @@ export const broken = (value: unknown): unknown => {
       return 12345;
     }
     if (Array.isArray(v)) return v.map(walk);
-    if (v && typeof v === "object") return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)]));
+    if (v && typeof v === "object")
+      return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)]));
     return v;
   };
   const out = walk(value);

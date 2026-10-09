@@ -8,14 +8,20 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import * as S from "effect/Schema";
-import * as SchemaAST from "effect/SchemaAST";
 import { SchemaAOTCompiler } from "effect/schema";
+import * as SchemaAST from "effect/SchemaAST";
 
 const [corpusName] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 const dedupeDir = process.argv.includes("--dedupe") ? "mods-dedupe" : "mods";
 const dir = join(import.meta.dirname, ".out", dedupeDir, corpusName!);
-const samples: Array<{ name: string; valid: unknown; broken?: unknown }> = JSON.parse(readFileSync(join(dir, "samples.json"), "utf8"));
-const snap = () => { (globalThis as any).gc(); (globalThis as any).gc(); return process.memoryUsage().heapUsed; };
+const samples: Array<{ name: string; valid: unknown; broken?: unknown }> = JSON.parse(
+  readFileSync(join(dir, "samples.json"), "utf8"),
+);
+const snap = () => {
+  (globalThis as any).gc();
+  (globalThis as any).gc();
+  return process.memoryUsage().heapUsed;
+};
 
 const mod = await import(join(dir, "effect-lazy.js"));
 const shapeNames = Object.keys(mod).filter((k) => k.startsWith("$"));
@@ -53,8 +59,13 @@ let ok = 0;
 for (const s of samples) if (validate(s.name, s.valid)) ok++;
 const firstMs = performance.now() - t;
 const afterFirst = snap();
-let rejected = 0, broken = 0;
-for (const s of samples) if (s.broken !== undefined) { broken++; if (!validate(s.name, s.broken)) rejected++; }
+let rejected = 0,
+  broken = 0;
+for (const s of samples)
+  if (s.broken !== undefined) {
+    broken++;
+    if (!validate(s.name, s.broken)) rejected++;
+  }
 const rounds = Math.max(1, Math.round(4000 / samples.length));
 for (let r = 0; r < rounds; r++) for (const s of samples) validate(s.name, s.valid);
 t = performance.now();

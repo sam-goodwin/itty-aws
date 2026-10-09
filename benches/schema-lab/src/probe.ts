@@ -21,7 +21,9 @@ await import("typebox");
 await import("typebox/value");
 await import("./desc-runtime.js");
 
-const samples: Array<{ name: string; valid: unknown; broken?: unknown }> = JSON.parse(readFileSync(samplesPath, "utf8"));
+const samples: Array<{ name: string; valid: unknown; broken?: unknown }> = JSON.parse(
+  readFileSync(samplesPath, "utf8"),
+);
 
 const before = snap();
 let t = performance.now();
@@ -36,7 +38,8 @@ for (const s of samples) if (mod.validate(s.name, s.valid)) accepted++;
 const firstMs = performance.now() - t;
 const afterFirst = snap();
 
-let rejected = 0, brokenCount = 0;
+let rejected = 0,
+  brokenCount = 0;
 for (const s of samples) {
   if (s.broken === undefined) continue;
   brokenCount++;
