@@ -32,6 +32,7 @@ import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 import type * as AST from "effect/SchemaAST";
 import * as API from "./api.ts";
+import { debugHttp } from "./debug.ts";
 import { HTTP_STATUS_MAP, InternalServerError } from "./errors.ts";
 import {
   buildRequest,
@@ -266,9 +267,9 @@ export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Laye
   const statusMap: Readonly<Record<number, (new (args: any) => any) | undefined>> =
     options.statusMap ?? HTTP_STATUS_MAP;
 
+  // A plain flatMap (no generator): this runs on every call.
   const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAst: AST.AST }) =>
-    Effect.gen(function* () {
-      const creds = yield* options.credentials as Effect.Effect<C>;
+    Effect.flatMap(options.credentials as Effect.Effect<C>, (creds) => {
       const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
       let baseUrl: string;
       try {
@@ -280,16 +281,18 @@ export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Laye
         // A baseUrl that refuses the route (missing scope in the
         // credentials) fails the call with that error, typed for callers by
         // the operation's declared error channel.
-        return yield* Effect.fail(e);
+        return Effect.fail(e);
       }
-      return buildRequest({
-        input: unwrapRedactedDeep(input),
-        inputAst,
-        baseUrl,
-        headers: options.headers(creds),
-        mapMemberHeader: options.mapMemberHeader,
-        unknownKeyToWire: options.unknownKeyToWire,
-      });
+      return Effect.succeed(
+        buildRequest({
+          input: unwrapRedactedDeep(input),
+          inputAst,
+          baseUrl,
+          headers: options.headers(creds),
+          mapMemberHeader: options.mapMemberHeader,
+          unknownKeyToWire: options.unknownKeyToWire,
+        }),
+      );
     });
 
   const decode = ({
@@ -301,100 +304,98 @@ export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Laye
     readonly outputAst: AST.AST;
     readonly errors: ReadonlyArray<unknown>;
   }) =>
-    Effect.gen(function* () {
-      if (
-        response.status >= 200 &&
-        response.status < 300 &&
-        getAnn(outputAst, binaryResponseSymbol) !== undefined
-      ) {
-        const bytes = yield* response.arrayBuffer.pipe(Effect.orDie);
-        return new Uint8Array(bytes);
-      }
-      // Read as text and parse tolerantly -- error pages are often non-JSON.
-      const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
-      if (process.env.DISTILLED_DEBUG_HTTP) {
-        console.error(`[distilled] <- ${response.status}`);
-      }
-      let json: unknown;
-      let nonJson = false;
-      if (text.trim().length > 0) {
-        try {
-          json = JSON.parse(text);
-        } catch {
-          nonJson = true;
-        }
-      }
-      const status = response.status;
-      const headers = response.headers as Record<string, string | undefined>;
+    // Plain Effect combinators (no generator): this runs on every call.
+    response.status >= 200 &&
+    response.status < 300 &&
+    getAnn(outputAst, binaryResponseSymbol) !== undefined
+      ? Effect.map(Effect.orDie(response.arrayBuffer), (bytes) => new Uint8Array(bytes))
+      : Effect.flatMap(Effect.orDie(response.text), (read): Effect.Effect<unknown> => {
+          // Read as text and parse tolerantly -- error pages are often non-JSON.
+          const text = read ?? "";
+          if (debugHttp()) {
+            console.error(`[distilled] <- ${response.status}`);
+          }
+          let json: unknown;
+          let nonJson = false;
+          if (text.trim().length > 0) {
+            try {
+              json = JSON.parse(text);
+            } catch {
+              nonJson = true;
+            }
+          }
+          const status = response.status;
+          const headers = response.headers as Record<string, string | undefined>;
 
-      if (status >= 400) {
-        const env = (nonJson ? undefined : errorEnvelope(json)) ?? {};
-        const message = env.message ?? (nonJson && text.trim() ? text.trim() : `HTTP ${status}`);
+          if (status >= 400) {
+            const env = (nonJson ? undefined : errorEnvelope(json)) ?? {};
+            const message =
+              env.message ?? (nonJson && text.trim() ? text.trim() : `HTTP ${status}`);
 
-        // 1. Per-operation typed error (matcher metadata on the class).
-        const typed = matchTypedError(
-          errorClasses,
-          status,
-          [
-            {
-              code: typeof env.code === "number" ? env.code : undefined,
-              message,
-            },
-          ],
-          { body: nonJson ? text : json, headers },
-        );
-        if (typed !== undefined) return yield* fail(typed);
+            // 1. Per-operation typed error (matcher metadata on the class).
+            const typed = matchTypedError(
+              errorClasses,
+              status,
+              [
+                {
+                  code: typeof env.code === "number" ? env.code : undefined,
+                  message,
+                },
+              ],
+              { body: nonJson ? text : json, headers },
+            );
+            if (typed !== undefined) return fail(typed);
 
-        // 2. Status-mapped class (retryAfter only stamps on retryable
-        //    statuses -- parseRetryAfterForStatus gates on that).
-        const StatusErrorClass = statusMap[status];
-        if (StatusErrorClass) {
-          return yield* fail(
-            new StatusErrorClass({
-              message,
-              retryAfter: parseRetryAfterForStatus(status, headers),
-            }),
+            // 2. Status-mapped class (retryAfter only stamps on retryable
+            //    statuses -- parseRetryAfterForStatus gates on that).
+            const StatusErrorClass = statusMap[status];
+            if (StatusErrorClass) {
+              return fail(
+                new StatusErrorClass({
+                  message,
+                  retryAfter: parseRetryAfterForStatus(status, headers),
+                }),
+              );
+            }
+
+            // 3. Unmapped 5xx (e.g. proxy-specific statuses) -> retryable server
+            //    error rather than the unknown fallback.
+            if (status >= 500) {
+              return fail(
+                new InternalServerError({
+                  message,
+                  retryAfter: parseRetryAfterForStatus(status, headers),
+                }),
+              );
+            }
+
+            // 4. Provider fallback.
+            return fail(
+              options.unknownError({
+                status,
+                code: env.code,
+                message,
+                body: nonJson ? text : json,
+                headers,
+              }),
+            );
+          }
+
+          // 2xx: the response body IS the payload (no envelope). Wire->TS key
+          // mapping is schema-driven; `RawResponseRoot` responses are the body
+          // verbatim (mapKeys handles arrays/scalars structurally either way).
+          // Strict mode (core/response-validation) checks the mapped body against
+          // the output schema -- a non-JSON body reaches it as a string and fails
+          // there unless the operation's output is itself a string.
+          let body: unknown = nonJson ? text : (json ?? {});
+          if (options.transformResponse) body = options.transformResponse(body);
+          return validateResponse(outputAst, mapKeys(outputAst, body, "decode"), (cause) =>
+            options.parseError({ body: nonJson ? text : json, cause }),
+          ).pipe(
+            Effect.catch(fail),
+            Effect.map((mapped) => wrapSensitive(outputAst, mapped)),
           );
-        }
-
-        // 3. Unmapped 5xx (e.g. proxy-specific statuses) -> retryable server
-        //    error rather than the unknown fallback.
-        if (status >= 500) {
-          return yield* fail(
-            new InternalServerError({
-              message,
-              retryAfter: parseRetryAfterForStatus(status, headers),
-            }),
-          );
-        }
-
-        // 4. Provider fallback.
-        return yield* fail(
-          options.unknownError({
-            status,
-            code: env.code,
-            message,
-            body: nonJson ? text : json,
-            headers,
-          }),
-        );
-      }
-
-      // 2xx: the response body IS the payload (no envelope). Wire->TS key
-      // mapping is schema-driven; `RawResponseRoot` responses are the body
-      // verbatim (mapKeys handles arrays/scalars structurally either way).
-      // Strict mode (core/response-validation) checks the mapped body against
-      // the output schema -- a non-JSON body reaches it as a string and fails
-      // there unless the operation's output is itself a string.
-      let body: unknown = nonJson ? text : (json ?? {});
-      if (options.transformResponse) body = options.transformResponse(body);
-      const mapped = yield* validateResponse(
-        outputAst,
-        mapKeys(outputAst, body, "decode"),
-        (cause) => options.parseError({ body: nonJson ? text : json, cause }),
-      ).pipe(Effect.catch(fail));
-      return wrapSensitive(outputAst, mapped);
-    });
+        });
 
   return Layer.succeed(
     API.Protocol,

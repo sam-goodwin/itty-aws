@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import { debugHttp } from "@distilled.cloud/core/debug";
 import {
   HTTP_STATUS_MAP,
   InternalServerError,
@@ -144,7 +145,7 @@ export const StackitProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.su
     }) =>
       Effect.gen(function* () {
         const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
-        if (process.env.DISTILLED_DEBUG_HTTP) {
+        if (debugHttp()) {
           console.error(`[distilled] <- ${response.status} ${text.slice(0, 400)}`);
         }
         let json: unknown;

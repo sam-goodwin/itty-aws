@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import { debugHttp } from "@distilled.cloud/core/debug";
 import {
   type API_ERRORS,
   type ConfigError,
@@ -133,7 +134,7 @@ const decode = ({
   Effect.gen(function* () {
     // Read as text and parse tolerantly -- error pages are often non-JSON.
     const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
-    if (process.env.DISTILLED_DEBUG_HTTP) {
+    if (debugHttp()) {
       console.error(`[distilled] <- ${response.status} ${text.slice(0, 400)}`);
     }
     let json: unknown;

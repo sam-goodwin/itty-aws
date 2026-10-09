@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import { debugHttp } from "@distilled.cloud/core/debug";
 import {
   ConfigError,
   GatewayTimeout,
@@ -177,7 +178,7 @@ const decode = ({
     // decodes from the same buffer.
     const bytes = new Uint8Array(yield* response.arrayBuffer.pipe(Effect.orDie));
     const text = new TextDecoder().decode(bytes);
-    if (process.env.DISTILLED_DEBUG_HTTP) {
+    if (debugHttp()) {
       console.error(`[distilled] <- ${response.status} ${text.slice(0, 400)}`);
     }
 
