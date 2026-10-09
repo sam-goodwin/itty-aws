@@ -258,22 +258,23 @@ const hostFor = (input: unknown, inputAst: AST.AST): string | undefined => {
 // and reintroduced for callers by the generated `CloudflareOpContext`
 // annotations.
 const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAst: AST.AST }) =>
-  Effect.gen(function* () {
-    // The Credentials service holds an effect -- resolving it here (per
-    // request) picks up token refreshes. Its ConfigError/OAuthRefreshError
-    // channel is erased at this boundary like the rest of encode's
-    // requirements; CloudflareOpError reintroduces it for callers.
-    const resolveCredentials = yield* Credentials;
-    const creds = yield* resolveCredentials as Effect.Effect<ResolvedCredentials>;
-    return buildRequest({
-      input,
-      inputAst,
-      baseUrl: hostFor(input, inputAst) ?? creds.apiBaseUrl,
-      headers: formatHeaders(creds),
-      mapMemberHeader: bearerPrefixAuthorization,
-      unknownKeyToWire: camelToSnake,
-    });
-  });
+  // Plain combinators (no generator): this runs on every request.
+  // The Credentials service holds an effect -- resolving it here (per
+  // request) picks up token refreshes. Its ConfigError/OAuthRefreshError
+  // channel is erased at this boundary like the rest of encode's
+  // requirements; CloudflareOpError reintroduces it for callers.
+  Effect.flatMap(Credentials, (resolveCredentials) =>
+    Effect.map(resolveCredentials as Effect.Effect<ResolvedCredentials>, (creds) =>
+      buildRequest({
+        input,
+        inputAst,
+        baseUrl: hostFor(input, inputAst) ?? creds.apiBaseUrl,
+        headers: formatHeaders(creds),
+        mapMemberHeader: bearerPrefixAuthorization,
+        unknownKeyToWire: camelToSnake,
+      }),
+    ),
+  );
 
 /** Shallow-camelCase the keys of the envelope's `result_info` block. */
 const camelizeKeys = (v: unknown): unknown => {
@@ -312,7 +313,7 @@ const makeDecode =
     readonly outputAst: AST.AST;
     readonly errors: ReadonlyArray<unknown>;
   }) =>
-    Effect.gen(function* () {
+    Effect.suspend((): Effect.Effect<unknown> => {
       // Raw binary response: when an output member carries
       // `BinaryResponseBody()`, a successful response is decoded from the
       // response headers plus the body as a lazy byte stream -- the body is
@@ -336,194 +337,198 @@ const makeDecode =
               result[key] = response.status;
             }
           }
-          return result;
+          return Effect.succeed(result);
         }
       }
 
       // Read as text and parse tolerantly -- Cloudflare answers some errors
       // (HTML 5xx pages, bare plain-text 4xx) with non-JSON bodies.
-      const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
-      if (debugHttp()) {
-        console.error(`[distilled] <- ${response.status} ${text.slice(0, 400)}`);
-      }
-      let json: Record<string, unknown> = {};
-      let nonJson = false;
-      if (text.trim().length > 0) {
-        try {
-          const parsed = JSON.parse(text);
-          if (parsed !== null && typeof parsed === "object") {
-            json = parsed as Record<string, unknown>;
-          } else {
+      return Effect.flatMap(Effect.orDie(response.text), (read): Effect.Effect<unknown> => {
+        const text = read ?? "";
+        if (debugHttp()) {
+          console.error(`[distilled] <- ${response.status} ${text.slice(0, 400)}`);
+        }
+        let json: Record<string, unknown> = {};
+        let nonJson = false;
+        if (text.trim().length > 0) {
+          try {
+            const parsed = JSON.parse(text);
+            if (parsed !== null && typeof parsed === "object") {
+              json = parsed as Record<string, unknown>;
+            } else {
+              nonJson = true;
+            }
+          } catch {
             nonJson = true;
           }
-        } catch {
-          nonJson = true;
         }
-      }
-      const status = response.status;
-      const headers = response.headers as Record<string, string | undefined>;
+        const status = response.status;
+        const headers = response.headers as Record<string, string | undefined>;
 
-      // Error envelope or non-2xx -> typed error, matched like the distilled
-      // cloudflare client: per-operation matchers, then global error codes,
-      // then throttling, then HTTP-status classes, then the unknown fallback.
-      const failed = status >= 400 || (!nonJson && json.success === false);
-      if (failed) {
-        // The v4 envelope carries `errors: [...]`; K2's produce endpoint
-        // answers with a single `error: { code, message, retryable }`.
-        const rawErrors = nonJson
-          ? []
-          : Array.isArray(json.errors)
-            ? json.errors
-            : json.error !== null && typeof json.error === "object"
-              ? [json.error]
-              : [];
-        const first = rawErrors[0] as { code?: number; message?: string } | undefined;
-        // Cloudflare sometimes omits the code entirely (e.g. webhook errors);
-        // treat missing code as 0 so `{ code: 0 }` matchers can match.
-        const errorCode = first ? (typeof first.code === "number" ? first.code : 0) : undefined;
-        const errorMessage = nonJson ? text : (first?.message ?? `HTTP ${status}`);
+        // Error envelope or non-2xx -> typed error, matched like the distilled
+        // cloudflare client: per-operation matchers, then global error codes,
+        // then throttling, then HTTP-status classes, then the unknown fallback.
+        const failed = status >= 400 || (!nonJson && json.success === false);
+        if (failed) {
+          // The v4 envelope carries `errors: [...]`; K2's produce endpoint
+          // answers with a single `error: { code, message, retryable }`.
+          const rawErrors = nonJson
+            ? []
+            : Array.isArray(json.errors)
+              ? json.errors
+              : json.error !== null && typeof json.error === "object"
+                ? [json.error]
+                : [];
+          const first = rawErrors[0] as { code?: number; message?: string } | undefined;
+          // Cloudflare sometimes omits the code entirely (e.g. webhook errors);
+          // treat missing code as 0 so `{ code: 0 }` matchers can match.
+          const errorCode = first ? (typeof first.code === "number" ? first.code : 0) : undefined;
+          const errorMessage = nonJson ? text : (first?.message ?? `HTTP ${status}`);
 
-        // Transient auth blips must be tagged retryable on EVERY error path,
-        // including per-operation typed errors -- an op-declared class with a
-        // status/code matcher (e.g. a plain Forbidden) otherwise intercepts
-        // the blip before the global map's tagging and the retry policy never
-        // sees it. Message evidence (see GLOBAL_ERROR_CODE_MAP for the field
-        // history): "Authentication error" (code 10000 family, valid tokens
-        // flake under concurrency), "Unable to authenticate request" and the
-        // code-10001 "internal error" variant (auth/edge hiccups).
-        const isTransientAuthBlip =
-          /authentication error|unable to authenticate request/i.test(errorMessage) ||
-          (errorCode === 10001 && /internal error/i.test(errorMessage));
-        const tagBlip = <E>(error: E): E => (isTransientAuthBlip ? tagRetryable(error) : error);
+          // Transient auth blips must be tagged retryable on EVERY error path,
+          // including per-operation typed errors -- an op-declared class with a
+          // status/code matcher (e.g. a plain Forbidden) otherwise intercepts
+          // the blip before the global map's tagging and the retry policy never
+          // sees it. Message evidence (see GLOBAL_ERROR_CODE_MAP for the field
+          // history): "Authentication error" (code 10000 family, valid tokens
+          // flake under concurrency), "Unable to authenticate request" and the
+          // code-10001 "internal error" variant (auth/edge hiccups).
+          const isTransientAuthBlip =
+            /authentication error|unable to authenticate request/i.test(errorMessage) ||
+            (errorCode === 10001 && /internal error/i.test(errorMessage));
+          const tagBlip = <E>(error: E): E => (isTransientAuthBlip ? tagRetryable(error) : error);
 
-        // 1. Per-operation typed error (matcher metadata on the class).
-        const typed = matchTypedError(
-          errorClasses,
-          status,
-          [{ code: errorCode, message: errorMessage }],
-          { body: nonJson ? text : json, headers },
-        );
-        if (typed !== undefined) {
-          return yield* Effect.fail(tagBlip(typed)) as Effect.Effect<never>;
-        }
+          // 1. Per-operation typed error (matcher metadata on the class).
+          const typed = matchTypedError(
+            errorClasses,
+            status,
+            [{ code: errorCode, message: errorMessage }],
+            { body: nonJson ? text : json, headers },
+          );
+          if (typed !== undefined) {
+            return Effect.fail(tagBlip(typed)) as Effect.Effect<never>;
+          }
 
-        // 2. Global/infrastructure error codes (any endpoint, any status).
-        if (errorCode !== undefined && errorCode in GLOBAL_ERROR_CODE_MAP) {
-          return yield* fail(tagBlip(GLOBAL_ERROR_CODE_MAP[errorCode]!(errorMessage, headers)));
-        }
+          // 2. Global/infrastructure error codes (any endpoint, any status).
+          if (errorCode !== undefined && errorCode in GLOBAL_ERROR_CODE_MAP) {
+            return fail(tagBlip(GLOBAL_ERROR_CODE_MAP[errorCode]!(errorMessage, headers)));
+          }
 
-        // 3. Throttling -- 429 or the global rate-limit message (Cloudflare
-        // returns it inside envelopes with arbitrary HTTP status, often 200).
-        if (status === 429 || GLOBAL_RATE_LIMIT_MESSAGE.test(errorMessage)) {
-          return yield* fail(
-            new TooManyRequests({
+          // 3. Throttling -- 429 or the global rate-limit message (Cloudflare
+          // returns it inside envelopes with arbitrary HTTP status, often 200).
+          if (status === 429 || GLOBAL_RATE_LIMIT_MESSAGE.test(errorMessage)) {
+            return fail(
+              new TooManyRequests({
+                message: errorMessage,
+                retryAfter: parseServerRetryHint(headers),
+              }),
+            );
+          }
+
+          // 4. HTTP-status classes (4xx) / retryable 5xx.
+          if (status >= 400 && status < 500) {
+            const StatusErrorClass = HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
+            if (StatusErrorClass) {
+              return fail(
+                tagBlip(
+                  new StatusErrorClass({
+                    message: errorMessage,
+                    retryAfter: parseRetryAfterForStatus(status, headers),
+                  } as any),
+                ),
+              );
+            }
+          }
+          if (status >= 500) {
+            return fail(httpStatusError(status, errorMessage, headers));
+          }
+
+          // 5. Unknown envelope error.
+          return fail(
+            new UnknownCloudflareError({
+              code: errorCode,
               message: errorMessage,
-              retryAfter: parseServerRetryHint(headers),
             }),
           );
         }
 
-        // 4. HTTP-status classes (4xx) / retryable 5xx.
-        if (status >= 400 && status < 500) {
-          const StatusErrorClass = HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
-          if (StatusErrorClass) {
-            return yield* fail(
-              tagBlip(
-                new StatusErrorClass({
-                  message: errorMessage,
-                  retryAfter: parseRetryAfterForStatus(status, headers),
-                } as any),
-              ),
-            );
+        // Strict mode (core/response-validation) checks the TS-shaped output
+        // against the schema; lenient mode returns it as built.
+        const body: unknown = nonJson ? text : json;
+        const validate = (value: unknown) =>
+          validateResponse(
+            outputAst,
+            value,
+            (cause) => new CloudflareParseError({ body, cause }),
+          ).pipe(Effect.catch(fail));
+
+        if (nonJson) json = {};
+
+        // Unwrap the envelope: the payload is `result` (fall back to the whole
+        // body for the handful of endpoints that don't use the envelope). A
+        // successful non-JSON body is the payload verbatim -- e.g. the
+        // security.txt GET answers an unconfigured zone with a bare non-JSON
+        // sentinel that callers detect by `typeof === "string"`.
+        const payload = (nonJson ? text : "result" in json ? json.result : json) as
+          | Record<string, unknown>
+          | unknown;
+        const rootDict = getAnn(outputAst, keyDictionarySymbol) as
+          | Record<string, string>
+          | undefined;
+
+        // Bare-payload response: the whole value IS the envelope's `result`
+        // (array/scalar), returned directly rather than wrapped in a struct.
+        if (getAnn(outputAst, envelopePayloadRootSymbol) !== undefined) {
+          return validate(mapKeys(outputAst, payload, "decode", rootDict));
+        }
+
+        // A non-JSON body for a struct output: lenient returns the text as
+        // read; strict fails it against the struct schema.
+        if (nonJson) return validate(text);
+
+        const result: Record<string, unknown> = {};
+
+        for (const prop of getProps(outputAst)) {
+          const key = String(prop.name);
+          if (options.resultInfo && hasPropAnn(prop, resultInfoSymbol)) {
+            if (json.result_info !== undefined) {
+              result[key] = camelizeKeys(json.result_info);
+            }
+          } else if (hasPropAnn(prop, envelopePayloadSymbol)) {
+            result[key] = mapKeys(prop.type, payload, "decode", rootDict);
+          } else if (hasPropAnn(prop, headerSymbol)) {
+            const v = response.headers[nameOf(prop, headerSymbol).toLowerCase()];
+            if (v !== undefined) result[key] = v;
+          } else if (hasPropAnn(prop, responseCodeSymbol)) {
+            result[key] = response.status;
+          } else {
+            // The schema's own wire name first; fall back to the service key
+            // dictionary (mined from the distilled SDK) -- the docs sometimes
+            // document a field under a name the live wire doesn't use (e.g. R2
+            // event notifications document `queueId` but the wire sends
+            // `queue`), and the dictionary carries the real mapping.
+            const wire = nameOf(prop, bodySymbol);
+            const dictWire = rootDict?.[key];
+            const src =
+              payload && typeof payload === "object"
+                ? wire in payload
+                  ? wire
+                  : dictWire !== undefined && dictWire in payload
+                    ? dictWire
+                    : undefined
+                : undefined;
+            if (src !== undefined) {
+              result[key] = mapKeys(
+                prop.type,
+                (payload as Record<string, unknown>)[src],
+                "decode",
+                rootDict,
+              );
+            }
           }
         }
-        if (status >= 500) {
-          return yield* fail(httpStatusError(status, errorMessage, headers));
-        }
-
-        // 5. Unknown envelope error.
-        return yield* fail(
-          new UnknownCloudflareError({
-            code: errorCode,
-            message: errorMessage,
-          }),
-        );
-      }
-
-      // Strict mode (core/response-validation) checks the TS-shaped output
-      // against the schema; lenient mode returns it as built.
-      const body: unknown = nonJson ? text : json;
-      const validate = (value: unknown) =>
-        validateResponse(
-          outputAst,
-          value,
-          (cause) => new CloudflareParseError({ body, cause }),
-        ).pipe(Effect.catch(fail));
-
-      if (nonJson) json = {};
-
-      // Unwrap the envelope: the payload is `result` (fall back to the whole
-      // body for the handful of endpoints that don't use the envelope). A
-      // successful non-JSON body is the payload verbatim -- e.g. the
-      // security.txt GET answers an unconfigured zone with a bare non-JSON
-      // sentinel that callers detect by `typeof === "string"`.
-      const payload = (nonJson ? text : "result" in json ? json.result : json) as
-        | Record<string, unknown>
-        | unknown;
-      const rootDict = getAnn(outputAst, keyDictionarySymbol) as Record<string, string> | undefined;
-
-      // Bare-payload response: the whole value IS the envelope's `result`
-      // (array/scalar), returned directly rather than wrapped in a struct.
-      if (getAnn(outputAst, envelopePayloadRootSymbol) !== undefined) {
-        return yield* validate(mapKeys(outputAst, payload, "decode", rootDict));
-      }
-
-      // A non-JSON body for a struct output: lenient returns the text as
-      // read; strict fails it against the struct schema.
-      if (nonJson) return yield* validate(text);
-
-      const result: Record<string, unknown> = {};
-
-      for (const prop of getProps(outputAst)) {
-        const key = String(prop.name);
-        if (options.resultInfo && hasPropAnn(prop, resultInfoSymbol)) {
-          if (json.result_info !== undefined) {
-            result[key] = camelizeKeys(json.result_info);
-          }
-        } else if (hasPropAnn(prop, envelopePayloadSymbol)) {
-          result[key] = mapKeys(prop.type, payload, "decode", rootDict);
-        } else if (hasPropAnn(prop, headerSymbol)) {
-          const v = response.headers[nameOf(prop, headerSymbol).toLowerCase()];
-          if (v !== undefined) result[key] = v;
-        } else if (hasPropAnn(prop, responseCodeSymbol)) {
-          result[key] = response.status;
-        } else {
-          // The schema's own wire name first; fall back to the service key
-          // dictionary (mined from the distilled SDK) -- the docs sometimes
-          // document a field under a name the live wire doesn't use (e.g. R2
-          // event notifications document `queueId` but the wire sends
-          // `queue`), and the dictionary carries the real mapping.
-          const wire = nameOf(prop, bodySymbol);
-          const dictWire = rootDict?.[key];
-          const src =
-            payload && typeof payload === "object"
-              ? wire in payload
-                ? wire
-                : dictWire !== undefined && dictWire in payload
-                  ? dictWire
-                  : undefined
-              : undefined;
-          if (src !== undefined) {
-            result[key] = mapKeys(
-              prop.type,
-              (payload as Record<string, unknown>)[src],
-              "decode",
-              rootDict,
-            );
-          }
-        }
-      }
-      return yield* validate(result);
+        return validate(result);
+      });
     });
 
 export const CloudflareProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(

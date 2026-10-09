@@ -282,103 +282,105 @@ const buildFormUrlEncoded = (body: Record<string, unknown>): string => {
 // request. The requirement is erased at this boundary and reintroduced for
 // callers by the generated `StripeOpContext` annotations.
 const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAst: AST.AST }) =>
-  Effect.gen(function* () {
-    const resolveCredentials = yield* Credentials;
-    const creds = yield* resolveCredentials as Effect.Effect<Config>;
-    const options = Option.getOrUndefined(yield* Effect.serviceOption(RequestOptions));
+  Effect.flatMap(Credentials, (resolveCredentials) =>
+    Effect.flatMap(resolveCredentials as Effect.Effect<Config>, (creds) =>
+      Effect.map(Effect.serviceOption(RequestOptions), (requestOptions) => {
+        const options = Option.getOrUndefined(requestOptions);
 
-    const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
-    if (!http) {
-      throw new Error("operation input is missing the Http() trait");
-    }
+        const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
+        if (!http) {
+          throw new Error("operation input is missing the Http() trait");
+        }
 
-    const baseHeaders: Record<string, string> = {
-      Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
-      ...stripeRequestHeaders(options),
-      Accept: "application/json",
-    };
+        const baseHeaders: Record<string, string> = {
+          Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
+          ...stripeRequestHeaders(options),
+          Accept: "application/json",
+        };
 
-    // Multipart (POST /v1/files): core's buildRequest speaks multipart
-    // form-data (file parts + JSON-encoded object parts) -- same behavior as
-    // v0's buildFormData.
-    if (http.contentType === "multipart") {
-      return buildRequest({
-        input: unwrapRedactedDeep(input),
-        inputAst,
-        baseUrl: creds.apiBaseUrl,
-        headers: baseHeaders,
-      });
-    }
+        // Multipart (POST /v1/files): core's buildRequest speaks multipart
+        // form-data (file parts + JSON-encoded object parts) -- same behavior as
+        // v0's buildFormData.
+        if (http.contentType === "multipart") {
+          return buildRequest({
+            input: unwrapRedactedDeep(input),
+            inputAst,
+            baseUrl: creds.apiBaseUrl,
+            headers: baseHeaders,
+          });
+        }
 
-    const inputObj = (unwrapRedactedDeep(input) ?? {}) as Record<string, unknown>;
-    const headers: Record<string, string> = { ...baseHeaders };
-    const body: Record<string, unknown> = {};
-    const query = new URLSearchParams();
-    let uri = http.uri;
-    const consumed = new Set<string>();
+        const inputObj = (unwrapRedactedDeep(input) ?? {}) as Record<string, unknown>;
+        const headers: Record<string, string> = { ...baseHeaders };
+        const body: Record<string, unknown> = {};
+        const query = new URLSearchParams();
+        let uri = http.uri;
+        const consumed = new Set<string>();
 
-    for (const prop of getProps(inputAst)) {
-      const key = String(prop.name);
-      consumed.add(key);
-      const value = inputObj[key];
-      if (value === undefined) continue;
+        for (const prop of getProps(inputAst)) {
+          const key = String(prop.name);
+          consumed.add(key);
+          const value = inputObj[key];
+          if (value === undefined) continue;
 
-      if (hasPropAnn(prop, labelSymbol)) {
-        const token = nameOf(prop, labelSymbol);
-        uri = uri.replace(`{${token}}`, encodeURIComponent(String(value)));
-      } else if (hasPropAnn(prop, headerSymbol)) {
-        headers[nameOf(prop, headerSymbol).toLowerCase()] = String(value);
-      } else if (hasPropAnn(prop, querySymbol)) {
-        // Stripe bracket expansion, not dotted params (`created[gte]=1`).
-        appendStripeQuery(query, nameOf(prop, querySymbol), value);
-      } else {
-        body[nameOf(prop, bodySymbol)] = mapKeys(prop.type, value, "encode");
-      }
-    }
+          if (hasPropAnn(prop, labelSymbol)) {
+            const token = nameOf(prop, labelSymbol);
+            uri = uri.replace(`{${token}}`, encodeURIComponent(String(value)));
+          } else if (hasPropAnn(prop, headerSymbol)) {
+            headers[nameOf(prop, headerSymbol).toLowerCase()] = String(value);
+          } else if (hasPropAnn(prop, querySymbol)) {
+            // Stripe bracket expansion, not dotted params (`created[gte]=1`).
+            appendStripeQuery(query, nameOf(prop, querySymbol), value);
+          } else {
+            body[nameOf(prop, bodySymbol)] = mapKeys(prop.type, value, "encode");
+          }
+        }
 
-    // Input keys the schema doesn't know pass through as body fields -- the
-    // generated schemas can lag the real API, and silently dropping them
-    // would break working callers.
-    for (const [key, value] of Object.entries(inputObj)) {
-      if (consumed.has(key) || value === undefined) continue;
-      body[key] = value;
-    }
+        // Input keys the schema doesn't know pass through as body fields -- the
+        // generated schemas can lag the real API, and silently dropping them
+        // would break working callers.
+        for (const [key, value] of Object.entries(inputObj)) {
+          if (consumed.has(key) || value === undefined) continue;
+          body[key] = value;
+        }
 
-    // v0's normalizeStripeGetQuery: GET inputs carry no body -- flatten the
-    // body-bound members into the query string with bracket notation.
-    if (BODYLESS.has(http.method)) {
-      for (const [key, value] of Object.entries(body)) {
-        appendStripeQuery(query, key, value);
-      }
-    }
+        // v0's normalizeStripeGetQuery: GET inputs carry no body -- flatten the
+        // body-bound members into the query string with bracket notation.
+        if (BODYLESS.has(http.method)) {
+          for (const [key, value] of Object.entries(body)) {
+            appendStripeQuery(query, key, value);
+          }
+        }
 
-    const qs = query.toString();
-    const url = `${creds.apiBaseUrl}${uri}${qs ? `?${qs}` : ""}`;
-    if (debugHttp()) {
-      console.error(
-        `[distilled] ${http.method} ${url}` +
-          (Object.keys(body).length && !BODYLESS.has(http.method)
-            ? ` body=${JSON.stringify(body).slice(0, 400)}`
-            : ""),
-      );
-    }
+        const qs = query.toString();
+        const url = `${creds.apiBaseUrl}${uri}${qs ? `?${qs}` : ""}`;
+        if (debugHttp()) {
+          console.error(
+            `[distilled] ${http.method} ${url}` +
+              (Object.keys(body).length && !BODYLESS.has(http.method)
+                ? ` body=${JSON.stringify(body).slice(0, 400)}`
+                : ""),
+          );
+        }
 
-    let request = HttpClientRequest.make(http.method)(url).pipe(
-      HttpClientRequest.setHeaders(headers),
-    );
-    if (!BODYLESS.has(http.method) && Object.keys(body).length > 0) {
-      request =
-        http.contentType === "form-urlencoded"
-          ? request.pipe(
-              HttpClientRequest.setBody(
-                HttpBody.text(buildFormUrlEncoded(body), "application/x-www-form-urlencoded"),
-              ),
-            )
-          : // The /v2/* operations are plain JSON.
-            request.pipe(HttpClientRequest.bodyJsonUnsafe(body));
-    }
-    return request;
-  });
+        let request = HttpClientRequest.make(http.method)(url).pipe(
+          HttpClientRequest.setHeaders(headers),
+        );
+        if (!BODYLESS.has(http.method) && Object.keys(body).length > 0) {
+          request =
+            http.contentType === "form-urlencoded"
+              ? request.pipe(
+                  HttpClientRequest.setBody(
+                    HttpBody.text(buildFormUrlEncoded(body), "application/x-www-form-urlencoded"),
+                  ),
+                )
+              : // The /v2/* operations are plain JSON.
+                request.pipe(HttpClientRequest.bodyJsonUnsafe(body));
+        }
+        return request;
+      }),
+    ),
+  );
 
 // =============================================================================
 // Response decoding / error matching (ported from v0's matchError)
@@ -508,9 +510,9 @@ const decode = ({
   readonly outputAst: AST.AST;
   readonly errors: ReadonlyArray<unknown>;
 }) =>
-  Effect.gen(function* () {
+  Effect.flatMap(Effect.orDie(response.text), (read): Effect.Effect<unknown> => {
     // Read as text and parse tolerantly -- error pages can be non-JSON.
-    const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
+    const text = read ?? "";
     if (debugHttp()) {
       console.error(`[distilled] <- ${response.status} ${text.slice(0, 400)}`);
     }
@@ -534,20 +536,22 @@ const decode = ({
         body: nonJson ? text : json,
         headers,
       });
-      if (typed !== undefined) return yield* fail(typed);
-      return yield* fail(matchStripeError(status, errorBody, headers));
+      if (typed !== undefined) return fail(typed);
+      return fail(matchStripeError(status, errorBody, headers));
     }
 
     // 2xx: the response body IS the payload (no envelope). Wire->TS key
     // mapping is schema-driven; sensitive members come back Redacted.
     // Strict mode checks the mapped body against the output schema first.
     const body: unknown = nonJson ? text : (json ?? {});
-    const mapped = yield* validateResponse(
+    return validateResponse(
       outputAst,
       mapKeys(outputAst, body, "decode"),
       (cause) => new StripeParseError({ body: nonJson ? text : json, cause }),
-    ).pipe(Effect.catch(fail));
-    return wrapSensitive(outputAst, mapped);
+    ).pipe(
+      Effect.catch(fail),
+      Effect.map((mapped) => wrapSensitive(outputAst, mapped)),
+    );
   });
 
 export const StripeProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
