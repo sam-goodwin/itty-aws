@@ -33,7 +33,8 @@ const literals = (code: string, file: string): string => {
     if (!node || typeof node !== "object") return;
     if (node.type === "Literal" && typeof node.value === "string") out.push(node.value);
     if (node.type === "TemplateElement") out.push(node.value?.raw ?? "");
-    for (const k in node) if (k !== "type" && node[k] && typeof node[k] === "object") visit(node[k]);
+    for (const k in node)
+      if (k !== "type" && node[k] && typeof node[k] === "object") visit(node[k]);
   };
   visit(parseAst(code, { sourceType: "module" }, file));
   return out.join("\u0000");
