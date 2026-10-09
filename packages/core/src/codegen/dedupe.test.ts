@@ -63,3 +63,13 @@ describe("dedupeSchemas", () => {
     expect(run(code)).toContain(`export const B = A as any as S.Schema<B>;`);
   });
 });
+
+test("structs that name different enum aliases of the same leaf merge", () => {
+  const code = [
+    `export const PaymentStatus = S.String;`,
+    `export const SetupStatus = S.String;`,
+    `export const A = S.Struct({ status: S.optional(PaymentStatus) });`,
+    `export const B = S.Struct({ status: S.optional(SetupStatus) });`,
+  ].join("\n");
+  expect(dedupeSchemas(code).code).toContain(`export const B = A as any as S.Schema<B>;`);
+});

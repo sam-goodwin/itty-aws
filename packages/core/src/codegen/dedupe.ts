@@ -54,6 +54,10 @@ export const dedupeSchemas = (
   if (IDENTIFIER_ON_WIRE.test(code)) return { code, merged: 0 };
   const program = parseAst(code, { sourceType: "module", lang: "ts" }, filename);
   const decls: Array<{ name: string; init: Node }> = [];
+  // `export const Status = S.String;`: enum aliases and other plain leaf
+  // schemas. References to them compare by what they alias, so two structs
+  // that differ only in which string enum a field names still merge.
+  const leafAliases = new Map<string, string>();
   const operationSchemas = new Set<string>();
 
   for (let statement of program.body as unknown as Node[]) {
@@ -69,10 +73,11 @@ export const dedupeSchemas = (
         continue;
       }
       if (SCHEMA_CALL.test(text)) decls.push({ name: id.name as string, init: d.init });
+      else if (/^S\.[A-Z]\w*$/.test(text)) leafAliases.set(id.name as string, text);
     }
   }
 
-  const names = new Set(decls.map((d) => d.name));
+  const names = new Set([...decls.map((d) => d.name), ...leafAliases.keys()]);
   const candidates: Candidate[] = decls
     .filter((d) => !operationSchemas.has(d.name))
     .map(({ name, init }) => {
@@ -112,7 +117,7 @@ export const dedupeSchemas = (
     });
 
   // Class of every schema const; operation schemas are their own class.
-  const cls = new Map<string, string>([...names].map((n) => [n, n]));
+  const cls = new Map<string, string>([...names].map((n) => [n, leafAliases.get(n) ?? n]));
   const keyOf = (c: Candidate): string => {
     const edits = [
       ...c.refs.map(([s, e, n]) => [s, e, n === c.name ? "@self" : `@${cls.get(n) ?? n}`] as const),
