@@ -207,27 +207,52 @@ export const declare = (_is: (u: unknown) => boolean, annotations?: Annotations)
  * `.fields`, `.ast` and a static `.pipe` for category decorators. It does not
  * validate on construction.
  */
+const tagKey = "~distilled/tag";
+const keysKey = "~distilled/keys";
+
+/**
+ * Shared base of every lite error class: a yieldable `Data.Error` that keeps
+ * only the declared fields and sets `_tag` and `name` like
+ * `Data.TaggedError`. One class per error costs ~0.6 KB; building a
+ * `Data.TaggedError` base for each cost ~2.3 KB.
+ */
+let liteErrorBase: any;
+const LiteErrorBase = (): any =>
+  (liteErrorBase ??= class LiteError extends (Data.Error as any) {
+    constructor(props?: Record<string, unknown>) {
+      const keys: ReadonlyArray<string> = (new.target as any)[keysKey];
+      const picked: Record<string, unknown> = {};
+      if (props) for (const k of keys) if (props[k] !== undefined) picked[k] = props[k];
+      super(picked);
+      (this as any)._tag = (new.target as any)[tagKey];
+    }
+    static get ast(): Node {
+      return node({
+        _tag: "Declaration",
+        typeParameters: [],
+        annotations: { identifier: (this as any)[tagKey] },
+      });
+    }
+    static pipe(this: unknown) {
+      return pipeArguments(this, arguments);
+    }
+  });
+
+/**
+ * A tagged error class without Effect Schema. It does not validate on
+ * construction. Carries `.fields` and `.identifier`, and a static `.pipe`
+ * for category decorators.
+ */
 export const TaggedError =
   (_identifier?: string) =>
   (tag: string, fields: Readonly<Record<string, Lite>> = {}): any => {
-    const keys = Object.keys(fields);
-    const Base = Data.TaggedError(tag) as any;
-    class LiteTaggedError extends Base {
-      constructor(props?: Record<string, unknown>) {
-        const picked: Record<string, unknown> = {};
-        if (props) for (const k of keys) if (props[k] !== undefined) picked[k] = props[k];
-        super(picked);
-      }
-      static fields = fields;
-      static identifier = tag;
-      static get ast(): Node {
-        return node({ _tag: "Declaration", typeParameters: [], annotations: { identifier: tag } });
-      }
-      static pipe(this: unknown) {
-        return pipeArguments(this, arguments);
-      }
-    }
-    return LiteTaggedError;
+    const C = class extends LiteErrorBase() {} as any;
+    C[tagKey] = tag;
+    C[keysKey] = Object.keys(fields);
+    C.fields = fields;
+    C.identifier = tag;
+    C.prototype.name = tag;
+    return C;
   };
 
 /** Schema `j` of builder `build`, made on first use (the lite `chunks.at`). */
