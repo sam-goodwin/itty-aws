@@ -60,22 +60,22 @@ const lazyProtocol = (load: () => Promise<Protocol>): Protocol => {
   };
 };
 
-const restXmlProtocol = lazyProtocol(() =>
+const restXmlProtocol = /*@__PURE__*/ lazyProtocol(() =>
   import("./protocols/rest-xml.ts").then((m) => m.restXmlProtocol),
 );
-const restJson1Protocol = lazyProtocol(() =>
+const restJson1Protocol = /*@__PURE__*/ lazyProtocol(() =>
   import("./protocols/rest-json.ts").then((m) => m.restJson1Protocol),
 );
-const awsJson1_0Protocol = lazyProtocol(() =>
+const awsJson1_0Protocol = /*@__PURE__*/ lazyProtocol(() =>
   import("./protocols/aws-json.ts").then((m) => m.awsJson1_0Protocol),
 );
-const awsJson1_1Protocol = lazyProtocol(() =>
+const awsJson1_1Protocol = /*@__PURE__*/ lazyProtocol(() =>
   import("./protocols/aws-json.ts").then((m) => m.awsJson1_1Protocol),
 );
-const awsQueryProtocol = lazyProtocol(() =>
+const awsQueryProtocol = /*@__PURE__*/ lazyProtocol(() =>
   import("./protocols/aws-query.ts").then((m) => m.awsQueryProtocol),
 );
-const ec2QueryProtocol = lazyProtocol(() =>
+const ec2QueryProtocol = /*@__PURE__*/ lazyProtocol(() =>
   import("./protocols/ec2-query.ts").then((m) => m.ec2QueryProtocol),
 );
 
@@ -751,28 +751,85 @@ export const EventHeader = () => makeAnnotation(eventHeaderSymbol, true);
 export const eventPayloadSymbol = "distilled-aws/event-payload" as const;
 export const EventPayload = () => makeAnnotation(eventPayloadSymbol, true);
 
+/**
+ * The event stream codec (binary framing, CRC32, payload parsers). It loads
+ * on the first event stream, and only bundles that keep an event stream
+ * schema reference it: `EventStream` / `InputEventStream` register the
+ * loader for their event schema, and the protocols find it from there.
+ */
+export interface EventStreamCodec {
+  readonly parseEventStream: typeof import("./eventstream/parser.ts").parseEventStream;
+  readonly parseEventStreamToUnion: typeof import("./eventstream/parser.ts").parseEventStreamToUnion;
+  readonly serializeInputEventStreamWithSchema: typeof import("./eventstream/serializer.ts").serializeInputEventStreamWithSchema;
+}
+const eventStreamCodecs = new WeakMap<object, () => Promise<EventStreamCodec>>();
+let codecPromise: Promise<EventStreamCodec> | undefined;
+const loadEventStreamCodec = (): Promise<EventStreamCodec> =>
+  (codecPromise ??= Promise.all([
+    import("./eventstream/parser.ts"),
+    import("./eventstream/serializer.ts"),
+  ]).then(([parser, serializer]) => ({ ...parser, ...serializer })));
+
+const codecFor = (eventSchema: unknown): Effect.Effect<EventStreamCodec> => {
+  const load =
+    eventSchema && (typeof eventSchema === "object" || typeof eventSchema === "function")
+      ? eventStreamCodecs.get(eventSchema)
+      : undefined;
+  return load
+    ? Effect.promise(load)
+    : Effect.die(new Error("event stream member without an EventStream / InputEventStream schema"));
+};
+
+/** A stream built by the event stream codec registered for `eventSchema`. */
+export const eventStreamWith = <A, E>(
+  eventSchema: unknown,
+  f: (codec: EventStreamCodec) => Stream.Stream<A, E>,
+): Stream.Stream<A, E> => Stream.unwrap(Effect.map(codecFor(eventSchema), f));
+
+/** A request body built by the event stream codec registered for `eventSchema`. */
+export const eventStreamBody = (
+  eventSchema: unknown,
+  f: (codec: EventStreamCodec) => ReadableStream<Uint8Array>,
+): ReadableStream<Uint8Array> => {
+  let reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
+  const open = async () =>
+    (reader ??= f(await Effect.runPromise(codecFor(eventSchema))).getReader());
+  return new ReadableStream<Uint8Array>({
+    async pull(controller) {
+      const { done, value } = await (await open()).read();
+      if (done) controller.close();
+      else controller.enqueue(value);
+    },
+    cancel: (reason) => reader?.cancel(reason),
+  });
+};
+
 export const EventStream = <A>(
   eventSchema: S.Schema<A>,
-): S.Schema<Stream.Stream<A, Error, never>> =>
+): S.Schema<Stream.Stream<A, Error, never>> => (
+  eventStreamCodecs.set(eventSchema, loadEventStreamCodec),
   S.declare((u): u is Stream.Stream<A, Error, never> => isEffectStream(u)).annotate({
     [streamingSymbol]: true,
     identifier: "EventStream",
     eventSchema,
-  });
+  })
+);
 
 export const inputEventStreamSymbol = "distilled-aws/input-event-stream" as const;
 
 export const InputEventStream = <A>(
   eventSchema: S.Schema<A>,
   eventPayloadMap?: Record<string, string>,
-): S.Schema<Stream.Stream<A, Error, never>> =>
+): S.Schema<Stream.Stream<A, Error, never>> => (
+  eventStreamCodecs.set(eventSchema, loadEventStreamCodec),
   S.declare((u): u is Stream.Stream<A, Error, never> => isEffectStream(u)).annotate({
     [streamingSymbol]: true,
     [inputEventStreamSymbol]: true,
     identifier: "InputEventStream",
     eventSchema,
     eventPayloadMap,
-  });
+  })
+);
 
 export const isInputEventStream = (ast: AST.AST): boolean => {
   if (ast.annotations?.[inputEventStreamSymbol]) return true;

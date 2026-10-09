@@ -14,7 +14,7 @@ import type { Protocol, ProtocolHandler } from "../client/protocol.ts";
 import type { Request } from "../client/request.ts";
 import type { Response } from "../client/response.ts";
 import { ParseError } from "../errors.ts";
-import { parseEventStreamToUnion, type PayloadParser } from "../eventstream/parser.ts";
+import type { PayloadParser } from "../eventstream/parser.ts";
 import {
   getEventSchema,
   getHttpHeader,
@@ -32,6 +32,7 @@ import {
   isOutputEventStream,
   isStreamingType,
   type StreamingInputBody,
+  eventStreamWith,
 } from "../traits.ts";
 import {
   getArrayElementAST,
@@ -241,10 +242,12 @@ export const restXmlProtocol: Protocol = (operation: Operation): ProtocolHandler
               throw error;
             }
           };
-          result[outputPayloadProp.name] = parseEventStreamToUnion(
-            response.body as ReadableStream<Uint8Array>,
-            xmlPayloadParser,
-            outputPayloadProp.eventSchema,
+          result[outputPayloadProp.name] = eventStreamWith(outputPayloadProp.eventSchema, (codec) =>
+            codec.parseEventStreamToUnion(
+              response.body as ReadableStream<Uint8Array>,
+              xmlPayloadParser,
+              outputPayloadProp.eventSchema,
+            ),
           );
         } else {
           // Raw streaming output (blob)

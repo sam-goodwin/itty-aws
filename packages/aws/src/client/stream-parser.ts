@@ -12,17 +12,7 @@ import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
-// The event stream codec (CRC32, binary framing) loads with the first event stream.
-const parseEventStream = (
-  raw: Parameters<typeof import("../eventstream/parser.ts").parseEventStream>[0],
-) =>
-  Stream.unwrap(
-    Effect.map(
-      Effect.promise(() => import("../eventstream/parser.ts")),
-      (m) => m.parseEventStream(raw),
-    ),
-  );
-import { isStreamingType } from "../traits.ts";
+import { eventStreamWith, isStreamingType } from "../traits.ts";
 import { getEncodedPropertySignatures } from "../util/ast.ts";
 
 /**
@@ -85,7 +75,9 @@ function parseTypedEventStream<A>(
   eventSchema?: Schema.Schema<A>,
 ): Stream.Stream<A, Error, never> {
   // Parse wire format into StreamEvent objects
-  const wireEventStream = parseEventStream(rawStream);
+  const wireEventStream = eventStreamWith(eventSchema, (codec) =>
+    codec.parseEventStream(rawStream),
+  );
 
   if (!eventSchema) {
     // No schema provided - return raw wire events

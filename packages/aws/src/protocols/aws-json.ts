@@ -26,12 +26,12 @@ import type { Protocol, ProtocolHandler } from "../client/protocol.ts";
 import type { Request } from "../client/request.ts";
 import type { Response } from "../client/response.ts";
 import { ParseError } from "../errors.ts";
-import { parseEventStreamToUnion } from "../eventstream/parser.ts";
 import {
   getAwsApiService,
   getEventSchema,
   isOutputEventStream,
   isStreamingType,
+  eventStreamWith,
 } from "../traits.ts";
 import { getEncodedPropertySignatures, getIdentifier } from "../util/ast.ts";
 import { extractJsonErrorCode, extractJsonErrorData, sanitizeErrorCode } from "../util/error.ts";
@@ -119,10 +119,14 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
             // Parse event stream to typed union events, decoded through the
             // event schema so blob/timestamp members match the generated types
             return {
-              [streamingOutputProp.name]: parseEventStreamToUnion(
-                response.body as ReadableStream<Uint8Array>,
-                undefined,
+              [streamingOutputProp.name]: eventStreamWith(
                 streamingOutputProp.eventSchema,
+                (codec) =>
+                  codec.parseEventStreamToUnion(
+                    response.body as ReadableStream<Uint8Array>,
+                    undefined,
+                    streamingOutputProp.eventSchema,
+                  ),
               ),
             };
           }

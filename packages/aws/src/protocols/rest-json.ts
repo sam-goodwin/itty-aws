@@ -21,8 +21,7 @@ import type { Response } from "../client/response.ts";
 import { applyApiGatewayCustomizations, isApiGateway } from "../customizations/api-gateway.ts";
 import { applyGlacierCustomizations, isGlacier } from "../customizations/glacier.ts";
 import { ParseError } from "../errors.ts";
-import { parseEventStreamToUnion } from "../eventstream/parser.ts";
-import { serializeInputEventStreamWithSchema, type InputEvent } from "../eventstream/serializer.ts";
+import type { InputEvent } from "../eventstream/serializer.ts";
 import {
   getAwsApiService,
   getEventPayloadMap,
@@ -40,6 +39,8 @@ import {
   isOutputEventStream,
   isStreamingType,
   type StreamingInputBody,
+  eventStreamWith,
+  eventStreamBody,
 } from "../traits.ts";
 import {
   getEncodedPropertySignatures,
@@ -203,10 +204,12 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
         if (isInputEventStreamPayload) {
           // Input event stream - frame each event per its eventPayload /
           // eventHeader member annotations (as the output side does).
-          request.body = serializeInputEventStreamWithSchema(
-            payloadValue as Stream.Stream<InputEvent, unknown>,
-            getEventSchema(payloadAst),
-            getEventPayloadMap(payloadAst),
+          request.body = eventStreamBody(getEventSchema(payloadAst), (codec) =>
+            codec.serializeInputEventStreamWithSchema(
+              payloadValue as Stream.Stream<InputEvent, unknown>,
+              getEventSchema(payloadAst),
+              getEventPayloadMap(payloadAst),
+            ),
           );
           // Set content type for event streams (always override)
           request.headers["Content-Type"] = "application/vnd.amazon.eventstream";
@@ -298,11 +301,13 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
           // Parse event stream - converts raw bytes to typed union events,
           // decoded through the event schema so blob/timestamp members match
           // the generated types
-          result[outputPayloadProp.name] = parseEventStreamToUnion(
-            response.body as ReadableStream<Uint8Array>,
-            undefined,
-            outputPayloadProp.eventSchema,
-            outputPayloadProp.eventPayloadMap,
+          result[outputPayloadProp.name] = eventStreamWith(outputPayloadProp.eventSchema, (codec) =>
+            codec.parseEventStreamToUnion(
+              response.body as ReadableStream<Uint8Array>,
+              undefined,
+              outputPayloadProp.eventSchema,
+              outputPayloadProp.eventPayloadMap,
+            ),
           );
         } else {
           // Raw streaming output (blob)
