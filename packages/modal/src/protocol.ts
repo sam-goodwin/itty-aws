@@ -55,10 +55,7 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
 };
 
 export const ModalProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
-  credentials: /*@__PURE__*/ Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
+  credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
   baseUrl: (creds) => creds.apiBaseUrl,
   headers: (creds) => ({
     "x-modal-token-id": Redacted.value(creds.tokenId),

@@ -45,10 +45,7 @@ export type SpacetimeDBOpContext = Credentials | HttpClient.HttpClient;
 
 export const SpacetimeDBProtocol: Layer.Layer<API.Protocol> =
   /*@__PURE__*/ makeRestProtocol<Config>({
-    credentials: /*@__PURE__*/ Effect.gen(function* () {
-      const resolve = yield* Credentials;
-      return yield* resolve;
-    }),
+    credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
     baseUrl: (creds) => creds.apiBaseUrl,
     headers: (creds): Record<string, string> => {
       const headers: Record<string, string> = {};

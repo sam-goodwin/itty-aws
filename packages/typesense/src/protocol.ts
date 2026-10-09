@@ -35,10 +35,7 @@ export type TypesenseOpContext = Credentials | HttpClient.HttpClient;
 export const TypesenseProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // Resolved on the calling fiber, per request -- the Credentials service
   // holds an effect, so lazily-resolved keys Just Work.
-  credentials: /*@__PURE__*/ Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
+  credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
   baseUrl: (creds) => creds.apiBaseUrl,
   headers: formatHeaders,
   // Typesense's ApiResponse error body is `{ message }` -- covered by the

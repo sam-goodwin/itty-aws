@@ -40,10 +40,7 @@ export const TursoProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestPr
   // The Credentials service holds an effect -- resolving it here (per
   // request) picks up rotations. Its error channel is erased at the protocol
   // boundary; TursoOpError reintroduces it for callers.
-  credentials: /*@__PURE__*/ Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
+  credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
   baseUrl: (creds) => creds.apiBaseUrl,
   headers: (creds) => ({
     Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,

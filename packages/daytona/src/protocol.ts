@@ -69,10 +69,7 @@ export const DaytonaProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRest
   // Resolved on the CALLING fiber per request (the layer is memoized per
   // process); the Credentials service holds an effect, so a key rotated
   // between calls is picked up without rebuilding the layer.
-  credentials: /*@__PURE__*/ Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
+  credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
   baseUrl: (creds, target) => baseUrlFor(creds, target.uri),
   headers: (creds) => {
     const headers: Record<string, string> = {

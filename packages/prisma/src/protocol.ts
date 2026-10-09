@@ -64,10 +64,7 @@ export const PrismaProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestP
   // holds an effect, so rotated tokens are picked up. Its ConfigError
   // channel is erased at this boundary (Protocol effects carry none) and
   // reintroduced for callers by `PrismaOpError`.
-  credentials: /*@__PURE__*/ Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
+  credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
   baseUrl: (creds) => creds.apiBaseUrl,
   headers: (creds) => ({
     Authorization: `Bearer ${Redacted.value(creds.apiToken)}`,

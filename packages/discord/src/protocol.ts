@@ -77,10 +77,7 @@ export const DiscordProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRest
   // Resolved on the CALLING fiber per request (the layer is memoized per
   // process); the Credentials service holds an effect so rotating tokens
   // Just Work.
-  credentials: /*@__PURE__*/ Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
+  credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
   baseUrl: (creds) => creds.apiBaseUrl,
   headers: (creds) => ({
     Authorization: `${creds.tokenType} ${Redacted.value(creds.token)}`,

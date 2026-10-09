@@ -55,10 +55,7 @@ export const ForgejoProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRest
   // Resolved on the CALLING fiber per request (the layer is memoized per
   // process); the Credentials service holds an effect, so a token rotated
   // between calls is picked up without rebuilding the layer.
-  credentials: /*@__PURE__*/ Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
+  credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
   baseUrl: (creds) => creds.apiBaseUrl,
   headers: (creds) => ({
     Authorization: `token ${Redacted.value(creds.token)}`,

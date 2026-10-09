@@ -71,10 +71,7 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
 export const IcebergProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // Resolved on the CALLING fiber per request; the Credentials service holds
   // an effect, so a token rotated between calls is picked up.
-  credentials: /*@__PURE__*/ Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
+  credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
   baseUrl: (creds, target) => baseUrlFor(creds, target.uri),
   headers: (creds): Record<string, string> =>
     creds.token ? { Authorization: `Bearer ${Redacted.value(creds.token)}` } : {},
