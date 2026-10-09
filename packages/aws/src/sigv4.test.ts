@@ -1,4 +1,5 @@
 import { createHash, createHmac } from "node:crypto";
+import * as CoreCrypto from "@distilled.cloud/core/crypto";
 import * as Cache from "effect/Cache";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
@@ -453,5 +454,50 @@ describe("Presign", () => {
     expect(parsed.searchParams.get("X-Amz-SignedHeaders")).toBe("content-type;host");
     expect(parsed.searchParams.get("X-Amz-Expires")).toBe("60");
     expect(parsed.searchParams.get("X-Amz-Signature")).toMatch(/^[0-9a-f]{64}$/);
+  });
+});
+
+describe("SigV4.sign crypto implementations", () => {
+  const program = SigV4.sign({
+    ...creds,
+    method: "GET",
+    url: "https://examplebucket.s3.amazonaws.com/test.txt",
+    headers: { Range: "bytes=0-9" },
+    service: "s3",
+    region: "us-east-1",
+    datetime,
+  });
+  const expected = "Signature=5c0d4ff29e72b8f94c5b6720369921e587e39bf7a64e456887dec4b43a2d1b77";
+  test.each([
+    ["webcrypto", CoreCrypto.webCrypto],
+    ["node:crypto", CoreCrypto.nodeCrypto],
+  ])("%s produces the AWS reference signature", async (_name, layer) => {
+    const signed = await Effect.runPromise(program.pipe(Effect.provide(layer)));
+    expect(signed.headers.authorization).toContain(expected);
+  });
+
+  test("a custom implementation is used for every hash and HMAC", async () => {
+    const calls: string[] = [];
+    const web = CoreCrypto.makeWebCrypto();
+    const custom: CoreCrypto.CryptoImpl = {
+      name: "counting",
+      sha256: (d) => (calls.push("sha256"), web.sha256(d)),
+      importHmacKey: (k) => (calls.push("import"), web.importHmacKey(k)),
+      hmacSha256: (k, d) => (calls.push("hmac"), web.hmacSha256(k, d)),
+    };
+    const signed = await Effect.runPromise(
+      SigV4.sign({
+        ...creds,
+        method: "POST",
+        url: "https://sts.amazonaws.com/",
+        body: "x",
+        service: "sts",
+        region: "us-west-2",
+        datetime: "20240101T000000Z",
+      }).pipe(Effect.provide(CoreCrypto.layer(custom))),
+    );
+    expect(signed.headers.authorization).toMatch(/Signature=[0-9a-f]{64}$/);
+    expect(calls.filter((c) => c === "sha256")).toHaveLength(2);
+    expect(calls).toContain("hmac");
   });
 });

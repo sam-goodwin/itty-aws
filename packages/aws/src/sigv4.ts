@@ -8,12 +8,12 @@
  * region are always supplied by the callers here, so host-based guessing is
  * intentionally absent.
  */
+import * as CoreCrypto from "@distilled.cloud/core/crypto";
 import * as Cache from "effect/Cache";
 import * as Context from "effect/Context";
 import * as Data from "effect/Data";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
-import * as Hex from "effect/encoding/Hex";
 import * as Exit from "effect/Exit";
 import * as Redacted from "effect/Redacted";
 
@@ -85,7 +85,7 @@ export class InvalidSigningHeaders extends Data.TaggedError("AWS::SigV4::Invalid
   readonly cause: unknown;
 }> {}
 
-/** WebCrypto (`crypto.subtle`) rejected an HMAC or SHA-256 operation. */
+/** The crypto implementation (see `@distilled.cloud/core/crypto`) rejected an HMAC or SHA-256 operation. */
 export class CryptoError extends Data.TaggedError("AWS::SigV4::CryptoError")<{
   readonly operation: "hmac" | "sha256";
   readonly cause: unknown;
@@ -93,102 +93,22 @@ export class CryptoError extends Data.TaggedError("AWS::SigV4::CryptoError")<{
 
 export type SigningError = InvalidSigningUrl | InvalidSigningHeaders | CryptoError;
 
-const encoder = new TextEncoder();
-
-const toBytes = (data: SignableBody): Uint8Array<ArrayBuffer> =>
+const toBytes = (data: SignableBody): Uint8Array | string =>
   typeof data === "string"
-    ? encoder.encode(data)
+    ? data
     : ArrayBuffer.isView(data)
-      ? // fresh ArrayBuffer-backed copy for the WebCrypto typings
-        new Uint8Array(data.buffer, data.byteOffset, data.byteLength).slice()
+      ? new Uint8Array(data.buffer, data.byteOffset, data.byteLength)
       : new Uint8Array(data);
 
-/**
- * Synchronous HMAC / SHA-256 from `node:crypto` where the runtime has it
- * (Node, Bun, Deno), found without a static import so the module still
- * loads in browsers and workers. WebCrypto is async-only: every digest is a
- * promise and a microtask hop, and HMAC also re-imports its key each time.
- * Signing one request made six such round trips; with `node:crypto` it makes
- * none.
- */
-interface NodeCrypto {
-  createSecretKey(key: Uint8Array): object;
-  createHmac(
-    alg: string,
-    key: Uint8Array | string | object,
-  ): { update(d: Uint8Array | string): any; digest(): Uint8Array };
-  createHash(alg: string): { update(d: Uint8Array | string): any; digest(enc: "hex"): string };
-}
-const nodeCrypto: NodeCrypto | undefined = (() => {
-  try {
-    const p = (globalThis as { process?: { getBuiltinModule?: (id: string) => unknown } }).process;
-    return p?.getBuiltinModule?.("node:crypto") as NodeCrypto | undefined;
-  } catch {
-    return undefined;
-  }
-})();
+/** Map the core crypto failure to this module's error (the public signing error). */
+const fromCore = (e: CoreCrypto.CryptoError) =>
+  new CryptoError({ operation: e.operation === "sha256" ? "sha256" : "hmac", cause: e.cause });
 
-// Preparing a raw HMAC key is most of an HMAC's cost in node:crypto (7 us
-// against 1.6 us with a KeyObject); derived signing keys are reused all day.
-const keyObjects = new WeakMap<ArrayBuffer, object>();
-const asKey = (key: string | ArrayBuffer): Uint8Array | string | object => {
-  if (typeof key === "string") return key;
-  let ko = keyObjects.get(key);
-  if (!ko) keyObjects.set(key, (ko = nodeCrypto!.createSecretKey(new Uint8Array(key))));
-  return ko;
-};
-
-const hmac = (key: string | ArrayBuffer, data: string): Effect.Effect<ArrayBuffer, CryptoError> =>
-  nodeCrypto
-    ? Effect.try({
-        try: () => {
-          const out = nodeCrypto.createHmac("sha256", asKey(key)).update(data).digest();
-          return out.buffer.slice(out.byteOffset, out.byteOffset + out.byteLength) as ArrayBuffer;
-        },
-        catch: (cause) => new CryptoError({ operation: "hmac", cause }),
-      })
-    : hmacWeb(key, data);
-
-/** Hex SHA-256 of `content`. */
-const sha256Hex = (content: SignableBody): Effect.Effect<string, CryptoError> =>
-  nodeCrypto
-    ? Effect.try({
-        try: () =>
-          nodeCrypto
-            .createHash("sha256")
-            .update(typeof content === "string" ? content : toBytes(content))
-            .digest("hex"),
-        catch: (cause) => new CryptoError({ operation: "sha256", cause }),
-      })
-    : Effect.map(sha256(content), hex);
-
-const hmacWeb = (
-  key: string | ArrayBuffer,
-  data: string,
-): Effect.Effect<ArrayBuffer, CryptoError> =>
-  Effect.tryPromise({
-    try: async () =>
-      crypto.subtle.sign(
-        "HMAC",
-        await crypto.subtle.importKey(
-          "raw",
-          typeof key === "string" ? encoder.encode(key) : key,
-          { name: "HMAC", hash: { name: "SHA-256" } },
-          false,
-          ["sign"],
-        ),
-        encoder.encode(data),
-      ),
-    catch: (cause) => new CryptoError({ operation: "hmac", cause }),
-  });
-
-const sha256 = (content: SignableBody): Effect.Effect<ArrayBuffer, CryptoError> =>
-  Effect.tryPromise({
-    try: () => crypto.subtle.digest("SHA-256", toBytes(content)),
-    catch: (cause) => new CryptoError({ operation: "sha256", cause }),
-  });
-
-const hex = (buffer: ArrayBuffer): string => Hex.encode(new Uint8Array(buffer));
+/** Hex SHA-256 with the context's crypto implementation. */
+const sha256Hex = (data: SignableBody): Effect.Effect<string, CryptoError> =>
+  Effect.flatMap(CoreCrypto.Crypto, (c) =>
+    Effect.mapError(Effect.map(c.sha256(toBytes(data)), CoreCrypto.hex), fromCore),
+  );
 
 /** Percent-encode the characters `encodeURIComponent` leaves alone but RFC 3986 reserves. */
 const encodeRfc3986 = (encoded: string): string =>
@@ -203,6 +123,8 @@ export interface SigningKeyScope {
   readonly date: string;
   readonly region: string;
   readonly service: string;
+  /** The implementation the key is imported into: a key from one cannot sign with another. */
+  readonly crypto?: CoreCrypto.CryptoImpl;
 }
 
 const deriveSigningKey = ({
@@ -210,12 +132,30 @@ const deriveSigningKey = ({
   date,
   region,
   service,
-}: SigningKeyScope): Effect.Effect<ArrayBuffer, CryptoError> =>
-  hmac("AWS4" + Redacted.value(secretAccessKey), date).pipe(
-    Effect.flatMap((kDate) => hmac(kDate, region)),
-    Effect.flatMap((kRegion) => hmac(kRegion, service)),
-    Effect.flatMap((kService) => hmac(kService, "aws4_request")),
+  crypto,
+}: SigningKeyScope): Effect.Effect<SigningKey, CryptoError> =>
+  Effect.flatMap(
+    crypto ? Effect.succeed(crypto) : CoreCrypto.Crypto,
+    (c: CoreCrypto.CryptoImpl) => {
+      const step = (key: Uint8Array | string, data: string) =>
+        Effect.flatMap(c.importHmacKey(key), (k) => c.hmacSha256(k, data));
+      return step("AWS4" + Redacted.value(secretAccessKey), date).pipe(
+        Effect.flatMap((kDate) => step(kDate, region)),
+        Effect.flatMap((kRegion) => step(kRegion, service)),
+        Effect.flatMap((kService) => step(kService, "aws4_request")),
+        // Import the final key once: it signs every request in this scope today.
+        Effect.flatMap((signing) => c.importHmacKey(signing)),
+        Effect.map((key) => ({ key, impl: c })),
+        Effect.mapError(fromCore),
+      );
+    },
   );
+
+/** A derived key imported into the implementation that will use it. */
+interface SigningKey {
+  readonly key: CoreCrypto.HmacKey;
+  readonly impl: CoreCrypto.CryptoImpl;
+}
 
 /**
  * Derived signing keys, keyed on secret/date/region/service. Deriving one
@@ -226,7 +166,7 @@ const deriveSigningKey = ({
  * retained, so a transient WebCrypto failure is retried on the next request.
  */
 export const SigningKeyCache = Context.Reference<
-  Cache.Cache<SigningKeyScope, ArrayBuffer, CryptoError>
+  Cache.Cache<SigningKeyScope, SigningKey, CryptoError>
 >("AWS::SigningKeyCache", {
   defaultValue: () =>
     Effect.runSync(
@@ -345,8 +285,11 @@ export const sign: (options: SignOptions) => Effect.Effect<SignedRequest, Signin
       date,
       region,
       service,
+      crypto: yield* CoreCrypto.Crypto,
     });
-    const signature = hex(yield* hmac(signingKey, stringToSign));
+    const signature = CoreCrypto.hex(
+      yield* Effect.mapError(signingKey.impl.hmacSha256(signingKey.key, stringToSign), fromCore),
+    );
 
     if (signQuery) {
       url.searchParams.set("X-Amz-Signature", signature);
