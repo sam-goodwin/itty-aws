@@ -83,8 +83,18 @@ const annotationsKey = Symbol.for("@distilled.cloud/core/schema/annotations");
 
 type Annotations = Record<string, unknown>;
 
+/**
+ * How a lazy schema builds itself: a closure, or a shared builder plus data
+ * stored on the schema object (no closure per schema; see packed.ts).
+ */
+export interface LazyBuilder {
+  readonly build: (data: unknown) => S.Top;
+}
+const dataKey = Symbol.for("@distilled.cloud/core/schema/data");
+
 interface LazySchema {
-  [buildKey]?: () => S.Top;
+  [buildKey]?: (() => S.Top) | LazyBuilder;
+  [dataKey]?: unknown;
   [annotationsKey]?: Annotations;
 }
 
@@ -93,8 +103,10 @@ const force = (self: LazySchema): void => {
   const build = self[buildKey];
   if (!build) return;
   const annotations = self[annotationsKey];
-  const real = annotations ? build().annotate(annotations) : build();
+  const built = typeof build === "function" ? build() : build.build(self[dataKey]);
+  const real = annotations ? built.annotate(annotations) : built;
   delete self[buildKey];
+  delete self[dataKey];
   delete self[annotationsKey];
   Object.defineProperties(self, Object.getOwnPropertyDescriptors(real));
 };
@@ -121,7 +133,7 @@ const LazyProto: object = Object.create(SchemaProto, {
       // Once built, annotate like any schema (a rebuilt copy).
       if (!build) return (SchemaProto as { annotate: Function }).annotate.call(this, annotations);
       const previous = this[annotationsKey];
-      return lazy(build, previous ? { ...previous, ...annotations } : annotations);
+      return lazy(build, previous ? { ...previous, ...annotations } : annotations, this[dataKey]);
     },
   },
 });
@@ -130,13 +142,25 @@ const LazyProto: object = Object.create(SchemaProto, {
 // moves it, build eagerly.
 const supported = (SchemaProto as Record<string, unknown>)["~effect/Schema/Schema"] !== undefined;
 
-const lazy = (build: () => S.Top, annotations?: Annotations): S.Top => {
-  if (!supported) return annotations ? build().annotate(annotations) : build();
+const lazy = (
+  build: (() => S.Top) | LazyBuilder,
+  annotations?: Annotations,
+  data?: unknown,
+): S.Top => {
+  if (!supported) {
+    const built = typeof build === "function" ? build() : build.build(data);
+    return annotations ? built.annotate(annotations) : built;
+  }
   const self = Object.create(LazyProto);
   self[buildKey] = build;
+  if (data !== undefined) self[dataKey] = data;
   if (annotations) self[annotationsKey] = annotations;
   return self;
 };
+
+/** A schema built on first use by `builder.build(data)`. */
+export const lazyFrom = (builder: LazyBuilder, data: unknown): S.Top =>
+  lazy(builder, undefined, data);
 
 const lazySuspend = (f: () => S.Top): S.Top => lazy(() => S.suspend(f));
 const lazyArray = (item: S.Top): S.Top => lazy(() => S.Array(item));

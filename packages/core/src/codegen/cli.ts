@@ -16,6 +16,7 @@ import { Flag } from "effect/cli";
 import { Command } from "effect/cli";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
+import { chunkSchemas } from "./chunk.ts";
 import { dedupeSchemas } from "./dedupe.ts";
 import { barrel } from "./emit.ts";
 import { formatGenerated } from "./format.ts";
@@ -198,7 +199,10 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           const resourceFile = `${resource}.ts`;
           const marked = annotateNestedCalls(generated.code, resourceFile);
           const code = toLatin1(
-            privatizeSchemas(dedupeSchemas(marked, resourceFile).code, resourceFile).code,
+            chunkSchemas(
+              privatizeSchemas(dedupeSchemas(marked, resourceFile).code, resourceFile).code,
+              resourceFile,
+            ).code,
             resourceFile,
           );
 
