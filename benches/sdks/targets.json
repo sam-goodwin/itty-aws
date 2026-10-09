@@ -23,7 +23,14 @@
         "body": "{}"
       },
       "protocol": "AcmeProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"newNonce\":\"x\",\"newAccount\":\"x\",\"newOrder\":\"x\",\"revokeCert\":\"x\"}"
+      }
     }
   },
   "adyen": {
@@ -96,7 +103,14 @@
         "body": "{}"
       },
       "protocol": "ArchilProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"success\":false,\"data\":[]}"
+      }
     }
   },
   "argocd": {
@@ -296,7 +310,14 @@
         "body": "{}"
       },
       "protocol": "AxiomProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "azure": {
@@ -323,7 +344,14 @@
       },
       "pinned": true,
       "protocol": "AzureProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"value\":[]}"
+      }
     }
   },
   "boat-dev": {
@@ -348,7 +376,14 @@
         "body": "{}"
       },
       "protocol": "BoatProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"ok\":false,\"type\":\"x\",\"installations\":[],\"environmentId\":\"x\",\"selectedRepositories\":[]}"
+      }
     }
   },
   "celld": {
@@ -371,7 +406,14 @@
       },
       "pinned": true,
       "protocol": "CelldProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"ok\":false}"
+      }
     }
   },
   "chronosphere": {
@@ -396,7 +438,14 @@
         "body": "{}"
       },
       "protocol": "ChronosphereProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"slos\":[]}"
+      }
     }
   },
   "clerk": {
@@ -420,7 +469,14 @@
         "body": "{}"
       },
       "protocol": "ClerkProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"data\":[],\"total_count\":0}"
+      }
     }
   },
   "cloudflare": {
@@ -487,7 +543,14 @@
         "body": "{}"
       },
       "protocol": "CoinbaseProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"endUsers\":[]}"
+      }
     }
   },
   "coolify": {
@@ -511,7 +574,14 @@
         "body": "{}"
       },
       "protocol": "CoolifyProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "\"x\""
+      }
     }
   },
   "customerio": {
@@ -588,7 +658,14 @@
         "body": "{}"
       },
       "protocol": "DaytonaProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"items\":[],\"total\":0,\"page\":0,\"totalPages\":0}"
+      }
     }
   },
   "digitalocean": {
@@ -638,7 +715,14 @@
         "body": "{}"
       },
       "protocol": "DiscordProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "docker": {
@@ -662,7 +746,14 @@
         "body": "{}"
       },
       "protocol": "DockerProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "doppler": {
@@ -852,6 +943,13 @@
           "content-type": "application/json"
         },
         "body": "{}"
+      },
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"token\":\"x\"}"
       }
     }
   },
@@ -877,7 +975,14 @@
         "body": "{}"
       },
       "protocol": "ForgejoProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "gcp": {
@@ -925,7 +1030,14 @@
         "body": "{}"
       },
       "protocol": "GithubProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "google-workspace": {
@@ -976,7 +1088,14 @@
         "body": "{}"
       },
       "protocol": "GrafanaProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "growthbook": {
@@ -1000,7 +1119,14 @@
         "body": "{}"
       },
       "protocol": "GrowthBookProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"configs\":[],\"limit\":0,\"offset\":0,\"count\":0,\"total\":0,\"hasMore\":false,\"nextOffset\":0}"
+      }
     }
   },
   "gusto": {
@@ -1026,7 +1152,14 @@
         "body": "{}"
       },
       "protocol": "GustoProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "hetzner": {
@@ -1051,7 +1184,14 @@
         "body": "{}"
       },
       "protocol": "HetznerProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"isos\":[],\"meta\":{\"pagination\":{\"page\":0,\"per_page\":0,\"previous_page\":0,\"next_page\":0,\"last_page\":0,\"total_entries\":0}}}"
+      }
     }
   },
   "hostinger": {
@@ -1125,7 +1265,14 @@
         "body": "{}"
       },
       "protocol": "IcebergProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"namespaces\":[]}"
+      }
     }
   },
   "infisical": {
@@ -1149,7 +1296,14 @@
         "body": "{}"
       },
       "protocol": "InfisicalProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"signers\":[],\"totalCount\":0}"
+      }
     }
   },
   "inngest": {
@@ -1173,7 +1327,14 @@
         "body": "{}"
       },
       "protocol": "InngestProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"data\":[]}"
+      }
     }
   },
   "intercom": {
@@ -1223,7 +1384,14 @@
         "body": "{}"
       },
       "protocol": "KubernetesProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"items\":[]}"
+      }
     }
   },
   "launchdarkly": {
@@ -1248,7 +1416,14 @@
         "body": "{}"
       },
       "protocol": "LaunchDarklyProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"items\":[],\"_links\":{}}"
+      }
     }
   },
   "meilisearch": {
@@ -1272,7 +1447,14 @@
         "body": "{}"
       },
       "protocol": "MeilisearchProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"results\":[],\"offset\":0,\"limit\":0,\"total\":0}"
+      }
     }
   },
   "mercury": {
@@ -1296,7 +1478,14 @@
         "body": "{}"
       },
       "protocol": "MercuryProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"cards\":[],\"page\":{}}"
+      }
     }
   },
   "metabase": {
@@ -1370,7 +1559,14 @@
         "body": "{}"
       },
       "protocol": "ModrinthProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "mongodb-atlas": {
@@ -1392,7 +1588,14 @@
         "body": "{}"
       },
       "protocol": "MongodbAtlasProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"results\":[]}"
+      }
     }
   },
   "neon": {
@@ -1416,7 +1619,14 @@
         "body": "{}"
       },
       "protocol": "NeonProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"projects\":[],\"applications\":{},\"integrations\":{}}"
+      }
     }
   },
   "notion": {
@@ -1440,6 +1650,13 @@
           "content-type": "application/json"
         },
         "body": "{}"
+      },
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"type\":\"x\",\"user\":{},\"object\":\"x\",\"next_cursor\":\"x\",\"has_more\":false,\"results\":[]}"
       }
     }
   },
@@ -1490,7 +1707,14 @@
         "body": "{}"
       },
       "protocol": "OnepasswordProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "opencode": {
@@ -1515,7 +1739,14 @@
         "body": "{}"
       },
       "protocol": "OpencodeProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "ovh": {
@@ -1540,7 +1771,14 @@
         "body": "{}"
       },
       "protocol": "OvhProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "paypal": {
@@ -1589,7 +1827,14 @@
         "body": "{}"
       },
       "protocol": "PlaidProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"wallets\":[],\"request_id\":\"x\"}"
+      }
     }
   },
   "planetscale": {
@@ -1615,7 +1860,14 @@
         "body": "{}"
       },
       "protocol": "PlanetScaleProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"type\":\"x\",\"current_page\":0,\"per_page\":0,\"next_page\":0,\"next_page_url\":\"x\",\"prev_page\":0,\"prev_page_url\":\"x\",\"data\":[]}"
+      }
     }
   },
   "polar": {
@@ -1639,7 +1891,14 @@
         "body": "{}"
       },
       "protocol": "PolarProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"items\":[],\"pagination\":{\"total_count\":0,\"max_page\":0}}"
+      }
     }
   },
   "porkbun": {
@@ -1714,7 +1973,14 @@
         "body": "{}"
       },
       "protocol": "PrismaProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"data\":[],\"pagination\":{\"nextCursor\":\"x\",\"hasMore\":false}}"
+      }
     }
   },
   "railway": {
@@ -1815,7 +2081,14 @@
         "body": "{}"
       },
       "protocol": "RenderProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "resend": {
@@ -1839,7 +2112,14 @@
         "body": "{}"
       },
       "protocol": "ResendProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"data\":[]}"
+      }
     }
   },
   "s2": {
@@ -1866,7 +2146,14 @@
         "body": "{}"
       },
       "protocol": "S2Protocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"basins\":[],\"has_more\":false}"
+      }
     }
   },
   "sentry": {
@@ -1892,7 +2179,14 @@
         "body": "{}"
       },
       "protocol": "SentryProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "[]"
+      }
     }
   },
   "slack": {
@@ -1944,7 +2238,14 @@
         "body": "{}"
       },
       "protocol": "SpacetimeDBProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"identities\":[]}"
+      }
     }
   },
   "squarespace": {
@@ -1968,7 +2269,14 @@
         "body": "{}"
       },
       "protocol": "SquarespaceProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"discounts\":[]}"
+      }
     }
   },
   "stackit": {
@@ -2016,7 +2324,14 @@
         "body": "{}"
       },
       "protocol": "StripeProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"data\":[],\"has_more\":false,\"object\":\"x\",\"url\":\"x\"}"
+      }
     }
   },
   "supabase": {
@@ -2040,7 +2355,14 @@
         "body": "{}"
       },
       "protocol": "SupabaseProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"data\":[]}"
+      }
     }
   },
   "surrealdb": {
@@ -2210,7 +2532,14 @@
         "body": "{}"
       },
       "protocol": "UnkeyProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"meta\":{\"requestId\":\"x\"},\"data\":[],\"pagination\":{\"hasMore\":false}}"
+      }
     }
   },
   "vanta": {
@@ -2234,7 +2563,14 @@
         "body": "{}"
       },
       "protocol": "VantaProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"results\":{\"data\":[],\"pageInfo\":{\"endCursor\":\"x\",\"hasNextPage\":false,\"hasPreviousPage\":false,\"startCursor\":\"x\"}}}"
+      }
     }
   },
   "vercel": {
@@ -2258,7 +2594,14 @@
         "body": "{}"
       },
       "protocol": "VercelProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"drives\":[],\"pagination\":{\"count\":0,\"next\":\"x\"}}"
+      }
     }
   },
   "whop": {
@@ -2282,7 +2625,14 @@
         "body": "{}"
       },
       "protocol": "WhopProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"data\":[],\"page_info\":{\"end_cursor\":\"x\",\"has_next_page\":false,\"has_previous_page\":false,\"start_cursor\":\"x\"}}"
+      }
     }
   },
   "workos": {
@@ -2357,7 +2707,14 @@
         "body": "{}"
       },
       "protocol": "ZendeskProtocol",
-      "primary": true
+      "primary": true,
+      "strictResponse": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{\"tags\":[]}"
+      }
     }
   },
   "zerossl": {

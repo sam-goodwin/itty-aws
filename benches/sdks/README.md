@@ -73,9 +73,22 @@ change.
 | `size`      | `npm pack --dry-run --offline`: tarball, unpacked, files, split into src / JS / .d.ts / maps; generated LOC; operation count; install footprint with core + effect |
 | `bundle`    | rolldown with Alchemy's settings (`../bundle/src/options.ts`): min, gzip, brotli, modules, effect / core / SDK share. Baselines `effect-minimal` and `effect-http` (the same authed GET hand-written with Effect); overhead = SDK − `effect-http` |
 | `runtime`   | fresh `node --expose-gc` per SDK importing `lib/*.js`: import time, retained heap, first call, warm p50/p99, added latency (call − bare `HttpClient` roundtrip on the same transport), strict-mode call, GCs per 1k calls, heap growth while warming and leak per 1k calls once warm, peak RSS; then the package root import in a second process |
+| `imports`   | every service module (`lib/services/*.js`) imported alone in a fresh `node --expose-gc` with effect loaded: import time and retained heap per provider/service pair (`services.<name>`); then every service of a provider in one process: import time, retained heap and live objects for the whole provider (`provider`) |
 | `typecheck` | `tsc --noEmit` of the uncast program against `lib/*.d.ts` (`skipLibCheck`): wall, peak RSS, types; any type error is reported |
 
 Every metric, with its description and unit, is listed in `src/metrics.ts`.
+
+Object counts (`runtime.importObjects`, `runtime.firstCallObjects`,
+`barrel.objects`, `provider.objects`) are live JS objects from
+`v8.queryObjects(Object)` after gc: plain objects, arrays, functions and
+class instances. Strings, numbers, null-prototype objects and V8-internal
+objects are not counted. They are counted in a separate probe process.
+Counting forces extra GCs, and in the same process those GCs let V8 flush
+bytecode of effect functions that ran once, which roughly halved the
+measured import heap (resend 660 KB to 325 KB).
+
+`size.tarballWithCore` is the SDK tarball plus `@distilled.cloud/core`'s:
+what `npm install` downloads from distilled for one provider.
 
 Latency numbers are microseconds on a shared machine; treat ±10% as noise.
 Sizes are deterministic.

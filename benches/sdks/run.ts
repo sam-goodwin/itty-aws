@@ -3,7 +3,7 @@
  *
  *   node benches/sdks/run.ts                       everything, every SDK
  *   node benches/sdks/run.ts --only aws,resend     some SDKs
- *   node benches/sdks/run.ts --suites size,bundle  some suites (size,bundle,runtime,typecheck)
+ *   node benches/sdks/run.ts --suites size,bundle  some suites (size,bundle,runtime,imports,typecheck)
  *   node benches/sdks/run.ts --history ~/bench/runs  also copy the run file there
  *   node benches/sdks/run.ts --rediscover          re-pick non-pinned targets
  *
@@ -11,7 +11,7 @@
  */
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { copyFileSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
 import { cpus, totalmem } from "node:os";
 import { join, resolve } from "node:path";
 import { BASELINES, bundle, fixtureSource } from "./src/bundle.ts";
@@ -45,8 +45,8 @@ import {
   run,
 } from "./src/util.ts";
 
-type Suite = "size" | "bundle" | "runtime" | "typecheck";
-const ALL_SUITES: Suite[] = ["size", "bundle", "runtime", "typecheck"];
+type Suite = "size" | "bundle" | "runtime" | "imports" | "typecheck";
+const ALL_SUITES: Suite[] = ["size", "bundle", "runtime", "imports", "typecheck"];
 
 const parseArgs = (argv: string[]) => {
   const opts = {
@@ -78,7 +78,7 @@ const parseArgs = (argv: string[]) => {
     else if (a === "-h" || a === "--help") {
       console.log(readJson(join(BENCH_DIR, "package.json")).description);
       console.log(
-        "flags: --only a,b --suites size,bundle,runtime,typecheck --jobs N --runtime-jobs N --budget ms --out file --history dir --note text --rediscover --build",
+        "flags: --only a,b --suites size,bundle,runtime,imports,typecheck --jobs N --runtime-jobs N --budget ms --out file --history dir --note text --rediscover --build",
       );
       process.exit(0);
     } else throw new Error(`unknown flag ${a}`);
@@ -175,9 +175,7 @@ const record: Record<string, any> = {};
 for (const pkg of sdks) {
   const primary = primaryOf(targets[pkg]);
   const counts = opsByProtocol(pkg);
-  const protocolNames = [
-    ...new Set([...Object.keys(targets[pkg] ?? {}), ...Object.keys(counts)]),
-  ];
+  const protocolNames = [...new Set([...Object.keys(targets[pkg] ?? {}), ...Object.keys(counts)])];
   record[pkg] = {
     version: packageVersion(pkg),
     target: primary
@@ -209,7 +207,9 @@ for (const pkg of sdks) {
     errors: {} as Record<string, string>,
   };
   for (const [protocol, msg] of Object.entries(discoverErrors[pkg] ?? {}))
-    record[pkg].errors[primary?.protocol === protocol || !primary ? "discover" : `discover [${protocol}]`] = msg;
+    record[pkg].errors[
+      primary?.protocol === protocol || !primary ? "discover" : `discover [${protocol}]`
+    ] = msg;
 }
 const fail = (pkg: string, suite: string, msg: string, protocol?: string) => {
   const r = record[pkg];
@@ -224,6 +224,21 @@ const put = (p: Program, suite: string, value: unknown) => {
   if (p.primary) record[p.pkg][suite] = value;
 };
 const tag = (p: Program) => (p.primary ? p.pkg : `${p.pkg} [${p.protocol}]`);
+
+const STRICT_CORE = join(PACKAGES, "core", "lib", "response-validation.js");
+
+/**
+ * The program with strict response validation: the call runs under
+ * `ResponseValidation.strict`, and the validation module is one of its
+ * imports, so import heap, first call and bundle include what strict costs.
+ */
+const strictTarget = (target: Target): Target => ({
+  ...target,
+  imports: { ...target.imports, RV: "core:response-validation" },
+  call: `(${target.call}).pipe(Effect.provide(RV.strict))`,
+  response: target.strictResponse ?? target.response,
+});
+const hasStrict = existsSync(STRICT_CORE);
 
 const baselines: Record<string, any> = {};
 const timings: Record<string, number> = {};
@@ -248,6 +263,7 @@ if (has("size")) {
         record[pkg].size = {
           ...s,
           installBytes: s.unpacked + core.unpacked + effect.unpacked,
+          tarballWithCore: s.tarball + core.tarball,
           bytesPerOp: s.operations ? Math.round(s.tarball / s.operations) : undefined,
         };
         log(
@@ -289,6 +305,17 @@ if (has("bundle")) {
       } catch (e) {
         fail(p.pkg, "bundle", String(e).slice(0, 400), p.protocol);
       }
+      if (!hasStrict) return;
+      try {
+        const r = await bundle(`${p.name}~strict`, fixtureSource(strictTarget(p.target)), p.pkg);
+        put(p, "strictBundle", {
+          ...r,
+          overheadGzip: r.gzip - ref.gzip,
+          overheadBytes: r.bytes - ref.bytes,
+        });
+      } catch (e) {
+        fail(p.pkg, "bundle-strict", String(e).slice(0, 400), p.protocol);
+      }
     });
   });
 }
@@ -297,7 +324,6 @@ if (has("bundle")) {
 
 //#region runtime + memory
 
-const STRICT_CORE = join(PACKAGES, "core", "lib", "response-validation.js");
 const opRequest = (target: Target): ProbeRequest => ({
   mode: "op",
   imports: resolveImports(target),
@@ -310,30 +336,143 @@ const opRequest = (target: Target): ProbeRequest => ({
   strictCore: existsSync(STRICT_CORE) ? STRICT_CORE : undefined,
 });
 
+const rootImport = (pkg: string) => ({
+  alias: "Barrel",
+  lib: join(PACKAGES, pkg, "lib", "index.js"),
+  src: "",
+});
+
 if (has("runtime")) {
   await phase("runtime", async () => {
     baselines.runtime = await probe({ mode: "baseline", imports: [], budgetMs: opts.budgetMs });
     log(
       `  baseline: effect import ${fmtMs(baselines.runtime.effectImportMs)}, mock roundtrip p50 ${baselines.runtime.mockRoundtrip?.p50Us?.toFixed(1)} µs`,
     );
+    // Strict programs need a schema-valid response: find one where the
+    // lenient response fails strict validation, and freeze it in targets.json.
+    if (hasStrict) {
+      let found = 0;
+      await pool(programs, opts.runtimeJobs, async (p) => {
+        if (p.target.strictResponse) return;
+        const plain = await probe({
+          ...opRequest(strictTarget(p.target)),
+          strictCore: undefined,
+          budgetMs: 1,
+        });
+        if (!plain.error && !plain.fatal) return;
+        const r = await probe({ ...opRequest(p.target), mode: "strictBody" } as ProbeRequest);
+        if (r.ok) {
+          const t = { ...p.target, strictResponse: r.response };
+          targets[p.pkg]![p.protocol] = t;
+          (p as { target: Target }).target = t;
+          found++;
+        } else log(`  ${tag(p)}: no strict-valid response (${String(r.error).slice(0, 120)})`);
+      });
+      if (found) {
+        saveTargets(targets);
+        log(`  strict: found schema-valid responses for ${found} program(s)`);
+      }
+    }
     await pool(programs, opts.runtimeJobs, async (p) => {
       const op = await probe(opRequest(p.target));
       if (op.fatal || op.error) fail(p.pkg, "runtime", op.fatal ?? op.error, p.protocol);
+      // Object counts come from a separate process: counting changes the heap numbers.
+      const counted = await probe({ ...opRequest(p.target), objects: true });
+      op.importObjects = counted.importObjects;
+      op.firstCallObjects = counted.firstCallObjects;
       put(p, "runtime", op);
+      if (hasStrict) {
+        const sReq = { ...opRequest(strictTarget(p.target)), strictCore: undefined };
+        const sop = await probe(sReq);
+        if (sop.fatal || sop.error)
+          fail(p.pkg, "runtime-strict", sop.fatal ?? sop.error, p.protocol);
+        const sCounted = await probe({ ...sReq, objects: true });
+        sop.importObjects = sCounted.importObjects;
+        sop.firstCallObjects = sCounted.firstCallObjects;
+        put(p, "strictRuntime", sop);
+      }
       let barrel: any;
       // The package root import does not depend on the protocol: once per SDK.
       if (p.primary) {
-        barrel = await probe({
-          mode: "barrel",
-          imports: [{ alias: "Barrel", lib: join(PACKAGES, p.pkg, "lib", "index.js"), src: "" }],
-        });
+        barrel = await probe({ mode: "barrel", imports: [rootImport(p.pkg)] });
         if (barrel.fatal) fail(p.pkg, "barrel", barrel.fatal);
+        else
+          barrel.objects = (
+            await probe({ mode: "barrel", objects: true, imports: [rootImport(p.pkg)] })
+          ).objects;
         record[p.pkg].barrel = barrel;
       }
       if (!op.error && !op.fatal)
         log(
           `  ${tag(p)}: +${op.addedP50Us?.toFixed(1)} µs/call, import ${fmtMs(op.importMs)}, heap ${fmtBytes(op.importHeap?.heapUsed)}${barrel ? `; root ${fmtMs(barrel.importMs)} ${fmtBytes(barrel.heap?.heapUsed)}` : ""}`,
         );
+    });
+  });
+}
+
+//#endregion
+
+//#region imports
+
+/** Service modules a provider publishes: lib/services/<name>.js. */
+const servicesOf = (pkg: string): string[] => {
+  const dir = join(PACKAGES, pkg, "lib", "services");
+  if (!existsSync(dir)) return [];
+  return (
+    readdirSync(dir)
+      // services/index.js (where present) re-exports the others.
+      .filter((f) => f.endsWith(".js") && f !== "index.js")
+      .map((f) => f.slice(0, -3))
+      .sort()
+  );
+};
+const serviceImport = (pkg: string, service: string, alias = "Barrel") => ({
+  alias,
+  lib: join(PACKAGES, pkg, "lib", "services", `${service}.js`),
+  src: "",
+});
+
+if (has("imports")) {
+  await phase("imports", async () => {
+    // Each provider/service pair: a fresh process (effect preloaded) imports that one module.
+    // Time and heap only; objects are counted per provider below.
+    const pairs = sdks.flatMap((pkg) => servicesOf(pkg).map((service) => ({ pkg, service })));
+    log(`  ${pairs.length} service modules in ${sdks.length} SDKs`);
+    for (const pkg of sdks) record[pkg].services = {};
+    await pool(pairs, opts.runtimeJobs, async ({ pkg, service }) => {
+      const r = await probe({ mode: "barrel", imports: [serviceImport(pkg, service)] });
+      if (r.fatal) {
+        fail(pkg, "imports", `${service}: ${r.fatal}`);
+        return;
+      }
+      record[pkg].services[service] = { importMs: r.importMs, heap: r.heap?.heapUsed };
+    });
+    // Each provider: one fresh process imports every service module it publishes.
+    await pool(sdks, opts.runtimeJobs, async (pkg) => {
+      const services = servicesOf(pkg);
+      if (!services.length) return;
+      const imports = services.map((service, i) => serviceImport(pkg, service, `S${i}`));
+      const r = await probe({ mode: "barrel", imports });
+      if (r.fatal) {
+        fail(pkg, "imports", `all services: ${r.fatal}`);
+        return;
+      }
+      const counted = await probe({ mode: "barrel", objects: true, imports });
+      const times = Object.values(record[pkg].services as Record<string, { importMs: number }>)
+        .map((x) => x.importMs)
+        .sort((a, b) => a - b);
+      record[pkg].provider = {
+        services: services.length,
+        importMs: r.importMs,
+        heap: r.heap?.heapUsed,
+        objects: counted.objects,
+        maxRss: r.maxRss,
+        serviceImportMedianMs: times.length ? times[Math.floor(times.length / 2)] : undefined,
+        serviceImportMaxMs: times.at(-1),
+      };
+      log(
+        `  ${pkg}: ${services.length} services, all ${fmtMs(r.importMs)}, heap ${fmtBytes(r.heap?.heapUsed)}, ${counted.objects} objects`,
+      );
     });
   });
 }
@@ -421,6 +560,10 @@ const runFile = {
     medianImportOpMs: medianOf((r) => r.runtime?.importMs),
     medianImportHeap: medianOf((r) => r.runtime?.importHeap?.heapUsed),
     medianTypecheckMs: medianOf((r) => r.typecheck?.wallMs),
+    medianImportObjects: medianOf((r) => r.runtime?.importObjects),
+    totalProviderHeap: sum((r) => r.provider?.heap),
+    totalProviderObjects: sum((r) => r.provider?.objects),
+    services: sum((r) => (r.services ? Object.keys(r.services).length : undefined)),
     protocols: sum((r) => r.protocolCount),
     programs: programs.length,
     programErrors: programs.filter(

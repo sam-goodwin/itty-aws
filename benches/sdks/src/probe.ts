@@ -7,17 +7,24 @@
  *   baseline  effect import cost, Effect.runPromise and mock-HTTP roundtrip latency
  *   op        import the credentials + one service module, first call, warm calls,
  *             strict-mode call, retained heap and GC pressure per 1k calls
- *   barrel    import the package root (`lib/index.js`)
+ *   barrel    import the package root (`lib/index.js`), or any list of modules
+ *             (one service module, or every service module of a provider)
+ *
+ * With `objects: true`, op and barrel count live JS objects instead and return
+ * nothing else. Counting forces extra GCs, and extra GCs let V8 flush the
+ * bytecode of effect functions that ran once, which halves the measured
+ * import heap. So objects are counted in their own process.
  *   discover  try operations × canned responses until one call succeeds
  *
  * Usage: node --expose-gc src/probe.ts '<ProbeRequest json>' — prints one JSON line.
  */
 import { PerformanceObserver } from "node:perf_hooks";
+import { queryObjects } from "node:v8";
 import type { CannedResponse, ResolvedImport } from "./targets.ts";
 import { EFFECT_HTTP } from "./util.ts";
 
 export interface ProbeRequest {
-  readonly mode: "baseline" | "op" | "barrel" | "discover";
+  readonly mode: "baseline" | "op" | "barrel" | "discover" | "strictBody";
   readonly imports: ReadonlyArray<ResolvedImport>;
   readonly auth?: string;
   readonly call?: string;
@@ -33,6 +40,8 @@ export interface ProbeRequest {
   /** Wall budget per latency series, ms. */
   readonly budgetMs?: number;
   readonly strictCore?: string;
+  /** op/barrel: count live objects only (see the header). */
+  readonly objects?: boolean;
 }
 
 export interface MemorySnapshot {
@@ -62,6 +71,17 @@ const snap = (): MemorySnapshot => {
   gc();
   const m = process.memoryUsage();
   return { rss: m.rss, heapUsed: m.heapUsed, external: m.external + m.arrayBuffers };
+};
+
+/**
+ * Live JS objects whose prototype chain reaches Object.prototype (plain
+ * objects, arrays, functions, class instances), after gc. Strings, numbers,
+ * null-prototype objects and V8-internal objects are not counted.
+ */
+const countObjects = (): number => {
+  gc();
+  gc();
+  return queryObjects(Object, { format: "count" }) as number;
 };
 
 const diff = (a: MemorySnapshot, b: MemorySnapshot): MemorySnapshot => ({
@@ -168,6 +188,22 @@ const main = async (req: ProbeRequest) => {
     };
   }
 
+  if (req.objects && (req.mode === "barrel" || req.mode === "op")) {
+    const o1 = countObjects();
+    const mods = await importAll(req.imports);
+    const o2 = countObjects();
+    if (req.mode === "barrel") return { objects: o2 - o1 };
+    const ctx = await buildContext(
+      Layer.mergeAll(evalExpr(req.auth!, mods), mockLayer(req.response!)),
+    );
+    try {
+      await Effect.runPromise(Effect.provideContext(evalExpr(req.call!, mods), ctx as any) as any);
+    } catch (e) {
+      return { importObjects: o2 - o1, error: errorText(e) };
+    }
+    return { importObjects: o2 - o1, firstCallObjects: countObjects() - o2 };
+  }
+
   if (req.mode === "barrel") {
     const t = now();
     const mods = await importAll(req.imports);
@@ -180,6 +216,125 @@ const main = async (req: ProbeRequest) => {
       exports: Object.keys(mods.Barrel ?? {}).length,
       maxRss: process.resourceUsage().maxRSS * 1024,
     };
+  }
+
+  if (req.mode === "strictBody") {
+    // A response body the operation accepts under ResponseValidation.strict:
+    // a minimal value of the output schema (required members only), mapped to
+    // wire names by the protocol's own key mapper, then checked by a strict call.
+    const mods = await importAll(req.imports);
+    const RV = await import(req.strictCore!);
+    const SchemaAST = await import("effect/SchemaAST");
+    const { mapKeys } = await import(
+      req.strictCore!.replace(/response-validation\.js$/, "protocol-http.js")
+    );
+    const opName = /\bOp\.(\w+)\(/.exec(req.call!)?.[1];
+    const op = opName ? (mods.Op as any)?.[opName] : undefined;
+    if (!op?.output) return { ok: false, error: "no output schema" };
+    const seen = new Set<unknown>();
+    const sample = (ast: any, depth: number): unknown => {
+      if (depth > 12) return undefined;
+      switch (ast._tag) {
+        case "Suspend":
+          if (seen.has(ast)) return undefined;
+          seen.add(ast);
+          try {
+            return sample(ast.thunk(), depth + 1);
+          } finally {
+            seen.delete(ast);
+          }
+        case "String":
+        case "TemplateLiteral":
+          return "x";
+        case "Number":
+          return 0;
+        case "BigInt":
+          return "0";
+        case "Boolean":
+          return false;
+        case "Null":
+          return null;
+        case "Literal":
+          return ast.literal;
+        case "Enum":
+          return ast.enums?.[0]?.[1];
+        case "Unknown":
+        case "Any":
+          return {};
+        case "Undefined":
+        case "Void":
+          return undefined;
+        case "Arrays":
+          return (ast.elements ?? []).map((e: any) => sample(e, depth + 1));
+        case "Union": {
+          for (const t of ast.types) {
+            if (t._tag === "Undefined") continue;
+            const v = sample(t, depth + 1);
+            if (v !== undefined) return v;
+          }
+          return null;
+        }
+        case "Objects": {
+          const out: Record<string, unknown> = {};
+          for (const p of ast.propertySignatures ?? []) {
+            if (p.type.context?.isOptional) continue;
+            const v = sample(p.type, depth + 1);
+            if (v !== undefined) out[String(p.name)] = v;
+          }
+          return out;
+        }
+        case "Declaration":
+          return /date/i.test(
+            String(ast.annotations?.identifier ?? ast.annotations?.expected ?? ""),
+          )
+            ? "2026-01-01T00:00:00.000Z"
+            : "x";
+        default:
+          return undefined;
+      }
+    };
+    const outputAst = op.output.ast;
+    let value: unknown;
+    try {
+      value = sample(SchemaAST.toEncoded(outputAst), 0);
+    } catch (e) {
+      return { ok: false, error: `sample: ${errorText(e)}` };
+    }
+    const wire = (mapKeys(outputAst, value, "encode") ?? {}) as any;
+    // Envelopes some protocols unwrap before validating: GraphQL `data`,
+    // Slack-style `ok: true`, and the lenient body merged with the sample.
+    let lenientBody: any = {};
+    try {
+      lenientBody = JSON.parse(req.response!.body);
+    } catch {}
+    const isObj = (v: unknown) => v !== null && typeof v === "object" && !Array.isArray(v);
+    const bodies = [
+      wire,
+      { data: wire },
+      isObj(wire) ? { ok: true, ...wire } : wire,
+      isObj(wire) && isObj(lenientBody) ? { ...lenientBody, ...wire } : wire,
+      isObj(lenientBody) && isObj(lenientBody.data)
+        ? { ...lenientBody, data: { ...lenientBody.data, ...wire } }
+        : wire,
+    ];
+    let lastError = "";
+    for (const b of bodies) {
+      const response = { ...req.response!, body: JSON.stringify(b) };
+      try {
+        const ctx = await buildContext(
+          Layer.mergeAll(evalExpr(req.auth!, mods), mockLayer(response)),
+        );
+        await Effect.runPromise(
+          Effect.provideContext(evalExpr(req.call!, mods), ctx as any).pipe(
+            Effect.provide(RV.strict),
+          ) as any,
+        );
+        return { ok: true, response };
+      } catch (e) {
+        lastError = errorText(e);
+      }
+    }
+    return { ok: false, error: lastError, body: JSON.stringify(wire).slice(0, 200) };
   }
 
   if (req.mode === "discover") {

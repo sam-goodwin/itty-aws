@@ -16,7 +16,7 @@ export interface Metric {
   readonly baseline?: string;
 }
 
-export const METRICS: ReadonlyArray<Metric> = [
+const LENIENT: ReadonlyArray<Metric> = [
   // size
   {
     id: "size.tarball",
@@ -26,6 +26,15 @@ export const METRICS: ReadonlyArray<Metric> = [
     unit: "bytes",
     description:
       "Gzipped tarball `npm pack` would publish: what `npm install` downloads for this package alone.",
+  },
+  {
+    id: "size.tarballWithCore",
+    suite: "size",
+    label: "Download with core",
+    path: "size.tarballWithCore",
+    unit: "bytes",
+    description:
+      "Gzipped tarball of the SDK plus @distilled.cloud/core: everything distilled publishes that `npm install` downloads for this provider (effect not included).",
   },
   {
     id: "size.unpacked",
@@ -250,6 +259,32 @@ export const METRICS: ReadonlyArray<Metric> = [
       "Time to import the package root lib/index.js after effect is loaded (fresh process).",
   },
   {
+    id: "runtime.importProvider",
+    suite: "runtime",
+    label: "Import (all services)",
+    path: "provider.importMs",
+    unit: "ms",
+    description:
+      "Time to import every service module the provider publishes (lib/services/*.js) in one fresh process, after effect is loaded.",
+  },
+  {
+    id: "runtime.importServiceMedian",
+    suite: "runtime",
+    label: "Import (1 service, median)",
+    path: "provider.serviceImportMedianMs",
+    unit: "ms",
+    description:
+      "Median over the provider's services of the time to import one service module alone (fresh process each, effect loaded). Every service is under `services.<name>.importMs`.",
+  },
+  {
+    id: "runtime.importServiceMax",
+    suite: "runtime",
+    label: "Import (1 service, slowest)",
+    path: "provider.serviceImportMaxMs",
+    unit: "ms",
+    description: "Slowest single-service import of the provider.",
+  },
+  {
     id: "runtime.gcPer1k",
     suite: "runtime",
     label: "GCs / 1k calls",
@@ -269,6 +304,23 @@ export const METRICS: ReadonlyArray<Metric> = [
       "Retained V8 heap after importing credentials + one service module (after gc, effect already loaded).",
   },
   {
+    id: "memory.importOpObjects",
+    suite: "memory",
+    label: "Objects (1 op)",
+    path: "runtime.importObjects",
+    unit: "count",
+    description:
+      "Live JS objects added by importing credentials + one service module (v8.queryObjects(Object) after gc: objects, arrays, functions, class instances; strings and null-prototype objects not counted).",
+  },
+  {
+    id: "memory.firstCallObjects",
+    suite: "memory",
+    label: "Objects after 1st call",
+    path: "runtime.firstCallObjects",
+    unit: "count",
+    description: "Live JS objects added by the first call (lazy schemas, caches).",
+  },
+  {
     id: "memory.firstCallHeap",
     suite: "memory",
     label: "Heap after 1st call",
@@ -283,6 +335,31 @@ export const METRICS: ReadonlyArray<Metric> = [
     path: "barrel.heap.heapUsed",
     unit: "bytes",
     description: "Retained heap after importing the package root (fresh process, after gc).",
+  },
+  {
+    id: "memory.barrelObjects",
+    suite: "memory",
+    label: "Objects (root import)",
+    path: "barrel.objects",
+    unit: "count",
+    description: "Live JS objects added by importing the package root.",
+  },
+  {
+    id: "memory.providerHeap",
+    suite: "memory",
+    label: "Heap (all services)",
+    path: "provider.heap",
+    unit: "bytes",
+    description:
+      "Retained heap after importing every service module of the provider in one fresh process (after gc, effect already loaded): the heap cost of the whole provider.",
+  },
+  {
+    id: "memory.providerObjects",
+    suite: "memory",
+    label: "Objects (all services)",
+    path: "provider.objects",
+    unit: "count",
+    description: "Live JS objects added by importing every service module of the provider.",
   },
   {
     id: "memory.barrelRss",
@@ -354,4 +431,42 @@ export const METRICS: ReadonlyArray<Metric> = [
     unit: "count",
     description: "Type errors in the uncast 1 auth + 1 op program (should be 0).",
   },
+];
+
+/**
+ * The same program with `ResponseValidation.strict` provided (the program's
+ * call piped through `Effect.provide(RV.strict)`): bundle, import, first
+ * call, latency and memory of a caller that validates responses. Stored as
+ * `strictBundle` / `strictRuntime` next to the lenient `bundle` / `runtime`.
+ */
+const STRICT_IDS = new Set([
+  "bundle.gzip",
+  "bundle.overheadGzip",
+  "bundle.effectRendered",
+  "runtime.addedP50",
+  "runtime.p99",
+  "runtime.firstCall",
+  "runtime.importOp",
+  "runtime.gcPer1k",
+  "memory.importOpHeap",
+  "memory.importOpObjects",
+  "memory.firstCallHeap",
+  "memory.firstCallObjects",
+  "memory.warmHeapGrowth",
+  "memory.leakPer1k",
+  "memory.peakRss",
+]);
+
+const strictOf = (m: Metric): Metric => ({
+  ...m,
+  id: `strict.${m.id}`,
+  label: `${m.label} (strict)`,
+  path: m.path.replace(/^bundle\./, "strictBundle.").replace(/^runtime\./, "strictRuntime."),
+  description: `${m.description} With ResponseValidation.strict provided.`,
+});
+
+export const METRICS: ReadonlyArray<Metric> = [
+  // runtime.strictP50 is superseded by strict.runtime.addedP50 / p99.
+  ...LENIENT.filter((m) => m.id !== "runtime.strictP50"),
+  ...LENIENT.filter((m) => STRICT_IDS.has(m.id)).map(strictOf),
 ];

@@ -56,6 +56,8 @@ export interface Target {
   readonly env: Record<string, string>;
   /** Canned 2xx response the mock transport returns. */
   readonly response: CannedResponse;
+  /** A response the call accepts under ResponseValidation.strict, when `response` is not. */
+  readonly strictResponse?: CannedResponse;
   /** Set for targets from `OVERRIDES`; `--rediscover` leaves them alone. */
   readonly pinned?: boolean;
   readonly note?: string;
