@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -156,24 +157,19 @@ export class TooManyRequestsException
     /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type MapOf__string = { [key: string]: string | undefined };
-const MapOf__string = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const MapOf__string = /*@__PURE__*/ __L.at(__c0, 0);
 export interface CreateApplicationRequest {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), tags: S.optional(MapOf__string) }),
-).annotate({ identifier: "CreateApplicationRequest" }) as any as S.Schema<CreateApplicationRequest>;
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateApplicationRequest>;
 export interface CreateAppRequest {
   CreateApplicationRequest?: CreateApplicationRequest;
 }
-const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateApplicationRequest: S.optional(CreateApplicationRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CreateApplicationRequest" }),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/apps" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateAppRequest" }) as any as S.Schema<CreateAppRequest>;
+const CreateAppRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateAppRequest>;
 export interface ApplicationResponse {
   Arn?: string;
   Id?: string;
@@ -181,25 +177,11 @@ export interface ApplicationResponse {
   tags?: { [key: string]: string | undefined };
   CreationDate?: string;
 }
-const ApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    tags: S.optional(MapOf__string),
-    CreationDate: S.optional(S.String),
-  }),
-).annotate({ identifier: "ApplicationResponse" }) as any as S.Schema<ApplicationResponse>;
+const ApplicationResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ApplicationResponse>;
 export interface CreateAppResponse {
   ApplicationResponse: ApplicationResponse & { Arn: string; Id: string; Name: string };
 }
-const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationResponse: S.optional(ApplicationResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ApplicationResponse" }),
-  }),
-).annotate({ identifier: "CreateAppResponse" }) as any as S.Schema<CreateAppResponse>;
+const CreateAppResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateAppResponse>;
 export type __EndpointTypesElement =
   | "PUSH"
   | "GCM"
@@ -218,19 +200,15 @@ export type __EndpointTypesElement =
 const __EndpointTypesElement = S.String;
 
 export type ListOf__EndpointTypesElement = __EndpointTypesElement[];
-const ListOf__EndpointTypesElement = /*@__PURE__*/ S.Array(__EndpointTypesElement);
+const ListOf__EndpointTypesElement = /*@__PURE__*/ __L.at(__c0, 5);
 export interface CustomDeliveryConfiguration {
   DeliveryUri?: string;
   EndpointTypes?: __EndpointTypesElement[];
 }
-const CustomDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryUri: S.optional(S.String),
-    EndpointTypes: S.optional(ListOf__EndpointTypesElement),
-  }),
-).annotate({
-  identifier: "CustomDeliveryConfiguration",
-}) as any as S.Schema<CustomDeliveryConfiguration>;
+const CustomDeliveryConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CustomDeliveryConfiguration>;
 export type Action = "OPEN_APP" | "DEEP_LINK" | "URL" | (string & {});
 const Action = S.String;
 
@@ -248,37 +226,21 @@ export interface Message {
   Title?: string;
   Url?: string;
 }
-const Message = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(Action),
-    Body: S.optional(S.String),
-    ImageIconUrl: S.optional(S.String),
-    ImageSmallIconUrl: S.optional(S.String),
-    ImageUrl: S.optional(S.String),
-    JsonBody: S.optional(S.String),
-    MediaUrl: S.optional(S.String),
-    RawContent: S.optional(S.String),
-    SilentPush: S.optional(S.Boolean),
-    TimeToLive: S.optional(S.Number),
-    Title: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
+const Message = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Message>;
 export interface CampaignCustomMessage {
   Data?: string;
 }
-const CampaignCustomMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Data: S.optional(S.String) }),
-).annotate({ identifier: "CampaignCustomMessage" }) as any as S.Schema<CampaignCustomMessage>;
+const CampaignCustomMessage = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CampaignCustomMessage>;
 export interface MessageHeader {
   Name?: string;
   Value?: string;
 }
-const MessageHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "MessageHeader" }) as any as S.Schema<MessageHeader>;
+const MessageHeader = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<MessageHeader>;
 export type ListOfMessageHeader = MessageHeader[];
-const ListOfMessageHeader = /*@__PURE__*/ S.Array(MessageHeader);
+const ListOfMessageHeader = /*@__PURE__*/ __L.at(__c1, 2);
 export interface CampaignEmailMessage {
   Body?: string;
   FromAddress?: string;
@@ -286,15 +248,7 @@ export interface CampaignEmailMessage {
   HtmlBody?: string;
   Title?: string;
 }
-const CampaignEmailMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Body: S.optional(S.String),
-    FromAddress: S.optional(S.String),
-    Headers: S.optional(ListOfMessageHeader),
-    HtmlBody: S.optional(S.String),
-    Title: S.optional(S.String),
-  }),
-).annotate({ identifier: "CampaignEmailMessage" }) as any as S.Schema<CampaignEmailMessage>;
+const CampaignEmailMessage = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CampaignEmailMessage>;
 export type MessageType = "TRANSACTIONAL" | "PROMOTIONAL" | (string & {});
 const MessageType = S.String;
 
@@ -306,16 +260,7 @@ export interface CampaignSmsMessage {
   EntityId?: string;
   TemplateId?: string;
 }
-const CampaignSmsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Body: S.optional(S.String),
-    MessageType: S.optional(MessageType),
-    OriginationNumber: S.optional(S.String),
-    SenderId: S.optional(S.String),
-    EntityId: S.optional(S.String),
-    TemplateId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CampaignSmsMessage" }) as any as S.Schema<CampaignSmsMessage>;
+const CampaignSmsMessage = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CampaignSmsMessage>;
 export type Alignment = "LEFT" | "CENTER" | "RIGHT" | (string & {});
 const Alignment = S.String;
 
@@ -324,25 +269,19 @@ export interface InAppMessageBodyConfig {
   Body?: string;
   TextColor?: string;
 }
-const InAppMessageBodyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Alignment: S.optional(Alignment),
-    Body: S.optional(S.String),
-    TextColor: S.optional(S.String),
-  }),
-).annotate({ identifier: "InAppMessageBodyConfig" }) as any as S.Schema<InAppMessageBodyConfig>;
+const InAppMessageBodyConfig = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<InAppMessageBodyConfig>;
 export interface InAppMessageHeaderConfig {
   Alignment?: Alignment;
   Header?: string;
   TextColor?: string;
 }
-const InAppMessageHeaderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Alignment: S.optional(Alignment),
-    Header: S.optional(S.String),
-    TextColor: S.optional(S.String),
-  }),
-).annotate({ identifier: "InAppMessageHeaderConfig" }) as any as S.Schema<InAppMessageHeaderConfig>;
+const InAppMessageHeaderConfig = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<InAppMessageHeaderConfig>;
 export type ButtonAction = "LINK" | "DEEP_LINK" | "CLOSE" | (string & {});
 const ButtonAction = S.String;
 
@@ -350,11 +289,10 @@ export interface OverrideButtonConfiguration {
   ButtonAction?: ButtonAction;
   Link?: string;
 }
-const OverrideButtonConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ButtonAction: S.optional(ButtonAction), Link: S.optional(S.String) }),
-).annotate({
-  identifier: "OverrideButtonConfiguration",
-}) as any as S.Schema<OverrideButtonConfiguration>;
+const OverrideButtonConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<OverrideButtonConfiguration>;
 export interface DefaultButtonConfiguration {
   BackgroundColor?: string;
   BorderRadius?: number;
@@ -363,32 +301,17 @@ export interface DefaultButtonConfiguration {
   Text?: string;
   TextColor?: string;
 }
-const DefaultButtonConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BackgroundColor: S.optional(S.String),
-    BorderRadius: S.optional(S.Number),
-    ButtonAction: S.optional(ButtonAction),
-    Link: S.optional(S.String),
-    Text: S.optional(S.String),
-    TextColor: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DefaultButtonConfiguration",
-}) as any as S.Schema<DefaultButtonConfiguration>;
+const DefaultButtonConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DefaultButtonConfiguration>;
 export interface InAppMessageButton {
   Android?: OverrideButtonConfiguration;
   DefaultConfig?: DefaultButtonConfiguration;
   IOS?: OverrideButtonConfiguration;
   Web?: OverrideButtonConfiguration;
 }
-const InAppMessageButton = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Android: S.optional(OverrideButtonConfiguration),
-    DefaultConfig: S.optional(DefaultButtonConfiguration),
-    IOS: S.optional(OverrideButtonConfiguration),
-    Web: S.optional(OverrideButtonConfiguration),
-  }),
-).annotate({ identifier: "InAppMessageButton" }) as any as S.Schema<InAppMessageButton>;
+const InAppMessageButton = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<InAppMessageButton>;
 export interface InAppMessageContent {
   BackgroundColor?: string;
   BodyConfig?: InAppMessageBodyConfig;
@@ -397,18 +320,9 @@ export interface InAppMessageContent {
   PrimaryBtn?: InAppMessageButton;
   SecondaryBtn?: InAppMessageButton;
 }
-const InAppMessageContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BackgroundColor: S.optional(S.String),
-    BodyConfig: S.optional(InAppMessageBodyConfig),
-    HeaderConfig: S.optional(InAppMessageHeaderConfig),
-    ImageUrl: S.optional(S.String),
-    PrimaryBtn: S.optional(InAppMessageButton),
-    SecondaryBtn: S.optional(InAppMessageButton),
-  }),
-).annotate({ identifier: "InAppMessageContent" }) as any as S.Schema<InAppMessageContent>;
+const InAppMessageContent = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<InAppMessageContent>;
 export type ListOfInAppMessageContent = InAppMessageContent[];
-const ListOfInAppMessageContent = /*@__PURE__*/ S.Array(InAppMessageContent);
+const ListOfInAppMessageContent = /*@__PURE__*/ __L.at(__c2, 3);
 export type Layout =
   | "BOTTOM_BANNER"
   | "TOP_BANNER"
@@ -425,14 +339,7 @@ export interface CampaignInAppMessage {
   CustomConfig?: { [key: string]: string | undefined };
   Layout?: Layout;
 }
-const CampaignInAppMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Body: S.optional(S.String),
-    Content: S.optional(ListOfInAppMessageContent),
-    CustomConfig: S.optional(MapOf__string),
-    Layout: S.optional(Layout),
-  }),
-).annotate({ identifier: "CampaignInAppMessage" }) as any as S.Schema<CampaignInAppMessage>;
+const CampaignInAppMessage = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CampaignInAppMessage>;
 export interface MessageConfiguration {
   ADMMessage?: Message;
   APNSMessage?: Message;
@@ -444,19 +351,7 @@ export interface MessageConfiguration {
   SMSMessage?: CampaignSmsMessage;
   InAppMessage?: CampaignInAppMessage;
 }
-const MessageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ADMMessage: S.optional(Message),
-    APNSMessage: S.optional(Message),
-    BaiduMessage: S.optional(Message),
-    CustomMessage: S.optional(CampaignCustomMessage),
-    DefaultMessage: S.optional(Message),
-    EmailMessage: S.optional(CampaignEmailMessage),
-    GCMMessage: S.optional(Message),
-    SMSMessage: S.optional(CampaignSmsMessage),
-    InAppMessage: S.optional(CampaignInAppMessage),
-  }),
-).annotate({ identifier: "MessageConfiguration" }) as any as S.Schema<MessageConfiguration>;
+const MessageConfiguration = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<MessageConfiguration>;
 export type AttributeType =
   | "INCLUSIVE"
   | "EXCLUSIVE"
@@ -469,19 +364,14 @@ export type AttributeType =
 const AttributeType = S.String;
 
 export type ListOf__string = string[];
-const ListOf__string = /*@__PURE__*/ S.Array(S.String);
+const ListOf__string = /*@__PURE__*/ __L.at(__c2, 6);
 export interface AttributeDimension {
   AttributeType?: AttributeType;
   Values?: string[];
 }
-const AttributeDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributeType: S.optional(AttributeType), Values: S.optional(ListOf__string) }),
-).annotate({ identifier: "AttributeDimension" }) as any as S.Schema<AttributeDimension>;
+const AttributeDimension = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AttributeDimension>;
 export type MapOfAttributeDimension = { [key: string]: AttributeDimension | undefined };
-const MapOfAttributeDimension = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ AttributeDimension.pipe(S.optional),
-);
+const MapOfAttributeDimension = /*@__PURE__*/ __L.at(__c3, 0);
 export type DimensionType = "INCLUSIVE" | "EXCLUSIVE" | (string & {});
 const DimensionType = S.String;
 
@@ -489,33 +379,20 @@ export interface SetDimension {
   DimensionType?: DimensionType;
   Values?: string[];
 }
-const SetDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DimensionType: S.optional(DimensionType), Values: S.optional(ListOf__string) }),
-).annotate({ identifier: "SetDimension" }) as any as S.Schema<SetDimension>;
+const SetDimension = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SetDimension>;
 export interface MetricDimension {
   ComparisonOperator?: string;
   Value?: number;
 }
-const MetricDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ComparisonOperator: S.optional(S.String), Value: S.optional(S.Number) }),
-).annotate({ identifier: "MetricDimension" }) as any as S.Schema<MetricDimension>;
+const MetricDimension = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MetricDimension>;
 export type MapOfMetricDimension = { [key: string]: MetricDimension | undefined };
-const MapOfMetricDimension = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ MetricDimension.pipe(S.optional),
-);
+const MapOfMetricDimension = /*@__PURE__*/ __L.at(__c3, 3);
 export interface EventDimensions {
   Attributes?: { [key: string]: AttributeDimension | undefined };
   EventType?: SetDimension;
   Metrics?: { [key: string]: MetricDimension | undefined };
 }
-const EventDimensions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attributes: S.optional(MapOfAttributeDimension),
-    EventType: S.optional(SetDimension),
-    Metrics: S.optional(MapOfMetricDimension),
-  }),
-).annotate({ identifier: "EventDimensions" }) as any as S.Schema<EventDimensions>;
+const EventDimensions = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EventDimensions>;
 export type FilterType = "SYSTEM" | "ENDPOINT" | (string & {});
 const FilterType = S.String;
 
@@ -523,9 +400,7 @@ export interface CampaignEventFilter {
   Dimensions?: EventDimensions;
   FilterType?: FilterType;
 }
-const CampaignEventFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Dimensions: S.optional(EventDimensions), FilterType: S.optional(FilterType) }),
-).annotate({ identifier: "CampaignEventFilter" }) as any as S.Schema<CampaignEventFilter>;
+const CampaignEventFilter = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CampaignEventFilter>;
 export type Frequency =
   | "ONCE"
   | "HOURLY"
@@ -541,9 +416,7 @@ export interface QuietTime {
   End?: string;
   Start?: string;
 }
-const QuietTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ End: S.optional(S.String), Start: S.optional(S.String) }),
-).annotate({ identifier: "QuietTime" }) as any as S.Schema<QuietTime>;
+const QuietTime = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<QuietTime>;
 export interface Schedule {
   EndTime?: string;
   EventFilter?: CampaignEventFilter;
@@ -553,24 +426,12 @@ export interface Schedule {
   StartTime?: string;
   Timezone?: string;
 }
-const Schedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndTime: S.optional(S.String),
-    EventFilter: S.optional(CampaignEventFilter),
-    Frequency: S.optional(Frequency),
-    IsLocalTime: S.optional(S.Boolean),
-    QuietTime: S.optional(QuietTime),
-    StartTime: S.optional(S.String),
-    Timezone: S.optional(S.String),
-  }),
-).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
+const Schedule = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Schedule>;
 export interface Template {
   Name?: string;
   Version?: string;
 }
-const Template = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
-).annotate({ identifier: "Template" }) as any as S.Schema<Template>;
+const Template = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Template>;
 export interface TemplateConfiguration {
   EmailTemplate?: Template;
   PushTemplate?: Template;
@@ -578,15 +439,10 @@ export interface TemplateConfiguration {
   VoiceTemplate?: Template;
   InAppTemplate?: Template;
 }
-const TemplateConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EmailTemplate: S.optional(Template),
-    PushTemplate: S.optional(Template),
-    SMSTemplate: S.optional(Template),
-    VoiceTemplate: S.optional(Template),
-    InAppTemplate: S.optional(Template),
-  }),
-).annotate({ identifier: "TemplateConfiguration" }) as any as S.Schema<TemplateConfiguration>;
+const TemplateConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<TemplateConfiguration>;
 export interface WriteTreatmentResource {
   CustomDeliveryConfiguration?: CustomDeliveryConfiguration;
   MessageConfiguration?: MessageConfiguration;
@@ -596,19 +452,12 @@ export interface WriteTreatmentResource {
   TreatmentDescription?: string;
   TreatmentName?: string;
 }
-const WriteTreatmentResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
-    MessageConfiguration: S.optional(MessageConfiguration),
-    Schedule: S.optional(Schedule),
-    SizePercent: S.optional(S.Number),
-    TemplateConfiguration: S.optional(TemplateConfiguration),
-    TreatmentDescription: S.optional(S.String),
-    TreatmentName: S.optional(S.String),
-  }),
-).annotate({ identifier: "WriteTreatmentResource" }) as any as S.Schema<WriteTreatmentResource>;
+const WriteTreatmentResource = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<WriteTreatmentResource>;
 export type ListOfWriteTreatmentResource = WriteTreatmentResource[];
-const ListOfWriteTreatmentResource = /*@__PURE__*/ S.Array(WriteTreatmentResource);
+const ListOfWriteTreatmentResource = /*@__PURE__*/ __L.at(__c4, 3);
 export type Mode = "DELIVERY" | "FILTER" | (string & {});
 const Mode = S.String;
 
@@ -617,13 +466,7 @@ export interface CampaignHook {
   Mode?: Mode;
   WebUrl?: string;
 }
-const CampaignHook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LambdaFunctionName: S.optional(S.String),
-    Mode: S.optional(Mode),
-    WebUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "CampaignHook" }) as any as S.Schema<CampaignHook>;
+const CampaignHook = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CampaignHook>;
 export interface CampaignLimits {
   Daily?: number;
   MaximumDuration?: number;
@@ -631,15 +474,7 @@ export interface CampaignLimits {
   Total?: number;
   Session?: number;
 }
-const CampaignLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Daily: S.optional(S.Number),
-    MaximumDuration: S.optional(S.Number),
-    MessagesPerSecond: S.optional(S.Number),
-    Total: S.optional(S.Number),
-    Session: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CampaignLimits" }) as any as S.Schema<CampaignLimits>;
+const CampaignLimits = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CampaignLimits>;
 export interface WriteCampaignRequest {
   AdditionalTreatments?: WriteTreatmentResource[];
   CustomDeliveryConfiguration?: CustomDeliveryConfiguration;
@@ -659,48 +494,15 @@ export interface WriteCampaignRequest {
   TreatmentName?: string;
   Priority?: number;
 }
-const WriteCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdditionalTreatments: S.optional(ListOfWriteTreatmentResource),
-    CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
-    Description: S.optional(S.String),
-    HoldoutPercent: S.optional(S.Number),
-    Hook: S.optional(CampaignHook),
-    IsPaused: S.optional(S.Boolean),
-    Limits: S.optional(CampaignLimits),
-    MessageConfiguration: S.optional(MessageConfiguration),
-    Name: S.optional(S.String),
-    Schedule: S.optional(Schedule),
-    SegmentId: S.optional(S.String),
-    SegmentVersion: S.optional(S.Number),
-    tags: S.optional(MapOf__string),
-    TemplateConfiguration: S.optional(TemplateConfiguration),
-    TreatmentDescription: S.optional(S.String),
-    TreatmentName: S.optional(S.String),
-    Priority: S.optional(S.Number),
-  }),
-).annotate({ identifier: "WriteCampaignRequest" }) as any as S.Schema<WriteCampaignRequest>;
+const WriteCampaignRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<WriteCampaignRequest>;
 export interface CreateCampaignRequest {
   ApplicationId: string;
   WriteCampaignRequest?: WriteCampaignRequest;
 }
-const CreateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    WriteCampaignRequest: S.optional(WriteCampaignRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "WriteCampaignRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/campaigns" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateCampaignRequest" }) as any as S.Schema<CreateCampaignRequest>;
+const CreateCampaignRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateCampaignRequest>;
 export type CampaignStatus =
   | "SCHEDULED"
   | "EXECUTING"
@@ -715,9 +517,7 @@ const CampaignStatus = S.String;
 export interface CampaignState {
   CampaignStatus?: CampaignStatus;
 }
-const CampaignState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CampaignStatus: S.optional(CampaignStatus) }),
-).annotate({ identifier: "CampaignState" }) as any as S.Schema<CampaignState>;
+const CampaignState = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CampaignState>;
 export interface TreatmentResource {
   CustomDeliveryConfiguration?: CustomDeliveryConfiguration;
   Id?: string;
@@ -729,21 +529,9 @@ export interface TreatmentResource {
   TreatmentDescription?: string;
   TreatmentName?: string;
 }
-const TreatmentResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
-    Id: S.optional(S.String),
-    MessageConfiguration: S.optional(MessageConfiguration),
-    Schedule: S.optional(Schedule),
-    SizePercent: S.optional(S.Number),
-    State: S.optional(CampaignState),
-    TemplateConfiguration: S.optional(TemplateConfiguration),
-    TreatmentDescription: S.optional(S.String),
-    TreatmentName: S.optional(S.String),
-  }),
-).annotate({ identifier: "TreatmentResource" }) as any as S.Schema<TreatmentResource>;
+const TreatmentResource = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TreatmentResource>;
 export type ListOfTreatmentResource = TreatmentResource[];
-const ListOfTreatmentResource = /*@__PURE__*/ S.Array(TreatmentResource);
+const ListOfTreatmentResource = /*@__PURE__*/ __L.at(__c5, 2);
 export interface CampaignResponse {
   AdditionalTreatments?: TreatmentResource[];
   ApplicationId?: string;
@@ -771,35 +559,7 @@ export interface CampaignResponse {
   Version?: number;
   Priority?: number;
 }
-const CampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdditionalTreatments: S.optional(ListOfTreatmentResource),
-    ApplicationId: S.optional(S.String),
-    Arn: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
-    DefaultState: S.optional(CampaignState),
-    Description: S.optional(S.String),
-    HoldoutPercent: S.optional(S.Number),
-    Hook: S.optional(CampaignHook),
-    Id: S.optional(S.String),
-    IsPaused: S.optional(S.Boolean),
-    LastModifiedDate: S.optional(S.String),
-    Limits: S.optional(CampaignLimits),
-    MessageConfiguration: S.optional(MessageConfiguration),
-    Name: S.optional(S.String),
-    Schedule: S.optional(Schedule),
-    SegmentId: S.optional(S.String),
-    SegmentVersion: S.optional(S.Number),
-    State: S.optional(CampaignState),
-    tags: S.optional(MapOf__string),
-    TemplateConfiguration: S.optional(TemplateConfiguration),
-    TreatmentDescription: S.optional(S.String),
-    TreatmentName: S.optional(S.String),
-    Version: S.optional(S.Number),
-    Priority: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CampaignResponse" }) as any as S.Schema<CampaignResponse>;
+const CampaignResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CampaignResponse>;
 export interface CreateCampaignResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -919,13 +679,10 @@ export interface CreateCampaignResponse {
     };
   };
 }
-const CreateCampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignResponse: S.optional(CampaignResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CampaignResponse" }),
-  }),
-).annotate({ identifier: "CreateCampaignResponse" }) as any as S.Schema<CreateCampaignResponse>;
+const CreateCampaignResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateCampaignResponse>;
 export interface EmailTemplateRequest {
   DefaultSubstitutions?: string;
   HtmlPart?: string;
@@ -936,102 +693,46 @@ export interface EmailTemplateRequest {
   TemplateDescription?: string;
   TextPart?: string;
 }
-const EmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DefaultSubstitutions: S.optional(S.String),
-    HtmlPart: S.optional(S.String),
-    RecommenderId: S.optional(S.String),
-    Subject: S.optional(S.String),
-    Headers: S.optional(ListOfMessageHeader),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-    TextPart: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmailTemplateRequest" }) as any as S.Schema<EmailTemplateRequest>;
+const EmailTemplateRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<EmailTemplateRequest>;
 export interface CreateEmailTemplateRequest {
   EmailTemplateRequest?: EmailTemplateRequest;
   TemplateName: string;
 }
-const CreateEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EmailTemplateRequest: S.optional(EmailTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EmailTemplateRequest" }),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/email" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateEmailTemplateRequest",
-}) as any as S.Schema<CreateEmailTemplateRequest>;
+const CreateEmailTemplateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateEmailTemplateRequest>;
 export interface CreateTemplateMessageBody {
   Arn?: string;
   Message?: string;
   RequestID?: string;
 }
-const CreateTemplateMessageBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestID: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateTemplateMessageBody",
-}) as any as S.Schema<CreateTemplateMessageBody>;
+const CreateTemplateMessageBody = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateTemplateMessageBody>;
 export interface CreateEmailTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
-const CreateEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CreateTemplateMessageBody" }),
-  }),
-).annotate({
-  identifier: "CreateEmailTemplateResponse",
-}) as any as S.Schema<CreateEmailTemplateResponse>;
+const CreateEmailTemplateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateEmailTemplateResponse>;
 export interface ExportJobRequest {
   RoleArn?: string;
   S3UrlPrefix?: string;
   SegmentId?: string;
   SegmentVersion?: number;
 }
-const ExportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RoleArn: S.optional(S.String),
-    S3UrlPrefix: S.optional(S.String),
-    SegmentId: S.optional(S.String),
-    SegmentVersion: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ExportJobRequest" }) as any as S.Schema<ExportJobRequest>;
+const ExportJobRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ExportJobRequest>;
 export interface CreateExportJobRequest {
   ApplicationId: string;
   ExportJobRequest?: ExportJobRequest;
 }
-const CreateExportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    ExportJobRequest: S.optional(ExportJobRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ExportJobRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/jobs/export" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateExportJobRequest" }) as any as S.Schema<CreateExportJobRequest>;
+const CreateExportJobRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateExportJobRequest>;
 export interface ExportJobResource {
   RoleArn?: string;
   S3UrlPrefix?: string;
@@ -1067,23 +768,7 @@ export interface ExportJobResponse {
   TotalProcessed?: number;
   Type?: string;
 }
-const ExportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CompletedPieces: S.optional(S.Number),
-    CompletionDate: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Definition: S.optional(ExportJobResource),
-    FailedPieces: S.optional(S.Number),
-    Failures: S.optional(ListOf__string),
-    Id: S.optional(S.String),
-    JobStatus: S.optional(JobStatus),
-    TotalFailures: S.optional(S.Number),
-    TotalPieces: S.optional(S.Number),
-    TotalProcessed: S.optional(S.Number),
-    Type: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExportJobResponse" }) as any as S.Schema<ExportJobResponse>;
+const ExportJobResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ExportJobResponse>;
 export interface CreateExportJobResponse {
   ExportJobResponse: ExportJobResponse & {
     ApplicationId: string;
@@ -1094,13 +779,10 @@ export interface CreateExportJobResponse {
     Type: string;
   };
 }
-const CreateExportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExportJobResponse: S.optional(ExportJobResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ExportJobResponse" }),
-  }),
-).annotate({ identifier: "CreateExportJobResponse" }) as any as S.Schema<CreateExportJobResponse>;
+const CreateExportJobResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateExportJobResponse>;
 export type Format = "CSV" | "JSON" | (string & {});
 const Format = S.String;
 
@@ -1114,39 +796,15 @@ export interface ImportJobRequest {
   SegmentId?: string;
   SegmentName?: string;
 }
-const ImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DefineSegment: S.optional(S.Boolean),
-    ExternalId: S.optional(S.String),
-    Format: S.optional(Format),
-    RegisterEndpoints: S.optional(S.Boolean),
-    RoleArn: S.optional(S.String),
-    S3Url: S.optional(S.String),
-    SegmentId: S.optional(S.String),
-    SegmentName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImportJobRequest" }) as any as S.Schema<ImportJobRequest>;
+const ImportJobRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ImportJobRequest>;
 export interface CreateImportJobRequest {
   ApplicationId: string;
   ImportJobRequest?: ImportJobRequest;
 }
-const CreateImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    ImportJobRequest: S.optional(ImportJobRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ImportJobRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/jobs/import" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateImportJobRequest" }) as any as S.Schema<CreateImportJobRequest>;
+const CreateImportJobRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateImportJobRequest>;
 export interface ImportJobResource {
   DefineSegment?: boolean;
   ExternalId?: string;
@@ -1173,23 +831,7 @@ export interface ImportJobResponse {
   TotalProcessed?: number;
   Type?: string;
 }
-const ImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CompletedPieces: S.optional(S.Number),
-    CompletionDate: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Definition: S.optional(ImportJobResource),
-    FailedPieces: S.optional(S.Number),
-    Failures: S.optional(ListOf__string),
-    Id: S.optional(S.String),
-    JobStatus: S.optional(JobStatus),
-    TotalFailures: S.optional(S.Number),
-    TotalPieces: S.optional(S.Number),
-    TotalProcessed: S.optional(S.Number),
-    Type: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImportJobResponse" }) as any as S.Schema<ImportJobResponse>;
+const ImportJobResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ImportJobResponse>;
 export interface CreateImportJobResponse {
   ImportJobResponse: ImportJobResponse & {
     ApplicationId: string;
@@ -1200,13 +842,10 @@ export interface CreateImportJobResponse {
     Type: string;
   };
 }
-const CreateImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ImportJobResponse: S.optional(ImportJobResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ImportJobResponse" }),
-  }),
-).annotate({ identifier: "CreateImportJobResponse" }) as any as S.Schema<CreateImportJobResponse>;
+const CreateImportJobResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateImportJobResponse>;
 export interface InAppTemplateRequest {
   Content?: InAppMessageContent[];
   CustomConfig?: { [key: string]: string | undefined };
@@ -1214,38 +853,15 @@ export interface InAppTemplateRequest {
   tags?: { [key: string]: string | undefined };
   TemplateDescription?: string;
 }
-const InAppTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Content: S.optional(ListOfInAppMessageContent),
-    CustomConfig: S.optional(MapOf__string),
-    Layout: S.optional(Layout),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-  }),
-).annotate({ identifier: "InAppTemplateRequest" }) as any as S.Schema<InAppTemplateRequest>;
+const InAppTemplateRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<InAppTemplateRequest>;
 export interface CreateInAppTemplateRequest {
   InAppTemplateRequest?: InAppTemplateRequest;
   TemplateName: string;
 }
-const CreateInAppTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InAppTemplateRequest: S.optional(InAppTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "InAppTemplateRequest" }),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/inapp" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateInAppTemplateRequest",
-}) as any as S.Schema<CreateInAppTemplateRequest>;
+const CreateInAppTemplateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CreateInAppTemplateRequest>;
 export interface TemplateCreateMessageBody {
   Arn?: string;
   Message?: string;
@@ -1256,15 +872,10 @@ const TemplateCreateMessageBody =
 export interface CreateInAppTemplateResponse {
   TemplateCreateMessageBody: TemplateCreateMessageBody;
 }
-const CreateInAppTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateCreateMessageBody: S.optional(TemplateCreateMessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "TemplateCreateMessageBody" }),
-  }),
-).annotate({
-  identifier: "CreateInAppTemplateResponse",
-}) as any as S.Schema<CreateInAppTemplateResponse>;
+const CreateInAppTemplateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateInAppTemplateResponse>;
 export interface JourneyCustomMessage {
   Data?: string;
 }
@@ -1277,29 +888,19 @@ export interface CustomMessageActivity {
   TemplateName?: string;
   TemplateVersion?: string;
 }
-const CustomMessageActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryUri: S.optional(S.String),
-    EndpointTypes: S.optional(ListOf__EndpointTypesElement),
-    MessageConfig: S.optional(JourneyCustomMessage),
-    NextActivity: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "CustomMessageActivity" }) as any as S.Schema<CustomMessageActivity>;
+const CustomMessageActivity = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CustomMessageActivity>;
 export interface EventCondition {
   Dimensions?: EventDimensions;
   MessageActivity?: string;
 }
-const EventCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Dimensions: S.optional(EventDimensions), MessageActivity: S.optional(S.String) }),
-).annotate({ identifier: "EventCondition" }) as any as S.Schema<EventCondition>;
+const EventCondition = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<EventCondition>;
 export interface SegmentCondition {
   SegmentId?: string;
 }
-const SegmentCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SegmentId: S.optional(S.String) }),
-).annotate({ identifier: "SegmentCondition" }) as any as S.Schema<SegmentCondition>;
+const SegmentCondition = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SegmentCondition>;
 export type Duration = "HR_24" | "DAY_7" | "DAY_14" | "DAY_30" | (string & {});
 const Duration = S.String;
 
@@ -1310,15 +911,11 @@ export interface RecencyDimension {
   Duration?: Duration;
   RecencyType?: RecencyType;
 }
-const RecencyDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Duration: S.optional(Duration), RecencyType: S.optional(RecencyType) }),
-).annotate({ identifier: "RecencyDimension" }) as any as S.Schema<RecencyDimension>;
+const RecencyDimension = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<RecencyDimension>;
 export interface SegmentBehaviors {
   Recency?: RecencyDimension;
 }
-const SegmentBehaviors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Recency: S.optional(RecencyDimension) }),
-).annotate({ identifier: "SegmentBehaviors" }) as any as S.Schema<SegmentBehaviors>;
+const SegmentBehaviors = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<SegmentBehaviors>;
 export interface SegmentDemographics {
   AppVersion?: SetDimension;
   Channel?: SetDimension;
@@ -1327,37 +924,22 @@ export interface SegmentDemographics {
   Model?: SetDimension;
   Platform?: SetDimension;
 }
-const SegmentDemographics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppVersion: S.optional(SetDimension),
-    Channel: S.optional(SetDimension),
-    DeviceType: S.optional(SetDimension),
-    Make: S.optional(SetDimension),
-    Model: S.optional(SetDimension),
-    Platform: S.optional(SetDimension),
-  }),
-).annotate({ identifier: "SegmentDemographics" }) as any as S.Schema<SegmentDemographics>;
+const SegmentDemographics = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<SegmentDemographics>;
 export interface GPSCoordinates {
   Latitude?: number;
   Longitude?: number;
 }
-const GPSCoordinates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Latitude: S.optional(S.Number), Longitude: S.optional(S.Number) }),
-).annotate({ identifier: "GPSCoordinates" }) as any as S.Schema<GPSCoordinates>;
+const GPSCoordinates = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GPSCoordinates>;
 export interface GPSPointDimension {
   Coordinates?: GPSCoordinates;
   RangeInKilometers?: number;
 }
-const GPSPointDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Coordinates: S.optional(GPSCoordinates), RangeInKilometers: S.optional(S.Number) }),
-).annotate({ identifier: "GPSPointDimension" }) as any as S.Schema<GPSPointDimension>;
+const GPSPointDimension = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GPSPointDimension>;
 export interface SegmentLocation {
   Country?: SetDimension;
   GPSPoint?: GPSPointDimension;
 }
-const SegmentLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Country: S.optional(SetDimension), GPSPoint: S.optional(GPSPointDimension) }),
-).annotate({ identifier: "SegmentLocation" }) as any as S.Schema<SegmentLocation>;
+const SegmentLocation = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<SegmentLocation>;
 export interface SegmentDimensions {
   Attributes?: { [key: string]: AttributeDimension | undefined };
   Behavior?: SegmentBehaviors;
@@ -1366,30 +948,15 @@ export interface SegmentDimensions {
   Metrics?: { [key: string]: MetricDimension | undefined };
   UserAttributes?: { [key: string]: AttributeDimension | undefined };
 }
-const SegmentDimensions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attributes: S.optional(MapOfAttributeDimension),
-    Behavior: S.optional(SegmentBehaviors),
-    Demographic: S.optional(SegmentDemographics),
-    Location: S.optional(SegmentLocation),
-    Metrics: S.optional(MapOfMetricDimension),
-    UserAttributes: S.optional(MapOfAttributeDimension),
-  }),
-).annotate({ identifier: "SegmentDimensions" }) as any as S.Schema<SegmentDimensions>;
+const SegmentDimensions = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<SegmentDimensions>;
 export interface SimpleCondition {
   EventCondition?: EventCondition;
   SegmentCondition?: SegmentCondition;
   SegmentDimensions?: SegmentDimensions;
 }
-const SimpleCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventCondition: S.optional(EventCondition),
-    SegmentCondition: S.optional(SegmentCondition),
-    SegmentDimensions: S.optional(SegmentDimensions),
-  }).pipe(S.encodeKeys({ SegmentDimensions: "segmentDimensions" })),
-).annotate({ identifier: "SimpleCondition" }) as any as S.Schema<SimpleCondition>;
+const SimpleCondition = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<SimpleCondition>;
 export type ListOfSimpleCondition = SimpleCondition[];
-const ListOfSimpleCondition = /*@__PURE__*/ S.Array(SimpleCondition);
+const ListOfSimpleCondition = /*@__PURE__*/ __L.at(__c8, 7);
 export type Operator = "ALL" | "ANY" | (string & {});
 const Operator = S.String;
 
@@ -1397,113 +964,79 @@ export interface Condition {
   Conditions?: SimpleCondition[];
   Operator?: Operator;
 }
-const Condition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Conditions: S.optional(ListOfSimpleCondition), Operator: S.optional(Operator) }),
-).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
+const Condition = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Condition>;
 export interface WaitTime {
   WaitFor?: string;
   WaitUntil?: string;
 }
-const WaitTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WaitFor: S.optional(S.String), WaitUntil: S.optional(S.String) }),
-).annotate({ identifier: "WaitTime" }) as any as S.Schema<WaitTime>;
+const WaitTime = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<WaitTime>;
 export interface ConditionalSplitActivity {
   Condition?: Condition;
   EvaluationWaitTime?: WaitTime;
   FalseActivity?: string;
   TrueActivity?: string;
 }
-const ConditionalSplitActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Condition: S.optional(Condition),
-    EvaluationWaitTime: S.optional(WaitTime),
-    FalseActivity: S.optional(S.String),
-    TrueActivity: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConditionalSplitActivity" }) as any as S.Schema<ConditionalSplitActivity>;
+const ConditionalSplitActivity = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ConditionalSplitActivity>;
 export interface JourneyEmailMessage {
   FromAddress?: string;
 }
-const JourneyEmailMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FromAddress: S.optional(S.String) }),
-).annotate({ identifier: "JourneyEmailMessage" }) as any as S.Schema<JourneyEmailMessage>;
+const JourneyEmailMessage = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<JourneyEmailMessage>;
 export interface EmailMessageActivity {
   MessageConfig?: JourneyEmailMessage;
   NextActivity?: string;
   TemplateName?: string;
   TemplateVersion?: string;
 }
-const EmailMessageActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageConfig: S.optional(JourneyEmailMessage),
-    NextActivity: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmailMessageActivity" }) as any as S.Schema<EmailMessageActivity>;
+const EmailMessageActivity = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<EmailMessageActivity>;
 export interface HoldoutActivity {
   NextActivity?: string;
   Percentage?: number;
 }
-const HoldoutActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextActivity: S.optional(S.String), Percentage: S.optional(S.Number) }),
-).annotate({ identifier: "HoldoutActivity" }) as any as S.Schema<HoldoutActivity>;
+const HoldoutActivity = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<HoldoutActivity>;
 export interface MultiConditionalBranch {
   Condition?: SimpleCondition;
   NextActivity?: string;
 }
-const MultiConditionalBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Condition: S.optional(SimpleCondition), NextActivity: S.optional(S.String) }),
-).annotate({ identifier: "MultiConditionalBranch" }) as any as S.Schema<MultiConditionalBranch>;
+const MultiConditionalBranch = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<MultiConditionalBranch>;
 export type ListOfMultiConditionalBranch = MultiConditionalBranch[];
-const ListOfMultiConditionalBranch = /*@__PURE__*/ S.Array(MultiConditionalBranch);
+const ListOfMultiConditionalBranch = /*@__PURE__*/ __L.at(__c9, 7);
 export interface MultiConditionalSplitActivity {
   Branches?: MultiConditionalBranch[];
   DefaultActivity?: string;
   EvaluationWaitTime?: WaitTime;
 }
-const MultiConditionalSplitActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Branches: S.optional(ListOfMultiConditionalBranch),
-    DefaultActivity: S.optional(S.String),
-    EvaluationWaitTime: S.optional(WaitTime),
-  }),
-).annotate({
-  identifier: "MultiConditionalSplitActivity",
-}) as any as S.Schema<MultiConditionalSplitActivity>;
+const MultiConditionalSplitActivity = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<MultiConditionalSplitActivity>;
 export interface JourneyPushMessage {
   TimeToLive?: string;
 }
-const JourneyPushMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TimeToLive: S.optional(S.String) }),
-).annotate({ identifier: "JourneyPushMessage" }) as any as S.Schema<JourneyPushMessage>;
+const JourneyPushMessage = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<JourneyPushMessage>;
 export interface PushMessageActivity {
   MessageConfig?: JourneyPushMessage;
   NextActivity?: string;
   TemplateName?: string;
   TemplateVersion?: string;
 }
-const PushMessageActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageConfig: S.optional(JourneyPushMessage),
-    NextActivity: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "PushMessageActivity" }) as any as S.Schema<PushMessageActivity>;
+const PushMessageActivity = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<PushMessageActivity>;
 export interface RandomSplitEntry {
   NextActivity?: string;
   Percentage?: number;
 }
 const RandomSplitEntry = HoldoutActivity as any as S.Schema<RandomSplitEntry>;
 export type ListOfRandomSplitEntry = RandomSplitEntry[];
-const ListOfRandomSplitEntry = /*@__PURE__*/ S.Array(RandomSplitEntry);
+const ListOfRandomSplitEntry = /*@__PURE__*/ __L.at(__c10, 3);
 export interface RandomSplitActivity {
   Branches?: RandomSplitEntry[];
 }
-const RandomSplitActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Branches: S.optional(ListOfRandomSplitEntry) }),
-).annotate({ identifier: "RandomSplitActivity" }) as any as S.Schema<RandomSplitActivity>;
+const RandomSplitActivity = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<RandomSplitActivity>;
 export interface JourneySMSMessage {
   MessageType?: MessageType;
   OriginationNumber?: string;
@@ -1511,42 +1044,26 @@ export interface JourneySMSMessage {
   EntityId?: string;
   TemplateId?: string;
 }
-const JourneySMSMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageType: S.optional(MessageType),
-    OriginationNumber: S.optional(S.String),
-    SenderId: S.optional(S.String),
-    EntityId: S.optional(S.String),
-    TemplateId: S.optional(S.String),
-  }),
-).annotate({ identifier: "JourneySMSMessage" }) as any as S.Schema<JourneySMSMessage>;
+const JourneySMSMessage = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<JourneySMSMessage>;
 export interface SMSMessageActivity {
   MessageConfig?: JourneySMSMessage;
   NextActivity?: string;
   TemplateName?: string;
   TemplateVersion?: string;
 }
-const SMSMessageActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageConfig: S.optional(JourneySMSMessage),
-    NextActivity: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "SMSMessageActivity" }) as any as S.Schema<SMSMessageActivity>;
+const SMSMessageActivity = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<SMSMessageActivity>;
 export interface WaitActivity {
   NextActivity?: string;
   WaitTime?: WaitTime;
 }
-const WaitActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextActivity: S.optional(S.String), WaitTime: S.optional(WaitTime) }),
-).annotate({ identifier: "WaitActivity" }) as any as S.Schema<WaitActivity>;
+const WaitActivity = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<WaitActivity>;
 export interface ContactCenterActivity {
   NextActivity?: string;
 }
-const ContactCenterActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextActivity: S.optional(S.String) }),
-).annotate({ identifier: "ContactCenterActivity" }) as any as S.Schema<ContactCenterActivity>;
+const ContactCenterActivity = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ContactCenterActivity>;
 export interface Activity {
   CUSTOM?: CustomMessageActivity;
   ConditionalSplit?: ConditionalSplitActivity;
@@ -1560,30 +1077,14 @@ export interface Activity {
   Wait?: WaitActivity;
   ContactCenter?: ContactCenterActivity;
 }
-const Activity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CUSTOM: S.optional(CustomMessageActivity),
-    ConditionalSplit: S.optional(ConditionalSplitActivity),
-    Description: S.optional(S.String),
-    EMAIL: S.optional(EmailMessageActivity),
-    Holdout: S.optional(HoldoutActivity),
-    MultiCondition: S.optional(MultiConditionalSplitActivity),
-    PUSH: S.optional(PushMessageActivity),
-    RandomSplit: S.optional(RandomSplitActivity),
-    SMS: S.optional(SMSMessageActivity),
-    Wait: S.optional(WaitActivity),
-    ContactCenter: S.optional(ContactCenterActivity),
-  }),
-).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
+const Activity = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<Activity>;
 export type MapOfActivity = { [key: string]: Activity | undefined };
-const MapOfActivity = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Activity.pipe(S.optional));
+const MapOfActivity = /*@__PURE__*/ __L.at(__c11, 2);
 export interface JourneyTimeframeCap {
   Cap?: number;
   Days?: number;
 }
-const JourneyTimeframeCap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cap: S.optional(S.Number), Days: S.optional(S.Number) }),
-).annotate({ identifier: "JourneyTimeframeCap" }) as any as S.Schema<JourneyTimeframeCap>;
+const JourneyTimeframeCap = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<JourneyTimeframeCap>;
 export interface JourneyLimits {
   DailyCap?: number;
   EndpointReentryCap?: number;
@@ -1592,29 +1093,14 @@ export interface JourneyLimits {
   TimeframeCap?: JourneyTimeframeCap;
   TotalCap?: number;
 }
-const JourneyLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DailyCap: S.optional(S.Number),
-    EndpointReentryCap: S.optional(S.Number),
-    MessagesPerSecond: S.optional(S.Number),
-    EndpointReentryInterval: S.optional(S.String),
-    TimeframeCap: S.optional(JourneyTimeframeCap),
-    TotalCap: S.optional(S.Number),
-  }),
-).annotate({ identifier: "JourneyLimits" }) as any as S.Schema<JourneyLimits>;
+const JourneyLimits = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<JourneyLimits>;
 export type __timestampIso8601 = Date;
 export interface JourneySchedule {
   EndTime?: Date;
   StartTime?: Date;
   Timezone?: string;
 }
-const JourneySchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Timezone: S.optional(S.String),
-  }),
-).annotate({ identifier: "JourneySchedule" }) as any as S.Schema<JourneySchedule>;
+const JourneySchedule = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<JourneySchedule>;
 export interface EventFilter {
   Dimensions?: EventDimensions;
   FilterType?: FilterType;
@@ -1624,21 +1110,13 @@ export interface EventStartCondition {
   EventFilter?: EventFilter;
   SegmentId?: string;
 }
-const EventStartCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EventFilter: S.optional(EventFilter), SegmentId: S.optional(S.String) }),
-).annotate({ identifier: "EventStartCondition" }) as any as S.Schema<EventStartCondition>;
+const EventStartCondition = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<EventStartCondition>;
 export interface StartCondition {
   Description?: string;
   EventStartCondition?: EventStartCondition;
   SegmentStartCondition?: SegmentCondition;
 }
-const StartCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    EventStartCondition: S.optional(EventStartCondition),
-    SegmentStartCondition: S.optional(SegmentCondition),
-  }),
-).annotate({ identifier: "StartCondition" }) as any as S.Schema<StartCondition>;
+const StartCondition = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<StartCondition>;
 export type State =
   | "DRAFT"
   | "ACTIVE"
@@ -1653,12 +1131,10 @@ export interface JourneyChannelSettings {
   ConnectCampaignArn?: string;
   ConnectCampaignExecutionRoleArn?: string;
 }
-const JourneyChannelSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectCampaignArn: S.optional(S.String),
-    ConnectCampaignExecutionRoleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "JourneyChannelSettings" }) as any as S.Schema<JourneyChannelSettings>;
+const JourneyChannelSettings = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<JourneyChannelSettings>;
 export type DayOfWeek =
   | "MONDAY"
   | "TUESDAY"
@@ -1674,16 +1150,11 @@ export interface OpenHoursRule {
   StartTime?: string;
   EndTime?: string;
 }
-const OpenHoursRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StartTime: S.optional(S.String), EndTime: S.optional(S.String) }),
-).annotate({ identifier: "OpenHoursRule" }) as any as S.Schema<OpenHoursRule>;
+const OpenHoursRule = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<OpenHoursRule>;
 export type ListOfOpenHoursRules = OpenHoursRule[];
-const ListOfOpenHoursRules = /*@__PURE__*/ S.Array(OpenHoursRule);
+const ListOfOpenHoursRules = /*@__PURE__*/ __L.at(__c12, 2);
 export type MapOfListOfOpenHoursRules = { [key in DayOfWeek]?: OpenHoursRule[] };
-const MapOfListOfOpenHoursRules = /*@__PURE__*/ S.Record(
-  DayOfWeek,
-  /*@__PURE__*/ ListOfOpenHoursRules.pipe(S.optional),
-);
+const MapOfListOfOpenHoursRules = /*@__PURE__*/ __L.at(__c12, 3);
 export interface OpenHours {
   EMAIL?: { [key: string]: OpenHoursRule[] | undefined };
   SMS?: { [key: string]: OpenHoursRule[] | undefined };
@@ -1691,29 +1162,15 @@ export interface OpenHours {
   VOICE?: { [key: string]: OpenHoursRule[] | undefined };
   CUSTOM?: { [key: string]: OpenHoursRule[] | undefined };
 }
-const OpenHours = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EMAIL: S.optional(MapOfListOfOpenHoursRules),
-    SMS: S.optional(MapOfListOfOpenHoursRules),
-    PUSH: S.optional(MapOfListOfOpenHoursRules),
-    VOICE: S.optional(MapOfListOfOpenHoursRules),
-    CUSTOM: S.optional(MapOfListOfOpenHoursRules),
-  }),
-).annotate({ identifier: "OpenHours" }) as any as S.Schema<OpenHours>;
+const OpenHours = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<OpenHours>;
 export interface ClosedDaysRule {
   Name?: string;
   StartDateTime?: string;
   EndDateTime?: string;
 }
-const ClosedDaysRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    StartDateTime: S.optional(S.String),
-    EndDateTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "ClosedDaysRule" }) as any as S.Schema<ClosedDaysRule>;
+const ClosedDaysRule = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ClosedDaysRule>;
 export type ListOfClosedDaysRules = ClosedDaysRule[];
-const ListOfClosedDaysRules = /*@__PURE__*/ S.Array(ClosedDaysRule);
+const ListOfClosedDaysRules = /*@__PURE__*/ __L.at(__c12, 6);
 export interface ClosedDays {
   EMAIL?: ClosedDaysRule[];
   SMS?: ClosedDaysRule[];
@@ -1721,22 +1178,12 @@ export interface ClosedDays {
   VOICE?: ClosedDaysRule[];
   CUSTOM?: ClosedDaysRule[];
 }
-const ClosedDays = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EMAIL: S.optional(ListOfClosedDaysRules),
-    SMS: S.optional(ListOfClosedDaysRules),
-    PUSH: S.optional(ListOfClosedDaysRules),
-    VOICE: S.optional(ListOfClosedDaysRules),
-    CUSTOM: S.optional(ListOfClosedDaysRules),
-  }),
-).annotate({ identifier: "ClosedDays" }) as any as S.Schema<ClosedDays>;
+const ClosedDays = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ClosedDays>;
 export type __TimezoneEstimationMethodsElement = "PHONE_NUMBER" | "POSTAL_CODE" | (string & {});
 const __TimezoneEstimationMethodsElement = S.String;
 
 export type ListOf__TimezoneEstimationMethodsElement = __TimezoneEstimationMethodsElement[];
-const ListOf__TimezoneEstimationMethodsElement = /*@__PURE__*/ S.Array(
-  __TimezoneEstimationMethodsElement,
-);
+const ListOf__TimezoneEstimationMethodsElement = /*@__PURE__*/ __L.at(__c13, 0);
 export interface WriteJourneyRequest {
   Activities?: { [key: string]: Activity | undefined };
   CreationDate?: string;
@@ -1758,50 +1205,15 @@ export interface WriteJourneyRequest {
   ClosedDays?: ClosedDays;
   TimezoneEstimationMethods?: __TimezoneEstimationMethodsElement[];
 }
-const WriteJourneyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Activities: S.optional(MapOfActivity),
-    CreationDate: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Limits: S.optional(JourneyLimits),
-    LocalTime: S.optional(S.Boolean),
-    Name: S.optional(S.String),
-    QuietTime: S.optional(QuietTime),
-    RefreshFrequency: S.optional(S.String),
-    Schedule: S.optional(JourneySchedule),
-    StartActivity: S.optional(S.String),
-    StartCondition: S.optional(StartCondition),
-    State: S.optional(State),
-    WaitForQuietTime: S.optional(S.Boolean),
-    RefreshOnSegmentUpdate: S.optional(S.Boolean),
-    JourneyChannelSettings: S.optional(JourneyChannelSettings),
-    SendingSchedule: S.optional(S.Boolean),
-    OpenHours: S.optional(OpenHours),
-    ClosedDays: S.optional(ClosedDays),
-    TimezoneEstimationMethods: S.optional(ListOf__TimezoneEstimationMethodsElement),
-  }),
-).annotate({ identifier: "WriteJourneyRequest" }) as any as S.Schema<WriteJourneyRequest>;
+const WriteJourneyRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<WriteJourneyRequest>;
 export interface CreateJourneyRequest {
   ApplicationId: string;
   WriteJourneyRequest?: WriteJourneyRequest;
 }
-const CreateJourneyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    WriteJourneyRequest: S.optional(WriteJourneyRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "WriteJourneyRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/journeys" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateJourneyRequest" }) as any as S.Schema<CreateJourneyRequest>;
+const CreateJourneyRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<CreateJourneyRequest>;
 export interface JourneyResponse {
   Activities?: { [key: string]: Activity | undefined };
   ApplicationId?: string;
@@ -1826,32 +1238,7 @@ export interface JourneyResponse {
   ClosedDays?: ClosedDays;
   TimezoneEstimationMethods?: __TimezoneEstimationMethodsElement[];
 }
-const JourneyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Activities: S.optional(MapOfActivity),
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Limits: S.optional(JourneyLimits),
-    LocalTime: S.optional(S.Boolean),
-    Name: S.optional(S.String),
-    QuietTime: S.optional(QuietTime),
-    RefreshFrequency: S.optional(S.String),
-    Schedule: S.optional(JourneySchedule),
-    StartActivity: S.optional(S.String),
-    StartCondition: S.optional(StartCondition),
-    State: S.optional(State),
-    tags: S.optional(MapOf__string),
-    WaitForQuietTime: S.optional(S.Boolean),
-    RefreshOnSegmentUpdate: S.optional(S.Boolean),
-    JourneyChannelSettings: S.optional(JourneyChannelSettings),
-    SendingSchedule: S.optional(S.Boolean),
-    OpenHours: S.optional(OpenHours),
-    ClosedDays: S.optional(ClosedDays),
-    TimezoneEstimationMethods: S.optional(ListOf__TimezoneEstimationMethodsElement),
-  }),
-).annotate({ identifier: "JourneyResponse" }) as any as S.Schema<JourneyResponse>;
+const JourneyResponse = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<JourneyResponse>;
 export interface CreateJourneyResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -1989,13 +1376,10 @@ export interface CreateJourneyResponse {
     };
   };
 }
-const CreateJourneyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyResponse: S.optional(JourneyResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyResponse" }),
-  }),
-).annotate({ identifier: "CreateJourneyResponse" }) as any as S.Schema<CreateJourneyResponse>;
+const CreateJourneyResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<CreateJourneyResponse>;
 export interface AndroidPushNotificationTemplate {
   Action?: Action;
   Body?: string;
@@ -2007,21 +1391,10 @@ export interface AndroidPushNotificationTemplate {
   Title?: string;
   Url?: string;
 }
-const AndroidPushNotificationTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(Action),
-    Body: S.optional(S.String),
-    ImageIconUrl: S.optional(S.String),
-    ImageUrl: S.optional(S.String),
-    RawContent: S.optional(S.String),
-    SmallImageIconUrl: S.optional(S.String),
-    Sound: S.optional(S.String),
-    Title: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AndroidPushNotificationTemplate",
-}) as any as S.Schema<AndroidPushNotificationTemplate>;
+const AndroidPushNotificationTemplate = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<AndroidPushNotificationTemplate>;
 export interface APNSPushNotificationTemplate {
   Action?: Action;
   Body?: string;
@@ -2031,19 +1404,10 @@ export interface APNSPushNotificationTemplate {
   Title?: string;
   Url?: string;
 }
-const APNSPushNotificationTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(Action),
-    Body: S.optional(S.String),
-    MediaUrl: S.optional(S.String),
-    RawContent: S.optional(S.String),
-    Sound: S.optional(S.String),
-    Title: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "APNSPushNotificationTemplate",
-}) as any as S.Schema<APNSPushNotificationTemplate>;
+const APNSPushNotificationTemplate = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<APNSPushNotificationTemplate>;
 export interface DefaultPushNotificationTemplate {
   Action?: Action;
   Body?: string;
@@ -2051,17 +1415,10 @@ export interface DefaultPushNotificationTemplate {
   Title?: string;
   Url?: string;
 }
-const DefaultPushNotificationTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(Action),
-    Body: S.optional(S.String),
-    Sound: S.optional(S.String),
-    Title: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DefaultPushNotificationTemplate",
-}) as any as S.Schema<DefaultPushNotificationTemplate>;
+const DefaultPushNotificationTemplate = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DefaultPushNotificationTemplate>;
 export interface PushNotificationTemplateRequest {
   ADM?: AndroidPushNotificationTemplate;
   APNS?: APNSPushNotificationTemplate;
@@ -2073,44 +1430,18 @@ export interface PushNotificationTemplateRequest {
   tags?: { [key: string]: string | undefined };
   TemplateDescription?: string;
 }
-const PushNotificationTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ADM: S.optional(AndroidPushNotificationTemplate),
-    APNS: S.optional(APNSPushNotificationTemplate),
-    Baidu: S.optional(AndroidPushNotificationTemplate),
-    Default: S.optional(DefaultPushNotificationTemplate),
-    DefaultSubstitutions: S.optional(S.String),
-    GCM: S.optional(AndroidPushNotificationTemplate),
-    RecommenderId: S.optional(S.String),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PushNotificationTemplateRequest",
-}) as any as S.Schema<PushNotificationTemplateRequest>;
+const PushNotificationTemplateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<PushNotificationTemplateRequest>;
 export interface CreatePushTemplateRequest {
   PushNotificationTemplateRequest?: PushNotificationTemplateRequest;
   TemplateName: string;
 }
-const CreatePushTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PushNotificationTemplateRequest: S.optional(PushNotificationTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "PushNotificationTemplateRequest" }),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/push" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreatePushTemplateRequest",
-}) as any as S.Schema<CreatePushTemplateRequest>;
+const CreatePushTemplateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<CreatePushTemplateRequest>;
 export interface CreatePushTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
@@ -2127,33 +1458,17 @@ export interface CreateRecommenderConfigurationShape {
   RecommendationsDisplayName?: string;
   RecommendationsPerMessage?: number;
 }
-const CreateRecommenderConfigurationShape = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attributes: S.optional(MapOf__string),
-    Description: S.optional(S.String),
-    Name: S.optional(S.String),
-    RecommendationProviderIdType: S.optional(S.String),
-    RecommendationProviderRoleArn: S.optional(S.String),
-    RecommendationProviderUri: S.optional(S.String),
-    RecommendationTransformerUri: S.optional(S.String),
-    RecommendationsDisplayName: S.optional(S.String),
-    RecommendationsPerMessage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateRecommenderConfigurationShape",
-}) as any as S.Schema<CreateRecommenderConfigurationShape>;
+const CreateRecommenderConfigurationShape = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<CreateRecommenderConfigurationShape>;
 export interface CreateRecommenderConfigurationRequest {
   CreateRecommenderConfiguration?: CreateRecommenderConfigurationShape;
 }
-const CreateRecommenderConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateRecommenderConfiguration: S.optional(CreateRecommenderConfigurationShape)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CreateRecommenderConfigurationShape" }),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/recommenders" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateRecommenderConfigurationRequest",
-}) as any as S.Schema<CreateRecommenderConfigurationRequest>;
+const CreateRecommenderConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<CreateRecommenderConfigurationRequest>;
 export interface RecommenderConfigurationResponse {
   Attributes?: { [key: string]: string | undefined };
   CreationDate?: string;
@@ -2168,24 +1483,10 @@ export interface RecommenderConfigurationResponse {
   RecommendationsDisplayName?: string;
   RecommendationsPerMessage?: number;
 }
-const RecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attributes: S.optional(MapOf__string),
-    CreationDate: S.optional(S.String),
-    Description: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Name: S.optional(S.String),
-    RecommendationProviderIdType: S.optional(S.String),
-    RecommendationProviderRoleArn: S.optional(S.String),
-    RecommendationProviderUri: S.optional(S.String),
-    RecommendationTransformerUri: S.optional(S.String),
-    RecommendationsDisplayName: S.optional(S.String),
-    RecommendationsPerMessage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecommenderConfigurationResponse",
-}) as any as S.Schema<RecommenderConfigurationResponse>;
+const RecommenderConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<RecommenderConfigurationResponse>;
 export interface CreateRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -2195,26 +1496,19 @@ export interface CreateRecommenderConfigurationResponse {
     RecommendationProviderUri: string;
   };
 }
-const CreateRecommenderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommenderConfigurationResponse: S.optional(RecommenderConfigurationResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "RecommenderConfigurationResponse" }),
-  }),
-).annotate({
-  identifier: "CreateRecommenderConfigurationResponse",
-}) as any as S.Schema<CreateRecommenderConfigurationResponse>;
+const CreateRecommenderConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<CreateRecommenderConfigurationResponse>;
 export type ListOfSegmentDimensions = SegmentDimensions[];
-const ListOfSegmentDimensions = /*@__PURE__*/ S.Array(SegmentDimensions);
+const ListOfSegmentDimensions = /*@__PURE__*/ __L.at(__c14, 6);
 export interface SegmentReference {
   Id?: string;
   Version?: number;
 }
-const SegmentReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Version: S.optional(S.Number) }),
-).annotate({ identifier: "SegmentReference" }) as any as S.Schema<SegmentReference>;
+const SegmentReference = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<SegmentReference>;
 export type ListOfSegmentReference = SegmentReference[];
-const ListOfSegmentReference = /*@__PURE__*/ S.Array(SegmentReference);
+const ListOfSegmentReference = /*@__PURE__*/ __L.at(__c15, 0);
 export type SourceType = "ALL" | "ANY" | "NONE" | (string & {});
 const SourceType = S.String;
 
@@ -2227,16 +1521,9 @@ export interface SegmentGroup {
   SourceType?: SourceType;
   Type?: Type;
 }
-const SegmentGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Dimensions: S.optional(ListOfSegmentDimensions),
-    SourceSegments: S.optional(ListOfSegmentReference),
-    SourceType: S.optional(SourceType),
-    Type: S.optional(Type),
-  }),
-).annotate({ identifier: "SegmentGroup" }) as any as S.Schema<SegmentGroup>;
+const SegmentGroup = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<SegmentGroup>;
 export type ListOfSegmentGroup = SegmentGroup[];
-const ListOfSegmentGroup = /*@__PURE__*/ S.Array(SegmentGroup);
+const ListOfSegmentGroup = /*@__PURE__*/ __L.at(__c15, 2);
 export type Include = "ALL" | "ANY" | "NONE" | (string & {});
 const Include = S.String;
 
@@ -2244,46 +1531,24 @@ export interface SegmentGroupList {
   Groups?: SegmentGroup[];
   Include?: Include;
 }
-const SegmentGroupList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Groups: S.optional(ListOfSegmentGroup), Include: S.optional(Include) }),
-).annotate({ identifier: "SegmentGroupList" }) as any as S.Schema<SegmentGroupList>;
+const SegmentGroupList = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<SegmentGroupList>;
 export interface WriteSegmentRequest {
   Dimensions?: SegmentDimensions;
   Name?: string;
   SegmentGroups?: SegmentGroupList;
   tags?: { [key: string]: string | undefined };
 }
-const WriteSegmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Dimensions: S.optional(SegmentDimensions),
-    Name: S.optional(S.String),
-    SegmentGroups: S.optional(SegmentGroupList),
-    tags: S.optional(MapOf__string),
-  }),
-).annotate({ identifier: "WriteSegmentRequest" }) as any as S.Schema<WriteSegmentRequest>;
+const WriteSegmentRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<WriteSegmentRequest>;
 export interface CreateSegmentRequest {
   ApplicationId: string;
   WriteSegmentRequest?: WriteSegmentRequest;
 }
-const CreateSegmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    WriteSegmentRequest: S.optional(WriteSegmentRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "WriteSegmentRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/segments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateSegmentRequest" }) as any as S.Schema<CreateSegmentRequest>;
+const CreateSegmentRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<CreateSegmentRequest>;
 export type MapOf__integer = { [key: string]: number | undefined };
-const MapOf__integer = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+const MapOf__integer = /*@__PURE__*/ __L.at(__c15, 6);
 export interface SegmentImportResource {
   ChannelCounts?: { [key: string]: number | undefined };
   ExternalId?: string;
@@ -2292,16 +1557,10 @@ export interface SegmentImportResource {
   S3Url?: string;
   Size?: number;
 }
-const SegmentImportResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelCounts: S.optional(MapOf__integer),
-    ExternalId: S.optional(S.String),
-    Format: S.optional(Format),
-    RoleArn: S.optional(S.String),
-    S3Url: S.optional(S.String),
-    Size: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SegmentImportResource" }) as any as S.Schema<SegmentImportResource>;
+const SegmentImportResource = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<SegmentImportResource>;
 export type SegmentType = "DIMENSIONAL" | "IMPORT" | (string & {});
 const SegmentType = S.String;
 
@@ -2319,22 +1578,7 @@ export interface SegmentResponse {
   tags?: { [key: string]: string | undefined };
   Version?: number;
 }
-const SegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    Arn: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Dimensions: S.optional(SegmentDimensions),
-    Id: S.optional(S.String),
-    ImportDefinition: S.optional(SegmentImportResource),
-    LastModifiedDate: S.optional(S.String),
-    Name: S.optional(S.String),
-    SegmentGroups: S.optional(SegmentGroupList),
-    SegmentType: S.optional(SegmentType),
-    tags: S.optional(MapOf__string),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SegmentResponse" }) as any as S.Schema<SegmentResponse>;
+const SegmentResponse = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<SegmentResponse>;
 export interface CreateSegmentResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -2414,13 +1658,10 @@ export interface CreateSegmentResponse {
     };
   };
 }
-const CreateSegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SegmentResponse: S.optional(SegmentResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SegmentResponse" }),
-  }),
-).annotate({ identifier: "CreateSegmentResponse" }) as any as S.Schema<CreateSegmentResponse>;
+const CreateSegmentResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<CreateSegmentResponse>;
 export interface SMSTemplateRequest {
   Body?: string;
   DefaultSubstitutions?: string;
@@ -2428,36 +1669,15 @@ export interface SMSTemplateRequest {
   tags?: { [key: string]: string | undefined };
   TemplateDescription?: string;
 }
-const SMSTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Body: S.optional(S.String),
-    DefaultSubstitutions: S.optional(S.String),
-    RecommenderId: S.optional(S.String),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-  }),
-).annotate({ identifier: "SMSTemplateRequest" }) as any as S.Schema<SMSTemplateRequest>;
+const SMSTemplateRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<SMSTemplateRequest>;
 export interface CreateSmsTemplateRequest {
   SMSTemplateRequest?: SMSTemplateRequest;
   TemplateName: string;
 }
-const CreateSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SMSTemplateRequest: S.optional(SMSTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SMSTemplateRequest" }),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/sms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateSmsTemplateRequest" }) as any as S.Schema<CreateSmsTemplateRequest>;
+const CreateSmsTemplateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<CreateSmsTemplateRequest>;
 export interface CreateSmsTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
@@ -2471,39 +1691,18 @@ export interface VoiceTemplateRequest {
   TemplateDescription?: string;
   VoiceId?: string;
 }
-const VoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Body: S.optional(S.String),
-    DefaultSubstitutions: S.optional(S.String),
-    LanguageCode: S.optional(S.String),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-    VoiceId: S.optional(S.String),
-  }),
-).annotate({ identifier: "VoiceTemplateRequest" }) as any as S.Schema<VoiceTemplateRequest>;
+const VoiceTemplateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<VoiceTemplateRequest>;
 export interface CreateVoiceTemplateRequest {
   TemplateName: string;
   VoiceTemplateRequest?: VoiceTemplateRequest;
 }
-const CreateVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    VoiceTemplateRequest: S.optional(VoiceTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "VoiceTemplateRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/voice" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateVoiceTemplateRequest",
-}) as any as S.Schema<CreateVoiceTemplateRequest>;
+const CreateVoiceTemplateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<CreateVoiceTemplateRequest>;
 export interface CreateVoiceTemplateResponse {
   CreateTemplateMessageBody: CreateTemplateMessageBody;
 }
@@ -2512,18 +1711,10 @@ const CreateVoiceTemplateResponse =
 export interface DeleteAdmChannelRequest {
   ApplicationId: string;
 }
-const DeleteAdmChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/adm" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteAdmChannelRequest" }) as any as S.Schema<DeleteAdmChannelRequest>;
+const DeleteAdmChannelRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DeleteAdmChannelRequest>;
 export interface ADMChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -2536,45 +1727,21 @@ export interface ADMChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const ADMChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ADMChannelResponse" }) as any as S.Schema<ADMChannelResponse>;
+const ADMChannelResponse = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<ADMChannelResponse>;
 export interface DeleteAdmChannelResponse {
   ADMChannelResponse: ADMChannelResponse & { Platform: string };
 }
-const DeleteAdmChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ADMChannelResponse: S.optional(ADMChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ADMChannelResponse" }),
-  }),
-).annotate({ identifier: "DeleteAdmChannelResponse" }) as any as S.Schema<DeleteAdmChannelResponse>;
+const DeleteAdmChannelResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DeleteAdmChannelResponse>;
 export interface DeleteApnsChannelRequest {
   ApplicationId: string;
 }
-const DeleteApnsChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/apns" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteApnsChannelRequest" }) as any as S.Schema<DeleteApnsChannelRequest>;
+const DeleteApnsChannelRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DeleteApnsChannelRequest>;
 export interface APNSChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -2589,51 +1756,21 @@ export interface APNSChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const APNSChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    HasTokenKey: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "APNSChannelResponse" }) as any as S.Schema<APNSChannelResponse>;
+const APNSChannelResponse = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<APNSChannelResponse>;
 export interface DeleteApnsChannelResponse {
   APNSChannelResponse: APNSChannelResponse & { Platform: string };
 }
-const DeleteApnsChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSChannelResponse: S.optional(APNSChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSChannelResponse" }),
-  }),
-).annotate({
-  identifier: "DeleteApnsChannelResponse",
-}) as any as S.Schema<DeleteApnsChannelResponse>;
+const DeleteApnsChannelResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DeleteApnsChannelResponse>;
 export interface DeleteApnsSandboxChannelRequest {
   ApplicationId: string;
 }
-const DeleteApnsSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteApnsSandboxChannelRequest",
-}) as any as S.Schema<DeleteApnsSandboxChannelRequest>;
+const DeleteApnsSandboxChannelRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DeleteApnsSandboxChannelRequest>;
 export interface APNSSandboxChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -2648,53 +1785,24 @@ export interface APNSSandboxChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const APNSSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    HasTokenKey: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "APNSSandboxChannelResponse",
-}) as any as S.Schema<APNSSandboxChannelResponse>;
+const APNSSandboxChannelResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<APNSSandboxChannelResponse>;
 export interface DeleteApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
-const DeleteApnsSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSSandboxChannelResponse" }),
-  }),
-).annotate({
-  identifier: "DeleteApnsSandboxChannelResponse",
-}) as any as S.Schema<DeleteApnsSandboxChannelResponse>;
+const DeleteApnsSandboxChannelResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<DeleteApnsSandboxChannelResponse>;
 export interface DeleteApnsVoipChannelRequest {
   ApplicationId: string;
 }
-const DeleteApnsVoipChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/apns_voip" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteApnsVoipChannelRequest",
-}) as any as S.Schema<DeleteApnsVoipChannelRequest>;
+const DeleteApnsVoipChannelRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<DeleteApnsVoipChannelRequest>;
 export interface APNSVoipChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -2713,32 +1821,17 @@ const APNSVoipChannelResponse = APNSChannelResponse as any as S.Schema<APNSVoipC
 export interface DeleteApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
-const DeleteApnsVoipChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSVoipChannelResponse: S.optional(APNSVoipChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSVoipChannelResponse" }),
-  }),
-).annotate({
-  identifier: "DeleteApnsVoipChannelResponse",
-}) as any as S.Schema<DeleteApnsVoipChannelResponse>;
+const DeleteApnsVoipChannelResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<DeleteApnsVoipChannelResponse>;
 export interface DeleteApnsVoipSandboxChannelRequest {
   ApplicationId: string;
 }
-const DeleteApnsVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteApnsVoipSandboxChannelRequest",
-}) as any as S.Schema<DeleteApnsVoipSandboxChannelRequest>;
+const DeleteApnsVoipSandboxChannelRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<DeleteApnsVoipSandboxChannelRequest>;
 export interface APNSVoipSandboxChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -2758,30 +1851,14 @@ const APNSVoipSandboxChannelResponse =
 export interface DeleteApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & { Platform: string };
 }
-const DeleteApnsVoipSandboxChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSVoipSandboxChannelResponse: S.optional(APNSVoipSandboxChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
-  }),
-).annotate({
-  identifier: "DeleteApnsVoipSandboxChannelResponse",
-}) as any as S.Schema<DeleteApnsVoipSandboxChannelResponse>;
+const DeleteApnsVoipSandboxChannelResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DeleteApnsVoipSandboxChannelResponse>;
 export interface DeleteAppRequest {
   ApplicationId: string;
 }
-const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteAppRequest" }) as any as S.Schema<DeleteAppRequest>;
+const DeleteAppRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<DeleteAppRequest>;
 export interface DeleteAppResponse {
   ApplicationResponse: ApplicationResponse & { Arn: string; Id: string; Name: string };
 }
@@ -2789,20 +1866,10 @@ const DeleteAppResponse = CreateAppResponse as any as S.Schema<DeleteAppResponse
 export interface DeleteBaiduChannelRequest {
   ApplicationId: string;
 }
-const DeleteBaiduChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteBaiduChannelRequest",
-}) as any as S.Schema<DeleteBaiduChannelRequest>;
+const DeleteBaiduChannelRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<DeleteBaiduChannelRequest>;
 export interface BaiduChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -2816,52 +1883,25 @@ export interface BaiduChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const BaiduChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Credential: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BaiduChannelResponse" }) as any as S.Schema<BaiduChannelResponse>;
+const BaiduChannelResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<BaiduChannelResponse>;
 export interface DeleteBaiduChannelResponse {
   BaiduChannelResponse: BaiduChannelResponse & { Credential: string; Platform: string };
 }
-const DeleteBaiduChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BaiduChannelResponse: S.optional(BaiduChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "BaiduChannelResponse" }),
-  }),
-).annotate({
-  identifier: "DeleteBaiduChannelResponse",
-}) as any as S.Schema<DeleteBaiduChannelResponse>;
+const DeleteBaiduChannelResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<DeleteBaiduChannelResponse>;
 export interface DeleteCampaignRequest {
   ApplicationId: string;
   CampaignId: string;
 }
-const DeleteCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteCampaignRequest" }) as any as S.Schema<DeleteCampaignRequest>;
+const DeleteCampaignRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<DeleteCampaignRequest>;
 export interface DeleteCampaignResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -2985,20 +2025,10 @@ const DeleteCampaignResponse = CreateCampaignResponse as any as S.Schema<DeleteC
 export interface DeleteEmailChannelRequest {
   ApplicationId: string;
 }
-const DeleteEmailChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/email" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteEmailChannelRequest",
-}) as any as S.Schema<DeleteEmailChannelRequest>;
+const DeleteEmailChannelRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<DeleteEmailChannelRequest>;
 export interface EmailChannelResponse {
   ApplicationId?: string;
   ConfigurationSet?: string;
@@ -3017,102 +2047,47 @@ export interface EmailChannelResponse {
   OrchestrationSendingRoleArn?: string;
   Version?: number;
 }
-const EmailChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    ConfigurationSet: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    FromAddress: S.optional(S.String),
-    HasCredential: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    Identity: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    MessagesPerSecond: S.optional(S.Number),
-    Platform: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    OrchestrationSendingRoleArn: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "EmailChannelResponse" }) as any as S.Schema<EmailChannelResponse>;
+const EmailChannelResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<EmailChannelResponse>;
 export interface DeleteEmailChannelResponse {
   EmailChannelResponse: EmailChannelResponse & { Platform: string };
 }
-const DeleteEmailChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EmailChannelResponse: S.optional(EmailChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EmailChannelResponse" }),
-  }),
-).annotate({
-  identifier: "DeleteEmailChannelResponse",
-}) as any as S.Schema<DeleteEmailChannelResponse>;
+const DeleteEmailChannelResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<DeleteEmailChannelResponse>;
 export interface DeleteEmailTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeleteEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/email" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteEmailTemplateRequest",
-}) as any as S.Schema<DeleteEmailTemplateRequest>;
+const DeleteEmailTemplateRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<DeleteEmailTemplateRequest>;
 export interface MessageBody {
   Message?: string;
   RequestID?: string;
 }
-const MessageBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Message: S.optional(S.String), RequestID: S.optional(S.String) }),
-).annotate({ identifier: "MessageBody" }) as any as S.Schema<MessageBody>;
+const MessageBody = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<MessageBody>;
 export interface DeleteEmailTemplateResponse {
   MessageBody: MessageBody;
 }
-const DeleteEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({
-  identifier: "DeleteEmailTemplateResponse",
-}) as any as S.Schema<DeleteEmailTemplateResponse>;
+const DeleteEmailTemplateResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<DeleteEmailTemplateResponse>;
 export interface DeleteEndpointRequest {
   ApplicationId: string;
   EndpointId: string;
 }
-const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteEndpointRequest" }) as any as S.Schema<DeleteEndpointRequest>;
+const DeleteEndpointRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<DeleteEndpointRequest>;
 export type MapOfListOf__string = { [key: string]: string[] | undefined };
-const MapOfListOf__string = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ListOf__string.pipe(S.optional),
-);
+const MapOfListOf__string = /*@__PURE__*/ __L.at(__c19, 7);
 export type ChannelType =
   | "PUSH"
   | "GCM"
@@ -3140,18 +2115,7 @@ export interface EndpointDemographic {
   PlatformVersion?: string;
   Timezone?: string;
 }
-const EndpointDemographic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppVersion: S.optional(S.String),
-    Locale: S.optional(S.String),
-    Make: S.optional(S.String),
-    Model: S.optional(S.String),
-    ModelVersion: S.optional(S.String),
-    Platform: S.optional(S.String),
-    PlatformVersion: S.optional(S.String),
-    Timezone: S.optional(S.String),
-  }),
-).annotate({ identifier: "EndpointDemographic" }) as any as S.Schema<EndpointDemographic>;
+const EndpointDemographic = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<EndpointDemographic>;
 export interface EndpointLocation {
   City?: string;
   Country?: string;
@@ -3160,25 +2124,14 @@ export interface EndpointLocation {
   PostalCode?: string;
   Region?: string;
 }
-const EndpointLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    City: S.optional(S.String),
-    Country: S.optional(S.String),
-    Latitude: S.optional(S.Number),
-    Longitude: S.optional(S.Number),
-    PostalCode: S.optional(S.String),
-    Region: S.optional(S.String),
-  }),
-).annotate({ identifier: "EndpointLocation" }) as any as S.Schema<EndpointLocation>;
+const EndpointLocation = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<EndpointLocation>;
 export type MapOf__double = { [key: string]: number | undefined };
 const MapOf__double = MapOf__integer as any as S.Schema<MapOf__double>;
 export interface EndpointUser {
   UserAttributes?: { [key: string]: string[] | undefined };
   UserId?: string;
 }
-const EndpointUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserAttributes: S.optional(MapOfListOf__string), UserId: S.optional(S.String) }),
-).annotate({ identifier: "EndpointUser" }) as any as S.Schema<EndpointUser>;
+const EndpointUser = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<EndpointUser>;
 export interface EndpointResponse {
   Address?: string;
   ApplicationId?: string;
@@ -3196,50 +2149,21 @@ export interface EndpointResponse {
   RequestId?: string;
   User?: EndpointUser;
 }
-const EndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: S.optional(S.String),
-    ApplicationId: S.optional(S.String),
-    Attributes: S.optional(MapOfListOf__string),
-    ChannelType: S.optional(ChannelType),
-    CohortId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Demographic: S.optional(EndpointDemographic),
-    EffectiveDate: S.optional(S.String),
-    EndpointStatus: S.optional(S.String),
-    Id: S.optional(S.String),
-    Location: S.optional(EndpointLocation),
-    Metrics: S.optional(MapOf__double),
-    OptOut: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    User: S.optional(EndpointUser),
-  }),
-).annotate({ identifier: "EndpointResponse" }) as any as S.Schema<EndpointResponse>;
+const EndpointResponse = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<EndpointResponse>;
 export interface DeleteEndpointResponse {
   EndpointResponse: EndpointResponse;
 }
-const DeleteEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndpointResponse: S.optional(EndpointResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EndpointResponse" }),
-  }),
-).annotate({ identifier: "DeleteEndpointResponse" }) as any as S.Schema<DeleteEndpointResponse>;
+const DeleteEndpointResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<DeleteEndpointResponse>;
 export interface DeleteEventStreamRequest {
   ApplicationId: string;
 }
-const DeleteEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/eventstream" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteEventStreamRequest" }) as any as S.Schema<DeleteEventStreamRequest>;
+const DeleteEventStreamRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DeleteEventStreamRequest>;
 export interface EventStream {
   ApplicationId?: string;
   DestinationStreamArn?: string;
@@ -3248,16 +2172,7 @@ export interface EventStream {
   LastUpdatedBy?: string;
   RoleArn?: string;
 }
-const EventStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    DestinationStreamArn: S.optional(S.String),
-    ExternalId: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    LastUpdatedBy: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "EventStream" }) as any as S.Schema<EventStream>;
+const EventStream = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<EventStream>;
 export interface DeleteEventStreamResponse {
   EventStream: EventStream & {
     ApplicationId: string;
@@ -3265,30 +2180,17 @@ export interface DeleteEventStreamResponse {
     RoleArn: string;
   };
 }
-const DeleteEventStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventStream: S.optional(EventStream)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EventStream" }),
-  }),
-).annotate({
-  identifier: "DeleteEventStreamResponse",
-}) as any as S.Schema<DeleteEventStreamResponse>;
+const DeleteEventStreamResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<DeleteEventStreamResponse>;
 export interface DeleteGcmChannelRequest {
   ApplicationId: string;
 }
-const DeleteGcmChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/gcm" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteGcmChannelRequest" }) as any as S.Schema<DeleteGcmChannelRequest>;
+const DeleteGcmChannelRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<DeleteGcmChannelRequest>;
 export interface GCMChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -3304,54 +2206,22 @@ export interface GCMChannelResponse {
   Platform?: string;
   Version?: number;
 }
-const GCMChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Credential: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    HasFcmServiceCredentials: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "GCMChannelResponse" }) as any as S.Schema<GCMChannelResponse>;
+const GCMChannelResponse = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<GCMChannelResponse>;
 export interface DeleteGcmChannelResponse {
   GCMChannelResponse: GCMChannelResponse & { Platform: string };
 }
-const DeleteGcmChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GCMChannelResponse: S.optional(GCMChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "GCMChannelResponse" }),
-  }),
-).annotate({ identifier: "DeleteGcmChannelResponse" }) as any as S.Schema<DeleteGcmChannelResponse>;
+const DeleteGcmChannelResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<DeleteGcmChannelResponse>;
 export interface DeleteInAppTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeleteInAppTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/inapp" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteInAppTemplateRequest",
-}) as any as S.Schema<DeleteInAppTemplateRequest>;
+const DeleteInAppTemplateRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<DeleteInAppTemplateRequest>;
 export interface DeleteInAppTemplateResponse {
   MessageBody: MessageBody;
 }
@@ -3361,21 +2231,10 @@ export interface DeleteJourneyRequest {
   ApplicationId: string;
   JourneyId: string;
 }
-const DeleteJourneyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteJourneyRequest" }) as any as S.Schema<DeleteJourneyRequest>;
+const DeleteJourneyRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<DeleteJourneyRequest>;
 export interface DeleteJourneyResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -3518,23 +2377,10 @@ export interface DeletePushTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeletePushTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/push" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePushTemplateRequest",
-}) as any as S.Schema<DeletePushTemplateRequest>;
+const DeletePushTemplateRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<DeletePushTemplateRequest>;
 export interface DeletePushTemplateResponse {
   MessageBody: MessageBody;
 }
@@ -3543,20 +2389,10 @@ const DeletePushTemplateResponse =
 export interface DeleteRecommenderConfigurationRequest {
   RecommenderId: string;
 }
-const DeleteRecommenderConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/recommenders/{RecommenderId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteRecommenderConfigurationRequest",
-}) as any as S.Schema<DeleteRecommenderConfigurationRequest>;
+const DeleteRecommenderConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<DeleteRecommenderConfigurationRequest>;
 export interface DeleteRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -3572,21 +2408,10 @@ export interface DeleteSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
 }
-const DeleteSegmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteSegmentRequest" }) as any as S.Schema<DeleteSegmentRequest>;
+const DeleteSegmentRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<DeleteSegmentRequest>;
 export interface DeleteSegmentResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -3670,18 +2495,10 @@ const DeleteSegmentResponse = CreateSegmentResponse as any as S.Schema<DeleteSeg
 export interface DeleteSmsChannelRequest {
   ApplicationId: string;
 }
-const DeleteSmsChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/sms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteSmsChannelRequest" }) as any as S.Schema<DeleteSmsChannelRequest>;
+const DeleteSmsChannelRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<DeleteSmsChannelRequest>;
 export interface SMSChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -3698,53 +2515,22 @@ export interface SMSChannelResponse {
   TransactionalMessagesPerSecond?: number;
   Version?: number;
 }
-const SMSChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Platform: S.optional(S.String),
-    PromotionalMessagesPerSecond: S.optional(S.Number),
-    SenderId: S.optional(S.String),
-    ShortCode: S.optional(S.String),
-    TransactionalMessagesPerSecond: S.optional(S.Number),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SMSChannelResponse" }) as any as S.Schema<SMSChannelResponse>;
+const SMSChannelResponse = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<SMSChannelResponse>;
 export interface DeleteSmsChannelResponse {
   SMSChannelResponse: SMSChannelResponse & { Platform: string };
 }
-const DeleteSmsChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SMSChannelResponse: S.optional(SMSChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SMSChannelResponse" }),
-  }),
-).annotate({ identifier: "DeleteSmsChannelResponse" }) as any as S.Schema<DeleteSmsChannelResponse>;
+const DeleteSmsChannelResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<DeleteSmsChannelResponse>;
 export interface DeleteSmsTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeleteSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/sms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteSmsTemplateRequest" }) as any as S.Schema<DeleteSmsTemplateRequest>;
+const DeleteSmsTemplateRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<DeleteSmsTemplateRequest>;
 export interface DeleteSmsTemplateResponse {
   MessageBody: MessageBody;
 }
@@ -3754,60 +2540,30 @@ export interface DeleteUserEndpointsRequest {
   ApplicationId: string;
   UserId: string;
 }
-const DeleteUserEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    UserId: S.String.pipe(T.HttpLabel("UserId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/users/{UserId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteUserEndpointsRequest",
-}) as any as S.Schema<DeleteUserEndpointsRequest>;
+const DeleteUserEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<DeleteUserEndpointsRequest>;
 export type ListOfEndpointResponse = EndpointResponse[];
-const ListOfEndpointResponse = /*@__PURE__*/ S.Array(EndpointResponse);
+const ListOfEndpointResponse = /*@__PURE__*/ __L.at(__c22, 5);
 export interface EndpointsResponse {
   Item?: EndpointResponse[];
 }
-const EndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfEndpointResponse) }),
-).annotate({ identifier: "EndpointsResponse" }) as any as S.Schema<EndpointsResponse>;
+const EndpointsResponse = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<EndpointsResponse>;
 export interface DeleteUserEndpointsResponse {
   EndpointsResponse: EndpointsResponse & { Item: ListOfEndpointResponse };
 }
-const DeleteUserEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndpointsResponse: S.optional(EndpointsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EndpointsResponse" }),
-  }),
-).annotate({
-  identifier: "DeleteUserEndpointsResponse",
-}) as any as S.Schema<DeleteUserEndpointsResponse>;
+const DeleteUserEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<DeleteUserEndpointsResponse>;
 export interface DeleteVoiceChannelRequest {
   ApplicationId: string;
 }
-const DeleteVoiceChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteVoiceChannelRequest",
-}) as any as S.Schema<DeleteVoiceChannelRequest>;
+const DeleteVoiceChannelRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<DeleteVoiceChannelRequest>;
 export interface VoiceChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -3824,36 +2580,18 @@ const VoiceChannelResponse = ADMChannelResponse as any as S.Schema<VoiceChannelR
 export interface DeleteVoiceChannelResponse {
   VoiceChannelResponse: VoiceChannelResponse & { Platform: string };
 }
-const DeleteVoiceChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VoiceChannelResponse: S.optional(VoiceChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "VoiceChannelResponse" }),
-  }),
-).annotate({
-  identifier: "DeleteVoiceChannelResponse",
-}) as any as S.Schema<DeleteVoiceChannelResponse>;
+const DeleteVoiceChannelResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<DeleteVoiceChannelResponse>;
 export interface DeleteVoiceTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const DeleteVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/voice" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteVoiceTemplateRequest",
-}) as any as S.Schema<DeleteVoiceTemplateRequest>;
+const DeleteVoiceTemplateRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<DeleteVoiceTemplateRequest>;
 export interface DeleteVoiceTemplateResponse {
   MessageBody: MessageBody;
 }
@@ -3862,18 +2600,10 @@ const DeleteVoiceTemplateResponse =
 export interface GetAdmChannelRequest {
   ApplicationId: string;
 }
-const GetAdmChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/adm" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetAdmChannelRequest" }) as any as S.Schema<GetAdmChannelRequest>;
+const GetAdmChannelRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GetAdmChannelRequest>;
 export interface GetAdmChannelResponse {
   ADMChannelResponse: ADMChannelResponse & { Platform: string };
 }
@@ -3881,45 +2611,24 @@ const GetAdmChannelResponse = DeleteAdmChannelResponse as any as S.Schema<GetAdm
 export interface GetApnsChannelRequest {
   ApplicationId: string;
 }
-const GetApnsChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/apns" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetApnsChannelRequest" }) as any as S.Schema<GetApnsChannelRequest>;
+const GetApnsChannelRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<GetApnsChannelRequest>;
 export interface GetApnsChannelResponse {
   APNSChannelResponse: APNSChannelResponse & { Platform: string };
 }
-const GetApnsChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSChannelResponse: S.optional(APNSChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSChannelResponse" }),
-  }),
-).annotate({ identifier: "GetApnsChannelResponse" }) as any as S.Schema<GetApnsChannelResponse>;
+const GetApnsChannelResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<GetApnsChannelResponse>;
 export interface GetApnsSandboxChannelRequest {
   ApplicationId: string;
 }
-const GetApnsSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApnsSandboxChannelRequest",
-}) as any as S.Schema<GetApnsSandboxChannelRequest>;
+const GetApnsSandboxChannelRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GetApnsSandboxChannelRequest>;
 export interface GetApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
@@ -3928,20 +2637,10 @@ const GetApnsSandboxChannelResponse =
 export interface GetApnsVoipChannelRequest {
   ApplicationId: string;
 }
-const GetApnsVoipChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/apns_voip" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApnsVoipChannelRequest",
-}) as any as S.Schema<GetApnsVoipChannelRequest>;
+const GetApnsVoipChannelRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GetApnsVoipChannelRequest>;
 export interface GetApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
@@ -3950,20 +2649,10 @@ const GetApnsVoipChannelResponse =
 export interface GetApnsVoipSandboxChannelRequest {
   ApplicationId: string;
 }
-const GetApnsVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApnsVoipSandboxChannelRequest",
-}) as any as S.Schema<GetApnsVoipSandboxChannelRequest>;
+const GetApnsVoipSandboxChannelRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GetApnsVoipSandboxChannelRequest>;
 export interface GetApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & { Platform: string };
 }
@@ -3972,11 +2661,7 @@ const GetApnsVoipSandboxChannelResponse =
 export interface GetAppRequest {
   ApplicationId: string;
 }
-const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
+const GetAppRequest = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<GetAppRequest>;
 export interface GetAppResponse {
   ApplicationResponse: ApplicationResponse & { Arn: string; Id: string; Name: string };
 }
@@ -3989,59 +2674,29 @@ export interface GetApplicationDateRangeKpiRequest {
   PageSize?: string;
   StartTime?: Date;
 }
-const GetApplicationDateRangeKpiRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("end-time"),
-    ),
-    KpiName: S.String.pipe(T.HttpLabel("KpiName")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("start-time"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/kpis/daterange/{KpiName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApplicationDateRangeKpiRequest",
-}) as any as S.Schema<GetApplicationDateRangeKpiRequest>;
+const GetApplicationDateRangeKpiRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GetApplicationDateRangeKpiRequest>;
 export interface ResultRowValue {
   Key?: string;
   Type?: string;
   Value?: string;
 }
-const ResultRowValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Type: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "ResultRowValue" }) as any as S.Schema<ResultRowValue>;
+const ResultRowValue = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<ResultRowValue>;
 export type ListOfResultRowValue = ResultRowValue[];
-const ListOfResultRowValue = /*@__PURE__*/ S.Array(ResultRowValue);
+const ListOfResultRowValue = /*@__PURE__*/ __L.at(__c24, 4);
 export interface ResultRow {
   GroupedBys?: ResultRowValue[];
   Values?: ResultRowValue[];
 }
-const ResultRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupedBys: S.optional(ListOfResultRowValue),
-    Values: S.optional(ListOfResultRowValue),
-  }),
-).annotate({ identifier: "ResultRow" }) as any as S.Schema<ResultRow>;
+const ResultRow = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<ResultRow>;
 export type ListOfResultRow = ResultRow[];
-const ListOfResultRow = /*@__PURE__*/ S.Array(ResultRow);
+const ListOfResultRow = /*@__PURE__*/ __L.at(__c24, 6);
 export interface BaseKpiResult {
   Rows?: ResultRow[];
 }
-const BaseKpiResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Rows: S.optional(ListOfResultRow) }),
-).annotate({ identifier: "BaseKpiResult" }) as any as S.Schema<BaseKpiResult>;
+const BaseKpiResult = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<BaseKpiResult>;
 export interface ApplicationDateRangeKpiResponse {
   ApplicationId?: string;
   EndTime?: Date;
@@ -4050,18 +2705,10 @@ export interface ApplicationDateRangeKpiResponse {
   NextToken?: string;
   StartTime?: Date;
 }
-const ApplicationDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    KpiName: S.optional(S.String),
-    KpiResult: S.optional(BaseKpiResult),
-    NextToken: S.optional(S.String),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "ApplicationDateRangeKpiResponse",
-}) as any as S.Schema<ApplicationDateRangeKpiResponse>;
+const ApplicationDateRangeKpiResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ApplicationDateRangeKpiResponse>;
 export interface GetApplicationDateRangeKpiResponse {
   ApplicationDateRangeKpiResponse: ApplicationDateRangeKpiResponse & {
     ApplicationId: string;
@@ -4076,46 +2723,26 @@ export interface GetApplicationDateRangeKpiResponse {
     StartTime: __timestampIso8601;
   };
 }
-const GetApplicationDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationDateRangeKpiResponse: S.optional(ApplicationDateRangeKpiResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ApplicationDateRangeKpiResponse" }),
-  }),
-).annotate({
-  identifier: "GetApplicationDateRangeKpiResponse",
-}) as any as S.Schema<GetApplicationDateRangeKpiResponse>;
+const GetApplicationDateRangeKpiResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GetApplicationDateRangeKpiResponse>;
 export interface GetApplicationSettingsRequest {
   ApplicationId: string;
 }
-const GetApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/settings" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApplicationSettingsRequest",
-}) as any as S.Schema<GetApplicationSettingsRequest>;
+const GetApplicationSettingsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<GetApplicationSettingsRequest>;
 export interface ApplicationSettingsJourneyLimits {
   DailyCap?: number;
   TimeframeCap?: JourneyTimeframeCap;
   TotalCap?: number;
 }
-const ApplicationSettingsJourneyLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DailyCap: S.optional(S.Number),
-    TimeframeCap: S.optional(JourneyTimeframeCap),
-    TotalCap: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ApplicationSettingsJourneyLimits",
-}) as any as S.Schema<ApplicationSettingsJourneyLimits>;
+const ApplicationSettingsJourneyLimits = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ApplicationSettingsJourneyLimits>;
 export interface ApplicationSettingsResource {
   ApplicationId?: string;
   CampaignHook?: CampaignHook;
@@ -4124,105 +2751,57 @@ export interface ApplicationSettingsResource {
   QuietTime?: QuietTime;
   JourneyLimits?: ApplicationSettingsJourneyLimits;
 }
-const ApplicationSettingsResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CampaignHook: S.optional(CampaignHook),
-    LastModifiedDate: S.optional(S.String),
-    Limits: S.optional(CampaignLimits),
-    QuietTime: S.optional(QuietTime),
-    JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
-  }),
-).annotate({
-  identifier: "ApplicationSettingsResource",
-}) as any as S.Schema<ApplicationSettingsResource>;
+const ApplicationSettingsResource = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ApplicationSettingsResource>;
 export interface GetApplicationSettingsResponse {
   ApplicationSettingsResource: ApplicationSettingsResource & { ApplicationId: string };
 }
-const GetApplicationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationSettingsResource: S.optional(ApplicationSettingsResource)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ApplicationSettingsResource" }),
-  }),
-).annotate({
-  identifier: "GetApplicationSettingsResponse",
-}) as any as S.Schema<GetApplicationSettingsResponse>;
+const GetApplicationSettingsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GetApplicationSettingsResponse>;
 export interface GetAppsRequest {
   PageSize?: string;
   Token?: string;
 }
-const GetAppsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/apps" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetAppsRequest" }) as any as S.Schema<GetAppsRequest>;
+const GetAppsRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<GetAppsRequest>;
 export type ListOfApplicationResponse = ApplicationResponse[];
-const ListOfApplicationResponse = /*@__PURE__*/ S.Array(ApplicationResponse);
+const ListOfApplicationResponse = /*@__PURE__*/ __L.at(__c25, 7);
 export interface ApplicationsResponse {
   Item?: ApplicationResponse[];
   NextToken?: string;
 }
-const ApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfApplicationResponse), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ApplicationsResponse" }) as any as S.Schema<ApplicationsResponse>;
+const ApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ApplicationsResponse>;
 export interface GetAppsResponse {
   ApplicationsResponse: ApplicationsResponse & {
     Item: (ApplicationResponse & { Arn: string; Id: string; Name: string })[];
   };
 }
-const GetAppsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationsResponse: S.optional(ApplicationsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ApplicationsResponse" }),
-  }),
-).annotate({ identifier: "GetAppsResponse" }) as any as S.Schema<GetAppsResponse>;
+const GetAppsResponse = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<GetAppsResponse>;
 export interface GetBaiduChannelRequest {
   ApplicationId: string;
 }
-const GetBaiduChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetBaiduChannelRequest" }) as any as S.Schema<GetBaiduChannelRequest>;
+const GetBaiduChannelRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<GetBaiduChannelRequest>;
 export interface GetBaiduChannelResponse {
   BaiduChannelResponse: BaiduChannelResponse & { Credential: string; Platform: string };
 }
-const GetBaiduChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BaiduChannelResponse: S.optional(BaiduChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "BaiduChannelResponse" }),
-  }),
-).annotate({ identifier: "GetBaiduChannelResponse" }) as any as S.Schema<GetBaiduChannelResponse>;
+const GetBaiduChannelResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<GetBaiduChannelResponse>;
 export interface GetCampaignRequest {
   ApplicationId: string;
   CampaignId: string;
 }
-const GetCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetCampaignRequest" }) as any as S.Schema<GetCampaignRequest>;
+const GetCampaignRequest = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<GetCampaignRequest>;
 export interface GetCampaignResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -4349,25 +2928,10 @@ export interface GetCampaignActivitiesRequest {
   PageSize?: string;
   Token?: string;
 }
-const GetCampaignActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/activities" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCampaignActivitiesRequest",
-}) as any as S.Schema<GetCampaignActivitiesRequest>;
+const GetCampaignActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<GetCampaignActivitiesRequest>;
 export interface ActivityResponse {
   ApplicationId?: string;
   CampaignId?: string;
@@ -4384,47 +2948,23 @@ export interface ActivityResponse {
   TreatmentId?: string;
   ExecutionMetrics?: { [key: string]: string | undefined };
 }
-const ActivityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CampaignId: S.optional(S.String),
-    End: S.optional(S.String),
-    Id: S.optional(S.String),
-    Result: S.optional(S.String),
-    ScheduledStart: S.optional(S.String),
-    Start: S.optional(S.String),
-    State: S.optional(S.String),
-    SuccessfulEndpointCount: S.optional(S.Number),
-    TimezonesCompletedCount: S.optional(S.Number),
-    TimezonesTotalCount: S.optional(S.Number),
-    TotalEndpointCount: S.optional(S.Number),
-    TreatmentId: S.optional(S.String),
-    ExecutionMetrics: S.optional(MapOf__string),
-  }),
-).annotate({ identifier: "ActivityResponse" }) as any as S.Schema<ActivityResponse>;
+const ActivityResponse = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<ActivityResponse>;
 export type ListOfActivityResponse = ActivityResponse[];
-const ListOfActivityResponse = /*@__PURE__*/ S.Array(ActivityResponse);
+const ListOfActivityResponse = /*@__PURE__*/ __L.at(__c26, 7);
 export interface ActivitiesResponse {
   Item?: ActivityResponse[];
   NextToken?: string;
 }
-const ActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfActivityResponse), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ActivitiesResponse" }) as any as S.Schema<ActivitiesResponse>;
+const ActivitiesResponse = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<ActivitiesResponse>;
 export interface GetCampaignActivitiesResponse {
   ActivitiesResponse: ActivitiesResponse & {
     Item: (ActivityResponse & { ApplicationId: string; CampaignId: string; Id: string })[];
   };
 }
-const GetCampaignActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActivitiesResponse: S.optional(ActivitiesResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ActivitiesResponse" }),
-  }),
-).annotate({
-  identifier: "GetCampaignActivitiesResponse",
-}) as any as S.Schema<GetCampaignActivitiesResponse>;
+const GetCampaignActivitiesResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<GetCampaignActivitiesResponse>;
 export interface GetCampaignDateRangeKpiRequest {
   ApplicationId: string;
   CampaignId: string;
@@ -4434,35 +2974,10 @@ export interface GetCampaignDateRangeKpiRequest {
   PageSize?: string;
   StartTime?: Date;
 }
-const GetCampaignDateRangeKpiRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("end-time"),
-    ),
-    KpiName: S.String.pipe(T.HttpLabel("KpiName")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("start-time"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/kpis/daterange/{KpiName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCampaignDateRangeKpiRequest",
-}) as any as S.Schema<GetCampaignDateRangeKpiRequest>;
+const GetCampaignDateRangeKpiRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<GetCampaignDateRangeKpiRequest>;
 export interface CampaignDateRangeKpiResponse {
   ApplicationId?: string;
   CampaignId?: string;
@@ -4472,19 +2987,10 @@ export interface CampaignDateRangeKpiResponse {
   NextToken?: string;
   StartTime?: Date;
 }
-const CampaignDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CampaignId: S.optional(S.String),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    KpiName: S.optional(S.String),
-    KpiResult: S.optional(BaseKpiResult),
-    NextToken: S.optional(S.String),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "CampaignDateRangeKpiResponse",
-}) as any as S.Schema<CampaignDateRangeKpiResponse>;
+const CampaignDateRangeKpiResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<CampaignDateRangeKpiResponse>;
 export interface GetCampaignDateRangeKpiResponse {
   CampaignDateRangeKpiResponse: CampaignDateRangeKpiResponse & {
     ApplicationId: string;
@@ -4500,45 +3006,23 @@ export interface GetCampaignDateRangeKpiResponse {
     StartTime: __timestampIso8601;
   };
 }
-const GetCampaignDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignDateRangeKpiResponse: S.optional(CampaignDateRangeKpiResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CampaignDateRangeKpiResponse" }),
-  }),
-).annotate({
-  identifier: "GetCampaignDateRangeKpiResponse",
-}) as any as S.Schema<GetCampaignDateRangeKpiResponse>;
+const GetCampaignDateRangeKpiResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<GetCampaignDateRangeKpiResponse>;
 export interface GetCampaignsRequest {
   ApplicationId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/campaigns" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetCampaignsRequest" }) as any as S.Schema<GetCampaignsRequest>;
+const GetCampaignsRequest = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<GetCampaignsRequest>;
 export type ListOfCampaignResponse = CampaignResponse[];
-const ListOfCampaignResponse = /*@__PURE__*/ S.Array(CampaignResponse);
+const ListOfCampaignResponse = /*@__PURE__*/ __L.at(__c27, 6);
 export interface CampaignsResponse {
   Item?: CampaignResponse[];
   NextToken?: string;
 }
-const CampaignsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfCampaignResponse), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "CampaignsResponse" }) as any as S.Schema<CampaignsResponse>;
+const CampaignsResponse = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<CampaignsResponse>;
 export interface GetCampaignsResponse {
   CampaignsResponse: CampaignsResponse & {
     Item: (CampaignResponse & {
@@ -4660,39 +3144,19 @@ export interface GetCampaignsResponse {
     })[];
   };
 }
-const GetCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignsResponse: S.optional(CampaignsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CampaignsResponse" }),
-  }),
-).annotate({ identifier: "GetCampaignsResponse" }) as any as S.Schema<GetCampaignsResponse>;
+const GetCampaignsResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<GetCampaignsResponse>;
 export interface GetCampaignVersionRequest {
   ApplicationId: string;
   CampaignId: string;
   Version: string;
 }
-const GetCampaignVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-    Version: S.String.pipe(T.HttpLabel("Version")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/versions/{Version}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCampaignVersionRequest",
-}) as any as S.Schema<GetCampaignVersionRequest>;
+const GetCampaignVersionRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<GetCampaignVersionRequest>;
 export interface GetCampaignVersionResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -4812,40 +3276,20 @@ export interface GetCampaignVersionResponse {
     };
   };
 }
-const GetCampaignVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignResponse: S.optional(CampaignResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CampaignResponse" }),
-  }),
-).annotate({
-  identifier: "GetCampaignVersionResponse",
-}) as any as S.Schema<GetCampaignVersionResponse>;
+const GetCampaignVersionResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<GetCampaignVersionResponse>;
 export interface GetCampaignVersionsRequest {
   ApplicationId: string;
   CampaignId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetCampaignVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCampaignVersionsRequest",
-}) as any as S.Schema<GetCampaignVersionsRequest>;
+const GetCampaignVersionsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<GetCampaignVersionsRequest>;
 export interface GetCampaignVersionsResponse {
   CampaignsResponse: CampaignsResponse & {
     Item: (CampaignResponse & {
@@ -4967,30 +3411,14 @@ export interface GetCampaignVersionsResponse {
     })[];
   };
 }
-const GetCampaignVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignsResponse: S.optional(CampaignsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CampaignsResponse" }),
-  }),
-).annotate({
-  identifier: "GetCampaignVersionsResponse",
-}) as any as S.Schema<GetCampaignVersionsResponse>;
+const GetCampaignVersionsResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<GetCampaignVersionsResponse>;
 export interface GetChannelsRequest {
   ApplicationId: string;
 }
-const GetChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetChannelsRequest" }) as any as S.Schema<GetChannelsRequest>;
+const GetChannelsRequest = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<GetChannelsRequest>;
 export interface ChannelResponse {
   ApplicationId?: string;
   CreationDate?: string;
@@ -5002,84 +3430,39 @@ export interface ChannelResponse {
   LastModifiedDate?: string;
   Version?: number;
 }
-const ChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    HasCredential: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    IsArchived: S.optional(S.Boolean),
-    LastModifiedBy: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ChannelResponse" }) as any as S.Schema<ChannelResponse>;
+const ChannelResponse = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<ChannelResponse>;
 export type MapOfChannelResponse = { [key: string]: ChannelResponse | undefined };
-const MapOfChannelResponse = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ChannelResponse.pipe(S.optional),
-);
+const MapOfChannelResponse = /*@__PURE__*/ __L.at(__c28, 7);
 export interface ChannelsResponse {
   Channels?: { [key: string]: ChannelResponse | undefined };
 }
-const ChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Channels: S.optional(MapOfChannelResponse) }),
-).annotate({ identifier: "ChannelsResponse" }) as any as S.Schema<ChannelsResponse>;
+const ChannelsResponse = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<ChannelsResponse>;
 export interface GetChannelsResponse {
   ChannelsResponse: ChannelsResponse & { Channels: MapOfChannelResponse };
 }
-const GetChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelsResponse: S.optional(ChannelsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ChannelsResponse" }),
-  }),
-).annotate({ identifier: "GetChannelsResponse" }) as any as S.Schema<GetChannelsResponse>;
+const GetChannelsResponse = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<GetChannelsResponse>;
 export interface GetEmailChannelRequest {
   ApplicationId: string;
 }
-const GetEmailChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/email" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetEmailChannelRequest" }) as any as S.Schema<GetEmailChannelRequest>;
+const GetEmailChannelRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<GetEmailChannelRequest>;
 export interface GetEmailChannelResponse {
   EmailChannelResponse: EmailChannelResponse & { Platform: string };
 }
-const GetEmailChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EmailChannelResponse: S.optional(EmailChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EmailChannelResponse" }),
-  }),
-).annotate({ identifier: "GetEmailChannelResponse" }) as any as S.Schema<GetEmailChannelResponse>;
+const GetEmailChannelResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<GetEmailChannelResponse>;
 export interface GetEmailTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/email" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetEmailTemplateRequest" }) as any as S.Schema<GetEmailTemplateRequest>;
+const GetEmailTemplateRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<GetEmailTemplateRequest>;
 export type TemplateType = "EMAIL" | "SMS" | "VOICE" | "PUSH" | "INAPP" | (string & {});
 const TemplateType = S.String;
 
@@ -5099,24 +3482,10 @@ export interface EmailTemplateResponse {
   TextPart?: string;
   Version?: string;
 }
-const EmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    DefaultSubstitutions: S.optional(S.String),
-    HtmlPart: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    RecommenderId: S.optional(S.String),
-    Subject: S.optional(S.String),
-    Headers: S.optional(ListOfMessageHeader),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateType: S.optional(TemplateType),
-    TextPart: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmailTemplateResponse" }) as any as S.Schema<EmailTemplateResponse>;
+const EmailTemplateResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<EmailTemplateResponse>;
 export interface GetEmailTemplateResponse {
   EmailTemplateResponse: EmailTemplateResponse & {
     CreationDate: string;
@@ -5125,32 +3494,15 @@ export interface GetEmailTemplateResponse {
     TemplateType: TemplateType;
   };
 }
-const GetEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EmailTemplateResponse: S.optional(EmailTemplateResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EmailTemplateResponse" }),
-  }),
-).annotate({ identifier: "GetEmailTemplateResponse" }) as any as S.Schema<GetEmailTemplateResponse>;
+const GetEmailTemplateResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<GetEmailTemplateResponse>;
 export interface GetEndpointRequest {
   ApplicationId: string;
   EndpointId: string;
 }
-const GetEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetEndpointRequest" }) as any as S.Schema<GetEndpointRequest>;
+const GetEndpointRequest = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<GetEndpointRequest>;
 export interface GetEndpointResponse {
   EndpointResponse: EndpointResponse;
 }
@@ -5158,18 +3510,10 @@ const GetEndpointResponse = DeleteEndpointResponse as any as S.Schema<GetEndpoin
 export interface GetEventStreamRequest {
   ApplicationId: string;
 }
-const GetEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/eventstream" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetEventStreamRequest" }) as any as S.Schema<GetEventStreamRequest>;
+const GetEventStreamRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<GetEventStreamRequest>;
 export interface GetEventStreamResponse {
   EventStream: EventStream & {
     ApplicationId: string;
@@ -5177,32 +3521,15 @@ export interface GetEventStreamResponse {
     RoleArn: string;
   };
 }
-const GetEventStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventStream: S.optional(EventStream)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EventStream" }),
-  }),
-).annotate({ identifier: "GetEventStreamResponse" }) as any as S.Schema<GetEventStreamResponse>;
+const GetEventStreamResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<GetEventStreamResponse>;
 export interface GetExportJobRequest {
   ApplicationId: string;
   JobId: string;
 }
-const GetExportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JobId: S.String.pipe(T.HttpLabel("JobId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/jobs/export/{JobId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetExportJobRequest" }) as any as S.Schema<GetExportJobRequest>;
+const GetExportJobRequest = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<GetExportJobRequest>;
 export interface GetExportJobResponse {
   ExportJobResponse: ExportJobResponse & {
     ApplicationId: string;
@@ -5219,31 +3546,17 @@ export interface GetExportJobsRequest {
   PageSize?: string;
   Token?: string;
 }
-const GetExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/jobs/export" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetExportJobsRequest" }) as any as S.Schema<GetExportJobsRequest>;
+const GetExportJobsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<GetExportJobsRequest>;
 export type ListOfExportJobResponse = ExportJobResponse[];
-const ListOfExportJobResponse = /*@__PURE__*/ S.Array(ExportJobResponse);
+const ListOfExportJobResponse = /*@__PURE__*/ __L.at(__c30, 4);
 export interface ExportJobsResponse {
   Item?: ExportJobResponse[];
   NextToken?: string;
 }
-const ExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfExportJobResponse), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ExportJobsResponse" }) as any as S.Schema<ExportJobsResponse>;
+const ExportJobsResponse = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<ExportJobsResponse>;
 export interface GetExportJobsResponse {
   ExportJobsResponse: ExportJobsResponse & {
     Item: (ExportJobResponse & {
@@ -5256,28 +3569,17 @@ export interface GetExportJobsResponse {
     })[];
   };
 }
-const GetExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExportJobsResponse: S.optional(ExportJobsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ExportJobsResponse" }),
-  }),
-).annotate({ identifier: "GetExportJobsResponse" }) as any as S.Schema<GetExportJobsResponse>;
+const GetExportJobsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<GetExportJobsResponse>;
 export interface GetGcmChannelRequest {
   ApplicationId: string;
 }
-const GetGcmChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/gcm" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetGcmChannelRequest" }) as any as S.Schema<GetGcmChannelRequest>;
+const GetGcmChannelRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<GetGcmChannelRequest>;
 export interface GetGcmChannelResponse {
   GCMChannelResponse: GCMChannelResponse & { Platform: string };
 }
@@ -5286,21 +3588,7 @@ export interface GetImportJobRequest {
   ApplicationId: string;
   JobId: string;
 }
-const GetImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JobId: S.String.pipe(T.HttpLabel("JobId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/jobs/import/{JobId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetImportJobRequest" }) as any as S.Schema<GetImportJobRequest>;
+const GetImportJobRequest = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<GetImportJobRequest>;
 export interface GetImportJobResponse {
   ImportJobResponse: ImportJobResponse & {
     ApplicationId: string;
@@ -5317,31 +3605,17 @@ export interface GetImportJobsRequest {
   PageSize?: string;
   Token?: string;
 }
-const GetImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/jobs/import" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetImportJobsRequest" }) as any as S.Schema<GetImportJobsRequest>;
+const GetImportJobsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<GetImportJobsRequest>;
 export type ListOfImportJobResponse = ImportJobResponse[];
-const ListOfImportJobResponse = /*@__PURE__*/ S.Array(ImportJobResponse);
+const ListOfImportJobResponse = /*@__PURE__*/ __L.at(__c31, 2);
 export interface ImportJobsResponse {
   Item?: ImportJobResponse[];
   NextToken?: string;
 }
-const ImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfImportJobResponse), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ImportJobsResponse" }) as any as S.Schema<ImportJobsResponse>;
+const ImportJobsResponse = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<ImportJobsResponse>;
 export interface GetImportJobsResponse {
   ImportJobsResponse: ImportJobsResponse & {
     Item: (ImportJobResponse & {
@@ -5354,59 +3628,33 @@ export interface GetImportJobsResponse {
     })[];
   };
 }
-const GetImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ImportJobsResponse: S.optional(ImportJobsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ImportJobsResponse" }),
-  }),
-).annotate({ identifier: "GetImportJobsResponse" }) as any as S.Schema<GetImportJobsResponse>;
+const GetImportJobsResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<GetImportJobsResponse>;
 export interface GetInAppMessagesRequest {
   ApplicationId: string;
   EndpointId: string;
 }
-const GetInAppMessagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}/inappmessages",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetInAppMessagesRequest" }) as any as S.Schema<GetInAppMessagesRequest>;
+const GetInAppMessagesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<GetInAppMessagesRequest>;
 export interface InAppMessage {
   Content?: InAppMessageContent[];
   CustomConfig?: { [key: string]: string | undefined };
   Layout?: Layout;
 }
-const InAppMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Content: S.optional(ListOfInAppMessageContent),
-    CustomConfig: S.optional(MapOf__string),
-    Layout: S.optional(Layout),
-  }),
-).annotate({ identifier: "InAppMessage" }) as any as S.Schema<InAppMessage>;
+const InAppMessage = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<InAppMessage>;
 export interface InAppCampaignSchedule {
   EndDate?: string;
   EventFilter?: CampaignEventFilter;
   QuietTime?: QuietTime;
 }
-const InAppCampaignSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndDate: S.optional(S.String),
-    EventFilter: S.optional(CampaignEventFilter),
-    QuietTime: S.optional(QuietTime),
-  }),
-).annotate({ identifier: "InAppCampaignSchedule" }) as any as S.Schema<InAppCampaignSchedule>;
+const InAppCampaignSchedule = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<InAppCampaignSchedule>;
 export interface InAppMessageCampaign {
   CampaignId?: string;
   DailyCap?: number;
@@ -5417,26 +3665,19 @@ export interface InAppMessageCampaign {
   TotalCap?: number;
   TreatmentId?: string;
 }
-const InAppMessageCampaign = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignId: S.optional(S.String),
-    DailyCap: S.optional(S.Number),
-    InAppMessage: S.optional(InAppMessage),
-    Priority: S.optional(S.Number),
-    Schedule: S.optional(InAppCampaignSchedule),
-    SessionCap: S.optional(S.Number),
-    TotalCap: S.optional(S.Number),
-    TreatmentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "InAppMessageCampaign" }) as any as S.Schema<InAppMessageCampaign>;
+const InAppMessageCampaign = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<InAppMessageCampaign>;
 export type ListOfInAppMessageCampaign = InAppMessageCampaign[];
-const ListOfInAppMessageCampaign = /*@__PURE__*/ S.Array(InAppMessageCampaign);
+const ListOfInAppMessageCampaign = /*@__PURE__*/ __L.at(__c32, 1);
 export interface InAppMessagesResponse {
   InAppMessageCampaigns?: InAppMessageCampaign[];
 }
-const InAppMessagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InAppMessageCampaigns: S.optional(ListOfInAppMessageCampaign) }),
-).annotate({ identifier: "InAppMessagesResponse" }) as any as S.Schema<InAppMessagesResponse>;
+const InAppMessagesResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<InAppMessagesResponse>;
 export interface GetInAppMessagesResponse {
   InAppMessagesResponse: InAppMessagesResponse & {
     InAppMessageCampaigns: (InAppMessageCampaign & {
@@ -5491,32 +3732,18 @@ export interface GetInAppMessagesResponse {
     })[];
   };
 }
-const GetInAppMessagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InAppMessagesResponse: S.optional(InAppMessagesResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "InAppMessagesResponse" }),
-  }),
-).annotate({ identifier: "GetInAppMessagesResponse" }) as any as S.Schema<GetInAppMessagesResponse>;
+const GetInAppMessagesResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<GetInAppMessagesResponse>;
 export interface GetInAppTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetInAppTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/inapp" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetInAppTemplateRequest" }) as any as S.Schema<GetInAppTemplateRequest>;
+const GetInAppTemplateRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<GetInAppTemplateRequest>;
 export interface InAppTemplateResponse {
   Arn?: string;
   Content?: InAppMessageContent[];
@@ -5530,21 +3757,10 @@ export interface InAppTemplateResponse {
   TemplateType?: TemplateType;
   Version?: string;
 }
-const InAppTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Content: S.optional(ListOfInAppMessageContent),
-    CreationDate: S.optional(S.String),
-    CustomConfig: S.optional(MapOf__string),
-    LastModifiedDate: S.optional(S.String),
-    Layout: S.optional(Layout),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateType: S.optional(TemplateType),
-    Version: S.optional(S.String),
-  }),
-).annotate({ identifier: "InAppTemplateResponse" }) as any as S.Schema<InAppTemplateResponse>;
+const InAppTemplateResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<InAppTemplateResponse>;
 export interface GetInAppTemplateResponse {
   InAppTemplateResponse: InAppTemplateResponse & {
     CreationDate: string;
@@ -5577,32 +3793,15 @@ export interface GetInAppTemplateResponse {
     })[];
   };
 }
-const GetInAppTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InAppTemplateResponse: S.optional(InAppTemplateResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "InAppTemplateResponse" }),
-  }),
-).annotate({ identifier: "GetInAppTemplateResponse" }) as any as S.Schema<GetInAppTemplateResponse>;
+const GetInAppTemplateResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<GetInAppTemplateResponse>;
 export interface GetJourneyRequest {
   ApplicationId: string;
   JourneyId: string;
 }
-const GetJourneyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetJourneyRequest" }) as any as S.Schema<GetJourneyRequest>;
+const GetJourneyRequest = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<GetJourneyRequest>;
 export interface GetJourneyResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -5750,35 +3949,10 @@ export interface GetJourneyDateRangeKpiRequest {
   PageSize?: string;
   StartTime?: Date;
 }
-const GetJourneyDateRangeKpiRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("end-time"),
-    ),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-    KpiName: S.String.pipe(T.HttpLabel("KpiName")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("start-time"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/kpis/daterange/{KpiName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetJourneyDateRangeKpiRequest",
-}) as any as S.Schema<GetJourneyDateRangeKpiRequest>;
+const GetJourneyDateRangeKpiRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<GetJourneyDateRangeKpiRequest>;
 export interface JourneyDateRangeKpiResponse {
   ApplicationId?: string;
   EndTime?: Date;
@@ -5788,19 +3962,10 @@ export interface JourneyDateRangeKpiResponse {
   NextToken?: string;
   StartTime?: Date;
 }
-const JourneyDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    JourneyId: S.optional(S.String),
-    KpiName: S.optional(S.String),
-    KpiResult: S.optional(BaseKpiResult),
-    NextToken: S.optional(S.String),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "JourneyDateRangeKpiResponse",
-}) as any as S.Schema<JourneyDateRangeKpiResponse>;
+const JourneyDateRangeKpiResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<JourneyDateRangeKpiResponse>;
 export interface GetJourneyDateRangeKpiResponse {
   JourneyDateRangeKpiResponse: JourneyDateRangeKpiResponse & {
     ApplicationId: string;
@@ -5816,15 +3981,10 @@ export interface GetJourneyDateRangeKpiResponse {
     StartTime: __timestampIso8601;
   };
 }
-const GetJourneyDateRangeKpiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyDateRangeKpiResponse: S.optional(JourneyDateRangeKpiResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyDateRangeKpiResponse" }),
-  }),
-).annotate({
-  identifier: "GetJourneyDateRangeKpiResponse",
-}) as any as S.Schema<GetJourneyDateRangeKpiResponse>;
+const GetJourneyDateRangeKpiResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<GetJourneyDateRangeKpiResponse>;
 export interface GetJourneyExecutionActivityMetricsRequest {
   ApplicationId: string;
   JourneyActivityId: string;
@@ -5832,29 +3992,10 @@ export interface GetJourneyExecutionActivityMetricsRequest {
   NextToken?: string;
   PageSize?: string;
 }
-const GetJourneyExecutionActivityMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JourneyActivityId: S.String.pipe(T.HttpLabel("JourneyActivityId")),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/activities/{JourneyActivityId}/execution-metrics",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetJourneyExecutionActivityMetricsRequest",
-}) as any as S.Schema<GetJourneyExecutionActivityMetricsRequest>;
+const GetJourneyExecutionActivityMetricsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<GetJourneyExecutionActivityMetricsRequest>;
 export interface JourneyExecutionActivityMetricsResponse {
   ActivityType?: string;
   ApplicationId?: string;
@@ -5863,18 +4004,10 @@ export interface JourneyExecutionActivityMetricsResponse {
   LastEvaluatedTime?: string;
   Metrics?: { [key: string]: string | undefined };
 }
-const JourneyExecutionActivityMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActivityType: S.optional(S.String),
-    ApplicationId: S.optional(S.String),
-    JourneyActivityId: S.optional(S.String),
-    JourneyId: S.optional(S.String),
-    LastEvaluatedTime: S.optional(S.String),
-    Metrics: S.optional(MapOf__string),
-  }),
-).annotate({
-  identifier: "JourneyExecutionActivityMetricsResponse",
-}) as any as S.Schema<JourneyExecutionActivityMetricsResponse>;
+const JourneyExecutionActivityMetricsResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<JourneyExecutionActivityMetricsResponse>;
 export interface GetJourneyExecutionActivityMetricsResponse {
   JourneyExecutionActivityMetricsResponse: JourneyExecutionActivityMetricsResponse & {
     ActivityType: string;
@@ -5885,59 +4018,30 @@ export interface GetJourneyExecutionActivityMetricsResponse {
     Metrics: MapOf__string;
   };
 }
-const GetJourneyExecutionActivityMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyExecutionActivityMetricsResponse: S.optional(JourneyExecutionActivityMetricsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyExecutionActivityMetricsResponse" }),
-  }),
-).annotate({
-  identifier: "GetJourneyExecutionActivityMetricsResponse",
-}) as any as S.Schema<GetJourneyExecutionActivityMetricsResponse>;
+const GetJourneyExecutionActivityMetricsResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<GetJourneyExecutionActivityMetricsResponse>;
 export interface GetJourneyExecutionMetricsRequest {
   ApplicationId: string;
   JourneyId: string;
   NextToken?: string;
   PageSize?: string;
 }
-const GetJourneyExecutionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/execution-metrics",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetJourneyExecutionMetricsRequest",
-}) as any as S.Schema<GetJourneyExecutionMetricsRequest>;
+const GetJourneyExecutionMetricsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<GetJourneyExecutionMetricsRequest>;
 export interface JourneyExecutionMetricsResponse {
   ApplicationId?: string;
   JourneyId?: string;
   LastEvaluatedTime?: string;
   Metrics?: { [key: string]: string | undefined };
 }
-const JourneyExecutionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    JourneyId: S.optional(S.String),
-    LastEvaluatedTime: S.optional(S.String),
-    Metrics: S.optional(MapOf__string),
-  }),
-).annotate({
-  identifier: "JourneyExecutionMetricsResponse",
-}) as any as S.Schema<JourneyExecutionMetricsResponse>;
+const JourneyExecutionMetricsResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<JourneyExecutionMetricsResponse>;
 export interface GetJourneyExecutionMetricsResponse {
   JourneyExecutionMetricsResponse: JourneyExecutionMetricsResponse & {
     ApplicationId: string;
@@ -5946,15 +4050,10 @@ export interface GetJourneyExecutionMetricsResponse {
     Metrics: MapOf__string;
   };
 }
-const GetJourneyExecutionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyExecutionMetricsResponse: S.optional(JourneyExecutionMetricsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyExecutionMetricsResponse" }),
-  }),
-).annotate({
-  identifier: "GetJourneyExecutionMetricsResponse",
-}) as any as S.Schema<GetJourneyExecutionMetricsResponse>;
+const GetJourneyExecutionMetricsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<GetJourneyExecutionMetricsResponse>;
 export interface GetJourneyRunExecutionActivityMetricsRequest {
   ApplicationId: string;
   JourneyActivityId: string;
@@ -5963,30 +4062,10 @@ export interface GetJourneyRunExecutionActivityMetricsRequest {
   PageSize?: string;
   RunId: string;
 }
-const GetJourneyRunExecutionActivityMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JourneyActivityId: S.String.pipe(T.HttpLabel("JourneyActivityId")),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    RunId: S.String.pipe(T.HttpLabel("RunId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/runs/{RunId}/activities/{JourneyActivityId}/execution-metrics",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetJourneyRunExecutionActivityMetricsRequest",
-}) as any as S.Schema<GetJourneyRunExecutionActivityMetricsRequest>;
+const GetJourneyRunExecutionActivityMetricsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<GetJourneyRunExecutionActivityMetricsRequest>;
 export interface JourneyRunExecutionActivityMetricsResponse {
   ActivityType?: string;
   ApplicationId?: string;
@@ -5996,19 +4075,10 @@ export interface JourneyRunExecutionActivityMetricsResponse {
   Metrics?: { [key: string]: string | undefined };
   RunId?: string;
 }
-const JourneyRunExecutionActivityMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActivityType: S.optional(S.String),
-    ApplicationId: S.optional(S.String),
-    JourneyActivityId: S.optional(S.String),
-    JourneyId: S.optional(S.String),
-    LastEvaluatedTime: S.optional(S.String),
-    Metrics: S.optional(MapOf__string),
-    RunId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JourneyRunExecutionActivityMetricsResponse",
-}) as any as S.Schema<JourneyRunExecutionActivityMetricsResponse>;
+const JourneyRunExecutionActivityMetricsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<JourneyRunExecutionActivityMetricsResponse>;
 export interface GetJourneyRunExecutionActivityMetricsResponse {
   JourneyRunExecutionActivityMetricsResponse: JourneyRunExecutionActivityMetricsResponse & {
     ActivityType: string;
@@ -6020,17 +4090,10 @@ export interface GetJourneyRunExecutionActivityMetricsResponse {
     RunId: string;
   };
 }
-const GetJourneyRunExecutionActivityMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyRunExecutionActivityMetricsResponse: S.optional(
-      JourneyRunExecutionActivityMetricsResponse,
-    )
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyRunExecutionActivityMetricsResponse" }),
-  }),
-).annotate({
-  identifier: "GetJourneyRunExecutionActivityMetricsResponse",
-}) as any as S.Schema<GetJourneyRunExecutionActivityMetricsResponse>;
+const GetJourneyRunExecutionActivityMetricsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<GetJourneyRunExecutionActivityMetricsResponse>;
 export interface GetJourneyRunExecutionMetricsRequest {
   ApplicationId: string;
   JourneyId: string;
@@ -6038,29 +4101,10 @@ export interface GetJourneyRunExecutionMetricsRequest {
   PageSize?: string;
   RunId: string;
 }
-const GetJourneyRunExecutionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    RunId: S.String.pipe(T.HttpLabel("RunId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/runs/{RunId}/execution-metrics",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetJourneyRunExecutionMetricsRequest",
-}) as any as S.Schema<GetJourneyRunExecutionMetricsRequest>;
+const GetJourneyRunExecutionMetricsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<GetJourneyRunExecutionMetricsRequest>;
 export interface JourneyRunExecutionMetricsResponse {
   ApplicationId?: string;
   JourneyId?: string;
@@ -6068,17 +4112,10 @@ export interface JourneyRunExecutionMetricsResponse {
   Metrics?: { [key: string]: string | undefined };
   RunId?: string;
 }
-const JourneyRunExecutionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    JourneyId: S.optional(S.String),
-    LastEvaluatedTime: S.optional(S.String),
-    Metrics: S.optional(MapOf__string),
-    RunId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JourneyRunExecutionMetricsResponse",
-}) as any as S.Schema<JourneyRunExecutionMetricsResponse>;
+const JourneyRunExecutionMetricsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<JourneyRunExecutionMetricsResponse>;
 export interface GetJourneyRunExecutionMetricsResponse {
   JourneyRunExecutionMetricsResponse: JourneyRunExecutionMetricsResponse & {
     ApplicationId: string;
@@ -6088,38 +4125,20 @@ export interface GetJourneyRunExecutionMetricsResponse {
     RunId: string;
   };
 }
-const GetJourneyRunExecutionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyRunExecutionMetricsResponse: S.optional(JourneyRunExecutionMetricsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyRunExecutionMetricsResponse" }),
-  }),
-).annotate({
-  identifier: "GetJourneyRunExecutionMetricsResponse",
-}) as any as S.Schema<GetJourneyRunExecutionMetricsResponse>;
+const GetJourneyRunExecutionMetricsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<GetJourneyRunExecutionMetricsResponse>;
 export interface GetJourneyRunsRequest {
   ApplicationId: string;
   JourneyId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetJourneyRunsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/runs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetJourneyRunsRequest" }) as any as S.Schema<GetJourneyRunsRequest>;
+const GetJourneyRunsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GetJourneyRunsRequest>;
 export type JourneyRunStatus = "SCHEDULED" | "RUNNING" | "COMPLETED" | "CANCELLED" | (string & {});
 const JourneyRunStatus = S.String;
 
@@ -6129,23 +4148,14 @@ export interface JourneyRunResponse {
   RunId?: string;
   Status?: JourneyRunStatus;
 }
-const JourneyRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreationTime: S.optional(S.String),
-    LastUpdateTime: S.optional(S.String),
-    RunId: S.optional(S.String),
-    Status: S.optional(JourneyRunStatus),
-  }),
-).annotate({ identifier: "JourneyRunResponse" }) as any as S.Schema<JourneyRunResponse>;
+const JourneyRunResponse = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<JourneyRunResponse>;
 export type ListOfJourneyRunResponse = JourneyRunResponse[];
-const ListOfJourneyRunResponse = /*@__PURE__*/ S.Array(JourneyRunResponse);
+const ListOfJourneyRunResponse = /*@__PURE__*/ __L.at(__c35, 1);
 export interface JourneyRunsResponse {
   Item?: JourneyRunResponse[];
   NextToken?: string;
 }
-const JourneyRunsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfJourneyRunResponse), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "JourneyRunsResponse" }) as any as S.Schema<JourneyRunsResponse>;
+const JourneyRunsResponse = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<JourneyRunsResponse>;
 export interface GetJourneyRunsResponse {
   JourneyRunsResponse: JourneyRunsResponse & {
     Item: (JourneyRunResponse & {
@@ -6156,32 +4166,18 @@ export interface GetJourneyRunsResponse {
     })[];
   };
 }
-const GetJourneyRunsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyRunsResponse: S.optional(JourneyRunsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyRunsResponse" }),
-  }),
-).annotate({ identifier: "GetJourneyRunsResponse" }) as any as S.Schema<GetJourneyRunsResponse>;
+const GetJourneyRunsResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<GetJourneyRunsResponse>;
 export interface GetPushTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetPushTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/push" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetPushTemplateRequest" }) as any as S.Schema<GetPushTemplateRequest>;
+const GetPushTemplateRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<GetPushTemplateRequest>;
 export interface PushNotificationTemplateResponse {
   ADM?: AndroidPushNotificationTemplate;
   APNS?: APNSPushNotificationTemplate;
@@ -6199,27 +4195,10 @@ export interface PushNotificationTemplateResponse {
   TemplateType?: TemplateType;
   Version?: string;
 }
-const PushNotificationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ADM: S.optional(AndroidPushNotificationTemplate),
-    APNS: S.optional(APNSPushNotificationTemplate),
-    Arn: S.optional(S.String),
-    Baidu: S.optional(AndroidPushNotificationTemplate),
-    CreationDate: S.optional(S.String),
-    Default: S.optional(DefaultPushNotificationTemplate),
-    DefaultSubstitutions: S.optional(S.String),
-    GCM: S.optional(AndroidPushNotificationTemplate),
-    LastModifiedDate: S.optional(S.String),
-    RecommenderId: S.optional(S.String),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateType: S.optional(TemplateType),
-    Version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PushNotificationTemplateResponse",
-}) as any as S.Schema<PushNotificationTemplateResponse>;
+const PushNotificationTemplateResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<PushNotificationTemplateResponse>;
 export interface GetPushTemplateResponse {
   PushNotificationTemplateResponse: PushNotificationTemplateResponse & {
     CreationDate: string;
@@ -6228,30 +4207,17 @@ export interface GetPushTemplateResponse {
     TemplateType: TemplateType;
   };
 }
-const GetPushTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PushNotificationTemplateResponse: S.optional(PushNotificationTemplateResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "PushNotificationTemplateResponse" }),
-  }),
-).annotate({ identifier: "GetPushTemplateResponse" }) as any as S.Schema<GetPushTemplateResponse>;
+const GetPushTemplateResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<GetPushTemplateResponse>;
 export interface GetRecommenderConfigurationRequest {
   RecommenderId: string;
 }
-const GetRecommenderConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/recommenders/{RecommenderId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetRecommenderConfigurationRequest",
-}) as any as S.Schema<GetRecommenderConfigurationRequest>;
+const GetRecommenderConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<GetRecommenderConfigurationRequest>;
 export interface GetRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -6267,30 +4233,20 @@ export interface GetRecommenderConfigurationsRequest {
   PageSize?: string;
   Token?: string;
 }
-const GetRecommenderConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/recommenders" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetRecommenderConfigurationsRequest",
-}) as any as S.Schema<GetRecommenderConfigurationsRequest>;
+const GetRecommenderConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<GetRecommenderConfigurationsRequest>;
 export type ListOfRecommenderConfigurationResponse = RecommenderConfigurationResponse[];
-const ListOfRecommenderConfigurationResponse = /*@__PURE__*/ S.Array(
-  RecommenderConfigurationResponse,
-);
+const ListOfRecommenderConfigurationResponse = /*@__PURE__*/ __L.at(__c36, 1);
 export interface ListRecommenderConfigurationsResponse {
   Item?: RecommenderConfigurationResponse[];
   NextToken?: string;
 }
-const ListRecommenderConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Item: S.optional(ListOfRecommenderConfigurationResponse),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRecommenderConfigurationsResponse",
-}) as any as S.Schema<ListRecommenderConfigurationsResponse>;
+const ListRecommenderConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<ListRecommenderConfigurationsResponse>;
 export interface GetRecommenderConfigurationsResponse {
   ListRecommenderConfigurationsResponse: ListRecommenderConfigurationsResponse & {
     Item: (RecommenderConfigurationResponse & {
@@ -6302,34 +4258,15 @@ export interface GetRecommenderConfigurationsResponse {
     })[];
   };
 }
-const GetRecommenderConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ListRecommenderConfigurationsResponse: S.optional(ListRecommenderConfigurationsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ListRecommenderConfigurationsResponse" }),
-  }),
-).annotate({
-  identifier: "GetRecommenderConfigurationsResponse",
-}) as any as S.Schema<GetRecommenderConfigurationsResponse>;
+const GetRecommenderConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<GetRecommenderConfigurationsResponse>;
 export interface GetSegmentRequest {
   ApplicationId: string;
   SegmentId: string;
 }
-const GetSegmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSegmentRequest" }) as any as S.Schema<GetSegmentRequest>;
+const GetSegmentRequest = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<GetSegmentRequest>;
 export interface GetSegmentResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -6416,25 +4353,10 @@ export interface GetSegmentExportJobsRequest {
   SegmentId: string;
   Token?: string;
 }
-const GetSegmentExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/jobs/export" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSegmentExportJobsRequest",
-}) as any as S.Schema<GetSegmentExportJobsRequest>;
+const GetSegmentExportJobsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<GetSegmentExportJobsRequest>;
 export interface GetSegmentExportJobsResponse {
   ExportJobsResponse: ExportJobsResponse & {
     Item: (ExportJobResponse & {
@@ -6447,40 +4369,20 @@ export interface GetSegmentExportJobsResponse {
     })[];
   };
 }
-const GetSegmentExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExportJobsResponse: S.optional(ExportJobsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ExportJobsResponse" }),
-  }),
-).annotate({
-  identifier: "GetSegmentExportJobsResponse",
-}) as any as S.Schema<GetSegmentExportJobsResponse>;
+const GetSegmentExportJobsResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<GetSegmentExportJobsResponse>;
 export interface GetSegmentImportJobsRequest {
   ApplicationId: string;
   PageSize?: string;
   SegmentId: string;
   Token?: string;
 }
-const GetSegmentImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/jobs/import" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSegmentImportJobsRequest",
-}) as any as S.Schema<GetSegmentImportJobsRequest>;
+const GetSegmentImportJobsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<GetSegmentImportJobsRequest>;
 export interface GetSegmentImportJobsResponse {
   ImportJobsResponse: ImportJobsResponse & {
     Item: (ImportJobResponse & {
@@ -6493,45 +4395,23 @@ export interface GetSegmentImportJobsResponse {
     })[];
   };
 }
-const GetSegmentImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ImportJobsResponse: S.optional(ImportJobsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ImportJobsResponse" }),
-  }),
-).annotate({
-  identifier: "GetSegmentImportJobsResponse",
-}) as any as S.Schema<GetSegmentImportJobsResponse>;
+const GetSegmentImportJobsResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<GetSegmentImportJobsResponse>;
 export interface GetSegmentsRequest {
   ApplicationId: string;
   PageSize?: string;
   Token?: string;
 }
-const GetSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/segments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSegmentsRequest" }) as any as S.Schema<GetSegmentsRequest>;
+const GetSegmentsRequest = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<GetSegmentsRequest>;
 export type ListOfSegmentResponse = SegmentResponse[];
-const ListOfSegmentResponse = /*@__PURE__*/ S.Array(SegmentResponse);
+const ListOfSegmentResponse = /*@__PURE__*/ __L.at(__c37, 2);
 export interface SegmentsResponse {
   Item?: SegmentResponse[];
   NextToken?: string;
 }
-const SegmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfSegmentResponse), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "SegmentsResponse" }) as any as S.Schema<SegmentsResponse>;
+const SegmentsResponse = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<SegmentsResponse>;
 export interface GetSegmentsResponse {
   SegmentsResponse: SegmentsResponse & {
     Item: (SegmentResponse & {
@@ -6615,37 +4495,16 @@ export interface GetSegmentsResponse {
     })[];
   };
 }
-const GetSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SegmentsResponse: S.optional(SegmentsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SegmentsResponse" }),
-  }),
-).annotate({ identifier: "GetSegmentsResponse" }) as any as S.Schema<GetSegmentsResponse>;
+const GetSegmentsResponse = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<GetSegmentsResponse>;
 export interface GetSegmentVersionRequest {
   ApplicationId: string;
   SegmentId: string;
   Version: string;
 }
-const GetSegmentVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-    Version: S.String.pipe(T.HttpLabel("Version")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/versions/{Version}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSegmentVersionRequest" }) as any as S.Schema<GetSegmentVersionRequest>;
+const GetSegmentVersionRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<GetSegmentVersionRequest>;
 export interface GetSegmentVersionResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -6725,40 +4584,20 @@ export interface GetSegmentVersionResponse {
     };
   };
 }
-const GetSegmentVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SegmentResponse: S.optional(SegmentResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SegmentResponse" }),
-  }),
-).annotate({
-  identifier: "GetSegmentVersionResponse",
-}) as any as S.Schema<GetSegmentVersionResponse>;
+const GetSegmentVersionResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<GetSegmentVersionResponse>;
 export interface GetSegmentVersionsRequest {
   ApplicationId: string;
   PageSize?: string;
   SegmentId: string;
   Token?: string;
 }
-const GetSegmentVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSegmentVersionsRequest",
-}) as any as S.Schema<GetSegmentVersionsRequest>;
+const GetSegmentVersionsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<GetSegmentVersionsRequest>;
 export interface GetSegmentVersionsResponse {
   SegmentsResponse: SegmentsResponse & {
     Item: (SegmentResponse & {
@@ -6842,30 +4681,17 @@ export interface GetSegmentVersionsResponse {
     })[];
   };
 }
-const GetSegmentVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SegmentsResponse: S.optional(SegmentsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SegmentsResponse" }),
-  }),
-).annotate({
-  identifier: "GetSegmentVersionsResponse",
-}) as any as S.Schema<GetSegmentVersionsResponse>;
+const GetSegmentVersionsResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<GetSegmentVersionsResponse>;
 export interface GetSmsChannelRequest {
   ApplicationId: string;
 }
-const GetSmsChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/sms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSmsChannelRequest" }) as any as S.Schema<GetSmsChannelRequest>;
+const GetSmsChannelRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<GetSmsChannelRequest>;
 export interface GetSmsChannelResponse {
   SMSChannelResponse: SMSChannelResponse & { Platform: string };
 }
@@ -6874,21 +4700,10 @@ export interface GetSmsTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/sms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSmsTemplateRequest" }) as any as S.Schema<GetSmsTemplateRequest>;
+const GetSmsTemplateRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<GetSmsTemplateRequest>;
 export interface SMSTemplateResponse {
   Arn?: string;
   Body?: string;
@@ -6902,21 +4717,7 @@ export interface SMSTemplateResponse {
   TemplateType?: TemplateType;
   Version?: string;
 }
-const SMSTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Body: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    DefaultSubstitutions: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    RecommenderId: S.optional(S.String),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateType: S.optional(TemplateType),
-    Version: S.optional(S.String),
-  }),
-).annotate({ identifier: "SMSTemplateResponse" }) as any as S.Schema<SMSTemplateResponse>;
+const SMSTemplateResponse = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<SMSTemplateResponse>;
 export interface GetSmsTemplateResponse {
   SMSTemplateResponse: SMSTemplateResponse & {
     CreationDate: string;
@@ -6925,86 +4726,47 @@ export interface GetSmsTemplateResponse {
     TemplateType: TemplateType;
   };
 }
-const GetSmsTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SMSTemplateResponse: S.optional(SMSTemplateResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SMSTemplateResponse" }),
-  }),
-).annotate({ identifier: "GetSmsTemplateResponse" }) as any as S.Schema<GetSmsTemplateResponse>;
+const GetSmsTemplateResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<GetSmsTemplateResponse>;
 export interface GetUserEndpointsRequest {
   ApplicationId: string;
   UserId: string;
 }
-const GetUserEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    UserId: S.String.pipe(T.HttpLabel("UserId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/users/{UserId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetUserEndpointsRequest" }) as any as S.Schema<GetUserEndpointsRequest>;
+const GetUserEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<GetUserEndpointsRequest>;
 export interface GetUserEndpointsResponse {
   EndpointsResponse: EndpointsResponse & { Item: ListOfEndpointResponse };
 }
-const GetUserEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndpointsResponse: S.optional(EndpointsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EndpointsResponse" }),
-  }),
-).annotate({ identifier: "GetUserEndpointsResponse" }) as any as S.Schema<GetUserEndpointsResponse>;
+const GetUserEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<GetUserEndpointsResponse>;
 export interface GetVoiceChannelRequest {
   ApplicationId: string;
 }
-const GetVoiceChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetVoiceChannelRequest" }) as any as S.Schema<GetVoiceChannelRequest>;
+const GetVoiceChannelRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<GetVoiceChannelRequest>;
 export interface GetVoiceChannelResponse {
   VoiceChannelResponse: VoiceChannelResponse & { Platform: string };
 }
-const GetVoiceChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VoiceChannelResponse: S.optional(VoiceChannelResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "VoiceChannelResponse" }),
-  }),
-).annotate({ identifier: "GetVoiceChannelResponse" }) as any as S.Schema<GetVoiceChannelResponse>;
+const GetVoiceChannelResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<GetVoiceChannelResponse>;
 export interface GetVoiceTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const GetVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/voice" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetVoiceTemplateRequest" }) as any as S.Schema<GetVoiceTemplateRequest>;
+const GetVoiceTemplateRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<GetVoiceTemplateRequest>;
 export interface VoiceTemplateResponse {
   Arn?: string;
   Body?: string;
@@ -7019,22 +4781,10 @@ export interface VoiceTemplateResponse {
   Version?: string;
   VoiceId?: string;
 }
-const VoiceTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Body: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    DefaultSubstitutions: S.optional(S.String),
-    LanguageCode: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateType: S.optional(TemplateType),
-    Version: S.optional(S.String),
-    VoiceId: S.optional(S.String),
-  }),
-).annotate({ identifier: "VoiceTemplateResponse" }) as any as S.Schema<VoiceTemplateResponse>;
+const VoiceTemplateResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<VoiceTemplateResponse>;
 export interface GetVoiceTemplateResponse {
   VoiceTemplateResponse: VoiceTemplateResponse & {
     CreationDate: string;
@@ -7043,43 +4793,23 @@ export interface GetVoiceTemplateResponse {
     TemplateType: TemplateType;
   };
 }
-const GetVoiceTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VoiceTemplateResponse: S.optional(VoiceTemplateResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "VoiceTemplateResponse" }),
-  }),
-).annotate({ identifier: "GetVoiceTemplateResponse" }) as any as S.Schema<GetVoiceTemplateResponse>;
+const GetVoiceTemplateResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<GetVoiceTemplateResponse>;
 export interface ListJourneysRequest {
   ApplicationId: string;
   PageSize?: string;
   Token?: string;
 }
-const ListJourneysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Token: S.optional(S.String).pipe(T.HttpQuery("token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/journeys" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListJourneysRequest" }) as any as S.Schema<ListJourneysRequest>;
+const ListJourneysRequest = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<ListJourneysRequest>;
 export type ListOfJourneyResponse = JourneyResponse[];
-const ListOfJourneyResponse = /*@__PURE__*/ S.Array(JourneyResponse);
+const ListOfJourneyResponse = /*@__PURE__*/ __L.at(__c39, 5);
 export interface JourneysResponse {
   Item?: JourneyResponse[];
   NextToken?: string;
 }
-const JourneysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfJourneyResponse), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "JourneysResponse" }) as any as S.Schema<JourneysResponse>;
+const JourneysResponse = /*@__PURE__*/ __L.at(__c39, 6) as any as S.Schema<JourneysResponse>;
 export interface ListJourneysResponse {
   JourneysResponse: JourneysResponse & {
     Item: (JourneyResponse & {
@@ -7233,53 +4963,38 @@ export interface ListJourneysResponse {
     })[];
   };
 }
-const ListJourneysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneysResponse: S.optional(JourneysResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneysResponse" }),
-  }),
-).annotate({ identifier: "ListJourneysResponse" }) as any as S.Schema<ListJourneysResponse>;
+const ListJourneysResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<ListJourneysResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/v1/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface TagsModel {
   tags?: { [key: string]: string | undefined };
 }
-const TagsModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(MapOf__string) }),
-).annotate({ identifier: "TagsModel" }) as any as S.Schema<TagsModel>;
+const TagsModel = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<TagsModel>;
 export interface ListTagsForResourceResponse {
   TagsModel: TagsModel & { tags: MapOf__string };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TagsModel: S.optional(TagsModel).pipe(T.HttpPayload()).annotate({ identifier: "TagsModel" }),
-  }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTemplatesRequest {
   NextToken?: string;
   PageSize?: string;
   Prefix?: string;
   TemplateType?: string;
 }
-const ListTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
-    TemplateType: S.optional(S.String).pipe(T.HttpQuery("template-type")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/templates" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListTemplatesRequest" }) as any as S.Schema<ListTemplatesRequest>;
+const ListTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<ListTemplatesRequest>;
 export interface TemplateResponse {
   Arn?: string;
   CreationDate?: string;
@@ -7291,28 +5006,14 @@ export interface TemplateResponse {
   TemplateType?: TemplateType;
   Version?: string;
 }
-const TemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationDate: S.optional(S.String),
-    DefaultSubstitutions: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    tags: S.optional(MapOf__string),
-    TemplateDescription: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateType: S.optional(TemplateType),
-    Version: S.optional(S.String),
-  }),
-).annotate({ identifier: "TemplateResponse" }) as any as S.Schema<TemplateResponse>;
+const TemplateResponse = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<TemplateResponse>;
 export type ListOfTemplateResponse = TemplateResponse[];
-const ListOfTemplateResponse = /*@__PURE__*/ S.Array(TemplateResponse);
+const ListOfTemplateResponse = /*@__PURE__*/ __L.at(__c40, 5);
 export interface TemplatesResponse {
   Item?: TemplateResponse[];
   NextToken?: string;
 }
-const TemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfTemplateResponse), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "TemplatesResponse" }) as any as S.Schema<TemplatesResponse>;
+const TemplatesResponse = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<TemplatesResponse>;
 export interface ListTemplatesResponse {
   TemplatesResponse: TemplatesResponse & {
     Item: (TemplateResponse & {
@@ -7323,38 +5024,20 @@ export interface ListTemplatesResponse {
     })[];
   };
 }
-const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplatesResponse: S.optional(TemplatesResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "TemplatesResponse" }),
-  }),
-).annotate({ identifier: "ListTemplatesResponse" }) as any as S.Schema<ListTemplatesResponse>;
+const ListTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<ListTemplatesResponse>;
 export interface ListTemplateVersionsRequest {
   NextToken?: string;
   PageSize?: string;
   TemplateName: string;
   TemplateType: string;
 }
-const ListTemplateVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/{TemplateType}/versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTemplateVersionsRequest",
-}) as any as S.Schema<ListTemplateVersionsRequest>;
+const ListTemplateVersionsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<ListTemplateVersionsRequest>;
 export interface TemplateVersionResponse {
   CreationDate?: string;
   DefaultSubstitutions?: string;
@@ -7364,33 +5047,22 @@ export interface TemplateVersionResponse {
   TemplateType?: string;
   Version?: string;
 }
-const TemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreationDate: S.optional(S.String),
-    DefaultSubstitutions: S.optional(S.String),
-    LastModifiedDate: S.optional(S.String),
-    TemplateDescription: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    TemplateType: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({ identifier: "TemplateVersionResponse" }) as any as S.Schema<TemplateVersionResponse>;
+const TemplateVersionResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<TemplateVersionResponse>;
 export type ListOfTemplateVersionResponse = TemplateVersionResponse[];
-const ListOfTemplateVersionResponse = /*@__PURE__*/ S.Array(TemplateVersionResponse);
+const ListOfTemplateVersionResponse = /*@__PURE__*/ __L.at(__c41, 2);
 export interface TemplateVersionsResponse {
   Item?: TemplateVersionResponse[];
   Message?: string;
   NextToken?: string;
   RequestID?: string;
 }
-const TemplateVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Item: S.optional(ListOfTemplateVersionResponse),
-    Message: S.optional(S.String),
-    NextToken: S.optional(S.String),
-    RequestID: S.optional(S.String),
-  }),
-).annotate({ identifier: "TemplateVersionsResponse" }) as any as S.Schema<TemplateVersionsResponse>;
+const TemplateVersionsResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<TemplateVersionsResponse>;
 export interface ListTemplateVersionsResponse {
   TemplateVersionsResponse: TemplateVersionsResponse & {
     Item: (TemplateVersionResponse & {
@@ -7401,43 +5073,25 @@ export interface ListTemplateVersionsResponse {
     })[];
   };
 }
-const ListTemplateVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateVersionsResponse: S.optional(TemplateVersionsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "TemplateVersionsResponse" }),
-  }),
-).annotate({
-  identifier: "ListTemplateVersionsResponse",
-}) as any as S.Schema<ListTemplateVersionsResponse>;
+const ListTemplateVersionsResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<ListTemplateVersionsResponse>;
 export interface NumberValidateRequest {
   IsoCountryCode?: string;
   PhoneNumber?: string;
 }
-const NumberValidateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IsoCountryCode: S.optional(S.String), PhoneNumber: S.optional(S.String) }),
-).annotate({ identifier: "NumberValidateRequest" }) as any as S.Schema<NumberValidateRequest>;
+const NumberValidateRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<NumberValidateRequest>;
 export interface PhoneNumberValidateRequest {
   NumberValidateRequest?: NumberValidateRequest;
 }
-const PhoneNumberValidateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NumberValidateRequest: S.optional(NumberValidateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "NumberValidateRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/phone/number/validate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PhoneNumberValidateRequest",
-}) as any as S.Schema<PhoneNumberValidateRequest>;
+const PhoneNumberValidateRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<PhoneNumberValidateRequest>;
 export interface NumberValidateResponse {
   Carrier?: string;
   City?: string;
@@ -7454,36 +5108,17 @@ export interface NumberValidateResponse {
   Timezone?: string;
   ZipCode?: string;
 }
-const NumberValidateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Carrier: S.optional(S.String),
-    City: S.optional(S.String),
-    CleansedPhoneNumberE164: S.optional(S.String),
-    CleansedPhoneNumberNational: S.optional(S.String),
-    Country: S.optional(S.String),
-    CountryCodeIso2: S.optional(S.String),
-    CountryCodeNumeric: S.optional(S.String),
-    County: S.optional(S.String),
-    OriginalCountryCodeIso2: S.optional(S.String),
-    OriginalPhoneNumber: S.optional(S.String),
-    PhoneType: S.optional(S.String),
-    PhoneTypeCode: S.optional(S.Number),
-    Timezone: S.optional(S.String),
-    ZipCode: S.optional(S.String),
-  }),
-).annotate({ identifier: "NumberValidateResponse" }) as any as S.Schema<NumberValidateResponse>;
+const NumberValidateResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<NumberValidateResponse>;
 export interface PhoneNumberValidateResponse {
   NumberValidateResponse: NumberValidateResponse;
 }
-const PhoneNumberValidateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NumberValidateResponse: S.optional(NumberValidateResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "NumberValidateResponse" }),
-  }),
-).annotate({
-  identifier: "PhoneNumberValidateResponse",
-}) as any as S.Schema<PhoneNumberValidateResponse>;
+const PhoneNumberValidateResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<PhoneNumberValidateResponse>;
 export interface PublicEndpoint {
   Address?: string;
   Attributes?: { [key: string]: string[] | undefined };
@@ -7497,35 +5132,14 @@ export interface PublicEndpoint {
   RequestId?: string;
   User?: EndpointUser;
 }
-const PublicEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: S.optional(S.String),
-    Attributes: S.optional(MapOfListOf__string),
-    ChannelType: S.optional(ChannelType),
-    Demographic: S.optional(EndpointDemographic),
-    EffectiveDate: S.optional(S.String),
-    EndpointStatus: S.optional(S.String),
-    Location: S.optional(EndpointLocation),
-    Metrics: S.optional(MapOf__double),
-    OptOut: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    User: S.optional(EndpointUser),
-  }),
-).annotate({ identifier: "PublicEndpoint" }) as any as S.Schema<PublicEndpoint>;
+const PublicEndpoint = /*@__PURE__*/ __L.at(__c42, 1) as any as S.Schema<PublicEndpoint>;
 export interface Session {
   Duration?: number;
   Id?: string;
   StartTimestamp?: string;
   StopTimestamp?: string;
 }
-const Session = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Duration: S.optional(S.Number),
-    Id: S.optional(S.String),
-    StartTimestamp: S.optional(S.String),
-    StopTimestamp: S.optional(S.String),
-  }),
-).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
+const Session = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<Session>;
 export interface Event {
   AppPackageName?: string;
   AppTitle?: string;
@@ -7538,137 +5152,68 @@ export interface Event {
   Session?: Session;
   Timestamp?: string;
 }
-const Event = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppPackageName: S.optional(S.String),
-    AppTitle: S.optional(S.String),
-    AppVersionCode: S.optional(S.String),
-    Attributes: S.optional(MapOf__string),
-    ClientSdkVersion: S.optional(S.String),
-    EventType: S.optional(S.String),
-    Metrics: S.optional(MapOf__double),
-    SdkName: S.optional(S.String),
-    Session: S.optional(Session),
-    Timestamp: S.optional(S.String),
-  }),
-).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
+const Event = /*@__PURE__*/ __L.at(__c42, 3) as any as S.Schema<Event>;
 export type MapOfEvent = { [key: string]: Event | undefined };
-const MapOfEvent = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Event.pipe(S.optional));
+const MapOfEvent = /*@__PURE__*/ __L.at(__c42, 4);
 export interface EventsBatch {
   Endpoint?: PublicEndpoint;
   Events?: { [key: string]: Event | undefined };
 }
-const EventsBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Endpoint: S.optional(PublicEndpoint), Events: S.optional(MapOfEvent) }),
-).annotate({ identifier: "EventsBatch" }) as any as S.Schema<EventsBatch>;
+const EventsBatch = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<EventsBatch>;
 export type MapOfEventsBatch = { [key: string]: EventsBatch | undefined };
-const MapOfEventsBatch = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ EventsBatch.pipe(S.optional),
-);
+const MapOfEventsBatch = /*@__PURE__*/ __L.at(__c42, 6);
 export interface EventsRequest {
   BatchItem?: { [key: string]: EventsBatch | undefined };
 }
-const EventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BatchItem: S.optional(MapOfEventsBatch) }),
-).annotate({ identifier: "EventsRequest" }) as any as S.Schema<EventsRequest>;
+const EventsRequest = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<EventsRequest>;
 export interface PutEventsRequest {
   ApplicationId: string;
   EventsRequest?: EventsRequest;
 }
-const PutEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    EventsRequest: S.optional(EventsRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EventsRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/events" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PutEventsRequest" }) as any as S.Schema<PutEventsRequest>;
+const PutEventsRequest = /*@__PURE__*/ __L.at(__c43, 0) as any as S.Schema<PutEventsRequest>;
 export interface EndpointItemResponse {
   Message?: string;
   StatusCode?: number;
 }
-const EndpointItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Message: S.optional(S.String), StatusCode: S.optional(S.Number) }),
-).annotate({ identifier: "EndpointItemResponse" }) as any as S.Schema<EndpointItemResponse>;
+const EndpointItemResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<EndpointItemResponse>;
 export interface EventItemResponse {
   Message?: string;
   StatusCode?: number;
 }
 const EventItemResponse = EndpointItemResponse as any as S.Schema<EventItemResponse>;
 export type MapOfEventItemResponse = { [key: string]: EventItemResponse | undefined };
-const MapOfEventItemResponse = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ EventItemResponse.pipe(S.optional),
-);
+const MapOfEventItemResponse = /*@__PURE__*/ __L.at(__c43, 2);
 export interface ItemResponse {
   EndpointItemResponse?: EndpointItemResponse;
   EventsItemResponse?: { [key: string]: EventItemResponse | undefined };
 }
-const ItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndpointItemResponse: S.optional(EndpointItemResponse),
-    EventsItemResponse: S.optional(MapOfEventItemResponse),
-  }),
-).annotate({ identifier: "ItemResponse" }) as any as S.Schema<ItemResponse>;
+const ItemResponse = /*@__PURE__*/ __L.at(__c43, 3) as any as S.Schema<ItemResponse>;
 export type MapOfItemResponse = { [key: string]: ItemResponse | undefined };
-const MapOfItemResponse = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ItemResponse.pipe(S.optional),
-);
+const MapOfItemResponse = /*@__PURE__*/ __L.at(__c43, 4);
 export interface EventsResponse {
   Results?: { [key: string]: ItemResponse | undefined };
 }
-const EventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Results: S.optional(MapOfItemResponse) }),
-).annotate({ identifier: "EventsResponse" }) as any as S.Schema<EventsResponse>;
+const EventsResponse = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<EventsResponse>;
 export interface PutEventsResponse {
   EventsResponse: EventsResponse;
 }
-const PutEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventsResponse: S.optional(EventsResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EventsResponse" }),
-  }),
-).annotate({ identifier: "PutEventsResponse" }) as any as S.Schema<PutEventsResponse>;
+const PutEventsResponse = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<PutEventsResponse>;
 export interface WriteEventStream {
   DestinationStreamArn?: string;
   RoleArn?: string;
 }
-const WriteEventStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DestinationStreamArn: S.optional(S.String), RoleArn: S.optional(S.String) }),
-).annotate({ identifier: "WriteEventStream" }) as any as S.Schema<WriteEventStream>;
+const WriteEventStream = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<WriteEventStream>;
 export interface PutEventStreamRequest {
   ApplicationId: string;
   WriteEventStream?: WriteEventStream;
 }
-const PutEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    WriteEventStream: S.optional(WriteEventStream)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "WriteEventStream" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/eventstream" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PutEventStreamRequest" }) as any as S.Schema<PutEventStreamRequest>;
+const PutEventStreamRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<PutEventStreamRequest>;
 export interface PutEventStreamResponse {
   EventStream: EventStream & {
     ApplicationId: string;
@@ -7680,54 +5225,32 @@ const PutEventStreamResponse = GetEventStreamResponse as any as S.Schema<PutEven
 export interface UpdateAttributesRequest {
   Blacklist?: string[];
 }
-const UpdateAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Blacklist: S.optional(ListOf__string) }),
-).annotate({ identifier: "UpdateAttributesRequest" }) as any as S.Schema<UpdateAttributesRequest>;
+const UpdateAttributesRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<UpdateAttributesRequest>;
 export interface RemoveAttributesRequest {
   ApplicationId: string;
   AttributeType: string;
   UpdateAttributesRequest?: UpdateAttributesRequest;
 }
-const RemoveAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    AttributeType: S.String.pipe(T.HttpLabel("AttributeType")),
-    UpdateAttributesRequest: S.optional(UpdateAttributesRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "UpdateAttributesRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/attributes/{AttributeType}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "RemoveAttributesRequest" }) as any as S.Schema<RemoveAttributesRequest>;
+const RemoveAttributesRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<RemoveAttributesRequest>;
 export interface AttributesResource {
   ApplicationId?: string;
   AttributeType?: string;
   Attributes?: string[];
 }
-const AttributesResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    AttributeType: S.optional(S.String),
-    Attributes: S.optional(ListOf__string),
-  }),
-).annotate({ identifier: "AttributesResource" }) as any as S.Schema<AttributesResource>;
+const AttributesResource = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<AttributesResource>;
 export interface RemoveAttributesResponse {
   AttributesResource: AttributesResource & { ApplicationId: string; AttributeType: string };
 }
-const RemoveAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AttributesResource: S.optional(AttributesResource)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "AttributesResource" }),
-  }),
-).annotate({ identifier: "RemoveAttributesResponse" }) as any as S.Schema<RemoveAttributesResponse>;
+const RemoveAttributesResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<RemoveAttributesResponse>;
 export interface AddressConfiguration {
   BodyOverride?: string;
   ChannelType?: ChannelType;
@@ -7736,21 +5259,12 @@ export interface AddressConfiguration {
   Substitutions?: { [key: string]: string[] | undefined };
   TitleOverride?: string;
 }
-const AddressConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BodyOverride: S.optional(S.String),
-    ChannelType: S.optional(ChannelType),
-    Context: S.optional(MapOf__string),
-    RawContent: S.optional(S.String),
-    Substitutions: S.optional(MapOfListOf__string),
-    TitleOverride: S.optional(S.String),
-  }),
-).annotate({ identifier: "AddressConfiguration" }) as any as S.Schema<AddressConfiguration>;
+const AddressConfiguration = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<AddressConfiguration>;
 export type MapOfAddressConfiguration = { [key: string]: AddressConfiguration | undefined };
-const MapOfAddressConfiguration = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ AddressConfiguration.pipe(S.optional),
-);
+const MapOfAddressConfiguration = /*@__PURE__*/ __L.at(__c44, 6);
 export interface EndpointSendConfiguration {
   BodyOverride?: string;
   Context?: { [key: string]: string | undefined };
@@ -7758,24 +5272,14 @@ export interface EndpointSendConfiguration {
   Substitutions?: { [key: string]: string[] | undefined };
   TitleOverride?: string;
 }
-const EndpointSendConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BodyOverride: S.optional(S.String),
-    Context: S.optional(MapOf__string),
-    RawContent: S.optional(S.String),
-    Substitutions: S.optional(MapOfListOf__string),
-    TitleOverride: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EndpointSendConfiguration",
-}) as any as S.Schema<EndpointSendConfiguration>;
+const EndpointSendConfiguration = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<EndpointSendConfiguration>;
 export type MapOfEndpointSendConfiguration = {
   [key: string]: EndpointSendConfiguration | undefined;
 };
-const MapOfEndpointSendConfiguration = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ EndpointSendConfiguration.pipe(S.optional),
-);
+const MapOfEndpointSendConfiguration = /*@__PURE__*/ __L.at(__c45, 0);
 export interface ADMMessage {
   Action?: Action;
   Body?: string;
@@ -7794,26 +5298,7 @@ export interface ADMMessage {
   Title?: string;
   Url?: string;
 }
-const ADMMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(Action),
-    Body: S.optional(S.String),
-    ConsolidationKey: S.optional(S.String),
-    Data: S.optional(MapOf__string),
-    ExpiresAfter: S.optional(S.String),
-    IconReference: S.optional(S.String),
-    ImageIconUrl: S.optional(S.String),
-    ImageUrl: S.optional(S.String),
-    MD5: S.optional(S.String),
-    RawContent: S.optional(S.String),
-    SilentPush: S.optional(S.Boolean),
-    SmallImageIconUrl: S.optional(S.String),
-    Sound: S.optional(S.String),
-    Substitutions: S.optional(MapOfListOf__string),
-    Title: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({ identifier: "ADMMessage" }) as any as S.Schema<ADMMessage>;
+const ADMMessage = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<ADMMessage>;
 export interface APNSMessage {
   APNSPushType?: string;
   Action?: Action;
@@ -7834,28 +5319,7 @@ export interface APNSMessage {
   Title?: string;
   Url?: string;
 }
-const APNSMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSPushType: S.optional(S.String),
-    Action: S.optional(Action),
-    Badge: S.optional(S.Number),
-    Body: S.optional(S.String),
-    Category: S.optional(S.String),
-    CollapseId: S.optional(S.String),
-    Data: S.optional(MapOf__string),
-    MediaUrl: S.optional(S.String),
-    PreferredAuthenticationMethod: S.optional(S.String),
-    Priority: S.optional(S.String),
-    RawContent: S.optional(S.String),
-    SilentPush: S.optional(S.Boolean),
-    Sound: S.optional(S.String),
-    Substitutions: S.optional(MapOfListOf__string),
-    ThreadId: S.optional(S.String),
-    TimeToLive: S.optional(S.Number),
-    Title: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({ identifier: "APNSMessage" }) as any as S.Schema<APNSMessage>;
+const APNSMessage = /*@__PURE__*/ __L.at(__c45, 2) as any as S.Schema<APNSMessage>;
 export interface BaiduMessage {
   Action?: Action;
   Body?: string;
@@ -7872,31 +5336,12 @@ export interface BaiduMessage {
   Title?: string;
   Url?: string;
 }
-const BaiduMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(Action),
-    Body: S.optional(S.String),
-    Data: S.optional(MapOf__string),
-    IconReference: S.optional(S.String),
-    ImageIconUrl: S.optional(S.String),
-    ImageUrl: S.optional(S.String),
-    RawContent: S.optional(S.String),
-    SilentPush: S.optional(S.Boolean),
-    SmallImageIconUrl: S.optional(S.String),
-    Sound: S.optional(S.String),
-    Substitutions: S.optional(MapOfListOf__string),
-    TimeToLive: S.optional(S.Number),
-    Title: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({ identifier: "BaiduMessage" }) as any as S.Schema<BaiduMessage>;
+const BaiduMessage = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<BaiduMessage>;
 export interface DefaultMessage {
   Body?: string;
   Substitutions?: { [key: string]: string[] | undefined };
 }
-const DefaultMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Body: S.optional(S.String), Substitutions: S.optional(MapOfListOf__string) }),
-).annotate({ identifier: "DefaultMessage" }) as any as S.Schema<DefaultMessage>;
+const DefaultMessage = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<DefaultMessage>;
 export interface DefaultPushNotificationMessage {
   Action?: Action;
   Body?: string;
@@ -7906,47 +5351,27 @@ export interface DefaultPushNotificationMessage {
   Title?: string;
   Url?: string;
 }
-const DefaultPushNotificationMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(Action),
-    Body: S.optional(S.String),
-    Data: S.optional(MapOf__string),
-    SilentPush: S.optional(S.Boolean),
-    Substitutions: S.optional(MapOfListOf__string),
-    Title: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DefaultPushNotificationMessage",
-}) as any as S.Schema<DefaultPushNotificationMessage>;
+const DefaultPushNotificationMessage = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<DefaultPushNotificationMessage>;
 export type __blob = Uint8Array;
 export interface RawEmail {
   Data?: Uint8Array;
 }
-const RawEmail = /*@__PURE__*/ S.suspend(() => S.Struct({ Data: S.optional(T.Blob) })).annotate({
-  identifier: "RawEmail",
-}) as any as S.Schema<RawEmail>;
+const RawEmail = /*@__PURE__*/ __L.at(__c45, 6) as any as S.Schema<RawEmail>;
 export interface SimpleEmailPart {
   Charset?: string;
   Data?: string;
 }
-const SimpleEmailPart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Charset: S.optional(S.String), Data: S.optional(S.String) }),
-).annotate({ identifier: "SimpleEmailPart" }) as any as S.Schema<SimpleEmailPart>;
+const SimpleEmailPart = /*@__PURE__*/ __L.at(__c45, 7) as any as S.Schema<SimpleEmailPart>;
 export interface SimpleEmail {
   HtmlPart?: SimpleEmailPart;
   Subject?: SimpleEmailPart;
   TextPart?: SimpleEmailPart;
   Headers?: MessageHeader[];
 }
-const SimpleEmail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HtmlPart: S.optional(SimpleEmailPart),
-    Subject: S.optional(SimpleEmailPart),
-    TextPart: S.optional(SimpleEmailPart),
-    Headers: S.optional(ListOfMessageHeader),
-  }),
-).annotate({ identifier: "SimpleEmail" }) as any as S.Schema<SimpleEmail>;
+const SimpleEmail = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<SimpleEmail>;
 export interface EmailMessage {
   Body?: string;
   FeedbackForwardingAddress?: string;
@@ -7956,17 +5381,7 @@ export interface EmailMessage {
   SimpleEmail?: SimpleEmail;
   Substitutions?: { [key: string]: string[] | undefined };
 }
-const EmailMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Body: S.optional(S.String),
-    FeedbackForwardingAddress: S.optional(S.String),
-    FromAddress: S.optional(S.String),
-    RawEmail: S.optional(RawEmail),
-    ReplyToAddresses: S.optional(ListOf__string),
-    SimpleEmail: S.optional(SimpleEmail),
-    Substitutions: S.optional(MapOfListOf__string),
-  }),
-).annotate({ identifier: "EmailMessage" }) as any as S.Schema<EmailMessage>;
+const EmailMessage = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<EmailMessage>;
 export interface GCMMessage {
   Action?: Action;
   Body?: string;
@@ -7987,28 +5402,7 @@ export interface GCMMessage {
   Title?: string;
   Url?: string;
 }
-const GCMMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(Action),
-    Body: S.optional(S.String),
-    CollapseKey: S.optional(S.String),
-    Data: S.optional(MapOf__string),
-    IconReference: S.optional(S.String),
-    ImageIconUrl: S.optional(S.String),
-    ImageUrl: S.optional(S.String),
-    PreferredAuthenticationMethod: S.optional(S.String),
-    Priority: S.optional(S.String),
-    RawContent: S.optional(S.String),
-    RestrictedPackageName: S.optional(S.String),
-    SilentPush: S.optional(S.Boolean),
-    SmallImageIconUrl: S.optional(S.String),
-    Sound: S.optional(S.String),
-    Substitutions: S.optional(MapOfListOf__string),
-    TimeToLive: S.optional(S.Number),
-    Title: S.optional(S.String),
-    Url: S.optional(S.String),
-  }),
-).annotate({ identifier: "GCMMessage" }) as any as S.Schema<GCMMessage>;
+const GCMMessage = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<GCMMessage>;
 export interface SMSMessage {
   Body?: string;
   Keyword?: string;
@@ -8020,19 +5414,7 @@ export interface SMSMessage {
   EntityId?: string;
   TemplateId?: string;
 }
-const SMSMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Body: S.optional(S.String),
-    Keyword: S.optional(S.String),
-    MediaUrl: S.optional(S.String),
-    MessageType: S.optional(MessageType),
-    OriginationNumber: S.optional(S.String),
-    SenderId: S.optional(S.String),
-    Substitutions: S.optional(MapOfListOf__string),
-    EntityId: S.optional(S.String),
-    TemplateId: S.optional(S.String),
-  }),
-).annotate({ identifier: "SMSMessage" }) as any as S.Schema<SMSMessage>;
+const SMSMessage = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<SMSMessage>;
 export interface VoiceMessage {
   Body?: string;
   LanguageCode?: string;
@@ -8040,15 +5422,7 @@ export interface VoiceMessage {
   Substitutions?: { [key: string]: string[] | undefined };
   VoiceId?: string;
 }
-const VoiceMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Body: S.optional(S.String),
-    LanguageCode: S.optional(S.String),
-    OriginationNumber: S.optional(S.String),
-    Substitutions: S.optional(MapOfListOf__string),
-    VoiceId: S.optional(S.String),
-  }),
-).annotate({ identifier: "VoiceMessage" }) as any as S.Schema<VoiceMessage>;
+const VoiceMessage = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<VoiceMessage>;
 export interface DirectMessageConfiguration {
   ADMMessage?: ADMMessage;
   APNSMessage?: APNSMessage;
@@ -8060,21 +5434,10 @@ export interface DirectMessageConfiguration {
   SMSMessage?: SMSMessage;
   VoiceMessage?: VoiceMessage;
 }
-const DirectMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ADMMessage: S.optional(ADMMessage),
-    APNSMessage: S.optional(APNSMessage),
-    BaiduMessage: S.optional(BaiduMessage),
-    DefaultMessage: S.optional(DefaultMessage),
-    DefaultPushNotificationMessage: S.optional(DefaultPushNotificationMessage),
-    EmailMessage: S.optional(EmailMessage),
-    GCMMessage: S.optional(GCMMessage),
-    SMSMessage: S.optional(SMSMessage),
-    VoiceMessage: S.optional(VoiceMessage),
-  }),
-).annotate({
-  identifier: "DirectMessageConfiguration",
-}) as any as S.Schema<DirectMessageConfiguration>;
+const DirectMessageConfiguration = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<DirectMessageConfiguration>;
 export interface MessageRequest {
   Addresses?: { [key: string]: AddressConfiguration | undefined };
   Context?: { [key: string]: string | undefined };
@@ -8083,37 +5446,12 @@ export interface MessageRequest {
   TemplateConfiguration?: TemplateConfiguration;
   TraceId?: string;
 }
-const MessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Addresses: S.optional(MapOfAddressConfiguration),
-    Context: S.optional(MapOf__string),
-    Endpoints: S.optional(MapOfEndpointSendConfiguration),
-    MessageConfiguration: S.optional(DirectMessageConfiguration),
-    TemplateConfiguration: S.optional(TemplateConfiguration),
-    TraceId: S.optional(S.String),
-  }),
-).annotate({ identifier: "MessageRequest" }) as any as S.Schema<MessageRequest>;
+const MessageRequest = /*@__PURE__*/ __L.at(__c46, 6) as any as S.Schema<MessageRequest>;
 export interface SendMessagesRequest {
   ApplicationId: string;
   MessageRequest?: MessageRequest;
 }
-const SendMessagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    MessageRequest: S.optional(MessageRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/messages" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SendMessagesRequest" }) as any as S.Schema<SendMessagesRequest>;
+const SendMessagesRequest = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<SendMessagesRequest>;
 export type DeliveryStatus =
   | "SUCCESSFUL"
   | "THROTTLED"
@@ -8133,21 +5471,12 @@ export interface EndpointMessageResult {
   StatusMessage?: string;
   UpdatedToken?: string;
 }
-const EndpointMessageResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: S.optional(S.String),
-    DeliveryStatus: S.optional(DeliveryStatus),
-    MessageId: S.optional(S.String),
-    StatusCode: S.optional(S.Number),
-    StatusMessage: S.optional(S.String),
-    UpdatedToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "EndpointMessageResult" }) as any as S.Schema<EndpointMessageResult>;
+const EndpointMessageResult = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<EndpointMessageResult>;
 export type MapOfEndpointMessageResult = { [key: string]: EndpointMessageResult | undefined };
-const MapOfEndpointMessageResult = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ EndpointMessageResult.pipe(S.optional),
-);
+const MapOfEndpointMessageResult = /*@__PURE__*/ __L.at(__c47, 1);
 export interface MessageResult {
   DeliveryStatus?: DeliveryStatus;
   MessageId?: string;
@@ -8155,34 +5484,16 @@ export interface MessageResult {
   StatusMessage?: string;
   UpdatedToken?: string;
 }
-const MessageResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryStatus: S.optional(DeliveryStatus),
-    MessageId: S.optional(S.String),
-    StatusCode: S.optional(S.Number),
-    StatusMessage: S.optional(S.String),
-    UpdatedToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "MessageResult" }) as any as S.Schema<MessageResult>;
+const MessageResult = /*@__PURE__*/ __L.at(__c47, 2) as any as S.Schema<MessageResult>;
 export type MapOfMessageResult = { [key: string]: MessageResult | undefined };
-const MapOfMessageResult = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ MessageResult.pipe(S.optional),
-);
+const MapOfMessageResult = /*@__PURE__*/ __L.at(__c47, 3);
 export interface MessageResponse {
   ApplicationId?: string;
   EndpointResult?: { [key: string]: EndpointMessageResult | undefined };
   RequestId?: string;
   Result?: { [key: string]: MessageResult | undefined };
 }
-const MessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    EndpointResult: S.optional(MapOfEndpointMessageResult),
-    RequestId: S.optional(S.String),
-    Result: S.optional(MapOfMessageResult),
-  }),
-).annotate({ identifier: "MessageResponse" }) as any as S.Schema<MessageResponse>;
+const MessageResponse = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<MessageResponse>;
 export interface SendMessagesResponse {
   MessageResponse: MessageResponse & {
     ApplicationId: string;
@@ -8198,13 +5509,10 @@ export interface SendMessagesResponse {
     };
   };
 }
-const SendMessagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageResponse: S.optional(MessageResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageResponse" }),
-  }),
-).annotate({ identifier: "SendMessagesResponse" }) as any as S.Schema<SendMessagesResponse>;
+const SendMessagesResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<SendMessagesResponse>;
 export interface SendOTPMessageRequestParameters {
   AllowedAttempts?: number;
   BrandName?: string;
@@ -8218,44 +5526,18 @@ export interface SendOTPMessageRequestParameters {
   TemplateId?: string;
   ValidityPeriod?: number;
 }
-const SendOTPMessageRequestParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AllowedAttempts: S.optional(S.Number),
-    BrandName: S.optional(S.String),
-    Channel: S.optional(S.String),
-    CodeLength: S.optional(S.Number),
-    DestinationIdentity: S.optional(S.String),
-    EntityId: S.optional(S.String),
-    Language: S.optional(S.String),
-    OriginationIdentity: S.optional(S.String),
-    ReferenceId: S.optional(S.String),
-    TemplateId: S.optional(S.String),
-    ValidityPeriod: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SendOTPMessageRequestParameters",
-}) as any as S.Schema<SendOTPMessageRequestParameters>;
+const SendOTPMessageRequestParameters = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<SendOTPMessageRequestParameters>;
 export interface SendOTPMessageRequest {
   ApplicationId: string;
   SendOTPMessageRequestParameters?: SendOTPMessageRequestParameters;
 }
-const SendOTPMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SendOTPMessageRequestParameters: S.optional(SendOTPMessageRequestParameters)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SendOTPMessageRequestParameters" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/otp" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SendOTPMessageRequest" }) as any as S.Schema<SendOTPMessageRequest>;
+const SendOTPMessageRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<SendOTPMessageRequest>;
 export interface SendOTPMessageResponse {
   MessageResponse: MessageResponse & {
     ApplicationId: string;
@@ -8279,55 +5561,31 @@ export interface SendUsersMessageRequest {
   TraceId?: string;
   Users?: { [key: string]: EndpointSendConfiguration | undefined };
 }
-const SendUsersMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Context: S.optional(MapOf__string),
-    MessageConfiguration: S.optional(DirectMessageConfiguration),
-    TemplateConfiguration: S.optional(TemplateConfiguration),
-    TraceId: S.optional(S.String),
-    Users: S.optional(MapOfEndpointSendConfiguration),
-  }),
-).annotate({ identifier: "SendUsersMessageRequest" }) as any as S.Schema<SendUsersMessageRequest>;
+const SendUsersMessageRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<SendUsersMessageRequest>;
 export interface SendUsersMessagesRequest {
   ApplicationId: string;
   SendUsersMessageRequest?: SendUsersMessageRequest;
 }
-const SendUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SendUsersMessageRequest: S.optional(SendUsersMessageRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SendUsersMessageRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/users-messages" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SendUsersMessagesRequest" }) as any as S.Schema<SendUsersMessagesRequest>;
+const SendUsersMessagesRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<SendUsersMessagesRequest>;
 export type MapOfMapOfEndpointMessageResult = {
   [key: string]: { [key: string]: EndpointMessageResult | undefined } | undefined;
 };
-const MapOfMapOfEndpointMessageResult = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ MapOfEndpointMessageResult.pipe(S.optional),
-);
+const MapOfMapOfEndpointMessageResult = /*@__PURE__*/ __L.at(__c48, 2);
 export interface SendUsersMessageResponse {
   ApplicationId?: string;
   RequestId?: string;
   Result?: { [key: string]: { [key: string]: EndpointMessageResult | undefined } | undefined };
 }
-const SendUsersMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    Result: S.optional(MapOfMapOfEndpointMessageResult),
-  }),
-).annotate({ identifier: "SendUsersMessageResponse" }) as any as S.Schema<SendUsersMessageResponse>;
+const SendUsersMessageResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<SendUsersMessageResponse>;
 export interface SendUsersMessagesResponse {
   SendUsersMessageResponse: SendUsersMessageResponse & {
     ApplicationId: string;
@@ -8342,50 +5600,25 @@ export interface SendUsersMessagesResponse {
     };
   };
 }
-const SendUsersMessagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SendUsersMessageResponse: S.optional(SendUsersMessageResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SendUsersMessageResponse" }),
-  }),
-).annotate({
-  identifier: "SendUsersMessagesResponse",
-}) as any as S.Schema<SendUsersMessagesResponse>;
+const SendUsersMessagesResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<SendUsersMessagesResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   TagsModel?: TagsModel;
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagsModel: S.optional(TagsModel).pipe(T.HttpPayload()).annotate({ identifier: "TagsModel" }),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: S.optional(ListOf__string).pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface ADMChannelRequest {
@@ -8393,34 +5626,15 @@ export interface ADMChannelRequest {
   ClientSecret?: string;
   Enabled?: boolean;
 }
-const ADMChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientId: S.optional(S.String),
-    ClientSecret: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ADMChannelRequest" }) as any as S.Schema<ADMChannelRequest>;
+const ADMChannelRequest = /*@__PURE__*/ __L.at(__c49, 0) as any as S.Schema<ADMChannelRequest>;
 export interface UpdateAdmChannelRequest {
   ADMChannelRequest?: ADMChannelRequest;
   ApplicationId: string;
 }
-const UpdateAdmChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ADMChannelRequest: S.optional(ADMChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "ADMChannelRequest" }),
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/adm" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateAdmChannelRequest" }) as any as S.Schema<UpdateAdmChannelRequest>;
+const UpdateAdmChannelRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<UpdateAdmChannelRequest>;
 export interface UpdateAdmChannelResponse {
   ADMChannelResponse: ADMChannelResponse & { Platform: string };
 }
@@ -8436,39 +5650,15 @@ export interface APNSChannelRequest {
   TokenKey?: string;
   TokenKeyId?: string;
 }
-const APNSChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BundleId: S.optional(S.String),
-    Certificate: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    PrivateKey: S.optional(S.String),
-    TeamId: S.optional(S.String),
-    TokenKey: S.optional(S.String),
-    TokenKeyId: S.optional(S.String),
-  }),
-).annotate({ identifier: "APNSChannelRequest" }) as any as S.Schema<APNSChannelRequest>;
+const APNSChannelRequest = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<APNSChannelRequest>;
 export interface UpdateApnsChannelRequest {
   APNSChannelRequest?: APNSChannelRequest;
   ApplicationId: string;
 }
-const UpdateApnsChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSChannelRequest: S.optional(APNSChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSChannelRequest" }),
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateApnsChannelRequest" }) as any as S.Schema<UpdateApnsChannelRequest>;
+const UpdateApnsChannelRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<UpdateApnsChannelRequest>;
 export interface UpdateApnsChannelResponse {
   APNSChannelResponse: APNSChannelResponse & { Platform: string };
 }
@@ -8484,43 +5674,18 @@ export interface APNSSandboxChannelRequest {
   TokenKey?: string;
   TokenKeyId?: string;
 }
-const APNSSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BundleId: S.optional(S.String),
-    Certificate: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    PrivateKey: S.optional(S.String),
-    TeamId: S.optional(S.String),
-    TokenKey: S.optional(S.String),
-    TokenKeyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "APNSSandboxChannelRequest",
-}) as any as S.Schema<APNSSandboxChannelRequest>;
+const APNSSandboxChannelRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<APNSSandboxChannelRequest>;
 export interface UpdateApnsSandboxChannelRequest {
   APNSSandboxChannelRequest?: APNSSandboxChannelRequest;
   ApplicationId: string;
 }
-const UpdateApnsSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSSandboxChannelRequest: S.optional(APNSSandboxChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSSandboxChannelRequest" }),
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateApnsSandboxChannelRequest",
-}) as any as S.Schema<UpdateApnsSandboxChannelRequest>;
+const UpdateApnsSandboxChannelRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<UpdateApnsSandboxChannelRequest>;
 export interface UpdateApnsSandboxChannelResponse {
   APNSSandboxChannelResponse: APNSSandboxChannelResponse & { Platform: string };
 }
@@ -8541,25 +5706,10 @@ export interface UpdateApnsVoipChannelRequest {
   APNSVoipChannelRequest?: APNSVoipChannelRequest;
   ApplicationId: string;
 }
-const UpdateApnsVoipChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSVoipChannelRequest: S.optional(APNSVoipChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSVoipChannelRequest" }),
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_voip" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateApnsVoipChannelRequest",
-}) as any as S.Schema<UpdateApnsVoipChannelRequest>;
+const UpdateApnsVoipChannelRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<UpdateApnsVoipChannelRequest>;
 export interface UpdateApnsVoipChannelResponse {
   APNSVoipChannelResponse: APNSVoipChannelResponse & { Platform: string };
 }
@@ -8581,25 +5731,10 @@ export interface UpdateApnsVoipSandboxChannelRequest {
   APNSVoipSandboxChannelRequest?: APNSVoipSandboxChannelRequest;
   ApplicationId: string;
 }
-const UpdateApnsVoipSandboxChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APNSVoipSandboxChannelRequest: S.optional(APNSVoipSandboxChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "APNSVoipSandboxChannelRequest" }),
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateApnsVoipSandboxChannelRequest",
-}) as any as S.Schema<UpdateApnsVoipSandboxChannelRequest>;
+const UpdateApnsVoipSandboxChannelRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<UpdateApnsVoipSandboxChannelRequest>;
 export interface UpdateApnsVoipSandboxChannelResponse {
   APNSVoipSandboxChannelResponse: APNSVoipSandboxChannelResponse & { Platform: string };
 }
@@ -8613,41 +5748,18 @@ export interface WriteApplicationSettingsRequest {
   QuietTime?: QuietTime;
   JourneyLimits?: ApplicationSettingsJourneyLimits;
 }
-const WriteApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignHook: S.optional(CampaignHook),
-    CloudWatchMetricsEnabled: S.optional(S.Boolean),
-    EventTaggingEnabled: S.optional(S.Boolean),
-    Limits: S.optional(CampaignLimits),
-    QuietTime: S.optional(QuietTime),
-    JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
-  }),
-).annotate({
-  identifier: "WriteApplicationSettingsRequest",
-}) as any as S.Schema<WriteApplicationSettingsRequest>;
+const WriteApplicationSettingsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<WriteApplicationSettingsRequest>;
 export interface UpdateApplicationSettingsRequest {
   ApplicationId: string;
   WriteApplicationSettingsRequest?: WriteApplicationSettingsRequest;
 }
-const UpdateApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    WriteApplicationSettingsRequest: S.optional(WriteApplicationSettingsRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "WriteApplicationSettingsRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/settings" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateApplicationSettingsRequest",
-}) as any as S.Schema<UpdateApplicationSettingsRequest>;
+const UpdateApplicationSettingsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<UpdateApplicationSettingsRequest>;
 export interface UpdateApplicationSettingsResponse {
   ApplicationSettingsResource: ApplicationSettingsResource & { ApplicationId: string };
 }
@@ -8658,36 +5770,15 @@ export interface BaiduChannelRequest {
   Enabled?: boolean;
   SecretKey?: string;
 }
-const BaiduChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApiKey: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    SecretKey: S.optional(S.String),
-  }),
-).annotate({ identifier: "BaiduChannelRequest" }) as any as S.Schema<BaiduChannelRequest>;
+const BaiduChannelRequest = /*@__PURE__*/ __L.at(__c50, 2) as any as S.Schema<BaiduChannelRequest>;
 export interface UpdateBaiduChannelRequest {
   ApplicationId: string;
   BaiduChannelRequest?: BaiduChannelRequest;
 }
-const UpdateBaiduChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    BaiduChannelRequest: S.optional(BaiduChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "BaiduChannelRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateBaiduChannelRequest",
-}) as any as S.Schema<UpdateBaiduChannelRequest>;
+const UpdateBaiduChannelRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<UpdateBaiduChannelRequest>;
 export interface UpdateBaiduChannelResponse {
   BaiduChannelResponse: BaiduChannelResponse & { Credential: string; Platform: string };
 }
@@ -8698,24 +5789,10 @@ export interface UpdateCampaignRequest {
   CampaignId: string;
   WriteCampaignRequest?: WriteCampaignRequest;
 }
-const UpdateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-    WriteCampaignRequest: S.optional(WriteCampaignRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "WriteCampaignRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateCampaignRequest" }) as any as S.Schema<UpdateCampaignRequest>;
+const UpdateCampaignRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<UpdateCampaignRequest>;
 export interface UpdateCampaignResponse {
   CampaignResponse: CampaignResponse & {
     ApplicationId: string;
@@ -8844,39 +5921,15 @@ export interface EmailChannelRequest {
   RoleArn?: string;
   OrchestrationSendingRoleArn?: string;
 }
-const EmailChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConfigurationSet: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    FromAddress: S.optional(S.String),
-    Identity: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    OrchestrationSendingRoleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmailChannelRequest" }) as any as S.Schema<EmailChannelRequest>;
+const EmailChannelRequest = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<EmailChannelRequest>;
 export interface UpdateEmailChannelRequest {
   ApplicationId: string;
   EmailChannelRequest?: EmailChannelRequest;
 }
-const UpdateEmailChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    EmailChannelRequest: S.optional(EmailChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EmailChannelRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/email" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateEmailChannelRequest",
-}) as any as S.Schema<UpdateEmailChannelRequest>;
+const UpdateEmailChannelRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<UpdateEmailChannelRequest>;
 export interface UpdateEmailChannelResponse {
   EmailChannelResponse: EmailChannelResponse & { Platform: string };
 }
@@ -8888,27 +5941,10 @@ export interface UpdateEmailTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const UpdateEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-    EmailTemplateRequest: S.optional(EmailTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EmailTemplateRequest" }),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/email" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateEmailTemplateRequest",
-}) as any as S.Schema<UpdateEmailTemplateRequest>;
+const UpdateEmailTemplateRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<UpdateEmailTemplateRequest>;
 export interface UpdateEmailTemplateResponse {
   MessageBody: MessageBody;
 }
@@ -8933,34 +5969,17 @@ export interface UpdateEndpointRequest {
   EndpointId: string;
   EndpointRequest?: EndpointRequest;
 }
-const UpdateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
-    EndpointRequest: S.optional(EndpointRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EndpointRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateEndpointRequest" }) as any as S.Schema<UpdateEndpointRequest>;
+const UpdateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<UpdateEndpointRequest>;
 export interface UpdateEndpointResponse {
   MessageBody: MessageBody;
 }
-const UpdateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageBody: S.optional(MessageBody)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "MessageBody" }),
-  }),
-).annotate({ identifier: "UpdateEndpointResponse" }) as any as S.Schema<UpdateEndpointResponse>;
+const UpdateEndpointResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<UpdateEndpointResponse>;
 export interface EndpointBatchItem {
   Address?: string;
   Attributes?: { [key: string]: string[] | undefined };
@@ -8975,53 +5994,24 @@ export interface EndpointBatchItem {
   RequestId?: string;
   User?: EndpointUser;
 }
-const EndpointBatchItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: S.optional(S.String),
-    Attributes: S.optional(MapOfListOf__string),
-    ChannelType: S.optional(ChannelType),
-    Demographic: S.optional(EndpointDemographic),
-    EffectiveDate: S.optional(S.String),
-    EndpointStatus: S.optional(S.String),
-    Id: S.optional(S.String),
-    Location: S.optional(EndpointLocation),
-    Metrics: S.optional(MapOf__double),
-    OptOut: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    User: S.optional(EndpointUser),
-  }),
-).annotate({ identifier: "EndpointBatchItem" }) as any as S.Schema<EndpointBatchItem>;
+const EndpointBatchItem = /*@__PURE__*/ __L.at(__c51, 2) as any as S.Schema<EndpointBatchItem>;
 export type ListOfEndpointBatchItem = EndpointBatchItem[];
-const ListOfEndpointBatchItem = /*@__PURE__*/ S.Array(EndpointBatchItem);
+const ListOfEndpointBatchItem = /*@__PURE__*/ __L.at(__c51, 3);
 export interface EndpointBatchRequest {
   Item?: EndpointBatchItem[];
 }
-const EndpointBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Item: S.optional(ListOfEndpointBatchItem) }),
-).annotate({ identifier: "EndpointBatchRequest" }) as any as S.Schema<EndpointBatchRequest>;
+const EndpointBatchRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<EndpointBatchRequest>;
 export interface UpdateEndpointsBatchRequest {
   ApplicationId: string;
   EndpointBatchRequest?: EndpointBatchRequest;
 }
-const UpdateEndpointsBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    EndpointBatchRequest: S.optional(EndpointBatchRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "EndpointBatchRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateEndpointsBatchRequest",
-}) as any as S.Schema<UpdateEndpointsBatchRequest>;
+const UpdateEndpointsBatchRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<UpdateEndpointsBatchRequest>;
 export interface UpdateEndpointsBatchResponse {
   MessageBody: MessageBody;
 }
@@ -9033,35 +6023,15 @@ export interface GCMChannelRequest {
   Enabled?: boolean;
   ServiceJson?: string;
 }
-const GCMChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApiKey: S.optional(S.String),
-    DefaultAuthenticationMethod: S.optional(S.String),
-    Enabled: S.optional(S.Boolean),
-    ServiceJson: S.optional(S.String),
-  }),
-).annotate({ identifier: "GCMChannelRequest" }) as any as S.Schema<GCMChannelRequest>;
+const GCMChannelRequest = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<GCMChannelRequest>;
 export interface UpdateGcmChannelRequest {
   ApplicationId: string;
   GCMChannelRequest?: GCMChannelRequest;
 }
-const UpdateGcmChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    GCMChannelRequest: S.optional(GCMChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "GCMChannelRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/gcm" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateGcmChannelRequest" }) as any as S.Schema<UpdateGcmChannelRequest>;
+const UpdateGcmChannelRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<UpdateGcmChannelRequest>;
 export interface UpdateGcmChannelResponse {
   GCMChannelResponse: GCMChannelResponse & { Platform: string };
 }
@@ -9073,27 +6043,10 @@ export interface UpdateInAppTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const UpdateInAppTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-    InAppTemplateRequest: S.optional(InAppTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "InAppTemplateRequest" }),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/inapp" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateInAppTemplateRequest",
-}) as any as S.Schema<UpdateInAppTemplateRequest>;
+const UpdateInAppTemplateRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<UpdateInAppTemplateRequest>;
 export interface UpdateInAppTemplateResponse {
   MessageBody: MessageBody;
 }
@@ -9104,24 +6057,10 @@ export interface UpdateJourneyRequest {
   JourneyId: string;
   WriteJourneyRequest?: WriteJourneyRequest;
 }
-const UpdateJourneyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-    WriteJourneyRequest: S.optional(WriteJourneyRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "WriteJourneyRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateJourneyRequest" }) as any as S.Schema<UpdateJourneyRequest>;
+const UpdateJourneyRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<UpdateJourneyRequest>;
 export interface UpdateJourneyResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -9263,34 +6202,16 @@ const UpdateJourneyResponse = CreateJourneyResponse as any as S.Schema<UpdateJou
 export interface JourneyStateRequest {
   State?: State;
 }
-const JourneyStateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ State: S.optional(State) }),
-).annotate({ identifier: "JourneyStateRequest" }) as any as S.Schema<JourneyStateRequest>;
+const JourneyStateRequest = /*@__PURE__*/ __L.at(__c52, 2) as any as S.Schema<JourneyStateRequest>;
 export interface UpdateJourneyStateRequest {
   ApplicationId: string;
   JourneyId: string;
   JourneyStateRequest?: JourneyStateRequest;
 }
-const UpdateJourneyStateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-    JourneyStateRequest: S.optional(JourneyStateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyStateRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/state" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateJourneyStateRequest",
-}) as any as S.Schema<UpdateJourneyStateRequest>;
+const UpdateJourneyStateRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<UpdateJourneyStateRequest>;
 export interface UpdateJourneyStateResponse {
   JourneyResponse: JourneyResponse & {
     ApplicationId: string;
@@ -9428,42 +6349,20 @@ export interface UpdateJourneyStateResponse {
     };
   };
 }
-const UpdateJourneyStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JourneyResponse: S.optional(JourneyResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "JourneyResponse" }),
-  }),
-).annotate({
-  identifier: "UpdateJourneyStateResponse",
-}) as any as S.Schema<UpdateJourneyStateResponse>;
+const UpdateJourneyStateResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<UpdateJourneyStateResponse>;
 export interface UpdatePushTemplateRequest {
   CreateNewVersion?: boolean;
   PushNotificationTemplateRequest?: PushNotificationTemplateRequest;
   TemplateName: string;
   Version?: string;
 }
-const UpdatePushTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-    PushNotificationTemplateRequest: S.optional(PushNotificationTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "PushNotificationTemplateRequest" }),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/push" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdatePushTemplateRequest",
-}) as any as S.Schema<UpdatePushTemplateRequest>;
+const UpdatePushTemplateRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<UpdatePushTemplateRequest>;
 export interface UpdatePushTemplateResponse {
   MessageBody: MessageBody;
 }
@@ -9486,25 +6385,10 @@ export interface UpdateRecommenderConfigurationRequest {
   RecommenderId: string;
   UpdateRecommenderConfiguration?: UpdateRecommenderConfigurationShape;
 }
-const UpdateRecommenderConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")),
-    UpdateRecommenderConfiguration: S.optional(UpdateRecommenderConfigurationShape)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "UpdateRecommenderConfigurationShape" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/recommenders/{RecommenderId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateRecommenderConfigurationRequest",
-}) as any as S.Schema<UpdateRecommenderConfigurationRequest>;
+const UpdateRecommenderConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<UpdateRecommenderConfigurationRequest>;
 export interface UpdateRecommenderConfigurationResponse {
   RecommenderConfigurationResponse: RecommenderConfigurationResponse & {
     CreationDate: string;
@@ -9521,24 +6405,10 @@ export interface UpdateSegmentRequest {
   SegmentId: string;
   WriteSegmentRequest?: WriteSegmentRequest;
 }
-const UpdateSegmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-    WriteSegmentRequest: S.optional(WriteSegmentRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "WriteSegmentRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateSegmentRequest" }) as any as S.Schema<UpdateSegmentRequest>;
+const UpdateSegmentRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<UpdateSegmentRequest>;
 export interface UpdateSegmentResponse {
   SegmentResponse: SegmentResponse & {
     ApplicationId: string;
@@ -9624,34 +6494,15 @@ export interface SMSChannelRequest {
   SenderId?: string;
   ShortCode?: string;
 }
-const SMSChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Enabled: S.optional(S.Boolean),
-    SenderId: S.optional(S.String),
-    ShortCode: S.optional(S.String),
-  }),
-).annotate({ identifier: "SMSChannelRequest" }) as any as S.Schema<SMSChannelRequest>;
+const SMSChannelRequest = /*@__PURE__*/ __L.at(__c53, 0) as any as S.Schema<SMSChannelRequest>;
 export interface UpdateSmsChannelRequest {
   ApplicationId: string;
   SMSChannelRequest?: SMSChannelRequest;
 }
-const UpdateSmsChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SMSChannelRequest: S.optional(SMSChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SMSChannelRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/sms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateSmsChannelRequest" }) as any as S.Schema<UpdateSmsChannelRequest>;
+const UpdateSmsChannelRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<UpdateSmsChannelRequest>;
 export interface UpdateSmsChannelResponse {
   SMSChannelResponse: SMSChannelResponse & { Platform: string };
 }
@@ -9663,25 +6514,10 @@ export interface UpdateSmsTemplateRequest {
   TemplateName: string;
   Version?: string;
 }
-const UpdateSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-    SMSTemplateRequest: S.optional(SMSTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "SMSTemplateRequest" }),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/sms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateSmsTemplateRequest" }) as any as S.Schema<UpdateSmsTemplateRequest>;
+const UpdateSmsTemplateRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<UpdateSmsTemplateRequest>;
 export interface UpdateSmsTemplateResponse {
   MessageBody: MessageBody;
 }
@@ -9690,36 +6526,19 @@ const UpdateSmsTemplateResponse =
 export interface TemplateActiveVersionRequest {
   Version?: string;
 }
-const TemplateActiveVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Version: S.optional(S.String) }),
-).annotate({
-  identifier: "TemplateActiveVersionRequest",
-}) as any as S.Schema<TemplateActiveVersionRequest>;
+const TemplateActiveVersionRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  3,
+) as any as S.Schema<TemplateActiveVersionRequest>;
 export interface UpdateTemplateActiveVersionRequest {
   TemplateActiveVersionRequest?: TemplateActiveVersionRequest;
   TemplateName: string;
   TemplateType: string;
 }
-const UpdateTemplateActiveVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateActiveVersionRequest: S.optional(TemplateActiveVersionRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "TemplateActiveVersionRequest" }),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/{TemplateType}/active-version" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateTemplateActiveVersionRequest",
-}) as any as S.Schema<UpdateTemplateActiveVersionRequest>;
+const UpdateTemplateActiveVersionRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<UpdateTemplateActiveVersionRequest>;
 export interface UpdateTemplateActiveVersionResponse {
   MessageBody: MessageBody;
 }
@@ -9728,32 +6547,15 @@ const UpdateTemplateActiveVersionResponse =
 export interface VoiceChannelRequest {
   Enabled?: boolean;
 }
-const VoiceChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({ identifier: "VoiceChannelRequest" }) as any as S.Schema<VoiceChannelRequest>;
+const VoiceChannelRequest = /*@__PURE__*/ __L.at(__c53, 5) as any as S.Schema<VoiceChannelRequest>;
 export interface UpdateVoiceChannelRequest {
   ApplicationId: string;
   VoiceChannelRequest?: VoiceChannelRequest;
 }
-const UpdateVoiceChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    VoiceChannelRequest: S.optional(VoiceChannelRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "VoiceChannelRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateVoiceChannelRequest",
-}) as any as S.Schema<UpdateVoiceChannelRequest>;
+const UpdateVoiceChannelRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<UpdateVoiceChannelRequest>;
 export interface UpdateVoiceChannelResponse {
   VoiceChannelResponse: VoiceChannelResponse & { Platform: string };
 }
@@ -9765,27 +6567,10 @@ export interface UpdateVoiceTemplateRequest {
   Version?: string;
   VoiceTemplateRequest?: VoiceTemplateRequest;
 }
-const UpdateVoiceTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-    TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-    Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-    VoiceTemplateRequest: S.optional(VoiceTemplateRequest)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "VoiceTemplateRequest" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/voice" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateVoiceTemplateRequest",
-}) as any as S.Schema<UpdateVoiceTemplateRequest>;
+const UpdateVoiceTemplateRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<UpdateVoiceTemplateRequest>;
 export interface UpdateVoiceTemplateResponse {
   MessageBody: MessageBody;
 }
@@ -9796,52 +6581,32 @@ export interface VerifyOTPMessageRequestParameters {
   Otp?: string;
   ReferenceId?: string;
 }
-const VerifyOTPMessageRequestParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DestinationIdentity: S.optional(S.String),
-    Otp: S.optional(S.String),
-    ReferenceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerifyOTPMessageRequestParameters",
-}) as any as S.Schema<VerifyOTPMessageRequestParameters>;
+const VerifyOTPMessageRequestParameters = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<VerifyOTPMessageRequestParameters>;
 export interface VerifyOTPMessageRequest {
   ApplicationId: string;
   VerifyOTPMessageRequestParameters?: VerifyOTPMessageRequestParameters;
 }
-const VerifyOTPMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    VerifyOTPMessageRequestParameters: S.optional(VerifyOTPMessageRequestParameters)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "VerifyOTPMessageRequestParameters" }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/verify-otp" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "VerifyOTPMessageRequest" }) as any as S.Schema<VerifyOTPMessageRequest>;
+const VerifyOTPMessageRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<VerifyOTPMessageRequest>;
 export interface VerificationResponse {
   Valid?: boolean;
 }
-const VerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Valid: S.optional(S.Boolean) }),
-).annotate({ identifier: "VerificationResponse" }) as any as S.Schema<VerificationResponse>;
+const VerificationResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<VerificationResponse>;
 export interface VerifyOTPMessageResponse {
   VerificationResponse: VerificationResponse;
 }
-const VerifyOTPMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VerificationResponse: S.optional(VerificationResponse)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "VerificationResponse" }),
-  }),
-).annotate({ identifier: "VerifyOTPMessageResponse" }) as any as S.Schema<VerifyOTPMessageResponse>;
+const VerifyOTPMessageResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<VerifyOTPMessageResponse>;
 export type CreateAppError =
   | BadRequestException
   | ForbiddenException
@@ -13919,3 +10684,5057 @@ export const verifyOTPMessage: API.OperationMethod<
   retry: Retry,
   operationName: "VerifyOTPMessage",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), tags: S.optional(MapOf__string) }),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CreateApplicationRequest: S.optional(CreateApplicationRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CreateApplicationRequest" }),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/apps" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateAppRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          tags: S.optional(MapOf__string),
+          CreationDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationResponse: S.optional(ApplicationResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ApplicationResponse" }),
+        }),
+      ).annotate({ identifier: "CreateAppResponse" });
+    case 5:
+      return S.Array(__EndpointTypesElement);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryUri: S.optional(S.String),
+          EndpointTypes: S.optional(ListOf__EndpointTypesElement),
+        }),
+      ).annotate({
+        identifier: "CustomDeliveryConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(Action),
+          Body: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageSmallIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          JsonBody: S.optional(S.String),
+          MediaUrl: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          TimeToLive: S.optional(S.Number),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Message" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Data: S.optional(S.String) })).annotate({
+        identifier: "CampaignCustomMessage",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "MessageHeader" });
+    case 2:
+      return S.Array(MessageHeader);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          FromAddress: S.optional(S.String),
+          Headers: S.optional(ListOfMessageHeader),
+          HtmlBody: S.optional(S.String),
+          Title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignEmailMessage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          MessageType: S.optional(MessageType),
+          OriginationNumber: S.optional(S.String),
+          SenderId: S.optional(S.String),
+          EntityId: S.optional(S.String),
+          TemplateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignSmsMessage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Alignment: S.optional(Alignment),
+          Body: S.optional(S.String),
+          TextColor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InAppMessageBodyConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Alignment: S.optional(Alignment),
+          Header: S.optional(S.String),
+          TextColor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InAppMessageHeaderConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ButtonAction: S.optional(ButtonAction), Link: S.optional(S.String) }),
+      ).annotate({
+        identifier: "OverrideButtonConfiguration",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackgroundColor: S.optional(S.String),
+          BorderRadius: S.optional(S.Number),
+          ButtonAction: S.optional(ButtonAction),
+          Link: S.optional(S.String),
+          Text: S.optional(S.String),
+          TextColor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DefaultButtonConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Android: S.optional(OverrideButtonConfiguration),
+          DefaultConfig: S.optional(DefaultButtonConfiguration),
+          IOS: S.optional(OverrideButtonConfiguration),
+          Web: S.optional(OverrideButtonConfiguration),
+        }),
+      ).annotate({ identifier: "InAppMessageButton" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          BackgroundColor: S.optional(S.String),
+          BodyConfig: S.optional(InAppMessageBodyConfig),
+          HeaderConfig: S.optional(InAppMessageHeaderConfig),
+          ImageUrl: S.optional(S.String),
+          PrimaryBtn: S.optional(InAppMessageButton),
+          SecondaryBtn: S.optional(InAppMessageButton),
+        }),
+      ).annotate({ identifier: "InAppMessageContent" });
+    case 3:
+      return S.Array(InAppMessageContent);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          Content: S.optional(ListOfInAppMessageContent),
+          CustomConfig: S.optional(MapOf__string),
+          Layout: S.optional(Layout),
+        }),
+      ).annotate({ identifier: "CampaignInAppMessage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ADMMessage: S.optional(Message),
+          APNSMessage: S.optional(Message),
+          BaiduMessage: S.optional(Message),
+          CustomMessage: S.optional(CampaignCustomMessage),
+          DefaultMessage: S.optional(Message),
+          EmailMessage: S.optional(CampaignEmailMessage),
+          GCMMessage: S.optional(Message),
+          SMSMessage: S.optional(CampaignSmsMessage),
+          InAppMessage: S.optional(CampaignInAppMessage),
+        }),
+      ).annotate({ identifier: "MessageConfiguration" });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ AttributeType: S.optional(AttributeType), Values: S.optional(ListOf__string) }),
+      ).annotate({ identifier: "AttributeDimension" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ AttributeDimension.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DimensionType: S.optional(DimensionType), Values: S.optional(ListOf__string) }),
+      ).annotate({ identifier: "SetDimension" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ComparisonOperator: S.optional(S.String), Value: S.optional(S.Number) }),
+      ).annotate({ identifier: "MetricDimension" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ MetricDimension.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Attributes: S.optional(MapOfAttributeDimension),
+          EventType: S.optional(SetDimension),
+          Metrics: S.optional(MapOfMetricDimension),
+        }),
+      ).annotate({ identifier: "EventDimensions" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Dimensions: S.optional(EventDimensions), FilterType: S.optional(FilterType) }),
+      ).annotate({ identifier: "CampaignEventFilter" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ End: S.optional(S.String), Start: S.optional(S.String) }),
+      ).annotate({ identifier: "QuietTime" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          EndTime: S.optional(S.String),
+          EventFilter: S.optional(CampaignEventFilter),
+          Frequency: S.optional(Frequency),
+          IsLocalTime: S.optional(S.Boolean),
+          QuietTime: S.optional(QuietTime),
+          StartTime: S.optional(S.String),
+          Timezone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Schedule" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
+      ).annotate({ identifier: "Template" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EmailTemplate: S.optional(Template),
+          PushTemplate: S.optional(Template),
+          SMSTemplate: S.optional(Template),
+          VoiceTemplate: S.optional(Template),
+          InAppTemplate: S.optional(Template),
+        }),
+      ).annotate({ identifier: "TemplateConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
+          MessageConfiguration: S.optional(MessageConfiguration),
+          Schedule: S.optional(Schedule),
+          SizePercent: S.optional(S.Number),
+          TemplateConfiguration: S.optional(TemplateConfiguration),
+          TreatmentDescription: S.optional(S.String),
+          TreatmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WriteTreatmentResource" });
+    case 3:
+      return S.Array(WriteTreatmentResource);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          LambdaFunctionName: S.optional(S.String),
+          Mode: S.optional(Mode),
+          WebUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignHook" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Daily: S.optional(S.Number),
+          MaximumDuration: S.optional(S.Number),
+          MessagesPerSecond: S.optional(S.Number),
+          Total: S.optional(S.Number),
+          Session: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CampaignLimits" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AdditionalTreatments: S.optional(ListOfWriteTreatmentResource),
+          CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
+          Description: S.optional(S.String),
+          HoldoutPercent: S.optional(S.Number),
+          Hook: S.optional(CampaignHook),
+          IsPaused: S.optional(S.Boolean),
+          Limits: S.optional(CampaignLimits),
+          MessageConfiguration: S.optional(MessageConfiguration),
+          Name: S.optional(S.String),
+          Schedule: S.optional(Schedule),
+          SegmentId: S.optional(S.String),
+          SegmentVersion: S.optional(S.Number),
+          tags: S.optional(MapOf__string),
+          TemplateConfiguration: S.optional(TemplateConfiguration),
+          TreatmentDescription: S.optional(S.String),
+          TreatmentName: S.optional(S.String),
+          Priority: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WriteCampaignRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          WriteCampaignRequest: S.optional(WriteCampaignRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteCampaignRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/campaigns" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateCampaignRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ CampaignStatus: S.optional(CampaignStatus) })).annotate({
+        identifier: "CampaignState",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
+          Id: S.optional(S.String),
+          MessageConfiguration: S.optional(MessageConfiguration),
+          Schedule: S.optional(Schedule),
+          SizePercent: S.optional(S.Number),
+          State: S.optional(CampaignState),
+          TemplateConfiguration: S.optional(TemplateConfiguration),
+          TreatmentDescription: S.optional(S.String),
+          TreatmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TreatmentResource" });
+    case 2:
+      return S.Array(TreatmentResource);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AdditionalTreatments: S.optional(ListOfTreatmentResource),
+          ApplicationId: S.optional(S.String),
+          Arn: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          CustomDeliveryConfiguration: S.optional(CustomDeliveryConfiguration),
+          DefaultState: S.optional(CampaignState),
+          Description: S.optional(S.String),
+          HoldoutPercent: S.optional(S.Number),
+          Hook: S.optional(CampaignHook),
+          Id: S.optional(S.String),
+          IsPaused: S.optional(S.Boolean),
+          LastModifiedDate: S.optional(S.String),
+          Limits: S.optional(CampaignLimits),
+          MessageConfiguration: S.optional(MessageConfiguration),
+          Name: S.optional(S.String),
+          Schedule: S.optional(Schedule),
+          SegmentId: S.optional(S.String),
+          SegmentVersion: S.optional(S.Number),
+          State: S.optional(CampaignState),
+          tags: S.optional(MapOf__string),
+          TemplateConfiguration: S.optional(TemplateConfiguration),
+          TreatmentDescription: S.optional(S.String),
+          TreatmentName: S.optional(S.String),
+          Version: S.optional(S.Number),
+          Priority: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CampaignResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CampaignResponse: S.optional(CampaignResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CampaignResponse" }),
+        }),
+      ).annotate({ identifier: "CreateCampaignResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DefaultSubstitutions: S.optional(S.String),
+          HtmlPart: S.optional(S.String),
+          RecommenderId: S.optional(S.String),
+          Subject: S.optional(S.String),
+          Headers: S.optional(ListOfMessageHeader),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+          TextPart: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailTemplateRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EmailTemplateRequest: S.optional(EmailTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EmailTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/email" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateEmailTemplateRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Message: S.optional(S.String),
+          RequestID: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateTemplateMessageBody",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CreateTemplateMessageBody: S.optional(CreateTemplateMessageBody)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CreateTemplateMessageBody" }),
+        }),
+      ).annotate({
+        identifier: "CreateEmailTemplateResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RoleArn: S.optional(S.String),
+          S3UrlPrefix: S.optional(S.String),
+          SegmentId: S.optional(S.String),
+          SegmentVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ExportJobRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          ExportJobRequest: S.optional(ExportJobRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ExportJobRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/jobs/export" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateExportJobRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CompletedPieces: S.optional(S.Number),
+          CompletionDate: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Definition: S.optional(ExportJobResource),
+          FailedPieces: S.optional(S.Number),
+          Failures: S.optional(ListOf__string),
+          Id: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
+          TotalFailures: S.optional(S.Number),
+          TotalPieces: S.optional(S.Number),
+          TotalProcessed: S.optional(S.Number),
+          Type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportJobResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ExportJobResponse: S.optional(ExportJobResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ExportJobResponse" }),
+        }),
+      ).annotate({ identifier: "CreateExportJobResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DefineSegment: S.optional(S.Boolean),
+          ExternalId: S.optional(S.String),
+          Format: S.optional(Format),
+          RegisterEndpoints: S.optional(S.Boolean),
+          RoleArn: S.optional(S.String),
+          S3Url: S.optional(S.String),
+          SegmentId: S.optional(S.String),
+          SegmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportJobRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          ImportJobRequest: S.optional(ImportJobRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ImportJobRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/jobs/import" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateImportJobRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CompletedPieces: S.optional(S.Number),
+          CompletionDate: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Definition: S.optional(ImportJobResource),
+          FailedPieces: S.optional(S.Number),
+          Failures: S.optional(ListOf__string),
+          Id: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
+          TotalFailures: S.optional(S.Number),
+          TotalPieces: S.optional(S.Number),
+          TotalProcessed: S.optional(S.Number),
+          Type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportJobResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ImportJobResponse: S.optional(ImportJobResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ImportJobResponse" }),
+        }),
+      ).annotate({ identifier: "CreateImportJobResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Content: S.optional(ListOfInAppMessageContent),
+          CustomConfig: S.optional(MapOf__string),
+          Layout: S.optional(Layout),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InAppTemplateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          InAppTemplateRequest: S.optional(InAppTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "InAppTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/inapp" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateInAppTemplateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateCreateMessageBody: S.optional(TemplateCreateMessageBody)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "TemplateCreateMessageBody" }),
+        }),
+      ).annotate({
+        identifier: "CreateInAppTemplateResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryUri: S.optional(S.String),
+          EndpointTypes: S.optional(ListOf__EndpointTypesElement),
+          MessageConfig: S.optional(JourneyCustomMessage),
+          NextActivity: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomMessageActivity" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Dimensions: S.optional(EventDimensions),
+          MessageActivity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventCondition" });
+    case 6:
+      return S.suspend(() => S.Struct({ SegmentId: S.optional(S.String) })).annotate({
+        identifier: "SegmentCondition",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Duration: S.optional(Duration), RecencyType: S.optional(RecencyType) }),
+      ).annotate({ identifier: "RecencyDimension" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Recency: S.optional(RecencyDimension) })).annotate({
+        identifier: "SegmentBehaviors",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AppVersion: S.optional(SetDimension),
+          Channel: S.optional(SetDimension),
+          DeviceType: S.optional(SetDimension),
+          Make: S.optional(SetDimension),
+          Model: S.optional(SetDimension),
+          Platform: S.optional(SetDimension),
+        }),
+      ).annotate({ identifier: "SegmentDemographics" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Latitude: S.optional(S.Number), Longitude: S.optional(S.Number) }),
+      ).annotate({ identifier: "GPSCoordinates" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Coordinates: S.optional(GPSCoordinates),
+          RangeInKilometers: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GPSPointDimension" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Country: S.optional(SetDimension), GPSPoint: S.optional(GPSPointDimension) }),
+      ).annotate({ identifier: "SegmentLocation" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Attributes: S.optional(MapOfAttributeDimension),
+          Behavior: S.optional(SegmentBehaviors),
+          Demographic: S.optional(SegmentDemographics),
+          Location: S.optional(SegmentLocation),
+          Metrics: S.optional(MapOfMetricDimension),
+          UserAttributes: S.optional(MapOfAttributeDimension),
+        }),
+      ).annotate({ identifier: "SegmentDimensions" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EventCondition: S.optional(EventCondition),
+          SegmentCondition: S.optional(SegmentCondition),
+          SegmentDimensions: S.optional(SegmentDimensions),
+        }).pipe(S.encodeKeys({ SegmentDimensions: "segmentDimensions" })),
+      ).annotate({ identifier: "SimpleCondition" });
+    case 7:
+      return S.Array(SimpleCondition);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Conditions: S.optional(ListOfSimpleCondition), Operator: S.optional(Operator) }),
+      ).annotate({ identifier: "Condition" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ WaitFor: S.optional(S.String), WaitUntil: S.optional(S.String) }),
+      ).annotate({ identifier: "WaitTime" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Condition: S.optional(Condition),
+          EvaluationWaitTime: S.optional(WaitTime),
+          FalseActivity: S.optional(S.String),
+          TrueActivity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConditionalSplitActivity" });
+    case 3:
+      return S.suspend(() => S.Struct({ FromAddress: S.optional(S.String) })).annotate({
+        identifier: "JourneyEmailMessage",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          MessageConfig: S.optional(JourneyEmailMessage),
+          NextActivity: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailMessageActivity" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ NextActivity: S.optional(S.String), Percentage: S.optional(S.Number) }),
+      ).annotate({ identifier: "HoldoutActivity" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Condition: S.optional(SimpleCondition), NextActivity: S.optional(S.String) }),
+      ).annotate({ identifier: "MultiConditionalBranch" });
+    case 7:
+      return S.Array(MultiConditionalBranch);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Branches: S.optional(ListOfMultiConditionalBranch),
+          DefaultActivity: S.optional(S.String),
+          EvaluationWaitTime: S.optional(WaitTime),
+        }),
+      ).annotate({
+        identifier: "MultiConditionalSplitActivity",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ TimeToLive: S.optional(S.String) })).annotate({
+        identifier: "JourneyPushMessage",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          MessageConfig: S.optional(JourneyPushMessage),
+          NextActivity: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PushMessageActivity" });
+    case 3:
+      return S.Array(RandomSplitEntry);
+    case 4:
+      return S.suspend(() => S.Struct({ Branches: S.optional(ListOfRandomSplitEntry) })).annotate({
+        identifier: "RandomSplitActivity",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          MessageType: S.optional(MessageType),
+          OriginationNumber: S.optional(S.String),
+          SenderId: S.optional(S.String),
+          EntityId: S.optional(S.String),
+          TemplateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JourneySMSMessage" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          MessageConfig: S.optional(JourneySMSMessage),
+          NextActivity: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SMSMessageActivity" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ NextActivity: S.optional(S.String), WaitTime: S.optional(WaitTime) }),
+      ).annotate({ identifier: "WaitActivity" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ NextActivity: S.optional(S.String) })).annotate({
+        identifier: "ContactCenterActivity",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CUSTOM: S.optional(CustomMessageActivity),
+          ConditionalSplit: S.optional(ConditionalSplitActivity),
+          Description: S.optional(S.String),
+          EMAIL: S.optional(EmailMessageActivity),
+          Holdout: S.optional(HoldoutActivity),
+          MultiCondition: S.optional(MultiConditionalSplitActivity),
+          PUSH: S.optional(PushMessageActivity),
+          RandomSplit: S.optional(RandomSplitActivity),
+          SMS: S.optional(SMSMessageActivity),
+          Wait: S.optional(WaitActivity),
+          ContactCenter: S.optional(ContactCenterActivity),
+        }),
+      ).annotate({ identifier: "Activity" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ Activity.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Cap: S.optional(S.Number), Days: S.optional(S.Number) }),
+      ).annotate({ identifier: "JourneyTimeframeCap" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DailyCap: S.optional(S.Number),
+          EndpointReentryCap: S.optional(S.Number),
+          MessagesPerSecond: S.optional(S.Number),
+          EndpointReentryInterval: S.optional(S.String),
+          TimeframeCap: S.optional(JourneyTimeframeCap),
+          TotalCap: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JourneyLimits" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Timezone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JourneySchedule" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ EventFilter: S.optional(EventFilter), SegmentId: S.optional(S.String) }),
+      ).annotate({ identifier: "EventStartCondition" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Description: S.optional(S.String),
+          EventStartCondition: S.optional(EventStartCondition),
+          SegmentStartCondition: S.optional(SegmentCondition),
+        }),
+      ).annotate({ identifier: "StartCondition" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectCampaignArn: S.optional(S.String),
+          ConnectCampaignExecutionRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JourneyChannelSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ StartTime: S.optional(S.String), EndTime: S.optional(S.String) }),
+      ).annotate({ identifier: "OpenHoursRule" });
+    case 2:
+      return S.Array(OpenHoursRule);
+    case 3:
+      return S.Record(DayOfWeek, /*@__PURE__*/ ListOfOpenHoursRules.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          EMAIL: S.optional(MapOfListOfOpenHoursRules),
+          SMS: S.optional(MapOfListOfOpenHoursRules),
+          PUSH: S.optional(MapOfListOfOpenHoursRules),
+          VOICE: S.optional(MapOfListOfOpenHoursRules),
+          CUSTOM: S.optional(MapOfListOfOpenHoursRules),
+        }),
+      ).annotate({ identifier: "OpenHours" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          StartDateTime: S.optional(S.String),
+          EndDateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClosedDaysRule" });
+    case 6:
+      return S.Array(ClosedDaysRule);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          EMAIL: S.optional(ListOfClosedDaysRules),
+          SMS: S.optional(ListOfClosedDaysRules),
+          PUSH: S.optional(ListOfClosedDaysRules),
+          VOICE: S.optional(ListOfClosedDaysRules),
+          CUSTOM: S.optional(ListOfClosedDaysRules),
+        }),
+      ).annotate({ identifier: "ClosedDays" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__TimezoneEstimationMethodsElement);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Activities: S.optional(MapOfActivity),
+          CreationDate: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Limits: S.optional(JourneyLimits),
+          LocalTime: S.optional(S.Boolean),
+          Name: S.optional(S.String),
+          QuietTime: S.optional(QuietTime),
+          RefreshFrequency: S.optional(S.String),
+          Schedule: S.optional(JourneySchedule),
+          StartActivity: S.optional(S.String),
+          StartCondition: S.optional(StartCondition),
+          State: S.optional(State),
+          WaitForQuietTime: S.optional(S.Boolean),
+          RefreshOnSegmentUpdate: S.optional(S.Boolean),
+          JourneyChannelSettings: S.optional(JourneyChannelSettings),
+          SendingSchedule: S.optional(S.Boolean),
+          OpenHours: S.optional(OpenHours),
+          ClosedDays: S.optional(ClosedDays),
+          TimezoneEstimationMethods: S.optional(ListOf__TimezoneEstimationMethodsElement),
+        }),
+      ).annotate({ identifier: "WriteJourneyRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          WriteJourneyRequest: S.optional(WriteJourneyRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteJourneyRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/journeys" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateJourneyRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Activities: S.optional(MapOfActivity),
+          ApplicationId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Id: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Limits: S.optional(JourneyLimits),
+          LocalTime: S.optional(S.Boolean),
+          Name: S.optional(S.String),
+          QuietTime: S.optional(QuietTime),
+          RefreshFrequency: S.optional(S.String),
+          Schedule: S.optional(JourneySchedule),
+          StartActivity: S.optional(S.String),
+          StartCondition: S.optional(StartCondition),
+          State: S.optional(State),
+          tags: S.optional(MapOf__string),
+          WaitForQuietTime: S.optional(S.Boolean),
+          RefreshOnSegmentUpdate: S.optional(S.Boolean),
+          JourneyChannelSettings: S.optional(JourneyChannelSettings),
+          SendingSchedule: S.optional(S.Boolean),
+          OpenHours: S.optional(OpenHours),
+          ClosedDays: S.optional(ClosedDays),
+          TimezoneEstimationMethods: S.optional(ListOf__TimezoneEstimationMethodsElement),
+        }),
+      ).annotate({ identifier: "JourneyResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyResponse: S.optional(JourneyResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyResponse" }),
+        }),
+      ).annotate({ identifier: "CreateJourneyResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(Action),
+          Body: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SmallImageIconUrl: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AndroidPushNotificationTemplate",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(Action),
+          Body: S.optional(S.String),
+          MediaUrl: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "APNSPushNotificationTemplate",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(Action),
+          Body: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DefaultPushNotificationTemplate",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ADM: S.optional(AndroidPushNotificationTemplate),
+          APNS: S.optional(APNSPushNotificationTemplate),
+          Baidu: S.optional(AndroidPushNotificationTemplate),
+          Default: S.optional(DefaultPushNotificationTemplate),
+          DefaultSubstitutions: S.optional(S.String),
+          GCM: S.optional(AndroidPushNotificationTemplate),
+          RecommenderId: S.optional(S.String),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PushNotificationTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PushNotificationTemplateRequest: S.optional(PushNotificationTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "PushNotificationTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/push" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreatePushTemplateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Attributes: S.optional(MapOf__string),
+          Description: S.optional(S.String),
+          Name: S.optional(S.String),
+          RecommendationProviderIdType: S.optional(S.String),
+          RecommendationProviderRoleArn: S.optional(S.String),
+          RecommendationProviderUri: S.optional(S.String),
+          RecommendationTransformerUri: S.optional(S.String),
+          RecommendationsDisplayName: S.optional(S.String),
+          RecommendationsPerMessage: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateRecommenderConfigurationShape",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CreateRecommenderConfiguration: S.optional(CreateRecommenderConfigurationShape)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CreateRecommenderConfigurationShape" }),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/recommenders" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateRecommenderConfigurationRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Attributes: S.optional(MapOf__string),
+          CreationDate: S.optional(S.String),
+          Description: S.optional(S.String),
+          Id: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Name: S.optional(S.String),
+          RecommendationProviderIdType: S.optional(S.String),
+          RecommendationProviderRoleArn: S.optional(S.String),
+          RecommendationProviderUri: S.optional(S.String),
+          RecommendationTransformerUri: S.optional(S.String),
+          RecommendationsDisplayName: S.optional(S.String),
+          RecommendationsPerMessage: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RecommenderConfigurationResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          RecommenderConfigurationResponse: S.optional(RecommenderConfigurationResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "RecommenderConfigurationResponse" }),
+        }),
+      ).annotate({
+        identifier: "CreateRecommenderConfigurationResponse",
+      });
+    case 6:
+      return S.Array(SegmentDimensions);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Id: S.optional(S.String), Version: S.optional(S.Number) }),
+      ).annotate({ identifier: "SegmentReference" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SegmentReference);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Dimensions: S.optional(ListOfSegmentDimensions),
+          SourceSegments: S.optional(ListOfSegmentReference),
+          SourceType: S.optional(SourceType),
+          Type: S.optional(Type),
+        }),
+      ).annotate({ identifier: "SegmentGroup" });
+    case 2:
+      return S.Array(SegmentGroup);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Groups: S.optional(ListOfSegmentGroup), Include: S.optional(Include) }),
+      ).annotate({ identifier: "SegmentGroupList" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Dimensions: S.optional(SegmentDimensions),
+          Name: S.optional(S.String),
+          SegmentGroups: S.optional(SegmentGroupList),
+          tags: S.optional(MapOf__string),
+        }),
+      ).annotate({ identifier: "WriteSegmentRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          WriteSegmentRequest: S.optional(WriteSegmentRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteSegmentRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/segments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateSegmentRequest" });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelCounts: S.optional(MapOf__integer),
+          ExternalId: S.optional(S.String),
+          Format: S.optional(Format),
+          RoleArn: S.optional(S.String),
+          S3Url: S.optional(S.String),
+          Size: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SegmentImportResource" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          Arn: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Dimensions: S.optional(SegmentDimensions),
+          Id: S.optional(S.String),
+          ImportDefinition: S.optional(SegmentImportResource),
+          LastModifiedDate: S.optional(S.String),
+          Name: S.optional(S.String),
+          SegmentGroups: S.optional(SegmentGroupList),
+          SegmentType: S.optional(SegmentType),
+          tags: S.optional(MapOf__string),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SegmentResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SegmentResponse: S.optional(SegmentResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SegmentResponse" }),
+        }),
+      ).annotate({ identifier: "CreateSegmentResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          DefaultSubstitutions: S.optional(S.String),
+          RecommenderId: S.optional(S.String),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SMSTemplateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          SMSTemplateRequest: S.optional(SMSTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SMSTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/sms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateSmsTemplateRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          DefaultSubstitutions: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+          VoiceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VoiceTemplateRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          VoiceTemplateRequest: S.optional(VoiceTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VoiceTemplateRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/templates/{TemplateName}/voice" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateVoiceTemplateRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/adm" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAdmChannelRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          HasCredential: S.optional(S.Boolean),
+          Id: S.optional(S.String),
+          IsArchived: S.optional(S.Boolean),
+          LastModifiedBy: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Platform: S.optional(S.String),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ADMChannelResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ADMChannelResponse: S.optional(ADMChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ADMChannelResponse" }),
+        }),
+      ).annotate({ identifier: "DeleteAdmChannelResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/apns" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteApnsChannelRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          DefaultAuthenticationMethod: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          HasCredential: S.optional(S.Boolean),
+          HasTokenKey: S.optional(S.Boolean),
+          Id: S.optional(S.String),
+          IsArchived: S.optional(S.Boolean),
+          LastModifiedBy: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Platform: S.optional(S.String),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "APNSChannelResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          APNSChannelResponse: S.optional(APNSChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteApnsChannelResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteApnsSandboxChannelRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          DefaultAuthenticationMethod: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          HasCredential: S.optional(S.Boolean),
+          HasTokenKey: S.optional(S.Boolean),
+          Id: S.optional(S.String),
+          IsArchived: S.optional(S.Boolean),
+          LastModifiedBy: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Platform: S.optional(S.String),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "APNSSandboxChannelResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          APNSSandboxChannelResponse: S.optional(APNSSandboxChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSSandboxChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteApnsSandboxChannelResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/apns_voip" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteApnsVoipChannelRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          APNSVoipChannelResponse: S.optional(APNSVoipChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSVoipChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteApnsVoipChannelResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteApnsVoipSandboxChannelRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          APNSVoipSandboxChannelResponse: S.optional(APNSVoipSandboxChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteApnsVoipSandboxChannelResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAppRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteBaiduChannelRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Credential: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          HasCredential: S.optional(S.Boolean),
+          Id: S.optional(S.String),
+          IsArchived: S.optional(S.Boolean),
+          LastModifiedBy: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Platform: S.optional(S.String),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BaiduChannelResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          BaiduChannelResponse: S.optional(BaiduChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "BaiduChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteBaiduChannelResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteCampaignRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/email" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteEmailChannelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          ConfigurationSet: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          FromAddress: S.optional(S.String),
+          HasCredential: S.optional(S.Boolean),
+          Id: S.optional(S.String),
+          Identity: S.optional(S.String),
+          IsArchived: S.optional(S.Boolean),
+          LastModifiedBy: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          MessagesPerSecond: S.optional(S.Number),
+          Platform: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          OrchestrationSendingRoleArn: S.optional(S.String),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EmailChannelResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EmailChannelResponse: S.optional(EmailChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EmailChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteEmailChannelResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/email" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteEmailTemplateRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Message: S.optional(S.String), RequestID: S.optional(S.String) }),
+      ).annotate({ identifier: "MessageBody" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          MessageBody: S.optional(MessageBody)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "MessageBody" }),
+        }),
+      ).annotate({
+        identifier: "DeleteEmailTemplateResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteEndpointRequest" });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ ListOf__string.pipe(S.optional));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AppVersion: S.optional(S.String),
+          Locale: S.optional(S.String),
+          Make: S.optional(S.String),
+          Model: S.optional(S.String),
+          ModelVersion: S.optional(S.String),
+          Platform: S.optional(S.String),
+          PlatformVersion: S.optional(S.String),
+          Timezone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointDemographic" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          City: S.optional(S.String),
+          Country: S.optional(S.String),
+          Latitude: S.optional(S.Number),
+          Longitude: S.optional(S.Number),
+          PostalCode: S.optional(S.String),
+          Region: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointLocation" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ UserAttributes: S.optional(MapOfListOf__string), UserId: S.optional(S.String) }),
+      ).annotate({ identifier: "EndpointUser" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          ApplicationId: S.optional(S.String),
+          Attributes: S.optional(MapOfListOf__string),
+          ChannelType: S.optional(ChannelType),
+          CohortId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Demographic: S.optional(EndpointDemographic),
+          EffectiveDate: S.optional(S.String),
+          EndpointStatus: S.optional(S.String),
+          Id: S.optional(S.String),
+          Location: S.optional(EndpointLocation),
+          Metrics: S.optional(MapOf__double),
+          OptOut: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          User: S.optional(EndpointUser),
+        }),
+      ).annotate({ identifier: "EndpointResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointResponse: S.optional(EndpointResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EndpointResponse" }),
+        }),
+      ).annotate({ identifier: "DeleteEndpointResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/eventstream" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteEventStreamRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          DestinationStreamArn: S.optional(S.String),
+          ExternalId: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          LastUpdatedBy: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventStream" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          EventStream: S.optional(EventStream)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EventStream" }),
+        }),
+      ).annotate({
+        identifier: "DeleteEventStreamResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/gcm" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteGcmChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Credential: S.optional(S.String),
+          DefaultAuthenticationMethod: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          HasCredential: S.optional(S.Boolean),
+          HasFcmServiceCredentials: S.optional(S.Boolean),
+          Id: S.optional(S.String),
+          IsArchived: S.optional(S.Boolean),
+          LastModifiedBy: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Platform: S.optional(S.String),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GCMChannelResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          GCMChannelResponse: S.optional(GCMChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "GCMChannelResponse" }),
+        }),
+      ).annotate({ identifier: "DeleteGcmChannelResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/inapp" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteInAppTemplateRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteJourneyRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/push" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePushTemplateRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/recommenders/{RecommenderId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteRecommenderConfigurationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSegmentRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/sms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSmsChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          HasCredential: S.optional(S.Boolean),
+          Id: S.optional(S.String),
+          IsArchived: S.optional(S.Boolean),
+          LastModifiedBy: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Platform: S.optional(S.String),
+          PromotionalMessagesPerSecond: S.optional(S.Number),
+          SenderId: S.optional(S.String),
+          ShortCode: S.optional(S.String),
+          TransactionalMessagesPerSecond: S.optional(S.Number),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SMSChannelResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SMSChannelResponse: S.optional(SMSChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SMSChannelResponse" }),
+        }),
+      ).annotate({ identifier: "DeleteSmsChannelResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/sms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSmsTemplateRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          UserId: S.String.pipe(T.HttpLabel("UserId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/users/{UserId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteUserEndpointsRequest",
+      });
+    case 5:
+      return S.Array(EndpointResponse);
+    case 6:
+      return S.suspend(() => S.Struct({ Item: S.optional(ListOfEndpointResponse) })).annotate({
+        identifier: "EndpointsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointsResponse: S.optional(EndpointsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EndpointsResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteUserEndpointsResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteVoiceChannelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VoiceChannelResponse: S.optional(VoiceChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VoiceChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteVoiceChannelResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/templates/{TemplateName}/voice" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteVoiceTemplateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/adm" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAdmChannelRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/apns" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetApnsChannelRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          APNSChannelResponse: S.optional(APNSChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSChannelResponse" }),
+        }),
+      ).annotate({ identifier: "GetApnsChannelResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetApnsSandboxChannelRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/apns_voip" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetApnsVoipChannelRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetApnsVoipSandboxChannelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAppRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("end-time"),
+          ),
+          KpiName: S.String.pipe(T.HttpLabel("KpiName")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("start-time"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/kpis/daterange/{KpiName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetApplicationDateRangeKpiRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Type: S.optional(S.String),
+          Value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResultRowValue" });
+    case 4:
+      return S.Array(ResultRowValue);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          GroupedBys: S.optional(ListOfResultRowValue),
+          Values: S.optional(ListOfResultRowValue),
+        }),
+      ).annotate({ identifier: "ResultRow" });
+    case 6:
+      return S.Array(ResultRow);
+    case 7:
+      return S.suspend(() => S.Struct({ Rows: S.optional(ListOfResultRow) })).annotate({
+        identifier: "BaseKpiResult",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          KpiName: S.optional(S.String),
+          KpiResult: S.optional(BaseKpiResult),
+          NextToken: S.optional(S.String),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "ApplicationDateRangeKpiResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationDateRangeKpiResponse: S.optional(ApplicationDateRangeKpiResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ApplicationDateRangeKpiResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetApplicationDateRangeKpiResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/settings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetApplicationSettingsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DailyCap: S.optional(S.Number),
+          TimeframeCap: S.optional(JourneyTimeframeCap),
+          TotalCap: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ApplicationSettingsJourneyLimits",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CampaignHook: S.optional(CampaignHook),
+          LastModifiedDate: S.optional(S.String),
+          Limits: S.optional(CampaignLimits),
+          QuietTime: S.optional(QuietTime),
+          JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
+        }),
+      ).annotate({
+        identifier: "ApplicationSettingsResource",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationSettingsResource: S.optional(ApplicationSettingsResource)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ApplicationSettingsResource" }),
+        }),
+      ).annotate({
+        identifier: "GetApplicationSettingsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/apps" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetAppsRequest" });
+    case 7:
+      return S.Array(ApplicationResponse);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(ListOfApplicationResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ApplicationsResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationsResponse: S.optional(ApplicationsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ApplicationsResponse" }),
+        }),
+      ).annotate({ identifier: "GetAppsResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetBaiduChannelRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          BaiduChannelResponse: S.optional(BaiduChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "BaiduChannelResponse" }),
+        }),
+      ).annotate({ identifier: "GetBaiduChannelResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetCampaignRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/activities",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCampaignActivitiesRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CampaignId: S.optional(S.String),
+          End: S.optional(S.String),
+          Id: S.optional(S.String),
+          Result: S.optional(S.String),
+          ScheduledStart: S.optional(S.String),
+          Start: S.optional(S.String),
+          State: S.optional(S.String),
+          SuccessfulEndpointCount: S.optional(S.Number),
+          TimezonesCompletedCount: S.optional(S.Number),
+          TimezonesTotalCount: S.optional(S.Number),
+          TotalEndpointCount: S.optional(S.Number),
+          TreatmentId: S.optional(S.String),
+          ExecutionMetrics: S.optional(MapOf__string),
+        }),
+      ).annotate({ identifier: "ActivityResponse" });
+    case 7:
+      return S.Array(ActivityResponse);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(ListOfActivityResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ActivitiesResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ActivitiesResponse: S.optional(ActivitiesResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ActivitiesResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetCampaignActivitiesResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("end-time"),
+          ),
+          KpiName: S.String.pipe(T.HttpLabel("KpiName")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("start-time"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/kpis/daterange/{KpiName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCampaignDateRangeKpiRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CampaignId: S.optional(S.String),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          KpiName: S.optional(S.String),
+          KpiResult: S.optional(BaseKpiResult),
+          NextToken: S.optional(S.String),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "CampaignDateRangeKpiResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CampaignDateRangeKpiResponse: S.optional(CampaignDateRangeKpiResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CampaignDateRangeKpiResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetCampaignDateRangeKpiResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/campaigns" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetCampaignsRequest" });
+    case 6:
+      return S.Array(CampaignResponse);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(ListOfCampaignResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "CampaignsResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CampaignsResponse: S.optional(CampaignsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CampaignsResponse" }),
+        }),
+      ).annotate({ identifier: "GetCampaignsResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+          Version: S.String.pipe(T.HttpLabel("Version")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/versions/{Version}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCampaignVersionRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CampaignResponse: S.optional(CampaignResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CampaignResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetCampaignVersionResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}/versions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCampaignVersionsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CampaignsResponse: S.optional(CampaignsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CampaignsResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetCampaignVersionsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetChannelsRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          HasCredential: S.optional(S.Boolean),
+          Id: S.optional(S.String),
+          IsArchived: S.optional(S.Boolean),
+          LastModifiedBy: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ChannelResponse" });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ ChannelResponse.pipe(S.optional));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Channels: S.optional(MapOfChannelResponse) })).annotate({
+        identifier: "ChannelsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelsResponse: S.optional(ChannelsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ChannelsResponse" }),
+        }),
+      ).annotate({ identifier: "GetChannelsResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/email" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetEmailChannelRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EmailChannelResponse: S.optional(EmailChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EmailChannelResponse" }),
+        }),
+      ).annotate({ identifier: "GetEmailChannelResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/email" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetEmailTemplateRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          DefaultSubstitutions: S.optional(S.String),
+          HtmlPart: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          RecommenderId: S.optional(S.String),
+          Subject: S.optional(S.String),
+          Headers: S.optional(ListOfMessageHeader),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateType: S.optional(TemplateType),
+          TextPart: S.optional(S.String),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailTemplateResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EmailTemplateResponse: S.optional(EmailTemplateResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EmailTemplateResponse" }),
+        }),
+      ).annotate({ identifier: "GetEmailTemplateResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetEndpointRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/eventstream" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetEventStreamRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EventStream: S.optional(EventStream)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EventStream" }),
+        }),
+      ).annotate({ identifier: "GetEventStreamResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JobId: S.String.pipe(T.HttpLabel("JobId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/jobs/export/{JobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetExportJobRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/jobs/export" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetExportJobsRequest" });
+    case 4:
+      return S.Array(ExportJobResponse);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(ListOfExportJobResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ExportJobsResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ExportJobsResponse: S.optional(ExportJobsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ExportJobsResponse" }),
+        }),
+      ).annotate({ identifier: "GetExportJobsResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/gcm" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetGcmChannelRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JobId: S.String.pipe(T.HttpLabel("JobId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/jobs/import/{JobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetImportJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/jobs/import" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetImportJobsRequest" });
+    case 2:
+      return S.Array(ImportJobResponse);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(ListOfImportJobResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ImportJobsResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ImportJobsResponse: S.optional(ImportJobsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ImportJobsResponse" }),
+        }),
+      ).annotate({ identifier: "GetImportJobsResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}/inappmessages",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetInAppMessagesRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Content: S.optional(ListOfInAppMessageContent),
+          CustomConfig: S.optional(MapOf__string),
+          Layout: S.optional(Layout),
+        }),
+      ).annotate({ identifier: "InAppMessage" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          EndDate: S.optional(S.String),
+          EventFilter: S.optional(CampaignEventFilter),
+          QuietTime: S.optional(QuietTime),
+        }),
+      ).annotate({ identifier: "InAppCampaignSchedule" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CampaignId: S.optional(S.String),
+          DailyCap: S.optional(S.Number),
+          InAppMessage: S.optional(InAppMessage),
+          Priority: S.optional(S.Number),
+          Schedule: S.optional(InAppCampaignSchedule),
+          SessionCap: S.optional(S.Number),
+          TotalCap: S.optional(S.Number),
+          TreatmentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InAppMessageCampaign" });
+    case 1:
+      return S.Array(InAppMessageCampaign);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ InAppMessageCampaigns: S.optional(ListOfInAppMessageCampaign) }),
+      ).annotate({ identifier: "InAppMessagesResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          InAppMessagesResponse: S.optional(InAppMessagesResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "InAppMessagesResponse" }),
+        }),
+      ).annotate({ identifier: "GetInAppMessagesResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/inapp" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetInAppTemplateRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Content: S.optional(ListOfInAppMessageContent),
+          CreationDate: S.optional(S.String),
+          CustomConfig: S.optional(MapOf__string),
+          LastModifiedDate: S.optional(S.String),
+          Layout: S.optional(Layout),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateType: S.optional(TemplateType),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InAppTemplateResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          InAppTemplateResponse: S.optional(InAppTemplateResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "InAppTemplateResponse" }),
+        }),
+      ).annotate({ identifier: "GetInAppTemplateResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetJourneyRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("end-time"),
+          ),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          KpiName: S.String.pipe(T.HttpLabel("KpiName")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("start-time"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/kpis/daterange/{KpiName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetJourneyDateRangeKpiRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          JourneyId: S.optional(S.String),
+          KpiName: S.optional(S.String),
+          KpiResult: S.optional(BaseKpiResult),
+          NextToken: S.optional(S.String),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "JourneyDateRangeKpiResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyDateRangeKpiResponse: S.optional(JourneyDateRangeKpiResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyDateRangeKpiResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetJourneyDateRangeKpiResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyActivityId: S.String.pipe(T.HttpLabel("JourneyActivityId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/activities/{JourneyActivityId}/execution-metrics",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetJourneyExecutionActivityMetricsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ActivityType: S.optional(S.String),
+          ApplicationId: S.optional(S.String),
+          JourneyActivityId: S.optional(S.String),
+          JourneyId: S.optional(S.String),
+          LastEvaluatedTime: S.optional(S.String),
+          Metrics: S.optional(MapOf__string),
+        }),
+      ).annotate({
+        identifier: "JourneyExecutionActivityMetricsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyExecutionActivityMetricsResponse: S.optional(
+            JourneyExecutionActivityMetricsResponse,
+          )
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyExecutionActivityMetricsResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetJourneyExecutionActivityMetricsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/execution-metrics",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetJourneyExecutionMetricsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          JourneyId: S.optional(S.String),
+          LastEvaluatedTime: S.optional(S.String),
+          Metrics: S.optional(MapOf__string),
+        }),
+      ).annotate({
+        identifier: "JourneyExecutionMetricsResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyExecutionMetricsResponse: S.optional(JourneyExecutionMetricsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyExecutionMetricsResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetJourneyExecutionMetricsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyActivityId: S.String.pipe(T.HttpLabel("JourneyActivityId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          RunId: S.String.pipe(T.HttpLabel("RunId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/runs/{RunId}/activities/{JourneyActivityId}/execution-metrics",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetJourneyRunExecutionActivityMetricsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ActivityType: S.optional(S.String),
+          ApplicationId: S.optional(S.String),
+          JourneyActivityId: S.optional(S.String),
+          JourneyId: S.optional(S.String),
+          LastEvaluatedTime: S.optional(S.String),
+          Metrics: S.optional(MapOf__string),
+          RunId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "JourneyRunExecutionActivityMetricsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyRunExecutionActivityMetricsResponse: S.optional(
+            JourneyRunExecutionActivityMetricsResponse,
+          )
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyRunExecutionActivityMetricsResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetJourneyRunExecutionActivityMetricsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          RunId: S.String.pipe(T.HttpLabel("RunId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/runs/{RunId}/execution-metrics",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetJourneyRunExecutionMetricsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          JourneyId: S.optional(S.String),
+          LastEvaluatedTime: S.optional(S.String),
+          Metrics: S.optional(MapOf__string),
+          RunId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "JourneyRunExecutionMetricsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyRunExecutionMetricsResponse: S.optional(JourneyRunExecutionMetricsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyRunExecutionMetricsResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetJourneyRunExecutionMetricsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/runs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetJourneyRunsRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CreationTime: S.optional(S.String),
+          LastUpdateTime: S.optional(S.String),
+          RunId: S.optional(S.String),
+          Status: S.optional(JourneyRunStatus),
+        }),
+      ).annotate({ identifier: "JourneyRunResponse" });
+    case 1:
+      return S.Array(JourneyRunResponse);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(ListOfJourneyRunResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "JourneyRunsResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyRunsResponse: S.optional(JourneyRunsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyRunsResponse" }),
+        }),
+      ).annotate({ identifier: "GetJourneyRunsResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/push" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetPushTemplateRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ADM: S.optional(AndroidPushNotificationTemplate),
+          APNS: S.optional(APNSPushNotificationTemplate),
+          Arn: S.optional(S.String),
+          Baidu: S.optional(AndroidPushNotificationTemplate),
+          CreationDate: S.optional(S.String),
+          Default: S.optional(DefaultPushNotificationTemplate),
+          DefaultSubstitutions: S.optional(S.String),
+          GCM: S.optional(AndroidPushNotificationTemplate),
+          LastModifiedDate: S.optional(S.String),
+          RecommenderId: S.optional(S.String),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateType: S.optional(TemplateType),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PushNotificationTemplateResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          PushNotificationTemplateResponse: S.optional(PushNotificationTemplateResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "PushNotificationTemplateResponse" }),
+        }),
+      ).annotate({ identifier: "GetPushTemplateResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/recommenders/{RecommenderId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRecommenderConfigurationRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/v1/recommenders" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetRecommenderConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(RecommenderConfigurationResponse);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Item: S.optional(ListOfRecommenderConfigurationResponse),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRecommenderConfigurationsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ListRecommenderConfigurationsResponse: S.optional(ListRecommenderConfigurationsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ListRecommenderConfigurationsResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetRecommenderConfigurationsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSegmentRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/jobs/export",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSegmentExportJobsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ExportJobsResponse: S.optional(ExportJobsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ExportJobsResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetSegmentExportJobsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/jobs/import",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSegmentImportJobsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ImportJobsResponse: S.optional(ImportJobsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ImportJobsResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetSegmentImportJobsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/segments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSegmentsRequest" });
+    case 2:
+      return S.Array(SegmentResponse);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(ListOfSegmentResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SegmentsResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SegmentsResponse: S.optional(SegmentsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SegmentsResponse" }),
+        }),
+      ).annotate({ identifier: "GetSegmentsResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+          Version: S.String.pipe(T.HttpLabel("Version")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/versions/{Version}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSegmentVersionRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          SegmentResponse: S.optional(SegmentResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SegmentResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetSegmentVersionResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}/versions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSegmentVersionsRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SegmentsResponse: S.optional(SegmentsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SegmentsResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetSegmentVersionsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/sms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSmsChannelRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/sms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSmsTemplateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Body: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          DefaultSubstitutions: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          RecommenderId: S.optional(S.String),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateType: S.optional(TemplateType),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SMSTemplateResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SMSTemplateResponse: S.optional(SMSTemplateResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SMSTemplateResponse" }),
+        }),
+      ).annotate({ identifier: "GetSmsTemplateResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          UserId: S.String.pipe(T.HttpLabel("UserId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/users/{UserId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetUserEndpointsRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointsResponse: S.optional(EndpointsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EndpointsResponse" }),
+        }),
+      ).annotate({ identifier: "GetUserEndpointsResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetVoiceChannelRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VoiceChannelResponse: S.optional(VoiceChannelResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VoiceChannelResponse" }),
+        }),
+      ).annotate({ identifier: "GetVoiceChannelResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/voice" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetVoiceTemplateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Body: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          DefaultSubstitutions: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateType: S.optional(TemplateType),
+          Version: S.optional(S.String),
+          VoiceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VoiceTemplateResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          VoiceTemplateResponse: S.optional(VoiceTemplateResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VoiceTemplateResponse" }),
+        }),
+      ).annotate({ identifier: "GetVoiceTemplateResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Token: S.optional(S.String).pipe(T.HttpQuery("token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/apps/{ApplicationId}/journeys" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListJourneysRequest" });
+    case 5:
+      return S.Array(JourneyResponse);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(ListOfJourneyResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "JourneysResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          JourneysResponse: S.optional(JourneysResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneysResponse" }),
+        }),
+      ).annotate({ identifier: "ListJourneysResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(MapOf__string) })).annotate({
+        identifier: "TagsModel",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TagsModel: S.optional(TagsModel)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "TagsModel" }),
+        }),
+      ).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
+          TemplateType: S.optional(S.String).pipe(T.HttpQuery("template-type")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/v1/templates" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListTemplatesRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          DefaultSubstitutions: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          tags: S.optional(MapOf__string),
+          TemplateDescription: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateType: S.optional(TemplateType),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TemplateResponse" });
+    case 5:
+      return S.Array(TemplateResponse);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(ListOfTemplateResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "TemplatesResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TemplatesResponse: S.optional(TemplatesResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "TemplatesResponse" }),
+        }),
+      ).annotate({ identifier: "ListTemplatesResponse" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/templates/{TemplateName}/{TemplateType}/versions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTemplateVersionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CreationDate: S.optional(S.String),
+          DefaultSubstitutions: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          TemplateDescription: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateType: S.optional(S.String),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TemplateVersionResponse" });
+    case 2:
+      return S.Array(TemplateVersionResponse);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Item: S.optional(ListOfTemplateVersionResponse),
+          Message: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          RequestID: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TemplateVersionsResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateVersionsResponse: S.optional(TemplateVersionsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "TemplateVersionsResponse" }),
+        }),
+      ).annotate({
+        identifier: "ListTemplateVersionsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ IsoCountryCode: S.optional(S.String), PhoneNumber: S.optional(S.String) }),
+      ).annotate({ identifier: "NumberValidateRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          NumberValidateRequest: S.optional(NumberValidateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "NumberValidateRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/phone/number/validate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PhoneNumberValidateRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Carrier: S.optional(S.String),
+          City: S.optional(S.String),
+          CleansedPhoneNumberE164: S.optional(S.String),
+          CleansedPhoneNumberNational: S.optional(S.String),
+          Country: S.optional(S.String),
+          CountryCodeIso2: S.optional(S.String),
+          CountryCodeNumeric: S.optional(S.String),
+          County: S.optional(S.String),
+          OriginalCountryCodeIso2: S.optional(S.String),
+          OriginalPhoneNumber: S.optional(S.String),
+          PhoneType: S.optional(S.String),
+          PhoneTypeCode: S.optional(S.Number),
+          Timezone: S.optional(S.String),
+          ZipCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NumberValidateResponse" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NumberValidateResponse: S.optional(NumberValidateResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "NumberValidateResponse" }),
+        }),
+      ).annotate({
+        identifier: "PhoneNumberValidateResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          Attributes: S.optional(MapOfListOf__string),
+          ChannelType: S.optional(ChannelType),
+          Demographic: S.optional(EndpointDemographic),
+          EffectiveDate: S.optional(S.String),
+          EndpointStatus: S.optional(S.String),
+          Location: S.optional(EndpointLocation),
+          Metrics: S.optional(MapOf__double),
+          OptOut: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          User: S.optional(EndpointUser),
+        }),
+      ).annotate({ identifier: "PublicEndpoint" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Duration: S.optional(S.Number),
+          Id: S.optional(S.String),
+          StartTimestamp: S.optional(S.String),
+          StopTimestamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Session" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AppPackageName: S.optional(S.String),
+          AppTitle: S.optional(S.String),
+          AppVersionCode: S.optional(S.String),
+          Attributes: S.optional(MapOf__string),
+          ClientSdkVersion: S.optional(S.String),
+          EventType: S.optional(S.String),
+          Metrics: S.optional(MapOf__double),
+          SdkName: S.optional(S.String),
+          Session: S.optional(Session),
+          Timestamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Event" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ Event.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Endpoint: S.optional(PublicEndpoint), Events: S.optional(MapOfEvent) }),
+      ).annotate({ identifier: "EventsBatch" });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ EventsBatch.pipe(S.optional));
+    case 7:
+      return S.suspend(() => S.Struct({ BatchItem: S.optional(MapOfEventsBatch) })).annotate({
+        identifier: "EventsRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EventsRequest: S.optional(EventsRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EventsRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/events" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutEventsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Message: S.optional(S.String), StatusCode: S.optional(S.Number) }),
+      ).annotate({ identifier: "EndpointItemResponse" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ EventItemResponse.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointItemResponse: S.optional(EndpointItemResponse),
+          EventsItemResponse: S.optional(MapOfEventItemResponse),
+        }),
+      ).annotate({ identifier: "ItemResponse" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ ItemResponse.pipe(S.optional));
+    case 5:
+      return S.suspend(() => S.Struct({ Results: S.optional(MapOfItemResponse) })).annotate({
+        identifier: "EventsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EventsResponse: S.optional(EventsResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EventsResponse" }),
+        }),
+      ).annotate({ identifier: "PutEventsResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DestinationStreamArn: S.optional(S.String), RoleArn: S.optional(S.String) }),
+      ).annotate({ identifier: "WriteEventStream" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          WriteEventStream: S.optional(WriteEventStream)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteEventStream" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/eventstream" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutEventStreamRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Blacklist: S.optional(ListOf__string) })).annotate({
+        identifier: "UpdateAttributesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          AttributeType: S.String.pipe(T.HttpLabel("AttributeType")),
+          UpdateAttributesRequest: S.optional(UpdateAttributesRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "UpdateAttributesRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/attributes/{AttributeType}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "RemoveAttributesRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          AttributeType: S.optional(S.String),
+          Attributes: S.optional(ListOf__string),
+        }),
+      ).annotate({ identifier: "AttributesResource" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AttributesResource: S.optional(AttributesResource)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "AttributesResource" }),
+        }),
+      ).annotate({ identifier: "RemoveAttributesResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          BodyOverride: S.optional(S.String),
+          ChannelType: S.optional(ChannelType),
+          Context: S.optional(MapOf__string),
+          RawContent: S.optional(S.String),
+          Substitutions: S.optional(MapOfListOf__string),
+          TitleOverride: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddressConfiguration" });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ AddressConfiguration.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          BodyOverride: S.optional(S.String),
+          Context: S.optional(MapOf__string),
+          RawContent: S.optional(S.String),
+          Substitutions: S.optional(MapOfListOf__string),
+          TitleOverride: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EndpointSendConfiguration",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ EndpointSendConfiguration.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(Action),
+          Body: S.optional(S.String),
+          ConsolidationKey: S.optional(S.String),
+          Data: S.optional(MapOf__string),
+          ExpiresAfter: S.optional(S.String),
+          IconReference: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          MD5: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          SmallImageIconUrl: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Substitutions: S.optional(MapOfListOf__string),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ADMMessage" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          APNSPushType: S.optional(S.String),
+          Action: S.optional(Action),
+          Badge: S.optional(S.Number),
+          Body: S.optional(S.String),
+          Category: S.optional(S.String),
+          CollapseId: S.optional(S.String),
+          Data: S.optional(MapOf__string),
+          MediaUrl: S.optional(S.String),
+          PreferredAuthenticationMethod: S.optional(S.String),
+          Priority: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          Sound: S.optional(S.String),
+          Substitutions: S.optional(MapOfListOf__string),
+          ThreadId: S.optional(S.String),
+          TimeToLive: S.optional(S.Number),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "APNSMessage" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(Action),
+          Body: S.optional(S.String),
+          Data: S.optional(MapOf__string),
+          IconReference: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          SmallImageIconUrl: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Substitutions: S.optional(MapOfListOf__string),
+          TimeToLive: S.optional(S.Number),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BaiduMessage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Body: S.optional(S.String), Substitutions: S.optional(MapOfListOf__string) }),
+      ).annotate({ identifier: "DefaultMessage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(Action),
+          Body: S.optional(S.String),
+          Data: S.optional(MapOf__string),
+          SilentPush: S.optional(S.Boolean),
+          Substitutions: S.optional(MapOfListOf__string),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DefaultPushNotificationMessage",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ Data: S.optional(T.Blob) })).annotate({
+        identifier: "RawEmail",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Charset: S.optional(S.String), Data: S.optional(S.String) }),
+      ).annotate({ identifier: "SimpleEmailPart" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HtmlPart: S.optional(SimpleEmailPart),
+          Subject: S.optional(SimpleEmailPart),
+          TextPart: S.optional(SimpleEmailPart),
+          Headers: S.optional(ListOfMessageHeader),
+        }),
+      ).annotate({ identifier: "SimpleEmail" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          FeedbackForwardingAddress: S.optional(S.String),
+          FromAddress: S.optional(S.String),
+          RawEmail: S.optional(RawEmail),
+          ReplyToAddresses: S.optional(ListOf__string),
+          SimpleEmail: S.optional(SimpleEmail),
+          Substitutions: S.optional(MapOfListOf__string),
+        }),
+      ).annotate({ identifier: "EmailMessage" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(Action),
+          Body: S.optional(S.String),
+          CollapseKey: S.optional(S.String),
+          Data: S.optional(MapOf__string),
+          IconReference: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          PreferredAuthenticationMethod: S.optional(S.String),
+          Priority: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          RestrictedPackageName: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          SmallImageIconUrl: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Substitutions: S.optional(MapOfListOf__string),
+          TimeToLive: S.optional(S.Number),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GCMMessage" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          Keyword: S.optional(S.String),
+          MediaUrl: S.optional(S.String),
+          MessageType: S.optional(MessageType),
+          OriginationNumber: S.optional(S.String),
+          SenderId: S.optional(S.String),
+          Substitutions: S.optional(MapOfListOf__string),
+          EntityId: S.optional(S.String),
+          TemplateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SMSMessage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          OriginationNumber: S.optional(S.String),
+          Substitutions: S.optional(MapOfListOf__string),
+          VoiceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VoiceMessage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ADMMessage: S.optional(ADMMessage),
+          APNSMessage: S.optional(APNSMessage),
+          BaiduMessage: S.optional(BaiduMessage),
+          DefaultMessage: S.optional(DefaultMessage),
+          DefaultPushNotificationMessage: S.optional(DefaultPushNotificationMessage),
+          EmailMessage: S.optional(EmailMessage),
+          GCMMessage: S.optional(GCMMessage),
+          SMSMessage: S.optional(SMSMessage),
+          VoiceMessage: S.optional(VoiceMessage),
+        }),
+      ).annotate({
+        identifier: "DirectMessageConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Addresses: S.optional(MapOfAddressConfiguration),
+          Context: S.optional(MapOf__string),
+          Endpoints: S.optional(MapOfEndpointSendConfiguration),
+          MessageConfiguration: S.optional(DirectMessageConfiguration),
+          TemplateConfiguration: S.optional(TemplateConfiguration),
+          TraceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessageRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          MessageRequest: S.optional(MessageRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "MessageRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/messages" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendMessagesRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          DeliveryStatus: S.optional(DeliveryStatus),
+          MessageId: S.optional(S.String),
+          StatusCode: S.optional(S.Number),
+          StatusMessage: S.optional(S.String),
+          UpdatedToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointMessageResult" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ EndpointMessageResult.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryStatus: S.optional(DeliveryStatus),
+          MessageId: S.optional(S.String),
+          StatusCode: S.optional(S.Number),
+          StatusMessage: S.optional(S.String),
+          UpdatedToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessageResult" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ MessageResult.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          EndpointResult: S.optional(MapOfEndpointMessageResult),
+          RequestId: S.optional(S.String),
+          Result: S.optional(MapOfMessageResult),
+        }),
+      ).annotate({ identifier: "MessageResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          MessageResponse: S.optional(MessageResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "MessageResponse" }),
+        }),
+      ).annotate({ identifier: "SendMessagesResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AllowedAttempts: S.optional(S.Number),
+          BrandName: S.optional(S.String),
+          Channel: S.optional(S.String),
+          CodeLength: S.optional(S.Number),
+          DestinationIdentity: S.optional(S.String),
+          EntityId: S.optional(S.String),
+          Language: S.optional(S.String),
+          OriginationIdentity: S.optional(S.String),
+          ReferenceId: S.optional(S.String),
+          TemplateId: S.optional(S.String),
+          ValidityPeriod: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SendOTPMessageRequestParameters",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SendOTPMessageRequestParameters: S.optional(SendOTPMessageRequestParameters)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SendOTPMessageRequestParameters" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/otp" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendOTPMessageRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Context: S.optional(MapOf__string),
+          MessageConfiguration: S.optional(DirectMessageConfiguration),
+          TemplateConfiguration: S.optional(TemplateConfiguration),
+          TraceId: S.optional(S.String),
+          Users: S.optional(MapOfEndpointSendConfiguration),
+        }),
+      ).annotate({ identifier: "SendUsersMessageRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SendUsersMessageRequest: S.optional(SendUsersMessageRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SendUsersMessageRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/users-messages" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendUsersMessagesRequest" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ MapOfEndpointMessageResult.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          Result: S.optional(MapOfMapOfEndpointMessageResult),
+        }),
+      ).annotate({ identifier: "SendUsersMessageResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SendUsersMessageResponse: S.optional(SendUsersMessageResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SendUsersMessageResponse" }),
+        }),
+      ).annotate({
+        identifier: "SendUsersMessagesResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagsModel: S.optional(TagsModel)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "TagsModel" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: S.optional(ListOf__string).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientId: S.optional(S.String),
+          ClientSecret: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ADMChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ADMChannelRequest: S.optional(ADMChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ADMChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/adm" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateAdmChannelRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          BundleId: S.optional(S.String),
+          Certificate: S.optional(S.String),
+          DefaultAuthenticationMethod: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          PrivateKey: S.optional(S.String),
+          TeamId: S.optional(S.String),
+          TokenKey: S.optional(S.String),
+          TokenKeyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "APNSChannelRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          APNSChannelRequest: S.optional(APNSChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateApnsChannelRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          BundleId: S.optional(S.String),
+          Certificate: S.optional(S.String),
+          DefaultAuthenticationMethod: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          PrivateKey: S.optional(S.String),
+          TeamId: S.optional(S.String),
+          TokenKey: S.optional(S.String),
+          TokenKeyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "APNSSandboxChannelRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          APNSSandboxChannelRequest: S.optional(APNSSandboxChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSSandboxChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateApnsSandboxChannelRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          APNSVoipChannelRequest: S.optional(APNSVoipChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSVoipChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_voip" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateApnsVoipChannelRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          APNSVoipSandboxChannelRequest: S.optional(APNSVoipSandboxChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSVoipSandboxChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateApnsVoipSandboxChannelRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CampaignHook: S.optional(CampaignHook),
+          CloudWatchMetricsEnabled: S.optional(S.Boolean),
+          EventTaggingEnabled: S.optional(S.Boolean),
+          Limits: S.optional(CampaignLimits),
+          QuietTime: S.optional(QuietTime),
+          JourneyLimits: S.optional(ApplicationSettingsJourneyLimits),
+        }),
+      ).annotate({
+        identifier: "WriteApplicationSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          WriteApplicationSettingsRequest: S.optional(WriteApplicationSettingsRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteApplicationSettingsRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/settings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateApplicationSettingsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApiKey: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          SecretKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BaiduChannelRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          BaiduChannelRequest: S.optional(BaiduChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "BaiduChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateBaiduChannelRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+          WriteCampaignRequest: S.optional(WriteCampaignRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteCampaignRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateCampaignRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSet: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          FromAddress: S.optional(S.String),
+          Identity: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          OrchestrationSendingRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailChannelRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EmailChannelRequest: S.optional(EmailChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EmailChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/email" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEmailChannelRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          EmailTemplateRequest: S.optional(EmailTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EmailTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/email" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEmailTemplateRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
+          EndpointRequest: S.optional(EndpointRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EndpointRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateEndpointRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MessageBody: S.optional(MessageBody)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "MessageBody" }),
+        }),
+      ).annotate({ identifier: "UpdateEndpointResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          Attributes: S.optional(MapOfListOf__string),
+          ChannelType: S.optional(ChannelType),
+          Demographic: S.optional(EndpointDemographic),
+          EffectiveDate: S.optional(S.String),
+          EndpointStatus: S.optional(S.String),
+          Id: S.optional(S.String),
+          Location: S.optional(EndpointLocation),
+          Metrics: S.optional(MapOf__double),
+          OptOut: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          User: S.optional(EndpointUser),
+        }),
+      ).annotate({ identifier: "EndpointBatchItem" });
+    case 3:
+      return S.Array(EndpointBatchItem);
+    case 4:
+      return S.suspend(() => S.Struct({ Item: S.optional(ListOfEndpointBatchItem) })).annotate({
+        identifier: "EndpointBatchRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EndpointBatchRequest: S.optional(EndpointBatchRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EndpointBatchRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEndpointsBatchRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApiKey: S.optional(S.String),
+          DefaultAuthenticationMethod: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          ServiceJson: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GCMChannelRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          GCMChannelRequest: S.optional(GCMChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "GCMChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/gcm" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateGcmChannelRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          InAppTemplateRequest: S.optional(InAppTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "InAppTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/inapp" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateInAppTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          WriteJourneyRequest: S.optional(WriteJourneyRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteJourneyRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateJourneyRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ State: S.optional(State) })).annotate({
+        identifier: "JourneyStateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          JourneyStateRequest: S.optional(JourneyStateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyStateRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/state" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateJourneyStateRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyResponse: S.optional(JourneyResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyResponse" }),
+        }),
+      ).annotate({
+        identifier: "UpdateJourneyStateResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          PushNotificationTemplateRequest: S.optional(PushNotificationTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "PushNotificationTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/push" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdatePushTemplateRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")),
+          UpdateRecommenderConfiguration: S.optional(UpdateRecommenderConfigurationShape)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "UpdateRecommenderConfigurationShape" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/recommenders/{RecommenderId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateRecommenderConfigurationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+          WriteSegmentRequest: S.optional(WriteSegmentRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteSegmentRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSegmentRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Enabled: S.optional(S.Boolean),
+          SenderId: S.optional(S.String),
+          ShortCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SMSChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SMSChannelRequest: S.optional(SMSChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SMSChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/sms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSmsChannelRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          SMSTemplateRequest: S.optional(SMSTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SMSTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/sms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSmsTemplateRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ Version: S.optional(S.String) })).annotate({
+        identifier: "TemplateActiveVersionRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateActiveVersionRequest: S.optional(TemplateActiveVersionRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "TemplateActiveVersionRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v1/templates/{TemplateName}/{TemplateType}/active-version",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateTemplateActiveVersionRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "VoiceChannelRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          VoiceChannelRequest: S.optional(VoiceChannelRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VoiceChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVoiceChannelRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+          VoiceTemplateRequest: S.optional(VoiceTemplateRequest)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VoiceTemplateRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/voice" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVoiceTemplateRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DestinationIdentity: S.optional(S.String),
+          Otp: S.optional(S.String),
+          ReferenceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VerifyOTPMessageRequestParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          VerifyOTPMessageRequestParameters: S.optional(VerifyOTPMessageRequestParameters)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VerifyOTPMessageRequestParameters" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/verify-otp" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "VerifyOTPMessageRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ Valid: S.optional(S.Boolean) })).annotate({
+        identifier: "VerificationResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          VerificationResponse: S.optional(VerificationResponse)
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VerificationResponse" }),
+        }),
+      ).annotate({ identifier: "VerifyOTPMessageResponse" });
+  }
+}

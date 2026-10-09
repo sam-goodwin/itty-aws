@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -132,56 +133,49 @@ export interface S3DataConfig {
   path: string;
   kmsKeyArn?: string;
 }
-const S3DataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ path: S.String, kmsKeyArn: S.optional(S.String) }),
-).annotate({ identifier: "S3DataConfig" }) as any as S.Schema<S3DataConfig>;
+const S3DataConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<S3DataConfig>;
 export interface BatchInferenceJobInput {
   s3DataSource: S3DataConfig;
 }
-const BatchInferenceJobInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3DataSource: S3DataConfig }),
-).annotate({ identifier: "BatchInferenceJobInput" }) as any as S.Schema<BatchInferenceJobInput>;
+const BatchInferenceJobInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchInferenceJobInput>;
 export interface BatchInferenceJobOutput {
   s3DataDestination: S3DataConfig;
 }
-const BatchInferenceJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3DataDestination: S3DataConfig }),
-).annotate({ identifier: "BatchInferenceJobOutput" }) as any as S.Schema<BatchInferenceJobOutput>;
+const BatchInferenceJobOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchInferenceJobOutput>;
 export type RoleArn = string;
 export type ParameterName = string;
 export type ParameterValue = string;
 export type HyperParameters = { [key: string]: string | undefined };
-const HyperParameters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const HyperParameters = /*@__PURE__*/ __L.at(__c0, 3);
 export type RankingInfluenceType = "POPULARITY" | "FRESHNESS" | (string & {});
 const RankingInfluenceType = S.String;
 
 export type RankingInfluenceWeight = number;
 export type RankingInfluence = { [key in RankingInfluenceType]?: number };
-const RankingInfluence = /*@__PURE__*/ S.Record(
-  RankingInfluenceType,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+const RankingInfluence = /*@__PURE__*/ __L.at(__c0, 4);
 export interface BatchInferenceJobConfig {
   itemExplorationConfig?: { [key: string]: string | undefined };
   rankingInfluence?: { [key: string]: number | undefined };
 }
-const BatchInferenceJobConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemExplorationConfig: S.optional(HyperParameters),
-    rankingInfluence: S.optional(RankingInfluence),
-  }),
-).annotate({ identifier: "BatchInferenceJobConfig" }) as any as S.Schema<BatchInferenceJobConfig>;
+const BatchInferenceJobConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BatchInferenceJobConfig>;
 export type TagKey = string | redacted.Redacted<string>;
 export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   tagKey: string | redacted.Redacted<string>;
   tagValue: string | redacted.Redacted<string>;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tagKey: SensitiveString, tagValue: SensitiveString }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-const Tags = /*@__PURE__*/ S.Array(Tag);
+const Tags = /*@__PURE__*/ __L.at(__c0, 7);
 export type BatchInferenceJobMode = "BATCH_INFERENCE" | "THEME_GENERATION" | (string & {});
 const BatchInferenceJobMode = S.String;
 
@@ -189,15 +183,17 @@ export type ColumnName = string;
 export interface FieldsForThemeGeneration {
   itemName: string;
 }
-const FieldsForThemeGeneration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ itemName: S.String }),
-).annotate({ identifier: "FieldsForThemeGeneration" }) as any as S.Schema<FieldsForThemeGeneration>;
+const FieldsForThemeGeneration = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<FieldsForThemeGeneration>;
 export interface ThemeGenerationConfig {
   fieldsForThemeGeneration: FieldsForThemeGeneration;
 }
-const ThemeGenerationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fieldsForThemeGeneration: FieldsForThemeGeneration }),
-).annotate({ identifier: "ThemeGenerationConfig" }) as any as S.Schema<ThemeGenerationConfig>;
+const ThemeGenerationConfig = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ThemeGenerationConfig>;
 export interface CreateBatchInferenceJobRequest {
   jobName: string;
   solutionVersionArn: string;
@@ -211,31 +207,17 @@ export interface CreateBatchInferenceJobRequest {
   batchInferenceJobMode?: BatchInferenceJobMode;
   themeGenerationConfig?: ThemeGenerationConfig;
 }
-const CreateBatchInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    solutionVersionArn: S.String,
-    filterArn: S.optional(S.String),
-    numResults: S.optional(S.Number),
-    jobInput: BatchInferenceJobInput,
-    jobOutput: BatchInferenceJobOutput,
-    roleArn: S.String,
-    batchInferenceJobConfig: S.optional(BatchInferenceJobConfig),
-    tags: S.optional(Tags),
-    batchInferenceJobMode: S.optional(BatchInferenceJobMode),
-    themeGenerationConfig: S.optional(ThemeGenerationConfig),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateBatchInferenceJobRequest",
-}) as any as S.Schema<CreateBatchInferenceJobRequest>;
+const CreateBatchInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateBatchInferenceJobRequest>;
 export interface CreateBatchInferenceJobResponse {
   batchInferenceJobArn?: string;
 }
-const CreateBatchInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchInferenceJobArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateBatchInferenceJobResponse",
-}) as any as S.Schema<CreateBatchInferenceJobResponse>;
+const CreateBatchInferenceJobResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateBatchInferenceJobResponse>;
 export interface BatchSegmentJobInput {
   s3DataSource: S3DataConfig;
 }
@@ -254,28 +236,17 @@ export interface CreateBatchSegmentJobRequest {
   roleArn: string;
   tags?: Tag[];
 }
-const CreateBatchSegmentJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    solutionVersionArn: S.String,
-    filterArn: S.optional(S.String),
-    numResults: S.optional(S.Number),
-    jobInput: BatchSegmentJobInput,
-    jobOutput: BatchSegmentJobOutput,
-    roleArn: S.String,
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateBatchSegmentJobRequest",
-}) as any as S.Schema<CreateBatchSegmentJobRequest>;
+const CreateBatchSegmentJobRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateBatchSegmentJobRequest>;
 export interface CreateBatchSegmentJobResponse {
   batchSegmentJobArn?: string;
 }
-const CreateBatchSegmentJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchSegmentJobArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateBatchSegmentJobResponse",
-}) as any as S.Schema<CreateBatchSegmentJobResponse>;
+const CreateBatchSegmentJobResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateBatchSegmentJobResponse>;
 export type TransactionsPerSecond = number;
 export interface CampaignConfig {
   itemExplorationConfig?: { [key: string]: string | undefined };
@@ -283,14 +254,7 @@ export interface CampaignConfig {
   syncWithLatestSolutionVersion?: boolean;
   rankingInfluence?: { [key: string]: number | undefined };
 }
-const CampaignConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemExplorationConfig: S.optional(HyperParameters),
-    enableMetadataWithRecommendations: S.optional(S.Boolean),
-    syncWithLatestSolutionVersion: S.optional(S.Boolean),
-    rankingInfluence: S.optional(RankingInfluence),
-  }),
-).annotate({ identifier: "CampaignConfig" }) as any as S.Schema<CampaignConfig>;
+const CampaignConfig = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CampaignConfig>;
 export interface CreateCampaignRequest {
   name: string;
   solutionVersionArn: string;
@@ -298,27 +262,21 @@ export interface CreateCampaignRequest {
   campaignConfig?: CampaignConfig;
   tags?: Tag[];
 }
-const CreateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    solutionVersionArn: S.String,
-    minProvisionedTPS: S.optional(S.Number),
-    campaignConfig: S.optional(CampaignConfig),
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateCampaignRequest" }) as any as S.Schema<CreateCampaignRequest>;
+const CreateCampaignRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateCampaignRequest>;
 export interface CreateCampaignResponse {
   campaignArn?: string;
 }
-const CreateCampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaignArn: S.optional(S.String) }),
-).annotate({ identifier: "CreateCampaignResponse" }) as any as S.Schema<CreateCampaignResponse>;
+const CreateCampaignResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateCampaignResponse>;
 export interface DataSource {
   dataLocation?: string;
 }
-const DataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataLocation: S.optional(S.String) }),
-).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
+const DataSource = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DataSource>;
 export interface CreateDataDeletionJobRequest {
   jobName: string;
   datasetGroupArn: string;
@@ -326,25 +284,17 @@ export interface CreateDataDeletionJobRequest {
   roleArn: string;
   tags?: Tag[];
 }
-const CreateDataDeletionJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    datasetGroupArn: S.String,
-    dataSource: DataSource,
-    roleArn: S.String,
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateDataDeletionJobRequest",
-}) as any as S.Schema<CreateDataDeletionJobRequest>;
+const CreateDataDeletionJobRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateDataDeletionJobRequest>;
 export interface CreateDataDeletionJobResponse {
   dataDeletionJobArn?: string;
 }
-const CreateDataDeletionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataDeletionJobArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateDataDeletionJobResponse",
-}) as any as S.Schema<CreateDataDeletionJobResponse>;
+const CreateDataDeletionJobResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateDataDeletionJobResponse>;
 export type DatasetType = string;
 export interface CreateDatasetRequest {
   name: string;
@@ -353,21 +303,14 @@ export interface CreateDatasetRequest {
   datasetType: string;
   tags?: Tag[];
 }
-const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    schemaArn: S.String,
-    datasetGroupArn: S.String,
-    datasetType: S.String,
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateDatasetRequest" }) as any as S.Schema<CreateDatasetRequest>;
+const CreateDatasetRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateDatasetRequest>;
 export interface CreateDatasetResponse {
   datasetArn?: string;
 }
-const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetArn: S.optional(S.String) }),
-).annotate({ identifier: "CreateDatasetResponse" }) as any as S.Schema<CreateDatasetResponse>;
+const CreateDatasetResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateDatasetResponse>;
 export type IngestionMode = "BULK" | "PUT" | "ALL" | (string & {});
 const IngestionMode = S.String;
 
@@ -383,26 +326,17 @@ export interface CreateDatasetExportJobRequest {
   jobOutput: DatasetExportJobOutput;
   tags?: Tag[];
 }
-const CreateDatasetExportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    datasetArn: S.String,
-    ingestionMode: S.optional(IngestionMode),
-    roleArn: S.String,
-    jobOutput: DatasetExportJobOutput,
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateDatasetExportJobRequest",
-}) as any as S.Schema<CreateDatasetExportJobRequest>;
+const CreateDatasetExportJobRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateDatasetExportJobRequest>;
 export interface CreateDatasetExportJobResponse {
   datasetExportJobArn?: string;
 }
-const CreateDatasetExportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetExportJobArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateDatasetExportJobResponse",
-}) as any as S.Schema<CreateDatasetExportJobResponse>;
+const CreateDatasetExportJobResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateDatasetExportJobResponse>;
 export type Domain = "ECOMMERCE" | "VIDEO_ON_DEMAND" | (string & {});
 const Domain = S.String;
 
@@ -413,26 +347,18 @@ export interface CreateDatasetGroupRequest {
   domain?: Domain;
   tags?: Tag[];
 }
-const CreateDatasetGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    roleArn: S.optional(S.String),
-    kmsKeyArn: S.optional(S.String),
-    domain: S.optional(Domain),
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateDatasetGroupRequest",
-}) as any as S.Schema<CreateDatasetGroupRequest>;
+const CreateDatasetGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateDatasetGroupRequest>;
 export interface CreateDatasetGroupResponse {
   datasetGroupArn?: string;
   domain?: Domain;
 }
-const CreateDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetGroupArn: S.optional(S.String), domain: S.optional(Domain) }),
-).annotate({
-  identifier: "CreateDatasetGroupResponse",
-}) as any as S.Schema<CreateDatasetGroupResponse>;
+const CreateDatasetGroupResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateDatasetGroupResponse>;
 export type ImportMode = "FULL" | "INCREMENTAL" | (string & {});
 const ImportMode = S.String;
 
@@ -445,49 +371,35 @@ export interface CreateDatasetImportJobRequest {
   importMode?: ImportMode;
   publishAttributionMetricsToS3?: boolean;
 }
-const CreateDatasetImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    datasetArn: S.String,
-    dataSource: DataSource,
-    roleArn: S.optional(S.String),
-    tags: S.optional(Tags),
-    importMode: S.optional(ImportMode),
-    publishAttributionMetricsToS3: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateDatasetImportJobRequest",
-}) as any as S.Schema<CreateDatasetImportJobRequest>;
+const CreateDatasetImportJobRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateDatasetImportJobRequest>;
 export interface CreateDatasetImportJobResponse {
   datasetImportJobArn?: string;
 }
-const CreateDatasetImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetImportJobArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateDatasetImportJobResponse",
-}) as any as S.Schema<CreateDatasetImportJobResponse>;
+const CreateDatasetImportJobResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateDatasetImportJobResponse>;
 export interface CreateEventTrackerRequest {
   name: string;
   datasetGroupArn: string;
   tags?: Tag[];
 }
-const CreateEventTrackerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, datasetGroupArn: S.String, tags: S.optional(Tags) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateEventTrackerRequest",
-}) as any as S.Schema<CreateEventTrackerRequest>;
+const CreateEventTrackerRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateEventTrackerRequest>;
 export type TrackingId = string;
 export interface CreateEventTrackerResponse {
   eventTrackerArn?: string;
   trackingId?: string;
 }
-const CreateEventTrackerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventTrackerArn: S.optional(S.String), trackingId: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateEventTrackerResponse",
-}) as any as S.Schema<CreateEventTrackerResponse>;
+const CreateEventTrackerResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateEventTrackerResponse>;
 export type FilterExpression = string | redacted.Redacted<string>;
 export interface CreateFilterRequest {
   name: string;
@@ -495,20 +407,11 @@ export interface CreateFilterRequest {
   filterExpression: string | redacted.Redacted<string>;
   tags?: Tag[];
 }
-const CreateFilterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    datasetGroupArn: S.String,
-    filterExpression: SensitiveString,
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateFilterRequest" }) as any as S.Schema<CreateFilterRequest>;
+const CreateFilterRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CreateFilterRequest>;
 export interface CreateFilterResponse {
   filterArn?: string;
 }
-const CreateFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filterArn: S.optional(S.String) }),
-).annotate({ identifier: "CreateFilterResponse" }) as any as S.Schema<CreateFilterResponse>;
+const CreateFilterResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreateFilterResponse>;
 export type EventType = string;
 export type MetricName = string;
 export type MetricExpression = string;
@@ -517,75 +420,52 @@ export interface MetricAttribute {
   metricName: string;
   expression: string;
 }
-const MetricAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventType: S.String, metricName: S.String, expression: S.String }),
-).annotate({ identifier: "MetricAttribute" }) as any as S.Schema<MetricAttribute>;
+const MetricAttribute = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MetricAttribute>;
 export type MetricAttributes = MetricAttribute[];
-const MetricAttributes = /*@__PURE__*/ S.Array(MetricAttribute);
+const MetricAttributes = /*@__PURE__*/ __L.at(__c4, 1);
 export interface MetricAttributionOutput {
   s3DataDestination?: S3DataConfig;
   roleArn: string;
 }
-const MetricAttributionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3DataDestination: S.optional(S3DataConfig), roleArn: S.String }),
-).annotate({ identifier: "MetricAttributionOutput" }) as any as S.Schema<MetricAttributionOutput>;
+const MetricAttributionOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<MetricAttributionOutput>;
 export interface CreateMetricAttributionRequest {
   name: string;
   datasetGroupArn: string;
   metrics: MetricAttribute[];
   metricsOutputConfig: MetricAttributionOutput;
 }
-const CreateMetricAttributionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    datasetGroupArn: S.String,
-    metrics: MetricAttributes,
-    metricsOutputConfig: MetricAttributionOutput,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateMetricAttributionRequest",
-}) as any as S.Schema<CreateMetricAttributionRequest>;
+const CreateMetricAttributionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateMetricAttributionRequest>;
 export interface CreateMetricAttributionResponse {
   metricAttributionArn?: string;
 }
-const CreateMetricAttributionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metricAttributionArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateMetricAttributionResponse",
-}) as any as S.Schema<CreateMetricAttributionResponse>;
+const CreateMetricAttributionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateMetricAttributionResponse>;
 export type ColumnNamesList = string[];
-const ColumnNamesList = /*@__PURE__*/ S.Array(S.String);
+const ColumnNamesList = /*@__PURE__*/ __L.at(__c4, 5);
 export type ExcludedDatasetColumns = { [key: string]: string[] | undefined };
-const ExcludedDatasetColumns = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ColumnNamesList.pipe(S.optional),
-);
+const ExcludedDatasetColumns = /*@__PURE__*/ __L.at(__c4, 6);
 export type IncludedDatasetColumns = { [key: string]: string[] | undefined };
 const IncludedDatasetColumns = ExcludedDatasetColumns as any as S.Schema<IncludedDatasetColumns>;
 export interface TrainingDataConfig {
   excludedDatasetColumns?: { [key: string]: string[] | undefined };
   includedDatasetColumns?: { [key: string]: string[] | undefined };
 }
-const TrainingDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    excludedDatasetColumns: S.optional(ExcludedDatasetColumns),
-    includedDatasetColumns: S.optional(IncludedDatasetColumns),
-  }),
-).annotate({ identifier: "TrainingDataConfig" }) as any as S.Schema<TrainingDataConfig>;
+const TrainingDataConfig = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<TrainingDataConfig>;
 export interface RecommenderConfig {
   itemExplorationConfig?: { [key: string]: string | undefined };
   minRecommendationRequestsPerSecond?: number;
   trainingDataConfig?: TrainingDataConfig;
   enableMetadataWithRecommendations?: boolean;
 }
-const RecommenderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemExplorationConfig: S.optional(HyperParameters),
-    minRecommendationRequestsPerSecond: S.optional(S.Number),
-    trainingDataConfig: S.optional(TrainingDataConfig),
-    enableMetadataWithRecommendations: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "RecommenderConfig" }) as any as S.Schema<RecommenderConfig>;
+const RecommenderConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RecommenderConfig>;
 export interface CreateRecommenderRequest {
   name: string;
   datasetGroupArn: string;
@@ -593,40 +473,28 @@ export interface CreateRecommenderRequest {
   recommenderConfig?: RecommenderConfig;
   tags?: Tag[];
 }
-const CreateRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    datasetGroupArn: S.String,
-    recipeArn: S.String,
-    recommenderConfig: S.optional(RecommenderConfig),
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateRecommenderRequest" }) as any as S.Schema<CreateRecommenderRequest>;
+const CreateRecommenderRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateRecommenderRequest>;
 export interface CreateRecommenderResponse {
   recommenderArn?: string;
 }
-const CreateRecommenderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenderArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateRecommenderResponse",
-}) as any as S.Schema<CreateRecommenderResponse>;
+const CreateRecommenderResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateRecommenderResponse>;
 export type AvroSchema = string;
 export interface CreateSchemaRequest {
   name: string;
   schema: string;
   domain?: Domain;
 }
-const CreateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, schema: S.String, domain: S.optional(Domain) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateSchemaRequest" }) as any as S.Schema<CreateSchemaRequest>;
+const CreateSchemaRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CreateSchemaRequest>;
 export interface CreateSchemaResponse {
   schemaArn?: string;
 }
-const CreateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schemaArn: S.optional(S.String) }),
-).annotate({ identifier: "CreateSchemaResponse" }) as any as S.Schema<CreateSchemaResponse>;
+const CreateSchemaResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CreateSchemaResponse>;
 export type PerformAutoML = boolean;
 export type PerformAutoTraining = boolean;
 export type PerformIncrementalUpdate = boolean;
@@ -638,24 +506,13 @@ export interface HPOObjective {
   metricName?: string;
   metricRegex?: string;
 }
-const HPOObjective = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    metricName: S.optional(S.String),
-    metricRegex: S.optional(S.String),
-  }),
-).annotate({ identifier: "HPOObjective" }) as any as S.Schema<HPOObjective>;
+const HPOObjective = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<HPOObjective>;
 export type HPOResource = string;
 export interface HPOResourceConfig {
   maxNumberOfTrainingJobs?: string;
   maxParallelTrainingJobs?: string;
 }
-const HPOResourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxNumberOfTrainingJobs: S.optional(S.String),
-    maxParallelTrainingJobs: S.optional(S.String),
-  }),
-).annotate({ identifier: "HPOResourceConfig" }) as any as S.Schema<HPOResourceConfig>;
+const HPOResourceConfig = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<HPOResourceConfig>;
 export type IntegerMinValue = number;
 export type IntegerMaxValue = number;
 export interface IntegerHyperParameterRange {
@@ -663,17 +520,12 @@ export interface IntegerHyperParameterRange {
   minValue?: number;
   maxValue?: number;
 }
-const IntegerHyperParameterRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    minValue: S.optional(S.Number),
-    maxValue: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "IntegerHyperParameterRange",
-}) as any as S.Schema<IntegerHyperParameterRange>;
+const IntegerHyperParameterRange = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<IntegerHyperParameterRange>;
 export type IntegerHyperParameterRanges = IntegerHyperParameterRange[];
-const IntegerHyperParameterRanges = /*@__PURE__*/ S.Array(IntegerHyperParameterRange);
+const IntegerHyperParameterRanges = /*@__PURE__*/ __L.at(__c6, 0);
 export type ContinuousMinValue = number;
 export type ContinuousMaxValue = number;
 export interface ContinuousHyperParameterRange {
@@ -691,37 +543,24 @@ export interface CategoricalHyperParameterRange {
   name?: string;
   values?: string[];
 }
-const CategoricalHyperParameterRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), values: S.optional(CategoricalValues) }),
-).annotate({
-  identifier: "CategoricalHyperParameterRange",
-}) as any as S.Schema<CategoricalHyperParameterRange>;
+const CategoricalHyperParameterRange = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CategoricalHyperParameterRange>;
 export type CategoricalHyperParameterRanges = CategoricalHyperParameterRange[];
-const CategoricalHyperParameterRanges = /*@__PURE__*/ S.Array(CategoricalHyperParameterRange);
+const CategoricalHyperParameterRanges = /*@__PURE__*/ __L.at(__c6, 2);
 export interface HyperParameterRanges {
   integerHyperParameterRanges?: IntegerHyperParameterRange[];
   continuousHyperParameterRanges?: ContinuousHyperParameterRange[];
   categoricalHyperParameterRanges?: CategoricalHyperParameterRange[];
 }
-const HyperParameterRanges = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integerHyperParameterRanges: S.optional(IntegerHyperParameterRanges),
-    continuousHyperParameterRanges: S.optional(ContinuousHyperParameterRanges),
-    categoricalHyperParameterRanges: S.optional(CategoricalHyperParameterRanges),
-  }),
-).annotate({ identifier: "HyperParameterRanges" }) as any as S.Schema<HyperParameterRanges>;
+const HyperParameterRanges = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<HyperParameterRanges>;
 export interface HPOConfig {
   hpoObjective?: HPOObjective;
   hpoResourceConfig?: HPOResourceConfig;
   algorithmHyperParameterRanges?: HyperParameterRanges;
 }
-const HPOConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hpoObjective: S.optional(HPOObjective),
-    hpoResourceConfig: S.optional(HPOResourceConfig),
-    algorithmHyperParameterRanges: S.optional(HyperParameterRanges),
-  }),
-).annotate({ identifier: "HPOConfig" }) as any as S.Schema<HPOConfig>;
+const HPOConfig = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<HPOConfig>;
 export type FeatureTransformationParameters = { [key: string]: string | undefined };
 const FeatureTransformationParameters =
   HyperParameters as any as S.Schema<FeatureTransformationParameters>;
@@ -731,9 +570,7 @@ export interface AutoMLConfig {
   metricName?: string;
   recipeList?: string[];
 }
-const AutoMLConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metricName: S.optional(S.String), recipeList: S.optional(ArnList) }),
-).annotate({ identifier: "AutoMLConfig" }) as any as S.Schema<AutoMLConfig>;
+const AutoMLConfig = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AutoMLConfig>;
 export type EventTypeThresholdValue = number;
 export type EventTypeWeight = number;
 export interface EventParameters {
@@ -741,21 +578,13 @@ export interface EventParameters {
   eventValueThreshold?: number;
   weight?: number;
 }
-const EventParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventType: S.optional(S.String),
-    eventValueThreshold: S.optional(S.Number),
-    weight: S.optional(S.Number),
-  }),
-).annotate({ identifier: "EventParameters" }) as any as S.Schema<EventParameters>;
+const EventParameters = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<EventParameters>;
 export type EventParametersList = EventParameters[];
-const EventParametersList = /*@__PURE__*/ S.Array(EventParameters);
+const EventParametersList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface EventsConfig {
   eventParametersList?: EventParameters[];
 }
-const EventsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventParametersList: S.optional(EventParametersList) }),
-).annotate({ identifier: "EventsConfig" }) as any as S.Schema<EventsConfig>;
+const EventsConfig = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<EventsConfig>;
 export type ItemAttribute = string;
 export type ObjectiveSensitivity = "LOW" | "MEDIUM" | "HIGH" | "OFF" | (string & {});
 const ObjectiveSensitivity = S.String;
@@ -764,19 +593,15 @@ export interface OptimizationObjective {
   itemAttribute?: string;
   objectiveSensitivity?: ObjectiveSensitivity;
 }
-const OptimizationObjective = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemAttribute: S.optional(S.String),
-    objectiveSensitivity: S.optional(ObjectiveSensitivity),
-  }),
-).annotate({ identifier: "OptimizationObjective" }) as any as S.Schema<OptimizationObjective>;
+const OptimizationObjective = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<OptimizationObjective>;
 export type SchedulingExpression = string;
 export interface AutoTrainingConfig {
   schedulingExpression?: string;
 }
-const AutoTrainingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schedulingExpression: S.optional(S.String) }),
-).annotate({ identifier: "AutoTrainingConfig" }) as any as S.Schema<AutoTrainingConfig>;
+const AutoTrainingConfig = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AutoTrainingConfig>;
 export interface SolutionConfig {
   eventValueThreshold?: string;
   hpoConfig?: HPOConfig;
@@ -788,19 +613,7 @@ export interface SolutionConfig {
   trainingDataConfig?: TrainingDataConfig;
   autoTrainingConfig?: AutoTrainingConfig;
 }
-const SolutionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventValueThreshold: S.optional(S.String),
-    hpoConfig: S.optional(HPOConfig),
-    algorithmHyperParameters: S.optional(HyperParameters),
-    featureTransformationParameters: S.optional(FeatureTransformationParameters),
-    autoMLConfig: S.optional(AutoMLConfig),
-    eventsConfig: S.optional(EventsConfig),
-    optimizationObjective: S.optional(OptimizationObjective),
-    trainingDataConfig: S.optional(TrainingDataConfig),
-    autoTrainingConfig: S.optional(AutoTrainingConfig),
-  }),
-).annotate({ identifier: "SolutionConfig" }) as any as S.Schema<SolutionConfig>;
+const SolutionConfig = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SolutionConfig>;
 export interface CreateSolutionRequest {
   name: string;
   performHPO?: boolean;
@@ -813,26 +626,17 @@ export interface CreateSolutionRequest {
   solutionConfig?: SolutionConfig;
   tags?: Tag[];
 }
-const CreateSolutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    performHPO: S.optional(S.Boolean),
-    performAutoML: S.optional(S.Boolean),
-    performAutoTraining: S.optional(S.Boolean),
-    performIncrementalUpdate: S.optional(S.Boolean),
-    recipeArn: S.optional(S.String),
-    datasetGroupArn: S.String,
-    eventType: S.optional(S.String),
-    solutionConfig: S.optional(SolutionConfig),
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateSolutionRequest" }) as any as S.Schema<CreateSolutionRequest>;
+const CreateSolutionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateSolutionRequest>;
 export interface CreateSolutionResponse {
   solutionArn?: string;
 }
-const CreateSolutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionArn: S.optional(S.String) }),
-).annotate({ identifier: "CreateSolutionResponse" }) as any as S.Schema<CreateSolutionResponse>;
+const CreateSolutionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateSolutionResponse>;
 export type TrainingMode = "FULL" | "UPDATE" | "AUTOTRAIN" | (string & {});
 const TrainingMode = S.String;
 
@@ -842,143 +646,111 @@ export interface CreateSolutionVersionRequest {
   trainingMode?: TrainingMode;
   tags?: Tag[];
 }
-const CreateSolutionVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    solutionArn: S.String,
-    trainingMode: S.optional(TrainingMode),
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateSolutionVersionRequest",
-}) as any as S.Schema<CreateSolutionVersionRequest>;
+const CreateSolutionVersionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateSolutionVersionRequest>;
 export interface CreateSolutionVersionResponse {
   solutionVersionArn?: string;
 }
-const CreateSolutionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionVersionArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateSolutionVersionResponse",
-}) as any as S.Schema<CreateSolutionVersionResponse>;
+const CreateSolutionVersionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateSolutionVersionResponse>;
 export interface DeleteCampaignRequest {
   campaignArn: string;
 }
-const DeleteCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaignArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteCampaignRequest" }) as any as S.Schema<DeleteCampaignRequest>;
+const DeleteCampaignRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteCampaignRequest>;
 export interface DeleteCampaignResponse {}
-const DeleteCampaignResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCampaignResponse",
-}) as any as S.Schema<DeleteCampaignResponse>;
+const DeleteCampaignResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteCampaignResponse>;
 export interface DeleteDatasetRequest {
   datasetArn: string;
 }
-const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteDatasetRequest" }) as any as S.Schema<DeleteDatasetRequest>;
+const DeleteDatasetRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteDatasetRequest>;
 export interface DeleteDatasetResponse {}
 const DeleteDatasetResponse = DeleteCampaignResponse as any as S.Schema<DeleteDatasetResponse>;
 export interface DeleteDatasetGroupRequest {
   datasetGroupArn: string;
 }
-const DeleteDatasetGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetGroupArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteDatasetGroupRequest",
-}) as any as S.Schema<DeleteDatasetGroupRequest>;
+const DeleteDatasetGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteDatasetGroupRequest>;
 export interface DeleteDatasetGroupResponse {}
 const DeleteDatasetGroupResponse =
   DeleteCampaignResponse as any as S.Schema<DeleteDatasetGroupResponse>;
 export interface DeleteEventTrackerRequest {
   eventTrackerArn: string;
 }
-const DeleteEventTrackerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventTrackerArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteEventTrackerRequest",
-}) as any as S.Schema<DeleteEventTrackerRequest>;
+const DeleteEventTrackerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteEventTrackerRequest>;
 export interface DeleteEventTrackerResponse {}
 const DeleteEventTrackerResponse =
   DeleteCampaignResponse as any as S.Schema<DeleteEventTrackerResponse>;
 export interface DeleteFilterRequest {
   filterArn: string;
 }
-const DeleteFilterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filterArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteFilterRequest" }) as any as S.Schema<DeleteFilterRequest>;
+const DeleteFilterRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeleteFilterRequest>;
 export interface DeleteFilterResponse {}
 const DeleteFilterResponse = DeleteCampaignResponse as any as S.Schema<DeleteFilterResponse>;
 export interface DeleteMetricAttributionRequest {
   metricAttributionArn: string;
 }
-const DeleteMetricAttributionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metricAttributionArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteMetricAttributionRequest",
-}) as any as S.Schema<DeleteMetricAttributionRequest>;
+const DeleteMetricAttributionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteMetricAttributionRequest>;
 export interface DeleteMetricAttributionResponse {}
-const DeleteMetricAttributionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMetricAttributionResponse",
-}) as any as S.Schema<DeleteMetricAttributionResponse>;
+const DeleteMetricAttributionResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteMetricAttributionResponse>;
 export interface DeleteRecommenderRequest {
   recommenderArn: string;
 }
-const DeleteRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenderArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteRecommenderRequest" }) as any as S.Schema<DeleteRecommenderRequest>;
+const DeleteRecommenderRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteRecommenderRequest>;
 export interface DeleteRecommenderResponse {}
 const DeleteRecommenderResponse =
   DeleteCampaignResponse as any as S.Schema<DeleteRecommenderResponse>;
 export interface DeleteSchemaRequest {
   schemaArn: string;
 }
-const DeleteSchemaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schemaArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteSchemaRequest" }) as any as S.Schema<DeleteSchemaRequest>;
+const DeleteSchemaRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeleteSchemaRequest>;
 export interface DeleteSchemaResponse {}
 const DeleteSchemaResponse = DeleteCampaignResponse as any as S.Schema<DeleteSchemaResponse>;
 export interface DeleteSolutionRequest {
   solutionArn: string;
 }
-const DeleteSolutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteSolutionRequest" }) as any as S.Schema<DeleteSolutionRequest>;
+const DeleteSolutionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteSolutionRequest>;
 export interface DeleteSolutionResponse {}
 const DeleteSolutionResponse = DeleteCampaignResponse as any as S.Schema<DeleteSolutionResponse>;
 export interface DescribeAlgorithmRequest {
   algorithmArn: string;
 }
-const DescribeAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ algorithmArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeAlgorithmRequest" }) as any as S.Schema<DescribeAlgorithmRequest>;
+const DescribeAlgorithmRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DescribeAlgorithmRequest>;
 export type DockerURI = string;
 export interface AlgorithmImage {
   name?: string;
   dockerURI: string;
 }
-const AlgorithmImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), dockerURI: S.String }),
-).annotate({ identifier: "AlgorithmImage" }) as any as S.Schema<AlgorithmImage>;
+const AlgorithmImage = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AlgorithmImage>;
 export type Tunable = boolean;
 export interface DefaultIntegerHyperParameterRange {
   name?: string;
@@ -986,18 +758,12 @@ export interface DefaultIntegerHyperParameterRange {
   maxValue?: number;
   isTunable?: boolean;
 }
-const DefaultIntegerHyperParameterRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    minValue: S.optional(S.Number),
-    maxValue: S.optional(S.Number),
-    isTunable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DefaultIntegerHyperParameterRange",
-}) as any as S.Schema<DefaultIntegerHyperParameterRange>;
+const DefaultIntegerHyperParameterRange = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DefaultIntegerHyperParameterRange>;
 export type DefaultIntegerHyperParameterRanges = DefaultIntegerHyperParameterRange[];
-const DefaultIntegerHyperParameterRanges = /*@__PURE__*/ S.Array(DefaultIntegerHyperParameterRange);
+const DefaultIntegerHyperParameterRanges = /*@__PURE__*/ __L.at(__c9, 6);
 export interface DefaultContinuousHyperParameterRange {
   name?: string;
   minValue?: number;
@@ -1012,33 +778,21 @@ export interface DefaultCategoricalHyperParameterRange {
   values?: string[];
   isTunable?: boolean;
 }
-const DefaultCategoricalHyperParameterRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    values: S.optional(CategoricalValues),
-    isTunable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DefaultCategoricalHyperParameterRange",
-}) as any as S.Schema<DefaultCategoricalHyperParameterRange>;
+const DefaultCategoricalHyperParameterRange = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DefaultCategoricalHyperParameterRange>;
 export type DefaultCategoricalHyperParameterRanges = DefaultCategoricalHyperParameterRange[];
-const DefaultCategoricalHyperParameterRanges = /*@__PURE__*/ S.Array(
-  DefaultCategoricalHyperParameterRange,
-);
+const DefaultCategoricalHyperParameterRanges = /*@__PURE__*/ __L.at(__c10, 0);
 export interface DefaultHyperParameterRanges {
   integerHyperParameterRanges?: DefaultIntegerHyperParameterRange[];
   continuousHyperParameterRanges?: DefaultContinuousHyperParameterRange[];
   categoricalHyperParameterRanges?: DefaultCategoricalHyperParameterRange[];
 }
-const DefaultHyperParameterRanges = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integerHyperParameterRanges: S.optional(DefaultIntegerHyperParameterRanges),
-    continuousHyperParameterRanges: S.optional(DefaultContinuousHyperParameterRanges),
-    categoricalHyperParameterRanges: S.optional(DefaultCategoricalHyperParameterRanges),
-  }),
-).annotate({
-  identifier: "DefaultHyperParameterRanges",
-}) as any as S.Schema<DefaultHyperParameterRanges>;
+const DefaultHyperParameterRanges = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DefaultHyperParameterRanges>;
 export type ResourceConfig = { [key: string]: string | undefined };
 const ResourceConfig = HyperParameters as any as S.Schema<ResourceConfig>;
 export type TrainingInputMode = string;
@@ -1054,38 +808,21 @@ export interface Algorithm {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const Algorithm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    algorithmArn: S.optional(S.String),
-    algorithmImage: S.optional(AlgorithmImage),
-    defaultHyperParameters: S.optional(HyperParameters),
-    defaultHyperParameterRanges: S.optional(DefaultHyperParameterRanges),
-    defaultResourceConfig: S.optional(ResourceConfig),
-    trainingInputMode: S.optional(S.String),
-    roleArn: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "Algorithm" }) as any as S.Schema<Algorithm>;
+const Algorithm = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<Algorithm>;
 export interface DescribeAlgorithmResponse {
   algorithm?: Algorithm;
 }
-const DescribeAlgorithmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ algorithm: S.optional(Algorithm) }),
-).annotate({
-  identifier: "DescribeAlgorithmResponse",
-}) as any as S.Schema<DescribeAlgorithmResponse>;
+const DescribeAlgorithmResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DescribeAlgorithmResponse>;
 export interface DescribeBatchInferenceJobRequest {
   batchInferenceJobArn: string;
 }
-const DescribeBatchInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchInferenceJobArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeBatchInferenceJobRequest",
-}) as any as S.Schema<DescribeBatchInferenceJobRequest>;
+const DescribeBatchInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DescribeBatchInferenceJobRequest>;
 export type FailureReason = string;
 export type Status = string;
 export interface BatchInferenceJob {
@@ -1105,43 +842,21 @@ export interface BatchInferenceJob {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const BatchInferenceJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.optional(S.String),
-    batchInferenceJobArn: S.optional(S.String),
-    filterArn: S.optional(S.String),
-    failureReason: S.optional(S.String),
-    solutionVersionArn: S.optional(S.String),
-    numResults: S.optional(S.Number),
-    jobInput: S.optional(BatchInferenceJobInput),
-    jobOutput: S.optional(BatchInferenceJobOutput),
-    batchInferenceJobConfig: S.optional(BatchInferenceJobConfig),
-    roleArn: S.optional(S.String),
-    batchInferenceJobMode: S.optional(BatchInferenceJobMode),
-    themeGenerationConfig: S.optional(ThemeGenerationConfig),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "BatchInferenceJob" }) as any as S.Schema<BatchInferenceJob>;
+const BatchInferenceJob = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<BatchInferenceJob>;
 export interface DescribeBatchInferenceJobResponse {
   batchInferenceJob?: BatchInferenceJob;
 }
-const DescribeBatchInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchInferenceJob: S.optional(BatchInferenceJob) }),
-).annotate({
-  identifier: "DescribeBatchInferenceJobResponse",
-}) as any as S.Schema<DescribeBatchInferenceJobResponse>;
+const DescribeBatchInferenceJobResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DescribeBatchInferenceJobResponse>;
 export interface DescribeBatchSegmentJobRequest {
   batchSegmentJobArn: string;
 }
-const DescribeBatchSegmentJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchSegmentJobArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeBatchSegmentJobRequest",
-}) as any as S.Schema<DescribeBatchSegmentJobRequest>;
+const DescribeBatchSegmentJobRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DescribeBatchSegmentJobRequest>;
 export interface BatchSegmentJob {
   jobName?: string;
   batchSegmentJobArn?: string;
@@ -1156,38 +871,21 @@ export interface BatchSegmentJob {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const BatchSegmentJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.optional(S.String),
-    batchSegmentJobArn: S.optional(S.String),
-    filterArn: S.optional(S.String),
-    failureReason: S.optional(S.String),
-    solutionVersionArn: S.optional(S.String),
-    numResults: S.optional(S.Number),
-    jobInput: S.optional(BatchSegmentJobInput),
-    jobOutput: S.optional(BatchSegmentJobOutput),
-    roleArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "BatchSegmentJob" }) as any as S.Schema<BatchSegmentJob>;
+const BatchSegmentJob = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<BatchSegmentJob>;
 export interface DescribeBatchSegmentJobResponse {
   batchSegmentJob?: BatchSegmentJob;
 }
-const DescribeBatchSegmentJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchSegmentJob: S.optional(BatchSegmentJob) }),
-).annotate({
-  identifier: "DescribeBatchSegmentJobResponse",
-}) as any as S.Schema<DescribeBatchSegmentJobResponse>;
+const DescribeBatchSegmentJobResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DescribeBatchSegmentJobResponse>;
 export interface DescribeCampaignRequest {
   campaignArn: string;
 }
-const DescribeCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaignArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeCampaignRequest" }) as any as S.Schema<DescribeCampaignRequest>;
+const DescribeCampaignRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DescribeCampaignRequest>;
 export interface CampaignUpdateSummary {
   solutionVersionArn?: string;
   minProvisionedTPS?: number;
@@ -1197,17 +895,10 @@ export interface CampaignUpdateSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const CampaignUpdateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solutionVersionArn: S.optional(S.String),
-    minProvisionedTPS: S.optional(S.Number),
-    campaignConfig: S.optional(CampaignConfig),
-    status: S.optional(S.String),
-    failureReason: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "CampaignUpdateSummary" }) as any as S.Schema<CampaignUpdateSummary>;
+const CampaignUpdateSummary = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CampaignUpdateSummary>;
 export interface Campaign {
   name?: string;
   campaignArn?: string;
@@ -1220,36 +911,21 @@ export interface Campaign {
   lastUpdatedDateTime?: Date;
   latestCampaignUpdate?: CampaignUpdateSummary;
 }
-const Campaign = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    campaignArn: S.optional(S.String),
-    solutionVersionArn: S.optional(S.String),
-    minProvisionedTPS: S.optional(S.Number),
-    campaignConfig: S.optional(CampaignConfig),
-    status: S.optional(S.String),
-    failureReason: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    latestCampaignUpdate: S.optional(CampaignUpdateSummary),
-  }),
-).annotate({ identifier: "Campaign" }) as any as S.Schema<Campaign>;
+const Campaign = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Campaign>;
 export interface DescribeCampaignResponse {
   campaign?: Campaign;
 }
-const DescribeCampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaign: S.optional(Campaign) }),
-).annotate({ identifier: "DescribeCampaignResponse" }) as any as S.Schema<DescribeCampaignResponse>;
+const DescribeCampaignResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DescribeCampaignResponse>;
 export interface DescribeDataDeletionJobRequest {
   dataDeletionJobArn: string;
 }
-const DescribeDataDeletionJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataDeletionJobArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeDataDeletionJobRequest",
-}) as any as S.Schema<DescribeDataDeletionJobRequest>;
+const DescribeDataDeletionJobRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DescribeDataDeletionJobRequest>;
 export interface DataDeletionJob {
   jobName?: string;
   dataDeletionJobArn?: string;
@@ -1262,36 +938,21 @@ export interface DataDeletionJob {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const DataDeletionJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.optional(S.String),
-    dataDeletionJobArn: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    dataSource: S.optional(DataSource),
-    roleArn: S.optional(S.String),
-    status: S.optional(S.String),
-    numDeleted: S.optional(S.Number),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataDeletionJob" }) as any as S.Schema<DataDeletionJob>;
+const DataDeletionJob = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<DataDeletionJob>;
 export interface DescribeDataDeletionJobResponse {
   dataDeletionJob?: DataDeletionJob;
 }
-const DescribeDataDeletionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataDeletionJob: S.optional(DataDeletionJob) }),
-).annotate({
-  identifier: "DescribeDataDeletionJobResponse",
-}) as any as S.Schema<DescribeDataDeletionJobResponse>;
+const DescribeDataDeletionJobResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<DescribeDataDeletionJobResponse>;
 export interface DescribeDatasetRequest {
   datasetArn: string;
 }
-const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeDatasetRequest" }) as any as S.Schema<DescribeDatasetRequest>;
+const DescribeDatasetRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DescribeDatasetRequest>;
 export interface DatasetUpdateSummary {
   schemaArn?: string;
   status?: string;
@@ -1299,15 +960,10 @@ export interface DatasetUpdateSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const DatasetUpdateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaArn: S.optional(S.String),
-    status: S.optional(S.String),
-    failureReason: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "DatasetUpdateSummary" }) as any as S.Schema<DatasetUpdateSummary>;
+const DatasetUpdateSummary = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DatasetUpdateSummary>;
 export interface Dataset {
   name?: string;
   datasetArn?: string;
@@ -1320,36 +976,21 @@ export interface Dataset {
   latestDatasetUpdate?: DatasetUpdateSummary;
   trackingId?: string;
 }
-const Dataset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    datasetArn: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    datasetType: S.optional(S.String),
-    schemaArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    latestDatasetUpdate: S.optional(DatasetUpdateSummary),
-    trackingId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
+const Dataset = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Dataset>;
 export interface DescribeDatasetResponse {
   dataset?: Dataset;
 }
-const DescribeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataset: S.optional(Dataset) }),
-).annotate({ identifier: "DescribeDatasetResponse" }) as any as S.Schema<DescribeDatasetResponse>;
+const DescribeDatasetResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<DescribeDatasetResponse>;
 export interface DescribeDatasetExportJobRequest {
   datasetExportJobArn: string;
 }
-const DescribeDatasetExportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetExportJobArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeDatasetExportJobRequest",
-}) as any as S.Schema<DescribeDatasetExportJobRequest>;
+const DescribeDatasetExportJobRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DescribeDatasetExportJobRequest>;
 export interface DatasetExportJob {
   jobName?: string;
   datasetExportJobArn?: string;
@@ -1362,38 +1003,21 @@ export interface DatasetExportJob {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const DatasetExportJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.optional(S.String),
-    datasetExportJobArn: S.optional(S.String),
-    datasetArn: S.optional(S.String),
-    ingestionMode: S.optional(IngestionMode),
-    roleArn: S.optional(S.String),
-    status: S.optional(S.String),
-    jobOutput: S.optional(DatasetExportJobOutput),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "DatasetExportJob" }) as any as S.Schema<DatasetExportJob>;
+const DatasetExportJob = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<DatasetExportJob>;
 export interface DescribeDatasetExportJobResponse {
   datasetExportJob?: DatasetExportJob;
 }
-const DescribeDatasetExportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetExportJob: S.optional(DatasetExportJob) }),
-).annotate({
-  identifier: "DescribeDatasetExportJobResponse",
-}) as any as S.Schema<DescribeDatasetExportJobResponse>;
+const DescribeDatasetExportJobResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DescribeDatasetExportJobResponse>;
 export interface DescribeDatasetGroupRequest {
   datasetGroupArn: string;
 }
-const DescribeDatasetGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetGroupArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeDatasetGroupRequest",
-}) as any as S.Schema<DescribeDatasetGroupRequest>;
+const DescribeDatasetGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DescribeDatasetGroupRequest>;
 export interface DatasetGroup {
   name?: string;
   datasetGroupArn?: string;
@@ -1405,37 +1029,21 @@ export interface DatasetGroup {
   failureReason?: string;
   domain?: Domain;
 }
-const DatasetGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    status: S.optional(S.String),
-    roleArn: S.optional(S.String),
-    kmsKeyArn: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-    domain: S.optional(Domain),
-  }),
-).annotate({ identifier: "DatasetGroup" }) as any as S.Schema<DatasetGroup>;
+const DatasetGroup = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<DatasetGroup>;
 export interface DescribeDatasetGroupResponse {
   datasetGroup?: DatasetGroup;
 }
-const DescribeDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetGroup: S.optional(DatasetGroup) }),
-).annotate({
-  identifier: "DescribeDatasetGroupResponse",
-}) as any as S.Schema<DescribeDatasetGroupResponse>;
+const DescribeDatasetGroupResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DescribeDatasetGroupResponse>;
 export interface DescribeDatasetImportJobRequest {
   datasetImportJobArn: string;
 }
-const DescribeDatasetImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetImportJobArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeDatasetImportJobRequest",
-}) as any as S.Schema<DescribeDatasetImportJobRequest>;
+const DescribeDatasetImportJobRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DescribeDatasetImportJobRequest>;
 export interface DatasetImportJob {
   jobName?: string;
   datasetImportJobArn?: string;
@@ -1449,39 +1057,21 @@ export interface DatasetImportJob {
   importMode?: ImportMode;
   publishAttributionMetricsToS3?: boolean;
 }
-const DatasetImportJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.optional(S.String),
-    datasetImportJobArn: S.optional(S.String),
-    datasetArn: S.optional(S.String),
-    dataSource: S.optional(DataSource),
-    roleArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-    importMode: S.optional(ImportMode),
-    publishAttributionMetricsToS3: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DatasetImportJob" }) as any as S.Schema<DatasetImportJob>;
+const DatasetImportJob = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<DatasetImportJob>;
 export interface DescribeDatasetImportJobResponse {
   datasetImportJob?: DatasetImportJob;
 }
-const DescribeDatasetImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetImportJob: S.optional(DatasetImportJob) }),
-).annotate({
-  identifier: "DescribeDatasetImportJobResponse",
-}) as any as S.Schema<DescribeDatasetImportJobResponse>;
+const DescribeDatasetImportJobResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DescribeDatasetImportJobResponse>;
 export interface DescribeEventTrackerRequest {
   eventTrackerArn: string;
 }
-const DescribeEventTrackerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventTrackerArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeEventTrackerRequest",
-}) as any as S.Schema<DescribeEventTrackerRequest>;
+const DescribeEventTrackerRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DescribeEventTrackerRequest>;
 export type AccountId = string;
 export interface EventTracker {
   name?: string;
@@ -1493,36 +1083,21 @@ export interface EventTracker {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const EventTracker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    eventTrackerArn: S.optional(S.String),
-    accountId: S.optional(S.String),
-    trackingId: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "EventTracker" }) as any as S.Schema<EventTracker>;
+const EventTracker = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<EventTracker>;
 export interface DescribeEventTrackerResponse {
   eventTracker?: EventTracker;
 }
-const DescribeEventTrackerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventTracker: S.optional(EventTracker) }),
-).annotate({
-  identifier: "DescribeEventTrackerResponse",
-}) as any as S.Schema<DescribeEventTrackerResponse>;
+const DescribeEventTrackerResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DescribeEventTrackerResponse>;
 export interface DescribeFeatureTransformationRequest {
   featureTransformationArn: string;
 }
-const DescribeFeatureTransformationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ featureTransformationArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeFeatureTransformationRequest",
-}) as any as S.Schema<DescribeFeatureTransformationRequest>;
+const DescribeFeatureTransformationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<DescribeFeatureTransformationRequest>;
 export type FeaturizationParameters = { [key: string]: string | undefined };
 const FeaturizationParameters = HyperParameters as any as S.Schema<FeaturizationParameters>;
 export interface FeatureTransformation {
@@ -1533,32 +1108,24 @@ export interface FeatureTransformation {
   lastUpdatedDateTime?: Date;
   status?: string;
 }
-const FeatureTransformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    featureTransformationArn: S.optional(S.String),
-    defaultParameters: S.optional(FeaturizationParameters),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    status: S.optional(S.String),
-  }),
-).annotate({ identifier: "FeatureTransformation" }) as any as S.Schema<FeatureTransformation>;
+const FeatureTransformation = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<FeatureTransformation>;
 export interface DescribeFeatureTransformationResponse {
   featureTransformation?: FeatureTransformation;
 }
-const DescribeFeatureTransformationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ featureTransformation: S.optional(FeatureTransformation) }),
-).annotate({
-  identifier: "DescribeFeatureTransformationResponse",
-}) as any as S.Schema<DescribeFeatureTransformationResponse>;
+const DescribeFeatureTransformationResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DescribeFeatureTransformationResponse>;
 export interface DescribeFilterRequest {
   filterArn: string;
 }
-const DescribeFilterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filterArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeFilterRequest" }) as any as S.Schema<DescribeFilterRequest>;
+const DescribeFilterRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<DescribeFilterRequest>;
 export interface Filter {
   name?: string;
   filterArn?: string;
@@ -1569,34 +1136,21 @@ export interface Filter {
   filterExpression?: string | redacted.Redacted<string>;
   status?: string;
 }
-const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    filterArn: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    datasetGroupArn: S.optional(S.String),
-    failureReason: S.optional(S.String),
-    filterExpression: S.optional(SensitiveString),
-    status: S.optional(S.String),
-  }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+const Filter = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<Filter>;
 export interface DescribeFilterResponse {
   filter?: Filter;
 }
-const DescribeFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filter: S.optional(Filter) }),
-).annotate({ identifier: "DescribeFilterResponse" }) as any as S.Schema<DescribeFilterResponse>;
+const DescribeFilterResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<DescribeFilterResponse>;
 export interface DescribeMetricAttributionRequest {
   metricAttributionArn: string;
 }
-const DescribeMetricAttributionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metricAttributionArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeMetricAttributionRequest",
-}) as any as S.Schema<DescribeMetricAttributionRequest>;
+const DescribeMetricAttributionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<DescribeMetricAttributionRequest>;
 export interface MetricAttribution {
   name?: string;
   metricAttributionArn?: string;
@@ -1607,34 +1161,21 @@ export interface MetricAttribution {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const MetricAttribution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    metricAttributionArn: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    metricsOutputConfig: S.optional(MetricAttributionOutput),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "MetricAttribution" }) as any as S.Schema<MetricAttribution>;
+const MetricAttribution = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<MetricAttribution>;
 export interface DescribeMetricAttributionResponse {
   metricAttribution?: MetricAttribution;
 }
-const DescribeMetricAttributionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metricAttribution: S.optional(MetricAttribution) }),
-).annotate({
-  identifier: "DescribeMetricAttributionResponse",
-}) as any as S.Schema<DescribeMetricAttributionResponse>;
+const DescribeMetricAttributionResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DescribeMetricAttributionResponse>;
 export interface DescribeRecipeRequest {
   recipeArn: string;
 }
-const DescribeRecipeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recipeArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeRecipeRequest" }) as any as S.Schema<DescribeRecipeRequest>;
+const DescribeRecipeRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<DescribeRecipeRequest>;
 export type Description = string;
 export type RecipeType = string;
 export interface Recipe {
@@ -1648,35 +1189,21 @@ export interface Recipe {
   recipeType?: string;
   lastUpdatedDateTime?: Date;
 }
-const Recipe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    recipeArn: S.optional(S.String),
-    algorithmArn: S.optional(S.String),
-    featureTransformationArn: S.optional(S.String),
-    status: S.optional(S.String),
-    description: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    recipeType: S.optional(S.String),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "Recipe" }) as any as S.Schema<Recipe>;
+const Recipe = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<Recipe>;
 export interface DescribeRecipeResponse {
   recipe?: Recipe;
 }
-const DescribeRecipeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recipe: S.optional(Recipe) }),
-).annotate({ identifier: "DescribeRecipeResponse" }) as any as S.Schema<DescribeRecipeResponse>;
+const DescribeRecipeResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DescribeRecipeResponse>;
 export interface DescribeRecommenderRequest {
   recommenderArn: string;
 }
-const DescribeRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenderArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeRecommenderRequest",
-}) as any as S.Schema<DescribeRecommenderRequest>;
+const DescribeRecommenderRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DescribeRecommenderRequest>;
 export interface RecommenderUpdateSummary {
   recommenderConfig?: RecommenderConfig;
   creationDateTime?: Date;
@@ -1684,18 +1211,13 @@ export interface RecommenderUpdateSummary {
   status?: string;
   failureReason?: string;
 }
-const RecommenderUpdateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommenderConfig: S.optional(RecommenderConfig),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    status: S.optional(S.String),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "RecommenderUpdateSummary" }) as any as S.Schema<RecommenderUpdateSummary>;
+const RecommenderUpdateSummary = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<RecommenderUpdateSummary>;
 export type MetricValue = number;
 export type Metrics = { [key: string]: number | undefined };
-const Metrics = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+const Metrics = /*@__PURE__*/ __L.at(__c15, 7);
 export interface Recommender {
   recommenderArn?: string;
   datasetGroupArn?: string;
@@ -1709,37 +1231,21 @@ export interface Recommender {
   latestRecommenderUpdate?: RecommenderUpdateSummary;
   modelMetrics?: { [key: string]: number | undefined };
 }
-const Recommender = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommenderArn: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    name: S.optional(S.String),
-    recipeArn: S.optional(S.String),
-    recommenderConfig: S.optional(RecommenderConfig),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    status: S.optional(S.String),
-    failureReason: S.optional(S.String),
-    latestRecommenderUpdate: S.optional(RecommenderUpdateSummary),
-    modelMetrics: S.optional(Metrics),
-  }),
-).annotate({ identifier: "Recommender" }) as any as S.Schema<Recommender>;
+const Recommender = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<Recommender>;
 export interface DescribeRecommenderResponse {
   recommender?: Recommender;
 }
-const DescribeRecommenderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommender: S.optional(Recommender) }),
-).annotate({
-  identifier: "DescribeRecommenderResponse",
-}) as any as S.Schema<DescribeRecommenderResponse>;
+const DescribeRecommenderResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<DescribeRecommenderResponse>;
 export interface DescribeSchemaRequest {
   schemaArn: string;
 }
-const DescribeSchemaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schemaArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeSchemaRequest" }) as any as S.Schema<DescribeSchemaRequest>;
+const DescribeSchemaRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<DescribeSchemaRequest>;
 export interface DatasetSchema {
   name?: string;
   schemaArn?: string;
@@ -1748,37 +1254,26 @@ export interface DatasetSchema {
   lastUpdatedDateTime?: Date;
   domain?: Domain;
 }
-const DatasetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    schemaArn: S.optional(S.String),
-    schema: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    domain: S.optional(Domain),
-  }),
-).annotate({ identifier: "DatasetSchema" }) as any as S.Schema<DatasetSchema>;
+const DatasetSchema = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<DatasetSchema>;
 export interface DescribeSchemaResponse {
   schema?: DatasetSchema;
 }
-const DescribeSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schema: S.optional(DatasetSchema) }),
-).annotate({ identifier: "DescribeSchemaResponse" }) as any as S.Schema<DescribeSchemaResponse>;
+const DescribeSchemaResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DescribeSchemaResponse>;
 export interface DescribeSolutionRequest {
   solutionArn: string;
 }
-const DescribeSolutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeSolutionRequest" }) as any as S.Schema<DescribeSolutionRequest>;
+const DescribeSolutionRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DescribeSolutionRequest>;
 export type PerformHPO = boolean;
 export interface AutoMLResult {
   bestRecipeArn?: string;
 }
-const AutoMLResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bestRecipeArn: S.optional(S.String) }),
-).annotate({ identifier: "AutoMLResult" }) as any as S.Schema<AutoMLResult>;
+const AutoMLResult = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<AutoMLResult>;
 export type TrainingType = "AUTOMATIC" | "MANUAL" | (string & {});
 const TrainingType = S.String;
 
@@ -1791,27 +1286,18 @@ export interface SolutionVersionSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const SolutionVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solutionVersionArn: S.optional(S.String),
-    status: S.optional(S.String),
-    trainingMode: S.optional(TrainingMode),
-    trainingType: S.optional(TrainingType),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "SolutionVersionSummary" }) as any as S.Schema<SolutionVersionSummary>;
+const SolutionVersionSummary = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<SolutionVersionSummary>;
 export interface SolutionUpdateConfig {
   autoTrainingConfig?: AutoTrainingConfig;
   eventsConfig?: EventsConfig;
 }
-const SolutionUpdateConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoTrainingConfig: S.optional(AutoTrainingConfig),
-    eventsConfig: S.optional(EventsConfig),
-  }),
-).annotate({ identifier: "SolutionUpdateConfig" }) as any as S.Schema<SolutionUpdateConfig>;
+const SolutionUpdateConfig = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<SolutionUpdateConfig>;
 export interface SolutionUpdateSummary {
   solutionUpdateConfig?: SolutionUpdateConfig;
   status?: string;
@@ -1821,17 +1307,10 @@ export interface SolutionUpdateSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const SolutionUpdateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solutionUpdateConfig: S.optional(SolutionUpdateConfig),
-    status: S.optional(S.String),
-    performAutoTraining: S.optional(S.Boolean),
-    performIncrementalUpdate: S.optional(S.Boolean),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "SolutionUpdateSummary" }) as any as S.Schema<SolutionUpdateSummary>;
+const SolutionUpdateSummary = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<SolutionUpdateSummary>;
 export interface Solution {
   name?: string;
   solutionArn?: string;
@@ -1850,49 +1329,26 @@ export interface Solution {
   latestSolutionVersion?: SolutionVersionSummary;
   latestSolutionUpdate?: SolutionUpdateSummary;
 }
-const Solution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    solutionArn: S.optional(S.String),
-    performHPO: S.optional(S.Boolean),
-    performAutoML: S.optional(S.Boolean),
-    performAutoTraining: S.optional(S.Boolean),
-    performIncrementalUpdate: S.optional(S.Boolean),
-    recipeArn: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    eventType: S.optional(S.String),
-    solutionConfig: S.optional(SolutionConfig),
-    autoMLResult: S.optional(AutoMLResult),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    latestSolutionVersion: S.optional(SolutionVersionSummary),
-    latestSolutionUpdate: S.optional(SolutionUpdateSummary),
-  }),
-).annotate({ identifier: "Solution" }) as any as S.Schema<Solution>;
+const Solution = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<Solution>;
 export interface DescribeSolutionResponse {
   solution?: Solution;
 }
-const DescribeSolutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solution: S.optional(Solution) }),
-).annotate({ identifier: "DescribeSolutionResponse" }) as any as S.Schema<DescribeSolutionResponse>;
+const DescribeSolutionResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DescribeSolutionResponse>;
 export interface DescribeSolutionVersionRequest {
   solutionVersionArn: string;
 }
-const DescribeSolutionVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionVersionArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeSolutionVersionRequest",
-}) as any as S.Schema<DescribeSolutionVersionRequest>;
+const DescribeSolutionVersionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DescribeSolutionVersionRequest>;
 export type TrainingHours = number;
 export interface TunedHPOParams {
   algorithmHyperParameters?: { [key: string]: string | undefined };
 }
-const TunedHPOParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ algorithmHyperParameters: S.optional(HyperParameters) }),
-).annotate({ identifier: "TunedHPOParams" }) as any as S.Schema<TunedHPOParams>;
+const TunedHPOParams = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<TunedHPOParams>;
 export interface SolutionVersion {
   name?: string;
   solutionVersionArn?: string;
@@ -1913,55 +1369,29 @@ export interface SolutionVersion {
   lastUpdatedDateTime?: Date;
   trainingType?: TrainingType;
 }
-const SolutionVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    solutionVersionArn: S.optional(S.String),
-    solutionArn: S.optional(S.String),
-    performHPO: S.optional(S.Boolean),
-    performAutoML: S.optional(S.Boolean),
-    performIncrementalUpdate: S.optional(S.Boolean),
-    recipeArn: S.optional(S.String),
-    eventType: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    solutionConfig: S.optional(SolutionConfig),
-    trainingHours: S.optional(S.Number),
-    trainingMode: S.optional(TrainingMode),
-    tunedHPOParams: S.optional(TunedHPOParams),
-    status: S.optional(S.String),
-    failureReason: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    trainingType: S.optional(TrainingType),
-  }),
-).annotate({ identifier: "SolutionVersion" }) as any as S.Schema<SolutionVersion>;
+const SolutionVersion = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<SolutionVersion>;
 export interface DescribeSolutionVersionResponse {
   solutionVersion?: SolutionVersion;
 }
-const DescribeSolutionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionVersion: S.optional(SolutionVersion) }),
-).annotate({
-  identifier: "DescribeSolutionVersionResponse",
-}) as any as S.Schema<DescribeSolutionVersionResponse>;
+const DescribeSolutionVersionResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<DescribeSolutionVersionResponse>;
 export interface GetSolutionMetricsRequest {
   solutionVersionArn: string;
 }
-const GetSolutionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionVersionArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetSolutionMetricsRequest",
-}) as any as S.Schema<GetSolutionMetricsRequest>;
+const GetSolutionMetricsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetSolutionMetricsRequest>;
 export interface GetSolutionMetricsResponse {
   solutionVersionArn?: string;
   metrics?: { [key: string]: number | undefined };
 }
-const GetSolutionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionVersionArn: S.optional(S.String), metrics: S.optional(Metrics) }),
-).annotate({
-  identifier: "GetSolutionMetricsResponse",
-}) as any as S.Schema<GetSolutionMetricsResponse>;
+const GetSolutionMetricsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetSolutionMetricsResponse>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListBatchInferenceJobsRequest {
@@ -1969,15 +1399,10 @@ export interface ListBatchInferenceJobsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListBatchInferenceJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solutionVersionArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListBatchInferenceJobsRequest",
-}) as any as S.Schema<ListBatchInferenceJobsRequest>;
+const ListBatchInferenceJobsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListBatchInferenceJobsRequest>;
 export interface BatchInferenceJobSummary {
   batchInferenceJobArn?: string;
   jobName?: string;
@@ -1988,43 +1413,29 @@ export interface BatchInferenceJobSummary {
   solutionVersionArn?: string;
   batchInferenceJobMode?: BatchInferenceJobMode;
 }
-const BatchInferenceJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchInferenceJobArn: S.optional(S.String),
-    jobName: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-    solutionVersionArn: S.optional(S.String),
-    batchInferenceJobMode: S.optional(BatchInferenceJobMode),
-  }),
-).annotate({ identifier: "BatchInferenceJobSummary" }) as any as S.Schema<BatchInferenceJobSummary>;
+const BatchInferenceJobSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<BatchInferenceJobSummary>;
 export type BatchInferenceJobs = BatchInferenceJobSummary[];
-const BatchInferenceJobs = /*@__PURE__*/ S.Array(BatchInferenceJobSummary);
+const BatchInferenceJobs = /*@__PURE__*/ __L.at(__c18, 4);
 export interface ListBatchInferenceJobsResponse {
   batchInferenceJobs?: BatchInferenceJobSummary[];
   nextToken?: string;
 }
-const ListBatchInferenceJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchInferenceJobs: S.optional(BatchInferenceJobs), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListBatchInferenceJobsResponse",
-}) as any as S.Schema<ListBatchInferenceJobsResponse>;
+const ListBatchInferenceJobsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListBatchInferenceJobsResponse>;
 export interface ListBatchSegmentJobsRequest {
   solutionVersionArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListBatchSegmentJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solutionVersionArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListBatchSegmentJobsRequest",
-}) as any as S.Schema<ListBatchSegmentJobsRequest>;
+const ListBatchSegmentJobsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListBatchSegmentJobsRequest>;
 export interface BatchSegmentJobSummary {
   batchSegmentJobArn?: string;
   jobName?: string;
@@ -2034,40 +1445,29 @@ export interface BatchSegmentJobSummary {
   failureReason?: string;
   solutionVersionArn?: string;
 }
-const BatchSegmentJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchSegmentJobArn: S.optional(S.String),
-    jobName: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-    solutionVersionArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "BatchSegmentJobSummary" }) as any as S.Schema<BatchSegmentJobSummary>;
+const BatchSegmentJobSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<BatchSegmentJobSummary>;
 export type BatchSegmentJobs = BatchSegmentJobSummary[];
-const BatchSegmentJobs = /*@__PURE__*/ S.Array(BatchSegmentJobSummary);
+const BatchSegmentJobs = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListBatchSegmentJobsResponse {
   batchSegmentJobs?: BatchSegmentJobSummary[];
   nextToken?: string;
 }
-const ListBatchSegmentJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchSegmentJobs: S.optional(BatchSegmentJobs), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListBatchSegmentJobsResponse",
-}) as any as S.Schema<ListBatchSegmentJobsResponse>;
+const ListBatchSegmentJobsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListBatchSegmentJobsResponse>;
 export interface ListCampaignsRequest {
   solutionArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solutionArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListCampaignsRequest" }) as any as S.Schema<ListCampaignsRequest>;
+const ListCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListCampaignsRequest>;
 export interface CampaignSummary {
   name?: string;
   campaignArn?: string;
@@ -2076,39 +1476,26 @@ export interface CampaignSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const CampaignSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    campaignArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "CampaignSummary" }) as any as S.Schema<CampaignSummary>;
+const CampaignSummary = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<CampaignSummary>;
 export type Campaigns = CampaignSummary[];
-const Campaigns = /*@__PURE__*/ S.Array(CampaignSummary);
+const Campaigns = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ListCampaignsResponse {
   campaigns?: CampaignSummary[];
   nextToken?: string;
 }
-const ListCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaigns: S.optional(Campaigns), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListCampaignsResponse" }) as any as S.Schema<ListCampaignsResponse>;
+const ListCampaignsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListCampaignsResponse>;
 export interface ListDataDeletionJobsRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDataDeletionJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetGroupArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListDataDeletionJobsRequest",
-}) as any as S.Schema<ListDataDeletionJobsRequest>;
+const ListDataDeletionJobsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListDataDeletionJobsRequest>;
 export interface DataDeletionJobSummary {
   dataDeletionJobArn?: string;
   datasetGroupArn?: string;
@@ -2118,42 +1505,29 @@ export interface DataDeletionJobSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const DataDeletionJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataDeletionJobArn: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    jobName: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataDeletionJobSummary" }) as any as S.Schema<DataDeletionJobSummary>;
+const DataDeletionJobSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<DataDeletionJobSummary>;
 export type DataDeletionJobs = DataDeletionJobSummary[];
-const DataDeletionJobs = /*@__PURE__*/ S.Array(DataDeletionJobSummary);
+const DataDeletionJobs = /*@__PURE__*/ __L.at(__c20, 0);
 export interface ListDataDeletionJobsResponse {
   dataDeletionJobs?: DataDeletionJobSummary[];
   nextToken?: string;
 }
-const ListDataDeletionJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataDeletionJobs: S.optional(DataDeletionJobs), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDataDeletionJobsResponse",
-}) as any as S.Schema<ListDataDeletionJobsResponse>;
+const ListDataDeletionJobsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListDataDeletionJobsResponse>;
 export interface ListDatasetExportJobsRequest {
   datasetArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDatasetExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListDatasetExportJobsRequest",
-}) as any as S.Schema<ListDatasetExportJobsRequest>;
+const ListDatasetExportJobsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListDatasetExportJobsRequest>;
 export interface DatasetExportJobSummary {
   datasetExportJobArn?: string;
   jobName?: string;
@@ -2162,36 +1536,28 @@ export interface DatasetExportJobSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const DatasetExportJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetExportJobArn: S.optional(S.String),
-    jobName: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "DatasetExportJobSummary" }) as any as S.Schema<DatasetExportJobSummary>;
+const DatasetExportJobSummary = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<DatasetExportJobSummary>;
 export type DatasetExportJobs = DatasetExportJobSummary[];
-const DatasetExportJobs = /*@__PURE__*/ S.Array(DatasetExportJobSummary);
+const DatasetExportJobs = /*@__PURE__*/ __L.at(__c20, 4);
 export interface ListDatasetExportJobsResponse {
   datasetExportJobs?: DatasetExportJobSummary[];
   nextToken?: string;
 }
-const ListDatasetExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetExportJobs: S.optional(DatasetExportJobs), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDatasetExportJobsResponse",
-}) as any as S.Schema<ListDatasetExportJobsResponse>;
+const ListDatasetExportJobsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListDatasetExportJobsResponse>;
 export interface ListDatasetGroupsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDatasetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListDatasetGroupsRequest" }) as any as S.Schema<ListDatasetGroupsRequest>;
+const ListDatasetGroupsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListDatasetGroupsRequest>;
 export interface DatasetGroupSummary {
   name?: string;
   datasetGroupArn?: string;
@@ -2201,42 +1567,26 @@ export interface DatasetGroupSummary {
   failureReason?: string;
   domain?: Domain;
 }
-const DatasetGroupSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-    domain: S.optional(Domain),
-  }),
-).annotate({ identifier: "DatasetGroupSummary" }) as any as S.Schema<DatasetGroupSummary>;
+const DatasetGroupSummary = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<DatasetGroupSummary>;
 export type DatasetGroups = DatasetGroupSummary[];
-const DatasetGroups = /*@__PURE__*/ S.Array(DatasetGroupSummary);
+const DatasetGroups = /*@__PURE__*/ __L.at(__c21, 0);
 export interface ListDatasetGroupsResponse {
   datasetGroups?: DatasetGroupSummary[];
   nextToken?: string;
 }
-const ListDatasetGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetGroups: S.optional(DatasetGroups), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDatasetGroupsResponse",
-}) as any as S.Schema<ListDatasetGroupsResponse>;
+const ListDatasetGroupsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListDatasetGroupsResponse>;
 export interface ListDatasetImportJobsRequest {
   datasetArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDatasetImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListDatasetImportJobsRequest",
-}) as any as S.Schema<ListDatasetImportJobsRequest>;
+const ListDatasetImportJobsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListDatasetImportJobsRequest>;
 export interface DatasetImportJobSummary {
   datasetImportJobArn?: string;
   jobName?: string;
@@ -2246,40 +1596,26 @@ export interface DatasetImportJobSummary {
   failureReason?: string;
   importMode?: ImportMode;
 }
-const DatasetImportJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetImportJobArn: S.optional(S.String),
-    jobName: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-    importMode: S.optional(ImportMode),
-  }),
-).annotate({ identifier: "DatasetImportJobSummary" }) as any as S.Schema<DatasetImportJobSummary>;
+const DatasetImportJobSummary = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<DatasetImportJobSummary>;
 export type DatasetImportJobs = DatasetImportJobSummary[];
-const DatasetImportJobs = /*@__PURE__*/ S.Array(DatasetImportJobSummary);
+const DatasetImportJobs = /*@__PURE__*/ __L.at(__c21, 4);
 export interface ListDatasetImportJobsResponse {
   datasetImportJobs?: DatasetImportJobSummary[];
   nextToken?: string;
 }
-const ListDatasetImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetImportJobs: S.optional(DatasetImportJobs), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDatasetImportJobsResponse",
-}) as any as S.Schema<ListDatasetImportJobsResponse>;
+const ListDatasetImportJobsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ListDatasetImportJobsResponse>;
 export interface ListDatasetsRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetGroupArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListDatasetsRequest" }) as any as S.Schema<ListDatasetsRequest>;
+const ListDatasetsRequest = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ListDatasetsRequest>;
 export interface DatasetSummary {
   name?: string;
   datasetArn?: string;
@@ -2288,37 +1624,26 @@ export interface DatasetSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const DatasetSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    datasetArn: S.optional(S.String),
-    datasetType: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "DatasetSummary" }) as any as S.Schema<DatasetSummary>;
+const DatasetSummary = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<DatasetSummary>;
 export type Datasets = DatasetSummary[];
-const Datasets = /*@__PURE__*/ S.Array(DatasetSummary);
+const Datasets = /*@__PURE__*/ __L.at(__c22, 0);
 export interface ListDatasetsResponse {
   datasets?: DatasetSummary[];
   nextToken?: string;
 }
-const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasets: S.optional(Datasets), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListDatasetsResponse" }) as any as S.Schema<ListDatasetsResponse>;
+const ListDatasetsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListDatasetsResponse>;
 export interface ListEventTrackersRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListEventTrackersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetGroupArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListEventTrackersRequest" }) as any as S.Schema<ListEventTrackersRequest>;
+const ListEventTrackersRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListEventTrackersRequest>;
 export interface EventTrackerSummary {
   name?: string;
   eventTrackerArn?: string;
@@ -2326,38 +1651,23 @@ export interface EventTrackerSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const EventTrackerSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    eventTrackerArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "EventTrackerSummary" }) as any as S.Schema<EventTrackerSummary>;
+const EventTrackerSummary = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<EventTrackerSummary>;
 export type EventTrackers = EventTrackerSummary[];
-const EventTrackers = /*@__PURE__*/ S.Array(EventTrackerSummary);
+const EventTrackers = /*@__PURE__*/ __L.at(__c22, 4);
 export interface ListEventTrackersResponse {
   eventTrackers?: EventTrackerSummary[];
   nextToken?: string;
 }
-const ListEventTrackersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventTrackers: S.optional(EventTrackers), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListEventTrackersResponse",
-}) as any as S.Schema<ListEventTrackersResponse>;
+const ListEventTrackersResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ListEventTrackersResponse>;
 export interface ListFiltersRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListFiltersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetGroupArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListFiltersRequest" }) as any as S.Schema<ListFiltersRequest>;
+const ListFiltersRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<ListFiltersRequest>;
 export interface FilterSummary {
   name?: string;
   filterArn?: string;
@@ -2367,63 +1677,40 @@ export interface FilterSummary {
   failureReason?: string;
   status?: string;
 }
-const FilterSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    filterArn: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    datasetGroupArn: S.optional(S.String),
-    failureReason: S.optional(S.String),
-    status: S.optional(S.String),
-  }),
-).annotate({ identifier: "FilterSummary" }) as any as S.Schema<FilterSummary>;
+const FilterSummary = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<FilterSummary>;
 export type Filters = FilterSummary[];
-const Filters = /*@__PURE__*/ S.Array(FilterSummary);
+const Filters = /*@__PURE__*/ __L.at(__c23, 0);
 export interface ListFiltersResponse {
   Filters?: FilterSummary[];
   nextToken?: string;
 }
-const ListFiltersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Filters: S.optional(Filters), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListFiltersResponse" }) as any as S.Schema<ListFiltersResponse>;
+const ListFiltersResponse = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<ListFiltersResponse>;
 export interface ListMetricAttributionMetricsRequest {
   metricAttributionArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListMetricAttributionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricAttributionArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListMetricAttributionMetricsRequest",
-}) as any as S.Schema<ListMetricAttributionMetricsRequest>;
+const ListMetricAttributionMetricsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ListMetricAttributionMetricsRequest>;
 export interface ListMetricAttributionMetricsResponse {
   metrics?: MetricAttribute[];
   nextToken?: string;
 }
-const ListMetricAttributionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metrics: S.optional(MetricAttributes), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListMetricAttributionMetricsResponse",
-}) as any as S.Schema<ListMetricAttributionMetricsResponse>;
+const ListMetricAttributionMetricsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListMetricAttributionMetricsResponse>;
 export interface ListMetricAttributionsRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListMetricAttributionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetGroupArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListMetricAttributionsRequest",
-}) as any as S.Schema<ListMetricAttributionsRequest>;
+const ListMetricAttributionsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ListMetricAttributionsRequest>;
 export interface MetricAttributionSummary {
   name?: string;
   metricAttributionArn?: string;
@@ -2432,27 +1719,20 @@ export interface MetricAttributionSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const MetricAttributionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    metricAttributionArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "MetricAttributionSummary" }) as any as S.Schema<MetricAttributionSummary>;
+const MetricAttributionSummary = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<MetricAttributionSummary>;
 export type MetricAttributions = MetricAttributionSummary[];
-const MetricAttributions = /*@__PURE__*/ S.Array(MetricAttributionSummary);
+const MetricAttributions = /*@__PURE__*/ __L.at(__c23, 6);
 export interface ListMetricAttributionsResponse {
   metricAttributions?: MetricAttributionSummary[];
   nextToken?: string;
 }
-const ListMetricAttributionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metricAttributions: S.optional(MetricAttributions), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListMetricAttributionsResponse",
-}) as any as S.Schema<ListMetricAttributionsResponse>;
+const ListMetricAttributionsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ListMetricAttributionsResponse>;
 export type RecipeProvider = "SERVICE" | (string & {});
 const RecipeProvider = S.String;
 
@@ -2462,14 +1742,7 @@ export interface ListRecipesRequest {
   maxResults?: number;
   domain?: Domain;
 }
-const ListRecipesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recipeProvider: S.optional(RecipeProvider),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    domain: S.optional(Domain),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListRecipesRequest" }) as any as S.Schema<ListRecipesRequest>;
+const ListRecipesRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ListRecipesRequest>;
 export interface RecipeSummary {
   name?: string;
   recipeArn?: string;
@@ -2478,37 +1751,23 @@ export interface RecipeSummary {
   lastUpdatedDateTime?: Date;
   domain?: Domain;
 }
-const RecipeSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    recipeArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    domain: S.optional(Domain),
-  }),
-).annotate({ identifier: "RecipeSummary" }) as any as S.Schema<RecipeSummary>;
+const RecipeSummary = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<RecipeSummary>;
 export type Recipes = RecipeSummary[];
-const Recipes = /*@__PURE__*/ S.Array(RecipeSummary);
+const Recipes = /*@__PURE__*/ __L.at(__c24, 2);
 export interface ListRecipesResponse {
   recipes?: RecipeSummary[];
   nextToken?: string;
 }
-const ListRecipesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recipes: S.optional(Recipes), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListRecipesResponse" }) as any as S.Schema<ListRecipesResponse>;
+const ListRecipesResponse = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<ListRecipesResponse>;
 export interface ListRecommendersRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetGroupArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListRecommendersRequest" }) as any as S.Schema<ListRecommendersRequest>;
+const ListRecommendersRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ListRecommendersRequest>;
 export interface RecommenderSummary {
   name?: string;
   recommenderArn?: string;
@@ -2519,36 +1778,22 @@ export interface RecommenderSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const RecommenderSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    recommenderArn: S.optional(S.String),
-    datasetGroupArn: S.optional(S.String),
-    recipeArn: S.optional(S.String),
-    recommenderConfig: S.optional(RecommenderConfig),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "RecommenderSummary" }) as any as S.Schema<RecommenderSummary>;
+const RecommenderSummary = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<RecommenderSummary>;
 export type Recommenders = RecommenderSummary[];
-const Recommenders = /*@__PURE__*/ S.Array(RecommenderSummary);
+const Recommenders = /*@__PURE__*/ __L.at(__c24, 6);
 export interface ListRecommendersResponse {
   recommenders?: RecommenderSummary[];
   nextToken?: string;
 }
-const ListRecommendersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenders: S.optional(Recommenders), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListRecommendersResponse" }) as any as S.Schema<ListRecommendersResponse>;
+const ListRecommendersResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ListRecommendersResponse>;
 export interface ListSchemasRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListSchemasRequest" }) as any as S.Schema<ListSchemasRequest>;
+const ListSchemasRequest = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<ListSchemasRequest>;
 export interface DatasetSchemaSummary {
   name?: string;
   schemaArn?: string;
@@ -2556,36 +1801,26 @@ export interface DatasetSchemaSummary {
   lastUpdatedDateTime?: Date;
   domain?: Domain;
 }
-const DatasetSchemaSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    schemaArn: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    domain: S.optional(Domain),
-  }),
-).annotate({ identifier: "DatasetSchemaSummary" }) as any as S.Schema<DatasetSchemaSummary>;
+const DatasetSchemaSummary = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<DatasetSchemaSummary>;
 export type Schemas = DatasetSchemaSummary[];
-const Schemas = /*@__PURE__*/ S.Array(DatasetSchemaSummary);
+const Schemas = /*@__PURE__*/ __L.at(__c25, 2);
 export interface ListSchemasResponse {
   schemas?: DatasetSchemaSummary[];
   nextToken?: string;
 }
-const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schemas: S.optional(Schemas), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSchemasResponse" }) as any as S.Schema<ListSchemasResponse>;
+const ListSchemasResponse = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ListSchemasResponse>;
 export interface ListSolutionsRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListSolutionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetGroupArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListSolutionsRequest" }) as any as S.Schema<ListSolutionsRequest>;
+const ListSolutionsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ListSolutionsRequest>;
 export interface SolutionSummary {
   name?: string;
   solutionArn?: string;
@@ -2594,90 +1829,71 @@ export interface SolutionSummary {
   lastUpdatedDateTime?: Date;
   recipeArn?: string;
 }
-const SolutionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    solutionArn: S.optional(S.String),
-    status: S.optional(S.String),
-    creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    recipeArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "SolutionSummary" }) as any as S.Schema<SolutionSummary>;
+const SolutionSummary = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<SolutionSummary>;
 export type Solutions = SolutionSummary[];
-const Solutions = /*@__PURE__*/ S.Array(SolutionSummary);
+const Solutions = /*@__PURE__*/ __L.at(__c25, 6);
 export interface ListSolutionsResponse {
   solutions?: SolutionSummary[];
   nextToken?: string;
 }
-const ListSolutionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutions: S.optional(Solutions), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSolutionsResponse" }) as any as S.Schema<ListSolutionsResponse>;
+const ListSolutionsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<ListSolutionsResponse>;
 export interface ListSolutionVersionsRequest {
   solutionArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListSolutionVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solutionArn: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListSolutionVersionsRequest",
-}) as any as S.Schema<ListSolutionVersionsRequest>;
+const ListSolutionVersionsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ListSolutionVersionsRequest>;
 export type SolutionVersions = SolutionVersionSummary[];
-const SolutionVersions = /*@__PURE__*/ S.Array(SolutionVersionSummary);
+const SolutionVersions = /*@__PURE__*/ __L.at(__c26, 1);
 export interface ListSolutionVersionsResponse {
   solutionVersions?: SolutionVersionSummary[];
   nextToken?: string;
 }
-const ListSolutionVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionVersions: S.optional(SolutionVersions), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSolutionVersionsResponse",
-}) as any as S.Schema<ListSolutionVersionsResponse>;
+const ListSolutionVersionsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ListSolutionVersionsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface StartRecommenderRequest {
   recommenderArn: string;
 }
-const StartRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenderArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StartRecommenderRequest" }) as any as S.Schema<StartRecommenderRequest>;
+const StartRecommenderRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<StartRecommenderRequest>;
 export interface StartRecommenderResponse {
   recommenderArn?: string;
 }
-const StartRecommenderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenderArn: S.optional(S.String) }),
-).annotate({ identifier: "StartRecommenderResponse" }) as any as S.Schema<StartRecommenderResponse>;
+const StartRecommenderResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<StartRecommenderResponse>;
 export interface StopRecommenderRequest {
   recommenderArn: string;
 }
-const StopRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenderArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StopRecommenderRequest" }) as any as S.Schema<StopRecommenderRequest>;
+const StopRecommenderRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<StopRecommenderRequest>;
 export interface StopRecommenderResponse {
   recommenderArn?: string;
 }
@@ -2686,39 +1902,32 @@ const StopRecommenderResponse =
 export interface StopSolutionVersionCreationRequest {
   solutionVersionArn: string;
 }
-const StopSolutionVersionCreationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionVersionArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StopSolutionVersionCreationRequest",
-}) as any as S.Schema<StopSolutionVersionCreationRequest>;
+const StopSolutionVersionCreationRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<StopSolutionVersionCreationRequest>;
 export interface StopSolutionVersionCreationResponse {}
-const StopSolutionVersionCreationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopSolutionVersionCreationResponse",
-}) as any as S.Schema<StopSolutionVersionCreationResponse>;
+const StopSolutionVersionCreationResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<StopSolutionVersionCreationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tags: Tags }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteCampaignResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = (string | redacted.Redacted<string>)[];
-const TagKeys = /*@__PURE__*/ S.Array(SensitiveString);
+const TagKeys = /*@__PURE__*/ __L.at(__c27, 3);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: (string | redacted.Redacted<string>)[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tagKeys: TagKeys }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = DeleteCampaignResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCampaignRequest {
@@ -2727,14 +1936,10 @@ export interface UpdateCampaignRequest {
   minProvisionedTPS?: number;
   campaignConfig?: CampaignConfig;
 }
-const UpdateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    campaignArn: S.String,
-    solutionVersionArn: S.optional(S.String),
-    minProvisionedTPS: S.optional(S.Number),
-    campaignConfig: S.optional(CampaignConfig),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateCampaignRequest" }) as any as S.Schema<UpdateCampaignRequest>;
+const UpdateCampaignRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<UpdateCampaignRequest>;
 export interface UpdateCampaignResponse {
   campaignArn?: string;
 }
@@ -2743,11 +1948,10 @@ export interface UpdateDatasetRequest {
   datasetArn: string;
   schemaArn: string;
 }
-const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetArn: S.String, schemaArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateDatasetRequest" }) as any as S.Schema<UpdateDatasetRequest>;
+const UpdateDatasetRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<UpdateDatasetRequest>;
 export interface UpdateDatasetResponse {
   datasetArn?: string;
 }
@@ -2760,16 +1964,10 @@ export interface UpdateMetricAttributionRequest {
   metricsOutputConfig?: MetricAttributionOutput;
   metricAttributionArn?: string;
 }
-const UpdateMetricAttributionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addMetrics: S.optional(MetricAttributes),
-    removeMetrics: S.optional(MetricAttributesNamesList),
-    metricsOutputConfig: S.optional(MetricAttributionOutput),
-    metricAttributionArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateMetricAttributionRequest",
-}) as any as S.Schema<UpdateMetricAttributionRequest>;
+const UpdateMetricAttributionRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<UpdateMetricAttributionRequest>;
 export interface UpdateMetricAttributionResponse {
   metricAttributionArn?: string;
 }
@@ -2779,11 +1977,10 @@ export interface UpdateRecommenderRequest {
   recommenderArn: string;
   recommenderConfig: RecommenderConfig;
 }
-const UpdateRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommenderArn: S.String, recommenderConfig: RecommenderConfig }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateRecommenderRequest" }) as any as S.Schema<UpdateRecommenderRequest>;
+const UpdateRecommenderRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<UpdateRecommenderRequest>;
 export interface UpdateRecommenderResponse {
   recommenderArn?: string;
 }
@@ -2795,14 +1992,10 @@ export interface UpdateSolutionRequest {
   performIncrementalUpdate?: boolean;
   solutionUpdateConfig?: SolutionUpdateConfig;
 }
-const UpdateSolutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solutionArn: S.String,
-    performAutoTraining: S.optional(S.Boolean),
-    performIncrementalUpdate: S.optional(S.Boolean),
-    solutionUpdateConfig: S.optional(SolutionUpdateConfig),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateSolutionRequest" }) as any as S.Schema<UpdateSolutionRequest>;
+const UpdateSolutionRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<UpdateSolutionRequest>;
 export interface UpdateSolutionResponse {
   solutionArn?: string;
 }
@@ -5182,3 +4375,1773 @@ export const updateSolution: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSolution",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ path: S.String, kmsKeyArn: S.optional(S.String) }),
+      ).annotate({ identifier: "S3DataConfig" });
+    case 1:
+      return S.suspend(() => S.Struct({ s3DataSource: S3DataConfig })).annotate({
+        identifier: "BatchInferenceJobInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ s3DataDestination: S3DataConfig })).annotate({
+        identifier: "BatchInferenceJobOutput",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 4:
+      return S.Record(RankingInfluenceType, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          itemExplorationConfig: S.optional(HyperParameters),
+          rankingInfluence: S.optional(RankingInfluence),
+        }),
+      ).annotate({ identifier: "BatchInferenceJobConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ tagKey: SensitiveString, tagValue: SensitiveString }),
+      ).annotate({ identifier: "Tag" });
+    case 7:
+      return S.Array(Tag);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ itemName: S.String })).annotate({
+        identifier: "FieldsForThemeGeneration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ fieldsForThemeGeneration: FieldsForThemeGeneration }),
+      ).annotate({ identifier: "ThemeGenerationConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          solutionVersionArn: S.String,
+          filterArn: S.optional(S.String),
+          numResults: S.optional(S.Number),
+          jobInput: BatchInferenceJobInput,
+          jobOutput: BatchInferenceJobOutput,
+          roleArn: S.String,
+          batchInferenceJobConfig: S.optional(BatchInferenceJobConfig),
+          tags: S.optional(Tags),
+          batchInferenceJobMode: S.optional(BatchInferenceJobMode),
+          themeGenerationConfig: S.optional(ThemeGenerationConfig),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateBatchInferenceJobRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ batchInferenceJobArn: S.optional(S.String) })).annotate({
+        identifier: "CreateBatchInferenceJobResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          solutionVersionArn: S.String,
+          filterArn: S.optional(S.String),
+          numResults: S.optional(S.Number),
+          jobInput: BatchSegmentJobInput,
+          jobOutput: BatchSegmentJobOutput,
+          roleArn: S.String,
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateBatchSegmentJobRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ batchSegmentJobArn: S.optional(S.String) })).annotate({
+        identifier: "CreateBatchSegmentJobResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          itemExplorationConfig: S.optional(HyperParameters),
+          enableMetadataWithRecommendations: S.optional(S.Boolean),
+          syncWithLatestSolutionVersion: S.optional(S.Boolean),
+          rankingInfluence: S.optional(RankingInfluence),
+        }),
+      ).annotate({ identifier: "CampaignConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          solutionVersionArn: S.String,
+          minProvisionedTPS: S.optional(S.Number),
+          campaignConfig: S.optional(CampaignConfig),
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateCampaignRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ campaignArn: S.optional(S.String) })).annotate({
+        identifier: "CreateCampaignResponse",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ dataLocation: S.optional(S.String) })).annotate({
+        identifier: "DataSource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          datasetGroupArn: S.String,
+          dataSource: DataSource,
+          roleArn: S.String,
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateDataDeletionJobRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ dataDeletionJobArn: S.optional(S.String) })).annotate({
+        identifier: "CreateDataDeletionJobResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          schemaArn: S.String,
+          datasetGroupArn: S.String,
+          datasetType: S.String,
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDatasetRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ datasetArn: S.optional(S.String) })).annotate({
+        identifier: "CreateDatasetResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          datasetArn: S.String,
+          ingestionMode: S.optional(IngestionMode),
+          roleArn: S.String,
+          jobOutput: DatasetExportJobOutput,
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateDatasetExportJobRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ datasetExportJobArn: S.optional(S.String) })).annotate({
+        identifier: "CreateDatasetExportJobResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          roleArn: S.optional(S.String),
+          kmsKeyArn: S.optional(S.String),
+          domain: S.optional(Domain),
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateDatasetGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ datasetGroupArn: S.optional(S.String), domain: S.optional(Domain) }),
+      ).annotate({
+        identifier: "CreateDatasetGroupResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          datasetArn: S.String,
+          dataSource: DataSource,
+          roleArn: S.optional(S.String),
+          tags: S.optional(Tags),
+          importMode: S.optional(ImportMode),
+          publishAttributionMetricsToS3: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateDatasetImportJobRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ datasetImportJobArn: S.optional(S.String) })).annotate({
+        identifier: "CreateDatasetImportJobResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, datasetGroupArn: S.String, tags: S.optional(Tags) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateEventTrackerRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ eventTrackerArn: S.optional(S.String), trackingId: S.optional(S.String) }),
+      ).annotate({
+        identifier: "CreateEventTrackerResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          datasetGroupArn: S.String,
+          filterExpression: SensitiveString,
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateFilterRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ filterArn: S.optional(S.String) })).annotate({
+        identifier: "CreateFilterResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ eventType: S.String, metricName: S.String, expression: S.String }),
+      ).annotate({ identifier: "MetricAttribute" });
+    case 1:
+      return S.Array(MetricAttribute);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ s3DataDestination: S.optional(S3DataConfig), roleArn: S.String }),
+      ).annotate({ identifier: "MetricAttributionOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          datasetGroupArn: S.String,
+          metrics: MetricAttributes,
+          metricsOutputConfig: MetricAttributionOutput,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateMetricAttributionRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ metricAttributionArn: S.optional(S.String) })).annotate({
+        identifier: "CreateMetricAttributionResponse",
+      });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ ColumnNamesList.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          excludedDatasetColumns: S.optional(ExcludedDatasetColumns),
+          includedDatasetColumns: S.optional(IncludedDatasetColumns),
+        }),
+      ).annotate({ identifier: "TrainingDataConfig" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          itemExplorationConfig: S.optional(HyperParameters),
+          minRecommendationRequestsPerSecond: S.optional(S.Number),
+          trainingDataConfig: S.optional(TrainingDataConfig),
+          enableMetadataWithRecommendations: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RecommenderConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          datasetGroupArn: S.String,
+          recipeArn: S.String,
+          recommenderConfig: S.optional(RecommenderConfig),
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateRecommenderRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ recommenderArn: S.optional(S.String) })).annotate({
+        identifier: "CreateRecommenderResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, schema: S.String, domain: S.optional(Domain) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateSchemaRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ schemaArn: S.optional(S.String) })).annotate({
+        identifier: "CreateSchemaResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          metricName: S.optional(S.String),
+          metricRegex: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HPOObjective" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          maxNumberOfTrainingJobs: S.optional(S.String),
+          maxParallelTrainingJobs: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HPOResourceConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          minValue: S.optional(S.Number),
+          maxValue: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IntegerHyperParameterRange",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(IntegerHyperParameterRange);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), values: S.optional(CategoricalValues) }),
+      ).annotate({
+        identifier: "CategoricalHyperParameterRange",
+      });
+    case 2:
+      return S.Array(CategoricalHyperParameterRange);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          integerHyperParameterRanges: S.optional(IntegerHyperParameterRanges),
+          continuousHyperParameterRanges: S.optional(ContinuousHyperParameterRanges),
+          categoricalHyperParameterRanges: S.optional(CategoricalHyperParameterRanges),
+        }),
+      ).annotate({ identifier: "HyperParameterRanges" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          hpoObjective: S.optional(HPOObjective),
+          hpoResourceConfig: S.optional(HPOResourceConfig),
+          algorithmHyperParameterRanges: S.optional(HyperParameterRanges),
+        }),
+      ).annotate({ identifier: "HPOConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ metricName: S.optional(S.String), recipeList: S.optional(ArnList) }),
+      ).annotate({ identifier: "AutoMLConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          eventType: S.optional(S.String),
+          eventValueThreshold: S.optional(S.Number),
+          weight: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EventParameters" });
+    case 7:
+      return S.Array(EventParameters);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ eventParametersList: S.optional(EventParametersList) }),
+      ).annotate({ identifier: "EventsConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          itemAttribute: S.optional(S.String),
+          objectiveSensitivity: S.optional(ObjectiveSensitivity),
+        }),
+      ).annotate({ identifier: "OptimizationObjective" });
+    case 2:
+      return S.suspend(() => S.Struct({ schedulingExpression: S.optional(S.String) })).annotate({
+        identifier: "AutoTrainingConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          eventValueThreshold: S.optional(S.String),
+          hpoConfig: S.optional(HPOConfig),
+          algorithmHyperParameters: S.optional(HyperParameters),
+          featureTransformationParameters: S.optional(FeatureTransformationParameters),
+          autoMLConfig: S.optional(AutoMLConfig),
+          eventsConfig: S.optional(EventsConfig),
+          optimizationObjective: S.optional(OptimizationObjective),
+          trainingDataConfig: S.optional(TrainingDataConfig),
+          autoTrainingConfig: S.optional(AutoTrainingConfig),
+        }),
+      ).annotate({ identifier: "SolutionConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          performHPO: S.optional(S.Boolean),
+          performAutoML: S.optional(S.Boolean),
+          performAutoTraining: S.optional(S.Boolean),
+          performIncrementalUpdate: S.optional(S.Boolean),
+          recipeArn: S.optional(S.String),
+          datasetGroupArn: S.String,
+          eventType: S.optional(S.String),
+          solutionConfig: S.optional(SolutionConfig),
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateSolutionRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ solutionArn: S.optional(S.String) })).annotate({
+        identifier: "CreateSolutionResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          solutionArn: S.String,
+          trainingMode: S.optional(TrainingMode),
+          tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateSolutionVersionRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ solutionVersionArn: S.optional(S.String) })).annotate({
+        identifier: "CreateSolutionVersionResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ campaignArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteCampaignRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCampaignResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ datasetArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteDatasetRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ datasetGroupArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteDatasetGroupRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ eventTrackerArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteEventTrackerRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ filterArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteFilterRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ metricAttributionArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteMetricAttributionRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteMetricAttributionResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ recommenderArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteRecommenderRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ schemaArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteSchemaRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ solutionArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteSolutionRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ algorithmArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeAlgorithmRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), dockerURI: S.String }),
+      ).annotate({ identifier: "AlgorithmImage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          minValue: S.optional(S.Number),
+          maxValue: S.optional(S.Number),
+          isTunable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DefaultIntegerHyperParameterRange",
+      });
+    case 6:
+      return S.Array(DefaultIntegerHyperParameterRange);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          values: S.optional(CategoricalValues),
+          isTunable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DefaultCategoricalHyperParameterRange",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DefaultCategoricalHyperParameterRange);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          integerHyperParameterRanges: S.optional(DefaultIntegerHyperParameterRanges),
+          continuousHyperParameterRanges: S.optional(DefaultContinuousHyperParameterRanges),
+          categoricalHyperParameterRanges: S.optional(DefaultCategoricalHyperParameterRanges),
+        }),
+      ).annotate({
+        identifier: "DefaultHyperParameterRanges",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          algorithmArn: S.optional(S.String),
+          algorithmImage: S.optional(AlgorithmImage),
+          defaultHyperParameters: S.optional(HyperParameters),
+          defaultHyperParameterRanges: S.optional(DefaultHyperParameterRanges),
+          defaultResourceConfig: S.optional(ResourceConfig),
+          trainingInputMode: S.optional(S.String),
+          roleArn: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "Algorithm" });
+    case 3:
+      return S.suspend(() => S.Struct({ algorithm: S.optional(Algorithm) })).annotate({
+        identifier: "DescribeAlgorithmResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ batchInferenceJobArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeBatchInferenceJobRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.optional(S.String),
+          batchInferenceJobArn: S.optional(S.String),
+          filterArn: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          solutionVersionArn: S.optional(S.String),
+          numResults: S.optional(S.Number),
+          jobInput: S.optional(BatchInferenceJobInput),
+          jobOutput: S.optional(BatchInferenceJobOutput),
+          batchInferenceJobConfig: S.optional(BatchInferenceJobConfig),
+          roleArn: S.optional(S.String),
+          batchInferenceJobMode: S.optional(BatchInferenceJobMode),
+          themeGenerationConfig: S.optional(ThemeGenerationConfig),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "BatchInferenceJob" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ batchInferenceJob: S.optional(BatchInferenceJob) }),
+      ).annotate({
+        identifier: "DescribeBatchInferenceJobResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ batchSegmentJobArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeBatchSegmentJobRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.optional(S.String),
+          batchSegmentJobArn: S.optional(S.String),
+          filterArn: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          solutionVersionArn: S.optional(S.String),
+          numResults: S.optional(S.Number),
+          jobInput: S.optional(BatchSegmentJobInput),
+          jobOutput: S.optional(BatchSegmentJobOutput),
+          roleArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "BatchSegmentJob" });
+    case 1:
+      return S.suspend(() => S.Struct({ batchSegmentJob: S.optional(BatchSegmentJob) })).annotate({
+        identifier: "DescribeBatchSegmentJobResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ campaignArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeCampaignRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersionArn: S.optional(S.String),
+          minProvisionedTPS: S.optional(S.Number),
+          campaignConfig: S.optional(CampaignConfig),
+          status: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "CampaignUpdateSummary" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          campaignArn: S.optional(S.String),
+          solutionVersionArn: S.optional(S.String),
+          minProvisionedTPS: S.optional(S.Number),
+          campaignConfig: S.optional(CampaignConfig),
+          status: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          latestCampaignUpdate: S.optional(CampaignUpdateSummary),
+        }),
+      ).annotate({ identifier: "Campaign" });
+    case 5:
+      return S.suspend(() => S.Struct({ campaign: S.optional(Campaign) })).annotate({
+        identifier: "DescribeCampaignResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ dataDeletionJobArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeDataDeletionJobRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.optional(S.String),
+          dataDeletionJobArn: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          dataSource: S.optional(DataSource),
+          roleArn: S.optional(S.String),
+          status: S.optional(S.String),
+          numDeleted: S.optional(S.Number),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataDeletionJob" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ dataDeletionJob: S.optional(DataDeletionJob) })).annotate({
+        identifier: "DescribeDataDeletionJobResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ datasetArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeDatasetRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          schemaArn: S.optional(S.String),
+          status: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DatasetUpdateSummary" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          datasetArn: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          datasetType: S.optional(S.String),
+          schemaArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          latestDatasetUpdate: S.optional(DatasetUpdateSummary),
+          trackingId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Dataset" });
+    case 4:
+      return S.suspend(() => S.Struct({ dataset: S.optional(Dataset) })).annotate({
+        identifier: "DescribeDatasetResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ datasetExportJobArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeDatasetExportJobRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.optional(S.String),
+          datasetExportJobArn: S.optional(S.String),
+          datasetArn: S.optional(S.String),
+          ingestionMode: S.optional(IngestionMode),
+          roleArn: S.optional(S.String),
+          status: S.optional(S.String),
+          jobOutput: S.optional(DatasetExportJobOutput),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatasetExportJob" });
+    case 7:
+      return S.suspend(() => S.Struct({ datasetExportJob: S.optional(DatasetExportJob) })).annotate(
+        {
+          identifier: "DescribeDatasetExportJobResponse",
+        },
+      );
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ datasetGroupArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeDatasetGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          status: S.optional(S.String),
+          roleArn: S.optional(S.String),
+          kmsKeyArn: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+          domain: S.optional(Domain),
+        }),
+      ).annotate({ identifier: "DatasetGroup" });
+    case 2:
+      return S.suspend(() => S.Struct({ datasetGroup: S.optional(DatasetGroup) })).annotate({
+        identifier: "DescribeDatasetGroupResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ datasetImportJobArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeDatasetImportJobRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.optional(S.String),
+          datasetImportJobArn: S.optional(S.String),
+          datasetArn: S.optional(S.String),
+          dataSource: S.optional(DataSource),
+          roleArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+          importMode: S.optional(ImportMode),
+          publishAttributionMetricsToS3: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DatasetImportJob" });
+    case 5:
+      return S.suspend(() => S.Struct({ datasetImportJob: S.optional(DatasetImportJob) })).annotate(
+        {
+          identifier: "DescribeDatasetImportJobResponse",
+        },
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ eventTrackerArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeEventTrackerRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          eventTrackerArn: S.optional(S.String),
+          accountId: S.optional(S.String),
+          trackingId: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "EventTracker" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ eventTracker: S.optional(EventTracker) })).annotate({
+        identifier: "DescribeEventTrackerResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ featureTransformationArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeFeatureTransformationRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          featureTransformationArn: S.optional(S.String),
+          defaultParameters: S.optional(FeaturizationParameters),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FeatureTransformation" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ featureTransformation: S.optional(FeatureTransformation) }),
+      ).annotate({
+        identifier: "DescribeFeatureTransformationResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ filterArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeFilterRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          filterArn: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          datasetGroupArn: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          filterExpression: S.optional(SensitiveString),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 6:
+      return S.suspend(() => S.Struct({ filter: S.optional(Filter) })).annotate({
+        identifier: "DescribeFilterResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ metricAttributionArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeMetricAttributionRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metricAttributionArn: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          metricsOutputConfig: S.optional(MetricAttributionOutput),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricAttribution" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ metricAttribution: S.optional(MetricAttribution) }),
+      ).annotate({
+        identifier: "DescribeMetricAttributionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ recipeArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeRecipeRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          recipeArn: S.optional(S.String),
+          algorithmArn: S.optional(S.String),
+          featureTransformationArn: S.optional(S.String),
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          recipeType: S.optional(S.String),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "Recipe" });
+    case 4:
+      return S.suspend(() => S.Struct({ recipe: S.optional(Recipe) })).annotate({
+        identifier: "DescribeRecipeResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ recommenderArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeRecommenderRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          recommenderConfig: S.optional(RecommenderConfig),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(S.String),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecommenderUpdateSummary" });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recommenderArn: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          name: S.optional(S.String),
+          recipeArn: S.optional(S.String),
+          recommenderConfig: S.optional(RecommenderConfig),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          latestRecommenderUpdate: S.optional(RecommenderUpdateSummary),
+          modelMetrics: S.optional(Metrics),
+        }),
+      ).annotate({ identifier: "Recommender" });
+    case 1:
+      return S.suspend(() => S.Struct({ recommender: S.optional(Recommender) })).annotate({
+        identifier: "DescribeRecommenderResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ schemaArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeSchemaRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          schemaArn: S.optional(S.String),
+          schema: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          domain: S.optional(Domain),
+        }),
+      ).annotate({ identifier: "DatasetSchema" });
+    case 4:
+      return S.suspend(() => S.Struct({ schema: S.optional(DatasetSchema) })).annotate({
+        identifier: "DescribeSchemaResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ solutionArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeSolutionRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ bestRecipeArn: S.optional(S.String) })).annotate({
+        identifier: "AutoMLResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersionArn: S.optional(S.String),
+          status: S.optional(S.String),
+          trainingMode: S.optional(TrainingMode),
+          trainingType: S.optional(TrainingType),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SolutionVersionSummary" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autoTrainingConfig: S.optional(AutoTrainingConfig),
+          eventsConfig: S.optional(EventsConfig),
+        }),
+      ).annotate({ identifier: "SolutionUpdateConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          solutionUpdateConfig: S.optional(SolutionUpdateConfig),
+          status: S.optional(S.String),
+          performAutoTraining: S.optional(S.Boolean),
+          performIncrementalUpdate: S.optional(S.Boolean),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SolutionUpdateSummary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          solutionArn: S.optional(S.String),
+          performHPO: S.optional(S.Boolean),
+          performAutoML: S.optional(S.Boolean),
+          performAutoTraining: S.optional(S.Boolean),
+          performIncrementalUpdate: S.optional(S.Boolean),
+          recipeArn: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          eventType: S.optional(S.String),
+          solutionConfig: S.optional(SolutionConfig),
+          autoMLResult: S.optional(AutoMLResult),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          latestSolutionVersion: S.optional(SolutionVersionSummary),
+          latestSolutionUpdate: S.optional(SolutionUpdateSummary),
+        }),
+      ).annotate({ identifier: "Solution" });
+    case 3:
+      return S.suspend(() => S.Struct({ solution: S.optional(Solution) })).annotate({
+        identifier: "DescribeSolutionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ solutionVersionArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeSolutionVersionRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ algorithmHyperParameters: S.optional(HyperParameters) }),
+      ).annotate({ identifier: "TunedHPOParams" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          solutionVersionArn: S.optional(S.String),
+          solutionArn: S.optional(S.String),
+          performHPO: S.optional(S.Boolean),
+          performAutoML: S.optional(S.Boolean),
+          performIncrementalUpdate: S.optional(S.Boolean),
+          recipeArn: S.optional(S.String),
+          eventType: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          solutionConfig: S.optional(SolutionConfig),
+          trainingHours: S.optional(S.Number),
+          trainingMode: S.optional(TrainingMode),
+          tunedHPOParams: S.optional(TunedHPOParams),
+          status: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          trainingType: S.optional(TrainingType),
+        }),
+      ).annotate({ identifier: "SolutionVersion" });
+    case 7:
+      return S.suspend(() => S.Struct({ solutionVersion: S.optional(SolutionVersion) })).annotate({
+        identifier: "DescribeSolutionVersionResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ solutionVersionArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetSolutionMetricsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ solutionVersionArn: S.optional(S.String), metrics: S.optional(Metrics) }),
+      ).annotate({
+        identifier: "GetSolutionMetricsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersionArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListBatchInferenceJobsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          batchInferenceJobArn: S.optional(S.String),
+          jobName: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+          solutionVersionArn: S.optional(S.String),
+          batchInferenceJobMode: S.optional(BatchInferenceJobMode),
+        }),
+      ).annotate({ identifier: "BatchInferenceJobSummary" });
+    case 4:
+      return S.Array(BatchInferenceJobSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          batchInferenceJobs: S.optional(BatchInferenceJobs),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListBatchInferenceJobsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersionArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListBatchSegmentJobsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          batchSegmentJobArn: S.optional(S.String),
+          jobName: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+          solutionVersionArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchSegmentJobSummary" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(BatchSegmentJobSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          batchSegmentJobs: S.optional(BatchSegmentJobs),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListBatchSegmentJobsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          solutionArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListCampaignsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          campaignArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignSummary" });
+    case 4:
+      return S.Array(CampaignSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ campaigns: S.optional(Campaigns), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListCampaignsResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          datasetGroupArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListDataDeletionJobsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          dataDeletionJobArn: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          jobName: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataDeletionJobSummary" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DataDeletionJobSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dataDeletionJobs: S.optional(DataDeletionJobs),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListDataDeletionJobsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          datasetArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListDatasetExportJobsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          datasetExportJobArn: S.optional(S.String),
+          jobName: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatasetExportJobSummary" });
+    case 4:
+      return S.Array(DatasetExportJobSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          datasetExportJobs: S.optional(DatasetExportJobs),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListDatasetExportJobsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListDatasetGroupsRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+          domain: S.optional(Domain),
+        }),
+      ).annotate({ identifier: "DatasetGroupSummary" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DatasetGroupSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ datasetGroups: S.optional(DatasetGroups), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListDatasetGroupsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          datasetArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListDatasetImportJobsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          datasetImportJobArn: S.optional(S.String),
+          jobName: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+          importMode: S.optional(ImportMode),
+        }),
+      ).annotate({ identifier: "DatasetImportJobSummary" });
+    case 4:
+      return S.Array(DatasetImportJobSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          datasetImportJobs: S.optional(DatasetImportJobs),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListDatasetImportJobsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          datasetGroupArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDatasetsRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          datasetArn: S.optional(S.String),
+          datasetType: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DatasetSummary" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DatasetSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ datasets: S.optional(Datasets), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDatasetsResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          datasetGroupArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListEventTrackersRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          eventTrackerArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "EventTrackerSummary" });
+    case 4:
+      return S.Array(EventTrackerSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ eventTrackers: S.optional(EventTrackers), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListEventTrackersResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          datasetGroupArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListFiltersRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          filterArn: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          datasetGroupArn: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FilterSummary" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(FilterSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Filters: S.optional(Filters), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListFiltersResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metricAttributionArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListMetricAttributionMetricsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ metrics: S.optional(MetricAttributes), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListMetricAttributionMetricsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          datasetGroupArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListMetricAttributionsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metricAttributionArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricAttributionSummary" });
+    case 6:
+      return S.Array(MetricAttributionSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          metricAttributions: S.optional(MetricAttributions),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListMetricAttributionsResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recipeProvider: S.optional(RecipeProvider),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          domain: S.optional(Domain),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListRecipesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          recipeArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          domain: S.optional(Domain),
+        }),
+      ).annotate({ identifier: "RecipeSummary" });
+    case 2:
+      return S.Array(RecipeSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ recipes: S.optional(Recipes), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRecipesResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          datasetGroupArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListRecommendersRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          recommenderArn: S.optional(S.String),
+          datasetGroupArn: S.optional(S.String),
+          recipeArn: S.optional(S.String),
+          recommenderConfig: S.optional(RecommenderConfig),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "RecommenderSummary" });
+    case 6:
+      return S.Array(RecommenderSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ recommenders: S.optional(Recommenders), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRecommendersResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListSchemasRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          schemaArn: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          domain: S.optional(Domain),
+        }),
+      ).annotate({ identifier: "DatasetSchemaSummary" });
+    case 2:
+      return S.Array(DatasetSchemaSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ schemas: S.optional(Schemas), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSchemasResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          datasetGroupArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListSolutionsRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          solutionArn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          recipeArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SolutionSummary" });
+    case 6:
+      return S.Array(SolutionSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ solutions: S.optional(Solutions), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSolutionsResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          solutionArn: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListSolutionVersionsRequest",
+      });
+    case 1:
+      return S.Array(SolutionVersionSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersions: S.optional(SolutionVersions),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListSolutionVersionsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ recommenderArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartRecommenderRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ recommenderArn: S.optional(S.String) })).annotate({
+        identifier: "StartRecommenderResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ recommenderArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopRecommenderRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ solutionVersionArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StopSolutionVersionCreationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "StopSolutionVersionCreationResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tags: Tags }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 3:
+      return S.Array(SensitiveString);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tagKeys: TagKeys }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          campaignArn: S.String,
+          solutionVersionArn: S.optional(S.String),
+          minProvisionedTPS: S.optional(S.Number),
+          campaignConfig: S.optional(CampaignConfig),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateCampaignRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ datasetArn: S.String, schemaArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateDatasetRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          addMetrics: S.optional(MetricAttributes),
+          removeMetrics: S.optional(MetricAttributesNamesList),
+          metricsOutputConfig: S.optional(MetricAttributionOutput),
+          metricAttributionArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateMetricAttributionRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ recommenderArn: S.String, recommenderConfig: RecommenderConfig }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateRecommenderRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          solutionArn: S.String,
+          performAutoTraining: S.optional(S.Boolean),
+          performIncrementalUpdate: S.optional(S.Boolean),
+          solutionUpdateConfig: S.optional(SolutionUpdateConfig),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateSolutionRequest" });
+  }
+}

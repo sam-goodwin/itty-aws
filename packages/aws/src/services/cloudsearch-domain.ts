@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
@@ -114,47 +115,18 @@ export interface SearchRequest {
   start?: number;
   stats?: string;
 }
-const SearchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cursor: S.optional(S.String).pipe(T.HttpQuery("cursor")),
-    expr: S.optional(S.String).pipe(T.HttpQuery("expr")),
-    facet: S.optional(S.String).pipe(T.HttpQuery("facet")),
-    filterQuery: S.optional(S.String).pipe(T.HttpQuery("fq")),
-    highlight: S.optional(S.String).pipe(T.HttpQuery("highlight")),
-    partial: S.optional(S.Boolean).pipe(T.HttpQuery("partial")),
-    query: S.String.pipe(T.HttpQuery("q")),
-    queryOptions: S.optional(S.String).pipe(T.HttpQuery("q.options")),
-    queryParser: S.optional(QueryParser).pipe(T.HttpQuery("q.parser")),
-    return: S.optional(S.String).pipe(T.HttpQuery("return")),
-    size: S.optional(S.Number).pipe(T.HttpQuery("size")),
-    sort: S.optional(S.String).pipe(T.HttpQuery("sort")),
-    start: S.optional(S.Number).pipe(T.HttpQuery("start")),
-    stats: S.optional(S.String).pipe(T.HttpQuery("stats")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-01-01/search?format=sdk&pretty=true" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
+const SearchRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SearchRequest>;
 export interface SearchStatus {
   timems?: number;
   rid?: string;
 }
-const SearchStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ timems: S.optional(S.Number), rid: S.optional(S.String) }),
-).annotate({ identifier: "SearchStatus" }) as any as S.Schema<SearchStatus>;
+const SearchStatus = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SearchStatus>;
 export type FieldValue = string[];
-const FieldValue = /*@__PURE__*/ S.Array(S.String);
+const FieldValue = /*@__PURE__*/ __L.at(__c0, 2);
 export type Fields = { [key: string]: string[] | undefined };
-const Fields = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FieldValue.pipe(S.optional));
+const Fields = /*@__PURE__*/ __L.at(__c0, 3);
 export type Exprs = { [key: string]: string | undefined };
-const Exprs = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Exprs = /*@__PURE__*/ __L.at(__c0, 4);
 export type Highlights = { [key: string]: string | undefined };
 const Highlights = Exprs as any as S.Schema<Highlights>;
 export interface Hit {
@@ -163,47 +135,29 @@ export interface Hit {
   exprs?: { [key: string]: string | undefined };
   highlights?: { [key: string]: string | undefined };
 }
-const Hit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    fields: S.optional(Fields),
-    exprs: S.optional(Exprs),
-    highlights: S.optional(Highlights),
-  }),
-).annotate({ identifier: "Hit" }) as any as S.Schema<Hit>;
+const Hit = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Hit>;
 export type HitList = Hit[];
-const HitList = /*@__PURE__*/ S.Array(Hit);
+const HitList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface Hits {
   found?: number;
   start?: number;
   cursor?: string;
   hit?: Hit[];
 }
-const Hits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    found: S.optional(S.Number),
-    start: S.optional(S.Number),
-    cursor: S.optional(S.String),
-    hit: S.optional(HitList),
-  }),
-).annotate({ identifier: "Hits" }) as any as S.Schema<Hits>;
+const Hits = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Hits>;
 export interface Bucket {
   value?: string;
   count?: number;
 }
-const Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.optional(S.String), count: S.optional(S.Number) }),
-).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
+const Bucket = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Bucket>;
 export type BucketList = Bucket[];
-const BucketList = /*@__PURE__*/ S.Array(Bucket);
+const BucketList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface BucketInfo {
   buckets?: Bucket[];
 }
-const BucketInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ buckets: S.optional(BucketList) }),
-).annotate({ identifier: "BucketInfo" }) as any as S.Schema<BucketInfo>;
+const BucketInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BucketInfo>;
 export type Facets = { [key: string]: BucketInfo | undefined };
-const Facets = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ BucketInfo.pipe(S.optional));
+const Facets = /*@__PURE__*/ __L.at(__c1, 3);
 export interface FieldStats {
   min?: string;
   max?: string;
@@ -214,34 +168,16 @@ export interface FieldStats {
   mean?: string;
   stddev?: number;
 }
-const FieldStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    min: S.optional(S.String),
-    max: S.optional(S.String),
-    count: S.optional(S.Number),
-    missing: S.optional(S.Number),
-    sum: S.optional(S.Number),
-    sumOfSquares: S.optional(S.Number),
-    mean: S.optional(S.String),
-    stddev: S.optional(S.Number),
-  }),
-).annotate({ identifier: "FieldStats" }) as any as S.Schema<FieldStats>;
+const FieldStats = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<FieldStats>;
 export type Stats = { [key: string]: FieldStats | undefined };
-const Stats = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FieldStats.pipe(S.optional));
+const Stats = /*@__PURE__*/ __L.at(__c1, 5);
 export interface SearchResponse {
   status?: SearchStatus;
   hits?: Hits;
   facets?: { [key: string]: BucketInfo | undefined };
   stats?: { [key: string]: FieldStats | undefined };
 }
-const SearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SearchStatus),
-    hits: S.optional(Hits),
-    facets: S.optional(Facets),
-    stats: S.optional(Stats),
-  }).pipe(ns),
-).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
+const SearchResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SearchResponse>;
 export type Suggester = string;
 export type SuggestionsSize = number;
 export interface SuggestRequest {
@@ -249,23 +185,7 @@ export interface SuggestRequest {
   suggester: string;
   size?: number;
 }
-const SuggestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.String.pipe(T.HttpQuery("q")),
-    suggester: S.String.pipe(T.HttpQuery("suggester")),
-    size: S.optional(S.Number).pipe(T.HttpQuery("size")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-01-01/suggest?format=sdk&pretty=true" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SuggestRequest" }) as any as S.Schema<SuggestRequest>;
+const SuggestRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SuggestRequest>;
 export interface SuggestStatus {
   timems?: number;
   rid?: string;
@@ -276,34 +196,20 @@ export interface SuggestionMatch {
   score?: number;
   id?: string;
 }
-const SuggestionMatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestion: S.optional(S.String),
-    score: S.optional(S.Number),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "SuggestionMatch" }) as any as S.Schema<SuggestionMatch>;
+const SuggestionMatch = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SuggestionMatch>;
 export type Suggestions = SuggestionMatch[];
-const Suggestions = /*@__PURE__*/ S.Array(SuggestionMatch);
+const Suggestions = /*@__PURE__*/ __L.at(__c2, 1);
 export interface SuggestModel {
   query?: string;
   found?: number;
   suggestions?: SuggestionMatch[];
 }
-const SuggestModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.optional(S.String),
-    found: S.optional(S.Number),
-    suggestions: S.optional(Suggestions),
-  }),
-).annotate({ identifier: "SuggestModel" }) as any as S.Schema<SuggestModel>;
+const SuggestModel = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SuggestModel>;
 export interface SuggestResponse {
   status?: SuggestStatus;
   suggest?: SuggestModel;
 }
-const SuggestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(SuggestStatus), suggest: S.optional(SuggestModel) }).pipe(ns),
-).annotate({ identifier: "SuggestResponse" }) as any as S.Schema<SuggestResponse>;
+const SuggestResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SuggestResponse>;
 export type ContentType = "application/json" | "application/xml" | (string & {});
 const ContentType = S.String;
 
@@ -311,46 +217,31 @@ export interface UploadDocumentsRequest {
   documents: T.StreamingInputBody;
   contentType: ContentType;
 }
-const UploadDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documents: T.StreamingInput.pipe(T.HttpPayload()),
-    contentType: ContentType.pipe(T.HttpHeader("Content-Type")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-01-01/documents/batch?format=sdk" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UploadDocumentsRequest" }) as any as S.Schema<UploadDocumentsRequest>;
+const UploadDocumentsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<UploadDocumentsRequest>;
 export type Adds = number;
 export type Deletes = number;
 export interface DocumentServiceWarning {
   message?: string;
 }
-const DocumentServiceWarning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({ identifier: "DocumentServiceWarning" }) as any as S.Schema<DocumentServiceWarning>;
+const DocumentServiceWarning = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DocumentServiceWarning>;
 export type DocumentServiceWarnings = DocumentServiceWarning[];
-const DocumentServiceWarnings = /*@__PURE__*/ S.Array(DocumentServiceWarning);
+const DocumentServiceWarnings = /*@__PURE__*/ __L.at(__c2, 6);
 export interface UploadDocumentsResponse {
   status?: string;
   adds?: number;
   deletes?: number;
   warnings?: DocumentServiceWarning[];
 }
-const UploadDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    adds: S.optional(S.Number),
-    deletes: S.optional(S.Number),
-    warnings: S.optional(DocumentServiceWarnings),
-  }).pipe(ns),
-).annotate({ identifier: "UploadDocumentsResponse" }) as any as S.Schema<UploadDocumentsResponse>;
+const UploadDocumentsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UploadDocumentsResponse>;
 export type SearchError = SearchException | CommonErrors;
 /**
  * Retrieves a list of documents that match the specified search criteria. How you specify the search criteria depends on which query parser you use. Amazon CloudSearch supports four query parsers:
@@ -425,3 +316,184 @@ export const uploadDocuments: API.OperationMethod<
   retry: Retry,
   operationName: "UploadDocuments",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cursor: S.optional(S.String).pipe(T.HttpQuery("cursor")),
+          expr: S.optional(S.String).pipe(T.HttpQuery("expr")),
+          facet: S.optional(S.String).pipe(T.HttpQuery("facet")),
+          filterQuery: S.optional(S.String).pipe(T.HttpQuery("fq")),
+          highlight: S.optional(S.String).pipe(T.HttpQuery("highlight")),
+          partial: S.optional(S.Boolean).pipe(T.HttpQuery("partial")),
+          query: S.String.pipe(T.HttpQuery("q")),
+          queryOptions: S.optional(S.String).pipe(T.HttpQuery("q.options")),
+          queryParser: S.optional(QueryParser).pipe(T.HttpQuery("q.parser")),
+          return: S.optional(S.String).pipe(T.HttpQuery("return")),
+          size: S.optional(S.Number).pipe(T.HttpQuery("size")),
+          sort: S.optional(S.String).pipe(T.HttpQuery("sort")),
+          start: S.optional(S.Number).pipe(T.HttpQuery("start")),
+          stats: S.optional(S.String).pipe(T.HttpQuery("stats")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-01-01/search?format=sdk&pretty=true" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SearchRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ timems: S.optional(S.Number), rid: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchStatus" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ FieldValue.pipe(S.optional));
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          fields: S.optional(Fields),
+          exprs: S.optional(Exprs),
+          highlights: S.optional(Highlights),
+        }),
+      ).annotate({ identifier: "Hit" });
+    case 6:
+      return S.Array(Hit);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          found: S.optional(S.Number),
+          start: S.optional(S.Number),
+          cursor: S.optional(S.String),
+          hit: S.optional(HitList),
+        }),
+      ).annotate({ identifier: "Hits" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ value: S.optional(S.String), count: S.optional(S.Number) }),
+      ).annotate({ identifier: "Bucket" });
+    case 1:
+      return S.Array(Bucket);
+    case 2:
+      return S.suspend(() => S.Struct({ buckets: S.optional(BucketList) })).annotate({
+        identifier: "BucketInfo",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ BucketInfo.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          min: S.optional(S.String),
+          max: S.optional(S.String),
+          count: S.optional(S.Number),
+          missing: S.optional(S.Number),
+          sum: S.optional(S.Number),
+          sumOfSquares: S.optional(S.Number),
+          mean: S.optional(S.String),
+          stddev: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FieldStats" });
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ FieldStats.pipe(S.optional));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(SearchStatus),
+          hits: S.optional(Hits),
+          facets: S.optional(Facets),
+          stats: S.optional(Stats),
+        }).pipe(ns),
+      ).annotate({ identifier: "SearchResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.String.pipe(T.HttpQuery("q")),
+          suggester: S.String.pipe(T.HttpQuery("suggester")),
+          size: S.optional(S.Number).pipe(T.HttpQuery("size")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-01-01/suggest?format=sdk&pretty=true" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SuggestRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suggestion: S.optional(S.String),
+          score: S.optional(S.Number),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SuggestionMatch" });
+    case 1:
+      return S.Array(SuggestionMatch);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+          found: S.optional(S.Number),
+          suggestions: S.optional(Suggestions),
+        }),
+      ).annotate({ identifier: "SuggestModel" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ status: S.optional(SuggestStatus), suggest: S.optional(SuggestModel) }).pipe(ns),
+      ).annotate({ identifier: "SuggestResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          documents: T.StreamingInput.pipe(T.HttpPayload()),
+          contentType: ContentType.pipe(T.HttpHeader("Content-Type")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-01-01/documents/batch?format=sdk" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UploadDocumentsRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
+        identifier: "DocumentServiceWarning",
+      });
+    case 6:
+      return S.Array(DocumentServiceWarning);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          adds: S.optional(S.Number),
+          deletes: S.optional(S.Number),
+          warnings: S.optional(DocumentServiceWarnings),
+        }).pipe(ns),
+      ).annotate({ identifier: "UploadDocumentsResponse" });
+  }
+}

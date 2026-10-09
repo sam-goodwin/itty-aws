@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
@@ -95,27 +96,16 @@ export interface MetricQuery {
   Start?: number;
   End?: number;
 }
-const MetricQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MetricName: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    MetricStat: S.optional(MetricStatistic),
-    Period: S.optional(Period),
-    XAxisType: S.optional(XAxisType),
-    Start: S.optional(S.Number),
-    End: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MetricQuery" }) as any as S.Schema<MetricQuery>;
+const MetricQuery = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<MetricQuery>;
 export type MetricQueryList = MetricQuery[];
-const MetricQueryList = /*@__PURE__*/ S.Array(MetricQuery);
+const MetricQueryList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface BatchGetMetricsRequest {
   MetricQueries?: MetricQuery[];
 }
-const BatchGetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MetricQueries: S.optional(MetricQueryList) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/BatchGetMetrics" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "BatchGetMetricsRequest" }) as any as S.Schema<BatchGetMetricsRequest>;
+const BatchGetMetricsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchGetMetricsRequest>;
 export type MetricQueryResultStatus =
   | "Complete"
   | "Truncated"
@@ -126,7 +116,7 @@ const MetricQueryResultStatus = S.String;
 
 export type Message = string;
 export type XAxisValues = number[];
-const XAxisValues = /*@__PURE__*/ S.Array(S.Number);
+const XAxisValues = /*@__PURE__*/ __L.at(__c0, 3);
 export type MetricValues = number[];
 const MetricValues = XAxisValues as any as S.Schema<MetricValues>;
 export interface MetricQueryResult {
@@ -135,16 +125,9 @@ export interface MetricQueryResult {
   XAxisValues?: number[];
   MetricValues?: number[];
 }
-const MetricQueryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(MetricQueryResultStatus),
-    Message: S.optional(S.String),
-    XAxisValues: S.optional(XAxisValues),
-    MetricValues: S.optional(MetricValues),
-  }),
-).annotate({ identifier: "MetricQueryResult" }) as any as S.Schema<MetricQueryResult>;
+const MetricQueryResult = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MetricQueryResult>;
 export type MetricQueryResultList = MetricQueryResult[];
-const MetricQueryResultList = /*@__PURE__*/ S.Array(MetricQueryResult);
+const MetricQueryResultList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchGetMetricsResponse {
   MetricQueryResults?: (MetricQueryResult & {
     Status: MetricQueryResultStatus;
@@ -152,9 +135,10 @@ export interface BatchGetMetricsResponse {
     MetricValues: MetricValues;
   })[];
 }
-const BatchGetMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MetricQueryResults: S.optional(MetricQueryResultList) }),
-).annotate({ identifier: "BatchGetMetricsResponse" }) as any as S.Schema<BatchGetMetricsResponse>;
+const BatchGetMetricsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchGetMetricsResponse>;
 export type ExperimentEntityName = string;
 export type Step = number;
 export interface RawMetricData {
@@ -163,26 +147,17 @@ export interface RawMetricData {
   Step?: number;
   Value?: number;
 }
-const RawMetricData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MetricName: S.optional(S.String),
-    Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Step: S.optional(S.Number),
-    Value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RawMetricData" }) as any as S.Schema<RawMetricData>;
+const RawMetricData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RawMetricData>;
 export type RawMetricDataList = RawMetricData[];
-const RawMetricDataList = /*@__PURE__*/ S.Array(RawMetricData);
+const RawMetricDataList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface BatchPutMetricsRequest {
   TrialComponentName?: string;
   MetricData?: RawMetricData[];
 }
-const BatchPutMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrialComponentName: S.optional(S.String),
-    MetricData: S.optional(RawMetricDataList),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/BatchPutMetrics" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "BatchPutMetricsRequest" }) as any as S.Schema<BatchPutMetricsRequest>;
+const BatchPutMetricsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchPutMetricsRequest>;
 export type PutMetricsErrorCode =
   | "METRIC_LIMIT_EXCEEDED"
   | "INTERNAL_ERROR"
@@ -195,17 +170,19 @@ export interface BatchPutMetricsError_ {
   Code?: PutMetricsErrorCode;
   MetricIndex?: number;
 }
-const BatchPutMetricsError_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(PutMetricsErrorCode), MetricIndex: S.optional(S.Number) }),
-).annotate({ identifier: "BatchPutMetricsError" }) as any as S.Schema<BatchPutMetricsError_>;
+const BatchPutMetricsError_ = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BatchPutMetricsError_>;
 export type BatchPutMetricsErrorList = BatchPutMetricsError_[];
-const BatchPutMetricsErrorList = /*@__PURE__*/ S.Array(BatchPutMetricsError_);
+const BatchPutMetricsErrorList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BatchPutMetricsResponse {
   Errors?: BatchPutMetricsError_[];
 }
-const BatchPutMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Errors: S.optional(BatchPutMetricsErrorList) }),
-).annotate({ identifier: "BatchPutMetricsResponse" }) as any as S.Schema<BatchPutMetricsResponse>;
+const BatchPutMetricsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BatchPutMetricsResponse>;
 export type BatchGetMetricsError = CommonErrors;
 /**
  * Used to retrieve training metrics from SageMaker.
@@ -241,3 +218,80 @@ export const batchPutMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "BatchPutMetrics",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MetricName: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          MetricStat: S.optional(MetricStatistic),
+          Period: S.optional(Period),
+          XAxisType: S.optional(XAxisType),
+          Start: S.optional(S.Number),
+          End: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MetricQuery" });
+    case 1:
+      return S.Array(MetricQuery);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ MetricQueries: S.optional(MetricQueryList) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/BatchGetMetrics" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetMetricsRequest" });
+    case 3:
+      return S.Array(S.Number);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(MetricQueryResultStatus),
+          Message: S.optional(S.String),
+          XAxisValues: S.optional(XAxisValues),
+          MetricValues: S.optional(MetricValues),
+        }),
+      ).annotate({ identifier: "MetricQueryResult" });
+    case 5:
+      return S.Array(MetricQueryResult);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ MetricQueryResults: S.optional(MetricQueryResultList) }),
+      ).annotate({ identifier: "BatchGetMetricsResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          MetricName: S.optional(S.String),
+          Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Step: S.optional(S.Number),
+          Value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RawMetricData" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(RawMetricData);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TrialComponentName: S.optional(S.String),
+          MetricData: S.optional(RawMetricDataList),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/BatchPutMetrics" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchPutMetricsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Code: S.optional(PutMetricsErrorCode), MetricIndex: S.optional(S.Number) }),
+      ).annotate({ identifier: "BatchPutMetricsError" });
+    case 3:
+      return S.Array(BatchPutMetricsError_);
+    case 4:
+      return S.suspend(() => S.Struct({ Errors: S.optional(BatchPutMetricsErrorList) })).annotate({
+        identifier: "BatchPutMetricsResponse",
+      });
+  }
+}

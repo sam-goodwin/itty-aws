@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -163,99 +164,60 @@ export interface AssociateLibraryItemReviewInput {
   instanceId: string;
   libraryItemId: string;
 }
-const AssociateLibraryItemReviewInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    libraryItemId: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/catalog.associateItemRating" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateLibraryItemReviewInput",
-}) as any as S.Schema<AssociateLibraryItemReviewInput>;
+const AssociateLibraryItemReviewInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateLibraryItemReviewInput>;
 export interface AssociateLibraryItemReviewResponse {}
-const AssociateLibraryItemReviewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssociateLibraryItemReviewResponse",
-}) as any as S.Schema<AssociateLibraryItemReviewResponse>;
+const AssociateLibraryItemReviewResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateLibraryItemReviewResponse>;
 export interface AssociateQAppWithUserInput {
   instanceId: string;
   appId: string;
 }
-const AssociateQAppWithUserInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), appId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/apps.install" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AssociateQAppWithUserInput",
-}) as any as S.Schema<AssociateQAppWithUserInput>;
+const AssociateQAppWithUserInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AssociateQAppWithUserInput>;
 export interface AssociateQAppWithUserResponse {}
-const AssociateQAppWithUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssociateQAppWithUserResponse",
-}) as any as S.Schema<AssociateQAppWithUserResponse>;
+const AssociateQAppWithUserResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssociateQAppWithUserResponse>;
 export interface BatchCreateCategoryInputCategory {
   id?: string;
   title: string;
   color?: string;
 }
-const BatchCreateCategoryInputCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), title: S.String, color: S.optional(S.String) }),
-).annotate({
-  identifier: "BatchCreateCategoryInputCategory",
-}) as any as S.Schema<BatchCreateCategoryInputCategory>;
+const BatchCreateCategoryInputCategory = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BatchCreateCategoryInputCategory>;
 export type BatchCreateCategoryInputCategoryList = BatchCreateCategoryInputCategory[];
-const BatchCreateCategoryInputCategoryList = /*@__PURE__*/ S.Array(
-  BatchCreateCategoryInputCategory,
-);
+const BatchCreateCategoryInputCategoryList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchCreateCategoryInput {
   instanceId: string;
   categories: BatchCreateCategoryInputCategory[];
 }
-const BatchCreateCategoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    categories: BatchCreateCategoryInputCategoryList,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/catalog.createCategories" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "BatchCreateCategoryInput" }) as any as S.Schema<BatchCreateCategoryInput>;
+const BatchCreateCategoryInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchCreateCategoryInput>;
 export interface BatchCreateCategoryResponse {}
 const BatchCreateCategoryResponse =
   AssociateQAppWithUserResponse as any as S.Schema<BatchCreateCategoryResponse>;
 export type DeleteCategoryInputList = string[];
-const DeleteCategoryInputList = /*@__PURE__*/ S.Array(S.String);
+const DeleteCategoryInputList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface BatchDeleteCategoryInput {
   instanceId: string;
   categories: string[];
 }
-const BatchDeleteCategoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    categories: DeleteCategoryInputList,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/catalog.deleteCategories" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "BatchDeleteCategoryInput" }) as any as S.Schema<BatchDeleteCategoryInput>;
+const BatchDeleteCategoryInput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchDeleteCategoryInput>;
 export interface BatchDeleteCategoryResponse {}
 const BatchDeleteCategoryResponse =
   AssociateQAppWithUserResponse as any as S.Schema<BatchDeleteCategoryResponse>;
@@ -264,30 +226,17 @@ export interface CategoryInput {
   title: string;
   color?: string;
 }
-const CategoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, title: S.String, color: S.optional(S.String) }),
-).annotate({ identifier: "CategoryInput" }) as any as S.Schema<CategoryInput>;
+const CategoryInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CategoryInput>;
 export type CategoryListInput = CategoryInput[];
-const CategoryListInput = /*@__PURE__*/ S.Array(CategoryInput);
+const CategoryListInput = /*@__PURE__*/ __L.at(__c1, 2);
 export interface BatchUpdateCategoryInput {
   instanceId: string;
   categories: CategoryInput[];
 }
-const BatchUpdateCategoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    categories: CategoryListInput,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/catalog.updateCategories" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "BatchUpdateCategoryInput" }) as any as S.Schema<BatchUpdateCategoryInput>;
+const BatchUpdateCategoryInput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<BatchUpdateCategoryInput>;
 export interface BatchUpdateCategoryResponse {}
 const BatchUpdateCategoryResponse =
   AssociateQAppWithUserResponse as any as S.Schema<BatchUpdateCategoryResponse>;
@@ -300,16 +249,10 @@ export interface CreateLibraryItemInput {
   appVersion: number;
   categories: string[];
 }
-const CreateLibraryItemInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    appId: S.String,
-    appVersion: S.Number,
-    categories: CategoryIdList,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/catalog.createItem" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateLibraryItemInput" }) as any as S.Schema<CreateLibraryItemInput>;
+const CreateLibraryItemInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateLibraryItemInput>;
 export type QAppsTimestamp = Date;
 export interface CreateLibraryItemOutput {
   libraryItemId: string;
@@ -321,18 +264,10 @@ export interface CreateLibraryItemOutput {
   ratingCount: number;
   isVerified?: boolean;
 }
-const CreateLibraryItemOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    libraryItemId: S.String,
-    status: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdBy: S.String,
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedBy: S.optional(S.String),
-    ratingCount: S.Number,
-    isVerified: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "CreateLibraryItemOutput" }) as any as S.Schema<CreateLibraryItemOutput>;
+const CreateLibraryItemOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateLibraryItemOutput>;
 export type Filename = string;
 export type DocumentScope = "APPLICATION" | "SESSION" | (string & {});
 const DocumentScope = S.String;
@@ -346,45 +281,22 @@ export interface CreatePresignedUrlInput {
   scope: DocumentScope;
   sessionId?: string;
 }
-const CreatePresignedUrlInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    cardId: S.String,
-    appId: S.String,
-    fileContentsSha256: S.String,
-    fileName: S.String,
-    scope: DocumentScope,
-    sessionId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/apps.createPresignedUrl" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreatePresignedUrlInput" }) as any as S.Schema<CreatePresignedUrlInput>;
+const CreatePresignedUrlInput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreatePresignedUrlInput>;
 export type PresignedUrlFields = { [key: string]: string | undefined };
-const PresignedUrlFields = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const PresignedUrlFields = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreatePresignedUrlOutput {
   fileId: string;
   presignedUrl: string;
   presignedUrlFields: { [key: string]: string | undefined };
   presignedUrlExpiration: Date;
 }
-const CreatePresignedUrlOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileId: S.String,
-    presignedUrl: S.String,
-    presignedUrlFields: PresignedUrlFields,
-    presignedUrlExpiration: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "CreatePresignedUrlOutput" }) as any as S.Schema<CreatePresignedUrlOutput>;
+const CreatePresignedUrlOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreatePresignedUrlOutput>;
 export type Title = string;
 export type Description = string;
 export type CardType =
@@ -405,25 +317,13 @@ export interface TextInputCardInput {
   placeholder?: string;
   defaultValue?: string;
 }
-const TextInputCardInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    id: S.String,
-    type: CardType,
-    placeholder: S.optional(S.String),
-    defaultValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "TextInputCardInput" }) as any as S.Schema<TextInputCardInput>;
+const TextInputCardInput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TextInputCardInput>;
 export type Prompt = string;
 export type CardOutputSource = "approved-sources" | "llm" | (string & {});
 const CardOutputSource = S.String;
 
 export type AttributeFilters = AttributeFilter[];
-const AttributeFilters = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
-    identifier: "AttributeFilter",
-  }),
-) as any as S.Schema<AttributeFilters>;
+const AttributeFilters = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AttributeFilters>;
 export type DocumentAttributeKey = string;
 export type DocumentAttributeStringValue = string;
 export type PlatoString = string;
@@ -435,21 +335,12 @@ export type DocumentAttributeValue =
   | { stringValue?: never; stringListValue: string[]; longValue?: never; dateValue?: never }
   | { stringValue?: never; stringListValue?: never; longValue: number; dateValue?: never }
   | { stringValue?: never; stringListValue?: never; longValue?: never; dateValue: Date };
-const DocumentAttributeValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-  /*@__PURE__*/ S.Struct({ stringListValue: DocumentAttributeStringListValue }),
-  /*@__PURE__*/ S.Struct({ longValue: S.Number }),
-  /*@__PURE__*/ S.Struct({
-    dateValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-  }),
-]);
+const DocumentAttributeValue = /*@__PURE__*/ __L.at(__c2, 3);
 export interface DocumentAttribute {
   name: string;
   value: DocumentAttributeValue;
 }
-const DocumentAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, value: DocumentAttributeValue }),
-).annotate({ identifier: "DocumentAttribute" }) as any as S.Schema<DocumentAttribute>;
+const DocumentAttribute = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DocumentAttribute>;
 export interface AttributeFilter {
   andAllFilters?: AttributeFilter[];
   orAllFilters?: AttributeFilter[];
@@ -462,28 +353,7 @@ export interface AttributeFilter {
   lessThan?: DocumentAttribute;
   lessThanOrEquals?: DocumentAttribute;
 }
-const AttributeFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    andAllFilters: S.optional(
-      S.suspend(() => AttributeFilters).annotate({ identifier: "AttributeFilters" }),
-    ),
-    orAllFilters: S.optional(
-      S.suspend(() => AttributeFilters).annotate({ identifier: "AttributeFilters" }),
-    ),
-    notFilter: S.optional(
-      S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
-        identifier: "AttributeFilter",
-      }),
-    ),
-    equalsTo: S.optional(DocumentAttribute),
-    containsAll: S.optional(DocumentAttribute),
-    containsAny: S.optional(DocumentAttribute),
-    greaterThan: S.optional(DocumentAttribute),
-    greaterThanOrEquals: S.optional(DocumentAttribute),
-    lessThan: S.optional(DocumentAttribute),
-    lessThanOrEquals: S.optional(DocumentAttribute),
-  }),
-).annotate({ identifier: "AttributeFilter" }) as any as S.Schema<AttributeFilter>;
+const AttributeFilter = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AttributeFilter>;
 export interface QQueryCardInput {
   title: string;
   id: string;
@@ -492,16 +362,7 @@ export interface QQueryCardInput {
   outputSource?: CardOutputSource;
   attributeFilter?: AttributeFilter;
 }
-const QQueryCardInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    id: S.String,
-    type: CardType,
-    prompt: S.String,
-    outputSource: S.optional(CardOutputSource),
-    attributeFilter: S.optional(AttributeFilter),
-  }),
-).annotate({ identifier: "QQueryCardInput" }) as any as S.Schema<QQueryCardInput>;
+const QQueryCardInput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<QQueryCardInput>;
 export type PluginId = string;
 export type ActionIdentifier = string;
 export interface QPluginCardInput {
@@ -512,16 +373,7 @@ export interface QPluginCardInput {
   pluginId: string;
   actionIdentifier?: string;
 }
-const QPluginCardInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    id: S.String,
-    type: CardType,
-    prompt: S.String,
-    pluginId: S.String,
-    actionIdentifier: S.optional(S.String),
-  }),
-).annotate({ identifier: "QPluginCardInput" }) as any as S.Schema<QPluginCardInput>;
+const QPluginCardInput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<QPluginCardInput>;
 export interface FileUploadCardInput {
   title: string;
   id: string;
@@ -530,23 +382,15 @@ export interface FileUploadCardInput {
   fileId?: string;
   allowOverride?: boolean;
 }
-const FileUploadCardInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    id: S.String,
-    type: CardType,
-    filename: S.optional(S.String),
-    fileId: S.optional(S.String),
-    allowOverride: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "FileUploadCardInput" }) as any as S.Schema<FileUploadCardInput>;
+const FileUploadCardInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<FileUploadCardInput>;
 export type FormInputCardMetadataSchema = unknown;
 export interface FormInputCardMetadata {
   schema: any;
 }
-const FormInputCardMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({ schema: S.Any })).annotate({
-  identifier: "FormInputCardMetadata",
-}) as any as S.Schema<FormInputCardMetadata>;
+const FormInputCardMetadata = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<FormInputCardMetadata>;
 export type InputCardComputeMode = "append" | "replace" | (string & {});
 const InputCardComputeMode = S.String;
 
@@ -557,15 +401,7 @@ export interface FormInputCardInput {
   metadata: FormInputCardMetadata;
   computeMode?: InputCardComputeMode;
 }
-const FormInputCardInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    id: S.String,
-    type: CardType,
-    metadata: FormInputCardMetadata,
-    computeMode: S.optional(InputCardComputeMode),
-  }),
-).annotate({ identifier: "FormInputCardInput" }) as any as S.Schema<FormInputCardInput>;
+const FormInputCardInput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<FormInputCardInput>;
 export type CardInput =
   | {
       textInput: TextInputCardInput;
@@ -602,25 +438,17 @@ export type CardInput =
       fileUpload?: never;
       formInput: FormInputCardInput;
     };
-const CardInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ textInput: TextInputCardInput }),
-  /*@__PURE__*/ S.Struct({ qQuery: QQueryCardInput }),
-  /*@__PURE__*/ S.Struct({ qPlugin: QPluginCardInput }),
-  /*@__PURE__*/ S.Struct({ fileUpload: FileUploadCardInput }),
-  /*@__PURE__*/ S.Struct({ formInput: FormInputCardInput }),
-]);
+const CardInput = /*@__PURE__*/ __L.at(__c3, 3);
 export type CardList = CardInput[];
-const CardList = /*@__PURE__*/ S.Array(CardInput);
+const CardList = /*@__PURE__*/ __L.at(__c3, 4);
 export type InitialPrompt = string;
 export interface AppDefinitionInput {
   cards: CardInput[];
   initialPrompt?: string;
 }
-const AppDefinitionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cards: CardList, initialPrompt: S.optional(S.String) }),
-).annotate({ identifier: "AppDefinitionInput" }) as any as S.Schema<AppDefinitionInput>;
+const AppDefinitionInput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AppDefinitionInput>;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c3, 6);
 export interface CreateQAppInput {
   instanceId: string;
   title: string;
@@ -628,15 +456,7 @@ export interface CreateQAppInput {
   appDefinition: AppDefinitionInput;
   tags?: { [key: string]: string | undefined };
 }
-const CreateQAppInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    title: S.String,
-    description: S.optional(S.String),
-    appDefinition: AppDefinitionInput,
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/apps.create" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateQAppInput" }) as any as S.Schema<CreateQAppInput>;
+const CreateQAppInput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreateQAppInput>;
 export type AppArn = string;
 export type AppStatus = "PUBLISHED" | "DRAFT" | "DELETED" | (string & {});
 const AppStatus = S.String;
@@ -650,7 +470,7 @@ export type AppRequiredCapability =
 const AppRequiredCapability = S.String;
 
 export type AppRequiredCapabilities = AppRequiredCapability[];
-const AppRequiredCapabilities = /*@__PURE__*/ S.Array(AppRequiredCapability);
+const AppRequiredCapabilities = /*@__PURE__*/ __L.at(__c4, 0);
 export interface CreateQAppOutput {
   appId: string;
   appArn: string;
@@ -665,34 +485,15 @@ export interface CreateQAppOutput {
   updatedBy: string;
   requiredCapabilities?: AppRequiredCapability[];
 }
-const CreateQAppOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    appArn: S.String,
-    title: S.String,
-    description: S.optional(S.String),
-    initialPrompt: S.optional(S.String),
-    appVersion: S.Number,
-    status: AppStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdBy: S.String,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedBy: S.String,
-    requiredCapabilities: S.optional(AppRequiredCapabilities),
-  }),
-).annotate({ identifier: "CreateQAppOutput" }) as any as S.Schema<CreateQAppOutput>;
+const CreateQAppOutput = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CreateQAppOutput>;
 export interface DeleteLibraryItemInput {
   instanceId: string;
   libraryItemId: string;
 }
-const DeleteLibraryItemInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    libraryItemId: S.String,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/catalog.deleteItem" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteLibraryItemInput" }) as any as S.Schema<DeleteLibraryItemInput>;
+const DeleteLibraryItemInput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeleteLibraryItemInput>;
 export interface DeleteLibraryItemResponse {}
 const DeleteLibraryItemResponse =
   AssociateQAppWithUserResponse as any as S.Schema<DeleteLibraryItemResponse>;
@@ -700,34 +501,17 @@ export interface DeleteQAppInput {
   instanceId: string;
   appId: string;
 }
-const DeleteQAppInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), appId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/apps.delete" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteQAppInput" }) as any as S.Schema<DeleteQAppInput>;
+const DeleteQAppInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DeleteQAppInput>;
 export interface DeleteQAppResponse {}
 const DeleteQAppResponse = AssociateQAppWithUserResponse as any as S.Schema<DeleteQAppResponse>;
 export interface DescribeQAppPermissionsInput {
   instanceId: string;
   appId: string;
 }
-const DescribeQAppPermissionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    appId: S.String.pipe(T.HttpQuery("appId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/apps.describeQAppPermissions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DescribeQAppPermissionsInput",
-}) as any as S.Schema<DescribeQAppPermissionsInput>;
+const DescribeQAppPermissionsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DescribeQAppPermissionsInput>;
 export type Action = "read" | "write" | (string & {});
 const Action = S.String;
 
@@ -739,57 +523,31 @@ export interface PrincipalOutput {
   userType?: UserType;
   email?: string;
 }
-const PrincipalOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String),
-    userType: S.optional(UserType),
-    email: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrincipalOutput" }) as any as S.Schema<PrincipalOutput>;
+const PrincipalOutput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PrincipalOutput>;
 export interface PermissionOutput {
   action: Action;
   principal: PrincipalOutput;
 }
-const PermissionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ action: Action, principal: PrincipalOutput }),
-).annotate({ identifier: "PermissionOutput" }) as any as S.Schema<PermissionOutput>;
+const PermissionOutput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PermissionOutput>;
 export type PermissionsOutputList = PermissionOutput[];
-const PermissionsOutputList = /*@__PURE__*/ S.Array(PermissionOutput);
+const PermissionsOutputList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface DescribeQAppPermissionsOutput {
   resourceArn?: string;
   appId?: string;
   permissions?: PermissionOutput[];
 }
-const DescribeQAppPermissionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.optional(S.String),
-    appId: S.optional(S.String),
-    permissions: S.optional(PermissionsOutputList),
-  }),
-).annotate({
-  identifier: "DescribeQAppPermissionsOutput",
-}) as any as S.Schema<DescribeQAppPermissionsOutput>;
+const DescribeQAppPermissionsOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DescribeQAppPermissionsOutput>;
 export interface DisassociateLibraryItemReviewInput {
   instanceId: string;
   libraryItemId: string;
 }
-const DisassociateLibraryItemReviewInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    libraryItemId: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/catalog.disassociateItemRating" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateLibraryItemReviewInput",
-}) as any as S.Schema<DisassociateLibraryItemReviewInput>;
+const DisassociateLibraryItemReviewInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DisassociateLibraryItemReviewInput>;
 export interface DisassociateLibraryItemReviewResponse {}
 const DisassociateLibraryItemReviewResponse =
   AssociateLibraryItemReviewResponse as any as S.Schema<DisassociateLibraryItemReviewResponse>;
@@ -797,13 +555,10 @@ export interface DisassociateQAppFromUserInput {
   instanceId: string;
   appId: string;
 }
-const DisassociateQAppFromUserInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), appId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/apps.uninstall" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DisassociateQAppFromUserInput",
-}) as any as S.Schema<DisassociateQAppFromUserInput>;
+const DisassociateQAppFromUserInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DisassociateQAppFromUserInput>;
 export interface DisassociateQAppFromUserResponse {}
 const DisassociateQAppFromUserResponse =
   AssociateLibraryItemReviewResponse as any as S.Schema<DisassociateQAppFromUserResponse>;
@@ -811,62 +566,34 @@ export interface ExportQAppSessionDataInput {
   instanceId: string;
   sessionId: string;
 }
-const ExportQAppSessionDataInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), sessionId: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtime.exportQAppSessionData" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ExportQAppSessionDataInput",
-}) as any as S.Schema<ExportQAppSessionDataInput>;
+const ExportQAppSessionDataInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ExportQAppSessionDataInput>;
 export interface ExportQAppSessionDataOutput {
   csvFileLink: string;
   expiresAt: Date;
   sessionArn: string;
 }
-const ExportQAppSessionDataOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    csvFileLink: S.String,
-    expiresAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    sessionArn: S.String,
-  }),
-).annotate({
-  identifier: "ExportQAppSessionDataOutput",
-}) as any as S.Schema<ExportQAppSessionDataOutput>;
+const ExportQAppSessionDataOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ExportQAppSessionDataOutput>;
 export interface GetLibraryItemInput {
   instanceId: string;
   libraryItemId: string;
   appId?: string;
 }
-const GetLibraryItemInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    libraryItemId: S.String.pipe(T.HttpQuery("libraryItemId")),
-    appId: S.optional(S.String).pipe(T.HttpQuery("appId")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/catalog.getItem" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetLibraryItemInput" }) as any as S.Schema<GetLibraryItemInput>;
+const GetLibraryItemInput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GetLibraryItemInput>;
 export interface Category {
   id: string;
   title: string;
   color?: string;
   appCount?: number;
 }
-const Category = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-    color: S.optional(S.String),
-    appCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
+const Category = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Category>;
 export type CategoryList = Category[];
-const CategoryList = /*@__PURE__*/ S.Array(Category);
+const CategoryList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface GetLibraryItemOutput {
   libraryItemId: string;
   appId: string;
@@ -882,35 +609,13 @@ export interface GetLibraryItemOutput {
   userCount?: number;
   isVerified?: boolean;
 }
-const GetLibraryItemOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    libraryItemId: S.String,
-    appId: S.String,
-    appVersion: S.Number,
-    categories: CategoryList,
-    status: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdBy: S.String,
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedBy: S.optional(S.String),
-    ratingCount: S.Number,
-    isRatedByUser: S.optional(S.Boolean),
-    userCount: S.optional(S.Number),
-    isVerified: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GetLibraryItemOutput" }) as any as S.Schema<GetLibraryItemOutput>;
+const GetLibraryItemOutput = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetLibraryItemOutput>;
 export interface GetQAppInput {
   instanceId: string;
   appId: string;
   appVersion?: number;
 }
-const GetQAppInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    appId: S.String.pipe(T.HttpQuery("appId")),
-    appVersion: S.optional(S.Number).pipe(T.HttpQuery("appVersion")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/apps.get" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetQAppInput" }) as any as S.Schema<GetQAppInput>;
+const GetQAppInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetQAppInput>;
 export type DependencyList = string[];
 const DependencyList = DeleteCategoryInputList as any as S.Schema<DependencyList>;
 export interface TextInputCard {
@@ -921,16 +626,7 @@ export interface TextInputCard {
   placeholder?: string;
   defaultValue?: string;
 }
-const TextInputCard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-    dependencies: DependencyList,
-    type: CardType,
-    placeholder: S.optional(S.String),
-    defaultValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "TextInputCard" }) as any as S.Schema<TextInputCard>;
+const TextInputCard = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<TextInputCard>;
 export type MemoryReferenceList = string[];
 const MemoryReferenceList = DeleteCategoryInputList as any as S.Schema<MemoryReferenceList>;
 export interface QQueryCard {
@@ -943,18 +639,7 @@ export interface QQueryCard {
   attributeFilter?: AttributeFilter;
   memoryReferences?: string[];
 }
-const QQueryCard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-    dependencies: DependencyList,
-    type: CardType,
-    prompt: S.String,
-    outputSource: CardOutputSource,
-    attributeFilter: S.optional(AttributeFilter),
-    memoryReferences: S.optional(MemoryReferenceList),
-  }),
-).annotate({ identifier: "QQueryCard" }) as any as S.Schema<QQueryCard>;
+const QQueryCard = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<QQueryCard>;
 export type PluginType =
   | "SERVICE_NOW"
   | "SALESFORCE"
@@ -985,18 +670,7 @@ export interface QPluginCard {
   pluginId: string;
   actionIdentifier?: string;
 }
-const QPluginCard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-    dependencies: DependencyList,
-    type: CardType,
-    prompt: S.String,
-    pluginType: PluginType,
-    pluginId: S.String,
-    actionIdentifier: S.optional(S.String),
-  }),
-).annotate({ identifier: "QPluginCard" }) as any as S.Schema<QPluginCard>;
+const QPluginCard = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<QPluginCard>;
 export interface FileUploadCard {
   id: string;
   title: string;
@@ -1006,17 +680,7 @@ export interface FileUploadCard {
   fileId?: string;
   allowOverride?: boolean;
 }
-const FileUploadCard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-    dependencies: DependencyList,
-    type: CardType,
-    filename: S.optional(S.String),
-    fileId: S.optional(S.String),
-    allowOverride: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "FileUploadCard" }) as any as S.Schema<FileUploadCard>;
+const FileUploadCard = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<FileUploadCard>;
 export interface FormInputCard {
   id: string;
   title: string;
@@ -1025,16 +689,7 @@ export interface FormInputCard {
   metadata: FormInputCardMetadata;
   computeMode?: InputCardComputeMode;
 }
-const FormInputCard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-    dependencies: DependencyList,
-    type: CardType,
-    metadata: FormInputCardMetadata,
-    computeMode: S.optional(InputCardComputeMode),
-  }),
-).annotate({ identifier: "FormInputCard" }) as any as S.Schema<FormInputCard>;
+const FormInputCard = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<FormInputCard>;
 export type Card =
   | {
       textInput: TextInputCard;
@@ -1071,27 +726,15 @@ export type Card =
       fileUpload?: never;
       formInput: FormInputCard;
     };
-const Card = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ textInput: TextInputCard }),
-  /*@__PURE__*/ S.Struct({ qQuery: QQueryCard }),
-  /*@__PURE__*/ S.Struct({ qPlugin: QPluginCard }),
-  /*@__PURE__*/ S.Struct({ fileUpload: FileUploadCard }),
-  /*@__PURE__*/ S.Struct({ formInput: FormInputCard }),
-]);
+const Card = /*@__PURE__*/ __L.at(__c6, 7);
 export type CardModelList = Card[];
-const CardModelList = /*@__PURE__*/ S.Array(Card);
+const CardModelList = /*@__PURE__*/ __L.at(__c7, 0);
 export interface AppDefinition {
   appDefinitionVersion: string;
   cards: Card[];
   canEdit?: boolean;
 }
-const AppDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appDefinitionVersion: S.String,
-    cards: CardModelList,
-    canEdit: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AppDefinition" }) as any as S.Schema<AppDefinition>;
+const AppDefinition = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<AppDefinition>;
 export interface GetQAppOutput {
   appId: string;
   appArn: string;
@@ -1107,35 +750,12 @@ export interface GetQAppOutput {
   requiredCapabilities?: AppRequiredCapability[];
   appDefinition: AppDefinition;
 }
-const GetQAppOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    appArn: S.String,
-    title: S.String,
-    description: S.optional(S.String),
-    initialPrompt: S.optional(S.String),
-    appVersion: S.Number,
-    status: AppStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdBy: S.String,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedBy: S.String,
-    requiredCapabilities: S.optional(AppRequiredCapabilities),
-    appDefinition: AppDefinition,
-  }),
-).annotate({ identifier: "GetQAppOutput" }) as any as S.Schema<GetQAppOutput>;
+const GetQAppOutput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetQAppOutput>;
 export interface GetQAppSessionInput {
   instanceId: string;
   sessionId: string;
 }
-const GetQAppSessionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    sessionId: S.String.pipe(T.HttpQuery("sessionId")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/runtime.getQAppSession" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetQAppSessionInput" }) as any as S.Schema<GetQAppSessionInput>;
+const GetQAppSessionInput = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GetQAppSessionInput>;
 export type SessionName = string;
 export type ExecutionStatus = "IN_PROGRESS" | "WAITING" | "COMPLETED" | "ERROR" | (string & {});
 const ExecutionStatus = S.String;
@@ -1145,29 +765,17 @@ export interface Submission {
   submissionId?: string;
   timestamp?: Date;
 }
-const Submission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Any),
-    submissionId: S.optional(S.String),
-    timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "Submission" }) as any as S.Schema<Submission>;
+const Submission = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Submission>;
 export type SubmissionList = Submission[];
-const SubmissionList = /*@__PURE__*/ S.Array(Submission);
+const SubmissionList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface CardStatus {
   currentState: ExecutionStatus;
   currentValue: string;
   submissions?: Submission[];
 }
-const CardStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentState: ExecutionStatus,
-    currentValue: S.String,
-    submissions: S.optional(SubmissionList),
-  }),
-).annotate({ identifier: "CardStatus" }) as any as S.Schema<CardStatus>;
+const CardStatus = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<CardStatus>;
 export type CardStatusMap = { [key: string]: CardStatus | undefined };
-const CardStatusMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ CardStatus.pipe(S.optional));
+const CardStatusMap = /*@__PURE__*/ __L.at(__c7, 7);
 export interface GetQAppSessionOutput {
   sessionId: string;
   sessionArn: string;
@@ -1178,39 +786,15 @@ export interface GetQAppSessionOutput {
   cardStatus: { [key: string]: CardStatus | undefined };
   userIsHost?: boolean;
 }
-const GetQAppSessionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    sessionArn: S.String,
-    sessionName: S.optional(S.String),
-    appVersion: S.optional(S.Number),
-    latestPublishedAppVersion: S.optional(S.Number),
-    status: ExecutionStatus,
-    cardStatus: CardStatusMap,
-    userIsHost: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GetQAppSessionOutput" }) as any as S.Schema<GetQAppSessionOutput>;
+const GetQAppSessionOutput = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetQAppSessionOutput>;
 export interface GetQAppSessionMetadataInput {
   instanceId: string;
   sessionId: string;
 }
-const GetQAppSessionMetadataInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    sessionId: S.String.pipe(T.HttpQuery("sessionId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/runtime.getQAppSessionMetadata" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetQAppSessionMetadataInput",
-}) as any as S.Schema<GetQAppSessionMetadataInput>;
+const GetQAppSessionMetadataInput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetQAppSessionMetadataInput>;
 export type SessionSharingEnabled = boolean;
 export type SessionSharingAcceptResponses = boolean;
 export type SessionSharingRevealCards = boolean;
@@ -1219,15 +803,10 @@ export interface SessionSharingConfiguration {
   acceptResponses?: boolean;
   revealCards?: boolean;
 }
-const SessionSharingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    acceptResponses: S.optional(S.Boolean),
-    revealCards: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SessionSharingConfiguration",
-}) as any as S.Schema<SessionSharingConfiguration>;
+const SessionSharingConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<SessionSharingConfiguration>;
 export interface GetQAppSessionMetadataOutput {
   sessionId: string;
   sessionArn: string;
@@ -1235,17 +814,10 @@ export interface GetQAppSessionMetadataOutput {
   sharingConfiguration: SessionSharingConfiguration;
   sessionOwner?: boolean;
 }
-const GetQAppSessionMetadataOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    sessionArn: S.String,
-    sessionName: S.optional(S.String),
-    sharingConfiguration: SessionSharingConfiguration,
-    sessionOwner: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetQAppSessionMetadataOutput",
-}) as any as S.Schema<GetQAppSessionMetadataOutput>;
+const GetQAppSessionMetadataOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetQAppSessionMetadataOutput>;
 export interface ImportDocumentInput {
   instanceId: string;
   cardId: string;
@@ -1255,41 +827,21 @@ export interface ImportDocumentInput {
   scope: DocumentScope;
   sessionId?: string;
 }
-const ImportDocumentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    cardId: S.String,
-    appId: S.String,
-    fileContentsBase64: S.String,
-    fileName: S.String,
-    scope: DocumentScope,
-    sessionId: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/apps.importDocument" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ImportDocumentInput" }) as any as S.Schema<ImportDocumentInput>;
+const ImportDocumentInput = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ImportDocumentInput>;
 export interface ImportDocumentOutput {
   fileId?: string;
 }
-const ImportDocumentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fileId: S.optional(S.String) }),
-).annotate({ identifier: "ImportDocumentOutput" }) as any as S.Schema<ImportDocumentOutput>;
+const ImportDocumentOutput = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ImportDocumentOutput>;
 export interface ListCategoriesInput {
   instanceId: string;
 }
-const ListCategoriesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/catalog.listCategories" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListCategoriesInput" }) as any as S.Schema<ListCategoriesInput>;
+const ListCategoriesInput = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ListCategoriesInput>;
 export type CategoriesList = Category[];
 const CategoriesList = CategoryList as any as S.Schema<CategoriesList>;
 export interface ListCategoriesOutput {
   categories?: Category[];
 }
-const ListCategoriesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ categories: S.optional(CategoriesList) }),
-).annotate({ identifier: "ListCategoriesOutput" }) as any as S.Schema<ListCategoriesOutput>;
+const ListCategoriesOutput = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ListCategoriesOutput>;
 export type PageLimit = number;
 export type PaginationToken = string;
 export interface ListLibraryItemsInput {
@@ -1298,14 +850,10 @@ export interface ListLibraryItemsInput {
   nextToken?: string;
   categoryId?: string;
 }
-const ListLibraryItemsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    categoryId: S.optional(S.String).pipe(T.HttpQuery("categoryId")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/catalog.list" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListLibraryItemsInput" }) as any as S.Schema<ListLibraryItemsInput>;
+const ListLibraryItemsInput = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListLibraryItemsInput>;
 export interface LibraryItemMember {
   libraryItemId: string;
   appId: string;
@@ -1323,26 +871,21 @@ export interface LibraryItemMember {
 }
 const LibraryItemMember = GetLibraryItemOutput as any as S.Schema<LibraryItemMember>;
 export type LibraryItemList = LibraryItemMember[];
-const LibraryItemList = /*@__PURE__*/ S.Array(LibraryItemMember);
+const LibraryItemList = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ListLibraryItemsOutput {
   libraryItems?: LibraryItemMember[];
   nextToken?: string;
 }
-const ListLibraryItemsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ libraryItems: S.optional(LibraryItemList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListLibraryItemsOutput" }) as any as S.Schema<ListLibraryItemsOutput>;
+const ListLibraryItemsOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListLibraryItemsOutput>;
 export interface ListQAppsInput {
   instanceId: string;
   limit?: number;
   nextToken?: string;
 }
-const ListQAppsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/apps.list" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListQAppsInput" }) as any as S.Schema<ListQAppsInput>;
+const ListQAppsInput = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListQAppsInput>;
 export interface UserAppItem {
   appId: string;
   appArn: string;
@@ -1353,53 +896,27 @@ export interface UserAppItem {
   status?: string;
   isVerified?: boolean;
 }
-const UserAppItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    appArn: S.String,
-    title: S.String,
-    description: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    canEdit: S.optional(S.Boolean),
-    status: S.optional(S.String),
-    isVerified: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UserAppItem" }) as any as S.Schema<UserAppItem>;
+const UserAppItem = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<UserAppItem>;
 export type UserAppsList = UserAppItem[];
-const UserAppsList = /*@__PURE__*/ S.Array(UserAppItem);
+const UserAppsList = /*@__PURE__*/ __L.at(__c9, 5);
 export interface ListQAppsOutput {
   apps: UserAppItem[];
   nextToken?: string;
 }
-const ListQAppsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ apps: UserAppsList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListQAppsOutput" }) as any as S.Schema<ListQAppsOutput>;
+const ListQAppsOutput = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ListQAppsOutput>;
 export interface ListQAppSessionDataInput {
   instanceId: string;
   sessionId: string;
 }
-const ListQAppSessionDataInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    sessionId: S.String.pipe(T.HttpQuery("sessionId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/runtime.listQAppSessionData" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListQAppSessionDataInput" }) as any as S.Schema<ListQAppSessionDataInput>;
+const ListQAppSessionDataInput = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListQAppSessionDataInput>;
 export type UserId = string;
 export interface User {
   userId?: string;
 }
-const User = /*@__PURE__*/ S.suspend(() => S.Struct({ userId: S.optional(S.String) })).annotate({
-  identifier: "User",
-}) as any as S.Schema<User>;
+const User = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<User>;
 export interface QAppSessionData {
   cardId: string;
   value?: any;
@@ -1407,44 +924,27 @@ export interface QAppSessionData {
   submissionId?: string;
   timestamp?: Date;
 }
-const QAppSessionData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cardId: S.String,
-    value: S.optional(S.Any),
-    user: User,
-    submissionId: S.optional(S.String),
-    timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "QAppSessionData" }) as any as S.Schema<QAppSessionData>;
+const QAppSessionData = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<QAppSessionData>;
 export type QAppSessionDataList = QAppSessionData[];
-const QAppSessionDataList = /*@__PURE__*/ S.Array(QAppSessionData);
+const QAppSessionDataList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface ListQAppSessionDataOutput {
   sessionId: string;
   sessionArn: string;
   sessionData?: QAppSessionData[];
   nextToken?: string;
 }
-const ListQAppSessionDataOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    sessionArn: S.String,
-    sessionData: S.optional(QAppSessionDataList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListQAppSessionDataOutput",
-}) as any as S.Schema<ListQAppSessionDataOutput>;
+const ListQAppSessionDataOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListQAppSessionDataOutput>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceARN: S.String.pipe(T.HttpLabel("resourceARN")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceARN}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
@@ -1452,11 +952,10 @@ const Tags = TagMap as any as S.Schema<Tags>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type Sender = "USER" | "SYSTEM" | (string & {});
 const Sender = S.String;
 
@@ -1464,49 +963,32 @@ export interface ConversationMessage {
   body: string;
   type: Sender;
 }
-const ConversationMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ body: S.String, type: Sender }),
-).annotate({ identifier: "ConversationMessage" }) as any as S.Schema<ConversationMessage>;
+const ConversationMessage = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ConversationMessage>;
 export type MessageList = ConversationMessage[];
-const MessageList = /*@__PURE__*/ S.Array(ConversationMessage);
+const MessageList = /*@__PURE__*/ __L.at(__c10, 7);
 export type PredictQAppInputOptions =
   | { conversation: ConversationMessage[]; problemStatement?: never }
   | { conversation?: never; problemStatement: string };
-const PredictQAppInputOptions = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ conversation: MessageList }),
-  /*@__PURE__*/ S.Struct({ problemStatement: S.String }),
-]);
+const PredictQAppInputOptions = /*@__PURE__*/ __L.at(__c11, 0);
 export interface PredictQAppInput {
   instanceId: string;
   options?: PredictQAppInputOptions;
 }
-const PredictQAppInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    options: S.optional(PredictQAppInputOptions),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/apps.predictQApp" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PredictQAppInput" }) as any as S.Schema<PredictQAppInput>;
+const PredictQAppInput = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<PredictQAppInput>;
 export interface PredictAppDefinition {
   title: string;
   description?: string;
   appDefinition: AppDefinitionInput;
 }
-const PredictAppDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    description: S.optional(S.String),
-    appDefinition: AppDefinitionInput,
-  }),
-).annotate({ identifier: "PredictAppDefinition" }) as any as S.Schema<PredictAppDefinition>;
+const PredictAppDefinition = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<PredictAppDefinition>;
 export interface PredictQAppOutput {
   app: PredictAppDefinition;
   problemStatement: string;
 }
-const PredictQAppOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ app: PredictAppDefinition, problemStatement: S.String }),
-).annotate({ identifier: "PredictQAppOutput" }) as any as S.Schema<PredictQAppOutput>;
+const PredictQAppOutput = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<PredictQAppOutput>;
 export type SubmissionMutationKind = "edit" | "delete" | "add" | (string & {});
 const SubmissionMutationKind = S.String;
 
@@ -1514,23 +996,15 @@ export interface SubmissionMutation {
   submissionId: string;
   mutationType: SubmissionMutationKind;
 }
-const SubmissionMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ submissionId: S.String, mutationType: SubmissionMutationKind }),
-).annotate({ identifier: "SubmissionMutation" }) as any as S.Schema<SubmissionMutation>;
+const SubmissionMutation = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<SubmissionMutation>;
 export interface CardValue {
   cardId: string;
   value: string;
   submissionMutation?: SubmissionMutation;
 }
-const CardValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cardId: S.String,
-    value: S.String,
-    submissionMutation: S.optional(SubmissionMutation),
-  }),
-).annotate({ identifier: "CardValue" }) as any as S.Schema<CardValue>;
+const CardValue = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<CardValue>;
 export type CardValueList = CardValue[];
-const CardValueList = /*@__PURE__*/ S.Array(CardValue);
+const CardValueList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface StartQAppSessionInput {
   instanceId: string;
   appId: string;
@@ -1539,48 +1013,26 @@ export interface StartQAppSessionInput {
   sessionId?: string;
   tags?: { [key: string]: string | undefined };
 }
-const StartQAppSessionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    appId: S.String,
-    appVersion: S.Number,
-    initialValues: S.optional(CardValueList),
-    sessionId: S.optional(S.String),
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtime.startQAppSession" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartQAppSessionInput" }) as any as S.Schema<StartQAppSessionInput>;
+const StartQAppSessionInput = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<StartQAppSessionInput>;
 export interface StartQAppSessionOutput {
   sessionId: string;
   sessionArn: string;
 }
-const StartQAppSessionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionId: S.String, sessionArn: S.String }),
-).annotate({ identifier: "StartQAppSessionOutput" }) as any as S.Schema<StartQAppSessionOutput>;
+const StartQAppSessionOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<StartQAppSessionOutput>;
 export interface StopQAppSessionInput {
   instanceId: string;
   sessionId: string;
 }
-const StopQAppSessionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), sessionId: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtime.deleteMiniAppRun" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StopQAppSessionInput" }) as any as S.Schema<StopQAppSessionInput>;
+const StopQAppSessionInput = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<StopQAppSessionInput>;
 export interface StopQAppSessionResponse {}
 const StopQAppSessionResponse =
   AssociateQAppWithUserResponse as any as S.Schema<StopQAppSessionResponse>;
@@ -1588,11 +1040,7 @@ export interface TagResourceRequest {
   resourceARN: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceARN: S.String.pipe(T.HttpLabel("resourceARN")), tags: Tags }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceARN}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = AssociateQAppWithUserResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
@@ -1601,14 +1049,10 @@ export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceARN: S.String.pipe(T.HttpLabel("resourceARN")),
-    tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceARN}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse =
   AssociateQAppWithUserResponse as any as S.Schema<UntagResourceResponse>;
@@ -1621,16 +1065,10 @@ export interface UpdateLibraryItemInput {
   status?: LibraryItemStatus;
   categories?: string[];
 }
-const UpdateLibraryItemInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    libraryItemId: S.String,
-    status: S.optional(LibraryItemStatus),
-    categories: S.optional(CategoryIdList),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/catalog.updateItem" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateLibraryItemInput" }) as any as S.Schema<UpdateLibraryItemInput>;
+const UpdateLibraryItemInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<UpdateLibraryItemInput>;
 export interface UpdateLibraryItemOutput {
   libraryItemId: string;
   appId: string;
@@ -1652,24 +1090,10 @@ export interface UpdateLibraryItemMetadataInput {
   libraryItemId: string;
   isVerified?: boolean;
 }
-const UpdateLibraryItemMetadataInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    libraryItemId: S.String,
-    isVerified: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/catalog.updateItemMetadata" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateLibraryItemMetadataInput",
-}) as any as S.Schema<UpdateLibraryItemMetadataInput>;
+const UpdateLibraryItemMetadataInput = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<UpdateLibraryItemMetadataInput>;
 export interface UpdateLibraryItemMetadataResponse {}
 const UpdateLibraryItemMetadataResponse =
   AssociateLibraryItemReviewResponse as any as S.Schema<UpdateLibraryItemMetadataResponse>;
@@ -1680,15 +1104,7 @@ export interface UpdateQAppInput {
   description?: string;
   appDefinition?: AppDefinitionInput;
 }
-const UpdateQAppInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    appId: S.String,
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    appDefinition: S.optional(AppDefinitionInput),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/apps.update" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateQAppInput" }) as any as S.Schema<UpdateQAppInput>;
+const UpdateQAppInput = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<UpdateQAppInput>;
 export interface UpdateQAppOutput {
   appId: string;
   appArn: string;
@@ -1708,36 +1124,19 @@ export interface PermissionInput {
   action: Action;
   principal: string;
 }
-const PermissionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ action: Action, principal: S.String }),
-).annotate({ identifier: "PermissionInput" }) as any as S.Schema<PermissionInput>;
+const PermissionInput = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<PermissionInput>;
 export type PermissionsInputList = PermissionInput[];
-const PermissionsInputList = /*@__PURE__*/ S.Array(PermissionInput);
+const PermissionsInputList = /*@__PURE__*/ __L.at(__c13, 0);
 export interface UpdateQAppPermissionsInput {
   instanceId: string;
   appId: string;
   grantPermissions?: PermissionInput[];
   revokePermissions?: PermissionInput[];
 }
-const UpdateQAppPermissionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    appId: S.String,
-    grantPermissions: S.optional(PermissionsInputList),
-    revokePermissions: S.optional(PermissionsInputList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/apps.updateQAppPermissions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateQAppPermissionsInput",
-}) as any as S.Schema<UpdateQAppPermissionsInput>;
+const UpdateQAppPermissionsInput = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<UpdateQAppPermissionsInput>;
 export interface UpdateQAppPermissionsOutput {
   resourceArn?: string;
   appId?: string;
@@ -1750,22 +1149,10 @@ export interface UpdateQAppSessionInput {
   sessionId: string;
   values?: CardValue[];
 }
-const UpdateQAppSessionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    sessionId: S.String,
-    values: S.optional(CardValueList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtime.updateQAppSession" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateQAppSessionInput" }) as any as S.Schema<UpdateQAppSessionInput>;
+const UpdateQAppSessionInput = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<UpdateQAppSessionInput>;
 export interface UpdateQAppSessionOutput {
   sessionId: string;
   sessionArn: string;
@@ -1777,41 +1164,20 @@ export interface UpdateQAppSessionMetadataInput {
   sessionName?: string;
   sharingConfiguration: SessionSharingConfiguration;
 }
-const UpdateQAppSessionMetadataInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-    sessionId: S.String,
-    sessionName: S.optional(S.String),
-    sharingConfiguration: SessionSharingConfiguration,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtime.updateQAppSessionMetadata" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateQAppSessionMetadataInput",
-}) as any as S.Schema<UpdateQAppSessionMetadataInput>;
+const UpdateQAppSessionMetadataInput = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<UpdateQAppSessionMetadataInput>;
 export interface UpdateQAppSessionMetadataOutput {
   sessionId: string;
   sessionArn: string;
   sessionName?: string;
   sharingConfiguration: SessionSharingConfiguration;
 }
-const UpdateQAppSessionMetadataOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    sessionArn: S.String,
-    sessionName: S.optional(S.String),
-    sharingConfiguration: SessionSharingConfiguration,
-  }),
-).annotate({
-  identifier: "UpdateQAppSessionMetadataOutput",
-}) as any as S.Schema<UpdateQAppSessionMetadataOutput>;
+const UpdateQAppSessionMetadataOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<UpdateQAppSessionMetadataOutput>;
 export type AssociateLibraryItemReviewError =
   | AccessDeniedException
   | ConflictException
@@ -2991,3 +2357,1104 @@ export const updateQAppSessionMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateQAppSessionMetadata",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          libraryItemId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/catalog.associateItemRating" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateLibraryItemReviewInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssociateLibraryItemReviewResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), appId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/apps.install" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AssociateQAppWithUserInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssociateQAppWithUserResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), title: S.String, color: S.optional(S.String) }),
+      ).annotate({
+        identifier: "BatchCreateCategoryInputCategory",
+      });
+    case 5:
+      return S.Array(BatchCreateCategoryInputCategory);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          categories: BatchCreateCategoryInputCategoryList,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/catalog.createCategories" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchCreateCategoryInput" });
+    case 7:
+      return S.Array(S.String);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          categories: DeleteCategoryInputList,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/catalog.deleteCategories" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchDeleteCategoryInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.String, title: S.String, color: S.optional(S.String) }),
+      ).annotate({ identifier: "CategoryInput" });
+    case 2:
+      return S.Array(CategoryInput);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          categories: CategoryListInput,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/catalog.updateCategories" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchUpdateCategoryInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          appId: S.String,
+          appVersion: S.Number,
+          categories: CategoryIdList,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/catalog.createItem" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateLibraryItemInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          libraryItemId: S.String,
+          status: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          createdBy: S.String,
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedBy: S.optional(S.String),
+          ratingCount: S.Number,
+          isVerified: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CreateLibraryItemOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          cardId: S.String,
+          appId: S.String,
+          fileContentsSha256: S.String,
+          fileName: S.String,
+          scope: DocumentScope,
+          sessionId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/apps.createPresignedUrl" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreatePresignedUrlInput" });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.String,
+          presignedUrl: S.String,
+          presignedUrlFields: PresignedUrlFields,
+          presignedUrlExpiration: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "CreatePresignedUrlOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          id: S.String,
+          type: CardType,
+          placeholder: S.optional(S.String),
+          defaultValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextInputCardInput" });
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
+          identifier: "AttributeFilter",
+        }),
+      );
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ stringListValue: DocumentAttributeStringListValue }),
+        /*@__PURE__*/ S.Struct({ longValue: S.Number }),
+        /*@__PURE__*/ S.Struct({
+          dateValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+      ]);
+    case 4:
+      return S.suspend(() => S.Struct({ name: S.String, value: DocumentAttributeValue })).annotate({
+        identifier: "DocumentAttribute",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          andAllFilters: S.optional(
+            S.suspend(() => AttributeFilters).annotate({ identifier: "AttributeFilters" }),
+          ),
+          orAllFilters: S.optional(
+            S.suspend(() => AttributeFilters).annotate({ identifier: "AttributeFilters" }),
+          ),
+          notFilter: S.optional(
+            S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
+              identifier: "AttributeFilter",
+            }),
+          ),
+          equalsTo: S.optional(DocumentAttribute),
+          containsAll: S.optional(DocumentAttribute),
+          containsAny: S.optional(DocumentAttribute),
+          greaterThan: S.optional(DocumentAttribute),
+          greaterThanOrEquals: S.optional(DocumentAttribute),
+          lessThan: S.optional(DocumentAttribute),
+          lessThanOrEquals: S.optional(DocumentAttribute),
+        }),
+      ).annotate({ identifier: "AttributeFilter" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          id: S.String,
+          type: CardType,
+          prompt: S.String,
+          outputSource: S.optional(CardOutputSource),
+          attributeFilter: S.optional(AttributeFilter),
+        }),
+      ).annotate({ identifier: "QQueryCardInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          id: S.String,
+          type: CardType,
+          prompt: S.String,
+          pluginId: S.String,
+          actionIdentifier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QPluginCardInput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          id: S.String,
+          type: CardType,
+          filename: S.optional(S.String),
+          fileId: S.optional(S.String),
+          allowOverride: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FileUploadCardInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ schema: S.Any })).annotate({
+        identifier: "FormInputCardMetadata",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          id: S.String,
+          type: CardType,
+          metadata: FormInputCardMetadata,
+          computeMode: S.optional(InputCardComputeMode),
+        }),
+      ).annotate({ identifier: "FormInputCardInput" });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ textInput: TextInputCardInput }),
+        /*@__PURE__*/ S.Struct({ qQuery: QQueryCardInput }),
+        /*@__PURE__*/ S.Struct({ qPlugin: QPluginCardInput }),
+        /*@__PURE__*/ S.Struct({ fileUpload: FileUploadCardInput }),
+        /*@__PURE__*/ S.Struct({ formInput: FormInputCardInput }),
+      ]);
+    case 4:
+      return S.Array(CardInput);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ cards: CardList, initialPrompt: S.optional(S.String) }),
+      ).annotate({ identifier: "AppDefinitionInput" });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          title: S.String,
+          description: S.optional(S.String),
+          appDefinition: AppDefinitionInput,
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/apps.create" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateQAppInput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AppRequiredCapability);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.String,
+          appArn: S.String,
+          title: S.String,
+          description: S.optional(S.String),
+          initialPrompt: S.optional(S.String),
+          appVersion: S.Number,
+          status: AppStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          createdBy: S.String,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedBy: S.String,
+          requiredCapabilities: S.optional(AppRequiredCapabilities),
+        }),
+      ).annotate({ identifier: "CreateQAppOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          libraryItemId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/catalog.deleteItem" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteLibraryItemInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), appId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/apps.delete" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteQAppInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          appId: S.String.pipe(T.HttpQuery("appId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/apps.describeQAppPermissions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeQAppPermissionsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String),
+          userType: S.optional(UserType),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrincipalOutput" });
+    case 6:
+      return S.suspend(() => S.Struct({ action: Action, principal: PrincipalOutput })).annotate({
+        identifier: "PermissionOutput",
+      });
+    case 7:
+      return S.Array(PermissionOutput);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.optional(S.String),
+          appId: S.optional(S.String),
+          permissions: S.optional(PermissionsOutputList),
+        }),
+      ).annotate({
+        identifier: "DescribeQAppPermissionsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          libraryItemId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/catalog.disassociateItemRating" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateLibraryItemReviewInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")), appId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/apps.uninstall" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisassociateQAppFromUserInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          sessionId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/runtime.exportQAppSessionData" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ExportQAppSessionDataInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          csvFileLink: S.String,
+          expiresAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          sessionArn: S.String,
+        }),
+      ).annotate({
+        identifier: "ExportQAppSessionDataOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          libraryItemId: S.String.pipe(T.HttpQuery("libraryItemId")),
+          appId: S.optional(S.String).pipe(T.HttpQuery("appId")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/catalog.getItem" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetLibraryItemInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          color: S.optional(S.String),
+          appCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Category" });
+    case 7:
+      return S.Array(Category);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          libraryItemId: S.String,
+          appId: S.String,
+          appVersion: S.Number,
+          categories: CategoryList,
+          status: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          createdBy: S.String,
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedBy: S.optional(S.String),
+          ratingCount: S.Number,
+          isRatedByUser: S.optional(S.Boolean),
+          userCount: S.optional(S.Number),
+          isVerified: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GetLibraryItemOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          appId: S.String.pipe(T.HttpQuery("appId")),
+          appVersion: S.optional(S.Number).pipe(T.HttpQuery("appVersion")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/apps.get" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetQAppInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          dependencies: DependencyList,
+          type: CardType,
+          placeholder: S.optional(S.String),
+          defaultValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextInputCard" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          dependencies: DependencyList,
+          type: CardType,
+          prompt: S.String,
+          outputSource: CardOutputSource,
+          attributeFilter: S.optional(AttributeFilter),
+          memoryReferences: S.optional(MemoryReferenceList),
+        }),
+      ).annotate({ identifier: "QQueryCard" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          dependencies: DependencyList,
+          type: CardType,
+          prompt: S.String,
+          pluginType: PluginType,
+          pluginId: S.String,
+          actionIdentifier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QPluginCard" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          dependencies: DependencyList,
+          type: CardType,
+          filename: S.optional(S.String),
+          fileId: S.optional(S.String),
+          allowOverride: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FileUploadCard" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          dependencies: DependencyList,
+          type: CardType,
+          metadata: FormInputCardMetadata,
+          computeMode: S.optional(InputCardComputeMode),
+        }),
+      ).annotate({ identifier: "FormInputCard" });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ textInput: TextInputCard }),
+        /*@__PURE__*/ S.Struct({ qQuery: QQueryCard }),
+        /*@__PURE__*/ S.Struct({ qPlugin: QPluginCard }),
+        /*@__PURE__*/ S.Struct({ fileUpload: FileUploadCard }),
+        /*@__PURE__*/ S.Struct({ formInput: FormInputCard }),
+      ]);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Card);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appDefinitionVersion: S.String,
+          cards: CardModelList,
+          canEdit: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AppDefinition" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.String,
+          appArn: S.String,
+          title: S.String,
+          description: S.optional(S.String),
+          initialPrompt: S.optional(S.String),
+          appVersion: S.Number,
+          status: AppStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          createdBy: S.String,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedBy: S.String,
+          requiredCapabilities: S.optional(AppRequiredCapabilities),
+          appDefinition: AppDefinition,
+        }),
+      ).annotate({ identifier: "GetQAppOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          sessionId: S.String.pipe(T.HttpQuery("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/runtime.getQAppSession" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetQAppSessionInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Any),
+          submissionId: S.optional(S.String),
+          timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "Submission" });
+    case 5:
+      return S.Array(Submission);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          currentState: ExecutionStatus,
+          currentValue: S.String,
+          submissions: S.optional(SubmissionList),
+        }),
+      ).annotate({ identifier: "CardStatus" });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ CardStatus.pipe(S.optional));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String,
+          sessionArn: S.String,
+          sessionName: S.optional(S.String),
+          appVersion: S.optional(S.Number),
+          latestPublishedAppVersion: S.optional(S.Number),
+          status: ExecutionStatus,
+          cardStatus: CardStatusMap,
+          userIsHost: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GetQAppSessionOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          sessionId: S.String.pipe(T.HttpQuery("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/runtime.getQAppSessionMetadata" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetQAppSessionMetadataInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          acceptResponses: S.optional(S.Boolean),
+          revealCards: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "SessionSharingConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String,
+          sessionArn: S.String,
+          sessionName: S.optional(S.String),
+          sharingConfiguration: SessionSharingConfiguration,
+          sessionOwner: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetQAppSessionMetadataOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          cardId: S.String,
+          appId: S.String,
+          fileContentsBase64: S.String,
+          fileName: S.String,
+          scope: DocumentScope,
+          sessionId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/apps.importDocument" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ImportDocumentInput" });
+    case 5:
+      return S.suspend(() => S.Struct({ fileId: S.optional(S.String) })).annotate({
+        identifier: "ImportDocumentOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ instanceId: S.String.pipe(T.HttpHeader("instance-id")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/catalog.listCategories" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListCategoriesInput" });
+    case 7:
+      return S.suspend(() => S.Struct({ categories: S.optional(CategoriesList) })).annotate({
+        identifier: "ListCategoriesOutput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          categoryId: S.optional(S.String).pipe(T.HttpQuery("categoryId")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/catalog.list" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListLibraryItemsInput" });
+    case 1:
+      return S.Array(LibraryItemMember);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ libraryItems: S.optional(LibraryItemList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListLibraryItemsOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/apps.list" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListQAppsInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.String,
+          appArn: S.String,
+          title: S.String,
+          description: S.optional(S.String),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          canEdit: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          isVerified: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UserAppItem" });
+    case 5:
+      return S.Array(UserAppItem);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ apps: UserAppsList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListQAppsOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          sessionId: S.String.pipe(T.HttpQuery("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/runtime.listQAppSessionData" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListQAppSessionDataInput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ userId: S.optional(S.String) })).annotate({
+        identifier: "User",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cardId: S.String,
+          value: S.optional(S.Any),
+          user: User,
+          submissionId: S.optional(S.String),
+          timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "QAppSessionData" });
+    case 2:
+      return S.Array(QAppSessionData);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String,
+          sessionArn: S.String,
+          sessionData: S.optional(QAppSessionDataList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListQAppSessionDataOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resourceARN: S.String.pipe(T.HttpLabel("resourceARN")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceARN}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ body: S.String, type: Sender })).annotate({
+        identifier: "ConversationMessage",
+      });
+    case 7:
+      return S.Array(ConversationMessage);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ conversation: MessageList }),
+        /*@__PURE__*/ S.Struct({ problemStatement: S.String }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          options: S.optional(PredictQAppInputOptions),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/apps.predictQApp" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PredictQAppInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          description: S.optional(S.String),
+          appDefinition: AppDefinitionInput,
+        }),
+      ).annotate({ identifier: "PredictAppDefinition" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ app: PredictAppDefinition, problemStatement: S.String }),
+      ).annotate({ identifier: "PredictQAppOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ submissionId: S.String, mutationType: SubmissionMutationKind }),
+      ).annotate({ identifier: "SubmissionMutation" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cardId: S.String,
+          value: S.String,
+          submissionMutation: S.optional(SubmissionMutation),
+        }),
+      ).annotate({ identifier: "CardValue" });
+    case 6:
+      return S.Array(CardValue);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          appId: S.String,
+          appVersion: S.Number,
+          initialValues: S.optional(CardValueList),
+          sessionId: S.optional(S.String),
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/runtime.startQAppSession" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartQAppSessionInput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ sessionId: S.String, sessionArn: S.String })).annotate({
+        identifier: "StartQAppSessionOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          sessionId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/runtime.deleteMiniAppRun" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopQAppSessionInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resourceARN: S.String.pipe(T.HttpLabel("resourceARN")), tags: Tags }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceARN}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resourceARN: S.String.pipe(T.HttpLabel("resourceARN")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceARN}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          libraryItemId: S.String,
+          status: S.optional(LibraryItemStatus),
+          categories: S.optional(CategoryIdList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/catalog.updateItem" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateLibraryItemInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          libraryItemId: S.String,
+          isVerified: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/catalog.updateItemMetadata" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateLibraryItemMetadataInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          appId: S.String,
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          appDefinition: S.optional(AppDefinitionInput),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/apps.update" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateQAppInput" });
+    case 7:
+      return S.suspend(() => S.Struct({ action: Action, principal: S.String })).annotate({
+        identifier: "PermissionInput",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PermissionInput);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          appId: S.String,
+          grantPermissions: S.optional(PermissionsInputList),
+          revokePermissions: S.optional(PermissionsInputList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/apps.updateQAppPermissions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateQAppPermissionsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          sessionId: S.String,
+          values: S.optional(CardValueList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/runtime.updateQAppSession" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateQAppSessionInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+          sessionId: S.String,
+          sessionName: S.optional(S.String),
+          sharingConfiguration: SessionSharingConfiguration,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/runtime.updateQAppSessionMetadata" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateQAppSessionMetadataInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String,
+          sessionArn: S.String,
+          sessionName: S.optional(S.String),
+          sharingConfiguration: SessionSharingConfiguration,
+        }),
+      ).annotate({
+        identifier: "UpdateQAppSessionMetadataOutput",
+      });
+  }
+}

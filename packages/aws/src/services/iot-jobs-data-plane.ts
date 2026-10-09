@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -155,25 +156,10 @@ export interface DescribeJobExecutionRequest {
   includeJobDocument?: boolean;
   executionNumber?: number;
 }
-const DescribeJobExecutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String.pipe(T.HttpLabel("jobId")),
-    thingName: S.String.pipe(T.HttpLabel("thingName")),
-    includeJobDocument: S.optional(S.Boolean).pipe(T.HttpQuery("includeJobDocument")),
-    executionNumber: S.optional(S.Number).pipe(T.HttpQuery("executionNumber")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/things/{thingName}/jobs/{jobId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DescribeJobExecutionRequest",
-}) as any as S.Schema<DescribeJobExecutionRequest>;
+const DescribeJobExecutionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DescribeJobExecutionRequest>;
 export type JobId = string;
 export type JobExecutionStatus =
   | "QUEUED"
@@ -190,7 +176,7 @@ const JobExecutionStatus = S.String;
 export type DetailsKey = string;
 export type DetailsValue = string;
 export type DetailsMap = { [key: string]: string | undefined };
-const DetailsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const DetailsMap = /*@__PURE__*/ __L.at(__c0, 1);
 export type QueuedAt = number;
 export type StartedAt = number;
 export type LastUpdatedAt = number;
@@ -210,39 +196,21 @@ export interface JobExecution {
   executionNumber?: number;
   jobDocument?: string;
 }
-const JobExecution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.optional(S.String),
-    thingName: S.optional(S.String),
-    status: S.optional(JobExecutionStatus),
-    statusDetails: S.optional(DetailsMap),
-    queuedAt: S.optional(S.Number),
-    startedAt: S.optional(S.Number),
-    lastUpdatedAt: S.optional(S.Number),
-    approximateSecondsBeforeTimedOut: S.optional(S.Number),
-    versionNumber: S.optional(S.Number),
-    executionNumber: S.optional(S.Number),
-    jobDocument: S.optional(S.String),
-  }),
-).annotate({ identifier: "JobExecution" }) as any as S.Schema<JobExecution>;
+const JobExecution = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<JobExecution>;
 export interface DescribeJobExecutionResponse {
   execution?: JobExecution;
 }
-const DescribeJobExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ execution: S.optional(JobExecution) }),
-).annotate({
-  identifier: "DescribeJobExecutionResponse",
-}) as any as S.Schema<DescribeJobExecutionResponse>;
+const DescribeJobExecutionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DescribeJobExecutionResponse>;
 export interface GetPendingJobExecutionsRequest {
   thingName: string;
 }
-const GetPendingJobExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ thingName: S.String.pipe(T.HttpLabel("thingName")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/things/{thingName}/jobs" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetPendingJobExecutionsRequest",
-}) as any as S.Schema<GetPendingJobExecutionsRequest>;
+const GetPendingJobExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetPendingJobExecutionsRequest>;
 export interface JobExecutionSummary {
   jobId?: string;
   queuedAt?: number;
@@ -251,30 +219,17 @@ export interface JobExecutionSummary {
   versionNumber?: number;
   executionNumber?: number;
 }
-const JobExecutionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.optional(S.String),
-    queuedAt: S.optional(S.Number),
-    startedAt: S.optional(S.Number),
-    lastUpdatedAt: S.optional(S.Number),
-    versionNumber: S.optional(S.Number),
-    executionNumber: S.optional(S.Number),
-  }),
-).annotate({ identifier: "JobExecutionSummary" }) as any as S.Schema<JobExecutionSummary>;
+const JobExecutionSummary = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<JobExecutionSummary>;
 export type JobExecutionSummaryList = JobExecutionSummary[];
-const JobExecutionSummaryList = /*@__PURE__*/ S.Array(JobExecutionSummary);
+const JobExecutionSummaryList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface GetPendingJobExecutionsResponse {
   inProgressJobs?: JobExecutionSummary[];
   queuedJobs?: JobExecutionSummary[];
 }
-const GetPendingJobExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inProgressJobs: S.optional(JobExecutionSummaryList),
-    queuedJobs: S.optional(JobExecutionSummaryList),
-  }),
-).annotate({
-  identifier: "GetPendingJobExecutionsResponse",
-}) as any as S.Schema<GetPendingJobExecutionsResponse>;
+const GetPendingJobExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetPendingJobExecutionsResponse>;
 export type TargetArn = string;
 export type CommandArn = string;
 export type CommandParameterName = string;
@@ -294,22 +249,12 @@ export interface CommandParameterValue {
   BIN?: Uint8Array;
   UL?: string;
 }
-const CommandParameterValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    S: S.optional(S.String),
-    B: S.optional(S.Boolean),
-    I: S.optional(S.Number),
-    L: S.optional(S.Number),
-    D: S.optional(S.Number),
-    BIN: S.optional(T.Blob),
-    UL: S.optional(S.String),
-  }),
-).annotate({ identifier: "CommandParameterValue" }) as any as S.Schema<CommandParameterValue>;
+const CommandParameterValue = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CommandParameterValue>;
 export type CommandExecutionParameterMap = { [key: string]: CommandParameterValue | undefined };
-const CommandExecutionParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ CommandParameterValue.pipe(S.optional),
-);
+const CommandExecutionParameterMap = /*@__PURE__*/ __L.at(__c1, 1);
 export type CommandExecutionTimeoutInSeconds = number;
 export type ClientRequestTokenV2 = string;
 export interface StartCommandExecutionRequest {
@@ -319,52 +264,28 @@ export interface StartCommandExecutionRequest {
   executionTimeoutSeconds?: number;
   clientToken?: string;
 }
-const StartCommandExecutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetArn: S.String,
-    commandArn: S.String,
-    parameters: S.optional(CommandExecutionParameterMap),
-    executionTimeoutSeconds: S.optional(S.Number),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/command-executions" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartCommandExecutionRequest",
-}) as any as S.Schema<StartCommandExecutionRequest>;
+const StartCommandExecutionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<StartCommandExecutionRequest>;
 export type CommandExecutionId = string;
 export interface StartCommandExecutionResponse {
   executionId?: string;
 }
-const StartCommandExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ executionId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartCommandExecutionResponse",
-}) as any as S.Schema<StartCommandExecutionResponse>;
+const StartCommandExecutionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<StartCommandExecutionResponse>;
 export type StepTimeoutInMinutes = number;
 export interface StartNextPendingJobExecutionRequest {
   thingName: string;
   statusDetails?: { [key: string]: string | undefined };
   stepTimeoutInMinutes?: number;
 }
-const StartNextPendingJobExecutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.String.pipe(T.HttpLabel("thingName")),
-    statusDetails: S.optional(DetailsMap),
-    stepTimeoutInMinutes: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/things/{thingName}/jobs/$next" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartNextPendingJobExecutionRequest",
-}) as any as S.Schema<StartNextPendingJobExecutionRequest>;
+const StartNextPendingJobExecutionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<StartNextPendingJobExecutionRequest>;
 export interface StartNextPendingJobExecutionResponse {
   execution?: JobExecution;
 }
@@ -383,51 +304,24 @@ export interface UpdateJobExecutionRequest {
   includeJobDocument?: boolean;
   executionNumber?: number;
 }
-const UpdateJobExecutionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String.pipe(T.HttpLabel("jobId")),
-    thingName: S.String.pipe(T.HttpLabel("thingName")),
-    status: JobExecutionStatus,
-    statusDetails: S.optional(DetailsMap),
-    stepTimeoutInMinutes: S.optional(S.Number),
-    expectedVersion: S.optional(S.Number),
-    includeJobExecutionState: S.optional(S.Boolean),
-    includeJobDocument: S.optional(S.Boolean),
-    executionNumber: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/things/{thingName}/jobs/{jobId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateJobExecutionRequest",
-}) as any as S.Schema<UpdateJobExecutionRequest>;
+const UpdateJobExecutionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<UpdateJobExecutionRequest>;
 export interface JobExecutionState {
   status?: JobExecutionStatus;
   statusDetails?: { [key: string]: string | undefined };
   versionNumber?: number;
 }
-const JobExecutionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(JobExecutionStatus),
-    statusDetails: S.optional(DetailsMap),
-    versionNumber: S.optional(S.Number),
-  }),
-).annotate({ identifier: "JobExecutionState" }) as any as S.Schema<JobExecutionState>;
+const JobExecutionState = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<JobExecutionState>;
 export interface UpdateJobExecutionResponse {
   executionState?: JobExecutionState;
   jobDocument?: string;
 }
-const UpdateJobExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ executionState: S.optional(JobExecutionState), jobDocument: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateJobExecutionResponse",
-}) as any as S.Schema<UpdateJobExecutionResponse>;
+const UpdateJobExecutionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateJobExecutionResponse>;
 export type ErrorMessage = string;
 export type BinaryBlob = Uint8Array;
 export type ResourceId = string;
@@ -596,3 +490,192 @@ export const updateJobExecution: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateJobExecution",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+          thingName: S.String.pipe(T.HttpLabel("thingName")),
+          includeJobDocument: S.optional(S.Boolean).pipe(T.HttpQuery("includeJobDocument")),
+          executionNumber: S.optional(S.Number).pipe(T.HttpQuery("executionNumber")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/things/{thingName}/jobs/{jobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeJobExecutionRequest",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.optional(S.String),
+          thingName: S.optional(S.String),
+          status: S.optional(JobExecutionStatus),
+          statusDetails: S.optional(DetailsMap),
+          queuedAt: S.optional(S.Number),
+          startedAt: S.optional(S.Number),
+          lastUpdatedAt: S.optional(S.Number),
+          approximateSecondsBeforeTimedOut: S.optional(S.Number),
+          versionNumber: S.optional(S.Number),
+          executionNumber: S.optional(S.Number),
+          jobDocument: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobExecution" });
+    case 3:
+      return S.suspend(() => S.Struct({ execution: S.optional(JobExecution) })).annotate({
+        identifier: "DescribeJobExecutionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ thingName: S.String.pipe(T.HttpLabel("thingName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/things/{thingName}/jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPendingJobExecutionsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.optional(S.String),
+          queuedAt: S.optional(S.Number),
+          startedAt: S.optional(S.Number),
+          lastUpdatedAt: S.optional(S.Number),
+          versionNumber: S.optional(S.Number),
+          executionNumber: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JobExecutionSummary" });
+    case 6:
+      return S.Array(JobExecutionSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          inProgressJobs: S.optional(JobExecutionSummaryList),
+          queuedJobs: S.optional(JobExecutionSummaryList),
+        }),
+      ).annotate({
+        identifier: "GetPendingJobExecutionsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          S: S.optional(S.String),
+          B: S.optional(S.Boolean),
+          I: S.optional(S.Number),
+          L: S.optional(S.Number),
+          D: S.optional(S.Number),
+          BIN: S.optional(T.Blob),
+          UL: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommandParameterValue" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ CommandParameterValue.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targetArn: S.String,
+          commandArn: S.String,
+          parameters: S.optional(CommandExecutionParameterMap),
+          executionTimeoutSeconds: S.optional(S.Number),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/command-executions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartCommandExecutionRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ executionId: S.optional(S.String) })).annotate({
+        identifier: "StartCommandExecutionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          thingName: S.String.pipe(T.HttpLabel("thingName")),
+          statusDetails: S.optional(DetailsMap),
+          stepTimeoutInMinutes: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/things/{thingName}/jobs/$next" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartNextPendingJobExecutionRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+          thingName: S.String.pipe(T.HttpLabel("thingName")),
+          status: JobExecutionStatus,
+          statusDetails: S.optional(DetailsMap),
+          stepTimeoutInMinutes: S.optional(S.Number),
+          expectedVersion: S.optional(S.Number),
+          includeJobExecutionState: S.optional(S.Boolean),
+          includeJobDocument: S.optional(S.Boolean),
+          executionNumber: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/things/{thingName}/jobs/{jobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateJobExecutionRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(JobExecutionStatus),
+          statusDetails: S.optional(DetailsMap),
+          versionNumber: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JobExecutionState" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          executionState: S.optional(JobExecutionState),
+          jobDocument: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateJobExecutionResponse",
+      });
+  }
+}

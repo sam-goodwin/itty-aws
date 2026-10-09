@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
@@ -130,12 +131,9 @@ const GetEntitlementFilterName = S.String;
 
 export type FilterValue = string;
 export type FilterValueList = string[];
-const FilterValueList = /*@__PURE__*/ S.Array(S.String);
+const FilterValueList = /*@__PURE__*/ __L.at(__c0, 0);
 export type GetEntitlementFilters = { [key in GetEntitlementFilterName]?: string[] };
-const GetEntitlementFilters = /*@__PURE__*/ S.Record(
-  GetEntitlementFilterName,
-  /*@__PURE__*/ FilterValueList.pipe(S.optional),
-);
+const GetEntitlementFilters = /*@__PURE__*/ __L.at(__c0, 1);
 export type NonEmptyString = string;
 export type PageSizeInteger = number;
 export interface GetEntitlementsRequest {
@@ -144,28 +142,17 @@ export interface GetEntitlementsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const GetEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductCode: S.String,
-    Filter: S.optional(GetEntitlementFilters),
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetEntitlementsRequest" }) as any as S.Schema<GetEntitlementsRequest>;
+const GetEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetEntitlementsRequest>;
 export interface EntitlementValue {
   IntegerValue?: number;
   DoubleValue?: number;
   BooleanValue?: boolean;
   StringValue?: string;
 }
-const EntitlementValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IntegerValue: S.optional(S.Number),
-    DoubleValue: S.optional(S.Number),
-    BooleanValue: S.optional(S.Boolean),
-    StringValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "EntitlementValue" }) as any as S.Schema<EntitlementValue>;
+const EntitlementValue = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EntitlementValue>;
 export interface Entitlement {
   ProductCode?: string;
   Dimension?: string;
@@ -175,26 +162,17 @@ export interface Entitlement {
   ExpirationDate?: Date;
   LicenseArn?: string;
 }
-const Entitlement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductCode: S.optional(S.String),
-    Dimension: S.optional(S.String),
-    CustomerIdentifier: S.optional(S.String),
-    CustomerAWSAccountId: S.optional(S.String),
-    Value: S.optional(EntitlementValue),
-    ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LicenseArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
+const Entitlement = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Entitlement>;
 export type EntitlementList = Entitlement[];
-const EntitlementList = /*@__PURE__*/ S.Array(Entitlement);
+const EntitlementList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface GetEntitlementsResult {
   Entitlements?: Entitlement[];
   NextToken?: string;
 }
-const GetEntitlementsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Entitlements: S.optional(EntitlementList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetEntitlementsResult" }) as any as S.Schema<GetEntitlementsResult>;
+const GetEntitlementsResult = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetEntitlementsResult>;
 export type ErrorMessage = string;
 export type GetEntitlementsError =
   | InternalServiceErrorException
@@ -224,3 +202,49 @@ export const getEntitlements: API.PaginatedOperationMethod<
     pageSize: "MaxResults",
   } as const,
 })) as any;
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Record(GetEntitlementFilterName, /*@__PURE__*/ FilterValueList.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ProductCode: S.String,
+          Filter: S.optional(GetEntitlementFilters),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetEntitlementsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          IntegerValue: S.optional(S.Number),
+          DoubleValue: S.optional(S.Number),
+          BooleanValue: S.optional(S.Boolean),
+          StringValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EntitlementValue" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ProductCode: S.optional(S.String),
+          Dimension: S.optional(S.String),
+          CustomerIdentifier: S.optional(S.String),
+          CustomerAWSAccountId: S.optional(S.String),
+          Value: S.optional(EntitlementValue),
+          ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LicenseArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Entitlement" });
+    case 5:
+      return S.Array(Entitlement);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Entitlements: S.optional(EntitlementList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetEntitlementsResult" });
+  }
+}

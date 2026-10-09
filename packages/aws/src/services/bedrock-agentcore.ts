@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -184,10 +185,10 @@ export type MemoryId = string;
 export type RequestIdentifier = string;
 export type Namespace = string;
 export type NamespacesList = string[];
-const NamespacesList = /*@__PURE__*/ S.Array(S.String);
+const NamespacesList = /*@__PURE__*/ __L.at(__c0, 0);
 export type SensitiveString = string | redacted.Redacted<string>;
 export type MemoryContent = { text: string | redacted.Redacted<string> };
-const MemoryContent = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ text: SensitiveString })]);
+const MemoryContent = /*@__PURE__*/ __L.at(__c0, 1);
 export type MemoryStrategyId = string;
 export type MetadataKey = string;
 export type StringValue = string;
@@ -199,19 +200,9 @@ export type MemoryRecordMetadataValue =
   | { stringValue?: never; stringListValue: string[]; numberValue?: never; dateTimeValue?: never }
   | { stringValue?: never; stringListValue?: never; numberValue: number; dateTimeValue?: never }
   | { stringValue?: never; stringListValue?: never; numberValue?: never; dateTimeValue: Date };
-const MemoryRecordMetadataValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-  /*@__PURE__*/ S.Struct({ stringListValue: StringValueList }),
-  /*@__PURE__*/ S.Struct({ numberValue: S.Number }),
-  /*@__PURE__*/ S.Struct({
-    dateTimeValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-  }),
-]);
+const MemoryRecordMetadataValue = /*@__PURE__*/ __L.at(__c0, 2);
 export type MemoryRecordMetadataMap = { [key: string]: MemoryRecordMetadataValue | undefined };
-const MemoryRecordMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ MemoryRecordMetadataValue.pipe(S.optional),
-);
+const MemoryRecordMetadataMap = /*@__PURE__*/ __L.at(__c0, 3);
 export interface MemoryRecordCreateInput {
   requestIdentifier: string;
   namespaces: string[];
@@ -220,41 +211,21 @@ export interface MemoryRecordCreateInput {
   memoryStrategyId?: string;
   metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
 }
-const MemoryRecordCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestIdentifier: S.String,
-    namespaces: NamespacesList,
-    content: MemoryContent,
-    timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    memoryStrategyId: S.optional(S.String),
-    metadata: S.optional(MemoryRecordMetadataMap),
-  }),
-).annotate({ identifier: "MemoryRecordCreateInput" }) as any as S.Schema<MemoryRecordCreateInput>;
+const MemoryRecordCreateInput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<MemoryRecordCreateInput>;
 export type MemoryRecordsCreateInputList = MemoryRecordCreateInput[];
-const MemoryRecordsCreateInputList = /*@__PURE__*/ S.Array(MemoryRecordCreateInput);
+const MemoryRecordsCreateInputList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchCreateMemoryRecordsInput {
   memoryId: string;
   records: MemoryRecordCreateInput[];
   clientToken?: string;
 }
-const BatchCreateMemoryRecordsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    records: MemoryRecordsCreateInputList,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/memoryRecords/batchCreate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchCreateMemoryRecordsInput",
-}) as any as S.Schema<BatchCreateMemoryRecordsInput>;
+const BatchCreateMemoryRecordsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchCreateMemoryRecordsInput>;
 export type MemoryRecordId = string;
 export type MemoryRecordStatus = "SUCCEEDED" | "FAILED" | (string & {});
 const MemoryRecordStatus = S.String;
@@ -266,56 +237,35 @@ export interface MemoryRecordOutput {
   errorCode?: number;
   errorMessage?: string;
 }
-const MemoryRecordOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryRecordId: S.String,
-    status: MemoryRecordStatus,
-    requestIdentifier: S.optional(S.String),
-    errorCode: S.optional(S.Number),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "MemoryRecordOutput" }) as any as S.Schema<MemoryRecordOutput>;
+const MemoryRecordOutput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<MemoryRecordOutput>;
 export type MemoryRecordsOutputList = MemoryRecordOutput[];
-const MemoryRecordsOutputList = /*@__PURE__*/ S.Array(MemoryRecordOutput);
+const MemoryRecordsOutputList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface BatchCreateMemoryRecordsOutput {
   successfulRecords: MemoryRecordOutput[];
   failedRecords: MemoryRecordOutput[];
 }
-const BatchCreateMemoryRecordsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ successfulRecords: MemoryRecordsOutputList, failedRecords: MemoryRecordsOutputList }),
-).annotate({
-  identifier: "BatchCreateMemoryRecordsOutput",
-}) as any as S.Schema<BatchCreateMemoryRecordsOutput>;
+const BatchCreateMemoryRecordsOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchCreateMemoryRecordsOutput>;
 export interface MemoryRecordDeleteInput {
   memoryRecordId: string;
   namespace?: string;
 }
-const MemoryRecordDeleteInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memoryRecordId: S.String, namespace: S.optional(S.String) }),
-).annotate({ identifier: "MemoryRecordDeleteInput" }) as any as S.Schema<MemoryRecordDeleteInput>;
+const MemoryRecordDeleteInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<MemoryRecordDeleteInput>;
 export type MemoryRecordsDeleteInputList = MemoryRecordDeleteInput[];
-const MemoryRecordsDeleteInputList = /*@__PURE__*/ S.Array(MemoryRecordDeleteInput);
+const MemoryRecordsDeleteInputList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BatchDeleteMemoryRecordsInput {
   memoryId: string;
   records: MemoryRecordDeleteInput[];
 }
-const BatchDeleteMemoryRecordsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    records: MemoryRecordsDeleteInputList,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/memoryRecords/batchDelete" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchDeleteMemoryRecordsInput",
-}) as any as S.Schema<BatchDeleteMemoryRecordsInput>;
+const BatchDeleteMemoryRecordsInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BatchDeleteMemoryRecordsInput>;
 export interface BatchDeleteMemoryRecordsOutput {
   successfulRecords: MemoryRecordOutput[];
   failedRecords: MemoryRecordOutput[];
@@ -331,40 +281,20 @@ export interface MemoryRecordUpdateInput {
   memoryStrategyId?: string;
   metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
 }
-const MemoryRecordUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryRecordId: S.String,
-    timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    content: S.optional(MemoryContent),
-    namespaces: S.optional(NamespacesList),
-    sourceNamespaces: S.optional(NamespacesList),
-    memoryStrategyId: S.optional(S.String),
-    metadata: S.optional(MemoryRecordMetadataMap),
-  }),
-).annotate({ identifier: "MemoryRecordUpdateInput" }) as any as S.Schema<MemoryRecordUpdateInput>;
+const MemoryRecordUpdateInput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<MemoryRecordUpdateInput>;
 export type MemoryRecordsUpdateInputList = MemoryRecordUpdateInput[];
-const MemoryRecordsUpdateInputList = /*@__PURE__*/ S.Array(MemoryRecordUpdateInput);
+const MemoryRecordsUpdateInputList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface BatchUpdateMemoryRecordsInput {
   memoryId: string;
   records: MemoryRecordUpdateInput[];
 }
-const BatchUpdateMemoryRecordsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    records: MemoryRecordsUpdateInputList,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/memoryRecords/batchUpdate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchUpdateMemoryRecordsInput",
-}) as any as S.Schema<BatchUpdateMemoryRecordsInput>;
+const BatchUpdateMemoryRecordsInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BatchUpdateMemoryRecordsInput>;
 export interface BatchUpdateMemoryRecordsOutput {
   successfulRecords: MemoryRecordOutput[];
   failedRecords: MemoryRecordOutput[];
@@ -376,33 +306,21 @@ export type UserIdType = string;
 export type UserIdentifier =
   | { userToken: string | redacted.Redacted<string>; userId?: never }
   | { userToken?: never; userId: string };
-const UserIdentifier = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ userToken: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ userId: S.String }),
-]);
+const UserIdentifier = /*@__PURE__*/ __L.at(__c2, 0);
 export type RequestUri = string;
 export interface CompleteResourceTokenAuthRequest {
   userIdentifier: UserIdentifier;
   sessionUri: string;
 }
-const CompleteResourceTokenAuthRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ userIdentifier: UserIdentifier, sessionUri: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/CompleteResourceTokenAuth" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CompleteResourceTokenAuthRequest",
-}) as any as S.Schema<CompleteResourceTokenAuthRequest>;
+const CompleteResourceTokenAuthRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CompleteResourceTokenAuthRequest>;
 export interface CompleteResourceTokenAuthResponse {}
-const CompleteResourceTokenAuthResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CompleteResourceTokenAuthResponse",
-}) as any as S.Schema<CompleteResourceTokenAuthResponse>;
+const CompleteResourceTokenAuthResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CompleteResourceTokenAuthResponse>;
 export type ABTestName = string;
 export type ABTestDescription = string;
 export type GatewayArn = string;
@@ -413,77 +331,59 @@ export interface ConfigurationBundleRef {
   bundleArn: string;
   bundleVersion: string;
 }
-const ConfigurationBundleRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bundleArn: S.String, bundleVersion: S.String }),
-).annotate({ identifier: "ConfigurationBundleRef" }) as any as S.Schema<ConfigurationBundleRef>;
+const ConfigurationBundleRef = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ConfigurationBundleRef>;
 export type TargetName = string;
 export interface TargetRef {
   name: string;
 }
-const TargetRef = /*@__PURE__*/ S.suspend(() => S.Struct({ name: S.String })).annotate({
-  identifier: "TargetRef",
-}) as any as S.Schema<TargetRef>;
+const TargetRef = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<TargetRef>;
 export interface VariantConfiguration {
   configurationBundle?: ConfigurationBundleRef;
   target?: TargetRef;
 }
-const VariantConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurationBundle: S.optional(ConfigurationBundleRef),
-    target: S.optional(TargetRef),
-  }),
-).annotate({ identifier: "VariantConfiguration" }) as any as S.Schema<VariantConfiguration>;
+const VariantConfiguration = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<VariantConfiguration>;
 export interface Variant {
   name: string;
   weight: number;
   variantConfiguration: VariantConfiguration;
 }
-const Variant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, weight: S.Number, variantConfiguration: VariantConfiguration }),
-).annotate({ identifier: "Variant" }) as any as S.Schema<Variant>;
+const Variant = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Variant>;
 export type VariantList = Variant[];
-const VariantList = /*@__PURE__*/ S.Array(Variant);
+const VariantList = /*@__PURE__*/ __L.at(__c2, 7);
 export type PathPattern = string;
 export type TargetPathList = string[];
 const TargetPathList = NamespacesList as any as S.Schema<TargetPathList>;
 export interface GatewayFilter {
   targetPaths?: string[];
 }
-const GatewayFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetPaths: S.optional(TargetPathList) }),
-).annotate({ identifier: "GatewayFilter" }) as any as S.Schema<GatewayFilter>;
+const GatewayFilter = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GatewayFilter>;
 export type OnlineEvaluationConfigArn = string;
 export interface PerVariantOnlineEvaluationConfig {
   name: string;
   onlineEvaluationConfigArn: string;
 }
-const PerVariantOnlineEvaluationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, onlineEvaluationConfigArn: S.String }),
-).annotate({
-  identifier: "PerVariantOnlineEvaluationConfig",
-}) as any as S.Schema<PerVariantOnlineEvaluationConfig>;
+const PerVariantOnlineEvaluationConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PerVariantOnlineEvaluationConfig>;
 export type PerVariantOnlineEvaluationConfigList = PerVariantOnlineEvaluationConfig[];
-const PerVariantOnlineEvaluationConfigList = /*@__PURE__*/ S.Array(
-  PerVariantOnlineEvaluationConfig,
-);
+const PerVariantOnlineEvaluationConfigList = /*@__PURE__*/ __L.at(__c3, 2);
 export type ABTestEvaluationConfig =
   | { onlineEvaluationConfigArn: string; perVariantOnlineEvaluationConfig?: never }
   | {
       onlineEvaluationConfigArn?: never;
       perVariantOnlineEvaluationConfig: PerVariantOnlineEvaluationConfig[];
     };
-const ABTestEvaluationConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ onlineEvaluationConfigArn: S.String }),
-  /*@__PURE__*/ S.Struct({
-    perVariantOnlineEvaluationConfig: PerVariantOnlineEvaluationConfigList,
-  }),
-]);
+const ABTestEvaluationConfig = /*@__PURE__*/ __L.at(__c3, 3);
 export type RoleArn = string;
 export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagsMap = /*@__PURE__*/ __L.at(__c3, 4);
 export interface CreateABTestRequest {
   name: string;
   description?: string;
@@ -496,20 +396,7 @@ export interface CreateABTestRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateABTestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    gatewayArn: S.String,
-    variants: VariantList,
-    gatewayFilter: S.optional(GatewayFilter),
-    evaluationConfig: ABTestEvaluationConfig,
-    roleArn: S.String,
-    enableOnCreate: S.optional(S.Boolean),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagsMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/ab-tests" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateABTestRequest" }) as any as S.Schema<CreateABTestRequest>;
+const CreateABTestRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateABTestRequest>;
 export type ABTestId = string;
 export type ABTestArn = string;
 export type ABTestStatus =
@@ -540,20 +427,11 @@ export interface CreateABTestResponse {
   executionStatus: ABTestExecutionStatus;
   createdAt: Date;
 }
-const CreateABTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    abTestId: S.String,
-    abTestArn: S.String,
-    name: S.optional(S.String),
-    status: ABTestStatus,
-    executionStatus: ABTestExecutionStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "CreateABTestResponse" }) as any as S.Schema<CreateABTestResponse>;
+const CreateABTestResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CreateABTestResponse>;
 export type ActorId = string;
 export type SessionId = string;
 export type Content = { text: string | redacted.Redacted<string> };
-const Content = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ text: SensitiveString })]);
+const Content = /*@__PURE__*/ __L.at(__c3, 7);
 export type Role = "ASSISTANT" | "USER" | "TOOL" | "OTHER" | (string & {});
 const Role = S.String;
 
@@ -561,57 +439,42 @@ export interface Conversational {
   content: Content;
   role: Role;
 }
-const Conversational = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ content: Content, role: Role }),
-).annotate({ identifier: "Conversational" }) as any as S.Schema<Conversational>;
+const Conversational = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Conversational>;
 export type MemoryDocument = unknown;
 export type MemoryJsonDataContent = unknown;
 export interface MemoryJsonData {
   content: any;
 }
-const MemoryJsonData = /*@__PURE__*/ S.suspend(() => S.Struct({ content: S.Any })).annotate({
-  identifier: "MemoryJsonData",
-}) as any as S.Schema<MemoryJsonData>;
+const MemoryJsonData = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<MemoryJsonData>;
 export type PayloadType =
   | { conversational: Conversational; blob?: never; json?: never }
   | { conversational?: never; blob: any; json?: never }
   | { conversational?: never; blob?: never; json: MemoryJsonData };
-const PayloadType = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ conversational: Conversational }),
-  /*@__PURE__*/ S.Struct({ blob: S.Any }),
-  /*@__PURE__*/ S.Struct({ json: MemoryJsonData }),
-]);
+const PayloadType = /*@__PURE__*/ __L.at(__c4, 2);
 export type PayloadTypeList = PayloadType[];
-const PayloadTypeList = /*@__PURE__*/ S.Array(PayloadType);
+const PayloadTypeList = /*@__PURE__*/ __L.at(__c4, 3);
 export type EventId = string;
 export type BranchName = string;
 export interface Branch {
   rootEventId?: string;
   name: string;
 }
-const Branch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ rootEventId: S.optional(S.String), name: S.String }),
-).annotate({ identifier: "Branch" }) as any as S.Schema<Branch>;
+const Branch = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Branch>;
 export type MetadataValue = { stringValue: string };
-const MetadataValue = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ stringValue: S.String })]);
+const MetadataValue = /*@__PURE__*/ __L.at(__c4, 5);
 export type MetadataMap = { [key: string]: MetadataValue | undefined };
-const MetadataMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ MetadataValue.pipe(S.optional));
+const MetadataMap = /*@__PURE__*/ __L.at(__c4, 6);
 export type ExtractionMode = "SKIP" | (string & {});
 const ExtractionMode = S.String;
 
 export type NamespaceVariableName = string;
 export type NamespaceVariableValue = string;
 export type NamespaceVariablesMap = { [key: string]: string | undefined };
-const NamespaceVariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const NamespaceVariablesMap = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ExtractionConfig {
   namespaceVariables?: { [key: string]: string | undefined };
 }
-const ExtractionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ namespaceVariables: S.optional(NamespaceVariablesMap) }),
-).annotate({ identifier: "ExtractionConfig" }) as any as S.Schema<ExtractionConfig>;
+const ExtractionConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ExtractionConfig>;
 export interface CreateEventInput {
   memoryId: string;
   actorId: string;
@@ -624,29 +487,7 @@ export interface CreateEventInput {
   extractionMode?: ExtractionMode;
   extractionConfig?: ExtractionConfig;
 }
-const CreateEventInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    actorId: S.String,
-    sessionId: S.optional(S.String),
-    eventTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    payload: PayloadTypeList,
-    branch: S.optional(Branch),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    metadata: S.optional(MetadataMap),
-    extractionMode: S.optional(ExtractionMode),
-    extractionConfig: S.optional(ExtractionConfig),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/events" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateEventInput" }) as any as S.Schema<CreateEventInput>;
+const CreateEventInput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<CreateEventInput>;
 export interface Event {
   memoryId: string;
   actorId: string;
@@ -657,24 +498,11 @@ export interface Event {
   branch?: Branch;
   metadata?: { [key: string]: MetadataValue | undefined };
 }
-const Event = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String,
-    actorId: S.String,
-    sessionId: S.String,
-    eventId: S.String,
-    eventTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    payload: S.optional(PayloadTypeList),
-    branch: S.optional(Branch),
-    metadata: S.optional(MetadataMap),
-  }),
-).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
+const Event = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Event>;
 export interface CreateEventOutput {
   event: Event;
 }
-const CreateEventOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ event: Event })).annotate({
-  identifier: "CreateEventOutput",
-}) as any as S.Schema<CreateEventOutput>;
+const CreateEventOutput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CreateEventOutput>;
 export type UserId = string;
 export type PaymentAgentName = string;
 export type PaymentManagerArn = string;
@@ -689,84 +517,52 @@ export type Email = string | redacted.Redacted<string>;
 export interface LinkedAccountEmail {
   emailAddress: string | redacted.Redacted<string>;
 }
-const LinkedAccountEmail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ emailAddress: SensitiveString }),
-).annotate({ identifier: "LinkedAccountEmail" }) as any as S.Schema<LinkedAccountEmail>;
+const LinkedAccountEmail = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<LinkedAccountEmail>;
 export type PhoneNumber = string | redacted.Redacted<string>;
 export interface LinkedAccountSms {
   phoneNumber: string | redacted.Redacted<string>;
 }
-const LinkedAccountSms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ phoneNumber: SensitiveString }),
-).annotate({ identifier: "LinkedAccountSms" }) as any as S.Schema<LinkedAccountSms>;
+const LinkedAccountSms = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<LinkedAccountSms>;
 export type JwtKeyId = string;
 export interface LinkedAccountDeveloperJwt {
   kid: string;
   sub: string;
 }
-const LinkedAccountDeveloperJwt = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ kid: S.String, sub: S.String }),
-).annotate({
-  identifier: "LinkedAccountDeveloperJwt",
-}) as any as S.Schema<LinkedAccountDeveloperJwt>;
+const LinkedAccountDeveloperJwt = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<LinkedAccountDeveloperJwt>;
 export interface OAuth2Authentication {
   sub: string;
   emailAddress?: string | redacted.Redacted<string>;
   name?: string;
   username?: string;
 }
-const OAuth2Authentication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sub: S.String,
-    emailAddress: S.optional(SensitiveString),
-    name: S.optional(S.String),
-    username: S.optional(S.String),
-  }),
-).annotate({ identifier: "OAuth2Authentication" }) as any as S.Schema<OAuth2Authentication>;
+const OAuth2Authentication = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<OAuth2Authentication>;
 export type LinkedAccountOAuth2 =
   | { google: OAuth2Authentication; apple?: never; x?: never; telegram?: never; github?: never }
   | { google?: never; apple: OAuth2Authentication; x?: never; telegram?: never; github?: never }
   | { google?: never; apple?: never; x: OAuth2Authentication; telegram?: never; github?: never }
   | { google?: never; apple?: never; x?: never; telegram: OAuth2Authentication; github?: never }
   | { google?: never; apple?: never; x?: never; telegram?: never; github: OAuth2Authentication };
-const LinkedAccountOAuth2 = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ google: OAuth2Authentication }),
-  /*@__PURE__*/ S.Struct({ apple: OAuth2Authentication }),
-  /*@__PURE__*/ S.Struct({ x: OAuth2Authentication }),
-  /*@__PURE__*/ S.Struct({ telegram: OAuth2Authentication }),
-  /*@__PURE__*/ S.Struct({ github: OAuth2Authentication }),
-]);
+const LinkedAccountOAuth2 = /*@__PURE__*/ __L.at(__c6, 0);
 export type LinkedAccount =
   | { email: LinkedAccountEmail; sms?: never; developerJwt?: never; oAuth2?: never }
   | { email?: never; sms: LinkedAccountSms; developerJwt?: never; oAuth2?: never }
   | { email?: never; sms?: never; developerJwt: LinkedAccountDeveloperJwt; oAuth2?: never }
   | { email?: never; sms?: never; developerJwt?: never; oAuth2: LinkedAccountOAuth2 };
-const LinkedAccount = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ email: LinkedAccountEmail }),
-  /*@__PURE__*/ S.Struct({ sms: LinkedAccountSms }),
-  /*@__PURE__*/ S.Struct({ developerJwt: LinkedAccountDeveloperJwt }),
-  /*@__PURE__*/ S.Struct({ oAuth2: LinkedAccountOAuth2 }),
-]);
+const LinkedAccount = /*@__PURE__*/ __L.at(__c6, 1);
 export type LinkedAccountList = LinkedAccount[];
-const LinkedAccountList = /*@__PURE__*/ S.Array(LinkedAccount);
+const LinkedAccountList = /*@__PURE__*/ __L.at(__c6, 2);
 export interface EmbeddedCryptoWallet {
   network: CryptoWalletNetwork;
   linkedAccounts: LinkedAccount[];
   walletAddress?: string;
   redirectUrl?: string;
 }
-const EmbeddedCryptoWallet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: CryptoWalletNetwork,
-    linkedAccounts: LinkedAccountList,
-    walletAddress: S.optional(S.String),
-    redirectUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmbeddedCryptoWallet" }) as any as S.Schema<EmbeddedCryptoWallet>;
+const EmbeddedCryptoWallet = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<EmbeddedCryptoWallet>;
 export type PaymentInstrumentDetails = { embeddedCryptoWallet: EmbeddedCryptoWallet };
-const PaymentInstrumentDetails = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ embeddedCryptoWallet: EmbeddedCryptoWallet }),
-]);
+const PaymentInstrumentDetails = /*@__PURE__*/ __L.at(__c6, 4);
 export interface CreatePaymentInstrumentRequest {
   userId?: string;
   agentName?: string;
@@ -776,30 +572,10 @@ export interface CreatePaymentInstrumentRequest {
   paymentInstrumentDetails: PaymentInstrumentDetails;
   clientToken?: string;
 }
-const CreatePaymentInstrumentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    agentName: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
-    ),
-    paymentManagerArn: S.String,
-    paymentConnectorId: S.String,
-    paymentInstrumentType: PaymentInstrumentType,
-    paymentInstrumentDetails: PaymentInstrumentDetails,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/createPaymentInstrument" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreatePaymentInstrumentRequest",
-}) as any as S.Schema<CreatePaymentInstrumentRequest>;
+const CreatePaymentInstrumentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreatePaymentInstrumentRequest>;
 export type PaymentInstrumentId = string;
 export type PaymentInstrumentStatus =
   | "INITIATED"
@@ -821,27 +597,14 @@ export interface PaymentInstrument {
   status: PaymentInstrumentStatus;
   updatedAt: Date;
 }
-const PaymentInstrument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentInstrumentId: S.String,
-    paymentManagerArn: S.String,
-    paymentConnectorId: S.String,
-    userId: S.String,
-    paymentInstrumentType: PaymentInstrumentType,
-    paymentInstrumentDetails: PaymentInstrumentDetails,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PaymentInstrumentStatus,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "PaymentInstrument" }) as any as S.Schema<PaymentInstrument>;
+const PaymentInstrument = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<PaymentInstrument>;
 export interface CreatePaymentInstrumentResponse {
   paymentInstrument: PaymentInstrument;
 }
-const CreatePaymentInstrumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ paymentInstrument: PaymentInstrument }),
-).annotate({
-  identifier: "CreatePaymentInstrumentResponse",
-}) as any as S.Schema<CreatePaymentInstrumentResponse>;
+const CreatePaymentInstrumentResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreatePaymentInstrumentResponse>;
 export type Currency = "USD" | (string & {});
 const Currency = S.String;
 
@@ -849,15 +612,11 @@ export interface Amount {
   value: string;
   currency: Currency;
 }
-const Amount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.String, currency: Currency }),
-).annotate({ identifier: "Amount" }) as any as S.Schema<Amount>;
+const Amount = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Amount>;
 export interface SessionLimits {
   maxSpendAmount: Amount;
 }
-const SessionLimits = /*@__PURE__*/ S.suspend(() => S.Struct({ maxSpendAmount: Amount })).annotate({
-  identifier: "SessionLimits",
-}) as any as S.Schema<SessionLimits>;
+const SessionLimits = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<SessionLimits>;
 export interface CreatePaymentSessionRequest {
   userId?: string;
   agentName?: string;
@@ -866,40 +625,16 @@ export interface CreatePaymentSessionRequest {
   expiryTimeInMinutes: number;
   clientToken?: string;
 }
-const CreatePaymentSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    agentName: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
-    ),
-    paymentManagerArn: S.String,
-    limits: S.optional(SessionLimits),
-    expiryTimeInMinutes: S.Number,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/createPaymentSession" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreatePaymentSessionRequest",
-}) as any as S.Schema<CreatePaymentSessionRequest>;
+const CreatePaymentSessionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CreatePaymentSessionRequest>;
 export type PaymentSessionId = string;
 export interface AvailableLimits {
   availableSpendAmount?: Amount;
   updatedAt?: Date;
 }
-const AvailableLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availableSpendAmount: S.optional(Amount),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "AvailableLimits" }) as any as S.Schema<AvailableLimits>;
+const AvailableLimits = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<AvailableLimits>;
 export interface PaymentSession {
   paymentSessionId: string;
   paymentManagerArn: string;
@@ -910,60 +645,32 @@ export interface PaymentSession {
   availableLimits?: AvailableLimits;
   updatedAt: Date;
 }
-const PaymentSession = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentSessionId: S.String,
-    paymentManagerArn: S.String,
-    limits: S.optional(SessionLimits),
-    userId: S.String,
-    expiryTimeInMinutes: S.Number,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    availableLimits: S.optional(AvailableLimits),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "PaymentSession" }) as any as S.Schema<PaymentSession>;
+const PaymentSession = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<PaymentSession>;
 export interface CreatePaymentSessionResponse {
   paymentSession: PaymentSession;
 }
-const CreatePaymentSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ paymentSession: PaymentSession }),
-).annotate({
-  identifier: "CreatePaymentSessionResponse",
-}) as any as S.Schema<CreatePaymentSessionResponse>;
+const CreatePaymentSessionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreatePaymentSessionResponse>;
 export interface DeleteABTestRequest {
   abTestId: string;
 }
-const DeleteABTestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ abTestId: S.String.pipe(T.HttpLabel("abTestId")) }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/ab-tests/{abTestId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteABTestRequest" }) as any as S.Schema<DeleteABTestRequest>;
+const DeleteABTestRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DeleteABTestRequest>;
 export interface DeleteABTestResponse {
   abTestId: string;
   abTestArn: string;
   status: ABTestStatus;
 }
-const DeleteABTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ abTestId: S.String, abTestArn: S.String, status: ABTestStatus }),
-).annotate({ identifier: "DeleteABTestResponse" }) as any as S.Schema<DeleteABTestResponse>;
+const DeleteABTestResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DeleteABTestResponse>;
 export type BatchEvaluationId = string;
 export interface DeleteBatchEvaluationRequest {
   batchEvaluationId: string;
 }
-const DeleteBatchEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchEvaluationId: S.String.pipe(T.HttpLabel("batchEvaluationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/evaluations/batch-evaluate/{batchEvaluationId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteBatchEvaluationRequest",
-}) as any as S.Schema<DeleteBatchEvaluationRequest>;
+const DeleteBatchEvaluationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteBatchEvaluationRequest>;
 export type BatchEvaluationArn = string;
 export type BatchEvaluationStatus =
   | "PENDING"
@@ -982,40 +689,19 @@ export interface DeleteBatchEvaluationResponse {
   batchEvaluationArn: string;
   status: BatchEvaluationStatus;
 }
-const DeleteBatchEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchEvaluationId: S.String,
-    batchEvaluationArn: S.String,
-    status: BatchEvaluationStatus,
-  }),
-).annotate({
-  identifier: "DeleteBatchEvaluationResponse",
-}) as any as S.Schema<DeleteBatchEvaluationResponse>;
+const DeleteBatchEvaluationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteBatchEvaluationResponse>;
 export type CapacityProviderId = string;
 export interface DeleteCapacityProviderSessionRequest {
   capacityProviderId: string;
   sessionId: string;
 }
-const DeleteCapacityProviderSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityProviderId: S.String.pipe(T.HttpLabel("capacityProviderId")),
-    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/capacity-providers/{capacityProviderId}/sessions/{sessionId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteCapacityProviderSessionRequest",
-}) as any as S.Schema<DeleteCapacityProviderSessionRequest>;
+const DeleteCapacityProviderSessionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeleteCapacityProviderSessionRequest>;
 export type CapacityProviderArn = string;
 export type CapacityProviderSessionStatus =
   | "Provisioning"
@@ -1032,130 +718,63 @@ export interface DeleteCapacityProviderSessionResponse {
   sessionId: string;
   status: CapacityProviderSessionStatus;
 }
-const DeleteCapacityProviderSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityProviderArn: S.String,
-    sessionId: S.String,
-    status: CapacityProviderSessionStatus,
-  }),
-).annotate({
-  identifier: "DeleteCapacityProviderSessionResponse",
-}) as any as S.Schema<DeleteCapacityProviderSessionResponse>;
+const DeleteCapacityProviderSessionResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteCapacityProviderSessionResponse>;
 export interface DeleteEventInput {
   memoryId: string;
   sessionId: string;
   eventId: string;
   actorId: string;
 }
-const DeleteEventInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-    eventId: S.String.pipe(T.HttpLabel("eventId")),
-    actorId: S.String.pipe(T.HttpLabel("actorId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}/events/{eventId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteEventInput" }) as any as S.Schema<DeleteEventInput>;
+const DeleteEventInput = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<DeleteEventInput>;
 export interface DeleteEventOutput {
   eventId: string;
 }
-const DeleteEventOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ eventId: S.String })).annotate({
-  identifier: "DeleteEventOutput",
-}) as any as S.Schema<DeleteEventOutput>;
+const DeleteEventOutput = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeleteEventOutput>;
 export interface DeleteMemoryRecordInput {
   memoryId: string;
   memoryRecordId: string;
   namespace?: string;
 }
-const DeleteMemoryRecordInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    memoryRecordId: S.String.pipe(T.HttpLabel("memoryRecordId")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/memories/{memoryId}/memoryRecords/{memoryRecordId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteMemoryRecordInput" }) as any as S.Schema<DeleteMemoryRecordInput>;
+const DeleteMemoryRecordInput = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteMemoryRecordInput>;
 export interface DeleteMemoryRecordOutput {
   memoryRecordId: string;
 }
-const DeleteMemoryRecordOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memoryRecordId: S.String }),
-).annotate({ identifier: "DeleteMemoryRecordOutput" }) as any as S.Schema<DeleteMemoryRecordOutput>;
+const DeleteMemoryRecordOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteMemoryRecordOutput>;
 export interface DeletePaymentInstrumentRequest {
   userId?: string;
   paymentManagerArn: string;
   paymentConnectorId: string;
   paymentInstrumentId: string;
 }
-const DeletePaymentInstrumentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    paymentManagerArn: S.String,
-    paymentConnectorId: S.String,
-    paymentInstrumentId: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/deletePaymentInstrument" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePaymentInstrumentRequest",
-}) as any as S.Schema<DeletePaymentInstrumentRequest>;
+const DeletePaymentInstrumentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeletePaymentInstrumentRequest>;
 export interface DeletePaymentInstrumentResponse {
   status: PaymentInstrumentStatus;
 }
-const DeletePaymentInstrumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: PaymentInstrumentStatus }),
-).annotate({
-  identifier: "DeletePaymentInstrumentResponse",
-}) as any as S.Schema<DeletePaymentInstrumentResponse>;
+const DeletePaymentInstrumentResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeletePaymentInstrumentResponse>;
 export interface DeletePaymentSessionRequest {
   userId?: string;
   paymentManagerArn: string;
   paymentSessionId: string;
 }
-const DeletePaymentSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    paymentManagerArn: S.String,
-    paymentSessionId: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/deletePaymentSession" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePaymentSessionRequest",
-}) as any as S.Schema<DeletePaymentSessionRequest>;
+const DeletePaymentSessionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeletePaymentSessionRequest>;
 export type PaymentSessionStatus = "ACTIVE" | "EXPIRED" | "DELETED" | (string & {});
 export interface DeletePaymentSessionResponse {
   status: PaymentSessionStatus;
@@ -1166,20 +785,10 @@ export type RecommendationId = string;
 export interface DeleteRecommendationRequest {
   recommendationId: string;
 }
-const DeleteRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommendationId: S.String.pipe(T.HttpLabel("recommendationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/recommendations/{recommendationId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteRecommendationRequest",
-}) as any as S.Schema<DeleteRecommendationRequest>;
+const DeleteRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteRecommendationRequest>;
 export type RecommendationStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -1193,17 +802,16 @@ export interface DeleteRecommendationResponse {
   recommendationId: string;
   status: RecommendationStatus;
 }
-const DeleteRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommendationId: S.String, status: RecommendationStatus }),
-).annotate({
-  identifier: "DeleteRecommendationResponse",
-}) as any as S.Schema<DeleteRecommendationResponse>;
+const DeleteRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteRecommendationResponse>;
 export type EvaluatorId = string;
 export type Span = unknown;
 export type Spans = any[];
-const Spans = /*@__PURE__*/ S.Array(S.Any);
+const Spans = /*@__PURE__*/ __L.at(__c9, 5);
 export type EvaluationInput = { sessionSpans: any[] };
-const EvaluationInput = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ sessionSpans: Spans })]);
+const EvaluationInput = /*@__PURE__*/ __L.at(__c9, 6);
 export type SpanId = string;
 export type SpanIds = string[];
 const SpanIds = NamespacesList as any as S.Schema<SpanIds>;
@@ -1213,74 +821,48 @@ const TraceIds = NamespacesList as any as S.Schema<TraceIds>;
 export type EvaluationTarget =
   | { spanIds: string[]; traceIds?: never }
   | { spanIds?: never; traceIds: string[] };
-const EvaluationTarget = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ spanIds: SpanIds }),
-  /*@__PURE__*/ S.Struct({ traceIds: TraceIds }),
-]);
+const EvaluationTarget = /*@__PURE__*/ __L.at(__c9, 7);
 export interface SpanContext {
   sessionId: string;
   traceId?: string;
   spanId?: string;
 }
-const SpanContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionId: S.String, traceId: S.optional(S.String), spanId: S.optional(S.String) }),
-).annotate({ identifier: "SpanContext" }) as any as S.Schema<SpanContext>;
+const SpanContext = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<SpanContext>;
 export type Context = { spanContext: SpanContext };
-const Context = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ spanContext: SpanContext })]);
+const Context = /*@__PURE__*/ __L.at(__c10, 1);
 export type EvaluationContent = { text: string };
-const EvaluationContent = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ text: S.String })]);
+const EvaluationContent = /*@__PURE__*/ __L.at(__c10, 2);
 export type EvaluationContentList = EvaluationContent[];
-const EvaluationContentList = /*@__PURE__*/ S.Array(EvaluationContent);
+const EvaluationContentList = /*@__PURE__*/ __L.at(__c10, 3);
 export type EvaluationToolName = string;
 export type EvaluationToolNames = string[];
 const EvaluationToolNames = NamespacesList as any as S.Schema<EvaluationToolNames>;
 export interface EvaluationExpectedTrajectory {
   toolNames?: string[];
 }
-const EvaluationExpectedTrajectory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ toolNames: S.optional(EvaluationToolNames) }),
-).annotate({
-  identifier: "EvaluationExpectedTrajectory",
-}) as any as S.Schema<EvaluationExpectedTrajectory>;
+const EvaluationExpectedTrajectory = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<EvaluationExpectedTrajectory>;
 export interface EvaluationReferenceInput {
   context: Context;
   expectedResponse?: EvaluationContent;
   assertions?: EvaluationContent[];
   expectedTrajectory?: EvaluationExpectedTrajectory;
 }
-const EvaluationReferenceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    context: Context,
-    expectedResponse: S.optional(EvaluationContent),
-    assertions: S.optional(EvaluationContentList),
-    expectedTrajectory: S.optional(EvaluationExpectedTrajectory),
-  }),
-).annotate({ identifier: "EvaluationReferenceInput" }) as any as S.Schema<EvaluationReferenceInput>;
+const EvaluationReferenceInput = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<EvaluationReferenceInput>;
 export type EvaluationReferenceInputs = EvaluationReferenceInput[];
-const EvaluationReferenceInputs = /*@__PURE__*/ S.Array(EvaluationReferenceInput);
+const EvaluationReferenceInputs = /*@__PURE__*/ __L.at(__c10, 6);
 export interface EvaluateRequest {
   evaluatorId: string;
   evaluationInput: EvaluationInput;
   evaluationTarget?: EvaluationTarget;
   evaluationReferenceInputs?: EvaluationReferenceInput[];
 }
-const EvaluateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")),
-    evaluationInput: EvaluationInput,
-    evaluationTarget: S.optional(EvaluationTarget),
-    evaluationReferenceInputs: S.optional(EvaluationReferenceInputs),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/evaluations/evaluate/{evaluatorId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "EvaluateRequest" }) as any as S.Schema<EvaluateRequest>;
+const EvaluateRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<EvaluateRequest>;
 export type EvaluatorArn = string;
 export type EvaluatorName = string;
 export type EvaluationExplanation = string | redacted.Redacted<string>;
@@ -1289,13 +871,7 @@ export interface TokenUsage {
   outputTokens?: number;
   totalTokens?: number;
 }
-const TokenUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputTokens: S.optional(S.Number),
-    outputTokens: S.optional(S.Number),
-    totalTokens: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TokenUsage" }) as any as S.Schema<TokenUsage>;
+const TokenUsage = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<TokenUsage>;
 export type EvaluationErrorMessage = string;
 export type EvaluationErrorCode = string;
 export type IgnoredReferenceInputField = string;
@@ -1314,37 +890,20 @@ export interface EvaluationResultContent {
   errorCode?: string;
   ignoredReferenceInputFields?: string[];
 }
-const EvaluationResultContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorArn: S.String,
-    evaluatorId: S.String,
-    evaluatorName: S.String,
-    explanation: S.optional(SensitiveString),
-    context: Context,
-    value: S.optional(S.Number),
-    label: S.optional(S.String),
-    tokenUsage: S.optional(TokenUsage),
-    errorMessage: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    ignoredReferenceInputFields: S.optional(IgnoredReferenceInputFields),
-  }),
-).annotate({ identifier: "EvaluationResultContent" }) as any as S.Schema<EvaluationResultContent>;
+const EvaluationResultContent = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<EvaluationResultContent>;
 export type EvaluationResults = EvaluationResultContent[];
-const EvaluationResults = /*@__PURE__*/ S.Array(EvaluationResultContent);
+const EvaluationResults = /*@__PURE__*/ __L.at(__c11, 2);
 export interface EvaluateResponse {
   evaluationResults: EvaluationResultContent[];
 }
-const EvaluateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ evaluationResults: EvaluationResults }),
-).annotate({ identifier: "EvaluateResponse" }) as any as S.Schema<EvaluateResponse>;
+const EvaluateResponse = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<EvaluateResponse>;
 export interface GetABTestRequest {
   abTestId: string;
 }
-const GetABTestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ abTestId: S.String.pipe(T.HttpLabel("abTestId")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/ab-tests/{abTestId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetABTestRequest" }) as any as S.Schema<GetABTestRequest>;
+const GetABTestRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetABTestRequest>;
 export type ErrorDetailsList = string[];
 const ErrorDetailsList = NamespacesList as any as S.Schema<ErrorDetailsList>;
 export interface ControlStats {
@@ -1352,16 +911,12 @@ export interface ControlStats {
   sampleSize: number;
   mean: number;
 }
-const ControlStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ variantName: S.String, sampleSize: S.Number, mean: S.Number }),
-).annotate({ identifier: "ControlStats" }) as any as S.Schema<ControlStats>;
+const ControlStats = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ControlStats>;
 export interface ConfidenceInterval {
   lower?: number;
   upper?: number;
 }
-const ConfidenceInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lower: S.optional(S.Number), upper: S.optional(S.Number) }),
-).annotate({ identifier: "ConfidenceInterval" }) as any as S.Schema<ConfidenceInterval>;
+const ConfidenceInterval = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ConfidenceInterval>;
 export interface VariantResult {
   variantName: string;
   sampleSize: number;
@@ -1372,44 +927,22 @@ export interface VariantResult {
   confidenceInterval?: ConfidenceInterval;
   isSignificant: boolean;
 }
-const VariantResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variantName: S.String,
-    sampleSize: S.Number,
-    mean: S.Number,
-    absoluteChange: S.optional(S.Number),
-    percentChange: S.optional(S.Number),
-    pValue: S.optional(S.Number),
-    confidenceInterval: S.optional(ConfidenceInterval),
-    isSignificant: S.Boolean,
-  }),
-).annotate({ identifier: "VariantResult" }) as any as S.Schema<VariantResult>;
+const VariantResult = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<VariantResult>;
 export type VariantResultList = VariantResult[];
-const VariantResultList = /*@__PURE__*/ S.Array(VariantResult);
+const VariantResultList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface EvaluatorMetric {
   evaluatorArn: string;
   controlStats: ControlStats;
   variantResults: VariantResult[];
 }
-const EvaluatorMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorArn: S.String,
-    controlStats: ControlStats,
-    variantResults: VariantResultList,
-  }),
-).annotate({ identifier: "EvaluatorMetric" }) as any as S.Schema<EvaluatorMetric>;
+const EvaluatorMetric = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<EvaluatorMetric>;
 export type EvaluatorMetricList = EvaluatorMetric[];
-const EvaluatorMetricList = /*@__PURE__*/ S.Array(EvaluatorMetric);
+const EvaluatorMetricList = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ABTestResults {
   analysisTimestamp?: Date;
   evaluatorMetrics: EvaluatorMetric[];
 }
-const ABTestResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analysisTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    evaluatorMetrics: EvaluatorMetricList,
-  }),
-).annotate({ identifier: "ABTestResults" }) as any as S.Schema<ABTestResults>;
+const ABTestResults = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ABTestResults>;
 export interface GetABTestResponse {
   abTestId: string;
   abTestArn: string;
@@ -1431,57 +964,14 @@ export interface GetABTestResponse {
   updatedAt: Date;
   results?: ABTestResults;
 }
-const GetABTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    abTestId: S.String,
-    abTestArn: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    status: ABTestStatus,
-    executionStatus: ABTestExecutionStatus,
-    gatewayArn: S.String,
-    variants: VariantList,
-    gatewayFilter: S.optional(GatewayFilter),
-    evaluationConfig: ABTestEvaluationConfig,
-    roleArn: S.optional(S.String),
-    currentRunId: S.optional(S.String),
-    errorDetails: S.optional(ErrorDetailsList),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    maxDurationExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    results: S.optional(ABTestResults),
-  }),
-).annotate({ identifier: "GetABTestResponse" }) as any as S.Schema<GetABTestResponse>;
+const GetABTestResponse = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetABTestResponse>;
 export type SessionType = string;
 export interface GetAgentCardRequest {
   runtimeSessionId?: string;
   agentRuntimeArn: string;
   qualifier?: string;
 }
-const GetAgentCardRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtimeSessionId: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
-      T.IdempotencyToken(),
-    ),
-    agentRuntimeArn: S.String.pipe(T.HttpLabel("agentRuntimeArn")),
-    qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/runtimes/{agentRuntimeArn}/invocations/.well-known/agent-card.json",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetAgentCardRequest" }) as any as S.Schema<GetAgentCardRequest>;
+const GetAgentCardRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<GetAgentCardRequest>;
 export type AgentCard = unknown;
 export type HttpResponseCode = number;
 export interface GetAgentCardResponse {
@@ -1489,50 +979,31 @@ export interface GetAgentCardResponse {
   agentCard: any;
   statusCode?: number;
 }
-const GetAgentCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtimeSessionId: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
-    ),
-    agentCard: S.Any.pipe(T.HttpPayload()),
-    statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
-  }),
-).annotate({ identifier: "GetAgentCardResponse" }) as any as S.Schema<GetAgentCardResponse>;
+const GetAgentCardResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetAgentCardResponse>;
 export interface GetBatchEvaluationRequest {
   batchEvaluationId: string;
 }
-const GetBatchEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchEvaluationId: S.String.pipe(T.HttpLabel("batchEvaluationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/evaluations/batch-evaluate/{batchEvaluationId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetBatchEvaluationRequest",
-}) as any as S.Schema<GetBatchEvaluationRequest>;
+const GetBatchEvaluationRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetBatchEvaluationRequest>;
 export type BatchEvaluationName = string;
 export interface Evaluator {
   evaluatorId: string;
 }
-const Evaluator = /*@__PURE__*/ S.suspend(() => S.Struct({ evaluatorId: S.String })).annotate({
-  identifier: "Evaluator",
-}) as any as S.Schema<Evaluator>;
+const Evaluator = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<Evaluator>;
 export type EvaluatorList = Evaluator[];
-const EvaluatorList = /*@__PURE__*/ S.Array(Evaluator);
+const EvaluatorList = /*@__PURE__*/ __L.at(__c13, 1);
 export type InsightId = string;
 export interface Insight {
   insightId: string;
 }
-const Insight = /*@__PURE__*/ S.suspend(() => S.Struct({ insightId: S.String })).annotate({
-  identifier: "Insight",
-}) as any as S.Schema<Insight>;
+const Insight = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<Insight>;
 export type InsightList = Insight[];
-const InsightList = /*@__PURE__*/ S.Array(Insight);
+const InsightList = /*@__PURE__*/ __L.at(__c13, 3);
 export type EvaluationStringList = string[];
 const EvaluationStringList = NamespacesList as any as S.Schema<EvaluationStringList>;
 export type LogGroupName = string;
@@ -1545,65 +1016,47 @@ export interface SessionFilterConfig {
   startTime?: Date;
   endTime?: Date;
 }
-const SessionFilterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "SessionFilterConfig" }) as any as S.Schema<SessionFilterConfig>;
+const SessionFilterConfig = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<SessionFilterConfig>;
 export type TraceIdList = string[];
 const TraceIdList = NamespacesList as any as S.Schema<TraceIdList>;
 export interface SessionTraceIds {
   sessionId: string;
   traceIds: string[];
 }
-const SessionTraceIds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionId: S.String, traceIds: TraceIdList }),
-).annotate({ identifier: "SessionTraceIds" }) as any as S.Schema<SessionTraceIds>;
+const SessionTraceIds = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<SessionTraceIds>;
 export type SessionTraceIdsList = SessionTraceIds[];
-const SessionTraceIdsList = /*@__PURE__*/ S.Array(SessionTraceIds);
+const SessionTraceIdsList = /*@__PURE__*/ __L.at(__c13, 6);
 export interface CloudWatchFilterConfig {
   sessionIds?: string[];
   timeRange?: SessionFilterConfig;
   sessionTraceIds?: SessionTraceIds[];
 }
-const CloudWatchFilterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionIds: S.optional(EvaluationStringList),
-    timeRange: S.optional(SessionFilterConfig),
-    sessionTraceIds: S.optional(SessionTraceIdsList),
-  }),
-).annotate({ identifier: "CloudWatchFilterConfig" }) as any as S.Schema<CloudWatchFilterConfig>;
+const CloudWatchFilterConfig = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<CloudWatchFilterConfig>;
 export interface CloudWatchLogsSource {
   serviceNames: string[];
   logGroupNames?: string[];
   logGroupNamePrefixes?: string[];
   filterConfig?: CloudWatchFilterConfig;
 }
-const CloudWatchLogsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceNames: EvaluationStringList,
-    logGroupNames: S.optional(LogGroupNameList),
-    logGroupNamePrefixes: S.optional(LogGroupNamePrefixList),
-    filterConfig: S.optional(CloudWatchFilterConfig),
-  }),
-).annotate({ identifier: "CloudWatchLogsSource" }) as any as S.Schema<CloudWatchLogsSource>;
+const CloudWatchLogsSource = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<CloudWatchLogsSource>;
 export interface OnlineEvaluationConfigSource {
   onlineEvaluationConfigArn: string;
   timeRange?: SessionFilterConfig;
 }
-const OnlineEvaluationConfigSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ onlineEvaluationConfigArn: S.String, timeRange: S.optional(SessionFilterConfig) }),
-).annotate({
-  identifier: "OnlineEvaluationConfigSource",
-}) as any as S.Schema<OnlineEvaluationConfigSource>;
+const OnlineEvaluationConfigSource = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<OnlineEvaluationConfigSource>;
 export type DataSourceConfig =
   | { cloudWatchLogs: CloudWatchLogsSource; onlineEvaluationConfigSource?: never }
   | { cloudWatchLogs?: never; onlineEvaluationConfigSource: OnlineEvaluationConfigSource };
-const DataSourceConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cloudWatchLogs: CloudWatchLogsSource }),
-  /*@__PURE__*/ S.Struct({ onlineEvaluationConfigSource: OnlineEvaluationConfigSource }),
-]);
+const DataSourceConfig = /*@__PURE__*/ __L.at(__c14, 2);
 export type OptionalLogGroupName = string;
 export type LogStreamName = string;
 export type MetricsNamespace = string;
@@ -1616,40 +1069,25 @@ export interface CloudWatchOutputConfig {
   metricsNamespace?: string;
   resultDestination?: ResultDestination;
 }
-const CloudWatchOutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logGroupName: S.optional(S.String),
-    logStreamName: S.optional(S.String),
-    metricsNamespace: S.optional(S.String),
-    resultDestination: S.optional(ResultDestination),
-  }),
-).annotate({ identifier: "CloudWatchOutputConfig" }) as any as S.Schema<CloudWatchOutputConfig>;
+const CloudWatchOutputConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<CloudWatchOutputConfig>;
 export type OutputConfig = { cloudWatchConfig: CloudWatchOutputConfig };
-const OutputConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cloudWatchConfig: CloudWatchOutputConfig }),
-]);
+const OutputConfig = /*@__PURE__*/ __L.at(__c14, 4);
 export interface EvaluatorStatistics {
   averageScore?: number;
 }
-const EvaluatorStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ averageScore: S.optional(S.Number) }),
-).annotate({ identifier: "EvaluatorStatistics" }) as any as S.Schema<EvaluatorStatistics>;
+const EvaluatorStatistics = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<EvaluatorStatistics>;
 export interface EvaluatorSummary {
   evaluatorId?: string;
   statistics?: EvaluatorStatistics;
   totalEvaluated?: number;
   totalFailed?: number;
 }
-const EvaluatorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorId: S.optional(S.String),
-    statistics: S.optional(EvaluatorStatistics),
-    totalEvaluated: S.optional(S.Number),
-    totalFailed: S.optional(S.Number),
-  }),
-).annotate({ identifier: "EvaluatorSummary" }) as any as S.Schema<EvaluatorSummary>;
+const EvaluatorSummary = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<EvaluatorSummary>;
 export type EvaluatorSummaryList = EvaluatorSummary[];
-const EvaluatorSummaryList = /*@__PURE__*/ S.Array(EvaluatorSummary);
+const EvaluatorSummaryList = /*@__PURE__*/ __L.at(__c14, 7);
 export interface EvaluationJobResults {
   numberOfSessionsCompleted?: number;
   numberOfSessionsInProgress?: number;
@@ -1658,16 +1096,10 @@ export interface EvaluationJobResults {
   numberOfSessionsIgnored?: number;
   evaluatorSummaries?: EvaluatorSummary[];
 }
-const EvaluationJobResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numberOfSessionsCompleted: S.optional(S.Number),
-    numberOfSessionsInProgress: S.optional(S.Number),
-    numberOfSessionsFailed: S.optional(S.Number),
-    totalNumberOfSessions: S.optional(S.Number),
-    numberOfSessionsIgnored: S.optional(S.Number),
-    evaluatorSummaries: S.optional(EvaluatorSummaryList),
-  }),
-).annotate({ identifier: "EvaluationJobResults" }) as any as S.Schema<EvaluationJobResults>;
+const EvaluationJobResults = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<EvaluationJobResults>;
 export type InsightsFailureCategory =
   | "execution-error-category-authentication"
   | "execution-error-category-resource-not-found"
@@ -1711,21 +1143,20 @@ export interface InsightsFailureSignal {
   evidence: string;
   confidence: number;
 }
-const InsightsFailureSignal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ category: InsightsFailureCategory, evidence: S.String, confidence: S.Number }),
-).annotate({ identifier: "InsightsFailureSignal" }) as any as S.Schema<InsightsFailureSignal>;
+const InsightsFailureSignal = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<InsightsFailureSignal>;
 export type InsightsFailureSignalList = InsightsFailureSignal[];
-const InsightsFailureSignalList = /*@__PURE__*/ S.Array(InsightsFailureSignal);
+const InsightsFailureSignalList = /*@__PURE__*/ __L.at(__c15, 2);
 export interface FailureSpanDetail {
   spanId: string;
   traceId: string;
   signals: InsightsFailureSignal[];
 }
-const FailureSpanDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ spanId: S.String, traceId: S.String, signals: InsightsFailureSignalList }),
-).annotate({ identifier: "FailureSpanDetail" }) as any as S.Schema<FailureSpanDetail>;
+const FailureSpanDetail = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<FailureSpanDetail>;
 export type FailureSpanDetailList = FailureSpanDetail[];
-const FailureSpanDetailList = /*@__PURE__*/ S.Array(FailureSpanDetail);
+const FailureSpanDetailList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface AffectedSession {
   sessionId: string;
   explanation: string;
@@ -1733,17 +1164,9 @@ export interface AffectedSession {
   recommendation: string;
   failureSpans: FailureSpanDetail[];
 }
-const AffectedSession = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    explanation: S.String,
-    fixType: S.String,
-    recommendation: S.String,
-    failureSpans: FailureSpanDetailList,
-  }),
-).annotate({ identifier: "AffectedSession" }) as any as S.Schema<AffectedSession>;
+const AffectedSession = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<AffectedSession>;
 export type AffectedSessionList = AffectedSession[];
-const AffectedSessionList = /*@__PURE__*/ S.Array(AffectedSession);
+const AffectedSessionList = /*@__PURE__*/ __L.at(__c15, 6);
 export interface RootCauseCluster {
   clusterId: number;
   name: string;
@@ -1752,18 +1175,9 @@ export interface RootCauseCluster {
   affectedSessionCount: number;
   affectedSessions: AffectedSession[];
 }
-const RootCauseCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterId: S.Number,
-    name: S.String,
-    rootCause: S.String,
-    recommendation: S.String,
-    affectedSessionCount: S.Number,
-    affectedSessions: AffectedSessionList,
-  }),
-).annotate({ identifier: "RootCauseCluster" }) as any as S.Schema<RootCauseCluster>;
+const RootCauseCluster = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<RootCauseCluster>;
 export type RootCauseClusterList = RootCauseCluster[];
-const RootCauseClusterList = /*@__PURE__*/ S.Array(RootCauseCluster);
+const RootCauseClusterList = /*@__PURE__*/ __L.at(__c16, 0);
 export interface FailureSubCategoryCluster {
   clusterId: number;
   name: string;
@@ -1771,19 +1185,12 @@ export interface FailureSubCategoryCluster {
   affectedSessionCount: number;
   rootCauses: RootCauseCluster[];
 }
-const FailureSubCategoryCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterId: S.Number,
-    name: S.String,
-    description: S.String,
-    affectedSessionCount: S.Number,
-    rootCauses: RootCauseClusterList,
-  }),
-).annotate({
-  identifier: "FailureSubCategoryCluster",
-}) as any as S.Schema<FailureSubCategoryCluster>;
+const FailureSubCategoryCluster = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<FailureSubCategoryCluster>;
 export type FailureSubCategoryClusterList = FailureSubCategoryCluster[];
-const FailureSubCategoryClusterList = /*@__PURE__*/ S.Array(FailureSubCategoryCluster);
+const FailureSubCategoryClusterList = /*@__PURE__*/ __L.at(__c16, 2);
 export interface FailureCategoryCluster {
   clusterId: number;
   name: string;
@@ -1791,38 +1198,31 @@ export interface FailureCategoryCluster {
   affectedSessionCount: number;
   subCategories: FailureSubCategoryCluster[];
 }
-const FailureCategoryCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterId: S.Number,
-    name: S.String,
-    description: S.String,
-    affectedSessionCount: S.Number,
-    subCategories: FailureSubCategoryClusterList,
-  }),
-).annotate({ identifier: "FailureCategoryCluster" }) as any as S.Schema<FailureCategoryCluster>;
+const FailureCategoryCluster = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<FailureCategoryCluster>;
 export type FailureCategoryClusterList = FailureCategoryCluster[];
-const FailureCategoryClusterList = /*@__PURE__*/ S.Array(FailureCategoryCluster);
+const FailureCategoryClusterList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface FailureAnalysisResultContent {
   failures: FailureCategoryCluster[];
 }
-const FailureAnalysisResultContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ failures: FailureCategoryClusterList }),
-).annotate({
-  identifier: "FailureAnalysisResultContent",
-}) as any as S.Schema<FailureAnalysisResultContent>;
+const FailureAnalysisResultContent = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<FailureAnalysisResultContent>;
 export type UserIntentList = string[];
 const UserIntentList = NamespacesList as any as S.Schema<UserIntentList>;
 export interface UserIntentAffectedSession {
   sessionId: string;
   userMessages: string[];
 }
-const UserIntentAffectedSession = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionId: S.String, userMessages: UserIntentList }),
-).annotate({
-  identifier: "UserIntentAffectedSession",
-}) as any as S.Schema<UserIntentAffectedSession>;
+const UserIntentAffectedSession = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<UserIntentAffectedSession>;
 export type UserIntentAffectedSessionList = UserIntentAffectedSession[];
-const UserIntentAffectedSessionList = /*@__PURE__*/ S.Array(UserIntentAffectedSession);
+const UserIntentAffectedSessionList = /*@__PURE__*/ __L.at(__c16, 7);
 export interface UserIntentCluster {
   clusterId: number;
   name: string;
@@ -1830,37 +1230,27 @@ export interface UserIntentCluster {
   affectedSessionCount: number;
   affectedSessions: UserIntentAffectedSession[];
 }
-const UserIntentCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterId: S.Number,
-    name: S.String,
-    description: S.String,
-    affectedSessionCount: S.Number,
-    affectedSessions: UserIntentAffectedSessionList,
-  }),
-).annotate({ identifier: "UserIntentCluster" }) as any as S.Schema<UserIntentCluster>;
+const UserIntentCluster = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<UserIntentCluster>;
 export type UserIntentClusterList = UserIntentCluster[];
-const UserIntentClusterList = /*@__PURE__*/ S.Array(UserIntentCluster);
+const UserIntentClusterList = /*@__PURE__*/ __L.at(__c17, 1);
 export interface UserIntentClusteringResultContent {
   userIntents: UserIntentCluster[];
 }
-const UserIntentClusteringResultContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ userIntents: UserIntentClusterList }),
-).annotate({
-  identifier: "UserIntentClusteringResultContent",
-}) as any as S.Schema<UserIntentClusteringResultContent>;
+const UserIntentClusteringResultContent = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<UserIntentClusteringResultContent>;
 export interface ExecutionSummaryAffectedSession {
   sessionId: string;
   approachTaken: string;
   finalOutcome: string;
 }
-const ExecutionSummaryAffectedSession = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionId: S.String, approachTaken: S.String, finalOutcome: S.String }),
-).annotate({
-  identifier: "ExecutionSummaryAffectedSession",
-}) as any as S.Schema<ExecutionSummaryAffectedSession>;
+const ExecutionSummaryAffectedSession = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ExecutionSummaryAffectedSession>;
 export type ExecutionSummaryAffectedSessionList = ExecutionSummaryAffectedSession[];
-const ExecutionSummaryAffectedSessionList = /*@__PURE__*/ S.Array(ExecutionSummaryAffectedSession);
+const ExecutionSummaryAffectedSessionList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ExecutionSummaryCluster {
   clusterId: number;
   name: string;
@@ -1868,25 +1258,19 @@ export interface ExecutionSummaryCluster {
   affectedSessionCount: number;
   affectedSessions: ExecutionSummaryAffectedSession[];
 }
-const ExecutionSummaryCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterId: S.Number,
-    name: S.String,
-    description: S.String,
-    affectedSessionCount: S.Number,
-    affectedSessions: ExecutionSummaryAffectedSessionList,
-  }),
-).annotate({ identifier: "ExecutionSummaryCluster" }) as any as S.Schema<ExecutionSummaryCluster>;
+const ExecutionSummaryCluster = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ExecutionSummaryCluster>;
 export type ExecutionSummaryClusterList = ExecutionSummaryCluster[];
-const ExecutionSummaryClusterList = /*@__PURE__*/ S.Array(ExecutionSummaryCluster);
+const ExecutionSummaryClusterList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface ExecutionSummaryClusteringResultContent {
   executionSummaries: ExecutionSummaryCluster[];
 }
-const ExecutionSummaryClusteringResultContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ executionSummaries: ExecutionSummaryClusterList }),
-).annotate({
-  identifier: "ExecutionSummaryClusteringResultContent",
-}) as any as S.Schema<ExecutionSummaryClusteringResultContent>;
+const ExecutionSummaryClusteringResultContent = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ExecutionSummaryClusteringResultContent>;
 export type BatchEvaluationDescription = string;
 export type KmsKeyArn = string;
 export interface GetBatchEvaluationResponse {
@@ -1908,49 +1292,19 @@ export interface GetBatchEvaluationResponse {
   updatedAt?: Date;
   kmsKeyArn?: string;
 }
-const GetBatchEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchEvaluationId: S.String,
-    batchEvaluationArn: S.String,
-    batchEvaluationName: S.String,
-    status: BatchEvaluationStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    evaluators: S.optional(EvaluatorList),
-    insights: S.optional(InsightList),
-    dataSourceConfig: S.optional(DataSourceConfig),
-    outputConfig: S.optional(OutputConfig),
-    evaluationResults: S.optional(EvaluationJobResults),
-    failureAnalysisResult: S.optional(FailureAnalysisResultContent),
-    userIntentResult: S.optional(UserIntentClusteringResultContent),
-    executionSummaryResult: S.optional(ExecutionSummaryClusteringResultContent),
-    errorDetails: S.optional(ErrorDetailsList),
-    description: S.optional(S.String),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    kmsKeyArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetBatchEvaluationResponse",
-}) as any as S.Schema<GetBatchEvaluationResponse>;
+const GetBatchEvaluationResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetBatchEvaluationResponse>;
 export type BrowserSessionId = string;
 export interface GetBrowserSessionRequest {
   browserIdentifier: string;
   sessionId: string;
 }
-const GetBrowserSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
-    sessionId: S.String.pipe(T.HttpQuery("sessionId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/browsers/{browserIdentifier}/sessions/get" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetBrowserSessionRequest" }) as any as S.Schema<GetBrowserSessionRequest>;
+const GetBrowserSessionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetBrowserSessionRequest>;
 export type Name = string;
 export type ViewPortWidth = number;
 export type ViewPortHeight = number;
@@ -1958,27 +1312,21 @@ export interface ViewPort {
   width: number;
   height: number;
 }
-const ViewPort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ width: S.Number, height: S.Number }),
-).annotate({ identifier: "ViewPort" }) as any as S.Schema<ViewPort>;
+const ViewPort = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<ViewPort>;
 export interface S3Location {
   bucket: string;
   prefix: string;
   versionId?: string;
 }
-const S3Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bucket: S.String, prefix: S.String, versionId: S.optional(S.String) }),
-).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
+const S3Location = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<S3Location>;
 export type ResourceLocation = { s3: S3Location };
-const ResourceLocation = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ s3: S3Location })]);
+const ResourceLocation = /*@__PURE__*/ __L.at(__c18, 4);
 export interface BrowserExtension {
   location: ResourceLocation;
 }
-const BrowserExtension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ location: ResourceLocation }),
-).annotate({ identifier: "BrowserExtension" }) as any as S.Schema<BrowserExtension>;
+const BrowserExtension = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<BrowserExtension>;
 export type BrowserExtensions = BrowserExtension[];
-const BrowserExtensions = /*@__PURE__*/ S.Array(BrowserExtension);
+const BrowserExtensions = /*@__PURE__*/ __L.at(__c18, 6);
 export type BrowserEnterprisePolicyType = "MANAGED" | "RECOMMENDED" | (string & {});
 const BrowserEnterprisePolicyType = S.String;
 
@@ -1986,20 +1334,20 @@ export interface BrowserEnterprisePolicy {
   location: ResourceLocation;
   type?: BrowserEnterprisePolicyType;
 }
-const BrowserEnterprisePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ location: ResourceLocation, type: S.optional(BrowserEnterprisePolicyType) }),
-).annotate({ identifier: "BrowserEnterprisePolicy" }) as any as S.Schema<BrowserEnterprisePolicy>;
+const BrowserEnterprisePolicy = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<BrowserEnterprisePolicy>;
 export type BrowserEnterprisePolicies = BrowserEnterprisePolicy[];
-const BrowserEnterprisePolicies = /*@__PURE__*/ S.Array(BrowserEnterprisePolicy);
+const BrowserEnterprisePolicies = /*@__PURE__*/ __L.at(__c19, 0);
 export type BrowserProfileId = string;
 export interface BrowserProfileConfiguration {
   profileIdentifier: string;
 }
-const BrowserProfileConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ profileIdentifier: S.String }),
-).annotate({
-  identifier: "BrowserProfileConfiguration",
-}) as any as S.Schema<BrowserProfileConfiguration>;
+const BrowserProfileConfiguration = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<BrowserProfileConfiguration>;
 export type BrowserSessionTimeout = number;
 export type BrowserSessionStatus = "READY" | "TERMINATED" | (string & {});
 const BrowserSessionStatus = S.String;
@@ -2012,22 +1360,19 @@ export interface AutomationStream {
   streamEndpoint: string;
   streamStatus: AutomationStreamStatus;
 }
-const AutomationStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ streamEndpoint: S.String, streamStatus: AutomationStreamStatus }),
-).annotate({ identifier: "AutomationStream" }) as any as S.Schema<AutomationStream>;
+const AutomationStream = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<AutomationStream>;
 export interface LiveViewStream {
   streamEndpoint?: string;
 }
-const LiveViewStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ streamEndpoint: S.optional(S.String) }),
-).annotate({ identifier: "LiveViewStream" }) as any as S.Schema<LiveViewStream>;
+const LiveViewStream = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<LiveViewStream>;
 export interface BrowserSessionStream {
   automationStream: AutomationStream;
   liveViewStream?: LiveViewStream;
 }
-const BrowserSessionStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ automationStream: AutomationStream, liveViewStream: S.optional(LiveViewStream) }),
-).annotate({ identifier: "BrowserSessionStream" }) as any as S.Schema<BrowserSessionStream>;
+const BrowserSessionStream = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<BrowserSessionStream>;
 export type HostName = string;
 export type DomainPattern = string;
 export type DomainPatterns = string[];
@@ -2036,60 +1381,44 @@ export type SecretArn = string;
 export interface BasicAuth {
   secretArn: string;
 }
-const BasicAuth = /*@__PURE__*/ S.suspend(() => S.Struct({ secretArn: S.String })).annotate({
-  identifier: "BasicAuth",
-}) as any as S.Schema<BasicAuth>;
+const BasicAuth = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<BasicAuth>;
 export type ProxyCredentials = { basicAuth: BasicAuth };
-const ProxyCredentials = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ basicAuth: BasicAuth })]);
+const ProxyCredentials = /*@__PURE__*/ __L.at(__c19, 6);
 export interface ExternalProxy {
   server: string;
   port: number;
   domainPatterns?: string[];
   credentials?: ProxyCredentials;
 }
-const ExternalProxy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    server: S.String,
-    port: S.Number,
-    domainPatterns: S.optional(DomainPatterns),
-    credentials: S.optional(ProxyCredentials),
-  }),
-).annotate({ identifier: "ExternalProxy" }) as any as S.Schema<ExternalProxy>;
+const ExternalProxy = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ExternalProxy>;
 export type Proxy = { externalProxy: ExternalProxy };
-const Proxy = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ externalProxy: ExternalProxy })]);
+const Proxy = /*@__PURE__*/ __L.at(__c20, 0);
 export type Proxies = Proxy[];
-const Proxies = /*@__PURE__*/ S.Array(Proxy);
+const Proxies = /*@__PURE__*/ __L.at(__c20, 1);
 export interface ProxyBypass {
   domainPatterns?: string[];
 }
-const ProxyBypass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainPatterns: S.optional(DomainPatterns) }),
-).annotate({ identifier: "ProxyBypass" }) as any as S.Schema<ProxyBypass>;
+const ProxyBypass = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ProxyBypass>;
 export interface ProxyConfiguration {
   proxies: Proxy[];
   bypass?: ProxyBypass;
 }
-const ProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ proxies: Proxies, bypass: S.optional(ProxyBypass) }),
-).annotate({ identifier: "ProxyConfiguration" }) as any as S.Schema<ProxyConfiguration>;
+const ProxyConfiguration = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<ProxyConfiguration>;
 export interface SecretsManagerLocation {
   secretArn: string;
 }
-const SecretsManagerLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ secretArn: S.String }),
-).annotate({ identifier: "SecretsManagerLocation" }) as any as S.Schema<SecretsManagerLocation>;
+const SecretsManagerLocation = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<SecretsManagerLocation>;
 export type CertificateLocation = { secretsManager: SecretsManagerLocation };
-const CertificateLocation = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ secretsManager: SecretsManagerLocation }),
-]);
+const CertificateLocation = /*@__PURE__*/ __L.at(__c20, 5);
 export interface Certificate {
   location: CertificateLocation;
 }
-const Certificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ location: CertificateLocation }),
-).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
+const Certificate = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<Certificate>;
 export type Certificates = Certificate[];
-const Certificates = /*@__PURE__*/ S.Array(Certificate);
+const Certificates = /*@__PURE__*/ __L.at(__c20, 7);
 export type S3FilesAccessPointArn = string;
 export type MountPath = string;
 export type S3FilesFileSystemArn = string;
@@ -2098,9 +1427,10 @@ export interface S3FilesConfiguration {
   mountPath: string;
   fileSystemArn: string;
 }
-const S3FilesConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessPointArn: S.String, mountPath: S.String, fileSystemArn: S.String }),
-).annotate({ identifier: "S3FilesConfiguration" }) as any as S.Schema<S3FilesConfiguration>;
+const S3FilesConfiguration = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<S3FilesConfiguration>;
 export type EfsAccessPointArn = string;
 export type EfsFileSystemArn = string;
 export interface EfsConfiguration {
@@ -2112,12 +1442,9 @@ const EfsConfiguration = S3FilesConfiguration as any as S.Schema<EfsConfiguratio
 export type ToolsFileSystemConfiguration =
   | { s3FilesConfiguration: S3FilesConfiguration; efsConfiguration?: never }
   | { s3FilesConfiguration?: never; efsConfiguration: EfsConfiguration };
-const ToolsFileSystemConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ s3FilesConfiguration: S3FilesConfiguration }),
-  /*@__PURE__*/ S.Struct({ efsConfiguration: EfsConfiguration }),
-]);
+const ToolsFileSystemConfiguration = /*@__PURE__*/ __L.at(__c21, 1);
 export type ToolsFileSystemConfigurations = ToolsFileSystemConfiguration[];
-const ToolsFileSystemConfigurations = /*@__PURE__*/ S.Array(ToolsFileSystemConfiguration);
+const ToolsFileSystemConfigurations = /*@__PURE__*/ __L.at(__c21, 2);
 export interface GetBrowserSessionResponse {
   browserIdentifier: string;
   sessionId: string;
@@ -2136,50 +1463,19 @@ export interface GetBrowserSessionResponse {
   sessionReplayArtifact?: string;
   lastUpdatedAt?: Date;
 }
-const GetBrowserSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserIdentifier: S.String,
-    sessionId: S.String,
-    name: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    viewPort: S.optional(ViewPort),
-    extensions: S.optional(BrowserExtensions),
-    enterprisePolicies: S.optional(BrowserEnterprisePolicies),
-    profileConfiguration: S.optional(BrowserProfileConfiguration),
-    sessionTimeoutSeconds: S.optional(S.Number),
-    status: S.optional(BrowserSessionStatus),
-    streams: S.optional(BrowserSessionStream),
-    proxyConfiguration: S.optional(ProxyConfiguration),
-    certificates: S.optional(Certificates),
-    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
-    sessionReplayArtifact: S.optional(S.String),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "GetBrowserSessionResponse",
-}) as any as S.Schema<GetBrowserSessionResponse>;
+const GetBrowserSessionResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<GetBrowserSessionResponse>;
 export type CodeInterpreterSessionId = string;
 export interface GetCodeInterpreterSessionRequest {
   codeInterpreterIdentifier: string;
   sessionId: string;
 }
-const GetCodeInterpreterSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
-    sessionId: S.String.pipe(T.HttpQuery("sessionId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/code-interpreters/{codeInterpreterIdentifier}/sessions/get" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCodeInterpreterSessionRequest",
-}) as any as S.Schema<GetCodeInterpreterSessionRequest>;
+const GetCodeInterpreterSessionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GetCodeInterpreterSessionRequest>;
 export type CodeInterpreterSessionTimeout = number;
 export type CodeInterpreterSessionStatus = "READY" | "TERMINATED" | (string & {});
 const CodeInterpreterSessionStatus = S.String;
@@ -2194,73 +1490,30 @@ export interface GetCodeInterpreterSessionResponse {
   certificates?: Certificate[];
   filesystemConfigurations?: ToolsFileSystemConfiguration[];
 }
-const GetCodeInterpreterSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterIdentifier: S.String,
-    sessionId: S.String,
-    name: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    sessionTimeoutSeconds: S.optional(S.Number),
-    status: S.optional(CodeInterpreterSessionStatus),
-    certificates: S.optional(Certificates),
-    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
-  }),
-).annotate({
-  identifier: "GetCodeInterpreterSessionResponse",
-}) as any as S.Schema<GetCodeInterpreterSessionResponse>;
+const GetCodeInterpreterSessionResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GetCodeInterpreterSessionResponse>;
 export interface GetEventInput {
   memoryId: string;
   sessionId: string;
   actorId: string;
   eventId: string;
 }
-const GetEventInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-    actorId: S.String.pipe(T.HttpLabel("actorId")),
-    eventId: S.String.pipe(T.HttpLabel("eventId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}/events/{eventId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetEventInput" }) as any as S.Schema<GetEventInput>;
+const GetEventInput = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<GetEventInput>;
 export interface GetEventOutput {
   event: Event;
 }
-const GetEventOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ event: Event })).annotate({
-  identifier: "GetEventOutput",
-}) as any as S.Schema<GetEventOutput>;
+const GetEventOutput = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<GetEventOutput>;
 export interface GetMemoryRecordInput {
   memoryId: string;
   memoryRecordId: string;
   namespace?: string;
 }
-const GetMemoryRecordInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    memoryRecordId: S.String.pipe(T.HttpLabel("memoryRecordId")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/memories/{memoryId}/memoryRecord/{memoryRecordId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetMemoryRecordInput" }) as any as S.Schema<GetMemoryRecordInput>;
+const GetMemoryRecordInput = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<GetMemoryRecordInput>;
 export interface MemoryRecord {
   memoryRecordId: string;
   content: MemoryContent;
@@ -2269,22 +1522,14 @@ export interface MemoryRecord {
   createdAt: Date;
   metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
 }
-const MemoryRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryRecordId: S.String,
-    content: MemoryContent,
-    memoryStrategyId: S.optional(S.String),
-    namespaces: NamespacesList,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    metadata: S.optional(MemoryRecordMetadataMap),
-  }),
-).annotate({ identifier: "MemoryRecord" }) as any as S.Schema<MemoryRecord>;
+const MemoryRecord = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<MemoryRecord>;
 export interface GetMemoryRecordOutput {
   memoryRecord: MemoryRecord;
 }
-const GetMemoryRecordOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memoryRecord: MemoryRecord }),
-).annotate({ identifier: "GetMemoryRecordOutput" }) as any as S.Schema<GetMemoryRecordOutput>;
+const GetMemoryRecordOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GetMemoryRecordOutput>;
 export interface GetPaymentInstrumentRequest {
   userId?: string;
   agentName?: string;
@@ -2292,28 +1537,10 @@ export interface GetPaymentInstrumentRequest {
   paymentConnectorId?: string;
   paymentInstrumentId: string;
 }
-const GetPaymentInstrumentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    agentName: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
-    ),
-    paymentManagerArn: S.String,
-    paymentConnectorId: S.optional(S.String),
-    paymentInstrumentId: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/getPaymentInstrument" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPaymentInstrumentRequest",
-}) as any as S.Schema<GetPaymentInstrumentRequest>;
+const GetPaymentInstrumentRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GetPaymentInstrumentRequest>;
 export interface GetPaymentInstrumentResponse {
   paymentInstrument: PaymentInstrument;
 }
@@ -2340,30 +1567,10 @@ export interface GetPaymentInstrumentBalanceRequest {
   chain: BlockchainChainId;
   token: InstrumentBalanceToken;
 }
-const GetPaymentInstrumentBalanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    agentName: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
-    ),
-    paymentManagerArn: S.String,
-    paymentConnectorId: S.String,
-    paymentInstrumentId: S.String,
-    chain: BlockchainChainId,
-    token: InstrumentBalanceToken,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/getPaymentInstrumentBalance" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPaymentInstrumentBalanceRequest",
-}) as any as S.Schema<GetPaymentInstrumentBalanceRequest>;
+const GetPaymentInstrumentBalanceRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<GetPaymentInstrumentBalanceRequest>;
 export interface TokenBalance {
   amount: string;
   decimals: number;
@@ -2371,49 +1578,25 @@ export interface TokenBalance {
   network: CryptoWalletNetwork;
   chain: BlockchainChainId;
 }
-const TokenBalance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.String,
-    decimals: S.Number,
-    token: InstrumentBalanceToken,
-    network: CryptoWalletNetwork,
-    chain: BlockchainChainId,
-  }),
-).annotate({ identifier: "TokenBalance" }) as any as S.Schema<TokenBalance>;
+const TokenBalance = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<TokenBalance>;
 export interface GetPaymentInstrumentBalanceResponse {
   paymentInstrumentId: string;
   tokenBalance: TokenBalance;
 }
-const GetPaymentInstrumentBalanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ paymentInstrumentId: S.String, tokenBalance: TokenBalance }),
-).annotate({
-  identifier: "GetPaymentInstrumentBalanceResponse",
-}) as any as S.Schema<GetPaymentInstrumentBalanceResponse>;
+const GetPaymentInstrumentBalanceResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GetPaymentInstrumentBalanceResponse>;
 export interface GetPaymentSessionRequest {
   userId?: string;
   agentName?: string;
   paymentManagerArn: string;
   paymentSessionId: string;
 }
-const GetPaymentSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    agentName: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
-    ),
-    paymentManagerArn: S.String,
-    paymentSessionId: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/getPaymentSession" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetPaymentSessionRequest" }) as any as S.Schema<GetPaymentSessionRequest>;
+const GetPaymentSessionRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<GetPaymentSessionRequest>;
 export interface GetPaymentSessionResponse {
   paymentSession: PaymentSession;
 }
@@ -2422,18 +1605,10 @@ const GetPaymentSessionResponse =
 export interface GetRecommendationRequest {
   recommendationId: string;
 }
-const GetRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommendationId: S.String.pipe(T.HttpLabel("recommendationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/recommendations/{recommendationId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetRecommendationRequest" }) as any as S.Schema<GetRecommendationRequest>;
+const GetRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<GetRecommendationRequest>;
 export type RecommendationArn = string;
 export type RecommendationName = string;
 export type RecommendationDescription = string;
@@ -2450,18 +1625,14 @@ export interface SystemPromptConfigurationBundle {
   versionId: string;
   systemPromptJsonPath: string;
 }
-const SystemPromptConfigurationBundle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bundleArn: S.String, versionId: S.String, systemPromptJsonPath: S.String }),
-).annotate({
-  identifier: "SystemPromptConfigurationBundle",
-}) as any as S.Schema<SystemPromptConfigurationBundle>;
+const SystemPromptConfigurationBundle = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<SystemPromptConfigurationBundle>;
 export type SystemPromptConfig =
   | { text: string | redacted.Redacted<string>; configurationBundle?: never }
   | { text?: never; configurationBundle: SystemPromptConfigurationBundle };
-const SystemPromptConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ configurationBundle: SystemPromptConfigurationBundle }),
-]);
+const SystemPromptConfig = /*@__PURE__*/ __L.at(__c23, 2);
 export type LogGroupArnList = string[];
 const LogGroupArnList = NamespacesList as any as S.Schema<LogGroupArnList>;
 export type ServiceName = string;
@@ -2484,27 +1655,22 @@ export type FilterValue =
   | { stringValue: string; doubleValue?: never; booleanValue?: never }
   | { stringValue?: never; doubleValue: number; booleanValue?: never }
   | { stringValue?: never; doubleValue?: never; booleanValue: boolean };
-const FilterValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
-  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
-]);
+const FilterValue = /*@__PURE__*/ __L.at(__c23, 3);
 export interface CloudWatchLogsFilter {
   key: string;
   operator: CloudWatchLogsFilterOperator;
   value: FilterValue;
 }
-const CloudWatchLogsFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, operator: CloudWatchLogsFilterOperator, value: FilterValue }),
-).annotate({ identifier: "CloudWatchLogsFilter" }) as any as S.Schema<CloudWatchLogsFilter>;
+const CloudWatchLogsFilter = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<CloudWatchLogsFilter>;
 export type CloudWatchLogsFilterList = CloudWatchLogsFilter[];
-const CloudWatchLogsFilterList = /*@__PURE__*/ S.Array(CloudWatchLogsFilter);
+const CloudWatchLogsFilterList = /*@__PURE__*/ __L.at(__c23, 5);
 export interface CloudWatchLogsRule {
   filters?: CloudWatchLogsFilter[];
 }
-const CloudWatchLogsRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filters: S.optional(CloudWatchLogsFilterList) }),
-).annotate({ identifier: "CloudWatchLogsRule" }) as any as S.Schema<CloudWatchLogsRule>;
+const CloudWatchLogsRule = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<CloudWatchLogsRule>;
 export interface CloudWatchLogsTraceConfig {
   logGroupArns: string[];
   serviceNames: string[];
@@ -2512,39 +1678,26 @@ export interface CloudWatchLogsTraceConfig {
   endTime: Date;
   rule?: CloudWatchLogsRule;
 }
-const CloudWatchLogsTraceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logGroupArns: LogGroupArnList,
-    serviceNames: ServiceNameList,
-    startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    rule: S.optional(CloudWatchLogsRule),
-  }),
-).annotate({
-  identifier: "CloudWatchLogsTraceConfig",
-}) as any as S.Schema<CloudWatchLogsTraceConfig>;
+const CloudWatchLogsTraceConfig = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<CloudWatchLogsTraceConfig>;
 export interface BatchEvaluationTraceConfig {
   batchEvaluationArn: string;
 }
-const BatchEvaluationTraceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchEvaluationArn: S.String }),
-).annotate({
-  identifier: "BatchEvaluationTraceConfig",
-}) as any as S.Schema<BatchEvaluationTraceConfig>;
+const BatchEvaluationTraceConfig = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<BatchEvaluationTraceConfig>;
 export interface OnlineEvaluationTraceConfig {
   onlineEvaluationConfigArn: string;
   startTime: Date;
   endTime: Date;
 }
-const OnlineEvaluationTraceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onlineEvaluationConfigArn: S.String,
-    startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "OnlineEvaluationTraceConfig",
-}) as any as S.Schema<OnlineEvaluationTraceConfig>;
+const OnlineEvaluationTraceConfig = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<OnlineEvaluationTraceConfig>;
 export type AgentTracesConfig =
   | {
       sessionSpans: any[];
@@ -2570,44 +1723,32 @@ export type AgentTracesConfig =
       batchEvaluation?: never;
       onlineEvaluation: OnlineEvaluationTraceConfig;
     };
-const AgentTracesConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ sessionSpans: Spans }),
-  /*@__PURE__*/ S.Struct({ cloudwatchLogs: CloudWatchLogsTraceConfig }),
-  /*@__PURE__*/ S.Struct({ batchEvaluation: BatchEvaluationTraceConfig }),
-  /*@__PURE__*/ S.Struct({ onlineEvaluation: OnlineEvaluationTraceConfig }),
-]);
+const AgentTracesConfig = /*@__PURE__*/ __L.at(__c24, 2);
 export interface RecommendationEvaluatorReference {
   evaluatorArn: string;
 }
-const RecommendationEvaluatorReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ evaluatorArn: S.String }),
-).annotate({
-  identifier: "RecommendationEvaluatorReference",
-}) as any as S.Schema<RecommendationEvaluatorReference>;
+const RecommendationEvaluatorReference = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<RecommendationEvaluatorReference>;
 export type RecommendationEvaluatorList = RecommendationEvaluatorReference[];
-const RecommendationEvaluatorList = /*@__PURE__*/ S.Array(RecommendationEvaluatorReference);
+const RecommendationEvaluatorList = /*@__PURE__*/ __L.at(__c24, 4);
 export interface RecommendationEvaluationConfig {
   evaluators: RecommendationEvaluatorReference[];
 }
-const RecommendationEvaluationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ evaluators: RecommendationEvaluatorList }),
-).annotate({
-  identifier: "RecommendationEvaluationConfig",
-}) as any as S.Schema<RecommendationEvaluationConfig>;
+const RecommendationEvaluationConfig = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<RecommendationEvaluationConfig>;
 export interface SystemPromptRecommendationConfig {
   systemPrompt: SystemPromptConfig;
   agentTraces: AgentTracesConfig;
   evaluationConfig?: RecommendationEvaluationConfig;
 }
-const SystemPromptRecommendationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    systemPrompt: SystemPromptConfig,
-    agentTraces: AgentTracesConfig,
-    evaluationConfig: S.optional(RecommendationEvaluationConfig),
-  }),
-).annotate({
-  identifier: "SystemPromptRecommendationConfig",
-}) as any as S.Schema<SystemPromptRecommendationConfig>;
+const SystemPromptRecommendationConfig = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<SystemPromptRecommendationConfig>;
 export type RecommendationToolName = string;
 export type ToolDescriptionText = string | redacted.Redacted<string>;
 export type ToolDescriptionConfig = { text: string | redacted.Redacted<string> };
@@ -2616,54 +1757,50 @@ export interface ToolDescriptionInput {
   toolName: string;
   toolDescription: ToolDescriptionConfig;
 }
-const ToolDescriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ toolName: S.String, toolDescription: ToolDescriptionConfig }),
-).annotate({ identifier: "ToolDescriptionInput" }) as any as S.Schema<ToolDescriptionInput>;
+const ToolDescriptionInput = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ToolDescriptionInput>;
 export type ToolDescriptionList = ToolDescriptionInput[];
-const ToolDescriptionList = /*@__PURE__*/ S.Array(ToolDescriptionInput);
+const ToolDescriptionList = /*@__PURE__*/ __L.at(__c25, 0);
 export interface ToolDescriptionTextInput {
   tools: ToolDescriptionInput[];
 }
-const ToolDescriptionTextInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tools: ToolDescriptionList }),
-).annotate({ identifier: "ToolDescriptionTextInput" }) as any as S.Schema<ToolDescriptionTextInput>;
+const ToolDescriptionTextInput = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ToolDescriptionTextInput>;
 export interface ConfigurationBundleToolEntry {
   toolName: string;
   toolDescriptionJsonPath: string;
 }
-const ConfigurationBundleToolEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ toolName: S.String, toolDescriptionJsonPath: S.String }),
-).annotate({
-  identifier: "ConfigurationBundleToolEntry",
-}) as any as S.Schema<ConfigurationBundleToolEntry>;
+const ConfigurationBundleToolEntry = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<ConfigurationBundleToolEntry>;
 export type ConfigurationBundleToolEntryList = ConfigurationBundleToolEntry[];
-const ConfigurationBundleToolEntryList = /*@__PURE__*/ S.Array(ConfigurationBundleToolEntry);
+const ConfigurationBundleToolEntryList = /*@__PURE__*/ __L.at(__c25, 3);
 export interface ToolDescriptionConfigurationBundle {
   bundleArn: string;
   versionId: string;
   tools: ConfigurationBundleToolEntry[];
 }
-const ToolDescriptionConfigurationBundle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bundleArn: S.String, versionId: S.String, tools: ConfigurationBundleToolEntryList }),
-).annotate({
-  identifier: "ToolDescriptionConfigurationBundle",
-}) as any as S.Schema<ToolDescriptionConfigurationBundle>;
+const ToolDescriptionConfigurationBundle = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ToolDescriptionConfigurationBundle>;
 export type ToolDescriptionSource =
   | { toolDescriptionText: ToolDescriptionTextInput; configurationBundle?: never }
   | { toolDescriptionText?: never; configurationBundle: ToolDescriptionConfigurationBundle };
-const ToolDescriptionSource = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ toolDescriptionText: ToolDescriptionTextInput }),
-  /*@__PURE__*/ S.Struct({ configurationBundle: ToolDescriptionConfigurationBundle }),
-]);
+const ToolDescriptionSource = /*@__PURE__*/ __L.at(__c25, 5);
 export interface ToolDescriptionRecommendationConfig {
   toolDescription: ToolDescriptionSource;
   agentTraces: AgentTracesConfig;
 }
-const ToolDescriptionRecommendationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ toolDescription: ToolDescriptionSource, agentTraces: AgentTracesConfig }),
-).annotate({
-  identifier: "ToolDescriptionRecommendationConfig",
-}) as any as S.Schema<ToolDescriptionRecommendationConfig>;
+const ToolDescriptionRecommendationConfig = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ToolDescriptionRecommendationConfig>;
 export type RecommendationConfig =
   | {
       systemPromptRecommendationConfig: SystemPromptRecommendationConfig;
@@ -2673,21 +1810,15 @@ export type RecommendationConfig =
       systemPromptRecommendationConfig?: never;
       toolDescriptionRecommendationConfig: ToolDescriptionRecommendationConfig;
     };
-const RecommendationConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ systemPromptRecommendationConfig: SystemPromptRecommendationConfig }),
-  /*@__PURE__*/ S.Struct({
-    toolDescriptionRecommendationConfig: ToolDescriptionRecommendationConfig,
-  }),
-]);
+const RecommendationConfig = /*@__PURE__*/ __L.at(__c25, 7);
 export interface RecommendationResultConfigurationBundle {
   bundleArn: string;
   versionId: string;
 }
-const RecommendationResultConfigurationBundle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bundleArn: S.String, versionId: S.String }),
-).annotate({
-  identifier: "RecommendationResultConfigurationBundle",
-}) as any as S.Schema<RecommendationResultConfigurationBundle>;
+const RecommendationResultConfigurationBundle = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<RecommendationResultConfigurationBundle>;
 export type RecommendationExplanation = string;
 export type RecommendationErrorCode = string;
 export type RecommendationErrorMessage = string;
@@ -2698,47 +1829,31 @@ export interface SystemPromptRecommendationResult {
   errorCode?: string;
   errorMessage?: string;
 }
-const SystemPromptRecommendationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommendedSystemPrompt: S.optional(SensitiveString),
-    configurationBundle: S.optional(RecommendationResultConfigurationBundle),
-    explanation: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SystemPromptRecommendationResult",
-}) as any as S.Schema<SystemPromptRecommendationResult>;
+const SystemPromptRecommendationResult = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<SystemPromptRecommendationResult>;
 export interface ToolDescriptionOutput {
   toolName: string;
   recommendedToolDescription?: string | redacted.Redacted<string>;
   explanation?: string;
 }
-const ToolDescriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolName: S.String,
-    recommendedToolDescription: S.optional(SensitiveString),
-    explanation: S.optional(S.String),
-  }),
-).annotate({ identifier: "ToolDescriptionOutput" }) as any as S.Schema<ToolDescriptionOutput>;
+const ToolDescriptionOutput = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ToolDescriptionOutput>;
 export type ToolDescriptionResultList = ToolDescriptionOutput[];
-const ToolDescriptionResultList = /*@__PURE__*/ S.Array(ToolDescriptionOutput);
+const ToolDescriptionResultList = /*@__PURE__*/ __L.at(__c26, 3);
 export interface ToolDescriptionRecommendationResult {
   tools?: ToolDescriptionOutput[];
   configurationBundle?: RecommendationResultConfigurationBundle;
   errorCode?: string;
   errorMessage?: string;
 }
-const ToolDescriptionRecommendationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tools: S.optional(ToolDescriptionResultList),
-    configurationBundle: S.optional(RecommendationResultConfigurationBundle),
-    errorCode: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ToolDescriptionRecommendationResult",
-}) as any as S.Schema<ToolDescriptionRecommendationResult>;
+const ToolDescriptionRecommendationResult = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ToolDescriptionRecommendationResult>;
 export type RecommendationResult =
   | {
       systemPromptRecommendationResult: SystemPromptRecommendationResult;
@@ -2748,12 +1863,7 @@ export type RecommendationResult =
       systemPromptRecommendationResult?: never;
       toolDescriptionRecommendationResult: ToolDescriptionRecommendationResult;
     };
-const RecommendationResult = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ systemPromptRecommendationResult: SystemPromptRecommendationResult }),
-  /*@__PURE__*/ S.Struct({
-    toolDescriptionRecommendationResult: ToolDescriptionRecommendationResult,
-  }),
-]);
+const RecommendationResult = /*@__PURE__*/ __L.at(__c26, 5);
 export interface GetRecommendationResponse {
   recommendationId: string;
   recommendationArn: string;
@@ -2767,46 +1877,28 @@ export interface GetRecommendationResponse {
   recommendationResult?: RecommendationResult;
   kmsKeyArn?: string;
 }
-const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommendationId: S.String,
-    recommendationArn: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    type: RecommendationType,
-    recommendationConfig: RecommendationConfig,
-    status: RecommendationStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    recommendationResult: S.optional(RecommendationResult),
-    kmsKeyArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetRecommendationResponse",
-}) as any as S.Schema<GetRecommendationResponse>;
+const GetRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<GetRecommendationResponse>;
 export type WorkloadIdentityTokenType = string | redacted.Redacted<string>;
 export type CredentialProviderName = string;
 export interface GetResourceApiKeyRequest {
   workloadIdentityToken: string | redacted.Redacted<string>;
   resourceCredentialProviderName: string;
 }
-const GetResourceApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadIdentityToken: SensitiveString,
-    resourceCredentialProviderName: S.String,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/identities/api-key" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetResourceApiKeyRequest" }) as any as S.Schema<GetResourceApiKeyRequest>;
+const GetResourceApiKeyRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<GetResourceApiKeyRequest>;
 export type ApiKeyType = string | redacted.Redacted<string>;
 export interface GetResourceApiKeyResponse {
   apiKey: string | redacted.Redacted<string>;
 }
-const GetResourceApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ apiKey: SensitiveString }),
-).annotate({
-  identifier: "GetResourceApiKeyResponse",
-}) as any as S.Schema<GetResourceApiKeyResponse>;
+const GetResourceApiKeyResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<GetResourceApiKeyResponse>;
 export type ScopeType = string;
 export type ScopesListType = string[];
 const ScopesListType = NamespacesList as any as S.Schema<ScopesListType>;
@@ -2823,10 +1915,7 @@ export type CustomRequestValueType = string | redacted.Redacted<string>;
 export type CustomRequestParametersType = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-const CustomRequestParametersType = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+const CustomRequestParametersType = /*@__PURE__*/ __L.at(__c27, 1);
 export type State = string | redacted.Redacted<string>;
 export type ResourceType = string;
 export type ResourcesListType = string[];
@@ -2847,32 +1936,10 @@ export interface GetResourceOauth2TokenRequest {
   resources?: string[];
   audiences?: string[];
 }
-const GetResourceOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadIdentityToken: SensitiveString,
-    resourceCredentialProviderName: S.String,
-    scopes: ScopesListType,
-    oauth2Flow: Oauth2FlowType,
-    sessionUri: S.optional(S.String),
-    resourceOauth2ReturnUrl: S.optional(S.String),
-    forceAuthentication: S.optional(S.Boolean),
-    customParameters: S.optional(CustomRequestParametersType),
-    customState: S.optional(SensitiveString),
-    resources: S.optional(ResourcesListType),
-    audiences: S.optional(AudiencesListType),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/oauth2/token" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetResourceOauth2TokenRequest",
-}) as any as S.Schema<GetResourceOauth2TokenRequest>;
+const GetResourceOauth2TokenRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<GetResourceOauth2TokenRequest>;
 export type AuthorizationUrlType = string | redacted.Redacted<string>;
 export type AccessTokenType = string | redacted.Redacted<string>;
 export type SessionStatus = "IN_PROGRESS" | "FAILED" | (string & {});
@@ -2884,16 +1951,10 @@ export interface GetResourceOauth2TokenResponse {
   sessionUri?: string;
   sessionStatus?: SessionStatus;
 }
-const GetResourceOauth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorizationUrl: S.optional(SensitiveString),
-    accessToken: S.optional(SensitiveString),
-    sessionUri: S.optional(S.String),
-    sessionStatus: S.optional(SessionStatus),
-  }),
-).annotate({
-  identifier: "GetResourceOauth2TokenResponse",
-}) as any as S.Schema<GetResourceOauth2TokenResponse>;
+const GetResourceOauth2TokenResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<GetResourceOauth2TokenResponse>;
 export type PaymentHttpMethodType = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | (string & {});
 const PaymentHttpMethodType = S.String;
 
@@ -2907,17 +1968,10 @@ export interface CoinbaseCdpTokenRequestInput {
   includeWalletAuthToken?: boolean;
   requestBody?: string;
 }
-const CoinbaseCdpTokenRequestInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestMethod: PaymentHttpMethodType,
-    requestHost: S.optional(S.String),
-    requestPath: S.String,
-    includeWalletAuthToken: S.optional(S.Boolean),
-    requestBody: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CoinbaseCdpTokenRequestInput",
-}) as any as S.Schema<CoinbaseCdpTokenRequestInput>;
+const CoinbaseCdpTokenRequestInput = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<CoinbaseCdpTokenRequestInput>;
 export type StripePrivyRequestHostType = string;
 export type StripePrivyRequestPathType = string;
 export type StripePrivyRequestBodyType = string | redacted.Redacted<string>;
@@ -2927,56 +1981,32 @@ export interface StripePrivyTokenRequestInput {
   requestBody: string | redacted.Redacted<string>;
   includeAuthorizationSignature?: boolean;
 }
-const StripePrivyTokenRequestInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestHost: S.optional(S.String),
-    requestPath: S.String,
-    requestBody: SensitiveString,
-    includeAuthorizationSignature: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StripePrivyTokenRequestInput",
-}) as any as S.Schema<StripePrivyTokenRequestInput>;
+const StripePrivyTokenRequestInput = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<StripePrivyTokenRequestInput>;
 export type PaymentTokenRequestInput =
   | { coinbaseCdpTokenRequest: CoinbaseCdpTokenRequestInput; stripePrivyTokenRequest?: never }
   | { coinbaseCdpTokenRequest?: never; stripePrivyTokenRequest: StripePrivyTokenRequestInput };
-const PaymentTokenRequestInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ coinbaseCdpTokenRequest: CoinbaseCdpTokenRequestInput }),
-  /*@__PURE__*/ S.Struct({ stripePrivyTokenRequest: StripePrivyTokenRequestInput }),
-]);
+const PaymentTokenRequestInput = /*@__PURE__*/ __L.at(__c27, 6);
 export interface GetResourcePaymentTokenRequest {
   workloadIdentityToken: string | redacted.Redacted<string>;
   resourceCredentialProviderName: string;
   paymentTokenRequest: PaymentTokenRequestInput;
 }
-const GetResourcePaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadIdentityToken: SensitiveString,
-    resourceCredentialProviderName: S.String,
-    paymentTokenRequest: PaymentTokenRequestInput,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/payment/token" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetResourcePaymentTokenRequest",
-}) as any as S.Schema<GetResourcePaymentTokenRequest>;
+const GetResourcePaymentTokenRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<GetResourcePaymentTokenRequest>;
 export type CoinbaseCdpPaymentJwtTokenType = string | redacted.Redacted<string>;
 export interface CoinbaseCdpTokenResponseOutput {
   bearerToken: string | redacted.Redacted<string>;
   walletAuthToken?: string | redacted.Redacted<string>;
 }
-const CoinbaseCdpTokenResponseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bearerToken: SensitiveString, walletAuthToken: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "CoinbaseCdpTokenResponseOutput",
-}) as any as S.Schema<CoinbaseCdpTokenResponseOutput>;
+const CoinbaseCdpTokenResponseOutput = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<CoinbaseCdpTokenResponseOutput>;
 export type StripePrivyAuthorizationSignatureType = string | redacted.Redacted<string>;
 export type StripePrivyAppIdType = string;
 export type StripePrivyBasicAuthTokenType = string | redacted.Redacted<string>;
@@ -2986,75 +2016,44 @@ export interface StripePrivyTokenResponseOutput {
   appId: string;
   basicAuthToken: string | redacted.Redacted<string>;
 }
-const StripePrivyTokenResponseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorizationSignature: S.optional(SensitiveString),
-    requestExpiry: S.optional(S.Number),
-    appId: S.String,
-    basicAuthToken: SensitiveString,
-  }),
-).annotate({
-  identifier: "StripePrivyTokenResponseOutput",
-}) as any as S.Schema<StripePrivyTokenResponseOutput>;
+const StripePrivyTokenResponseOutput = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<StripePrivyTokenResponseOutput>;
 export type PaymentTokenResponseOutput =
   | { coinbaseCdpTokenResponse: CoinbaseCdpTokenResponseOutput; stripePrivyTokenResponse?: never }
   | { coinbaseCdpTokenResponse?: never; stripePrivyTokenResponse: StripePrivyTokenResponseOutput };
-const PaymentTokenResponseOutput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ coinbaseCdpTokenResponse: CoinbaseCdpTokenResponseOutput }),
-  /*@__PURE__*/ S.Struct({ stripePrivyTokenResponse: StripePrivyTokenResponseOutput }),
-]);
+const PaymentTokenResponseOutput = /*@__PURE__*/ __L.at(__c28, 2);
 export interface GetResourcePaymentTokenResponse {
   paymentTokenResponse: PaymentTokenResponseOutput;
 }
-const GetResourcePaymentTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ paymentTokenResponse: PaymentTokenResponseOutput }),
-).annotate({
-  identifier: "GetResourcePaymentTokenResponse",
-}) as any as S.Schema<GetResourcePaymentTokenResponse>;
+const GetResourcePaymentTokenResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<GetResourcePaymentTokenResponse>;
 export type WorkloadIdentityNameType = string;
 export interface GetWorkloadAccessTokenRequest {
   workloadName: string;
 }
-const GetWorkloadAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workloadName: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/GetWorkloadAccessToken" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetWorkloadAccessTokenRequest",
-}) as any as S.Schema<GetWorkloadAccessTokenRequest>;
+const GetWorkloadAccessTokenRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<GetWorkloadAccessTokenRequest>;
 export interface GetWorkloadAccessTokenResponse {
   workloadAccessToken: string | redacted.Redacted<string>;
 }
-const GetWorkloadAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workloadAccessToken: SensitiveString }),
-).annotate({
-  identifier: "GetWorkloadAccessTokenResponse",
-}) as any as S.Schema<GetWorkloadAccessTokenResponse>;
+const GetWorkloadAccessTokenResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<GetWorkloadAccessTokenResponse>;
 export interface GetWorkloadAccessTokenForJWTRequest {
   workloadName: string;
   userToken: string | redacted.Redacted<string>;
 }
-const GetWorkloadAccessTokenForJWTRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workloadName: S.String, userToken: SensitiveString }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/GetWorkloadAccessTokenForJWT" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetWorkloadAccessTokenForJWTRequest",
-}) as any as S.Schema<GetWorkloadAccessTokenForJWTRequest>;
+const GetWorkloadAccessTokenForJWTRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<GetWorkloadAccessTokenForJWTRequest>;
 export interface GetWorkloadAccessTokenForJWTResponse {
   workloadAccessToken: string | redacted.Redacted<string>;
 }
@@ -3064,20 +2063,10 @@ export interface GetWorkloadAccessTokenForUserIdRequest {
   workloadName: string;
   userId: string;
 }
-const GetWorkloadAccessTokenForUserIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workloadName: S.String, userId: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/GetWorkloadAccessTokenForUserId" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetWorkloadAccessTokenForUserIdRequest",
-}) as any as S.Schema<GetWorkloadAccessTokenForUserIdRequest>;
+const GetWorkloadAccessTokenForUserIdRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<GetWorkloadAccessTokenForUserIdRequest>;
 export interface GetWorkloadAccessTokenForUserIdResponse {
   workloadAccessToken: string | redacted.Redacted<string>;
 }
@@ -3086,22 +2075,15 @@ const GetWorkloadAccessTokenForUserIdResponse =
 export type IngestPayloadType =
   | { conversational: Conversational; json?: never }
   | { conversational?: never; json: MemoryJsonData };
-const IngestPayloadType = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ conversational: Conversational }),
-  /*@__PURE__*/ S.Struct({ json: MemoryJsonData }),
-]);
+const IngestPayloadType = /*@__PURE__*/ __L.at(__c29, 0);
 export type IngestPayloadList = IngestPayloadType[];
-const IngestPayloadList = /*@__PURE__*/ S.Array(IngestPayloadType);
+const IngestPayloadList = /*@__PURE__*/ __L.at(__c29, 1);
 export interface InlineMemoryContent {
   payload: IngestPayloadType[];
 }
-const InlineMemoryContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ payload: IngestPayloadList }),
-).annotate({ identifier: "InlineMemoryContent" }) as any as S.Schema<InlineMemoryContent>;
+const InlineMemoryContent = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<InlineMemoryContent>;
 export type ContentSource = { inline: InlineMemoryContent };
-const ContentSource = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ inline: InlineMemoryContent }),
-]);
+const ContentSource = /*@__PURE__*/ __L.at(__c29, 3);
 export interface IngestDataInput {
   memoryId: string;
   source: ContentSource;
@@ -3112,33 +2094,11 @@ export interface IngestDataInput {
   metadata?: { [key: string]: MetadataValue | undefined };
   clientToken?: string;
 }
-const IngestDataInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    source: ContentSource,
-    contentTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    actorId: S.String,
-    sessionId: S.optional(S.String),
-    extractionConfig: S.optional(ExtractionConfig),
-    metadata: S.optional(MetadataMap),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/ingest" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "IngestDataInput" }) as any as S.Schema<IngestDataInput>;
+const IngestDataInput = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<IngestDataInput>;
 export interface IngestDataOutput {
   sessionId: string;
 }
-const IngestDataOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ sessionId: S.String })).annotate({
-  identifier: "IngestDataOutput",
-}) as any as S.Schema<IngestDataOutput>;
+const IngestDataOutput = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<IngestDataOutput>;
 export type MimeType = string;
 export type StringType = string;
 export type Body = Uint8Array | redacted.Redacted<Uint8Array>;
@@ -3160,42 +2120,10 @@ export interface InvokeAgentRuntimeRequest {
   accountId?: string;
   payload: T.StreamingInputBody;
 }
-const InvokeAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
-    mcpSessionId: S.optional(S.String).pipe(T.HttpHeader("Mcp-Session-Id")),
-    runtimeSessionId: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
-      T.IdempotencyToken(),
-    ),
-    mcpProtocolVersion: S.optional(S.String).pipe(T.HttpHeader("Mcp-Protocol-Version")),
-    mcpMethod: S.optional(S.String).pipe(T.HttpHeader("Mcp-Method")),
-    mcpName: S.optional(S.String).pipe(T.HttpHeader("Mcp-Name")),
-    runtimeUserId: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-User-Id"),
-    ),
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
-    baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
-    agentRuntimeArn: S.String.pipe(T.HttpLabel("agentRuntimeArn")),
-    qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
-    accountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
-    payload: T.StreamingInput.pipe(T.HttpPayload()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtimes/{agentRuntimeArn}/invocations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "InvokeAgentRuntimeRequest",
-}) as any as S.Schema<InvokeAgentRuntimeRequest>;
+const InvokeAgentRuntimeRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<InvokeAgentRuntimeRequest>;
 export interface InvokeAgentRuntimeResponse {
   runtimeSessionId?: string;
   mcpSessionId?: string;
@@ -3208,33 +2136,18 @@ export interface InvokeAgentRuntimeResponse {
   response?: T.StreamingOutputBody;
   statusCode?: number;
 }
-const InvokeAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtimeSessionId: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
-    ),
-    mcpSessionId: S.optional(S.String).pipe(T.HttpHeader("Mcp-Session-Id")),
-    mcpProtocolVersion: S.optional(S.String).pipe(T.HttpHeader("Mcp-Protocol-Version")),
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
-    baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
-    contentType: S.String.pipe(T.HttpHeader("Content-Type")),
-    response: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-    statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
-  }),
-).annotate({
-  identifier: "InvokeAgentRuntimeResponse",
-}) as any as S.Schema<InvokeAgentRuntimeResponse>;
+const InvokeAgentRuntimeResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<InvokeAgentRuntimeResponse>;
 export interface InvokeAgentRuntimeCommandRequestBody {
   command: string;
   timeout?: number;
 }
-const InvokeAgentRuntimeCommandRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ command: S.String, timeout: S.optional(S.Number) }),
-).annotate({
-  identifier: "InvokeAgentRuntimeCommandRequestBody",
-}) as any as S.Schema<InvokeAgentRuntimeCommandRequestBody>;
+const InvokeAgentRuntimeCommandRequestBody = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<InvokeAgentRuntimeCommandRequestBody>;
 export interface InvokeAgentRuntimeCommandRequest {
   contentType?: string;
   accept?: string;
@@ -3248,48 +2161,17 @@ export interface InvokeAgentRuntimeCommandRequest {
   accountId?: string;
   body: InvokeAgentRuntimeCommandRequestBody;
 }
-const InvokeAgentRuntimeCommandRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
-    runtimeSessionId: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
-      T.IdempotencyToken(),
-    ),
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
-    baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
-    agentRuntimeArn: S.String.pipe(T.HttpLabel("agentRuntimeArn")),
-    qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
-    accountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
-    body: InvokeAgentRuntimeCommandRequestBody.pipe(T.HttpPayload()).annotate({
-      identifier: "InvokeAgentRuntimeCommandRequestBody",
-    }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtimes/{agentRuntimeArn}/commands" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "InvokeAgentRuntimeCommandRequest",
-}) as any as S.Schema<InvokeAgentRuntimeCommandRequest>;
+const InvokeAgentRuntimeCommandRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<InvokeAgentRuntimeCommandRequest>;
 export interface ContentStartEvent {}
-const ContentStartEvent = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ContentStartEvent",
-}) as any as S.Schema<ContentStartEvent>;
+const ContentStartEvent = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<ContentStartEvent>;
 export interface ContentDeltaEvent {
   stdout?: string;
   stderr?: string;
 }
-const ContentDeltaEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stdout: S.optional(S.String), stderr: S.optional(S.String) }),
-).annotate({ identifier: "ContentDeltaEvent" }) as any as S.Schema<ContentDeltaEvent>;
+const ContentDeltaEvent = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<ContentDeltaEvent>;
 export type CommandExecutionStatus = "COMPLETED" | "TIMED_OUT" | (string & {});
 const CommandExecutionStatus = S.String;
 
@@ -3297,21 +2179,13 @@ export interface ContentStopEvent {
   exitCode: number;
   status: CommandExecutionStatus;
 }
-const ContentStopEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exitCode: S.Number, status: CommandExecutionStatus }),
-).annotate({ identifier: "ContentStopEvent" }) as any as S.Schema<ContentStopEvent>;
+const ContentStopEvent = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<ContentStopEvent>;
 export interface ResponseChunk {
   contentStart?: ContentStartEvent;
   contentDelta?: ContentDeltaEvent;
   contentStop?: ContentStopEvent;
 }
-const ResponseChunk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentStart: S.optional(ContentStartEvent),
-    contentDelta: S.optional(ContentDeltaEvent),
-    contentStop: S.optional(ContentStopEvent),
-  }),
-).annotate({ identifier: "ResponseChunk" }) as any as S.Schema<ResponseChunk>;
+const ResponseChunk = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<ResponseChunk>;
 export type NonBlankString = string;
 export type ValidationExceptionReason =
   | "CannotParse"
@@ -3326,11 +2200,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c30, 7);
 export type InvokeAgentRuntimeCommandStreamOutput =
   | {
       chunk: ResponseChunk;
@@ -3412,48 +2287,9 @@ export type InvokeAgentRuntimeCommandStreamOutput =
       validationException?: never;
       runtimeClientError: RuntimeClientError;
     };
-const InvokeAgentRuntimeCommandStreamOutput = /*@__PURE__*/ T.EventStream(
-  /*@__PURE__*/ S.Union([
-    /*@__PURE__*/ S.Struct({ chunk: ResponseChunk }),
-    /*@__PURE__*/ S.Struct({
-      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
-        identifier: "AccessDeniedException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
-        identifier: "InternalServerException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
-        identifier: "ResourceNotFoundException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
-        () => ServiceQuotaExceededException,
-      ).annotate({
-        identifier: "ServiceQuotaExceededException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
-        identifier: "ThrottlingException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
-        identifier: "ValidationException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      runtimeClientError: /*@__PURE__*/ S.suspend(() => RuntimeClientError).annotate({
-        identifier: "RuntimeClientError",
-      }),
-    }),
-  ]),
-) as any as S.Schema<stream.Stream<InvokeAgentRuntimeCommandStreamOutput, Error, never>>;
+const InvokeAgentRuntimeCommandStreamOutput = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<
+  stream.Stream<InvokeAgentRuntimeCommandStreamOutput, Error, never>
+>;
 export interface InvokeAgentRuntimeCommandResponse {
   runtimeSessionId?: string;
   traceId?: string;
@@ -3464,22 +2300,10 @@ export interface InvokeAgentRuntimeCommandResponse {
   statusCode?: number;
   stream: stream.Stream<InvokeAgentRuntimeCommandStreamOutput, Error, never>;
 }
-const InvokeAgentRuntimeCommandResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtimeSessionId: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
-    ),
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
-    baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
-    contentType: S.String.pipe(T.HttpHeader("Content-Type")),
-    statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
-    stream: InvokeAgentRuntimeCommandStreamOutput.pipe(T.HttpPayload()),
-  }),
-).annotate({
-  identifier: "InvokeAgentRuntimeCommandResponse",
-}) as any as S.Schema<InvokeAgentRuntimeCommandResponse>;
+const InvokeAgentRuntimeCommandResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<InvokeAgentRuntimeCommandResponse>;
 export type MouseButton = "LEFT" | "RIGHT" | "MIDDLE" | (string & {});
 const MouseButton = S.String;
 
@@ -3489,21 +2313,12 @@ export interface MouseClickArguments {
   button?: MouseButton;
   clickCount?: number;
 }
-const MouseClickArguments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.Number,
-    y: S.Number,
-    button: S.optional(MouseButton),
-    clickCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MouseClickArguments" }) as any as S.Schema<MouseClickArguments>;
+const MouseClickArguments = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<MouseClickArguments>;
 export interface MouseMoveArguments {
   x: number;
   y: number;
 }
-const MouseMoveArguments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ x: S.Number, y: S.Number }),
-).annotate({ identifier: "MouseMoveArguments" }) as any as S.Schema<MouseMoveArguments>;
+const MouseMoveArguments = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<MouseMoveArguments>;
 export interface MouseDragArguments {
   endX: number;
   endY: number;
@@ -3511,59 +2326,42 @@ export interface MouseDragArguments {
   startY: number;
   button?: MouseButton;
 }
-const MouseDragArguments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endX: S.Number,
-    endY: S.Number,
-    startX: S.Number,
-    startY: S.Number,
-    button: S.optional(MouseButton),
-  }),
-).annotate({ identifier: "MouseDragArguments" }) as any as S.Schema<MouseDragArguments>;
+const MouseDragArguments = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<MouseDragArguments>;
 export interface MouseScrollArguments {
   x: number;
   y: number;
   deltaX?: number;
   deltaY?: number;
 }
-const MouseScrollArguments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.Number,
-    y: S.Number,
-    deltaX: S.optional(S.Number),
-    deltaY: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MouseScrollArguments" }) as any as S.Schema<MouseScrollArguments>;
+const MouseScrollArguments = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<MouseScrollArguments>;
 export interface KeyTypeArguments {
   text: string;
 }
-const KeyTypeArguments = /*@__PURE__*/ S.suspend(() => S.Struct({ text: S.String })).annotate({
-  identifier: "KeyTypeArguments",
-}) as any as S.Schema<KeyTypeArguments>;
+const KeyTypeArguments = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<KeyTypeArguments>;
 export interface KeyPressArguments {
   key: string;
   presses?: number;
 }
-const KeyPressArguments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, presses: S.optional(S.Number) }),
-).annotate({ identifier: "KeyPressArguments" }) as any as S.Schema<KeyPressArguments>;
+const KeyPressArguments = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<KeyPressArguments>;
 export type KeyList = string[];
 const KeyList = NamespacesList as any as S.Schema<KeyList>;
 export interface KeyShortcutArguments {
   keys: string[];
 }
-const KeyShortcutArguments = /*@__PURE__*/ S.suspend(() => S.Struct({ keys: KeyList })).annotate({
-  identifier: "KeyShortcutArguments",
-}) as any as S.Schema<KeyShortcutArguments>;
+const KeyShortcutArguments = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<KeyShortcutArguments>;
 export type ScreenshotFormat = "PNG" | (string & {});
 const ScreenshotFormat = S.String;
 
 export interface ScreenshotArguments {
   format?: ScreenshotFormat;
 }
-const ScreenshotArguments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ format: S.optional(ScreenshotFormat) }),
-).annotate({ identifier: "ScreenshotArguments" }) as any as S.Schema<ScreenshotArguments>;
+const ScreenshotArguments = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<ScreenshotArguments>;
 export type BrowserAction =
   | {
       mouseClick: MouseClickArguments;
@@ -3645,37 +2443,16 @@ export type BrowserAction =
       keyShortcut?: never;
       screenshot: ScreenshotArguments;
     };
-const BrowserAction = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ mouseClick: MouseClickArguments }),
-  /*@__PURE__*/ S.Struct({ mouseMove: MouseMoveArguments }),
-  /*@__PURE__*/ S.Struct({ mouseDrag: MouseDragArguments }),
-  /*@__PURE__*/ S.Struct({ mouseScroll: MouseScrollArguments }),
-  /*@__PURE__*/ S.Struct({ keyType: KeyTypeArguments }),
-  /*@__PURE__*/ S.Struct({ keyPress: KeyPressArguments }),
-  /*@__PURE__*/ S.Struct({ keyShortcut: KeyShortcutArguments }),
-  /*@__PURE__*/ S.Struct({ screenshot: ScreenshotArguments }),
-]);
+const BrowserAction = /*@__PURE__*/ __L.at(__c32, 2);
 export interface InvokeBrowserRequest {
   browserIdentifier: string;
   sessionId: string;
   action: BrowserAction;
 }
-const InvokeBrowserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
-    sessionId: S.String.pipe(T.HttpHeader("x-amzn-browser-session-id")),
-    action: BrowserAction,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/browsers/{browserIdentifier}/sessions/invoke" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "InvokeBrowserRequest" }) as any as S.Schema<InvokeBrowserRequest>;
+const InvokeBrowserRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<InvokeBrowserRequest>;
 export type BrowserActionStatus = "SUCCESS" | "FAILED" | (string & {});
 const BrowserActionStatus = S.String;
 
@@ -3683,9 +2460,7 @@ export interface MouseClickResult {
   status: BrowserActionStatus;
   error?: string;
 }
-const MouseClickResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: BrowserActionStatus, error: S.optional(S.String) }),
-).annotate({ identifier: "MouseClickResult" }) as any as S.Schema<MouseClickResult>;
+const MouseClickResult = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<MouseClickResult>;
 export interface MouseMoveResult {
   status: BrowserActionStatus;
   error?: string;
@@ -3721,9 +2496,7 @@ export interface ScreenshotResult {
   error?: string;
   data?: Uint8Array;
 }
-const ScreenshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: BrowserActionStatus, error: S.optional(S.String), data: S.optional(T.Blob) }),
-).annotate({ identifier: "ScreenshotResult" }) as any as S.Schema<ScreenshotResult>;
+const ScreenshotResult = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<ScreenshotResult>;
 export type BrowserActionResult =
   | {
       mouseClick: MouseClickResult;
@@ -3805,26 +2578,15 @@ export type BrowserActionResult =
       keyShortcut?: never;
       screenshot: ScreenshotResult;
     };
-const BrowserActionResult = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ mouseClick: MouseClickResult }),
-  /*@__PURE__*/ S.Struct({ mouseMove: MouseMoveResult }),
-  /*@__PURE__*/ S.Struct({ mouseDrag: MouseDragResult }),
-  /*@__PURE__*/ S.Struct({ mouseScroll: MouseScrollResult }),
-  /*@__PURE__*/ S.Struct({ keyType: KeyTypeResult }),
-  /*@__PURE__*/ S.Struct({ keyPress: KeyPressResult }),
-  /*@__PURE__*/ S.Struct({ keyShortcut: KeyShortcutResult }),
-  /*@__PURE__*/ S.Struct({ screenshot: ScreenshotResult }),
-]);
+const BrowserActionResult = /*@__PURE__*/ __L.at(__c32, 6);
 export interface InvokeBrowserResponse {
   result: BrowserActionResult;
   sessionId: string;
 }
-const InvokeBrowserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: BrowserActionResult,
-    sessionId: S.String.pipe(T.HttpHeader("x-amzn-browser-session-id")),
-  }),
-).annotate({ identifier: "InvokeBrowserResponse" }) as any as S.Schema<InvokeBrowserResponse>;
+const InvokeBrowserResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<InvokeBrowserResponse>;
 export type ToolName =
   | "executeCode"
   | "executeCommand"
@@ -3849,11 +2611,9 @@ export interface InputContentBlock {
   text?: string;
   blob?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-const InputContentBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ path: S.String, text: S.optional(S.String), blob: S.optional(SensitiveBlob) }),
-).annotate({ identifier: "InputContentBlock" }) as any as S.Schema<InputContentBlock>;
+const InputContentBlock = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<InputContentBlock>;
 export type InputContentBlockList = InputContentBlock[];
-const InputContentBlockList = /*@__PURE__*/ S.Array(InputContentBlock);
+const InputContentBlockList = /*@__PURE__*/ __L.at(__c33, 1);
 export type LanguageRuntime = "nodejs" | "deno" | "python" | (string & {});
 const LanguageRuntime = S.String;
 
@@ -3869,20 +2629,7 @@ export interface ToolArguments {
   taskId?: string;
   runtime?: LanguageRuntime;
 }
-const ToolArguments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    language: S.optional(ProgrammingLanguage),
-    clearContext: S.optional(S.Boolean),
-    command: S.optional(S.String),
-    path: S.optional(S.String),
-    paths: S.optional(StringList),
-    content: S.optional(InputContentBlockList),
-    directoryPath: S.optional(S.String),
-    taskId: S.optional(S.String),
-    runtime: S.optional(LanguageRuntime),
-  }),
-).annotate({ identifier: "ToolArguments" }) as any as S.Schema<ToolArguments>;
+const ToolArguments = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<ToolArguments>;
 export interface InvokeCodeInterpreterRequest {
   codeInterpreterIdentifier: string;
   sessionId?: string;
@@ -3891,30 +2638,10 @@ export interface InvokeCodeInterpreterRequest {
   name: ToolName;
   arguments?: ToolArguments;
 }
-const InvokeCodeInterpreterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
-    sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-code-interpreter-session-id")),
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    name: ToolName,
-    arguments: S.optional(ToolArguments),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/code-interpreters/{codeInterpreterIdentifier}/tools/invoke",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "InvokeCodeInterpreterRequest",
-}) as any as S.Schema<InvokeCodeInterpreterRequest>;
+const InvokeCodeInterpreterRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<InvokeCodeInterpreterRequest>;
 export type ContentBlockType = "text" | "image" | "resource" | "resource_link" | (string & {});
 const ContentBlockType = S.String;
 
@@ -3928,15 +2655,7 @@ export interface ResourceContent {
   text?: string;
   blob?: Uint8Array;
 }
-const ResourceContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ResourceContentType,
-    uri: S.optional(S.String),
-    mimeType: S.optional(S.String),
-    text: S.optional(S.String),
-    blob: S.optional(T.Blob),
-  }),
-).annotate({ identifier: "ResourceContent" }) as any as S.Schema<ResourceContent>;
+const ResourceContent = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<ResourceContent>;
 export interface ContentBlock {
   type: ContentBlockType;
   text?: string;
@@ -3948,21 +2667,9 @@ export interface ContentBlock {
   size?: number;
   resource?: ResourceContent;
 }
-const ContentBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ContentBlockType,
-    text: S.optional(S.String),
-    data: S.optional(T.Blob),
-    mimeType: S.optional(S.String),
-    uri: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    size: S.optional(S.Number),
-    resource: S.optional(ResourceContent),
-  }),
-).annotate({ identifier: "ContentBlock" }) as any as S.Schema<ContentBlock>;
+const ContentBlock = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<ContentBlock>;
 export type ContentBlockList = ContentBlock[];
-const ContentBlockList = /*@__PURE__*/ S.Array(ContentBlock);
+const ContentBlockList = /*@__PURE__*/ __L.at(__c33, 6);
 export type TaskStatus =
   | "submitted"
   | "working"
@@ -3980,30 +2687,19 @@ export interface ToolResultStructuredContent {
   exitCode?: number;
   executionTime?: number;
 }
-const ToolResultStructuredContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskId: S.optional(S.String),
-    taskStatus: S.optional(TaskStatus),
-    stdout: S.optional(S.String),
-    stderr: S.optional(S.String),
-    exitCode: S.optional(S.Number),
-    executionTime: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ToolResultStructuredContent",
-}) as any as S.Schema<ToolResultStructuredContent>;
+const ToolResultStructuredContent = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ToolResultStructuredContent>;
 export interface CodeInterpreterResult {
   content: ContentBlock[];
   structuredContent?: ToolResultStructuredContent;
   isError?: boolean;
 }
-const CodeInterpreterResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: ContentBlockList,
-    structuredContent: S.optional(ToolResultStructuredContent),
-    isError: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "CodeInterpreterResult" }) as any as S.Schema<CodeInterpreterResult>;
+const CodeInterpreterResult = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<CodeInterpreterResult>;
 export type CodeInterpreterStreamOutput =
   | {
       result: CodeInterpreterResult;
@@ -4085,60 +2781,17 @@ export type CodeInterpreterStreamOutput =
       throttlingException?: never;
       validationException: ValidationException;
     };
-const CodeInterpreterStreamOutput = /*@__PURE__*/ T.EventStream(
-  /*@__PURE__*/ S.Union([
-    /*@__PURE__*/ S.Struct({ result: CodeInterpreterResult }),
-    /*@__PURE__*/ S.Struct({
-      accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
-        identifier: "AccessDeniedException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      conflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
-        identifier: "ConflictException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
-        identifier: "InternalServerException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      resourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
-        identifier: "ResourceNotFoundException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
-        () => ServiceQuotaExceededException,
-      ).annotate({
-        identifier: "ServiceQuotaExceededException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
-        identifier: "ThrottlingException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
-        identifier: "ValidationException",
-      }),
-    }),
-  ]),
-) as any as S.Schema<stream.Stream<CodeInterpreterStreamOutput, Error, never>>;
+const CodeInterpreterStreamOutput = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<
+  stream.Stream<CodeInterpreterStreamOutput, Error, never>
+>;
 export interface InvokeCodeInterpreterResponse {
   sessionId?: string;
   stream: stream.Stream<CodeInterpreterStreamOutput, Error, never>;
 }
-const InvokeCodeInterpreterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-code-interpreter-session-id")),
-    stream: CodeInterpreterStreamOutput.pipe(T.HttpPayload()),
-  }),
-).annotate({
-  identifier: "InvokeCodeInterpreterResponse",
-}) as any as S.Schema<InvokeCodeInterpreterResponse>;
+const InvokeCodeInterpreterResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<InvokeCodeInterpreterResponse>;
 export type HarnessArn = string;
 export type HarnessEndpointName = string;
 export type HarnessConversationRole = "user" | "assistant" | (string & {});
@@ -4158,24 +2811,13 @@ export interface HarnessToolUseBlock {
   type?: HarnessToolUseType;
   serverName?: string;
 }
-const HarnessToolUseBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    toolUseId: S.String,
-    input: S.Any,
-    type: S.optional(HarnessToolUseType),
-    serverName: S.optional(S.String),
-  }),
-).annotate({ identifier: "HarnessToolUseBlock" }) as any as S.Schema<HarnessToolUseBlock>;
+const HarnessToolUseBlock = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<HarnessToolUseBlock>;
 export type HarnessToolResultContentBlock =
   | { text: string | redacted.Redacted<string>; json?: never }
   | { text?: never; json: any };
-const HarnessToolResultContentBlock = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ json: S.Any }),
-]);
+const HarnessToolResultContentBlock = /*@__PURE__*/ __L.at(__c34, 4);
 export type HarnessToolResultContentBlocks = HarnessToolResultContentBlock[];
-const HarnessToolResultContentBlocks = /*@__PURE__*/ S.Array(HarnessToolResultContentBlock);
+const HarnessToolResultContentBlocks = /*@__PURE__*/ __L.at(__c34, 5);
 export type HarnessToolUseStatus = "success" | "error" | (string & {});
 const HarnessToolUseStatus = S.String;
 
@@ -4185,30 +2827,22 @@ export interface HarnessToolResultBlock {
   status?: HarnessToolUseStatus;
   type?: HarnessToolUseType;
 }
-const HarnessToolResultBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolUseId: S.String,
-    content: HarnessToolResultContentBlocks,
-    status: S.optional(HarnessToolUseStatus),
-    type: S.optional(HarnessToolUseType),
-  }),
-).annotate({ identifier: "HarnessToolResultBlock" }) as any as S.Schema<HarnessToolResultBlock>;
+const HarnessToolResultBlock = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<HarnessToolResultBlock>;
 export interface HarnessReasoningTextBlock {
   text: string;
   signature?: string;
 }
-const HarnessReasoningTextBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ text: S.String, signature: S.optional(S.String) }),
-).annotate({
-  identifier: "HarnessReasoningTextBlock",
-}) as any as S.Schema<HarnessReasoningTextBlock>;
+const HarnessReasoningTextBlock = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<HarnessReasoningTextBlock>;
 export type HarnessReasoningContentBlock =
   | { reasoningText: HarnessReasoningTextBlock; redactedContent?: never }
   | { reasoningText?: never; redactedContent: Uint8Array };
-const HarnessReasoningContentBlock = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ reasoningText: HarnessReasoningTextBlock }),
-  /*@__PURE__*/ S.Struct({ redactedContent: T.Blob }),
-]);
+const HarnessReasoningContentBlock = /*@__PURE__*/ __L.at(__c35, 0);
 export type HarnessContentBlock =
   | {
       text: string | redacted.Redacted<string>;
@@ -4224,23 +2858,16 @@ export type HarnessContentBlock =
       toolResult?: never;
       reasoningContent: HarnessReasoningContentBlock;
     };
-const HarnessContentBlock = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ toolUse: HarnessToolUseBlock }),
-  /*@__PURE__*/ S.Struct({ toolResult: HarnessToolResultBlock }),
-  /*@__PURE__*/ S.Struct({ reasoningContent: HarnessReasoningContentBlock }),
-]);
+const HarnessContentBlock = /*@__PURE__*/ __L.at(__c35, 1);
 export type HarnessContentBlocks = HarnessContentBlock[];
-const HarnessContentBlocks = /*@__PURE__*/ S.Array(HarnessContentBlock);
+const HarnessContentBlocks = /*@__PURE__*/ __L.at(__c35, 2);
 export interface HarnessMessage {
   role: HarnessConversationRole;
   content: HarnessContentBlock[];
 }
-const HarnessMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ role: HarnessConversationRole, content: HarnessContentBlocks }),
-).annotate({ identifier: "HarnessMessage" }) as any as S.Schema<HarnessMessage>;
+const HarnessMessage = /*@__PURE__*/ __L.at(__c35, 3) as any as S.Schema<HarnessMessage>;
 export type HarnessMessages = HarnessMessage[];
-const HarnessMessages = /*@__PURE__*/ S.Array(HarnessMessage);
+const HarnessMessages = /*@__PURE__*/ __L.at(__c35, 4);
 export type ModelId = string;
 export type MaxTokens = number;
 export type Temperature = number;
@@ -4260,18 +2887,10 @@ export interface HarnessBedrockModelConfig {
   apiFormat?: HarnessBedrockApiFormat;
   additionalParams?: any;
 }
-const HarnessBedrockModelConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelId: S.String,
-    maxTokens: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    topP: S.optional(S.Number),
-    apiFormat: S.optional(HarnessBedrockApiFormat),
-    additionalParams: S.optional(S.Any),
-  }),
-).annotate({
-  identifier: "HarnessBedrockModelConfig",
-}) as any as S.Schema<HarnessBedrockModelConfig>;
+const HarnessBedrockModelConfig = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<HarnessBedrockModelConfig>;
 export type ApiKeyArn = string;
 export type HarnessOpenAiApiBase = string | redacted.Redacted<string>;
 export type HarnessOpenAiApiFormat = "chat_completions" | "responses" | (string & {});
@@ -4287,18 +2906,10 @@ export interface HarnessOpenAiModelConfig {
   apiFormat?: HarnessOpenAiApiFormat;
   additionalParams?: any;
 }
-const HarnessOpenAiModelConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelId: S.String,
-    apiKeyArn: S.String,
-    apiBase: S.optional(SensitiveString),
-    maxTokens: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    topP: S.optional(S.Number),
-    apiFormat: S.optional(HarnessOpenAiApiFormat),
-    additionalParams: S.optional(S.Any),
-  }),
-).annotate({ identifier: "HarnessOpenAiModelConfig" }) as any as S.Schema<HarnessOpenAiModelConfig>;
+const HarnessOpenAiModelConfig = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<HarnessOpenAiModelConfig>;
 export type TopK = number;
 export interface HarnessGeminiModelConfig {
   modelId: string;
@@ -4309,17 +2920,10 @@ export interface HarnessGeminiModelConfig {
   topK?: number;
   additionalParams?: any;
 }
-const HarnessGeminiModelConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelId: S.String,
-    apiKeyArn: S.String,
-    maxTokens: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    topP: S.optional(S.Number),
-    topK: S.optional(S.Number),
-    additionalParams: S.optional(S.Any),
-  }),
-).annotate({ identifier: "HarnessGeminiModelConfig" }) as any as S.Schema<HarnessGeminiModelConfig>;
+const HarnessGeminiModelConfig = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<HarnessGeminiModelConfig>;
 export type HarnessLiteLlmApiBase = string | redacted.Redacted<string>;
 export interface HarnessLiteLlmModelConfig {
   modelId: string;
@@ -4330,19 +2934,10 @@ export interface HarnessLiteLlmModelConfig {
   topP?: number;
   additionalParams?: any;
 }
-const HarnessLiteLlmModelConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelId: S.String,
-    apiKeyArn: S.optional(S.String),
-    apiBase: S.optional(SensitiveString),
-    maxTokens: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    topP: S.optional(S.Number),
-    additionalParams: S.optional(S.Any),
-  }),
-).annotate({
-  identifier: "HarnessLiteLlmModelConfig",
-}) as any as S.Schema<HarnessLiteLlmModelConfig>;
+const HarnessLiteLlmModelConfig = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<HarnessLiteLlmModelConfig>;
 export type HarnessModelConfiguration =
   | {
       bedrockModelConfig: HarnessBedrockModelConfig;
@@ -4368,16 +2963,11 @@ export type HarnessModelConfiguration =
       geminiModelConfig?: never;
       liteLlmModelConfig: HarnessLiteLlmModelConfig;
     };
-const HarnessModelConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ bedrockModelConfig: HarnessBedrockModelConfig }),
-  /*@__PURE__*/ S.Struct({ openAiModelConfig: HarnessOpenAiModelConfig }),
-  /*@__PURE__*/ S.Struct({ geminiModelConfig: HarnessGeminiModelConfig }),
-  /*@__PURE__*/ S.Struct({ liteLlmModelConfig: HarnessLiteLlmModelConfig }),
-]);
+const HarnessModelConfiguration = /*@__PURE__*/ __L.at(__c36, 1);
 export type HarnessSystemContentBlock = { text: string | redacted.Redacted<string> };
 const HarnessSystemContentBlock = MemoryContent as any as S.Schema<HarnessSystemContentBlock>;
 export type HarnessSystemPrompt = HarnessSystemContentBlock[];
-const HarnessSystemPrompt = /*@__PURE__*/ S.Array(HarnessSystemContentBlock);
+const HarnessSystemPrompt = /*@__PURE__*/ __L.at(__c36, 2);
 export type HarnessToolType =
   | "remote_mcp"
   | "agentcore_browser"
@@ -4396,18 +2986,18 @@ export interface HarnessRemoteMcpConfig {
   url: string | redacted.Redacted<string>;
   headers?: { [key: string]: string | undefined };
 }
-const HarnessRemoteMcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ url: SensitiveString, headers: S.optional(HttpHeadersMap) }),
-).annotate({ identifier: "HarnessRemoteMcpConfig" }) as any as S.Schema<HarnessRemoteMcpConfig>;
+const HarnessRemoteMcpConfig = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<HarnessRemoteMcpConfig>;
 export type HarnessBrowserArn = string;
 export interface HarnessAgentCoreBrowserConfig {
   browserArn?: string;
 }
-const HarnessAgentCoreBrowserConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ browserArn: S.optional(S.String) }),
-).annotate({
-  identifier: "HarnessAgentCoreBrowserConfig",
-}) as any as S.Schema<HarnessAgentCoreBrowserConfig>;
+const HarnessAgentCoreBrowserConfig = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<HarnessAgentCoreBrowserConfig>;
 export type OAuthCredentialProviderArn = string;
 export type OAuthScope = string;
 export type OAuthScopes = string[];
@@ -4433,52 +3023,40 @@ export interface OAuthCredentialProvider {
   grantType?: OAuthGrantType;
   defaultReturnUrl?: string;
 }
-const OAuthCredentialProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerArn: S.String,
-    scopes: OAuthScopes,
-    customParameters: S.optional(OAuthCustomParameters),
-    grantType: S.optional(OAuthGrantType),
-    defaultReturnUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "OAuthCredentialProvider" }) as any as S.Schema<OAuthCredentialProvider>;
+const OAuthCredentialProvider = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<OAuthCredentialProvider>;
 export type HarnessGatewayOutboundAuth =
   | { awsIam: Record<string, never>; none?: never; oauth?: never }
   | { awsIam?: never; none: Record<string, never>; oauth?: never }
   | { awsIam?: never; none?: never; oauth: OAuthCredentialProvider };
-const HarnessGatewayOutboundAuth = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ awsIam: /*@__PURE__*/ S.Struct({}) }),
-  /*@__PURE__*/ S.Struct({ none: /*@__PURE__*/ S.Struct({}) }),
-  /*@__PURE__*/ S.Struct({ oauth: OAuthCredentialProvider }),
-]);
+const HarnessGatewayOutboundAuth = /*@__PURE__*/ __L.at(__c36, 6);
 export interface HarnessAgentCoreGatewayConfig {
   gatewayArn: string;
   outboundAuth?: HarnessGatewayOutboundAuth;
 }
-const HarnessAgentCoreGatewayConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ gatewayArn: S.String, outboundAuth: S.optional(HarnessGatewayOutboundAuth) }),
-).annotate({
-  identifier: "HarnessAgentCoreGatewayConfig",
-}) as any as S.Schema<HarnessAgentCoreGatewayConfig>;
+const HarnessAgentCoreGatewayConfig = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<HarnessAgentCoreGatewayConfig>;
 export type HarnessInlineFunctionDescription = string | redacted.Redacted<string>;
 export interface HarnessInlineFunctionConfig {
   description: string | redacted.Redacted<string>;
   inputSchema: any;
 }
-const HarnessInlineFunctionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ description: SensitiveString, inputSchema: S.Any }),
-).annotate({
-  identifier: "HarnessInlineFunctionConfig",
-}) as any as S.Schema<HarnessInlineFunctionConfig>;
+const HarnessInlineFunctionConfig = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<HarnessInlineFunctionConfig>;
 export type HarnessCodeInterpreterArn = string;
 export interface HarnessAgentCoreCodeInterpreterConfig {
   codeInterpreterArn?: string;
 }
-const HarnessAgentCoreCodeInterpreterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ codeInterpreterArn: S.optional(S.String) }),
-).annotate({
-  identifier: "HarnessAgentCoreCodeInterpreterConfig",
-}) as any as S.Schema<HarnessAgentCoreCodeInterpreterConfig>;
+const HarnessAgentCoreCodeInterpreterConfig = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<HarnessAgentCoreCodeInterpreterConfig>;
 export type HarnessToolConfiguration =
   | {
       remoteMcp: HarnessRemoteMcpConfig;
@@ -4515,75 +3093,57 @@ export type HarnessToolConfiguration =
       inlineFunction?: never;
       agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig;
     };
-const HarnessToolConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ remoteMcp: HarnessRemoteMcpConfig }),
-  /*@__PURE__*/ S.Struct({ agentCoreBrowser: HarnessAgentCoreBrowserConfig }),
-  /*@__PURE__*/ S.Struct({ agentCoreGateway: HarnessAgentCoreGatewayConfig }),
-  /*@__PURE__*/ S.Struct({ inlineFunction: HarnessInlineFunctionConfig }),
-  /*@__PURE__*/ S.Struct({ agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig }),
-]);
+const HarnessToolConfiguration = /*@__PURE__*/ __L.at(__c37, 2);
 export interface HarnessTool {
   type: HarnessToolType;
   name?: string;
   config?: HarnessToolConfiguration;
 }
-const HarnessTool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: HarnessToolType,
-    name: S.optional(S.String),
-    config: S.optional(HarnessToolConfiguration),
-  }),
-).annotate({ identifier: "HarnessTool" }) as any as S.Schema<HarnessTool>;
+const HarnessTool = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<HarnessTool>;
 export type HarnessTools = HarnessTool[];
-const HarnessTools = /*@__PURE__*/ S.Array(HarnessTool);
+const HarnessTools = /*@__PURE__*/ __L.at(__c37, 4);
 export type HarnessSkillPath = string;
 export type HarnessSkillS3Uri = string;
 export interface HarnessSkillS3Source {
   uri: string;
 }
-const HarnessSkillS3Source = /*@__PURE__*/ S.suspend(() => S.Struct({ uri: S.String })).annotate({
-  identifier: "HarnessSkillS3Source",
-}) as any as S.Schema<HarnessSkillS3Source>;
+const HarnessSkillS3Source = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<HarnessSkillS3Source>;
 export type HarnessSkillGitUrl = string;
 export interface HarnessSkillGitAuth {
   credentialArn: string;
   username?: string;
 }
-const HarnessSkillGitAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ credentialArn: S.String, username: S.optional(S.String) }),
-).annotate({ identifier: "HarnessSkillGitAuth" }) as any as S.Schema<HarnessSkillGitAuth>;
+const HarnessSkillGitAuth = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<HarnessSkillGitAuth>;
 export interface HarnessSkillGitSource {
   url: string;
   path?: string;
   auth?: HarnessSkillGitAuth;
 }
-const HarnessSkillGitSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ url: S.String, path: S.optional(S.String), auth: S.optional(HarnessSkillGitAuth) }),
-).annotate({ identifier: "HarnessSkillGitSource" }) as any as S.Schema<HarnessSkillGitSource>;
+const HarnessSkillGitSource = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<HarnessSkillGitSource>;
 export type HarnessAwsSkillPath = string;
 export type HarnessAwsSkillPaths = string[];
 const HarnessAwsSkillPaths = NamespacesList as any as S.Schema<HarnessAwsSkillPaths>;
 export interface HarnessSkillAwsSkillsSource {
   paths?: string[];
 }
-const HarnessSkillAwsSkillsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ paths: S.optional(HarnessAwsSkillPaths) }),
-).annotate({
-  identifier: "HarnessSkillAwsSkillsSource",
-}) as any as S.Schema<HarnessSkillAwsSkillsSource>;
+const HarnessSkillAwsSkillsSource = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<HarnessSkillAwsSkillsSource>;
 export type HarnessSkill =
   | { path: string; s3?: never; git?: never; awsSkills?: never }
   | { path?: never; s3: HarnessSkillS3Source; git?: never; awsSkills?: never }
   | { path?: never; s3?: never; git: HarnessSkillGitSource; awsSkills?: never }
   | { path?: never; s3?: never; git?: never; awsSkills: HarnessSkillAwsSkillsSource };
-const HarnessSkill = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ path: S.String }),
-  /*@__PURE__*/ S.Struct({ s3: HarnessSkillS3Source }),
-  /*@__PURE__*/ S.Struct({ git: HarnessSkillGitSource }),
-  /*@__PURE__*/ S.Struct({ awsSkills: HarnessSkillAwsSkillsSource }),
-]);
+const HarnessSkill = /*@__PURE__*/ __L.at(__c38, 1);
 export type HarnessSkills = HarnessSkill[];
-const HarnessSkills = /*@__PURE__*/ S.Array(HarnessSkill);
+const HarnessSkills = /*@__PURE__*/ __L.at(__c38, 2);
 export type HarnessAllowedTool = string;
 export type HarnessAllowedTools = string[];
 const HarnessAllowedTools = NamespacesList as any as S.Schema<HarnessAllowedTools>;
@@ -4607,83 +3167,54 @@ export interface InvokeHarnessRequest {
   timeoutSeconds?: number;
   actorId?: string;
 }
-const InvokeHarnessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessArn: S.String.pipe(T.HttpQuery("harnessArn")),
-    qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
-    runtimeSessionId: S.String.pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id")),
-    runtimeUserId: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-User-Id"),
-    ),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
-    messages: HarnessMessages,
-    model: S.optional(HarnessModelConfiguration),
-    systemPrompt: S.optional(HarnessSystemPrompt),
-    tools: S.optional(HarnessTools),
-    skills: S.optional(HarnessSkills),
-    allowedTools: S.optional(HarnessAllowedTools),
-    maxIterations: S.optional(S.Number),
-    maxTokens: S.optional(S.Number),
-    timeoutSeconds: S.optional(S.Number),
-    actorId: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/harnesses/invoke" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "InvokeHarnessRequest" }) as any as S.Schema<InvokeHarnessRequest>;
+const InvokeHarnessRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<InvokeHarnessRequest>;
 export interface HarnessMessageStartEvent {
   role: HarnessConversationRole;
 }
-const HarnessMessageStartEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ role: HarnessConversationRole }),
-).annotate({ identifier: "HarnessMessageStartEvent" }) as any as S.Schema<HarnessMessageStartEvent>;
+const HarnessMessageStartEvent = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<HarnessMessageStartEvent>;
 export interface HarnessToolUseBlockStart {
   toolUseId: string;
   name: string;
   type?: HarnessToolUseType;
   serverName?: string;
 }
-const HarnessToolUseBlockStart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolUseId: S.String,
-    name: S.String,
-    type: S.optional(HarnessToolUseType),
-    serverName: S.optional(S.String),
-  }),
-).annotate({ identifier: "HarnessToolUseBlockStart" }) as any as S.Schema<HarnessToolUseBlockStart>;
+const HarnessToolUseBlockStart = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<HarnessToolUseBlockStart>;
 export interface HarnessToolResultBlockStart {
   toolUseId: string;
   status?: HarnessToolUseStatus;
 }
-const HarnessToolResultBlockStart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ toolUseId: S.String, status: S.optional(HarnessToolUseStatus) }),
-).annotate({
-  identifier: "HarnessToolResultBlockStart",
-}) as any as S.Schema<HarnessToolResultBlockStart>;
+const HarnessToolResultBlockStart = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<HarnessToolResultBlockStart>;
 export type HarnessContentBlockStart =
   | { toolUse: HarnessToolUseBlockStart; toolResult?: never }
   | { toolUse?: never; toolResult: HarnessToolResultBlockStart };
-const HarnessContentBlockStart = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ toolUse: HarnessToolUseBlockStart }),
-  /*@__PURE__*/ S.Struct({ toolResult: HarnessToolResultBlockStart }),
-]);
+const HarnessContentBlockStart = /*@__PURE__*/ __L.at(__c38, 7);
 export interface HarnessContentBlockStartEvent {
   contentBlockIndex: number;
   start: HarnessContentBlockStart;
 }
-const HarnessContentBlockStartEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ contentBlockIndex: S.Number, start: HarnessContentBlockStart }),
-).annotate({
-  identifier: "HarnessContentBlockStartEvent",
-}) as any as S.Schema<HarnessContentBlockStartEvent>;
+const HarnessContentBlockStartEvent = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<HarnessContentBlockStartEvent>;
 export interface HarnessToolUseBlockDelta {
   input: string | redacted.Redacted<string>;
 }
-const HarnessToolUseBlockDelta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ input: SensitiveString }),
-).annotate({ identifier: "HarnessToolUseBlockDelta" }) as any as S.Schema<HarnessToolUseBlockDelta>;
+const HarnessToolUseBlockDelta = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<HarnessToolUseBlockDelta>;
 export type HarnessToolResultBlockDelta =
   | { text: string | redacted.Redacted<string>; json?: never }
   | { text?: never; json: any };
@@ -4694,19 +3225,14 @@ export type HarnessReasoningContentBlockDelta =
   | { text: string; redactedContent?: never; signature?: never }
   | { text?: never; redactedContent: Uint8Array | redacted.Redacted<Uint8Array>; signature?: never }
   | { text?: never; redactedContent?: never; signature: string };
-const HarnessReasoningContentBlockDelta = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ text: S.String }),
-  /*@__PURE__*/ S.Struct({ redactedContent: SensitiveBlob }),
-  /*@__PURE__*/ S.Struct({ signature: S.String }),
-]);
+const HarnessReasoningContentBlockDelta = /*@__PURE__*/ __L.at(__c39, 2);
 export interface HarnessToolResultMetadataBlockDelta {
   metadata: string | redacted.Redacted<string>;
 }
-const HarnessToolResultMetadataBlockDelta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metadata: SensitiveString }),
-).annotate({
-  identifier: "HarnessToolResultMetadataBlockDelta",
-}) as any as S.Schema<HarnessToolResultMetadataBlockDelta>;
+const HarnessToolResultMetadataBlockDelta = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<HarnessToolResultMetadataBlockDelta>;
 export type HarnessContentBlockDelta =
   | {
       text: string | redacted.Redacted<string>;
@@ -4743,30 +3269,22 @@ export type HarnessContentBlockDelta =
       reasoningContent?: never;
       toolResultMetadata: HarnessToolResultMetadataBlockDelta;
     };
-const HarnessContentBlockDelta = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ text: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ toolUse: HarnessToolUseBlockDelta }),
-  /*@__PURE__*/ S.Struct({ toolResult: HarnessToolResultBlocksDelta }),
-  /*@__PURE__*/ S.Struct({ reasoningContent: HarnessReasoningContentBlockDelta }),
-  /*@__PURE__*/ S.Struct({ toolResultMetadata: HarnessToolResultMetadataBlockDelta }),
-]);
+const HarnessContentBlockDelta = /*@__PURE__*/ __L.at(__c39, 4);
 export interface HarnessContentBlockDeltaEvent {
   contentBlockIndex: number;
   delta: HarnessContentBlockDelta;
 }
-const HarnessContentBlockDeltaEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ contentBlockIndex: S.Number, delta: HarnessContentBlockDelta }),
-).annotate({
-  identifier: "HarnessContentBlockDeltaEvent",
-}) as any as S.Schema<HarnessContentBlockDeltaEvent>;
+const HarnessContentBlockDeltaEvent = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<HarnessContentBlockDeltaEvent>;
 export interface HarnessContentBlockStopEvent {
   contentBlockIndex: number;
 }
-const HarnessContentBlockStopEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ contentBlockIndex: S.Number }),
-).annotate({
-  identifier: "HarnessContentBlockStopEvent",
-}) as any as S.Schema<HarnessContentBlockStopEvent>;
+const HarnessContentBlockStopEvent = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<HarnessContentBlockStopEvent>;
 export type HarnessStopReason =
   | "end_turn"
   | "tool_use"
@@ -4789,9 +3307,10 @@ const HarnessStopReason = S.String;
 export interface HarnessMessageStopEvent {
   stopReason: HarnessStopReason;
 }
-const HarnessMessageStopEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stopReason: HarnessStopReason }),
-).annotate({ identifier: "HarnessMessageStopEvent" }) as any as S.Schema<HarnessMessageStopEvent>;
+const HarnessMessageStopEvent = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<HarnessMessageStopEvent>;
 export interface HarnessTokenUsage {
   inputTokens: number;
   outputTokens: number;
@@ -4799,28 +3318,22 @@ export interface HarnessTokenUsage {
   cacheReadInputTokens?: number;
   cacheWriteInputTokens?: number;
 }
-const HarnessTokenUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputTokens: S.Number,
-    outputTokens: S.Number,
-    totalTokens: S.Number,
-    cacheReadInputTokens: S.optional(S.Number),
-    cacheWriteInputTokens: S.optional(S.Number),
-  }),
-).annotate({ identifier: "HarnessTokenUsage" }) as any as S.Schema<HarnessTokenUsage>;
+const HarnessTokenUsage = /*@__PURE__*/ __L.at(__c40, 0) as any as S.Schema<HarnessTokenUsage>;
 export interface HarnessStreamMetrics {
   latencyMs: number;
 }
-const HarnessStreamMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ latencyMs: S.Number }),
-).annotate({ identifier: "HarnessStreamMetrics" }) as any as S.Schema<HarnessStreamMetrics>;
+const HarnessStreamMetrics = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<HarnessStreamMetrics>;
 export interface HarnessMetadataEvent {
   usage: HarnessTokenUsage;
   metrics: HarnessStreamMetrics;
 }
-const HarnessMetadataEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ usage: HarnessTokenUsage, metrics: HarnessStreamMetrics }),
-).annotate({ identifier: "HarnessMetadataEvent" }) as any as S.Schema<HarnessMetadataEvent>;
+const HarnessMetadataEvent = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<HarnessMetadataEvent>;
 export type HarnessHookEventId = string;
 export type HarnessHookName = string;
 export type HarnessHookEventType =
@@ -4841,15 +3354,7 @@ export interface HarnessHookEvent {
   decision?: HarnessHookDecision;
   reason?: string;
 }
-const HarnessHookEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hookEventId: S.String,
-    name: S.String,
-    type: HarnessHookEventType,
-    decision: S.optional(HarnessHookDecision),
-    reason: S.optional(S.String),
-  }),
-).annotate({ identifier: "HarnessHookEvent" }) as any as S.Schema<HarnessHookEvent>;
+const HarnessHookEvent = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<HarnessHookEvent>;
 export type InvokeHarnessStreamOutput =
   | {
       messageStart: HarnessMessageStartEvent;
@@ -4971,48 +3476,21 @@ export type InvokeHarnessStreamOutput =
       runtimeClientError?: never;
       hookEvent: HarnessHookEvent;
     };
-const InvokeHarnessStreamOutput = /*@__PURE__*/ T.EventStream(
-  /*@__PURE__*/ S.Union([
-    /*@__PURE__*/ S.Struct({ messageStart: HarnessMessageStartEvent }),
-    /*@__PURE__*/ S.Struct({ contentBlockStart: HarnessContentBlockStartEvent }),
-    /*@__PURE__*/ S.Struct({ contentBlockDelta: HarnessContentBlockDeltaEvent }),
-    /*@__PURE__*/ S.Struct({ contentBlockStop: HarnessContentBlockStopEvent }),
-    /*@__PURE__*/ S.Struct({ messageStop: HarnessMessageStopEvent }),
-    /*@__PURE__*/ S.Struct({ metadata: HarnessMetadataEvent }),
-    /*@__PURE__*/ S.Struct({
-      internalServerException: /*@__PURE__*/ S.suspend(() => InternalServerException).annotate({
-        identifier: "InternalServerException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
-        identifier: "ValidationException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      runtimeClientError: /*@__PURE__*/ S.suspend(() => RuntimeClientError).annotate({
-        identifier: "RuntimeClientError",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({ hookEvent: HarnessHookEvent }),
-  ]),
-) as any as S.Schema<stream.Stream<InvokeHarnessStreamOutput, Error, never>>;
+const InvokeHarnessStreamOutput = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<
+  stream.Stream<InvokeHarnessStreamOutput, Error, never>
+>;
 export interface InvokeHarnessResponse {
   stream: stream.Stream<InvokeHarnessStreamOutput, Error, never>;
 }
-const InvokeHarnessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stream: InvokeHarnessStreamOutput.pipe(T.HttpPayload()) }),
-).annotate({ identifier: "InvokeHarnessResponse" }) as any as S.Schema<InvokeHarnessResponse>;
+const InvokeHarnessResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<InvokeHarnessResponse>;
 export interface ListABTestsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListABTestsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/ab-tests" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListABTestsRequest" }) as any as S.Schema<ListABTestsRequest>;
+const ListABTestsRequest = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<ListABTestsRequest>;
 export interface ABTestSummary {
   abTestId: string;
   abTestArn: string;
@@ -5024,28 +3502,14 @@ export interface ABTestSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const ABTestSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    abTestId: S.String,
-    abTestArn: S.String,
-    name: S.String,
-    status: ABTestStatus,
-    executionStatus: ABTestExecutionStatus,
-    description: S.optional(S.String),
-    gatewayArn: S.optional(S.String),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "ABTestSummary" }) as any as S.Schema<ABTestSummary>;
+const ABTestSummary = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<ABTestSummary>;
 export type ABTestSummaryList = ABTestSummary[];
-const ABTestSummaryList = /*@__PURE__*/ S.Array(ABTestSummary);
+const ABTestSummaryList = /*@__PURE__*/ __L.at(__c41, 0);
 export interface ListABTestsResponse {
   abTests: ABTestSummary[];
   nextToken?: string;
 }
-const ListABTestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ abTests: ABTestSummaryList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListABTestsResponse" }) as any as S.Schema<ListABTestsResponse>;
+const ListABTestsResponse = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<ListABTestsResponse>;
 export type MaxResults = number;
 export type PaginationToken = string;
 export interface ListActorsInput {
@@ -5053,58 +3517,26 @@ export interface ListActorsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListActorsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/actors" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListActorsInput" }) as any as S.Schema<ListActorsInput>;
+const ListActorsInput = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<ListActorsInput>;
 export interface ActorSummary {
   actorId: string;
 }
-const ActorSummary = /*@__PURE__*/ S.suspend(() => S.Struct({ actorId: S.String })).annotate({
-  identifier: "ActorSummary",
-}) as any as S.Schema<ActorSummary>;
+const ActorSummary = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<ActorSummary>;
 export type ActorSummaryList = ActorSummary[];
-const ActorSummaryList = /*@__PURE__*/ S.Array(ActorSummary);
+const ActorSummaryList = /*@__PURE__*/ __L.at(__c41, 4);
 export interface ListActorsOutput {
   actorSummaries: ActorSummary[];
   nextToken?: string;
 }
-const ListActorsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actorSummaries: ActorSummaryList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListActorsOutput" }) as any as S.Schema<ListActorsOutput>;
+const ListActorsOutput = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<ListActorsOutput>;
 export interface ListBatchEvaluationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListBatchEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/evaluations/batch-evaluate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListBatchEvaluationsRequest",
-}) as any as S.Schema<ListBatchEvaluationsRequest>;
+const ListBatchEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<ListBatchEvaluationsRequest>;
 export interface BatchEvaluationSummary {
   batchEvaluationId: string;
   batchEvaluationArn: string;
@@ -5119,33 +3551,20 @@ export interface BatchEvaluationSummary {
   kmsKeyArn?: string;
   updatedAt?: Date;
 }
-const BatchEvaluationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchEvaluationId: S.String,
-    batchEvaluationArn: S.String,
-    batchEvaluationName: S.String,
-    status: BatchEvaluationStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    description: S.optional(S.String),
-    evaluators: S.optional(EvaluatorList),
-    insights: S.optional(InsightList),
-    evaluationResults: S.optional(EvaluationJobResults),
-    errorDetails: S.optional(ErrorDetailsList),
-    kmsKeyArn: S.optional(S.String),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "BatchEvaluationSummary" }) as any as S.Schema<BatchEvaluationSummary>;
+const BatchEvaluationSummary = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<BatchEvaluationSummary>;
 export type BatchEvaluationSummaryList = BatchEvaluationSummary[];
-const BatchEvaluationSummaryList = /*@__PURE__*/ S.Array(BatchEvaluationSummary);
+const BatchEvaluationSummaryList = /*@__PURE__*/ __L.at(__c42, 0);
 export interface ListBatchEvaluationsResponse {
   batchEvaluations: BatchEvaluationSummary[];
   nextToken?: string;
 }
-const ListBatchEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchEvaluations: BatchEvaluationSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListBatchEvaluationsResponse",
-}) as any as S.Schema<ListBatchEvaluationsResponse>;
+const ListBatchEvaluationsResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<ListBatchEvaluationsResponse>;
 export type NextToken = string;
 export interface ListBrowserSessionsRequest {
   browserIdentifier: string;
@@ -5153,25 +3572,10 @@ export interface ListBrowserSessionsRequest {
   nextToken?: string;
   status?: BrowserSessionStatus;
 }
-const ListBrowserSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    status: S.optional(BrowserSessionStatus),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/browsers/{browserIdentifier}/sessions/list" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListBrowserSessionsRequest",
-}) as any as S.Schema<ListBrowserSessionsRequest>;
+const ListBrowserSessionsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<ListBrowserSessionsRequest>;
 export interface BrowserSessionSummary {
   browserIdentifier: string;
   sessionId: string;
@@ -5180,55 +3584,30 @@ export interface BrowserSessionSummary {
   createdAt: Date;
   lastUpdatedAt?: Date;
 }
-const BrowserSessionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserIdentifier: S.String,
-    sessionId: S.String,
-    name: S.optional(S.String),
-    status: BrowserSessionStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "BrowserSessionSummary" }) as any as S.Schema<BrowserSessionSummary>;
+const BrowserSessionSummary = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<BrowserSessionSummary>;
 export type BrowserSessionSummaries = BrowserSessionSummary[];
-const BrowserSessionSummaries = /*@__PURE__*/ S.Array(BrowserSessionSummary);
+const BrowserSessionSummaries = /*@__PURE__*/ __L.at(__c42, 4);
 export interface ListBrowserSessionsResponse {
   items: BrowserSessionSummary[];
   nextToken?: string;
 }
-const ListBrowserSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: BrowserSessionSummaries, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListBrowserSessionsResponse",
-}) as any as S.Schema<ListBrowserSessionsResponse>;
+const ListBrowserSessionsResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<ListBrowserSessionsResponse>;
 export interface ListCodeInterpreterSessionsRequest {
   codeInterpreterIdentifier: string;
   maxResults?: number;
   nextToken?: string;
   status?: CodeInterpreterSessionStatus;
 }
-const ListCodeInterpreterSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    status: S.optional(CodeInterpreterSessionStatus),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/code-interpreters/{codeInterpreterIdentifier}/sessions/list",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCodeInterpreterSessionsRequest",
-}) as any as S.Schema<ListCodeInterpreterSessionsRequest>;
+const ListCodeInterpreterSessionsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<ListCodeInterpreterSessionsRequest>;
 export interface CodeInterpreterSessionSummary {
   codeInterpreterIdentifier: string;
   sessionId: string;
@@ -5237,67 +3616,48 @@ export interface CodeInterpreterSessionSummary {
   createdAt: Date;
   lastUpdatedAt?: Date;
 }
-const CodeInterpreterSessionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterIdentifier: S.String,
-    sessionId: S.String,
-    name: S.optional(S.String),
-    status: CodeInterpreterSessionStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "CodeInterpreterSessionSummary",
-}) as any as S.Schema<CodeInterpreterSessionSummary>;
+const CodeInterpreterSessionSummary = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<CodeInterpreterSessionSummary>;
 export type CodeInterpreterSessionSummaries = CodeInterpreterSessionSummary[];
-const CodeInterpreterSessionSummaries = /*@__PURE__*/ S.Array(CodeInterpreterSessionSummary);
+const CodeInterpreterSessionSummaries = /*@__PURE__*/ __L.at(__c43, 0);
 export interface ListCodeInterpreterSessionsResponse {
   items: CodeInterpreterSessionSummary[];
   nextToken?: string;
 }
-const ListCodeInterpreterSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: CodeInterpreterSessionSummaries, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListCodeInterpreterSessionsResponse",
-}) as any as S.Schema<ListCodeInterpreterSessionsResponse>;
+const ListCodeInterpreterSessionsResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<ListCodeInterpreterSessionsResponse>;
 export interface BranchFilter {
   name: string;
   includeParentBranches?: boolean;
 }
-const BranchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, includeParentBranches: S.optional(S.Boolean) }),
-).annotate({ identifier: "BranchFilter" }) as any as S.Schema<BranchFilter>;
+const BranchFilter = /*@__PURE__*/ __L.at(__c43, 2) as any as S.Schema<BranchFilter>;
 export type LeftExpression = { metadataKey: string };
-const LeftExpression = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ metadataKey: S.String })]);
+const LeftExpression = /*@__PURE__*/ __L.at(__c43, 3);
 export type OperatorType = "EQUALS_TO" | "EXISTS" | "NOT_EXISTS" | (string & {});
 const OperatorType = S.String;
 
 export type RightExpression = { metadataValue: MetadataValue };
-const RightExpression = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ metadataValue: MetadataValue }),
-]);
+const RightExpression = /*@__PURE__*/ __L.at(__c43, 4);
 export interface EventMetadataFilterExpression {
   left: LeftExpression;
   operator: OperatorType;
   right?: RightExpression;
 }
-const EventMetadataFilterExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ left: LeftExpression, operator: OperatorType, right: S.optional(RightExpression) }),
-).annotate({
-  identifier: "EventMetadataFilterExpression",
-}) as any as S.Schema<EventMetadataFilterExpression>;
+const EventMetadataFilterExpression = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<EventMetadataFilterExpression>;
 export type EventMetadataFilterList = EventMetadataFilterExpression[];
-const EventMetadataFilterList = /*@__PURE__*/ S.Array(EventMetadataFilterExpression);
+const EventMetadataFilterList = /*@__PURE__*/ __L.at(__c43, 6);
 export interface FilterInput {
   branch?: BranchFilter;
   eventMetadata?: EventMetadataFilterExpression[];
 }
-const FilterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(BranchFilter),
-    eventMetadata: S.optional(EventMetadataFilterList),
-  }),
-).annotate({ identifier: "FilterInput" }) as any as S.Schema<FilterInput>;
+const FilterInput = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<FilterInput>;
 export interface ListEventsInput {
   memoryId: string;
   sessionId: string;
@@ -5307,35 +3667,14 @@ export interface ListEventsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListEventsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-    actorId: S.String.pipe(T.HttpLabel("actorId")),
-    includePayloads: S.optional(S.Boolean),
-    filter: S.optional(FilterInput),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListEventsInput" }) as any as S.Schema<ListEventsInput>;
+const ListEventsInput = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<ListEventsInput>;
 export type EventList = Event[];
-const EventList = /*@__PURE__*/ S.Array(Event);
+const EventList = /*@__PURE__*/ __L.at(__c44, 1);
 export interface ListEventsOutput {
   events: Event[];
   nextToken?: string;
 }
-const ListEventsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ events: EventList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListEventsOutput" }) as any as S.Schema<ListEventsOutput>;
+const ListEventsOutput = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<ListEventsOutput>;
 export type ExtractionJobStatus = "FAILED" | (string & {});
 const ExtractionJobStatus = S.String;
 
@@ -5345,52 +3684,29 @@ export interface ExtractionJobFilterInput {
   actorId?: string;
   status?: ExtractionJobStatus;
 }
-const ExtractionJobFilterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategyId: S.optional(S.String),
-    sessionId: S.optional(S.String),
-    actorId: S.optional(S.String),
-    status: S.optional(ExtractionJobStatus),
-  }),
-).annotate({ identifier: "ExtractionJobFilterInput" }) as any as S.Schema<ExtractionJobFilterInput>;
+const ExtractionJobFilterInput = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<ExtractionJobFilterInput>;
 export interface ListMemoryExtractionJobsInput {
   memoryId: string;
   maxResults?: number;
   filter?: ExtractionJobFilterInput;
   nextToken?: string;
 }
-const ListMemoryExtractionJobsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    maxResults: S.optional(S.Number),
-    filter: S.optional(ExtractionJobFilterInput),
-    nextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/extractionJobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListMemoryExtractionJobsInput",
-}) as any as S.Schema<ListMemoryExtractionJobsInput>;
+const ListMemoryExtractionJobsInput = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<ListMemoryExtractionJobsInput>;
 export interface MessageMetadata {
   eventId: string;
   messageIndex: number;
 }
-const MessageMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventId: S.String, messageIndex: S.Number }),
-).annotate({ identifier: "MessageMetadata" }) as any as S.Schema<MessageMetadata>;
+const MessageMetadata = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<MessageMetadata>;
 export type MessagesList = MessageMetadata[];
-const MessagesList = /*@__PURE__*/ S.Array(MessageMetadata);
+const MessagesList = /*@__PURE__*/ __L.at(__c44, 6);
 export type ExtractionJobMessages = { messagesList: MessageMetadata[] };
-const ExtractionJobMessages = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ messagesList: MessagesList }),
-]);
+const ExtractionJobMessages = /*@__PURE__*/ __L.at(__c44, 7);
 export interface ExtractionJobMetadata {
   jobID: string;
   messages: ExtractionJobMessages;
@@ -5400,28 +3716,20 @@ export interface ExtractionJobMetadata {
   sessionId?: string;
   actorId?: string;
 }
-const ExtractionJobMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobID: S.String,
-    messages: ExtractionJobMessages,
-    status: S.optional(ExtractionJobStatus),
-    failureReason: S.optional(S.String),
-    strategyId: S.optional(S.String),
-    sessionId: S.optional(S.String),
-    actorId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExtractionJobMetadata" }) as any as S.Schema<ExtractionJobMetadata>;
+const ExtractionJobMetadata = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<ExtractionJobMetadata>;
 export type ExtractionJobMetadataList = ExtractionJobMetadata[];
-const ExtractionJobMetadataList = /*@__PURE__*/ S.Array(ExtractionJobMetadata);
+const ExtractionJobMetadataList = /*@__PURE__*/ __L.at(__c45, 1);
 export interface ListMemoryExtractionJobsOutput {
   jobs: ExtractionJobMetadata[];
   nextToken?: string;
 }
-const ListMemoryExtractionJobsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobs: ExtractionJobMetadataList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListMemoryExtractionJobsOutput",
-}) as any as S.Schema<ListMemoryExtractionJobsOutput>;
+const ListMemoryExtractionJobsOutput = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<ListMemoryExtractionJobsOutput>;
 export type MemoryRecordLeftExpression = { metadataKey: string };
 const MemoryRecordLeftExpression = LeftExpression as any as S.Schema<MemoryRecordLeftExpression>;
 export type MemoryRecordOperatorType =
@@ -5439,25 +3747,18 @@ export type MemoryRecordOperatorType =
 const MemoryRecordOperatorType = S.String;
 
 export type MemoryRecordRightExpression = { metadataValue: MemoryRecordMetadataValue };
-const MemoryRecordRightExpression = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ metadataValue: MemoryRecordMetadataValue }),
-]);
+const MemoryRecordRightExpression = /*@__PURE__*/ __L.at(__c45, 3);
 export interface MemoryMetadataFilterExpression {
   left: MemoryRecordLeftExpression;
   operator: MemoryRecordOperatorType;
   right?: MemoryRecordRightExpression;
 }
-const MemoryMetadataFilterExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    left: MemoryRecordLeftExpression,
-    operator: MemoryRecordOperatorType,
-    right: S.optional(MemoryRecordRightExpression),
-  }),
-).annotate({
-  identifier: "MemoryMetadataFilterExpression",
-}) as any as S.Schema<MemoryMetadataFilterExpression>;
+const MemoryMetadataFilterExpression = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<MemoryMetadataFilterExpression>;
 export type MemoryMetadataFilterList = MemoryMetadataFilterExpression[];
-const MemoryMetadataFilterList = /*@__PURE__*/ S.Array(MemoryMetadataFilterExpression);
+const MemoryMetadataFilterList = /*@__PURE__*/ __L.at(__c45, 5);
 export interface ListMemoryRecordsInput {
   memoryId: string;
   namespace?: string;
@@ -5467,26 +3768,10 @@ export interface ListMemoryRecordsInput {
   nextToken?: string;
   metadataFilters?: MemoryMetadataFilterExpression[];
 }
-const ListMemoryRecordsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    namespace: S.optional(S.String),
-    namespacePath: S.optional(S.String),
-    memoryStrategyId: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    metadataFilters: S.optional(MemoryMetadataFilterList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/memoryRecords" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListMemoryRecordsInput" }) as any as S.Schema<ListMemoryRecordsInput>;
+const ListMemoryRecordsInput = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<ListMemoryRecordsInput>;
 export interface MemoryRecordSummary {
   memoryRecordId: string;
   content: MemoryContent;
@@ -5496,26 +3781,17 @@ export interface MemoryRecordSummary {
   score?: number;
   metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
 }
-const MemoryRecordSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryRecordId: S.String,
-    content: MemoryContent,
-    memoryStrategyId: S.optional(S.String),
-    namespaces: NamespacesList,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    score: S.optional(S.Number),
-    metadata: S.optional(MemoryRecordMetadataMap),
-  }),
-).annotate({ identifier: "MemoryRecordSummary" }) as any as S.Schema<MemoryRecordSummary>;
+const MemoryRecordSummary = /*@__PURE__*/ __L.at(__c45, 7) as any as S.Schema<MemoryRecordSummary>;
 export type MemoryRecordSummaryList = MemoryRecordSummary[];
-const MemoryRecordSummaryList = /*@__PURE__*/ S.Array(MemoryRecordSummary);
+const MemoryRecordSummaryList = /*@__PURE__*/ __L.at(__c46, 0);
 export interface ListMemoryRecordsOutput {
   memoryRecordSummaries: MemoryRecordSummary[];
   nextToken?: string;
 }
-const ListMemoryRecordsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memoryRecordSummaries: MemoryRecordSummaryList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListMemoryRecordsOutput" }) as any as S.Schema<ListMemoryRecordsOutput>;
+const ListMemoryRecordsOutput = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<ListMemoryRecordsOutput>;
 export interface ListPaymentInstrumentsRequest {
   userId?: string;
   agentName?: string;
@@ -5524,29 +3800,10 @@ export interface ListPaymentInstrumentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListPaymentInstrumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    agentName: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
-    ),
-    paymentManagerArn: S.String,
-    paymentConnectorId: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/listPaymentInstruments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPaymentInstrumentsRequest",
-}) as any as S.Schema<ListPaymentInstrumentsRequest>;
+const ListPaymentInstrumentsRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<ListPaymentInstrumentsRequest>;
 export interface PaymentInstrumentSummary {
   paymentInstrumentId: string;
   paymentManagerArn: string;
@@ -5557,29 +3814,20 @@ export interface PaymentInstrumentSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const PaymentInstrumentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentInstrumentId: S.String,
-    paymentManagerArn: S.String,
-    paymentConnectorId: S.String,
-    userId: S.String,
-    paymentInstrumentType: PaymentInstrumentType,
-    status: PaymentInstrumentStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "PaymentInstrumentSummary" }) as any as S.Schema<PaymentInstrumentSummary>;
+const PaymentInstrumentSummary = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<PaymentInstrumentSummary>;
 export type PaymentInstrumentSummaryList = PaymentInstrumentSummary[];
-const PaymentInstrumentSummaryList = /*@__PURE__*/ S.Array(PaymentInstrumentSummary);
+const PaymentInstrumentSummaryList = /*@__PURE__*/ __L.at(__c46, 4);
 export interface ListPaymentInstrumentsResponse {
   paymentInstruments: PaymentInstrumentSummary[];
   nextToken?: string;
 }
-const ListPaymentInstrumentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ paymentInstruments: PaymentInstrumentSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPaymentInstrumentsResponse",
-}) as any as S.Schema<ListPaymentInstrumentsResponse>;
+const ListPaymentInstrumentsResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<ListPaymentInstrumentsResponse>;
 export interface ListPaymentSessionsRequest {
   userId?: string;
   agentName?: string;
@@ -5587,28 +3835,10 @@ export interface ListPaymentSessionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListPaymentSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    agentName: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
-    ),
-    paymentManagerArn: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/listPaymentSessions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPaymentSessionsRequest",
-}) as any as S.Schema<ListPaymentSessionsRequest>;
+const ListPaymentSessionsRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<ListPaymentSessionsRequest>;
 export interface PaymentSessionSummary {
   paymentSessionId: string;
   paymentManagerArn: string;
@@ -5617,41 +3847,29 @@ export interface PaymentSessionSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const PaymentSessionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentSessionId: S.String,
-    paymentManagerArn: S.String,
-    userId: S.String,
-    expiryTimeInMinutes: S.Number,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "PaymentSessionSummary" }) as any as S.Schema<PaymentSessionSummary>;
+const PaymentSessionSummary = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<PaymentSessionSummary>;
 export type PaymentSessionSummaryList = PaymentSessionSummary[];
-const PaymentSessionSummaryList = /*@__PURE__*/ S.Array(PaymentSessionSummary);
+const PaymentSessionSummaryList = /*@__PURE__*/ __L.at(__c47, 0);
 export interface ListPaymentSessionsResponse {
   paymentSessions: PaymentSessionSummary[];
   nextToken?: string;
 }
-const ListPaymentSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ paymentSessions: PaymentSessionSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPaymentSessionsResponse",
-}) as any as S.Schema<ListPaymentSessionsResponse>;
+const ListPaymentSessionsResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<ListPaymentSessionsResponse>;
 export interface ListRecommendationsRequest {
   maxResults?: number;
   nextToken?: string;
   statusFilter?: RecommendationStatus;
 }
-const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    statusFilter: S.optional(RecommendationStatus).pipe(T.HttpQuery("status")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/recommendations" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListRecommendationsRequest",
-}) as any as S.Schema<ListRecommendationsRequest>;
+const ListRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<ListRecommendationsRequest>;
 export interface RecommendationSummary {
   recommendationId: string;
   recommendationArn: string;
@@ -5662,38 +3880,27 @@ export interface RecommendationSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const RecommendationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommendationId: S.String,
-    recommendationArn: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    type: RecommendationType,
-    status: RecommendationStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "RecommendationSummary" }) as any as S.Schema<RecommendationSummary>;
+const RecommendationSummary = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<RecommendationSummary>;
 export type RecommendationSummaryList = RecommendationSummary[];
-const RecommendationSummaryList = /*@__PURE__*/ S.Array(RecommendationSummary);
+const RecommendationSummaryList = /*@__PURE__*/ __L.at(__c47, 4);
 export interface ListRecommendationsResponse {
   recommendationSummaries: RecommendationSummary[];
   nextToken?: string;
 }
-const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommendationSummaries: RecommendationSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListRecommendationsResponse",
-}) as any as S.Schema<ListRecommendationsResponse>;
+const ListRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<ListRecommendationsResponse>;
 export type EventFilterCondition = "HAS_EVENTS" | (string & {});
 const EventFilterCondition = S.String;
 
 export interface SessionFilter {
   eventFilter?: EventFilterCondition;
 }
-const SessionFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventFilter: S.optional(EventFilterCondition) }),
-).annotate({ identifier: "SessionFilter" }) as any as S.Schema<SessionFilter>;
+const SessionFilter = /*@__PURE__*/ __L.at(__c47, 6) as any as S.Schema<SessionFilter>;
 export interface ListSessionsInput {
   memoryId: string;
   actorId: string;
@@ -5701,45 +3908,20 @@ export interface ListSessionsInput {
   nextToken?: string;
   filter?: SessionFilter;
 }
-const ListSessionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    actorId: S.String.pipe(T.HttpLabel("actorId")),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    filter: S.optional(SessionFilter),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/actor/{actorId}/sessions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListSessionsInput" }) as any as S.Schema<ListSessionsInput>;
+const ListSessionsInput = /*@__PURE__*/ __L.at(__c47, 7) as any as S.Schema<ListSessionsInput>;
 export interface SessionSummary {
   sessionId: string;
   actorId: string;
   createdAt: Date;
 }
-const SessionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    actorId: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "SessionSummary" }) as any as S.Schema<SessionSummary>;
+const SessionSummary = /*@__PURE__*/ __L.at(__c48, 0) as any as S.Schema<SessionSummary>;
 export type SessionSummaryList = SessionSummary[];
-const SessionSummaryList = /*@__PURE__*/ S.Array(SessionSummary);
+const SessionSummaryList = /*@__PURE__*/ __L.at(__c48, 1);
 export interface ListSessionsOutput {
   sessionSummaries: SessionSummary[];
   nextToken?: string;
 }
-const ListSessionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionSummaries: SessionSummaryList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSessionsOutput" }) as any as S.Schema<ListSessionsOutput>;
+const ListSessionsOutput = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<ListSessionsOutput>;
 export type PaymentType = "CRYPTO_X402" | "MPP" | (string & {});
 const PaymentType = S.String;
 
@@ -5750,9 +3932,10 @@ export interface CryptoX402PaymentInput {
   payload: any;
   permit2AllowanceLimit?: string;
 }
-const CryptoX402PaymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ version: S.String, payload: S.Any, permit2AllowanceLimit: S.optional(S.String) }),
-).annotate({ identifier: "CryptoX402PaymentInput" }) as any as S.Schema<CryptoX402PaymentInput>;
+const CryptoX402PaymentInput = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<CryptoX402PaymentInput>;
 export type Version = string;
 export type WwwAuthenticateHeader = string;
 export type WwwAuthenticateHeaderList = string[];
@@ -5762,20 +3945,11 @@ export interface MppPaymentInput {
   wwwAuthenticateHeaders: string[];
   buyerPaysGasFees?: boolean;
 }
-const MppPaymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.String,
-    wwwAuthenticateHeaders: WwwAuthenticateHeaderList,
-    buyerPaysGasFees: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MppPaymentInput" }) as any as S.Schema<MppPaymentInput>;
+const MppPaymentInput = /*@__PURE__*/ __L.at(__c48, 4) as any as S.Schema<MppPaymentInput>;
 export type PaymentInput =
   | { cryptoX402: CryptoX402PaymentInput; mpp?: never }
   | { cryptoX402?: never; mpp: MppPaymentInput };
-const PaymentInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cryptoX402: CryptoX402PaymentInput }),
-  /*@__PURE__*/ S.Struct({ mpp: MppPaymentInput }),
-]);
+const PaymentInput = /*@__PURE__*/ __L.at(__c48, 5);
 export interface ProcessPaymentRequest {
   userId?: string;
   agentName?: string;
@@ -5786,29 +3960,10 @@ export interface ProcessPaymentRequest {
   paymentInput: PaymentInput;
   clientToken?: string;
 }
-const ProcessPaymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id")),
-    agentName: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
-    ),
-    paymentManagerArn: S.String,
-    paymentSessionId: S.String,
-    paymentInstrumentId: S.String,
-    paymentType: PaymentType,
-    paymentInput: PaymentInput,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/processPayment" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ProcessPaymentRequest" }) as any as S.Schema<ProcessPaymentRequest>;
+const ProcessPaymentRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<ProcessPaymentRequest>;
 export type ProcessPaymentId = string;
 export type PaymentStatus = "PROOF_GENERATED" | (string & {});
 const PaymentStatus = S.String;
@@ -5817,25 +3972,21 @@ export interface CryptoX402PaymentOutput {
   version: string;
   payload: any;
 }
-const CryptoX402PaymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ version: S.String, payload: S.Any }),
-).annotate({ identifier: "CryptoX402PaymentOutput" }) as any as S.Schema<CryptoX402PaymentOutput>;
+const CryptoX402PaymentOutput = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<CryptoX402PaymentOutput>;
 export type MppPaymentCredential = string | redacted.Redacted<string>;
 export interface MppPaymentOutput {
   version: string;
   selectedPaymentId: string;
   paymentCredential: string | redacted.Redacted<string>;
 }
-const MppPaymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ version: S.String, selectedPaymentId: S.String, paymentCredential: SensitiveString }),
-).annotate({ identifier: "MppPaymentOutput" }) as any as S.Schema<MppPaymentOutput>;
+const MppPaymentOutput = /*@__PURE__*/ __L.at(__c49, 0) as any as S.Schema<MppPaymentOutput>;
 export type PaymentOutput =
   | { cryptoX402: CryptoX402PaymentOutput; mpp?: never }
   | { cryptoX402?: never; mpp: MppPaymentOutput };
-const PaymentOutput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cryptoX402: CryptoX402PaymentOutput }),
-  /*@__PURE__*/ S.Struct({ mpp: MppPaymentOutput }),
-]);
+const PaymentOutput = /*@__PURE__*/ __L.at(__c49, 1);
 export interface ProcessPaymentResponse {
   processPaymentId: string;
   paymentManagerArn: string;
@@ -5847,33 +3998,17 @@ export interface ProcessPaymentResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-const ProcessPaymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    processPaymentId: S.String,
-    paymentManagerArn: S.String,
-    paymentSessionId: S.String,
-    paymentInstrumentId: S.String,
-    paymentType: PaymentType,
-    status: PaymentStatus,
-    paymentOutput: PaymentOutput,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "ProcessPaymentResponse" }) as any as S.Schema<ProcessPaymentResponse>;
+const ProcessPaymentResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<ProcessPaymentResponse>;
 export interface SearchCriteria {
   searchQuery: string | redacted.Redacted<string>;
   memoryStrategyId?: string;
   topK?: number;
   metadataFilters?: MemoryMetadataFilterExpression[];
 }
-const SearchCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    searchQuery: SensitiveString,
-    memoryStrategyId: S.optional(S.String),
-    topK: S.optional(S.Number),
-    metadataFilters: S.optional(MemoryMetadataFilterList),
-  }),
-).annotate({ identifier: "SearchCriteria" }) as any as S.Schema<SearchCriteria>;
+const SearchCriteria = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<SearchCriteria>;
 export interface RetrieveMemoryRecordsInput {
   memoryId: string;
   namespace?: string;
@@ -5882,36 +4017,18 @@ export interface RetrieveMemoryRecordsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const RetrieveMemoryRecordsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    namespace: S.optional(S.String),
-    namespacePath: S.optional(S.String),
-    searchCriteria: SearchCriteria,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/retrieve" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RetrieveMemoryRecordsInput",
-}) as any as S.Schema<RetrieveMemoryRecordsInput>;
+const RetrieveMemoryRecordsInput = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<RetrieveMemoryRecordsInput>;
 export interface RetrieveMemoryRecordsOutput {
   memoryRecordSummaries: MemoryRecordSummary[];
   nextToken?: string;
 }
-const RetrieveMemoryRecordsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memoryRecordSummaries: MemoryRecordSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "RetrieveMemoryRecordsOutput",
-}) as any as S.Schema<RetrieveMemoryRecordsOutput>;
+const RetrieveMemoryRecordsOutput = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<RetrieveMemoryRecordsOutput>;
 export interface SaveBrowserSessionProfileRequest {
   traceId?: string;
   traceParent?: string;
@@ -5920,43 +4037,20 @@ export interface SaveBrowserSessionProfileRequest {
   sessionId: string;
   clientToken?: string;
 }
-const SaveBrowserSessionProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    profileIdentifier: S.String.pipe(T.HttpLabel("profileIdentifier")),
-    browserIdentifier: S.String,
-    sessionId: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/browser-profiles/{profileIdentifier}/save" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "SaveBrowserSessionProfileRequest",
-}) as any as S.Schema<SaveBrowserSessionProfileRequest>;
+const SaveBrowserSessionProfileRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<SaveBrowserSessionProfileRequest>;
 export interface SaveBrowserSessionProfileResponse {
   profileIdentifier: string;
   browserIdentifier: string;
   sessionId: string;
   lastUpdatedAt: Date;
 }
-const SaveBrowserSessionProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileIdentifier: S.String,
-    browserIdentifier: S.String,
-    sessionId: S.String,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "SaveBrowserSessionProfileResponse",
-}) as any as S.Schema<SaveBrowserSessionProfileResponse>;
+const SaveBrowserSessionProfileResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<SaveBrowserSessionProfileResponse>;
 export type RegistryIdentifier = string;
 export type RegistryIdList = string[];
 const RegistryIdList = NamespacesList as any as S.Schema<RegistryIdList>;
@@ -5967,25 +4061,10 @@ export interface SearchRegistryRecordsRequest {
   maxResults?: number;
   filters?: any;
 }
-const SearchRegistryRecordsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    searchQuery: S.String,
-    registryIds: RegistryIdList,
-    maxResults: S.optional(S.Number),
-    filters: S.optional(S.Any),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/registry-records/search" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "SearchRegistryRecordsRequest",
-}) as any as S.Schema<SearchRegistryRecordsRequest>;
+const SearchRegistryRecordsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<SearchRegistryRecordsRequest>;
 export type RegistryArn = string;
 export type RegistryRecordArn = string;
 export type RegistryRecordId = string;
@@ -6000,23 +4079,17 @@ export interface ServerDefinition {
   schemaVersion?: string;
   inlineContent?: string;
 }
-const ServerDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schemaVersion: S.optional(S.String), inlineContent: S.optional(S.String) }),
-).annotate({ identifier: "ServerDefinition" }) as any as S.Schema<ServerDefinition>;
+const ServerDefinition = /*@__PURE__*/ __L.at(__c50, 1) as any as S.Schema<ServerDefinition>;
 export interface ToolsDefinition {
   protocolVersion?: string;
   inlineContent?: string;
 }
-const ToolsDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ protocolVersion: S.optional(S.String), inlineContent: S.optional(S.String) }),
-).annotate({ identifier: "ToolsDefinition" }) as any as S.Schema<ToolsDefinition>;
+const ToolsDefinition = /*@__PURE__*/ __L.at(__c50, 2) as any as S.Schema<ToolsDefinition>;
 export interface McpDescriptor {
   server: ServerDefinition;
   tools: ToolsDefinition;
 }
-const McpDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ server: ServerDefinition, tools: ToolsDefinition }),
-).annotate({ identifier: "McpDescriptor" }) as any as S.Schema<McpDescriptor>;
+const McpDescriptor = /*@__PURE__*/ __L.at(__c50, 3) as any as S.Schema<McpDescriptor>;
 export interface AgentCardDefinition {
   schemaVersion?: string;
   inlineContent?: string;
@@ -6025,15 +4098,11 @@ const AgentCardDefinition = ServerDefinition as any as S.Schema<AgentCardDefinit
 export interface A2aDescriptor {
   agentCard: AgentCardDefinition;
 }
-const A2aDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentCard: AgentCardDefinition }),
-).annotate({ identifier: "A2aDescriptor" }) as any as S.Schema<A2aDescriptor>;
+const A2aDescriptor = /*@__PURE__*/ __L.at(__c50, 4) as any as S.Schema<A2aDescriptor>;
 export interface CustomDescriptor {
   inlineContent?: string;
 }
-const CustomDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inlineContent: S.optional(S.String) }),
-).annotate({ identifier: "CustomDescriptor" }) as any as S.Schema<CustomDescriptor>;
+const CustomDescriptor = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<CustomDescriptor>;
 export interface SkillMdDefinition {
   inlineContent?: string;
 }
@@ -6047,23 +4116,17 @@ export interface AgentSkillsDescriptor {
   skillMd: SkillMdDefinition;
   skillDefinition?: SkillDefinition;
 }
-const AgentSkillsDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ skillMd: SkillMdDefinition, skillDefinition: S.optional(SkillDefinition) }),
-).annotate({ identifier: "AgentSkillsDescriptor" }) as any as S.Schema<AgentSkillsDescriptor>;
+const AgentSkillsDescriptor = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<AgentSkillsDescriptor>;
 export interface Descriptors {
   mcp?: McpDescriptor;
   a2a?: A2aDescriptor;
   custom?: CustomDescriptor;
   agentSkills?: AgentSkillsDescriptor;
 }
-const Descriptors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mcp: S.optional(McpDescriptor),
-    a2a: S.optional(A2aDescriptor),
-    custom: S.optional(CustomDescriptor),
-    agentSkills: S.optional(AgentSkillsDescriptor),
-  }),
-).annotate({ identifier: "Descriptors" }) as any as S.Schema<Descriptors>;
+const Descriptors = /*@__PURE__*/ __L.at(__c50, 7) as any as S.Schema<Descriptors>;
 export type RegistryRecordVersion = string;
 export type RegistryRecordStatus =
   | "DRAFT"
@@ -6087,61 +4150,36 @@ export interface RegistryRecordSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const RegistryRecordSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryArn: S.String,
-    recordArn: S.String,
-    recordId: S.String,
-    name: S.String,
-    description: S.optional(SensitiveString),
-    descriptorType: DescriptorType,
-    descriptors: Descriptors,
-    version: S.String,
-    status: RegistryRecordStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "RegistryRecordSummary" }) as any as S.Schema<RegistryRecordSummary>;
+const RegistryRecordSummary = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<RegistryRecordSummary>;
 export type RegistryRecordSummaryList = RegistryRecordSummary[];
-const RegistryRecordSummaryList = /*@__PURE__*/ S.Array(RegistryRecordSummary);
+const RegistryRecordSummaryList = /*@__PURE__*/ __L.at(__c51, 1);
 export interface SearchRegistryRecordsResponse {
   registryRecords: RegistryRecordSummary[];
 }
-const SearchRegistryRecordsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ registryRecords: RegistryRecordSummaryList }),
-).annotate({
-  identifier: "SearchRegistryRecordsResponse",
-}) as any as S.Schema<SearchRegistryRecordsResponse>;
+const SearchRegistryRecordsResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<SearchRegistryRecordsResponse>;
 export type GroundTruthTurnInput = { prompt: string };
-const GroundTruthTurnInput = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ prompt: S.String })]);
+const GroundTruthTurnInput = /*@__PURE__*/ __L.at(__c51, 3);
 export interface GroundTruthTurn {
   input?: GroundTruthTurnInput;
   expectedResponse?: EvaluationContent;
 }
-const GroundTruthTurn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: S.optional(GroundTruthTurnInput),
-    expectedResponse: S.optional(EvaluationContent),
-  }),
-).annotate({ identifier: "GroundTruthTurn" }) as any as S.Schema<GroundTruthTurn>;
+const GroundTruthTurn = /*@__PURE__*/ __L.at(__c51, 4) as any as S.Schema<GroundTruthTurn>;
 export type GroundTruthTurnList = GroundTruthTurn[];
-const GroundTruthTurnList = /*@__PURE__*/ S.Array(GroundTruthTurn);
+const GroundTruthTurnList = /*@__PURE__*/ __L.at(__c51, 5);
 export interface InlineGroundTruth {
   assertions?: EvaluationContent[];
   expectedTrajectory?: EvaluationExpectedTrajectory;
   turns?: GroundTruthTurn[];
 }
-const InlineGroundTruth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assertions: S.optional(EvaluationContentList),
-    expectedTrajectory: S.optional(EvaluationExpectedTrajectory),
-    turns: S.optional(GroundTruthTurnList),
-  }),
-).annotate({ identifier: "InlineGroundTruth" }) as any as S.Schema<InlineGroundTruth>;
+const InlineGroundTruth = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<InlineGroundTruth>;
 export type GroundTruthSource = { inline: InlineGroundTruth };
-const GroundTruthSource = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ inline: InlineGroundTruth }),
-]);
+const GroundTruthSource = /*@__PURE__*/ __L.at(__c51, 7);
 export type StringMap = { [key: string]: string | undefined };
 const StringMap = TagsMap as any as S.Schema<StringMap>;
 export interface SessionMetadataShape {
@@ -6150,20 +4188,14 @@ export interface SessionMetadataShape {
   groundTruth?: GroundTruthSource;
   metadata?: { [key: string]: string | undefined };
 }
-const SessionMetadataShape = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    testScenarioId: S.optional(S.String),
-    groundTruth: S.optional(GroundTruthSource),
-    metadata: S.optional(StringMap),
-  }),
-).annotate({ identifier: "SessionMetadataShape" }) as any as S.Schema<SessionMetadataShape>;
+const SessionMetadataShape = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<SessionMetadataShape>;
 export type SessionMetadataList = SessionMetadataShape[];
-const SessionMetadataList = /*@__PURE__*/ S.Array(SessionMetadataShape);
+const SessionMetadataList = /*@__PURE__*/ __L.at(__c52, 1);
 export type EvaluationMetadata = { sessionMetadata: SessionMetadataShape[] };
-const EvaluationMetadata = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ sessionMetadata: SessionMetadataList }),
-]);
+const EvaluationMetadata = /*@__PURE__*/ __L.at(__c52, 2);
 export interface StartBatchEvaluationRequest {
   batchEvaluationName: string;
   evaluators?: Evaluator[];
@@ -6176,31 +4208,10 @@ export interface StartBatchEvaluationRequest {
   description?: string;
   outputConfig?: OutputConfig;
 }
-const StartBatchEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchEvaluationName: S.String,
-    evaluators: S.optional(EvaluatorList),
-    insights: S.optional(InsightList),
-    dataSourceConfig: DataSourceConfig,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    evaluationMetadata: S.optional(EvaluationMetadata),
-    tags: S.optional(TagsMap),
-    kmsKeyArn: S.optional(S.String),
-    description: S.optional(S.String),
-    outputConfig: S.optional(OutputConfig),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/evaluations/batch-evaluate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartBatchEvaluationRequest",
-}) as any as S.Schema<StartBatchEvaluationRequest>;
+const StartBatchEvaluationRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<StartBatchEvaluationRequest>;
 export interface StartBatchEvaluationResponse {
   batchEvaluationId: string;
   batchEvaluationArn: string;
@@ -6214,23 +4225,10 @@ export interface StartBatchEvaluationResponse {
   kmsKeyArn?: string;
   description?: string;
 }
-const StartBatchEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchEvaluationId: S.String,
-    batchEvaluationArn: S.String,
-    batchEvaluationName: S.String,
-    evaluators: S.optional(EvaluatorList),
-    insights: S.optional(InsightList),
-    status: BatchEvaluationStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    outputConfig: S.optional(OutputConfig),
-    tags: S.optional(TagsMap),
-    kmsKeyArn: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartBatchEvaluationResponse",
-}) as any as S.Schema<StartBatchEvaluationResponse>;
+const StartBatchEvaluationResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<StartBatchEvaluationResponse>;
 export interface StartBrowserSessionRequest {
   traceId?: string;
   traceParent?: string;
@@ -6246,50 +4244,20 @@ export interface StartBrowserSessionRequest {
   filesystemConfigurations?: ToolsFileSystemConfiguration[];
   clientToken?: string;
 }
-const StartBrowserSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
-    name: S.optional(S.String),
-    sessionTimeoutSeconds: S.optional(S.Number),
-    viewPort: S.optional(ViewPort),
-    extensions: S.optional(BrowserExtensions),
-    profileConfiguration: S.optional(BrowserProfileConfiguration),
-    proxyConfiguration: S.optional(ProxyConfiguration),
-    enterprisePolicies: S.optional(BrowserEnterprisePolicies),
-    certificates: S.optional(Certificates),
-    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/browsers/{browserIdentifier}/sessions/start" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartBrowserSessionRequest",
-}) as any as S.Schema<StartBrowserSessionRequest>;
+const StartBrowserSessionRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<StartBrowserSessionRequest>;
 export interface StartBrowserSessionResponse {
   browserIdentifier: string;
   sessionId: string;
   createdAt: Date;
   streams?: BrowserSessionStream;
 }
-const StartBrowserSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserIdentifier: S.String,
-    sessionId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    streams: S.optional(BrowserSessionStream),
-  }),
-).annotate({
-  identifier: "StartBrowserSessionResponse",
-}) as any as S.Schema<StartBrowserSessionResponse>;
+const StartBrowserSessionResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<StartBrowserSessionResponse>;
 export interface StartCodeInterpreterSessionRequest {
   traceId?: string;
   traceParent?: string;
@@ -6300,83 +4268,39 @@ export interface StartCodeInterpreterSessionRequest {
   filesystemConfigurations?: ToolsFileSystemConfiguration[];
   clientToken?: string;
 }
-const StartCodeInterpreterSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
-    name: S.optional(S.String),
-    sessionTimeoutSeconds: S.optional(S.Number),
-    certificates: S.optional(Certificates),
-    filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/code-interpreters/{codeInterpreterIdentifier}/sessions/start",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartCodeInterpreterSessionRequest",
-}) as any as S.Schema<StartCodeInterpreterSessionRequest>;
+const StartCodeInterpreterSessionRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<StartCodeInterpreterSessionRequest>;
 export interface StartCodeInterpreterSessionResponse {
   codeInterpreterIdentifier: string;
   sessionId: string;
   createdAt: Date;
 }
-const StartCodeInterpreterSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterIdentifier: S.String,
-    sessionId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "StartCodeInterpreterSessionResponse",
-}) as any as S.Schema<StartCodeInterpreterSessionResponse>;
+const StartCodeInterpreterSessionResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<StartCodeInterpreterSessionResponse>;
 export interface ExtractionJob {
   jobId: string;
 }
-const ExtractionJob = /*@__PURE__*/ S.suspend(() => S.Struct({ jobId: S.String })).annotate({
-  identifier: "ExtractionJob",
-}) as any as S.Schema<ExtractionJob>;
+const ExtractionJob = /*@__PURE__*/ __L.at(__c53, 1) as any as S.Schema<ExtractionJob>;
 export interface StartMemoryExtractionJobInput {
   memoryId: string;
   extractionJob: ExtractionJob;
   clientToken?: string;
 }
-const StartMemoryExtractionJobInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-    extractionJob: ExtractionJob,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/{memoryId}/extractionJobs/start" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartMemoryExtractionJobInput",
-}) as any as S.Schema<StartMemoryExtractionJobInput>;
+const StartMemoryExtractionJobInput = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<StartMemoryExtractionJobInput>;
 export interface StartMemoryExtractionJobOutput {
   jobId: string;
 }
-const StartMemoryExtractionJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.String }),
-).annotate({
-  identifier: "StartMemoryExtractionJobOutput",
-}) as any as S.Schema<StartMemoryExtractionJobOutput>;
+const StartMemoryExtractionJobOutput = /*@__PURE__*/ __L.at(
+  __c53,
+  3,
+) as any as S.Schema<StartMemoryExtractionJobOutput>;
 export interface StartRecommendationRequest {
   name: string;
   description?: string;
@@ -6386,19 +4310,10 @@ export interface StartRecommendationRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const StartRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    type: RecommendationType,
-    recommendationConfig: RecommendationConfig,
-    kmsKeyArn: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagsMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/recommendations" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "StartRecommendationRequest",
-}) as any as S.Schema<StartRecommendationRequest>;
+const StartRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<StartRecommendationRequest>;
 export interface StartRecommendationResponse {
   recommendationId: string;
   recommendationArn: string;
@@ -6410,54 +4325,27 @@ export interface StartRecommendationResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-const StartRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommendationId: S.String,
-    recommendationArn: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    type: RecommendationType,
-    recommendationConfig: RecommendationConfig,
-    status: RecommendationStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "StartRecommendationResponse",
-}) as any as S.Schema<StartRecommendationResponse>;
+const StartRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<StartRecommendationResponse>;
 export interface StopBatchEvaluationRequest {
   batchEvaluationId: string;
 }
-const StopBatchEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ batchEvaluationId: S.String.pipe(T.HttpLabel("batchEvaluationId")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/evaluations/batch-evaluate/{batchEvaluationId}/stop" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StopBatchEvaluationRequest",
-}) as any as S.Schema<StopBatchEvaluationRequest>;
+const StopBatchEvaluationRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<StopBatchEvaluationRequest>;
 export interface StopBatchEvaluationResponse {
   batchEvaluationId: string;
   batchEvaluationArn: string;
   status: BatchEvaluationStatus;
   description?: string;
 }
-const StopBatchEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchEvaluationId: S.String,
-    batchEvaluationArn: S.String,
-    status: BatchEvaluationStatus,
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StopBatchEvaluationResponse",
-}) as any as S.Schema<StopBatchEvaluationResponse>;
+const StopBatchEvaluationResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<StopBatchEvaluationResponse>;
 export interface StopBrowserSessionRequest {
   traceId?: string;
   traceParent?: string;
@@ -6465,40 +4353,19 @@ export interface StopBrowserSessionRequest {
   sessionId: string;
   clientToken?: string;
 }
-const StopBrowserSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
-    sessionId: S.String.pipe(T.HttpQuery("sessionId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/browsers/{browserIdentifier}/sessions/stop" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StopBrowserSessionRequest",
-}) as any as S.Schema<StopBrowserSessionRequest>;
+const StopBrowserSessionRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<StopBrowserSessionRequest>;
 export interface StopBrowserSessionResponse {
   browserIdentifier: string;
   sessionId: string;
   lastUpdatedAt: Date;
 }
-const StopBrowserSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserIdentifier: S.String,
-    sessionId: S.String,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "StopBrowserSessionResponse",
-}) as any as S.Schema<StopBrowserSessionResponse>;
+const StopBrowserSessionResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<StopBrowserSessionResponse>;
 export interface StopCodeInterpreterSessionRequest {
   traceId?: string;
   traceParent?: string;
@@ -6506,82 +4373,37 @@ export interface StopCodeInterpreterSessionRequest {
   sessionId: string;
   clientToken?: string;
 }
-const StopCodeInterpreterSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
-    traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
-    codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
-    sessionId: S.String.pipe(T.HttpQuery("sessionId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/code-interpreters/{codeInterpreterIdentifier}/sessions/stop",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StopCodeInterpreterSessionRequest",
-}) as any as S.Schema<StopCodeInterpreterSessionRequest>;
+const StopCodeInterpreterSessionRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<StopCodeInterpreterSessionRequest>;
 export interface StopCodeInterpreterSessionResponse {
   codeInterpreterIdentifier: string;
   sessionId: string;
   lastUpdatedAt: Date;
 }
-const StopCodeInterpreterSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterIdentifier: S.String,
-    sessionId: S.String,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "StopCodeInterpreterSessionResponse",
-}) as any as S.Schema<StopCodeInterpreterSessionResponse>;
+const StopCodeInterpreterSessionResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<StopCodeInterpreterSessionResponse>;
 export interface StopRuntimeSessionRequest {
   runtimeSessionId: string;
   agentRuntimeArn: string;
   qualifier?: string;
   clientToken?: string;
 }
-const StopRuntimeSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtimeSessionId: S.String.pipe(T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id")),
-    agentRuntimeArn: S.String.pipe(T.HttpLabel("agentRuntimeArn")),
-    qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtimes/{agentRuntimeArn}/stopruntimesession" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StopRuntimeSessionRequest",
-}) as any as S.Schema<StopRuntimeSessionRequest>;
+const StopRuntimeSessionRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<StopRuntimeSessionRequest>;
 export interface StopRuntimeSessionResponse {
   runtimeSessionId?: string;
   statusCode?: number;
 }
-const StopRuntimeSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtimeSessionId: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
-    ),
-    statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
-  }),
-).annotate({
-  identifier: "StopRuntimeSessionResponse",
-}) as any as S.Schema<StopRuntimeSessionResponse>;
+const StopRuntimeSessionResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<StopRuntimeSessionResponse>;
 export interface UpdateABTestRequest {
   abTestId: string;
   clientToken?: string;
@@ -6593,21 +4415,7 @@ export interface UpdateABTestRequest {
   roleArn?: string;
   executionStatus?: ABTestExecutionStatus;
 }
-const UpdateABTestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    abTestId: S.String.pipe(T.HttpLabel("abTestId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    variants: S.optional(VariantList),
-    gatewayFilter: S.optional(GatewayFilter),
-    evaluationConfig: S.optional(ABTestEvaluationConfig),
-    roleArn: S.optional(S.String),
-    executionStatus: S.optional(ABTestExecutionStatus),
-  }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/ab-tests/{abTestId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateABTestRequest" }) as any as S.Schema<UpdateABTestRequest>;
+const UpdateABTestRequest = /*@__PURE__*/ __L.at(__c54, 6) as any as S.Schema<UpdateABTestRequest>;
 export interface UpdateABTestResponse {
   abTestId: string;
   abTestArn: string;
@@ -6615,66 +4423,39 @@ export interface UpdateABTestResponse {
   executionStatus: ABTestExecutionStatus;
   updatedAt: Date;
 }
-const UpdateABTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    abTestId: S.String,
-    abTestArn: S.String,
-    status: ABTestStatus,
-    executionStatus: ABTestExecutionStatus,
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "UpdateABTestResponse" }) as any as S.Schema<UpdateABTestResponse>;
+const UpdateABTestResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<UpdateABTestResponse>;
 export interface AutomationStreamUpdate {
   streamStatus?: AutomationStreamStatus;
 }
-const AutomationStreamUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ streamStatus: S.optional(AutomationStreamStatus) }),
-).annotate({ identifier: "AutomationStreamUpdate" }) as any as S.Schema<AutomationStreamUpdate>;
+const AutomationStreamUpdate = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<AutomationStreamUpdate>;
 export type StreamUpdate = { automationStreamUpdate: AutomationStreamUpdate };
-const StreamUpdate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ automationStreamUpdate: AutomationStreamUpdate }),
-]);
+const StreamUpdate = /*@__PURE__*/ __L.at(__c55, 1);
 export interface UpdateBrowserStreamRequest {
   browserIdentifier: string;
   sessionId: string;
   streamUpdate: StreamUpdate;
   clientToken?: string;
 }
-const UpdateBrowserStreamRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
-    sessionId: S.String.pipe(T.HttpQuery("sessionId")),
-    streamUpdate: StreamUpdate,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/browsers/{browserIdentifier}/sessions/streams/update" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateBrowserStreamRequest",
-}) as any as S.Schema<UpdateBrowserStreamRequest>;
+const UpdateBrowserStreamRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<UpdateBrowserStreamRequest>;
 export interface UpdateBrowserStreamResponse {
   browserIdentifier: string;
   sessionId: string;
   streams: BrowserSessionStream;
   updatedAt: Date;
 }
-const UpdateBrowserStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserIdentifier: S.String,
-    sessionId: S.String,
-    streams: BrowserSessionStream,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "UpdateBrowserStreamResponse",
-}) as any as S.Schema<UpdateBrowserStreamResponse>;
+const UpdateBrowserStreamResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<UpdateBrowserStreamResponse>;
 export type BatchCreateMemoryRecordsError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -9097,3 +6878,3994 @@ export const updateBrowserStream: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBrowserStream",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ text: SensitiveString })]);
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ stringListValue: StringValueList }),
+        /*@__PURE__*/ S.Struct({ numberValue: S.Number }),
+        /*@__PURE__*/ S.Struct({
+          dateTimeValue: /*@__PURE__*/ S.Date.pipe(
+            /*@__PURE__*/ T.TimestampFormat("epoch-seconds"),
+          ),
+        }),
+      ]);
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ MemoryRecordMetadataValue.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          requestIdentifier: S.String,
+          namespaces: NamespacesList,
+          content: MemoryContent,
+          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          memoryStrategyId: S.optional(S.String),
+          metadata: S.optional(MemoryRecordMetadataMap),
+        }),
+      ).annotate({ identifier: "MemoryRecordCreateInput" });
+    case 5:
+      return S.Array(MemoryRecordCreateInput);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          records: MemoryRecordsCreateInputList,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/memoryRecords/batchCreate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchCreateMemoryRecordsInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          memoryRecordId: S.String,
+          status: MemoryRecordStatus,
+          requestIdentifier: S.optional(S.String),
+          errorCode: S.optional(S.Number),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MemoryRecordOutput" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(MemoryRecordOutput);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          successfulRecords: MemoryRecordsOutputList,
+          failedRecords: MemoryRecordsOutputList,
+        }),
+      ).annotate({
+        identifier: "BatchCreateMemoryRecordsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ memoryRecordId: S.String, namespace: S.optional(S.String) }),
+      ).annotate({ identifier: "MemoryRecordDeleteInput" });
+    case 3:
+      return S.Array(MemoryRecordDeleteInput);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          records: MemoryRecordsDeleteInputList,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/memoryRecords/batchDelete" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteMemoryRecordsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          memoryRecordId: S.String,
+          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          content: S.optional(MemoryContent),
+          namespaces: S.optional(NamespacesList),
+          sourceNamespaces: S.optional(NamespacesList),
+          memoryStrategyId: S.optional(S.String),
+          metadata: S.optional(MemoryRecordMetadataMap),
+        }),
+      ).annotate({ identifier: "MemoryRecordUpdateInput" });
+    case 6:
+      return S.Array(MemoryRecordUpdateInput);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          records: MemoryRecordsUpdateInputList,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/memoryRecords/batchUpdate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateMemoryRecordsInput",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ userToken: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ userId: S.String }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ userIdentifier: UserIdentifier, sessionUri: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/identities/CompleteResourceTokenAuth" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CompleteResourceTokenAuthRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CompleteResourceTokenAuthResponse",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ bundleArn: S.String, bundleVersion: S.String })).annotate({
+        identifier: "ConfigurationBundleRef",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ name: S.String })).annotate({
+        identifier: "TargetRef",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          configurationBundle: S.optional(ConfigurationBundleRef),
+          target: S.optional(TargetRef),
+        }),
+      ).annotate({ identifier: "VariantConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, weight: S.Number, variantConfiguration: VariantConfiguration }),
+      ).annotate({ identifier: "Variant" });
+    case 7:
+      return S.Array(Variant);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ targetPaths: S.optional(TargetPathList) })).annotate({
+        identifier: "GatewayFilter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, onlineEvaluationConfigArn: S.String }),
+      ).annotate({
+        identifier: "PerVariantOnlineEvaluationConfig",
+      });
+    case 2:
+      return S.Array(PerVariantOnlineEvaluationConfig);
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ onlineEvaluationConfigArn: S.String }),
+        /*@__PURE__*/ S.Struct({
+          perVariantOnlineEvaluationConfig: PerVariantOnlineEvaluationConfigList,
+        }),
+      ]);
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          gatewayArn: S.String,
+          variants: VariantList,
+          gatewayFilter: S.optional(GatewayFilter),
+          evaluationConfig: ABTestEvaluationConfig,
+          roleArn: S.String,
+          enableOnCreate: S.optional(S.Boolean),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(TagsMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/ab-tests" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateABTestRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          abTestId: S.String,
+          abTestArn: S.String,
+          name: S.optional(S.String),
+          status: ABTestStatus,
+          executionStatus: ABTestExecutionStatus,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "CreateABTestResponse" });
+    case 7:
+      return S.Union([/*@__PURE__*/ S.Struct({ text: SensitiveString })]);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ content: Content, role: Role })).annotate({
+        identifier: "Conversational",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ content: S.Any })).annotate({
+        identifier: "MemoryJsonData",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ conversational: Conversational }),
+        /*@__PURE__*/ S.Struct({ blob: S.Any }),
+        /*@__PURE__*/ S.Struct({ json: MemoryJsonData }),
+      ]);
+    case 3:
+      return S.Array(PayloadType);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ rootEventId: S.optional(S.String), name: S.String }),
+      ).annotate({ identifier: "Branch" });
+    case 5:
+      return S.Union([/*@__PURE__*/ S.Struct({ stringValue: S.String })]);
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ MetadataValue.pipe(S.optional));
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ namespaceVariables: S.optional(NamespaceVariablesMap) }),
+      ).annotate({ identifier: "ExtractionConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          actorId: S.String,
+          sessionId: S.optional(S.String),
+          eventTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          payload: PayloadTypeList,
+          branch: S.optional(Branch),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          metadata: S.optional(MetadataMap),
+          extractionMode: S.optional(ExtractionMode),
+          extractionConfig: S.optional(ExtractionConfig),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/events" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateEventInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String,
+          actorId: S.String,
+          sessionId: S.String,
+          eventId: S.String,
+          eventTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          payload: S.optional(PayloadTypeList),
+          branch: S.optional(Branch),
+          metadata: S.optional(MetadataMap),
+        }),
+      ).annotate({ identifier: "Event" });
+    case 3:
+      return S.suspend(() => S.Struct({ event: Event })).annotate({
+        identifier: "CreateEventOutput",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ emailAddress: SensitiveString })).annotate({
+        identifier: "LinkedAccountEmail",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ phoneNumber: SensitiveString })).annotate({
+        identifier: "LinkedAccountSms",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ kid: S.String, sub: S.String })).annotate({
+        identifier: "LinkedAccountDeveloperJwt",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sub: S.String,
+          emailAddress: S.optional(SensitiveString),
+          name: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuth2Authentication" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ google: OAuth2Authentication }),
+        /*@__PURE__*/ S.Struct({ apple: OAuth2Authentication }),
+        /*@__PURE__*/ S.Struct({ x: OAuth2Authentication }),
+        /*@__PURE__*/ S.Struct({ telegram: OAuth2Authentication }),
+        /*@__PURE__*/ S.Struct({ github: OAuth2Authentication }),
+      ]);
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ email: LinkedAccountEmail }),
+        /*@__PURE__*/ S.Struct({ sms: LinkedAccountSms }),
+        /*@__PURE__*/ S.Struct({ developerJwt: LinkedAccountDeveloperJwt }),
+        /*@__PURE__*/ S.Struct({ oAuth2: LinkedAccountOAuth2 }),
+      ]);
+    case 2:
+      return S.Array(LinkedAccount);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          network: CryptoWalletNetwork,
+          linkedAccounts: LinkedAccountList,
+          walletAddress: S.optional(S.String),
+          redirectUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmbeddedCryptoWallet" });
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ embeddedCryptoWallet: EmbeddedCryptoWallet })]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          agentName: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+          ),
+          paymentManagerArn: S.String,
+          paymentConnectorId: S.String,
+          paymentInstrumentType: PaymentInstrumentType,
+          paymentInstrumentDetails: PaymentInstrumentDetails,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/createPaymentInstrument" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreatePaymentInstrumentRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          paymentInstrumentId: S.String,
+          paymentManagerArn: S.String,
+          paymentConnectorId: S.String,
+          userId: S.String,
+          paymentInstrumentType: PaymentInstrumentType,
+          paymentInstrumentDetails: PaymentInstrumentDetails,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          status: PaymentInstrumentStatus,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "PaymentInstrument" });
+    case 7:
+      return S.suspend(() => S.Struct({ paymentInstrument: PaymentInstrument })).annotate({
+        identifier: "CreatePaymentInstrumentResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ value: S.String, currency: Currency })).annotate({
+        identifier: "Amount",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ maxSpendAmount: Amount })).annotate({
+        identifier: "SessionLimits",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          agentName: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+          ),
+          paymentManagerArn: S.String,
+          limits: S.optional(SessionLimits),
+          expiryTimeInMinutes: S.Number,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/createPaymentSession" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreatePaymentSessionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          availableSpendAmount: S.optional(Amount),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "AvailableLimits" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          paymentSessionId: S.String,
+          paymentManagerArn: S.String,
+          limits: S.optional(SessionLimits),
+          userId: S.String,
+          expiryTimeInMinutes: S.Number,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          availableLimits: S.optional(AvailableLimits),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "PaymentSession" });
+    case 5:
+      return S.suspend(() => S.Struct({ paymentSession: PaymentSession })).annotate({
+        identifier: "CreatePaymentSessionResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ abTestId: S.String.pipe(T.HttpLabel("abTestId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/ab-tests/{abTestId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteABTestRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ abTestId: S.String, abTestArn: S.String, status: ABTestStatus }),
+      ).annotate({ identifier: "DeleteABTestResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ batchEvaluationId: S.String.pipe(T.HttpLabel("batchEvaluationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/evaluations/batch-evaluate/{batchEvaluationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteBatchEvaluationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          batchEvaluationId: S.String,
+          batchEvaluationArn: S.String,
+          status: BatchEvaluationStatus,
+        }),
+      ).annotate({
+        identifier: "DeleteBatchEvaluationResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          capacityProviderId: S.String.pipe(T.HttpLabel("capacityProviderId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/capacity-providers/{capacityProviderId}/sessions/{sessionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteCapacityProviderSessionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          capacityProviderArn: S.String,
+          sessionId: S.String,
+          status: CapacityProviderSessionStatus,
+        }),
+      ).annotate({
+        identifier: "DeleteCapacityProviderSessionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+          eventId: S.String.pipe(T.HttpLabel("eventId")),
+          actorId: S.String.pipe(T.HttpLabel("actorId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}/events/{eventId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteEventInput" });
+    case 5:
+      return S.suspend(() => S.Struct({ eventId: S.String })).annotate({
+        identifier: "DeleteEventOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          memoryRecordId: S.String.pipe(T.HttpLabel("memoryRecordId")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/memories/{memoryId}/memoryRecords/{memoryRecordId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteMemoryRecordInput" });
+    case 7:
+      return S.suspend(() => S.Struct({ memoryRecordId: S.String })).annotate({
+        identifier: "DeleteMemoryRecordOutput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          paymentManagerArn: S.String,
+          paymentConnectorId: S.String,
+          paymentInstrumentId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/deletePaymentInstrument" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePaymentInstrumentRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ status: PaymentInstrumentStatus })).annotate({
+        identifier: "DeletePaymentInstrumentResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          paymentManagerArn: S.String,
+          paymentSessionId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/deletePaymentSession" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePaymentSessionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ recommendationId: S.String.pipe(T.HttpLabel("recommendationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/recommendations/{recommendationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteRecommendationRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ recommendationId: S.String, status: RecommendationStatus }),
+      ).annotate({
+        identifier: "DeleteRecommendationResponse",
+      });
+    case 5:
+      return S.Array(S.Any);
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ sessionSpans: Spans })]);
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ spanIds: SpanIds }),
+        /*@__PURE__*/ S.Struct({ traceIds: TraceIds }),
+      ]);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String,
+          traceId: S.optional(S.String),
+          spanId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SpanContext" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ spanContext: SpanContext })]);
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ text: S.String })]);
+    case 3:
+      return S.Array(EvaluationContent);
+    case 4:
+      return S.suspend(() => S.Struct({ toolNames: S.optional(EvaluationToolNames) })).annotate({
+        identifier: "EvaluationExpectedTrajectory",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          context: Context,
+          expectedResponse: S.optional(EvaluationContent),
+          assertions: S.optional(EvaluationContentList),
+          expectedTrajectory: S.optional(EvaluationExpectedTrajectory),
+        }),
+      ).annotate({ identifier: "EvaluationReferenceInput" });
+    case 6:
+      return S.Array(EvaluationReferenceInput);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")),
+          evaluationInput: EvaluationInput,
+          evaluationTarget: S.optional(EvaluationTarget),
+          evaluationReferenceInputs: S.optional(EvaluationReferenceInputs),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/evaluations/evaluate/{evaluatorId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "EvaluateRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inputTokens: S.optional(S.Number),
+          outputTokens: S.optional(S.Number),
+          totalTokens: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TokenUsage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          evaluatorArn: S.String,
+          evaluatorId: S.String,
+          evaluatorName: S.String,
+          explanation: S.optional(SensitiveString),
+          context: Context,
+          value: S.optional(S.Number),
+          label: S.optional(S.String),
+          tokenUsage: S.optional(TokenUsage),
+          errorMessage: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          ignoredReferenceInputFields: S.optional(IgnoredReferenceInputFields),
+        }),
+      ).annotate({ identifier: "EvaluationResultContent" });
+    case 2:
+      return S.Array(EvaluationResultContent);
+    case 3:
+      return S.suspend(() => S.Struct({ evaluationResults: EvaluationResults })).annotate({
+        identifier: "EvaluateResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ abTestId: S.String.pipe(T.HttpLabel("abTestId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/ab-tests/{abTestId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetABTestRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ variantName: S.String, sampleSize: S.Number, mean: S.Number }),
+      ).annotate({ identifier: "ControlStats" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ lower: S.optional(S.Number), upper: S.optional(S.Number) }),
+      ).annotate({ identifier: "ConfidenceInterval" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          variantName: S.String,
+          sampleSize: S.Number,
+          mean: S.Number,
+          absoluteChange: S.optional(S.Number),
+          percentChange: S.optional(S.Number),
+          pValue: S.optional(S.Number),
+          confidenceInterval: S.optional(ConfidenceInterval),
+          isSignificant: S.Boolean,
+        }),
+      ).annotate({ identifier: "VariantResult" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(VariantResult);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          evaluatorArn: S.String,
+          controlStats: ControlStats,
+          variantResults: VariantResultList,
+        }),
+      ).annotate({ identifier: "EvaluatorMetric" });
+    case 2:
+      return S.Array(EvaluatorMetric);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          analysisTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          evaluatorMetrics: EvaluatorMetricList,
+        }),
+      ).annotate({ identifier: "ABTestResults" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          abTestId: S.String,
+          abTestArn: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          status: ABTestStatus,
+          executionStatus: ABTestExecutionStatus,
+          gatewayArn: S.String,
+          variants: VariantList,
+          gatewayFilter: S.optional(GatewayFilter),
+          evaluationConfig: ABTestEvaluationConfig,
+          roleArn: S.optional(S.String),
+          currentRunId: S.optional(S.String),
+          errorDetails: S.optional(ErrorDetailsList),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          maxDurationExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          results: S.optional(ABTestResults),
+        }),
+      ).annotate({ identifier: "GetABTestResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          runtimeSessionId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+            T.IdempotencyToken(),
+          ),
+          agentRuntimeArn: S.String.pipe(T.HttpLabel("agentRuntimeArn")),
+          qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/runtimes/{agentRuntimeArn}/invocations/.well-known/agent-card.json",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAgentCardRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          runtimeSessionId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+          ),
+          agentCard: S.Any.pipe(T.HttpPayload()),
+          statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
+        }),
+      ).annotate({ identifier: "GetAgentCardResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ batchEvaluationId: S.String.pipe(T.HttpLabel("batchEvaluationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/evaluations/batch-evaluate/{batchEvaluationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetBatchEvaluationRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ evaluatorId: S.String })).annotate({
+        identifier: "Evaluator",
+      });
+    case 1:
+      return S.Array(Evaluator);
+    case 2:
+      return S.suspend(() => S.Struct({ insightId: S.String })).annotate({
+        identifier: "Insight",
+      });
+    case 3:
+      return S.Array(Insight);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "SessionFilterConfig" });
+    case 5:
+      return S.suspend(() => S.Struct({ sessionId: S.String, traceIds: TraceIdList })).annotate({
+        identifier: "SessionTraceIds",
+      });
+    case 6:
+      return S.Array(SessionTraceIds);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sessionIds: S.optional(EvaluationStringList),
+          timeRange: S.optional(SessionFilterConfig),
+          sessionTraceIds: S.optional(SessionTraceIdsList),
+        }),
+      ).annotate({ identifier: "CloudWatchFilterConfig" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceNames: EvaluationStringList,
+          logGroupNames: S.optional(LogGroupNameList),
+          logGroupNamePrefixes: S.optional(LogGroupNamePrefixList),
+          filterConfig: S.optional(CloudWatchFilterConfig),
+        }),
+      ).annotate({ identifier: "CloudWatchLogsSource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          onlineEvaluationConfigArn: S.String,
+          timeRange: S.optional(SessionFilterConfig),
+        }),
+      ).annotate({
+        identifier: "OnlineEvaluationConfigSource",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ cloudWatchLogs: CloudWatchLogsSource }),
+        /*@__PURE__*/ S.Struct({ onlineEvaluationConfigSource: OnlineEvaluationConfigSource }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          logGroupName: S.optional(S.String),
+          logStreamName: S.optional(S.String),
+          metricsNamespace: S.optional(S.String),
+          resultDestination: S.optional(ResultDestination),
+        }),
+      ).annotate({ identifier: "CloudWatchOutputConfig" });
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ cloudWatchConfig: CloudWatchOutputConfig })]);
+    case 5:
+      return S.suspend(() => S.Struct({ averageScore: S.optional(S.Number) })).annotate({
+        identifier: "EvaluatorStatistics",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          evaluatorId: S.optional(S.String),
+          statistics: S.optional(EvaluatorStatistics),
+          totalEvaluated: S.optional(S.Number),
+          totalFailed: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EvaluatorSummary" });
+    case 7:
+      return S.Array(EvaluatorSummary);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          numberOfSessionsCompleted: S.optional(S.Number),
+          numberOfSessionsInProgress: S.optional(S.Number),
+          numberOfSessionsFailed: S.optional(S.Number),
+          totalNumberOfSessions: S.optional(S.Number),
+          numberOfSessionsIgnored: S.optional(S.Number),
+          evaluatorSummaries: S.optional(EvaluatorSummaryList),
+        }),
+      ).annotate({ identifier: "EvaluationJobResults" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ category: InsightsFailureCategory, evidence: S.String, confidence: S.Number }),
+      ).annotate({ identifier: "InsightsFailureSignal" });
+    case 2:
+      return S.Array(InsightsFailureSignal);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ spanId: S.String, traceId: S.String, signals: InsightsFailureSignalList }),
+      ).annotate({ identifier: "FailureSpanDetail" });
+    case 4:
+      return S.Array(FailureSpanDetail);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String,
+          explanation: S.String,
+          fixType: S.String,
+          recommendation: S.String,
+          failureSpans: FailureSpanDetailList,
+        }),
+      ).annotate({ identifier: "AffectedSession" });
+    case 6:
+      return S.Array(AffectedSession);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          clusterId: S.Number,
+          name: S.String,
+          rootCause: S.String,
+          recommendation: S.String,
+          affectedSessionCount: S.Number,
+          affectedSessions: AffectedSessionList,
+        }),
+      ).annotate({ identifier: "RootCauseCluster" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(RootCauseCluster);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clusterId: S.Number,
+          name: S.String,
+          description: S.String,
+          affectedSessionCount: S.Number,
+          rootCauses: RootCauseClusterList,
+        }),
+      ).annotate({
+        identifier: "FailureSubCategoryCluster",
+      });
+    case 2:
+      return S.Array(FailureSubCategoryCluster);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          clusterId: S.Number,
+          name: S.String,
+          description: S.String,
+          affectedSessionCount: S.Number,
+          subCategories: FailureSubCategoryClusterList,
+        }),
+      ).annotate({ identifier: "FailureCategoryCluster" });
+    case 4:
+      return S.Array(FailureCategoryCluster);
+    case 5:
+      return S.suspend(() => S.Struct({ failures: FailureCategoryClusterList })).annotate({
+        identifier: "FailureAnalysisResultContent",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ sessionId: S.String, userMessages: UserIntentList }),
+      ).annotate({
+        identifier: "UserIntentAffectedSession",
+      });
+    case 7:
+      return S.Array(UserIntentAffectedSession);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterId: S.Number,
+          name: S.String,
+          description: S.String,
+          affectedSessionCount: S.Number,
+          affectedSessions: UserIntentAffectedSessionList,
+        }),
+      ).annotate({ identifier: "UserIntentCluster" });
+    case 1:
+      return S.Array(UserIntentCluster);
+    case 2:
+      return S.suspend(() => S.Struct({ userIntents: UserIntentClusterList })).annotate({
+        identifier: "UserIntentClusteringResultContent",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ sessionId: S.String, approachTaken: S.String, finalOutcome: S.String }),
+      ).annotate({
+        identifier: "ExecutionSummaryAffectedSession",
+      });
+    case 4:
+      return S.Array(ExecutionSummaryAffectedSession);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          clusterId: S.Number,
+          name: S.String,
+          description: S.String,
+          affectedSessionCount: S.Number,
+          affectedSessions: ExecutionSummaryAffectedSessionList,
+        }),
+      ).annotate({ identifier: "ExecutionSummaryCluster" });
+    case 6:
+      return S.Array(ExecutionSummaryCluster);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ executionSummaries: ExecutionSummaryClusterList }),
+      ).annotate({
+        identifier: "ExecutionSummaryClusteringResultContent",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batchEvaluationId: S.String,
+          batchEvaluationArn: S.String,
+          batchEvaluationName: S.String,
+          status: BatchEvaluationStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          evaluators: S.optional(EvaluatorList),
+          insights: S.optional(InsightList),
+          dataSourceConfig: S.optional(DataSourceConfig),
+          outputConfig: S.optional(OutputConfig),
+          evaluationResults: S.optional(EvaluationJobResults),
+          failureAnalysisResult: S.optional(FailureAnalysisResultContent),
+          userIntentResult: S.optional(UserIntentClusteringResultContent),
+          executionSummaryResult: S.optional(ExecutionSummaryClusteringResultContent),
+          errorDetails: S.optional(ErrorDetailsList),
+          description: S.optional(S.String),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          kmsKeyArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetBatchEvaluationResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
+          sessionId: S.String.pipe(T.HttpQuery("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/browsers/{browserIdentifier}/sessions/get" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetBrowserSessionRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ width: S.Number, height: S.Number })).annotate({
+        identifier: "ViewPort",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ bucket: S.String, prefix: S.String, versionId: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Location" });
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3: S3Location })]);
+    case 5:
+      return S.suspend(() => S.Struct({ location: ResourceLocation })).annotate({
+        identifier: "BrowserExtension",
+      });
+    case 6:
+      return S.Array(BrowserExtension);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ location: ResourceLocation, type: S.optional(BrowserEnterprisePolicyType) }),
+      ).annotate({ identifier: "BrowserEnterprisePolicy" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(BrowserEnterprisePolicy);
+    case 1:
+      return S.suspend(() => S.Struct({ profileIdentifier: S.String })).annotate({
+        identifier: "BrowserProfileConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ streamEndpoint: S.String, streamStatus: AutomationStreamStatus }),
+      ).annotate({ identifier: "AutomationStream" });
+    case 3:
+      return S.suspend(() => S.Struct({ streamEndpoint: S.optional(S.String) })).annotate({
+        identifier: "LiveViewStream",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          automationStream: AutomationStream,
+          liveViewStream: S.optional(LiveViewStream),
+        }),
+      ).annotate({ identifier: "BrowserSessionStream" });
+    case 5:
+      return S.suspend(() => S.Struct({ secretArn: S.String })).annotate({
+        identifier: "BasicAuth",
+      });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ basicAuth: BasicAuth })]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          server: S.String,
+          port: S.Number,
+          domainPatterns: S.optional(DomainPatterns),
+          credentials: S.optional(ProxyCredentials),
+        }),
+      ).annotate({ identifier: "ExternalProxy" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ externalProxy: ExternalProxy })]);
+    case 1:
+      return S.Array(Proxy);
+    case 2:
+      return S.suspend(() => S.Struct({ domainPatterns: S.optional(DomainPatterns) })).annotate({
+        identifier: "ProxyBypass",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ proxies: Proxies, bypass: S.optional(ProxyBypass) }),
+      ).annotate({ identifier: "ProxyConfiguration" });
+    case 4:
+      return S.suspend(() => S.Struct({ secretArn: S.String })).annotate({
+        identifier: "SecretsManagerLocation",
+      });
+    case 5:
+      return S.Union([/*@__PURE__*/ S.Struct({ secretsManager: SecretsManagerLocation })]);
+    case 6:
+      return S.suspend(() => S.Struct({ location: CertificateLocation })).annotate({
+        identifier: "Certificate",
+      });
+    case 7:
+      return S.Array(Certificate);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ accessPointArn: S.String, mountPath: S.String, fileSystemArn: S.String }),
+      ).annotate({ identifier: "S3FilesConfiguration" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ s3FilesConfiguration: S3FilesConfiguration }),
+        /*@__PURE__*/ S.Struct({ efsConfiguration: EfsConfiguration }),
+      ]);
+    case 2:
+      return S.Array(ToolsFileSystemConfiguration);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          browserIdentifier: S.String,
+          sessionId: S.String,
+          name: S.optional(S.String),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          viewPort: S.optional(ViewPort),
+          extensions: S.optional(BrowserExtensions),
+          enterprisePolicies: S.optional(BrowserEnterprisePolicies),
+          profileConfiguration: S.optional(BrowserProfileConfiguration),
+          sessionTimeoutSeconds: S.optional(S.Number),
+          status: S.optional(BrowserSessionStatus),
+          streams: S.optional(BrowserSessionStream),
+          proxyConfiguration: S.optional(ProxyConfiguration),
+          certificates: S.optional(Certificates),
+          filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
+          sessionReplayArtifact: S.optional(S.String),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "GetBrowserSessionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
+          sessionId: S.String.pipe(T.HttpQuery("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/code-interpreters/{codeInterpreterIdentifier}/sessions/get",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCodeInterpreterSessionRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          codeInterpreterIdentifier: S.String,
+          sessionId: S.String,
+          name: S.optional(S.String),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          sessionTimeoutSeconds: S.optional(S.Number),
+          status: S.optional(CodeInterpreterSessionStatus),
+          certificates: S.optional(Certificates),
+          filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
+        }),
+      ).annotate({
+        identifier: "GetCodeInterpreterSessionResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+          actorId: S.String.pipe(T.HttpLabel("actorId")),
+          eventId: S.String.pipe(T.HttpLabel("eventId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}/events/{eventId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetEventInput" });
+    case 7:
+      return S.suspend(() => S.Struct({ event: Event })).annotate({
+        identifier: "GetEventOutput",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          memoryRecordId: S.String.pipe(T.HttpLabel("memoryRecordId")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/memories/{memoryId}/memoryRecord/{memoryRecordId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetMemoryRecordInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          memoryRecordId: S.String,
+          content: MemoryContent,
+          memoryStrategyId: S.optional(S.String),
+          namespaces: NamespacesList,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          metadata: S.optional(MemoryRecordMetadataMap),
+        }),
+      ).annotate({ identifier: "MemoryRecord" });
+    case 2:
+      return S.suspend(() => S.Struct({ memoryRecord: MemoryRecord })).annotate({
+        identifier: "GetMemoryRecordOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          agentName: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+          ),
+          paymentManagerArn: S.String,
+          paymentConnectorId: S.optional(S.String),
+          paymentInstrumentId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/getPaymentInstrument" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPaymentInstrumentRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          agentName: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+          ),
+          paymentManagerArn: S.String,
+          paymentConnectorId: S.String,
+          paymentInstrumentId: S.String,
+          chain: BlockchainChainId,
+          token: InstrumentBalanceToken,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/getPaymentInstrumentBalance" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPaymentInstrumentBalanceRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.String,
+          decimals: S.Number,
+          token: InstrumentBalanceToken,
+          network: CryptoWalletNetwork,
+          chain: BlockchainChainId,
+        }),
+      ).annotate({ identifier: "TokenBalance" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ paymentInstrumentId: S.String, tokenBalance: TokenBalance }),
+      ).annotate({
+        identifier: "GetPaymentInstrumentBalanceResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          agentName: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+          ),
+          paymentManagerArn: S.String,
+          paymentSessionId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/getPaymentSession" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetPaymentSessionRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ recommendationId: S.String.pipe(T.HttpLabel("recommendationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/recommendations/{recommendationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetRecommendationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ bundleArn: S.String, versionId: S.String, systemPromptJsonPath: S.String }),
+      ).annotate({
+        identifier: "SystemPromptConfigurationBundle",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ configurationBundle: SystemPromptConfigurationBundle }),
+      ]);
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ key: S.String, operator: CloudWatchLogsFilterOperator, value: FilterValue }),
+      ).annotate({ identifier: "CloudWatchLogsFilter" });
+    case 5:
+      return S.Array(CloudWatchLogsFilter);
+    case 6:
+      return S.suspend(() => S.Struct({ filters: S.optional(CloudWatchLogsFilterList) })).annotate({
+        identifier: "CloudWatchLogsRule",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          logGroupArns: LogGroupArnList,
+          serviceNames: ServiceNameList,
+          startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          rule: S.optional(CloudWatchLogsRule),
+        }),
+      ).annotate({
+        identifier: "CloudWatchLogsTraceConfig",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ batchEvaluationArn: S.String })).annotate({
+        identifier: "BatchEvaluationTraceConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          onlineEvaluationConfigArn: S.String,
+          startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "OnlineEvaluationTraceConfig",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ sessionSpans: Spans }),
+        /*@__PURE__*/ S.Struct({ cloudwatchLogs: CloudWatchLogsTraceConfig }),
+        /*@__PURE__*/ S.Struct({ batchEvaluation: BatchEvaluationTraceConfig }),
+        /*@__PURE__*/ S.Struct({ onlineEvaluation: OnlineEvaluationTraceConfig }),
+      ]);
+    case 3:
+      return S.suspend(() => S.Struct({ evaluatorArn: S.String })).annotate({
+        identifier: "RecommendationEvaluatorReference",
+      });
+    case 4:
+      return S.Array(RecommendationEvaluatorReference);
+    case 5:
+      return S.suspend(() => S.Struct({ evaluators: RecommendationEvaluatorList })).annotate({
+        identifier: "RecommendationEvaluationConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          systemPrompt: SystemPromptConfig,
+          agentTraces: AgentTracesConfig,
+          evaluationConfig: S.optional(RecommendationEvaluationConfig),
+        }),
+      ).annotate({
+        identifier: "SystemPromptRecommendationConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ toolName: S.String, toolDescription: ToolDescriptionConfig }),
+      ).annotate({ identifier: "ToolDescriptionInput" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ToolDescriptionInput);
+    case 1:
+      return S.suspend(() => S.Struct({ tools: ToolDescriptionList })).annotate({
+        identifier: "ToolDescriptionTextInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ toolName: S.String, toolDescriptionJsonPath: S.String }),
+      ).annotate({
+        identifier: "ConfigurationBundleToolEntry",
+      });
+    case 3:
+      return S.Array(ConfigurationBundleToolEntry);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          bundleArn: S.String,
+          versionId: S.String,
+          tools: ConfigurationBundleToolEntryList,
+        }),
+      ).annotate({
+        identifier: "ToolDescriptionConfigurationBundle",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ toolDescriptionText: ToolDescriptionTextInput }),
+        /*@__PURE__*/ S.Struct({ configurationBundle: ToolDescriptionConfigurationBundle }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ toolDescription: ToolDescriptionSource, agentTraces: AgentTracesConfig }),
+      ).annotate({
+        identifier: "ToolDescriptionRecommendationConfig",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          systemPromptRecommendationConfig: SystemPromptRecommendationConfig,
+        }),
+        /*@__PURE__*/ S.Struct({
+          toolDescriptionRecommendationConfig: ToolDescriptionRecommendationConfig,
+        }),
+      ]);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ bundleArn: S.String, versionId: S.String })).annotate({
+        identifier: "RecommendationResultConfigurationBundle",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          recommendedSystemPrompt: S.optional(SensitiveString),
+          configurationBundle: S.optional(RecommendationResultConfigurationBundle),
+          explanation: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SystemPromptRecommendationResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          toolName: S.String,
+          recommendedToolDescription: S.optional(SensitiveString),
+          explanation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolDescriptionOutput" });
+    case 3:
+      return S.Array(ToolDescriptionOutput);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          tools: S.optional(ToolDescriptionResultList),
+          configurationBundle: S.optional(RecommendationResultConfigurationBundle),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ToolDescriptionRecommendationResult",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          systemPromptRecommendationResult: SystemPromptRecommendationResult,
+        }),
+        /*@__PURE__*/ S.Struct({
+          toolDescriptionRecommendationResult: ToolDescriptionRecommendationResult,
+        }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          recommendationId: S.String,
+          recommendationArn: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          type: RecommendationType,
+          recommendationConfig: RecommendationConfig,
+          status: RecommendationStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          recommendationResult: S.optional(RecommendationResult),
+          kmsKeyArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetRecommendationResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workloadIdentityToken: SensitiveString,
+          resourceCredentialProviderName: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/identities/api-key" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetResourceApiKeyRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ apiKey: SensitiveString })).annotate({
+        identifier: "GetResourceApiKeyResponse",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workloadIdentityToken: SensitiveString,
+          resourceCredentialProviderName: S.String,
+          scopes: ScopesListType,
+          oauth2Flow: Oauth2FlowType,
+          sessionUri: S.optional(S.String),
+          resourceOauth2ReturnUrl: S.optional(S.String),
+          forceAuthentication: S.optional(S.Boolean),
+          customParameters: S.optional(CustomRequestParametersType),
+          customState: S.optional(SensitiveString),
+          resources: S.optional(ResourcesListType),
+          audiences: S.optional(AudiencesListType),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/identities/oauth2/token" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetResourceOauth2TokenRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationUrl: S.optional(SensitiveString),
+          accessToken: S.optional(SensitiveString),
+          sessionUri: S.optional(S.String),
+          sessionStatus: S.optional(SessionStatus),
+        }),
+      ).annotate({
+        identifier: "GetResourceOauth2TokenResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          requestMethod: PaymentHttpMethodType,
+          requestHost: S.optional(S.String),
+          requestPath: S.String,
+          includeWalletAuthToken: S.optional(S.Boolean),
+          requestBody: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CoinbaseCdpTokenRequestInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          requestHost: S.optional(S.String),
+          requestPath: S.String,
+          requestBody: SensitiveString,
+          includeAuthorizationSignature: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "StripePrivyTokenRequestInput",
+      });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ coinbaseCdpTokenRequest: CoinbaseCdpTokenRequestInput }),
+        /*@__PURE__*/ S.Struct({ stripePrivyTokenRequest: StripePrivyTokenRequestInput }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workloadIdentityToken: SensitiveString,
+          resourceCredentialProviderName: S.String,
+          paymentTokenRequest: PaymentTokenRequestInput,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/identities/payment/token" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetResourcePaymentTokenRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ bearerToken: SensitiveString, walletAuthToken: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "CoinbaseCdpTokenResponseOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationSignature: S.optional(SensitiveString),
+          requestExpiry: S.optional(S.Number),
+          appId: S.String,
+          basicAuthToken: SensitiveString,
+        }),
+      ).annotate({
+        identifier: "StripePrivyTokenResponseOutput",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ coinbaseCdpTokenResponse: CoinbaseCdpTokenResponseOutput }),
+        /*@__PURE__*/ S.Struct({ stripePrivyTokenResponse: StripePrivyTokenResponseOutput }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ paymentTokenResponse: PaymentTokenResponseOutput }),
+      ).annotate({
+        identifier: "GetResourcePaymentTokenResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ workloadName: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/identities/GetWorkloadAccessToken" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetWorkloadAccessTokenRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ workloadAccessToken: SensitiveString })).annotate({
+        identifier: "GetWorkloadAccessTokenResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ workloadName: S.String, userToken: SensitiveString }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/identities/GetWorkloadAccessTokenForJWT" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetWorkloadAccessTokenForJWTRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ workloadName: S.String, userId: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/identities/GetWorkloadAccessTokenForUserId" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetWorkloadAccessTokenForUserIdRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ conversational: Conversational }),
+        /*@__PURE__*/ S.Struct({ json: MemoryJsonData }),
+      ]);
+    case 1:
+      return S.Array(IngestPayloadType);
+    case 2:
+      return S.suspend(() => S.Struct({ payload: IngestPayloadList })).annotate({
+        identifier: "InlineMemoryContent",
+      });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ inline: InlineMemoryContent })]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          source: ContentSource,
+          contentTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          actorId: S.String,
+          sessionId: S.optional(S.String),
+          extractionConfig: S.optional(ExtractionConfig),
+          metadata: S.optional(MetadataMap),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/ingest" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "IngestDataInput" });
+    case 5:
+      return S.suspend(() => S.Struct({ sessionId: S.String })).annotate({
+        identifier: "IngestDataOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
+          mcpSessionId: S.optional(S.String).pipe(T.HttpHeader("Mcp-Session-Id")),
+          runtimeSessionId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+            T.IdempotencyToken(),
+          ),
+          mcpProtocolVersion: S.optional(S.String).pipe(T.HttpHeader("Mcp-Protocol-Version")),
+          mcpMethod: S.optional(S.String).pipe(T.HttpHeader("Mcp-Method")),
+          mcpName: S.optional(S.String).pipe(T.HttpHeader("Mcp-Name")),
+          runtimeUserId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-User-Id"),
+          ),
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
+          baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
+          agentRuntimeArn: S.String.pipe(T.HttpLabel("agentRuntimeArn")),
+          qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
+          accountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
+          payload: T.StreamingInput.pipe(T.HttpPayload()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/runtimes/{agentRuntimeArn}/invocations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "InvokeAgentRuntimeRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          runtimeSessionId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+          ),
+          mcpSessionId: S.optional(S.String).pipe(T.HttpHeader("Mcp-Session-Id")),
+          mcpProtocolVersion: S.optional(S.String).pipe(T.HttpHeader("Mcp-Protocol-Version")),
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
+          baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
+          contentType: S.String.pipe(T.HttpHeader("Content-Type")),
+          response: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+          statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
+        }),
+      ).annotate({
+        identifier: "InvokeAgentRuntimeResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ command: S.String, timeout: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "InvokeAgentRuntimeCommandRequestBody",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
+          runtimeSessionId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+            T.IdempotencyToken(),
+          ),
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
+          baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
+          agentRuntimeArn: S.String.pipe(T.HttpLabel("agentRuntimeArn")),
+          qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
+          accountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
+          body: InvokeAgentRuntimeCommandRequestBody.pipe(T.HttpPayload()).annotate({
+            identifier: "InvokeAgentRuntimeCommandRequestBody",
+          }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/runtimes/{agentRuntimeArn}/commands" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "InvokeAgentRuntimeCommandRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ContentStartEvent",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ stdout: S.optional(S.String), stderr: S.optional(S.String) }),
+      ).annotate({ identifier: "ContentDeltaEvent" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ exitCode: S.Number, status: CommandExecutionStatus }),
+      ).annotate({ identifier: "ContentStopEvent" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          contentStart: S.optional(ContentStartEvent),
+          contentDelta: S.optional(ContentDeltaEvent),
+          contentStop: S.optional(ContentStopEvent),
+        }),
+      ).annotate({ identifier: "ResponseChunk" });
+    case 6:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 7:
+      return S.Array(ValidationExceptionField);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return T.EventStream(
+        /*@__PURE__*/ S.Union([
+          /*@__PURE__*/ S.Struct({ chunk: ResponseChunk }),
+          /*@__PURE__*/ S.Struct({
+            accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
+              identifier: "AccessDeniedException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            internalServerException: /*@__PURE__*/ S.suspend(
+              () => InternalServerException,
+            ).annotate({
+              identifier: "InternalServerException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            resourceNotFoundException: /*@__PURE__*/ S.suspend(
+              () => ResourceNotFoundException,
+            ).annotate({
+              identifier: "ResourceNotFoundException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
+              () => ServiceQuotaExceededException,
+            ).annotate({
+              identifier: "ServiceQuotaExceededException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
+              identifier: "ThrottlingException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
+              identifier: "ValidationException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            runtimeClientError: /*@__PURE__*/ S.suspend(() => RuntimeClientError).annotate({
+              identifier: "RuntimeClientError",
+            }),
+          }),
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          runtimeSessionId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+          ),
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
+          baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
+          contentType: S.String.pipe(T.HttpHeader("Content-Type")),
+          statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
+          stream: InvokeAgentRuntimeCommandStreamOutput.pipe(T.HttpPayload()),
+        }),
+      ).annotate({
+        identifier: "InvokeAgentRuntimeCommandResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          x: S.Number,
+          y: S.Number,
+          button: S.optional(MouseButton),
+          clickCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MouseClickArguments" });
+    case 3:
+      return S.suspend(() => S.Struct({ x: S.Number, y: S.Number })).annotate({
+        identifier: "MouseMoveArguments",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          endX: S.Number,
+          endY: S.Number,
+          startX: S.Number,
+          startY: S.Number,
+          button: S.optional(MouseButton),
+        }),
+      ).annotate({ identifier: "MouseDragArguments" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          x: S.Number,
+          y: S.Number,
+          deltaX: S.optional(S.Number),
+          deltaY: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MouseScrollArguments" });
+    case 6:
+      return S.suspend(() => S.Struct({ text: S.String })).annotate({
+        identifier: "KeyTypeArguments",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ key: S.String, presses: S.optional(S.Number) })).annotate({
+        identifier: "KeyPressArguments",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ keys: KeyList })).annotate({
+        identifier: "KeyShortcutArguments",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ format: S.optional(ScreenshotFormat) })).annotate({
+        identifier: "ScreenshotArguments",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ mouseClick: MouseClickArguments }),
+        /*@__PURE__*/ S.Struct({ mouseMove: MouseMoveArguments }),
+        /*@__PURE__*/ S.Struct({ mouseDrag: MouseDragArguments }),
+        /*@__PURE__*/ S.Struct({ mouseScroll: MouseScrollArguments }),
+        /*@__PURE__*/ S.Struct({ keyType: KeyTypeArguments }),
+        /*@__PURE__*/ S.Struct({ keyPress: KeyPressArguments }),
+        /*@__PURE__*/ S.Struct({ keyShortcut: KeyShortcutArguments }),
+        /*@__PURE__*/ S.Struct({ screenshot: ScreenshotArguments }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
+          sessionId: S.String.pipe(T.HttpHeader("x-amzn-browser-session-id")),
+          action: BrowserAction,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/browsers/{browserIdentifier}/sessions/invoke" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "InvokeBrowserRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ status: BrowserActionStatus, error: S.optional(S.String) }),
+      ).annotate({ identifier: "MouseClickResult" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: BrowserActionStatus,
+          error: S.optional(S.String),
+          data: S.optional(T.Blob),
+        }),
+      ).annotate({ identifier: "ScreenshotResult" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ mouseClick: MouseClickResult }),
+        /*@__PURE__*/ S.Struct({ mouseMove: MouseMoveResult }),
+        /*@__PURE__*/ S.Struct({ mouseDrag: MouseDragResult }),
+        /*@__PURE__*/ S.Struct({ mouseScroll: MouseScrollResult }),
+        /*@__PURE__*/ S.Struct({ keyType: KeyTypeResult }),
+        /*@__PURE__*/ S.Struct({ keyPress: KeyPressResult }),
+        /*@__PURE__*/ S.Struct({ keyShortcut: KeyShortcutResult }),
+        /*@__PURE__*/ S.Struct({ screenshot: ScreenshotResult }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          result: BrowserActionResult,
+          sessionId: S.String.pipe(T.HttpHeader("x-amzn-browser-session-id")),
+        }),
+      ).annotate({ identifier: "InvokeBrowserResponse" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ path: S.String, text: S.optional(S.String), blob: S.optional(SensitiveBlob) }),
+      ).annotate({ identifier: "InputContentBlock" });
+    case 1:
+      return S.Array(InputContentBlock);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          language: S.optional(ProgrammingLanguage),
+          clearContext: S.optional(S.Boolean),
+          command: S.optional(S.String),
+          path: S.optional(S.String),
+          paths: S.optional(StringList),
+          content: S.optional(InputContentBlockList),
+          directoryPath: S.optional(S.String),
+          taskId: S.optional(S.String),
+          runtime: S.optional(LanguageRuntime),
+        }),
+      ).annotate({ identifier: "ToolArguments" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
+          sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-code-interpreter-session-id")),
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          name: ToolName,
+          arguments: S.optional(ToolArguments),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/code-interpreters/{codeInterpreterIdentifier}/tools/invoke",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "InvokeCodeInterpreterRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: ResourceContentType,
+          uri: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          text: S.optional(S.String),
+          blob: S.optional(T.Blob),
+        }),
+      ).annotate({ identifier: "ResourceContent" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: ContentBlockType,
+          text: S.optional(S.String),
+          data: S.optional(T.Blob),
+          mimeType: S.optional(S.String),
+          uri: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          size: S.optional(S.Number),
+          resource: S.optional(ResourceContent),
+        }),
+      ).annotate({ identifier: "ContentBlock" });
+    case 6:
+      return S.Array(ContentBlock);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          taskStatus: S.optional(TaskStatus),
+          stdout: S.optional(S.String),
+          stderr: S.optional(S.String),
+          exitCode: S.optional(S.Number),
+          executionTime: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ToolResultStructuredContent",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: ContentBlockList,
+          structuredContent: S.optional(ToolResultStructuredContent),
+          isError: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CodeInterpreterResult" });
+    case 1:
+      return T.EventStream(
+        /*@__PURE__*/ S.Union([
+          /*@__PURE__*/ S.Struct({ result: CodeInterpreterResult }),
+          /*@__PURE__*/ S.Struct({
+            accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
+              identifier: "AccessDeniedException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            conflictException: /*@__PURE__*/ S.suspend(() => ConflictException).annotate({
+              identifier: "ConflictException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            internalServerException: /*@__PURE__*/ S.suspend(
+              () => InternalServerException,
+            ).annotate({
+              identifier: "InternalServerException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            resourceNotFoundException: /*@__PURE__*/ S.suspend(
+              () => ResourceNotFoundException,
+            ).annotate({
+              identifier: "ResourceNotFoundException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            serviceQuotaExceededException: /*@__PURE__*/ S.suspend(
+              () => ServiceQuotaExceededException,
+            ).annotate({
+              identifier: "ServiceQuotaExceededException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            throttlingException: /*@__PURE__*/ S.suspend(() => ThrottlingException).annotate({
+              identifier: "ThrottlingException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
+              identifier: "ValidationException",
+            }),
+          }),
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-code-interpreter-session-id")),
+          stream: CodeInterpreterStreamOutput.pipe(T.HttpPayload()),
+        }),
+      ).annotate({
+        identifier: "InvokeCodeInterpreterResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          toolUseId: S.String,
+          input: S.Any,
+          type: S.optional(HarnessToolUseType),
+          serverName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HarnessToolUseBlock" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ json: S.Any }),
+      ]);
+    case 5:
+      return S.Array(HarnessToolResultContentBlock);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          toolUseId: S.String,
+          content: HarnessToolResultContentBlocks,
+          status: S.optional(HarnessToolUseStatus),
+          type: S.optional(HarnessToolUseType),
+        }),
+      ).annotate({ identifier: "HarnessToolResultBlock" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ text: S.String, signature: S.optional(S.String) }),
+      ).annotate({
+        identifier: "HarnessReasoningTextBlock",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ reasoningText: HarnessReasoningTextBlock }),
+        /*@__PURE__*/ S.Struct({ redactedContent: T.Blob }),
+      ]);
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ toolUse: HarnessToolUseBlock }),
+        /*@__PURE__*/ S.Struct({ toolResult: HarnessToolResultBlock }),
+        /*@__PURE__*/ S.Struct({ reasoningContent: HarnessReasoningContentBlock }),
+      ]);
+    case 2:
+      return S.Array(HarnessContentBlock);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ role: HarnessConversationRole, content: HarnessContentBlocks }),
+      ).annotate({ identifier: "HarnessMessage" });
+    case 4:
+      return S.Array(HarnessMessage);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String,
+          maxTokens: S.optional(S.Number),
+          temperature: S.optional(S.Number),
+          topP: S.optional(S.Number),
+          apiFormat: S.optional(HarnessBedrockApiFormat),
+          additionalParams: S.optional(S.Any),
+        }),
+      ).annotate({
+        identifier: "HarnessBedrockModelConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String,
+          apiKeyArn: S.String,
+          apiBase: S.optional(SensitiveString),
+          maxTokens: S.optional(S.Number),
+          temperature: S.optional(S.Number),
+          topP: S.optional(S.Number),
+          apiFormat: S.optional(HarnessOpenAiApiFormat),
+          additionalParams: S.optional(S.Any),
+        }),
+      ).annotate({ identifier: "HarnessOpenAiModelConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String,
+          apiKeyArn: S.String,
+          maxTokens: S.optional(S.Number),
+          temperature: S.optional(S.Number),
+          topP: S.optional(S.Number),
+          topK: S.optional(S.Number),
+          additionalParams: S.optional(S.Any),
+        }),
+      ).annotate({ identifier: "HarnessGeminiModelConfig" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String,
+          apiKeyArn: S.optional(S.String),
+          apiBase: S.optional(SensitiveString),
+          maxTokens: S.optional(S.Number),
+          temperature: S.optional(S.Number),
+          topP: S.optional(S.Number),
+          additionalParams: S.optional(S.Any),
+        }),
+      ).annotate({
+        identifier: "HarnessLiteLlmModelConfig",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ bedrockModelConfig: HarnessBedrockModelConfig }),
+        /*@__PURE__*/ S.Struct({ openAiModelConfig: HarnessOpenAiModelConfig }),
+        /*@__PURE__*/ S.Struct({ geminiModelConfig: HarnessGeminiModelConfig }),
+        /*@__PURE__*/ S.Struct({ liteLlmModelConfig: HarnessLiteLlmModelConfig }),
+      ]);
+    case 2:
+      return S.Array(HarnessSystemContentBlock);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ url: SensitiveString, headers: S.optional(HttpHeadersMap) }),
+      ).annotate({ identifier: "HarnessRemoteMcpConfig" });
+    case 4:
+      return S.suspend(() => S.Struct({ browserArn: S.optional(S.String) })).annotate({
+        identifier: "HarnessAgentCoreBrowserConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          providerArn: S.String,
+          scopes: OAuthScopes,
+          customParameters: S.optional(OAuthCustomParameters),
+          grantType: S.optional(OAuthGrantType),
+          defaultReturnUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuthCredentialProvider" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ awsIam: /*@__PURE__*/ S.Struct({}) }),
+        /*@__PURE__*/ S.Struct({ none: /*@__PURE__*/ S.Struct({}) }),
+        /*@__PURE__*/ S.Struct({ oauth: OAuthCredentialProvider }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ gatewayArn: S.String, outboundAuth: S.optional(HarnessGatewayOutboundAuth) }),
+      ).annotate({
+        identifier: "HarnessAgentCoreGatewayConfig",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ description: SensitiveString, inputSchema: S.Any }),
+      ).annotate({
+        identifier: "HarnessInlineFunctionConfig",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ codeInterpreterArn: S.optional(S.String) })).annotate({
+        identifier: "HarnessAgentCoreCodeInterpreterConfig",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ remoteMcp: HarnessRemoteMcpConfig }),
+        /*@__PURE__*/ S.Struct({ agentCoreBrowser: HarnessAgentCoreBrowserConfig }),
+        /*@__PURE__*/ S.Struct({ agentCoreGateway: HarnessAgentCoreGatewayConfig }),
+        /*@__PURE__*/ S.Struct({ inlineFunction: HarnessInlineFunctionConfig }),
+        /*@__PURE__*/ S.Struct({ agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: HarnessToolType,
+          name: S.optional(S.String),
+          config: S.optional(HarnessToolConfiguration),
+        }),
+      ).annotate({ identifier: "HarnessTool" });
+    case 4:
+      return S.Array(HarnessTool);
+    case 5:
+      return S.suspend(() => S.Struct({ uri: S.String })).annotate({
+        identifier: "HarnessSkillS3Source",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ credentialArn: S.String, username: S.optional(S.String) }),
+      ).annotate({ identifier: "HarnessSkillGitAuth" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          path: S.optional(S.String),
+          auth: S.optional(HarnessSkillGitAuth),
+        }),
+      ).annotate({ identifier: "HarnessSkillGitSource" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ paths: S.optional(HarnessAwsSkillPaths) })).annotate({
+        identifier: "HarnessSkillAwsSkillsSource",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ path: S.String }),
+        /*@__PURE__*/ S.Struct({ s3: HarnessSkillS3Source }),
+        /*@__PURE__*/ S.Struct({ git: HarnessSkillGitSource }),
+        /*@__PURE__*/ S.Struct({ awsSkills: HarnessSkillAwsSkillsSource }),
+      ]);
+    case 2:
+      return S.Array(HarnessSkill);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          harnessArn: S.String.pipe(T.HttpQuery("harnessArn")),
+          qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
+          runtimeSessionId: S.String.pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+          ),
+          runtimeUserId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-User-Id"),
+          ),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          traceState: S.optional(S.String).pipe(T.HttpHeader("tracestate")),
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          baggage: S.optional(S.String).pipe(T.HttpHeader("baggage")),
+          messages: HarnessMessages,
+          model: S.optional(HarnessModelConfiguration),
+          systemPrompt: S.optional(HarnessSystemPrompt),
+          tools: S.optional(HarnessTools),
+          skills: S.optional(HarnessSkills),
+          allowedTools: S.optional(HarnessAllowedTools),
+          maxIterations: S.optional(S.Number),
+          maxTokens: S.optional(S.Number),
+          timeoutSeconds: S.optional(S.Number),
+          actorId: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/harnesses/invoke" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "InvokeHarnessRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ role: HarnessConversationRole })).annotate({
+        identifier: "HarnessMessageStartEvent",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          toolUseId: S.String,
+          name: S.String,
+          type: S.optional(HarnessToolUseType),
+          serverName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HarnessToolUseBlockStart" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ toolUseId: S.String, status: S.optional(HarnessToolUseStatus) }),
+      ).annotate({
+        identifier: "HarnessToolResultBlockStart",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ toolUse: HarnessToolUseBlockStart }),
+        /*@__PURE__*/ S.Struct({ toolResult: HarnessToolResultBlockStart }),
+      ]);
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ contentBlockIndex: S.Number, start: HarnessContentBlockStart }),
+      ).annotate({
+        identifier: "HarnessContentBlockStartEvent",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ input: SensitiveString })).annotate({
+        identifier: "HarnessToolUseBlockDelta",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ text: S.String }),
+        /*@__PURE__*/ S.Struct({ redactedContent: SensitiveBlob }),
+        /*@__PURE__*/ S.Struct({ signature: S.String }),
+      ]);
+    case 3:
+      return S.suspend(() => S.Struct({ metadata: SensitiveString })).annotate({
+        identifier: "HarnessToolResultMetadataBlockDelta",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ text: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ toolUse: HarnessToolUseBlockDelta }),
+        /*@__PURE__*/ S.Struct({ toolResult: HarnessToolResultBlocksDelta }),
+        /*@__PURE__*/ S.Struct({ reasoningContent: HarnessReasoningContentBlockDelta }),
+        /*@__PURE__*/ S.Struct({ toolResultMetadata: HarnessToolResultMetadataBlockDelta }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ contentBlockIndex: S.Number, delta: HarnessContentBlockDelta }),
+      ).annotate({
+        identifier: "HarnessContentBlockDeltaEvent",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ contentBlockIndex: S.Number })).annotate({
+        identifier: "HarnessContentBlockStopEvent",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ stopReason: HarnessStopReason })).annotate({
+        identifier: "HarnessMessageStopEvent",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inputTokens: S.Number,
+          outputTokens: S.Number,
+          totalTokens: S.Number,
+          cacheReadInputTokens: S.optional(S.Number),
+          cacheWriteInputTokens: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HarnessTokenUsage" });
+    case 1:
+      return S.suspend(() => S.Struct({ latencyMs: S.Number })).annotate({
+        identifier: "HarnessStreamMetrics",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ usage: HarnessTokenUsage, metrics: HarnessStreamMetrics }),
+      ).annotate({ identifier: "HarnessMetadataEvent" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          hookEventId: S.String,
+          name: S.String,
+          type: HarnessHookEventType,
+          decision: S.optional(HarnessHookDecision),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HarnessHookEvent" });
+    case 4:
+      return T.EventStream(
+        /*@__PURE__*/ S.Union([
+          /*@__PURE__*/ S.Struct({ messageStart: HarnessMessageStartEvent }),
+          /*@__PURE__*/ S.Struct({ contentBlockStart: HarnessContentBlockStartEvent }),
+          /*@__PURE__*/ S.Struct({ contentBlockDelta: HarnessContentBlockDeltaEvent }),
+          /*@__PURE__*/ S.Struct({ contentBlockStop: HarnessContentBlockStopEvent }),
+          /*@__PURE__*/ S.Struct({ messageStop: HarnessMessageStopEvent }),
+          /*@__PURE__*/ S.Struct({ metadata: HarnessMetadataEvent }),
+          /*@__PURE__*/ S.Struct({
+            internalServerException: /*@__PURE__*/ S.suspend(
+              () => InternalServerException,
+            ).annotate({
+              identifier: "InternalServerException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
+              identifier: "ValidationException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            runtimeClientError: /*@__PURE__*/ S.suspend(() => RuntimeClientError).annotate({
+              identifier: "RuntimeClientError",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({ hookEvent: HarnessHookEvent }),
+        ]),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ stream: InvokeHarnessStreamOutput.pipe(T.HttpPayload()) }),
+      ).annotate({ identifier: "InvokeHarnessResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/ab-tests" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListABTestsRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          abTestId: S.String,
+          abTestArn: S.String,
+          name: S.String,
+          status: ABTestStatus,
+          executionStatus: ABTestExecutionStatus,
+          description: S.optional(S.String),
+          gatewayArn: S.optional(S.String),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "ABTestSummary" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ABTestSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ abTests: ABTestSummaryList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListABTestsResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/actors" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListActorsInput" });
+    case 3:
+      return S.suspend(() => S.Struct({ actorId: S.String })).annotate({
+        identifier: "ActorSummary",
+      });
+    case 4:
+      return S.Array(ActorSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ actorSummaries: ActorSummaryList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListActorsOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/evaluations/batch-evaluate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBatchEvaluationsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          batchEvaluationId: S.String,
+          batchEvaluationArn: S.String,
+          batchEvaluationName: S.String,
+          status: BatchEvaluationStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          description: S.optional(S.String),
+          evaluators: S.optional(EvaluatorList),
+          insights: S.optional(InsightList),
+          evaluationResults: S.optional(EvaluationJobResults),
+          errorDetails: S.optional(ErrorDetailsList),
+          kmsKeyArn: S.optional(S.String),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "BatchEvaluationSummary" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(BatchEvaluationSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ batchEvaluations: BatchEvaluationSummaryList, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListBatchEvaluationsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          status: S.optional(BrowserSessionStatus),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/browsers/{browserIdentifier}/sessions/list" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBrowserSessionsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          browserIdentifier: S.String,
+          sessionId: S.String,
+          name: S.optional(S.String),
+          status: BrowserSessionStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "BrowserSessionSummary" });
+    case 4:
+      return S.Array(BrowserSessionSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ items: BrowserSessionSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListBrowserSessionsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          status: S.optional(CodeInterpreterSessionStatus),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/code-interpreters/{codeInterpreterIdentifier}/sessions/list",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCodeInterpreterSessionsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          codeInterpreterIdentifier: S.String,
+          sessionId: S.String,
+          name: S.optional(S.String),
+          status: CodeInterpreterSessionStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "CodeInterpreterSessionSummary",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CodeInterpreterSessionSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ items: CodeInterpreterSessionSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListCodeInterpreterSessionsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, includeParentBranches: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "BranchFilter" });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ metadataKey: S.String })]);
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ metadataValue: MetadataValue })]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          left: LeftExpression,
+          operator: OperatorType,
+          right: S.optional(RightExpression),
+        }),
+      ).annotate({
+        identifier: "EventMetadataFilterExpression",
+      });
+    case 6:
+      return S.Array(EventMetadataFilterExpression);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          branch: S.optional(BranchFilter),
+          eventMetadata: S.optional(EventMetadataFilterList),
+        }),
+      ).annotate({ identifier: "FilterInput" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+          actorId: S.String.pipe(T.HttpLabel("actorId")),
+          includePayloads: S.optional(S.Boolean),
+          filter: S.optional(FilterInput),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListEventsInput" });
+    case 1:
+      return S.Array(Event);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ events: EventList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEventsOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          strategyId: S.optional(S.String),
+          sessionId: S.optional(S.String),
+          actorId: S.optional(S.String),
+          status: S.optional(ExtractionJobStatus),
+        }),
+      ).annotate({ identifier: "ExtractionJobFilterInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          maxResults: S.optional(S.Number),
+          filter: S.optional(ExtractionJobFilterInput),
+          nextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/extractionJobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListMemoryExtractionJobsInput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ eventId: S.String, messageIndex: S.Number })).annotate({
+        identifier: "MessageMetadata",
+      });
+    case 6:
+      return S.Array(MessageMetadata);
+    case 7:
+      return S.Union([/*@__PURE__*/ S.Struct({ messagesList: MessagesList })]);
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobID: S.String,
+          messages: ExtractionJobMessages,
+          status: S.optional(ExtractionJobStatus),
+          failureReason: S.optional(S.String),
+          strategyId: S.optional(S.String),
+          sessionId: S.optional(S.String),
+          actorId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExtractionJobMetadata" });
+    case 1:
+      return S.Array(ExtractionJobMetadata);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ jobs: ExtractionJobMetadataList, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListMemoryExtractionJobsOutput",
+      });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ metadataValue: MemoryRecordMetadataValue })]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          left: MemoryRecordLeftExpression,
+          operator: MemoryRecordOperatorType,
+          right: S.optional(MemoryRecordRightExpression),
+        }),
+      ).annotate({
+        identifier: "MemoryMetadataFilterExpression",
+      });
+    case 5:
+      return S.Array(MemoryMetadataFilterExpression);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          namespace: S.optional(S.String),
+          namespacePath: S.optional(S.String),
+          memoryStrategyId: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          metadataFilters: S.optional(MemoryMetadataFilterList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/memoryRecords" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListMemoryRecordsInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          memoryRecordId: S.String,
+          content: MemoryContent,
+          memoryStrategyId: S.optional(S.String),
+          namespaces: NamespacesList,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          score: S.optional(S.Number),
+          metadata: S.optional(MemoryRecordMetadataMap),
+        }),
+      ).annotate({ identifier: "MemoryRecordSummary" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(MemoryRecordSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          memoryRecordSummaries: MemoryRecordSummaryList,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListMemoryRecordsOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          agentName: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+          ),
+          paymentManagerArn: S.String,
+          paymentConnectorId: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/listPaymentInstruments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPaymentInstrumentsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          paymentInstrumentId: S.String,
+          paymentManagerArn: S.String,
+          paymentConnectorId: S.String,
+          userId: S.String,
+          paymentInstrumentType: PaymentInstrumentType,
+          status: PaymentInstrumentStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "PaymentInstrumentSummary" });
+    case 4:
+      return S.Array(PaymentInstrumentSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          paymentInstruments: PaymentInstrumentSummaryList,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListPaymentInstrumentsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          agentName: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+          ),
+          paymentManagerArn: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/listPaymentSessions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPaymentSessionsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          paymentSessionId: S.String,
+          paymentManagerArn: S.String,
+          userId: S.String,
+          expiryTimeInMinutes: S.Number,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "PaymentSessionSummary" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PaymentSessionSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ paymentSessions: PaymentSessionSummaryList, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListPaymentSessionsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          statusFilter: S.optional(RecommendationStatus).pipe(T.HttpQuery("status")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/recommendations" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListRecommendationsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          recommendationId: S.String,
+          recommendationArn: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          type: RecommendationType,
+          status: RecommendationStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "RecommendationSummary" });
+    case 4:
+      return S.Array(RecommendationSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          recommendationSummaries: RecommendationSummaryList,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRecommendationsResponse",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ eventFilter: S.optional(EventFilterCondition) })).annotate({
+        identifier: "SessionFilter",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          actorId: S.String.pipe(T.HttpLabel("actorId")),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          filter: S.optional(SessionFilter),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/actor/{actorId}/sessions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListSessionsInput" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String,
+          actorId: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "SessionSummary" });
+    case 1:
+      return S.Array(SessionSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ sessionSummaries: SessionSummaryList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSessionsOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.String,
+          payload: S.Any,
+          permit2AllowanceLimit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CryptoX402PaymentInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.String,
+          wwwAuthenticateHeaders: WwwAuthenticateHeaderList,
+          buyerPaysGasFees: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MppPaymentInput" });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ cryptoX402: CryptoX402PaymentInput }),
+        /*@__PURE__*/ S.Struct({ mpp: MppPaymentInput }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+          ),
+          agentName: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+          ),
+          paymentManagerArn: S.String,
+          paymentSessionId: S.String,
+          paymentInstrumentId: S.String,
+          paymentType: PaymentType,
+          paymentInput: PaymentInput,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/payments/processPayment" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ProcessPaymentRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ version: S.String, payload: S.Any })).annotate({
+        identifier: "CryptoX402PaymentOutput",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.String,
+          selectedPaymentId: S.String,
+          paymentCredential: SensitiveString,
+        }),
+      ).annotate({ identifier: "MppPaymentOutput" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ cryptoX402: CryptoX402PaymentOutput }),
+        /*@__PURE__*/ S.Struct({ mpp: MppPaymentOutput }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          processPaymentId: S.String,
+          paymentManagerArn: S.String,
+          paymentSessionId: S.String,
+          paymentInstrumentId: S.String,
+          paymentType: PaymentType,
+          status: PaymentStatus,
+          paymentOutput: PaymentOutput,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "ProcessPaymentResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          searchQuery: SensitiveString,
+          memoryStrategyId: S.optional(S.String),
+          topK: S.optional(S.Number),
+          metadataFilters: S.optional(MemoryMetadataFilterList),
+        }),
+      ).annotate({ identifier: "SearchCriteria" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          namespace: S.optional(S.String),
+          namespacePath: S.optional(S.String),
+          searchCriteria: SearchCriteria,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/retrieve" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RetrieveMemoryRecordsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          memoryRecordSummaries: MemoryRecordSummaryList,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RetrieveMemoryRecordsOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          profileIdentifier: S.String.pipe(T.HttpLabel("profileIdentifier")),
+          browserIdentifier: S.String,
+          sessionId: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/browser-profiles/{profileIdentifier}/save" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "SaveBrowserSessionProfileRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          profileIdentifier: S.String,
+          browserIdentifier: S.String,
+          sessionId: S.String,
+          lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "SaveBrowserSessionProfileResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          searchQuery: S.String,
+          registryIds: RegistryIdList,
+          maxResults: S.optional(S.Number),
+          filters: S.optional(S.Any),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/registry-records/search" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "SearchRegistryRecordsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ schemaVersion: S.optional(S.String), inlineContent: S.optional(S.String) }),
+      ).annotate({ identifier: "ServerDefinition" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ protocolVersion: S.optional(S.String), inlineContent: S.optional(S.String) }),
+      ).annotate({ identifier: "ToolsDefinition" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ server: ServerDefinition, tools: ToolsDefinition }),
+      ).annotate({ identifier: "McpDescriptor" });
+    case 4:
+      return S.suspend(() => S.Struct({ agentCard: AgentCardDefinition })).annotate({
+        identifier: "A2aDescriptor",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ inlineContent: S.optional(S.String) })).annotate({
+        identifier: "CustomDescriptor",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ skillMd: SkillMdDefinition, skillDefinition: S.optional(SkillDefinition) }),
+      ).annotate({ identifier: "AgentSkillsDescriptor" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          mcp: S.optional(McpDescriptor),
+          a2a: S.optional(A2aDescriptor),
+          custom: S.optional(CustomDescriptor),
+          agentSkills: S.optional(AgentSkillsDescriptor),
+        }),
+      ).annotate({ identifier: "Descriptors" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          registryArn: S.String,
+          recordArn: S.String,
+          recordId: S.String,
+          name: S.String,
+          description: S.optional(SensitiveString),
+          descriptorType: DescriptorType,
+          descriptors: Descriptors,
+          version: S.String,
+          status: RegistryRecordStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "RegistryRecordSummary" });
+    case 1:
+      return S.Array(RegistryRecordSummary);
+    case 2:
+      return S.suspend(() => S.Struct({ registryRecords: RegistryRecordSummaryList })).annotate({
+        identifier: "SearchRegistryRecordsResponse",
+      });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ prompt: S.String })]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          input: S.optional(GroundTruthTurnInput),
+          expectedResponse: S.optional(EvaluationContent),
+        }),
+      ).annotate({ identifier: "GroundTruthTurn" });
+    case 5:
+      return S.Array(GroundTruthTurn);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          assertions: S.optional(EvaluationContentList),
+          expectedTrajectory: S.optional(EvaluationExpectedTrajectory),
+          turns: S.optional(GroundTruthTurnList),
+        }),
+      ).annotate({ identifier: "InlineGroundTruth" });
+    case 7:
+      return S.Union([/*@__PURE__*/ S.Struct({ inline: InlineGroundTruth })]);
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String,
+          testScenarioId: S.optional(S.String),
+          groundTruth: S.optional(GroundTruthSource),
+          metadata: S.optional(StringMap),
+        }),
+      ).annotate({ identifier: "SessionMetadataShape" });
+    case 1:
+      return S.Array(SessionMetadataShape);
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ sessionMetadata: SessionMetadataList })]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          batchEvaluationName: S.String,
+          evaluators: S.optional(EvaluatorList),
+          insights: S.optional(InsightList),
+          dataSourceConfig: DataSourceConfig,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          evaluationMetadata: S.optional(EvaluationMetadata),
+          tags: S.optional(TagsMap),
+          kmsKeyArn: S.optional(S.String),
+          description: S.optional(S.String),
+          outputConfig: S.optional(OutputConfig),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/evaluations/batch-evaluate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartBatchEvaluationRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          batchEvaluationId: S.String,
+          batchEvaluationArn: S.String,
+          batchEvaluationName: S.String,
+          evaluators: S.optional(EvaluatorList),
+          insights: S.optional(InsightList),
+          status: BatchEvaluationStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          outputConfig: S.optional(OutputConfig),
+          tags: S.optional(TagsMap),
+          kmsKeyArn: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StartBatchEvaluationResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
+          name: S.optional(S.String),
+          sessionTimeoutSeconds: S.optional(S.Number),
+          viewPort: S.optional(ViewPort),
+          extensions: S.optional(BrowserExtensions),
+          profileConfiguration: S.optional(BrowserProfileConfiguration),
+          proxyConfiguration: S.optional(ProxyConfiguration),
+          enterprisePolicies: S.optional(BrowserEnterprisePolicies),
+          certificates: S.optional(Certificates),
+          filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/browsers/{browserIdentifier}/sessions/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartBrowserSessionRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          browserIdentifier: S.String,
+          sessionId: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          streams: S.optional(BrowserSessionStream),
+        }),
+      ).annotate({
+        identifier: "StartBrowserSessionResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
+          name: S.optional(S.String),
+          sessionTimeoutSeconds: S.optional(S.Number),
+          certificates: S.optional(Certificates),
+          filesystemConfigurations: S.optional(ToolsFileSystemConfigurations),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/code-interpreters/{codeInterpreterIdentifier}/sessions/start",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartCodeInterpreterSessionRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          codeInterpreterIdentifier: S.String,
+          sessionId: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "StartCodeInterpreterSessionResponse",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ jobId: S.String })).annotate({
+        identifier: "ExtractionJob",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+          extractionJob: ExtractionJob,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/memories/{memoryId}/extractionJobs/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartMemoryExtractionJobInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ jobId: S.String })).annotate({
+        identifier: "StartMemoryExtractionJobOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          type: RecommendationType,
+          recommendationConfig: RecommendationConfig,
+          kmsKeyArn: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(TagsMap),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/recommendations" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StartRecommendationRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          recommendationId: S.String,
+          recommendationArn: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          type: RecommendationType,
+          recommendationConfig: RecommendationConfig,
+          status: RecommendationStatus,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "StartRecommendationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ batchEvaluationId: S.String.pipe(T.HttpLabel("batchEvaluationId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/evaluations/batch-evaluate/{batchEvaluationId}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StopBatchEvaluationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          batchEvaluationId: S.String,
+          batchEvaluationArn: S.String,
+          status: BatchEvaluationStatus,
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StopBatchEvaluationResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
+          sessionId: S.String.pipe(T.HttpQuery("sessionId")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/browsers/{browserIdentifier}/sessions/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StopBrowserSessionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          browserIdentifier: S.String,
+          sessionId: S.String,
+          lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "StopBrowserSessionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          traceId: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Trace-Id")),
+          traceParent: S.optional(S.String).pipe(T.HttpHeader("traceparent")),
+          codeInterpreterIdentifier: S.String.pipe(T.HttpLabel("codeInterpreterIdentifier")),
+          sessionId: S.String.pipe(T.HttpQuery("sessionId")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/code-interpreters/{codeInterpreterIdentifier}/sessions/stop",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StopCodeInterpreterSessionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          codeInterpreterIdentifier: S.String,
+          sessionId: S.String,
+          lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "StopCodeInterpreterSessionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          runtimeSessionId: S.String.pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+          ),
+          agentRuntimeArn: S.String.pipe(T.HttpLabel("agentRuntimeArn")),
+          qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/runtimes/{agentRuntimeArn}/stopruntimesession" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StopRuntimeSessionRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          runtimeSessionId: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+          ),
+          statusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
+        }),
+      ).annotate({
+        identifier: "StopRuntimeSessionResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          abTestId: S.String.pipe(T.HttpLabel("abTestId")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          variants: S.optional(VariantList),
+          gatewayFilter: S.optional(GatewayFilter),
+          evaluationConfig: S.optional(ABTestEvaluationConfig),
+          roleArn: S.optional(S.String),
+          executionStatus: S.optional(ABTestExecutionStatus),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/ab-tests/{abTestId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateABTestRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          abTestId: S.String,
+          abTestArn: S.String,
+          status: ABTestStatus,
+          executionStatus: ABTestExecutionStatus,
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "UpdateABTestResponse" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ streamStatus: S.optional(AutomationStreamStatus) }),
+      ).annotate({ identifier: "AutomationStreamUpdate" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ automationStreamUpdate: AutomationStreamUpdate })]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          browserIdentifier: S.String.pipe(T.HttpLabel("browserIdentifier")),
+          sessionId: S.String.pipe(T.HttpQuery("sessionId")),
+          streamUpdate: StreamUpdate,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/browsers/{browserIdentifier}/sessions/streams/update" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateBrowserStreamRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          browserIdentifier: S.String,
+          sessionId: S.String,
+          streams: BrowserSessionStream,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "UpdateBrowserStreamResponse",
+      });
+  }
+}

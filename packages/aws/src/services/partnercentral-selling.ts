@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -115,24 +116,15 @@ export interface AcceptEngagementInvitationRequest {
   Catalog: string;
   Identifier: string;
 }
-const AcceptEngagementInvitationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/AcceptEngagementInvitation" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AcceptEngagementInvitationRequest",
-}) as any as S.Schema<AcceptEngagementInvitationRequest>;
+const AcceptEngagementInvitationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptEngagementInvitationRequest>;
 export interface AcceptEngagementInvitationResponse {}
-const AcceptEngagementInvitationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AcceptEngagementInvitationResponse",
-}) as any as S.Schema<AcceptEngagementInvitationResponse>;
+const AcceptEngagementInvitationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptEngagementInvitationResponse>;
 export type OpportunityIdentifier = string;
 export type Email = string | redacted.Redacted<string>;
 export type Name = string | redacted.Redacted<string>;
@@ -145,29 +137,21 @@ export interface AssigneeContact {
   Phone?: string | redacted.Redacted<string>;
   BusinessTitle: string | redacted.Redacted<string>;
 }
-const AssigneeContact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Email: SensitiveString,
-    FirstName: SensitiveString,
-    LastName: SensitiveString,
-    Phone: S.optional(SensitiveString),
-    BusinessTitle: SensitiveString,
-  }),
-).annotate({ identifier: "AssigneeContact" }) as any as S.Schema<AssigneeContact>;
+const AssigneeContact = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AssigneeContact>;
 export interface AssignOpportunityRequest {
   Catalog: string;
   Identifier: string;
   Assignee: AssigneeContact;
 }
-const AssignOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, Identifier: S.String, Assignee: AssigneeContact }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/AssignOpportunity" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "AssignOpportunityRequest" }) as any as S.Schema<AssignOpportunityRequest>;
+const AssignOpportunityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssignOpportunityRequest>;
 export interface AssignOpportunityResponse {}
-const AssignOpportunityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssignOpportunityResponse",
-}) as any as S.Schema<AssignOpportunityResponse>;
+const AssignOpportunityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssignOpportunityResponse>;
 export type RelatedEntityType =
   | "Solutions"
   | "AwsProducts"
@@ -184,18 +168,10 @@ export interface AssociateOpportunityRequest {
   RelatedEntityType: RelatedEntityType;
   RelatedEntityIdentifier: string;
 }
-const AssociateOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    OpportunityIdentifier: S.String,
-    RelatedEntityType: RelatedEntityType,
-    RelatedEntityIdentifier: S.String,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/AssociateOpportunity" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AssociateOpportunityRequest",
-}) as any as S.Schema<AssociateOpportunityRequest>;
+const AssociateOpportunityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateOpportunityRequest>;
 export interface AssociateOpportunityResponse {}
 const AssociateOpportunityResponse =
   AssignOpportunityResponse as any as S.Schema<AssociateOpportunityResponse>;
@@ -503,14 +479,7 @@ export interface EngagementCustomer {
   WebsiteUrl: string | redacted.Redacted<string>;
   CountryCode: CountryCode;
 }
-const EngagementCustomer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Industry: Industry,
-    CompanyName: SensitiveString,
-    WebsiteUrl: SensitiveString,
-    CountryCode: CountryCode,
-  }),
-).annotate({ identifier: "EngagementCustomer" }) as any as S.Schema<EngagementCustomer>;
+const EngagementCustomer = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EngagementCustomer>;
 export type EngagementCustomerProjectTitle = string;
 export type EngagementCustomerBusinessProblem = string | redacted.Redacted<string>;
 export interface EngagementCustomerProjectDetails {
@@ -518,27 +487,22 @@ export interface EngagementCustomerProjectDetails {
   BusinessProblem: string | redacted.Redacted<string>;
   TargetCompletionDate: string;
 }
-const EngagementCustomerProjectDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Title: S.String, BusinessProblem: SensitiveString, TargetCompletionDate: S.String }),
-).annotate({
-  identifier: "EngagementCustomerProjectDetails",
-}) as any as S.Schema<EngagementCustomerProjectDetails>;
+const EngagementCustomerProjectDetails = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<EngagementCustomerProjectDetails>;
 export interface CustomerProjectsContext {
   Customer?: EngagementCustomer;
   Project?: EngagementCustomerProjectDetails;
 }
-const CustomerProjectsContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Customer: S.optional(EngagementCustomer),
-    Project: S.optional(EngagementCustomerProjectDetails),
-  }),
-).annotate({ identifier: "CustomerProjectsContext" }) as any as S.Schema<CustomerProjectsContext>;
+const CustomerProjectsContext = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CustomerProjectsContext>;
 export interface LeadInsights {
   LeadReadinessScore?: string;
 }
-const LeadInsights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LeadReadinessScore: S.optional(S.String) }),
-).annotate({ identifier: "LeadInsights" }) as any as S.Schema<LeadInsights>;
+const LeadInsights = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<LeadInsights>;
 export type LeadQualificationStatus = string;
 export type LeadIndustry = string;
 export type LeadWebsiteUrl = string | redacted.Redacted<string>;
@@ -549,14 +513,7 @@ export interface LeadAddress {
   StateOrRegion?: string;
   CountryCode?: string | redacted.Redacted<string>;
 }
-const LeadAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    City: S.optional(S.String),
-    PostalCode: S.optional(S.String),
-    StateOrRegion: S.optional(S.String),
-    CountryCode: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "LeadAddress" }) as any as S.Schema<LeadAddress>;
+const LeadAddress = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LeadAddress>;
 export type AwsMaturity = string;
 export type LeadMarketSegment = string;
 export interface LeadCustomer {
@@ -567,16 +524,7 @@ export interface LeadCustomer {
   AwsMaturity?: string;
   MarketSegment?: string;
 }
-const LeadCustomer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Industry: S.optional(S.String),
-    CompanyName: SensitiveString,
-    WebsiteUrl: S.optional(SensitiveString),
-    Address: S.optional(LeadAddress),
-    AwsMaturity: S.optional(S.String),
-    MarketSegment: S.optional(S.String),
-  }),
-).annotate({ identifier: "LeadCustomer" }) as any as S.Schema<LeadCustomer>;
+const LeadCustomer = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<LeadCustomer>;
 export type LeadSourceType = string;
 export type LeadSourceId = string;
 export type LeadSourceName = string;
@@ -593,15 +541,7 @@ export interface LeadContact {
   LastName: string | redacted.Redacted<string>;
   Phone?: string | redacted.Redacted<string>;
 }
-const LeadContact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BusinessTitle: SensitiveString,
-    Email: SensitiveString,
-    FirstName: SensitiveString,
-    LastName: SensitiveString,
-    Phone: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "LeadContact" }) as any as S.Schema<LeadContact>;
+const LeadContact = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<LeadContact>;
 export interface LeadInteraction {
   SourceType?: string;
   SourceId?: string;
@@ -612,34 +552,16 @@ export interface LeadInteraction {
   BusinessProblem?: string | redacted.Redacted<string>;
   Contact: LeadContact;
 }
-const LeadInteraction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SourceType: S.optional(S.String),
-    SourceId: S.optional(S.String),
-    SourceName: S.optional(S.String),
-    Usecase: S.optional(S.String),
-    InteractionDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    CustomerAction: S.optional(S.String),
-    BusinessProblem: S.optional(SensitiveString),
-    Contact: LeadContact,
-  }),
-).annotate({ identifier: "LeadInteraction" }) as any as S.Schema<LeadInteraction>;
+const LeadInteraction = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<LeadInteraction>;
 export type LeadInteractionList = LeadInteraction[];
-const LeadInteractionList = /*@__PURE__*/ S.Array(LeadInteraction);
+const LeadInteractionList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface LeadContext {
   Insights?: LeadInsights;
   QualificationStatus?: string;
   Customer: LeadCustomer;
   Interactions: LeadInteraction[];
 }
-const LeadContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Insights: S.optional(LeadInsights),
-    QualificationStatus: S.optional(S.String),
-    Customer: LeadCustomer,
-    Interactions: LeadInteractionList,
-  }),
-).annotate({ identifier: "LeadContext" }) as any as S.Schema<LeadContext>;
+const LeadContext = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<LeadContext>;
 export type ProspectingAccountName = string;
 export type ProspectingGeo = string;
 export type ProspectingRegion = string;
@@ -648,7 +570,7 @@ export type ProspectingSubIndustry = string;
 export type ProspectingSegment = string;
 export type ProspectingCompanySize = string;
 export type EligibleProgramsList = string[];
-const EligibleProgramsList = /*@__PURE__*/ S.Array(S.String);
+const EligibleProgramsList = /*@__PURE__*/ __L.at(__c2, 0);
 export type ProspectingPublicProfileSummary = string;
 export interface ProspectingResultCustomer {
   AccountName?: string;
@@ -663,23 +585,10 @@ export interface ProspectingResultCustomer {
   EligiblePrograms?: string[];
   PublicProfileSummary?: string;
 }
-const ProspectingResultCustomer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountName: S.optional(S.String),
-    Geo: S.optional(S.String),
-    Region: S.optional(S.String),
-    SubRegion: S.optional(S.String),
-    Country: S.optional(CountryCode),
-    Industry: S.optional(Industry),
-    SubIndustry: S.optional(S.String),
-    Segment: S.optional(S.String),
-    CompanySize: S.optional(S.String),
-    EligiblePrograms: S.optional(EligibleProgramsList),
-    PublicProfileSummary: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProspectingResultCustomer",
-}) as any as S.Schema<ProspectingResultCustomer>;
+const ProspectingResultCustomer = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ProspectingResultCustomer>;
 export type EngagementScoreLevel = string;
 export interface ProspectingInsights {
   MarketplaceEngagementScore?: string;
@@ -687,14 +596,7 @@ export interface ProspectingInsights {
   SolutionCategory?: string;
   SolutionSubCategory?: string;
 }
-const ProspectingInsights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MarketplaceEngagementScore: S.optional(S.String),
-    SolutionScore: S.optional(S.String),
-    SolutionCategory: S.optional(S.String),
-    SolutionSubCategory: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProspectingInsights" }) as any as S.Schema<ProspectingInsights>;
+const ProspectingInsights = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ProspectingInsights>;
 export type ProspectingTaskIdentifier = string;
 export type TaskArn = string;
 export type TaskName = string;
@@ -707,46 +609,27 @@ export interface ProspectingResultAws {
   TaskArn?: string;
   TaskName?: string;
 }
-const ProspectingResultAws = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Customer: S.optional(ProspectingResultCustomer),
-    Insights: S.optional(ProspectingInsights),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    TaskName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProspectingResultAws" }) as any as S.Schema<ProspectingResultAws>;
+const ProspectingResultAws = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ProspectingResultAws>;
 export interface ProspectingResult {
   Aws?: ProspectingResultAws;
 }
-const ProspectingResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Aws: S.optional(ProspectingResultAws) }),
-).annotate({ identifier: "ProspectingResult" }) as any as S.Schema<ProspectingResult>;
+const ProspectingResult = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ProspectingResult>;
 export type EngagementContextPayload =
   | { CustomerProject: CustomerProjectsContext; Lead?: never; ProspectingResult?: never }
   | { CustomerProject?: never; Lead: LeadContext; ProspectingResult?: never }
   | { CustomerProject?: never; Lead?: never; ProspectingResult: ProspectingResult };
-const EngagementContextPayload = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ CustomerProject: CustomerProjectsContext }),
-  /*@__PURE__*/ S.Struct({ Lead: LeadContext }),
-  /*@__PURE__*/ S.Struct({ ProspectingResult: ProspectingResult }),
-]);
+const EngagementContextPayload = /*@__PURE__*/ __L.at(__c2, 5);
 export interface EngagementContextDetails {
   Id?: string;
   Type: EngagementContextType;
   Payload?: EngagementContextPayload;
 }
-const EngagementContextDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Type: EngagementContextType,
-    Payload: S.optional(EngagementContextPayload),
-  }),
-).annotate({ identifier: "EngagementContextDetails" }) as any as S.Schema<EngagementContextDetails>;
+const EngagementContextDetails = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<EngagementContextDetails>;
 export type EngagementContexts = EngagementContextDetails[];
-const EngagementContexts = /*@__PURE__*/ S.Array(EngagementContextDetails);
+const EngagementContexts = /*@__PURE__*/ __L.at(__c2, 7);
 export interface CreateEngagementRequest {
   Catalog: string;
   ClientToken: string;
@@ -754,17 +637,10 @@ export interface CreateEngagementRequest {
   Description?: string;
   Contexts?: EngagementContextDetails[];
 }
-const CreateEngagementRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-    Title: S.optional(S.String),
-    Description: S.optional(S.String),
-    Contexts: S.optional(EngagementContexts),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/CreateEngagement" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateEngagementRequest" }) as any as S.Schema<CreateEngagementRequest>;
+const CreateEngagementRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateEngagementRequest>;
 export type EngagementIdentifier = string;
 export type EngagementArn = string;
 export interface CreateEngagementResponse {
@@ -772,13 +648,10 @@ export interface CreateEngagementResponse {
   Arn?: string;
   ModifiedAt?: Date;
 }
-const CreateEngagementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "CreateEngagementResponse" }) as any as S.Schema<CreateEngagementResponse>;
+const CreateEngagementResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateEngagementResponse>;
 export type EngagementArnOrIdentifier = string;
 export interface CreateEngagementContextRequest {
   Catalog: string;
@@ -787,42 +660,20 @@ export interface CreateEngagementContextRequest {
   Type: EngagementContextType;
   Payload: EngagementContextPayload;
 }
-const CreateEngagementContextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    EngagementIdentifier: S.String,
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-    Type: EngagementContextType,
-    Payload: EngagementContextPayload,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/CreateEngagementContext" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateEngagementContextRequest",
-}) as any as S.Schema<CreateEngagementContextRequest>;
+const CreateEngagementContextRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateEngagementContextRequest>;
 export interface CreateEngagementContextResponse {
   EngagementId?: string;
   EngagementArn?: string;
   EngagementLastModifiedAt?: Date;
   ContextId?: string;
 }
-const CreateEngagementContextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EngagementId: S.optional(S.String),
-    EngagementArn: S.optional(S.String),
-    EngagementLastModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ContextId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateEngagementContextResponse",
-}) as any as S.Schema<CreateEngagementContextResponse>;
+const CreateEngagementContextResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateEngagementContextResponse>;
 export type InvitationMessage = string | redacted.Redacted<string>;
 export type Alias = string | redacted.Redacted<string>;
 export type AwsAccount = string | redacted.Redacted<string>;
@@ -830,11 +681,9 @@ export interface AccountReceiver {
   Alias?: string | redacted.Redacted<string>;
   AwsAccountId: string | redacted.Redacted<string>;
 }
-const AccountReceiver = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Alias: S.optional(SensitiveString), AwsAccountId: SensitiveString }),
-).annotate({ identifier: "AccountReceiver" }) as any as S.Schema<AccountReceiver>;
+const AccountReceiver = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AccountReceiver>;
 export type Receiver = { Account: AccountReceiver };
-const Receiver = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ Account: AccountReceiver })]);
+const Receiver = /*@__PURE__*/ __L.at(__c3, 5);
 export type SenderContactEmail = string | redacted.Redacted<string>;
 export interface SenderContact {
   Email: string | redacted.Redacted<string>;
@@ -843,17 +692,9 @@ export interface SenderContact {
   BusinessTitle?: string | redacted.Redacted<string>;
   Phone?: string | redacted.Redacted<string>;
 }
-const SenderContact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Email: SensitiveString,
-    FirstName: S.optional(SensitiveString),
-    LastName: S.optional(SensitiveString),
-    BusinessTitle: S.optional(SensitiveString),
-    Phone: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "SenderContact" }) as any as S.Schema<SenderContact>;
+const SenderContact = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SenderContact>;
 export type SenderContactList = SenderContact[];
-const SenderContactList = /*@__PURE__*/ S.Array(SenderContact);
+const SenderContactList = /*@__PURE__*/ __L.at(__c3, 7);
 export type ReceiverResponsibility =
   | "Distributor"
   | "Reseller"
@@ -868,7 +709,7 @@ export type ReceiverResponsibility =
 const ReceiverResponsibility = S.String;
 
 export type ReceiverResponsibilityList = ReceiverResponsibility[];
-const ReceiverResponsibilityList = /*@__PURE__*/ S.Array(ReceiverResponsibility);
+const ReceiverResponsibilityList = /*@__PURE__*/ __L.at(__c4, 0);
 export type Amount = string | redacted.Redacted<string>;
 export type CurrencyCode =
   | "USD"
@@ -1053,47 +894,29 @@ export interface ExpectedCustomerSpend {
   TargetCompany: string;
   EstimationUrl?: string;
 }
-const ExpectedCustomerSpend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Amount: S.optional(SensitiveString),
-    CurrencyCode: CurrencyCode,
-    Frequency: PaymentFrequency,
-    TargetCompany: S.String,
-    EstimationUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExpectedCustomerSpend" }) as any as S.Schema<ExpectedCustomerSpend>;
+const ExpectedCustomerSpend = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ExpectedCustomerSpend>;
 export type ExpectedCustomerSpendList = ExpectedCustomerSpend[];
-const ExpectedCustomerSpendList = /*@__PURE__*/ S.Array(ExpectedCustomerSpend);
+const ExpectedCustomerSpendList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface ProjectDetails {
   BusinessProblem: string | redacted.Redacted<string>;
   Title: string;
   TargetCompletionDate: string;
   ExpectedCustomerSpend: ExpectedCustomerSpend[];
 }
-const ProjectDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BusinessProblem: SensitiveString,
-    Title: S.String,
-    TargetCompletionDate: S.String,
-    ExpectedCustomerSpend: ExpectedCustomerSpendList,
-  }),
-).annotate({ identifier: "ProjectDetails" }) as any as S.Schema<ProjectDetails>;
+const ProjectDetails = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ProjectDetails>;
 export interface OpportunityInvitationPayload {
   SenderContacts?: SenderContact[];
   ReceiverResponsibilities: ReceiverResponsibility[];
   Customer: EngagementCustomer;
   Project: ProjectDetails;
 }
-const OpportunityInvitationPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SenderContacts: S.optional(SenderContactList),
-    ReceiverResponsibilities: ReceiverResponsibilityList,
-    Customer: EngagementCustomer,
-    Project: ProjectDetails,
-  }),
-).annotate({
-  identifier: "OpportunityInvitationPayload",
-}) as any as S.Schema<OpportunityInvitationPayload>;
+const OpportunityInvitationPayload = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<OpportunityInvitationPayload>;
 export interface LeadInvitationCustomer {
   Industry?: string;
   CompanyName: string | redacted.Redacted<string>;
@@ -1102,16 +925,10 @@ export interface LeadInvitationCustomer {
   AwsMaturity?: string;
   MarketSegment?: string;
 }
-const LeadInvitationCustomer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Industry: S.optional(S.String),
-    CompanyName: SensitiveString,
-    WebsiteUrl: S.optional(SensitiveString),
-    CountryCode: S.optional(SensitiveString),
-    AwsMaturity: S.optional(S.String),
-    MarketSegment: S.optional(S.String),
-  }),
-).annotate({ identifier: "LeadInvitationCustomer" }) as any as S.Schema<LeadInvitationCustomer>;
+const LeadInvitationCustomer = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<LeadInvitationCustomer>;
 export interface LeadInvitationInteraction {
   SourceType?: string;
   SourceId?: string;
@@ -1119,75 +936,48 @@ export interface LeadInvitationInteraction {
   Usecase?: string;
   ContactBusinessTitle: string | redacted.Redacted<string>;
 }
-const LeadInvitationInteraction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SourceType: S.optional(S.String),
-    SourceId: S.optional(S.String),
-    SourceName: S.optional(S.String),
-    Usecase: S.optional(S.String),
-    ContactBusinessTitle: SensitiveString,
-  }),
-).annotate({
-  identifier: "LeadInvitationInteraction",
-}) as any as S.Schema<LeadInvitationInteraction>;
+const LeadInvitationInteraction = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<LeadInvitationInteraction>;
 export interface LeadInvitationPayload {
   Customer: LeadInvitationCustomer;
   Interaction: LeadInvitationInteraction;
 }
-const LeadInvitationPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Customer: LeadInvitationCustomer, Interaction: LeadInvitationInteraction }),
-).annotate({ identifier: "LeadInvitationPayload" }) as any as S.Schema<LeadInvitationPayload>;
+const LeadInvitationPayload = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<LeadInvitationPayload>;
 export type Payload =
   | { OpportunityInvitation: OpportunityInvitationPayload; LeadInvitation?: never }
   | { OpportunityInvitation?: never; LeadInvitation: LeadInvitationPayload };
-const Payload = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ OpportunityInvitation: OpportunityInvitationPayload }),
-  /*@__PURE__*/ S.Struct({ LeadInvitation: LeadInvitationPayload }),
-]);
+const Payload = /*@__PURE__*/ __L.at(__c5, 0);
 export interface Invitation {
   Message: string | redacted.Redacted<string>;
   Receiver: Receiver;
   Payload: Payload;
 }
-const Invitation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Message: SensitiveString, Receiver: Receiver, Payload: Payload }),
-).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
+const Invitation = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Invitation>;
 export interface CreateEngagementInvitationRequest {
   Catalog: string;
   ClientToken: string;
   EngagementIdentifier: string;
   Invitation: Invitation;
 }
-const CreateEngagementInvitationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-    EngagementIdentifier: S.String,
-    Invitation: Invitation,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/CreateEngagementInvitation" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateEngagementInvitationRequest",
-}) as any as S.Schema<CreateEngagementInvitationRequest>;
+const CreateEngagementInvitationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateEngagementInvitationRequest>;
 export type EngagementInvitationIdentifier = string;
 export type EngagementInvitationArn = string;
 export interface CreateEngagementInvitationResponse {
   Id: string;
   Arn: string;
 }
-const CreateEngagementInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String, Arn: S.String }),
-).annotate({
-  identifier: "CreateEngagementInvitationResponse",
-}) as any as S.Schema<CreateEngagementInvitationResponse>;
+const CreateEngagementInvitationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateEngagementInvitationResponse>;
 export type PrimaryNeedFromAws =
   | "Co-Sell - Architectural Validation"
   | "Co-Sell - Business Presentation"
@@ -1212,15 +1002,7 @@ export interface Address {
   CountryCode?: CountryCode;
   StreetAddress?: string | redacted.Redacted<string>;
 }
-const Address = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    City: S.optional(SensitiveString),
-    PostalCode: S.optional(SensitiveString),
-    StateOrRegion: S.optional(SensitiveString),
-    CountryCode: S.optional(CountryCode),
-    StreetAddress: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
+const Address = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Address>;
 export type DunsNumber = string | redacted.Redacted<string>;
 export interface Account {
   Industry?: Industry;
@@ -1231,17 +1013,7 @@ export interface Account {
   Address?: Address;
   Duns?: string | redacted.Redacted<string>;
 }
-const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Industry: S.optional(Industry),
-    OtherIndustry: S.optional(S.String),
-    CompanyName: SensitiveString,
-    WebsiteUrl: S.optional(SensitiveString),
-    AwsAccountId: S.optional(SensitiveString),
-    Address: S.optional(Address),
-    Duns: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
+const Account = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Account>;
 export interface Contact {
   Email?: string | redacted.Redacted<string>;
   FirstName?: string | redacted.Redacted<string>;
@@ -1249,24 +1021,14 @@ export interface Contact {
   BusinessTitle?: string | redacted.Redacted<string>;
   Phone?: string | redacted.Redacted<string>;
 }
-const Contact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Email: S.optional(SensitiveString),
-    FirstName: S.optional(SensitiveString),
-    LastName: S.optional(SensitiveString),
-    BusinessTitle: S.optional(SensitiveString),
-    Phone: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
+const Contact = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Contact>;
 export type CustomerContactsList = Contact[];
-const CustomerContactsList = /*@__PURE__*/ S.Array(Contact);
+const CustomerContactsList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface Customer {
   Account?: Account;
   Contacts?: Contact[];
 }
-const Customer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Account: S.optional(Account), Contacts: S.optional(CustomerContactsList) }),
-).annotate({ identifier: "Customer" }) as any as S.Schema<Customer>;
+const Customer = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Customer>;
 export type DeliveryModel =
   | "SaaS or PaaS"
   | "BYOL or AMI"
@@ -1284,9 +1046,10 @@ export interface ExpectedContractDuration {
   Term: ExpectedContractDurationTerm;
   Value: string;
 }
-const ExpectedContractDuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Term: ExpectedContractDurationTerm, Value: S.String }),
-).annotate({ identifier: "ExpectedContractDuration" }) as any as S.Schema<ExpectedContractDuration>;
+const ExpectedContractDuration = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ExpectedContractDuration>;
 export type PiiString = string | redacted.Redacted<string>;
 export type ApnPrograms = string[];
 const ApnPrograms = EligibleProgramsList as any as S.Schema<ApnPrograms>;
@@ -1336,24 +1099,7 @@ export interface Project {
   AdditionalComments?: string;
   AwsPartition?: AwsPartition;
 }
-const Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryModels: S.optional(DeliveryModels),
-    ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
-    ExpectedContractDuration: S.optional(ExpectedContractDuration),
-    Title: S.optional(SensitiveString),
-    ApnPrograms: S.optional(ApnPrograms),
-    CustomerBusinessProblem: S.optional(SensitiveString),
-    CustomerUseCase: S.optional(S.String),
-    RelatedOpportunityIdentifier: S.optional(S.String),
-    SalesActivities: S.optional(SalesActivities),
-    CompetitorName: S.optional(CompetitorName),
-    OtherCompetitorNames: S.optional(S.String),
-    OtherSolutionDescription: S.optional(SensitiveString),
-    AdditionalComments: S.optional(S.String),
-    AwsPartition: S.optional(AwsPartition),
-  }),
-).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
+const Project = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Project>;
 export type OpportunityType = "Net New Business" | "Flat Renewal" | "Expansion" | (string & {});
 const OpportunityType = S.String;
 
@@ -1389,15 +1135,7 @@ export interface Marketing {
   Channels?: Channel[];
   AwsFundingUsed?: AwsFundingUsed;
 }
-const Marketing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CampaignName: S.optional(S.String),
-    Source: S.optional(MarketingSource),
-    UseCases: S.optional(UseCases),
-    Channels: S.optional(Channels),
-    AwsFundingUsed: S.optional(AwsFundingUsed),
-  }),
-).annotate({ identifier: "Marketing" }) as any as S.Schema<Marketing>;
+const Marketing = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Marketing>;
 export type RevenueModel = "Contract" | "Pay-as-you-go" | "Subscription" | (string & {});
 const RevenueModel = S.String;
 
@@ -1405,23 +1143,14 @@ export interface MonetaryValue {
   Amount: string;
   CurrencyCode: CurrencyCode;
 }
-const MonetaryValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Amount: S.String, CurrencyCode: CurrencyCode }),
-).annotate({ identifier: "MonetaryValue" }) as any as S.Schema<MonetaryValue>;
+const MonetaryValue = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<MonetaryValue>;
 export interface SoftwareRevenue {
   DeliveryModel?: RevenueModel;
   Value?: MonetaryValue;
   EffectiveDate?: string;
   ExpirationDate?: string;
 }
-const SoftwareRevenue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryModel: S.optional(RevenueModel),
-    Value: S.optional(MonetaryValue),
-    EffectiveDate: S.optional(S.String),
-    ExpirationDate: S.optional(S.String),
-  }),
-).annotate({ identifier: "SoftwareRevenue" }) as any as S.Schema<SoftwareRevenue>;
+const SoftwareRevenue = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<SoftwareRevenue>;
 export type Stage =
   | "Prospect"
   | "Qualified"
@@ -1470,11 +1199,9 @@ export interface NextStepsHistory {
   Value: string;
   Time: Date;
 }
-const NextStepsHistory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.String, Time: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
-).annotate({ identifier: "NextStepsHistory" }) as any as S.Schema<NextStepsHistory>;
+const NextStepsHistory = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<NextStepsHistory>;
 export type NextStepsHistories = NextStepsHistory[];
-const NextStepsHistories = /*@__PURE__*/ S.Array(NextStepsHistory);
+const NextStepsHistories = /*@__PURE__*/ __L.at(__c6, 7);
 export interface LifeCycle {
   Stage?: Stage;
   ClosedLostReason?: ClosedLostReason;
@@ -1485,18 +1212,7 @@ export interface LifeCycle {
   ReviewStatusReason?: string;
   NextStepsHistory?: NextStepsHistory[];
 }
-const LifeCycle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Stage: S.optional(Stage),
-    ClosedLostReason: S.optional(ClosedLostReason),
-    NextSteps: S.optional(SensitiveString),
-    TargetCloseDate: S.optional(S.String),
-    ReviewStatus: S.optional(ReviewStatus),
-    ReviewComments: S.optional(S.String),
-    ReviewStatusReason: S.optional(S.String),
-    NextStepsHistory: S.optional(NextStepsHistories),
-  }),
-).annotate({ identifier: "LifeCycle" }) as any as S.Schema<LifeCycle>;
+const LifeCycle = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<LifeCycle>;
 export type OpportunityOrigin = "AWS Referral" | "Partner Referral" | (string & {});
 const OpportunityOrigin = S.String;
 
@@ -1509,11 +1225,9 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c7, 2);
 export interface CreateOpportunityRequest {
   Catalog: string;
   PrimaryNeedsFromAws?: PrimaryNeedFromAws[];
@@ -1530,40 +1244,19 @@ export interface CreateOpportunityRequest {
   OpportunityTeam?: Contact[];
   Tags?: Tag[];
 }
-const CreateOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    PrimaryNeedsFromAws: S.optional(PrimaryNeedsFromAws),
-    NationalSecurity: S.optional(NationalSecurity),
-    PartnerOpportunityIdentifier: S.optional(S.String),
-    Customer: S.optional(Customer),
-    Project: S.optional(Project),
-    OpportunityType: S.optional(OpportunityType),
-    Marketing: S.optional(Marketing),
-    SoftwareRevenue: S.optional(SoftwareRevenue),
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-    LifeCycle: S.optional(LifeCycle),
-    Origin: S.optional(OpportunityOrigin),
-    OpportunityTeam: S.optional(PartnerOpportunityTeamMembersList),
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/CreateOpportunity" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateOpportunityRequest" }) as any as S.Schema<CreateOpportunityRequest>;
+const CreateOpportunityRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateOpportunityRequest>;
 export interface CreateOpportunityResponse {
   Id: string;
   PartnerOpportunityIdentifier?: string;
   LastModifiedDate?: Date;
 }
-const CreateOpportunityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    PartnerOpportunityIdentifier: S.optional(S.String),
-    LastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "CreateOpportunityResponse",
-}) as any as S.Schema<CreateOpportunityResponse>;
+const CreateOpportunityResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateOpportunityResponse>;
 export type ResourceType = "Opportunity" | (string & {});
 const ResourceType = S.String;
 
@@ -1577,31 +1270,20 @@ export interface CreateResourceSnapshotRequest {
   ResourceSnapshotTemplateIdentifier: string;
   ClientToken: string;
 }
-const CreateResourceSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    EngagementIdentifier: S.String,
-    ResourceType: ResourceType,
-    ResourceIdentifier: S.String,
-    ResourceSnapshotTemplateIdentifier: S.String,
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/CreateResourceSnapshot" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateResourceSnapshotRequest",
-}) as any as S.Schema<CreateResourceSnapshotRequest>;
+const CreateResourceSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateResourceSnapshotRequest>;
 export type ResourceArn = string;
 export type ResourceSnapshotRevision = number;
 export interface CreateResourceSnapshotResponse {
   Arn?: string;
   Revision?: number;
 }
-const CreateResourceSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Revision: S.optional(S.Number) }),
-).annotate({
-  identifier: "CreateResourceSnapshotResponse",
-}) as any as S.Schema<CreateResourceSnapshotResponse>;
+const CreateResourceSnapshotResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateResourceSnapshotResponse>;
 export interface CreateResourceSnapshotJobRequest {
   Catalog: string;
   ClientToken: string;
@@ -1611,57 +1293,28 @@ export interface CreateResourceSnapshotJobRequest {
   ResourceSnapshotTemplateIdentifier: string;
   Tags?: Tag[];
 }
-const CreateResourceSnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-    EngagementIdentifier: S.String,
-    ResourceType: ResourceType,
-    ResourceIdentifier: S.String,
-    ResourceSnapshotTemplateIdentifier: S.String,
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/CreateResourceSnapshotJob" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateResourceSnapshotJobRequest",
-}) as any as S.Schema<CreateResourceSnapshotJobRequest>;
+const CreateResourceSnapshotJobRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateResourceSnapshotJobRequest>;
 export type ResourceSnapshotJobIdentifier = string;
 export type ResourceSnapshotJobArn = string;
 export interface CreateResourceSnapshotJobResponse {
   Id?: string;
   Arn?: string;
 }
-const CreateResourceSnapshotJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateResourceSnapshotJobResponse",
-}) as any as S.Schema<CreateResourceSnapshotJobResponse>;
+const CreateResourceSnapshotJobResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateResourceSnapshotJobResponse>;
 export interface DeleteResourceSnapshotJobRequest {
   Catalog: string;
   ResourceSnapshotJobIdentifier: string;
 }
-const DeleteResourceSnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, ResourceSnapshotJobIdentifier: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/DeleteResourceSnapshotJob" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteResourceSnapshotJobRequest",
-}) as any as S.Schema<DeleteResourceSnapshotJobRequest>;
+const DeleteResourceSnapshotJobRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteResourceSnapshotJobRequest>;
 export interface DeleteResourceSnapshotJobResponse {}
 const DeleteResourceSnapshotJobResponse =
   AcceptEngagementInvitationResponse as any as S.Schema<DeleteResourceSnapshotJobResponse>;
@@ -1671,47 +1324,23 @@ export interface DisassociateOpportunityRequest {
   RelatedEntityType: RelatedEntityType;
   RelatedEntityIdentifier: string;
 }
-const DisassociateOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    OpportunityIdentifier: S.String,
-    RelatedEntityType: RelatedEntityType,
-    RelatedEntityIdentifier: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/DisassociateOpportunity" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateOpportunityRequest",
-}) as any as S.Schema<DisassociateOpportunityRequest>;
+const DisassociateOpportunityRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DisassociateOpportunityRequest>;
 export interface DisassociateOpportunityResponse {}
-const DisassociateOpportunityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateOpportunityResponse",
-}) as any as S.Schema<DisassociateOpportunityResponse>;
+const DisassociateOpportunityResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DisassociateOpportunityResponse>;
 export interface GetAwsOpportunitySummaryRequest {
   Catalog: string;
   RelatedOpportunityIdentifier: string;
 }
-const GetAwsOpportunitySummaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, RelatedOpportunityIdentifier: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GetAwsOpportunitySummary" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAwsOpportunitySummaryRequest",
-}) as any as S.Schema<GetAwsOpportunitySummaryRequest>;
+const GetAwsOpportunitySummaryRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetAwsOpportunitySummaryRequest>;
 export type SalesInvolvementType = "For Visibility Only" | "Co-Sell" | (string & {});
 const SalesInvolvementType = S.String;
 
@@ -1811,15 +1440,10 @@ export interface AwsOpportunityLifeCycle {
   NextSteps?: string | redacted.Redacted<string>;
   NextStepsHistory?: ProfileNextStepsHistory[];
 }
-const AwsOpportunityLifeCycle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TargetCloseDate: S.optional(S.String),
-    ClosedLostReason: S.optional(AwsClosedLostReason),
-    Stage: S.optional(AwsOpportunityStage),
-    NextSteps: S.optional(SensitiveString),
-    NextStepsHistory: S.optional(ProfileNextStepsHistories),
-  }),
-).annotate({ identifier: "AwsOpportunityLifeCycle" }) as any as S.Schema<AwsOpportunityLifeCycle>;
+const AwsOpportunityLifeCycle = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<AwsOpportunityLifeCycle>;
 export type AwsMemberBusinessTitle =
   | "AWSSalesRep"
   | "AWSAccountOwner"
@@ -1837,33 +1461,27 @@ export interface AwsTeamMember {
   LastName?: string | redacted.Redacted<string>;
   BusinessTitle?: AwsMemberBusinessTitle;
 }
-const AwsTeamMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Email: S.optional(SensitiveString),
-    FirstName: S.optional(SensitiveString),
-    LastName: S.optional(SensitiveString),
-    BusinessTitle: S.optional(AwsMemberBusinessTitle),
-  }),
-).annotate({ identifier: "AwsTeamMember" }) as any as S.Schema<AwsTeamMember>;
+const AwsTeamMember = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<AwsTeamMember>;
 export type AwsOpportunityTeamMembersList = AwsTeamMember[];
-const AwsOpportunityTeamMembersList = /*@__PURE__*/ S.Array(AwsTeamMember);
+const AwsOpportunityTeamMembersList = /*@__PURE__*/ __L.at(__c8, 7);
 export type EngagementScore = "High" | "Medium" | "Low" | (string & {});
 const EngagementScore = S.String;
 
 export type MonetaryAmount = string | redacted.Redacted<string>;
 export type AmountMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-const AmountMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+const AmountMap = /*@__PURE__*/ __L.at(__c9, 0);
 export type StringList = string[];
 const StringList = EligibleProgramsList as any as S.Schema<StringList>;
 export interface AwsProductOptimization {
   Description: string;
   SavingsAmount: string | redacted.Redacted<string>;
 }
-const AwsProductOptimization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Description: S.String, SavingsAmount: SensitiveString }),
-).annotate({ identifier: "AwsProductOptimization" }) as any as S.Schema<AwsProductOptimization>;
+const AwsProductOptimization = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<AwsProductOptimization>;
 export type AwsProductOptimizationsList = AwsProductOptimization[];
-const AwsProductOptimizationsList = /*@__PURE__*/ S.Array(AwsProductOptimization);
+const AwsProductOptimizationsList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface AwsProductDetails {
   ProductCode: string;
   ServiceCode?: string;
@@ -1873,19 +1491,9 @@ export interface AwsProductDetails {
   PotentialSavingsAmount?: string | redacted.Redacted<string>;
   Optimizations: AwsProductOptimization[];
 }
-const AwsProductDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductCode: S.String,
-    ServiceCode: S.optional(S.String),
-    Categories: StringList,
-    Amount: S.optional(SensitiveString),
-    OptimizedAmount: S.optional(SensitiveString),
-    PotentialSavingsAmount: S.optional(SensitiveString),
-    Optimizations: AwsProductOptimizationsList,
-  }),
-).annotate({ identifier: "AwsProductDetails" }) as any as S.Schema<AwsProductDetails>;
+const AwsProductDetails = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AwsProductDetails>;
 export type AwsProductsList = AwsProductDetails[];
-const AwsProductsList = /*@__PURE__*/ S.Array(AwsProductDetails);
+const AwsProductsList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface AwsProductInsights {
   CurrencyCode: CurrencyCode;
   Frequency: PaymentFrequency;
@@ -1895,52 +1503,30 @@ export interface AwsProductInsights {
   TotalAmountByCategory: { [key: string]: string | redacted.Redacted<string> | undefined };
   AwsProducts: AwsProductDetails[];
 }
-const AwsProductInsights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CurrencyCode: CurrencyCode,
-    Frequency: PaymentFrequency,
-    TotalAmount: S.optional(SensitiveString),
-    TotalOptimizedAmount: S.optional(SensitiveString),
-    TotalPotentialSavingsAmount: S.optional(SensitiveString),
-    TotalAmountByCategory: AmountMap,
-    AwsProducts: AwsProductsList,
-  }),
-).annotate({ identifier: "AwsProductInsights" }) as any as S.Schema<AwsProductInsights>;
+const AwsProductInsights = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AwsProductInsights>;
 export interface AwsProductsSpendInsightsBySource {
   Partner?: AwsProductInsights;
   AWS?: AwsProductInsights;
 }
-const AwsProductsSpendInsightsBySource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Partner: S.optional(AwsProductInsights), AWS: S.optional(AwsProductInsights) }),
-).annotate({
-  identifier: "AwsProductsSpendInsightsBySource",
-}) as any as S.Schema<AwsProductsSpendInsightsBySource>;
+const AwsProductsSpendInsightsBySource = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<AwsProductsSpendInsightsBySource>;
 export interface OpportunityQuality {
   Score?: number;
   Trend?: string;
 }
-const OpportunityQuality = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Score: S.optional(S.Number), Trend: S.optional(S.String) }),
-).annotate({ identifier: "OpportunityQuality" }) as any as S.Schema<OpportunityQuality>;
+const OpportunityQuality = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<OpportunityQuality>;
 export type RecommendationAttributeMap = { [key: string]: string | undefined };
-const RecommendationAttributeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const RecommendationAttributeMap = /*@__PURE__*/ __L.at(__c10, 0);
 export interface Recommendation {
   Type: string;
   Details: string;
   Attributes?: { [key: string]: string | undefined };
 }
-const Recommendation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.String,
-    Details: S.String,
-    Attributes: S.optional(RecommendationAttributeMap),
-  }),
-).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
+const Recommendation = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Recommendation>;
 export type RecommendationList = Recommendation[];
-const RecommendationList = /*@__PURE__*/ S.Array(Recommendation);
+const RecommendationList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface AwsOpportunityInsights {
   NextBestActions?: string;
   EngagementScore?: EngagementScore;
@@ -1948,15 +1534,10 @@ export interface AwsOpportunityInsights {
   OpportunityQuality?: OpportunityQuality;
   Recommendations?: Recommendation[];
 }
-const AwsOpportunityInsights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextBestActions: S.optional(S.String),
-    EngagementScore: S.optional(EngagementScore),
-    AwsProductsSpendInsightsBySource: S.optional(AwsProductsSpendInsightsBySource),
-    OpportunityQuality: S.optional(OpportunityQuality),
-    Recommendations: S.optional(RecommendationList),
-  }),
-).annotate({ identifier: "AwsOpportunityInsights" }) as any as S.Schema<AwsOpportunityInsights>;
+const AwsOpportunityInsights = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<AwsOpportunityInsights>;
 export type InvolvementTypeChangeReason =
   | "Expansion Opportunity"
   | "Change in Deal Information"
@@ -1986,46 +1567,32 @@ export interface AwsOpportunityRelatedEntities {
   AwsMarketplaceSolutions?: string[];
   AwsMarketplaceProducts?: string[];
 }
-const AwsOpportunityRelatedEntities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AwsProducts: S.optional(AwsProductIdentifiers),
-    Solutions: S.optional(SolutionIdentifiers),
-    AwsMarketplaceSolutions: S.optional(AwsMarketplaceSolutionIdentifiers),
-    AwsMarketplaceProducts: S.optional(AwsMarketplaceProductIdentifiers),
-  }),
-).annotate({
-  identifier: "AwsOpportunityRelatedEntities",
-}) as any as S.Schema<AwsOpportunityRelatedEntities>;
+const AwsOpportunityRelatedEntities = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<AwsOpportunityRelatedEntities>;
 export interface AwsOpportunityCustomer {
   Contacts?: Contact[];
 }
-const AwsOpportunityCustomer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Contacts: S.optional(CustomerContactsList) }),
-).annotate({ identifier: "AwsOpportunityCustomer" }) as any as S.Schema<AwsOpportunityCustomer>;
+const AwsOpportunityCustomer = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<AwsOpportunityCustomer>;
 export interface AwsOpportunityProject {
   ExpectedCustomerSpend?: ExpectedCustomerSpend[];
   AwsPartition?: AwsPartition;
 }
-const AwsOpportunityProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
-    AwsPartition: S.optional(AwsPartition),
-  }),
-).annotate({ identifier: "AwsOpportunityProject" }) as any as S.Schema<AwsOpportunityProject>;
+const AwsOpportunityProject = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<AwsOpportunityProject>;
 export interface AwsSoftwareRevenue {
   Value?: MonetaryValue;
   Discount?: string;
   EffectiveDate?: string;
   ExpirationDate?: string;
 }
-const AwsSoftwareRevenue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Value: S.optional(MonetaryValue),
-    Discount: S.optional(S.String),
-    EffectiveDate: S.optional(S.String),
-    ExpirationDate: S.optional(S.String),
-  }),
-).annotate({ identifier: "AwsSoftwareRevenue" }) as any as S.Schema<AwsSoftwareRevenue>;
+const AwsSoftwareRevenue = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<AwsSoftwareRevenue>;
 export interface GetAwsOpportunitySummaryResponse {
   RelatedOpportunityId?: string;
   Origin?: OpportunityOrigin;
@@ -2042,35 +1609,18 @@ export interface GetAwsOpportunitySummaryResponse {
   SoftwareRevenue?: AwsSoftwareRevenue;
   Catalog: string;
 }
-const GetAwsOpportunitySummaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RelatedOpportunityId: S.optional(S.String),
-    Origin: S.optional(OpportunityOrigin),
-    InvolvementType: S.optional(SalesInvolvementType),
-    Visibility: S.optional(Visibility),
-    LifeCycle: S.optional(AwsOpportunityLifeCycle),
-    OpportunityTeam: S.optional(AwsOpportunityTeamMembersList),
-    Insights: S.optional(AwsOpportunityInsights),
-    InvolvementTypeChangeReason: S.optional(InvolvementTypeChangeReason),
-    RelatedEntityIds: S.optional(AwsOpportunityRelatedEntities),
-    Customer: S.optional(AwsOpportunityCustomer),
-    Project: S.optional(AwsOpportunityProject),
-    CosellMotion: S.optional(S.String),
-    SoftwareRevenue: S.optional(AwsSoftwareRevenue),
-    Catalog: S.String,
-  }),
-).annotate({
-  identifier: "GetAwsOpportunitySummaryResponse",
-}) as any as S.Schema<GetAwsOpportunitySummaryResponse>;
+const GetAwsOpportunitySummaryResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetAwsOpportunitySummaryResponse>;
 export interface GetEngagementRequest {
   Catalog: string;
   Identifier: string;
 }
-const GetEngagementRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/GetEngagement" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetEngagementRequest" }) as any as S.Schema<GetEngagementRequest>;
+const GetEngagementRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetEngagementRequest>;
 export interface GetEngagementResponse {
   Id?: string;
   Arn?: string;
@@ -2083,38 +1633,18 @@ export interface GetEngagementResponse {
   ModifiedBy?: string | redacted.Redacted<string>;
   Contexts?: EngagementContextDetails[];
 }
-const GetEngagementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Title: S.optional(S.String),
-    Description: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    CreatedBy: S.optional(SensitiveString),
-    MemberCount: S.optional(S.Number),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ModifiedBy: S.optional(SensitiveString),
-    Contexts: S.optional(EngagementContexts),
-  }),
-).annotate({ identifier: "GetEngagementResponse" }) as any as S.Schema<GetEngagementResponse>;
+const GetEngagementResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetEngagementResponse>;
 export interface GetEngagementInvitationRequest {
   Catalog: string;
   Identifier: string;
 }
-const GetEngagementInvitationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GetEngagementInvitation" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetEngagementInvitationRequest",
-}) as any as S.Schema<GetEngagementInvitationRequest>;
+const GetEngagementInvitationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetEngagementInvitationRequest>;
 export type EngagementInvitationPayloadType =
   | "OpportunityInvitation"
   | "LeadInvitation"
@@ -2130,33 +1660,25 @@ export interface EngagementMemberSummary {
   CompanyName?: string | redacted.Redacted<string>;
   WebsiteUrl?: string;
 }
-const EngagementMemberSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CompanyName: S.optional(SensitiveString), WebsiteUrl: S.optional(S.String) }),
-).annotate({ identifier: "EngagementMemberSummary" }) as any as S.Schema<EngagementMemberSummary>;
+const EngagementMemberSummary = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<EngagementMemberSummary>;
 export type EngagementMemberSummaries = EngagementMemberSummary[];
-const EngagementMemberSummaries = /*@__PURE__*/ S.Array(EngagementMemberSummary);
+const EngagementMemberSummaries = /*@__PURE__*/ __L.at(__c11, 5);
 export interface InvitationProspectingResultAws {
   Customer?: ProspectingResultCustomer;
   Insights?: ProspectingInsights;
 }
-const InvitationProspectingResultAws = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Customer: S.optional(ProspectingResultCustomer),
-    Insights: S.optional(ProspectingInsights),
-  }),
-).annotate({
-  identifier: "InvitationProspectingResultAws",
-}) as any as S.Schema<InvitationProspectingResultAws>;
+const InvitationProspectingResultAws = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<InvitationProspectingResultAws>;
 export interface EnrichmentContext {
   ProspectingResultAws?: InvitationProspectingResultAws;
   LeadInsights?: LeadInsights;
 }
-const EnrichmentContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProspectingResultAws: S.optional(InvitationProspectingResultAws),
-    LeadInsights: S.optional(LeadInsights),
-  }),
-).annotate({ identifier: "EnrichmentContext" }) as any as S.Schema<EnrichmentContext>;
+const EnrichmentContext = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<EnrichmentContext>;
 export interface GetEngagementInvitationResponse {
   Arn?: string;
   PayloadType?: EngagementInvitationPayloadType;
@@ -2177,39 +1699,18 @@ export interface GetEngagementInvitationResponse {
   ExistingMembers?: EngagementMemberSummary[];
   EnrichmentContext?: EnrichmentContext;
 }
-const GetEngagementInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    PayloadType: S.optional(EngagementInvitationPayloadType),
-    Id: S.String,
-    EngagementId: S.optional(S.String),
-    EngagementTitle: S.optional(S.String),
-    Status: S.optional(InvitationStatus),
-    InvitationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ExpirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    SenderAwsAccountId: S.optional(SensitiveString),
-    SenderCompanyName: S.optional(S.String),
-    Receiver: S.optional(Receiver),
-    Catalog: S.String,
-    RejectionReason: S.optional(S.String),
-    Payload: S.optional(Payload),
-    InvitationMessage: S.optional(SensitiveString),
-    EngagementDescription: S.optional(S.String),
-    ExistingMembers: S.optional(EngagementMemberSummaries),
-    EnrichmentContext: S.optional(EnrichmentContext),
-  }),
-).annotate({
-  identifier: "GetEngagementInvitationResponse",
-}) as any as S.Schema<GetEngagementInvitationResponse>;
+const GetEngagementInvitationResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetEngagementInvitationResponse>;
 export interface GetOpportunityRequest {
   Catalog: string;
   Identifier: string;
 }
-const GetOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/GetOpportunity" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetOpportunityRequest" }) as any as S.Schema<GetOpportunityRequest>;
+const GetOpportunityRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetOpportunityRequest>;
 export type OpportunityArn = string;
 export type AwsMarketplaceOfferIdentifier = string;
 export type AwsMarketplaceOfferIdentifiers = string[];
@@ -2227,16 +1728,10 @@ export interface RelatedEntityIdentifiers {
   AwsMarketplaceSolutions?: string[];
   AwsMarketplaceProducts?: string[];
 }
-const RelatedEntityIdentifiers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AwsMarketplaceOffers: S.optional(AwsMarketplaceOfferIdentifiers),
-    AwsMarketplaceOfferSets: S.optional(AwsMarketplaceOfferSetIdentifiers),
-    Solutions: S.optional(SolutionIdentifiers),
-    AwsProducts: S.optional(AwsProductIdentifiers),
-    AwsMarketplaceSolutions: S.optional(AwsMarketplaceSolutionIdentifiers),
-    AwsMarketplaceProducts: S.optional(AwsMarketplaceProductIdentifiers),
-  }),
-).annotate({ identifier: "RelatedEntityIdentifiers" }) as any as S.Schema<RelatedEntityIdentifiers>;
+const RelatedEntityIdentifiers = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<RelatedEntityIdentifiers>;
 export interface GetOpportunityResponse {
   Catalog: string;
   PrimaryNeedsFromAws?: PrimaryNeedFromAws[];
@@ -2255,44 +1750,18 @@ export interface GetOpportunityResponse {
   LifeCycle?: LifeCycle;
   OpportunityTeam?: Contact[];
 }
-const GetOpportunityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    PrimaryNeedsFromAws: S.optional(PrimaryNeedsFromAws),
-    NationalSecurity: S.optional(NationalSecurity),
-    PartnerOpportunityIdentifier: S.optional(S.String),
-    Customer: S.optional(Customer),
-    Project: S.optional(Project),
-    OpportunityType: S.optional(OpportunityType),
-    Marketing: S.optional(Marketing),
-    SoftwareRevenue: S.optional(SoftwareRevenue),
-    Id: S.String,
-    Arn: S.optional(S.String),
-    LastModifiedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    CreatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    RelatedEntityIdentifiers: RelatedEntityIdentifiers,
-    LifeCycle: S.optional(LifeCycle),
-    OpportunityTeam: S.optional(PartnerOpportunityTeamMembersList),
-  }),
-).annotate({ identifier: "GetOpportunityResponse" }) as any as S.Schema<GetOpportunityResponse>;
+const GetOpportunityResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetOpportunityResponse>;
 export interface GetProspectingFromEngagementTaskRequest {
   Catalog: string;
   TaskIdentifier: string;
 }
-const GetProspectingFromEngagementTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, TaskIdentifier: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GetProspectingFromEngagementTask" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetProspectingFromEngagementTaskRequest",
-}) as any as S.Schema<GetProspectingFromEngagementTaskRequest>;
+const GetProspectingFromEngagementTaskRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetProspectingFromEngagementTaskRequest>;
 export type ProspectingTaskArn = string;
 export type ProspectingTaskStatus =
   | "PENDING"
@@ -2309,19 +1778,12 @@ export interface EngagementProspectingResult {
   ReasonCode?: string;
   Message?: string;
 }
-const EngagementProspectingResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EngagementIdentifier: S.String,
-    EngagementContextId: S.optional(S.String),
-    Status: ProspectingTaskStatus,
-    ReasonCode: S.optional(S.String),
-    Message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EngagementProspectingResult",
-}) as any as S.Schema<EngagementProspectingResult>;
+const EngagementProspectingResult = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<EngagementProspectingResult>;
 export type EngagementProspectingResultList = EngagementProspectingResult[];
-const EngagementProspectingResultList = /*@__PURE__*/ S.Array(EngagementProspectingResult);
+const EngagementProspectingResultList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface GetProspectingFromEngagementTaskResponse {
   TaskId: string;
   TaskArn: string;
@@ -2330,18 +1792,10 @@ export interface GetProspectingFromEngagementTaskResponse {
   EndTime?: Date;
   Engagements: EngagementProspectingResult[];
 }
-const GetProspectingFromEngagementTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.String,
-    TaskArn: S.String,
-    TaskName: S.String,
-    StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Engagements: EngagementProspectingResultList,
-  }),
-).annotate({
-  identifier: "GetProspectingFromEngagementTaskResponse",
-}) as any as S.Schema<GetProspectingFromEngagementTaskResponse>;
+const GetProspectingFromEngagementTaskResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetProspectingFromEngagementTaskResponse>;
 export interface GetResourceSnapshotRequest {
   Catalog: string;
   EngagementIdentifier: string;
@@ -2350,34 +1804,17 @@ export interface GetResourceSnapshotRequest {
   ResourceSnapshotTemplateIdentifier: string;
   Revision?: number;
 }
-const GetResourceSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    EngagementIdentifier: S.String,
-    ResourceType: ResourceType,
-    ResourceIdentifier: S.String,
-    ResourceSnapshotTemplateIdentifier: S.String,
-    Revision: S.optional(S.Number),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/GetResourceSnapshot" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetResourceSnapshotRequest",
-}) as any as S.Schema<GetResourceSnapshotRequest>;
+const GetResourceSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetResourceSnapshotRequest>;
 export interface LifeCycleForView {
   TargetCloseDate?: string;
   ReviewStatus?: ReviewStatus;
   Stage?: Stage;
   NextSteps?: string | redacted.Redacted<string>;
 }
-const LifeCycleForView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TargetCloseDate: S.optional(S.String),
-    ReviewStatus: S.optional(ReviewStatus),
-    Stage: S.optional(Stage),
-    NextSteps: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "LifeCycleForView" }) as any as S.Schema<LifeCycleForView>;
+const LifeCycleForView = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<LifeCycleForView>;
 export interface ProjectView {
   DeliveryModels?: DeliveryModel[];
   ExpectedCustomerSpend?: ExpectedCustomerSpend[];
@@ -2386,16 +1823,7 @@ export interface ProjectView {
   SalesActivities?: SalesActivity[];
   OtherSolutionDescription?: string | redacted.Redacted<string>;
 }
-const ProjectView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryModels: S.optional(DeliveryModels),
-    ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
-    ExpectedContractDuration: S.optional(ExpectedContractDuration),
-    CustomerUseCase: S.optional(S.String),
-    SalesActivities: S.optional(SalesActivities),
-    OtherSolutionDescription: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "ProjectView" }) as any as S.Schema<ProjectView>;
+const ProjectView = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ProjectView>;
 export interface OpportunitySummaryView {
   OpportunityType?: OpportunityType;
   Lifecycle?: LifeCycleForView;
@@ -2405,17 +1833,10 @@ export interface OpportunitySummaryView {
   Project?: ProjectView;
   RelatedEntityIdentifiers?: RelatedEntityIdentifiers;
 }
-const OpportunitySummaryView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OpportunityType: S.optional(OpportunityType),
-    Lifecycle: S.optional(LifeCycleForView),
-    OpportunityTeam: S.optional(PartnerOpportunityTeamMembersList),
-    PrimaryNeedsFromAws: S.optional(PrimaryNeedsFromAws),
-    Customer: S.optional(Customer),
-    Project: S.optional(ProjectView),
-    RelatedEntityIdentifiers: S.optional(RelatedEntityIdentifiers),
-  }),
-).annotate({ identifier: "OpportunitySummaryView" }) as any as S.Schema<OpportunitySummaryView>;
+const OpportunitySummaryView = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<OpportunitySummaryView>;
 export interface AwsOpportunitySummaryFullView {
   RelatedOpportunityId?: string;
   Origin?: OpportunityOrigin;
@@ -2431,34 +1852,16 @@ export interface AwsOpportunitySummaryFullView {
   CosellMotion?: string;
   SoftwareRevenue?: AwsSoftwareRevenue;
 }
-const AwsOpportunitySummaryFullView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RelatedOpportunityId: S.optional(S.String),
-    Origin: S.optional(OpportunityOrigin),
-    InvolvementType: S.optional(SalesInvolvementType),
-    Visibility: S.optional(Visibility),
-    LifeCycle: S.optional(AwsOpportunityLifeCycle),
-    OpportunityTeam: S.optional(AwsOpportunityTeamMembersList),
-    Insights: S.optional(AwsOpportunityInsights),
-    InvolvementTypeChangeReason: S.optional(InvolvementTypeChangeReason),
-    RelatedEntityIds: S.optional(AwsOpportunityRelatedEntities),
-    Customer: S.optional(AwsOpportunityCustomer),
-    Project: S.optional(AwsOpportunityProject),
-    CosellMotion: S.optional(S.String),
-    SoftwareRevenue: S.optional(AwsSoftwareRevenue),
-  }),
-).annotate({
-  identifier: "AwsOpportunitySummaryFullView",
-}) as any as S.Schema<AwsOpportunitySummaryFullView>;
+const AwsOpportunitySummaryFullView = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<AwsOpportunitySummaryFullView>;
 export type ResourceSnapshotPayload =
   | { OpportunitySummary: OpportunitySummaryView; AwsOpportunitySummaryFullView?: never }
   | { OpportunitySummary?: never; AwsOpportunitySummaryFullView: AwsOpportunitySummaryFullView };
-const ResourceSnapshotPayload = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ OpportunitySummary: OpportunitySummaryView }),
-  /*@__PURE__*/ S.Struct({ AwsOpportunitySummaryFullView: AwsOpportunitySummaryFullView }),
-]);
+const ResourceSnapshotPayload = /*@__PURE__*/ __L.at(__c13, 5);
 export type AwsAccountIdOrAliasList = (string | redacted.Redacted<string>)[];
-const AwsAccountIdOrAliasList = /*@__PURE__*/ S.Array(SensitiveString);
+const AwsAccountIdOrAliasList = /*@__PURE__*/ __L.at(__c13, 6);
 export interface GetResourceSnapshotResponse {
   Catalog: string;
   Arn?: string;
@@ -2472,34 +1875,18 @@ export interface GetResourceSnapshotResponse {
   Payload?: ResourceSnapshotPayload;
   TargetMemberAccounts?: (string | redacted.Redacted<string>)[];
 }
-const GetResourceSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Arn: S.optional(S.String),
-    CreatedBy: S.optional(SensitiveString),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    EngagementId: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-    ResourceId: S.optional(S.String),
-    ResourceSnapshotTemplateName: S.optional(S.String),
-    Revision: S.optional(S.Number),
-    Payload: S.optional(ResourceSnapshotPayload),
-    TargetMemberAccounts: S.optional(AwsAccountIdOrAliasList),
-  }),
-).annotate({
-  identifier: "GetResourceSnapshotResponse",
-}) as any as S.Schema<GetResourceSnapshotResponse>;
+const GetResourceSnapshotResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetResourceSnapshotResponse>;
 export interface GetResourceSnapshotJobRequest {
   Catalog: string;
   ResourceSnapshotJobIdentifier: string;
 }
-const GetResourceSnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, ResourceSnapshotJobIdentifier: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/GetResourceSnapshotJob" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetResourceSnapshotJobRequest",
-}) as any as S.Schema<GetResourceSnapshotJobRequest>;
+const GetResourceSnapshotJobRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetResourceSnapshotJobRequest>;
 export type ResourceSnapshotJobStatus = "Running" | "Stopped" | (string & {});
 const ResourceSnapshotJobStatus = S.String;
 
@@ -2517,51 +1904,26 @@ export interface GetResourceSnapshotJobResponse {
   LastSuccessfulExecutionDate?: Date;
   LastFailure?: string;
 }
-const GetResourceSnapshotJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    EngagementId: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-    ResourceId: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    ResourceSnapshotTemplateName: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Status: S.optional(ResourceSnapshotJobStatus),
-    LastSuccessfulExecutionDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    LastFailure: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetResourceSnapshotJobResponse",
-}) as any as S.Schema<GetResourceSnapshotJobResponse>;
+const GetResourceSnapshotJobResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetResourceSnapshotJobResponse>;
 export interface GetSellingSystemSettingsRequest {
   Catalog: string;
 }
-const GetSellingSystemSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GetSellingSystemSettings" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSellingSystemSettingsRequest",
-}) as any as S.Schema<GetSellingSystemSettingsRequest>;
+const GetSellingSystemSettingsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetSellingSystemSettingsRequest>;
 export type ResourceSnapshotJobRoleArn = string;
 export interface GetSellingSystemSettingsResponse {
   Catalog: string;
   ResourceSnapshotJobRoleArn?: string;
 }
-const GetSellingSystemSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, ResourceSnapshotJobRoleArn: S.optional(S.String) }),
-).annotate({
-  identifier: "GetSellingSystemSettingsResponse",
-}) as any as S.Schema<GetSellingSystemSettingsResponse>;
+const GetSellingSystemSettingsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetSellingSystemSettingsResponse>;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 const SortOrder = S.String;
 
@@ -2572,9 +1934,7 @@ export interface ListTasksSortBase {
   SortOrder: SortOrder;
   SortBy: ListTasksSortName;
 }
-const ListTasksSortBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortOrder: SortOrder, SortBy: ListTasksSortName }),
-).annotate({ identifier: "ListTasksSortBase" }) as any as S.Schema<ListTasksSortBase>;
+const ListTasksSortBase = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ListTasksSortBase>;
 export type TaskStatus = "IN_PROGRESS" | "COMPLETE" | "FAILED" | (string & {});
 const TaskStatus = S.String;
 
@@ -2598,29 +1958,10 @@ export interface ListEngagementByAcceptingInvitationTasksRequest {
   EngagementInvitationIdentifier?: string[];
   TaskIdentifier?: string[];
 }
-const ListEngagementByAcceptingInvitationTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    Sort: S.optional(ListTasksSortBase),
-    Catalog: S.String,
-    TaskStatus: S.optional(TaskStatuses),
-    OpportunityIdentifier: S.optional(OpportunityIdentifiers),
-    EngagementInvitationIdentifier: S.optional(EngagementInvitationIdentifiers),
-    TaskIdentifier: S.optional(TaskIdentifiers),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListEngagementByAcceptingInvitationTasks" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEngagementByAcceptingInvitationTasksRequest",
-}) as any as S.Schema<ListEngagementByAcceptingInvitationTasksRequest>;
+const ListEngagementByAcceptingInvitationTasksRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListEngagementByAcceptingInvitationTasksRequest>;
 export type TaskIdentifier = string;
 export type ReasonCode =
   | "InvitationAccessDenied"
@@ -2659,38 +2000,21 @@ export interface ListEngagementByAcceptingInvitationTaskSummary {
   ResourceSnapshotJobId?: string;
   EngagementInvitationId?: string;
 }
-const ListEngagementByAcceptingInvitationTaskSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    TaskStatus: S.optional(TaskStatus),
-    Message: S.optional(S.String),
-    ReasonCode: S.optional(ReasonCode),
-    OpportunityId: S.optional(S.String),
-    ResourceSnapshotJobId: S.optional(S.String),
-    EngagementInvitationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEngagementByAcceptingInvitationTaskSummary",
-}) as any as S.Schema<ListEngagementByAcceptingInvitationTaskSummary>;
+const ListEngagementByAcceptingInvitationTaskSummary = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListEngagementByAcceptingInvitationTaskSummary>;
 export type ListEngagementByAcceptingInvitationTaskSummaries =
   ListEngagementByAcceptingInvitationTaskSummary[];
-const ListEngagementByAcceptingInvitationTaskSummaries = /*@__PURE__*/ S.Array(
-  ListEngagementByAcceptingInvitationTaskSummary,
-);
+const ListEngagementByAcceptingInvitationTaskSummaries = /*@__PURE__*/ __L.at(__c14, 7);
 export interface ListEngagementByAcceptingInvitationTasksResponse {
   TaskSummaries?: ListEngagementByAcceptingInvitationTaskSummary[];
   NextToken?: string;
 }
-const ListEngagementByAcceptingInvitationTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskSummaries: S.optional(ListEngagementByAcceptingInvitationTaskSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEngagementByAcceptingInvitationTasksResponse",
-}) as any as S.Schema<ListEngagementByAcceptingInvitationTasksResponse>;
+const ListEngagementByAcceptingInvitationTasksResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListEngagementByAcceptingInvitationTasksResponse>;
 export type EngagementIdentifiers = string[];
 const EngagementIdentifiers = EligibleProgramsList as any as S.Schema<EngagementIdentifiers>;
 export interface ListEngagementFromOpportunityTasksRequest {
@@ -2703,29 +2027,10 @@ export interface ListEngagementFromOpportunityTasksRequest {
   OpportunityIdentifier?: string[];
   EngagementIdentifier?: string[];
 }
-const ListEngagementFromOpportunityTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    Sort: S.optional(ListTasksSortBase),
-    Catalog: S.String,
-    TaskStatus: S.optional(TaskStatuses),
-    TaskIdentifier: S.optional(TaskIdentifiers),
-    OpportunityIdentifier: S.optional(OpportunityIdentifiers),
-    EngagementIdentifier: S.optional(EngagementIdentifiers),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListEngagementFromOpportunityTasks" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEngagementFromOpportunityTasksRequest",
-}) as any as S.Schema<ListEngagementFromOpportunityTasksRequest>;
+const ListEngagementFromOpportunityTasksRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListEngagementFromOpportunityTasksRequest>;
 export interface ListEngagementFromOpportunityTaskSummary {
   TaskId?: string;
   TaskArn?: string;
@@ -2738,38 +2043,20 @@ export interface ListEngagementFromOpportunityTaskSummary {
   EngagementId?: string;
   EngagementInvitationId?: string;
 }
-const ListEngagementFromOpportunityTaskSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    TaskStatus: S.optional(TaskStatus),
-    Message: S.optional(S.String),
-    ReasonCode: S.optional(ReasonCode),
-    OpportunityId: S.optional(S.String),
-    ResourceSnapshotJobId: S.optional(S.String),
-    EngagementId: S.optional(S.String),
-    EngagementInvitationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEngagementFromOpportunityTaskSummary",
-}) as any as S.Schema<ListEngagementFromOpportunityTaskSummary>;
+const ListEngagementFromOpportunityTaskSummary = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListEngagementFromOpportunityTaskSummary>;
 export type ListEngagementFromOpportunityTaskSummaries = ListEngagementFromOpportunityTaskSummary[];
-const ListEngagementFromOpportunityTaskSummaries = /*@__PURE__*/ S.Array(
-  ListEngagementFromOpportunityTaskSummary,
-);
+const ListEngagementFromOpportunityTaskSummaries = /*@__PURE__*/ __L.at(__c15, 3);
 export interface ListEngagementFromOpportunityTasksResponse {
   TaskSummaries?: ListEngagementFromOpportunityTaskSummary[];
   NextToken?: string;
 }
-const ListEngagementFromOpportunityTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskSummaries: S.optional(ListEngagementFromOpportunityTaskSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEngagementFromOpportunityTasksResponse",
-}) as any as S.Schema<ListEngagementFromOpportunityTasksResponse>;
+const ListEngagementFromOpportunityTasksResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListEngagementFromOpportunityTasksResponse>;
 export type PageSize = number;
 export type OpportunityEngagementInvitationSortName = "InvitationDate" | (string & {});
 const OpportunityEngagementInvitationSortName = S.String;
@@ -2778,13 +2065,12 @@ export interface OpportunityEngagementInvitationSort {
   SortOrder: SortOrder;
   SortBy: OpportunityEngagementInvitationSortName;
 }
-const OpportunityEngagementInvitationSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortOrder: SortOrder, SortBy: OpportunityEngagementInvitationSortName }),
-).annotate({
-  identifier: "OpportunityEngagementInvitationSort",
-}) as any as S.Schema<OpportunityEngagementInvitationSort>;
+const OpportunityEngagementInvitationSort = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<OpportunityEngagementInvitationSort>;
 export type EngagementInvitationsPayloadType = EngagementInvitationPayloadType[];
-const EngagementInvitationsPayloadType = /*@__PURE__*/ S.Array(EngagementInvitationPayloadType);
+const EngagementInvitationsPayloadType = /*@__PURE__*/ __L.at(__c15, 6);
 export type ParticipantType = "SENDER" | "RECEIVER" | (string & {});
 const ParticipantType = S.String;
 
@@ -2801,30 +2087,10 @@ export interface ListEngagementInvitationsRequest {
   EngagementIdentifier?: string[];
   SenderAwsAccountId?: (string | redacted.Redacted<string>)[];
 }
-const ListEngagementInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    Sort: S.optional(OpportunityEngagementInvitationSort),
-    PayloadType: S.optional(EngagementInvitationsPayloadType),
-    ParticipantType: ParticipantType,
-    Status: S.optional(InvitationStatusList),
-    EngagementIdentifier: S.optional(EngagementIdentifiers),
-    SenderAwsAccountId: S.optional(AwsAccountIdOrAliasList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListEngagementInvitations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEngagementInvitationsRequest",
-}) as any as S.Schema<ListEngagementInvitationsRequest>;
+const ListEngagementInvitationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListEngagementInvitationsRequest>;
 export interface EngagementInvitationSummary {
   Arn?: string;
   PayloadType?: EngagementInvitationPayloadType;
@@ -2840,39 +2106,20 @@ export interface EngagementInvitationSummary {
   Catalog: string;
   ParticipantType?: ParticipantType;
 }
-const EngagementInvitationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    PayloadType: S.optional(EngagementInvitationPayloadType),
-    Id: S.String,
-    EngagementId: S.optional(S.String),
-    EngagementTitle: S.optional(S.String),
-    Status: S.optional(InvitationStatus),
-    InvitationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ExpirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    SenderAwsAccountId: S.optional(SensitiveString),
-    SenderCompanyName: S.optional(S.String),
-    Receiver: S.optional(Receiver),
-    Catalog: S.String,
-    ParticipantType: S.optional(ParticipantType),
-  }),
-).annotate({
-  identifier: "EngagementInvitationSummary",
-}) as any as S.Schema<EngagementInvitationSummary>;
+const EngagementInvitationSummary = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<EngagementInvitationSummary>;
 export type EngagementInvitationSummaries = EngagementInvitationSummary[];
-const EngagementInvitationSummaries = /*@__PURE__*/ S.Array(EngagementInvitationSummary);
+const EngagementInvitationSummaries = /*@__PURE__*/ __L.at(__c16, 1);
 export interface ListEngagementInvitationsResponse {
   EngagementInvitationSummaries?: EngagementInvitationSummary[];
   NextToken?: string;
 }
-const ListEngagementInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EngagementInvitationSummaries: S.optional(EngagementInvitationSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEngagementInvitationsResponse",
-}) as any as S.Schema<ListEngagementInvitationsResponse>;
+const ListEngagementInvitationsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListEngagementInvitationsResponse>;
 export type MemberPageSize = number;
 export interface ListEngagementMembersRequest {
   Catalog: string;
@@ -2880,41 +2127,26 @@ export interface ListEngagementMembersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListEngagementMembersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Identifier: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/ListEngagementMembers" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListEngagementMembersRequest",
-}) as any as S.Schema<ListEngagementMembersRequest>;
+const ListEngagementMembersRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListEngagementMembersRequest>;
 export interface EngagementMember {
   CompanyName?: string | redacted.Redacted<string>;
   WebsiteUrl?: string;
   AccountId?: string | redacted.Redacted<string>;
 }
-const EngagementMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CompanyName: S.optional(SensitiveString),
-    WebsiteUrl: S.optional(S.String),
-    AccountId: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "EngagementMember" }) as any as S.Schema<EngagementMember>;
+const EngagementMember = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<EngagementMember>;
 export type EngagementMembers = EngagementMember[];
-const EngagementMembers = /*@__PURE__*/ S.Array(EngagementMember);
+const EngagementMembers = /*@__PURE__*/ __L.at(__c16, 5);
 export interface ListEngagementMembersResponse {
   EngagementMemberList: EngagementMember[];
   NextToken?: string;
 }
-const ListEngagementMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EngagementMemberList: EngagementMembers, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListEngagementMembersResponse",
-}) as any as S.Schema<ListEngagementMembersResponse>;
+const ListEngagementMembersResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListEngagementMembersResponse>;
 export interface ListEngagementResourceAssociationsRequest {
   Catalog: string;
   MaxResults?: number;
@@ -2924,28 +2156,10 @@ export interface ListEngagementResourceAssociationsRequest {
   ResourceIdentifier?: string;
   CreatedBy?: string | redacted.Redacted<string>;
 }
-const ListEngagementResourceAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    EngagementIdentifier: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-    ResourceIdentifier: S.optional(S.String),
-    CreatedBy: S.optional(SensitiveString),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListEngagementResourceAssociations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEngagementResourceAssociationsRequest",
-}) as any as S.Schema<ListEngagementResourceAssociationsRequest>;
+const ListEngagementResourceAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListEngagementResourceAssociationsRequest>;
 export interface EngagementResourceAssociationSummary {
   Catalog: string;
   EngagementId?: string;
@@ -2953,33 +2167,20 @@ export interface EngagementResourceAssociationSummary {
   ResourceId?: string;
   CreatedBy?: string | redacted.Redacted<string>;
 }
-const EngagementResourceAssociationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    EngagementId: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-    ResourceId: S.optional(S.String),
-    CreatedBy: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "EngagementResourceAssociationSummary",
-}) as any as S.Schema<EngagementResourceAssociationSummary>;
+const EngagementResourceAssociationSummary = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<EngagementResourceAssociationSummary>;
 export type EngagementResourceAssociationSummaryList = EngagementResourceAssociationSummary[];
-const EngagementResourceAssociationSummaryList = /*@__PURE__*/ S.Array(
-  EngagementResourceAssociationSummary,
-);
+const EngagementResourceAssociationSummaryList = /*@__PURE__*/ __L.at(__c17, 1);
 export interface ListEngagementResourceAssociationsResponse {
   EngagementResourceAssociationSummaries: EngagementResourceAssociationSummary[];
   NextToken?: string;
 }
-const ListEngagementResourceAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EngagementResourceAssociationSummaries: EngagementResourceAssociationSummaryList,
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEngagementResourceAssociationsResponse",
-}) as any as S.Schema<ListEngagementResourceAssociationsResponse>;
+const ListEngagementResourceAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListEngagementResourceAssociationsResponse>;
 export type AwsAccountList = (string | redacted.Redacted<string>)[];
 const AwsAccountList = AwsAccountIdOrAliasList as any as S.Schema<AwsAccountList>;
 export type EngagementContextTypeList = EngagementContextType[];
@@ -3003,19 +2204,10 @@ export interface ListEngagementsRequest {
   NextToken?: string;
   EngagementIdentifier?: string[];
 }
-const ListEngagementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    CreatedBy: S.optional(AwsAccountList),
-    ExcludeCreatedBy: S.optional(AwsAccountList),
-    ContextTypes: S.optional(EngagementContextTypeList),
-    ExcludeContextTypes: S.optional(EngagementContextTypeList),
-    Sort: S.optional(EngagementSort),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    EngagementIdentifier: S.optional(EngagementIdentifiers),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/ListEngagements" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListEngagementsRequest" }) as any as S.Schema<ListEngagementsRequest>;
+const ListEngagementsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListEngagementsRequest>;
 export interface EngagementSummary {
   Arn?: string;
   Id?: string;
@@ -3027,28 +2219,17 @@ export interface EngagementSummary {
   ModifiedBy?: string | redacted.Redacted<string>;
   ContextTypes?: EngagementContextType[];
 }
-const EngagementSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Title: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    CreatedBy: S.optional(SensitiveString),
-    MemberCount: S.optional(S.Number),
-    ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ModifiedBy: S.optional(SensitiveString),
-    ContextTypes: S.optional(EngagementContextTypeList),
-  }),
-).annotate({ identifier: "EngagementSummary" }) as any as S.Schema<EngagementSummary>;
+const EngagementSummary = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<EngagementSummary>;
 export type EngagementSummaryList = EngagementSummary[];
-const EngagementSummaryList = /*@__PURE__*/ S.Array(EngagementSummary);
+const EngagementSummaryList = /*@__PURE__*/ __L.at(__c17, 5);
 export interface ListEngagementsResponse {
   EngagementSummaryList: EngagementSummary[];
   NextToken?: string;
 }
-const ListEngagementsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EngagementSummaryList: EngagementSummaryList, NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListEngagementsResponse" }) as any as S.Schema<ListEngagementsResponse>;
+const ListEngagementsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListEngagementsResponse>;
 export type OpportunitySortName =
   | "LastModifiedDate"
   | "Identifier"
@@ -3065,12 +2246,7 @@ export interface LastModifiedDate {
   AfterLastModifiedDate?: Date;
   BeforeLastModifiedDate?: Date;
 }
-const LastModifiedDate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AfterLastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    BeforeLastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "LastModifiedDate" }) as any as S.Schema<LastModifiedDate>;
+const LastModifiedDate = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<LastModifiedDate>;
 export type FilterIdentifier = string[];
 const FilterIdentifier = EligibleProgramsList as any as S.Schema<FilterIdentifier>;
 export type FilterLifeCycleStage = Stage[];
@@ -3082,22 +2258,15 @@ export interface CreatedDateFilter {
   AfterCreatedDate?: Date;
   BeforeCreatedDate?: Date;
 }
-const CreatedDateFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AfterCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    BeforeCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "CreatedDateFilter" }) as any as S.Schema<CreatedDateFilter>;
+const CreatedDateFilter = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<CreatedDateFilter>;
 export interface TargetCloseDateFilter {
   AfterTargetCloseDate?: string;
   BeforeTargetCloseDate?: string;
 }
-const TargetCloseDateFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AfterTargetCloseDate: S.optional(S.String),
-    BeforeTargetCloseDate: S.optional(S.String),
-  }),
-).annotate({ identifier: "TargetCloseDateFilter" }) as any as S.Schema<TargetCloseDateFilter>;
+const TargetCloseDateFilter = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<TargetCloseDateFilter>;
 export interface ListOpportunitiesRequest {
   Catalog: string;
   MaxResults?: number;
@@ -3111,23 +2280,10 @@ export interface ListOpportunitiesRequest {
   CreatedDate?: CreatedDateFilter;
   TargetCloseDate?: TargetCloseDateFilter;
 }
-const ListOpportunitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    Sort: S.optional(OpportunitySort),
-    LastModifiedDate: S.optional(LastModifiedDate),
-    Identifier: S.optional(FilterIdentifier),
-    LifeCycleStage: S.optional(FilterLifeCycleStage),
-    LifeCycleReviewStatus: S.optional(FilterLifeCycleReviewStatus),
-    CustomerCompanyName: S.optional(StringList),
-    CreatedDate: S.optional(CreatedDateFilter),
-    TargetCloseDate: S.optional(TargetCloseDateFilter),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/ListOpportunities" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListOpportunitiesRequest" }) as any as S.Schema<ListOpportunitiesRequest>;
+const ListOpportunitiesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListOpportunitiesRequest>;
 export interface LifeCycleSummary {
   Stage?: Stage;
   ClosedLostReason?: ClosedLostReason;
@@ -3137,31 +2293,14 @@ export interface LifeCycleSummary {
   ReviewComments?: string;
   ReviewStatusReason?: string;
 }
-const LifeCycleSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Stage: S.optional(Stage),
-    ClosedLostReason: S.optional(ClosedLostReason),
-    NextSteps: S.optional(SensitiveString),
-    TargetCloseDate: S.optional(S.String),
-    ReviewStatus: S.optional(ReviewStatus),
-    ReviewComments: S.optional(S.String),
-    ReviewStatusReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "LifeCycleSummary" }) as any as S.Schema<LifeCycleSummary>;
+const LifeCycleSummary = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<LifeCycleSummary>;
 export interface AddressSummary {
   City?: string | redacted.Redacted<string>;
   PostalCode?: string | redacted.Redacted<string>;
   StateOrRegion?: string | redacted.Redacted<string>;
   CountryCode?: CountryCode;
 }
-const AddressSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    City: S.optional(SensitiveString),
-    PostalCode: S.optional(SensitiveString),
-    StateOrRegion: S.optional(SensitiveString),
-    CountryCode: S.optional(CountryCode),
-  }),
-).annotate({ identifier: "AddressSummary" }) as any as S.Schema<AddressSummary>;
+const AddressSummary = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<AddressSummary>;
 export interface AccountSummary {
   Industry?: Industry;
   OtherIndustry?: string;
@@ -3169,33 +2308,17 @@ export interface AccountSummary {
   WebsiteUrl?: string | redacted.Redacted<string>;
   Address?: AddressSummary;
 }
-const AccountSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Industry: S.optional(Industry),
-    OtherIndustry: S.optional(S.String),
-    CompanyName: SensitiveString,
-    WebsiteUrl: S.optional(SensitiveString),
-    Address: S.optional(AddressSummary),
-  }),
-).annotate({ identifier: "AccountSummary" }) as any as S.Schema<AccountSummary>;
+const AccountSummary = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<AccountSummary>;
 export interface CustomerSummary {
   Account?: AccountSummary;
 }
-const CustomerSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Account: S.optional(AccountSummary) }),
-).annotate({ identifier: "CustomerSummary" }) as any as S.Schema<CustomerSummary>;
+const CustomerSummary = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<CustomerSummary>;
 export interface ProjectSummary {
   DeliveryModels?: DeliveryModel[];
   ExpectedCustomerSpend?: ExpectedCustomerSpend[];
   ExpectedContractDuration?: ExpectedContractDuration;
 }
-const ProjectSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryModels: S.optional(DeliveryModels),
-    ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
-    ExpectedContractDuration: S.optional(ExpectedContractDuration),
-  }),
-).annotate({ identifier: "ProjectSummary" }) as any as S.Schema<ProjectSummary>;
+const ProjectSummary = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ProjectSummary>;
 export interface OpportunitySummary {
   Catalog: string;
   Id?: string;
@@ -3208,31 +2331,17 @@ export interface OpportunitySummary {
   Customer?: CustomerSummary;
   Project?: ProjectSummary;
 }
-const OpportunitySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    PartnerOpportunityIdentifier: S.optional(S.String),
-    OpportunityType: S.optional(OpportunityType),
-    LastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    LifeCycle: S.optional(LifeCycleSummary),
-    Customer: S.optional(CustomerSummary),
-    Project: S.optional(ProjectSummary),
-  }),
-).annotate({ identifier: "OpportunitySummary" }) as any as S.Schema<OpportunitySummary>;
+const OpportunitySummary = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<OpportunitySummary>;
 export type OpportunitySummaries = OpportunitySummary[];
-const OpportunitySummaries = /*@__PURE__*/ S.Array(OpportunitySummary);
+const OpportunitySummaries = /*@__PURE__*/ __L.at(__c19, 1);
 export interface ListOpportunitiesResponse {
   OpportunitySummaries: OpportunitySummary[];
   NextToken?: string;
 }
-const ListOpportunitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OpportunitySummaries: OpportunitySummaries, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListOpportunitiesResponse",
-}) as any as S.Schema<ListOpportunitiesResponse>;
+const ListOpportunitiesResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListOpportunitiesResponse>;
 export type ContextIdentifier = string;
 export type ContextIdentifiers = string[];
 const ContextIdentifiers = EligibleProgramsList as any as S.Schema<ContextIdentifiers>;
@@ -3247,30 +2356,10 @@ export interface ListOpportunityFromEngagementTasksRequest {
   EngagementIdentifier?: string[];
   ContextIdentifier?: string[];
 }
-const ListOpportunityFromEngagementTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    Sort: S.optional(ListTasksSortBase),
-    Catalog: S.String,
-    TaskStatus: S.optional(TaskStatuses),
-    TaskIdentifier: S.optional(TaskIdentifiers),
-    OpportunityIdentifier: S.optional(OpportunityIdentifiers),
-    EngagementIdentifier: S.optional(EngagementIdentifiers),
-    ContextIdentifier: S.optional(ContextIdentifiers),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListOpportunityFromEngagementTasks" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListOpportunityFromEngagementTasksRequest",
-}) as any as S.Schema<ListOpportunityFromEngagementTasksRequest>;
+const ListOpportunityFromEngagementTasksRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ListOpportunityFromEngagementTasksRequest>;
 export interface ListOpportunityFromEngagementTaskSummary {
   TaskId?: string;
   TaskArn?: string;
@@ -3283,38 +2372,20 @@ export interface ListOpportunityFromEngagementTaskSummary {
   EngagementId?: string;
   ContextId?: string;
 }
-const ListOpportunityFromEngagementTaskSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    TaskStatus: S.optional(TaskStatus),
-    Message: S.optional(S.String),
-    ReasonCode: S.optional(ReasonCode),
-    OpportunityId: S.optional(S.String),
-    ResourceSnapshotJobId: S.optional(S.String),
-    EngagementId: S.optional(S.String),
-    ContextId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOpportunityFromEngagementTaskSummary",
-}) as any as S.Schema<ListOpportunityFromEngagementTaskSummary>;
+const ListOpportunityFromEngagementTaskSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListOpportunityFromEngagementTaskSummary>;
 export type ListOpportunityFromEngagementTaskSummaries = ListOpportunityFromEngagementTaskSummary[];
-const ListOpportunityFromEngagementTaskSummaries = /*@__PURE__*/ S.Array(
-  ListOpportunityFromEngagementTaskSummary,
-);
+const ListOpportunityFromEngagementTaskSummaries = /*@__PURE__*/ __L.at(__c19, 5);
 export interface ListOpportunityFromEngagementTasksResponse {
   TaskSummaries?: ListOpportunityFromEngagementTaskSummary[];
   NextToken?: string;
 }
-const ListOpportunityFromEngagementTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskSummaries: S.optional(ListOpportunityFromEngagementTaskSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOpportunityFromEngagementTasksResponse",
-}) as any as S.Schema<ListOpportunityFromEngagementTasksResponse>;
+const ListOpportunityFromEngagementTasksResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListOpportunityFromEngagementTasksResponse>;
 export type TaskIdentifierList = string[];
 const TaskIdentifierList = EligibleProgramsList as any as S.Schema<TaskIdentifierList>;
 export type TaskNameList = string[];
@@ -3340,29 +2411,10 @@ export interface ListProspectingFromEngagementTasksRequest {
   StartBefore?: Date;
   Sort?: ProspectingFromEngagementTaskSort;
 }
-const ListProspectingFromEngagementTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    TaskIdentifier: S.optional(TaskIdentifierList),
-    TaskName: S.optional(TaskNameList),
-    StartAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    StartBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Sort: S.optional(ProspectingFromEngagementTaskSort),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListProspectingFromEngagementTasks" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListProspectingFromEngagementTasksRequest",
-}) as any as S.Schema<ListProspectingFromEngagementTasksRequest>;
+const ListProspectingFromEngagementTasksRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListProspectingFromEngagementTasksRequest>;
 export interface ProspectingTaskSummary {
   TaskId: string;
   TaskArn: string;
@@ -3373,29 +2425,20 @@ export interface ProspectingTaskSummary {
   CompletedEngagementCount: number;
   FailedEngagementCount: number;
 }
-const ProspectingTaskSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.String,
-    TaskArn: S.String,
-    TaskName: S.String,
-    StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    TotalEngagementCount: S.Number,
-    CompletedEngagementCount: S.Number,
-    FailedEngagementCount: S.Number,
-  }),
-).annotate({ identifier: "ProspectingTaskSummary" }) as any as S.Schema<ProspectingTaskSummary>;
+const ProspectingTaskSummary = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ProspectingTaskSummary>;
 export type ProspectingTaskSummaryList = ProspectingTaskSummary[];
-const ProspectingTaskSummaryList = /*@__PURE__*/ S.Array(ProspectingTaskSummary);
+const ProspectingTaskSummaryList = /*@__PURE__*/ __L.at(__c20, 1);
 export interface ListProspectingFromEngagementTasksResponse {
   NextToken?: string;
   TaskSummaries: ProspectingTaskSummary[];
 }
-const ListProspectingFromEngagementTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), TaskSummaries: ProspectingTaskSummaryList }),
-).annotate({
-  identifier: "ListProspectingFromEngagementTasksResponse",
-}) as any as S.Schema<ListProspectingFromEngagementTasksResponse>;
+const ListProspectingFromEngagementTasksResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListProspectingFromEngagementTasksResponse>;
 export type SortBy = "CreatedDate" | (string & {});
 const SortBy = S.String;
 
@@ -3403,9 +2446,7 @@ export interface SortObject {
   SortBy?: SortBy;
   SortOrder?: SortOrder;
 }
-const SortObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SortBy: S.optional(SortBy), SortOrder: S.optional(SortOrder) }),
-).annotate({ identifier: "SortObject" }) as any as S.Schema<SortObject>;
+const SortObject = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<SortObject>;
 export interface ListResourceSnapshotJobsRequest {
   Catalog: string;
   MaxResults?: number;
@@ -3414,57 +2455,30 @@ export interface ListResourceSnapshotJobsRequest {
   Status?: ResourceSnapshotJobStatus;
   Sort?: SortObject;
 }
-const ListResourceSnapshotJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    EngagementIdentifier: S.optional(S.String),
-    Status: S.optional(ResourceSnapshotJobStatus),
-    Sort: S.optional(SortObject),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListResourceSnapshotJobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListResourceSnapshotJobsRequest",
-}) as any as S.Schema<ListResourceSnapshotJobsRequest>;
+const ListResourceSnapshotJobsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListResourceSnapshotJobsRequest>;
 export interface ResourceSnapshotJobSummary {
   Id?: string;
   Arn?: string;
   EngagementId?: string;
   Status?: ResourceSnapshotJobStatus;
 }
-const ResourceSnapshotJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    EngagementId: S.optional(S.String),
-    Status: S.optional(ResourceSnapshotJobStatus),
-  }),
-).annotate({
-  identifier: "ResourceSnapshotJobSummary",
-}) as any as S.Schema<ResourceSnapshotJobSummary>;
+const ResourceSnapshotJobSummary = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ResourceSnapshotJobSummary>;
 export type ResourceSnapshotJobSummaryList = ResourceSnapshotJobSummary[];
-const ResourceSnapshotJobSummaryList = /*@__PURE__*/ S.Array(ResourceSnapshotJobSummary);
+const ResourceSnapshotJobSummaryList = /*@__PURE__*/ __L.at(__c20, 6);
 export interface ListResourceSnapshotJobsResponse {
   ResourceSnapshotJobSummaries: ResourceSnapshotJobSummary[];
   NextToken?: string;
 }
-const ListResourceSnapshotJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceSnapshotJobSummaries: ResourceSnapshotJobSummaryList,
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListResourceSnapshotJobsResponse",
-}) as any as S.Schema<ListResourceSnapshotJobsResponse>;
+const ListResourceSnapshotJobsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListResourceSnapshotJobsResponse>;
 export interface ListResourceSnapshotsRequest {
   Catalog: string;
   MaxResults?: number;
@@ -3475,22 +2489,10 @@ export interface ListResourceSnapshotsRequest {
   ResourceSnapshotTemplateIdentifier?: string;
   CreatedBy?: string | redacted.Redacted<string>;
 }
-const ListResourceSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    EngagementIdentifier: S.String,
-    ResourceType: S.optional(ResourceType),
-    ResourceIdentifier: S.optional(S.String),
-    ResourceSnapshotTemplateIdentifier: S.optional(S.String),
-    CreatedBy: S.optional(SensitiveString),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/ListResourceSnapshots" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListResourceSnapshotsRequest",
-}) as any as S.Schema<ListResourceSnapshotsRequest>;
+const ListResourceSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListResourceSnapshotsRequest>;
 export type ResourceSnapshotArn = string;
 export interface ResourceSnapshotSummary {
   Arn?: string;
@@ -3500,30 +2502,20 @@ export interface ResourceSnapshotSummary {
   ResourceSnapshotTemplateName?: string;
   CreatedBy?: string | redacted.Redacted<string>;
 }
-const ResourceSnapshotSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Revision: S.optional(S.Number),
-    ResourceType: S.optional(ResourceType),
-    ResourceId: S.optional(S.String),
-    ResourceSnapshotTemplateName: S.optional(S.String),
-    CreatedBy: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "ResourceSnapshotSummary" }) as any as S.Schema<ResourceSnapshotSummary>;
+const ResourceSnapshotSummary = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ResourceSnapshotSummary>;
 export type ResourceSnapshotSummaryList = ResourceSnapshotSummary[];
-const ResourceSnapshotSummaryList = /*@__PURE__*/ S.Array(ResourceSnapshotSummary);
+const ResourceSnapshotSummaryList = /*@__PURE__*/ __L.at(__c21, 2);
 export interface ListResourceSnapshotsResponse {
   ResourceSnapshotSummaries: ResourceSnapshotSummary[];
   NextToken?: string;
 }
-const ListResourceSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceSnapshotSummaries: ResourceSnapshotSummaryList,
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListResourceSnapshotsResponse",
-}) as any as S.Schema<ListResourceSnapshotsResponse>;
+const ListResourceSnapshotsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListResourceSnapshotsResponse>;
 export type SolutionSortName =
   | "Identifier"
   | "Name"
@@ -3555,18 +2547,10 @@ export interface ListSolutionsRequest {
   Category?: string[];
   AwsMarketplaceSolutionArn?: string[];
 }
-const ListSolutionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    Sort: S.optional(SolutionSort),
-    Status: S.optional(FilterStatus),
-    Identifier: S.optional(SolutionIdentifiers),
-    Category: S.optional(StringList),
-    AwsMarketplaceSolutionArn: S.optional(AwsMarketplaceSolutionArnList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/ListSolutions" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListSolutionsRequest" }) as any as S.Schema<ListSolutionsRequest>;
+const ListSolutionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ListSolutionsRequest>;
 export type SolutionArn = string;
 export interface SolutionBase {
   Catalog: string;
@@ -3578,65 +2562,41 @@ export interface SolutionBase {
   CreatedDate: Date;
   AwsMarketplaceSolutionArn?: string;
 }
-const SolutionBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Id: S.String,
-    Arn: S.optional(S.String),
-    Name: S.String,
-    Status: SolutionStatus,
-    Category: S.String,
-    CreatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    AwsMarketplaceSolutionArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "SolutionBase" }) as any as S.Schema<SolutionBase>;
+const SolutionBase = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<SolutionBase>;
 export type SolutionList = SolutionBase[];
-const SolutionList = /*@__PURE__*/ S.Array(SolutionBase);
+const SolutionList = /*@__PURE__*/ __L.at(__c21, 6);
 export interface ListSolutionsResponse {
   SolutionSummaries: SolutionBase[];
   NextToken?: string;
 }
-const ListSolutionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SolutionSummaries: SolutionList, NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSolutionsResponse" }) as any as S.Schema<ListSolutionsResponse>;
+const ListSolutionsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListSolutionsResponse>;
 export type TaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/ListTagsForResource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: TagList }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type ResourceSnapshotJobRoleIdentifier = string;
 export interface PutSellingSystemSettingsRequest {
   Catalog: string;
   ResourceSnapshotJobRoleIdentifier?: string;
 }
-const PutSellingSystemSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, ResourceSnapshotJobRoleIdentifier: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/PutSellingSystemSettings" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutSellingSystemSettingsRequest",
-}) as any as S.Schema<PutSellingSystemSettingsRequest>;
+const PutSellingSystemSettingsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<PutSellingSystemSettingsRequest>;
 export interface PutSellingSystemSettingsResponse {
   Catalog: string;
   ResourceSnapshotJobRoleArn?: string;
@@ -3648,20 +2608,10 @@ export interface RejectEngagementInvitationRequest {
   Identifier: string;
   RejectionReason?: string;
 }
-const RejectEngagementInvitationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, Identifier: S.String, RejectionReason: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/RejectEngagementInvitation" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RejectEngagementInvitationRequest",
-}) as any as S.Schema<RejectEngagementInvitationRequest>;
+const RejectEngagementInvitationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<RejectEngagementInvitationRequest>;
 export interface RejectEngagementInvitationResponse {}
 const RejectEngagementInvitationResponse =
   AcceptEngagementInvitationResponse as any as S.Schema<RejectEngagementInvitationResponse>;
@@ -3671,25 +2621,10 @@ export interface StartEngagementByAcceptingInvitationTaskRequest {
   Identifier: string;
   Tags?: Tag[];
 }
-const StartEngagementByAcceptingInvitationTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-    Identifier: S.String,
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/StartEngagementByAcceptingInvitationTask" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartEngagementByAcceptingInvitationTaskRequest",
-}) as any as S.Schema<StartEngagementByAcceptingInvitationTaskRequest>;
+const StartEngagementByAcceptingInvitationTaskRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<StartEngagementByAcceptingInvitationTaskRequest>;
 export interface StartEngagementByAcceptingInvitationTaskResponse {
   TaskId?: string;
   TaskArn?: string;
@@ -3707,9 +2642,7 @@ export interface AwsSubmission {
   InvolvementType: SalesInvolvementType;
   Visibility?: Visibility;
 }
-const AwsSubmission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InvolvementType: SalesInvolvementType, Visibility: S.optional(Visibility) }),
-).annotate({ identifier: "AwsSubmission" }) as any as S.Schema<AwsSubmission>;
+const AwsSubmission = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<AwsSubmission>;
 export interface StartEngagementFromOpportunityTaskRequest {
   Catalog: string;
   ClientToken: string;
@@ -3717,26 +2650,10 @@ export interface StartEngagementFromOpportunityTaskRequest {
   AwsSubmission: AwsSubmission;
   Tags?: Tag[];
 }
-const StartEngagementFromOpportunityTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-    Identifier: S.String,
-    AwsSubmission: AwsSubmission,
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/StartEngagementFromOpportunityTask" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartEngagementFromOpportunityTaskRequest",
-}) as any as S.Schema<StartEngagementFromOpportunityTaskRequest>;
+const StartEngagementFromOpportunityTaskRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<StartEngagementFromOpportunityTaskRequest>;
 export interface StartEngagementFromOpportunityTaskResponse {
   TaskId?: string;
   TaskArn?: string;
@@ -3758,26 +2675,10 @@ export interface StartOpportunityFromEngagementTaskRequest {
   ContextIdentifier: string;
   Tags?: Tag[];
 }
-const StartOpportunityFromEngagementTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-    Identifier: S.String,
-    ContextIdentifier: S.String,
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/StartOpportunityFromEngagementTask" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartOpportunityFromEngagementTaskRequest",
-}) as any as S.Schema<StartOpportunityFromEngagementTaskRequest>;
+const StartOpportunityFromEngagementTaskRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<StartOpportunityFromEngagementTaskRequest>;
 export interface StartOpportunityFromEngagementTaskResponse {
   TaskId?: string;
   TaskArn?: string;
@@ -3800,25 +2701,10 @@ export interface StartProspectingFromEngagementTaskRequest {
   TaskName: string;
   ClientToken: string;
 }
-const StartProspectingFromEngagementTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Identifiers: EngagementIdentifierList,
-    TaskName: S.String,
-    ClientToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/StartProspectingFromEngagementTask" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartProspectingFromEngagementTaskRequest",
-}) as any as S.Schema<StartProspectingFromEngagementTaskRequest>;
+const StartProspectingFromEngagementTaskRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<StartProspectingFromEngagementTaskRequest>;
 export interface StartProspectingFromEngagementTaskResponse {
   Identifiers: string[];
   TaskName: string;
@@ -3829,38 +2715,18 @@ export interface StartProspectingFromEngagementTaskResponse {
   TaskArn?: string;
   TaskStatus: ProspectingTaskStatus;
 }
-const StartProspectingFromEngagementTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifiers: EngagementIdentifierList,
-    TaskName: S.String,
-    Message: S.optional(S.String),
-    ReasonCode: S.optional(S.String),
-    StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    TaskStatus: ProspectingTaskStatus,
-  }),
-).annotate({
-  identifier: "StartProspectingFromEngagementTaskResponse",
-}) as any as S.Schema<StartProspectingFromEngagementTaskResponse>;
+const StartProspectingFromEngagementTaskResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<StartProspectingFromEngagementTaskResponse>;
 export interface StartResourceSnapshotJobRequest {
   Catalog: string;
   ResourceSnapshotJobIdentifier: string;
 }
-const StartResourceSnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, ResourceSnapshotJobIdentifier: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/StartResourceSnapshotJob" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartResourceSnapshotJobRequest",
-}) as any as S.Schema<StartResourceSnapshotJobRequest>;
+const StartResourceSnapshotJobRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<StartResourceSnapshotJobRequest>;
 export interface StartResourceSnapshotJobResponse {}
 const StartResourceSnapshotJobResponse =
   AcceptEngagementInvitationResponse as any as S.Schema<StartResourceSnapshotJobResponse>;
@@ -3868,20 +2734,10 @@ export interface StopResourceSnapshotJobRequest {
   Catalog: string;
   ResourceSnapshotJobIdentifier: string;
 }
-const StopResourceSnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, ResourceSnapshotJobIdentifier: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/StopResourceSnapshotJob" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StopResourceSnapshotJobRequest",
-}) as any as S.Schema<StopResourceSnapshotJobRequest>;
+const StopResourceSnapshotJobRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<StopResourceSnapshotJobRequest>;
 export interface StopResourceSnapshotJobResponse {}
 const StopResourceSnapshotJobResponse =
   DisassociateOpportunityResponse as any as S.Schema<StopResourceSnapshotJobResponse>;
@@ -3891,16 +2747,10 @@ export interface SubmitOpportunityRequest {
   InvolvementType: SalesInvolvementType;
   Visibility?: Visibility;
 }
-const SubmitOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Identifier: S.String,
-    InvolvementType: SalesInvolvementType,
-    Visibility: S.optional(Visibility),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/SubmitOpportunity" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "SubmitOpportunityRequest" }) as any as S.Schema<SubmitOpportunityRequest>;
+const SubmitOpportunityRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<SubmitOpportunityRequest>;
 export interface SubmitOpportunityResponse {}
 const SubmitOpportunityResponse =
   AssignOpportunityResponse as any as S.Schema<SubmitOpportunityResponse>;
@@ -3908,11 +2758,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = AssignOpportunityResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -3921,11 +2767,10 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = AssignOpportunityResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLeadContext {
@@ -3934,23 +2779,12 @@ export interface UpdateLeadContext {
   Interaction?: LeadInteraction;
   Insights?: LeadInsights;
 }
-const UpdateLeadContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    QualificationStatus: S.optional(S.String),
-    Customer: LeadCustomer,
-    Interaction: S.optional(LeadInteraction),
-    Insights: S.optional(LeadInsights),
-  }),
-).annotate({ identifier: "UpdateLeadContext" }) as any as S.Schema<UpdateLeadContext>;
+const UpdateLeadContext = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<UpdateLeadContext>;
 export type UpdateEngagementContextPayload =
   | { Lead: UpdateLeadContext; CustomerProject?: never; ProspectingResult?: never }
   | { Lead?: never; CustomerProject: CustomerProjectsContext; ProspectingResult?: never }
   | { Lead?: never; CustomerProject?: never; ProspectingResult: ProspectingResult };
-const UpdateEngagementContextPayload = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Lead: UpdateLeadContext }),
-  /*@__PURE__*/ S.Struct({ CustomerProject: CustomerProjectsContext }),
-  /*@__PURE__*/ S.Struct({ ProspectingResult: ProspectingResult }),
-]);
+const UpdateEngagementContextPayload = /*@__PURE__*/ __L.at(__c24, 0);
 export interface UpdateEngagementContextRequest {
   Catalog: string;
   EngagementIdentifier: string;
@@ -3959,43 +2793,20 @@ export interface UpdateEngagementContextRequest {
   Type: EngagementContextType;
   Payload: UpdateEngagementContextPayload;
 }
-const UpdateEngagementContextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    EngagementIdentifier: S.String,
-    ContextIdentifier: S.String,
-    EngagementLastModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    Type: EngagementContextType,
-    Payload: UpdateEngagementContextPayload,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/UpdateEngagementContext" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateEngagementContextRequest",
-}) as any as S.Schema<UpdateEngagementContextRequest>;
+const UpdateEngagementContextRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<UpdateEngagementContextRequest>;
 export interface UpdateEngagementContextResponse {
   EngagementId: string;
   EngagementArn: string;
   EngagementLastModifiedAt: Date;
   ContextId: string;
 }
-const UpdateEngagementContextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EngagementId: S.String,
-    EngagementArn: S.String,
-    EngagementLastModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ContextId: S.String,
-  }),
-).annotate({
-  identifier: "UpdateEngagementContextResponse",
-}) as any as S.Schema<UpdateEngagementContextResponse>;
+const UpdateEngagementContextResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<UpdateEngagementContextResponse>;
 export interface UpdateOpportunityRequest {
   Catalog: string;
   PrimaryNeedsFromAws?: PrimaryNeedFromAws[];
@@ -4010,36 +2821,18 @@ export interface UpdateOpportunityRequest {
   Identifier: string;
   LifeCycle?: LifeCycle;
 }
-const UpdateOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    PrimaryNeedsFromAws: S.optional(PrimaryNeedsFromAws),
-    NationalSecurity: S.optional(NationalSecurity),
-    PartnerOpportunityIdentifier: S.optional(S.String),
-    Customer: S.optional(Customer),
-    Project: S.optional(Project),
-    OpportunityType: S.optional(OpportunityType),
-    Marketing: S.optional(Marketing),
-    SoftwareRevenue: S.optional(SoftwareRevenue),
-    LastModifiedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    Identifier: S.String,
-    LifeCycle: S.optional(LifeCycle),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/UpdateOpportunity" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateOpportunityRequest" }) as any as S.Schema<UpdateOpportunityRequest>;
+const UpdateOpportunityRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<UpdateOpportunityRequest>;
 export interface UpdateOpportunityResponse {
   Id: string;
   LastModifiedDate: Date;
 }
-const UpdateOpportunityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    LastModifiedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "UpdateOpportunityResponse",
-}) as any as S.Schema<UpdateOpportunityResponse>;
+const UpdateOpportunityResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateOpportunityResponse>;
 export type AccessDeniedExceptionErrorCode =
   | "INCOMPATIBLE_BENEFIT_AWS_PARTNER_STATE"
   | (string & {});
@@ -4070,15 +2863,12 @@ export interface ValidationExceptionError {
   Message: string;
   Code: ValidationExceptionErrorCode;
 }
-const ValidationExceptionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FieldName: S.optional(S.String),
-    Message: S.String,
-    Code: ValidationExceptionErrorCode,
-  }),
-).annotate({ identifier: "ValidationExceptionError" }) as any as S.Schema<ValidationExceptionError>;
+const ValidationExceptionError = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ValidationExceptionError>;
 export type ValidationExceptionErrorList = ValidationExceptionError[];
-const ValidationExceptionErrorList = /*@__PURE__*/ S.Array(ValidationExceptionError);
+const ValidationExceptionErrorList = /*@__PURE__*/ __L.at(__c24, 6);
 export type AcceptEngagementInvitationError =
   | AccessDeniedException
   | ConflictException
@@ -5616,3 +4406,2135 @@ export const updateOpportunity: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateOpportunity",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/AcceptEngagementInvitation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AcceptEngagementInvitationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptEngagementInvitationResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Email: SensitiveString,
+          FirstName: SensitiveString,
+          LastName: SensitiveString,
+          Phone: S.optional(SensitiveString),
+          BusinessTitle: SensitiveString,
+        }),
+      ).annotate({ identifier: "AssigneeContact" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, Identifier: S.String, Assignee: AssigneeContact }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/AssignOpportunity" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AssignOpportunityRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssignOpportunityResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          OpportunityIdentifier: S.String,
+          RelatedEntityType: RelatedEntityType,
+          RelatedEntityIdentifier: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/AssociateOpportunity" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateOpportunityRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Industry: Industry,
+          CompanyName: SensitiveString,
+          WebsiteUrl: SensitiveString,
+          CountryCode: CountryCode,
+        }),
+      ).annotate({ identifier: "EngagementCustomer" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Title: S.String,
+          BusinessProblem: SensitiveString,
+          TargetCompletionDate: S.String,
+        }),
+      ).annotate({
+        identifier: "EngagementCustomerProjectDetails",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Customer: S.optional(EngagementCustomer),
+          Project: S.optional(EngagementCustomerProjectDetails),
+        }),
+      ).annotate({ identifier: "CustomerProjectsContext" });
+    case 1:
+      return S.suspend(() => S.Struct({ LeadReadinessScore: S.optional(S.String) })).annotate({
+        identifier: "LeadInsights",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          City: S.optional(S.String),
+          PostalCode: S.optional(S.String),
+          StateOrRegion: S.optional(S.String),
+          CountryCode: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "LeadAddress" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Industry: S.optional(S.String),
+          CompanyName: SensitiveString,
+          WebsiteUrl: S.optional(SensitiveString),
+          Address: S.optional(LeadAddress),
+          AwsMaturity: S.optional(S.String),
+          MarketSegment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LeadCustomer" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          BusinessTitle: SensitiveString,
+          Email: SensitiveString,
+          FirstName: SensitiveString,
+          LastName: SensitiveString,
+          Phone: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "LeadContact" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          SourceType: S.optional(S.String),
+          SourceId: S.optional(S.String),
+          SourceName: S.optional(S.String),
+          Usecase: S.optional(S.String),
+          InteractionDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          CustomerAction: S.optional(S.String),
+          BusinessProblem: S.optional(SensitiveString),
+          Contact: LeadContact,
+        }),
+      ).annotate({ identifier: "LeadInteraction" });
+    case 6:
+      return S.Array(LeadInteraction);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Insights: S.optional(LeadInsights),
+          QualificationStatus: S.optional(S.String),
+          Customer: LeadCustomer,
+          Interactions: LeadInteractionList,
+        }),
+      ).annotate({ identifier: "LeadContext" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccountName: S.optional(S.String),
+          Geo: S.optional(S.String),
+          Region: S.optional(S.String),
+          SubRegion: S.optional(S.String),
+          Country: S.optional(CountryCode),
+          Industry: S.optional(Industry),
+          SubIndustry: S.optional(S.String),
+          Segment: S.optional(S.String),
+          CompanySize: S.optional(S.String),
+          EligiblePrograms: S.optional(EligibleProgramsList),
+          PublicProfileSummary: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProspectingResultCustomer",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          MarketplaceEngagementScore: S.optional(S.String),
+          SolutionScore: S.optional(S.String),
+          SolutionCategory: S.optional(S.String),
+          SolutionSubCategory: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProspectingInsights" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Customer: S.optional(ProspectingResultCustomer),
+          Insights: S.optional(ProspectingInsights),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          TaskId: S.optional(S.String),
+          TaskArn: S.optional(S.String),
+          TaskName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProspectingResultAws" });
+    case 4:
+      return S.suspend(() => S.Struct({ Aws: S.optional(ProspectingResultAws) })).annotate({
+        identifier: "ProspectingResult",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ CustomerProject: CustomerProjectsContext }),
+        /*@__PURE__*/ S.Struct({ Lead: LeadContext }),
+        /*@__PURE__*/ S.Struct({ ProspectingResult: ProspectingResult }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Type: EngagementContextType,
+          Payload: S.optional(EngagementContextPayload),
+        }),
+      ).annotate({ identifier: "EngagementContextDetails" });
+    case 7:
+      return S.Array(EngagementContextDetails);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          Title: S.optional(S.String),
+          Description: S.optional(S.String),
+          Contexts: S.optional(EngagementContexts),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/CreateEngagement" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateEngagementRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Arn: S.optional(S.String),
+          ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CreateEngagementResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          EngagementIdentifier: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          Type: EngagementContextType,
+          Payload: EngagementContextPayload,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CreateEngagementContext" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateEngagementContextRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EngagementId: S.optional(S.String),
+          EngagementArn: S.optional(S.String),
+          EngagementLastModifiedAt: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          ContextId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateEngagementContextResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Alias: S.optional(SensitiveString), AwsAccountId: SensitiveString }),
+      ).annotate({ identifier: "AccountReceiver" });
+    case 5:
+      return S.Union([/*@__PURE__*/ S.Struct({ Account: AccountReceiver })]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Email: SensitiveString,
+          FirstName: S.optional(SensitiveString),
+          LastName: S.optional(SensitiveString),
+          BusinessTitle: S.optional(SensitiveString),
+          Phone: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "SenderContact" });
+    case 7:
+      return S.Array(SenderContact);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ReceiverResponsibility);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Amount: S.optional(SensitiveString),
+          CurrencyCode: CurrencyCode,
+          Frequency: PaymentFrequency,
+          TargetCompany: S.String,
+          EstimationUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExpectedCustomerSpend" });
+    case 2:
+      return S.Array(ExpectedCustomerSpend);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          BusinessProblem: SensitiveString,
+          Title: S.String,
+          TargetCompletionDate: S.String,
+          ExpectedCustomerSpend: ExpectedCustomerSpendList,
+        }),
+      ).annotate({ identifier: "ProjectDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SenderContacts: S.optional(SenderContactList),
+          ReceiverResponsibilities: ReceiverResponsibilityList,
+          Customer: EngagementCustomer,
+          Project: ProjectDetails,
+        }),
+      ).annotate({
+        identifier: "OpportunityInvitationPayload",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Industry: S.optional(S.String),
+          CompanyName: SensitiveString,
+          WebsiteUrl: S.optional(SensitiveString),
+          CountryCode: S.optional(SensitiveString),
+          AwsMaturity: S.optional(S.String),
+          MarketSegment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LeadInvitationCustomer" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          SourceType: S.optional(S.String),
+          SourceId: S.optional(S.String),
+          SourceName: S.optional(S.String),
+          Usecase: S.optional(S.String),
+          ContactBusinessTitle: SensitiveString,
+        }),
+      ).annotate({
+        identifier: "LeadInvitationInteraction",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Customer: LeadInvitationCustomer, Interaction: LeadInvitationInteraction }),
+      ).annotate({ identifier: "LeadInvitationPayload" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ OpportunityInvitation: OpportunityInvitationPayload }),
+        /*@__PURE__*/ S.Struct({ LeadInvitation: LeadInvitationPayload }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Message: SensitiveString, Receiver: Receiver, Payload: Payload }),
+      ).annotate({ identifier: "Invitation" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          EngagementIdentifier: S.String,
+          Invitation: Invitation,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CreateEngagementInvitation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateEngagementInvitationRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Id: S.String, Arn: S.String })).annotate({
+        identifier: "CreateEngagementInvitationResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          City: S.optional(SensitiveString),
+          PostalCode: S.optional(SensitiveString),
+          StateOrRegion: S.optional(SensitiveString),
+          CountryCode: S.optional(CountryCode),
+          StreetAddress: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Address" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Industry: S.optional(Industry),
+          OtherIndustry: S.optional(S.String),
+          CompanyName: SensitiveString,
+          WebsiteUrl: S.optional(SensitiveString),
+          AwsAccountId: S.optional(SensitiveString),
+          Address: S.optional(Address),
+          Duns: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Account" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Email: S.optional(SensitiveString),
+          FirstName: S.optional(SensitiveString),
+          LastName: S.optional(SensitiveString),
+          BusinessTitle: S.optional(SensitiveString),
+          Phone: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Contact" });
+    case 7:
+      return S.Array(Contact);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Account: S.optional(Account), Contacts: S.optional(CustomerContactsList) }),
+      ).annotate({ identifier: "Customer" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Term: ExpectedContractDurationTerm, Value: S.String }),
+      ).annotate({ identifier: "ExpectedContractDuration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryModels: S.optional(DeliveryModels),
+          ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
+          ExpectedContractDuration: S.optional(ExpectedContractDuration),
+          Title: S.optional(SensitiveString),
+          ApnPrograms: S.optional(ApnPrograms),
+          CustomerBusinessProblem: S.optional(SensitiveString),
+          CustomerUseCase: S.optional(S.String),
+          RelatedOpportunityIdentifier: S.optional(S.String),
+          SalesActivities: S.optional(SalesActivities),
+          CompetitorName: S.optional(CompetitorName),
+          OtherCompetitorNames: S.optional(S.String),
+          OtherSolutionDescription: S.optional(SensitiveString),
+          AdditionalComments: S.optional(S.String),
+          AwsPartition: S.optional(AwsPartition),
+        }),
+      ).annotate({ identifier: "Project" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CampaignName: S.optional(S.String),
+          Source: S.optional(MarketingSource),
+          UseCases: S.optional(UseCases),
+          Channels: S.optional(Channels),
+          AwsFundingUsed: S.optional(AwsFundingUsed),
+        }),
+      ).annotate({ identifier: "Marketing" });
+    case 4:
+      return S.suspend(() => S.Struct({ Amount: S.String, CurrencyCode: CurrencyCode })).annotate({
+        identifier: "MonetaryValue",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryModel: S.optional(RevenueModel),
+          Value: S.optional(MonetaryValue),
+          EffectiveDate: S.optional(S.String),
+          ExpirationDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SoftwareRevenue" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Value: S.String, Time: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
+      ).annotate({ identifier: "NextStepsHistory" });
+    case 7:
+      return S.Array(NextStepsHistory);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Stage: S.optional(Stage),
+          ClosedLostReason: S.optional(ClosedLostReason),
+          NextSteps: S.optional(SensitiveString),
+          TargetCloseDate: S.optional(S.String),
+          ReviewStatus: S.optional(ReviewStatus),
+          ReviewComments: S.optional(S.String),
+          ReviewStatusReason: S.optional(S.String),
+          NextStepsHistory: S.optional(NextStepsHistories),
+        }),
+      ).annotate({ identifier: "LifeCycle" });
+    case 1:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 2:
+      return S.Array(Tag);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          PrimaryNeedsFromAws: S.optional(PrimaryNeedsFromAws),
+          NationalSecurity: S.optional(NationalSecurity),
+          PartnerOpportunityIdentifier: S.optional(S.String),
+          Customer: S.optional(Customer),
+          Project: S.optional(Project),
+          OpportunityType: S.optional(OpportunityType),
+          Marketing: S.optional(Marketing),
+          SoftwareRevenue: S.optional(SoftwareRevenue),
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          LifeCycle: S.optional(LifeCycle),
+          Origin: S.optional(OpportunityOrigin),
+          OpportunityTeam: S.optional(PartnerOpportunityTeamMembersList),
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CreateOpportunity" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateOpportunityRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          PartnerOpportunityIdentifier: S.optional(S.String),
+          LastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "CreateOpportunityResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          EngagementIdentifier: S.String,
+          ResourceType: ResourceType,
+          ResourceIdentifier: S.String,
+          ResourceSnapshotTemplateIdentifier: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CreateResourceSnapshot" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateResourceSnapshotRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String), Revision: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "CreateResourceSnapshotResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          EngagementIdentifier: S.String,
+          ResourceType: ResourceType,
+          ResourceIdentifier: S.String,
+          ResourceSnapshotTemplateIdentifier: S.String,
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CreateResourceSnapshotJob" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateResourceSnapshotJobRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "CreateResourceSnapshotJobResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, ResourceSnapshotJobIdentifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/DeleteResourceSnapshotJob" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteResourceSnapshotJobRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          OpportunityIdentifier: S.String,
+          RelatedEntityType: RelatedEntityType,
+          RelatedEntityIdentifier: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/DisassociateOpportunity" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateOpportunityRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DisassociateOpportunityResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, RelatedOpportunityIdentifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GetAwsOpportunitySummary" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAwsOpportunitySummaryRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TargetCloseDate: S.optional(S.String),
+          ClosedLostReason: S.optional(AwsClosedLostReason),
+          Stage: S.optional(AwsOpportunityStage),
+          NextSteps: S.optional(SensitiveString),
+          NextStepsHistory: S.optional(ProfileNextStepsHistories),
+        }),
+      ).annotate({ identifier: "AwsOpportunityLifeCycle" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Email: S.optional(SensitiveString),
+          FirstName: S.optional(SensitiveString),
+          LastName: S.optional(SensitiveString),
+          BusinessTitle: S.optional(AwsMemberBusinessTitle),
+        }),
+      ).annotate({ identifier: "AwsTeamMember" });
+    case 7:
+      return S.Array(AwsTeamMember);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Description: S.String, SavingsAmount: SensitiveString }),
+      ).annotate({ identifier: "AwsProductOptimization" });
+    case 2:
+      return S.Array(AwsProductOptimization);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ProductCode: S.String,
+          ServiceCode: S.optional(S.String),
+          Categories: StringList,
+          Amount: S.optional(SensitiveString),
+          OptimizedAmount: S.optional(SensitiveString),
+          PotentialSavingsAmount: S.optional(SensitiveString),
+          Optimizations: AwsProductOptimizationsList,
+        }),
+      ).annotate({ identifier: "AwsProductDetails" });
+    case 4:
+      return S.Array(AwsProductDetails);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CurrencyCode: CurrencyCode,
+          Frequency: PaymentFrequency,
+          TotalAmount: S.optional(SensitiveString),
+          TotalOptimizedAmount: S.optional(SensitiveString),
+          TotalPotentialSavingsAmount: S.optional(SensitiveString),
+          TotalAmountByCategory: AmountMap,
+          AwsProducts: AwsProductsList,
+        }),
+      ).annotate({ identifier: "AwsProductInsights" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Partner: S.optional(AwsProductInsights), AWS: S.optional(AwsProductInsights) }),
+      ).annotate({
+        identifier: "AwsProductsSpendInsightsBySource",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Score: S.optional(S.Number), Trend: S.optional(S.String) }),
+      ).annotate({ identifier: "OpportunityQuality" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.String,
+          Details: S.String,
+          Attributes: S.optional(RecommendationAttributeMap),
+        }),
+      ).annotate({ identifier: "Recommendation" });
+    case 2:
+      return S.Array(Recommendation);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          NextBestActions: S.optional(S.String),
+          EngagementScore: S.optional(EngagementScore),
+          AwsProductsSpendInsightsBySource: S.optional(AwsProductsSpendInsightsBySource),
+          OpportunityQuality: S.optional(OpportunityQuality),
+          Recommendations: S.optional(RecommendationList),
+        }),
+      ).annotate({ identifier: "AwsOpportunityInsights" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AwsProducts: S.optional(AwsProductIdentifiers),
+          Solutions: S.optional(SolutionIdentifiers),
+          AwsMarketplaceSolutions: S.optional(AwsMarketplaceSolutionIdentifiers),
+          AwsMarketplaceProducts: S.optional(AwsMarketplaceProductIdentifiers),
+        }),
+      ).annotate({
+        identifier: "AwsOpportunityRelatedEntities",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ Contacts: S.optional(CustomerContactsList) })).annotate({
+        identifier: "AwsOpportunityCustomer",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
+          AwsPartition: S.optional(AwsPartition),
+        }),
+      ).annotate({ identifier: "AwsOpportunityProject" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Value: S.optional(MonetaryValue),
+          Discount: S.optional(S.String),
+          EffectiveDate: S.optional(S.String),
+          ExpirationDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsSoftwareRevenue" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RelatedOpportunityId: S.optional(S.String),
+          Origin: S.optional(OpportunityOrigin),
+          InvolvementType: S.optional(SalesInvolvementType),
+          Visibility: S.optional(Visibility),
+          LifeCycle: S.optional(AwsOpportunityLifeCycle),
+          OpportunityTeam: S.optional(AwsOpportunityTeamMembersList),
+          Insights: S.optional(AwsOpportunityInsights),
+          InvolvementTypeChangeReason: S.optional(InvolvementTypeChangeReason),
+          RelatedEntityIds: S.optional(AwsOpportunityRelatedEntities),
+          Customer: S.optional(AwsOpportunityCustomer),
+          Project: S.optional(AwsOpportunityProject),
+          CosellMotion: S.optional(S.String),
+          SoftwareRevenue: S.optional(AwsSoftwareRevenue),
+          Catalog: S.String,
+        }),
+      ).annotate({
+        identifier: "GetAwsOpportunitySummaryResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/GetEngagement" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetEngagementRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Arn: S.optional(S.String),
+          Title: S.optional(S.String),
+          Description: S.optional(S.String),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          CreatedBy: S.optional(SensitiveString),
+          MemberCount: S.optional(S.Number),
+          ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          ModifiedBy: S.optional(SensitiveString),
+          Contexts: S.optional(EngagementContexts),
+        }),
+      ).annotate({ identifier: "GetEngagementResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GetEngagementInvitation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetEngagementInvitationRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ CompanyName: S.optional(SensitiveString), WebsiteUrl: S.optional(S.String) }),
+      ).annotate({ identifier: "EngagementMemberSummary" });
+    case 5:
+      return S.Array(EngagementMemberSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Customer: S.optional(ProspectingResultCustomer),
+          Insights: S.optional(ProspectingInsights),
+        }),
+      ).annotate({
+        identifier: "InvitationProspectingResultAws",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ProspectingResultAws: S.optional(InvitationProspectingResultAws),
+          LeadInsights: S.optional(LeadInsights),
+        }),
+      ).annotate({ identifier: "EnrichmentContext" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          PayloadType: S.optional(EngagementInvitationPayloadType),
+          Id: S.String,
+          EngagementId: S.optional(S.String),
+          EngagementTitle: S.optional(S.String),
+          Status: S.optional(InvitationStatus),
+          InvitationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          ExpirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          SenderAwsAccountId: S.optional(SensitiveString),
+          SenderCompanyName: S.optional(S.String),
+          Receiver: S.optional(Receiver),
+          Catalog: S.String,
+          RejectionReason: S.optional(S.String),
+          Payload: S.optional(Payload),
+          InvitationMessage: S.optional(SensitiveString),
+          EngagementDescription: S.optional(S.String),
+          ExistingMembers: S.optional(EngagementMemberSummaries),
+          EnrichmentContext: S.optional(EnrichmentContext),
+        }),
+      ).annotate({
+        identifier: "GetEngagementInvitationResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/GetOpportunity" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetOpportunityRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AwsMarketplaceOffers: S.optional(AwsMarketplaceOfferIdentifiers),
+          AwsMarketplaceOfferSets: S.optional(AwsMarketplaceOfferSetIdentifiers),
+          Solutions: S.optional(SolutionIdentifiers),
+          AwsProducts: S.optional(AwsProductIdentifiers),
+          AwsMarketplaceSolutions: S.optional(AwsMarketplaceSolutionIdentifiers),
+          AwsMarketplaceProducts: S.optional(AwsMarketplaceProductIdentifiers),
+        }),
+      ).annotate({ identifier: "RelatedEntityIdentifiers" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          PrimaryNeedsFromAws: S.optional(PrimaryNeedsFromAws),
+          NationalSecurity: S.optional(NationalSecurity),
+          PartnerOpportunityIdentifier: S.optional(S.String),
+          Customer: S.optional(Customer),
+          Project: S.optional(Project),
+          OpportunityType: S.optional(OpportunityType),
+          Marketing: S.optional(Marketing),
+          SoftwareRevenue: S.optional(SoftwareRevenue),
+          Id: S.String,
+          Arn: S.optional(S.String),
+          LastModifiedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          CreatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          RelatedEntityIdentifiers: RelatedEntityIdentifiers,
+          LifeCycle: S.optional(LifeCycle),
+          OpportunityTeam: S.optional(PartnerOpportunityTeamMembersList),
+        }),
+      ).annotate({ identifier: "GetOpportunityResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, TaskIdentifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GetProspectingFromEngagementTask" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetProspectingFromEngagementTaskRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          EngagementIdentifier: S.String,
+          EngagementContextId: S.optional(S.String),
+          Status: ProspectingTaskStatus,
+          ReasonCode: S.optional(S.String),
+          Message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EngagementProspectingResult",
+      });
+    case 6:
+      return S.Array(EngagementProspectingResult);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TaskId: S.String,
+          TaskArn: S.String,
+          TaskName: S.String,
+          StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Engagements: EngagementProspectingResultList,
+        }),
+      ).annotate({
+        identifier: "GetProspectingFromEngagementTaskResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          EngagementIdentifier: S.String,
+          ResourceType: ResourceType,
+          ResourceIdentifier: S.String,
+          ResourceSnapshotTemplateIdentifier: S.String,
+          Revision: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GetResourceSnapshot" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetResourceSnapshotRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TargetCloseDate: S.optional(S.String),
+          ReviewStatus: S.optional(ReviewStatus),
+          Stage: S.optional(Stage),
+          NextSteps: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "LifeCycleForView" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryModels: S.optional(DeliveryModels),
+          ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
+          ExpectedContractDuration: S.optional(ExpectedContractDuration),
+          CustomerUseCase: S.optional(S.String),
+          SalesActivities: S.optional(SalesActivities),
+          OtherSolutionDescription: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "ProjectView" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          OpportunityType: S.optional(OpportunityType),
+          Lifecycle: S.optional(LifeCycleForView),
+          OpportunityTeam: S.optional(PartnerOpportunityTeamMembersList),
+          PrimaryNeedsFromAws: S.optional(PrimaryNeedsFromAws),
+          Customer: S.optional(Customer),
+          Project: S.optional(ProjectView),
+          RelatedEntityIdentifiers: S.optional(RelatedEntityIdentifiers),
+        }),
+      ).annotate({ identifier: "OpportunitySummaryView" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          RelatedOpportunityId: S.optional(S.String),
+          Origin: S.optional(OpportunityOrigin),
+          InvolvementType: S.optional(SalesInvolvementType),
+          Visibility: S.optional(Visibility),
+          LifeCycle: S.optional(AwsOpportunityLifeCycle),
+          OpportunityTeam: S.optional(AwsOpportunityTeamMembersList),
+          Insights: S.optional(AwsOpportunityInsights),
+          InvolvementTypeChangeReason: S.optional(InvolvementTypeChangeReason),
+          RelatedEntityIds: S.optional(AwsOpportunityRelatedEntities),
+          Customer: S.optional(AwsOpportunityCustomer),
+          Project: S.optional(AwsOpportunityProject),
+          CosellMotion: S.optional(S.String),
+          SoftwareRevenue: S.optional(AwsSoftwareRevenue),
+        }),
+      ).annotate({
+        identifier: "AwsOpportunitySummaryFullView",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ OpportunitySummary: OpportunitySummaryView }),
+        /*@__PURE__*/ S.Struct({ AwsOpportunitySummaryFullView: AwsOpportunitySummaryFullView }),
+      ]);
+    case 6:
+      return S.Array(SensitiveString);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Arn: S.optional(S.String),
+          CreatedBy: S.optional(SensitiveString),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          EngagementId: S.optional(S.String),
+          ResourceType: S.optional(ResourceType),
+          ResourceId: S.optional(S.String),
+          ResourceSnapshotTemplateName: S.optional(S.String),
+          Revision: S.optional(S.Number),
+          Payload: S.optional(ResourceSnapshotPayload),
+          TargetMemberAccounts: S.optional(AwsAccountIdOrAliasList),
+        }),
+      ).annotate({
+        identifier: "GetResourceSnapshotResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, ResourceSnapshotJobIdentifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GetResourceSnapshotJob" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetResourceSnapshotJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Id: S.optional(S.String),
+          Arn: S.optional(S.String),
+          EngagementId: S.optional(S.String),
+          ResourceType: S.optional(ResourceType),
+          ResourceId: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          ResourceSnapshotTemplateName: S.optional(S.String),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Status: S.optional(ResourceSnapshotJobStatus),
+          LastSuccessfulExecutionDate: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          LastFailure: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetResourceSnapshotJobResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GetSellingSystemSettings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSellingSystemSettingsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, ResourceSnapshotJobRoleArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetSellingSystemSettingsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ SortOrder: SortOrder, SortBy: ListTasksSortName }),
+      ).annotate({ identifier: "ListTasksSortBase" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          Sort: S.optional(ListTasksSortBase),
+          Catalog: S.String,
+          TaskStatus: S.optional(TaskStatuses),
+          OpportunityIdentifier: S.optional(OpportunityIdentifiers),
+          EngagementInvitationIdentifier: S.optional(EngagementInvitationIdentifiers),
+          TaskIdentifier: S.optional(TaskIdentifiers),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListEngagementByAcceptingInvitationTasks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEngagementByAcceptingInvitationTasksRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TaskId: S.optional(S.String),
+          TaskArn: S.optional(S.String),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          TaskStatus: S.optional(TaskStatus),
+          Message: S.optional(S.String),
+          ReasonCode: S.optional(ReasonCode),
+          OpportunityId: S.optional(S.String),
+          ResourceSnapshotJobId: S.optional(S.String),
+          EngagementInvitationId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEngagementByAcceptingInvitationTaskSummary",
+      });
+    case 7:
+      return S.Array(ListEngagementByAcceptingInvitationTaskSummary);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TaskSummaries: S.optional(ListEngagementByAcceptingInvitationTaskSummaries),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEngagementByAcceptingInvitationTasksResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          Sort: S.optional(ListTasksSortBase),
+          Catalog: S.String,
+          TaskStatus: S.optional(TaskStatuses),
+          TaskIdentifier: S.optional(TaskIdentifiers),
+          OpportunityIdentifier: S.optional(OpportunityIdentifiers),
+          EngagementIdentifier: S.optional(EngagementIdentifiers),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListEngagementFromOpportunityTasks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEngagementFromOpportunityTasksRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TaskId: S.optional(S.String),
+          TaskArn: S.optional(S.String),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          TaskStatus: S.optional(TaskStatus),
+          Message: S.optional(S.String),
+          ReasonCode: S.optional(ReasonCode),
+          OpportunityId: S.optional(S.String),
+          ResourceSnapshotJobId: S.optional(S.String),
+          EngagementId: S.optional(S.String),
+          EngagementInvitationId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEngagementFromOpportunityTaskSummary",
+      });
+    case 3:
+      return S.Array(ListEngagementFromOpportunityTaskSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TaskSummaries: S.optional(ListEngagementFromOpportunityTaskSummaries),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEngagementFromOpportunityTasksResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ SortOrder: SortOrder, SortBy: OpportunityEngagementInvitationSortName }),
+      ).annotate({
+        identifier: "OpportunityEngagementInvitationSort",
+      });
+    case 6:
+      return S.Array(EngagementInvitationPayloadType);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          Sort: S.optional(OpportunityEngagementInvitationSort),
+          PayloadType: S.optional(EngagementInvitationsPayloadType),
+          ParticipantType: ParticipantType,
+          Status: S.optional(InvitationStatusList),
+          EngagementIdentifier: S.optional(EngagementIdentifiers),
+          SenderAwsAccountId: S.optional(AwsAccountIdOrAliasList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListEngagementInvitations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEngagementInvitationsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          PayloadType: S.optional(EngagementInvitationPayloadType),
+          Id: S.String,
+          EngagementId: S.optional(S.String),
+          EngagementTitle: S.optional(S.String),
+          Status: S.optional(InvitationStatus),
+          InvitationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          ExpirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          SenderAwsAccountId: S.optional(SensitiveString),
+          SenderCompanyName: S.optional(S.String),
+          Receiver: S.optional(Receiver),
+          Catalog: S.String,
+          ParticipantType: S.optional(ParticipantType),
+        }),
+      ).annotate({
+        identifier: "EngagementInvitationSummary",
+      });
+    case 1:
+      return S.Array(EngagementInvitationSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EngagementInvitationSummaries: S.optional(EngagementInvitationSummaries),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEngagementInvitationsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Identifier: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListEngagementMembers" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEngagementMembersRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CompanyName: S.optional(SensitiveString),
+          WebsiteUrl: S.optional(S.String),
+          AccountId: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "EngagementMember" });
+    case 5:
+      return S.Array(EngagementMember);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ EngagementMemberList: EngagementMembers, NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListEngagementMembersResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          EngagementIdentifier: S.optional(S.String),
+          ResourceType: S.optional(ResourceType),
+          ResourceIdentifier: S.optional(S.String),
+          CreatedBy: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListEngagementResourceAssociations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEngagementResourceAssociationsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          EngagementId: S.optional(S.String),
+          ResourceType: S.optional(ResourceType),
+          ResourceId: S.optional(S.String),
+          CreatedBy: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "EngagementResourceAssociationSummary",
+      });
+    case 1:
+      return S.Array(EngagementResourceAssociationSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EngagementResourceAssociationSummaries: EngagementResourceAssociationSummaryList,
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEngagementResourceAssociationsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          CreatedBy: S.optional(AwsAccountList),
+          ExcludeCreatedBy: S.optional(AwsAccountList),
+          ContextTypes: S.optional(EngagementContextTypeList),
+          ExcludeContextTypes: S.optional(EngagementContextTypeList),
+          Sort: S.optional(EngagementSort),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          EngagementIdentifier: S.optional(EngagementIdentifiers),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/ListEngagements" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListEngagementsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Id: S.optional(S.String),
+          Title: S.optional(S.String),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          CreatedBy: S.optional(SensitiveString),
+          MemberCount: S.optional(S.Number),
+          ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          ModifiedBy: S.optional(SensitiveString),
+          ContextTypes: S.optional(EngagementContextTypeList),
+        }),
+      ).annotate({ identifier: "EngagementSummary" });
+    case 5:
+      return S.Array(EngagementSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ EngagementSummaryList: EngagementSummaryList, NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEngagementsResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AfterLastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          BeforeLastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "LastModifiedDate" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AfterCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          BeforeCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CreatedDateFilter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AfterTargetCloseDate: S.optional(S.String),
+          BeforeTargetCloseDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TargetCloseDateFilter" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          Sort: S.optional(OpportunitySort),
+          LastModifiedDate: S.optional(LastModifiedDate),
+          Identifier: S.optional(FilterIdentifier),
+          LifeCycleStage: S.optional(FilterLifeCycleStage),
+          LifeCycleReviewStatus: S.optional(FilterLifeCycleReviewStatus),
+          CustomerCompanyName: S.optional(StringList),
+          CreatedDate: S.optional(CreatedDateFilter),
+          TargetCloseDate: S.optional(TargetCloseDateFilter),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListOpportunities" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListOpportunitiesRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Stage: S.optional(Stage),
+          ClosedLostReason: S.optional(ClosedLostReason),
+          NextSteps: S.optional(SensitiveString),
+          TargetCloseDate: S.optional(S.String),
+          ReviewStatus: S.optional(ReviewStatus),
+          ReviewComments: S.optional(S.String),
+          ReviewStatusReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LifeCycleSummary" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          City: S.optional(SensitiveString),
+          PostalCode: S.optional(SensitiveString),
+          StateOrRegion: S.optional(SensitiveString),
+          CountryCode: S.optional(CountryCode),
+        }),
+      ).annotate({ identifier: "AddressSummary" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Industry: S.optional(Industry),
+          OtherIndustry: S.optional(S.String),
+          CompanyName: SensitiveString,
+          WebsiteUrl: S.optional(SensitiveString),
+          Address: S.optional(AddressSummary),
+        }),
+      ).annotate({ identifier: "AccountSummary" });
+    case 6:
+      return S.suspend(() => S.Struct({ Account: S.optional(AccountSummary) })).annotate({
+        identifier: "CustomerSummary",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryModels: S.optional(DeliveryModels),
+          ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
+          ExpectedContractDuration: S.optional(ExpectedContractDuration),
+        }),
+      ).annotate({ identifier: "ProjectSummary" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Id: S.optional(S.String),
+          Arn: S.optional(S.String),
+          PartnerOpportunityIdentifier: S.optional(S.String),
+          OpportunityType: S.optional(OpportunityType),
+          LastModifiedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          LifeCycle: S.optional(LifeCycleSummary),
+          Customer: S.optional(CustomerSummary),
+          Project: S.optional(ProjectSummary),
+        }),
+      ).annotate({ identifier: "OpportunitySummary" });
+    case 1:
+      return S.Array(OpportunitySummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ OpportunitySummaries: OpportunitySummaries, NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListOpportunitiesResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          Sort: S.optional(ListTasksSortBase),
+          Catalog: S.String,
+          TaskStatus: S.optional(TaskStatuses),
+          TaskIdentifier: S.optional(TaskIdentifiers),
+          OpportunityIdentifier: S.optional(OpportunityIdentifiers),
+          EngagementIdentifier: S.optional(EngagementIdentifiers),
+          ContextIdentifier: S.optional(ContextIdentifiers),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListOpportunityFromEngagementTasks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListOpportunityFromEngagementTasksRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TaskId: S.optional(S.String),
+          TaskArn: S.optional(S.String),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          TaskStatus: S.optional(TaskStatus),
+          Message: S.optional(S.String),
+          ReasonCode: S.optional(ReasonCode),
+          OpportunityId: S.optional(S.String),
+          ResourceSnapshotJobId: S.optional(S.String),
+          EngagementId: S.optional(S.String),
+          ContextId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListOpportunityFromEngagementTaskSummary",
+      });
+    case 5:
+      return S.Array(ListOpportunityFromEngagementTaskSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TaskSummaries: S.optional(ListOpportunityFromEngagementTaskSummaries),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListOpportunityFromEngagementTasksResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          TaskIdentifier: S.optional(TaskIdentifierList),
+          TaskName: S.optional(TaskNameList),
+          StartAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          StartBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Sort: S.optional(ProspectingFromEngagementTaskSort),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListProspectingFromEngagementTasks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListProspectingFromEngagementTasksRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TaskId: S.String,
+          TaskArn: S.String,
+          TaskName: S.String,
+          StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          TotalEngagementCount: S.Number,
+          CompletedEngagementCount: S.Number,
+          FailedEngagementCount: S.Number,
+        }),
+      ).annotate({ identifier: "ProspectingTaskSummary" });
+    case 1:
+      return S.Array(ProspectingTaskSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), TaskSummaries: ProspectingTaskSummaryList }),
+      ).annotate({
+        identifier: "ListProspectingFromEngagementTasksResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ SortBy: S.optional(SortBy), SortOrder: S.optional(SortOrder) }),
+      ).annotate({ identifier: "SortObject" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          EngagementIdentifier: S.optional(S.String),
+          Status: S.optional(ResourceSnapshotJobStatus),
+          Sort: S.optional(SortObject),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListResourceSnapshotJobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListResourceSnapshotJobsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Arn: S.optional(S.String),
+          EngagementId: S.optional(S.String),
+          Status: S.optional(ResourceSnapshotJobStatus),
+        }),
+      ).annotate({
+        identifier: "ResourceSnapshotJobSummary",
+      });
+    case 6:
+      return S.Array(ResourceSnapshotJobSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceSnapshotJobSummaries: ResourceSnapshotJobSummaryList,
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListResourceSnapshotJobsResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          EngagementIdentifier: S.String,
+          ResourceType: S.optional(ResourceType),
+          ResourceIdentifier: S.optional(S.String),
+          ResourceSnapshotTemplateIdentifier: S.optional(S.String),
+          CreatedBy: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListResourceSnapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListResourceSnapshotsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Revision: S.optional(S.Number),
+          ResourceType: S.optional(ResourceType),
+          ResourceId: S.optional(S.String),
+          ResourceSnapshotTemplateName: S.optional(S.String),
+          CreatedBy: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "ResourceSnapshotSummary" });
+    case 2:
+      return S.Array(ResourceSnapshotSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceSnapshotSummaries: ResourceSnapshotSummaryList,
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListResourceSnapshotsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          Sort: S.optional(SolutionSort),
+          Status: S.optional(FilterStatus),
+          Identifier: S.optional(SolutionIdentifiers),
+          Category: S.optional(StringList),
+          AwsMarketplaceSolutionArn: S.optional(AwsMarketplaceSolutionArnList),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/ListSolutions" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListSolutionsRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Id: S.String,
+          Arn: S.optional(S.String),
+          Name: S.String,
+          Status: SolutionStatus,
+          Category: S.String,
+          CreatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          AwsMarketplaceSolutionArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SolutionBase" });
+    case 6:
+      return S.Array(SolutionBase);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ SolutionSummaries: SolutionList, NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSolutionsResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListTagsForResource" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: TagList })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          ResourceSnapshotJobRoleIdentifier: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/PutSellingSystemSettings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutSellingSystemSettingsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Identifier: S.String,
+          RejectionReason: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/RejectEngagementInvitation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RejectEngagementInvitationRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          Identifier: S.String,
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/StartEngagementByAcceptingInvitationTask" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartEngagementByAcceptingInvitationTaskRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ InvolvementType: SalesInvolvementType, Visibility: S.optional(Visibility) }),
+      ).annotate({ identifier: "AwsSubmission" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          Identifier: S.String,
+          AwsSubmission: AwsSubmission,
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/StartEngagementFromOpportunityTask" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartEngagementFromOpportunityTaskRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          Identifier: S.String,
+          ContextIdentifier: S.String,
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/StartOpportunityFromEngagementTask" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartOpportunityFromEngagementTaskRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Identifiers: EngagementIdentifierList,
+          TaskName: S.String,
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/StartProspectingFromEngagementTask" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartProspectingFromEngagementTaskRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Identifiers: EngagementIdentifierList,
+          TaskName: S.String,
+          Message: S.optional(S.String),
+          ReasonCode: S.optional(S.String),
+          StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          TaskId: S.optional(S.String),
+          TaskArn: S.optional(S.String),
+          TaskStatus: ProspectingTaskStatus,
+        }),
+      ).annotate({
+        identifier: "StartProspectingFromEngagementTaskResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, ResourceSnapshotJobIdentifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/StartResourceSnapshotJob" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartResourceSnapshotJobRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Catalog: S.String, ResourceSnapshotJobIdentifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/StopResourceSnapshotJob" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StopResourceSnapshotJobRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          Identifier: S.String,
+          InvolvementType: SalesInvolvementType,
+          Visibility: S.optional(Visibility),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/SubmitOpportunity" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SubmitOpportunityRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          QualificationStatus: S.optional(S.String),
+          Customer: LeadCustomer,
+          Interaction: S.optional(LeadInteraction),
+          Insights: S.optional(LeadInsights),
+        }),
+      ).annotate({ identifier: "UpdateLeadContext" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Lead: UpdateLeadContext }),
+        /*@__PURE__*/ S.Struct({ CustomerProject: CustomerProjectsContext }),
+        /*@__PURE__*/ S.Struct({ ProspectingResult: ProspectingResult }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          EngagementIdentifier: S.String,
+          ContextIdentifier: S.String,
+          EngagementLastModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          Type: EngagementContextType,
+          Payload: UpdateEngagementContextPayload,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/UpdateEngagementContext" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEngagementContextRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EngagementId: S.String,
+          EngagementArn: S.String,
+          EngagementLastModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ContextId: S.String,
+        }),
+      ).annotate({
+        identifier: "UpdateEngagementContextResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          PrimaryNeedsFromAws: S.optional(PrimaryNeedsFromAws),
+          NationalSecurity: S.optional(NationalSecurity),
+          PartnerOpportunityIdentifier: S.optional(S.String),
+          Customer: S.optional(Customer),
+          Project: S.optional(Project),
+          OpportunityType: S.optional(OpportunityType),
+          Marketing: S.optional(Marketing),
+          SoftwareRevenue: S.optional(SoftwareRevenue),
+          LastModifiedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          Identifier: S.String,
+          LifeCycle: S.optional(LifeCycle),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/UpdateOpportunity" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateOpportunityRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          LastModifiedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "UpdateOpportunityResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          FieldName: S.optional(S.String),
+          Message: S.String,
+          Code: ValidationExceptionErrorCode,
+        }),
+      ).annotate({ identifier: "ValidationExceptionError" });
+    case 6:
+      return S.Array(ValidationExceptionError);
+  }
+}

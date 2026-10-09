@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -115,11 +116,7 @@ export type ExportArn = string;
 export interface GetExportRequest {
   exportArn: string;
 }
-const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exportArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v2/GetExport" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetExportRequest" }) as any as S.Schema<GetExportRequest>;
+const GetExportRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetExportRequest>;
 export type IdempotencyToken = string;
 export type ExportStatus = "PENDING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | (string & {});
 const ExportStatus = S.String;
@@ -155,25 +152,7 @@ export interface GetExportResponse {
   itemsCount?: number;
   exportDataCutoffTime?: Date;
 }
-const GetExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportArn: S.String,
-    clientToken: S.String,
-    exportStatus: ExportStatus,
-    domainName: S.String,
-    requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    s3Bucket: S.String,
-    s3KeyPrefix: S.optional(S.String),
-    s3SseAlgorithm: S.optional(S3SseAlgorithm),
-    s3SseKmsKeyId: S.optional(S.String),
-    s3BucketOwner: S.optional(S.String),
-    failureCode: S.optional(S.String),
-    failureMessage: S.optional(S.String),
-    exportManifest: S.optional(S.String),
-    itemsCount: S.optional(S.Number),
-    exportDataCutoffTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "GetExportResponse" }) as any as S.Schema<GetExportResponse>;
+const GetExportResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GetExportResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListExportsRequest {
@@ -181,36 +160,21 @@ export interface ListExportsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainName: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/v2/ListExports" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListExportsRequest" }) as any as S.Schema<ListExportsRequest>;
+const ListExportsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ListExportsRequest>;
 export interface ExportSummary {
   exportArn: string;
   exportStatus: ExportStatus;
   requestedAt: Date;
   domainName: string;
 }
-const ExportSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportArn: S.String,
-    exportStatus: ExportStatus,
-    requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    domainName: S.String,
-  }),
-).annotate({ identifier: "ExportSummary" }) as any as S.Schema<ExportSummary>;
+const ExportSummary = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ExportSummary>;
 export type ExportSummaries = ExportSummary[];
-const ExportSummaries = /*@__PURE__*/ S.Array(ExportSummary);
+const ExportSummaries = /*@__PURE__*/ __L.at(__c0, 4);
 export interface ListExportsResponse {
   exportSummaries: ExportSummary[];
   nextToken?: string;
 }
-const ListExportsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exportSummaries: ExportSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListExportsResponse" }) as any as S.Schema<ListExportsResponse>;
+const ListExportsResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListExportsResponse>;
 export interface StartDomainExportRequest {
   clientToken?: string;
   domainName: string;
@@ -220,33 +184,19 @@ export interface StartDomainExportRequest {
   s3SseKmsKeyId?: string;
   s3BucketOwner?: string;
 }
-const StartDomainExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    domainName: S.String,
-    s3Bucket: S.String,
-    s3KeyPrefix: S.optional(S.String),
-    s3SseAlgorithm: S.optional(S3SseAlgorithm),
-    s3SseKmsKeyId: S.optional(S.String),
-    s3BucketOwner: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v2/StartDomainExport" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StartDomainExportRequest" }) as any as S.Schema<StartDomainExportRequest>;
+const StartDomainExportRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<StartDomainExportRequest>;
 export interface StartDomainExportResponse {
   clientToken: string;
   exportArn: string;
   requestedAt: Date;
 }
-const StartDomainExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.String,
-    exportArn: S.String,
-    requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "StartDomainExportResponse",
-}) as any as S.Schema<StartDomainExportResponse>;
+const StartDomainExportResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<StartDomainExportResponse>;
 export type GetExportError = InvalidParameterValueException | NoSuchExportException | CommonErrors;
 /**
  * Returns information for an existing domain export.
@@ -323,3 +273,91 @@ export const startDomainExport: API.OperationMethod<
   retry: Retry,
   operationName: "StartDomainExport",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ exportArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v2/GetExport" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetExportRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          exportArn: S.String,
+          clientToken: S.String,
+          exportStatus: ExportStatus,
+          domainName: S.String,
+          requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          s3Bucket: S.String,
+          s3KeyPrefix: S.optional(S.String),
+          s3SseAlgorithm: S.optional(S3SseAlgorithm),
+          s3SseKmsKeyId: S.optional(S.String),
+          s3BucketOwner: S.optional(S.String),
+          failureCode: S.optional(S.String),
+          failureMessage: S.optional(S.String),
+          exportManifest: S.optional(S.String),
+          itemsCount: S.optional(S.Number),
+          exportDataCutoffTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "GetExportResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v2/ListExports" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListExportsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          exportArn: S.String,
+          exportStatus: ExportStatus,
+          requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          domainName: S.String,
+        }),
+      ).annotate({ identifier: "ExportSummary" });
+    case 4:
+      return S.Array(ExportSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ exportSummaries: ExportSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListExportsResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          domainName: S.String,
+          s3Bucket: S.String,
+          s3KeyPrefix: S.optional(S.String),
+          s3SseAlgorithm: S.optional(S3SseAlgorithm),
+          s3SseKmsKeyId: S.optional(S.String),
+          s3BucketOwner: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/StartDomainExport" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartDomainExportRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.String,
+          exportArn: S.String,
+          requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "StartDomainExportResponse",
+      });
+  }
+}

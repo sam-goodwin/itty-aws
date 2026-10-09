@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -110,14 +111,15 @@ export type MaximumCapacity = number;
 export type VpcId = string;
 export type Ipv4CidrBlock = string;
 export type Ipv4CidrBlockList = string[];
-const Ipv4CidrBlockList = /*@__PURE__*/ S.Array(S.String);
+const Ipv4CidrBlockList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface VpcTransitConfiguration {
   VpcId: string;
   Ipv4CidrBlocks: string[];
 }
-const VpcTransitConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcId: S.String, Ipv4CidrBlocks: Ipv4CidrBlockList }),
-).annotate({ identifier: "VpcTransitConfiguration" }) as any as S.Schema<VpcTransitConfiguration>;
+const VpcTransitConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<VpcTransitConfiguration>;
 export interface LocationConfiguration {
   LocationName: string;
   AlwaysOnCapacity?: number;
@@ -126,39 +128,20 @@ export interface LocationConfiguration {
   MaximumCapacity?: number;
   VpcTransitConfiguration?: VpcTransitConfiguration;
 }
-const LocationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LocationName: S.String,
-    AlwaysOnCapacity: S.optional(S.Number),
-    OnDemandCapacity: S.optional(S.Number),
-    TargetIdleCapacity: S.optional(S.Number),
-    MaximumCapacity: S.optional(S.Number),
-    VpcTransitConfiguration: S.optional(VpcTransitConfiguration),
-  }),
-).annotate({ identifier: "LocationConfiguration" }) as any as S.Schema<LocationConfiguration>;
+const LocationConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<LocationConfiguration>;
 export type LocationConfigurations = LocationConfiguration[];
-const LocationConfigurations = /*@__PURE__*/ S.Array(LocationConfiguration);
+const LocationConfigurations = /*@__PURE__*/ __L.at(__c0, 3);
 export interface AddStreamGroupLocationsInput {
   Identifier: string;
   LocationConfigurations: LocationConfiguration[];
 }
-const AddStreamGroupLocationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    LocationConfigurations: LocationConfigurations,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/locations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AddStreamGroupLocationsInput",
-}) as any as S.Schema<AddStreamGroupLocationsInput>;
+const AddStreamGroupLocationsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddStreamGroupLocationsInput>;
 export type StreamGroupLocationStatus =
   | "ACTIVATING"
   | "ACTIVE"
@@ -174,16 +157,10 @@ export interface VpcTransitConfigurationResponse {
   TransitGatewayId?: string;
   TransitGatewayResourceShareArn?: string;
 }
-const VpcTransitConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VpcId: S.optional(S.String),
-    Ipv4CidrBlocks: S.optional(Ipv4CidrBlockList),
-    TransitGatewayId: S.optional(S.String),
-    TransitGatewayResourceShareArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VpcTransitConfigurationResponse",
-}) as any as S.Schema<VpcTransitConfigurationResponse>;
+const VpcTransitConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<VpcTransitConfigurationResponse>;
 export interface LocationState {
   LocationName?: string;
   Status?: StreamGroupLocationStatus;
@@ -197,55 +174,27 @@ export interface LocationState {
   InternalVpcIpv4CidrBlock?: string;
   VpcTransitConfiguration?: VpcTransitConfigurationResponse;
 }
-const LocationState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LocationName: S.optional(S.String),
-    Status: S.optional(StreamGroupLocationStatus),
-    AlwaysOnCapacity: S.optional(S.Number),
-    OnDemandCapacity: S.optional(S.Number),
-    TargetIdleCapacity: S.optional(S.Number),
-    MaximumCapacity: S.optional(S.Number),
-    RequestedCapacity: S.optional(S.Number),
-    AllocatedCapacity: S.optional(S.Number),
-    IdleCapacity: S.optional(S.Number),
-    InternalVpcIpv4CidrBlock: S.optional(S.String),
-    VpcTransitConfiguration: S.optional(VpcTransitConfigurationResponse),
-  }),
-).annotate({ identifier: "LocationState" }) as any as S.Schema<LocationState>;
+const LocationState = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LocationState>;
 export type LocationStates = LocationState[];
-const LocationStates = /*@__PURE__*/ S.Array(LocationState);
+const LocationStates = /*@__PURE__*/ __L.at(__c0, 7);
 export interface AddStreamGroupLocationsOutput {
   Identifier: string;
   Locations: LocationState[];
 }
-const AddStreamGroupLocationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String, Locations: LocationStates }),
-).annotate({
-  identifier: "AddStreamGroupLocationsOutput",
-}) as any as S.Schema<AddStreamGroupLocationsOutput>;
+const AddStreamGroupLocationsOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AddStreamGroupLocationsOutput>;
 export type Identifiers = string[];
 const Identifiers = Ipv4CidrBlockList as any as S.Schema<Identifiers>;
 export interface AssociateApplicationsInput {
   Identifier: string;
   ApplicationIdentifiers: string[];
 }
-const AssociateApplicationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    ApplicationIdentifiers: Identifiers,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/associations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateApplicationsInput",
-}) as any as S.Schema<AssociateApplicationsInput>;
+const AssociateApplicationsInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AssociateApplicationsInput>;
 export type Arn = string;
 export type ArnList = string[];
 const ArnList = Ipv4CidrBlockList as any as S.Schema<ArnList>;
@@ -253,11 +202,10 @@ export interface AssociateApplicationsOutput {
   Arn?: string;
   ApplicationArns?: string[];
 }
-const AssociateApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), ApplicationArns: S.optional(ArnList) }),
-).annotate({
-  identifier: "AssociateApplicationsOutput",
-}) as any as S.Schema<AssociateApplicationsOutput>;
+const AssociateApplicationsOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AssociateApplicationsOutput>;
 export type Description = string;
 export type RuntimeEnvironmentType = "PROTON" | "WINDOWS" | "UBUNTU" | (string & {});
 const RuntimeEnvironmentType = S.String;
@@ -267,9 +215,7 @@ export interface RuntimeEnvironment {
   Type: RuntimeEnvironmentType;
   Version: string;
 }
-const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: RuntimeEnvironmentType, Version: S.String }),
-).annotate({ identifier: "RuntimeEnvironment" }) as any as S.Schema<RuntimeEnvironment>;
+const RuntimeEnvironment = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RuntimeEnvironment>;
 export type ExecutablePath = string;
 export type ApplicationSourceUri = string;
 export type FilePath = string;
@@ -279,7 +225,7 @@ export type ApplicationLogOutputUri = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ __L.at(__c1, 4);
 export type ClientToken = string;
 export interface CreateApplicationInput {
   Description: string;
@@ -291,18 +237,10 @@ export interface CreateApplicationInput {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-const CreateApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.String,
-    RuntimeEnvironment: RuntimeEnvironment,
-    ExecutablePath: S.String,
-    ApplicationSourceUri: S.String,
-    ApplicationLogPaths: S.optional(FilePaths),
-    ApplicationLogOutputUri: S.optional(S.String),
-    Tags: S.optional(Tags),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateApplicationInput" }) as any as S.Schema<CreateApplicationInput>;
+const CreateApplicationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateApplicationInput>;
 export type Id = string;
 export type ApplicationStatus =
   | "INITIALIZED"
@@ -327,11 +265,9 @@ export interface ReplicationStatus {
   Location?: string;
   Status?: ReplicationStatusType;
 }
-const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Location: S.optional(S.String), Status: S.optional(ReplicationStatusType) }),
-).annotate({ identifier: "ReplicationStatus" }) as any as S.Schema<ReplicationStatus>;
+const ReplicationStatus = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ReplicationStatus>;
 export type ReplicationStatuses = ReplicationStatus[];
-const ReplicationStatuses = /*@__PURE__*/ S.Array(ReplicationStatus);
+const ReplicationStatuses = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreateApplicationOutput {
   Arn: string;
   Description?: string;
@@ -348,24 +284,10 @@ export interface CreateApplicationOutput {
   LastUpdatedAt?: Date;
   AssociatedStreamGroups?: string[];
 }
-const CreateApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    RuntimeEnvironment: S.optional(RuntimeEnvironment),
-    ExecutablePath: S.optional(S.String),
-    ApplicationLogPaths: S.optional(FilePaths),
-    ApplicationLogOutputUri: S.optional(S.String),
-    ApplicationSourceUri: S.optional(S.String),
-    Id: S.optional(S.String),
-    Status: S.optional(ApplicationStatus),
-    StatusReason: S.optional(ApplicationStatusReason),
-    ReplicationStatuses: S.optional(ReplicationStatuses),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedStreamGroups: S.optional(ArnList),
-  }),
-).annotate({ identifier: "CreateApplicationOutput" }) as any as S.Schema<CreateApplicationOutput>;
+const CreateApplicationOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateApplicationOutput>;
 export type StreamClass =
   | "gen4n_high"
   | "gen4n_ultra"
@@ -395,23 +317,15 @@ export interface CreateStreamGroupInput {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-const CreateStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.String,
-    StreamClass: StreamClass,
-    DefaultApplicationIdentifier: S.optional(S.String),
-    LocationConfigurations: S.optional(LocationConfigurations),
-    Tags: S.optional(Tags),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/streamgroups" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateStreamGroupInput" }) as any as S.Schema<CreateStreamGroupInput>;
+const CreateStreamGroupInput = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateStreamGroupInput>;
 export interface DefaultApplication {
   Id?: string;
   Arn?: string;
 }
-const DefaultApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({ identifier: "DefaultApplication" }) as any as S.Schema<DefaultApplication>;
+const DefaultApplication = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DefaultApplication>;
 export type StreamGroupStatus =
   | "ACTIVATING"
   | "UPDATING_LOCATIONS"
@@ -440,46 +354,18 @@ export interface CreateStreamGroupOutput {
   ExpiresAt?: Date;
   AssociatedApplications?: string[];
 }
-const CreateStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    DefaultApplication: S.optional(DefaultApplication),
-    LocationStates: S.optional(LocationStates),
-    StreamClass: S.optional(StreamClass),
-    Id: S.optional(S.String),
-    Status: S.optional(StreamGroupStatus),
-    StatusReason: S.optional(StreamGroupStatusReason),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedApplications: S.optional(ArnList),
-  }),
-).annotate({ identifier: "CreateStreamGroupOutput" }) as any as S.Schema<CreateStreamGroupOutput>;
+const CreateStreamGroupOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateStreamGroupOutput>;
 export interface CreateStreamSessionAdminShellInput {
   Identifier: string;
   StreamSessionIdentifier: string;
 }
-const CreateStreamSessionAdminShellInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}/access",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateStreamSessionAdminShellInput",
-}) as any as S.Schema<CreateStreamSessionAdminShellInput>;
+const CreateStreamSessionAdminShellInput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateStreamSessionAdminShellInput>;
 export type SessionId = string;
 export type StreamUrl = string;
 export type TokenValue = string | redacted.Redacted<string>;
@@ -488,15 +374,10 @@ export interface CreateStreamSessionAdminShellOutput {
   StreamUrl?: string;
   TokenValue?: string | redacted.Redacted<string>;
 }
-const CreateStreamSessionAdminShellOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SessionId: S.optional(S.String),
-    StreamUrl: S.optional(S.String),
-    TokenValue: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "CreateStreamSessionAdminShellOutput",
-}) as any as S.Schema<CreateStreamSessionAdminShellOutput>;
+const CreateStreamSessionAdminShellOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateStreamSessionAdminShellOutput>;
 export type SignalRequest = string | redacted.Redacted<string>;
 export interface CreateStreamSessionConnectionInput {
   ClientToken?: string;
@@ -504,37 +385,18 @@ export interface CreateStreamSessionConnectionInput {
   StreamSessionIdentifier: string;
   SignalRequest: string | redacted.Redacted<string>;
 }
-const CreateStreamSessionConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
-    SignalRequest: SensitiveString,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}/connections",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateStreamSessionConnectionInput",
-}) as any as S.Schema<CreateStreamSessionConnectionInput>;
+const CreateStreamSessionConnectionInput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateStreamSessionConnectionInput>;
 export type SignalResponse = string | redacted.Redacted<string>;
 export interface CreateStreamSessionConnectionOutput {
   SignalResponse?: string | redacted.Redacted<string>;
 }
-const CreateStreamSessionConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SignalResponse: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "CreateStreamSessionConnectionOutput",
-}) as any as S.Schema<CreateStreamSessionConnectionOutput>;
+const CreateStreamSessionConnectionOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateStreamSessionConnectionOutput>;
 export type Protocol = "WebRTC" | (string & {});
 const Protocol = S.String;
 
@@ -546,10 +408,7 @@ export type SessionLengthSeconds = number;
 export type GameLaunchArgList = string[];
 const GameLaunchArgList = Ipv4CidrBlockList as any as S.Schema<GameLaunchArgList>;
 export type EnvironmentVariables = { [key: string]: string | undefined };
-const EnvironmentVariables = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const EnvironmentVariables = /*@__PURE__*/ __L.at(__c3, 0);
 export type IamRoleArn = string | redacted.Redacted<string>;
 export type ResolutionWidth = number;
 export type ResolutionHeight = number;
@@ -557,15 +416,11 @@ export interface Resolution {
   Width: number;
   Height: number;
 }
-const Resolution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Width: S.Number, Height: S.Number }),
-).annotate({ identifier: "Resolution" }) as any as S.Schema<Resolution>;
+const Resolution = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Resolution>;
 export interface DisplayConfiguration {
   Resolution?: Resolution;
 }
-const DisplayConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Resolution: S.optional(Resolution) }),
-).annotate({ identifier: "DisplayConfiguration" }) as any as S.Schema<DisplayConfiguration>;
+const DisplayConfiguration = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DisplayConfiguration>;
 export interface CreateStreamUrlInput {
   Identifier: string;
   ApplicationIdentifier: string;
@@ -581,32 +436,7 @@ export interface CreateStreamUrlInput {
   DisplayConfiguration?: DisplayConfiguration;
   ClientToken?: string;
 }
-const CreateStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    ApplicationIdentifier: S.String,
-    Protocol: Protocol,
-    UrlExpiresAfterMinutes: S.Number,
-    UsageLimit: S.optional(S.Number),
-    Description: S.optional(S.String),
-    Locations: LocationList,
-    SessionLengthSeconds: S.optional(S.Number),
-    AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-    AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
-    RoleArn: S.optional(SensitiveString),
-    DisplayConfiguration: S.optional(DisplayConfiguration),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/streamurls" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateStreamUrlInput" }) as any as S.Schema<CreateStreamUrlInput>;
+const CreateStreamUrlInput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreateStreamUrlInput>;
 export type StreamSessionStreamUrl = string | redacted.Redacted<string>;
 export type StreamUrlStatus = "ACTIVE" | "EXPIRED" | "REVOKED" | "LIMIT_REACHED" | (string & {});
 const StreamUrlStatus = S.String;
@@ -642,63 +472,29 @@ export interface CreateStreamUrlOutput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-const CreateStreamUrlOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    StreamUrlId: S.optional(S.String),
-    StreamUrl: S.optional(SensitiveString),
-    Status: S.optional(StreamUrlStatus),
-    StatusReason: S.optional(StreamUrlStatusReason),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UsageLimit: S.optional(S.Number),
-    RemainingUses: S.optional(S.Number),
-    StreamGroupArn: S.optional(S.String),
-    ApplicationArn: S.optional(S.String),
-    Protocol: S.optional(Protocol),
-    Locations: S.optional(LocationList),
-    SessionLengthSeconds: S.optional(S.Number),
-    Description: S.optional(S.String),
-    AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-    AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
-    RoleArn: S.optional(SensitiveString),
-    DisplayConfiguration: S.optional(DisplayConfiguration),
-  }),
-).annotate({ identifier: "CreateStreamUrlOutput" }) as any as S.Schema<CreateStreamUrlOutput>;
+const CreateStreamUrlOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateStreamUrlOutput>;
 export interface DeleteApplicationInput {
   Identifier: string;
 }
-const DeleteApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/applications/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteApplicationInput" }) as any as S.Schema<DeleteApplicationInput>;
+const DeleteApplicationInput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteApplicationInput>;
 export interface DeleteApplicationResponse {}
-const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteStreamGroupInput {
   Identifier: string;
 }
-const DeleteStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/streamgroups/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteStreamGroupInput" }) as any as S.Schema<DeleteStreamGroupInput>;
+const DeleteStreamGroupInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteStreamGroupInput>;
 export interface DeleteStreamGroupResponse {}
 const DeleteStreamGroupResponse =
   DeleteApplicationResponse as any as S.Schema<DeleteStreamGroupResponse>;
@@ -706,23 +502,10 @@ export interface DisassociateApplicationsInput {
   Identifier: string;
   ApplicationIdentifiers: string[];
 }
-const DisassociateApplicationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    ApplicationIdentifiers: Identifiers,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/disassociations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateApplicationsInput",
-}) as any as S.Schema<DisassociateApplicationsInput>;
+const DisassociateApplicationsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DisassociateApplicationsInput>;
 export interface DisassociateApplicationsOutput {
   Arn?: string;
   ApplicationArns?: string[];
@@ -735,45 +518,17 @@ export interface ExportStreamSessionFilesInput {
   StreamSessionIdentifier: string;
   OutputUri: string;
 }
-const ExportStreamSessionFilesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
-    OutputUri: S.String,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}/exportfiles",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ExportStreamSessionFilesInput",
-}) as any as S.Schema<ExportStreamSessionFilesInput>;
+const ExportStreamSessionFilesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ExportStreamSessionFilesInput>;
 export interface ExportStreamSessionFilesOutput {}
 const ExportStreamSessionFilesOutput =
   DeleteApplicationResponse as any as S.Schema<ExportStreamSessionFilesOutput>;
 export interface GetApplicationInput {
   Identifier: string;
 }
-const GetApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/applications/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetApplicationInput" }) as any as S.Schema<GetApplicationInput>;
+const GetApplicationInput = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetApplicationInput>;
 export interface GetApplicationOutput {
   Arn: string;
   Description?: string;
@@ -794,18 +549,7 @@ const GetApplicationOutput = CreateApplicationOutput as any as S.Schema<GetAppli
 export interface GetStreamGroupInput {
   Identifier: string;
 }
-const GetStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/streamgroups/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetStreamGroupInput" }) as any as S.Schema<GetStreamGroupInput>;
+const GetStreamGroupInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetStreamGroupInput>;
 export interface GetStreamGroupOutput {
   Arn: string;
   Description?: string;
@@ -825,24 +569,10 @@ export interface GetStreamSessionInput {
   Identifier: string;
   StreamSessionIdentifier: string;
 }
-const GetStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetStreamSessionInput" }) as any as S.Schema<GetStreamSessionInput>;
+const GetStreamSessionInput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetStreamSessionInput>;
 export type UserId = string;
 export type StreamSessionStatus =
   | "ACTIVATING"
@@ -875,11 +605,10 @@ export type ConnectionTimeoutSeconds = number;
 export interface PerformanceStatsConfiguration {
   SharedWithClient?: boolean;
 }
-const PerformanceStatsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SharedWithClient: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "PerformanceStatsConfiguration",
-}) as any as S.Schema<PerformanceStatsConfiguration>;
+const PerformanceStatsConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<PerformanceStatsConfiguration>;
 export type FileLocationUri = string;
 export type WebSdkProtocolUrl = string;
 export type ExportFilesStatus = "SUCCEEDED" | "FAILED" | "PENDING" | (string & {});
@@ -891,13 +620,7 @@ export interface ExportFilesMetadata {
   StatusReason?: string;
   OutputUri?: string;
 }
-const ExportFilesMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(ExportFilesStatus),
-    StatusReason: S.optional(S.String),
-    OutputUri: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExportFilesMetadata" }) as any as S.Schema<ExportFilesMetadata>;
+const ExportFilesMetadata = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ExportFilesMetadata>;
 export interface GetStreamSessionOutput {
   Arn?: string;
   Description?: string;
@@ -923,52 +646,15 @@ export interface GetStreamSessionOutput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-const GetStreamSessionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Description: S.optional(S.String),
-    StreamGroupId: S.optional(S.String),
-    UserId: S.optional(S.String),
-    Status: S.optional(StreamSessionStatus),
-    StatusReason: S.optional(StreamSessionStatusReason),
-    Protocol: S.optional(Protocol),
-    Location: S.optional(S.String),
-    SignalRequest: S.optional(SensitiveString),
-    SignalResponse: S.optional(SensitiveString),
-    ConnectionTimeoutSeconds: S.optional(S.Number),
-    SessionLengthSeconds: S.optional(S.Number),
-    AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-    AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
-    PerformanceStatsConfiguration: S.optional(PerformanceStatsConfiguration),
-    LogFileLocationUri: S.optional(S.String),
-    WebSdkProtocolUrl: S.optional(S.String),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ApplicationArn: S.optional(S.String),
-    ExportFilesMetadata: S.optional(ExportFilesMetadata),
-    RoleArn: S.optional(SensitiveString),
-    DisplayConfiguration: S.optional(DisplayConfiguration),
-  }),
-).annotate({ identifier: "GetStreamSessionOutput" }) as any as S.Schema<GetStreamSessionOutput>;
+const GetStreamSessionOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetStreamSessionOutput>;
 export interface GetStreamUrlInput {
   Identifier: string;
   StreamUrlIdentifier: string;
 }
-const GetStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    StreamUrlIdentifier: S.String.pipe(T.HttpLabel("StreamUrlIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/streamgroups/{Identifier}/streamurls/{StreamUrlIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetStreamUrlInput" }) as any as S.Schema<GetStreamUrlInput>;
+const GetStreamUrlInput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetStreamUrlInput>;
 export interface StreamSessionSummary {
   Arn?: string;
   UserId?: string;
@@ -982,23 +668,9 @@ export interface StreamSessionSummary {
   Location?: string;
   RoleArn?: string | redacted.Redacted<string>;
 }
-const StreamSessionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    UserId: S.optional(S.String),
-    Status: S.optional(StreamSessionStatus),
-    StatusReason: S.optional(StreamSessionStatusReason),
-    Protocol: S.optional(Protocol),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ApplicationArn: S.optional(S.String),
-    ExportFilesMetadata: S.optional(ExportFilesMetadata),
-    Location: S.optional(S.String),
-    RoleArn: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "StreamSessionSummary" }) as any as S.Schema<StreamSessionSummary>;
+const StreamSessionSummary = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<StreamSessionSummary>;
 export type StreamSessionSummaryList = StreamSessionSummary[];
-const StreamSessionSummaryList = /*@__PURE__*/ S.Array(StreamSessionSummary);
+const StreamSessionSummaryList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface GetStreamUrlOutput {
   Arn: string;
   StreamUrlId?: string;
@@ -1021,42 +693,17 @@ export interface GetStreamUrlOutput {
   DisplayConfiguration?: DisplayConfiguration;
   StreamSessions?: StreamSessionSummary[];
 }
-const GetStreamUrlOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    StreamUrlId: S.optional(S.String),
-    StreamUrl: S.optional(SensitiveString),
-    Status: S.optional(StreamUrlStatus),
-    StatusReason: S.optional(StreamUrlStatusReason),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UsageLimit: S.optional(S.Number),
-    RemainingUses: S.optional(S.Number),
-    StreamGroupArn: S.optional(S.String),
-    ApplicationArn: S.optional(S.String),
-    Protocol: S.optional(Protocol),
-    Locations: S.optional(LocationList),
-    SessionLengthSeconds: S.optional(S.Number),
-    Description: S.optional(S.String),
-    AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-    AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
-    RoleArn: S.optional(SensitiveString),
-    DisplayConfiguration: S.optional(DisplayConfiguration),
-    StreamSessions: S.optional(StreamSessionSummaryList),
-  }),
-).annotate({ identifier: "GetStreamUrlOutput" }) as any as S.Schema<GetStreamUrlOutput>;
+const GetStreamUrlOutput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetStreamUrlOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListApplicationsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListApplicationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListApplicationsInput" }) as any as S.Schema<ListApplicationsInput>;
+const ListApplicationsInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListApplicationsInput>;
 export interface ApplicationSummary {
   Arn: string;
   Id?: string;
@@ -1066,43 +713,24 @@ export interface ApplicationSummary {
   LastUpdatedAt?: Date;
   RuntimeEnvironment?: RuntimeEnvironment;
 }
-const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Id: S.optional(S.String),
-    Description: S.optional(S.String),
-    Status: S.optional(ApplicationStatus),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RuntimeEnvironment: S.optional(RuntimeEnvironment),
-  }),
-).annotate({ identifier: "ApplicationSummary" }) as any as S.Schema<ApplicationSummary>;
+const ApplicationSummary = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ApplicationSummary>;
 export type ApplicationSummaryList = ApplicationSummary[];
-const ApplicationSummaryList = /*@__PURE__*/ S.Array(ApplicationSummary);
+const ApplicationSummaryList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListApplicationsOutput {
   Items?: ApplicationSummary[];
   NextToken?: string;
 }
-const ListApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Items: S.optional(ApplicationSummaryList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListApplicationsOutput" }) as any as S.Schema<ListApplicationsOutput>;
+const ListApplicationsOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListApplicationsOutput>;
 export interface ListApplicationShaderCachesInput {
   Identifier: string;
 }
-const ListApplicationShaderCachesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/applications/{Identifier}/shadercaches" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListApplicationShaderCachesInput",
-}) as any as S.Schema<ListApplicationShaderCachesInput>;
+const ListApplicationShaderCachesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListApplicationShaderCachesInput>;
 export type ShaderCacheStatus =
   | "INITIALIZED"
   | "PROCESSING"
@@ -1120,36 +748,24 @@ export interface ShaderCacheSummary {
   StorageBytes?: number;
   AssociatedStreamGroups?: string[];
 }
-const ShaderCacheSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String,
-    ApplicationArn: S.String,
-    Status: S.optional(ShaderCacheStatus),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    StorageBytes: S.optional(S.Number),
-    AssociatedStreamGroups: S.optional(ArnList),
-  }),
-).annotate({ identifier: "ShaderCacheSummary" }) as any as S.Schema<ShaderCacheSummary>;
+const ShaderCacheSummary = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ShaderCacheSummary>;
 export type ShaderCacheSummaryList = ShaderCacheSummary[];
-const ShaderCacheSummaryList = /*@__PURE__*/ S.Array(ShaderCacheSummary);
+const ShaderCacheSummaryList = /*@__PURE__*/ __L.at(__c6, 2);
 export interface ListApplicationShaderCachesOutput {
   Items?: ShaderCacheSummary[];
 }
-const ListApplicationShaderCachesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Items: S.optional(ShaderCacheSummaryList) }),
-).annotate({
-  identifier: "ListApplicationShaderCachesOutput",
-}) as any as S.Schema<ListApplicationShaderCachesOutput>;
+const ListApplicationShaderCachesOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListApplicationShaderCachesOutput>;
 export interface ListStreamGroupsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListStreamGroupsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/streamgroups" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListStreamGroupsInput" }) as any as S.Schema<ListStreamGroupsInput>;
+const ListStreamGroupsInput = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListStreamGroupsInput>;
 export interface StreamGroupSummary {
   Arn: string;
   Id?: string;
@@ -1161,28 +777,17 @@ export interface StreamGroupSummary {
   LastUpdatedAt?: Date;
   ExpiresAt?: Date;
 }
-const StreamGroupSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Id: S.optional(S.String),
-    Description: S.optional(S.String),
-    DefaultApplication: S.optional(DefaultApplication),
-    StreamClass: S.optional(StreamClass),
-    Status: S.optional(StreamGroupStatus),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "StreamGroupSummary" }) as any as S.Schema<StreamGroupSummary>;
+const StreamGroupSummary = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<StreamGroupSummary>;
 export type StreamGroupSummaryList = StreamGroupSummary[];
-const StreamGroupSummaryList = /*@__PURE__*/ S.Array(StreamGroupSummary);
+const StreamGroupSummaryList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface ListStreamGroupsOutput {
   Items?: StreamGroupSummary[];
   NextToken?: string;
 }
-const ListStreamGroupsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Items: S.optional(StreamGroupSummaryList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListStreamGroupsOutput" }) as any as S.Schema<ListStreamGroupsOutput>;
+const ListStreamGroupsOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListStreamGroupsOutput>;
 export interface ListStreamSessionsInput {
   Status?: StreamSessionStatus;
   ExportFilesStatus?: ExportFilesStatus;
@@ -1190,70 +795,43 @@ export interface ListStreamSessionsInput {
   MaxResults?: number;
   Identifier: string;
 }
-const ListStreamSessionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(StreamSessionStatus).pipe(T.HttpQuery("Status")),
-    ExportFilesStatus: S.optional(ExportFilesStatus).pipe(T.HttpQuery("ExportFilesStatus")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/streamgroups/{Identifier}/streamsessions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListStreamSessionsInput" }) as any as S.Schema<ListStreamSessionsInput>;
+const ListStreamSessionsInput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListStreamSessionsInput>;
 export interface ListStreamSessionsOutput {
   Items?: StreamSessionSummary[];
   NextToken?: string;
 }
-const ListStreamSessionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Items: S.optional(StreamSessionSummaryList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListStreamSessionsOutput" }) as any as S.Schema<ListStreamSessionsOutput>;
+const ListStreamSessionsOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListStreamSessionsOutput>;
 export interface ListStreamSessionsByAccountInput {
   Status?: StreamSessionStatus;
   ExportFilesStatus?: ExportFilesStatus;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListStreamSessionsByAccountInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(StreamSessionStatus).pipe(T.HttpQuery("Status")),
-    ExportFilesStatus: S.optional(ExportFilesStatus).pipe(T.HttpQuery("ExportFilesStatus")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/streamsessions" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListStreamSessionsByAccountInput",
-}) as any as S.Schema<ListStreamSessionsByAccountInput>;
+const ListStreamSessionsByAccountInput = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListStreamSessionsByAccountInput>;
 export interface ListStreamSessionsByAccountOutput {
   Items?: StreamSessionSummary[];
   NextToken?: string;
 }
-const ListStreamSessionsByAccountOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Items: S.optional(StreamSessionSummaryList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListStreamSessionsByAccountOutput",
-}) as any as S.Schema<ListStreamSessionsByAccountOutput>;
+const ListStreamSessionsByAccountOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListStreamSessionsByAccountOutput>;
 export interface ListStreamUrlsInput {
   Status?: StreamUrlStatus;
   StreamGroupIdentifier?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListStreamUrlsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(StreamUrlStatus).pipe(T.HttpQuery("Status")),
-    StreamGroupIdentifier: S.optional(S.String).pipe(T.HttpQuery("StreamGroupIdentifier")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/streamurls" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListStreamUrlsInput" }) as any as S.Schema<ListStreamUrlsInput>;
+const ListStreamUrlsInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ListStreamUrlsInput>;
 export interface StreamUrlSummary {
   Arn: string;
   StreamUrlId?: string;
@@ -1269,77 +847,43 @@ export interface StreamUrlSummary {
   SessionLengthSeconds?: number;
   Description?: string;
 }
-const StreamUrlSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    StreamUrlId: S.optional(S.String),
-    StreamUrl: S.optional(SensitiveString),
-    Status: S.optional(StreamUrlStatus),
-    StatusReason: S.optional(StreamUrlStatusReason),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UsageLimit: S.optional(S.Number),
-    RemainingUses: S.optional(S.Number),
-    StreamGroupArn: S.optional(S.String),
-    ApplicationArn: S.optional(S.String),
-    SessionLengthSeconds: S.optional(S.Number),
-    Description: S.optional(S.String),
-  }),
-).annotate({ identifier: "StreamUrlSummary" }) as any as S.Schema<StreamUrlSummary>;
+const StreamUrlSummary = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<StreamUrlSummary>;
 export type StreamUrlSummaryList = StreamUrlSummary[];
-const StreamUrlSummaryList = /*@__PURE__*/ S.Array(StreamUrlSummary);
+const StreamUrlSummaryList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface ListStreamUrlsOutput {
   Items?: StreamUrlSummary[];
   NextToken?: string;
 }
-const ListStreamUrlsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Items: S.optional(StreamUrlSummaryList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListStreamUrlsOutput" }) as any as S.Schema<ListStreamUrlsOutput>;
+const ListStreamUrlsOutput = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ListStreamUrlsOutput>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type LocationsList = string[];
 const LocationsList = Ipv4CidrBlockList as any as S.Schema<LocationsList>;
 export interface RemoveStreamGroupLocationsInput {
   Identifier: string;
   Locations: string[];
 }
-const RemoveStreamGroupLocationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    Locations: LocationsList.pipe(T.HttpQuery("locations")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/streamgroups/{Identifier}/locations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RemoveStreamGroupLocationsInput",
-}) as any as S.Schema<RemoveStreamGroupLocationsInput>;
+const RemoveStreamGroupLocationsInput = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<RemoveStreamGroupLocationsInput>;
 export interface RemoveStreamGroupLocationsResponse {}
-const RemoveStreamGroupLocationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveStreamGroupLocationsResponse",
-}) as any as S.Schema<RemoveStreamGroupLocationsResponse>;
+const RemoveStreamGroupLocationsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<RemoveStreamGroupLocationsResponse>;
 export type RevocationMode = "REVOKE_URL" | "REVOKE_AND_TERMINATE_SESSIONS" | (string & {});
 const RevocationMode = S.String;
 
@@ -1348,25 +892,7 @@ export interface RevokeStreamUrlInput {
   StreamUrlIdentifier: string;
   RevocationMode?: RevocationMode;
 }
-const RevokeStreamUrlInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    StreamUrlIdentifier: S.String.pipe(T.HttpLabel("StreamUrlIdentifier")),
-    RevocationMode: S.optional(RevocationMode),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/streamgroups/{Identifier}/streamurls/{StreamUrlIdentifier}/revoke",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "RevokeStreamUrlInput" }) as any as S.Schema<RevokeStreamUrlInput>;
+const RevokeStreamUrlInput = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<RevokeStreamUrlInput>;
 export interface RevokeStreamUrlResponse {}
 const RevokeStreamUrlResponse =
   DeleteApplicationResponse as any as S.Schema<RevokeStreamUrlResponse>;
@@ -1387,34 +913,10 @@ export interface StartStreamSessionInput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-const StartStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Description: S.optional(S.String),
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    Protocol: Protocol,
-    SignalRequest: SensitiveString,
-    ApplicationIdentifier: S.String,
-    UserId: S.optional(S.String),
-    Locations: S.optional(LocationList),
-    ConnectionTimeoutSeconds: S.optional(S.Number),
-    SessionLengthSeconds: S.optional(S.Number),
-    AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-    AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
-    PerformanceStatsConfiguration: S.optional(PerformanceStatsConfiguration),
-    RoleArn: S.optional(SensitiveString),
-    DisplayConfiguration: S.optional(DisplayConfiguration),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/streamsessions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartStreamSessionInput" }) as any as S.Schema<StartStreamSessionInput>;
+const StartStreamSessionInput = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<StartStreamSessionInput>;
 export interface StartStreamSessionOutput {
   Arn?: string;
   Description?: string;
@@ -1446,37 +948,17 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: Tags }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export interface TerminateStreamSessionInput {
   Identifier: string;
   StreamSessionIdentifier: string;
 }
-const TerminateStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TerminateStreamSessionInput",
-}) as any as S.Schema<TerminateStreamSessionInput>;
+const TerminateStreamSessionInput = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<TerminateStreamSessionInput>;
 export interface TerminateStreamSessionResponse {}
 const TerminateStreamSessionResponse =
   DeleteApplicationResponse as any as S.Schema<TerminateStreamSessionResponse>;
@@ -1486,14 +968,7 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationInput {
@@ -1502,23 +977,10 @@ export interface UpdateApplicationInput {
   ApplicationLogPaths?: string[];
   ApplicationLogOutputUri?: string;
 }
-const UpdateApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    Description: S.optional(S.String),
-    ApplicationLogPaths: S.optional(FilePaths),
-    ApplicationLogOutputUri: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/applications/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateApplicationInput" }) as any as S.Schema<UpdateApplicationInput>;
+const UpdateApplicationInput = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<UpdateApplicationInput>;
 export interface UpdateApplicationOutput {
   Arn: string;
   Description?: string;
@@ -1542,23 +1004,10 @@ export interface UpdateStreamGroupInput {
   Description?: string;
   DefaultApplicationIdentifier?: string;
 }
-const UpdateStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    LocationConfigurations: S.optional(LocationConfigurations),
-    Description: S.optional(S.String),
-    DefaultApplicationIdentifier: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/streamgroups/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateStreamGroupInput" }) as any as S.Schema<UpdateStreamGroupInput>;
+const UpdateStreamGroupInput = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<UpdateStreamGroupInput>;
 export interface UpdateStreamGroupOutput {
   Arn: string;
   Description?: string;
@@ -2714,3 +2163,896 @@ export const updateStreamGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateStreamGroup",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ VpcId: S.String, Ipv4CidrBlocks: Ipv4CidrBlockList }),
+      ).annotate({ identifier: "VpcTransitConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          LocationName: S.String,
+          AlwaysOnCapacity: S.optional(S.Number),
+          OnDemandCapacity: S.optional(S.Number),
+          TargetIdleCapacity: S.optional(S.Number),
+          MaximumCapacity: S.optional(S.Number),
+          VpcTransitConfiguration: S.optional(VpcTransitConfiguration),
+        }),
+      ).annotate({ identifier: "LocationConfiguration" });
+    case 3:
+      return S.Array(LocationConfiguration);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          LocationConfigurations: LocationConfigurations,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/locations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AddStreamGroupLocationsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          VpcId: S.optional(S.String),
+          Ipv4CidrBlocks: S.optional(Ipv4CidrBlockList),
+          TransitGatewayId: S.optional(S.String),
+          TransitGatewayResourceShareArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VpcTransitConfigurationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          LocationName: S.optional(S.String),
+          Status: S.optional(StreamGroupLocationStatus),
+          AlwaysOnCapacity: S.optional(S.Number),
+          OnDemandCapacity: S.optional(S.Number),
+          TargetIdleCapacity: S.optional(S.Number),
+          MaximumCapacity: S.optional(S.Number),
+          RequestedCapacity: S.optional(S.Number),
+          AllocatedCapacity: S.optional(S.Number),
+          IdleCapacity: S.optional(S.Number),
+          InternalVpcIpv4CidrBlock: S.optional(S.String),
+          VpcTransitConfiguration: S.optional(VpcTransitConfigurationResponse),
+        }),
+      ).annotate({ identifier: "LocationState" });
+    case 7:
+      return S.Array(LocationState);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String, Locations: LocationStates }),
+      ).annotate({
+        identifier: "AddStreamGroupLocationsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          ApplicationIdentifiers: Identifiers,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/associations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateApplicationsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String), ApplicationArns: S.optional(ArnList) }),
+      ).annotate({
+        identifier: "AssociateApplicationsOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Type: RuntimeEnvironmentType, Version: S.String }),
+      ).annotate({ identifier: "RuntimeEnvironment" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Description: S.String,
+          RuntimeEnvironment: RuntimeEnvironment,
+          ExecutablePath: S.String,
+          ApplicationSourceUri: S.String,
+          ApplicationLogPaths: S.optional(FilePaths),
+          ApplicationLogOutputUri: S.optional(S.String),
+          Tags: S.optional(Tags),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateApplicationInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Location: S.optional(S.String), Status: S.optional(ReplicationStatusType) }),
+      ).annotate({ identifier: "ReplicationStatus" });
+    case 7:
+      return S.Array(ReplicationStatus);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          Description: S.optional(S.String),
+          RuntimeEnvironment: S.optional(RuntimeEnvironment),
+          ExecutablePath: S.optional(S.String),
+          ApplicationLogPaths: S.optional(FilePaths),
+          ApplicationLogOutputUri: S.optional(S.String),
+          ApplicationSourceUri: S.optional(S.String),
+          Id: S.optional(S.String),
+          Status: S.optional(ApplicationStatus),
+          StatusReason: S.optional(ApplicationStatusReason),
+          ReplicationStatuses: S.optional(ReplicationStatuses),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AssociatedStreamGroups: S.optional(ArnList),
+        }),
+      ).annotate({ identifier: "CreateApplicationOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Description: S.String,
+          StreamClass: StreamClass,
+          DefaultApplicationIdentifier: S.optional(S.String),
+          LocationConfigurations: S.optional(LocationConfigurations),
+          Tags: S.optional(Tags),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/streamgroups" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateStreamGroupInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
+      ).annotate({ identifier: "DefaultApplication" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          Description: S.optional(S.String),
+          DefaultApplication: S.optional(DefaultApplication),
+          LocationStates: S.optional(LocationStates),
+          StreamClass: S.optional(StreamClass),
+          Id: S.optional(S.String),
+          Status: S.optional(StreamGroupStatus),
+          StatusReason: S.optional(StreamGroupStatusReason),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AssociatedApplications: S.optional(ArnList),
+        }),
+      ).annotate({ identifier: "CreateStreamGroupOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}/access",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateStreamSessionAdminShellInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          SessionId: S.optional(S.String),
+          StreamUrl: S.optional(S.String),
+          TokenValue: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "CreateStreamSessionAdminShellOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
+          SignalRequest: SensitiveString,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}/connections",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateStreamSessionConnectionInput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ SignalResponse: S.optional(SensitiveString) })).annotate({
+        identifier: "CreateStreamSessionConnectionOutput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() => S.Struct({ Width: S.Number, Height: S.Number })).annotate({
+        identifier: "Resolution",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Resolution: S.optional(Resolution) })).annotate({
+        identifier: "DisplayConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          ApplicationIdentifier: S.String,
+          Protocol: Protocol,
+          UrlExpiresAfterMinutes: S.Number,
+          UsageLimit: S.optional(S.Number),
+          Description: S.optional(S.String),
+          Locations: LocationList,
+          SessionLengthSeconds: S.optional(S.Number),
+          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
+          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
+          RoleArn: S.optional(SensitiveString),
+          DisplayConfiguration: S.optional(DisplayConfiguration),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/streamurls" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateStreamUrlInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          StreamUrlId: S.optional(S.String),
+          StreamUrl: S.optional(SensitiveString),
+          Status: S.optional(StreamUrlStatus),
+          StatusReason: S.optional(StreamUrlStatusReason),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UsageLimit: S.optional(S.Number),
+          RemainingUses: S.optional(S.Number),
+          StreamGroupArn: S.optional(S.String),
+          ApplicationArn: S.optional(S.String),
+          Protocol: S.optional(Protocol),
+          Locations: S.optional(LocationList),
+          SessionLengthSeconds: S.optional(S.Number),
+          Description: S.optional(S.String),
+          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
+          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
+          RoleArn: S.optional(SensitiveString),
+          DisplayConfiguration: S.optional(DisplayConfiguration),
+        }),
+      ).annotate({ identifier: "CreateStreamUrlOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/applications/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteApplicationInput" });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteApplicationResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/streamgroups/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteStreamGroupInput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          ApplicationIdentifiers: Identifiers,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/disassociations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateApplicationsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
+          OutputUri: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}/exportfiles",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ExportStreamSessionFilesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetApplicationInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/streamgroups/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetStreamGroupInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetStreamSessionInput" });
+    case 5:
+      return S.suspend(() => S.Struct({ SharedWithClient: S.optional(S.Boolean) })).annotate({
+        identifier: "PerformanceStatsConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(ExportFilesStatus),
+          StatusReason: S.optional(S.String),
+          OutputUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportFilesMetadata" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Description: S.optional(S.String),
+          StreamGroupId: S.optional(S.String),
+          UserId: S.optional(S.String),
+          Status: S.optional(StreamSessionStatus),
+          StatusReason: S.optional(StreamSessionStatusReason),
+          Protocol: S.optional(Protocol),
+          Location: S.optional(S.String),
+          SignalRequest: S.optional(SensitiveString),
+          SignalResponse: S.optional(SensitiveString),
+          ConnectionTimeoutSeconds: S.optional(S.Number),
+          SessionLengthSeconds: S.optional(S.Number),
+          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
+          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
+          PerformanceStatsConfiguration: S.optional(PerformanceStatsConfiguration),
+          LogFileLocationUri: S.optional(S.String),
+          WebSdkProtocolUrl: S.optional(S.String),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ApplicationArn: S.optional(S.String),
+          ExportFilesMetadata: S.optional(ExportFilesMetadata),
+          RoleArn: S.optional(SensitiveString),
+          DisplayConfiguration: S.optional(DisplayConfiguration),
+        }),
+      ).annotate({ identifier: "GetStreamSessionOutput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          StreamUrlIdentifier: S.String.pipe(T.HttpLabel("StreamUrlIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/streamgroups/{Identifier}/streamurls/{StreamUrlIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetStreamUrlInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          UserId: S.optional(S.String),
+          Status: S.optional(StreamSessionStatus),
+          StatusReason: S.optional(StreamSessionStatusReason),
+          Protocol: S.optional(Protocol),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ApplicationArn: S.optional(S.String),
+          ExportFilesMetadata: S.optional(ExportFilesMetadata),
+          Location: S.optional(S.String),
+          RoleArn: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "StreamSessionSummary" });
+    case 2:
+      return S.Array(StreamSessionSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          StreamUrlId: S.optional(S.String),
+          StreamUrl: S.optional(SensitiveString),
+          Status: S.optional(StreamUrlStatus),
+          StatusReason: S.optional(StreamUrlStatusReason),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UsageLimit: S.optional(S.Number),
+          RemainingUses: S.optional(S.Number),
+          StreamGroupArn: S.optional(S.String),
+          ApplicationArn: S.optional(S.String),
+          Protocol: S.optional(Protocol),
+          Locations: S.optional(LocationList),
+          SessionLengthSeconds: S.optional(S.Number),
+          Description: S.optional(S.String),
+          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
+          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
+          RoleArn: S.optional(SensitiveString),
+          DisplayConfiguration: S.optional(DisplayConfiguration),
+          StreamSessions: S.optional(StreamSessionSummaryList),
+        }),
+      ).annotate({ identifier: "GetStreamUrlOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListApplicationsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          Id: S.optional(S.String),
+          Description: S.optional(S.String),
+          Status: S.optional(ApplicationStatus),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RuntimeEnvironment: S.optional(RuntimeEnvironment),
+        }),
+      ).annotate({ identifier: "ApplicationSummary" });
+    case 6:
+      return S.Array(ApplicationSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(ApplicationSummaryList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListApplicationsOutput" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{Identifier}/shadercaches" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListApplicationShaderCachesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String,
+          ApplicationArn: S.String,
+          Status: S.optional(ShaderCacheStatus),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StorageBytes: S.optional(S.Number),
+          AssociatedStreamGroups: S.optional(ArnList),
+        }),
+      ).annotate({ identifier: "ShaderCacheSummary" });
+    case 2:
+      return S.Array(ShaderCacheSummary);
+    case 3:
+      return S.suspend(() => S.Struct({ Items: S.optional(ShaderCacheSummaryList) })).annotate({
+        identifier: "ListApplicationShaderCachesOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/streamgroups" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListStreamGroupsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          Id: S.optional(S.String),
+          Description: S.optional(S.String),
+          DefaultApplication: S.optional(DefaultApplication),
+          StreamClass: S.optional(StreamClass),
+          Status: S.optional(StreamGroupStatus),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "StreamGroupSummary" });
+    case 6:
+      return S.Array(StreamGroupSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(StreamGroupSummaryList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListStreamGroupsOutput" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(StreamSessionStatus).pipe(T.HttpQuery("Status")),
+          ExportFilesStatus: S.optional(ExportFilesStatus).pipe(T.HttpQuery("ExportFilesStatus")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/streamgroups/{Identifier}/streamsessions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListStreamSessionsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(StreamSessionSummaryList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListStreamSessionsOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(StreamSessionStatus).pipe(T.HttpQuery("Status")),
+          ExportFilesStatus: S.optional(ExportFilesStatus).pipe(T.HttpQuery("ExportFilesStatus")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/streamsessions" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListStreamSessionsByAccountInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(StreamSessionSummaryList), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListStreamSessionsByAccountOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(StreamUrlStatus).pipe(T.HttpQuery("Status")),
+          StreamGroupIdentifier: S.optional(S.String).pipe(T.HttpQuery("StreamGroupIdentifier")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/streamurls" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListStreamUrlsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          StreamUrlId: S.optional(S.String),
+          StreamUrl: S.optional(SensitiveString),
+          Status: S.optional(StreamUrlStatus),
+          StatusReason: S.optional(StreamUrlStatusReason),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UsageLimit: S.optional(S.Number),
+          RemainingUses: S.optional(S.Number),
+          StreamGroupArn: S.optional(S.String),
+          ApplicationArn: S.optional(S.String),
+          SessionLengthSeconds: S.optional(S.Number),
+          Description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamUrlSummary" });
+    case 6:
+      return S.Array(StreamUrlSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(StreamUrlSummaryList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListStreamUrlsOutput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          Locations: LocationsList.pipe(T.HttpQuery("locations")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/streamgroups/{Identifier}/locations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RemoveStreamGroupLocationsInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "RemoveStreamGroupLocationsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          StreamUrlIdentifier: S.String.pipe(T.HttpLabel("StreamUrlIdentifier")),
+          RevocationMode: S.optional(RevocationMode),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/streamgroups/{Identifier}/streamurls/{StreamUrlIdentifier}/revoke",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "RevokeStreamUrlInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Description: S.optional(S.String),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          Protocol: Protocol,
+          SignalRequest: SensitiveString,
+          ApplicationIdentifier: S.String,
+          UserId: S.optional(S.String),
+          Locations: S.optional(LocationList),
+          ConnectionTimeoutSeconds: S.optional(S.Number),
+          SessionLengthSeconds: S.optional(S.Number),
+          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
+          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
+          PerformanceStatsConfiguration: S.optional(PerformanceStatsConfiguration),
+          RoleArn: S.optional(SensitiveString),
+          DisplayConfiguration: S.optional(DisplayConfiguration),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/streamsessions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartStreamSessionInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: Tags }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          StreamSessionIdentifier: S.String.pipe(T.HttpLabel("StreamSessionIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/streamgroups/{Identifier}/streamsessions/{StreamSessionIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "TerminateStreamSessionInput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          Description: S.optional(S.String),
+          ApplicationLogPaths: S.optional(FilePaths),
+          ApplicationLogOutputUri: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/applications/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateApplicationInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          LocationConfigurations: S.optional(LocationConfigurations),
+          Description: S.optional(S.String),
+          DefaultApplicationIdentifier: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/streamgroups/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateStreamGroupInput" });
+  }
+}

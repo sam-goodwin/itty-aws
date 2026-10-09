@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -118,13 +119,10 @@ export type Token = string;
 export interface GetLatestConfigurationRequest {
   ConfigurationToken: string;
 }
-const GetLatestConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationToken: S.String.pipe(T.HttpQuery("configuration_token")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/configuration" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetLatestConfigurationRequest",
-}) as any as S.Schema<GetLatestConfigurationRequest>;
+const GetLatestConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetLatestConfigurationRequest>;
 export interface GetLatestConfigurationResponse {
   NextPollConfigurationToken?: string;
   NextPollIntervalInSeconds?: number;
@@ -132,21 +130,10 @@ export interface GetLatestConfigurationResponse {
   Configuration?: T.StreamingOutputBody;
   VersionLabel?: string;
 }
-const GetLatestConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextPollConfigurationToken: S.optional(S.String).pipe(
-      T.HttpHeader("Next-Poll-Configuration-Token"),
-    ),
-    NextPollIntervalInSeconds: S.optional(S.Number).pipe(
-      T.HttpHeader("Next-Poll-Interval-In-Seconds"),
-    ),
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    Configuration: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-    VersionLabel: S.optional(S.String).pipe(T.HttpHeader("Version-Label")),
-  }),
-).annotate({
-  identifier: "GetLatestConfigurationResponse",
-}) as any as S.Schema<GetLatestConfigurationResponse>;
+const GetLatestConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetLatestConfigurationResponse>;
 export type Identifier = string;
 export type OptionalPollSeconds = number;
 export interface StartConfigurationSessionRequest {
@@ -155,48 +142,35 @@ export interface StartConfigurationSessionRequest {
   ConfigurationProfileIdentifier: string;
   RequiredMinimumPollIntervalInSeconds?: number;
 }
-const StartConfigurationSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationIdentifier: S.String,
-    EnvironmentIdentifier: S.String,
-    ConfigurationProfileIdentifier: S.String,
-    RequiredMinimumPollIntervalInSeconds: S.optional(S.Number),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/configurationsessions" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartConfigurationSessionRequest",
-}) as any as S.Schema<StartConfigurationSessionRequest>;
+const StartConfigurationSessionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<StartConfigurationSessionRequest>;
 export interface StartConfigurationSessionResponse {
   InitialConfigurationToken?: string;
 }
-const StartConfigurationSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InitialConfigurationToken: S.optional(S.String) }),
-).annotate({
-  identifier: "StartConfigurationSessionResponse",
-}) as any as S.Schema<StartConfigurationSessionResponse>;
+const StartConfigurationSessionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<StartConfigurationSessionResponse>;
 export type BadRequestReason = string;
 export type InvalidParameterProblem = string;
 export interface InvalidParameterDetail {
   Problem?: string;
 }
-const InvalidParameterDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Problem: S.optional(S.String) }),
-).annotate({ identifier: "InvalidParameterDetail" }) as any as S.Schema<InvalidParameterDetail>;
+const InvalidParameterDetail = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<InvalidParameterDetail>;
 export type InvalidParameterMap = { [key: string]: InvalidParameterDetail | undefined };
-const InvalidParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ InvalidParameterDetail.pipe(S.optional),
-);
+const InvalidParameterMap = /*@__PURE__*/ __L.at(__c0, 5);
 export type BadRequestDetails = {
   InvalidParameters: { [key: string]: InvalidParameterDetail | undefined };
 };
-const BadRequestDetails = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ InvalidParameters: InvalidParameterMap }),
-]);
+const BadRequestDetails = /*@__PURE__*/ __L.at(__c0, 6);
 export type ResourceType = string;
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const StringMap = /*@__PURE__*/ __L.at(__c0, 7);
 export type GetLatestConfigurationError =
   | BadRequestException
   | InternalServerException
@@ -269,3 +243,69 @@ export const startConfigurationSession: API.OperationMethod<
   retry: Retry,
   operationName: "StartConfigurationSession",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationToken: S.String.pipe(T.HttpQuery("configuration_token")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/configuration" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetLatestConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          NextPollConfigurationToken: S.optional(S.String).pipe(
+            T.HttpHeader("Next-Poll-Configuration-Token"),
+          ),
+          NextPollIntervalInSeconds: S.optional(S.Number).pipe(
+            T.HttpHeader("Next-Poll-Interval-In-Seconds"),
+          ),
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          Configuration: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+          VersionLabel: S.optional(S.String).pipe(T.HttpHeader("Version-Label")),
+        }),
+      ).annotate({
+        identifier: "GetLatestConfigurationResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationIdentifier: S.String,
+          EnvironmentIdentifier: S.String,
+          ConfigurationProfileIdentifier: S.String,
+          RequiredMinimumPollIntervalInSeconds: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/configurationsessions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartConfigurationSessionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ InitialConfigurationToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "StartConfigurationSessionResponse",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ Problem: S.optional(S.String) })).annotate({
+        identifier: "InvalidParameterDetail",
+      });
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ InvalidParameterDetail.pipe(S.optional));
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ InvalidParameters: InvalidParameterMap })]);
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}

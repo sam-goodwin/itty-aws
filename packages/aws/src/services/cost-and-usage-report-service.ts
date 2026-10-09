@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -104,34 +105,27 @@ export type ReportName = string;
 export interface DeleteReportDefinitionRequest {
   ReportName: string;
 }
-const DeleteReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReportName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteReportDefinitionRequest",
-}) as any as S.Schema<DeleteReportDefinitionRequest>;
+const DeleteReportDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteReportDefinitionRequest>;
 export type DeleteResponseMessage = string;
 export interface DeleteReportDefinitionResponse {
   ResponseMessage?: string;
 }
-const DeleteReportDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResponseMessage: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteReportDefinitionResponse",
-}) as any as S.Schema<DeleteReportDefinitionResponse>;
+const DeleteReportDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteReportDefinitionResponse>;
 export type MaxResults = number;
 export interface DescribeReportDefinitionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeReportDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeReportDefinitionsRequest",
-}) as any as S.Schema<DescribeReportDefinitionsRequest>;
+const DescribeReportDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DescribeReportDefinitionsRequest>;
 export type TimeUnit = "HOURLY" | "DAILY" | "MONTHLY" | (string & {});
 const TimeUnit = S.String;
 
@@ -149,7 +143,7 @@ export type SchemaElement =
 const SchemaElement = S.String;
 
 export type SchemaElementList = SchemaElement[];
-const SchemaElementList = /*@__PURE__*/ S.Array(SchemaElement);
+const SchemaElementList = /*@__PURE__*/ __L.at(__c0, 3);
 export type S3Bucket = string;
 export type S3Prefix = string;
 export type AWSRegion =
@@ -200,9 +194,7 @@ export interface ReportStatus {
   lastDelivery?: string;
   lastStatus?: LastStatus;
 }
-const ReportStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lastDelivery: S.optional(S.String), lastStatus: S.optional(LastStatus) }),
-).annotate({ identifier: "ReportStatus" }) as any as S.Schema<ReportStatus>;
+const ReportStatus = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ReportStatus>;
 export interface ReportDefinition {
   ReportName: string;
   TimeUnit: TimeUnit;
@@ -218,92 +210,61 @@ export interface ReportDefinition {
   BillingViewArn?: string;
   ReportStatus?: ReportStatus;
 }
-const ReportDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReportName: S.String,
-    TimeUnit: TimeUnit,
-    Format: ReportFormat,
-    Compression: CompressionFormat,
-    AdditionalSchemaElements: SchemaElementList,
-    S3Bucket: S.String,
-    S3Prefix: S.String,
-    S3Region: AWSRegion,
-    AdditionalArtifacts: S.optional(AdditionalArtifactList),
-    RefreshClosedReports: S.optional(S.Boolean),
-    ReportVersioning: S.optional(ReportVersioning),
-    BillingViewArn: S.optional(S.String),
-    ReportStatus: S.optional(ReportStatus),
-  }),
-).annotate({ identifier: "ReportDefinition" }) as any as S.Schema<ReportDefinition>;
+const ReportDefinition = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ReportDefinition>;
 export type ReportDefinitionList = ReportDefinition[];
-const ReportDefinitionList = /*@__PURE__*/ S.Array(ReportDefinition);
+const ReportDefinitionList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface DescribeReportDefinitionsResponse {
   ReportDefinitions?: ReportDefinition[];
   NextToken?: string;
 }
-const DescribeReportDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReportDefinitions: S.optional(ReportDefinitionList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DescribeReportDefinitionsResponse",
-}) as any as S.Schema<DescribeReportDefinitionsResponse>;
+const DescribeReportDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DescribeReportDefinitionsResponse>;
 export interface ListTagsForResourceRequest {
   ReportName: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReportName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ModifyReportDefinitionRequest {
   ReportName: string;
   ReportDefinition: ReportDefinition;
 }
-const ModifyReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReportName: S.String, ReportDefinition: ReportDefinition }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ModifyReportDefinitionRequest",
-}) as any as S.Schema<ModifyReportDefinitionRequest>;
+const ModifyReportDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ModifyReportDefinitionRequest>;
 export interface ModifyReportDefinitionResponse {}
-const ModifyReportDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ModifyReportDefinitionResponse",
-}) as any as S.Schema<ModifyReportDefinitionResponse>;
+const ModifyReportDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ModifyReportDefinitionResponse>;
 export interface PutReportDefinitionRequest {
   ReportDefinition: ReportDefinition;
   Tags?: Tag[];
 }
-const PutReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReportDefinition: ReportDefinition, Tags: S.optional(TagList) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutReportDefinitionRequest",
-}) as any as S.Schema<PutReportDefinitionRequest>;
+const PutReportDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<PutReportDefinitionRequest>;
 export interface PutReportDefinitionResponse {}
 const PutReportDefinitionResponse =
   ModifyReportDefinitionResponse as any as S.Schema<PutReportDefinitionResponse>;
@@ -311,24 +272,16 @@ export interface TagResourceRequest {
   ReportName: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReportName: S.String, Tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = ModifyReportDefinitionResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface UntagResourceRequest {
   ReportName: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReportName: S.String, TagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse =
   ModifyReportDefinitionResponse as any as S.Schema<UntagResourceResponse>;
@@ -498,3 +451,124 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ReportName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteReportDefinitionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ ResponseMessage: S.optional(S.String) })).annotate({
+        identifier: "DeleteReportDefinitionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeReportDefinitionsRequest",
+      });
+    case 3:
+      return S.Array(SchemaElement);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ lastDelivery: S.optional(S.String), lastStatus: S.optional(LastStatus) }),
+      ).annotate({ identifier: "ReportStatus" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ReportName: S.String,
+          TimeUnit: TimeUnit,
+          Format: ReportFormat,
+          Compression: CompressionFormat,
+          AdditionalSchemaElements: SchemaElementList,
+          S3Bucket: S.String,
+          S3Prefix: S.String,
+          S3Region: AWSRegion,
+          AdditionalArtifacts: S.optional(AdditionalArtifactList),
+          RefreshClosedReports: S.optional(S.Boolean),
+          ReportVersioning: S.optional(ReportVersioning),
+          BillingViewArn: S.optional(S.String),
+          ReportStatus: S.optional(ReportStatus),
+        }),
+      ).annotate({ identifier: "ReportDefinition" });
+    case 6:
+      return S.Array(ReportDefinition);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ReportDefinitions: S.optional(ReportDefinitionList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeReportDefinitionsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ReportName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 2:
+      return S.Array(Tag);
+    case 3:
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ReportName: S.String, ReportDefinition: ReportDefinition }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ModifyReportDefinitionRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ModifyReportDefinitionResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ReportDefinition: ReportDefinition, Tags: S.optional(TagList) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "PutReportDefinitionRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ReportName: S.String, Tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ReportName: S.String, TagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}

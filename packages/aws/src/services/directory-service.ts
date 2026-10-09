@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -363,13 +364,10 @@ export type DirectoryId = string;
 export interface AcceptSharedDirectoryRequest {
   SharedDirectoryId: string;
 }
-const AcceptSharedDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SharedDirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AcceptSharedDirectoryRequest",
-}) as any as S.Schema<AcceptSharedDirectoryRequest>;
+const AcceptSharedDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptSharedDirectoryRequest>;
 export type CustomerId = string;
 export type ShareMethod = "ORGANIZATIONS" | "HANDSHAKE" | (string & {});
 const ShareMethod = S.String;
@@ -401,27 +399,14 @@ export interface SharedDirectory {
   CreatedDateTime?: Date;
   LastUpdatedDateTime?: Date;
 }
-const SharedDirectory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OwnerAccountId: S.optional(S.String),
-    OwnerDirectoryId: S.optional(S.String),
-    ShareMethod: S.optional(ShareMethod),
-    SharedAccountId: S.optional(S.String),
-    SharedDirectoryId: S.optional(S.String),
-    ShareStatus: S.optional(ShareStatus),
-    ShareNotes: S.optional(SensitiveString),
-    CreatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "SharedDirectory" }) as any as S.Schema<SharedDirectory>;
+const SharedDirectory = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SharedDirectory>;
 export interface AcceptSharedDirectoryResult {
   SharedDirectory?: SharedDirectory;
 }
-const AcceptSharedDirectoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SharedDirectory: S.optional(SharedDirectory) }).pipe(ns),
-).annotate({
-  identifier: "AcceptSharedDirectoryResult",
-}) as any as S.Schema<AcceptSharedDirectoryResult>;
+const AcceptSharedDirectoryResult = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AcceptSharedDirectoryResult>;
 export type CidrIp = string;
 export type CidrIpv6 = string;
 export type Description = string;
@@ -430,54 +415,34 @@ export interface IpRoute {
   CidrIpv6?: string;
   Description?: string;
 }
-const IpRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CidrIp: S.optional(S.String),
-    CidrIpv6: S.optional(S.String),
-    Description: S.optional(S.String),
-  }),
-).annotate({ identifier: "IpRoute" }) as any as S.Schema<IpRoute>;
+const IpRoute = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<IpRoute>;
 export type IpRoutes = IpRoute[];
-const IpRoutes = /*@__PURE__*/ S.Array(IpRoute);
+const IpRoutes = /*@__PURE__*/ __L.at(__c0, 4);
 export type UpdateSecurityGroupForDirectoryControllers = boolean;
 export interface AddIpRoutesRequest {
   DirectoryId: string;
   IpRoutes: IpRoute[];
   UpdateSecurityGroupForDirectoryControllers?: boolean;
 }
-const AddIpRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    IpRoutes: IpRoutes,
-    UpdateSecurityGroupForDirectoryControllers: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "AddIpRoutesRequest" }) as any as S.Schema<AddIpRoutesRequest>;
+const AddIpRoutesRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AddIpRoutesRequest>;
 export interface AddIpRoutesResult {}
-const AddIpRoutesResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "AddIpRoutesResult",
-}) as any as S.Schema<AddIpRoutesResult>;
+const AddIpRoutesResult = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AddIpRoutesResult>;
 export type RegionName = string;
 export type VpcId = string;
 export type SubnetId = string;
 export type SubnetIds = string[];
-const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+const SubnetIds = /*@__PURE__*/ __L.at(__c0, 7);
 export interface DirectoryVpcSettings {
   VpcId: string;
   SubnetIds: string[];
 }
-const DirectoryVpcSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcId: S.String, SubnetIds: SubnetIds }),
-).annotate({ identifier: "DirectoryVpcSettings" }) as any as S.Schema<DirectoryVpcSettings>;
+const DirectoryVpcSettings = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DirectoryVpcSettings>;
 export interface AddRegionRequest {
   DirectoryId: string;
   RegionName: string;
   VPCSettings: DirectoryVpcSettings;
 }
-const AddRegionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, RegionName: S.String, VPCSettings: DirectoryVpcSettings }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "AddRegionRequest" }) as any as S.Schema<AddRegionRequest>;
+const AddRegionRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AddRegionRequest>;
 export interface AddRegionResult {}
 const AddRegionResult = AddIpRoutesResult as any as S.Schema<AddRegionResult>;
 export type ResourceId = string;
@@ -487,40 +452,36 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-const Tags = /*@__PURE__*/ S.Array(Tag);
+const Tags = /*@__PURE__*/ __L.at(__c1, 3);
 export interface AddTagsToResourceRequest {
   ResourceId: string;
   Tags: Tag[];
 }
-const AddTagsToResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceId: S.String, Tags: Tags }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "AddTagsToResourceRequest" }) as any as S.Schema<AddTagsToResourceRequest>;
+const AddTagsToResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AddTagsToResourceRequest>;
 export interface AddTagsToResourceResult {}
-const AddTagsToResourceResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "AddTagsToResourceResult",
-}) as any as S.Schema<AddTagsToResourceResult>;
+const AddTagsToResourceResult = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AddTagsToResourceResult>;
 export type SchemaExtensionId = string;
 export interface CancelSchemaExtensionRequest {
   DirectoryId: string;
   SchemaExtensionId: string;
 }
-const CancelSchemaExtensionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, SchemaExtensionId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CancelSchemaExtensionRequest",
-}) as any as S.Schema<CancelSchemaExtensionRequest>;
+const CancelSchemaExtensionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CancelSchemaExtensionRequest>;
 export interface CancelSchemaExtensionResult {}
-const CancelSchemaExtensionResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "CancelSchemaExtensionResult",
-}) as any as S.Schema<CancelSchemaExtensionResult>;
+const CancelSchemaExtensionResult = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CancelSchemaExtensionResult>;
 export type DirectoryName = string;
 export type DirectoryShortName = string;
 export type ConnectPassword = string | redacted.Redacted<string>;
@@ -541,15 +502,10 @@ export interface DirectoryConnectSettings {
   CustomerDnsIpsV6?: string[];
   CustomerUserName: string;
 }
-const DirectoryConnectSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VpcId: S.String,
-    SubnetIds: SubnetIds,
-    CustomerDnsIps: S.optional(DnsIpAddrs),
-    CustomerDnsIpsV6: S.optional(DnsIpv6Addrs),
-    CustomerUserName: S.String,
-  }),
-).annotate({ identifier: "DirectoryConnectSettings" }) as any as S.Schema<DirectoryConnectSettings>;
+const DirectoryConnectSettings = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DirectoryConnectSettings>;
 export type NetworkType = "Dual-stack" | "IPv4" | "IPv6" | (string & {});
 const NetworkType = S.String;
 
@@ -563,41 +519,28 @@ export interface ConnectDirectoryRequest {
   Tags?: Tag[];
   NetworkType?: NetworkType;
 }
-const ConnectDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    ShortName: S.optional(S.String),
-    Password: SensitiveString,
-    Description: S.optional(S.String),
-    Size: DirectorySize,
-    ConnectSettings: DirectoryConnectSettings,
-    Tags: S.optional(Tags),
-    NetworkType: S.optional(NetworkType),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ConnectDirectoryRequest" }) as any as S.Schema<ConnectDirectoryRequest>;
+const ConnectDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ConnectDirectoryRequest>;
 export interface ConnectDirectoryResult {
   DirectoryId?: string;
 }
-const ConnectDirectoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ConnectDirectoryResult" }) as any as S.Schema<ConnectDirectoryResult>;
+const ConnectDirectoryResult = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ConnectDirectoryResult>;
 export type AliasName = string;
 export interface CreateAliasRequest {
   DirectoryId: string;
   Alias: string;
 }
-const CreateAliasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, Alias: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateAliasRequest" }) as any as S.Schema<CreateAliasRequest>;
+const CreateAliasRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CreateAliasRequest>;
 export interface CreateAliasResult {
   DirectoryId?: string;
   Alias?: string;
 }
-const CreateAliasResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.optional(S.String), Alias: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateAliasResult" }) as any as S.Schema<CreateAliasResult>;
+const CreateAliasResult = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateAliasResult>;
 export type ComputerName = string;
 export type ComputerPassword = string | redacted.Redacted<string>;
 export type OrganizationalUnitDN = string;
@@ -607,11 +550,9 @@ export interface Attribute {
   Name?: string;
   Value?: string;
 }
-const Attribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
+const Attribute = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Attribute>;
 export type Attributes = Attribute[];
-const Attributes = /*@__PURE__*/ S.Array(Attribute);
+const Attributes = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateComputerRequest {
   DirectoryId: string;
   ComputerName: string;
@@ -619,34 +560,21 @@ export interface CreateComputerRequest {
   OrganizationalUnitDistinguishedName?: string;
   ComputerAttributes?: Attribute[];
 }
-const CreateComputerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    ComputerName: S.String,
-    Password: SensitiveString,
-    OrganizationalUnitDistinguishedName: S.optional(S.String),
-    ComputerAttributes: S.optional(Attributes),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateComputerRequest" }) as any as S.Schema<CreateComputerRequest>;
+const CreateComputerRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateComputerRequest>;
 export type SID = string;
 export interface Computer {
   ComputerId?: string;
   ComputerName?: string;
   ComputerAttributes?: Attribute[];
 }
-const Computer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComputerId: S.optional(S.String),
-    ComputerName: S.optional(S.String),
-    ComputerAttributes: S.optional(Attributes),
-  }),
-).annotate({ identifier: "Computer" }) as any as S.Schema<Computer>;
+const Computer = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Computer>;
 export interface CreateComputerResult {
   Computer?: Computer;
 }
-const CreateComputerResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Computer: S.optional(Computer) }).pipe(ns),
-).annotate({ identifier: "CreateComputerResult" }) as any as S.Schema<CreateComputerResult>;
+const CreateComputerResult = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CreateComputerResult>;
 export type RemoteDomainName = string;
 export interface CreateConditionalForwarderRequest {
   DirectoryId: string;
@@ -654,16 +582,10 @@ export interface CreateConditionalForwarderRequest {
   DnsIpAddrs?: string[];
   DnsIpv6Addrs?: string[];
 }
-const CreateConditionalForwarderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    RemoteDomainName: S.String,
-    DnsIpAddrs: S.optional(DnsIpAddrs),
-    DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateConditionalForwarderRequest",
-}) as any as S.Schema<CreateConditionalForwarderRequest>;
+const CreateConditionalForwarderRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateConditionalForwarderRequest>;
 export interface CreateConditionalForwarderResult {}
 const CreateConditionalForwarderResult =
   CancelSchemaExtensionResult as any as S.Schema<CreateConditionalForwarderResult>;
@@ -678,18 +600,10 @@ export interface CreateDirectoryRequest {
   Tags?: Tag[];
   NetworkType?: NetworkType;
 }
-const CreateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    ShortName: S.optional(S.String),
-    Password: SensitiveString,
-    Description: S.optional(S.String),
-    Size: DirectorySize,
-    VpcSettings: S.optional(DirectoryVpcSettings),
-    Tags: S.optional(Tags),
-    NetworkType: S.optional(NetworkType),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateDirectoryRequest" }) as any as S.Schema<CreateDirectoryRequest>;
+const CreateDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateDirectoryRequest>;
 export interface CreateDirectoryResult {
   DirectoryId?: string;
 }
@@ -701,11 +615,10 @@ export interface CreateHybridADRequest {
   AssessmentId: string;
   Tags?: Tag[];
 }
-const CreateHybridADRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SecretArn: S.String, AssessmentId: S.String, Tags: S.optional(Tags) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateHybridADRequest" }) as any as S.Schema<CreateHybridADRequest>;
+const CreateHybridADRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateHybridADRequest>;
 export interface CreateHybridADResult {
   DirectoryId?: string;
 }
@@ -715,13 +628,10 @@ export interface CreateLogSubscriptionRequest {
   DirectoryId: string;
   LogGroupName: string;
 }
-const CreateLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, LogGroupName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateLogSubscriptionRequest",
-}) as any as S.Schema<CreateLogSubscriptionRequest>;
+const CreateLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateLogSubscriptionRequest>;
 export interface CreateLogSubscriptionResult {}
 const CreateLogSubscriptionResult =
   CancelSchemaExtensionResult as any as S.Schema<CreateLogSubscriptionResult>;
@@ -738,18 +648,10 @@ export interface CreateMicrosoftADRequest {
   Tags?: Tag[];
   NetworkType?: NetworkType;
 }
-const CreateMicrosoftADRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    ShortName: S.optional(S.String),
-    Password: SensitiveString,
-    Description: S.optional(S.String),
-    VpcSettings: DirectoryVpcSettings,
-    Edition: S.optional(DirectoryEdition),
-    Tags: S.optional(Tags),
-    NetworkType: S.optional(NetworkType),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateMicrosoftADRequest" }) as any as S.Schema<CreateMicrosoftADRequest>;
+const CreateMicrosoftADRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateMicrosoftADRequest>;
 export interface CreateMicrosoftADResult {
   DirectoryId?: string;
 }
@@ -759,18 +661,15 @@ export interface CreateSnapshotRequest {
   DirectoryId: string;
   Name?: string;
 }
-const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, Name: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateSnapshotRequest" }) as any as S.Schema<CreateSnapshotRequest>;
+const CreateSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateSnapshotRequest>;
 export type SnapshotId = string;
 export interface CreateSnapshotResult {
   SnapshotId?: string;
 }
-const CreateSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SnapshotId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateSnapshotResult" }) as any as S.Schema<CreateSnapshotResult>;
+const CreateSnapshotResult = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<CreateSnapshotResult>;
 export type TrustPassword = string | redacted.Redacted<string>;
 export type TrustDirection = "One-Way: Outgoing" | "One-Way: Incoming" | "Two-Way" | (string & {});
 const TrustDirection = S.String;
@@ -791,63 +690,44 @@ export interface CreateTrustRequest {
   ConditionalForwarderIpv6Addrs?: string[];
   SelectiveAuth?: SelectiveAuth;
 }
-const CreateTrustRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    RemoteDomainName: S.String,
-    TrustPassword: SensitiveString,
-    TrustDirection: TrustDirection,
-    TrustType: S.optional(TrustType),
-    ConditionalForwarderIpAddrs: S.optional(DnsIpAddrs),
-    ConditionalForwarderIpv6Addrs: S.optional(DnsIpv6Addrs),
-    SelectiveAuth: S.optional(SelectiveAuth),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateTrustRequest" }) as any as S.Schema<CreateTrustRequest>;
+const CreateTrustRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CreateTrustRequest>;
 export type TrustId = string;
 export interface CreateTrustResult {
   TrustId?: string;
 }
-const CreateTrustResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrustId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateTrustResult" }) as any as S.Schema<CreateTrustResult>;
+const CreateTrustResult = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CreateTrustResult>;
 export interface DeleteADAssessmentRequest {
   AssessmentId: string;
 }
-const DeleteADAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssessmentId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteADAssessmentRequest",
-}) as any as S.Schema<DeleteADAssessmentRequest>;
+const DeleteADAssessmentRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeleteADAssessmentRequest>;
 export interface DeleteADAssessmentResult {
   AssessmentId?: string;
 }
-const DeleteADAssessmentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssessmentId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteADAssessmentResult" }) as any as S.Schema<DeleteADAssessmentResult>;
+const DeleteADAssessmentResult = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeleteADAssessmentResult>;
 export interface DeleteConditionalForwarderRequest {
   DirectoryId: string;
   RemoteDomainName: string;
 }
-const DeleteConditionalForwarderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, RemoteDomainName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteConditionalForwarderRequest",
-}) as any as S.Schema<DeleteConditionalForwarderRequest>;
+const DeleteConditionalForwarderRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeleteConditionalForwarderRequest>;
 export interface DeleteConditionalForwarderResult {}
 const DeleteConditionalForwarderResult =
   CancelSchemaExtensionResult as any as S.Schema<DeleteConditionalForwarderResult>;
 export interface DeleteDirectoryRequest {
   DirectoryId: string;
 }
-const DeleteDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteDirectoryRequest" }) as any as S.Schema<DeleteDirectoryRequest>;
+const DeleteDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DeleteDirectoryRequest>;
 export interface DeleteDirectoryResult {
   DirectoryId?: string;
 }
@@ -855,24 +735,20 @@ const DeleteDirectoryResult = ConnectDirectoryResult as any as S.Schema<DeleteDi
 export interface DeleteLogSubscriptionRequest {
   DirectoryId: string;
 }
-const DeleteLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteLogSubscriptionRequest",
-}) as any as S.Schema<DeleteLogSubscriptionRequest>;
+const DeleteLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteLogSubscriptionRequest>;
 export interface DeleteLogSubscriptionResult {}
 const DeleteLogSubscriptionResult =
   CancelSchemaExtensionResult as any as S.Schema<DeleteLogSubscriptionResult>;
 export interface DeleteSnapshotRequest {
   SnapshotId: string;
 }
-const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SnapshotId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteSnapshotRequest" }) as any as S.Schema<DeleteSnapshotRequest>;
+const DeleteSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteSnapshotRequest>;
 export interface DeleteSnapshotResult {
   SnapshotId?: string;
 }
@@ -882,11 +758,7 @@ export interface DeleteTrustRequest {
   TrustId: string;
   DeleteAssociatedConditionalForwarder?: boolean;
 }
-const DeleteTrustRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrustId: S.String, DeleteAssociatedConditionalForwarder: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteTrustRequest" }) as any as S.Schema<DeleteTrustRequest>;
+const DeleteTrustRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DeleteTrustRequest>;
 export interface DeleteTrustResult {
   TrustId?: string;
 }
@@ -896,13 +768,10 @@ export interface DeregisterCertificateRequest {
   DirectoryId: string;
   CertificateId: string;
 }
-const DeregisterCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, CertificateId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeregisterCertificateRequest",
-}) as any as S.Schema<DeregisterCertificateRequest>;
+const DeregisterCertificateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeregisterCertificateRequest>;
 export interface DeregisterCertificateResult {}
 const DeregisterCertificateResult =
   CancelSchemaExtensionResult as any as S.Schema<DeregisterCertificateResult>;
@@ -911,26 +780,20 @@ export interface DeregisterEventTopicRequest {
   DirectoryId: string;
   TopicName: string;
 }
-const DeregisterEventTopicRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, TopicName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeregisterEventTopicRequest",
-}) as any as S.Schema<DeregisterEventTopicRequest>;
+const DeregisterEventTopicRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeregisterEventTopicRequest>;
 export interface DeregisterEventTopicResult {}
 const DeregisterEventTopicResult =
   CancelSchemaExtensionResult as any as S.Schema<DeregisterEventTopicResult>;
 export interface DescribeADAssessmentRequest {
   AssessmentId: string;
 }
-const DescribeADAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssessmentId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeADAssessmentRequest",
-}) as any as S.Schema<DescribeADAssessmentRequest>;
+const DescribeADAssessmentRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DescribeADAssessmentRequest>;
 export type AssessmentStartTime = Date;
 export type LastUpdateDateTime = Date;
 export type AssessmentStatus = string;
@@ -963,25 +826,7 @@ export interface Assessment {
   ReportType?: string;
   Version?: string;
 }
-const Assessment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssessmentId: S.optional(S.String),
-    DirectoryId: S.optional(S.String),
-    DnsName: S.optional(S.String),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(S.String),
-    StatusCode: S.optional(S.String),
-    StatusReason: S.optional(S.String),
-    CustomerDnsIps: S.optional(CustomerDnsIps),
-    VpcId: S.optional(S.String),
-    SubnetIds: S.optional(SubnetIds),
-    SecurityGroupIds: S.optional(SecurityGroupIds),
-    SelfManagedInstanceIds: S.optional(AssessmentInstanceIds),
-    ReportType: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({ identifier: "Assessment" }) as any as S.Schema<Assessment>;
+const Assessment = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Assessment>;
 export type AssessmentValidationCategory = string;
 export type AssessmentValidationName = string;
 export type AssessmentValidationStatus = string;
@@ -997,53 +842,31 @@ export interface AssessmentValidation {
   StartTime?: Date;
   LastUpdateDateTime?: Date;
 }
-const AssessmentValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Category: S.optional(S.String),
-    Name: S.optional(S.String),
-    Status: S.optional(S.String),
-    StatusCode: S.optional(S.String),
-    StatusReason: S.optional(S.String),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "AssessmentValidation" }) as any as S.Schema<AssessmentValidation>;
+const AssessmentValidation = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<AssessmentValidation>;
 export type AssessmentValidations = AssessmentValidation[];
-const AssessmentValidations = /*@__PURE__*/ S.Array(AssessmentValidation);
+const AssessmentValidations = /*@__PURE__*/ __L.at(__c5, 7);
 export interface AssessmentReport {
   DomainControllerIp?: string;
   Validations?: AssessmentValidation[];
 }
-const AssessmentReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainControllerIp: S.optional(S.String),
-    Validations: S.optional(AssessmentValidations),
-  }),
-).annotate({ identifier: "AssessmentReport" }) as any as S.Schema<AssessmentReport>;
+const AssessmentReport = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<AssessmentReport>;
 export type AssessmentReports = AssessmentReport[];
-const AssessmentReports = /*@__PURE__*/ S.Array(AssessmentReport);
+const AssessmentReports = /*@__PURE__*/ __L.at(__c6, 1);
 export interface DescribeADAssessmentResult {
   Assessment?: Assessment;
   AssessmentReports?: AssessmentReport[];
 }
-const DescribeADAssessmentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Assessment: S.optional(Assessment),
-    AssessmentReports: S.optional(AssessmentReports),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeADAssessmentResult",
-}) as any as S.Schema<DescribeADAssessmentResult>;
+const DescribeADAssessmentResult = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DescribeADAssessmentResult>;
 export interface DescribeCAEnrollmentPolicyRequest {
   DirectoryId: string;
 }
-const DescribeCAEnrollmentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeCAEnrollmentPolicyRequest",
-}) as any as S.Schema<DescribeCAEnrollmentPolicyRequest>;
+const DescribeCAEnrollmentPolicyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DescribeCAEnrollmentPolicyRequest>;
 export type PcaConnectorArn = string;
 export type CaEnrollmentPolicyStatus =
   | "InProgress"
@@ -1063,28 +886,18 @@ export interface DescribeCAEnrollmentPolicyResult {
   LastUpdatedDateTime?: Date;
   CaEnrollmentPolicyStatusReason?: string;
 }
-const DescribeCAEnrollmentPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    PcaConnectorArn: S.optional(S.String),
-    CaEnrollmentPolicyStatus: S.optional(CaEnrollmentPolicyStatus),
-    LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CaEnrollmentPolicyStatusReason: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeCAEnrollmentPolicyResult",
-}) as any as S.Schema<DescribeCAEnrollmentPolicyResult>;
+const DescribeCAEnrollmentPolicyResult = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DescribeCAEnrollmentPolicyResult>;
 export interface DescribeCertificateRequest {
   DirectoryId: string;
   CertificateId: string;
 }
-const DescribeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, CertificateId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeCertificateRequest",
-}) as any as S.Schema<DescribeCertificateRequest>;
+const DescribeCertificateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DescribeCertificateRequest>;
 export type CertificateState =
   | "Registering"
   | "Registered"
@@ -1106,9 +919,10 @@ export type OCSPUrl = string;
 export interface ClientCertAuthSettings {
   OCSPUrl?: string;
 }
-const ClientCertAuthSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OCSPUrl: S.optional(S.String) }),
-).annotate({ identifier: "ClientCertAuthSettings" }) as any as S.Schema<ClientCertAuthSettings>;
+const ClientCertAuthSettings = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ClientCertAuthSettings>;
 export interface Certificate {
   CertificateId?: string;
   State?: CertificateState;
@@ -1119,26 +933,14 @@ export interface Certificate {
   Type?: CertificateType;
   ClientCertAuthSettings?: ClientCertAuthSettings;
 }
-const Certificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateId: S.optional(S.String),
-    State: S.optional(CertificateState),
-    StateReason: S.optional(S.String),
-    CommonName: S.optional(S.String),
-    RegisteredDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExpiryDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Type: S.optional(CertificateType),
-    ClientCertAuthSettings: S.optional(ClientCertAuthSettings),
-  }),
-).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
+const Certificate = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Certificate>;
 export interface DescribeCertificateResult {
   Certificate?: Certificate;
 }
-const DescribeCertificateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Certificate: S.optional(Certificate) }).pipe(ns),
-).annotate({
-  identifier: "DescribeCertificateResult",
-}) as any as S.Schema<DescribeCertificateResult>;
+const DescribeCertificateResult = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DescribeCertificateResult>;
 export type ClientAuthenticationType = "SmartCard" | "SmartCardOrPassword" | (string & {});
 const ClientAuthenticationType = S.String;
 
@@ -1150,16 +952,10 @@ export interface DescribeClientAuthenticationSettingsRequest {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeClientAuthenticationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    Type: S.optional(ClientAuthenticationType),
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeClientAuthenticationSettingsRequest",
-}) as any as S.Schema<DescribeClientAuthenticationSettingsRequest>;
+const DescribeClientAuthenticationSettingsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DescribeClientAuthenticationSettingsRequest>;
 export type ClientAuthenticationStatus = "Enabled" | "Disabled" | (string & {});
 const ClientAuthenticationStatus = S.String;
 
@@ -1168,42 +964,30 @@ export interface ClientAuthenticationSettingInfo {
   Status?: ClientAuthenticationStatus;
   LastUpdatedDateTime?: Date;
 }
-const ClientAuthenticationSettingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(ClientAuthenticationType),
-    Status: S.optional(ClientAuthenticationStatus),
-    LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "ClientAuthenticationSettingInfo",
-}) as any as S.Schema<ClientAuthenticationSettingInfo>;
+const ClientAuthenticationSettingInfo = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ClientAuthenticationSettingInfo>;
 export type ClientAuthenticationSettingsInfo = ClientAuthenticationSettingInfo[];
-const ClientAuthenticationSettingsInfo = /*@__PURE__*/ S.Array(ClientAuthenticationSettingInfo);
+const ClientAuthenticationSettingsInfo = /*@__PURE__*/ __L.at(__c7, 3);
 export interface DescribeClientAuthenticationSettingsResult {
   ClientAuthenticationSettingsInfo?: ClientAuthenticationSettingInfo[];
   NextToken?: string;
 }
-const DescribeClientAuthenticationSettingsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientAuthenticationSettingsInfo: S.optional(ClientAuthenticationSettingsInfo),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeClientAuthenticationSettingsResult",
-}) as any as S.Schema<DescribeClientAuthenticationSettingsResult>;
+const DescribeClientAuthenticationSettingsResult = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DescribeClientAuthenticationSettingsResult>;
 export type RemoteDomainNames = string[];
 const RemoteDomainNames = SubnetIds as any as S.Schema<RemoteDomainNames>;
 export interface DescribeConditionalForwardersRequest {
   DirectoryId: string;
   RemoteDomainNames?: string[];
 }
-const DescribeConditionalForwardersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, RemoteDomainNames: S.optional(RemoteDomainNames) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeConditionalForwardersRequest",
-}) as any as S.Schema<DescribeConditionalForwardersRequest>;
+const DescribeConditionalForwardersRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DescribeConditionalForwardersRequest>;
 export type ReplicationScope = "Domain" | (string & {});
 const ReplicationScope = S.String;
 
@@ -1213,24 +997,16 @@ export interface ConditionalForwarder {
   DnsIpv6Addrs?: string[];
   ReplicationScope?: ReplicationScope;
 }
-const ConditionalForwarder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RemoteDomainName: S.optional(S.String),
-    DnsIpAddrs: S.optional(DnsIpAddrs),
-    DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
-    ReplicationScope: S.optional(ReplicationScope),
-  }),
-).annotate({ identifier: "ConditionalForwarder" }) as any as S.Schema<ConditionalForwarder>;
+const ConditionalForwarder = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ConditionalForwarder>;
 export type ConditionalForwarders = ConditionalForwarder[];
-const ConditionalForwarders = /*@__PURE__*/ S.Array(ConditionalForwarder);
+const ConditionalForwarders = /*@__PURE__*/ __L.at(__c7, 7);
 export interface DescribeConditionalForwardersResult {
   ConditionalForwarders?: ConditionalForwarder[];
 }
-const DescribeConditionalForwardersResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConditionalForwarders: S.optional(ConditionalForwarders) }).pipe(ns),
-).annotate({
-  identifier: "DescribeConditionalForwardersResult",
-}) as any as S.Schema<DescribeConditionalForwardersResult>;
+const DescribeConditionalForwardersResult = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DescribeConditionalForwardersResult>;
 export type DirectoryIds = string[];
 const DirectoryIds = SubnetIds as any as S.Schema<DirectoryIds>;
 export type Limit = number;
@@ -1239,15 +1015,10 @@ export interface DescribeDirectoriesRequest {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryIds: S.optional(DirectoryIds),
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeDirectoriesRequest",
-}) as any as S.Schema<DescribeDirectoriesRequest>;
+const DescribeDirectoriesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DescribeDirectoriesRequest>;
 export type AccessUrl = string;
 export type DirectoryStage =
   | "Requested"
@@ -1283,16 +1054,10 @@ export interface DirectoryVpcSettingsDescription {
   SecurityGroupId?: string;
   AvailabilityZones?: string[];
 }
-const DirectoryVpcSettingsDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VpcId: S.optional(S.String),
-    SubnetIds: S.optional(SubnetIds),
-    SecurityGroupId: S.optional(S.String),
-    AvailabilityZones: S.optional(AvailabilityZones),
-  }),
-).annotate({
-  identifier: "DirectoryVpcSettingsDescription",
-}) as any as S.Schema<DirectoryVpcSettingsDescription>;
+const DirectoryVpcSettingsDescription = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DirectoryVpcSettingsDescription>;
 export type IpAddrs = string[];
 const IpAddrs = SubnetIds as any as S.Schema<IpAddrs>;
 export type IpV6Addrs = string[];
@@ -1306,19 +1071,10 @@ export interface DirectoryConnectSettingsDescription {
   ConnectIps?: string[];
   ConnectIpsV6?: string[];
 }
-const DirectoryConnectSettingsDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VpcId: S.optional(S.String),
-    SubnetIds: S.optional(SubnetIds),
-    CustomerUserName: S.optional(S.String),
-    SecurityGroupId: S.optional(S.String),
-    AvailabilityZones: S.optional(AvailabilityZones),
-    ConnectIps: S.optional(IpAddrs),
-    ConnectIpsV6: S.optional(IpV6Addrs),
-  }),
-).annotate({
-  identifier: "DirectoryConnectSettingsDescription",
-}) as any as S.Schema<DirectoryConnectSettingsDescription>;
+const DirectoryConnectSettingsDescription = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DirectoryConnectSettingsDescription>;
 export type Server = string;
 export type Servers = string[];
 const Servers = SubnetIds as any as S.Schema<Servers>;
@@ -1347,19 +1103,7 @@ export interface RadiusSettings {
   DisplayLabel?: string;
   UseSameUsername?: boolean;
 }
-const RadiusSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RadiusServers: S.optional(Servers),
-    RadiusServersIpv6: S.optional(Servers),
-    RadiusPort: S.optional(S.Number),
-    RadiusTimeout: S.optional(S.Number),
-    RadiusRetries: S.optional(S.Number),
-    SharedSecret: S.optional(SensitiveString),
-    AuthenticationProtocol: S.optional(RadiusAuthenticationProtocol),
-    DisplayLabel: S.optional(S.String),
-    UseSameUsername: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "RadiusSettings" }) as any as S.Schema<RadiusSettings>;
+const RadiusSettings = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<RadiusSettings>;
 export type RadiusStatus = "Creating" | "Completed" | "Failed" | (string & {});
 const RadiusStatus = S.String;
 
@@ -1376,32 +1120,17 @@ export interface OwnerDirectoryDescription {
   RadiusStatus?: RadiusStatus;
   NetworkType?: NetworkType;
 }
-const OwnerDirectoryDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    AccountId: S.optional(S.String),
-    DnsIpAddrs: S.optional(DnsIpAddrs),
-    DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
-    VpcSettings: S.optional(DirectoryVpcSettingsDescription),
-    RadiusSettings: S.optional(RadiusSettings),
-    RadiusStatus: S.optional(RadiusStatus),
-    NetworkType: S.optional(NetworkType),
-  }),
-).annotate({
-  identifier: "OwnerDirectoryDescription",
-}) as any as S.Schema<OwnerDirectoryDescription>;
+const OwnerDirectoryDescription = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<OwnerDirectoryDescription>;
 export type AdditionalRegions = string[];
 const AdditionalRegions = SubnetIds as any as S.Schema<AdditionalRegions>;
 export interface RegionsInfo {
   PrimaryRegion?: string;
   AdditionalRegions?: string[];
 }
-const RegionsInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrimaryRegion: S.optional(S.String),
-    AdditionalRegions: S.optional(AdditionalRegions),
-  }),
-).annotate({ identifier: "RegionsInfo" }) as any as S.Schema<RegionsInfo>;
+const RegionsInfo = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<RegionsInfo>;
 export type OSVersion = "SERVER_2012" | "SERVER_2019" | (string & {});
 const OSVersion = S.String;
 
@@ -1409,14 +1138,10 @@ export interface HybridSettingsDescription {
   SelfManagedDnsIpAddrs?: string[];
   SelfManagedInstanceIds?: string[];
 }
-const HybridSettingsDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SelfManagedDnsIpAddrs: S.optional(IpAddrs),
-    SelfManagedInstanceIds: S.optional(AssessmentInstanceIds),
-  }),
-).annotate({
-  identifier: "HybridSettingsDescription",
-}) as any as S.Schema<HybridSettingsDescription>;
+const HybridSettingsDescription = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<HybridSettingsDescription>;
 export interface DirectoryDescription {
   DirectoryId?: string;
   Name?: string;
@@ -1448,63 +1173,24 @@ export interface DirectoryDescription {
   HybridSettings?: HybridSettingsDescription;
   NetworkType?: NetworkType;
 }
-const DirectoryDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    Name: S.optional(S.String),
-    ShortName: S.optional(S.String),
-    Size: S.optional(DirectorySize),
-    Edition: S.optional(DirectoryEdition),
-    Alias: S.optional(S.String),
-    AccessUrl: S.optional(S.String),
-    Description: S.optional(S.String),
-    DnsIpAddrs: S.optional(DnsIpAddrs),
-    DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
-    Stage: S.optional(DirectoryStage),
-    ShareStatus: S.optional(ShareStatus),
-    ShareMethod: S.optional(ShareMethod),
-    ShareNotes: S.optional(SensitiveString),
-    LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    StageLastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Type: S.optional(DirectoryType),
-    VpcSettings: S.optional(DirectoryVpcSettingsDescription),
-    ConnectSettings: S.optional(DirectoryConnectSettingsDescription),
-    RadiusSettings: S.optional(RadiusSettings),
-    RadiusStatus: S.optional(RadiusStatus),
-    StageReason: S.optional(S.String),
-    SsoEnabled: S.optional(S.Boolean),
-    DesiredNumberOfDomainControllers: S.optional(S.Number),
-    OwnerDirectoryDescription: S.optional(OwnerDirectoryDescription),
-    RegionsInfo: S.optional(RegionsInfo),
-    OsVersion: S.optional(OSVersion),
-    HybridSettings: S.optional(HybridSettingsDescription),
-    NetworkType: S.optional(NetworkType),
-  }),
-).annotate({ identifier: "DirectoryDescription" }) as any as S.Schema<DirectoryDescription>;
+const DirectoryDescription = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DirectoryDescription>;
 export type DirectoryDescriptions = DirectoryDescription[];
-const DirectoryDescriptions = /*@__PURE__*/ S.Array(DirectoryDescription);
+const DirectoryDescriptions = /*@__PURE__*/ __L.at(__c9, 1);
 export interface DescribeDirectoriesResult {
   DirectoryDescriptions?: DirectoryDescription[];
   NextToken?: string;
 }
-const DescribeDirectoriesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryDescriptions: S.optional(DirectoryDescriptions),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeDirectoriesResult",
-}) as any as S.Schema<DescribeDirectoriesResult>;
+const DescribeDirectoriesResult = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DescribeDirectoriesResult>;
 export interface DescribeDirectoryDataAccessRequest {
   DirectoryId: string;
 }
-const DescribeDirectoryDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeDirectoryDataAccessRequest",
-}) as any as S.Schema<DescribeDirectoryDataAccessRequest>;
+const DescribeDirectoryDataAccessRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DescribeDirectoryDataAccessRequest>;
 export type DataAccessStatus =
   | "Disabled"
   | "Disabling"
@@ -1517,11 +1203,10 @@ const DataAccessStatus = S.String;
 export interface DescribeDirectoryDataAccessResult {
   DataAccessStatus?: DataAccessStatus;
 }
-const DescribeDirectoryDataAccessResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataAccessStatus: S.optional(DataAccessStatus) }).pipe(ns),
-).annotate({
-  identifier: "DescribeDirectoryDataAccessResult",
-}) as any as S.Schema<DescribeDirectoryDataAccessResult>;
+const DescribeDirectoryDataAccessResult = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DescribeDirectoryDataAccessResult>;
 export type DomainControllerId = string;
 export type DomainControllerIds = string[];
 const DomainControllerIds = SubnetIds as any as S.Schema<DomainControllerIds>;
@@ -1531,16 +1216,10 @@ export interface DescribeDomainControllersRequest {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeDomainControllersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    DomainControllerIds: S.optional(DomainControllerIds),
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeDomainControllersRequest",
-}) as any as S.Schema<DescribeDomainControllersRequest>;
+const DescribeDomainControllersRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DescribeDomainControllersRequest>;
 export type DomainControllerStatus =
   | "Creating"
   | "Active"
@@ -1567,48 +1246,27 @@ export interface DomainController {
   LaunchTime?: Date;
   StatusLastUpdatedDateTime?: Date;
 }
-const DomainController = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    DomainControllerId: S.optional(S.String),
-    DnsIpAddr: S.optional(S.String),
-    DnsIpv6Addr: S.optional(S.String),
-    VpcId: S.optional(S.String),
-    SubnetId: S.optional(S.String),
-    AvailabilityZone: S.optional(S.String),
-    Status: S.optional(DomainControllerStatus),
-    StatusReason: S.optional(S.String),
-    LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    StatusLastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "DomainController" }) as any as S.Schema<DomainController>;
+const DomainController = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<DomainController>;
 export type DomainControllers = DomainController[];
-const DomainControllers = /*@__PURE__*/ S.Array(DomainController);
+const DomainControllers = /*@__PURE__*/ __L.at(__c9, 7);
 export interface DescribeDomainControllersResult {
   DomainControllers?: DomainController[];
   NextToken?: string;
 }
-const DescribeDomainControllersResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainControllers: S.optional(DomainControllers),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeDomainControllersResult",
-}) as any as S.Schema<DescribeDomainControllersResult>;
+const DescribeDomainControllersResult = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DescribeDomainControllersResult>;
 export type TopicNames = string[];
 const TopicNames = SubnetIds as any as S.Schema<TopicNames>;
 export interface DescribeEventTopicsRequest {
   DirectoryId?: string;
   TopicNames?: string[];
 }
-const DescribeEventTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.optional(S.String), TopicNames: S.optional(TopicNames) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeEventTopicsRequest",
-}) as any as S.Schema<DescribeEventTopicsRequest>;
+const DescribeEventTopicsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DescribeEventTopicsRequest>;
 export type TopicArn = string;
 export type TopicStatus = "Registered" | "Topic not found" | "Failed" | "Deleted" | (string & {});
 const TopicStatus = S.String;
@@ -1620,25 +1278,16 @@ export interface EventTopic {
   CreatedDateTime?: Date;
   Status?: TopicStatus;
 }
-const EventTopic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    TopicName: S.optional(S.String),
-    TopicArn: S.optional(S.String),
-    CreatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(TopicStatus),
-  }),
-).annotate({ identifier: "EventTopic" }) as any as S.Schema<EventTopic>;
+const EventTopic = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<EventTopic>;
 export type EventTopics = EventTopic[];
-const EventTopics = /*@__PURE__*/ S.Array(EventTopic);
+const EventTopics = /*@__PURE__*/ __L.at(__c10, 3);
 export interface DescribeEventTopicsResult {
   EventTopics?: EventTopic[];
 }
-const DescribeEventTopicsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EventTopics: S.optional(EventTopics) }).pipe(ns),
-).annotate({
-  identifier: "DescribeEventTopicsResult",
-}) as any as S.Schema<DescribeEventTopicsResult>;
+const DescribeEventTopicsResult = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DescribeEventTopicsResult>;
 export type HybridUpdateType =
   | "SelfManagedInstances"
   | "HybridAdministratorAccount"
@@ -1650,15 +1299,10 @@ export interface DescribeHybridADUpdateRequest {
   UpdateType?: HybridUpdateType;
   NextToken?: string;
 }
-const DescribeHybridADUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    UpdateType: S.optional(HybridUpdateType),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeHybridADUpdateRequest",
-}) as any as S.Schema<DescribeHybridADUpdateRequest>;
+const DescribeHybridADUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DescribeHybridADUpdateRequest>;
 export type UpdateStatus = "Updated" | "Updating" | "UpdateFailed" | (string & {});
 const UpdateStatus = S.String;
 
@@ -1668,9 +1312,7 @@ export interface HybridUpdateValue {
   InstanceIds?: string[];
   DnsIps?: string[];
 }
-const HybridUpdateValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InstanceIds: S.optional(AssessmentInstanceIds), DnsIps: S.optional(CustomerDnsIps) }),
-).annotate({ identifier: "HybridUpdateValue" }) as any as S.Schema<HybridUpdateValue>;
+const HybridUpdateValue = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<HybridUpdateValue>;
 export type StartDateTime = Date;
 export interface HybridUpdateInfoEntry {
   Status?: UpdateStatus;
@@ -1682,42 +1324,28 @@ export interface HybridUpdateInfoEntry {
   LastUpdatedDateTime?: Date;
   AssessmentId?: string;
 }
-const HybridUpdateInfoEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(UpdateStatus),
-    StatusReason: S.optional(S.String),
-    InitiatedBy: S.optional(S.String),
-    NewValue: S.optional(HybridUpdateValue),
-    PreviousValue: S.optional(HybridUpdateValue),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssessmentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "HybridUpdateInfoEntry" }) as any as S.Schema<HybridUpdateInfoEntry>;
+const HybridUpdateInfoEntry = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<HybridUpdateInfoEntry>;
 export type HybridUpdateInfoEntries = HybridUpdateInfoEntry[];
-const HybridUpdateInfoEntries = /*@__PURE__*/ S.Array(HybridUpdateInfoEntry);
+const HybridUpdateInfoEntries = /*@__PURE__*/ __L.at(__c11, 0);
 export interface HybridUpdateActivities {
   SelfManagedInstances?: HybridUpdateInfoEntry[];
   HybridAdministratorAccount?: HybridUpdateInfoEntry[];
 }
-const HybridUpdateActivities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SelfManagedInstances: S.optional(HybridUpdateInfoEntries),
-    HybridAdministratorAccount: S.optional(HybridUpdateInfoEntries),
-  }),
-).annotate({ identifier: "HybridUpdateActivities" }) as any as S.Schema<HybridUpdateActivities>;
+const HybridUpdateActivities = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<HybridUpdateActivities>;
 export interface DescribeHybridADUpdateResult {
   UpdateActivities?: HybridUpdateActivities;
   NextToken?: string;
 }
-const DescribeHybridADUpdateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    UpdateActivities: S.optional(HybridUpdateActivities),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeHybridADUpdateResult",
-}) as any as S.Schema<DescribeHybridADUpdateResult>;
+const DescribeHybridADUpdateResult = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DescribeHybridADUpdateResult>;
 export type LDAPSType = "Client" | (string & {});
 const LDAPSType = S.String;
 
@@ -1727,16 +1355,10 @@ export interface DescribeLDAPSSettingsRequest {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeLDAPSSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    Type: S.optional(LDAPSType),
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeLDAPSSettingsRequest",
-}) as any as S.Schema<DescribeLDAPSSettingsRequest>;
+const DescribeLDAPSSettingsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DescribeLDAPSSettingsRequest>;
 export type LDAPSStatus = "Enabling" | "Enabled" | "EnableFailed" | "Disabled" | (string & {});
 const LDAPSStatus = S.String;
 
@@ -1746,39 +1368,26 @@ export interface LDAPSSettingInfo {
   LDAPSStatusReason?: string;
   LastUpdatedDateTime?: Date;
 }
-const LDAPSSettingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LDAPSStatus: S.optional(LDAPSStatus),
-    LDAPSStatusReason: S.optional(S.String),
-    LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "LDAPSSettingInfo" }) as any as S.Schema<LDAPSSettingInfo>;
+const LDAPSSettingInfo = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<LDAPSSettingInfo>;
 export type LDAPSSettingsInfo = LDAPSSettingInfo[];
-const LDAPSSettingsInfo = /*@__PURE__*/ S.Array(LDAPSSettingInfo);
+const LDAPSSettingsInfo = /*@__PURE__*/ __L.at(__c11, 5);
 export interface DescribeLDAPSSettingsResult {
   LDAPSSettingsInfo?: LDAPSSettingInfo[];
   NextToken?: string;
 }
-const DescribeLDAPSSettingsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LDAPSSettingsInfo: S.optional(LDAPSSettingsInfo),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeLDAPSSettingsResult",
-}) as any as S.Schema<DescribeLDAPSSettingsResult>;
+const DescribeLDAPSSettingsResult = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DescribeLDAPSSettingsResult>;
 export interface DescribeRegionsRequest {
   DirectoryId: string;
   RegionName?: string;
   NextToken?: string;
 }
-const DescribeRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    RegionName: S.optional(S.String),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeRegionsRequest" }) as any as S.Schema<DescribeRegionsRequest>;
+const DescribeRegionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DescribeRegionsRequest>;
 export type RegionType = "Primary" | "Additional" | (string & {});
 const RegionType = S.String;
 
@@ -1794,31 +1403,17 @@ export interface RegionDescription {
   StatusLastUpdatedDateTime?: Date;
   LastUpdatedDateTime?: Date;
 }
-const RegionDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    RegionName: S.optional(S.String),
-    RegionType: S.optional(RegionType),
-    Status: S.optional(DirectoryStage),
-    VpcSettings: S.optional(DirectoryVpcSettings),
-    DesiredNumberOfDomainControllers: S.optional(S.Number),
-    LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    StatusLastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "RegionDescription" }) as any as S.Schema<RegionDescription>;
+const RegionDescription = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<RegionDescription>;
 export type RegionsDescription = RegionDescription[];
-const RegionsDescription = /*@__PURE__*/ S.Array(RegionDescription);
+const RegionsDescription = /*@__PURE__*/ __L.at(__c12, 1);
 export interface DescribeRegionsResult {
   RegionsDescription?: RegionDescription[];
   NextToken?: string;
 }
-const DescribeRegionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RegionsDescription: S.optional(RegionsDescription),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "DescribeRegionsResult" }) as any as S.Schema<DescribeRegionsResult>;
+const DescribeRegionsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DescribeRegionsResult>;
 export type DirectoryConfigurationStatus =
   | "Requested"
   | "Updating"
@@ -1833,13 +1428,10 @@ export interface DescribeSettingsRequest {
   Status?: DirectoryConfigurationStatus;
   NextToken?: string;
 }
-const DescribeSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    Status: S.optional(DirectoryConfigurationStatus),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeSettingsRequest" }) as any as S.Schema<DescribeSettingsRequest>;
+const DescribeSettingsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DescribeSettingsRequest>;
 export type DirectoryConfigurationSettingType = string;
 export type DirectoryConfigurationSettingName = string;
 export type DirectoryConfigurationSettingAllowedValues = string;
@@ -1847,10 +1439,7 @@ export type DirectoryConfigurationSettingValue = string;
 export type DirectoryConfigurationSettingRequestDetailedStatus = {
   [key: string]: DirectoryConfigurationStatus | undefined;
 };
-const DirectoryConfigurationSettingRequestDetailedStatus = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ DirectoryConfigurationStatus.pipe(S.optional),
-);
+const DirectoryConfigurationSettingRequestDetailedStatus = /*@__PURE__*/ __L.at(__c12, 4);
 export type DirectoryConfigurationSettingRequestStatusMessage = string;
 export type DirectoryConfigurationSettingLastUpdatedDateTime = Date;
 export type DirectoryConfigurationSettingLastRequestedDateTime = Date;
@@ -1868,65 +1457,38 @@ export interface SettingEntry {
   LastRequestedDateTime?: Date;
   DataType?: string;
 }
-const SettingEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(S.String),
-    Name: S.optional(S.String),
-    AllowedValues: S.optional(S.String),
-    AppliedValue: S.optional(S.String),
-    RequestedValue: S.optional(S.String),
-    RequestStatus: S.optional(DirectoryConfigurationStatus),
-    RequestDetailedStatus: S.optional(DirectoryConfigurationSettingRequestDetailedStatus),
-    RequestStatusMessage: S.optional(S.String),
-    LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastRequestedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    DataType: S.optional(S.String),
-  }),
-).annotate({ identifier: "SettingEntry" }) as any as S.Schema<SettingEntry>;
+const SettingEntry = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<SettingEntry>;
 export type SettingEntries = SettingEntry[];
-const SettingEntries = /*@__PURE__*/ S.Array(SettingEntry);
+const SettingEntries = /*@__PURE__*/ __L.at(__c12, 6);
 export interface DescribeSettingsResult {
   DirectoryId?: string;
   SettingEntries?: SettingEntry[];
   NextToken?: string;
 }
-const DescribeSettingsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    SettingEntries: S.optional(SettingEntries),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "DescribeSettingsResult" }) as any as S.Schema<DescribeSettingsResult>;
+const DescribeSettingsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DescribeSettingsResult>;
 export interface DescribeSharedDirectoriesRequest {
   OwnerDirectoryId: string;
   SharedDirectoryIds?: string[];
   NextToken?: string;
   Limit?: number;
 }
-const DescribeSharedDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OwnerDirectoryId: S.String,
-    SharedDirectoryIds: S.optional(DirectoryIds),
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeSharedDirectoriesRequest",
-}) as any as S.Schema<DescribeSharedDirectoriesRequest>;
+const DescribeSharedDirectoriesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DescribeSharedDirectoriesRequest>;
 export type SharedDirectories = SharedDirectory[];
-const SharedDirectories = /*@__PURE__*/ S.Array(SharedDirectory);
+const SharedDirectories = /*@__PURE__*/ __L.at(__c13, 1);
 export interface DescribeSharedDirectoriesResult {
   SharedDirectories?: SharedDirectory[];
   NextToken?: string;
 }
-const DescribeSharedDirectoriesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SharedDirectories: S.optional(SharedDirectories),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeSharedDirectoriesResult",
-}) as any as S.Schema<DescribeSharedDirectoriesResult>;
+const DescribeSharedDirectoriesResult = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DescribeSharedDirectoriesResult>;
 export type SnapshotIds = string[];
 const SnapshotIds = SubnetIds as any as S.Schema<SnapshotIds>;
 export interface DescribeSnapshotsRequest {
@@ -1935,14 +1497,10 @@ export interface DescribeSnapshotsRequest {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    SnapshotIds: S.optional(SnapshotIds),
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeSnapshotsRequest" }) as any as S.Schema<DescribeSnapshotsRequest>;
+const DescribeSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DescribeSnapshotsRequest>;
 export type SnapshotType = "Auto" | "Manual" | (string & {});
 const SnapshotType = S.String;
 
@@ -1958,25 +1516,17 @@ export interface Snapshot {
   Status?: SnapshotStatus;
   StartTime?: Date;
 }
-const Snapshot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    SnapshotId: S.optional(S.String),
-    Type: S.optional(SnapshotType),
-    Name: S.optional(S.String),
-    Status: S.optional(SnapshotStatus),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
+const Snapshot = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Snapshot>;
 export type Snapshots = Snapshot[];
-const Snapshots = /*@__PURE__*/ S.Array(Snapshot);
+const Snapshots = /*@__PURE__*/ __L.at(__c13, 5);
 export interface DescribeSnapshotsResult {
   Snapshots?: Snapshot[];
   NextToken?: string;
 }
-const DescribeSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Snapshots: S.optional(Snapshots), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DescribeSnapshotsResult" }) as any as S.Schema<DescribeSnapshotsResult>;
+const DescribeSnapshotsResult = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DescribeSnapshotsResult>;
 export type TrustIds = string[];
 const TrustIds = SubnetIds as any as S.Schema<TrustIds>;
 export interface DescribeTrustsRequest {
@@ -1985,14 +1535,10 @@ export interface DescribeTrustsRequest {
   NextToken?: string;
   Limit?: number;
 }
-const DescribeTrustsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    TrustIds: S.optional(TrustIds),
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeTrustsRequest" }) as any as S.Schema<DescribeTrustsRequest>;
+const DescribeTrustsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DescribeTrustsRequest>;
 export type TrustState =
   | "Creating"
   | "Created"
@@ -2022,30 +1568,17 @@ export interface Trust {
   TrustStateReason?: string;
   SelectiveAuth?: SelectiveAuth;
 }
-const Trust = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    TrustId: S.optional(S.String),
-    RemoteDomainName: S.optional(S.String),
-    TrustType: S.optional(TrustType),
-    TrustDirection: S.optional(TrustDirection),
-    TrustState: S.optional(TrustState),
-    CreatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    StateLastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    TrustStateReason: S.optional(S.String),
-    SelectiveAuth: S.optional(SelectiveAuth),
-  }),
-).annotate({ identifier: "Trust" }) as any as S.Schema<Trust>;
+const Trust = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<Trust>;
 export type Trusts = Trust[];
-const Trusts = /*@__PURE__*/ S.Array(Trust);
+const Trusts = /*@__PURE__*/ __L.at(__c14, 1);
 export interface DescribeTrustsResult {
   Trusts?: Trust[];
   NextToken?: string;
 }
-const DescribeTrustsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Trusts: S.optional(Trusts), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DescribeTrustsResult" }) as any as S.Schema<DescribeTrustsResult>;
+const DescribeTrustsResult = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DescribeTrustsResult>;
 export type UpdateType = "OS" | "NETWORK" | "SIZE" | (string & {});
 const UpdateType = S.String;
 
@@ -2055,28 +1588,18 @@ export interface DescribeUpdateDirectoryRequest {
   RegionName?: string;
   NextToken?: string;
 }
-const DescribeUpdateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    UpdateType: UpdateType,
-    RegionName: S.optional(S.String),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeUpdateDirectoryRequest",
-}) as any as S.Schema<DescribeUpdateDirectoryRequest>;
+const DescribeUpdateDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DescribeUpdateDirectoryRequest>;
 export interface OSUpdateSettings {
   OSVersion?: OSVersion;
 }
-const OSUpdateSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OSVersion: S.optional(OSVersion) }),
-).annotate({ identifier: "OSUpdateSettings" }) as any as S.Schema<OSUpdateSettings>;
+const OSUpdateSettings = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<OSUpdateSettings>;
 export interface UpdateValue {
   OSUpdateSettings?: OSUpdateSettings;
 }
-const UpdateValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OSUpdateSettings: S.optional(OSUpdateSettings) }),
-).annotate({ identifier: "UpdateValue" }) as any as S.Schema<UpdateValue>;
+const UpdateValue = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<UpdateValue>;
 export interface UpdateInfoEntry {
   Region?: string;
   Status?: UpdateStatus;
@@ -2087,42 +1610,24 @@ export interface UpdateInfoEntry {
   StartTime?: Date;
   LastUpdatedDateTime?: Date;
 }
-const UpdateInfoEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Region: S.optional(S.String),
-    Status: S.optional(UpdateStatus),
-    StatusReason: S.optional(S.String),
-    InitiatedBy: S.optional(S.String),
-    NewValue: S.optional(UpdateValue),
-    PreviousValue: S.optional(UpdateValue),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "UpdateInfoEntry" }) as any as S.Schema<UpdateInfoEntry>;
+const UpdateInfoEntry = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<UpdateInfoEntry>;
 export type UpdateActivities = UpdateInfoEntry[];
-const UpdateActivities = /*@__PURE__*/ S.Array(UpdateInfoEntry);
+const UpdateActivities = /*@__PURE__*/ __L.at(__c14, 7);
 export interface DescribeUpdateDirectoryResult {
   UpdateActivities?: UpdateInfoEntry[];
   NextToken?: string;
 }
-const DescribeUpdateDirectoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    UpdateActivities: S.optional(UpdateActivities),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeUpdateDirectoryResult",
-}) as any as S.Schema<DescribeUpdateDirectoryResult>;
+const DescribeUpdateDirectoryResult = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DescribeUpdateDirectoryResult>;
 export interface DisableCAEnrollmentPolicyRequest {
   DirectoryId: string;
 }
-const DisableCAEnrollmentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DisableCAEnrollmentPolicyRequest",
-}) as any as S.Schema<DisableCAEnrollmentPolicyRequest>;
+const DisableCAEnrollmentPolicyRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DisableCAEnrollmentPolicyRequest>;
 export interface DisableCAEnrollmentPolicyResult {}
 const DisableCAEnrollmentPolicyResult =
   CancelSchemaExtensionResult as any as S.Schema<DisableCAEnrollmentPolicyResult>;
@@ -2130,26 +1635,20 @@ export interface DisableClientAuthenticationRequest {
   DirectoryId: string;
   Type: ClientAuthenticationType;
 }
-const DisableClientAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, Type: ClientAuthenticationType }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DisableClientAuthenticationRequest",
-}) as any as S.Schema<DisableClientAuthenticationRequest>;
+const DisableClientAuthenticationRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<DisableClientAuthenticationRequest>;
 export interface DisableClientAuthenticationResult {}
 const DisableClientAuthenticationResult =
   CancelSchemaExtensionResult as any as S.Schema<DisableClientAuthenticationResult>;
 export interface DisableDirectoryDataAccessRequest {
   DirectoryId: string;
 }
-const DisableDirectoryDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DisableDirectoryDataAccessRequest",
-}) as any as S.Schema<DisableDirectoryDataAccessRequest>;
+const DisableDirectoryDataAccessRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DisableDirectoryDataAccessRequest>;
 export interface DisableDirectoryDataAccessResult {}
 const DisableDirectoryDataAccessResult =
   CancelSchemaExtensionResult as any as S.Schema<DisableDirectoryDataAccessResult>;
@@ -2157,21 +1656,16 @@ export interface DisableLDAPSRequest {
   DirectoryId: string;
   Type: LDAPSType;
 }
-const DisableLDAPSRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, Type: LDAPSType }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DisableLDAPSRequest" }) as any as S.Schema<DisableLDAPSRequest>;
+const DisableLDAPSRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<DisableLDAPSRequest>;
 export interface DisableLDAPSResult {}
 const DisableLDAPSResult = AddIpRoutesResult as any as S.Schema<DisableLDAPSResult>;
 export interface DisableRadiusRequest {
   DirectoryId: string;
 }
-const DisableRadiusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DisableRadiusRequest" }) as any as S.Schema<DisableRadiusRequest>;
+const DisableRadiusRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DisableRadiusRequest>;
 export interface DisableRadiusResult {}
 const DisableRadiusResult = AddIpRoutesResult as any as S.Schema<DisableRadiusResult>;
 export interface DisableSsoRequest {
@@ -2179,26 +1673,17 @@ export interface DisableSsoRequest {
   UserName?: string;
   Password?: string | redacted.Redacted<string>;
 }
-const DisableSsoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    UserName: S.optional(S.String),
-    Password: S.optional(SensitiveString),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DisableSsoRequest" }) as any as S.Schema<DisableSsoRequest>;
+const DisableSsoRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<DisableSsoRequest>;
 export interface DisableSsoResult {}
 const DisableSsoResult = AddIpRoutesResult as any as S.Schema<DisableSsoResult>;
 export interface EnableCAEnrollmentPolicyRequest {
   DirectoryId: string;
   PcaConnectorArn: string;
 }
-const EnableCAEnrollmentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, PcaConnectorArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "EnableCAEnrollmentPolicyRequest",
-}) as any as S.Schema<EnableCAEnrollmentPolicyRequest>;
+const EnableCAEnrollmentPolicyRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<EnableCAEnrollmentPolicyRequest>;
 export interface EnableCAEnrollmentPolicyResult {}
 const EnableCAEnrollmentPolicyResult =
   CancelSchemaExtensionResult as any as S.Schema<EnableCAEnrollmentPolicyResult>;
@@ -2206,26 +1691,20 @@ export interface EnableClientAuthenticationRequest {
   DirectoryId: string;
   Type: ClientAuthenticationType;
 }
-const EnableClientAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, Type: ClientAuthenticationType }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "EnableClientAuthenticationRequest",
-}) as any as S.Schema<EnableClientAuthenticationRequest>;
+const EnableClientAuthenticationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<EnableClientAuthenticationRequest>;
 export interface EnableClientAuthenticationResult {}
 const EnableClientAuthenticationResult =
   CancelSchemaExtensionResult as any as S.Schema<EnableClientAuthenticationResult>;
 export interface EnableDirectoryDataAccessRequest {
   DirectoryId: string;
 }
-const EnableDirectoryDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "EnableDirectoryDataAccessRequest",
-}) as any as S.Schema<EnableDirectoryDataAccessRequest>;
+const EnableDirectoryDataAccessRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<EnableDirectoryDataAccessRequest>;
 export interface EnableDirectoryDataAccessResult {}
 const EnableDirectoryDataAccessResult =
   CancelSchemaExtensionResult as any as S.Schema<EnableDirectoryDataAccessResult>;
@@ -2233,22 +1712,14 @@ export interface EnableLDAPSRequest {
   DirectoryId: string;
   Type: LDAPSType;
 }
-const EnableLDAPSRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, Type: LDAPSType }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "EnableLDAPSRequest" }) as any as S.Schema<EnableLDAPSRequest>;
+const EnableLDAPSRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<EnableLDAPSRequest>;
 export interface EnableLDAPSResult {}
 const EnableLDAPSResult = AddIpRoutesResult as any as S.Schema<EnableLDAPSResult>;
 export interface EnableRadiusRequest {
   DirectoryId: string;
   RadiusSettings: RadiusSettings;
 }
-const EnableRadiusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, RadiusSettings: RadiusSettings }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "EnableRadiusRequest" }) as any as S.Schema<EnableRadiusRequest>;
+const EnableRadiusRequest = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<EnableRadiusRequest>;
 export interface EnableRadiusResult {}
 const EnableRadiusResult = AddIpRoutesResult as any as S.Schema<EnableRadiusResult>;
 export interface EnableSsoRequest {
@@ -2256,21 +1727,14 @@ export interface EnableSsoRequest {
   UserName?: string;
   Password?: string | redacted.Redacted<string>;
 }
-const EnableSsoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    UserName: S.optional(S.String),
-    Password: S.optional(SensitiveString),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "EnableSsoRequest" }) as any as S.Schema<EnableSsoRequest>;
+const EnableSsoRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<EnableSsoRequest>;
 export interface EnableSsoResult {}
 const EnableSsoResult = AddIpRoutesResult as any as S.Schema<EnableSsoResult>;
 export interface GetDirectoryLimitsRequest {}
-const GetDirectoryLimitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetDirectoryLimitsRequest",
-}) as any as S.Schema<GetDirectoryLimitsRequest>;
+const GetDirectoryLimitsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetDirectoryLimitsRequest>;
 export type CloudOnlyDirectoriesLimitReached = boolean;
 export type ConnectedDirectoriesLimitReached = boolean;
 export interface DirectoryLimits {
@@ -2284,65 +1748,45 @@ export interface DirectoryLimits {
   ConnectedDirectoriesCurrentCount?: number;
   ConnectedDirectoriesLimitReached?: boolean;
 }
-const DirectoryLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CloudOnlyDirectoriesLimit: S.optional(S.Number),
-    CloudOnlyDirectoriesCurrentCount: S.optional(S.Number),
-    CloudOnlyDirectoriesLimitReached: S.optional(S.Boolean),
-    CloudOnlyMicrosoftADLimit: S.optional(S.Number),
-    CloudOnlyMicrosoftADCurrentCount: S.optional(S.Number),
-    CloudOnlyMicrosoftADLimitReached: S.optional(S.Boolean),
-    ConnectedDirectoriesLimit: S.optional(S.Number),
-    ConnectedDirectoriesCurrentCount: S.optional(S.Number),
-    ConnectedDirectoriesLimitReached: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DirectoryLimits" }) as any as S.Schema<DirectoryLimits>;
+const DirectoryLimits = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<DirectoryLimits>;
 export interface GetDirectoryLimitsResult {
   DirectoryLimits?: DirectoryLimits;
 }
-const GetDirectoryLimitsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryLimits: S.optional(DirectoryLimits) }).pipe(ns),
-).annotate({ identifier: "GetDirectoryLimitsResult" }) as any as S.Schema<GetDirectoryLimitsResult>;
+const GetDirectoryLimitsResult = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetDirectoryLimitsResult>;
 export interface GetSnapshotLimitsRequest {
   DirectoryId: string;
 }
-const GetSnapshotLimitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetSnapshotLimitsRequest" }) as any as S.Schema<GetSnapshotLimitsRequest>;
+const GetSnapshotLimitsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetSnapshotLimitsRequest>;
 export type ManualSnapshotsLimitReached = boolean;
 export interface SnapshotLimits {
   ManualSnapshotsLimit?: number;
   ManualSnapshotsCurrentCount?: number;
   ManualSnapshotsLimitReached?: boolean;
 }
-const SnapshotLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManualSnapshotsLimit: S.optional(S.Number),
-    ManualSnapshotsCurrentCount: S.optional(S.Number),
-    ManualSnapshotsLimitReached: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SnapshotLimits" }) as any as S.Schema<SnapshotLimits>;
+const SnapshotLimits = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<SnapshotLimits>;
 export interface GetSnapshotLimitsResult {
   SnapshotLimits?: SnapshotLimits;
 }
-const GetSnapshotLimitsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SnapshotLimits: S.optional(SnapshotLimits) }).pipe(ns),
-).annotate({ identifier: "GetSnapshotLimitsResult" }) as any as S.Schema<GetSnapshotLimitsResult>;
+const GetSnapshotLimitsResult = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetSnapshotLimitsResult>;
 export type AssessmentLimit = number;
 export interface ListADAssessmentsRequest {
   DirectoryId?: string;
   NextToken?: string;
   Limit?: number;
 }
-const ListADAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListADAssessmentsRequest" }) as any as S.Schema<ListADAssessmentsRequest>;
+const ListADAssessmentsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListADAssessmentsRequest>;
 export interface AssessmentSummary {
   AssessmentId?: string;
   DirectoryId?: string;
@@ -2353,39 +1797,26 @@ export interface AssessmentSummary {
   CustomerDnsIps?: string[];
   ReportType?: string;
 }
-const AssessmentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssessmentId: S.optional(S.String),
-    DirectoryId: S.optional(S.String),
-    DnsName: S.optional(S.String),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(S.String),
-    CustomerDnsIps: S.optional(CustomerDnsIps),
-    ReportType: S.optional(S.String),
-  }),
-).annotate({ identifier: "AssessmentSummary" }) as any as S.Schema<AssessmentSummary>;
+const AssessmentSummary = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<AssessmentSummary>;
 export type Assessments = AssessmentSummary[];
-const Assessments = /*@__PURE__*/ S.Array(AssessmentSummary);
+const Assessments = /*@__PURE__*/ __L.at(__c17, 5);
 export interface ListADAssessmentsResult {
   Assessments?: AssessmentSummary[];
   NextToken?: string;
 }
-const ListADAssessmentsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Assessments: S.optional(Assessments), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListADAssessmentsResult" }) as any as S.Schema<ListADAssessmentsResult>;
+const ListADAssessmentsResult = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListADAssessmentsResult>;
 export interface ListCertificatesRequest {
   DirectoryId: string;
   NextToken?: string;
   Limit?: number;
 }
-const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListCertificatesRequest" }) as any as S.Schema<ListCertificatesRequest>;
+const ListCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListCertificatesRequest>;
 export interface CertificateInfo {
   CertificateId?: string;
   CommonName?: string;
@@ -2393,39 +1824,23 @@ export interface CertificateInfo {
   ExpiryDateTime?: Date;
   Type?: CertificateType;
 }
-const CertificateInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateId: S.optional(S.String),
-    CommonName: S.optional(S.String),
-    State: S.optional(CertificateState),
-    ExpiryDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Type: S.optional(CertificateType),
-  }),
-).annotate({ identifier: "CertificateInfo" }) as any as S.Schema<CertificateInfo>;
+const CertificateInfo = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<CertificateInfo>;
 export type CertificatesInfo = CertificateInfo[];
-const CertificatesInfo = /*@__PURE__*/ S.Array(CertificateInfo);
+const CertificatesInfo = /*@__PURE__*/ __L.at(__c18, 1);
 export interface ListCertificatesResult {
   NextToken?: string;
   CertificatesInfo?: CertificateInfo[];
 }
-const ListCertificatesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    CertificatesInfo: S.optional(CertificatesInfo),
-  }).pipe(ns),
-).annotate({ identifier: "ListCertificatesResult" }) as any as S.Schema<ListCertificatesResult>;
+const ListCertificatesResult = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListCertificatesResult>;
 export interface ListIpRoutesRequest {
   DirectoryId: string;
   NextToken?: string;
   Limit?: number;
 }
-const ListIpRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListIpRoutesRequest" }) as any as S.Schema<ListIpRoutesRequest>;
+const ListIpRoutesRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ListIpRoutesRequest>;
 export type IpRouteStatusMsg =
   | "Adding"
   | "Added"
@@ -2447,81 +1862,49 @@ export interface IpRouteInfo {
   IpRouteStatusReason?: string;
   Description?: string;
 }
-const IpRouteInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    CidrIp: S.optional(S.String),
-    CidrIpv6: S.optional(S.String),
-    IpRouteStatusMsg: S.optional(IpRouteStatusMsg),
-    AddedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    IpRouteStatusReason: S.optional(S.String),
-    Description: S.optional(S.String),
-  }),
-).annotate({ identifier: "IpRouteInfo" }) as any as S.Schema<IpRouteInfo>;
+const IpRouteInfo = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<IpRouteInfo>;
 export type IpRoutesInfo = IpRouteInfo[];
-const IpRoutesInfo = /*@__PURE__*/ S.Array(IpRouteInfo);
+const IpRoutesInfo = /*@__PURE__*/ __L.at(__c18, 5);
 export interface ListIpRoutesResult {
   IpRoutesInfo?: IpRouteInfo[];
   NextToken?: string;
 }
-const ListIpRoutesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IpRoutesInfo: S.optional(IpRoutesInfo), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListIpRoutesResult" }) as any as S.Schema<ListIpRoutesResult>;
+const ListIpRoutesResult = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ListIpRoutesResult>;
 export interface ListLogSubscriptionsRequest {
   DirectoryId?: string;
   NextToken?: string;
   Limit?: number;
 }
-const ListLogSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListLogSubscriptionsRequest",
-}) as any as S.Schema<ListLogSubscriptionsRequest>;
+const ListLogSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListLogSubscriptionsRequest>;
 export type SubscriptionCreatedDateTime = Date;
 export interface LogSubscription {
   DirectoryId?: string;
   LogGroupName?: string;
   SubscriptionCreatedDateTime?: Date;
 }
-const LogSubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    LogGroupName: S.optional(S.String),
-    SubscriptionCreatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "LogSubscription" }) as any as S.Schema<LogSubscription>;
+const LogSubscription = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<LogSubscription>;
 export type LogSubscriptions = LogSubscription[];
-const LogSubscriptions = /*@__PURE__*/ S.Array(LogSubscription);
+const LogSubscriptions = /*@__PURE__*/ __L.at(__c19, 1);
 export interface ListLogSubscriptionsResult {
   LogSubscriptions?: LogSubscription[];
   NextToken?: string;
 }
-const ListLogSubscriptionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LogSubscriptions: S.optional(LogSubscriptions),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListLogSubscriptionsResult",
-}) as any as S.Schema<ListLogSubscriptionsResult>;
+const ListLogSubscriptionsResult = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListLogSubscriptionsResult>;
 export interface ListSchemaExtensionsRequest {
   DirectoryId: string;
   NextToken?: string;
   Limit?: number;
 }
-const ListSchemaExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListSchemaExtensionsRequest",
-}) as any as S.Schema<ListSchemaExtensionsRequest>;
+const ListSchemaExtensionsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ListSchemaExtensionsRequest>;
 export type SchemaExtensionStatus =
   | "Initializing"
   | "CreatingSnapshot"
@@ -2546,54 +1929,34 @@ export interface SchemaExtensionInfo {
   StartDateTime?: Date;
   EndDateTime?: Date;
 }
-const SchemaExtensionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.optional(S.String),
-    SchemaExtensionId: S.optional(S.String),
-    Description: S.optional(S.String),
-    SchemaExtensionStatus: S.optional(SchemaExtensionStatus),
-    SchemaExtensionStatusReason: S.optional(S.String),
-    StartDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "SchemaExtensionInfo" }) as any as S.Schema<SchemaExtensionInfo>;
+const SchemaExtensionInfo = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<SchemaExtensionInfo>;
 export type SchemaExtensionsInfo = SchemaExtensionInfo[];
-const SchemaExtensionsInfo = /*@__PURE__*/ S.Array(SchemaExtensionInfo);
+const SchemaExtensionsInfo = /*@__PURE__*/ __L.at(__c19, 5);
 export interface ListSchemaExtensionsResult {
   SchemaExtensionsInfo?: SchemaExtensionInfo[];
   NextToken?: string;
 }
-const ListSchemaExtensionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SchemaExtensionsInfo: S.optional(SchemaExtensionsInfo),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListSchemaExtensionsResult",
-}) as any as S.Schema<ListSchemaExtensionsResult>;
+const ListSchemaExtensionsResult = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListSchemaExtensionsResult>;
 export interface ListTagsForResourceRequest {
   ResourceId: string;
   NextToken?: string;
   Limit?: number;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceId: S.String,
-    NextToken: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResult {
   Tags?: Tag[];
   NextToken?: string;
 }
-const ListTagsForResourceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(Tags), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListTagsForResourceResult",
-}) as any as S.Schema<ListTagsForResourceResult>;
+const ListTagsForResourceResult = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListTagsForResourceResult>;
 export type CertificateData = string;
 export interface RegisterCertificateRequest {
   DirectoryId: string;
@@ -2601,56 +1964,42 @@ export interface RegisterCertificateRequest {
   Type?: CertificateType;
   ClientCertAuthSettings?: ClientCertAuthSettings;
 }
-const RegisterCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    CertificateData: S.String,
-    Type: S.optional(CertificateType),
-    ClientCertAuthSettings: S.optional(ClientCertAuthSettings),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RegisterCertificateRequest",
-}) as any as S.Schema<RegisterCertificateRequest>;
+const RegisterCertificateRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<RegisterCertificateRequest>;
 export interface RegisterCertificateResult {
   CertificateId?: string;
 }
-const RegisterCertificateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RegisterCertificateResult",
-}) as any as S.Schema<RegisterCertificateResult>;
+const RegisterCertificateResult = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<RegisterCertificateResult>;
 export interface RegisterEventTopicRequest {
   DirectoryId: string;
   TopicName: string;
 }
-const RegisterEventTopicRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, TopicName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RegisterEventTopicRequest",
-}) as any as S.Schema<RegisterEventTopicRequest>;
+const RegisterEventTopicRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<RegisterEventTopicRequest>;
 export interface RegisterEventTopicResult {}
 const RegisterEventTopicResult =
   AddTagsToResourceResult as any as S.Schema<RegisterEventTopicResult>;
 export interface RejectSharedDirectoryRequest {
   SharedDirectoryId: string;
 }
-const RejectSharedDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SharedDirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RejectSharedDirectoryRequest",
-}) as any as S.Schema<RejectSharedDirectoryRequest>;
+const RejectSharedDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<RejectSharedDirectoryRequest>;
 export interface RejectSharedDirectoryResult {
   SharedDirectoryId?: string;
 }
-const RejectSharedDirectoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SharedDirectoryId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RejectSharedDirectoryResult",
-}) as any as S.Schema<RejectSharedDirectoryResult>;
+const RejectSharedDirectoryResult = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<RejectSharedDirectoryResult>;
 export type CidrIps = string[];
 const CidrIps = SubnetIds as any as S.Schema<CidrIps>;
 export type CidrIpv6s = string[];
@@ -2660,23 +2009,16 @@ export interface RemoveIpRoutesRequest {
   CidrIps?: string[];
   CidrIpv6s?: string[];
 }
-const RemoveIpRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    CidrIps: S.optional(CidrIps),
-    CidrIpv6s: S.optional(CidrIpv6s),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "RemoveIpRoutesRequest" }) as any as S.Schema<RemoveIpRoutesRequest>;
+const RemoveIpRoutesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<RemoveIpRoutesRequest>;
 export interface RemoveIpRoutesResult {}
 const RemoveIpRoutesResult = AddIpRoutesResult as any as S.Schema<RemoveIpRoutesResult>;
 export interface RemoveRegionRequest {
   DirectoryId: string;
 }
-const RemoveRegionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "RemoveRegionRequest" }) as any as S.Schema<RemoveRegionRequest>;
+const RemoveRegionRequest = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<RemoveRegionRequest>;
 export interface RemoveRegionResult {}
 const RemoveRegionResult = AddIpRoutesResult as any as S.Schema<RemoveRegionResult>;
 export type TagKeys = string[];
@@ -2685,13 +2027,10 @@ export interface RemoveTagsFromResourceRequest {
   ResourceId: string;
   TagKeys: string[];
 }
-const RemoveTagsFromResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceId: S.String, TagKeys: TagKeys }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RemoveTagsFromResourceRequest",
-}) as any as S.Schema<RemoveTagsFromResourceRequest>;
+const RemoveTagsFromResourceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<RemoveTagsFromResourceRequest>;
 export interface RemoveTagsFromResourceResult {}
 const RemoveTagsFromResourceResult =
   CancelSchemaExtensionResult as any as S.Schema<RemoveTagsFromResourceResult>;
@@ -2702,23 +2041,19 @@ export interface ResetUserPasswordRequest {
   UserName: string;
   NewPassword: string | redacted.Redacted<string>;
 }
-const ResetUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, UserName: S.String, NewPassword: SensitiveString }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ResetUserPasswordRequest" }) as any as S.Schema<ResetUserPasswordRequest>;
+const ResetUserPasswordRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ResetUserPasswordRequest>;
 export interface ResetUserPasswordResult {}
 const ResetUserPasswordResult = AddTagsToResourceResult as any as S.Schema<ResetUserPasswordResult>;
 export interface RestoreFromSnapshotRequest {
   SnapshotId: string;
 }
-const RestoreFromSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SnapshotId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RestoreFromSnapshotRequest",
-}) as any as S.Schema<RestoreFromSnapshotRequest>;
+const RestoreFromSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<RestoreFromSnapshotRequest>;
 export interface RestoreFromSnapshotResult {}
 const RestoreFromSnapshotResult =
   CancelSchemaExtensionResult as any as S.Schema<RestoreFromSnapshotResult>;
@@ -2730,29 +2065,24 @@ export interface ShareTarget {
   Id: string;
   Type: TargetType;
 }
-const ShareTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String, Type: TargetType }),
-).annotate({ identifier: "ShareTarget" }) as any as S.Schema<ShareTarget>;
+const ShareTarget = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<ShareTarget>;
 export interface ShareDirectoryRequest {
   DirectoryId: string;
   ShareNotes?: string | redacted.Redacted<string>;
   ShareTarget: ShareTarget;
   ShareMethod: ShareMethod;
 }
-const ShareDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    ShareNotes: S.optional(SensitiveString),
-    ShareTarget: ShareTarget,
-    ShareMethod: ShareMethod,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ShareDirectoryRequest" }) as any as S.Schema<ShareDirectoryRequest>;
+const ShareDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ShareDirectoryRequest>;
 export interface ShareDirectoryResult {
   SharedDirectoryId?: string;
 }
-const ShareDirectoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SharedDirectoryId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ShareDirectoryResult" }) as any as S.Schema<ShareDirectoryResult>;
+const ShareDirectoryResult = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ShareDirectoryResult>;
 export interface AssessmentConfiguration {
   CustomerDnsIps: string[];
   DnsName: string;
@@ -2760,25 +2090,18 @@ export interface AssessmentConfiguration {
   InstanceIds: string[];
   SecurityGroupIds?: string[];
 }
-const AssessmentConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CustomerDnsIps: CustomerDnsIps,
-    DnsName: S.String,
-    VpcSettings: DirectoryVpcSettings,
-    InstanceIds: AssessmentInstanceIds,
-    SecurityGroupIds: S.optional(SecurityGroupIds),
-  }),
-).annotate({ identifier: "AssessmentConfiguration" }) as any as S.Schema<AssessmentConfiguration>;
+const AssessmentConfiguration = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<AssessmentConfiguration>;
 export interface StartADAssessmentRequest {
   AssessmentConfiguration?: AssessmentConfiguration;
   DirectoryId?: string;
 }
-const StartADAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssessmentConfiguration: S.optional(AssessmentConfiguration),
-    DirectoryId: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "StartADAssessmentRequest" }) as any as S.Schema<StartADAssessmentRequest>;
+const StartADAssessmentRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<StartADAssessmentRequest>;
 export interface StartADAssessmentResult {
   AssessmentId?: string;
 }
@@ -2792,24 +2115,17 @@ export interface StartSchemaExtensionRequest {
   LdifContent: string;
   Description: string;
 }
-const StartSchemaExtensionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    CreateSnapshotBeforeSchemaExtension: S.Boolean,
-    LdifContent: S.String,
-    Description: S.String,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "StartSchemaExtensionRequest",
-}) as any as S.Schema<StartSchemaExtensionRequest>;
+const StartSchemaExtensionRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<StartSchemaExtensionRequest>;
 export interface StartSchemaExtensionResult {
   SchemaExtensionId?: string;
 }
-const StartSchemaExtensionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SchemaExtensionId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "StartSchemaExtensionResult",
-}) as any as S.Schema<StartSchemaExtensionResult>;
+const StartSchemaExtensionResult = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<StartSchemaExtensionResult>;
 export interface UnshareTarget {
   Id: string;
   Type: TargetType;
@@ -2819,11 +2135,10 @@ export interface UnshareDirectoryRequest {
   DirectoryId: string;
   UnshareTarget: UnshareTarget;
 }
-const UnshareDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, UnshareTarget: UnshareTarget }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UnshareDirectoryRequest" }) as any as S.Schema<UnshareDirectoryRequest>;
+const UnshareDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<UnshareDirectoryRequest>;
 export interface UnshareDirectoryResult {
   SharedDirectoryId?: string;
 }
@@ -2834,34 +2149,28 @@ export interface UpdateConditionalForwarderRequest {
   DnsIpAddrs?: string[];
   DnsIpv6Addrs?: string[];
 }
-const UpdateConditionalForwarderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    RemoteDomainName: S.String,
-    DnsIpAddrs: S.optional(DnsIpAddrs),
-    DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateConditionalForwarderRequest",
-}) as any as S.Schema<UpdateConditionalForwarderRequest>;
+const UpdateConditionalForwarderRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<UpdateConditionalForwarderRequest>;
 export interface UpdateConditionalForwarderResult {}
 const UpdateConditionalForwarderResult =
   CancelSchemaExtensionResult as any as S.Schema<UpdateConditionalForwarderResult>;
 export interface DirectorySizeUpdateSettings {
   DirectorySize?: DirectorySize;
 }
-const DirectorySizeUpdateSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectorySize: S.optional(DirectorySize) }),
-).annotate({
-  identifier: "DirectorySizeUpdateSettings",
-}) as any as S.Schema<DirectorySizeUpdateSettings>;
+const DirectorySizeUpdateSettings = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<DirectorySizeUpdateSettings>;
 export interface NetworkUpdateSettings {
   NetworkType?: NetworkType;
   CustomerDnsIpsV6?: string[];
 }
-const NetworkUpdateSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NetworkType: S.optional(NetworkType), CustomerDnsIpsV6: S.optional(DnsIpv6Addrs) }),
-).annotate({ identifier: "NetworkUpdateSettings" }) as any as S.Schema<NetworkUpdateSettings>;
+const NetworkUpdateSettings = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<NetworkUpdateSettings>;
 export type CreateSnapshotBeforeUpdate = boolean;
 export interface UpdateDirectorySetupRequest {
   DirectoryId: string;
@@ -2871,68 +2180,53 @@ export interface UpdateDirectorySetupRequest {
   NetworkUpdateSettings?: NetworkUpdateSettings;
   CreateSnapshotBeforeUpdate?: boolean;
 }
-const UpdateDirectorySetupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    UpdateType: UpdateType,
-    OSUpdateSettings: S.optional(OSUpdateSettings),
-    DirectorySizeUpdateSettings: S.optional(DirectorySizeUpdateSettings),
-    NetworkUpdateSettings: S.optional(NetworkUpdateSettings),
-    CreateSnapshotBeforeUpdate: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateDirectorySetupRequest",
-}) as any as S.Schema<UpdateDirectorySetupRequest>;
+const UpdateDirectorySetupRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<UpdateDirectorySetupRequest>;
 export interface UpdateDirectorySetupResult {}
 const UpdateDirectorySetupResult =
   CancelSchemaExtensionResult as any as S.Schema<UpdateDirectorySetupResult>;
 export interface HybridAdministratorAccountUpdate {
   SecretArn: string;
 }
-const HybridAdministratorAccountUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SecretArn: S.String }),
-).annotate({
-  identifier: "HybridAdministratorAccountUpdate",
-}) as any as S.Schema<HybridAdministratorAccountUpdate>;
+const HybridAdministratorAccountUpdate = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<HybridAdministratorAccountUpdate>;
 export interface HybridCustomerInstancesSettings {
   CustomerDnsIps: string[];
   InstanceIds: string[];
 }
-const HybridCustomerInstancesSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CustomerDnsIps: CustomerDnsIps, InstanceIds: AssessmentInstanceIds }),
-).annotate({
-  identifier: "HybridCustomerInstancesSettings",
-}) as any as S.Schema<HybridCustomerInstancesSettings>;
+const HybridCustomerInstancesSettings = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<HybridCustomerInstancesSettings>;
 export interface UpdateHybridADRequest {
   DirectoryId: string;
   HybridAdministratorAccountUpdate?: HybridAdministratorAccountUpdate;
   SelfManagedInstancesSettings?: HybridCustomerInstancesSettings;
 }
-const UpdateHybridADRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryId: S.String,
-    HybridAdministratorAccountUpdate: S.optional(HybridAdministratorAccountUpdate),
-    SelfManagedInstancesSettings: S.optional(HybridCustomerInstancesSettings),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateHybridADRequest" }) as any as S.Schema<UpdateHybridADRequest>;
+const UpdateHybridADRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<UpdateHybridADRequest>;
 export interface UpdateHybridADResult {
   DirectoryId?: string;
   AssessmentId?: string;
 }
-const UpdateHybridADResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.optional(S.String), AssessmentId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateHybridADResult" }) as any as S.Schema<UpdateHybridADResult>;
+const UpdateHybridADResult = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateHybridADResult>;
 export interface UpdateNumberOfDomainControllersRequest {
   DirectoryId: string;
   DesiredNumber: number;
 }
-const UpdateNumberOfDomainControllersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, DesiredNumber: S.Number }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateNumberOfDomainControllersRequest",
-}) as any as S.Schema<UpdateNumberOfDomainControllersRequest>;
+const UpdateNumberOfDomainControllersRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<UpdateNumberOfDomainControllersRequest>;
 export interface UpdateNumberOfDomainControllersResult {}
 const UpdateNumberOfDomainControllersResult =
   CancelSchemaExtensionResult as any as S.Schema<UpdateNumberOfDomainControllersResult>;
@@ -2940,31 +2234,24 @@ export interface UpdateRadiusRequest {
   DirectoryId: string;
   RadiusSettings: RadiusSettings;
 }
-const UpdateRadiusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, RadiusSettings: RadiusSettings }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateRadiusRequest" }) as any as S.Schema<UpdateRadiusRequest>;
+const UpdateRadiusRequest = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<UpdateRadiusRequest>;
 export interface UpdateRadiusResult {}
 const UpdateRadiusResult = AddIpRoutesResult as any as S.Schema<UpdateRadiusResult>;
 export interface Setting {
   Name: string;
   Value: string;
 }
-const Setting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Value: S.String }),
-).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
+const Setting = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<Setting>;
 export type Settings = Setting[];
-const Settings = /*@__PURE__*/ S.Array(Setting);
+const Settings = /*@__PURE__*/ __L.at(__c23, 6);
 export interface UpdateSettingsRequest {
   DirectoryId: string;
   Settings: Setting[];
 }
-const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.String, Settings: Settings }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateSettingsRequest" }) as any as S.Schema<UpdateSettingsRequest>;
+const UpdateSettingsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<UpdateSettingsRequest>;
 export interface UpdateSettingsResult {
   DirectoryId?: string;
 }
@@ -2973,27 +2260,17 @@ export interface UpdateTrustRequest {
   TrustId: string;
   SelectiveAuth?: SelectiveAuth;
 }
-const UpdateTrustRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrustId: S.String, SelectiveAuth: S.optional(SelectiveAuth) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateTrustRequest" }) as any as S.Schema<UpdateTrustRequest>;
+const UpdateTrustRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<UpdateTrustRequest>;
 export type RequestId = string;
 export interface UpdateTrustResult {
   RequestId?: string;
   TrustId?: string;
 }
-const UpdateTrustResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RequestId: S.optional(S.String), TrustId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateTrustResult" }) as any as S.Schema<UpdateTrustResult>;
+const UpdateTrustResult = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<UpdateTrustResult>;
 export interface VerifyTrustRequest {
   TrustId: string;
 }
-const VerifyTrustRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrustId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "VerifyTrustRequest" }) as any as S.Schema<VerifyTrustRequest>;
+const VerifyTrustRequest = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<VerifyTrustRequest>;
 export interface VerifyTrustResult {
   TrustId?: string;
 }
@@ -5793,3 +5070,1562 @@ export const verifyTrust: API.OperationMethod<
   retry: Retry,
   operationName: "VerifyTrust",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SharedDirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AcceptSharedDirectoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          OwnerAccountId: S.optional(S.String),
+          OwnerDirectoryId: S.optional(S.String),
+          ShareMethod: S.optional(ShareMethod),
+          SharedAccountId: S.optional(S.String),
+          SharedDirectoryId: S.optional(S.String),
+          ShareStatus: S.optional(ShareStatus),
+          ShareNotes: S.optional(SensitiveString),
+          CreatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "SharedDirectory" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ SharedDirectory: S.optional(SharedDirectory) }).pipe(ns),
+      ).annotate({
+        identifier: "AcceptSharedDirectoryResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CidrIp: S.optional(S.String),
+          CidrIpv6: S.optional(S.String),
+          Description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpRoute" });
+    case 4:
+      return S.Array(IpRoute);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          IpRoutes: IpRoutes,
+          UpdateSecurityGroupForDirectoryControllers: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AddIpRoutesRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AddIpRoutesResult",
+      });
+    case 7:
+      return S.Array(S.String);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ VpcId: S.String, SubnetIds: SubnetIds })).annotate({
+        identifier: "DirectoryVpcSettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          RegionName: S.String,
+          VPCSettings: DirectoryVpcSettings,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AddRegionRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 3:
+      return S.Array(Tag);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ResourceId: S.String, Tags: Tags }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AddTagsToResourceRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AddTagsToResourceResult",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, SchemaExtensionId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CancelSchemaExtensionRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CancelSchemaExtensionResult",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VpcId: S.String,
+          SubnetIds: SubnetIds,
+          CustomerDnsIps: S.optional(DnsIpAddrs),
+          CustomerDnsIpsV6: S.optional(DnsIpv6Addrs),
+          CustomerUserName: S.String,
+        }),
+      ).annotate({ identifier: "DirectoryConnectSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          ShortName: S.optional(S.String),
+          Password: SensitiveString,
+          Description: S.optional(S.String),
+          Size: DirectorySize,
+          ConnectSettings: DirectoryConnectSettings,
+          Tags: S.optional(Tags),
+          NetworkType: S.optional(NetworkType),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ConnectDirectoryRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ DirectoryId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "ConnectDirectoryResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, Alias: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateAliasRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.optional(S.String), Alias: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "CreateAliasResult" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Attribute" });
+    case 6:
+      return S.Array(Attribute);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          ComputerName: S.String,
+          Password: SensitiveString,
+          OrganizationalUnitDistinguishedName: S.optional(S.String),
+          ComputerAttributes: S.optional(Attributes),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateComputerRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ComputerId: S.optional(S.String),
+          ComputerName: S.optional(S.String),
+          ComputerAttributes: S.optional(Attributes),
+        }),
+      ).annotate({ identifier: "Computer" });
+    case 1:
+      return S.suspend(() => S.Struct({ Computer: S.optional(Computer) }).pipe(ns)).annotate({
+        identifier: "CreateComputerResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          RemoteDomainName: S.String,
+          DnsIpAddrs: S.optional(DnsIpAddrs),
+          DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateConditionalForwarderRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          ShortName: S.optional(S.String),
+          Password: SensitiveString,
+          Description: S.optional(S.String),
+          Size: DirectorySize,
+          VpcSettings: S.optional(DirectoryVpcSettings),
+          Tags: S.optional(Tags),
+          NetworkType: S.optional(NetworkType),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDirectoryRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ SecretArn: S.String, AssessmentId: S.String, Tags: S.optional(Tags) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateHybridADRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, LogGroupName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateLogSubscriptionRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          ShortName: S.optional(S.String),
+          Password: SensitiveString,
+          Description: S.optional(S.String),
+          VpcSettings: DirectoryVpcSettings,
+          Edition: S.optional(DirectoryEdition),
+          Tags: S.optional(Tags),
+          NetworkType: S.optional(NetworkType),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateMicrosoftADRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, Name: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateSnapshotRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ SnapshotId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateSnapshotResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          RemoteDomainName: S.String,
+          TrustPassword: SensitiveString,
+          TrustDirection: TrustDirection,
+          TrustType: S.optional(TrustType),
+          ConditionalForwarderIpAddrs: S.optional(DnsIpAddrs),
+          ConditionalForwarderIpv6Addrs: S.optional(DnsIpv6Addrs),
+          SelectiveAuth: S.optional(SelectiveAuth),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTrustRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ TrustId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateTrustResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AssessmentId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteADAssessmentRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ AssessmentId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "DeleteADAssessmentResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, RemoteDomainName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteConditionalForwarderRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteDirectoryRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteLogSubscriptionRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SnapshotId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteSnapshotRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TrustId: S.String,
+          DeleteAssociatedConditionalForwarder: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteTrustRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, CertificateId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeregisterCertificateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, TopicName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeregisterEventTopicRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AssessmentId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeADAssessmentRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AssessmentId: S.optional(S.String),
+          DirectoryId: S.optional(S.String),
+          DnsName: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(S.String),
+          StatusCode: S.optional(S.String),
+          StatusReason: S.optional(S.String),
+          CustomerDnsIps: S.optional(CustomerDnsIps),
+          VpcId: S.optional(S.String),
+          SubnetIds: S.optional(SubnetIds),
+          SecurityGroupIds: S.optional(SecurityGroupIds),
+          SelfManagedInstanceIds: S.optional(AssessmentInstanceIds),
+          ReportType: S.optional(S.String),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Assessment" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Category: S.optional(S.String),
+          Name: S.optional(S.String),
+          Status: S.optional(S.String),
+          StatusCode: S.optional(S.String),
+          StatusReason: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "AssessmentValidation" });
+    case 7:
+      return S.Array(AssessmentValidation);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DomainControllerIp: S.optional(S.String),
+          Validations: S.optional(AssessmentValidations),
+        }),
+      ).annotate({ identifier: "AssessmentReport" });
+    case 1:
+      return S.Array(AssessmentReport);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Assessment: S.optional(Assessment),
+          AssessmentReports: S.optional(AssessmentReports),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeADAssessmentResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeCAEnrollmentPolicyRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          PcaConnectorArn: S.optional(S.String),
+          CaEnrollmentPolicyStatus: S.optional(CaEnrollmentPolicyStatus),
+          LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CaEnrollmentPolicyStatusReason: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeCAEnrollmentPolicyResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, CertificateId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeCertificateRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ OCSPUrl: S.optional(S.String) })).annotate({
+        identifier: "ClientCertAuthSettings",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateId: S.optional(S.String),
+          State: S.optional(CertificateState),
+          StateReason: S.optional(S.String),
+          CommonName: S.optional(S.String),
+          RegisteredDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ExpiryDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Type: S.optional(CertificateType),
+          ClientCertAuthSettings: S.optional(ClientCertAuthSettings),
+        }),
+      ).annotate({ identifier: "Certificate" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Certificate: S.optional(Certificate) }).pipe(ns)).annotate({
+        identifier: "DescribeCertificateResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          Type: S.optional(ClientAuthenticationType),
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeClientAuthenticationSettingsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(ClientAuthenticationType),
+          Status: S.optional(ClientAuthenticationStatus),
+          LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "ClientAuthenticationSettingInfo",
+      });
+    case 3:
+      return S.Array(ClientAuthenticationSettingInfo);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ClientAuthenticationSettingsInfo: S.optional(ClientAuthenticationSettingsInfo),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeClientAuthenticationSettingsResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, RemoteDomainNames: S.optional(RemoteDomainNames) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeConditionalForwardersRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          RemoteDomainName: S.optional(S.String),
+          DnsIpAddrs: S.optional(DnsIpAddrs),
+          DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
+          ReplicationScope: S.optional(ReplicationScope),
+        }),
+      ).annotate({ identifier: "ConditionalForwarder" });
+    case 7:
+      return S.Array(ConditionalForwarder);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ConditionalForwarders: S.optional(ConditionalForwarders) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeConditionalForwardersResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryIds: S.optional(DirectoryIds),
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeDirectoriesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          VpcId: S.optional(S.String),
+          SubnetIds: S.optional(SubnetIds),
+          SecurityGroupId: S.optional(S.String),
+          AvailabilityZones: S.optional(AvailabilityZones),
+        }),
+      ).annotate({
+        identifier: "DirectoryVpcSettingsDescription",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          VpcId: S.optional(S.String),
+          SubnetIds: S.optional(SubnetIds),
+          CustomerUserName: S.optional(S.String),
+          SecurityGroupId: S.optional(S.String),
+          AvailabilityZones: S.optional(AvailabilityZones),
+          ConnectIps: S.optional(IpAddrs),
+          ConnectIpsV6: S.optional(IpV6Addrs),
+        }),
+      ).annotate({
+        identifier: "DirectoryConnectSettingsDescription",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          RadiusServers: S.optional(Servers),
+          RadiusServersIpv6: S.optional(Servers),
+          RadiusPort: S.optional(S.Number),
+          RadiusTimeout: S.optional(S.Number),
+          RadiusRetries: S.optional(S.Number),
+          SharedSecret: S.optional(SensitiveString),
+          AuthenticationProtocol: S.optional(RadiusAuthenticationProtocol),
+          DisplayLabel: S.optional(S.String),
+          UseSameUsername: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RadiusSettings" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          DnsIpAddrs: S.optional(DnsIpAddrs),
+          DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
+          VpcSettings: S.optional(DirectoryVpcSettingsDescription),
+          RadiusSettings: S.optional(RadiusSettings),
+          RadiusStatus: S.optional(RadiusStatus),
+          NetworkType: S.optional(NetworkType),
+        }),
+      ).annotate({
+        identifier: "OwnerDirectoryDescription",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          PrimaryRegion: S.optional(S.String),
+          AdditionalRegions: S.optional(AdditionalRegions),
+        }),
+      ).annotate({ identifier: "RegionsInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SelfManagedDnsIpAddrs: S.optional(IpAddrs),
+          SelfManagedInstanceIds: S.optional(AssessmentInstanceIds),
+        }),
+      ).annotate({
+        identifier: "HybridSettingsDescription",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          Name: S.optional(S.String),
+          ShortName: S.optional(S.String),
+          Size: S.optional(DirectorySize),
+          Edition: S.optional(DirectoryEdition),
+          Alias: S.optional(S.String),
+          AccessUrl: S.optional(S.String),
+          Description: S.optional(S.String),
+          DnsIpAddrs: S.optional(DnsIpAddrs),
+          DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
+          Stage: S.optional(DirectoryStage),
+          ShareStatus: S.optional(ShareStatus),
+          ShareMethod: S.optional(ShareMethod),
+          ShareNotes: S.optional(SensitiveString),
+          LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StageLastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Type: S.optional(DirectoryType),
+          VpcSettings: S.optional(DirectoryVpcSettingsDescription),
+          ConnectSettings: S.optional(DirectoryConnectSettingsDescription),
+          RadiusSettings: S.optional(RadiusSettings),
+          RadiusStatus: S.optional(RadiusStatus),
+          StageReason: S.optional(S.String),
+          SsoEnabled: S.optional(S.Boolean),
+          DesiredNumberOfDomainControllers: S.optional(S.Number),
+          OwnerDirectoryDescription: S.optional(OwnerDirectoryDescription),
+          RegionsInfo: S.optional(RegionsInfo),
+          OsVersion: S.optional(OSVersion),
+          HybridSettings: S.optional(HybridSettingsDescription),
+          NetworkType: S.optional(NetworkType),
+        }),
+      ).annotate({ identifier: "DirectoryDescription" });
+    case 1:
+      return S.Array(DirectoryDescription);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryDescriptions: S.optional(DirectoryDescriptions),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDirectoriesResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeDirectoryDataAccessRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ DataAccessStatus: S.optional(DataAccessStatus) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDirectoryDataAccessResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          DomainControllerIds: S.optional(DomainControllerIds),
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeDomainControllersRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          DomainControllerId: S.optional(S.String),
+          DnsIpAddr: S.optional(S.String),
+          DnsIpv6Addr: S.optional(S.String),
+          VpcId: S.optional(S.String),
+          SubnetId: S.optional(S.String),
+          AvailabilityZone: S.optional(S.String),
+          Status: S.optional(DomainControllerStatus),
+          StatusReason: S.optional(S.String),
+          LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StatusLastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DomainController" });
+    case 7:
+      return S.Array(DomainController);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DomainControllers: S.optional(DomainControllers),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDomainControllersResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.optional(S.String), TopicNames: S.optional(TopicNames) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeEventTopicsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          TopicName: S.optional(S.String),
+          TopicArn: S.optional(S.String),
+          CreatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(TopicStatus),
+        }),
+      ).annotate({ identifier: "EventTopic" });
+    case 3:
+      return S.Array(EventTopic);
+    case 4:
+      return S.suspend(() => S.Struct({ EventTopics: S.optional(EventTopics) }).pipe(ns)).annotate({
+        identifier: "DescribeEventTopicsResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          UpdateType: S.optional(HybridUpdateType),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeHybridADUpdateRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceIds: S.optional(AssessmentInstanceIds),
+          DnsIps: S.optional(CustomerDnsIps),
+        }),
+      ).annotate({ identifier: "HybridUpdateValue" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(UpdateStatus),
+          StatusReason: S.optional(S.String),
+          InitiatedBy: S.optional(S.String),
+          NewValue: S.optional(HybridUpdateValue),
+          PreviousValue: S.optional(HybridUpdateValue),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AssessmentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HybridUpdateInfoEntry" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(HybridUpdateInfoEntry);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SelfManagedInstances: S.optional(HybridUpdateInfoEntries),
+          HybridAdministratorAccount: S.optional(HybridUpdateInfoEntries),
+        }),
+      ).annotate({ identifier: "HybridUpdateActivities" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          UpdateActivities: S.optional(HybridUpdateActivities),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeHybridADUpdateResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          Type: S.optional(LDAPSType),
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeLDAPSSettingsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          LDAPSStatus: S.optional(LDAPSStatus),
+          LDAPSStatusReason: S.optional(S.String),
+          LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "LDAPSSettingInfo" });
+    case 5:
+      return S.Array(LDAPSSettingInfo);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          LDAPSSettingsInfo: S.optional(LDAPSSettingsInfo),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeLDAPSSettingsResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          RegionName: S.optional(S.String),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeRegionsRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          RegionName: S.optional(S.String),
+          RegionType: S.optional(RegionType),
+          Status: S.optional(DirectoryStage),
+          VpcSettings: S.optional(DirectoryVpcSettings),
+          DesiredNumberOfDomainControllers: S.optional(S.Number),
+          LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StatusLastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "RegionDescription" });
+    case 1:
+      return S.Array(RegionDescription);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RegionsDescription: S.optional(RegionsDescription),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeRegionsResult" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          Status: S.optional(DirectoryConfigurationStatus),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeSettingsRequest" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ DirectoryConfigurationStatus.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(S.String),
+          Name: S.optional(S.String),
+          AllowedValues: S.optional(S.String),
+          AppliedValue: S.optional(S.String),
+          RequestedValue: S.optional(S.String),
+          RequestStatus: S.optional(DirectoryConfigurationStatus),
+          RequestDetailedStatus: S.optional(DirectoryConfigurationSettingRequestDetailedStatus),
+          RequestStatusMessage: S.optional(S.String),
+          LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastRequestedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DataType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SettingEntry" });
+    case 6:
+      return S.Array(SettingEntry);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          SettingEntries: S.optional(SettingEntries),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeSettingsResult" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OwnerDirectoryId: S.String,
+          SharedDirectoryIds: S.optional(DirectoryIds),
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeSharedDirectoriesRequest",
+      });
+    case 1:
+      return S.Array(SharedDirectory);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SharedDirectories: S.optional(SharedDirectories),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeSharedDirectoriesResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          SnapshotIds: S.optional(SnapshotIds),
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeSnapshotsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          SnapshotId: S.optional(S.String),
+          Type: S.optional(SnapshotType),
+          Name: S.optional(S.String),
+          Status: S.optional(SnapshotStatus),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "Snapshot" });
+    case 5:
+      return S.Array(Snapshot);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Snapshots: S.optional(Snapshots), NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "DescribeSnapshotsResult" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          TrustIds: S.optional(TrustIds),
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeTrustsRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          TrustId: S.optional(S.String),
+          RemoteDomainName: S.optional(S.String),
+          TrustType: S.optional(TrustType),
+          TrustDirection: S.optional(TrustDirection),
+          TrustState: S.optional(TrustState),
+          CreatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StateLastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          TrustStateReason: S.optional(S.String),
+          SelectiveAuth: S.optional(SelectiveAuth),
+        }),
+      ).annotate({ identifier: "Trust" });
+    case 1:
+      return S.Array(Trust);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Trusts: S.optional(Trusts), NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "DescribeTrustsResult" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          UpdateType: UpdateType,
+          RegionName: S.optional(S.String),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeUpdateDirectoryRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ OSVersion: S.optional(OSVersion) })).annotate({
+        identifier: "OSUpdateSettings",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ OSUpdateSettings: S.optional(OSUpdateSettings) })).annotate(
+        { identifier: "UpdateValue" },
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Region: S.optional(S.String),
+          Status: S.optional(UpdateStatus),
+          StatusReason: S.optional(S.String),
+          InitiatedBy: S.optional(S.String),
+          NewValue: S.optional(UpdateValue),
+          PreviousValue: S.optional(UpdateValue),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "UpdateInfoEntry" });
+    case 7:
+      return S.Array(UpdateInfoEntry);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UpdateActivities: S.optional(UpdateActivities),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeUpdateDirectoryResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisableCAEnrollmentPolicyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, Type: ClientAuthenticationType }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisableClientAuthenticationRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisableDirectoryDataAccessRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, Type: LDAPSType }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DisableLDAPSRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DisableRadiusRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          UserName: S.optional(S.String),
+          Password: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DisableSsoRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, PcaConnectorArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "EnableCAEnrollmentPolicyRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, Type: ClientAuthenticationType }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "EnableClientAuthenticationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "EnableDirectoryDataAccessRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, Type: LDAPSType }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "EnableLDAPSRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, RadiusSettings: RadiusSettings }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "EnableRadiusRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          UserName: S.optional(S.String),
+          Password: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "EnableSsoRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetDirectoryLimitsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CloudOnlyDirectoriesLimit: S.optional(S.Number),
+          CloudOnlyDirectoriesCurrentCount: S.optional(S.Number),
+          CloudOnlyDirectoriesLimitReached: S.optional(S.Boolean),
+          CloudOnlyMicrosoftADLimit: S.optional(S.Number),
+          CloudOnlyMicrosoftADCurrentCount: S.optional(S.Number),
+          CloudOnlyMicrosoftADLimitReached: S.optional(S.Boolean),
+          ConnectedDirectoriesLimit: S.optional(S.Number),
+          ConnectedDirectoriesCurrentCount: S.optional(S.Number),
+          ConnectedDirectoriesLimitReached: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DirectoryLimits" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DirectoryLimits: S.optional(DirectoryLimits) }).pipe(ns),
+      ).annotate({ identifier: "GetDirectoryLimitsResult" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetSnapshotLimitsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ManualSnapshotsLimit: S.optional(S.Number),
+          ManualSnapshotsCurrentCount: S.optional(S.Number),
+          ManualSnapshotsLimitReached: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SnapshotLimits" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ SnapshotLimits: S.optional(SnapshotLimits) }).pipe(ns),
+      ).annotate({ identifier: "GetSnapshotLimitsResult" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListADAssessmentsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AssessmentId: S.optional(S.String),
+          DirectoryId: S.optional(S.String),
+          DnsName: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(S.String),
+          CustomerDnsIps: S.optional(CustomerDnsIps),
+          ReportType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssessmentSummary" });
+    case 5:
+      return S.Array(AssessmentSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Assessments: S.optional(Assessments), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "ListADAssessmentsResult" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListCertificatesRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateId: S.optional(S.String),
+          CommonName: S.optional(S.String),
+          State: S.optional(CertificateState),
+          ExpiryDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Type: S.optional(CertificateType),
+        }),
+      ).annotate({ identifier: "CertificateInfo" });
+    case 1:
+      return S.Array(CertificateInfo);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          CertificatesInfo: S.optional(CertificatesInfo),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListCertificatesResult" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListIpRoutesRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          CidrIp: S.optional(S.String),
+          CidrIpv6: S.optional(S.String),
+          IpRouteStatusMsg: S.optional(IpRouteStatusMsg),
+          AddedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IpRouteStatusReason: S.optional(S.String),
+          Description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpRouteInfo" });
+    case 5:
+      return S.Array(IpRouteInfo);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ IpRoutesInfo: S.optional(IpRoutesInfo), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "ListIpRoutesResult" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListLogSubscriptionsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          LogGroupName: S.optional(S.String),
+          SubscriptionCreatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "LogSubscription" });
+    case 1:
+      return S.Array(LogSubscription);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          LogSubscriptions: S.optional(LogSubscriptions),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListLogSubscriptionsResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListSchemaExtensionsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.optional(S.String),
+          SchemaExtensionId: S.optional(S.String),
+          Description: S.optional(S.String),
+          SchemaExtensionStatus: S.optional(SchemaExtensionStatus),
+          SchemaExtensionStatusReason: S.optional(S.String),
+          StartDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "SchemaExtensionInfo" });
+    case 5:
+      return S.Array(SchemaExtensionInfo);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          SchemaExtensionsInfo: S.optional(SchemaExtensionsInfo),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListSchemaExtensionsResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceId: S.String,
+          NextToken: S.optional(S.String),
+          Limit: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Tags: S.optional(Tags), NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ListTagsForResourceResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          CertificateData: S.String,
+          Type: S.optional(CertificateType),
+          ClientCertAuthSettings: S.optional(ClientCertAuthSettings),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RegisterCertificateRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ CertificateId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "RegisterCertificateResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, TopicName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RegisterEventTopicRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ SharedDirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RejectSharedDirectoryRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ SharedDirectoryId: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "RejectSharedDirectoryResult",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          CidrIps: S.optional(CidrIps),
+          CidrIpv6s: S.optional(CidrIpv6s),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "RemoveIpRoutesRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "RemoveRegionRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceId: S.String, TagKeys: TagKeys }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RemoveTagsFromResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, UserName: S.String, NewPassword: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ResetUserPasswordRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ SnapshotId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RestoreFromSnapshotRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Id: S.String, Type: TargetType })).annotate({
+        identifier: "ShareTarget",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          ShareNotes: S.optional(SensitiveString),
+          ShareTarget: ShareTarget,
+          ShareMethod: ShareMethod,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ShareDirectoryRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ SharedDirectoryId: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ShareDirectoryResult" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CustomerDnsIps: CustomerDnsIps,
+          DnsName: S.String,
+          VpcSettings: DirectoryVpcSettings,
+          InstanceIds: AssessmentInstanceIds,
+          SecurityGroupIds: S.optional(SecurityGroupIds),
+        }),
+      ).annotate({ identifier: "AssessmentConfiguration" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AssessmentConfiguration: S.optional(AssessmentConfiguration),
+          DirectoryId: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartADAssessmentRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          CreateSnapshotBeforeSchemaExtension: S.Boolean,
+          LdifContent: S.String,
+          Description: S.String,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "StartSchemaExtensionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ SchemaExtensionId: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "StartSchemaExtensionResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, UnshareTarget: UnshareTarget }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UnshareDirectoryRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          RemoteDomainName: S.String,
+          DnsIpAddrs: S.optional(DnsIpAddrs),
+          DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateConditionalForwarderRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ DirectorySize: S.optional(DirectorySize) })).annotate({
+        identifier: "DirectorySizeUpdateSettings",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          NetworkType: S.optional(NetworkType),
+          CustomerDnsIpsV6: S.optional(DnsIpv6Addrs),
+        }),
+      ).annotate({ identifier: "NetworkUpdateSettings" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          UpdateType: UpdateType,
+          OSUpdateSettings: S.optional(OSUpdateSettings),
+          DirectorySizeUpdateSettings: S.optional(DirectorySizeUpdateSettings),
+          NetworkUpdateSettings: S.optional(NetworkUpdateSettings),
+          CreateSnapshotBeforeUpdate: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateDirectorySetupRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ SecretArn: S.String })).annotate({
+        identifier: "HybridAdministratorAccountUpdate",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CustomerDnsIps: CustomerDnsIps, InstanceIds: AssessmentInstanceIds }),
+      ).annotate({
+        identifier: "HybridCustomerInstancesSettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DirectoryId: S.String,
+          HybridAdministratorAccountUpdate: S.optional(HybridAdministratorAccountUpdate),
+          SelfManagedInstancesSettings: S.optional(HybridCustomerInstancesSettings),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateHybridADRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.optional(S.String), AssessmentId: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "UpdateHybridADResult" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, DesiredNumber: S.Number }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateNumberOfDomainControllersRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, RadiusSettings: RadiusSettings }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateRadiusRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
+        identifier: "Setting",
+      });
+    case 6:
+      return S.Array(Setting);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DirectoryId: S.String, Settings: Settings }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateSettingsRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TrustId: S.String, SelectiveAuth: S.optional(SelectiveAuth) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateTrustRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ RequestId: S.optional(S.String), TrustId: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "UpdateTrustResult" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ TrustId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "VerifyTrustRequest" });
+  }
+}

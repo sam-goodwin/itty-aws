@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -607,24 +608,10 @@ export interface ActivateKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
 }
-const ActivateKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    Name: S.String.pipe(T.HttpLabel("Name")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/activate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ActivateKeySigningKeyRequest",
-}) as any as S.Schema<ActivateKeySigningKeyRequest>;
+const ActivateKeySigningKeyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ActivateKeySigningKeyRequest>;
 export type ChangeStatus = "PENDING" | "INSYNC" | (string & {});
 const ChangeStatus = S.String;
 
@@ -635,22 +622,14 @@ export interface ChangeInfo {
   SubmittedAt: Date;
   Comment?: string;
 }
-const ChangeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    Status: ChangeStatus,
-    SubmittedAt: T.DateFromString,
-    Comment: S.optional(S.String),
-  }),
-).annotate({ identifier: "ChangeInfo" }) as any as S.Schema<ChangeInfo>;
+const ChangeInfo = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ChangeInfo>;
 export interface ActivateKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
 }
-const ActivateKeySigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({
-  identifier: "ActivateKeySigningKeyResponse",
-}) as any as S.Schema<ActivateKeySigningKeyResponse>;
+const ActivateKeySigningKeyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ActivateKeySigningKeyResponse>;
 export type VPCRegion =
   | "us-east-1"
   | "us-east-2"
@@ -706,42 +685,24 @@ export interface VPC {
   VPCRegion?: VPCRegion;
   VPCId?: string;
 }
-const VPC = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VPCRegion: S.optional(VPCRegion), VPCId: S.optional(S.String) }),
-).annotate({ identifier: "VPC" }) as any as S.Schema<VPC>;
+const VPC = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<VPC>;
 export type AssociateVPCComment = string;
 export interface AssociateVPCWithHostedZoneRequest {
   HostedZoneId: string;
   VPC: VPC;
   Comment?: string;
 }
-const AssociateVPCWithHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    VPC: VPC,
-    Comment: S.optional(S.String),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/associatevpc" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateVPCWithHostedZoneRequest",
-}) as any as S.Schema<AssociateVPCWithHostedZoneRequest>;
+const AssociateVPCWithHostedZoneRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociateVPCWithHostedZoneRequest>;
 export interface AssociateVPCWithHostedZoneResponse {
   ChangeInfo: ChangeInfo;
 }
-const AssociateVPCWithHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({
-  identifier: "AssociateVPCWithHostedZoneResponse",
-}) as any as S.Schema<AssociateVPCWithHostedZoneResponse>;
+const AssociateVPCWithHostedZoneResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateVPCWithHostedZoneResponse>;
 export type UUID = string;
 export type CollectionVersion = number;
 export type CidrLocationNameDefaultNotAllowed = string;
@@ -750,52 +711,32 @@ const CidrCollectionChangeAction = S.String;
 
 export type Cidr = string;
 export type CidrList = string[];
-const CidrList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Cidr")),
-);
+const CidrList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface CidrCollectionChange {
   LocationName: string;
   Action: CidrCollectionChangeAction;
   CidrList: string[];
 }
-const CidrCollectionChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationName: S.String, Action: CidrCollectionChangeAction, CidrList: CidrList }),
-).annotate({ identifier: "CidrCollectionChange" }) as any as S.Schema<CidrCollectionChange>;
+const CidrCollectionChange = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CidrCollectionChange>;
 export type CidrCollectionChanges = CidrCollectionChange[];
-const CidrCollectionChanges = /*@__PURE__*/ S.Array(CidrCollectionChange);
+const CidrCollectionChanges = /*@__PURE__*/ __L.at(__c1, 0);
 export interface ChangeCidrCollectionRequest {
   Id: string;
   CollectionVersion?: number;
   Changes: CidrCollectionChange[];
 }
-const ChangeCidrCollectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String.pipe(T.HttpLabel("Id")),
-    CollectionVersion: S.optional(S.Number),
-    Changes: CidrCollectionChanges,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/cidrcollection/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ChangeCidrCollectionRequest",
-}) as any as S.Schema<ChangeCidrCollectionRequest>;
+const ChangeCidrCollectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ChangeCidrCollectionRequest>;
 export type ChangeId = string;
 export interface ChangeCidrCollectionResponse {
   Id: string;
 }
-const ChangeCidrCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String }).pipe(ns),
-).annotate({
-  identifier: "ChangeCidrCollectionResponse",
-}) as any as S.Schema<ChangeCidrCollectionResponse>;
+const ChangeCidrCollectionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ChangeCidrCollectionResponse>;
 export type ChangeAction = "CREATE" | "DELETE" | "UPSERT" | (string & {});
 const ChangeAction = S.String;
 
@@ -874,13 +815,7 @@ export interface GeoLocation {
   CountryCode?: string;
   SubdivisionCode?: string;
 }
-const GeoLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContinentCode: S.optional(S.String),
-    CountryCode: S.optional(S.String),
-    SubdivisionCode: S.optional(S.String),
-  }),
-).annotate({ identifier: "GeoLocation" }) as any as S.Schema<GeoLocation>;
+const GeoLocation = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GeoLocation>;
 export type ResourceRecordSetFailover = "PRIMARY" | "SECONDARY" | (string & {});
 const ResourceRecordSetFailover = S.String;
 
@@ -890,24 +825,16 @@ export type RData = string;
 export interface ResourceRecord {
   Value: string;
 }
-const ResourceRecord = /*@__PURE__*/ S.suspend(() => S.Struct({ Value: S.String })).annotate({
-  identifier: "ResourceRecord",
-}) as any as S.Schema<ResourceRecord>;
+const ResourceRecord = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ResourceRecord>;
 export type ResourceRecords = ResourceRecord[];
-const ResourceRecords = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ ResourceRecord.pipe(/*@__PURE__*/ T.XmlName("ResourceRecord")).annotate({
-    identifier: "ResourceRecord",
-  }),
-);
+const ResourceRecords = /*@__PURE__*/ __L.at(__c1, 5);
 export type AliasHealthEnabled = boolean;
 export interface AliasTarget {
   HostedZoneId: string;
   DNSName: string;
   EvaluateTargetHealth: boolean;
 }
-const AliasTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneId: S.String, DNSName: S.String, EvaluateTargetHealth: S.Boolean }),
-).annotate({ identifier: "AliasTarget" }) as any as S.Schema<AliasTarget>;
+const AliasTarget = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AliasTarget>;
 export type HealthCheckId = string;
 export type TrafficPolicyInstanceId = string;
 export type CidrLocationNameDefaultAllowed = string;
@@ -915,9 +842,7 @@ export interface CidrRoutingConfig {
   CollectionId: string;
   LocationName: string;
 }
-const CidrRoutingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CollectionId: S.String, LocationName: S.String }),
-).annotate({ identifier: "CidrRoutingConfig" }) as any as S.Schema<CidrRoutingConfig>;
+const CidrRoutingConfig = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CidrRoutingConfig>;
 export type AWSRegion = string;
 export type LocalZoneGroup = string;
 export type Latitude = string;
@@ -926,9 +851,7 @@ export interface Coordinates {
   Latitude: string;
   Longitude: string;
 }
-const Coordinates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Latitude: S.String, Longitude: S.String }),
-).annotate({ identifier: "Coordinates" }) as any as S.Schema<Coordinates>;
+const Coordinates = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Coordinates>;
 export type Bias = number;
 export interface GeoProximityLocation {
   AWSRegion?: string;
@@ -936,14 +859,7 @@ export interface GeoProximityLocation {
   Coordinates?: Coordinates;
   Bias?: number;
 }
-const GeoProximityLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AWSRegion: S.optional(S.String),
-    LocalZoneGroup: S.optional(S.String),
-    Coordinates: S.optional(Coordinates),
-    Bias: S.optional(S.Number),
-  }),
-).annotate({ identifier: "GeoProximityLocation" }) as any as S.Schema<GeoProximityLocation>;
+const GeoProximityLocation = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GeoProximityLocation>;
 export interface ResourceRecordSet {
   Name: string;
   Type: RRType;
@@ -961,73 +877,34 @@ export interface ResourceRecordSet {
   CidrRoutingConfig?: CidrRoutingConfig;
   GeoProximityLocation?: GeoProximityLocation;
 }
-const ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Type: RRType,
-    SetIdentifier: S.optional(S.String),
-    Weight: S.optional(S.Number),
-    Region: S.optional(ResourceRecordSetRegion),
-    GeoLocation: S.optional(GeoLocation),
-    Failover: S.optional(ResourceRecordSetFailover),
-    MultiValueAnswer: S.optional(S.Boolean),
-    TTL: S.optional(S.Number),
-    ResourceRecords: S.optional(ResourceRecords),
-    AliasTarget: S.optional(AliasTarget),
-    HealthCheckId: S.optional(S.String),
-    TrafficPolicyInstanceId: S.optional(S.String),
-    CidrRoutingConfig: S.optional(CidrRoutingConfig),
-    GeoProximityLocation: S.optional(GeoProximityLocation),
-  }),
-).annotate({ identifier: "ResourceRecordSet" }) as any as S.Schema<ResourceRecordSet>;
+const ResourceRecordSet = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ResourceRecordSet>;
 export interface Change {
   Action: ChangeAction;
   ResourceRecordSet: ResourceRecordSet;
 }
-const Change = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Action: ChangeAction, ResourceRecordSet: ResourceRecordSet }),
-).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
+const Change = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Change>;
 export type Changes = Change[];
-const Changes = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ Change.pipe(/*@__PURE__*/ T.XmlName("Change")).annotate({ identifier: "Change" }),
-);
+const Changes = /*@__PURE__*/ __L.at(__c2, 4);
 export interface ChangeBatch {
   Comment?: string;
   Changes: Change[];
 }
-const ChangeBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Comment: S.optional(S.String), Changes: Changes }),
-).annotate({ identifier: "ChangeBatch" }) as any as S.Schema<ChangeBatch>;
+const ChangeBatch = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ChangeBatch>;
 export interface ChangeResourceRecordSetsRequest {
   HostedZoneId: string;
   ChangeBatch: ChangeBatch;
 }
-const ChangeResourceRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    ChangeBatch: ChangeBatch,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/rrset" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ChangeResourceRecordSetsRequest",
-}) as any as S.Schema<ChangeResourceRecordSetsRequest>;
+const ChangeResourceRecordSetsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ChangeResourceRecordSetsRequest>;
 export interface ChangeResourceRecordSetsResponse {
   ChangeInfo: ChangeInfo;
 }
-const ChangeResourceRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({
-  identifier: "ChangeResourceRecordSetsResponse",
-}) as any as S.Schema<ChangeResourceRecordSetsResponse>;
+const ChangeResourceRecordSetsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ChangeResourceRecordSetsResponse>;
 export type TagResourceType = "healthcheck" | "hostedzone" | (string & {});
 const TagResourceType = S.String;
 
@@ -1038,48 +915,25 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
-);
+const TagList = /*@__PURE__*/ __L.at(__c3, 1);
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
-);
+const TagKeyList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface ChangeTagsForResourceRequest {
   ResourceType: TagResourceType;
   ResourceId: string;
   AddTags?: Tag[];
   RemoveTagKeys?: string[];
 }
-const ChangeTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
-    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-    AddTags: S.optional(TagList),
-    RemoveTagKeys: S.optional(TagKeyList),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/tags/{ResourceType}/{ResourceId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ChangeTagsForResourceRequest",
-}) as any as S.Schema<ChangeTagsForResourceRequest>;
+const ChangeTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ChangeTagsForResourceRequest>;
 export interface ChangeTagsForResourceResponse {}
-const ChangeTagsForResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  {
-    identifier: "ChangeTagsForResourceResponse",
-  },
+const ChangeTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
 ) as any as S.Schema<ChangeTagsForResourceResponse>;
 export type CollectionName = string;
 export type CidrNonce = string;
@@ -1087,21 +941,10 @@ export interface CreateCidrCollectionRequest {
   Name: string;
   CallerReference: string;
 }
-const CreateCidrCollectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, CallerReference: S.String }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/cidrcollection" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateCidrCollectionRequest",
-}) as any as S.Schema<CreateCidrCollectionRequest>;
+const CreateCidrCollectionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateCidrCollectionRequest>;
 export type ARN = string;
 export interface CidrCollection {
   Arn?: string;
@@ -1109,27 +952,16 @@ export interface CidrCollection {
   Name?: string;
   Version?: number;
 }
-const CidrCollection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CidrCollection" }) as any as S.Schema<CidrCollection>;
+const CidrCollection = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CidrCollection>;
 export type ResourceURI = string;
 export interface CreateCidrCollectionResponse {
   Collection?: CidrCollection;
   Location?: string;
 }
-const CreateCidrCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Collection: S.optional(CidrCollection),
-    Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
-  }).pipe(ns),
-).annotate({
-  identifier: "CreateCidrCollectionResponse",
-}) as any as S.Schema<CreateCidrCollectionResponse>;
+const CreateCidrCollectionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateCidrCollectionResponse>;
 export type HealthCheckNonce = string;
 export type IPAddress = string;
 export type Port = number;
@@ -1155,9 +987,7 @@ export type Inverted = boolean;
 export type Disabled = boolean;
 export type HealthThreshold = number;
 export type ChildHealthCheckList = string[];
-const ChildHealthCheckList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ChildHealthCheck")),
-);
+const ChildHealthCheckList = /*@__PURE__*/ __L.at(__c4, 0);
 export type EnableSNI = boolean;
 export type HealthCheckRegion =
   | "us-east-1"
@@ -1172,9 +1002,7 @@ export type HealthCheckRegion =
 const HealthCheckRegion = S.String;
 
 export type HealthCheckRegionList = HealthCheckRegion[];
-const HealthCheckRegionList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ HealthCheckRegion.pipe(/*@__PURE__*/ T.XmlName("Region")),
-);
+const HealthCheckRegionList = /*@__PURE__*/ __L.at(__c4, 1);
 export type CloudWatchRegion =
   | "us-east-1"
   | "us-east-2"
@@ -1230,9 +1058,7 @@ export interface AlarmIdentifier {
   Region: CloudWatchRegion;
   Name: string;
 }
-const AlarmIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Region: CloudWatchRegion, Name: S.String }),
-).annotate({ identifier: "AlarmIdentifier" }) as any as S.Schema<AlarmIdentifier>;
+const AlarmIdentifier = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AlarmIdentifier>;
 export type InsufficientDataHealthStatus =
   | "Healthy"
   | "Unhealthy"
@@ -1261,53 +1087,21 @@ export interface HealthCheckConfig {
   InsufficientDataHealthStatus?: InsufficientDataHealthStatus;
   RoutingControlArn?: string;
 }
-const HealthCheckConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IPAddress: S.optional(S.String),
-    Port: S.optional(S.Number),
-    Type: HealthCheckType,
-    ResourcePath: S.optional(S.String),
-    FullyQualifiedDomainName: S.optional(S.String),
-    SearchString: S.optional(S.String),
-    RequestInterval: S.optional(S.Number),
-    FailureThreshold: S.optional(S.Number),
-    MeasureLatency: S.optional(S.Boolean),
-    Inverted: S.optional(S.Boolean),
-    Disabled: S.optional(S.Boolean),
-    HealthThreshold: S.optional(S.Number),
-    ChildHealthChecks: S.optional(ChildHealthCheckList),
-    EnableSNI: S.optional(S.Boolean),
-    Regions: S.optional(HealthCheckRegionList),
-    AlarmIdentifier: S.optional(AlarmIdentifier),
-    InsufficientDataHealthStatus: S.optional(InsufficientDataHealthStatus),
-    RoutingControlArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "HealthCheckConfig" }) as any as S.Schema<HealthCheckConfig>;
+const HealthCheckConfig = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<HealthCheckConfig>;
 export interface CreateHealthCheckRequest {
   CallerReference: string;
   HealthCheckConfig: HealthCheckConfig;
 }
-const CreateHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CallerReference: S.String, HealthCheckConfig: HealthCheckConfig }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/healthcheck" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateHealthCheckRequest" }) as any as S.Schema<CreateHealthCheckRequest>;
+const CreateHealthCheckRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateHealthCheckRequest>;
 export type ServicePrincipal = string;
 export interface LinkedService {
   ServicePrincipal?: string;
   Description?: string;
 }
-const LinkedService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServicePrincipal: S.optional(S.String), Description: S.optional(S.String) }),
-).annotate({ identifier: "LinkedService" }) as any as S.Schema<LinkedService>;
+const LinkedService = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<LinkedService>;
 export type HealthCheckVersion = number;
 export type EvaluationPeriods = number;
 export type Threshold = number;
@@ -1330,15 +1124,9 @@ export interface Dimension {
   Name: string;
   Value: string;
 }
-const Dimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Value: S.String }),
-).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
+const Dimension = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Dimension>;
 export type DimensionList = Dimension[];
-const DimensionList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ Dimension.pipe(/*@__PURE__*/ T.XmlName("Dimension")).annotate({
-    identifier: "Dimension",
-  }),
-);
+const DimensionList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface CloudWatchAlarmConfiguration {
   EvaluationPeriods: number;
   Threshold: number;
@@ -1349,20 +1137,10 @@ export interface CloudWatchAlarmConfiguration {
   Statistic: Statistic;
   Dimensions?: Dimension[];
 }
-const CloudWatchAlarmConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EvaluationPeriods: S.Number,
-    Threshold: S.Number,
-    ComparisonOperator: ComparisonOperator,
-    Period: S.Number,
-    MetricName: S.String,
-    Namespace: S.String,
-    Statistic: Statistic,
-    Dimensions: S.optional(DimensionList),
-  }),
-).annotate({
-  identifier: "CloudWatchAlarmConfiguration",
-}) as any as S.Schema<CloudWatchAlarmConfiguration>;
+const CloudWatchAlarmConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CloudWatchAlarmConfiguration>;
 export interface HealthCheck {
   Id: string;
   CallerReference: string;
@@ -1371,36 +1149,22 @@ export interface HealthCheck {
   HealthCheckVersion: number;
   CloudWatchAlarmConfiguration?: CloudWatchAlarmConfiguration;
 }
-const HealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    CallerReference: S.String,
-    LinkedService: S.optional(LinkedService),
-    HealthCheckConfig: HealthCheckConfig,
-    HealthCheckVersion: S.Number,
-    CloudWatchAlarmConfiguration: S.optional(CloudWatchAlarmConfiguration),
-  }),
-).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
+const HealthCheck = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<HealthCheck>;
 export interface CreateHealthCheckResponse {
   HealthCheck: HealthCheck;
   Location: string;
 }
-const CreateHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheck: HealthCheck, Location: S.String.pipe(T.HttpHeader("Location")) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "CreateHealthCheckResponse",
-}) as any as S.Schema<CreateHealthCheckResponse>;
+const CreateHealthCheckResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateHealthCheckResponse>;
 export type Nonce = string;
 export type IsPrivateZone = boolean;
 export interface HostedZoneConfig {
   Comment?: string;
   PrivateZone?: boolean;
 }
-const HostedZoneConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Comment: S.optional(S.String), PrivateZone: S.optional(S.Boolean) }),
-).annotate({ identifier: "HostedZoneConfig" }) as any as S.Schema<HostedZoneConfig>;
+const HostedZoneConfig = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<HostedZoneConfig>;
 export interface CreateHostedZoneRequest {
   Name: string;
   VPC?: VPC;
@@ -1408,25 +1172,10 @@ export interface CreateHostedZoneRequest {
   HostedZoneConfig?: HostedZoneConfig;
   DelegationSetId?: string;
 }
-const CreateHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    VPC: S.optional(VPC),
-    CallerReference: S.String,
-    HostedZoneConfig: S.optional(HostedZoneConfig),
-    DelegationSetId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateHostedZoneRequest" }) as any as S.Schema<CreateHostedZoneRequest>;
+const CreateHostedZoneRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateHostedZoneRequest>;
 export type HostedZoneRRSetCount = number;
 export type AcceleratedRecoveryStatus =
   | "ENABLING"
@@ -1444,19 +1193,15 @@ export type FailureReason = string;
 export interface HostedZoneFailureReasons {
   AcceleratedRecovery?: string;
 }
-const HostedZoneFailureReasons = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceleratedRecovery: S.optional(S.String) }),
-).annotate({ identifier: "HostedZoneFailureReasons" }) as any as S.Schema<HostedZoneFailureReasons>;
+const HostedZoneFailureReasons = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<HostedZoneFailureReasons>;
 export interface HostedZoneFeatures {
   AcceleratedRecoveryStatus?: AcceleratedRecoveryStatus;
   FailureReasons?: HostedZoneFailureReasons;
 }
-const HostedZoneFeatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceleratedRecoveryStatus: S.optional(AcceleratedRecoveryStatus),
-    FailureReasons: S.optional(HostedZoneFailureReasons),
-  }),
-).annotate({ identifier: "HostedZoneFeatures" }) as any as S.Schema<HostedZoneFeatures>;
+const HostedZoneFeatures = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<HostedZoneFeatures>;
 export interface HostedZone {
   Id: string;
   Name: string;
@@ -1466,33 +1211,15 @@ export interface HostedZone {
   LinkedService?: LinkedService;
   Features?: HostedZoneFeatures;
 }
-const HostedZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    Name: S.String,
-    CallerReference: S.String,
-    Config: S.optional(HostedZoneConfig),
-    ResourceRecordSetCount: S.optional(S.Number),
-    LinkedService: S.optional(LinkedService),
-    Features: S.optional(HostedZoneFeatures),
-  }),
-).annotate({ identifier: "HostedZone" }) as any as S.Schema<HostedZone>;
+const HostedZone = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<HostedZone>;
 export type DelegationSetNameServers = string[];
-const DelegationSetNameServers = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("NameServer")),
-);
+const DelegationSetNameServers = /*@__PURE__*/ __L.at(__c6, 0);
 export interface DelegationSet {
   Id?: string;
   CallerReference?: string;
   NameServers: string[];
 }
-const DelegationSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    CallerReference: S.optional(S.String),
-    NameServers: DelegationSetNameServers,
-  }),
-).annotate({ identifier: "DelegationSet" }) as any as S.Schema<DelegationSet>;
+const DelegationSet = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DelegationSet>;
 export interface CreateHostedZoneResponse {
   HostedZone: HostedZone;
   ChangeInfo: ChangeInfo;
@@ -1500,15 +1227,10 @@ export interface CreateHostedZoneResponse {
   VPC?: VPC;
   Location: string;
 }
-const CreateHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZone: HostedZone,
-    ChangeInfo: ChangeInfo,
-    DelegationSet: S.optional(DelegationSet),
-    VPC: S.optional(VPC),
-    Location: S.String.pipe(T.HttpHeader("Location")),
-  }).pipe(ns),
-).annotate({ identifier: "CreateHostedZoneResponse" }) as any as S.Schema<CreateHostedZoneResponse>;
+const CreateHostedZoneResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateHostedZoneResponse>;
 export type SigningKeyString = string;
 export type SigningKeyStatus = string;
 export interface CreateKeySigningKeyRequest {
@@ -1518,27 +1240,10 @@ export interface CreateKeySigningKeyRequest {
   Name: string;
   Status: string;
 }
-const CreateKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CallerReference: S.String,
-    HostedZoneId: S.String,
-    KeyManagementServiceArn: S.String,
-    Name: S.String,
-    Status: S.String,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/keysigningkey" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateKeySigningKeyRequest",
-}) as any as S.Schema<CreateKeySigningKeyRequest>;
+const CreateKeySigningKeyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CreateKeySigningKeyRequest>;
 export type SigningKeyInteger = number;
 export type SigningKeyTag = number;
 export type SigningKeyStatusMessage = string;
@@ -1560,112 +1265,56 @@ export interface KeySigningKey {
   CreatedDate?: Date;
   LastModifiedDate?: Date;
 }
-const KeySigningKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    KmsArn: S.optional(S.String),
-    Flag: S.optional(S.Number),
-    SigningAlgorithmMnemonic: S.optional(S.String),
-    SigningAlgorithmType: S.optional(S.Number),
-    DigestAlgorithmMnemonic: S.optional(S.String),
-    DigestAlgorithmType: S.optional(S.Number),
-    KeyTag: S.optional(S.Number),
-    DigestValue: S.optional(S.String),
-    PublicKey: S.optional(S.String),
-    DSRecord: S.optional(S.String),
-    DNSKEYRecord: S.optional(S.String),
-    Status: S.optional(S.String),
-    StatusMessage: S.optional(S.String),
-    CreatedDate: S.optional(T.DateFromString),
-    LastModifiedDate: S.optional(T.DateFromString),
-  }),
-).annotate({ identifier: "KeySigningKey" }) as any as S.Schema<KeySigningKey>;
+const KeySigningKey = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<KeySigningKey>;
 export interface CreateKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
   KeySigningKey: KeySigningKey;
   Location: string;
 }
-const CreateKeySigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChangeInfo: ChangeInfo,
-    KeySigningKey: KeySigningKey,
-    Location: S.String.pipe(T.HttpHeader("Location")),
-  }).pipe(ns),
-).annotate({
-  identifier: "CreateKeySigningKeyResponse",
-}) as any as S.Schema<CreateKeySigningKeyResponse>;
+const CreateKeySigningKeyResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateKeySigningKeyResponse>;
 export type CloudWatchLogsLogGroupArn = string;
 export interface CreateQueryLoggingConfigRequest {
   HostedZoneId: string;
   CloudWatchLogsLogGroupArn: string;
 }
-const CreateQueryLoggingConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneId: S.String, CloudWatchLogsLogGroupArn: S.String }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/queryloggingconfig" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateQueryLoggingConfigRequest",
-}) as any as S.Schema<CreateQueryLoggingConfigRequest>;
+const CreateQueryLoggingConfigRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateQueryLoggingConfigRequest>;
 export type QueryLoggingConfigId = string;
 export interface QueryLoggingConfig {
   Id: string;
   HostedZoneId: string;
   CloudWatchLogsLogGroupArn: string;
 }
-const QueryLoggingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String, HostedZoneId: S.String, CloudWatchLogsLogGroupArn: S.String }),
-).annotate({ identifier: "QueryLoggingConfig" }) as any as S.Schema<QueryLoggingConfig>;
+const QueryLoggingConfig = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<QueryLoggingConfig>;
 export interface CreateQueryLoggingConfigResponse {
   QueryLoggingConfig: QueryLoggingConfig;
   Location: string;
 }
-const CreateQueryLoggingConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    QueryLoggingConfig: QueryLoggingConfig,
-    Location: S.String.pipe(T.HttpHeader("Location")),
-  }).pipe(ns),
-).annotate({
-  identifier: "CreateQueryLoggingConfigResponse",
-}) as any as S.Schema<CreateQueryLoggingConfigResponse>;
+const CreateQueryLoggingConfigResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateQueryLoggingConfigResponse>;
 export interface CreateReusableDelegationSetRequest {
   CallerReference: string;
   HostedZoneId?: string;
 }
-const CreateReusableDelegationSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CallerReference: S.String, HostedZoneId: S.optional(S.String) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/delegationset" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateReusableDelegationSetRequest",
-}) as any as S.Schema<CreateReusableDelegationSetRequest>;
+const CreateReusableDelegationSetRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateReusableDelegationSetRequest>;
 export interface CreateReusableDelegationSetResponse {
   DelegationSet: DelegationSet;
   Location: string;
 }
-const CreateReusableDelegationSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DelegationSet: DelegationSet,
-    Location: S.String.pipe(T.HttpHeader("Location")),
-  }).pipe(ns),
-).annotate({
-  identifier: "CreateReusableDelegationSetResponse",
-}) as any as S.Schema<CreateReusableDelegationSetResponse>;
+const CreateReusableDelegationSetResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CreateReusableDelegationSetResponse>;
 export type TrafficPolicyName = string;
 export type TrafficPolicyDocument = string;
 export type TrafficPolicyComment = string;
@@ -1674,21 +1323,10 @@ export interface CreateTrafficPolicyRequest {
   Document: string;
   Comment?: string;
 }
-const CreateTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Document: S.String, Comment: S.optional(S.String) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateTrafficPolicyRequest",
-}) as any as S.Schema<CreateTrafficPolicyRequest>;
+const CreateTrafficPolicyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateTrafficPolicyRequest>;
 export type TrafficPolicyId = string;
 export type TrafficPolicyVersion = number;
 export interface TrafficPolicy {
@@ -1699,28 +1337,15 @@ export interface TrafficPolicy {
   Document: string;
   Comment?: string;
 }
-const TrafficPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    Version: S.Number,
-    Name: S.String,
-    Type: RRType,
-    Document: S.String,
-    Comment: S.optional(S.String),
-  }),
-).annotate({ identifier: "TrafficPolicy" }) as any as S.Schema<TrafficPolicy>;
+const TrafficPolicy = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<TrafficPolicy>;
 export interface CreateTrafficPolicyResponse {
   TrafficPolicy: TrafficPolicy;
   Location: string;
 }
-const CreateTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicy: TrafficPolicy,
-    Location: S.String.pipe(T.HttpHeader("Location")),
-  }).pipe(ns),
-).annotate({
-  identifier: "CreateTrafficPolicyResponse",
-}) as any as S.Schema<CreateTrafficPolicyResponse>;
+const CreateTrafficPolicyResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateTrafficPolicyResponse>;
 export interface CreateTrafficPolicyInstanceRequest {
   HostedZoneId: string;
   Name: string;
@@ -1728,27 +1353,10 @@ export interface CreateTrafficPolicyInstanceRequest {
   TrafficPolicyId: string;
   TrafficPolicyVersion: number;
 }
-const CreateTrafficPolicyInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String,
-    Name: S.String,
-    TTL: S.Number,
-    TrafficPolicyId: S.String,
-    TrafficPolicyVersion: S.Number,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicyinstance" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateTrafficPolicyInstanceRequest",
-}) as any as S.Schema<CreateTrafficPolicyInstanceRequest>;
+const CreateTrafficPolicyInstanceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateTrafficPolicyInstanceRequest>;
 export type TrafficPolicyInstanceState = string;
 export type Message = string;
 export interface TrafficPolicyInstance {
@@ -1762,433 +1370,226 @@ export interface TrafficPolicyInstance {
   TrafficPolicyVersion: number;
   TrafficPolicyType: RRType;
 }
-const TrafficPolicyInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    HostedZoneId: S.String,
-    Name: S.String,
-    TTL: S.Number,
-    State: S.String,
-    Message: S.String,
-    TrafficPolicyId: S.String,
-    TrafficPolicyVersion: S.Number,
-    TrafficPolicyType: RRType,
-  }),
-).annotate({ identifier: "TrafficPolicyInstance" }) as any as S.Schema<TrafficPolicyInstance>;
+const TrafficPolicyInstance = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<TrafficPolicyInstance>;
 export interface CreateTrafficPolicyInstanceResponse {
   TrafficPolicyInstance: TrafficPolicyInstance;
   Location: string;
 }
-const CreateTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicyInstance: TrafficPolicyInstance,
-    Location: S.String.pipe(T.HttpHeader("Location")),
-  }).pipe(ns),
-).annotate({
-  identifier: "CreateTrafficPolicyInstanceResponse",
-}) as any as S.Schema<CreateTrafficPolicyInstanceResponse>;
+const CreateTrafficPolicyInstanceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateTrafficPolicyInstanceResponse>;
 export interface CreateTrafficPolicyVersionRequest {
   Id: string;
   Document: string;
   Comment?: string;
 }
-const CreateTrafficPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String.pipe(T.HttpLabel("Id")),
-    Document: S.String,
-    Comment: S.optional(S.String),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateTrafficPolicyVersionRequest",
-}) as any as S.Schema<CreateTrafficPolicyVersionRequest>;
+const CreateTrafficPolicyVersionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateTrafficPolicyVersionRequest>;
 export interface CreateTrafficPolicyVersionResponse {
   TrafficPolicy: TrafficPolicy;
   Location: string;
 }
-const CreateTrafficPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicy: TrafficPolicy,
-    Location: S.String.pipe(T.HttpHeader("Location")),
-  }).pipe(ns),
-).annotate({
-  identifier: "CreateTrafficPolicyVersionResponse",
-}) as any as S.Schema<CreateTrafficPolicyVersionResponse>;
+const CreateTrafficPolicyVersionResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateTrafficPolicyVersionResponse>;
 export interface CreateVPCAssociationAuthorizationRequest {
   HostedZoneId: string;
   VPC: VPC;
 }
-const CreateVPCAssociationAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")), VPC: VPC }).pipe(
-    T.all(
-      ns,
-      T.Http({
-        method: "POST",
-        uri: "/2013-04-01/hostedzone/{HostedZoneId}/authorizevpcassociation",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateVPCAssociationAuthorizationRequest",
-}) as any as S.Schema<CreateVPCAssociationAuthorizationRequest>;
+const CreateVPCAssociationAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreateVPCAssociationAuthorizationRequest>;
 export interface CreateVPCAssociationAuthorizationResponse {
   HostedZoneId: string;
   VPC: VPC;
 }
-const CreateVPCAssociationAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneId: S.String, VPC: VPC }).pipe(ns),
-).annotate({
-  identifier: "CreateVPCAssociationAuthorizationResponse",
-}) as any as S.Schema<CreateVPCAssociationAuthorizationResponse>;
+const CreateVPCAssociationAuthorizationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreateVPCAssociationAuthorizationResponse>;
 export interface DeactivateKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
 }
-const DeactivateKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    Name: S.String.pipe(T.HttpLabel("Name")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/deactivate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeactivateKeySigningKeyRequest",
-}) as any as S.Schema<DeactivateKeySigningKeyRequest>;
+const DeactivateKeySigningKeyRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeactivateKeySigningKeyRequest>;
 export interface DeactivateKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
 }
-const DeactivateKeySigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({
-  identifier: "DeactivateKeySigningKeyResponse",
-}) as any as S.Schema<DeactivateKeySigningKeyResponse>;
+const DeactivateKeySigningKeyResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeactivateKeySigningKeyResponse>;
 export interface DeleteCidrCollectionRequest {
   Id: string;
 }
-const DeleteCidrCollectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2013-04-01/cidrcollection/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteCidrCollectionRequest",
-}) as any as S.Schema<DeleteCidrCollectionRequest>;
+const DeleteCidrCollectionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteCidrCollectionRequest>;
 export interface DeleteCidrCollectionResponse {}
-const DeleteCidrCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteCidrCollectionResponse",
-}) as any as S.Schema<DeleteCidrCollectionResponse>;
+const DeleteCidrCollectionResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteCidrCollectionResponse>;
 export interface DeleteHealthCheckRequest {
   HealthCheckId: string;
 }
-const DeleteHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2013-04-01/healthcheck/{HealthCheckId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteHealthCheckRequest" }) as any as S.Schema<DeleteHealthCheckRequest>;
+const DeleteHealthCheckRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeleteHealthCheckRequest>;
 export interface DeleteHealthCheckResponse {}
-const DeleteHealthCheckResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteHealthCheckResponse",
-}) as any as S.Schema<DeleteHealthCheckResponse>;
+const DeleteHealthCheckResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteHealthCheckResponse>;
 export interface DeleteHostedZoneRequest {
   Id: string;
 }
-const DeleteHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2013-04-01/hostedzone/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteHostedZoneRequest" }) as any as S.Schema<DeleteHostedZoneRequest>;
+const DeleteHostedZoneRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteHostedZoneRequest>;
 export interface DeleteHostedZoneResponse {
   ChangeInfo: ChangeInfo;
 }
-const DeleteHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({ identifier: "DeleteHostedZoneResponse" }) as any as S.Schema<DeleteHostedZoneResponse>;
+const DeleteHostedZoneResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteHostedZoneResponse>;
 export interface DeleteKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
 }
-const DeleteKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    Name: S.String.pipe(T.HttpLabel("Name")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteKeySigningKeyRequest",
-}) as any as S.Schema<DeleteKeySigningKeyRequest>;
+const DeleteKeySigningKeyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteKeySigningKeyRequest>;
 export interface DeleteKeySigningKeyResponse {
   ChangeInfo: ChangeInfo;
 }
-const DeleteKeySigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({
-  identifier: "DeleteKeySigningKeyResponse",
-}) as any as S.Schema<DeleteKeySigningKeyResponse>;
+const DeleteKeySigningKeyResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteKeySigningKeyResponse>;
 export interface DeleteQueryLoggingConfigRequest {
   Id: string;
 }
-const DeleteQueryLoggingConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2013-04-01/queryloggingconfig/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteQueryLoggingConfigRequest",
-}) as any as S.Schema<DeleteQueryLoggingConfigRequest>;
+const DeleteQueryLoggingConfigRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteQueryLoggingConfigRequest>;
 export interface DeleteQueryLoggingConfigResponse {}
-const DeleteQueryLoggingConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteQueryLoggingConfigResponse",
-}) as any as S.Schema<DeleteQueryLoggingConfigResponse>;
+const DeleteQueryLoggingConfigResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteQueryLoggingConfigResponse>;
 export interface DeleteReusableDelegationSetRequest {
   Id: string;
 }
-const DeleteReusableDelegationSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2013-04-01/delegationset/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteReusableDelegationSetRequest",
-}) as any as S.Schema<DeleteReusableDelegationSetRequest>;
+const DeleteReusableDelegationSetRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeleteReusableDelegationSetRequest>;
 export interface DeleteReusableDelegationSetResponse {}
-const DeleteReusableDelegationSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteReusableDelegationSetResponse",
-}) as any as S.Schema<DeleteReusableDelegationSetResponse>;
+const DeleteReusableDelegationSetResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteReusableDelegationSetResponse>;
 export interface DeleteTrafficPolicyRequest {
   Id: string;
   Version: number;
 }
-const DeleteTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String.pipe(T.HttpLabel("Id")),
-    Version: S.Number.pipe(T.HttpLabel("Version")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2013-04-01/trafficpolicy/{Id}/{Version}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteTrafficPolicyRequest",
-}) as any as S.Schema<DeleteTrafficPolicyRequest>;
+const DeleteTrafficPolicyRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeleteTrafficPolicyRequest>;
 export interface DeleteTrafficPolicyResponse {}
-const DeleteTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteTrafficPolicyResponse",
-}) as any as S.Schema<DeleteTrafficPolicyResponse>;
+const DeleteTrafficPolicyResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DeleteTrafficPolicyResponse>;
 export interface DeleteTrafficPolicyInstanceRequest {
   Id: string;
 }
-const DeleteTrafficPolicyInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2013-04-01/trafficpolicyinstance/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteTrafficPolicyInstanceRequest",
-}) as any as S.Schema<DeleteTrafficPolicyInstanceRequest>;
+const DeleteTrafficPolicyInstanceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DeleteTrafficPolicyInstanceRequest>;
 export interface DeleteTrafficPolicyInstanceResponse {}
-const DeleteTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteTrafficPolicyInstanceResponse",
-}) as any as S.Schema<DeleteTrafficPolicyInstanceResponse>;
+const DeleteTrafficPolicyInstanceResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DeleteTrafficPolicyInstanceResponse>;
 export interface DeleteVPCAssociationAuthorizationRequest {
   HostedZoneId: string;
   VPC: VPC;
 }
-const DeleteVPCAssociationAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")), VPC: VPC }).pipe(
-    T.all(
-      ns,
-      T.Http({
-        method: "POST",
-        uri: "/2013-04-01/hostedzone/{HostedZoneId}/deauthorizevpcassociation",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteVPCAssociationAuthorizationRequest",
-}) as any as S.Schema<DeleteVPCAssociationAuthorizationRequest>;
+const DeleteVPCAssociationAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DeleteVPCAssociationAuthorizationRequest>;
 export interface DeleteVPCAssociationAuthorizationResponse {}
-const DeleteVPCAssociationAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteVPCAssociationAuthorizationResponse",
-}) as any as S.Schema<DeleteVPCAssociationAuthorizationResponse>;
+const DeleteVPCAssociationAuthorizationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DeleteVPCAssociationAuthorizationResponse>;
 export interface DisableHostedZoneDNSSECRequest {
   HostedZoneId: string;
 }
-const DisableHostedZoneDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/disable-dnssec" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisableHostedZoneDNSSECRequest",
-}) as any as S.Schema<DisableHostedZoneDNSSECRequest>;
+const DisableHostedZoneDNSSECRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DisableHostedZoneDNSSECRequest>;
 export interface DisableHostedZoneDNSSECResponse {
   ChangeInfo: ChangeInfo;
 }
-const DisableHostedZoneDNSSECResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({
-  identifier: "DisableHostedZoneDNSSECResponse",
-}) as any as S.Schema<DisableHostedZoneDNSSECResponse>;
+const DisableHostedZoneDNSSECResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DisableHostedZoneDNSSECResponse>;
 export type DisassociateVPCComment = string;
 export interface DisassociateVPCFromHostedZoneRequest {
   HostedZoneId: string;
   VPC: VPC;
   Comment?: string;
 }
-const DisassociateVPCFromHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    VPC: VPC,
-    Comment: S.optional(S.String),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/disassociatevpc" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateVPCFromHostedZoneRequest",
-}) as any as S.Schema<DisassociateVPCFromHostedZoneRequest>;
+const DisassociateVPCFromHostedZoneRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DisassociateVPCFromHostedZoneRequest>;
 export interface DisassociateVPCFromHostedZoneResponse {
   ChangeInfo: ChangeInfo;
 }
-const DisassociateVPCFromHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({
-  identifier: "DisassociateVPCFromHostedZoneResponse",
-}) as any as S.Schema<DisassociateVPCFromHostedZoneResponse>;
+const DisassociateVPCFromHostedZoneResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DisassociateVPCFromHostedZoneResponse>;
 export interface EnableHostedZoneDNSSECRequest {
   HostedZoneId: string;
 }
-const EnableHostedZoneDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/enable-dnssec" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "EnableHostedZoneDNSSECRequest",
-}) as any as S.Schema<EnableHostedZoneDNSSECRequest>;
+const EnableHostedZoneDNSSECRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<EnableHostedZoneDNSSECRequest>;
 export interface EnableHostedZoneDNSSECResponse {
   ChangeInfo: ChangeInfo;
 }
-const EnableHostedZoneDNSSECResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({
-  identifier: "EnableHostedZoneDNSSECResponse",
-}) as any as S.Schema<EnableHostedZoneDNSSECResponse>;
+const EnableHostedZoneDNSSECResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<EnableHostedZoneDNSSECResponse>;
 export type AccountLimitType =
   | "MAX_HEALTH_CHECKS_BY_OWNER"
   | "MAX_HOSTED_ZONES_BY_OWNER"
@@ -2201,139 +1602,74 @@ const AccountLimitType = S.String;
 export interface GetAccountLimitRequest {
   Type: AccountLimitType;
 }
-const GetAccountLimitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: AccountLimitType.pipe(T.HttpLabel("Type")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/accountlimit/{Type}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetAccountLimitRequest" }) as any as S.Schema<GetAccountLimitRequest>;
+const GetAccountLimitRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetAccountLimitRequest>;
 export type LimitValue = number;
 export interface AccountLimit {
   Type: AccountLimitType;
   Value: number;
 }
-const AccountLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: AccountLimitType, Value: S.Number }),
-).annotate({ identifier: "AccountLimit" }) as any as S.Schema<AccountLimit>;
+const AccountLimit = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<AccountLimit>;
 export type UsageCount = number;
 export interface GetAccountLimitResponse {
   Limit: AccountLimit;
   Count: number;
 }
-const GetAccountLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Limit: AccountLimit, Count: S.Number }).pipe(ns),
-).annotate({ identifier: "GetAccountLimitResponse" }) as any as S.Schema<GetAccountLimitResponse>;
+const GetAccountLimitResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetAccountLimitResponse>;
 export interface GetChangeRequest {
   Id: string;
 }
-const GetChangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/change/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetChangeRequest" }) as any as S.Schema<GetChangeRequest>;
+const GetChangeRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetChangeRequest>;
 export interface GetChangeResponse {
   ChangeInfo: ChangeInfo;
 }
-const GetChangeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns),
-).annotate({ identifier: "GetChangeResponse" }) as any as S.Schema<GetChangeResponse>;
+const GetChangeResponse = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<GetChangeResponse>;
 export interface GetCheckerIpRangesRequest {}
-const GetCheckerIpRangesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/checkeripranges" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCheckerIpRangesRequest",
-}) as any as S.Schema<GetCheckerIpRangesRequest>;
+const GetCheckerIpRangesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetCheckerIpRangesRequest>;
 export type IPAddressCidr = string;
 export type CheckerIpRanges = string[];
-const CheckerIpRanges = /*@__PURE__*/ S.Array(S.String);
+const CheckerIpRanges = /*@__PURE__*/ __L.at(__c12, 5);
 export interface GetCheckerIpRangesResponse {
   CheckerIpRanges: string[];
 }
-const GetCheckerIpRangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CheckerIpRanges: CheckerIpRanges }).pipe(ns),
-).annotate({
-  identifier: "GetCheckerIpRangesResponse",
-}) as any as S.Schema<GetCheckerIpRangesResponse>;
+const GetCheckerIpRangesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetCheckerIpRangesResponse>;
 export interface GetDNSSECRequest {
   HostedZoneId: string;
 }
-const GetDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/hostedzone/{HostedZoneId}/dnssec" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetDNSSECRequest" }) as any as S.Schema<GetDNSSECRequest>;
+const GetDNSSECRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetDNSSECRequest>;
 export type ServeSignature = string;
 export interface DNSSECStatus {
   ServeSignature?: string;
   StatusMessage?: string;
 }
-const DNSSECStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServeSignature: S.optional(S.String), StatusMessage: S.optional(S.String) }),
-).annotate({ identifier: "DNSSECStatus" }) as any as S.Schema<DNSSECStatus>;
+const DNSSECStatus = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<DNSSECStatus>;
 export type KeySigningKeys = KeySigningKey[];
-const KeySigningKeys = /*@__PURE__*/ S.Array(KeySigningKey);
+const KeySigningKeys = /*@__PURE__*/ __L.at(__c13, 1);
 export interface GetDNSSECResponse {
   Status: DNSSECStatus;
   KeySigningKeys: KeySigningKey[];
 }
-const GetDNSSECResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: DNSSECStatus, KeySigningKeys: KeySigningKeys }).pipe(ns),
-).annotate({ identifier: "GetDNSSECResponse" }) as any as S.Schema<GetDNSSECResponse>;
+const GetDNSSECResponse = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GetDNSSECResponse>;
 export interface GetGeoLocationRequest {
   ContinentCode?: string;
   CountryCode?: string;
   SubdivisionCode?: string;
 }
-const GetGeoLocationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContinentCode: S.optional(S.String).pipe(T.HttpQuery("continentcode")),
-    CountryCode: S.optional(S.String).pipe(T.HttpQuery("countrycode")),
-    SubdivisionCode: S.optional(S.String).pipe(T.HttpQuery("subdivisioncode")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/geolocation" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetGeoLocationRequest" }) as any as S.Schema<GetGeoLocationRequest>;
+const GetGeoLocationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetGeoLocationRequest>;
 export type GeoLocationContinentName = string;
 export type GeoLocationCountryName = string;
 export type GeoLocationSubdivisionName = string;
@@ -2345,206 +1681,117 @@ export interface GeoLocationDetails {
   SubdivisionCode?: string;
   SubdivisionName?: string;
 }
-const GeoLocationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContinentCode: S.optional(S.String),
-    ContinentName: S.optional(S.String),
-    CountryCode: S.optional(S.String),
-    CountryName: S.optional(S.String),
-    SubdivisionCode: S.optional(S.String),
-    SubdivisionName: S.optional(S.String),
-  }),
-).annotate({ identifier: "GeoLocationDetails" }) as any as S.Schema<GeoLocationDetails>;
+const GeoLocationDetails = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GeoLocationDetails>;
 export interface GetGeoLocationResponse {
   GeoLocationDetails: GeoLocationDetails;
 }
-const GetGeoLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GeoLocationDetails: GeoLocationDetails }).pipe(ns),
-).annotate({ identifier: "GetGeoLocationResponse" }) as any as S.Schema<GetGeoLocationResponse>;
+const GetGeoLocationResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetGeoLocationResponse>;
 export interface GetHealthCheckRequest {
   HealthCheckId: string;
 }
-const GetHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/healthcheck/{HealthCheckId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetHealthCheckRequest" }) as any as S.Schema<GetHealthCheckRequest>;
+const GetHealthCheckRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetHealthCheckRequest>;
 export interface GetHealthCheckResponse {
   HealthCheck: HealthCheck;
 }
-const GetHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheck: HealthCheck }).pipe(ns),
-).annotate({ identifier: "GetHealthCheckResponse" }) as any as S.Schema<GetHealthCheckResponse>;
+const GetHealthCheckResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetHealthCheckResponse>;
 export interface GetHealthCheckCountRequest {}
-const GetHealthCheckCountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/healthcheckcount" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetHealthCheckCountRequest",
-}) as any as S.Schema<GetHealthCheckCountRequest>;
+const GetHealthCheckCountRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetHealthCheckCountRequest>;
 export type HealthCheckCount = number;
 export interface GetHealthCheckCountResponse {
   HealthCheckCount: number;
 }
-const GetHealthCheckCountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheckCount: S.Number }).pipe(ns),
-).annotate({
-  identifier: "GetHealthCheckCountResponse",
-}) as any as S.Schema<GetHealthCheckCountResponse>;
+const GetHealthCheckCountResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetHealthCheckCountResponse>;
 export interface GetHealthCheckLastFailureReasonRequest {
   HealthCheckId: string;
 }
-const GetHealthCheckLastFailureReasonRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetHealthCheckLastFailureReasonRequest",
-}) as any as S.Schema<GetHealthCheckLastFailureReasonRequest>;
+const GetHealthCheckLastFailureReasonRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetHealthCheckLastFailureReasonRequest>;
 export type Status = string;
 export interface StatusReport {
   Status?: string;
   CheckedTime?: Date;
 }
-const StatusReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(S.String), CheckedTime: S.optional(T.DateFromString) }),
-).annotate({ identifier: "StatusReport" }) as any as S.Schema<StatusReport>;
+const StatusReport = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<StatusReport>;
 export interface HealthCheckObservation {
   Region?: HealthCheckRegion;
   IPAddress?: string;
   StatusReport?: StatusReport;
 }
-const HealthCheckObservation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Region: S.optional(HealthCheckRegion),
-    IPAddress: S.optional(S.String),
-    StatusReport: S.optional(StatusReport),
-  }),
-).annotate({ identifier: "HealthCheckObservation" }) as any as S.Schema<HealthCheckObservation>;
+const HealthCheckObservation = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<HealthCheckObservation>;
 export type HealthCheckObservations = HealthCheckObservation[];
-const HealthCheckObservations = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ HealthCheckObservation.pipe(
-    /*@__PURE__*/ T.XmlName("HealthCheckObservation"),
-  ).annotate({
-    identifier: "HealthCheckObservation",
-  }),
-);
+const HealthCheckObservations = /*@__PURE__*/ __L.at(__c14, 5);
 export interface GetHealthCheckLastFailureReasonResponse {
   HealthCheckObservations: HealthCheckObservation[];
 }
-const GetHealthCheckLastFailureReasonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
-).annotate({
-  identifier: "GetHealthCheckLastFailureReasonResponse",
-}) as any as S.Schema<GetHealthCheckLastFailureReasonResponse>;
+const GetHealthCheckLastFailureReasonResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetHealthCheckLastFailureReasonResponse>;
 export interface GetHealthCheckStatusRequest {
   HealthCheckId: string;
 }
-const GetHealthCheckStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/healthcheck/{HealthCheckId}/status" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetHealthCheckStatusRequest",
-}) as any as S.Schema<GetHealthCheckStatusRequest>;
+const GetHealthCheckStatusRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetHealthCheckStatusRequest>;
 export interface GetHealthCheckStatusResponse {
   HealthCheckObservations: HealthCheckObservation[];
 }
-const GetHealthCheckStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
-).annotate({
-  identifier: "GetHealthCheckStatusResponse",
-}) as any as S.Schema<GetHealthCheckStatusResponse>;
+const GetHealthCheckStatusResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetHealthCheckStatusResponse>;
 export interface GetHostedZoneRequest {
   Id: string;
 }
-const GetHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/hostedzone/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetHostedZoneRequest" }) as any as S.Schema<GetHostedZoneRequest>;
+const GetHostedZoneRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetHostedZoneRequest>;
 export type VPCs = VPC[];
-const VPCs = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ VPC.pipe(/*@__PURE__*/ T.XmlName("VPC")).annotate({ identifier: "VPC" }),
-);
+const VPCs = /*@__PURE__*/ __L.at(__c15, 2);
 export interface GetHostedZoneResponse {
   HostedZone: HostedZone;
   DelegationSet?: DelegationSet;
   VPCs?: VPC[];
 }
-const GetHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZone: HostedZone,
-    DelegationSet: S.optional(DelegationSet),
-    VPCs: S.optional(VPCs),
-  }).pipe(ns),
-).annotate({ identifier: "GetHostedZoneResponse" }) as any as S.Schema<GetHostedZoneResponse>;
+const GetHostedZoneResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GetHostedZoneResponse>;
 export interface GetHostedZoneCountRequest {}
-const GetHostedZoneCountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/hostedzonecount" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetHostedZoneCountRequest",
-}) as any as S.Schema<GetHostedZoneCountRequest>;
+const GetHostedZoneCountRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetHostedZoneCountRequest>;
 export type HostedZoneCount = number;
 export interface GetHostedZoneCountResponse {
   HostedZoneCount: number;
 }
-const GetHostedZoneCountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneCount: S.Number }).pipe(ns),
-).annotate({
-  identifier: "GetHostedZoneCountResponse",
-}) as any as S.Schema<GetHostedZoneCountResponse>;
+const GetHostedZoneCountResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetHostedZoneCountResponse>;
 export type HostedZoneLimitType =
   | "MAX_RRSETS_BY_ZONE"
   | "MAX_VPCS_ASSOCIATED_BY_ZONE"
@@ -2555,92 +1802,51 @@ export interface GetHostedZoneLimitRequest {
   Type: HostedZoneLimitType;
   HostedZoneId: string;
 }
-const GetHostedZoneLimitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: HostedZoneLimitType.pipe(T.HttpLabel("Type")),
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/hostedzonelimit/{HostedZoneId}/{Type}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetHostedZoneLimitRequest",
-}) as any as S.Schema<GetHostedZoneLimitRequest>;
+const GetHostedZoneLimitRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetHostedZoneLimitRequest>;
 export interface HostedZoneLimit {
   Type: HostedZoneLimitType;
   Value: number;
 }
-const HostedZoneLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: HostedZoneLimitType, Value: S.Number }),
-).annotate({ identifier: "HostedZoneLimit" }) as any as S.Schema<HostedZoneLimit>;
+const HostedZoneLimit = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<HostedZoneLimit>;
 export interface GetHostedZoneLimitResponse {
   Limit: HostedZoneLimit;
   Count: number;
 }
-const GetHostedZoneLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Limit: HostedZoneLimit, Count: S.Number }).pipe(ns),
-).annotate({
-  identifier: "GetHostedZoneLimitResponse",
-}) as any as S.Schema<GetHostedZoneLimitResponse>;
+const GetHostedZoneLimitResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetHostedZoneLimitResponse>;
 export interface GetQueryLoggingConfigRequest {
   Id: string;
 }
-const GetQueryLoggingConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/queryloggingconfig/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetQueryLoggingConfigRequest",
-}) as any as S.Schema<GetQueryLoggingConfigRequest>;
+const GetQueryLoggingConfigRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetQueryLoggingConfigRequest>;
 export interface GetQueryLoggingConfigResponse {
   QueryLoggingConfig: QueryLoggingConfig;
 }
-const GetQueryLoggingConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ QueryLoggingConfig: QueryLoggingConfig }).pipe(ns),
-).annotate({
-  identifier: "GetQueryLoggingConfigResponse",
-}) as any as S.Schema<GetQueryLoggingConfigResponse>;
+const GetQueryLoggingConfigResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<GetQueryLoggingConfigResponse>;
 export interface GetReusableDelegationSetRequest {
   Id: string;
 }
-const GetReusableDelegationSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/delegationset/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetReusableDelegationSetRequest",
-}) as any as S.Schema<GetReusableDelegationSetRequest>;
+const GetReusableDelegationSetRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GetReusableDelegationSetRequest>;
 export interface GetReusableDelegationSetResponse {
   DelegationSet: DelegationSet;
 }
-const GetReusableDelegationSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DelegationSet: DelegationSet }).pipe(ns),
-).annotate({
-  identifier: "GetReusableDelegationSetResponse",
-}) as any as S.Schema<GetReusableDelegationSetResponse>;
+const GetReusableDelegationSetResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetReusableDelegationSetResponse>;
 export type ReusableDelegationSetLimitType = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET" | (string & {});
 const ReusableDelegationSetLimitType = S.String;
 
@@ -2648,122 +1854,68 @@ export interface GetReusableDelegationSetLimitRequest {
   Type: ReusableDelegationSetLimitType;
   DelegationSetId: string;
 }
-const GetReusableDelegationSetLimitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: ReusableDelegationSetLimitType.pipe(T.HttpLabel("Type")),
-    DelegationSetId: S.String.pipe(T.HttpLabel("DelegationSetId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({
-        method: "GET",
-        uri: "/2013-04-01/reusabledelegationsetlimit/{DelegationSetId}/{Type}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetReusableDelegationSetLimitRequest",
-}) as any as S.Schema<GetReusableDelegationSetLimitRequest>;
+const GetReusableDelegationSetLimitRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetReusableDelegationSetLimitRequest>;
 export interface ReusableDelegationSetLimit {
   Type: ReusableDelegationSetLimitType;
   Value: number;
 }
-const ReusableDelegationSetLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: ReusableDelegationSetLimitType, Value: S.Number }),
-).annotate({
-  identifier: "ReusableDelegationSetLimit",
-}) as any as S.Schema<ReusableDelegationSetLimit>;
+const ReusableDelegationSetLimit = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ReusableDelegationSetLimit>;
 export interface GetReusableDelegationSetLimitResponse {
   Limit: ReusableDelegationSetLimit;
   Count: number;
 }
-const GetReusableDelegationSetLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Limit: ReusableDelegationSetLimit, Count: S.Number }).pipe(ns),
-).annotate({
-  identifier: "GetReusableDelegationSetLimitResponse",
-}) as any as S.Schema<GetReusableDelegationSetLimitResponse>;
+const GetReusableDelegationSetLimitResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetReusableDelegationSetLimitResponse>;
 export interface GetTrafficPolicyRequest {
   Id: string;
   Version: number;
 }
-const GetTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String.pipe(T.HttpLabel("Id")),
-    Version: S.Number.pipe(T.HttpLabel("Version")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicy/{Id}/{Version}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetTrafficPolicyRequest" }) as any as S.Schema<GetTrafficPolicyRequest>;
+const GetTrafficPolicyRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetTrafficPolicyRequest>;
 export interface GetTrafficPolicyResponse {
   TrafficPolicy: TrafficPolicy;
 }
-const GetTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns),
-).annotate({ identifier: "GetTrafficPolicyResponse" }) as any as S.Schema<GetTrafficPolicyResponse>;
+const GetTrafficPolicyResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GetTrafficPolicyResponse>;
 export interface GetTrafficPolicyInstanceRequest {
   Id: string;
 }
-const GetTrafficPolicyInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstance/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTrafficPolicyInstanceRequest",
-}) as any as S.Schema<GetTrafficPolicyInstanceRequest>;
+const GetTrafficPolicyInstanceRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetTrafficPolicyInstanceRequest>;
 export interface GetTrafficPolicyInstanceResponse {
   TrafficPolicyInstance: TrafficPolicyInstance;
 }
-const GetTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
-).annotate({
-  identifier: "GetTrafficPolicyInstanceResponse",
-}) as any as S.Schema<GetTrafficPolicyInstanceResponse>;
+const GetTrafficPolicyInstanceResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetTrafficPolicyInstanceResponse>;
 export interface GetTrafficPolicyInstanceCountRequest {}
-const GetTrafficPolicyInstanceCountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstancecount" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTrafficPolicyInstanceCountRequest",
-}) as any as S.Schema<GetTrafficPolicyInstanceCountRequest>;
+const GetTrafficPolicyInstanceCountRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetTrafficPolicyInstanceCountRequest>;
 export type TrafficPolicyInstanceCount = number;
 export interface GetTrafficPolicyInstanceCountResponse {
   TrafficPolicyInstanceCount: number;
 }
-const GetTrafficPolicyInstanceCountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicyInstanceCount: S.Number }).pipe(ns),
-).annotate({
-  identifier: "GetTrafficPolicyInstanceCountResponse",
-}) as any as S.Schema<GetTrafficPolicyInstanceCountResponse>;
+const GetTrafficPolicyInstanceCountResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<GetTrafficPolicyInstanceCountResponse>;
 export type PaginationToken = string;
 export interface ListCidrBlocksRequest {
   CollectionId: string;
@@ -2771,163 +1923,85 @@ export interface ListCidrBlocksRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCidrBlocksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CollectionId: S.String.pipe(T.HttpLabel("CollectionId")),
-    LocationName: S.optional(S.String).pipe(T.HttpQuery("location")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/cidrcollection/{CollectionId}/cidrblocks" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListCidrBlocksRequest" }) as any as S.Schema<ListCidrBlocksRequest>;
+const ListCidrBlocksRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListCidrBlocksRequest>;
 export interface CidrBlockSummary {
   CidrBlock?: string;
   LocationName?: string;
 }
-const CidrBlockSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CidrBlock: S.optional(S.String), LocationName: S.optional(S.String) }),
-).annotate({ identifier: "CidrBlockSummary" }) as any as S.Schema<CidrBlockSummary>;
+const CidrBlockSummary = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<CidrBlockSummary>;
 export type CidrBlockSummaries = CidrBlockSummary[];
-const CidrBlockSummaries = /*@__PURE__*/ S.Array(CidrBlockSummary);
+const CidrBlockSummaries = /*@__PURE__*/ __L.at(__c18, 0);
 export interface ListCidrBlocksResponse {
   NextToken?: string;
   CidrBlocks?: CidrBlockSummary[];
 }
-const ListCidrBlocksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), CidrBlocks: S.optional(CidrBlockSummaries) }).pipe(
-    ns,
-  ),
-).annotate({ identifier: "ListCidrBlocksResponse" }) as any as S.Schema<ListCidrBlocksResponse>;
+const ListCidrBlocksResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListCidrBlocksResponse>;
 export interface ListCidrCollectionsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCidrCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/cidrcollection" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCidrCollectionsRequest",
-}) as any as S.Schema<ListCidrCollectionsRequest>;
+const ListCidrCollectionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListCidrCollectionsRequest>;
 export interface CollectionSummary {
   Arn?: string;
   Id?: string;
   Name?: string;
   Version?: number;
 }
-const CollectionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CollectionSummary" }) as any as S.Schema<CollectionSummary>;
+const CollectionSummary = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<CollectionSummary>;
 export type CollectionSummaries = CollectionSummary[];
-const CollectionSummaries = /*@__PURE__*/ S.Array(CollectionSummary);
+const CollectionSummaries = /*@__PURE__*/ __L.at(__c18, 4);
 export interface ListCidrCollectionsResponse {
   NextToken?: string;
   CidrCollections?: CollectionSummary[];
 }
-const ListCidrCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    CidrCollections: S.optional(CollectionSummaries),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListCidrCollectionsResponse",
-}) as any as S.Schema<ListCidrCollectionsResponse>;
+const ListCidrCollectionsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListCidrCollectionsResponse>;
 export interface ListCidrLocationsRequest {
   CollectionId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCidrLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CollectionId: S.String.pipe(T.HttpLabel("CollectionId")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/cidrcollection/{CollectionId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListCidrLocationsRequest" }) as any as S.Schema<ListCidrLocationsRequest>;
+const ListCidrLocationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListCidrLocationsRequest>;
 export interface LocationSummary {
   LocationName?: string;
 }
-const LocationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationName: S.optional(S.String) }),
-).annotate({ identifier: "LocationSummary" }) as any as S.Schema<LocationSummary>;
+const LocationSummary = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<LocationSummary>;
 export type LocationSummaries = LocationSummary[];
-const LocationSummaries = /*@__PURE__*/ S.Array(LocationSummary);
+const LocationSummaries = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListCidrLocationsResponse {
   NextToken?: string;
   CidrLocations?: LocationSummary[];
 }
-const ListCidrLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), CidrLocations: S.optional(LocationSummaries) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "ListCidrLocationsResponse",
-}) as any as S.Schema<ListCidrLocationsResponse>;
+const ListCidrLocationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListCidrLocationsResponse>;
 export interface ListGeoLocationsRequest {
   StartContinentCode?: string;
   StartCountryCode?: string;
   StartSubdivisionCode?: string;
   MaxItems?: number;
 }
-const ListGeoLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartContinentCode: S.optional(S.String).pipe(T.HttpQuery("startcontinentcode")),
-    StartCountryCode: S.optional(S.String).pipe(T.HttpQuery("startcountrycode")),
-    StartSubdivisionCode: S.optional(S.String).pipe(T.HttpQuery("startsubdivisioncode")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/geolocations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListGeoLocationsRequest" }) as any as S.Schema<ListGeoLocationsRequest>;
+const ListGeoLocationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListGeoLocationsRequest>;
 export type GeoLocationDetailsList = GeoLocationDetails[];
-const GeoLocationDetailsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ GeoLocationDetails.pipe(/*@__PURE__*/ T.XmlName("GeoLocationDetails")).annotate({
-    identifier: "GeoLocationDetails",
-  }),
-);
+const GeoLocationDetailsList = /*@__PURE__*/ __L.at(__c19, 3);
 export type PageTruncated = boolean;
 export interface ListGeoLocationsResponse {
   GeoLocationDetailsList: GeoLocationDetails[];
@@ -2937,43 +2011,21 @@ export interface ListGeoLocationsResponse {
   NextSubdivisionCode?: string;
   MaxItems: number;
 }
-const ListGeoLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GeoLocationDetailsList: GeoLocationDetailsList,
-    IsTruncated: S.Boolean,
-    NextContinentCode: S.optional(S.String),
-    NextCountryCode: S.optional(S.String),
-    NextSubdivisionCode: S.optional(S.String),
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({ identifier: "ListGeoLocationsResponse" }) as any as S.Schema<ListGeoLocationsResponse>;
+const ListGeoLocationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListGeoLocationsResponse>;
 export type PageMarker = string;
 export interface ListHealthChecksRequest {
   Marker?: string;
   MaxItems?: number;
 }
-const ListHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/healthcheck" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListHealthChecksRequest" }) as any as S.Schema<ListHealthChecksRequest>;
+const ListHealthChecksRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListHealthChecksRequest>;
 export type HealthChecks = HealthCheck[];
-const HealthChecks = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ HealthCheck.pipe(/*@__PURE__*/ T.XmlName("HealthCheck")).annotate({
-    identifier: "HealthCheck",
-  }),
-);
+const HealthChecks = /*@__PURE__*/ __L.at(__c19, 6);
 export interface ListHealthChecksResponse {
   HealthChecks?: HealthCheck[];
   Marker?: string;
@@ -2981,15 +2033,10 @@ export interface ListHealthChecksResponse {
   NextMarker?: string;
   MaxItems: number;
 }
-const ListHealthChecksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HealthChecks: S.optional(HealthChecks),
-    Marker: S.optional(S.String),
-    IsTruncated: S.Boolean,
-    NextMarker: S.optional(S.String),
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({ identifier: "ListHealthChecksResponse" }) as any as S.Schema<ListHealthChecksResponse>;
+const ListHealthChecksResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListHealthChecksResponse>;
 export type HostedZoneType = "PrivateHostedZone" | (string & {});
 const HostedZoneType = S.String;
 
@@ -2999,30 +2046,12 @@ export interface ListHostedZonesRequest {
   DelegationSetId?: string;
   HostedZoneType?: HostedZoneType;
 }
-const ListHostedZonesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    DelegationSetId: S.optional(S.String).pipe(T.HttpQuery("delegationsetid")),
-    HostedZoneType: S.optional(HostedZoneType).pipe(T.HttpQuery("hostedzonetype")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/hostedzone" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListHostedZonesRequest" }) as any as S.Schema<ListHostedZonesRequest>;
+const ListHostedZonesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListHostedZonesRequest>;
 export type HostedZones = HostedZone[];
-const HostedZones = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ HostedZone.pipe(/*@__PURE__*/ T.XmlName("HostedZone")).annotate({
-    identifier: "HostedZone",
-  }),
-);
+const HostedZones = /*@__PURE__*/ __L.at(__c20, 1);
 export interface ListHostedZonesResponse {
   HostedZones?: HostedZone[];
   Marker?: string;
@@ -3030,39 +2059,19 @@ export interface ListHostedZonesResponse {
   NextMarker?: string;
   MaxItems: number;
 }
-const ListHostedZonesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZones: S.optional(HostedZones),
-    Marker: S.optional(S.String),
-    IsTruncated: S.Boolean,
-    NextMarker: S.optional(S.String),
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({ identifier: "ListHostedZonesResponse" }) as any as S.Schema<ListHostedZonesResponse>;
+const ListHostedZonesResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListHostedZonesResponse>;
 export interface ListHostedZonesByNameRequest {
   DNSName?: string;
   HostedZoneId?: string;
   MaxItems?: number;
 }
-const ListHostedZonesByNameRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DNSName: S.optional(S.String).pipe(T.HttpQuery("dnsname")),
-    HostedZoneId: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/hostedzonesbyname" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListHostedZonesByNameRequest",
-}) as any as S.Schema<ListHostedZonesByNameRequest>;
+const ListHostedZonesByNameRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListHostedZonesByNameRequest>;
 export interface ListHostedZonesByNameResponse {
   HostedZones?: HostedZone[];
   DNSName?: string;
@@ -3072,124 +2081,63 @@ export interface ListHostedZonesByNameResponse {
   NextHostedZoneId?: string;
   MaxItems: number;
 }
-const ListHostedZonesByNameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZones: S.optional(HostedZones),
-    DNSName: S.optional(S.String),
-    HostedZoneId: S.optional(S.String),
-    IsTruncated: S.Boolean,
-    NextDNSName: S.optional(S.String),
-    NextHostedZoneId: S.optional(S.String),
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({
-  identifier: "ListHostedZonesByNameResponse",
-}) as any as S.Schema<ListHostedZonesByNameResponse>;
+const ListHostedZonesByNameResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListHostedZonesByNameResponse>;
 export interface ListHostedZonesByVPCRequest {
   VPCId: string;
   VPCRegion: VPCRegion;
   MaxItems?: number;
   NextToken?: string;
 }
-const ListHostedZonesByVPCRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VPCId: S.String.pipe(T.HttpQuery("vpcid")),
-    VPCRegion: VPCRegion.pipe(T.HttpQuery("vpcregion")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/hostedzonesbyvpc" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListHostedZonesByVPCRequest",
-}) as any as S.Schema<ListHostedZonesByVPCRequest>;
+const ListHostedZonesByVPCRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListHostedZonesByVPCRequest>;
 export type AWSAccountID = string;
 export type HostedZoneOwningService = string;
 export interface HostedZoneOwner {
   OwningAccount?: string;
   OwningService?: string;
 }
-const HostedZoneOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OwningAccount: S.optional(S.String), OwningService: S.optional(S.String) }),
-).annotate({ identifier: "HostedZoneOwner" }) as any as S.Schema<HostedZoneOwner>;
+const HostedZoneOwner = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<HostedZoneOwner>;
 export interface HostedZoneSummary {
   HostedZoneId: string;
   Name: string;
   Owner: HostedZoneOwner;
 }
-const HostedZoneSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZoneId: S.String, Name: S.String, Owner: HostedZoneOwner }),
-).annotate({ identifier: "HostedZoneSummary" }) as any as S.Schema<HostedZoneSummary>;
+const HostedZoneSummary = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<HostedZoneSummary>;
 export type HostedZoneSummaries = HostedZoneSummary[];
-const HostedZoneSummaries = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ HostedZoneSummary.pipe(/*@__PURE__*/ T.XmlName("HostedZoneSummary")).annotate({
-    identifier: "HostedZoneSummary",
-  }),
-);
+const HostedZoneSummaries = /*@__PURE__*/ __L.at(__c21, 0);
 export interface ListHostedZonesByVPCResponse {
   HostedZoneSummaries: HostedZoneSummary[];
   MaxItems: number;
   NextToken?: string;
 }
-const ListHostedZonesByVPCResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneSummaries: HostedZoneSummaries,
-    MaxItems: S.Number,
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListHostedZonesByVPCResponse",
-}) as any as S.Schema<ListHostedZonesByVPCResponse>;
+const ListHostedZonesByVPCResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListHostedZonesByVPCResponse>;
 export interface ListQueryLoggingConfigsRequest {
   HostedZoneId?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListQueryLoggingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/queryloggingconfig" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListQueryLoggingConfigsRequest",
-}) as any as S.Schema<ListQueryLoggingConfigsRequest>;
+const ListQueryLoggingConfigsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListQueryLoggingConfigsRequest>;
 export type QueryLoggingConfigs = QueryLoggingConfig[];
-const QueryLoggingConfigs = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ QueryLoggingConfig.pipe(/*@__PURE__*/ T.XmlName("QueryLoggingConfig")).annotate({
-    identifier: "QueryLoggingConfig",
-  }),
-);
+const QueryLoggingConfigs = /*@__PURE__*/ __L.at(__c21, 3);
 export interface ListQueryLoggingConfigsResponse {
   QueryLoggingConfigs?: QueryLoggingConfig[];
   NextToken?: string;
 }
-const ListQueryLoggingConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    QueryLoggingConfigs: S.optional(QueryLoggingConfigs),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListQueryLoggingConfigsResponse",
-}) as any as S.Schema<ListQueryLoggingConfigsResponse>;
+const ListQueryLoggingConfigsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ListQueryLoggingConfigsResponse>;
 export interface ListResourceRecordSetsRequest {
   HostedZoneId: string;
   StartRecordName?: string;
@@ -3197,33 +2145,12 @@ export interface ListResourceRecordSetsRequest {
   StartRecordIdentifier?: string;
   MaxItems?: number;
 }
-const ListResourceRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    StartRecordName: S.optional(S.String).pipe(T.HttpQuery("name")),
-    StartRecordType: S.optional(RRType).pipe(T.HttpQuery("type")),
-    StartRecordIdentifier: S.optional(S.String).pipe(T.HttpQuery("identifier")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/hostedzone/{HostedZoneId}/rrset" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListResourceRecordSetsRequest",
-}) as any as S.Schema<ListResourceRecordSetsRequest>;
+const ListResourceRecordSetsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ListResourceRecordSetsRequest>;
 export type ResourceRecordSets = ResourceRecordSet[];
-const ResourceRecordSets = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ ResourceRecordSet.pipe(/*@__PURE__*/ T.XmlName("ResourceRecordSet")).annotate({
-    identifier: "ResourceRecordSet",
-  }),
-);
+const ResourceRecordSets = /*@__PURE__*/ __L.at(__c21, 6);
 export interface ListResourceRecordSetsResponse {
   ResourceRecordSets?: ResourceRecordSet[];
   IsTruncated: boolean;
@@ -3232,46 +2159,20 @@ export interface ListResourceRecordSetsResponse {
   NextRecordIdentifier?: string;
   MaxItems: number;
 }
-const ListResourceRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceRecordSets: S.optional(ResourceRecordSets),
-    IsTruncated: S.Boolean,
-    NextRecordName: S.optional(S.String),
-    NextRecordType: S.optional(RRType),
-    NextRecordIdentifier: S.optional(S.String),
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({
-  identifier: "ListResourceRecordSetsResponse",
-}) as any as S.Schema<ListResourceRecordSetsResponse>;
+const ListResourceRecordSetsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListResourceRecordSetsResponse>;
 export interface ListReusableDelegationSetsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-const ListReusableDelegationSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/delegationset" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListReusableDelegationSetsRequest",
-}) as any as S.Schema<ListReusableDelegationSetsRequest>;
+const ListReusableDelegationSetsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListReusableDelegationSetsRequest>;
 export type DelegationSets = DelegationSet[];
-const DelegationSets = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ DelegationSet.pipe(/*@__PURE__*/ T.XmlName("DelegationSet")).annotate({
-    identifier: "DelegationSet",
-  }),
-);
+const DelegationSets = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListReusableDelegationSetsResponse {
   DelegationSets: DelegationSet[];
   Marker: string;
@@ -3279,121 +2180,58 @@ export interface ListReusableDelegationSetsResponse {
   NextMarker?: string;
   MaxItems: number;
 }
-const ListReusableDelegationSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DelegationSets: DelegationSets,
-    Marker: S.String,
-    IsTruncated: S.Boolean,
-    NextMarker: S.optional(S.String),
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({
-  identifier: "ListReusableDelegationSetsResponse",
-}) as any as S.Schema<ListReusableDelegationSetsResponse>;
+const ListReusableDelegationSetsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListReusableDelegationSetsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceType: TagResourceType;
   ResourceId: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
-    ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/tags/{ResourceType}/{ResourceId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ResourceTagSet {
   ResourceType?: TagResourceType;
   ResourceId?: string;
   Tags?: Tag[];
 }
-const ResourceTagSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceType: S.optional(TagResourceType),
-    ResourceId: S.optional(S.String),
-    Tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "ResourceTagSet" }) as any as S.Schema<ResourceTagSet>;
+const ResourceTagSet = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<ResourceTagSet>;
 export interface ListTagsForResourceResponse {
   ResourceTagSet: ResourceTagSet;
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceTagSet: ResourceTagSet }).pipe(ns),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type TagResourceIdList = string[];
-const TagResourceIdList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ResourceId")),
-);
+const TagResourceIdList = /*@__PURE__*/ __L.at(__c22, 6);
 export interface ListTagsForResourcesRequest {
   ResourceType: TagResourceType;
   ResourceIds: string[];
 }
-const ListTagsForResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
-    ResourceIds: TagResourceIdList,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/tags/{ResourceType}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourcesRequest",
-}) as any as S.Schema<ListTagsForResourcesRequest>;
+const ListTagsForResourcesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ListTagsForResourcesRequest>;
 export type ResourceTagSetList = ResourceTagSet[];
-const ResourceTagSetList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ ResourceTagSet.pipe(/*@__PURE__*/ T.XmlName("ResourceTagSet")).annotate({
-    identifier: "ResourceTagSet",
-  }),
-);
+const ResourceTagSetList = /*@__PURE__*/ __L.at(__c23, 0);
 export interface ListTagsForResourcesResponse {
   ResourceTagSets: ResourceTagSet[];
 }
-const ListTagsForResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceTagSets: ResourceTagSetList }).pipe(ns),
-).annotate({
-  identifier: "ListTagsForResourcesResponse",
-}) as any as S.Schema<ListTagsForResourcesResponse>;
+const ListTagsForResourcesResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<ListTagsForResourcesResponse>;
 export interface ListTrafficPoliciesRequest {
   TrafficPolicyIdMarker?: string;
   MaxItems?: number;
 }
-const ListTrafficPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicyIdMarker: S.optional(S.String).pipe(T.HttpQuery("trafficpolicyid")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicies" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTrafficPoliciesRequest",
-}) as any as S.Schema<ListTrafficPoliciesRequest>;
+const ListTrafficPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ListTrafficPoliciesRequest>;
 export interface TrafficPolicySummary {
   Id: string;
   Name: string;
@@ -3401,77 +2239,34 @@ export interface TrafficPolicySummary {
   LatestVersion: number;
   TrafficPolicyCount: number;
 }
-const TrafficPolicySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    Name: S.String,
-    Type: RRType,
-    LatestVersion: S.Number,
-    TrafficPolicyCount: S.Number,
-  }),
-).annotate({ identifier: "TrafficPolicySummary" }) as any as S.Schema<TrafficPolicySummary>;
+const TrafficPolicySummary = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<TrafficPolicySummary>;
 export type TrafficPolicySummaries = TrafficPolicySummary[];
-const TrafficPolicySummaries = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ TrafficPolicySummary.pipe(/*@__PURE__*/ T.XmlName("TrafficPolicySummary")).annotate(
-    {
-      identifier: "TrafficPolicySummary",
-    },
-  ),
-);
+const TrafficPolicySummaries = /*@__PURE__*/ __L.at(__c23, 4);
 export interface ListTrafficPoliciesResponse {
   TrafficPolicySummaries: TrafficPolicySummary[];
   IsTruncated: boolean;
   TrafficPolicyIdMarker: string;
   MaxItems: number;
 }
-const ListTrafficPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicySummaries: TrafficPolicySummaries,
-    IsTruncated: S.Boolean,
-    TrafficPolicyIdMarker: S.String,
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({
-  identifier: "ListTrafficPoliciesResponse",
-}) as any as S.Schema<ListTrafficPoliciesResponse>;
+const ListTrafficPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ListTrafficPoliciesResponse>;
 export interface ListTrafficPolicyInstancesRequest {
   HostedZoneIdMarker?: string;
   TrafficPolicyInstanceNameMarker?: string;
   TrafficPolicyInstanceTypeMarker?: RRType;
   MaxItems?: number;
 }
-const ListTrafficPolicyInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneIdMarker: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
-    TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
-      T.HttpQuery("trafficpolicyinstancename"),
-    ),
-    TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
-      T.HttpQuery("trafficpolicyinstancetype"),
-    ),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstances" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTrafficPolicyInstancesRequest",
-}) as any as S.Schema<ListTrafficPolicyInstancesRequest>;
+const ListTrafficPolicyInstancesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ListTrafficPolicyInstancesRequest>;
 export type TrafficPolicyInstances = TrafficPolicyInstance[];
-const TrafficPolicyInstances = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ TrafficPolicyInstance.pipe(
-    /*@__PURE__*/ T.XmlName("TrafficPolicyInstance"),
-  ).annotate({
-    identifier: "TrafficPolicyInstance",
-  }),
-);
+const TrafficPolicyInstances = /*@__PURE__*/ __L.at(__c23, 7);
 export interface ListTrafficPolicyInstancesResponse {
   TrafficPolicyInstances: TrafficPolicyInstance[];
   HostedZoneIdMarker?: string;
@@ -3480,48 +2275,20 @@ export interface ListTrafficPolicyInstancesResponse {
   IsTruncated: boolean;
   MaxItems: number;
 }
-const ListTrafficPolicyInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicyInstances: TrafficPolicyInstances,
-    HostedZoneIdMarker: S.optional(S.String),
-    TrafficPolicyInstanceNameMarker: S.optional(S.String),
-    TrafficPolicyInstanceTypeMarker: S.optional(RRType),
-    IsTruncated: S.Boolean,
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({
-  identifier: "ListTrafficPolicyInstancesResponse",
-}) as any as S.Schema<ListTrafficPolicyInstancesResponse>;
+const ListTrafficPolicyInstancesResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListTrafficPolicyInstancesResponse>;
 export interface ListTrafficPolicyInstancesByHostedZoneRequest {
   HostedZoneId: string;
   TrafficPolicyInstanceNameMarker?: string;
   TrafficPolicyInstanceTypeMarker?: RRType;
   MaxItems?: number;
 }
-const ListTrafficPolicyInstancesByHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpQuery("id")),
-    TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
-      T.HttpQuery("trafficpolicyinstancename"),
-    ),
-    TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
-      T.HttpQuery("trafficpolicyinstancetype"),
-    ),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstances/hostedzone" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTrafficPolicyInstancesByHostedZoneRequest",
-}) as any as S.Schema<ListTrafficPolicyInstancesByHostedZoneRequest>;
+const ListTrafficPolicyInstancesByHostedZoneRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListTrafficPolicyInstancesByHostedZoneRequest>;
 export interface ListTrafficPolicyInstancesByHostedZoneResponse {
   TrafficPolicyInstances: TrafficPolicyInstance[];
   TrafficPolicyInstanceNameMarker?: string;
@@ -3529,17 +2296,10 @@ export interface ListTrafficPolicyInstancesByHostedZoneResponse {
   IsTruncated: boolean;
   MaxItems: number;
 }
-const ListTrafficPolicyInstancesByHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicyInstances: TrafficPolicyInstances,
-    TrafficPolicyInstanceNameMarker: S.optional(S.String),
-    TrafficPolicyInstanceTypeMarker: S.optional(RRType),
-    IsTruncated: S.Boolean,
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({
-  identifier: "ListTrafficPolicyInstancesByHostedZoneResponse",
-}) as any as S.Schema<ListTrafficPolicyInstancesByHostedZoneResponse>;
+const ListTrafficPolicyInstancesByHostedZoneResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ListTrafficPolicyInstancesByHostedZoneResponse>;
 export interface ListTrafficPolicyInstancesByPolicyRequest {
   TrafficPolicyId: string;
   TrafficPolicyVersion: number;
@@ -3548,32 +2308,10 @@ export interface ListTrafficPolicyInstancesByPolicyRequest {
   TrafficPolicyInstanceTypeMarker?: RRType;
   MaxItems?: number;
 }
-const ListTrafficPolicyInstancesByPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicyId: S.String.pipe(T.HttpQuery("id")),
-    TrafficPolicyVersion: S.Number.pipe(T.HttpQuery("version")),
-    HostedZoneIdMarker: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
-    TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
-      T.HttpQuery("trafficpolicyinstancename"),
-    ),
-    TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
-      T.HttpQuery("trafficpolicyinstancetype"),
-    ),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstances/trafficpolicy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTrafficPolicyInstancesByPolicyRequest",
-}) as any as S.Schema<ListTrafficPolicyInstancesByPolicyRequest>;
+const ListTrafficPolicyInstancesByPolicyRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ListTrafficPolicyInstancesByPolicyRequest>;
 export interface ListTrafficPolicyInstancesByPolicyResponse {
   TrafficPolicyInstances: TrafficPolicyInstance[];
   HostedZoneIdMarker?: string;
@@ -3582,106 +2320,50 @@ export interface ListTrafficPolicyInstancesByPolicyResponse {
   IsTruncated: boolean;
   MaxItems: number;
 }
-const ListTrafficPolicyInstancesByPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicyInstances: TrafficPolicyInstances,
-    HostedZoneIdMarker: S.optional(S.String),
-    TrafficPolicyInstanceNameMarker: S.optional(S.String),
-    TrafficPolicyInstanceTypeMarker: S.optional(RRType),
-    IsTruncated: S.Boolean,
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({
-  identifier: "ListTrafficPolicyInstancesByPolicyResponse",
-}) as any as S.Schema<ListTrafficPolicyInstancesByPolicyResponse>;
+const ListTrafficPolicyInstancesByPolicyResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ListTrafficPolicyInstancesByPolicyResponse>;
 export type TrafficPolicyVersionMarker = string;
 export interface ListTrafficPolicyVersionsRequest {
   Id: string;
   TrafficPolicyVersionMarker?: string;
   MaxItems?: number;
 }
-const ListTrafficPolicyVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String.pipe(T.HttpLabel("Id")),
-    TrafficPolicyVersionMarker: S.optional(S.String).pipe(T.HttpQuery("trafficpolicyversion")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicies/{Id}/versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTrafficPolicyVersionsRequest",
-}) as any as S.Schema<ListTrafficPolicyVersionsRequest>;
+const ListTrafficPolicyVersionsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListTrafficPolicyVersionsRequest>;
 export type TrafficPolicies = TrafficPolicy[];
-const TrafficPolicies = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ TrafficPolicy.pipe(/*@__PURE__*/ T.XmlName("TrafficPolicy")).annotate({
-    identifier: "TrafficPolicy",
-  }),
-);
+const TrafficPolicies = /*@__PURE__*/ __L.at(__c24, 6);
 export interface ListTrafficPolicyVersionsResponse {
   TrafficPolicies: TrafficPolicy[];
   IsTruncated: boolean;
   TrafficPolicyVersionMarker: string;
   MaxItems: number;
 }
-const ListTrafficPolicyVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicies: TrafficPolicies,
-    IsTruncated: S.Boolean,
-    TrafficPolicyVersionMarker: S.String,
-    MaxItems: S.Number,
-  }).pipe(ns),
-).annotate({
-  identifier: "ListTrafficPolicyVersionsResponse",
-}) as any as S.Schema<ListTrafficPolicyVersionsResponse>;
+const ListTrafficPolicyVersionsResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ListTrafficPolicyVersionsResponse>;
 export interface ListVPCAssociationAuthorizationsRequest {
   HostedZoneId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListVPCAssociationAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({
-        method: "GET",
-        uri: "/2013-04-01/hostedzone/{HostedZoneId}/authorizevpcassociation",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListVPCAssociationAuthorizationsRequest",
-}) as any as S.Schema<ListVPCAssociationAuthorizationsRequest>;
+const ListVPCAssociationAuthorizationsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ListVPCAssociationAuthorizationsRequest>;
 export interface ListVPCAssociationAuthorizationsResponse {
   HostedZoneId: string;
   NextToken?: string;
   VPCs?: VPC[];
 }
-const ListVPCAssociationAuthorizationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String,
-    NextToken: S.optional(S.String),
-    VPCs: S.optional(VPCs),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListVPCAssociationAuthorizationsResponse",
-}) as any as S.Schema<ListVPCAssociationAuthorizationsResponse>;
+const ListVPCAssociationAuthorizationsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListVPCAssociationAuthorizationsResponse>;
 export type SubnetMask = string;
 export interface TestDNSAnswerRequest {
   HostedZoneId: string;
@@ -3691,32 +2373,14 @@ export interface TestDNSAnswerRequest {
   EDNS0ClientSubnetIP?: string;
   EDNS0ClientSubnetMask?: string;
 }
-const TestDNSAnswerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpQuery("hostedzoneid")),
-    RecordName: S.String.pipe(T.HttpQuery("recordname")),
-    RecordType: RRType.pipe(T.HttpQuery("recordtype")),
-    ResolverIP: S.optional(S.String).pipe(T.HttpQuery("resolverip")),
-    EDNS0ClientSubnetIP: S.optional(S.String).pipe(T.HttpQuery("edns0clientsubnetip")),
-    EDNS0ClientSubnetMask: S.optional(S.String).pipe(T.HttpQuery("edns0clientsubnetmask")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2013-04-01/testdnsanswer" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "TestDNSAnswerRequest" }) as any as S.Schema<TestDNSAnswerRequest>;
+const TestDNSAnswerRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<TestDNSAnswerRequest>;
 export type Nameserver = string;
 export type RecordDataEntry = string;
 export type RecordData = string[];
-const RecordData = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("RecordDataEntry")),
-);
+const RecordData = /*@__PURE__*/ __L.at(__c25, 3);
 export type DNSRCode = string;
 export type TransportProtocol = string;
 export interface TestDNSAnswerResponse {
@@ -3727,16 +2391,10 @@ export interface TestDNSAnswerResponse {
   ResponseCode: string;
   Protocol: string;
 }
-const TestDNSAnswerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Nameserver: S.String,
-    RecordName: S.String,
-    RecordType: RRType,
-    RecordData: RecordData,
-    ResponseCode: S.String,
-    Protocol: S.String,
-  }).pipe(ns),
-).annotate({ identifier: "TestDNSAnswerResponse" }) as any as S.Schema<TestDNSAnswerResponse>;
+const TestDNSAnswerResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<TestDNSAnswerResponse>;
 export type ResettableElementName =
   | "FullyQualifiedDomainName"
   | "Regions"
@@ -3746,9 +2404,7 @@ export type ResettableElementName =
 const ResettableElementName = S.String;
 
 export type ResettableElementNameList = ResettableElementName[];
-const ResettableElementNameList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ ResettableElementName.pipe(/*@__PURE__*/ T.XmlName("ResettableElementName")),
-);
+const ResettableElementNameList = /*@__PURE__*/ __L.at(__c25, 5);
 export interface UpdateHealthCheckRequest {
   HealthCheckId: string;
   HealthCheckVersion?: number;
@@ -3768,172 +2424,82 @@ export interface UpdateHealthCheckRequest {
   InsufficientDataHealthStatus?: InsufficientDataHealthStatus;
   ResetElements?: ResettableElementName[];
 }
-const UpdateHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")),
-    HealthCheckVersion: S.optional(S.Number),
-    IPAddress: S.optional(S.String),
-    Port: S.optional(S.Number),
-    ResourcePath: S.optional(S.String),
-    FullyQualifiedDomainName: S.optional(S.String),
-    SearchString: S.optional(S.String),
-    FailureThreshold: S.optional(S.Number),
-    Inverted: S.optional(S.Boolean),
-    Disabled: S.optional(S.Boolean),
-    HealthThreshold: S.optional(S.Number),
-    ChildHealthChecks: S.optional(ChildHealthCheckList),
-    EnableSNI: S.optional(S.Boolean),
-    Regions: S.optional(HealthCheckRegionList),
-    AlarmIdentifier: S.optional(AlarmIdentifier),
-    InsufficientDataHealthStatus: S.optional(InsufficientDataHealthStatus),
-    ResetElements: S.optional(ResettableElementNameList),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/healthcheck/{HealthCheckId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateHealthCheckRequest" }) as any as S.Schema<UpdateHealthCheckRequest>;
+const UpdateHealthCheckRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<UpdateHealthCheckRequest>;
 export interface UpdateHealthCheckResponse {
   HealthCheck: HealthCheck;
 }
-const UpdateHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HealthCheck: HealthCheck }).pipe(ns),
-).annotate({
-  identifier: "UpdateHealthCheckResponse",
-}) as any as S.Schema<UpdateHealthCheckResponse>;
+const UpdateHealthCheckResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<UpdateHealthCheckResponse>;
 export interface UpdateHostedZoneCommentRequest {
   Id: string;
   Comment?: string;
 }
-const UpdateHostedZoneCommentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")), Comment: S.optional(S.String) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateHostedZoneCommentRequest",
-}) as any as S.Schema<UpdateHostedZoneCommentRequest>;
+const UpdateHostedZoneCommentRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<UpdateHostedZoneCommentRequest>;
 export interface UpdateHostedZoneCommentResponse {
   HostedZone: HostedZone;
 }
-const UpdateHostedZoneCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HostedZone: HostedZone }).pipe(ns),
-).annotate({
-  identifier: "UpdateHostedZoneCommentResponse",
-}) as any as S.Schema<UpdateHostedZoneCommentResponse>;
+const UpdateHostedZoneCommentResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<UpdateHostedZoneCommentResponse>;
 export type AcceleratedRecoveryEnabled = boolean;
 export interface UpdateHostedZoneFeaturesRequest {
   HostedZoneId: string;
   EnableAcceleratedRecovery?: boolean;
 }
-const UpdateHostedZoneFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
-    EnableAcceleratedRecovery: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/features" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateHostedZoneFeaturesRequest",
-}) as any as S.Schema<UpdateHostedZoneFeaturesRequest>;
+const UpdateHostedZoneFeaturesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<UpdateHostedZoneFeaturesRequest>;
 export interface UpdateHostedZoneFeaturesResponse {}
-const UpdateHostedZoneFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateHostedZoneFeaturesResponse",
-}) as any as S.Schema<UpdateHostedZoneFeaturesResponse>;
+const UpdateHostedZoneFeaturesResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<UpdateHostedZoneFeaturesResponse>;
 export interface UpdateTrafficPolicyCommentRequest {
   Id: string;
   Version: number;
   Comment: string;
 }
-const UpdateTrafficPolicyCommentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String.pipe(T.HttpLabel("Id")),
-    Version: S.Number.pipe(T.HttpLabel("Version")),
-    Comment: S.String,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy/{Id}/{Version}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateTrafficPolicyCommentRequest",
-}) as any as S.Schema<UpdateTrafficPolicyCommentRequest>;
+const UpdateTrafficPolicyCommentRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<UpdateTrafficPolicyCommentRequest>;
 export interface UpdateTrafficPolicyCommentResponse {
   TrafficPolicy: TrafficPolicy;
 }
-const UpdateTrafficPolicyCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns),
-).annotate({
-  identifier: "UpdateTrafficPolicyCommentResponse",
-}) as any as S.Schema<UpdateTrafficPolicyCommentResponse>;
+const UpdateTrafficPolicyCommentResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<UpdateTrafficPolicyCommentResponse>;
 export interface UpdateTrafficPolicyInstanceRequest {
   Id: string;
   TTL: number;
   TrafficPolicyId: string;
   TrafficPolicyVersion: number;
 }
-const UpdateTrafficPolicyInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String.pipe(T.HttpLabel("Id")),
-    TTL: S.Number,
-    TrafficPolicyId: S.String,
-    TrafficPolicyVersion: S.Number,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicyinstance/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateTrafficPolicyInstanceRequest",
-}) as any as S.Schema<UpdateTrafficPolicyInstanceRequest>;
+const UpdateTrafficPolicyInstanceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<UpdateTrafficPolicyInstanceRequest>;
 export interface UpdateTrafficPolicyInstanceResponse {
   TrafficPolicyInstance: TrafficPolicyInstance;
 }
-const UpdateTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
-).annotate({
-  identifier: "UpdateTrafficPolicyInstanceResponse",
-}) as any as S.Schema<UpdateTrafficPolicyInstanceResponse>;
+const UpdateTrafficPolicyInstanceResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<UpdateTrafficPolicyInstanceResponse>;
 export type ErrorMessage = string;
 export type ErrorMessages = string[];
-const ErrorMessages = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Message")),
-);
+const ErrorMessages = /*@__PURE__*/ __L.at(__c27, 0);
 export type ActivateKeySigningKeyError =
   | ConcurrentModification
   | InvalidInput
@@ -6601,3 +5167,2381 @@ export const updateTrafficPolicyInstance: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTrafficPolicyInstance",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          Name: S.String.pipe(T.HttpLabel("Name")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "POST",
+              uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/activate",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ActivateKeySigningKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          Status: ChangeStatus,
+          SubmittedAt: T.DateFromString,
+          Comment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChangeInfo" });
+    case 2:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "ActivateKeySigningKeyResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ VPCRegion: S.optional(VPCRegion), VPCId: S.optional(S.String) }),
+      ).annotate({ identifier: "VPC" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          VPC: VPC,
+          Comment: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/associatevpc" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateVPCWithHostedZoneRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "AssociateVPCWithHostedZoneResponse",
+      });
+    case 6:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Cidr")));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          LocationName: S.String,
+          Action: CidrCollectionChangeAction,
+          CidrList: CidrList,
+        }),
+      ).annotate({ identifier: "CidrCollectionChange" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CidrCollectionChange);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String.pipe(T.HttpLabel("Id")),
+          CollectionVersion: S.optional(S.Number),
+          Changes: CidrCollectionChanges,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/cidrcollection/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ChangeCidrCollectionRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Id: S.String }).pipe(ns)).annotate({
+        identifier: "ChangeCidrCollectionResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ContinentCode: S.optional(S.String),
+          CountryCode: S.optional(S.String),
+          SubdivisionCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeoLocation" });
+    case 4:
+      return S.suspend(() => S.Struct({ Value: S.String })).annotate({
+        identifier: "ResourceRecord",
+      });
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ ResourceRecord.pipe(/*@__PURE__*/ T.XmlName("ResourceRecord")).annotate({
+          identifier: "ResourceRecord",
+        }),
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ HostedZoneId: S.String, DNSName: S.String, EvaluateTargetHealth: S.Boolean }),
+      ).annotate({ identifier: "AliasTarget" });
+    case 7:
+      return S.suspend(() => S.Struct({ CollectionId: S.String, LocationName: S.String })).annotate(
+        { identifier: "CidrRoutingConfig" },
+      );
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Latitude: S.String, Longitude: S.String })).annotate({
+        identifier: "Coordinates",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AWSRegion: S.optional(S.String),
+          LocalZoneGroup: S.optional(S.String),
+          Coordinates: S.optional(Coordinates),
+          Bias: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GeoProximityLocation" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Type: RRType,
+          SetIdentifier: S.optional(S.String),
+          Weight: S.optional(S.Number),
+          Region: S.optional(ResourceRecordSetRegion),
+          GeoLocation: S.optional(GeoLocation),
+          Failover: S.optional(ResourceRecordSetFailover),
+          MultiValueAnswer: S.optional(S.Boolean),
+          TTL: S.optional(S.Number),
+          ResourceRecords: S.optional(ResourceRecords),
+          AliasTarget: S.optional(AliasTarget),
+          HealthCheckId: S.optional(S.String),
+          TrafficPolicyInstanceId: S.optional(S.String),
+          CidrRoutingConfig: S.optional(CidrRoutingConfig),
+          GeoProximityLocation: S.optional(GeoProximityLocation),
+        }),
+      ).annotate({ identifier: "ResourceRecordSet" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Action: ChangeAction, ResourceRecordSet: ResourceRecordSet }),
+      ).annotate({ identifier: "Change" });
+    case 4:
+      return S.Array(
+        /*@__PURE__*/ Change.pipe(/*@__PURE__*/ T.XmlName("Change")).annotate({
+          identifier: "Change",
+        }),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Comment: S.optional(S.String), Changes: Changes }),
+      ).annotate({ identifier: "ChangeBatch" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          ChangeBatch: ChangeBatch,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/rrset" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ChangeResourceRecordSetsRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "ChangeResourceRecordSetsResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+      );
+    case 2:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
+          ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+          AddTags: S.optional(TagList),
+          RemoveTagKeys: S.optional(TagKeyList),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/tags/{ResourceType}/{ResourceId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ChangeTagsForResourceRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "ChangeTagsForResourceResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, CallerReference: S.String }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/cidrcollection" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateCidrCollectionRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CidrCollection" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Collection: S.optional(CidrCollection),
+          Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateCidrCollectionResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ChildHealthCheck")));
+    case 1:
+      return S.Array(/*@__PURE__*/ HealthCheckRegion.pipe(/*@__PURE__*/ T.XmlName("Region")));
+    case 2:
+      return S.suspend(() => S.Struct({ Region: CloudWatchRegion, Name: S.String })).annotate({
+        identifier: "AlarmIdentifier",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          IPAddress: S.optional(S.String),
+          Port: S.optional(S.Number),
+          Type: HealthCheckType,
+          ResourcePath: S.optional(S.String),
+          FullyQualifiedDomainName: S.optional(S.String),
+          SearchString: S.optional(S.String),
+          RequestInterval: S.optional(S.Number),
+          FailureThreshold: S.optional(S.Number),
+          MeasureLatency: S.optional(S.Boolean),
+          Inverted: S.optional(S.Boolean),
+          Disabled: S.optional(S.Boolean),
+          HealthThreshold: S.optional(S.Number),
+          ChildHealthChecks: S.optional(ChildHealthCheckList),
+          EnableSNI: S.optional(S.Boolean),
+          Regions: S.optional(HealthCheckRegionList),
+          AlarmIdentifier: S.optional(AlarmIdentifier),
+          InsufficientDataHealthStatus: S.optional(InsufficientDataHealthStatus),
+          RoutingControlArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HealthCheckConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ CallerReference: S.String, HealthCheckConfig: HealthCheckConfig }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/healthcheck" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateHealthCheckRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ServicePrincipal: S.optional(S.String), Description: S.optional(S.String) }),
+      ).annotate({ identifier: "LinkedService" });
+    case 6:
+      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
+        identifier: "Dimension",
+      });
+    case 7:
+      return S.Array(
+        /*@__PURE__*/ Dimension.pipe(/*@__PURE__*/ T.XmlName("Dimension")).annotate({
+          identifier: "Dimension",
+        }),
+      );
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EvaluationPeriods: S.Number,
+          Threshold: S.Number,
+          ComparisonOperator: ComparisonOperator,
+          Period: S.Number,
+          MetricName: S.String,
+          Namespace: S.String,
+          Statistic: Statistic,
+          Dimensions: S.optional(DimensionList),
+        }),
+      ).annotate({
+        identifier: "CloudWatchAlarmConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          CallerReference: S.String,
+          LinkedService: S.optional(LinkedService),
+          HealthCheckConfig: HealthCheckConfig,
+          HealthCheckVersion: S.Number,
+          CloudWatchAlarmConfiguration: S.optional(CloudWatchAlarmConfiguration),
+        }),
+      ).annotate({ identifier: "HealthCheck" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          HealthCheck: HealthCheck,
+          Location: S.String.pipe(T.HttpHeader("Location")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateHealthCheckResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Comment: S.optional(S.String), PrivateZone: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "HostedZoneConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          VPC: S.optional(VPC),
+          CallerReference: S.String,
+          HostedZoneConfig: S.optional(HostedZoneConfig),
+          DelegationSetId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/hostedzone" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateHostedZoneRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ AcceleratedRecovery: S.optional(S.String) })).annotate({
+        identifier: "HostedZoneFailureReasons",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcceleratedRecoveryStatus: S.optional(AcceleratedRecoveryStatus),
+          FailureReasons: S.optional(HostedZoneFailureReasons),
+        }),
+      ).annotate({ identifier: "HostedZoneFeatures" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          Name: S.String,
+          CallerReference: S.String,
+          Config: S.optional(HostedZoneConfig),
+          ResourceRecordSetCount: S.optional(S.Number),
+          LinkedService: S.optional(LinkedService),
+          Features: S.optional(HostedZoneFeatures),
+        }),
+      ).annotate({ identifier: "HostedZone" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("NameServer")));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          CallerReference: S.optional(S.String),
+          NameServers: DelegationSetNameServers,
+        }),
+      ).annotate({ identifier: "DelegationSet" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZone: HostedZone,
+          ChangeInfo: ChangeInfo,
+          DelegationSet: S.optional(DelegationSet),
+          VPC: S.optional(VPC),
+          Location: S.String.pipe(T.HttpHeader("Location")),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateHostedZoneResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CallerReference: S.String,
+          HostedZoneId: S.String,
+          KeyManagementServiceArn: S.String,
+          Name: S.String,
+          Status: S.String,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/keysigningkey" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateKeySigningKeyRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          KmsArn: S.optional(S.String),
+          Flag: S.optional(S.Number),
+          SigningAlgorithmMnemonic: S.optional(S.String),
+          SigningAlgorithmType: S.optional(S.Number),
+          DigestAlgorithmMnemonic: S.optional(S.String),
+          DigestAlgorithmType: S.optional(S.Number),
+          KeyTag: S.optional(S.Number),
+          DigestValue: S.optional(S.String),
+          PublicKey: S.optional(S.String),
+          DSRecord: S.optional(S.String),
+          DNSKEYRecord: S.optional(S.String),
+          Status: S.optional(S.String),
+          StatusMessage: S.optional(S.String),
+          CreatedDate: S.optional(T.DateFromString),
+          LastModifiedDate: S.optional(T.DateFromString),
+        }),
+      ).annotate({ identifier: "KeySigningKey" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ChangeInfo: ChangeInfo,
+          KeySigningKey: KeySigningKey,
+          Location: S.String.pipe(T.HttpHeader("Location")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateKeySigningKeyResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ HostedZoneId: S.String, CloudWatchLogsLogGroupArn: S.String }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/queryloggingconfig" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateQueryLoggingConfigRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String, HostedZoneId: S.String, CloudWatchLogsLogGroupArn: S.String }),
+      ).annotate({ identifier: "QueryLoggingConfig" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          QueryLoggingConfig: QueryLoggingConfig,
+          Location: S.String.pipe(T.HttpHeader("Location")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateQueryLoggingConfigResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ CallerReference: S.String, HostedZoneId: S.optional(S.String) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/delegationset" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateReusableDelegationSetRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DelegationSet: DelegationSet,
+          Location: S.String.pipe(T.HttpHeader("Location")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateReusableDelegationSetResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Document: S.String, Comment: S.optional(S.String) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateTrafficPolicyRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          Version: S.Number,
+          Name: S.String,
+          Type: RRType,
+          Document: S.String,
+          Comment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TrafficPolicy" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicy: TrafficPolicy,
+          Location: S.String.pipe(T.HttpHeader("Location")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateTrafficPolicyResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String,
+          Name: S.String,
+          TTL: S.Number,
+          TrafficPolicyId: S.String,
+          TrafficPolicyVersion: S.Number,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicyinstance" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateTrafficPolicyInstanceRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          HostedZoneId: S.String,
+          Name: S.String,
+          TTL: S.Number,
+          State: S.String,
+          Message: S.String,
+          TrafficPolicyId: S.String,
+          TrafficPolicyVersion: S.Number,
+          TrafficPolicyType: RRType,
+        }),
+      ).annotate({ identifier: "TrafficPolicyInstance" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicyInstance: TrafficPolicyInstance,
+          Location: S.String.pipe(T.HttpHeader("Location")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateTrafficPolicyInstanceResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String.pipe(T.HttpLabel("Id")),
+          Document: S.String,
+          Comment: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateTrafficPolicyVersionRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicy: TrafficPolicy,
+          Location: S.String.pipe(T.HttpHeader("Location")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateTrafficPolicyVersionResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")), VPC: VPC }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "POST",
+              uri: "/2013-04-01/hostedzone/{HostedZoneId}/authorizevpcassociation",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateVPCAssociationAuthorizationRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ HostedZoneId: S.String, VPC: VPC }).pipe(ns)).annotate({
+        identifier: "CreateVPCAssociationAuthorizationResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          Name: S.String.pipe(T.HttpLabel("Name")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "POST",
+              uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/deactivate",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeactivateKeySigningKeyRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "DeactivateKeySigningKeyResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2013-04-01/cidrcollection/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteCidrCollectionRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteCidrCollectionResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2013-04-01/healthcheck/{HealthCheckId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteHealthCheckRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteHealthCheckResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2013-04-01/hostedzone/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteHostedZoneRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "DeleteHostedZoneResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          Name: S.String.pipe(T.HttpLabel("Name")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteKeySigningKeyRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "DeleteKeySigningKeyResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2013-04-01/queryloggingconfig/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteQueryLoggingConfigRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteQueryLoggingConfigResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2013-04-01/delegationset/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteReusableDelegationSetRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteReusableDelegationSetResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String.pipe(T.HttpLabel("Id")),
+          Version: S.Number.pipe(T.HttpLabel("Version")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2013-04-01/trafficpolicy/{Id}/{Version}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteTrafficPolicyRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteTrafficPolicyResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2013-04-01/trafficpolicyinstance/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteTrafficPolicyInstanceRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteTrafficPolicyInstanceResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")), VPC: VPC }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "POST",
+              uri: "/2013-04-01/hostedzone/{HostedZoneId}/deauthorizevpcassociation",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteVPCAssociationAuthorizationRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteVPCAssociationAuthorizationResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/disable-dnssec" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisableHostedZoneDNSSECRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "DisableHostedZoneDNSSECResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          VPC: VPC,
+          Comment: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "POST",
+              uri: "/2013-04-01/hostedzone/{HostedZoneId}/disassociatevpc",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateVPCFromHostedZoneRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "DisassociateVPCFromHostedZoneResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/enable-dnssec" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "EnableHostedZoneDNSSECRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "EnableHostedZoneDNSSECResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Type: AccountLimitType.pipe(T.HttpLabel("Type")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/accountlimit/{Type}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAccountLimitRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Type: AccountLimitType, Value: S.Number })).annotate({
+        identifier: "AccountLimit",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Limit: AccountLimit, Count: S.Number }).pipe(ns)).annotate({
+        identifier: "GetAccountLimitResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/change/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetChangeRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ ChangeInfo: ChangeInfo }).pipe(ns)).annotate({
+        identifier: "GetChangeResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/checkeripranges" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCheckerIpRangesRequest",
+      });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() => S.Struct({ CheckerIpRanges: CheckerIpRanges }).pipe(ns)).annotate({
+        identifier: "GetCheckerIpRangesResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/hostedzone/{HostedZoneId}/dnssec" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDNSSECRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServeSignature: S.optional(S.String), StatusMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "DNSSECStatus" });
+    case 1:
+      return S.Array(KeySigningKey);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Status: DNSSECStatus, KeySigningKeys: KeySigningKeys }).pipe(ns),
+      ).annotate({ identifier: "GetDNSSECResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ContinentCode: S.optional(S.String).pipe(T.HttpQuery("continentcode")),
+          CountryCode: S.optional(S.String).pipe(T.HttpQuery("countrycode")),
+          SubdivisionCode: S.optional(S.String).pipe(T.HttpQuery("subdivisioncode")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/geolocation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetGeoLocationRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ContinentCode: S.optional(S.String),
+          ContinentName: S.optional(S.String),
+          CountryCode: S.optional(S.String),
+          CountryName: S.optional(S.String),
+          SubdivisionCode: S.optional(S.String),
+          SubdivisionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeoLocationDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ GeoLocationDetails: GeoLocationDetails }).pipe(ns),
+      ).annotate({ identifier: "GetGeoLocationResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/healthcheck/{HealthCheckId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetHealthCheckRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ HealthCheck: HealthCheck }).pipe(ns)).annotate({
+        identifier: "GetHealthCheckResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/healthcheckcount" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetHealthCheckCountRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ HealthCheckCount: S.Number }).pipe(ns)).annotate({
+        identifier: "GetHealthCheckCountResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "GET",
+              uri: "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetHealthCheckLastFailureReasonRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Status: S.optional(S.String), CheckedTime: S.optional(T.DateFromString) }),
+      ).annotate({ identifier: "StatusReport" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Region: S.optional(HealthCheckRegion),
+          IPAddress: S.optional(S.String),
+          StatusReport: S.optional(StatusReport),
+        }),
+      ).annotate({ identifier: "HealthCheckObservation" });
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ HealthCheckObservation.pipe(
+          /*@__PURE__*/ T.XmlName("HealthCheckObservation"),
+        ).annotate({
+          identifier: "HealthCheckObservation",
+        }),
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
+      ).annotate({
+        identifier: "GetHealthCheckLastFailureReasonResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/healthcheck/{HealthCheckId}/status" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetHealthCheckStatusRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ HealthCheckObservations: HealthCheckObservations }).pipe(ns),
+      ).annotate({
+        identifier: "GetHealthCheckStatusResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/hostedzone/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetHostedZoneRequest" });
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ VPC.pipe(/*@__PURE__*/ T.XmlName("VPC")).annotate({ identifier: "VPC" }),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZone: HostedZone,
+          DelegationSet: S.optional(DelegationSet),
+          VPCs: S.optional(VPCs),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetHostedZoneResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/hostedzonecount" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetHostedZoneCountRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ HostedZoneCount: S.Number }).pipe(ns)).annotate({
+        identifier: "GetHostedZoneCountResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Type: HostedZoneLimitType.pipe(T.HttpLabel("Type")),
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/hostedzonelimit/{HostedZoneId}/{Type}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetHostedZoneLimitRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Type: HostedZoneLimitType, Value: S.Number })).annotate({
+        identifier: "HostedZoneLimit",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Limit: HostedZoneLimit, Count: S.Number }).pipe(ns),
+      ).annotate({
+        identifier: "GetHostedZoneLimitResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/queryloggingconfig/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetQueryLoggingConfigRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ QueryLoggingConfig: QueryLoggingConfig }).pipe(ns),
+      ).annotate({
+        identifier: "GetQueryLoggingConfigResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/delegationset/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetReusableDelegationSetRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ DelegationSet: DelegationSet }).pipe(ns)).annotate({
+        identifier: "GetReusableDelegationSetResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Type: ReusableDelegationSetLimitType.pipe(T.HttpLabel("Type")),
+          DelegationSetId: S.String.pipe(T.HttpLabel("DelegationSetId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "GET",
+              uri: "/2013-04-01/reusabledelegationsetlimit/{DelegationSetId}/{Type}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetReusableDelegationSetLimitRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Type: ReusableDelegationSetLimitType, Value: S.Number }),
+      ).annotate({
+        identifier: "ReusableDelegationSetLimit",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Limit: ReusableDelegationSetLimit, Count: S.Number }).pipe(ns),
+      ).annotate({
+        identifier: "GetReusableDelegationSetLimitResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String.pipe(T.HttpLabel("Id")),
+          Version: S.Number.pipe(T.HttpLabel("Version")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicy/{Id}/{Version}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetTrafficPolicyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns)).annotate({
+        identifier: "GetTrafficPolicyResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstance/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTrafficPolicyInstanceRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
+      ).annotate({
+        identifier: "GetTrafficPolicyInstanceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstancecount" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTrafficPolicyInstanceCountRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ TrafficPolicyInstanceCount: S.Number }).pipe(ns)).annotate({
+        identifier: "GetTrafficPolicyInstanceCountResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CollectionId: S.String.pipe(T.HttpLabel("CollectionId")),
+          LocationName: S.optional(S.String).pipe(T.HttpQuery("location")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/cidrcollection/{CollectionId}/cidrblocks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListCidrBlocksRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ CidrBlock: S.optional(S.String), LocationName: S.optional(S.String) }),
+      ).annotate({ identifier: "CidrBlockSummary" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CidrBlockSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          CidrBlocks: S.optional(CidrBlockSummaries),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListCidrBlocksResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/cidrcollection" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCidrCollectionsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          Version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CollectionSummary" });
+    case 4:
+      return S.Array(CollectionSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          CidrCollections: S.optional(CollectionSummaries),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListCidrCollectionsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CollectionId: S.String.pipe(T.HttpLabel("CollectionId")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/cidrcollection/{CollectionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListCidrLocationsRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ LocationName: S.optional(S.String) })).annotate({
+        identifier: "LocationSummary",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(LocationSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          CidrLocations: S.optional(LocationSummaries),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListCidrLocationsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StartContinentCode: S.optional(S.String).pipe(T.HttpQuery("startcontinentcode")),
+          StartCountryCode: S.optional(S.String).pipe(T.HttpQuery("startcountrycode")),
+          StartSubdivisionCode: S.optional(S.String).pipe(T.HttpQuery("startsubdivisioncode")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/geolocations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListGeoLocationsRequest" });
+    case 3:
+      return S.Array(
+        /*@__PURE__*/ GeoLocationDetails.pipe(
+          /*@__PURE__*/ T.XmlName("GeoLocationDetails"),
+        ).annotate({
+          identifier: "GeoLocationDetails",
+        }),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GeoLocationDetailsList: GeoLocationDetailsList,
+          IsTruncated: S.Boolean,
+          NextContinentCode: S.optional(S.String),
+          NextCountryCode: S.optional(S.String),
+          NextSubdivisionCode: S.optional(S.String),
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({ identifier: "ListGeoLocationsResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/healthcheck" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListHealthChecksRequest" });
+    case 6:
+      return S.Array(
+        /*@__PURE__*/ HealthCheck.pipe(/*@__PURE__*/ T.XmlName("HealthCheck")).annotate({
+          identifier: "HealthCheck",
+        }),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          HealthChecks: S.optional(HealthChecks),
+          Marker: S.optional(S.String),
+          IsTruncated: S.Boolean,
+          NextMarker: S.optional(S.String),
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({ identifier: "ListHealthChecksResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+          DelegationSetId: S.optional(S.String).pipe(T.HttpQuery("delegationsetid")),
+          HostedZoneType: S.optional(HostedZoneType).pipe(T.HttpQuery("hostedzonetype")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/hostedzone" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListHostedZonesRequest" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ HostedZone.pipe(/*@__PURE__*/ T.XmlName("HostedZone")).annotate({
+          identifier: "HostedZone",
+        }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZones: S.optional(HostedZones),
+          Marker: S.optional(S.String),
+          IsTruncated: S.Boolean,
+          NextMarker: S.optional(S.String),
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({ identifier: "ListHostedZonesResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DNSName: S.optional(S.String).pipe(T.HttpQuery("dnsname")),
+          HostedZoneId: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/hostedzonesbyname" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListHostedZonesByNameRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZones: S.optional(HostedZones),
+          DNSName: S.optional(S.String),
+          HostedZoneId: S.optional(S.String),
+          IsTruncated: S.Boolean,
+          NextDNSName: S.optional(S.String),
+          NextHostedZoneId: S.optional(S.String),
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListHostedZonesByNameResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          VPCId: S.String.pipe(T.HttpQuery("vpcid")),
+          VPCRegion: VPCRegion.pipe(T.HttpQuery("vpcregion")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/hostedzonesbyvpc" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListHostedZonesByVPCRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ OwningAccount: S.optional(S.String), OwningService: S.optional(S.String) }),
+      ).annotate({ identifier: "HostedZoneOwner" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ HostedZoneId: S.String, Name: S.String, Owner: HostedZoneOwner }),
+      ).annotate({ identifier: "HostedZoneSummary" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(
+        /*@__PURE__*/ HostedZoneSummary.pipe(/*@__PURE__*/ T.XmlName("HostedZoneSummary")).annotate(
+          {
+            identifier: "HostedZoneSummary",
+          },
+        ),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneSummaries: HostedZoneSummaries,
+          MaxItems: S.Number,
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListHostedZonesByVPCResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/queryloggingconfig" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListQueryLoggingConfigsRequest",
+      });
+    case 3:
+      return S.Array(
+        /*@__PURE__*/ QueryLoggingConfig.pipe(
+          /*@__PURE__*/ T.XmlName("QueryLoggingConfig"),
+        ).annotate({
+          identifier: "QueryLoggingConfig",
+        }),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          QueryLoggingConfigs: S.optional(QueryLoggingConfigs),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListQueryLoggingConfigsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          StartRecordName: S.optional(S.String).pipe(T.HttpQuery("name")),
+          StartRecordType: S.optional(RRType).pipe(T.HttpQuery("type")),
+          StartRecordIdentifier: S.optional(S.String).pipe(T.HttpQuery("identifier")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/hostedzone/{HostedZoneId}/rrset" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListResourceRecordSetsRequest",
+      });
+    case 6:
+      return S.Array(
+        /*@__PURE__*/ ResourceRecordSet.pipe(/*@__PURE__*/ T.XmlName("ResourceRecordSet")).annotate(
+          {
+            identifier: "ResourceRecordSet",
+          },
+        ),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceRecordSets: S.optional(ResourceRecordSets),
+          IsTruncated: S.Boolean,
+          NextRecordName: S.optional(S.String),
+          NextRecordType: S.optional(RRType),
+          NextRecordIdentifier: S.optional(S.String),
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListResourceRecordSetsResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/delegationset" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListReusableDelegationSetsRequest",
+      });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ DelegationSet.pipe(/*@__PURE__*/ T.XmlName("DelegationSet")).annotate({
+          identifier: "DelegationSet",
+        }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DelegationSets: DelegationSets,
+          Marker: S.String,
+          IsTruncated: S.Boolean,
+          NextMarker: S.optional(S.String),
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListReusableDelegationSetsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
+          ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/tags/{ResourceType}/{ResourceId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceType: S.optional(TagResourceType),
+          ResourceId: S.optional(S.String),
+          Tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "ResourceTagSet" });
+    case 5:
+      return S.suspend(() => S.Struct({ ResourceTagSet: ResourceTagSet }).pipe(ns)).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 6:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ResourceId")));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceType: TagResourceType.pipe(T.HttpLabel("ResourceType")),
+          ResourceIds: TagResourceIdList,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/tags/{ResourceType}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourcesRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(
+        /*@__PURE__*/ ResourceTagSet.pipe(/*@__PURE__*/ T.XmlName("ResourceTagSet")).annotate({
+          identifier: "ResourceTagSet",
+        }),
+      );
+    case 1:
+      return S.suspend(() => S.Struct({ ResourceTagSets: ResourceTagSetList }).pipe(ns)).annotate({
+        identifier: "ListTagsForResourcesResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicyIdMarker: S.optional(S.String).pipe(T.HttpQuery("trafficpolicyid")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicies" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTrafficPoliciesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          Name: S.String,
+          Type: RRType,
+          LatestVersion: S.Number,
+          TrafficPolicyCount: S.Number,
+        }),
+      ).annotate({ identifier: "TrafficPolicySummary" });
+    case 4:
+      return S.Array(
+        /*@__PURE__*/ TrafficPolicySummary.pipe(
+          /*@__PURE__*/ T.XmlName("TrafficPolicySummary"),
+        ).annotate({
+          identifier: "TrafficPolicySummary",
+        }),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicySummaries: TrafficPolicySummaries,
+          IsTruncated: S.Boolean,
+          TrafficPolicyIdMarker: S.String,
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListTrafficPoliciesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneIdMarker: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
+          TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
+            T.HttpQuery("trafficpolicyinstancename"),
+          ),
+          TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
+            T.HttpQuery("trafficpolicyinstancetype"),
+          ),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstances" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTrafficPolicyInstancesRequest",
+      });
+    case 7:
+      return S.Array(
+        /*@__PURE__*/ TrafficPolicyInstance.pipe(
+          /*@__PURE__*/ T.XmlName("TrafficPolicyInstance"),
+        ).annotate({
+          identifier: "TrafficPolicyInstance",
+        }),
+      );
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicyInstances: TrafficPolicyInstances,
+          HostedZoneIdMarker: S.optional(S.String),
+          TrafficPolicyInstanceNameMarker: S.optional(S.String),
+          TrafficPolicyInstanceTypeMarker: S.optional(RRType),
+          IsTruncated: S.Boolean,
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListTrafficPolicyInstancesResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpQuery("id")),
+          TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
+            T.HttpQuery("trafficpolicyinstancename"),
+          ),
+          TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
+            T.HttpQuery("trafficpolicyinstancetype"),
+          ),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstances/hostedzone" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTrafficPolicyInstancesByHostedZoneRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicyInstances: TrafficPolicyInstances,
+          TrafficPolicyInstanceNameMarker: S.optional(S.String),
+          TrafficPolicyInstanceTypeMarker: S.optional(RRType),
+          IsTruncated: S.Boolean,
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListTrafficPolicyInstancesByHostedZoneResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicyId: S.String.pipe(T.HttpQuery("id")),
+          TrafficPolicyVersion: S.Number.pipe(T.HttpQuery("version")),
+          HostedZoneIdMarker: S.optional(S.String).pipe(T.HttpQuery("hostedzoneid")),
+          TrafficPolicyInstanceNameMarker: S.optional(S.String).pipe(
+            T.HttpQuery("trafficpolicyinstancename"),
+          ),
+          TrafficPolicyInstanceTypeMarker: S.optional(RRType).pipe(
+            T.HttpQuery("trafficpolicyinstancetype"),
+          ),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicyinstances/trafficpolicy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTrafficPolicyInstancesByPolicyRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicyInstances: TrafficPolicyInstances,
+          HostedZoneIdMarker: S.optional(S.String),
+          TrafficPolicyInstanceNameMarker: S.optional(S.String),
+          TrafficPolicyInstanceTypeMarker: S.optional(RRType),
+          IsTruncated: S.Boolean,
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListTrafficPolicyInstancesByPolicyResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String.pipe(T.HttpLabel("Id")),
+          TrafficPolicyVersionMarker: S.optional(S.String).pipe(
+            T.HttpQuery("trafficpolicyversion"),
+          ),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxitems")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/trafficpolicies/{Id}/versions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTrafficPolicyVersionsRequest",
+      });
+    case 6:
+      return S.Array(
+        /*@__PURE__*/ TrafficPolicy.pipe(/*@__PURE__*/ T.XmlName("TrafficPolicy")).annotate({
+          identifier: "TrafficPolicy",
+        }),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicies: TrafficPolicies,
+          IsTruncated: S.Boolean,
+          TrafficPolicyVersionMarker: S.String,
+          MaxItems: S.Number,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListTrafficPolicyVersionsResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nexttoken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxresults")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "GET",
+              uri: "/2013-04-01/hostedzone/{HostedZoneId}/authorizevpcassociation",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListVPCAssociationAuthorizationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String,
+          NextToken: S.optional(S.String),
+          VPCs: S.optional(VPCs),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListVPCAssociationAuthorizationsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpQuery("hostedzoneid")),
+          RecordName: S.String.pipe(T.HttpQuery("recordname")),
+          RecordType: RRType.pipe(T.HttpQuery("recordtype")),
+          ResolverIP: S.optional(S.String).pipe(T.HttpQuery("resolverip")),
+          EDNS0ClientSubnetIP: S.optional(S.String).pipe(T.HttpQuery("edns0clientsubnetip")),
+          EDNS0ClientSubnetMask: S.optional(S.String).pipe(T.HttpQuery("edns0clientsubnetmask")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2013-04-01/testdnsanswer" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TestDNSAnswerRequest" });
+    case 3:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("RecordDataEntry")));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Nameserver: S.String,
+          RecordName: S.String,
+          RecordType: RRType,
+          RecordData: RecordData,
+          ResponseCode: S.String,
+          Protocol: S.String,
+        }).pipe(ns),
+      ).annotate({ identifier: "TestDNSAnswerResponse" });
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ ResettableElementName.pipe(/*@__PURE__*/ T.XmlName("ResettableElementName")),
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          HealthCheckId: S.String.pipe(T.HttpLabel("HealthCheckId")),
+          HealthCheckVersion: S.optional(S.Number),
+          IPAddress: S.optional(S.String),
+          Port: S.optional(S.Number),
+          ResourcePath: S.optional(S.String),
+          FullyQualifiedDomainName: S.optional(S.String),
+          SearchString: S.optional(S.String),
+          FailureThreshold: S.optional(S.Number),
+          Inverted: S.optional(S.Boolean),
+          Disabled: S.optional(S.Boolean),
+          HealthThreshold: S.optional(S.Number),
+          ChildHealthChecks: S.optional(ChildHealthCheckList),
+          EnableSNI: S.optional(S.Boolean),
+          Regions: S.optional(HealthCheckRegionList),
+          AlarmIdentifier: S.optional(AlarmIdentifier),
+          InsufficientDataHealthStatus: S.optional(InsufficientDataHealthStatus),
+          ResetElements: S.optional(ResettableElementNameList),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/healthcheck/{HealthCheckId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateHealthCheckRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ HealthCheck: HealthCheck }).pipe(ns)).annotate({
+        identifier: "UpdateHealthCheckResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")), Comment: S.optional(S.String) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateHostedZoneCommentRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ HostedZone: HostedZone }).pipe(ns)).annotate({
+        identifier: "UpdateHostedZoneCommentResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          HostedZoneId: S.String.pipe(T.HttpLabel("HostedZoneId")),
+          EnableAcceleratedRecovery: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/hostedzone/{HostedZoneId}/features" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateHostedZoneFeaturesRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateHostedZoneFeaturesResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String.pipe(T.HttpLabel("Id")),
+          Version: S.Number.pipe(T.HttpLabel("Version")),
+          Comment: S.String,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicy/{Id}/{Version}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateTrafficPolicyCommentRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ TrafficPolicy: TrafficPolicy }).pipe(ns)).annotate({
+        identifier: "UpdateTrafficPolicyCommentResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String.pipe(T.HttpLabel("Id")),
+          TTL: S.Number,
+          TrafficPolicyId: S.String,
+          TrafficPolicyVersion: S.Number,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2013-04-01/trafficpolicyinstance/{Id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateTrafficPolicyInstanceRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ TrafficPolicyInstance: TrafficPolicyInstance }).pipe(ns),
+      ).annotate({
+        identifier: "UpdateTrafficPolicyInstanceResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Message")));
+  }
+}

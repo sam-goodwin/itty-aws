@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -107,7 +108,7 @@ export type Arn = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Filters = { [key: string]: string | undefined };
-const Filters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Filters = /*@__PURE__*/ __L.at(__c0, 0);
 export type NextToken = string;
 export interface QueryForecastRequest {
   ForecastArn: string;
@@ -116,39 +117,28 @@ export interface QueryForecastRequest {
   Filters: { [key: string]: string | undefined };
   NextToken?: string;
 }
-const QueryForecastRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ForecastArn: S.String,
-    StartDate: S.optional(S.String),
-    EndDate: S.optional(S.String),
-    Filters: Filters,
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "QueryForecastRequest" }) as any as S.Schema<QueryForecastRequest>;
+const QueryForecastRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<QueryForecastRequest>;
 export type Statistic = string;
 export interface DataPoint {
   Timestamp?: string;
   Value?: number;
 }
-const DataPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Timestamp: S.optional(S.String), Value: S.optional(S.Number) }),
-).annotate({ identifier: "DataPoint" }) as any as S.Schema<DataPoint>;
+const DataPoint = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DataPoint>;
 export type TimeSeries = DataPoint[];
-const TimeSeries = /*@__PURE__*/ S.Array(DataPoint);
+const TimeSeries = /*@__PURE__*/ __L.at(__c0, 3);
 export type Predictions = { [key: string]: DataPoint[] | undefined };
-const Predictions = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ TimeSeries.pipe(S.optional));
+const Predictions = /*@__PURE__*/ __L.at(__c0, 4);
 export interface Forecast {
   Predictions?: { [key: string]: DataPoint[] | undefined };
 }
-const Forecast = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Predictions: S.optional(Predictions) }),
-).annotate({ identifier: "Forecast" }) as any as S.Schema<Forecast>;
+const Forecast = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Forecast>;
 export interface QueryForecastResponse {
   Forecast?: Forecast;
 }
-const QueryForecastResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Forecast: S.optional(Forecast) }),
-).annotate({ identifier: "QueryForecastResponse" }) as any as S.Schema<QueryForecastResponse>;
+const QueryForecastResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<QueryForecastResponse>;
 export type LongArn = string;
 export interface QueryWhatIfForecastRequest {
   WhatIfForecastArn: string;
@@ -157,25 +147,17 @@ export interface QueryWhatIfForecastRequest {
   Filters: { [key: string]: string | undefined };
   NextToken?: string;
 }
-const QueryWhatIfForecastRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WhatIfForecastArn: S.String,
-    StartDate: S.optional(S.String),
-    EndDate: S.optional(S.String),
-    Filters: Filters,
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "QueryWhatIfForecastRequest",
-}) as any as S.Schema<QueryWhatIfForecastRequest>;
+const QueryWhatIfForecastRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<QueryWhatIfForecastRequest>;
 export interface QueryWhatIfForecastResponse {
   Forecast?: Forecast;
 }
-const QueryWhatIfForecastResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Forecast: S.optional(Forecast) }),
-).annotate({
-  identifier: "QueryWhatIfForecastResponse",
-}) as any as S.Schema<QueryWhatIfForecastResponse>;
+const QueryWhatIfForecastResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<QueryWhatIfForecastResponse>;
 export type ErrorMessage = string;
 export type QueryForecastError =
   | InvalidInputException
@@ -249,3 +231,57 @@ export const queryWhatIfForecast: API.OperationMethod<
   retry: Retry,
   operationName: "QueryWhatIfForecast",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ForecastArn: S.String,
+          StartDate: S.optional(S.String),
+          EndDate: S.optional(S.String),
+          Filters: Filters,
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "QueryForecastRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Timestamp: S.optional(S.String), Value: S.optional(S.Number) }),
+      ).annotate({ identifier: "DataPoint" });
+    case 3:
+      return S.Array(DataPoint);
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ TimeSeries.pipe(S.optional));
+    case 5:
+      return S.suspend(() => S.Struct({ Predictions: S.optional(Predictions) })).annotate({
+        identifier: "Forecast",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ Forecast: S.optional(Forecast) })).annotate({
+        identifier: "QueryForecastResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          WhatIfForecastArn: S.String,
+          StartDate: S.optional(S.String),
+          EndDate: S.optional(S.String),
+          Filters: Filters,
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "QueryWhatIfForecastRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Forecast: S.optional(Forecast) })).annotate({
+        identifier: "QueryWhatIfForecastResponse",
+      });
+  }
+}

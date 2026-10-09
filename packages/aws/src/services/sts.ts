@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -275,11 +276,9 @@ export type RoleSessionNameType = string;
 export interface PolicyDescriptorType {
   arn?: string;
 }
-const PolicyDescriptorType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.optional(S.String) }),
-).annotate({ identifier: "PolicyDescriptorType" }) as any as S.Schema<PolicyDescriptorType>;
+const PolicyDescriptorType = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PolicyDescriptorType>;
 export type PolicyDescriptorListType = PolicyDescriptorType[];
-const PolicyDescriptorListType = /*@__PURE__*/ S.Array(PolicyDescriptorType);
+const PolicyDescriptorListType = /*@__PURE__*/ __L.at(__c0, 1);
 export type UnrestrictedSessionPolicyDocumentType = string;
 export type RoleDurationSecondsType = number;
 export type TagKeyType = string;
@@ -288,13 +287,11 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Tag>;
 export type TagListType = Tag[];
-const TagListType = /*@__PURE__*/ S.Array(Tag);
+const TagListType = /*@__PURE__*/ __L.at(__c0, 3);
 export type TagKeyListType = string[];
-const TagKeyListType = /*@__PURE__*/ S.Array(S.String);
+const TagKeyListType = /*@__PURE__*/ __L.at(__c0, 4);
 export type ExternalIdType = string;
 export type SerialNumberType = string;
 export type TokenCodeType = string;
@@ -304,11 +301,9 @@ export interface ProvidedContext {
   ProviderArn?: string;
   ContextAssertion?: string;
 }
-const ProvidedContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProviderArn: S.optional(S.String), ContextAssertion: S.optional(S.String) }),
-).annotate({ identifier: "ProvidedContext" }) as any as S.Schema<ProvidedContext>;
+const ProvidedContext = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ProvidedContext>;
 export type ProvidedContextsListType = ProvidedContext[];
-const ProvidedContextsListType = /*@__PURE__*/ S.Array(ProvidedContext);
+const ProvidedContextsListType = /*@__PURE__*/ __L.at(__c0, 6);
 export type MinimumSessionTokenSizeType = number;
 export interface AssumeRoleRequest {
   RoleArn: string;
@@ -325,23 +320,7 @@ export interface AssumeRoleRequest {
   ProvidedContexts?: ProvidedContext[];
   MinimumSessionTokenSize?: number;
 }
-const AssumeRoleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RoleArn: S.String,
-    RoleSessionName: S.String,
-    PolicyArns: S.optional(PolicyDescriptorListType),
-    Policy: S.optional(S.String),
-    DurationSeconds: S.optional(S.Number),
-    Tags: S.optional(TagListType),
-    TransitiveTagKeys: S.optional(TagKeyListType),
-    ExternalId: S.optional(S.String),
-    SerialNumber: S.optional(S.String),
-    TokenCode: S.optional(S.String),
-    SourceIdentity: S.optional(S.String),
-    ProvidedContexts: S.optional(ProvidedContextsListType),
-    MinimumSessionTokenSize: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "AssumeRoleRequest" }) as any as S.Schema<AssumeRoleRequest>;
+const AssumeRoleRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AssumeRoleRequest>;
 export type AccessKeyIdType = string;
 export type AccessKeySecretType = string | redacted.Redacted<string>;
 export type TokenType = string;
@@ -351,22 +330,13 @@ export interface Credentials {
   SessionToken: string;
   Expiration: Date;
 }
-const Credentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccessKeyId: S.String,
-    SecretAccessKey: SensitiveString,
-    SessionToken: S.String,
-    Expiration: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "Credentials" }) as any as S.Schema<Credentials>;
+const Credentials = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Credentials>;
 export type AssumedRoleIdType = string;
 export interface AssumedRoleUser {
   AssumedRoleId: string;
   Arn: string;
 }
-const AssumedRoleUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssumedRoleId: S.String, Arn: S.String }),
-).annotate({ identifier: "AssumedRoleUser" }) as any as S.Schema<AssumedRoleUser>;
+const AssumedRoleUser = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AssumedRoleUser>;
 export type NonNegativeIntegerType = number;
 export type SessionTokenUtilizationType = number;
 export type SessionTokenSizeType = number;
@@ -378,16 +348,7 @@ export interface AssumeRoleResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-const AssumeRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Credentials: S.optional(Credentials),
-    AssumedRoleUser: S.optional(AssumedRoleUser),
-    PackedPolicySize: S.optional(S.Number),
-    SourceIdentity: S.optional(S.String),
-    SessionTokenUtilization: S.optional(S.Number),
-    SessionTokenSize: S.optional(S.Number),
-  }).pipe(ns),
-).annotate({ identifier: "AssumeRoleResponse" }) as any as S.Schema<AssumeRoleResponse>;
+const AssumeRoleResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AssumeRoleResponse>;
 export type SAMLAssertionType = string | redacted.Redacted<string>;
 export type SessionPolicyDocumentType = string;
 export interface AssumeRoleWithSAMLRequest {
@@ -399,19 +360,10 @@ export interface AssumeRoleWithSAMLRequest {
   DurationSeconds?: number;
   MinimumSessionTokenSize?: number;
 }
-const AssumeRoleWithSAMLRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RoleArn: S.String,
-    PrincipalArn: S.String,
-    SAMLAssertion: SensitiveString,
-    PolicyArns: S.optional(PolicyDescriptorListType),
-    Policy: S.optional(S.String),
-    DurationSeconds: S.optional(S.Number),
-    MinimumSessionTokenSize: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AssumeRoleWithSAMLRequest",
-}) as any as S.Schema<AssumeRoleWithSAMLRequest>;
+const AssumeRoleWithSAMLRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AssumeRoleWithSAMLRequest>;
 export type Subject = string;
 export type SubjectType = string;
 export type Issuer = string;
@@ -430,23 +382,10 @@ export interface AssumeRoleWithSAMLResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-const AssumeRoleWithSAMLResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Credentials: S.optional(Credentials),
-    AssumedRoleUser: S.optional(AssumedRoleUser),
-    PackedPolicySize: S.optional(S.Number),
-    Subject: S.optional(S.String),
-    SubjectType: S.optional(S.String),
-    Issuer: S.optional(S.String),
-    Audience: S.optional(S.String),
-    NameQualifier: S.optional(S.String),
-    SourceIdentity: S.optional(S.String),
-    SessionTokenUtilization: S.optional(S.Number),
-    SessionTokenSize: S.optional(S.Number),
-  }).pipe(ns),
-).annotate({
-  identifier: "AssumeRoleWithSAMLResponse",
-}) as any as S.Schema<AssumeRoleWithSAMLResponse>;
+const AssumeRoleWithSAMLResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AssumeRoleWithSAMLResponse>;
 export type ClientTokenType = string | redacted.Redacted<string>;
 export type UrlType = string;
 export interface AssumeRoleWithWebIdentityRequest {
@@ -459,20 +398,10 @@ export interface AssumeRoleWithWebIdentityRequest {
   DurationSeconds?: number;
   MinimumSessionTokenSize?: number;
 }
-const AssumeRoleWithWebIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RoleArn: S.String,
-    RoleSessionName: S.String,
-    WebIdentityToken: SensitiveString,
-    ProviderId: S.optional(S.String),
-    PolicyArns: S.optional(PolicyDescriptorListType),
-    Policy: S.optional(S.String),
-    DurationSeconds: S.optional(S.Number),
-    MinimumSessionTokenSize: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AssumeRoleWithWebIdentityRequest",
-}) as any as S.Schema<AssumeRoleWithWebIdentityRequest>;
+const AssumeRoleWithWebIdentityRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AssumeRoleWithWebIdentityRequest>;
 export type WebIdentitySubjectType = string;
 export interface AssumeRoleWithWebIdentityResponse {
   Credentials?: Credentials;
@@ -485,21 +414,10 @@ export interface AssumeRoleWithWebIdentityResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-const AssumeRoleWithWebIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Credentials: S.optional(Credentials),
-    SubjectFromWebIdentityToken: S.optional(S.String),
-    AssumedRoleUser: S.optional(AssumedRoleUser),
-    PackedPolicySize: S.optional(S.Number),
-    Provider: S.optional(S.String),
-    Audience: S.optional(S.String),
-    SourceIdentity: S.optional(S.String),
-    SessionTokenUtilization: S.optional(S.Number),
-    SessionTokenSize: S.optional(S.Number),
-  }).pipe(ns),
-).annotate({
-  identifier: "AssumeRoleWithWebIdentityResponse",
-}) as any as S.Schema<AssumeRoleWithWebIdentityResponse>;
+const AssumeRoleWithWebIdentityResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AssumeRoleWithWebIdentityResponse>;
 export type TargetPrincipalType = string;
 export type RootDurationSecondsType = number;
 export interface AssumeRootRequest {
@@ -508,107 +426,77 @@ export interface AssumeRootRequest {
   DurationSeconds?: number;
   MinimumSessionTokenSize?: number;
 }
-const AssumeRootRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TargetPrincipal: S.String,
-    TaskPolicyArn: PolicyDescriptorType,
-    DurationSeconds: S.optional(S.Number),
-    MinimumSessionTokenSize: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "AssumeRootRequest" }) as any as S.Schema<AssumeRootRequest>;
+const AssumeRootRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AssumeRootRequest>;
 export interface AssumeRootResponse {
   Credentials?: Credentials;
   SourceIdentity?: string;
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-const AssumeRootResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Credentials: S.optional(Credentials),
-    SourceIdentity: S.optional(S.String),
-    SessionTokenUtilization: S.optional(S.Number),
-    SessionTokenSize: S.optional(S.Number),
-  }).pipe(ns),
-).annotate({ identifier: "AssumeRootResponse" }) as any as S.Schema<AssumeRootResponse>;
+const AssumeRootResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AssumeRootResponse>;
 export type EncodedMessageType = string;
 export interface DecodeAuthorizationMessageRequest {
   EncodedMessage: string;
 }
-const DecodeAuthorizationMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EncodedMessage: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DecodeAuthorizationMessageRequest",
-}) as any as S.Schema<DecodeAuthorizationMessageRequest>;
+const DecodeAuthorizationMessageRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DecodeAuthorizationMessageRequest>;
 export type DecodedMessageType = string;
 export interface DecodeAuthorizationMessageResponse {
   DecodedMessage?: string;
 }
-const DecodeAuthorizationMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DecodedMessage: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DecodeAuthorizationMessageResponse",
-}) as any as S.Schema<DecodeAuthorizationMessageResponse>;
+const DecodeAuthorizationMessageResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DecodeAuthorizationMessageResponse>;
 export interface GetAccessKeyInfoRequest {
   AccessKeyId: string;
 }
-const GetAccessKeyInfoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccessKeyId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetAccessKeyInfoRequest" }) as any as S.Schema<GetAccessKeyInfoRequest>;
+const GetAccessKeyInfoRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetAccessKeyInfoRequest>;
 export type AccountType = string;
 export interface GetAccessKeyInfoResponse {
   Account?: string;
 }
-const GetAccessKeyInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Account: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "GetAccessKeyInfoResponse" }) as any as S.Schema<GetAccessKeyInfoResponse>;
+const GetAccessKeyInfoResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetAccessKeyInfoResponse>;
 export interface GetCallerIdentityRequest {}
-const GetCallerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetCallerIdentityRequest" }) as any as S.Schema<GetCallerIdentityRequest>;
+const GetCallerIdentityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetCallerIdentityRequest>;
 export type UserIdType = string;
 export interface GetCallerIdentityResponse {
   UserId?: string;
   Account?: string;
   Arn?: string;
 }
-const GetCallerIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    UserId: S.optional(S.String),
-    Account: S.optional(S.String),
-    Arn: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetCallerIdentityResponse",
-}) as any as S.Schema<GetCallerIdentityResponse>;
+const GetCallerIdentityResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetCallerIdentityResponse>;
 export type TradeInTokenType = string | redacted.Redacted<string>;
 export interface GetDelegatedAccessTokenRequest {
   TradeInToken: string | redacted.Redacted<string>;
 }
-const GetDelegatedAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TradeInToken: SensitiveString }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetDelegatedAccessTokenRequest",
-}) as any as S.Schema<GetDelegatedAccessTokenRequest>;
+const GetDelegatedAccessTokenRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetDelegatedAccessTokenRequest>;
 export interface GetDelegatedAccessTokenResponse {
   Credentials?: Credentials;
   PackedPolicySize?: number;
   AssumedPrincipal?: string;
 }
-const GetDelegatedAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Credentials: S.optional(Credentials),
-    PackedPolicySize: S.optional(S.Number),
-    AssumedPrincipal: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetDelegatedAccessTokenResponse",
-}) as any as S.Schema<GetDelegatedAccessTokenResponse>;
+const GetDelegatedAccessTokenResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetDelegatedAccessTokenResponse>;
 export type UserNameType = string;
 export type DurationSecondsType = number;
 export interface GetFederationTokenRequest {
@@ -619,26 +507,16 @@ export interface GetFederationTokenRequest {
   Tags?: Tag[];
   MinimumSessionTokenSize?: number;
 }
-const GetFederationTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Policy: S.optional(S.String),
-    PolicyArns: S.optional(PolicyDescriptorListType),
-    DurationSeconds: S.optional(S.Number),
-    Tags: S.optional(TagListType),
-    MinimumSessionTokenSize: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetFederationTokenRequest",
-}) as any as S.Schema<GetFederationTokenRequest>;
+const GetFederationTokenRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetFederationTokenRequest>;
 export type FederatedIdType = string;
 export interface FederatedUser {
   FederatedUserId: string;
   Arn: string;
 }
-const FederatedUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FederatedUserId: S.String, Arn: S.String }),
-).annotate({ identifier: "FederatedUser" }) as any as S.Schema<FederatedUser>;
+const FederatedUser = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<FederatedUser>;
 export interface GetFederationTokenResponse {
   Credentials?: Credentials;
   FederatedUser?: FederatedUser;
@@ -646,46 +524,32 @@ export interface GetFederationTokenResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-const GetFederationTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Credentials: S.optional(Credentials),
-    FederatedUser: S.optional(FederatedUser),
-    PackedPolicySize: S.optional(S.Number),
-    SessionTokenUtilization: S.optional(S.Number),
-    SessionTokenSize: S.optional(S.Number),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetFederationTokenResponse",
-}) as any as S.Schema<GetFederationTokenResponse>;
+const GetFederationTokenResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetFederationTokenResponse>;
 export interface GetSessionTokenRequest {
   DurationSeconds?: number;
   SerialNumber?: string;
   TokenCode?: string;
   MinimumSessionTokenSize?: number;
 }
-const GetSessionTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DurationSeconds: S.optional(S.Number),
-    SerialNumber: S.optional(S.String),
-    TokenCode: S.optional(S.String),
-    MinimumSessionTokenSize: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetSessionTokenRequest" }) as any as S.Schema<GetSessionTokenRequest>;
+const GetSessionTokenRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetSessionTokenRequest>;
 export interface GetSessionTokenResponse {
   Credentials?: Credentials;
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-const GetSessionTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Credentials: S.optional(Credentials),
-    SessionTokenUtilization: S.optional(S.Number),
-    SessionTokenSize: S.optional(S.Number),
-  }).pipe(ns),
-).annotate({ identifier: "GetSessionTokenResponse" }) as any as S.Schema<GetSessionTokenResponse>;
+const GetSessionTokenResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetSessionTokenResponse>;
 export type WebIdentityTokenAudienceStringType = string;
 export type WebIdentityTokenAudienceListType = string[];
-const WebIdentityTokenAudienceListType = /*@__PURE__*/ S.Array(S.String);
+const WebIdentityTokenAudienceListType = /*@__PURE__*/ __L.at(__c3, 6);
 export type WebIdentityTokenDurationSecondsType = number;
 export type JwtAlgorithmType = string;
 export interface GetWebIdentityTokenRequest {
@@ -694,29 +558,19 @@ export interface GetWebIdentityTokenRequest {
   SigningAlgorithm: string;
   Tags?: Tag[];
 }
-const GetWebIdentityTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Audience: WebIdentityTokenAudienceListType,
-    DurationSeconds: S.optional(S.Number),
-    SigningAlgorithm: S.String,
-    Tags: S.optional(TagListType),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetWebIdentityTokenRequest",
-}) as any as S.Schema<GetWebIdentityTokenRequest>;
+const GetWebIdentityTokenRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetWebIdentityTokenRequest>;
 export type WebIdentityTokenType = string | redacted.Redacted<string>;
 export interface GetWebIdentityTokenResponse {
   WebIdentityToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
-const GetWebIdentityTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WebIdentityToken: S.optional(SensitiveString),
-    Expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetWebIdentityTokenResponse",
-}) as any as S.Schema<GetWebIdentityTokenResponse>;
+const GetWebIdentityTokenResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetWebIdentityTokenResponse>;
 export type ExpiredIdentityTokenMessage = string;
 export type MalformedPolicyDocumentMessage = string;
 export type PackedPolicyTooLargeMessage = string;
@@ -1546,3 +1400,292 @@ export const getWebIdentityToken: API.OperationMethod<
   retry: Retry,
   operationName: "GetWebIdentityToken",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
+        identifier: "PolicyDescriptorType",
+      });
+    case 1:
+      return S.Array(PolicyDescriptorType);
+    case 2:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 3:
+      return S.Array(Tag);
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ProviderArn: S.optional(S.String), ContextAssertion: S.optional(S.String) }),
+      ).annotate({ identifier: "ProvidedContext" });
+    case 6:
+      return S.Array(ProvidedContext);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          RoleArn: S.String,
+          RoleSessionName: S.String,
+          PolicyArns: S.optional(PolicyDescriptorListType),
+          Policy: S.optional(S.String),
+          DurationSeconds: S.optional(S.Number),
+          Tags: S.optional(TagListType),
+          TransitiveTagKeys: S.optional(TagKeyListType),
+          ExternalId: S.optional(S.String),
+          SerialNumber: S.optional(S.String),
+          TokenCode: S.optional(S.String),
+          SourceIdentity: S.optional(S.String),
+          ProvidedContexts: S.optional(ProvidedContextsListType),
+          MinimumSessionTokenSize: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AssumeRoleRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccessKeyId: S.String,
+          SecretAccessKey: SensitiveString,
+          SessionToken: S.String,
+          Expiration: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "Credentials" });
+    case 1:
+      return S.suspend(() => S.Struct({ AssumedRoleId: S.String, Arn: S.String })).annotate({
+        identifier: "AssumedRoleUser",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: S.optional(Credentials),
+          AssumedRoleUser: S.optional(AssumedRoleUser),
+          PackedPolicySize: S.optional(S.Number),
+          SourceIdentity: S.optional(S.String),
+          SessionTokenUtilization: S.optional(S.Number),
+          SessionTokenSize: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({ identifier: "AssumeRoleResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RoleArn: S.String,
+          PrincipalArn: S.String,
+          SAMLAssertion: SensitiveString,
+          PolicyArns: S.optional(PolicyDescriptorListType),
+          Policy: S.optional(S.String),
+          DurationSeconds: S.optional(S.Number),
+          MinimumSessionTokenSize: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AssumeRoleWithSAMLRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: S.optional(Credentials),
+          AssumedRoleUser: S.optional(AssumedRoleUser),
+          PackedPolicySize: S.optional(S.Number),
+          Subject: S.optional(S.String),
+          SubjectType: S.optional(S.String),
+          Issuer: S.optional(S.String),
+          Audience: S.optional(S.String),
+          NameQualifier: S.optional(S.String),
+          SourceIdentity: S.optional(S.String),
+          SessionTokenUtilization: S.optional(S.Number),
+          SessionTokenSize: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "AssumeRoleWithSAMLResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          RoleArn: S.String,
+          RoleSessionName: S.String,
+          WebIdentityToken: SensitiveString,
+          ProviderId: S.optional(S.String),
+          PolicyArns: S.optional(PolicyDescriptorListType),
+          Policy: S.optional(S.String),
+          DurationSeconds: S.optional(S.Number),
+          MinimumSessionTokenSize: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AssumeRoleWithWebIdentityRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: S.optional(Credentials),
+          SubjectFromWebIdentityToken: S.optional(S.String),
+          AssumedRoleUser: S.optional(AssumedRoleUser),
+          PackedPolicySize: S.optional(S.Number),
+          Provider: S.optional(S.String),
+          Audience: S.optional(S.String),
+          SourceIdentity: S.optional(S.String),
+          SessionTokenUtilization: S.optional(S.Number),
+          SessionTokenSize: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "AssumeRoleWithWebIdentityResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TargetPrincipal: S.String,
+          TaskPolicyArn: PolicyDescriptorType,
+          DurationSeconds: S.optional(S.Number),
+          MinimumSessionTokenSize: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AssumeRootRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: S.optional(Credentials),
+          SourceIdentity: S.optional(S.String),
+          SessionTokenUtilization: S.optional(S.Number),
+          SessionTokenSize: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({ identifier: "AssumeRootResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EncodedMessage: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DecodeAuthorizationMessageRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ DecodedMessage: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "DecodeAuthorizationMessageResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AccessKeyId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetAccessKeyInfoRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ Account: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "GetAccessKeyInfoResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetCallerIdentityRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          UserId: S.optional(S.String),
+          Account: S.optional(S.String),
+          Arn: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetCallerIdentityResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ TradeInToken: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetDelegatedAccessTokenRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: S.optional(Credentials),
+          PackedPolicySize: S.optional(S.Number),
+          AssumedPrincipal: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetDelegatedAccessTokenResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Policy: S.optional(S.String),
+          PolicyArns: S.optional(PolicyDescriptorListType),
+          DurationSeconds: S.optional(S.Number),
+          Tags: S.optional(TagListType),
+          MinimumSessionTokenSize: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetFederationTokenRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ FederatedUserId: S.String, Arn: S.String })).annotate({
+        identifier: "FederatedUser",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: S.optional(Credentials),
+          FederatedUser: S.optional(FederatedUser),
+          PackedPolicySize: S.optional(S.Number),
+          SessionTokenUtilization: S.optional(S.Number),
+          SessionTokenSize: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetFederationTokenResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DurationSeconds: S.optional(S.Number),
+          SerialNumber: S.optional(S.String),
+          TokenCode: S.optional(S.String),
+          MinimumSessionTokenSize: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetSessionTokenRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: S.optional(Credentials),
+          SessionTokenUtilization: S.optional(S.Number),
+          SessionTokenSize: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetSessionTokenResponse" });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Audience: WebIdentityTokenAudienceListType,
+          DurationSeconds: S.optional(S.Number),
+          SigningAlgorithm: S.String,
+          Tags: S.optional(TagListType),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetWebIdentityTokenRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          WebIdentityToken: S.optional(SensitiveString),
+          Expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetWebIdentityTokenResponse",
+      });
+  }
+}

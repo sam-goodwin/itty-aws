@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -98,7 +99,7 @@ export type ActionId = string | redacted.Redacted<string>;
 export type UserId = string | redacted.Redacted<string>;
 export type RecommendationId = string;
 export type ActionImpression = (string | redacted.Redacted<string>)[];
-const ActionImpression = /*@__PURE__*/ S.Array(SensitiveString);
+const ActionImpression = /*@__PURE__*/ __L.at(__c0, 0);
 export type SynthesizedJsonActionInteractionProperties = string | redacted.Redacted<string>;
 export interface ActionInteraction {
   actionId: string | redacted.Redacted<string>;
@@ -111,56 +112,36 @@ export interface ActionInteraction {
   impression?: (string | redacted.Redacted<string>)[];
   properties?: string | redacted.Redacted<string>;
 }
-const ActionInteraction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionId: SensitiveString,
-    userId: S.optional(SensitiveString),
-    sessionId: S.String,
-    timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    eventType: S.String,
-    eventId: S.optional(S.String),
-    recommendationId: S.optional(S.String),
-    impression: S.optional(ActionImpression),
-    properties: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "ActionInteraction" }) as any as S.Schema<ActionInteraction>;
+const ActionInteraction = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ActionInteraction>;
 export type ActionInteractionsList = ActionInteraction[];
-const ActionInteractionsList = /*@__PURE__*/ S.Array(ActionInteraction);
+const ActionInteractionsList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface PutActionInteractionsRequest {
   trackingId: string;
   actionInteractions: ActionInteraction[];
 }
-const PutActionInteractionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trackingId: S.String, actionInteractions: ActionInteractionsList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/action-interactions" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutActionInteractionsRequest",
-}) as any as S.Schema<PutActionInteractionsRequest>;
+const PutActionInteractionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PutActionInteractionsRequest>;
 export interface PutActionInteractionsResponse {}
-const PutActionInteractionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutActionInteractionsResponse",
-}) as any as S.Schema<PutActionInteractionsResponse>;
+const PutActionInteractionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PutActionInteractionsResponse>;
 export type Arn = string;
 export type SynthesizedJsonActionProperties = string | redacted.Redacted<string>;
 export interface Action {
   actionId: string;
   properties?: string | redacted.Redacted<string>;
 }
-const Action = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actionId: S.String, properties: S.optional(SensitiveString) }),
-).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
+const Action = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Action>;
 export type ActionList = Action[];
-const ActionList = /*@__PURE__*/ S.Array(Action);
+const ActionList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface PutActionsRequest {
   datasetArn: string;
   actions: Action[];
 }
-const PutActionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetArn: S.String, actions: ActionList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/actions" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutActionsRequest" }) as any as S.Schema<PutActionsRequest>;
+const PutActionsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PutActionsRequest>;
 export interface PutActionsResponse {}
 const PutActionsResponse = PutActionInteractionsResponse as any as S.Schema<PutActionsResponse>;
 export type FloatType = number;
@@ -172,9 +153,7 @@ export type EventAttributionSource = string;
 export interface MetricAttribution {
   eventAttributionSource: string;
 }
-const MetricAttribution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventAttributionSource: S.String }),
-).annotate({ identifier: "MetricAttribution" }) as any as S.Schema<MetricAttribution>;
+const MetricAttribution = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MetricAttribution>;
 export interface Event {
   eventId?: string;
   eventType: string;
@@ -186,35 +165,16 @@ export interface Event {
   impression?: (string | redacted.Redacted<string>)[];
   metricAttribution?: MetricAttribution;
 }
-const Event = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventId: S.optional(S.String),
-    eventType: S.String,
-    eventValue: S.optional(S.Number),
-    itemId: S.optional(SensitiveString),
-    properties: S.optional(SensitiveString),
-    sentAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    recommendationId: S.optional(S.String),
-    impression: S.optional(Impression),
-    metricAttribution: S.optional(MetricAttribution),
-  }),
-).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
+const Event = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Event>;
 export type EventList = Event[];
-const EventList = /*@__PURE__*/ S.Array(Event);
+const EventList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface PutEventsRequest {
   trackingId: string;
   userId?: string | redacted.Redacted<string>;
   sessionId: string;
   eventList: Event[];
 }
-const PutEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trackingId: S.String,
-    userId: S.optional(SensitiveString),
-    sessionId: S.String,
-    eventList: EventList,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/events" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "PutEventsRequest" }) as any as S.Schema<PutEventsRequest>;
+const PutEventsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PutEventsRequest>;
 export interface PutEventsResponse {}
 const PutEventsResponse = PutActionInteractionsResponse as any as S.Schema<PutEventsResponse>;
 export type SynthesizedJsonItemProperties = string | redacted.Redacted<string>;
@@ -222,20 +182,14 @@ export interface Item {
   itemId: string;
   properties?: string | redacted.Redacted<string>;
 }
-const Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ itemId: S.String, properties: S.optional(SensitiveString) }),
-).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
+const Item = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Item>;
 export type ItemList = Item[];
-const ItemList = /*@__PURE__*/ S.Array(Item);
+const ItemList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface PutItemsRequest {
   datasetArn: string;
   items: Item[];
 }
-const PutItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetArn: S.String, items: ItemList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/items" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutItemsRequest" }) as any as S.Schema<PutItemsRequest>;
+const PutItemsRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PutItemsRequest>;
 export interface PutItemsResponse {}
 const PutItemsResponse = PutActionInteractionsResponse as any as S.Schema<PutItemsResponse>;
 export type SynthesizedJsonUserProperties = string | redacted.Redacted<string>;
@@ -243,20 +197,14 @@ export interface User {
   userId: string;
   properties?: string | redacted.Redacted<string>;
 }
-const User = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ userId: S.String, properties: S.optional(SensitiveString) }),
-).annotate({ identifier: "User" }) as any as S.Schema<User>;
+const User = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<User>;
 export type UserList = User[];
-const UserList = /*@__PURE__*/ S.Array(User);
+const UserList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface PutUsersRequest {
   datasetArn: string;
   users: User[];
 }
-const PutUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetArn: S.String, users: UserList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/users" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutUsersRequest" }) as any as S.Schema<PutUsersRequest>;
+const PutUsersRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PutUsersRequest>;
 export interface PutUsersResponse {}
 const PutUsersResponse = PutActionInteractionsResponse as any as S.Schema<PutUsersResponse>;
 export type ErrorMessage = string;
@@ -373,3 +321,119 @@ export const putUsers: API.OperationMethod<
   retry: Retry,
   operationName: "PutUsers",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actionId: SensitiveString,
+          userId: S.optional(SensitiveString),
+          sessionId: S.String,
+          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          eventType: S.String,
+          eventId: S.optional(S.String),
+          recommendationId: S.optional(S.String),
+          impression: S.optional(ActionImpression),
+          properties: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "ActionInteraction" });
+    case 2:
+      return S.Array(ActionInteraction);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ trackingId: S.String, actionInteractions: ActionInteractionsList }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/action-interactions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutActionInteractionsRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PutActionInteractionsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ actionId: S.String, properties: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "Action" });
+    case 6:
+      return S.Array(Action);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ datasetArn: S.String, actions: ActionList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/actions" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutActionsRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ eventAttributionSource: S.String })).annotate({
+        identifier: "MetricAttribution",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          eventId: S.optional(S.String),
+          eventType: S.String,
+          eventValue: S.optional(S.Number),
+          itemId: S.optional(SensitiveString),
+          properties: S.optional(SensitiveString),
+          sentAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          recommendationId: S.optional(S.String),
+          impression: S.optional(Impression),
+          metricAttribution: S.optional(MetricAttribution),
+        }),
+      ).annotate({ identifier: "Event" });
+    case 2:
+      return S.Array(Event);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          trackingId: S.String,
+          userId: S.optional(SensitiveString),
+          sessionId: S.String,
+          eventList: EventList,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/events" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "PutEventsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ itemId: S.String, properties: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "Item" });
+    case 5:
+      return S.Array(Item);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ datasetArn: S.String, items: ItemList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/items" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutItemsRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ userId: S.String, properties: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(User);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ datasetArn: S.String, users: UserList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/users" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutUsersRequest" });
+  }
+}

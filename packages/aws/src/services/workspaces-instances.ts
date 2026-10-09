@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -139,15 +140,15 @@ export interface AssociateVolumeRequest {
   VolumeId: string;
   Device: string;
 }
-const AssociateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceInstanceId: S.String, VolumeId: S.String, Device: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "AssociateVolumeRequest" }) as any as S.Schema<AssociateVolumeRequest>;
+const AssociateVolumeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateVolumeRequest>;
 export interface AssociateVolumeResponse {}
-const AssociateVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssociateVolumeResponse",
-}) as any as S.Schema<AssociateVolumeResponse>;
+const AssociateVolumeResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateVolumeResponse>;
 export type String64 = string;
 export type ClientToken = string | redacted.Redacted<string>;
 export type NonNegativeInteger = number;
@@ -167,20 +168,16 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface TagSpecification {
   ResourceType?: ResourceTypeEnum;
   Tags?: Tag[];
 }
-const TagSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceType: S.optional(ResourceTypeEnum), Tags: S.optional(TagList) }),
-).annotate({ identifier: "TagSpecification" }) as any as S.Schema<TagSpecification>;
+const TagSpecification = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TagSpecification>;
 export type TagSpecifications = TagSpecification[];
-const TagSpecifications = /*@__PURE__*/ S.Array(TagSpecification);
+const TagSpecifications = /*@__PURE__*/ __L.at(__c0, 5);
 export type VolumeTypeEnum =
   | "standard"
   | "io1"
@@ -204,26 +201,11 @@ export interface CreateVolumeRequest {
   Throughput?: number;
   VolumeType?: VolumeTypeEnum;
 }
-const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AvailabilityZone: S.String,
-    ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-    Encrypted: S.optional(S.Boolean),
-    Iops: S.optional(S.Number),
-    KmsKeyId: S.optional(SensitiveString),
-    SizeInGB: S.optional(S.Number),
-    SnapshotId: S.optional(S.String),
-    TagSpecifications: S.optional(TagSpecifications),
-    Throughput: S.optional(S.Number),
-    VolumeType: S.optional(VolumeTypeEnum),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateVolumeRequest" }) as any as S.Schema<CreateVolumeRequest>;
+const CreateVolumeRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateVolumeRequest>;
 export interface CreateVolumeResponse {
   VolumeId?: string;
 }
-const CreateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VolumeId: S.optional(S.String) }),
-).annotate({ identifier: "CreateVolumeResponse" }) as any as S.Schema<CreateVolumeResponse>;
+const CreateVolumeResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateVolumeResponse>;
 export interface EbsBlockDevice {
   VolumeType?: VolumeTypeEnum;
   Encrypted?: boolean;
@@ -232,16 +214,7 @@ export interface EbsBlockDevice {
   Throughput?: number;
   VolumeSize?: number;
 }
-const EbsBlockDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VolumeType: S.optional(VolumeTypeEnum),
-    Encrypted: S.optional(S.Boolean),
-    KmsKeyId: S.optional(SensitiveString),
-    Iops: S.optional(S.Number),
-    Throughput: S.optional(S.Number),
-    VolumeSize: S.optional(S.Number),
-  }),
-).annotate({ identifier: "EbsBlockDevice" }) as any as S.Schema<EbsBlockDevice>;
+const EbsBlockDevice = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EbsBlockDevice>;
 export type VirtualName = string;
 export interface BlockDeviceMappingRequest {
   DeviceName?: string;
@@ -249,18 +222,12 @@ export interface BlockDeviceMappingRequest {
   NoDevice?: string;
   VirtualName?: string;
 }
-const BlockDeviceMappingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeviceName: S.optional(S.String),
-    Ebs: S.optional(EbsBlockDevice),
-    NoDevice: S.optional(S.String),
-    VirtualName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BlockDeviceMappingRequest",
-}) as any as S.Schema<BlockDeviceMappingRequest>;
+const BlockDeviceMappingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BlockDeviceMappingRequest>;
 export type BlockDeviceMappings = BlockDeviceMappingRequest[];
-const BlockDeviceMappings = /*@__PURE__*/ S.Array(BlockDeviceMappingRequest);
+const BlockDeviceMappings = /*@__PURE__*/ __L.at(__c1, 2);
 export type CapacityReservationPreferenceEnum =
   | "capacity-reservations-only"
   | "open"
@@ -274,26 +241,18 @@ export interface CapacityReservationTarget {
   CapacityReservationId?: string;
   CapacityReservationResourceGroupArn?: string;
 }
-const CapacityReservationTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CapacityReservationId: S.optional(S.String),
-    CapacityReservationResourceGroupArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CapacityReservationTarget",
-}) as any as S.Schema<CapacityReservationTarget>;
+const CapacityReservationTarget = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CapacityReservationTarget>;
 export interface CapacityReservationSpecification {
   CapacityReservationPreference?: CapacityReservationPreferenceEnum;
   CapacityReservationTarget?: CapacityReservationTarget;
 }
-const CapacityReservationSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CapacityReservationPreference: S.optional(CapacityReservationPreferenceEnum),
-    CapacityReservationTarget: S.optional(CapacityReservationTarget),
-  }),
-).annotate({
-  identifier: "CapacityReservationSpecification",
-}) as any as S.Schema<CapacityReservationSpecification>;
+const CapacityReservationSpecification = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CapacityReservationSpecification>;
 export type AmdSevSnpEnum = "enabled" | "disabled" | (string & {});
 const AmdSevSnpEnum = S.String;
 
@@ -306,48 +265,39 @@ export interface CpuOptionsRequest {
   ThreadsPerCore?: number;
   NestedVirtualization?: NestedVirtualizationEnum;
 }
-const CpuOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AmdSevSnp: S.optional(AmdSevSnpEnum),
-    CoreCount: S.optional(S.Number),
-    ThreadsPerCore: S.optional(S.Number),
-    NestedVirtualization: S.optional(NestedVirtualizationEnum),
-  }),
-).annotate({ identifier: "CpuOptionsRequest" }) as any as S.Schema<CpuOptionsRequest>;
+const CpuOptionsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CpuOptionsRequest>;
 export type CpuCreditsEnum = "standard" | "unlimited" | (string & {});
 const CpuCreditsEnum = S.String;
 
 export interface CreditSpecificationRequest {
   CpuCredits?: CpuCreditsEnum;
 }
-const CreditSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CpuCredits: S.optional(CpuCreditsEnum) }),
-).annotate({
-  identifier: "CreditSpecificationRequest",
-}) as any as S.Schema<CreditSpecificationRequest>;
+const CreditSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreditSpecificationRequest>;
 export interface EnclaveOptionsRequest {
   Enabled?: boolean;
 }
-const EnclaveOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({ identifier: "EnclaveOptionsRequest" }) as any as S.Schema<EnclaveOptionsRequest>;
+const EnclaveOptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<EnclaveOptionsRequest>;
 export interface HibernationOptionsRequest {
   Configured?: boolean;
 }
-const HibernationOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Configured: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "HibernationOptionsRequest",
-}) as any as S.Schema<HibernationOptionsRequest>;
+const HibernationOptionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<HibernationOptionsRequest>;
 export interface IamInstanceProfileSpecification {
   Arn?: string;
   Name?: string;
 }
-const IamInstanceProfileSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({
-  identifier: "IamInstanceProfileSpecification",
-}) as any as S.Schema<IamInstanceProfileSpecification>;
+const IamInstanceProfileSpecification = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<IamInstanceProfileSpecification>;
 export type ImageId = string;
 export type MarketTypeEnum = "spot" | "capacity-block" | (string & {});
 const MarketTypeEnum = S.String;
@@ -365,56 +315,43 @@ export interface SpotMarketOptions {
   SpotInstanceType?: SpotInstanceTypeEnum;
   ValidUntilUtc?: Date;
 }
-const SpotMarketOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BlockDurationMinutes: S.optional(S.Number),
-    InstanceInterruptionBehavior: S.optional(InstanceInterruptionBehaviorEnum),
-    MaxPrice: S.optional(S.String),
-    SpotInstanceType: S.optional(SpotInstanceTypeEnum),
-    ValidUntilUtc: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "SpotMarketOptions" }) as any as S.Schema<SpotMarketOptions>;
+const SpotMarketOptions = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SpotMarketOptions>;
 export interface InstanceMarketOptionsRequest {
   MarketType?: MarketTypeEnum;
   SpotOptions?: SpotMarketOptions;
 }
-const InstanceMarketOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MarketType: S.optional(MarketTypeEnum), SpotOptions: S.optional(SpotMarketOptions) }),
-).annotate({
-  identifier: "InstanceMarketOptionsRequest",
-}) as any as S.Schema<InstanceMarketOptionsRequest>;
+const InstanceMarketOptionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<InstanceMarketOptionsRequest>;
 export type InstanceType = string;
 export type Ipv6Address = string | redacted.Redacted<string>;
 export interface InstanceIpv6Address {
   Ipv6Address?: string | redacted.Redacted<string>;
   IsPrimaryIpv6?: boolean;
 }
-const InstanceIpv6Address = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Ipv6Address: S.optional(SensitiveString), IsPrimaryIpv6: S.optional(S.Boolean) }),
-).annotate({ identifier: "InstanceIpv6Address" }) as any as S.Schema<InstanceIpv6Address>;
+const InstanceIpv6Address = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<InstanceIpv6Address>;
 export type Ipv6Addresses = InstanceIpv6Address[];
-const Ipv6Addresses = /*@__PURE__*/ S.Array(InstanceIpv6Address);
+const Ipv6Addresses = /*@__PURE__*/ __L.at(__c2, 5);
 export interface LicenseConfigurationRequest {
   LicenseConfigurationArn?: string;
 }
-const LicenseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LicenseConfigurationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "LicenseConfigurationRequest",
-}) as any as S.Schema<LicenseConfigurationRequest>;
+const LicenseConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<LicenseConfigurationRequest>;
 export type LicenseSpecifications = LicenseConfigurationRequest[];
-const LicenseSpecifications = /*@__PURE__*/ S.Array(LicenseConfigurationRequest);
+const LicenseSpecifications = /*@__PURE__*/ __L.at(__c2, 7);
 export type AutoRecoveryEnum = "disabled" | "default" | (string & {});
 const AutoRecoveryEnum = S.String;
 
 export interface InstanceMaintenanceOptionsRequest {
   AutoRecovery?: AutoRecoveryEnum;
 }
-const InstanceMaintenanceOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoRecovery: S.optional(AutoRecoveryEnum) }),
-).annotate({
-  identifier: "InstanceMaintenanceOptionsRequest",
-}) as any as S.Schema<InstanceMaintenanceOptionsRequest>;
+const InstanceMaintenanceOptionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<InstanceMaintenanceOptionsRequest>;
 export type HttpEndpointEnum = "enabled" | "disabled" | (string & {});
 const HttpEndpointEnum = S.String;
 
@@ -435,60 +372,42 @@ export interface InstanceMetadataOptionsRequest {
   HttpTokens?: HttpTokensEnum;
   InstanceMetadataTags?: InstanceMetadataTagsEnum;
 }
-const InstanceMetadataOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HttpEndpoint: S.optional(HttpEndpointEnum),
-    HttpProtocolIpv6: S.optional(HttpProtocolIpv6Enum),
-    HttpPutResponseHopLimit: S.optional(S.Number),
-    HttpTokens: S.optional(HttpTokensEnum),
-    InstanceMetadataTags: S.optional(InstanceMetadataTagsEnum),
-  }),
-).annotate({
-  identifier: "InstanceMetadataOptionsRequest",
-}) as any as S.Schema<InstanceMetadataOptionsRequest>;
+const InstanceMetadataOptionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<InstanceMetadataOptionsRequest>;
 export interface RunInstancesMonitoringEnabled {
   Enabled?: boolean;
 }
-const RunInstancesMonitoringEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "RunInstancesMonitoringEnabled",
-}) as any as S.Schema<RunInstancesMonitoringEnabled>;
+const RunInstancesMonitoringEnabled = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<RunInstancesMonitoringEnabled>;
 export interface ConnectionTrackingSpecificationRequest {
   TcpEstablishedTimeout?: number;
   UdpStreamTimeout?: number;
   UdpTimeout?: number;
 }
-const ConnectionTrackingSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TcpEstablishedTimeout: S.optional(S.Number),
-    UdpStreamTimeout: S.optional(S.Number),
-    UdpTimeout: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ConnectionTrackingSpecificationRequest",
-}) as any as S.Schema<ConnectionTrackingSpecificationRequest>;
+const ConnectionTrackingSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ConnectionTrackingSpecificationRequest>;
 export type Description = string;
 export interface EnaSrdUdpSpecificationRequest {
   EnaSrdUdpEnabled?: boolean;
 }
-const EnaSrdUdpSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnaSrdUdpEnabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "EnaSrdUdpSpecificationRequest",
-}) as any as S.Schema<EnaSrdUdpSpecificationRequest>;
+const EnaSrdUdpSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<EnaSrdUdpSpecificationRequest>;
 export interface EnaSrdSpecificationRequest {
   EnaSrdEnabled?: boolean;
   EnaSrdUdpSpecification?: EnaSrdUdpSpecificationRequest;
 }
-const EnaSrdSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnaSrdEnabled: S.optional(S.Boolean),
-    EnaSrdUdpSpecification: S.optional(EnaSrdUdpSpecificationRequest),
-  }),
-).annotate({
-  identifier: "EnaSrdSpecificationRequest",
-}) as any as S.Schema<EnaSrdSpecificationRequest>;
+const EnaSrdSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<EnaSrdSpecificationRequest>;
 export type InterfaceTypeEnum = "interface" | "efa" | "efa-only" | (string & {});
 const InterfaceTypeEnum = S.String;
 
@@ -496,40 +415,37 @@ export type Ipv4Prefix = string;
 export interface Ipv4PrefixSpecificationRequest {
   Ipv4Prefix?: string;
 }
-const Ipv4PrefixSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Ipv4Prefix: S.optional(S.String) }),
-).annotate({
-  identifier: "Ipv4PrefixSpecificationRequest",
-}) as any as S.Schema<Ipv4PrefixSpecificationRequest>;
+const Ipv4PrefixSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<Ipv4PrefixSpecificationRequest>;
 export type Ipv4Prefixes = Ipv4PrefixSpecificationRequest[];
-const Ipv4Prefixes = /*@__PURE__*/ S.Array(Ipv4PrefixSpecificationRequest);
+const Ipv4Prefixes = /*@__PURE__*/ __L.at(__c3, 7);
 export type Ipv6Prefix = string;
 export interface Ipv6PrefixSpecificationRequest {
   Ipv6Prefix?: string;
 }
-const Ipv6PrefixSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Ipv6Prefix: S.optional(S.String) }),
-).annotate({
-  identifier: "Ipv6PrefixSpecificationRequest",
-}) as any as S.Schema<Ipv6PrefixSpecificationRequest>;
+const Ipv6PrefixSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<Ipv6PrefixSpecificationRequest>;
 export type Ipv6Prefixes = Ipv6PrefixSpecificationRequest[];
-const Ipv6Prefixes = /*@__PURE__*/ S.Array(Ipv6PrefixSpecificationRequest);
+const Ipv6Prefixes = /*@__PURE__*/ __L.at(__c4, 1);
 export type NetworkInterfaceId = string;
 export type Ipv4Address = string | redacted.Redacted<string>;
 export interface PrivateIpAddressSpecification {
   Primary?: boolean;
   PrivateIpAddress?: string | redacted.Redacted<string>;
 }
-const PrivateIpAddressSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Primary: S.optional(S.Boolean), PrivateIpAddress: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "PrivateIpAddressSpecification",
-}) as any as S.Schema<PrivateIpAddressSpecification>;
+const PrivateIpAddressSpecification = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<PrivateIpAddressSpecification>;
 export type PrivateIpAddresses = PrivateIpAddressSpecification[];
-const PrivateIpAddresses = /*@__PURE__*/ S.Array(PrivateIpAddressSpecification);
+const PrivateIpAddresses = /*@__PURE__*/ __L.at(__c4, 3);
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+const SecurityGroupIds = /*@__PURE__*/ __L.at(__c4, 4);
 export type SubnetId = string;
 export interface InstanceNetworkInterfaceSpecification {
   AssociateCarrierIpAddress?: boolean;
@@ -554,46 +470,22 @@ export interface InstanceNetworkInterfaceSpecification {
   Groups?: string[];
   SubnetId?: string;
 }
-const InstanceNetworkInterfaceSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssociateCarrierIpAddress: S.optional(S.Boolean),
-    AssociatePublicIpAddress: S.optional(S.Boolean),
-    ConnectionTrackingSpecification: S.optional(ConnectionTrackingSpecificationRequest),
-    Description: S.optional(S.String),
-    DeviceIndex: S.optional(S.Number),
-    EnaSrdSpecification: S.optional(EnaSrdSpecificationRequest),
-    InterfaceType: S.optional(InterfaceTypeEnum),
-    Ipv4Prefixes: S.optional(Ipv4Prefixes),
-    Ipv4PrefixCount: S.optional(S.Number),
-    Ipv6AddressCount: S.optional(S.Number),
-    Ipv6Addresses: S.optional(Ipv6Addresses),
-    Ipv6Prefixes: S.optional(Ipv6Prefixes),
-    Ipv6PrefixCount: S.optional(S.Number),
-    NetworkCardIndex: S.optional(S.Number),
-    NetworkInterfaceId: S.optional(S.String),
-    PrimaryIpv6: S.optional(S.Boolean),
-    PrivateIpAddress: S.optional(SensitiveString),
-    PrivateIpAddresses: S.optional(PrivateIpAddresses),
-    SecondaryPrivateIpAddressCount: S.optional(S.Number),
-    Groups: S.optional(SecurityGroupIds),
-    SubnetId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstanceNetworkInterfaceSpecification",
-}) as any as S.Schema<InstanceNetworkInterfaceSpecification>;
+const InstanceNetworkInterfaceSpecification = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<InstanceNetworkInterfaceSpecification>;
 export type NetworkInterfaces = InstanceNetworkInterfaceSpecification[];
-const NetworkInterfaces = /*@__PURE__*/ S.Array(InstanceNetworkInterfaceSpecification);
+const NetworkInterfaces = /*@__PURE__*/ __L.at(__c4, 6);
 export type BandwidthWeightingEnum = "default" | "vpc-1" | "ebs-1" | (string & {});
 const BandwidthWeightingEnum = S.String;
 
 export interface InstanceNetworkPerformanceOptionsRequest {
   BandwidthWeighting?: BandwidthWeightingEnum;
 }
-const InstanceNetworkPerformanceOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BandwidthWeighting: S.optional(BandwidthWeightingEnum) }),
-).annotate({
-  identifier: "InstanceNetworkPerformanceOptionsRequest",
-}) as any as S.Schema<InstanceNetworkPerformanceOptionsRequest>;
+const InstanceNetworkPerformanceOptionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<InstanceNetworkPerformanceOptionsRequest>;
 export type AvailabilityZone = string;
 export type PlacementGroupId = string;
 export type HostId = string;
@@ -610,18 +502,7 @@ export interface Placement {
   PartitionNumber?: number;
   Tenancy?: TenancyEnum;
 }
-const Placement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Affinity: S.optional(S.String),
-    AvailabilityZone: S.optional(S.String),
-    GroupId: S.optional(S.String),
-    GroupName: S.optional(S.String),
-    HostId: S.optional(S.String),
-    HostResourceGroupArn: S.optional(S.String),
-    PartitionNumber: S.optional(S.Number),
-    Tenancy: S.optional(TenancyEnum),
-  }),
-).annotate({ identifier: "Placement" }) as any as S.Schema<Placement>;
+const Placement = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Placement>;
 export type HostnameTypeEnum = "ip-name" | "resource-name" | (string & {});
 const HostnameTypeEnum = S.String;
 
@@ -630,15 +511,10 @@ export interface PrivateDnsNameOptionsRequest {
   EnableResourceNameDnsARecord?: boolean;
   EnableResourceNameDnsAAAARecord?: boolean;
 }
-const PrivateDnsNameOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostnameType: S.optional(HostnameTypeEnum),
-    EnableResourceNameDnsARecord: S.optional(S.Boolean),
-    EnableResourceNameDnsAAAARecord: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PrivateDnsNameOptionsRequest",
-}) as any as S.Schema<PrivateDnsNameOptionsRequest>;
+const PrivateDnsNameOptionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PrivateDnsNameOptionsRequest>;
 export type SecurityGroupName = string;
 export type SecurityGroupNames = string[];
 const SecurityGroupNames = SecurityGroupIds as any as S.Schema<SecurityGroupNames>;
@@ -677,99 +553,52 @@ export interface ManagedInstanceRequest {
   TagSpecifications?: TagSpecification[];
   UserData?: string | redacted.Redacted<string>;
 }
-const ManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BlockDeviceMappings: S.optional(BlockDeviceMappings),
-    CapacityReservationSpecification: S.optional(CapacityReservationSpecification),
-    CpuOptions: S.optional(CpuOptionsRequest),
-    CreditSpecification: S.optional(CreditSpecificationRequest),
-    DisableApiStop: S.optional(S.Boolean),
-    EbsOptimized: S.optional(S.Boolean),
-    EnablePrimaryIpv6: S.optional(S.Boolean),
-    EnclaveOptions: S.optional(EnclaveOptionsRequest),
-    HibernationOptions: S.optional(HibernationOptionsRequest),
-    IamInstanceProfile: S.optional(IamInstanceProfileSpecification),
-    ImageId: S.optional(S.String),
-    InstanceMarketOptions: S.optional(InstanceMarketOptionsRequest),
-    InstanceType: S.optional(S.String),
-    Ipv6Addresses: S.optional(Ipv6Addresses),
-    Ipv6AddressCount: S.optional(S.Number),
-    KernelId: S.optional(S.String),
-    KeyName: S.optional(S.String),
-    LicenseSpecifications: S.optional(LicenseSpecifications),
-    MaintenanceOptions: S.optional(InstanceMaintenanceOptionsRequest),
-    MetadataOptions: S.optional(InstanceMetadataOptionsRequest),
-    Monitoring: S.optional(RunInstancesMonitoringEnabled),
-    NetworkInterfaces: S.optional(NetworkInterfaces),
-    NetworkPerformanceOptions: S.optional(InstanceNetworkPerformanceOptionsRequest),
-    Placement: S.optional(Placement),
-    PrivateDnsNameOptions: S.optional(PrivateDnsNameOptionsRequest),
-    PrivateIpAddress: S.optional(SensitiveString),
-    RamdiskId: S.optional(S.String),
-    SecurityGroupIds: S.optional(SecurityGroupIds),
-    SecurityGroups: S.optional(SecurityGroupNames),
-    SubnetId: S.optional(S.String),
-    TagSpecifications: S.optional(TagSpecifications),
-    UserData: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "ManagedInstanceRequest" }) as any as S.Schema<ManagedInstanceRequest>;
+const ManagedInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ManagedInstanceRequest>;
 export type BillingMode = "MONTHLY" | "HOURLY" | (string & {});
 const BillingMode = S.String;
 
 export interface BillingConfiguration {
   BillingMode: BillingMode;
 }
-const BillingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BillingMode: BillingMode }),
-).annotate({ identifier: "BillingConfiguration" }) as any as S.Schema<BillingConfiguration>;
+const BillingConfiguration = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<BillingConfiguration>;
 export interface CreateWorkspaceInstanceRequest {
   ClientToken?: string | redacted.Redacted<string>;
   Tags?: Tag[];
   ManagedInstance: ManagedInstanceRequest;
   BillingConfiguration?: BillingConfiguration;
 }
-const CreateWorkspaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-    Tags: S.optional(TagList),
-    ManagedInstance: ManagedInstanceRequest,
-    BillingConfiguration: S.optional(BillingConfiguration),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateWorkspaceInstanceRequest",
-}) as any as S.Schema<CreateWorkspaceInstanceRequest>;
+const CreateWorkspaceInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateWorkspaceInstanceRequest>;
 export interface CreateWorkspaceInstanceResponse {
   WorkspaceInstanceId?: string;
 }
-const CreateWorkspaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceInstanceId: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateWorkspaceInstanceResponse",
-}) as any as S.Schema<CreateWorkspaceInstanceResponse>;
+const CreateWorkspaceInstanceResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateWorkspaceInstanceResponse>;
 export interface DeleteVolumeRequest {
   VolumeId: string;
 }
-const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VolumeId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
+const DeleteVolumeRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeleteVolumeRequest>;
 export interface DeleteVolumeResponse {}
 const DeleteVolumeResponse = AssociateVolumeResponse as any as S.Schema<DeleteVolumeResponse>;
 export interface DeleteWorkspaceInstanceRequest {
   WorkspaceInstanceId: string;
 }
-const DeleteWorkspaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceInstanceId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteWorkspaceInstanceRequest",
-}) as any as S.Schema<DeleteWorkspaceInstanceRequest>;
+const DeleteWorkspaceInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteWorkspaceInstanceRequest>;
 export interface DeleteWorkspaceInstanceResponse {}
-const DeleteWorkspaceInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceInstanceResponse",
-}) as any as S.Schema<DeleteWorkspaceInstanceResponse>;
+const DeleteWorkspaceInstanceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteWorkspaceInstanceResponse>;
 export type DisassociateModeEnum = "FORCE" | "NO_FORCE" | (string & {});
 const DisassociateModeEnum = S.String;
 
@@ -779,52 +608,38 @@ export interface DisassociateVolumeRequest {
   Device?: string;
   DisassociateMode?: DisassociateModeEnum;
 }
-const DisassociateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WorkspaceInstanceId: S.String,
-    VolumeId: S.String,
-    Device: S.optional(S.String),
-    DisassociateMode: S.optional(DisassociateModeEnum),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DisassociateVolumeRequest",
-}) as any as S.Schema<DisassociateVolumeRequest>;
+const DisassociateVolumeRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DisassociateVolumeRequest>;
 export interface DisassociateVolumeResponse {}
 const DisassociateVolumeResponse =
   AssociateVolumeResponse as any as S.Schema<DisassociateVolumeResponse>;
 export interface GetWorkspaceInstanceRequest {
   WorkspaceInstanceId: string;
 }
-const GetWorkspaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceInstanceId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetWorkspaceInstanceRequest",
-}) as any as S.Schema<GetWorkspaceInstanceRequest>;
+const GetWorkspaceInstanceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetWorkspaceInstanceRequest>;
 export interface WorkspaceInstanceError {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-const WorkspaceInstanceError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
-).annotate({ identifier: "WorkspaceInstanceError" }) as any as S.Schema<WorkspaceInstanceError>;
+const WorkspaceInstanceError = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<WorkspaceInstanceError>;
 export type WorkspaceInstanceErrors = WorkspaceInstanceError[];
-const WorkspaceInstanceErrors = /*@__PURE__*/ S.Array(WorkspaceInstanceError);
+const WorkspaceInstanceErrors = /*@__PURE__*/ __L.at(__c6, 4);
 export interface EC2InstanceError {
   EC2ErrorCode?: string;
   EC2ExceptionType?: string;
   EC2ErrorMessage?: string;
 }
-const EC2InstanceError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EC2ErrorCode: S.optional(S.String),
-    EC2ExceptionType: S.optional(S.String),
-    EC2ErrorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "EC2InstanceError" }) as any as S.Schema<EC2InstanceError>;
+const EC2InstanceError = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<EC2InstanceError>;
 export type EC2InstanceErrors = EC2InstanceError[];
-const EC2InstanceErrors = /*@__PURE__*/ S.Array(EC2InstanceError);
+const EC2InstanceErrors = /*@__PURE__*/ __L.at(__c6, 6);
 export type ProvisionStateEnum =
   | "ALLOCATING"
   | "ALLOCATED"
@@ -838,9 +653,7 @@ const ProvisionStateEnum = S.String;
 export interface EC2ManagedInstance {
   InstanceId?: string;
 }
-const EC2ManagedInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InstanceId: S.optional(S.String) }),
-).annotate({ identifier: "EC2ManagedInstance" }) as any as S.Schema<EC2ManagedInstance>;
+const EC2ManagedInstance = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<EC2ManagedInstance>;
 export interface GetWorkspaceInstanceResponse {
   WorkspaceInstanceErrors?: WorkspaceInstanceError[];
   EC2InstanceErrors?: EC2InstanceError[];
@@ -849,18 +662,10 @@ export interface GetWorkspaceInstanceResponse {
   EC2ManagedInstance?: EC2ManagedInstance;
   BillingConfiguration?: BillingConfiguration;
 }
-const GetWorkspaceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WorkspaceInstanceErrors: S.optional(WorkspaceInstanceErrors),
-    EC2InstanceErrors: S.optional(EC2InstanceErrors),
-    ProvisionState: S.optional(ProvisionStateEnum),
-    WorkspaceInstanceId: S.optional(S.String),
-    EC2ManagedInstance: S.optional(EC2ManagedInstance),
-    BillingConfiguration: S.optional(BillingConfiguration),
-  }),
-).annotate({
-  identifier: "GetWorkspaceInstanceResponse",
-}) as any as S.Schema<GetWorkspaceInstanceResponse>;
+const GetWorkspaceInstanceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetWorkspaceInstanceResponse>;
 export type ListInstanceTypesMaxResults = number;
 export type NextToken = string | redacted.Redacted<string>;
 export type PlatformTypeEnum =
@@ -882,156 +687,109 @@ export interface InstanceConfigurationFilter {
   PlatformType: PlatformTypeEnum;
   Tenancy: InstanceConfigurationTenancyEnum;
 }
-const InstanceConfigurationFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BillingMode: BillingMode,
-    PlatformType: PlatformTypeEnum,
-    Tenancy: InstanceConfigurationTenancyEnum,
-  }),
-).annotate({
-  identifier: "InstanceConfigurationFilter",
-}) as any as S.Schema<InstanceConfigurationFilter>;
+const InstanceConfigurationFilter = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<InstanceConfigurationFilter>;
 export interface ListInstanceTypesRequest {
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
   InstanceConfigurationFilter?: InstanceConfigurationFilter;
 }
-const ListInstanceTypesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(SensitiveString),
-    InstanceConfigurationFilter: S.optional(InstanceConfigurationFilter),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListInstanceTypesRequest" }) as any as S.Schema<ListInstanceTypesRequest>;
+const ListInstanceTypesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListInstanceTypesRequest>;
 export interface SupportedInstanceConfiguration {
   BillingMode?: BillingMode;
   PlatformType?: PlatformTypeEnum;
   Tenancy?: InstanceConfigurationTenancyEnum;
 }
-const SupportedInstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BillingMode: S.optional(BillingMode),
-    PlatformType: S.optional(PlatformTypeEnum),
-    Tenancy: S.optional(InstanceConfigurationTenancyEnum),
-  }),
-).annotate({
-  identifier: "SupportedInstanceConfiguration",
-}) as any as S.Schema<SupportedInstanceConfiguration>;
+const SupportedInstanceConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<SupportedInstanceConfiguration>;
 export type SupportedInstanceConfigurations = SupportedInstanceConfiguration[];
-const SupportedInstanceConfigurations = /*@__PURE__*/ S.Array(SupportedInstanceConfiguration);
+const SupportedInstanceConfigurations = /*@__PURE__*/ __L.at(__c7, 4);
 export interface InstanceTypeInfo {
   InstanceType?: string;
   SupportedInstanceConfigurations?: SupportedInstanceConfiguration[];
 }
-const InstanceTypeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstanceType: S.optional(S.String),
-    SupportedInstanceConfigurations: S.optional(SupportedInstanceConfigurations),
-  }),
-).annotate({ identifier: "InstanceTypeInfo" }) as any as S.Schema<InstanceTypeInfo>;
+const InstanceTypeInfo = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<InstanceTypeInfo>;
 export type InstanceTypes = InstanceTypeInfo[];
-const InstanceTypes = /*@__PURE__*/ S.Array(InstanceTypeInfo);
+const InstanceTypes = /*@__PURE__*/ __L.at(__c7, 6);
 export interface ListInstanceTypesResponse {
   InstanceTypes: InstanceTypeInfo[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListInstanceTypesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InstanceTypes: InstanceTypes, NextToken: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "ListInstanceTypesResponse",
-}) as any as S.Schema<ListInstanceTypesResponse>;
+const ListInstanceTypesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListInstanceTypesResponse>;
 export type MaxResults = number;
 export interface ListRegionsRequest {
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(SensitiveString) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListRegionsRequest" }) as any as S.Schema<ListRegionsRequest>;
+const ListRegionsRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListRegionsRequest>;
 export type RegionName = string;
 export interface Region {
   RegionName?: string;
 }
-const Region = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RegionName: S.optional(S.String) }),
-).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
+const Region = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Region>;
 export type RegionList = Region[];
-const RegionList = /*@__PURE__*/ S.Array(Region);
+const RegionList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface ListRegionsResponse {
   Regions: Region[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Regions: RegionList, NextToken: S.optional(SensitiveString) }),
-).annotate({ identifier: "ListRegionsResponse" }) as any as S.Schema<ListRegionsResponse>;
+const ListRegionsResponse = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ListRegionsResponse>;
 export interface ListTagsForResourceRequest {
   WorkspaceInstanceId: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceInstanceId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type ProvisionStates = ProvisionStateEnum[];
-const ProvisionStates = /*@__PURE__*/ S.Array(ProvisionStateEnum);
+const ProvisionStates = /*@__PURE__*/ __L.at(__c8, 6);
 export interface ListWorkspaceInstancesRequest {
   ProvisionStates?: ProvisionStateEnum[];
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListWorkspaceInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionStates: S.optional(ProvisionStates),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListWorkspaceInstancesRequest",
-}) as any as S.Schema<ListWorkspaceInstancesRequest>;
+const ListWorkspaceInstancesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListWorkspaceInstancesRequest>;
 export interface WorkspaceInstance {
   ProvisionState?: ProvisionStateEnum;
   WorkspaceInstanceId?: string;
   EC2ManagedInstance?: EC2ManagedInstance;
 }
-const WorkspaceInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionState: S.optional(ProvisionStateEnum),
-    WorkspaceInstanceId: S.optional(S.String),
-    EC2ManagedInstance: S.optional(EC2ManagedInstance),
-  }),
-).annotate({ identifier: "WorkspaceInstance" }) as any as S.Schema<WorkspaceInstance>;
+const WorkspaceInstance = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<WorkspaceInstance>;
 export type WorkspaceInstances = WorkspaceInstance[];
-const WorkspaceInstances = /*@__PURE__*/ S.Array(WorkspaceInstance);
+const WorkspaceInstances = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ListWorkspaceInstancesResponse {
   WorkspaceInstances: WorkspaceInstance[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListWorkspaceInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceInstances: WorkspaceInstances, NextToken: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "ListWorkspaceInstancesResponse",
-}) as any as S.Schema<ListWorkspaceInstancesResponse>;
+const ListWorkspaceInstancesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListWorkspaceInstancesResponse>;
 export interface TagResourceRequest {
   WorkspaceInstanceId: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceInstanceId: S.String, Tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = AssociateVolumeResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -1040,11 +798,7 @@ export interface UntagResourceRequest {
   WorkspaceInstanceId: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceInstanceId: S.String, TagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = AssociateVolumeResponse as any as S.Schema<UntagResourceResponse>;
 export type ValidationExceptionReason =
@@ -1062,11 +816,12 @@ export interface ValidationExceptionField {
   Reason: string;
   Message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Reason: S.String, Message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c9, 6);
 export type AssociateVolumeError =
   | AccessDeniedException
   | ConflictException
@@ -1485,3 +1240,561 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String, VolumeId: S.String, Device: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AssociateVolumeRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssociateVolumeResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 3:
+      return S.Array(Tag);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ResourceType: S.optional(ResourceTypeEnum), Tags: S.optional(TagList) }),
+      ).annotate({ identifier: "TagSpecification" });
+    case 5:
+      return S.Array(TagSpecification);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AvailabilityZone: S.String,
+          ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
+          Encrypted: S.optional(S.Boolean),
+          Iops: S.optional(S.Number),
+          KmsKeyId: S.optional(SensitiveString),
+          SizeInGB: S.optional(S.Number),
+          SnapshotId: S.optional(S.String),
+          TagSpecifications: S.optional(TagSpecifications),
+          Throughput: S.optional(S.Number),
+          VolumeType: S.optional(VolumeTypeEnum),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateVolumeRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ VolumeId: S.optional(S.String) })).annotate({
+        identifier: "CreateVolumeResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VolumeType: S.optional(VolumeTypeEnum),
+          Encrypted: S.optional(S.Boolean),
+          KmsKeyId: S.optional(SensitiveString),
+          Iops: S.optional(S.Number),
+          Throughput: S.optional(S.Number),
+          VolumeSize: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EbsBlockDevice" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DeviceName: S.optional(S.String),
+          Ebs: S.optional(EbsBlockDevice),
+          NoDevice: S.optional(S.String),
+          VirtualName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BlockDeviceMappingRequest",
+      });
+    case 2:
+      return S.Array(BlockDeviceMappingRequest);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CapacityReservationId: S.optional(S.String),
+          CapacityReservationResourceGroupArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationTarget",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CapacityReservationPreference: S.optional(CapacityReservationPreferenceEnum),
+          CapacityReservationTarget: S.optional(CapacityReservationTarget),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationSpecification",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AmdSevSnp: S.optional(AmdSevSnpEnum),
+          CoreCount: S.optional(S.Number),
+          ThreadsPerCore: S.optional(S.Number),
+          NestedVirtualization: S.optional(NestedVirtualizationEnum),
+        }),
+      ).annotate({ identifier: "CpuOptionsRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ CpuCredits: S.optional(CpuCreditsEnum) })).annotate({
+        identifier: "CreditSpecificationRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "EnclaveOptionsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Configured: S.optional(S.Boolean) })).annotate({
+        identifier: "HibernationOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
+      ).annotate({
+        identifier: "IamInstanceProfileSpecification",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          BlockDurationMinutes: S.optional(S.Number),
+          InstanceInterruptionBehavior: S.optional(InstanceInterruptionBehaviorEnum),
+          MaxPrice: S.optional(S.String),
+          SpotInstanceType: S.optional(SpotInstanceTypeEnum),
+          ValidUntilUtc: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "SpotMarketOptions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MarketType: S.optional(MarketTypeEnum),
+          SpotOptions: S.optional(SpotMarketOptions),
+        }),
+      ).annotate({
+        identifier: "InstanceMarketOptionsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Ipv6Address: S.optional(SensitiveString),
+          IsPrimaryIpv6: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "InstanceIpv6Address" });
+    case 5:
+      return S.Array(InstanceIpv6Address);
+    case 6:
+      return S.suspend(() => S.Struct({ LicenseConfigurationArn: S.optional(S.String) })).annotate({
+        identifier: "LicenseConfigurationRequest",
+      });
+    case 7:
+      return S.Array(LicenseConfigurationRequest);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ AutoRecovery: S.optional(AutoRecoveryEnum) })).annotate({
+        identifier: "InstanceMaintenanceOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          HttpEndpoint: S.optional(HttpEndpointEnum),
+          HttpProtocolIpv6: S.optional(HttpProtocolIpv6Enum),
+          HttpPutResponseHopLimit: S.optional(S.Number),
+          HttpTokens: S.optional(HttpTokensEnum),
+          InstanceMetadataTags: S.optional(InstanceMetadataTagsEnum),
+        }),
+      ).annotate({
+        identifier: "InstanceMetadataOptionsRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "RunInstancesMonitoringEnabled",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TcpEstablishedTimeout: S.optional(S.Number),
+          UdpStreamTimeout: S.optional(S.Number),
+          UdpTimeout: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ConnectionTrackingSpecificationRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ EnaSrdUdpEnabled: S.optional(S.Boolean) })).annotate({
+        identifier: "EnaSrdUdpSpecificationRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          EnaSrdEnabled: S.optional(S.Boolean),
+          EnaSrdUdpSpecification: S.optional(EnaSrdUdpSpecificationRequest),
+        }),
+      ).annotate({
+        identifier: "EnaSrdSpecificationRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ Ipv4Prefix: S.optional(S.String) })).annotate({
+        identifier: "Ipv4PrefixSpecificationRequest",
+      });
+    case 7:
+      return S.Array(Ipv4PrefixSpecificationRequest);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Ipv6Prefix: S.optional(S.String) })).annotate({
+        identifier: "Ipv6PrefixSpecificationRequest",
+      });
+    case 1:
+      return S.Array(Ipv6PrefixSpecificationRequest);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Primary: S.optional(S.Boolean), PrivateIpAddress: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "PrivateIpAddressSpecification",
+      });
+    case 3:
+      return S.Array(PrivateIpAddressSpecification);
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AssociateCarrierIpAddress: S.optional(S.Boolean),
+          AssociatePublicIpAddress: S.optional(S.Boolean),
+          ConnectionTrackingSpecification: S.optional(ConnectionTrackingSpecificationRequest),
+          Description: S.optional(S.String),
+          DeviceIndex: S.optional(S.Number),
+          EnaSrdSpecification: S.optional(EnaSrdSpecificationRequest),
+          InterfaceType: S.optional(InterfaceTypeEnum),
+          Ipv4Prefixes: S.optional(Ipv4Prefixes),
+          Ipv4PrefixCount: S.optional(S.Number),
+          Ipv6AddressCount: S.optional(S.Number),
+          Ipv6Addresses: S.optional(Ipv6Addresses),
+          Ipv6Prefixes: S.optional(Ipv6Prefixes),
+          Ipv6PrefixCount: S.optional(S.Number),
+          NetworkCardIndex: S.optional(S.Number),
+          NetworkInterfaceId: S.optional(S.String),
+          PrimaryIpv6: S.optional(S.Boolean),
+          PrivateIpAddress: S.optional(SensitiveString),
+          PrivateIpAddresses: S.optional(PrivateIpAddresses),
+          SecondaryPrivateIpAddressCount: S.optional(S.Number),
+          Groups: S.optional(SecurityGroupIds),
+          SubnetId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstanceNetworkInterfaceSpecification",
+      });
+    case 6:
+      return S.Array(InstanceNetworkInterfaceSpecification);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ BandwidthWeighting: S.optional(BandwidthWeightingEnum) }),
+      ).annotate({
+        identifier: "InstanceNetworkPerformanceOptionsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Affinity: S.optional(S.String),
+          AvailabilityZone: S.optional(S.String),
+          GroupId: S.optional(S.String),
+          GroupName: S.optional(S.String),
+          HostId: S.optional(S.String),
+          HostResourceGroupArn: S.optional(S.String),
+          PartitionNumber: S.optional(S.Number),
+          Tenancy: S.optional(TenancyEnum),
+        }),
+      ).annotate({ identifier: "Placement" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          HostnameType: S.optional(HostnameTypeEnum),
+          EnableResourceNameDnsARecord: S.optional(S.Boolean),
+          EnableResourceNameDnsAAAARecord: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "PrivateDnsNameOptionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          BlockDeviceMappings: S.optional(BlockDeviceMappings),
+          CapacityReservationSpecification: S.optional(CapacityReservationSpecification),
+          CpuOptions: S.optional(CpuOptionsRequest),
+          CreditSpecification: S.optional(CreditSpecificationRequest),
+          DisableApiStop: S.optional(S.Boolean),
+          EbsOptimized: S.optional(S.Boolean),
+          EnablePrimaryIpv6: S.optional(S.Boolean),
+          EnclaveOptions: S.optional(EnclaveOptionsRequest),
+          HibernationOptions: S.optional(HibernationOptionsRequest),
+          IamInstanceProfile: S.optional(IamInstanceProfileSpecification),
+          ImageId: S.optional(S.String),
+          InstanceMarketOptions: S.optional(InstanceMarketOptionsRequest),
+          InstanceType: S.optional(S.String),
+          Ipv6Addresses: S.optional(Ipv6Addresses),
+          Ipv6AddressCount: S.optional(S.Number),
+          KernelId: S.optional(S.String),
+          KeyName: S.optional(S.String),
+          LicenseSpecifications: S.optional(LicenseSpecifications),
+          MaintenanceOptions: S.optional(InstanceMaintenanceOptionsRequest),
+          MetadataOptions: S.optional(InstanceMetadataOptionsRequest),
+          Monitoring: S.optional(RunInstancesMonitoringEnabled),
+          NetworkInterfaces: S.optional(NetworkInterfaces),
+          NetworkPerformanceOptions: S.optional(InstanceNetworkPerformanceOptionsRequest),
+          Placement: S.optional(Placement),
+          PrivateDnsNameOptions: S.optional(PrivateDnsNameOptionsRequest),
+          PrivateIpAddress: S.optional(SensitiveString),
+          RamdiskId: S.optional(S.String),
+          SecurityGroupIds: S.optional(SecurityGroupIds),
+          SecurityGroups: S.optional(SecurityGroupNames),
+          SubnetId: S.optional(S.String),
+          TagSpecifications: S.optional(TagSpecifications),
+          UserData: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "ManagedInstanceRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ BillingMode: BillingMode })).annotate({
+        identifier: "BillingConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
+          Tags: S.optional(TagList),
+          ManagedInstance: ManagedInstanceRequest,
+          BillingConfiguration: S.optional(BillingConfiguration),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateWorkspaceInstanceRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ WorkspaceInstanceId: S.optional(S.String) })).annotate({
+        identifier: "CreateWorkspaceInstanceResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ VolumeId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteVolumeRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteWorkspaceInstanceRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteWorkspaceInstanceResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          WorkspaceInstanceId: S.String,
+          VolumeId: S.String,
+          Device: S.optional(S.String),
+          DisassociateMode: S.optional(DisassociateModeEnum),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DisassociateVolumeRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceInstanceRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "WorkspaceInstanceError" });
+    case 4:
+      return S.Array(WorkspaceInstanceError);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          EC2ErrorCode: S.optional(S.String),
+          EC2ExceptionType: S.optional(S.String),
+          EC2ErrorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EC2InstanceError" });
+    case 6:
+      return S.Array(EC2InstanceError);
+    case 7:
+      return S.suspend(() => S.Struct({ InstanceId: S.optional(S.String) })).annotate({
+        identifier: "EC2ManagedInstance",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          WorkspaceInstanceErrors: S.optional(WorkspaceInstanceErrors),
+          EC2InstanceErrors: S.optional(EC2InstanceErrors),
+          ProvisionState: S.optional(ProvisionStateEnum),
+          WorkspaceInstanceId: S.optional(S.String),
+          EC2ManagedInstance: S.optional(EC2ManagedInstance),
+          BillingConfiguration: S.optional(BillingConfiguration),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceInstanceResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BillingMode: BillingMode,
+          PlatformType: PlatformTypeEnum,
+          Tenancy: InstanceConfigurationTenancyEnum,
+        }),
+      ).annotate({
+        identifier: "InstanceConfigurationFilter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(SensitiveString),
+          InstanceConfigurationFilter: S.optional(InstanceConfigurationFilter),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListInstanceTypesRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          BillingMode: S.optional(BillingMode),
+          PlatformType: S.optional(PlatformTypeEnum),
+          Tenancy: S.optional(InstanceConfigurationTenancyEnum),
+        }),
+      ).annotate({
+        identifier: "SupportedInstanceConfiguration",
+      });
+    case 4:
+      return S.Array(SupportedInstanceConfiguration);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceType: S.optional(S.String),
+          SupportedInstanceConfigurations: S.optional(SupportedInstanceConfigurations),
+        }),
+      ).annotate({ identifier: "InstanceTypeInfo" });
+    case 6:
+      return S.Array(InstanceTypeInfo);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ InstanceTypes: InstanceTypes, NextToken: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "ListInstanceTypesResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(SensitiveString) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListRegionsRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ RegionName: S.optional(S.String) })).annotate({
+        identifier: "Region",
+      });
+    case 2:
+      return S.Array(Region);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Regions: RegionList, NextToken: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "ListRegionsResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 6:
+      return S.Array(ProvisionStateEnum);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionStates: S.optional(ProvisionStates),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListWorkspaceInstancesRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionState: S.optional(ProvisionStateEnum),
+          WorkspaceInstanceId: S.optional(S.String),
+          EC2ManagedInstance: S.optional(EC2ManagedInstance),
+        }),
+      ).annotate({ identifier: "WorkspaceInstance" });
+    case 1:
+      return S.Array(WorkspaceInstance);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          WorkspaceInstances: WorkspaceInstances,
+          NextToken: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "ListWorkspaceInstancesResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String, Tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ WorkspaceInstanceId: S.String, TagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Reason: S.String, Message: S.String }),
+      ).annotate({ identifier: "ValidationExceptionField" });
+    case 6:
+      return S.Array(ValidationExceptionField);
+  }
+}

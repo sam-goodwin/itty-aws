@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -137,11 +138,9 @@ export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: SensitiveString, Value: SensitiveString }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export type ConnectionType = "CONNECT_SSH" | "CONNECT_SSM" | (string & {});
 const ConnectionType = S.String;
 
@@ -158,32 +157,18 @@ export interface CreateEnvironmentEC2Request {
   connectionType?: ConnectionType;
   dryRun?: boolean;
 }
-const CreateEnvironmentEC2Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    clientRequestToken: S.optional(S.String),
-    instanceType: S.String,
-    subnetId: S.optional(S.String),
-    imageId: S.String,
-    automaticStopTimeMinutes: S.optional(S.Number),
-    ownerArn: S.optional(S.String),
-    tags: S.optional(TagList),
-    connectionType: S.optional(ConnectionType),
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateEnvironmentEC2Request",
-}) as any as S.Schema<CreateEnvironmentEC2Request>;
+const CreateEnvironmentEC2Request = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateEnvironmentEC2Request>;
 export type EnvironmentId = string;
 export interface CreateEnvironmentEC2Result {
   environmentId?: string;
 }
-const CreateEnvironmentEC2Result = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentId: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateEnvironmentEC2Result",
-}) as any as S.Schema<CreateEnvironmentEC2Result>;
+const CreateEnvironmentEC2Result = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateEnvironmentEC2Result>;
 export type MemberPermissions = "read-write" | "read-only" | (string & {});
 const MemberPermissions = S.String;
 
@@ -192,13 +177,10 @@ export interface CreateEnvironmentMembershipRequest {
   userArn: string;
   permissions: MemberPermissions;
 }
-const CreateEnvironmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentId: S.String, userArn: S.String, permissions: MemberPermissions }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateEnvironmentMembershipRequest",
-}) as any as S.Schema<CreateEnvironmentMembershipRequest>;
+const CreateEnvironmentMembershipRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateEnvironmentMembershipRequest>;
 export type Permissions = "owner" | "read-write" | "read-only" | (string & {});
 const Permissions = S.String;
 
@@ -209,52 +191,41 @@ export interface EnvironmentMember {
   environmentId: string;
   lastAccess?: Date;
 }
-const EnvironmentMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: Permissions,
-    userId: S.String,
-    userArn: S.String,
-    environmentId: S.String,
-    lastAccess: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "EnvironmentMember" }) as any as S.Schema<EnvironmentMember>;
+const EnvironmentMember = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EnvironmentMember>;
 export interface CreateEnvironmentMembershipResult {
   membership: EnvironmentMember;
 }
-const CreateEnvironmentMembershipResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ membership: EnvironmentMember }),
-).annotate({
-  identifier: "CreateEnvironmentMembershipResult",
-}) as any as S.Schema<CreateEnvironmentMembershipResult>;
+const CreateEnvironmentMembershipResult = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateEnvironmentMembershipResult>;
 export interface DeleteEnvironmentRequest {
   environmentId: string;
 }
-const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
+const DeleteEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteEnvironmentRequest>;
 export interface DeleteEnvironmentResult {}
-const DeleteEnvironmentResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResult",
-}) as any as S.Schema<DeleteEnvironmentResult>;
+const DeleteEnvironmentResult = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteEnvironmentResult>;
 export interface DeleteEnvironmentMembershipRequest {
   environmentId: string;
   userArn: string;
 }
-const DeleteEnvironmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentId: S.String, userArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteEnvironmentMembershipRequest",
-}) as any as S.Schema<DeleteEnvironmentMembershipRequest>;
+const DeleteEnvironmentMembershipRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteEnvironmentMembershipRequest>;
 export interface DeleteEnvironmentMembershipResult {}
-const DeleteEnvironmentMembershipResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentMembershipResult",
-}) as any as S.Schema<DeleteEnvironmentMembershipResult>;
+const DeleteEnvironmentMembershipResult = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteEnvironmentMembershipResult>;
 export type PermissionsList = Permissions[];
-const PermissionsList = /*@__PURE__*/ S.Array(Permissions);
+const PermissionsList = /*@__PURE__*/ __L.at(__c1, 3);
 export type MaxResults = number;
 export interface DescribeEnvironmentMembershipsRequest {
   userArn?: string;
@@ -263,40 +234,29 @@ export interface DescribeEnvironmentMembershipsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const DescribeEnvironmentMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userArn: S.optional(S.String),
-    environmentId: S.optional(S.String),
-    permissions: S.optional(PermissionsList),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeEnvironmentMembershipsRequest",
-}) as any as S.Schema<DescribeEnvironmentMembershipsRequest>;
+const DescribeEnvironmentMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DescribeEnvironmentMembershipsRequest>;
 export type EnvironmentMembersList = EnvironmentMember[];
-const EnvironmentMembersList = /*@__PURE__*/ S.Array(EnvironmentMember);
+const EnvironmentMembersList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface DescribeEnvironmentMembershipsResult {
   memberships?: EnvironmentMember[];
   nextToken?: string;
 }
-const DescribeEnvironmentMembershipsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memberships: S.optional(EnvironmentMembersList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "DescribeEnvironmentMembershipsResult",
-}) as any as S.Schema<DescribeEnvironmentMembershipsResult>;
+const DescribeEnvironmentMembershipsResult = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DescribeEnvironmentMembershipsResult>;
 export type BoundedEnvironmentIdList = string[];
-const BoundedEnvironmentIdList = /*@__PURE__*/ S.Array(S.String);
+const BoundedEnvironmentIdList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface DescribeEnvironmentsRequest {
   environmentIds: string[];
 }
-const DescribeEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentIds: BoundedEnvironmentIdList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeEnvironmentsRequest",
-}) as any as S.Schema<DescribeEnvironmentsRequest>;
+const DescribeEnvironmentsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DescribeEnvironmentsRequest>;
 export type EnvironmentType = "ssh" | "ec2" | (string & {});
 const EnvironmentType = S.String;
 
@@ -314,13 +274,7 @@ export interface EnvironmentLifecycle {
   reason?: string;
   failureResource?: string;
 }
-const EnvironmentLifecycle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(EnvironmentLifecycleStatus),
-    reason: S.optional(S.String),
-    failureResource: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnvironmentLifecycle" }) as any as S.Schema<EnvironmentLifecycle>;
+const EnvironmentLifecycle = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<EnvironmentLifecycle>;
 export type ManagedCredentialsStatus =
   | "ENABLED_ON_CREATE"
   | "ENABLED_BY_OWNER"
@@ -347,39 +301,23 @@ export interface Environment {
   lifecycle?: EnvironmentLifecycle;
   managedCredentialsStatus?: ManagedCredentialsStatus;
 }
-const Environment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    type: EnvironmentType,
-    connectionType: S.optional(ConnectionType),
-    arn: S.String,
-    ownerArn: S.String,
-    lifecycle: S.optional(EnvironmentLifecycle),
-    managedCredentialsStatus: S.optional(ManagedCredentialsStatus),
-  }),
-).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
+const Environment = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Environment>;
 export type EnvironmentList = Environment[];
-const EnvironmentList = /*@__PURE__*/ S.Array(Environment);
+const EnvironmentList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface DescribeEnvironmentsResult {
   environments?: Environment[];
 }
-const DescribeEnvironmentsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environments: S.optional(EnvironmentList) }),
-).annotate({
-  identifier: "DescribeEnvironmentsResult",
-}) as any as S.Schema<DescribeEnvironmentsResult>;
+const DescribeEnvironmentsResult = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DescribeEnvironmentsResult>;
 export interface DescribeEnvironmentStatusRequest {
   environmentId: string;
 }
-const DescribeEnvironmentStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeEnvironmentStatusRequest",
-}) as any as S.Schema<DescribeEnvironmentStatusRequest>;
+const DescribeEnvironmentStatusRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DescribeEnvironmentStatusRequest>;
 export type EnvironmentStatus =
   | "error"
   | "creating"
@@ -395,70 +333,57 @@ export interface DescribeEnvironmentStatusResult {
   status: EnvironmentStatus;
   message: string;
 }
-const DescribeEnvironmentStatusResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: EnvironmentStatus, message: S.String }),
-).annotate({
-  identifier: "DescribeEnvironmentStatusResult",
-}) as any as S.Schema<DescribeEnvironmentStatusResult>;
+const DescribeEnvironmentStatusResult = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DescribeEnvironmentStatusResult>;
 export interface ListEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListEnvironmentsRequest" }) as any as S.Schema<ListEnvironmentsRequest>;
+const ListEnvironmentsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListEnvironmentsRequest>;
 export type EnvironmentIdList = string[];
 const EnvironmentIdList = BoundedEnvironmentIdList as any as S.Schema<EnvironmentIdList>;
 export interface ListEnvironmentsResult {
   nextToken?: string;
   environmentIds?: string[];
 }
-const ListEnvironmentsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), environmentIds: S.optional(EnvironmentIdList) }),
-).annotate({ identifier: "ListEnvironmentsResult" }) as any as S.Schema<ListEnvironmentsResult>;
+const ListEnvironmentsResult = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListEnvironmentsResult>;
 export type EnvironmentArn = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteEnvironmentResult as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = (string | redacted.Redacted<string>)[];
-const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
+const TagKeyList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: (string | redacted.Redacted<string>)[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = DeleteEnvironmentResult as any as S.Schema<UntagResourceResponse>;
 export type ManagedCredentialsAction = "ENABLE" | "DISABLE" | (string & {});
@@ -470,14 +395,10 @@ export interface UpdateEnvironmentRequest {
   description?: string | redacted.Redacted<string>;
   managedCredentialsAction?: ManagedCredentialsAction;
 }
-const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    name: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    managedCredentialsAction: S.optional(ManagedCredentialsAction),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateEnvironmentRequest" }) as any as S.Schema<UpdateEnvironmentRequest>;
+const UpdateEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<UpdateEnvironmentRequest>;
 export interface UpdateEnvironmentResult {}
 const UpdateEnvironmentResult = DeleteEnvironmentResult as any as S.Schema<UpdateEnvironmentResult>;
 export interface UpdateEnvironmentMembershipRequest {
@@ -485,21 +406,17 @@ export interface UpdateEnvironmentMembershipRequest {
   userArn: string;
   permissions: MemberPermissions;
 }
-const UpdateEnvironmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentId: S.String, userArn: S.String, permissions: MemberPermissions }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateEnvironmentMembershipRequest",
-}) as any as S.Schema<UpdateEnvironmentMembershipRequest>;
+const UpdateEnvironmentMembershipRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<UpdateEnvironmentMembershipRequest>;
 export interface UpdateEnvironmentMembershipResult {
   membership?: EnvironmentMember;
 }
-const UpdateEnvironmentMembershipResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ membership: S.optional(EnvironmentMember) }),
-).annotate({
-  identifier: "UpdateEnvironmentMembershipResult",
-}) as any as S.Schema<UpdateEnvironmentMembershipResult>;
+const UpdateEnvironmentMembershipResult = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<UpdateEnvironmentMembershipResult>;
 export type CreateEnvironmentEC2Error =
   | BadRequestException
   | ConflictException
@@ -991,3 +908,236 @@ export const updateEnvironmentMembership: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEnvironmentMembership",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: SensitiveString, Value: SensitiveString })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(Tag);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          clientRequestToken: S.optional(S.String),
+          instanceType: S.String,
+          subnetId: S.optional(S.String),
+          imageId: S.String,
+          automaticStopTimeMinutes: S.optional(S.Number),
+          ownerArn: S.optional(S.String),
+          tags: S.optional(TagList),
+          connectionType: S.optional(ConnectionType),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEnvironmentEC2Request",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ environmentId: S.optional(S.String) })).annotate({
+        identifier: "CreateEnvironmentEC2Result",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String,
+          userArn: S.String,
+          permissions: MemberPermissions,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEnvironmentMembershipRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: Permissions,
+          userId: S.String,
+          userArn: S.String,
+          environmentId: S.String,
+          lastAccess: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "EnvironmentMember" });
+    case 6:
+      return S.suspend(() => S.Struct({ membership: EnvironmentMember })).annotate({
+        identifier: "CreateEnvironmentMembershipResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ environmentId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteEnvironmentRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteEnvironmentResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ environmentId: S.String, userArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvironmentMembershipRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteEnvironmentMembershipResult",
+      });
+    case 3:
+      return S.Array(Permissions);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          userArn: S.optional(S.String),
+          environmentId: S.optional(S.String),
+          permissions: S.optional(PermissionsList),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeEnvironmentMembershipsRequest",
+      });
+    case 5:
+      return S.Array(EnvironmentMember);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          memberships: S.optional(EnvironmentMembersList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeEnvironmentMembershipsResult",
+      });
+    case 7:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ environmentIds: BoundedEnvironmentIdList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeEnvironmentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(EnvironmentLifecycleStatus),
+          reason: S.optional(S.String),
+          failureResource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentLifecycle" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          type: EnvironmentType,
+          connectionType: S.optional(ConnectionType),
+          arn: S.String,
+          ownerArn: S.String,
+          lifecycle: S.optional(EnvironmentLifecycle),
+          managedCredentialsStatus: S.optional(ManagedCredentialsStatus),
+        }),
+      ).annotate({ identifier: "Environment" });
+    case 3:
+      return S.Array(Environment);
+    case 4:
+      return S.suspend(() => S.Struct({ environments: S.optional(EnvironmentList) })).annotate({
+        identifier: "DescribeEnvironmentsResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ environmentId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeEnvironmentStatusRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ status: EnvironmentStatus, message: S.String })).annotate({
+        identifier: "DescribeEnvironmentStatusResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListEnvironmentsRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          environmentIds: S.optional(EnvironmentIdList),
+        }),
+      ).annotate({ identifier: "ListEnvironmentsResult" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 4:
+      return S.Array(SensitiveString);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String,
+          name: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          managedCredentialsAction: S.optional(ManagedCredentialsAction),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateEnvironmentRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String,
+          userArn: S.String,
+          permissions: MemberPermissions,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateEnvironmentMembershipRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ membership: S.optional(EnvironmentMember) })).annotate({
+        identifier: "UpdateEnvironmentMembershipResult",
+      });
+  }
+}

@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
@@ -104,11 +105,9 @@ export interface AuditEvent {
   eventData: string;
   eventDataChecksum?: string;
 }
-const AuditEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, eventData: S.String, eventDataChecksum: S.optional(S.String) }),
-).annotate({ identifier: "AuditEvent" }) as any as S.Schema<AuditEvent>;
+const AuditEvent = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AuditEvent>;
 export type AuditEvents = AuditEvent[];
-const AuditEvents = /*@__PURE__*/ S.Array(AuditEvent);
+const AuditEvents = /*@__PURE__*/ __L.at(__c0, 1);
 export type ChannelArn = string;
 export type ExternalId = string;
 export interface PutAuditEventsRequest {
@@ -116,22 +115,20 @@ export interface PutAuditEventsRequest {
   channelArn: string;
   externalId?: string;
 }
-const PutAuditEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    auditEvents: AuditEvents,
-    channelArn: S.String.pipe(T.HttpQuery("channelArn")),
-    externalId: S.optional(S.String).pipe(T.HttpQuery("externalId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/PutAuditEvents" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "PutAuditEventsRequest" }) as any as S.Schema<PutAuditEventsRequest>;
+const PutAuditEventsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PutAuditEventsRequest>;
 export interface AuditEventResultEntry {
   id: string;
   eventID: string;
 }
-const AuditEventResultEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, eventID: S.String }),
-).annotate({ identifier: "AuditEventResultEntry" }) as any as S.Schema<AuditEventResultEntry>;
+const AuditEventResultEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AuditEventResultEntry>;
 export type AuditEventResultEntries = AuditEventResultEntry[];
-const AuditEventResultEntries = /*@__PURE__*/ S.Array(AuditEventResultEntry);
+const AuditEventResultEntries = /*@__PURE__*/ __L.at(__c0, 4);
 export type ErrorCode = string;
 export type ErrorMessage = string;
 export interface ResultErrorEntry {
@@ -139,18 +136,17 @@ export interface ResultErrorEntry {
   errorCode: string;
   errorMessage: string;
 }
-const ResultErrorEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, errorCode: S.String, errorMessage: S.String }),
-).annotate({ identifier: "ResultErrorEntry" }) as any as S.Schema<ResultErrorEntry>;
+const ResultErrorEntry = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ResultErrorEntry>;
 export type ResultErrorEntries = ResultErrorEntry[];
-const ResultErrorEntries = /*@__PURE__*/ S.Array(ResultErrorEntry);
+const ResultErrorEntries = /*@__PURE__*/ __L.at(__c0, 6);
 export interface PutAuditEventsResponse {
   successful: AuditEventResultEntry[];
   failed: ResultErrorEntry[];
 }
-const PutAuditEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ successful: AuditEventResultEntries, failed: ResultErrorEntries }),
-).annotate({ identifier: "PutAuditEventsResponse" }) as any as S.Schema<PutAuditEventsResponse>;
+const PutAuditEventsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PutAuditEventsResponse>;
 export type PutAuditEventsError =
   | ChannelInsufficientPermission
   | ChannelNotFound
@@ -186,3 +182,41 @@ export const putAuditEvents: API.OperationMethod<
   retry: Retry,
   operationName: "PutAuditEvents",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String, eventData: S.String, eventDataChecksum: S.optional(S.String) }),
+      ).annotate({ identifier: "AuditEvent" });
+    case 1:
+      return S.Array(AuditEvent);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          auditEvents: AuditEvents,
+          channelArn: S.String.pipe(T.HttpQuery("channelArn")),
+          externalId: S.optional(S.String).pipe(T.HttpQuery("externalId")),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/PutAuditEvents" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutAuditEventsRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ id: S.String, eventID: S.String })).annotate({
+        identifier: "AuditEventResultEntry",
+      });
+    case 4:
+      return S.Array(AuditEventResultEntry);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ id: S.String, errorCode: S.String, errorMessage: S.String }),
+      ).annotate({ identifier: "ResultErrorEntry" });
+    case 6:
+      return S.Array(ResultErrorEntry);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ successful: AuditEventResultEntries, failed: ResultErrorEntries }),
+      ).annotate({ identifier: "PutAuditEventsResponse" });
+  }
+}

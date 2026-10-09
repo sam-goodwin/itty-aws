@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -166,36 +167,17 @@ export interface DeleteSessionRequest {
   botAlias: string;
   userId: string;
 }
-const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botName: S.String.pipe(T.HttpLabel("botName")),
-    botAlias: S.String.pipe(T.HttpLabel("botAlias")),
-    userId: S.String.pipe(T.HttpLabel("userId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/session" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
+const DeleteSessionRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteSessionRequest>;
 export interface DeleteSessionResponse {
   botName?: string;
   botAlias?: string;
   userId?: string;
   sessionId?: string;
 }
-const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botName: S.optional(S.String),
-    botAlias: S.optional(S.String),
-    userId: S.optional(S.String),
-    sessionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteSessionResponse" }) as any as S.Schema<DeleteSessionResponse>;
+const DeleteSessionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteSessionResponse>;
 export type IntentSummaryCheckpointLabel = string;
 export interface GetSessionRequest {
   botName: string;
@@ -203,26 +185,10 @@ export interface GetSessionRequest {
   userId: string;
   checkpointLabelFilter?: string;
 }
-const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botName: S.String.pipe(T.HttpLabel("botName")),
-    botAlias: S.String.pipe(T.HttpLabel("botAlias")),
-    userId: S.String.pipe(T.HttpLabel("userId")),
-    checkpointLabelFilter: S.optional(S.String).pipe(T.HttpQuery("checkpointLabelFilter")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/session" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSessionRequest" }) as any as S.Schema<GetSessionRequest>;
+const GetSessionRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetSessionRequest>;
 export type IntentName = string;
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const StringMap = /*@__PURE__*/ __L.at(__c0, 3);
 export type ConfirmationStatus = "None" | "Confirmed" | "Denied" | (string & {});
 const ConfirmationStatus = S.String;
 
@@ -247,19 +213,9 @@ export interface IntentSummary {
   fulfillmentState?: FulfillmentState;
   slotToElicit?: string;
 }
-const IntentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    intentName: S.optional(S.String),
-    checkpointLabel: S.optional(S.String),
-    slots: S.optional(StringMap),
-    confirmationStatus: S.optional(ConfirmationStatus),
-    dialogActionType: DialogActionType,
-    fulfillmentState: S.optional(FulfillmentState),
-    slotToElicit: S.optional(S.String),
-  }),
-).annotate({ identifier: "IntentSummary" }) as any as S.Schema<IntentSummary>;
+const IntentSummary = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<IntentSummary>;
 export type IntentSummaryList = IntentSummary[];
-const IntentSummaryList = /*@__PURE__*/ S.Array(IntentSummary);
+const IntentSummaryList = /*@__PURE__*/ __L.at(__c0, 5);
 export type Text = string | redacted.Redacted<string>;
 export type MessageFormatType =
   | "PlainText"
@@ -278,17 +234,7 @@ export interface DialogAction {
   message?: string | redacted.Redacted<string>;
   messageFormat?: MessageFormatType;
 }
-const DialogAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DialogActionType,
-    intentName: S.optional(S.String),
-    slots: S.optional(StringMap),
-    slotToElicit: S.optional(S.String),
-    fulfillmentState: S.optional(FulfillmentState),
-    message: S.optional(SensitiveString),
-    messageFormat: S.optional(MessageFormatType),
-  }),
-).annotate({ identifier: "DialogAction" }) as any as S.Schema<DialogAction>;
+const DialogAction = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DialogAction>;
 export type ActiveContextName = string;
 export type ActiveContextTimeToLiveInSeconds = number;
 export type ActiveContextTurnsToLive = number;
@@ -296,31 +242,23 @@ export interface ActiveContextTimeToLive {
   timeToLiveInSeconds?: number;
   turnsToLive?: number;
 }
-const ActiveContextTimeToLive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ timeToLiveInSeconds: S.optional(S.Number), turnsToLive: S.optional(S.Number) }),
-).annotate({ identifier: "ActiveContextTimeToLive" }) as any as S.Schema<ActiveContextTimeToLive>;
+const ActiveContextTimeToLive = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ActiveContextTimeToLive>;
 export type ParameterName = string;
 export type ActiveContextParametersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-const ActiveContextParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+const ActiveContextParametersMap = /*@__PURE__*/ __L.at(__c1, 0);
 export interface ActiveContext {
   name: string;
   timeToLive: ActiveContextTimeToLive;
   parameters: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const ActiveContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    timeToLive: ActiveContextTimeToLive,
-    parameters: ActiveContextParametersMap,
-  }),
-).annotate({ identifier: "ActiveContext" }) as any as S.Schema<ActiveContext>;
+const ActiveContext = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ActiveContext>;
 export type ActiveContextsList = ActiveContext[];
-const ActiveContextsList = /*@__PURE__*/ S.Array(ActiveContext);
+const ActiveContextsList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface GetSessionResponse {
   recentIntentSummaryView?: IntentSummary[];
   sessionAttributes?: { [key: string]: string | undefined };
@@ -328,15 +266,7 @@ export interface GetSessionResponse {
   dialogAction?: DialogAction;
   activeContexts?: ActiveContext[];
 }
-const GetSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recentIntentSummaryView: S.optional(IntentSummaryList),
-    sessionAttributes: S.optional(StringMap),
-    sessionId: S.optional(S.String),
-    dialogAction: S.optional(DialogAction),
-    activeContexts: S.optional(ActiveContextsList),
-  }),
-).annotate({ identifier: "GetSessionResponse" }) as any as S.Schema<GetSessionResponse>;
+const GetSessionResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetSessionResponse>;
 export type SynthesizedJsonAttributesString = string | redacted.Redacted<string>;
 export type HttpContentType = string;
 export type Accept = string;
@@ -352,32 +282,7 @@ export interface PostContentRequest {
   inputStream: T.StreamingInputBody;
   activeContexts?: string | redacted.Redacted<string>;
 }
-const PostContentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botName: S.String.pipe(T.HttpLabel("botName")),
-    botAlias: S.String.pipe(T.HttpLabel("botAlias")),
-    userId: S.String.pipe(T.HttpLabel("userId")),
-    sessionAttributes: S.optional(SensitiveString).pipe(
-      T.HttpHeader("x-amz-lex-session-attributes"),
-    ),
-    requestAttributes: S.optional(SensitiveString).pipe(
-      T.HttpHeader("x-amz-lex-request-attributes"),
-    ),
-    contentType: S.String.pipe(T.HttpHeader("Content-Type")),
-    accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
-    inputStream: T.StreamingInput.pipe(T.HttpPayload()),
-    activeContexts: S.optional(SensitiveString).pipe(T.HttpHeader("x-amz-lex-active-contexts")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/content" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PostContentRequest" }) as any as S.Schema<PostContentRequest>;
+const PostContentRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PostContentRequest>;
 export type SynthesizedJsonString = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type DialogState =
@@ -412,30 +317,7 @@ export interface PostContentResponse {
   sessionId?: string;
   activeContexts?: string | redacted.Redacted<string>;
 }
-const PostContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    intentName: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-intent-name")),
-    nluIntentConfidence: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-nlu-intent-confidence")),
-    alternativeIntents: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-alternative-intents")),
-    slots: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slots")),
-    sessionAttributes: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-session-attributes")),
-    sentimentResponse: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-sentiment")),
-    message: S.optional(SensitiveString).pipe(T.HttpHeader("x-amz-lex-message")),
-    encodedMessage: S.optional(SensitiveString).pipe(T.HttpHeader("x-amz-lex-encoded-message")),
-    messageFormat: S.optional(MessageFormatType).pipe(T.HttpHeader("x-amz-lex-message-format")),
-    dialogState: S.optional(DialogState).pipe(T.HttpHeader("x-amz-lex-dialog-state")),
-    slotToElicit: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slot-to-elicit")),
-    inputTranscript: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-input-transcript")),
-    encodedInputTranscript: S.optional(SensitiveString).pipe(
-      T.HttpHeader("x-amz-lex-encoded-input-transcript"),
-    ),
-    audioStream: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-    botVersion: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-bot-version")),
-    sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-session-id")),
-    activeContexts: S.optional(SensitiveString).pipe(T.HttpHeader("x-amz-lex-active-contexts")),
-  }),
-).annotate({ identifier: "PostContentResponse" }) as any as S.Schema<PostContentResponse>;
+const PostContentResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PostContentResponse>;
 export interface PostTextRequest {
   botName: string;
   botAlias: string;
@@ -445,55 +327,26 @@ export interface PostTextRequest {
   inputText: string | redacted.Redacted<string>;
   activeContexts?: ActiveContext[];
 }
-const PostTextRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botName: S.String.pipe(T.HttpLabel("botName")),
-    botAlias: S.String.pipe(T.HttpLabel("botAlias")),
-    userId: S.String.pipe(T.HttpLabel("userId")),
-    sessionAttributes: S.optional(StringMap),
-    requestAttributes: S.optional(StringMap),
-    inputText: SensitiveString,
-    activeContexts: S.optional(ActiveContextsList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/text" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PostTextRequest" }) as any as S.Schema<PostTextRequest>;
+const PostTextRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PostTextRequest>;
 export interface IntentConfidence {
   score?: number;
 }
-const IntentConfidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ score: S.optional(S.Number) }),
-).annotate({ identifier: "IntentConfidence" }) as any as S.Schema<IntentConfidence>;
+const IntentConfidence = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<IntentConfidence>;
 export interface PredictedIntent {
   intentName?: string;
   nluIntentConfidence?: IntentConfidence;
   slots?: { [key: string]: string | undefined };
 }
-const PredictedIntent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    intentName: S.optional(S.String),
-    nluIntentConfidence: S.optional(IntentConfidence),
-    slots: S.optional(StringMap),
-  }),
-).annotate({ identifier: "PredictedIntent" }) as any as S.Schema<PredictedIntent>;
+const PredictedIntent = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PredictedIntent>;
 export type IntentList = PredictedIntent[];
-const IntentList = /*@__PURE__*/ S.Array(PredictedIntent);
+const IntentList = /*@__PURE__*/ __L.at(__c2, 1);
 export type SentimentLabel = string;
 export type SentimentScore = string;
 export interface SentimentResponse {
   sentimentLabel?: string;
   sentimentScore?: string;
 }
-const SentimentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sentimentLabel: S.optional(S.String), sentimentScore: S.optional(S.String) }),
-).annotate({ identifier: "SentimentResponse" }) as any as S.Schema<SentimentResponse>;
+const SentimentResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SentimentResponse>;
 export type ContentType = "application/vnd.amazonaws.card.generic" | (string & {});
 const ContentType = S.String;
 
@@ -505,11 +358,9 @@ export interface Button {
   text: string;
   value: string;
 }
-const Button = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ text: S.String, value: S.String }),
-).annotate({ identifier: "Button" }) as any as S.Schema<Button>;
+const Button = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Button>;
 export type ListOfButtons = Button[];
-const ListOfButtons = /*@__PURE__*/ S.Array(Button);
+const ListOfButtons = /*@__PURE__*/ __L.at(__c2, 4);
 export interface GenericAttachment {
   title?: string;
   subTitle?: string;
@@ -517,29 +368,15 @@ export interface GenericAttachment {
   imageUrl?: string;
   buttons?: Button[];
 }
-const GenericAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    subTitle: S.optional(S.String),
-    attachmentLinkUrl: S.optional(S.String),
-    imageUrl: S.optional(S.String),
-    buttons: S.optional(ListOfButtons),
-  }),
-).annotate({ identifier: "GenericAttachment" }) as any as S.Schema<GenericAttachment>;
+const GenericAttachment = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GenericAttachment>;
 export type GenericAttachmentList = GenericAttachment[];
-const GenericAttachmentList = /*@__PURE__*/ S.Array(GenericAttachment);
+const GenericAttachmentList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface ResponseCard {
   version?: string;
   contentType?: ContentType;
   genericAttachments?: GenericAttachment[];
 }
-const ResponseCard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    contentType: S.optional(ContentType),
-    genericAttachments: S.optional(GenericAttachmentList),
-  }),
-).annotate({ identifier: "ResponseCard" }) as any as S.Schema<ResponseCard>;
+const ResponseCard = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ResponseCard>;
 export interface PostTextResponse {
   intentName?: string;
   nluIntentConfidence?: IntentConfidence;
@@ -556,24 +393,7 @@ export interface PostTextResponse {
   botVersion?: string;
   activeContexts?: ActiveContext[];
 }
-const PostTextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    intentName: S.optional(S.String),
-    nluIntentConfidence: S.optional(IntentConfidence),
-    alternativeIntents: S.optional(IntentList),
-    slots: S.optional(StringMap),
-    sessionAttributes: S.optional(StringMap),
-    message: S.optional(SensitiveString),
-    sentimentResponse: S.optional(SentimentResponse),
-    messageFormat: S.optional(MessageFormatType),
-    dialogState: S.optional(DialogState),
-    slotToElicit: S.optional(S.String),
-    responseCard: S.optional(ResponseCard),
-    sessionId: S.optional(S.String),
-    botVersion: S.optional(S.String),
-    activeContexts: S.optional(ActiveContextsList),
-  }),
-).annotate({ identifier: "PostTextResponse" }) as any as S.Schema<PostTextResponse>;
+const PostTextResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<PostTextResponse>;
 export interface PutSessionRequest {
   botName: string;
   botAlias: string;
@@ -584,27 +404,7 @@ export interface PutSessionRequest {
   accept?: string;
   activeContexts?: ActiveContext[];
 }
-const PutSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botName: S.String.pipe(T.HttpLabel("botName")),
-    botAlias: S.String.pipe(T.HttpLabel("botAlias")),
-    userId: S.String.pipe(T.HttpLabel("userId")),
-    sessionAttributes: S.optional(StringMap),
-    dialogAction: S.optional(DialogAction),
-    recentIntentSummaryView: S.optional(IntentSummaryList),
-    accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
-    activeContexts: S.optional(ActiveContextsList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/session" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PutSessionRequest" }) as any as S.Schema<PutSessionRequest>;
+const PutSessionRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PutSessionRequest>;
 export interface PutSessionResponse {
   contentType?: string;
   intentName?: string;
@@ -619,22 +419,7 @@ export interface PutSessionResponse {
   sessionId?: string;
   activeContexts?: string | redacted.Redacted<string>;
 }
-const PutSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    intentName: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-intent-name")),
-    slots: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slots")),
-    sessionAttributes: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-session-attributes")),
-    message: S.optional(SensitiveString).pipe(T.HttpHeader("x-amz-lex-message")),
-    encodedMessage: S.optional(SensitiveString).pipe(T.HttpHeader("x-amz-lex-encoded-message")),
-    messageFormat: S.optional(MessageFormatType).pipe(T.HttpHeader("x-amz-lex-message-format")),
-    dialogState: S.optional(DialogState).pipe(T.HttpHeader("x-amz-lex-dialog-state")),
-    slotToElicit: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slot-to-elicit")),
-    audioStream: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-    sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-session-id")),
-    activeContexts: S.optional(SensitiveString).pipe(T.HttpHeader("x-amz-lex-active-contexts")),
-  }),
-).annotate({ identifier: "PutSessionResponse" }) as any as S.Schema<PutSessionResponse>;
+const PutSessionResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PutSessionResponse>;
 export type ErrorMessage = string;
 export type DeleteSessionError =
   | BadRequestException
@@ -926,3 +711,325 @@ export const putSession: API.OperationMethod<
   retry: Retry,
   operationName: "PutSession",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          botName: S.String.pipe(T.HttpLabel("botName")),
+          botAlias: S.String.pipe(T.HttpLabel("botAlias")),
+          userId: S.String.pipe(T.HttpLabel("userId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/session",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSessionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          botName: S.optional(S.String),
+          botAlias: S.optional(S.String),
+          userId: S.optional(S.String),
+          sessionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeleteSessionResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          botName: S.String.pipe(T.HttpLabel("botName")),
+          botAlias: S.String.pipe(T.HttpLabel("botAlias")),
+          userId: S.String.pipe(T.HttpLabel("userId")),
+          checkpointLabelFilter: S.optional(S.String).pipe(T.HttpQuery("checkpointLabelFilter")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/session" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSessionRequest" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          intentName: S.optional(S.String),
+          checkpointLabel: S.optional(S.String),
+          slots: S.optional(StringMap),
+          confirmationStatus: S.optional(ConfirmationStatus),
+          dialogActionType: DialogActionType,
+          fulfillmentState: S.optional(FulfillmentState),
+          slotToElicit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IntentSummary" });
+    case 5:
+      return S.Array(IntentSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: DialogActionType,
+          intentName: S.optional(S.String),
+          slots: S.optional(StringMap),
+          slotToElicit: S.optional(S.String),
+          fulfillmentState: S.optional(FulfillmentState),
+          message: S.optional(SensitiveString),
+          messageFormat: S.optional(MessageFormatType),
+        }),
+      ).annotate({ identifier: "DialogAction" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ timeToLiveInSeconds: S.optional(S.Number), turnsToLive: S.optional(S.Number) }),
+      ).annotate({ identifier: "ActiveContextTimeToLive" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          timeToLive: ActiveContextTimeToLive,
+          parameters: ActiveContextParametersMap,
+        }),
+      ).annotate({ identifier: "ActiveContext" });
+    case 2:
+      return S.Array(ActiveContext);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          recentIntentSummaryView: S.optional(IntentSummaryList),
+          sessionAttributes: S.optional(StringMap),
+          sessionId: S.optional(S.String),
+          dialogAction: S.optional(DialogAction),
+          activeContexts: S.optional(ActiveContextsList),
+        }),
+      ).annotate({ identifier: "GetSessionResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          botName: S.String.pipe(T.HttpLabel("botName")),
+          botAlias: S.String.pipe(T.HttpLabel("botAlias")),
+          userId: S.String.pipe(T.HttpLabel("userId")),
+          sessionAttributes: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-lex-session-attributes"),
+          ),
+          requestAttributes: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-lex-request-attributes"),
+          ),
+          contentType: S.String.pipe(T.HttpHeader("Content-Type")),
+          accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
+          inputStream: T.StreamingInput.pipe(T.HttpPayload()),
+          activeContexts: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-lex-active-contexts"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/content",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PostContentRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          intentName: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-intent-name")),
+          nluIntentConfidence: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-lex-nlu-intent-confidence"),
+          ),
+          alternativeIntents: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-lex-alternative-intents"),
+          ),
+          slots: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slots")),
+          sessionAttributes: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-lex-session-attributes"),
+          ),
+          sentimentResponse: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-sentiment")),
+          message: S.optional(SensitiveString).pipe(T.HttpHeader("x-amz-lex-message")),
+          encodedMessage: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-lex-encoded-message"),
+          ),
+          messageFormat: S.optional(MessageFormatType).pipe(
+            T.HttpHeader("x-amz-lex-message-format"),
+          ),
+          dialogState: S.optional(DialogState).pipe(T.HttpHeader("x-amz-lex-dialog-state")),
+          slotToElicit: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slot-to-elicit")),
+          inputTranscript: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-input-transcript")),
+          encodedInputTranscript: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-lex-encoded-input-transcript"),
+          ),
+          audioStream: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+          botVersion: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-bot-version")),
+          sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-session-id")),
+          activeContexts: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-lex-active-contexts"),
+          ),
+        }),
+      ).annotate({ identifier: "PostContentResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          botName: S.String.pipe(T.HttpLabel("botName")),
+          botAlias: S.String.pipe(T.HttpLabel("botAlias")),
+          userId: S.String.pipe(T.HttpLabel("userId")),
+          sessionAttributes: S.optional(StringMap),
+          requestAttributes: S.optional(StringMap),
+          inputText: SensitiveString,
+          activeContexts: S.optional(ActiveContextsList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/text" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PostTextRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ score: S.optional(S.Number) })).annotate({
+        identifier: "IntentConfidence",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          intentName: S.optional(S.String),
+          nluIntentConfidence: S.optional(IntentConfidence),
+          slots: S.optional(StringMap),
+        }),
+      ).annotate({ identifier: "PredictedIntent" });
+    case 1:
+      return S.Array(PredictedIntent);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ sentimentLabel: S.optional(S.String), sentimentScore: S.optional(S.String) }),
+      ).annotate({ identifier: "SentimentResponse" });
+    case 3:
+      return S.suspend(() => S.Struct({ text: S.String, value: S.String })).annotate({
+        identifier: "Button",
+      });
+    case 4:
+      return S.Array(Button);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          subTitle: S.optional(S.String),
+          attachmentLinkUrl: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+          buttons: S.optional(ListOfButtons),
+        }),
+      ).annotate({ identifier: "GenericAttachment" });
+    case 6:
+      return S.Array(GenericAttachment);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          contentType: S.optional(ContentType),
+          genericAttachments: S.optional(GenericAttachmentList),
+        }),
+      ).annotate({ identifier: "ResponseCard" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          intentName: S.optional(S.String),
+          nluIntentConfidence: S.optional(IntentConfidence),
+          alternativeIntents: S.optional(IntentList),
+          slots: S.optional(StringMap),
+          sessionAttributes: S.optional(StringMap),
+          message: S.optional(SensitiveString),
+          sentimentResponse: S.optional(SentimentResponse),
+          messageFormat: S.optional(MessageFormatType),
+          dialogState: S.optional(DialogState),
+          slotToElicit: S.optional(S.String),
+          responseCard: S.optional(ResponseCard),
+          sessionId: S.optional(S.String),
+          botVersion: S.optional(S.String),
+          activeContexts: S.optional(ActiveContextsList),
+        }),
+      ).annotate({ identifier: "PostTextResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          botName: S.String.pipe(T.HttpLabel("botName")),
+          botAlias: S.String.pipe(T.HttpLabel("botAlias")),
+          userId: S.String.pipe(T.HttpLabel("userId")),
+          sessionAttributes: S.optional(StringMap),
+          dialogAction: S.optional(DialogAction),
+          recentIntentSummaryView: S.optional(IntentSummaryList),
+          accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
+          activeContexts: S.optional(ActiveContextsList),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/bot/{botName}/alias/{botAlias}/user/{userId}/session",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutSessionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          intentName: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-intent-name")),
+          slots: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slots")),
+          sessionAttributes: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-lex-session-attributes"),
+          ),
+          message: S.optional(SensitiveString).pipe(T.HttpHeader("x-amz-lex-message")),
+          encodedMessage: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-lex-encoded-message"),
+          ),
+          messageFormat: S.optional(MessageFormatType).pipe(
+            T.HttpHeader("x-amz-lex-message-format"),
+          ),
+          dialogState: S.optional(DialogState).pipe(T.HttpHeader("x-amz-lex-dialog-state")),
+          slotToElicit: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-slot-to-elicit")),
+          audioStream: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+          sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-session-id")),
+          activeContexts: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-lex-active-contexts"),
+          ),
+        }),
+      ).annotate({ identifier: "PutSessionResponse" });
+  }
+}

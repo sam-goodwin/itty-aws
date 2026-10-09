@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -121,13 +122,10 @@ export type InvocationArn = string;
 export interface GetDataAutomationStatusRequest {
   invocationArn: string;
 }
-const GetDataAutomationStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ invocationArn: S.String.pipe(T.HttpLabel("invocationArn")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetDataAutomationStatusRequest",
-}) as any as S.Schema<GetDataAutomationStatusRequest>;
+const GetDataAutomationStatusRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetDataAutomationStatusRequest>;
 export type AutomationJobStatus =
   | "Created"
   | "InProgress"
@@ -141,9 +139,7 @@ export type S3Uri = string;
 export interface OutputConfiguration {
   s3Uri: string;
 }
-const OutputConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-  identifier: "OutputConfiguration",
-}) as any as S.Schema<OutputConfiguration>;
+const OutputConfiguration = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<OutputConfiguration>;
 export interface GetDataAutomationStatusResponse {
   status?: AutomationJobStatus;
   errorType?: string;
@@ -153,26 +149,18 @@ export interface GetDataAutomationStatusResponse {
   jobCompletionTime?: Date;
   jobDurationInSeconds?: number;
 }
-const GetDataAutomationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(AutomationJobStatus),
-    errorType: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    outputConfiguration: S.optional(OutputConfiguration),
-    jobSubmissionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    jobCompletionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    jobDurationInSeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetDataAutomationStatusResponse",
-}) as any as S.Schema<GetDataAutomationStatusResponse>;
+const GetDataAutomationStatusResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetDataAutomationStatusResponse>;
 export interface SyncInputConfiguration {
   bytes?: Uint8Array;
   s3Uri?: string;
 }
-const SyncInputConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bytes: S.optional(T.Blob), s3Uri: S.optional(S.String) }),
-).annotate({ identifier: "SyncInputConfiguration" }) as any as S.Schema<SyncInputConfiguration>;
+const SyncInputConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SyncInputConfiguration>;
 export type DataAutomationArn = string;
 export type DataAutomationStage = "LIVE" | "DEVELOPMENT" | (string & {});
 const DataAutomationStage = S.String;
@@ -181,11 +169,10 @@ export interface DataAutomationConfiguration {
   dataAutomationProjectArn: string;
   stage?: DataAutomationStage;
 }
-const DataAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataAutomationProjectArn: S.String, stage: S.optional(DataAutomationStage) }),
-).annotate({
-  identifier: "DataAutomationConfiguration",
-}) as any as S.Schema<DataAutomationConfiguration>;
+const DataAutomationConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DataAutomationConfiguration>;
 export type BlueprintArn = string;
 export type BlueprintVersion = string;
 export type BlueprintStage = "DEVELOPMENT" | "LIVE" | (string & {});
@@ -196,31 +183,23 @@ export interface Blueprint {
   version?: string;
   stage?: BlueprintStage;
 }
-const Blueprint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blueprintArn: S.String,
-    version: S.optional(S.String),
-    stage: S.optional(BlueprintStage),
-  }),
-).annotate({ identifier: "Blueprint" }) as any as S.Schema<Blueprint>;
+const Blueprint = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Blueprint>;
 export type BlueprintList = Blueprint[];
-const BlueprintList = /*@__PURE__*/ S.Array(Blueprint);
+const BlueprintList = /*@__PURE__*/ __L.at(__c0, 6);
 export type DataAutomationProfileArn = string;
 export type KMSKeyId = string;
 export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;
 export type EncryptionContextMap = { [key: string]: string | undefined };
-const EncryptionContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const EncryptionContextMap = /*@__PURE__*/ __L.at(__c0, 7);
 export interface EncryptionConfiguration {
   kmsKeyId: string;
   kmsEncryptionContext?: { [key: string]: string | undefined };
 }
-const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ kmsKeyId: S.String, kmsEncryptionContext: S.optional(EncryptionContextMap) }),
-).annotate({ identifier: "EncryptionConfiguration" }) as any as S.Schema<EncryptionConfiguration>;
+const EncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<EncryptionConfiguration>;
 export interface InvokeDataAutomationRequest {
   inputConfiguration: SyncInputConfiguration;
   dataAutomationConfiguration?: DataAutomationConfiguration;
@@ -229,18 +208,10 @@ export interface InvokeDataAutomationRequest {
   encryptionConfiguration?: EncryptionConfiguration;
   outputConfiguration?: OutputConfiguration;
 }
-const InvokeDataAutomationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputConfiguration: SyncInputConfiguration,
-    dataAutomationConfiguration: S.optional(DataAutomationConfiguration),
-    blueprints: S.optional(BlueprintList),
-    dataAutomationProfileArn: S.String,
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-    outputConfiguration: S.optional(OutputConfiguration),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "InvokeDataAutomationRequest",
-}) as any as S.Schema<InvokeDataAutomationRequest>;
+const InvokeDataAutomationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<InvokeDataAutomationRequest>;
 export type SemanticModality = "DOCUMENT" | "IMAGE" | "AUDIO" | "VIDEO" | (string & {});
 const SemanticModality = S.String;
 
@@ -252,92 +223,68 @@ export interface OutputSegment {
   customOutput?: string;
   standardOutput?: string;
 }
-const OutputSegment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customOutputStatus: S.optional(CustomOutputStatus),
-    customOutput: S.optional(S.String),
-    standardOutput: S.optional(S.String),
-  }),
-).annotate({ identifier: "OutputSegment" }) as any as S.Schema<OutputSegment>;
+const OutputSegment = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<OutputSegment>;
 export type OutputSegmentList = OutputSegment[];
-const OutputSegmentList = /*@__PURE__*/ S.Array(OutputSegment);
+const OutputSegmentList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface InvokeDataAutomationResponse {
   outputConfiguration?: OutputConfiguration;
   semanticModality: SemanticModality;
   outputSegments?: OutputSegment[];
 }
-const InvokeDataAutomationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outputConfiguration: S.optional(OutputConfiguration),
-    semanticModality: SemanticModality,
-    outputSegments: S.optional(OutputSegmentList),
-  }),
-).annotate({
-  identifier: "InvokeDataAutomationResponse",
-}) as any as S.Schema<InvokeDataAutomationResponse>;
+const InvokeDataAutomationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<InvokeDataAutomationResponse>;
 export type IdempotencyToken = string;
 export interface TimestampSegment {
   startTimeMillis: number;
   endTimeMillis: number;
 }
-const TimestampSegment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ startTimeMillis: S.Number, endTimeMillis: S.Number }),
-).annotate({ identifier: "TimestampSegment" }) as any as S.Schema<TimestampSegment>;
+const TimestampSegment = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TimestampSegment>;
 export type VideoSegmentConfiguration = { timestampSegment: TimestampSegment };
-const VideoSegmentConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ timestampSegment: TimestampSegment }),
-]);
+const VideoSegmentConfiguration = /*@__PURE__*/ __L.at(__c1, 6);
 export interface VideoAssetProcessingConfiguration {
   segmentConfiguration?: VideoSegmentConfiguration;
 }
-const VideoAssetProcessingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ segmentConfiguration: S.optional(VideoSegmentConfiguration) }),
-).annotate({
-  identifier: "VideoAssetProcessingConfiguration",
-}) as any as S.Schema<VideoAssetProcessingConfiguration>;
+const VideoAssetProcessingConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<VideoAssetProcessingConfiguration>;
 export interface AssetProcessingConfiguration {
   video?: VideoAssetProcessingConfiguration;
 }
-const AssetProcessingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ video: S.optional(VideoAssetProcessingConfiguration) }),
-).annotate({
-  identifier: "AssetProcessingConfiguration",
-}) as any as S.Schema<AssetProcessingConfiguration>;
+const AssetProcessingConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AssetProcessingConfiguration>;
 export interface InputConfiguration {
   s3Uri: string;
   assetProcessingConfiguration?: AssetProcessingConfiguration;
 }
-const InputConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    s3Uri: S.String,
-    assetProcessingConfiguration: S.optional(AssetProcessingConfiguration),
-  }),
-).annotate({ identifier: "InputConfiguration" }) as any as S.Schema<InputConfiguration>;
+const InputConfiguration = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<InputConfiguration>;
 export interface EventBridgeConfiguration {
   eventBridgeEnabled: boolean;
 }
-const EventBridgeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventBridgeEnabled: S.Boolean }),
-).annotate({ identifier: "EventBridgeConfiguration" }) as any as S.Schema<EventBridgeConfiguration>;
+const EventBridgeConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<EventBridgeConfiguration>;
 export interface NotificationConfiguration {
   eventBridgeConfiguration: EventBridgeConfiguration;
 }
-const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ eventBridgeConfiguration: EventBridgeConfiguration }),
-).annotate({
-  identifier: "NotificationConfiguration",
-}) as any as S.Schema<NotificationConfiguration>;
+const NotificationConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<NotificationConfiguration>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface InvokeDataAutomationAsyncRequest {
   clientToken?: string;
   inputConfiguration: InputConfiguration;
@@ -349,72 +296,46 @@ export interface InvokeDataAutomationAsyncRequest {
   dataAutomationProfileArn: string;
   tags?: Tag[];
 }
-const InvokeDataAutomationAsyncRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    inputConfiguration: InputConfiguration,
-    outputConfiguration: OutputConfiguration,
-    dataAutomationConfiguration: S.optional(DataAutomationConfiguration),
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-    notificationConfiguration: S.optional(NotificationConfiguration),
-    blueprints: S.optional(BlueprintList),
-    dataAutomationProfileArn: S.String,
-    tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "InvokeDataAutomationAsyncRequest",
-}) as any as S.Schema<InvokeDataAutomationAsyncRequest>;
+const InvokeDataAutomationAsyncRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<InvokeDataAutomationAsyncRequest>;
 export interface InvokeDataAutomationAsyncResponse {
   invocationArn: string;
 }
-const InvokeDataAutomationAsyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ invocationArn: S.String }),
-).annotate({
-  identifier: "InvokeDataAutomationAsyncResponse",
-}) as any as S.Schema<InvokeDataAutomationAsyncResponse>;
+const InvokeDataAutomationAsyncResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<InvokeDataAutomationAsyncResponse>;
 export type TaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceARN: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceARN: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceARN: S.String, tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceARN: S.String, tagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type NonBlankString = string;
@@ -599,3 +520,197 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ invocationArn: S.String.pipe(T.HttpLabel("invocationArn")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetDataAutomationStatusRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
+        identifier: "OutputConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(AutomationJobStatus),
+          errorType: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          outputConfiguration: S.optional(OutputConfiguration),
+          jobSubmissionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          jobCompletionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          jobDurationInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetDataAutomationStatusResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ bytes: S.optional(T.Blob), s3Uri: S.optional(S.String) }),
+      ).annotate({ identifier: "SyncInputConfiguration" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ dataAutomationProjectArn: S.String, stage: S.optional(DataAutomationStage) }),
+      ).annotate({
+        identifier: "DataAutomationConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          blueprintArn: S.String,
+          version: S.optional(S.String),
+          stage: S.optional(BlueprintStage),
+        }),
+      ).annotate({ identifier: "Blueprint" });
+    case 6:
+      return S.Array(Blueprint);
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ kmsKeyId: S.String, kmsEncryptionContext: S.optional(EncryptionContextMap) }),
+      ).annotate({ identifier: "EncryptionConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inputConfiguration: SyncInputConfiguration,
+          dataAutomationConfiguration: S.optional(DataAutomationConfiguration),
+          blueprints: S.optional(BlueprintList),
+          dataAutomationProfileArn: S.String,
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          outputConfiguration: S.optional(OutputConfiguration),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "InvokeDataAutomationRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customOutputStatus: S.optional(CustomOutputStatus),
+          customOutput: S.optional(S.String),
+          standardOutput: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OutputSegment" });
+    case 3:
+      return S.Array(OutputSegment);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          outputConfiguration: S.optional(OutputConfiguration),
+          semanticModality: SemanticModality,
+          outputSegments: S.optional(OutputSegmentList),
+        }),
+      ).annotate({
+        identifier: "InvokeDataAutomationResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ startTimeMillis: S.Number, endTimeMillis: S.Number }),
+      ).annotate({ identifier: "TimestampSegment" });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ timestampSegment: TimestampSegment })]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ segmentConfiguration: S.optional(VideoSegmentConfiguration) }),
+      ).annotate({
+        identifier: "VideoAssetProcessingConfiguration",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ video: S.optional(VideoAssetProcessingConfiguration) }),
+      ).annotate({
+        identifier: "AssetProcessingConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          s3Uri: S.String,
+          assetProcessingConfiguration: S.optional(AssetProcessingConfiguration),
+        }),
+      ).annotate({ identifier: "InputConfiguration" });
+    case 2:
+      return S.suspend(() => S.Struct({ eventBridgeEnabled: S.Boolean })).annotate({
+        identifier: "EventBridgeConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ eventBridgeConfiguration: EventBridgeConfiguration }),
+      ).annotate({
+        identifier: "NotificationConfiguration",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 5:
+      return S.Array(Tag);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          inputConfiguration: InputConfiguration,
+          outputConfiguration: OutputConfiguration,
+          dataAutomationConfiguration: S.optional(DataAutomationConfiguration),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          notificationConfiguration: S.optional(NotificationConfiguration),
+          blueprints: S.optional(BlueprintList),
+          dataAutomationProfileArn: S.String,
+          tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "InvokeDataAutomationAsyncRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ invocationArn: S.String })).annotate({
+        identifier: "InvokeDataAutomationAsyncResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceARN: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagList) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resourceARN: S.String, tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceARN: S.String, tagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}

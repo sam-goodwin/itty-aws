@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -160,7 +161,7 @@ export type SpaceId = string;
 export type ChannelId = string;
 export type AccessorId = string;
 export type AccessorIdList = string[];
-const AccessorIdList = /*@__PURE__*/ S.Array(S.String);
+const AccessorIdList = /*@__PURE__*/ __L.at(__c0, 0);
 export type ChannelRole = "ASKER" | "EXPERT" | "MODERATOR" | "SUPPORTREQUESTOR" | (string & {});
 const ChannelRole = S.String;
 
@@ -170,25 +171,10 @@ export interface BatchAddChannelRoleToAccessorsInput {
   accessorIds: string[];
   channelRole: ChannelRole;
 }
-const BatchAddChannelRoleToAccessorsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    channelId: S.String.pipe(T.HttpLabel("channelId")),
-    accessorIds: AccessorIdList,
-    channelRole: ChannelRole,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/spaces/{spaceId}/channels/{channelId}/roles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchAddChannelRoleToAccessorsInput",
-}) as any as S.Schema<BatchAddChannelRoleToAccessorsInput>;
+const BatchAddChannelRoleToAccessorsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchAddChannelRoleToAccessorsInput>;
 export type ErrorCode = number;
 export type ErrorMessage = string;
 export interface BatchError {
@@ -196,20 +182,17 @@ export interface BatchError {
   error: number;
   message: string;
 }
-const BatchError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessorId: S.String, error: S.Number, message: S.String }),
-).annotate({ identifier: "BatchError" }) as any as S.Schema<BatchError>;
+const BatchError = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BatchError>;
 export type BatchErrorList = BatchError[];
-const BatchErrorList = /*@__PURE__*/ S.Array(BatchError);
+const BatchErrorList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface BatchAddChannelRoleToAccessorsOutput {
   addedAccessorIds: string[];
   errors: BatchError[];
 }
-const BatchAddChannelRoleToAccessorsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ addedAccessorIds: AccessorIdList, errors: BatchErrorList }),
-).annotate({
-  identifier: "BatchAddChannelRoleToAccessorsOutput",
-}) as any as S.Schema<BatchAddChannelRoleToAccessorsOutput>;
+const BatchAddChannelRoleToAccessorsOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BatchAddChannelRoleToAccessorsOutput>;
 export type Role = "EXPERT" | "MODERATOR" | "ADMINISTRATOR" | "SUPPORTREQUESTOR" | (string & {});
 const Role = S.String;
 
@@ -218,84 +201,44 @@ export interface BatchAddRoleInput {
   accessorIds: string[];
   role: Role;
 }
-const BatchAddRoleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    accessorIds: AccessorIdList,
-    role: Role,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/spaces/{spaceId}/roles" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "BatchAddRoleInput" }) as any as S.Schema<BatchAddRoleInput>;
+const BatchAddRoleInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BatchAddRoleInput>;
 export interface BatchAddRoleOutput {
   addedAccessorIds: string[];
   errors: BatchError[];
 }
-const BatchAddRoleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ addedAccessorIds: AccessorIdList, errors: BatchErrorList }),
-).annotate({ identifier: "BatchAddRoleOutput" }) as any as S.Schema<BatchAddRoleOutput>;
+const BatchAddRoleOutput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BatchAddRoleOutput>;
 export interface BatchRemoveChannelRoleFromAccessorsInput {
   spaceId: string;
   channelId: string;
   accessorIds: string[];
   channelRole: ChannelRole;
 }
-const BatchRemoveChannelRoleFromAccessorsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    channelId: S.String.pipe(T.HttpLabel("channelId")),
-    accessorIds: AccessorIdList,
-    channelRole: ChannelRole,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/spaces/{spaceId}/channels/{channelId}/roles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchRemoveChannelRoleFromAccessorsInput",
-}) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsInput>;
+const BatchRemoveChannelRoleFromAccessorsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsInput>;
 export interface BatchRemoveChannelRoleFromAccessorsOutput {
   removedAccessorIds: string[];
   errors: BatchError[];
 }
-const BatchRemoveChannelRoleFromAccessorsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ removedAccessorIds: AccessorIdList, errors: BatchErrorList }),
-).annotate({
-  identifier: "BatchRemoveChannelRoleFromAccessorsOutput",
-}) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsOutput>;
+const BatchRemoveChannelRoleFromAccessorsOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsOutput>;
 export interface BatchRemoveRoleInput {
   spaceId: string;
   accessorIds: string[];
   role: Role;
 }
-const BatchRemoveRoleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    accessorIds: AccessorIdList,
-    role: Role,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/spaces/{spaceId}/roles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "BatchRemoveRoleInput" }) as any as S.Schema<BatchRemoveRoleInput>;
+const BatchRemoveRoleInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<BatchRemoveRoleInput>;
 export interface BatchRemoveRoleOutput {
   removedAccessorIds: string[];
   errors: BatchError[];
 }
-const BatchRemoveRoleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ removedAccessorIds: AccessorIdList, errors: BatchErrorList }),
-).annotate({ identifier: "BatchRemoveRoleOutput" }) as any as S.Schema<BatchRemoveRoleOutput>;
+const BatchRemoveRoleOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BatchRemoveRoleOutput>;
 export type ChannelName = string | redacted.Redacted<string>;
 export type ChannelDescription = string | redacted.Redacted<string>;
 export interface CreateChannelInput {
@@ -303,28 +246,11 @@ export interface CreateChannelInput {
   channelName: string | redacted.Redacted<string>;
   channelDescription?: string | redacted.Redacted<string>;
 }
-const CreateChannelInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    channelName: SensitiveString,
-    channelDescription: S.optional(SensitiveString),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/spaces/{spaceId}/channels" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateChannelInput" }) as any as S.Schema<CreateChannelInput>;
+const CreateChannelInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateChannelInput>;
 export interface CreateChannelOutput {
   channelId: string;
 }
-const CreateChannelOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ channelId: S.String }),
-).annotate({ identifier: "CreateChannelOutput" }) as any as S.Schema<CreateChannelOutput>;
+const CreateChannelOutput = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateChannelOutput>;
 export type SpaceName = string | redacted.Redacted<string>;
 export type SpaceSubdomain = string;
 export type TierLevel = "BASIC" | "STANDARD" | (string & {});
@@ -335,26 +261,22 @@ export type KMSKey = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ __L.at(__c1, 5);
 export type Arn = string;
 export type FeatureEnableParameter = "ENABLED" | "DISABLED" | (string & {});
 const FeatureEnableParameter = S.String;
 
 export type EmailDomain = string | redacted.Redacted<string>;
 export type AllowedDomainsList = (string | redacted.Redacted<string>)[];
-const AllowedDomainsList = /*@__PURE__*/ S.Array(SensitiveString);
+const AllowedDomainsList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface SupportedEmailDomainsParameters {
   enabled?: FeatureEnableParameter;
   allowedDomains?: (string | redacted.Redacted<string>)[];
 }
-const SupportedEmailDomainsParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(FeatureEnableParameter),
-    allowedDomains: S.optional(AllowedDomainsList),
-  }),
-).annotate({
-  identifier: "SupportedEmailDomainsParameters",
-}) as any as S.Schema<SupportedEmailDomainsParameters>;
+const SupportedEmailDomainsParameters = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SupportedEmailDomainsParameters>;
 export interface CreateSpaceInput {
   name: string | redacted.Redacted<string>;
   subdomain: string;
@@ -365,84 +287,34 @@ export interface CreateSpaceInput {
   roleArn?: string;
   supportedEmailDomains?: SupportedEmailDomainsParameters;
 }
-const CreateSpaceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    subdomain: S.String,
-    tier: TierLevel,
-    description: S.optional(SensitiveString),
-    userKMSKey: S.optional(S.String),
-    tags: S.optional(Tags),
-    roleArn: S.optional(S.String),
-    supportedEmailDomains: S.optional(SupportedEmailDomainsParameters),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/spaces" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateSpaceInput" }) as any as S.Schema<CreateSpaceInput>;
+const CreateSpaceInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateSpaceInput>;
 export interface CreateSpaceOutput {
   spaceId: string;
 }
-const CreateSpaceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ spaceId: S.String })).annotate({
-  identifier: "CreateSpaceOutput",
-}) as any as S.Schema<CreateSpaceOutput>;
+const CreateSpaceOutput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateSpaceOutput>;
 export interface DeleteSpaceInput {
   spaceId: string;
 }
-const DeleteSpaceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ spaceId: S.String.pipe(T.HttpLabel("spaceId")) }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/spaces/{spaceId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteSpaceInput" }) as any as S.Schema<DeleteSpaceInput>;
+const DeleteSpaceInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteSpaceInput>;
 export interface DeleteSpaceResponse {}
-const DeleteSpaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSpaceResponse",
-}) as any as S.Schema<DeleteSpaceResponse>;
+const DeleteSpaceResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteSpaceResponse>;
 export type AdminId = string;
 export interface DeregisterAdminInput {
   spaceId: string;
   adminId: string;
 }
-const DeregisterAdminInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    adminId: S.String.pipe(T.HttpLabel("adminId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/spaces/{spaceId}/admins/{adminId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeregisterAdminInput" }) as any as S.Schema<DeregisterAdminInput>;
+const DeregisterAdminInput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeregisterAdminInput>;
 export interface DeregisterAdminResponse {}
 const DeregisterAdminResponse = DeleteSpaceResponse as any as S.Schema<DeregisterAdminResponse>;
 export interface GetChannelInput {
   spaceId: string;
   channelId: string;
 }
-const GetChannelInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    channelId: S.String.pipe(T.HttpLabel("channelId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/spaces/{spaceId}/channels/{channelId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetChannelInput" }) as any as S.Schema<GetChannelInput>;
+const GetChannelInput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetChannelInput>;
 export type ChannelRoleList = ChannelRole[];
-const ChannelRoleList = /*@__PURE__*/ S.Array(ChannelRole);
+const ChannelRoleList = /*@__PURE__*/ __L.at(__c2, 6);
 export type ChannelRoles = { [key: string]: ChannelRole[] | undefined };
-const ChannelRoles = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ChannelRoleList.pipe(S.optional),
-);
+const ChannelRoles = /*@__PURE__*/ __L.at(__c2, 7);
 export type ChannelStatus =
   | "CREATED"
   | "CREATING"
@@ -463,26 +335,11 @@ export interface GetChannelOutput {
   channelRoles?: { [key: string]: ChannelRole[] | undefined };
   channelStatus: ChannelStatus;
 }
-const GetChannelOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String,
-    channelId: S.String,
-    channelName: SensitiveString,
-    channelDescription: S.optional(SensitiveString),
-    createDateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    channelRoles: S.optional(ChannelRoles),
-    channelStatus: ChannelStatus,
-  }),
-).annotate({ identifier: "GetChannelOutput" }) as any as S.Schema<GetChannelOutput>;
+const GetChannelOutput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetChannelOutput>;
 export interface GetSpaceInput {
   spaceId: string;
 }
-const GetSpaceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ spaceId: S.String.pipe(T.HttpLabel("spaceId")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/spaces/{spaceId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetSpaceInput" }) as any as S.Schema<GetSpaceInput>;
+const GetSpaceInput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetSpaceInput>;
 export type ProvisioningStatus = string;
 export type ConfigurationStatus = "CONFIGURED" | "UNCONFIGURED" | (string & {});
 const ConfigurationStatus = S.String;
@@ -501,7 +358,7 @@ const GroupAdmins = AccessorIdList as any as S.Schema<GroupAdmins>;
 export type RoleList = Role[];
 const RoleList = ChannelRoleList as any as S.Schema<RoleList>;
 export type Roles = { [key: string]: Role[] | undefined };
-const Roles = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ RoleList.pipe(S.optional));
+const Roles = /*@__PURE__*/ __L.at(__c3, 2);
 export type UserCount = number;
 export type ContentSize = number;
 export type FeatureEnableStatus = "ENABLED" | "DISABLED" | "NOT_ALLOWED" | (string & {});
@@ -537,56 +394,14 @@ export interface GetSpaceOutput {
   contentSize?: number;
   supportedEmailDomains?: SupportedEmailDomainsStatus;
 }
-const GetSpaceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String,
-    arn: S.String,
-    name: SensitiveString,
-    status: S.String,
-    configurationStatus: ConfigurationStatus,
-    clientId: S.String,
-    identityStoreId: S.optional(S.String),
-    applicationArn: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    vanityDomainStatus: VanityDomainStatus,
-    vanityDomain: S.String,
-    randomDomain: S.String,
-    customerRoleArn: S.optional(S.String),
-    createDateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    tier: TierLevel,
-    storageLimit: S.Number,
-    userAdmins: S.optional(UserAdmins),
-    groupAdmins: S.optional(GroupAdmins),
-    roles: S.optional(Roles),
-    userKMSKey: S.optional(S.String),
-    userCount: S.optional(S.Number),
-    contentSize: S.optional(S.Number),
-    supportedEmailDomains: S.optional(SupportedEmailDomainsStatus),
-  }),
-).annotate({ identifier: "GetSpaceOutput" }) as any as S.Schema<GetSpaceOutput>;
+const GetSpaceOutput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetSpaceOutput>;
 export type ListChannelsLimit = number;
 export interface ListChannelsInput {
   spaceId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListChannelsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/spaces/{spaceId}/channels" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListChannelsInput" }) as any as S.Schema<ListChannelsInput>;
+const ListChannelsInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListChannelsInput>;
 export type GroupCount = number;
 export interface ChannelData {
   spaceId: string;
@@ -599,39 +414,20 @@ export interface ChannelData {
   userCount: number;
   groupCount: number;
 }
-const ChannelData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String,
-    channelId: S.String,
-    channelName: SensitiveString,
-    channelDescription: S.optional(SensitiveString),
-    createDateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    channelStatus: ChannelStatus,
-    userCount: S.Number,
-    groupCount: S.Number,
-  }),
-).annotate({ identifier: "ChannelData" }) as any as S.Schema<ChannelData>;
+const ChannelData = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ChannelData>;
 export type ChannelsList = ChannelData[];
-const ChannelsList = /*@__PURE__*/ S.Array(ChannelData);
+const ChannelsList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ListChannelsOutput {
   channels: ChannelData[];
   nextToken?: string;
 }
-const ListChannelsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ channels: ChannelsList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListChannelsOutput" }) as any as S.Schema<ListChannelsOutput>;
+const ListChannelsOutput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListChannelsOutput>;
 export type ListSpacesLimit = number;
 export interface ListSpacesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListSpacesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/spaces" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListSpacesInput" }) as any as S.Schema<ListSpacesInput>;
+const ListSpacesInput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListSpacesInput>;
 export interface SpaceData {
   spaceId: string;
   arn: string;
@@ -651,73 +447,33 @@ export interface SpaceData {
   contentSize?: number;
   supportedEmailDomains?: SupportedEmailDomainsStatus;
 }
-const SpaceData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String,
-    arn: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    status: S.String,
-    configurationStatus: ConfigurationStatus,
-    vanityDomainStatus: VanityDomainStatus,
-    vanityDomain: S.String,
-    randomDomain: S.String,
-    tier: TierLevel,
-    storageLimit: S.Number,
-    createDateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    userKMSKey: S.optional(S.String),
-    userCount: S.optional(S.Number),
-    contentSize: S.optional(S.Number),
-    supportedEmailDomains: S.optional(SupportedEmailDomainsStatus),
-  }),
-).annotate({ identifier: "SpaceData" }) as any as S.Schema<SpaceData>;
+const SpaceData = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SpaceData>;
 export type SpacesList = SpaceData[];
-const SpacesList = /*@__PURE__*/ S.Array(SpaceData);
+const SpacesList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface ListSpacesOutput {
   spaces: SpaceData[];
   nextToken?: string;
 }
-const ListSpacesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ spaces: SpacesList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSpacesOutput" }) as any as S.Schema<ListSpacesOutput>;
+const ListSpacesOutput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ListSpacesOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RegisterAdminInput {
   spaceId: string;
   adminId: string;
 }
-const RegisterAdminInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    adminId: S.String.pipe(T.HttpLabel("adminId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/spaces/{spaceId}/admins/{adminId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "RegisterAdminInput" }) as any as S.Schema<RegisterAdminInput>;
+const RegisterAdminInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<RegisterAdminInput>;
 export interface RegisterAdminResponse {}
 const RegisterAdminResponse = DeleteSpaceResponse as any as S.Schema<RegisterAdminResponse>;
 export type InviteTitle = string | redacted.Redacted<string>;
@@ -728,34 +484,14 @@ export interface SendInvitesInput {
   title: string | redacted.Redacted<string>;
   body: string | redacted.Redacted<string>;
 }
-const SendInvitesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    accessorIds: AccessorIdList,
-    title: SensitiveString,
-    body: SensitiveString,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/spaces/{spaceId}/invite" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SendInvitesInput" }) as any as S.Schema<SendInvitesInput>;
+const SendInvitesInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<SendInvitesInput>;
 export interface SendInvitesResponse {}
 const SendInvitesResponse = DeleteSpaceResponse as any as S.Schema<SendInvitesResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteSpaceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -764,14 +500,7 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = DeleteSpaceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateChannelInput {
@@ -780,23 +509,7 @@ export interface UpdateChannelInput {
   channelName: string | redacted.Redacted<string>;
   channelDescription?: string | redacted.Redacted<string>;
 }
-const UpdateChannelInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    channelId: S.String.pipe(T.HttpLabel("channelId")),
-    channelName: SensitiveString,
-    channelDescription: S.optional(SensitiveString),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/spaces/{spaceId}/channels/{channelId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateChannelInput" }) as any as S.Schema<UpdateChannelInput>;
+const UpdateChannelInput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UpdateChannelInput>;
 export interface UpdateChannelOutput {}
 const UpdateChannelOutput = DeleteSpaceResponse as any as S.Schema<UpdateChannelOutput>;
 export interface UpdateSpaceInput {
@@ -806,15 +519,7 @@ export interface UpdateSpaceInput {
   roleArn?: string;
   supportedEmailDomains?: SupportedEmailDomainsParameters;
 }
-const UpdateSpaceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-    description: S.optional(SensitiveString),
-    tier: S.optional(TierLevel),
-    roleArn: S.optional(S.String),
-    supportedEmailDomains: S.optional(SupportedEmailDomainsParameters),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/spaces/{spaceId}" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateSpaceInput" }) as any as S.Schema<UpdateSpaceInput>;
+const UpdateSpaceInput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<UpdateSpaceInput>;
 export interface UpdateSpaceResponse {}
 const UpdateSpaceResponse = DeleteSpaceResponse as any as S.Schema<UpdateSpaceResponse>;
 export type ValidationExceptionReason =
@@ -829,11 +534,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c5, 5);
 export type BatchAddChannelRoleToAccessorsError =
   | AccessDeniedException
   | InternalServerException
@@ -1427,3 +1133,475 @@ export const updateSpace: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSpace",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          channelId: S.String.pipe(T.HttpLabel("channelId")),
+          accessorIds: AccessorIdList,
+          channelRole: ChannelRole,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/spaces/{spaceId}/channels/{channelId}/roles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchAddChannelRoleToAccessorsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ accessorId: S.String, error: S.Number, message: S.String }),
+      ).annotate({ identifier: "BatchError" });
+    case 3:
+      return S.Array(BatchError);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ addedAccessorIds: AccessorIdList, errors: BatchErrorList }),
+      ).annotate({
+        identifier: "BatchAddChannelRoleToAccessorsOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          accessorIds: AccessorIdList,
+          role: Role,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/spaces/{spaceId}/roles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchAddRoleInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ addedAccessorIds: AccessorIdList, errors: BatchErrorList }),
+      ).annotate({ identifier: "BatchAddRoleOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          channelId: S.String.pipe(T.HttpLabel("channelId")),
+          accessorIds: AccessorIdList,
+          channelRole: ChannelRole,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/spaces/{spaceId}/channels/{channelId}/roles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchRemoveChannelRoleFromAccessorsInput",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ removedAccessorIds: AccessorIdList, errors: BatchErrorList }),
+      ).annotate({
+        identifier: "BatchRemoveChannelRoleFromAccessorsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          accessorIds: AccessorIdList,
+          role: Role,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/spaces/{spaceId}/roles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchRemoveRoleInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ removedAccessorIds: AccessorIdList, errors: BatchErrorList }),
+      ).annotate({ identifier: "BatchRemoveRoleOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          channelName: SensitiveString,
+          channelDescription: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/spaces/{spaceId}/channels" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateChannelInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ channelId: S.String })).annotate({
+        identifier: "CreateChannelOutput",
+      });
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 6:
+      return S.Array(SensitiveString);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(FeatureEnableParameter),
+          allowedDomains: S.optional(AllowedDomainsList),
+        }),
+      ).annotate({
+        identifier: "SupportedEmailDomainsParameters",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          subdomain: S.String,
+          tier: TierLevel,
+          description: S.optional(SensitiveString),
+          userKMSKey: S.optional(S.String),
+          tags: S.optional(Tags),
+          roleArn: S.optional(S.String),
+          supportedEmailDomains: S.optional(SupportedEmailDomainsParameters),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/spaces" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateSpaceInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ spaceId: S.String })).annotate({
+        identifier: "CreateSpaceOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ spaceId: S.String.pipe(T.HttpLabel("spaceId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/spaces/{spaceId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSpaceInput" });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSpaceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          adminId: S.String.pipe(T.HttpLabel("adminId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/spaces/{spaceId}/admins/{adminId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeregisterAdminInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          channelId: S.String.pipe(T.HttpLabel("channelId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/spaces/{spaceId}/channels/{channelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetChannelInput" });
+    case 6:
+      return S.Array(ChannelRole);
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ ChannelRoleList.pipe(S.optional));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String,
+          channelId: S.String,
+          channelName: SensitiveString,
+          channelDescription: S.optional(SensitiveString),
+          createDateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          channelRoles: S.optional(ChannelRoles),
+          channelStatus: ChannelStatus,
+        }),
+      ).annotate({ identifier: "GetChannelOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ spaceId: S.String.pipe(T.HttpLabel("spaceId")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/spaces/{spaceId}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetSpaceInput" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ RoleList.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String,
+          arn: S.String,
+          name: SensitiveString,
+          status: S.String,
+          configurationStatus: ConfigurationStatus,
+          clientId: S.String,
+          identityStoreId: S.optional(S.String),
+          applicationArn: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          vanityDomainStatus: VanityDomainStatus,
+          vanityDomain: S.String,
+          randomDomain: S.String,
+          customerRoleArn: S.optional(S.String),
+          createDateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          tier: TierLevel,
+          storageLimit: S.Number,
+          userAdmins: S.optional(UserAdmins),
+          groupAdmins: S.optional(GroupAdmins),
+          roles: S.optional(Roles),
+          userKMSKey: S.optional(S.String),
+          userCount: S.optional(S.Number),
+          contentSize: S.optional(S.Number),
+          supportedEmailDomains: S.optional(SupportedEmailDomainsStatus),
+        }),
+      ).annotate({ identifier: "GetSpaceOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/spaces/{spaceId}/channels" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListChannelsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String,
+          channelId: S.String,
+          channelName: SensitiveString,
+          channelDescription: S.optional(SensitiveString),
+          createDateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          channelStatus: ChannelStatus,
+          userCount: S.Number,
+          groupCount: S.Number,
+        }),
+      ).annotate({ identifier: "ChannelData" });
+    case 6:
+      return S.Array(ChannelData);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ channels: ChannelsList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListChannelsOutput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/spaces" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListSpacesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String,
+          arn: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          status: S.String,
+          configurationStatus: ConfigurationStatus,
+          vanityDomainStatus: VanityDomainStatus,
+          vanityDomain: S.String,
+          randomDomain: S.String,
+          tier: TierLevel,
+          storageLimit: S.Number,
+          createDateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          deleteDateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          userKMSKey: S.optional(S.String),
+          userCount: S.optional(S.Number),
+          contentSize: S.optional(S.Number),
+          supportedEmailDomains: S.optional(SupportedEmailDomainsStatus),
+        }),
+      ).annotate({ identifier: "SpaceData" });
+    case 2:
+      return S.Array(SpaceData);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ spaces: SpacesList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSpacesOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          adminId: S.String.pipe(T.HttpLabel("adminId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/spaces/{spaceId}/admins/{adminId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "RegisterAdminInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          accessorIds: AccessorIdList,
+          title: SensitiveString,
+          body: SensitiveString,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/spaces/{spaceId}/invite" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendInvitesInput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          channelId: S.String.pipe(T.HttpLabel("channelId")),
+          channelName: SensitiveString,
+          channelDescription: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/spaces/{spaceId}/channels/{channelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateChannelInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+          description: S.optional(SensitiveString),
+          tier: S.optional(TierLevel),
+          roleArn: S.optional(S.String),
+          supportedEmailDomains: S.optional(SupportedEmailDomainsParameters),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/spaces/{spaceId}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateSpaceInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 5:
+      return S.Array(ValidationExceptionField);
+  }
+}

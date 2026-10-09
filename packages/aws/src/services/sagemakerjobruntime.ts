@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -116,93 +117,52 @@ export interface CompleteRolloutRequest {
   Status?: CompletionStatus;
   ClientToken?: string;
 }
-const CompleteRolloutRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
-    TrajectoryId: S.String,
-    Status: S.optional(CompletionStatus),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/complete-rollout" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CompleteRolloutRequest" }) as any as S.Schema<CompleteRolloutRequest>;
+const CompleteRolloutRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CompleteRolloutRequest>;
 export interface CompleteRolloutResponse {}
-const CompleteRolloutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CompleteRolloutResponse",
-}) as any as S.Schema<CompleteRolloutResponse>;
+const CompleteRolloutResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CompleteRolloutResponse>;
 export interface SampleRequest {
   JobArn: string;
   TrajectoryId: string;
   Body: T.StreamingInputBody;
 }
-const SampleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
-    TrajectoryId: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id")),
-    Body: T.StreamingInput.pipe(T.HttpPayload()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/sample" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "SampleRequest" }) as any as S.Schema<SampleRequest>;
+const SampleRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SampleRequest>;
 export interface SampleResponse {
   ContentType?: string;
   Body: T.StreamingOutputBody;
 }
-const SampleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    Body: T.StreamingOutput.pipe(T.HttpPayload()),
-  }),
-).annotate({ identifier: "SampleResponse" }) as any as S.Schema<SampleResponse>;
+const SampleResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SampleResponse>;
 export interface SampleWithResponseStreamRequest {
   JobArn: string;
   TrajectoryId: string;
   Body: T.StreamingInputBody;
 }
-const SampleWithResponseStreamRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
-    TrajectoryId: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id")),
-    Body: T.StreamingInput.pipe(T.HttpPayload()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/sample-with-response-stream" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "SampleWithResponseStreamRequest",
-}) as any as S.Schema<SampleWithResponseStreamRequest>;
+const SampleWithResponseStreamRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<SampleWithResponseStreamRequest>;
 export interface SampleWithResponseStreamResponse {
   ContentType?: string;
   Body: T.StreamingOutputBody;
 }
-const SampleWithResponseStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    Body: T.StreamingOutput.pipe(T.HttpPayload()),
-  }),
-).annotate({
-  identifier: "SampleWithResponseStreamResponse",
-}) as any as S.Schema<SampleWithResponseStreamResponse>;
+const SampleWithResponseStreamResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<SampleWithResponseStreamResponse>;
 export type DoubleList = number[];
-const DoubleList = /*@__PURE__*/ S.Array(S.Number);
+const DoubleList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface UpdateRewardRequest {
   JobArn: string;
   TrajectoryId: string;
   Rewards: number[];
   ClientToken?: string;
 }
-const UpdateRewardRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
-    TrajectoryId: S.String,
-    Rewards: DoubleList,
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/update-reward" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateRewardRequest" }) as any as S.Schema<UpdateRewardRequest>;
+const UpdateRewardRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UpdateRewardRequest>;
 export interface UpdateRewardResponse {}
 const UpdateRewardResponse = CompleteRolloutResponse as any as S.Schema<UpdateRewardResponse>;
 export type FailureReason = string;
@@ -345,3 +305,80 @@ export const updateReward: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateReward",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
+          TrajectoryId: S.String,
+          Status: S.optional(CompletionStatus),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/complete-rollout" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CompleteRolloutRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CompleteRolloutResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
+          TrajectoryId: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id")),
+          Body: T.StreamingInput.pipe(T.HttpPayload()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/sample" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SampleRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          Body: T.StreamingOutput.pipe(T.HttpPayload()),
+        }),
+      ).annotate({ identifier: "SampleResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
+          TrajectoryId: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id")),
+          Body: T.StreamingInput.pipe(T.HttpPayload()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/sample-with-response-stream" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "SampleWithResponseStreamRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          Body: T.StreamingOutput.pipe(T.HttpPayload()),
+        }),
+      ).annotate({
+        identifier: "SampleWithResponseStreamResponse",
+      });
+    case 6:
+      return S.Array(S.Number);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
+          TrajectoryId: S.String,
+          Rewards: DoubleList,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/update-reward" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateRewardRequest" });
+  }
+}

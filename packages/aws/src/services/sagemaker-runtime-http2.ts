@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -383,18 +384,11 @@ export interface RequestPayloadPart {
   CompletionState?: string;
   P?: string;
 }
-const RequestPayloadPart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()),
-    DataType: S.optional(S.String).pipe(T.EventHeader()),
-    CompletionState: S.optional(S.String).pipe(T.EventHeader()),
-    P: S.optional(S.String).pipe(T.EventHeader()),
-  }),
-).annotate({ identifier: "RequestPayloadPart" }) as any as S.Schema<RequestPayloadPart>;
+const RequestPayloadPart = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<RequestPayloadPart>;
 export type RequestStreamEvent = { PayloadPart: RequestPayloadPart };
-const RequestStreamEvent = /*@__PURE__*/ T.InputEventStream(
-  /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ PayloadPart: RequestPayloadPart })]),
-) as any as S.Schema<stream.Stream<RequestStreamEvent, Error, never>>;
+const RequestStreamEvent = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<
+  stream.Stream<RequestStreamEvent, Error, never>
+>;
 export interface InvokeEndpointWithBidirectionalStreamInput {
   EndpointName: string;
   Body: stream.Stream<RequestStreamEvent, Error, never>;
@@ -402,30 +396,10 @@ export interface InvokeEndpointWithBidirectionalStreamInput {
   ModelInvocationPath?: string;
   ModelQueryString?: string;
 }
-const InvokeEndpointWithBidirectionalStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
-    Body: RequestStreamEvent.pipe(T.HttpPayload()),
-    TargetVariant: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-SageMaker-Target-Variant")),
-    ModelInvocationPath: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-SageMaker-Model-Invocation-Path"),
-    ),
-    ModelQueryString: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-SageMaker-Model-Query-String"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/endpoints/{EndpointName}/invocations-bidirectional-stream" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "InvokeEndpointWithBidirectionalStreamInput",
-}) as any as S.Schema<InvokeEndpointWithBidirectionalStreamInput>;
+const InvokeEndpointWithBidirectionalStreamInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<InvokeEndpointWithBidirectionalStreamInput>;
 export interface ResponsePayloadPart {
   Bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
   DataType?: string;
@@ -437,35 +411,17 @@ export type ResponseStreamEvent =
   | { PayloadPart: ResponsePayloadPart; ModelStreamError?: never; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError: ModelStreamError; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError?: never; InternalStreamFailure: InternalStreamFailure };
-const ResponseStreamEvent = /*@__PURE__*/ T.EventStream(
-  /*@__PURE__*/ S.Union([
-    /*@__PURE__*/ S.Struct({ PayloadPart: ResponsePayloadPart }),
-    /*@__PURE__*/ S.Struct({
-      ModelStreamError: /*@__PURE__*/ S.suspend(() => ModelStreamError).annotate({
-        identifier: "ModelStreamError",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      InternalStreamFailure: /*@__PURE__*/ S.suspend(() => InternalStreamFailure).annotate({
-        identifier: "InternalStreamFailure",
-      }),
-    }),
-  ]),
-) as any as S.Schema<stream.Stream<ResponseStreamEvent, Error, never>>;
+const ResponseStreamEvent = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<
+  stream.Stream<ResponseStreamEvent, Error, never>
+>;
 export interface InvokeEndpointWithBidirectionalStreamOutput {
   Body: stream.Stream<ResponseStreamEvent, Error, never>;
   InvokedProductionVariant?: string;
 }
-const InvokeEndpointWithBidirectionalStreamOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Body: ResponseStreamEvent.pipe(T.HttpPayload()),
-    InvokedProductionVariant: S.optional(S.String).pipe(
-      T.HttpHeader("X-Amzn-Invoked-Production-Variant"),
-    ),
-  }),
-).annotate({
-  identifier: "InvokeEndpointWithBidirectionalStreamOutput",
-}) as any as S.Schema<InvokeEndpointWithBidirectionalStreamOutput>;
+const InvokeEndpointWithBidirectionalStreamOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<InvokeEndpointWithBidirectionalStreamOutput>;
 export type InvokeEndpointWithBidirectionalStreamError =
   | InputValidationError
   | InternalServerError
@@ -509,3 +465,77 @@ export const invokeEndpointWithBidirectionalStream: API.OperationMethod<
   retry: Retry,
   operationName: "InvokeEndpointWithBidirectionalStream",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()),
+          DataType: S.optional(S.String).pipe(T.EventHeader()),
+          CompletionState: S.optional(S.String).pipe(T.EventHeader()),
+          P: S.optional(S.String).pipe(T.EventHeader()),
+        }),
+      ).annotate({ identifier: "RequestPayloadPart" });
+    case 1:
+      return T.InputEventStream(
+        /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ PayloadPart: RequestPayloadPart })]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
+          Body: RequestStreamEvent.pipe(T.HttpPayload()),
+          TargetVariant: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-SageMaker-Target-Variant")),
+          ModelInvocationPath: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-SageMaker-Model-Invocation-Path"),
+          ),
+          ModelQueryString: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-SageMaker-Model-Query-String"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/endpoints/{EndpointName}/invocations-bidirectional-stream",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "InvokeEndpointWithBidirectionalStreamInput",
+      });
+    case 3:
+      return T.EventStream(
+        /*@__PURE__*/ S.Union([
+          /*@__PURE__*/ S.Struct({ PayloadPart: ResponsePayloadPart }),
+          /*@__PURE__*/ S.Struct({
+            ModelStreamError: /*@__PURE__*/ S.suspend(() => ModelStreamError).annotate({
+              identifier: "ModelStreamError",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            InternalStreamFailure: /*@__PURE__*/ S.suspend(() => InternalStreamFailure).annotate({
+              identifier: "InternalStreamFailure",
+            }),
+          }),
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Body: ResponseStreamEvent.pipe(T.HttpPayload()),
+          InvokedProductionVariant: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Invoked-Production-Variant"),
+          ),
+        }),
+      ).annotate({
+        identifier: "InvokeEndpointWithBidirectionalStreamOutput",
+      });
+  }
+}

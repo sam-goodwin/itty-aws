@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -149,19 +150,16 @@ export class ValidationException
 export type ConnectorArn = string;
 export type ClientToken = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ __L.at(__c0, 0);
 export interface CreateChallengeRequest {
   ConnectorArn: string;
   ClientToken?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateChallengeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectorArn: S.String,
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/challenges" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateChallengeRequest" }) as any as S.Schema<CreateChallengeRequest>;
+const CreateChallengeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateChallengeRequest>;
 export type ChallengeArn = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface Challenge {
@@ -171,21 +169,14 @@ export interface Challenge {
   UpdatedAt?: Date;
   Password?: string | redacted.Redacted<string>;
 }
-const Challenge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ConnectorArn: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Password: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "Challenge" }) as any as S.Schema<Challenge>;
+const Challenge = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Challenge>;
 export interface CreateChallengeResponse {
   Challenge?: Challenge;
 }
-const CreateChallengeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Challenge: S.optional(Challenge) }),
-).annotate({ identifier: "CreateChallengeResponse" }) as any as S.Schema<CreateChallengeResponse>;
+const CreateChallengeResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateChallengeResponse>;
 export type CertificateAuthorityArn = string;
 export type AzureApplicationId = string;
 export type AzureDomain = string;
@@ -193,13 +184,9 @@ export interface IntuneConfiguration {
   AzureApplicationId: string;
   Domain: string;
 }
-const IntuneConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AzureApplicationId: S.String, Domain: S.String }),
-).annotate({ identifier: "IntuneConfiguration" }) as any as S.Schema<IntuneConfiguration>;
+const IntuneConfiguration = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<IntuneConfiguration>;
 export type MobileDeviceManagement = { Intune: IntuneConfiguration };
-const MobileDeviceManagement = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Intune: IntuneConfiguration }),
-]);
+const MobileDeviceManagement = /*@__PURE__*/ __L.at(__c0, 5);
 export type VpcEndpointId = string;
 export interface CreateConnectorRequest {
   CertificateAuthorityArn: string;
@@ -208,136 +195,77 @@ export interface CreateConnectorRequest {
   ClientToken?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateAuthorityArn: S.String,
-    MobileDeviceManagement: S.optional(MobileDeviceManagement),
-    VpcEndpointId: S.optional(S.String),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/connectors" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateConnectorRequest" }) as any as S.Schema<CreateConnectorRequest>;
+const CreateConnectorRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateConnectorRequest>;
 export interface CreateConnectorResponse {
   ConnectorArn?: string;
 }
-const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectorArn: S.optional(S.String) }),
-).annotate({ identifier: "CreateConnectorResponse" }) as any as S.Schema<CreateConnectorResponse>;
+const CreateConnectorResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateConnectorResponse>;
 export interface DeleteChallengeRequest {
   ChallengeArn: string;
 }
-const DeleteChallengeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChallengeArn: S.String.pipe(T.HttpLabel("ChallengeArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/challenges/{ChallengeArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteChallengeRequest" }) as any as S.Schema<DeleteChallengeRequest>;
+const DeleteChallengeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteChallengeRequest>;
 export interface DeleteChallengeResponse {}
-const DeleteChallengeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChallengeResponse",
-}) as any as S.Schema<DeleteChallengeResponse>;
+const DeleteChallengeResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteChallengeResponse>;
 export interface DeleteConnectorRequest {
   ConnectorArn: string;
 }
-const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/connectors/{ConnectorArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteConnectorRequest" }) as any as S.Schema<DeleteConnectorRequest>;
+const DeleteConnectorRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteConnectorRequest>;
 export interface DeleteConnectorResponse {}
 const DeleteConnectorResponse = DeleteChallengeResponse as any as S.Schema<DeleteConnectorResponse>;
 export interface GetChallengeMetadataRequest {
   ChallengeArn: string;
 }
-const GetChallengeMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChallengeArn: S.String.pipe(T.HttpLabel("ChallengeArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/challengeMetadata/{ChallengeArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetChallengeMetadataRequest",
-}) as any as S.Schema<GetChallengeMetadataRequest>;
+const GetChallengeMetadataRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetChallengeMetadataRequest>;
 export interface ChallengeMetadata {
   Arn?: string;
   ConnectorArn?: string;
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const ChallengeMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ConnectorArn: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ChallengeMetadata" }) as any as S.Schema<ChallengeMetadata>;
+const ChallengeMetadata = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ChallengeMetadata>;
 export interface GetChallengeMetadataResponse {
   ChallengeMetadata?: ChallengeMetadata;
 }
-const GetChallengeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChallengeMetadata: S.optional(ChallengeMetadata) }),
-).annotate({
-  identifier: "GetChallengeMetadataResponse",
-}) as any as S.Schema<GetChallengeMetadataResponse>;
+const GetChallengeMetadataResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetChallengeMetadataResponse>;
 export interface GetChallengePasswordRequest {
   ChallengeArn: string;
 }
-const GetChallengePasswordRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChallengeArn: S.String.pipe(T.HttpLabel("ChallengeArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/challengePasswords/{ChallengeArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetChallengePasswordRequest",
-}) as any as S.Schema<GetChallengePasswordRequest>;
+const GetChallengePasswordRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetChallengePasswordRequest>;
 export interface GetChallengePasswordResponse {
   Password?: string | redacted.Redacted<string>;
 }
-const GetChallengePasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Password: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "GetChallengePasswordResponse",
-}) as any as S.Schema<GetChallengePasswordResponse>;
+const GetChallengePasswordResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetChallengePasswordResponse>;
 export interface GetConnectorRequest {
   ConnectorArn: string;
 }
-const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/connectors/{ConnectorArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetConnectorRequest" }) as any as S.Schema<GetConnectorRequest>;
+const GetConnectorRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetConnectorRequest>;
 export type ConnectorType = "GENERAL_PURPOSE" | "INTUNE" | (string & {});
 const ConnectorType = S.String;
 
@@ -346,13 +274,7 @@ export interface OpenIdConfiguration {
   Subject?: string;
   Audience?: string;
 }
-const OpenIdConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Issuer: S.optional(S.String),
-    Subject: S.optional(S.String),
-    Audience: S.optional(S.String),
-  }),
-).annotate({ identifier: "OpenIdConfiguration" }) as any as S.Schema<OpenIdConfiguration>;
+const OpenIdConfiguration = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<OpenIdConfiguration>;
 export type ConnectorStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED" | (string & {});
 const ConnectorStatus = S.String;
 
@@ -378,26 +300,11 @@ export interface Connector {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const Connector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CertificateAuthorityArn: S.optional(S.String),
-    Type: S.optional(ConnectorType),
-    MobileDeviceManagement: S.optional(MobileDeviceManagement),
-    OpenIdConfiguration: S.optional(OpenIdConfiguration),
-    Status: S.optional(ConnectorStatus),
-    StatusReason: S.optional(ConnectorStatusReason),
-    Endpoint: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
+const Connector = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Connector>;
 export interface GetConnectorResponse {
   Connector?: Connector;
 }
-const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Connector: S.optional(Connector) }),
-).annotate({ identifier: "GetConnectorResponse" }) as any as S.Schema<GetConnectorResponse>;
+const GetConnectorResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetConnectorResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListChallengeMetadataRequest {
@@ -405,17 +312,10 @@ export interface ListChallengeMetadataRequest {
   NextToken?: string;
   ConnectorArn: string;
 }
-const ListChallengeMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    ConnectorArn: S.String.pipe(T.HttpQuery("ConnectorArn")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/challengeMetadata" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListChallengeMetadataRequest",
-}) as any as S.Schema<ListChallengeMetadataRequest>;
+const ListChallengeMetadataRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListChallengeMetadataRequest>;
 export interface ChallengeMetadataSummary {
   Arn?: string;
   ConnectorArn?: string;
@@ -424,26 +324,23 @@ export interface ChallengeMetadataSummary {
 }
 const ChallengeMetadataSummary = ChallengeMetadata as any as S.Schema<ChallengeMetadataSummary>;
 export type ChallengeMetadataList = ChallengeMetadataSummary[];
-const ChallengeMetadataList = /*@__PURE__*/ S.Array(ChallengeMetadataSummary);
+const ChallengeMetadataList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface ListChallengeMetadataResponse {
   Challenges?: ChallengeMetadataSummary[];
   NextToken?: string;
 }
-const ListChallengeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Challenges: S.optional(ChallengeMetadataList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListChallengeMetadataResponse",
-}) as any as S.Schema<ListChallengeMetadataResponse>;
+const ListChallengeMetadataResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListChallengeMetadataResponse>;
 export interface ListConnectorsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/connectors" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListConnectorsRequest" }) as any as S.Schema<ListConnectorsRequest>;
+const ListConnectorsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListConnectorsRequest>;
 export interface ConnectorSummary {
   Arn?: string;
   CertificateAuthorityArn?: string;
@@ -458,57 +355,43 @@ export interface ConnectorSummary {
 }
 const ConnectorSummary = Connector as any as S.Schema<ConnectorSummary>;
 export type ConnectorList = ConnectorSummary[];
-const ConnectorList = /*@__PURE__*/ S.Array(ConnectorSummary);
+const ConnectorList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface ListConnectorsResponse {
   Connectors?: ConnectorSummary[];
   NextToken?: string;
 }
-const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Connectors: S.optional(ConnectorList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListConnectorsResponse" }) as any as S.Schema<ListConnectorsResponse>;
+const ListConnectorsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListConnectorsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: Tags }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteChallengeResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = DeleteChallengeResponse as any as S.Schema<UntagResourceResponse>;
 export type ValidationExceptionReason =
@@ -909,3 +792,274 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectorArn: S.String,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(Tags),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/challenges" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateChallengeRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          ConnectorArn: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Password: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Challenge" });
+    case 3:
+      return S.suspend(() => S.Struct({ Challenge: S.optional(Challenge) })).annotate({
+        identifier: "CreateChallengeResponse",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ AzureApplicationId: S.String, Domain: S.String })).annotate(
+        { identifier: "IntuneConfiguration" },
+      );
+    case 5:
+      return S.Union([/*@__PURE__*/ S.Struct({ Intune: IntuneConfiguration })]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateAuthorityArn: S.String,
+          MobileDeviceManagement: S.optional(MobileDeviceManagement),
+          VpcEndpointId: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(Tags),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/connectors" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateConnectorRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ ConnectorArn: S.optional(S.String) })).annotate({
+        identifier: "CreateConnectorResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChallengeArn: S.String.pipe(T.HttpLabel("ChallengeArn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/challenges/{ChallengeArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteChallengeRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteChallengeResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/connectors/{ConnectorArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteConnectorRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ChallengeArn: S.String.pipe(T.HttpLabel("ChallengeArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/challengeMetadata/{ChallengeArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetChallengeMetadataRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          ConnectorArn: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ChallengeMetadata" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ChallengeMetadata: S.optional(ChallengeMetadata) }),
+      ).annotate({
+        identifier: "GetChallengeMetadataResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ChallengeArn: S.String.pipe(T.HttpLabel("ChallengeArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/challengePasswords/{ChallengeArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetChallengePasswordRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Password: S.optional(SensitiveString) })).annotate({
+        identifier: "GetChallengePasswordResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/connectors/{ConnectorArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetConnectorRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Issuer: S.optional(S.String),
+          Subject: S.optional(S.String),
+          Audience: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OpenIdConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CertificateAuthorityArn: S.optional(S.String),
+          Type: S.optional(ConnectorType),
+          MobileDeviceManagement: S.optional(MobileDeviceManagement),
+          OpenIdConfiguration: S.optional(OpenIdConfiguration),
+          Status: S.optional(ConnectorStatus),
+          StatusReason: S.optional(ConnectorStatusReason),
+          Endpoint: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "Connector" });
+    case 3:
+      return S.suspend(() => S.Struct({ Connector: S.optional(Connector) })).annotate({
+        identifier: "GetConnectorResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          ConnectorArn: S.String.pipe(T.HttpQuery("ConnectorArn")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/challengeMetadata" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListChallengeMetadataRequest",
+      });
+    case 5:
+      return S.Array(ChallengeMetadataSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Challenges: S.optional(ChallengeMetadataList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListChallengeMetadataResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/connectors" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListConnectorsRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ConnectorSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Connectors: S.optional(ConnectorList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListConnectorsResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: Tags }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}

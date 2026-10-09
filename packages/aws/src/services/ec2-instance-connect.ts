@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -200,24 +201,20 @@ export interface SendSerialConsoleSSHPublicKeyRequest {
   SerialPort?: number;
   SSHPublicKey: string;
 }
-const SendSerialConsoleSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InstanceId: S.String, SerialPort: S.optional(S.Number), SSHPublicKey: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SendSerialConsoleSSHPublicKeyRequest",
-}) as any as S.Schema<SendSerialConsoleSSHPublicKeyRequest>;
+const SendSerialConsoleSSHPublicKeyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<SendSerialConsoleSSHPublicKeyRequest>;
 export type RequestId = string;
 export type Success = boolean;
 export interface SendSerialConsoleSSHPublicKeyResponse {
   RequestId?: string;
   Success?: boolean;
 }
-const SendSerialConsoleSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "SendSerialConsoleSSHPublicKeyResponse",
-}) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>;
+const SendSerialConsoleSSHPublicKeyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>;
 export type InstanceOSUser = string;
 export type AvailabilityZone = string;
 export interface SendSSHPublicKeyRequest {
@@ -226,21 +223,18 @@ export interface SendSSHPublicKeyRequest {
   SSHPublicKey: string;
   AvailabilityZone?: string;
 }
-const SendSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstanceId: S.String,
-    InstanceOSUser: S.String,
-    SSHPublicKey: S.String,
-    AvailabilityZone: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "SendSSHPublicKeyRequest" }) as any as S.Schema<SendSSHPublicKeyRequest>;
+const SendSSHPublicKeyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<SendSSHPublicKeyRequest>;
 export interface SendSSHPublicKeyResponse {
   RequestId?: string;
   Success?: boolean;
 }
-const SendSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
-).annotate({ identifier: "SendSSHPublicKeyResponse" }) as any as S.Schema<SendSSHPublicKeyResponse>;
+const SendSSHPublicKeyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SendSSHPublicKeyResponse>;
 export type SendSerialConsoleSSHPublicKeyError =
   | AuthException
   | EC2InstanceNotFoundException
@@ -324,3 +318,38 @@ export const sendSSHPublicKey: API.OperationMethod<
   retry: Retry,
   operationName: "SendSSHPublicKey",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceId: S.String,
+          SerialPort: S.optional(S.Number),
+          SSHPublicKey: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SendSerialConsoleSSHPublicKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
+      ).annotate({
+        identifier: "SendSerialConsoleSSHPublicKeyResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceId: S.String,
+          InstanceOSUser: S.String,
+          SSHPublicKey: S.String,
+          AvailabilityZone: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SendSSHPublicKeyRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "SendSSHPublicKeyResponse" });
+  }
+}

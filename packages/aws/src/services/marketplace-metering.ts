@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -207,20 +208,16 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface UsageAllocation {
   AllocatedUsageQuantity: number;
   Tags?: Tag[];
 }
-const UsageAllocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AllocatedUsageQuantity: S.Number, Tags: S.optional(TagList) }),
-).annotate({ identifier: "UsageAllocation" }) as any as S.Schema<UsageAllocation>;
+const UsageAllocation = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UsageAllocation>;
 export type UsageAllocations = UsageAllocation[];
-const UsageAllocations = /*@__PURE__*/ S.Array(UsageAllocation);
+const UsageAllocations = /*@__PURE__*/ __L.at(__c0, 3);
 export type CustomerAWSAccountId = string;
 export type LicenseArn = string;
 export interface UsageRecord {
@@ -232,29 +229,18 @@ export interface UsageRecord {
   CustomerAWSAccountId?: string;
   LicenseArn?: string;
 }
-const UsageRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    CustomerIdentifier: S.optional(S.String),
-    Dimension: S.String,
-    Quantity: S.optional(S.Number),
-    UsageAllocations: S.optional(UsageAllocations),
-    CustomerAWSAccountId: S.optional(S.String),
-    LicenseArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "UsageRecord" }) as any as S.Schema<UsageRecord>;
+const UsageRecord = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UsageRecord>;
 export type UsageRecordList = UsageRecord[];
-const UsageRecordList = /*@__PURE__*/ S.Array(UsageRecord);
+const UsageRecordList = /*@__PURE__*/ __L.at(__c0, 5);
 export type ProductCode = string;
 export interface BatchMeterUsageRequest {
   UsageRecords: UsageRecord[];
   ProductCode?: string;
 }
-const BatchMeterUsageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UsageRecords: UsageRecordList, ProductCode: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "BatchMeterUsageRequest" }) as any as S.Schema<BatchMeterUsageRequest>;
+const BatchMeterUsageRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchMeterUsageRequest>;
 export type UsageRecordResultStatus =
   | "Success"
   | "CustomerNotSubscribed"
@@ -267,25 +253,17 @@ export interface UsageRecordResult {
   MeteringRecordId?: string;
   Status?: UsageRecordResultStatus;
 }
-const UsageRecordResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    UsageRecord: S.optional(UsageRecord),
-    MeteringRecordId: S.optional(S.String),
-    Status: S.optional(UsageRecordResultStatus),
-  }),
-).annotate({ identifier: "UsageRecordResult" }) as any as S.Schema<UsageRecordResult>;
+const UsageRecordResult = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UsageRecordResult>;
 export type UsageRecordResultList = UsageRecordResult[];
-const UsageRecordResultList = /*@__PURE__*/ S.Array(UsageRecordResult);
+const UsageRecordResultList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface BatchMeterUsageResult {
   Results?: UsageRecordResult[];
   UnprocessedRecords?: UsageRecord[];
 }
-const BatchMeterUsageResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Results: S.optional(UsageRecordResultList),
-    UnprocessedRecords: S.optional(UsageRecordList),
-  }),
-).annotate({ identifier: "BatchMeterUsageResult" }) as any as S.Schema<BatchMeterUsageResult>;
+const BatchMeterUsageResult = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchMeterUsageResult>;
 export type ClientToken = string;
 export interface MeterUsageRequest {
   ProductCode: string;
@@ -296,23 +274,11 @@ export interface MeterUsageRequest {
   UsageAllocations?: UsageAllocation[];
   ClientToken?: string;
 }
-const MeterUsageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductCode: S.String,
-    Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    UsageDimension: S.String,
-    UsageQuantity: S.optional(S.Number),
-    DryRun: S.optional(S.Boolean),
-    UsageAllocations: S.optional(UsageAllocations),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "MeterUsageRequest" }) as any as S.Schema<MeterUsageRequest>;
+const MeterUsageRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MeterUsageRequest>;
 export interface MeterUsageResult {
   MeteringRecordId?: string;
 }
-const MeterUsageResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MeteringRecordId: S.optional(S.String) }),
-).annotate({ identifier: "MeterUsageResult" }) as any as S.Schema<MeterUsageResult>;
+const MeterUsageResult = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MeterUsageResult>;
 export type VersionInteger = number;
 export type Nonce = string;
 export interface RegisterUsageRequest {
@@ -320,44 +286,30 @@ export interface RegisterUsageRequest {
   PublicKeyVersion: number;
   Nonce?: string;
 }
-const RegisterUsageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProductCode: S.String, PublicKeyVersion: S.Number, Nonce: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "RegisterUsageRequest" }) as any as S.Schema<RegisterUsageRequest>;
+const RegisterUsageRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RegisterUsageRequest>;
 export type NonEmptyString = string;
 export interface RegisterUsageResult {
   PublicKeyRotationTimestamp?: Date;
   Signature?: string;
 }
-const RegisterUsageResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PublicKeyRotationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Signature: S.optional(S.String),
-  }),
-).annotate({ identifier: "RegisterUsageResult" }) as any as S.Schema<RegisterUsageResult>;
+const RegisterUsageResult = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RegisterUsageResult>;
 export interface ResolveCustomerRequest {
   RegistrationToken: string;
 }
-const ResolveCustomerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RegistrationToken: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ResolveCustomerRequest" }) as any as S.Schema<ResolveCustomerRequest>;
+const ResolveCustomerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ResolveCustomerRequest>;
 export interface ResolveCustomerResult {
   CustomerIdentifier?: string;
   ProductCode?: string;
   CustomerAWSAccountId?: string;
   LicenseArn?: string;
 }
-const ResolveCustomerResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CustomerIdentifier: S.optional(S.String),
-    ProductCode: S.optional(S.String),
-    CustomerAWSAccountId: S.optional(S.String),
-    LicenseArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResolveCustomerResult" }) as any as S.Schema<ResolveCustomerResult>;
+const ResolveCustomerResult = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ResolveCustomerResult>;
 export type ErrorMessage = string;
 export type BatchMeterUsageError =
   | DisabledApiException
@@ -631,3 +583,108 @@ export const resolveCustomer: API.OperationMethod<
   retry: Retry,
   operationName: "ResolveCustomer",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(Tag);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AllocatedUsageQuantity: S.Number, Tags: S.optional(TagList) }),
+      ).annotate({ identifier: "UsageAllocation" });
+    case 3:
+      return S.Array(UsageAllocation);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          CustomerIdentifier: S.optional(S.String),
+          Dimension: S.String,
+          Quantity: S.optional(S.Number),
+          UsageAllocations: S.optional(UsageAllocations),
+          CustomerAWSAccountId: S.optional(S.String),
+          LicenseArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UsageRecord" });
+    case 5:
+      return S.Array(UsageRecord);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ UsageRecords: UsageRecordList, ProductCode: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchMeterUsageRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          UsageRecord: S.optional(UsageRecord),
+          MeteringRecordId: S.optional(S.String),
+          Status: S.optional(UsageRecordResultStatus),
+        }),
+      ).annotate({ identifier: "UsageRecordResult" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(UsageRecordResult);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Results: S.optional(UsageRecordResultList),
+          UnprocessedRecords: S.optional(UsageRecordList),
+        }),
+      ).annotate({ identifier: "BatchMeterUsageResult" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ProductCode: S.String,
+          Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          UsageDimension: S.String,
+          UsageQuantity: S.optional(S.Number),
+          DryRun: S.optional(S.Boolean),
+          UsageAllocations: S.optional(UsageAllocations),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "MeterUsageRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ MeteringRecordId: S.optional(S.String) })).annotate({
+        identifier: "MeterUsageResult",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ProductCode: S.String,
+          PublicKeyVersion: S.Number,
+          Nonce: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "RegisterUsageRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          PublicKeyRotationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Signature: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegisterUsageResult" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ RegistrationToken: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ResolveCustomerRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CustomerIdentifier: S.optional(S.String),
+          ProductCode: S.optional(S.String),
+          CustomerAWSAccountId: S.optional(S.String),
+          LicenseArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResolveCustomerResult" });
+  }
+}

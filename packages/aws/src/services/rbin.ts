@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -132,9 +133,7 @@ export interface RetentionPeriod {
   RetentionPeriodValue: number;
   RetentionPeriodUnit: RetentionPeriodUnit;
 }
-const RetentionPeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RetentionPeriodValue: S.Number, RetentionPeriodUnit: RetentionPeriodUnit }),
-).annotate({ identifier: "RetentionPeriod" }) as any as S.Schema<RetentionPeriod>;
+const RetentionPeriod = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<RetentionPeriod>;
 export type Description = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -142,11 +141,9 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 2);
 export type ResourceType = "EBS_SNAPSHOT" | "EC2_IMAGE" | "EBS_VOLUME" | (string & {});
 const ResourceType = S.String;
 
@@ -156,11 +153,9 @@ export interface ResourceTag {
   ResourceTagKey: string;
   ResourceTagValue?: string;
 }
-const ResourceTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceTagKey: S.String, ResourceTagValue: S.optional(S.String) }),
-).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
+const ResourceTag = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ResourceTag>;
 export type ResourceTags = ResourceTag[];
-const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
+const ResourceTags = /*@__PURE__*/ __L.at(__c0, 4);
 export type UnlockDelayValue = number;
 export type UnlockDelayUnit = "DAYS" | (string & {});
 const UnlockDelayUnit = S.String;
@@ -169,15 +164,11 @@ export interface UnlockDelay {
   UnlockDelayValue: number;
   UnlockDelayUnit: UnlockDelayUnit;
 }
-const UnlockDelay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnlockDelayValue: S.Number, UnlockDelayUnit: UnlockDelayUnit }),
-).annotate({ identifier: "UnlockDelay" }) as any as S.Schema<UnlockDelay>;
+const UnlockDelay = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<UnlockDelay>;
 export interface LockConfiguration {
   UnlockDelay: UnlockDelay;
 }
-const LockConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnlockDelay: UnlockDelay }),
-).annotate({ identifier: "LockConfiguration" }) as any as S.Schema<LockConfiguration>;
+const LockConfiguration = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LockConfiguration>;
 export type ExcludeResourceTags = ResourceTag[];
 const ExcludeResourceTags = ResourceTags as any as S.Schema<ExcludeResourceTags>;
 export interface CreateRuleRequest {
@@ -189,17 +180,7 @@ export interface CreateRuleRequest {
   LockConfiguration?: LockConfiguration;
   ExcludeResourceTags?: ResourceTag[];
 }
-const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RetentionPeriod: RetentionPeriod,
-    Description: S.optional(S.String),
-    Tags: S.optional(TagList),
-    ResourceType: ResourceType,
-    ResourceTags: S.optional(ResourceTags),
-    LockConfiguration: S.optional(LockConfiguration),
-    ExcludeResourceTags: S.optional(ExcludeResourceTags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/rules" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateRuleRequest" }) as any as S.Schema<CreateRuleRequest>;
+const CreateRuleRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateRuleRequest>;
 export type RuleIdentifier = string;
 export type RuleStatus = "pending" | "available" | (string & {});
 const RuleStatus = S.String;
@@ -221,41 +202,17 @@ export interface CreateRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.optional(S.String),
-    RetentionPeriod: S.optional(RetentionPeriod),
-    Description: S.optional(S.String),
-    Tags: S.optional(TagList),
-    ResourceType: S.optional(ResourceType),
-    ResourceTags: S.optional(ResourceTags),
-    Status: S.optional(RuleStatus),
-    LockConfiguration: S.optional(LockConfiguration),
-    LockState: S.optional(LockState),
-    RuleArn: S.optional(S.String),
-    ExcludeResourceTags: S.optional(ExcludeResourceTags),
-  }),
-).annotate({ identifier: "CreateRuleResponse" }) as any as S.Schema<CreateRuleResponse>;
+const CreateRuleResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateRuleResponse>;
 export interface DeleteRuleRequest {
   Identifier: string;
 }
-const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/rules/{Identifier}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
+const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResponse {}
-const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRuleResponse",
-}) as any as S.Schema<DeleteRuleResponse>;
+const DeleteRuleResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteRuleResponse>;
 export interface GetRuleRequest {
   Identifier: string;
 }
-const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/rules/{Identifier}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
+const GetRuleRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetRuleRequest>;
 export interface GetRuleResponse {
   Identifier?: string;
   Description?: string;
@@ -269,21 +226,7 @@ export interface GetRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.optional(S.String),
-    Description: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-    RetentionPeriod: S.optional(RetentionPeriod),
-    ResourceTags: S.optional(ResourceTags),
-    Status: S.optional(RuleStatus),
-    LockConfiguration: S.optional(LockConfiguration),
-    LockState: S.optional(LockState),
-    LockEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RuleArn: S.optional(S.String),
-    ExcludeResourceTags: S.optional(ExcludeResourceTags),
-  }),
-).annotate({ identifier: "GetRuleResponse" }) as any as S.Schema<GetRuleResponse>;
+const GetRuleResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetRuleResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListRulesRequest {
@@ -294,16 +237,7 @@ export interface ListRulesRequest {
   LockState?: LockState;
   ExcludeResourceTags?: ResourceTag[];
 }
-const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    ResourceType: ResourceType,
-    ResourceTags: S.optional(ResourceTags),
-    LockState: S.optional(LockState),
-    ExcludeResourceTags: S.optional(ExcludeResourceTags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/list-rules" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListRulesRequest" }) as any as S.Schema<ListRulesRequest>;
+const ListRulesRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListRulesRequest>;
 export interface RuleSummary {
   Identifier?: string;
   Description?: string;
@@ -311,61 +245,33 @@ export interface RuleSummary {
   LockState?: LockState;
   RuleArn?: string;
 }
-const RuleSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.optional(S.String),
-    Description: S.optional(S.String),
-    RetentionPeriod: S.optional(RetentionPeriod),
-    LockState: S.optional(LockState),
-    RuleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "RuleSummary" }) as any as S.Schema<RuleSummary>;
+const RuleSummary = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<RuleSummary>;
 export type RuleSummaryList = RuleSummary[];
-const RuleSummaryList = /*@__PURE__*/ S.Array(RuleSummary);
+const RuleSummaryList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface ListRulesResponse {
   Rules?: RuleSummary[];
   NextToken?: string;
 }
-const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Rules: S.optional(RuleSummaryList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListRulesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface LockRuleRequest {
   Identifier: string;
   LockConfiguration: LockConfiguration;
 }
-const LockRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    LockConfiguration: LockConfiguration,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/rules/{Identifier}/lock" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "LockRuleRequest" }) as any as S.Schema<LockRuleRequest>;
+const LockRuleRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<LockRuleRequest>;
 export interface LockRuleResponse {
   Identifier?: string;
   Description?: string;
@@ -378,46 +284,18 @@ export interface LockRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-const LockRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.optional(S.String),
-    Description: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-    RetentionPeriod: S.optional(RetentionPeriod),
-    ResourceTags: S.optional(ResourceTags),
-    Status: S.optional(RuleStatus),
-    LockConfiguration: S.optional(LockConfiguration),
-    LockState: S.optional(LockState),
-    RuleArn: S.optional(S.String),
-    ExcludeResourceTags: S.optional(ExcludeResourceTags),
-  }),
-).annotate({ identifier: "LockRuleResponse" }) as any as S.Schema<LockRuleResponse>;
+const LockRuleResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<LockRuleResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteRuleResponse as any as S.Schema<TagResourceResponse>;
 export interface UnlockRuleRequest {
   Identifier: string;
 }
-const UnlockRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/rules/{Identifier}/unlock" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UnlockRuleRequest" }) as any as S.Schema<UnlockRuleRequest>;
+const UnlockRuleRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UnlockRuleRequest>;
 export interface UnlockRuleResponse {
   Identifier?: string;
   Description?: string;
@@ -433,19 +311,12 @@ export interface UnlockRuleResponse {
 }
 const UnlockRuleResponse = GetRuleResponse as any as S.Schema<UnlockRuleResponse>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = DeleteRuleResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateRuleRequest {
@@ -456,18 +327,7 @@ export interface UpdateRuleRequest {
   ResourceTags?: ResourceTag[];
   ExcludeResourceTags?: ResourceTag[];
 }
-const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    RetentionPeriod: S.optional(RetentionPeriod),
-    Description: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-    ResourceTags: S.optional(ResourceTags),
-    ExcludeResourceTags: S.optional(ExcludeResourceTags),
-  }).pipe(
-    T.all(T.Http({ method: "PATCH", uri: "/rules/{Identifier}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateRuleRequest" }) as any as S.Schema<UpdateRuleRequest>;
+const UpdateRuleRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UpdateRuleRequest>;
 export interface UpdateRuleResponse {
   Identifier?: string;
   RetentionPeriod?: RetentionPeriod;
@@ -480,20 +340,7 @@ export interface UpdateRuleResponse {
   RuleArn?: string;
   ExcludeResourceTags?: ResourceTag[];
 }
-const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.optional(S.String),
-    RetentionPeriod: S.optional(RetentionPeriod),
-    Description: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-    ResourceTags: S.optional(ResourceTags),
-    Status: S.optional(RuleStatus),
-    LockState: S.optional(LockState),
-    LockEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RuleArn: S.optional(S.String),
-    ExcludeResourceTags: S.optional(ExcludeResourceTags),
-  }),
-).annotate({ identifier: "UpdateRuleResponse" }) as any as S.Schema<UpdateRuleResponse>;
+const UpdateRuleResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UpdateRuleResponse>;
 export type ErrorMessage = string;
 export type ServiceQuotaExceededExceptionReason = "SERVICE_QUOTA_EXCEEDED" | (string & {});
 const ServiceQuotaExceededExceptionReason = S.String;
@@ -788,3 +635,277 @@ export const updateRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRule",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RetentionPeriodValue: S.Number, RetentionPeriodUnit: RetentionPeriodUnit }),
+      ).annotate({ identifier: "RetentionPeriod" });
+    case 1:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 2:
+      return S.Array(Tag);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResourceTagKey: S.String, ResourceTagValue: S.optional(S.String) }),
+      ).annotate({ identifier: "ResourceTag" });
+    case 4:
+      return S.Array(ResourceTag);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ UnlockDelayValue: S.Number, UnlockDelayUnit: UnlockDelayUnit }),
+      ).annotate({ identifier: "UnlockDelay" });
+    case 6:
+      return S.suspend(() => S.Struct({ UnlockDelay: UnlockDelay })).annotate({
+        identifier: "LockConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          RetentionPeriod: RetentionPeriod,
+          Description: S.optional(S.String),
+          Tags: S.optional(TagList),
+          ResourceType: ResourceType,
+          ResourceTags: S.optional(ResourceTags),
+          LockConfiguration: S.optional(LockConfiguration),
+          ExcludeResourceTags: S.optional(ExcludeResourceTags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/rules" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateRuleRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.optional(S.String),
+          RetentionPeriod: S.optional(RetentionPeriod),
+          Description: S.optional(S.String),
+          Tags: S.optional(TagList),
+          ResourceType: S.optional(ResourceType),
+          ResourceTags: S.optional(ResourceTags),
+          Status: S.optional(RuleStatus),
+          LockConfiguration: S.optional(LockConfiguration),
+          LockState: S.optional(LockState),
+          RuleArn: S.optional(S.String),
+          ExcludeResourceTags: S.optional(ExcludeResourceTags),
+        }),
+      ).annotate({ identifier: "CreateRuleResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/rules/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteRuleRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteRuleResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/rules/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetRuleRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.optional(S.String),
+          Description: S.optional(S.String),
+          ResourceType: S.optional(ResourceType),
+          RetentionPeriod: S.optional(RetentionPeriod),
+          ResourceTags: S.optional(ResourceTags),
+          Status: S.optional(RuleStatus),
+          LockConfiguration: S.optional(LockConfiguration),
+          LockState: S.optional(LockState),
+          LockEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RuleArn: S.optional(S.String),
+          ExcludeResourceTags: S.optional(ExcludeResourceTags),
+        }),
+      ).annotate({ identifier: "GetRuleResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          ResourceType: ResourceType,
+          ResourceTags: S.optional(ResourceTags),
+          LockState: S.optional(LockState),
+          ExcludeResourceTags: S.optional(ExcludeResourceTags),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/list-rules" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListRulesRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.optional(S.String),
+          Description: S.optional(S.String),
+          RetentionPeriod: S.optional(RetentionPeriod),
+          LockState: S.optional(LockState),
+          RuleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuleSummary" });
+    case 7:
+      return S.Array(RuleSummary);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Rules: S.optional(RuleSummaryList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRulesResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          LockConfiguration: LockConfiguration,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/rules/{Identifier}/lock" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "LockRuleRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.optional(S.String),
+          Description: S.optional(S.String),
+          ResourceType: S.optional(ResourceType),
+          RetentionPeriod: S.optional(RetentionPeriod),
+          ResourceTags: S.optional(ResourceTags),
+          Status: S.optional(RuleStatus),
+          LockConfiguration: S.optional(LockConfiguration),
+          LockState: S.optional(LockState),
+          RuleArn: S.optional(S.String),
+          ExcludeResourceTags: S.optional(ExcludeResourceTags),
+        }),
+      ).annotate({ identifier: "LockRuleResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagList }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/rules/{Identifier}/unlock" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UnlockRuleRequest" });
+    case 7:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          RetentionPeriod: S.optional(RetentionPeriod),
+          Description: S.optional(S.String),
+          ResourceType: S.optional(ResourceType),
+          ResourceTags: S.optional(ResourceTags),
+          ExcludeResourceTags: S.optional(ExcludeResourceTags),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/rules/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateRuleRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.optional(S.String),
+          RetentionPeriod: S.optional(RetentionPeriod),
+          Description: S.optional(S.String),
+          ResourceType: S.optional(ResourceType),
+          ResourceTags: S.optional(ResourceTags),
+          Status: S.optional(RuleStatus),
+          LockState: S.optional(LockState),
+          LockEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RuleArn: S.optional(S.String),
+          ExcludeResourceTags: S.optional(ExcludeResourceTags),
+        }),
+      ).annotate({ identifier: "UpdateRuleResponse" });
+  }
+}

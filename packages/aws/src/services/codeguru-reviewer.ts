@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -119,9 +120,7 @@ export type Name = string;
 export interface CodeCommitRepository {
   Name: string;
 }
-const CodeCommitRepository = /*@__PURE__*/ S.suspend(() => S.Struct({ Name: S.String })).annotate({
-  identifier: "CodeCommitRepository",
-}) as any as S.Schema<CodeCommitRepository>;
+const CodeCommitRepository = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CodeCommitRepository>;
 export type ConnectionArn = string;
 export type Owner = string;
 export interface ThirdPartySourceRepository {
@@ -129,38 +128,28 @@ export interface ThirdPartySourceRepository {
   ConnectionArn: string;
   Owner: string;
 }
-const ThirdPartySourceRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, ConnectionArn: S.String, Owner: S.String }),
-).annotate({
-  identifier: "ThirdPartySourceRepository",
-}) as any as S.Schema<ThirdPartySourceRepository>;
+const ThirdPartySourceRepository = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ThirdPartySourceRepository>;
 export type S3BucketName = string;
 export interface S3Repository {
   Name: string;
   BucketName: string;
 }
-const S3Repository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, BucketName: S.String }),
-).annotate({ identifier: "S3Repository" }) as any as S.Schema<S3Repository>;
+const S3Repository = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<S3Repository>;
 export interface Repository {
   CodeCommit?: CodeCommitRepository;
   Bitbucket?: ThirdPartySourceRepository;
   GitHubEnterpriseServer?: ThirdPartySourceRepository;
   S3Bucket?: S3Repository;
 }
-const Repository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CodeCommit: S.optional(CodeCommitRepository),
-    Bitbucket: S.optional(ThirdPartySourceRepository),
-    GitHubEnterpriseServer: S.optional(ThirdPartySourceRepository),
-    S3Bucket: S.optional(S3Repository),
-  }),
-).annotate({ identifier: "Repository" }) as any as S.Schema<Repository>;
+const Repository = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Repository>;
 export type ClientRequestToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c0, 4);
 export type KMSKeyId = string;
 export type EncryptionOption = "AWS_OWNED_CMK" | "CUSTOMER_MANAGED_CMK" | (string & {});
 const EncryptionOption = S.String;
@@ -169,25 +158,17 @@ export interface KMSKeyDetails {
   KMSKeyId?: string;
   EncryptionOption?: EncryptionOption;
 }
-const KMSKeyDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KMSKeyId: S.optional(S.String), EncryptionOption: S.optional(EncryptionOption) }),
-).annotate({ identifier: "KMSKeyDetails" }) as any as S.Schema<KMSKeyDetails>;
+const KMSKeyDetails = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<KMSKeyDetails>;
 export interface AssociateRepositoryRequest {
   Repository: Repository;
   ClientRequestToken?: string;
   Tags?: { [key: string]: string | undefined };
   KMSKeyDetails?: KMSKeyDetails;
 }
-const AssociateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Repository: Repository,
-    ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Tags: S.optional(TagMap),
-    KMSKeyDetails: S.optional(KMSKeyDetails),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/associations" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AssociateRepositoryRequest",
-}) as any as S.Schema<AssociateRepositoryRequest>;
+const AssociateRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AssociateRepositoryRequest>;
 export type AssociationId = string;
 export type Arn = string;
 export type ProviderType =
@@ -215,19 +196,12 @@ export interface CodeArtifacts {
   SourceCodeArtifactsObjectKey: string;
   BuildArtifactsObjectKey?: string;
 }
-const CodeArtifacts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SourceCodeArtifactsObjectKey: S.String,
-    BuildArtifactsObjectKey: S.optional(S.String),
-  }),
-).annotate({ identifier: "CodeArtifacts" }) as any as S.Schema<CodeArtifacts>;
+const CodeArtifacts = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CodeArtifacts>;
 export interface S3RepositoryDetails {
   BucketName?: string;
   CodeArtifacts?: CodeArtifacts;
 }
-const S3RepositoryDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BucketName: S.optional(S.String), CodeArtifacts: S.optional(CodeArtifacts) }),
-).annotate({ identifier: "S3RepositoryDetails" }) as any as S.Schema<S3RepositoryDetails>;
+const S3RepositoryDetails = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<S3RepositoryDetails>;
 export interface RepositoryAssociation {
   AssociationId?: string;
   AssociationArn?: string;
@@ -242,69 +216,51 @@ export interface RepositoryAssociation {
   KMSKeyDetails?: KMSKeyDetails;
   S3RepositoryDetails?: S3RepositoryDetails;
 }
-const RepositoryAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssociationId: S.optional(S.String),
-    AssociationArn: S.optional(S.String),
-    ConnectionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    Owner: S.optional(S.String),
-    ProviderType: S.optional(ProviderType),
-    State: S.optional(RepositoryAssociationState),
-    StateReason: S.optional(S.String),
-    LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    KMSKeyDetails: S.optional(KMSKeyDetails),
-    S3RepositoryDetails: S.optional(S3RepositoryDetails),
-  }),
-).annotate({ identifier: "RepositoryAssociation" }) as any as S.Schema<RepositoryAssociation>;
+const RepositoryAssociation = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<RepositoryAssociation>;
 export interface AssociateRepositoryResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
 }
-const AssociateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RepositoryAssociation: S.optional(RepositoryAssociation), Tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "AssociateRepositoryResponse",
-}) as any as S.Schema<AssociateRepositoryResponse>;
+const AssociateRepositoryResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AssociateRepositoryResponse>;
 export type CodeReviewName = string;
 export type AssociationArn = string;
 export type BranchName = string;
 export interface RepositoryHeadSourceCodeType {
   BranchName: string;
 }
-const RepositoryHeadSourceCodeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BranchName: S.String }),
-).annotate({
-  identifier: "RepositoryHeadSourceCodeType",
-}) as any as S.Schema<RepositoryHeadSourceCodeType>;
+const RepositoryHeadSourceCodeType = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<RepositoryHeadSourceCodeType>;
 export type CommitId = string;
 export interface CommitDiffSourceCodeType {
   SourceCommit?: string;
   DestinationCommit?: string;
   MergeBaseCommit?: string;
 }
-const CommitDiffSourceCodeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SourceCommit: S.optional(S.String),
-    DestinationCommit: S.optional(S.String),
-    MergeBaseCommit: S.optional(S.String),
-  }),
-).annotate({ identifier: "CommitDiffSourceCodeType" }) as any as S.Schema<CommitDiffSourceCodeType>;
+const CommitDiffSourceCodeType = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CommitDiffSourceCodeType>;
 export interface BranchDiffSourceCodeType {
   SourceBranchName: string;
   DestinationBranchName: string;
 }
-const BranchDiffSourceCodeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SourceBranchName: S.String, DestinationBranchName: S.String }),
-).annotate({ identifier: "BranchDiffSourceCodeType" }) as any as S.Schema<BranchDiffSourceCodeType>;
+const BranchDiffSourceCodeType = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BranchDiffSourceCodeType>;
 export interface S3BucketRepository {
   Name: string;
   Details?: S3RepositoryDetails;
 }
-const S3BucketRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Details: S.optional(S3RepositoryDetails) }),
-).annotate({ identifier: "S3BucketRepository" }) as any as S.Schema<S3BucketRepository>;
+const S3BucketRepository = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<S3BucketRepository>;
 export type RequestId = string;
 export type Requester = string;
 export type EventName = string;
@@ -313,9 +269,7 @@ export interface EventInfo {
   Name?: string;
   State?: string;
 }
-const EventInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), State: S.optional(S.String) }),
-).annotate({ identifier: "EventInfo" }) as any as S.Schema<EventInfo>;
+const EventInfo = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EventInfo>;
 export type VendorName = "GitHub" | "GitLab" | "NativeS3" | (string & {});
 const VendorName = S.String;
 
@@ -325,14 +279,7 @@ export interface RequestMetadata {
   EventInfo?: EventInfo;
   VendorName?: VendorName;
 }
-const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RequestId: S.optional(S.String),
-    Requester: S.optional(S.String),
-    EventInfo: S.optional(EventInfo),
-    VendorName: S.optional(VendorName),
-  }),
-).annotate({ identifier: "RequestMetadata" }) as any as S.Schema<RequestMetadata>;
+const RequestMetadata = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<RequestMetadata>;
 export interface SourceCodeType {
   CommitDiff?: CommitDiffSourceCodeType;
   RepositoryHead?: RepositoryHeadSourceCodeType;
@@ -340,51 +287,32 @@ export interface SourceCodeType {
   S3BucketRepository?: S3BucketRepository;
   RequestMetadata?: RequestMetadata;
 }
-const SourceCodeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CommitDiff: S.optional(CommitDiffSourceCodeType),
-    RepositoryHead: S.optional(RepositoryHeadSourceCodeType),
-    BranchDiff: S.optional(BranchDiffSourceCodeType),
-    S3BucketRepository: S.optional(S3BucketRepository),
-    RequestMetadata: S.optional(RequestMetadata),
-  }),
-).annotate({ identifier: "SourceCodeType" }) as any as S.Schema<SourceCodeType>;
+const SourceCodeType = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SourceCodeType>;
 export interface RepositoryAnalysis {
   RepositoryHead?: RepositoryHeadSourceCodeType;
   SourceCodeType?: SourceCodeType;
 }
-const RepositoryAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RepositoryHead: S.optional(RepositoryHeadSourceCodeType),
-    SourceCodeType: S.optional(SourceCodeType),
-  }),
-).annotate({ identifier: "RepositoryAnalysis" }) as any as S.Schema<RepositoryAnalysis>;
+const RepositoryAnalysis = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<RepositoryAnalysis>;
 export type AnalysisType = "Security" | "CodeQuality" | (string & {});
 const AnalysisType = S.String;
 
 export type AnalysisTypes = AnalysisType[];
-const AnalysisTypes = /*@__PURE__*/ S.Array(AnalysisType);
+const AnalysisTypes = /*@__PURE__*/ __L.at(__c2, 3);
 export interface CodeReviewType {
   RepositoryAnalysis: RepositoryAnalysis;
   AnalysisTypes?: AnalysisType[];
 }
-const CodeReviewType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RepositoryAnalysis: RepositoryAnalysis, AnalysisTypes: S.optional(AnalysisTypes) }),
-).annotate({ identifier: "CodeReviewType" }) as any as S.Schema<CodeReviewType>;
+const CodeReviewType = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CodeReviewType>;
 export interface CreateCodeReviewRequest {
   Name: string;
   RepositoryAssociationArn: string;
   Type: CodeReviewType;
   ClientRequestToken?: string;
 }
-const CreateCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    RepositoryAssociationArn: S.String,
-    Type: CodeReviewType,
-    ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/codereviews" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateCodeReviewRequest" }) as any as S.Schema<CreateCodeReviewRequest>;
+const CreateCodeReviewRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateCodeReviewRequest>;
 export type JobState = "Completed" | "Pending" | "Failed" | "Deleting" | (string & {});
 const JobState = S.String;
 
@@ -399,13 +327,7 @@ export interface Metrics {
   SuppressedLinesOfCodeCount?: number;
   FindingsCount?: number;
 }
-const Metrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MeteredLinesOfCodeCount: S.optional(S.Number),
-    SuppressedLinesOfCodeCount: S.optional(S.Number),
-    FindingsCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
+const Metrics = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Metrics>;
 export type ConfigFileState = "Present" | "Absent" | "PresentWithErrors" | (string & {});
 const ConfigFileState = S.String;
 
@@ -427,57 +349,28 @@ export interface CodeReview {
   AnalysisTypes?: AnalysisType[];
   ConfigFileState?: ConfigFileState;
 }
-const CodeReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    CodeReviewArn: S.optional(S.String),
-    RepositoryName: S.optional(S.String),
-    Owner: S.optional(S.String),
-    ProviderType: S.optional(ProviderType),
-    State: S.optional(JobState),
-    StateReason: S.optional(S.String),
-    CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Type: S.optional(Type),
-    PullRequestId: S.optional(S.String),
-    SourceCodeType: S.optional(SourceCodeType),
-    AssociationArn: S.optional(S.String),
-    Metrics: S.optional(Metrics),
-    AnalysisTypes: S.optional(AnalysisTypes),
-    ConfigFileState: S.optional(ConfigFileState),
-  }),
-).annotate({ identifier: "CodeReview" }) as any as S.Schema<CodeReview>;
+const CodeReview = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CodeReview>;
 export interface CreateCodeReviewResponse {
   CodeReview?: CodeReview;
 }
-const CreateCodeReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CodeReview: S.optional(CodeReview) }),
-).annotate({ identifier: "CreateCodeReviewResponse" }) as any as S.Schema<CreateCodeReviewResponse>;
+const CreateCodeReviewResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateCodeReviewResponse>;
 export interface DescribeCodeReviewRequest {
   CodeReviewArn: string;
 }
-const DescribeCodeReviewRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/codereviews/{CodeReviewArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DescribeCodeReviewRequest",
-}) as any as S.Schema<DescribeCodeReviewRequest>;
+const DescribeCodeReviewRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DescribeCodeReviewRequest>;
 export interface DescribeCodeReviewResponse {
   CodeReview?: CodeReview;
 }
-const DescribeCodeReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CodeReview: S.optional(CodeReview) }),
-).annotate({
-  identifier: "DescribeCodeReviewResponse",
-}) as any as S.Schema<DescribeCodeReviewResponse>;
+const DescribeCodeReviewResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DescribeCodeReviewResponse>;
 export type RecommendationId = string;
 export type UserId = string;
 export interface DescribeRecommendationFeedbackRequest {
@@ -485,24 +378,10 @@ export interface DescribeRecommendationFeedbackRequest {
   RecommendationId: string;
   UserId?: string;
 }
-const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")),
-    RecommendationId: S.String.pipe(T.HttpQuery("RecommendationId")),
-    UserId: S.optional(S.String).pipe(T.HttpQuery("UserId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/feedback/{CodeReviewArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DescribeRecommendationFeedbackRequest",
-}) as any as S.Schema<DescribeRecommendationFeedbackRequest>;
+const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DescribeRecommendationFeedbackRequest>;
 export type Reaction = "ThumbsUp" | "ThumbsDown" | (string & {});
 export type Reactions = Reaction[];
 const Reactions = AnalysisTypes as any as S.Schema<Reactions>;
@@ -514,41 +393,24 @@ export interface RecommendationFeedback {
   CreatedTimeStamp?: Date;
   LastUpdatedTimeStamp?: Date;
 }
-const RecommendationFeedback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CodeReviewArn: S.optional(S.String),
-    RecommendationId: S.optional(S.String),
-    Reactions: S.optional(Reactions),
-    UserId: S.optional(S.String),
-    CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "RecommendationFeedback" }) as any as S.Schema<RecommendationFeedback>;
+const RecommendationFeedback = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<RecommendationFeedback>;
 export interface DescribeRecommendationFeedbackResponse {
   RecommendationFeedback?: RecommendationFeedback;
 }
-const DescribeRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecommendationFeedback: S.optional(RecommendationFeedback) }),
-).annotate({
-  identifier: "DescribeRecommendationFeedbackResponse",
-}) as any as S.Schema<DescribeRecommendationFeedbackResponse>;
+const DescribeRecommendationFeedbackResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DescribeRecommendationFeedbackResponse>;
 export interface DescribeRepositoryAssociationRequest {
   AssociationArn: string;
 }
-const DescribeRepositoryAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssociationArn: S.String.pipe(T.HttpLabel("AssociationArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/associations/{AssociationArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DescribeRepositoryAssociationRequest",
-}) as any as S.Schema<DescribeRepositoryAssociationRequest>;
+const DescribeRepositoryAssociationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DescribeRepositoryAssociationRequest>;
 export interface DescribeRepositoryAssociationResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
@@ -558,20 +420,10 @@ const DescribeRepositoryAssociationResponse =
 export interface DisassociateRepositoryRequest {
   AssociationArn: string;
 }
-const DisassociateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssociationArn: S.String.pipe(T.HttpLabel("AssociationArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/associations/{AssociationArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateRepositoryRequest",
-}) as any as S.Schema<DisassociateRepositoryRequest>;
+const DisassociateRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DisassociateRepositoryRequest>;
 export interface DisassociateRepositoryResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
@@ -583,7 +435,7 @@ const ProviderTypes = AnalysisTypes as any as S.Schema<ProviderTypes>;
 export type JobStates = JobState[];
 const JobStates = AnalysisTypes as any as S.Schema<JobStates>;
 export type RepositoryNames = string[];
-const RepositoryNames = /*@__PURE__*/ S.Array(S.String);
+const RepositoryNames = /*@__PURE__*/ __L.at(__c4, 0);
 export type ListCodeReviewsMaxResults = number;
 export type NextToken = string;
 export interface ListCodeReviewsRequest {
@@ -594,16 +446,10 @@ export interface ListCodeReviewsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListCodeReviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProviderTypes: S.optional(ProviderTypes).pipe(T.HttpQuery("ProviderTypes")),
-    States: S.optional(JobStates).pipe(T.HttpQuery("States")),
-    RepositoryNames: S.optional(RepositoryNames).pipe(T.HttpQuery("RepositoryNames")),
-    Type: Type.pipe(T.HttpQuery("Type")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/codereviews" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListCodeReviewsRequest" }) as any as S.Schema<ListCodeReviewsRequest>;
+const ListCodeReviewsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListCodeReviewsRequest>;
 export interface MetricsSummary {
   MeteredLinesOfCodeCount?: number;
   SuppressedLinesOfCodeCount?: number;
@@ -624,34 +470,17 @@ export interface CodeReviewSummary {
   MetricsSummary?: MetricsSummary;
   SourceCodeType?: SourceCodeType;
 }
-const CodeReviewSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    CodeReviewArn: S.optional(S.String),
-    RepositoryName: S.optional(S.String),
-    Owner: S.optional(S.String),
-    ProviderType: S.optional(ProviderType),
-    State: S.optional(JobState),
-    CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Type: S.optional(Type),
-    PullRequestId: S.optional(S.String),
-    MetricsSummary: S.optional(MetricsSummary),
-    SourceCodeType: S.optional(SourceCodeType),
-  }),
-).annotate({ identifier: "CodeReviewSummary" }) as any as S.Schema<CodeReviewSummary>;
+const CodeReviewSummary = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CodeReviewSummary>;
 export type CodeReviewSummaries = CodeReviewSummary[];
-const CodeReviewSummaries = /*@__PURE__*/ S.Array(CodeReviewSummary);
+const CodeReviewSummaries = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ListCodeReviewsResponse {
   CodeReviewSummaries?: CodeReviewSummary[];
   NextToken?: string;
 }
-const ListCodeReviewsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CodeReviewSummaries: S.optional(CodeReviewSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListCodeReviewsResponse" }) as any as S.Schema<ListCodeReviewsResponse>;
+const ListCodeReviewsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListCodeReviewsResponse>;
 export type MaxResults = number;
 export type UserIds = string[];
 const UserIds = RepositoryNames as any as S.Schema<UserIds>;
@@ -664,78 +493,39 @@ export interface ListRecommendationFeedbackRequest {
   UserIds?: string[];
   RecommendationIds?: string[];
 }
-const ListRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")),
-    UserIds: S.optional(UserIds).pipe(T.HttpQuery("UserIds")),
-    RecommendationIds: S.optional(RecommendationIds).pipe(T.HttpQuery("RecommendationIds")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/feedback/{CodeReviewArn}/RecommendationFeedback" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListRecommendationFeedbackRequest",
-}) as any as S.Schema<ListRecommendationFeedbackRequest>;
+const ListRecommendationFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListRecommendationFeedbackRequest>;
 export interface RecommendationFeedbackSummary {
   RecommendationId?: string;
   Reactions?: Reaction[];
   UserId?: string;
 }
-const RecommendationFeedbackSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommendationId: S.optional(S.String),
-    Reactions: S.optional(Reactions),
-    UserId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecommendationFeedbackSummary",
-}) as any as S.Schema<RecommendationFeedbackSummary>;
+const RecommendationFeedbackSummary = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<RecommendationFeedbackSummary>;
 export type RecommendationFeedbackSummaries = RecommendationFeedbackSummary[];
-const RecommendationFeedbackSummaries = /*@__PURE__*/ S.Array(RecommendationFeedbackSummary);
+const RecommendationFeedbackSummaries = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ListRecommendationFeedbackResponse {
   RecommendationFeedbackSummaries?: RecommendationFeedbackSummary[];
   NextToken?: string;
 }
-const ListRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommendationFeedbackSummaries: S.optional(RecommendationFeedbackSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRecommendationFeedbackResponse",
-}) as any as S.Schema<ListRecommendationFeedbackResponse>;
+const ListRecommendationFeedbackResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListRecommendationFeedbackResponse>;
 export type ListRecommendationsMaxResults = number;
 export interface ListRecommendationsRequest {
   NextToken?: string;
   MaxResults?: number;
   CodeReviewArn: string;
 }
-const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/codereviews/{CodeReviewArn}/Recommendations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListRecommendationsRequest",
-}) as any as S.Schema<ListRecommendationsRequest>;
+const ListRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListRecommendationsRequest>;
 export type FilePath = string;
 export type LineNumber = number;
 export type Text = string;
@@ -768,15 +558,7 @@ export interface RuleMetadata {
   LongDescription?: string;
   RuleTags?: string[];
 }
-const RuleMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleId: S.optional(S.String),
-    RuleName: S.optional(S.String),
-    ShortDescription: S.optional(S.String),
-    LongDescription: S.optional(S.String),
-    RuleTags: S.optional(RuleTags),
-  }),
-).annotate({ identifier: "RuleMetadata" }) as any as S.Schema<RuleMetadata>;
+const RuleMetadata = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<RuleMetadata>;
 export type Severity = "Info" | "Low" | "Medium" | "High" | "Critical" | (string & {});
 const Severity = S.String;
 
@@ -790,32 +572,20 @@ export interface RecommendationSummary {
   RuleMetadata?: RuleMetadata;
   Severity?: Severity;
 }
-const RecommendationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FilePath: S.optional(S.String),
-    RecommendationId: S.optional(S.String),
-    StartLine: S.optional(S.Number),
-    EndLine: S.optional(S.Number),
-    Description: S.optional(S.String),
-    RecommendationCategory: S.optional(RecommendationCategory),
-    RuleMetadata: S.optional(RuleMetadata),
-    Severity: S.optional(Severity),
-  }),
-).annotate({ identifier: "RecommendationSummary" }) as any as S.Schema<RecommendationSummary>;
+const RecommendationSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<RecommendationSummary>;
 export type RecommendationSummaries = RecommendationSummary[];
-const RecommendationSummaries = /*@__PURE__*/ S.Array(RecommendationSummary);
+const RecommendationSummaries = /*@__PURE__*/ __L.at(__c5, 4);
 export interface ListRecommendationsResponse {
   RecommendationSummaries?: RecommendationSummary[];
   NextToken?: string;
 }
-const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommendationSummaries: S.optional(RecommendationSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRecommendationsResponse",
-}) as any as S.Schema<ListRecommendationsResponse>;
+const ListRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListRecommendationsResponse>;
 export type RepositoryAssociationStates = RepositoryAssociationState[];
 const RepositoryAssociationStates = AnalysisTypes as any as S.Schema<RepositoryAssociationStates>;
 export type Names = string[];
@@ -830,18 +600,10 @@ export interface ListRepositoryAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListRepositoryAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProviderTypes: S.optional(ProviderTypes).pipe(T.HttpQuery("ProviderType")),
-    States: S.optional(RepositoryAssociationStates).pipe(T.HttpQuery("State")),
-    Names: S.optional(Names).pipe(T.HttpQuery("Name")),
-    Owners: S.optional(Owners).pipe(T.HttpQuery("Owner")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/associations" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListRepositoryAssociationsRequest",
-}) as any as S.Schema<ListRepositoryAssociationsRequest>;
+const ListRepositoryAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListRepositoryAssociationsRequest>;
 export interface RepositoryAssociationSummary {
   AssociationArn?: string;
   ConnectionArn?: string;
@@ -852,95 +614,62 @@ export interface RepositoryAssociationSummary {
   ProviderType?: ProviderType;
   State?: RepositoryAssociationState;
 }
-const RepositoryAssociationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssociationArn: S.optional(S.String),
-    ConnectionArn: S.optional(S.String),
-    LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociationId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Owner: S.optional(S.String),
-    ProviderType: S.optional(ProviderType),
-    State: S.optional(RepositoryAssociationState),
-  }),
-).annotate({
-  identifier: "RepositoryAssociationSummary",
-}) as any as S.Schema<RepositoryAssociationSummary>;
+const RepositoryAssociationSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<RepositoryAssociationSummary>;
 export type RepositoryAssociationSummaries = RepositoryAssociationSummary[];
-const RepositoryAssociationSummaries = /*@__PURE__*/ S.Array(RepositoryAssociationSummary);
+const RepositoryAssociationSummaries = /*@__PURE__*/ __L.at(__c6, 0);
 export interface ListRepositoryAssociationsResponse {
   RepositoryAssociationSummaries?: RepositoryAssociationSummary[];
   NextToken?: string;
 }
-const ListRepositoryAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RepositoryAssociationSummaries: S.optional(RepositoryAssociationSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRepositoryAssociationsResponse",
-}) as any as S.Schema<ListRepositoryAssociationsResponse>;
+const ListRepositoryAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListRepositoryAssociationsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutRecommendationFeedbackRequest {
   CodeReviewArn: string;
   RecommendationId: string;
   Reactions: Reaction[];
 }
-const PutRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CodeReviewArn: S.String, RecommendationId: S.String, Reactions: Reactions }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/feedback" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutRecommendationFeedbackRequest",
-}) as any as S.Schema<PutRecommendationFeedbackRequest>;
+const PutRecommendationFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<PutRecommendationFeedbackRequest>;
 export interface PutRecommendationFeedbackResponse {}
-const PutRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutRecommendationFeedbackResponse",
-}) as any as S.Schema<PutRecommendationFeedbackResponse>;
+const PutRecommendationFeedbackResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<PutRecommendationFeedbackResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), Tags: TagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
 const TagKeyList = RepositoryNames as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
@@ -1382,3 +1111,550 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
+        identifier: "CodeCommitRepository",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, ConnectionArn: S.String, Owner: S.String }),
+      ).annotate({
+        identifier: "ThirdPartySourceRepository",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Name: S.String, BucketName: S.String })).annotate({
+        identifier: "S3Repository",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CodeCommit: S.optional(CodeCommitRepository),
+          Bitbucket: S.optional(ThirdPartySourceRepository),
+          GitHubEnterpriseServer: S.optional(ThirdPartySourceRepository),
+          S3Bucket: S.optional(S3Repository),
+        }),
+      ).annotate({ identifier: "Repository" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          KMSKeyId: S.optional(S.String),
+          EncryptionOption: S.optional(EncryptionOption),
+        }),
+      ).annotate({ identifier: "KMSKeyDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Repository: Repository,
+          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(TagMap),
+          KMSKeyDetails: S.optional(KMSKeyDetails),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/associations" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AssociateRepositoryRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SourceCodeArtifactsObjectKey: S.String,
+          BuildArtifactsObjectKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CodeArtifacts" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ BucketName: S.optional(S.String), CodeArtifacts: S.optional(CodeArtifacts) }),
+      ).annotate({ identifier: "S3RepositoryDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AssociationId: S.optional(S.String),
+          AssociationArn: S.optional(S.String),
+          ConnectionArn: S.optional(S.String),
+          Name: S.optional(S.String),
+          Owner: S.optional(S.String),
+          ProviderType: S.optional(ProviderType),
+          State: S.optional(RepositoryAssociationState),
+          StateReason: S.optional(S.String),
+          LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          KMSKeyDetails: S.optional(KMSKeyDetails),
+          S3RepositoryDetails: S.optional(S3RepositoryDetails),
+        }),
+      ).annotate({ identifier: "RepositoryAssociation" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RepositoryAssociation: S.optional(RepositoryAssociation),
+          Tags: S.optional(TagMap),
+        }),
+      ).annotate({
+        identifier: "AssociateRepositoryResponse",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ BranchName: S.String })).annotate({
+        identifier: "RepositoryHeadSourceCodeType",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SourceCommit: S.optional(S.String),
+          DestinationCommit: S.optional(S.String),
+          MergeBaseCommit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommitDiffSourceCodeType" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ SourceBranchName: S.String, DestinationBranchName: S.String }),
+      ).annotate({ identifier: "BranchDiffSourceCodeType" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Details: S.optional(S3RepositoryDetails) }),
+      ).annotate({ identifier: "S3BucketRepository" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), State: S.optional(S.String) }),
+      ).annotate({ identifier: "EventInfo" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RequestId: S.optional(S.String),
+          Requester: S.optional(S.String),
+          EventInfo: S.optional(EventInfo),
+          VendorName: S.optional(VendorName),
+        }),
+      ).annotate({ identifier: "RequestMetadata" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CommitDiff: S.optional(CommitDiffSourceCodeType),
+          RepositoryHead: S.optional(RepositoryHeadSourceCodeType),
+          BranchDiff: S.optional(BranchDiffSourceCodeType),
+          S3BucketRepository: S.optional(S3BucketRepository),
+          RequestMetadata: S.optional(RequestMetadata),
+        }),
+      ).annotate({ identifier: "SourceCodeType" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RepositoryHead: S.optional(RepositoryHeadSourceCodeType),
+          SourceCodeType: S.optional(SourceCodeType),
+        }),
+      ).annotate({ identifier: "RepositoryAnalysis" });
+    case 3:
+      return S.Array(AnalysisType);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          RepositoryAnalysis: RepositoryAnalysis,
+          AnalysisTypes: S.optional(AnalysisTypes),
+        }),
+      ).annotate({ identifier: "CodeReviewType" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          RepositoryAssociationArn: S.String,
+          Type: CodeReviewType,
+          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/codereviews" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateCodeReviewRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          MeteredLinesOfCodeCount: S.optional(S.Number),
+          SuppressedLinesOfCodeCount: S.optional(S.Number),
+          FindingsCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Metrics" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          CodeReviewArn: S.optional(S.String),
+          RepositoryName: S.optional(S.String),
+          Owner: S.optional(S.String),
+          ProviderType: S.optional(ProviderType),
+          State: S.optional(JobState),
+          StateReason: S.optional(S.String),
+          CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Type: S.optional(Type),
+          PullRequestId: S.optional(S.String),
+          SourceCodeType: S.optional(SourceCodeType),
+          AssociationArn: S.optional(S.String),
+          Metrics: S.optional(Metrics),
+          AnalysisTypes: S.optional(AnalysisTypes),
+          ConfigFileState: S.optional(ConfigFileState),
+        }),
+      ).annotate({ identifier: "CodeReview" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ CodeReview: S.optional(CodeReview) })).annotate({
+        identifier: "CreateCodeReviewResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/codereviews/{CodeReviewArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeCodeReviewRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ CodeReview: S.optional(CodeReview) })).annotate({
+        identifier: "DescribeCodeReviewResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")),
+          RecommendationId: S.String.pipe(T.HttpQuery("RecommendationId")),
+          UserId: S.optional(S.String).pipe(T.HttpQuery("UserId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/feedback/{CodeReviewArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeRecommendationFeedbackRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CodeReviewArn: S.optional(S.String),
+          RecommendationId: S.optional(S.String),
+          Reactions: S.optional(Reactions),
+          UserId: S.optional(S.String),
+          CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "RecommendationFeedback" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ RecommendationFeedback: S.optional(RecommendationFeedback) }),
+      ).annotate({
+        identifier: "DescribeRecommendationFeedbackResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ AssociationArn: S.String.pipe(T.HttpLabel("AssociationArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/associations/{AssociationArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeRepositoryAssociationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ AssociationArn: S.String.pipe(T.HttpLabel("AssociationArn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/associations/{AssociationArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateRepositoryRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ProviderTypes: S.optional(ProviderTypes).pipe(T.HttpQuery("ProviderTypes")),
+          States: S.optional(JobStates).pipe(T.HttpQuery("States")),
+          RepositoryNames: S.optional(RepositoryNames).pipe(T.HttpQuery("RepositoryNames")),
+          Type: Type.pipe(T.HttpQuery("Type")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/codereviews" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListCodeReviewsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          CodeReviewArn: S.optional(S.String),
+          RepositoryName: S.optional(S.String),
+          Owner: S.optional(S.String),
+          ProviderType: S.optional(ProviderType),
+          State: S.optional(JobState),
+          CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Type: S.optional(Type),
+          PullRequestId: S.optional(S.String),
+          MetricsSummary: S.optional(MetricsSummary),
+          SourceCodeType: S.optional(SourceCodeType),
+        }),
+      ).annotate({ identifier: "CodeReviewSummary" });
+    case 3:
+      return S.Array(CodeReviewSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CodeReviewSummaries: S.optional(CodeReviewSummaries),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListCodeReviewsResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")),
+          UserIds: S.optional(UserIds).pipe(T.HttpQuery("UserIds")),
+          RecommendationIds: S.optional(RecommendationIds).pipe(T.HttpQuery("RecommendationIds")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/feedback/{CodeReviewArn}/RecommendationFeedback" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListRecommendationFeedbackRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          RecommendationId: S.optional(S.String),
+          Reactions: S.optional(Reactions),
+          UserId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RecommendationFeedbackSummary",
+      });
+    case 7:
+      return S.Array(RecommendationFeedbackSummary);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RecommendationFeedbackSummaries: S.optional(RecommendationFeedbackSummaries),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRecommendationFeedbackResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/codereviews/{CodeReviewArn}/Recommendations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListRecommendationsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.optional(S.String),
+          RuleName: S.optional(S.String),
+          ShortDescription: S.optional(S.String),
+          LongDescription: S.optional(S.String),
+          RuleTags: S.optional(RuleTags),
+        }),
+      ).annotate({ identifier: "RuleMetadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          FilePath: S.optional(S.String),
+          RecommendationId: S.optional(S.String),
+          StartLine: S.optional(S.Number),
+          EndLine: S.optional(S.Number),
+          Description: S.optional(S.String),
+          RecommendationCategory: S.optional(RecommendationCategory),
+          RuleMetadata: S.optional(RuleMetadata),
+          Severity: S.optional(Severity),
+        }),
+      ).annotate({ identifier: "RecommendationSummary" });
+    case 4:
+      return S.Array(RecommendationSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          RecommendationSummaries: S.optional(RecommendationSummaries),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRecommendationsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ProviderTypes: S.optional(ProviderTypes).pipe(T.HttpQuery("ProviderType")),
+          States: S.optional(RepositoryAssociationStates).pipe(T.HttpQuery("State")),
+          Names: S.optional(Names).pipe(T.HttpQuery("Name")),
+          Owners: S.optional(Owners).pipe(T.HttpQuery("Owner")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/associations" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListRepositoryAssociationsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AssociationArn: S.optional(S.String),
+          ConnectionArn: S.optional(S.String),
+          LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AssociationId: S.optional(S.String),
+          Name: S.optional(S.String),
+          Owner: S.optional(S.String),
+          ProviderType: S.optional(ProviderType),
+          State: S.optional(RepositoryAssociationState),
+        }),
+      ).annotate({
+        identifier: "RepositoryAssociationSummary",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(RepositoryAssociationSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RepositoryAssociationSummaries: S.optional(RepositoryAssociationSummaries),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRepositoryAssociationsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CodeReviewArn: S.String,
+          RecommendationId: S.String,
+          Reactions: Reactions,
+        }).pipe(T.all(T.Http({ method: "PUT", uri: "/feedback" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "PutRecommendationFeedbackRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PutRecommendationFeedbackResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), Tags: TagMap }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}

@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -131,7 +132,7 @@ export class TooManyRequestsException
     /*@__PURE__*/ T.HttpError(429),
   ).pipe(C.withThrottlingError) {}
 export type __listOf__string = string[];
-const __listOf__string = /*@__PURE__*/ S.Array(S.String);
+const __listOf__string = /*@__PURE__*/ __L.at(__c0, 0);
 export interface CreateApplicationRequest {
   Author?: string;
   Description?: string;
@@ -149,45 +150,10 @@ export interface CreateApplicationRequest {
   TemplateBody?: string;
   TemplateUrl?: string;
 }
-const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Author: S.optional(S.String),
-    Description: S.optional(S.String),
-    HomePageUrl: S.optional(S.String),
-    Labels: S.optional(__listOf__string),
-    LicenseBody: S.optional(S.String),
-    LicenseUrl: S.optional(S.String),
-    Name: S.optional(S.String),
-    ReadmeBody: S.optional(S.String),
-    ReadmeUrl: S.optional(S.String),
-    SemanticVersion: S.optional(S.String),
-    SourceCodeArchiveUrl: S.optional(S.String),
-    SourceCodeUrl: S.optional(S.String),
-    SpdxLicenseId: S.optional(S.String),
-    TemplateBody: S.optional(S.String),
-    TemplateUrl: S.optional(S.String),
-  })
-    .pipe(
-      S.encodeKeys({
-        Author: "author",
-        Description: "description",
-        HomePageUrl: "homePageUrl",
-        Labels: "labels",
-        LicenseBody: "licenseBody",
-        LicenseUrl: "licenseUrl",
-        Name: "name",
-        ReadmeBody: "readmeBody",
-        ReadmeUrl: "readmeUrl",
-        SemanticVersion: "semanticVersion",
-        SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
-        SourceCodeUrl: "sourceCodeUrl",
-        SpdxLicenseId: "spdxLicenseId",
-        TemplateBody: "templateBody",
-        TemplateUrl: "templateUrl",
-      }),
-    )
-    .pipe(T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateApplicationRequest" }) as any as S.Schema<CreateApplicationRequest>;
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateApplicationRequest>;
 export interface ParameterDefinition {
   AllowedPattern?: string;
   AllowedValues?: string[];
@@ -203,41 +169,9 @@ export interface ParameterDefinition {
   ReferencedByResources?: string[];
   Type?: string;
 }
-const ParameterDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AllowedPattern: S.optional(S.String),
-    AllowedValues: S.optional(__listOf__string),
-    ConstraintDescription: S.optional(S.String),
-    DefaultValue: S.optional(S.String),
-    Description: S.optional(S.String),
-    MaxLength: S.optional(S.Number),
-    MaxValue: S.optional(S.Number),
-    MinLength: S.optional(S.Number),
-    MinValue: S.optional(S.Number),
-    Name: S.optional(S.String),
-    NoEcho: S.optional(S.Boolean),
-    ReferencedByResources: S.optional(__listOf__string),
-    Type: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AllowedPattern: "allowedPattern",
-      AllowedValues: "allowedValues",
-      ConstraintDescription: "constraintDescription",
-      DefaultValue: "defaultValue",
-      Description: "description",
-      MaxLength: "maxLength",
-      MaxValue: "maxValue",
-      MinLength: "minLength",
-      MinValue: "minValue",
-      Name: "name",
-      NoEcho: "noEcho",
-      ReferencedByResources: "referencedByResources",
-      Type: "type",
-    }),
-  ),
-).annotate({ identifier: "ParameterDefinition" }) as any as S.Schema<ParameterDefinition>;
+const ParameterDefinition = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ParameterDefinition>;
 export type __listOfParameterDefinition = ParameterDefinition[];
-const __listOfParameterDefinition = /*@__PURE__*/ S.Array(ParameterDefinition);
+const __listOfParameterDefinition = /*@__PURE__*/ __L.at(__c0, 3);
 export type Capability =
   | "CAPABILITY_IAM"
   | "CAPABILITY_NAMED_IAM"
@@ -247,7 +181,7 @@ export type Capability =
 const Capability = S.String;
 
 export type __listOfCapability = Capability[];
-const __listOfCapability = /*@__PURE__*/ S.Array(Capability);
+const __listOfCapability = /*@__PURE__*/ __L.at(__c0, 4);
 export interface Version {
   ApplicationId?: string;
   CreationTime?: string;
@@ -259,31 +193,7 @@ export interface Version {
   SourceCodeUrl?: string;
   TemplateUrl?: string;
 }
-const Version = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    ParameterDefinitions: S.optional(__listOfParameterDefinition),
-    RequiredCapabilities: S.optional(__listOfCapability),
-    ResourcesSupported: S.optional(S.Boolean),
-    SemanticVersion: S.optional(S.String),
-    SourceCodeArchiveUrl: S.optional(S.String),
-    SourceCodeUrl: S.optional(S.String),
-    TemplateUrl: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      CreationTime: "creationTime",
-      ParameterDefinitions: "parameterDefinitions",
-      RequiredCapabilities: "requiredCapabilities",
-      ResourcesSupported: "resourcesSupported",
-      SemanticVersion: "semanticVersion",
-      SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
-      SourceCodeUrl: "sourceCodeUrl",
-      TemplateUrl: "templateUrl",
-    }),
-  ),
-).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
+const Version = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Version>;
 export interface CreateApplicationResponse {
   ApplicationId?: string;
   Author?: string;
@@ -310,41 +220,10 @@ export interface CreateApplicationResponse {
     TemplateUrl: string;
   };
 }
-const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    Author: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    Description: S.optional(S.String),
-    HomePageUrl: S.optional(S.String),
-    IsVerifiedAuthor: S.optional(S.Boolean),
-    Labels: S.optional(__listOf__string),
-    LicenseUrl: S.optional(S.String),
-    Name: S.optional(S.String),
-    ReadmeUrl: S.optional(S.String),
-    SpdxLicenseId: S.optional(S.String),
-    VerifiedAuthorUrl: S.optional(S.String),
-    Version: S.optional(Version),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      Author: "author",
-      CreationTime: "creationTime",
-      Description: "description",
-      HomePageUrl: "homePageUrl",
-      IsVerifiedAuthor: "isVerifiedAuthor",
-      Labels: "labels",
-      LicenseUrl: "licenseUrl",
-      Name: "name",
-      ReadmeUrl: "readmeUrl",
-      SpdxLicenseId: "spdxLicenseId",
-      VerifiedAuthorUrl: "verifiedAuthorUrl",
-      Version: "version",
-    }),
-  ),
-).annotate({
-  identifier: "CreateApplicationResponse",
-}) as any as S.Schema<CreateApplicationResponse>;
+const CreateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateApplicationResponse>;
 export interface CreateApplicationVersionRequest {
   ApplicationId: string;
   SemanticVersion: string;
@@ -353,36 +232,10 @@ export interface CreateApplicationVersionRequest {
   TemplateBody?: string;
   TemplateUrl?: string;
 }
-const CreateApplicationVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SemanticVersion: S.String.pipe(T.HttpLabel("SemanticVersion")),
-    SourceCodeArchiveUrl: S.optional(S.String),
-    SourceCodeUrl: S.optional(S.String),
-    TemplateBody: S.optional(S.String),
-    TemplateUrl: S.optional(S.String),
-  })
-    .pipe(
-      S.encodeKeys({
-        SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
-        SourceCodeUrl: "sourceCodeUrl",
-        TemplateBody: "templateBody",
-        TemplateUrl: "templateUrl",
-      }),
-    )
-    .pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/applications/{ApplicationId}/versions/{SemanticVersion}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "CreateApplicationVersionRequest",
-}) as any as S.Schema<CreateApplicationVersionRequest>;
+const CreateApplicationVersionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateApplicationVersionRequest>;
 export interface CreateApplicationVersionResponse {
   ApplicationId?: string;
   CreationTime?: string;
@@ -397,81 +250,39 @@ export interface CreateApplicationVersionResponse {
   SourceCodeUrl?: string;
   TemplateUrl?: string;
 }
-const CreateApplicationVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    ParameterDefinitions: S.optional(__listOfParameterDefinition),
-    RequiredCapabilities: S.optional(__listOfCapability),
-    ResourcesSupported: S.optional(S.Boolean),
-    SemanticVersion: S.optional(S.String),
-    SourceCodeArchiveUrl: S.optional(S.String),
-    SourceCodeUrl: S.optional(S.String),
-    TemplateUrl: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      CreationTime: "creationTime",
-      ParameterDefinitions: "parameterDefinitions",
-      RequiredCapabilities: "requiredCapabilities",
-      ResourcesSupported: "resourcesSupported",
-      SemanticVersion: "semanticVersion",
-      SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
-      SourceCodeUrl: "sourceCodeUrl",
-      TemplateUrl: "templateUrl",
-    }),
-  ),
-).annotate({
-  identifier: "CreateApplicationVersionResponse",
-}) as any as S.Schema<CreateApplicationVersionResponse>;
+const CreateApplicationVersionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateApplicationVersionResponse>;
 export interface ParameterValue {
   Name?: string;
   Value?: string;
 }
-const ParameterValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Name: "name", Value: "value" }),
-  ),
-).annotate({ identifier: "ParameterValue" }) as any as S.Schema<ParameterValue>;
+const ParameterValue = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ParameterValue>;
 export type __listOfParameterValue = ParameterValue[];
-const __listOfParameterValue = /*@__PURE__*/ S.Array(ParameterValue);
+const __listOfParameterValue = /*@__PURE__*/ __L.at(__c1, 2);
 export interface RollbackTrigger {
   Arn?: string;
   Type?: string;
 }
-const RollbackTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Type: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Arn: "arn", Type: "type" }),
-  ),
-).annotate({ identifier: "RollbackTrigger" }) as any as S.Schema<RollbackTrigger>;
+const RollbackTrigger = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RollbackTrigger>;
 export type __listOfRollbackTrigger = RollbackTrigger[];
-const __listOfRollbackTrigger = /*@__PURE__*/ S.Array(RollbackTrigger);
+const __listOfRollbackTrigger = /*@__PURE__*/ __L.at(__c1, 4);
 export interface RollbackConfiguration {
   MonitoringTimeInMinutes?: number;
   RollbackTriggers?: RollbackTrigger[];
 }
-const RollbackConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitoringTimeInMinutes: S.optional(S.Number),
-    RollbackTriggers: S.optional(__listOfRollbackTrigger),
-  }).pipe(
-    S.encodeKeys({
-      MonitoringTimeInMinutes: "monitoringTimeInMinutes",
-      RollbackTriggers: "rollbackTriggers",
-    }),
-  ),
-).annotate({ identifier: "RollbackConfiguration" }) as any as S.Schema<RollbackConfiguration>;
+const RollbackConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<RollbackConfiguration>;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Key: "key", Value: "value" }),
-  ),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Tag>;
 export type __listOfTag = Tag[];
-const __listOfTag = /*@__PURE__*/ S.Array(Tag);
+const __listOfTag = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreateCloudFormationChangeSetRequest {
   ApplicationId: string;
   Capabilities?: string[];
@@ -487,97 +298,28 @@ export interface CreateCloudFormationChangeSetRequest {
   Tags?: Tag[];
   TemplateId?: string;
 }
-const CreateCloudFormationChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    Capabilities: S.optional(__listOf__string),
-    ChangeSetName: S.optional(S.String),
-    ClientToken: S.optional(S.String),
-    Description: S.optional(S.String),
-    NotificationArns: S.optional(__listOf__string),
-    ParameterOverrides: S.optional(__listOfParameterValue),
-    ResourceTypes: S.optional(__listOf__string),
-    RollbackConfiguration: S.optional(RollbackConfiguration),
-    SemanticVersion: S.optional(S.String),
-    StackName: S.optional(S.String),
-    Tags: S.optional(__listOfTag),
-    TemplateId: S.optional(S.String),
-  })
-    .pipe(
-      S.encodeKeys({
-        Capabilities: "capabilities",
-        ChangeSetName: "changeSetName",
-        ClientToken: "clientToken",
-        Description: "description",
-        NotificationArns: "notificationArns",
-        ParameterOverrides: "parameterOverrides",
-        ResourceTypes: "resourceTypes",
-        RollbackConfiguration: "rollbackConfiguration",
-        SemanticVersion: "semanticVersion",
-        StackName: "stackName",
-        Tags: "tags",
-        TemplateId: "templateId",
-      }),
-    )
-    .pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/applications/{ApplicationId}/changesets" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "CreateCloudFormationChangeSetRequest",
-}) as any as S.Schema<CreateCloudFormationChangeSetRequest>;
+const CreateCloudFormationChangeSetRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateCloudFormationChangeSetRequest>;
 export interface CreateCloudFormationChangeSetResponse {
   ApplicationId?: string;
   ChangeSetId?: string;
   SemanticVersion?: string;
   StackId?: string;
 }
-const CreateCloudFormationChangeSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    ChangeSetId: S.optional(S.String),
-    SemanticVersion: S.optional(S.String),
-    StackId: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      ChangeSetId: "changeSetId",
-      SemanticVersion: "semanticVersion",
-      StackId: "stackId",
-    }),
-  ),
-).annotate({
-  identifier: "CreateCloudFormationChangeSetResponse",
-}) as any as S.Schema<CreateCloudFormationChangeSetResponse>;
+const CreateCloudFormationChangeSetResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateCloudFormationChangeSetResponse>;
 export interface CreateCloudFormationTemplateRequest {
   ApplicationId: string;
   SemanticVersion?: string;
 }
-const CreateCloudFormationTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SemanticVersion: S.optional(S.String),
-  })
-    .pipe(S.encodeKeys({ SemanticVersion: "semanticVersion" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/applications/{ApplicationId}/templates" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "CreateCloudFormationTemplateRequest",
-}) as any as S.Schema<CreateCloudFormationTemplateRequest>;
+const CreateCloudFormationTemplateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateCloudFormationTemplateRequest>;
 export type Status = "PREPARING" | "ACTIVE" | "EXPIRED" | (string & {});
 const Status = S.String;
 
@@ -590,67 +332,30 @@ export interface CreateCloudFormationTemplateResponse {
   TemplateId?: string;
   TemplateUrl?: string;
 }
-const CreateCloudFormationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    ExpirationTime: S.optional(S.String),
-    SemanticVersion: S.optional(S.String),
-    Status: S.optional(Status),
-    TemplateId: S.optional(S.String),
-    TemplateUrl: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      CreationTime: "creationTime",
-      ExpirationTime: "expirationTime",
-      SemanticVersion: "semanticVersion",
-      Status: "status",
-      TemplateId: "templateId",
-      TemplateUrl: "templateUrl",
-    }),
-  ),
-).annotate({
-  identifier: "CreateCloudFormationTemplateResponse",
-}) as any as S.Schema<CreateCloudFormationTemplateResponse>;
+const CreateCloudFormationTemplateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateCloudFormationTemplateResponse>;
 export interface DeleteApplicationRequest {
   ApplicationId: string;
 }
-const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/applications/{ApplicationId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
-const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteApplicationResponse>;
 export interface GetApplicationRequest {
   ApplicationId: string;
   SemanticVersion?: string;
 }
-const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    SemanticVersion: S.optional(S.String).pipe(T.HttpQuery("semanticVersion")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/applications/{ApplicationId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetApplicationRequest" }) as any as S.Schema<GetApplicationRequest>;
+const GetApplicationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetApplicationRequest>;
 export interface GetApplicationResponse {
   ApplicationId?: string;
   Author?: string;
@@ -677,115 +382,47 @@ export interface GetApplicationResponse {
     TemplateUrl: string;
   };
 }
-const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    Author: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    Description: S.optional(S.String),
-    HomePageUrl: S.optional(S.String),
-    IsVerifiedAuthor: S.optional(S.Boolean),
-    Labels: S.optional(__listOf__string),
-    LicenseUrl: S.optional(S.String),
-    Name: S.optional(S.String),
-    ReadmeUrl: S.optional(S.String),
-    SpdxLicenseId: S.optional(S.String),
-    VerifiedAuthorUrl: S.optional(S.String),
-    Version: S.optional(Version),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      Author: "author",
-      CreationTime: "creationTime",
-      Description: "description",
-      HomePageUrl: "homePageUrl",
-      IsVerifiedAuthor: "isVerifiedAuthor",
-      Labels: "labels",
-      LicenseUrl: "licenseUrl",
-      Name: "name",
-      ReadmeUrl: "readmeUrl",
-      SpdxLicenseId: "spdxLicenseId",
-      VerifiedAuthorUrl: "verifiedAuthorUrl",
-      Version: "version",
-    }),
-  ),
-).annotate({ identifier: "GetApplicationResponse" }) as any as S.Schema<GetApplicationResponse>;
+const GetApplicationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetApplicationResponse>;
 export interface GetApplicationPolicyRequest {
   ApplicationId: string;
 }
-const GetApplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/applications/{ApplicationId}/policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApplicationPolicyRequest",
-}) as any as S.Schema<GetApplicationPolicyRequest>;
+const GetApplicationPolicyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetApplicationPolicyRequest>;
 export interface ApplicationPolicyStatement {
   Actions?: string[];
   PrincipalOrgIDs?: string[];
   Principals?: string[];
   StatementId?: string;
 }
-const ApplicationPolicyStatement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Actions: S.optional(__listOf__string),
-    PrincipalOrgIDs: S.optional(__listOf__string),
-    Principals: S.optional(__listOf__string),
-    StatementId: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      Actions: "actions",
-      PrincipalOrgIDs: "principalOrgIDs",
-      Principals: "principals",
-      StatementId: "statementId",
-    }),
-  ),
-).annotate({
-  identifier: "ApplicationPolicyStatement",
-}) as any as S.Schema<ApplicationPolicyStatement>;
+const ApplicationPolicyStatement = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ApplicationPolicyStatement>;
 export type __listOfApplicationPolicyStatement = ApplicationPolicyStatement[];
-const __listOfApplicationPolicyStatement = /*@__PURE__*/ S.Array(ApplicationPolicyStatement);
+const __listOfApplicationPolicyStatement = /*@__PURE__*/ __L.at(__c3, 2);
 export interface GetApplicationPolicyResponse {
   Statements?: (ApplicationPolicyStatement & {
     Actions: __listOf__string;
     Principals: __listOf__string;
   })[];
 }
-const GetApplicationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Statements: S.optional(__listOfApplicationPolicyStatement) }).pipe(
-    S.encodeKeys({ Statements: "statements" }),
-  ),
-).annotate({
-  identifier: "GetApplicationPolicyResponse",
-}) as any as S.Schema<GetApplicationPolicyResponse>;
+const GetApplicationPolicyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetApplicationPolicyResponse>;
 export interface GetCloudFormationTemplateRequest {
   ApplicationId: string;
   TemplateId: string;
 }
-const GetCloudFormationTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    TemplateId: S.String.pipe(T.HttpLabel("TemplateId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/applications/{ApplicationId}/templates/{TemplateId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCloudFormationTemplateRequest",
-}) as any as S.Schema<GetCloudFormationTemplateRequest>;
+const GetCloudFormationTemplateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetCloudFormationTemplateRequest>;
 export interface GetCloudFormationTemplateResponse {
   ApplicationId?: string;
   CreationTime?: string;
@@ -804,38 +441,20 @@ export interface ListApplicationDependenciesRequest {
   NextToken?: string;
   SemanticVersion?: string;
 }
-const ListApplicationDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    SemanticVersion: S.optional(S.String).pipe(T.HttpQuery("semanticVersion")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/applications/{ApplicationId}/dependencies" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListApplicationDependenciesRequest",
-}) as any as S.Schema<ListApplicationDependenciesRequest>;
+const ListApplicationDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListApplicationDependenciesRequest>;
 export interface ApplicationDependencySummary {
   ApplicationId?: string;
   SemanticVersion?: string;
 }
-const ApplicationDependencySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationId: S.optional(S.String), SemanticVersion: S.optional(S.String) }).pipe(
-    S.encodeKeys({ ApplicationId: "applicationId", SemanticVersion: "semanticVersion" }),
-  ),
-).annotate({
-  identifier: "ApplicationDependencySummary",
-}) as any as S.Schema<ApplicationDependencySummary>;
+const ApplicationDependencySummary = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ApplicationDependencySummary>;
 export type __listOfApplicationDependencySummary = ApplicationDependencySummary[];
-const __listOfApplicationDependencySummary = /*@__PURE__*/ S.Array(ApplicationDependencySummary);
+const __listOfApplicationDependencySummary = /*@__PURE__*/ __L.at(__c3, 7);
 export interface ListApplicationDependenciesResponse {
   Dependencies?: (ApplicationDependencySummary & {
     ApplicationId: string;
@@ -843,24 +462,18 @@ export interface ListApplicationDependenciesResponse {
   })[];
   NextToken?: string;
 }
-const ListApplicationDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Dependencies: S.optional(__listOfApplicationDependencySummary),
-    NextToken: S.optional(S.String),
-  }).pipe(S.encodeKeys({ Dependencies: "dependencies", NextToken: "nextToken" })),
-).annotate({
-  identifier: "ListApplicationDependenciesResponse",
-}) as any as S.Schema<ListApplicationDependenciesResponse>;
+const ListApplicationDependenciesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListApplicationDependenciesResponse>;
 export interface ListApplicationsRequest {
   MaxItems?: number;
   NextToken?: string;
 }
-const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListApplicationsRequest" }) as any as S.Schema<ListApplicationsRequest>;
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListApplicationsRequest>;
 export interface ApplicationSummary {
   ApplicationId?: string;
   Author?: string;
@@ -871,31 +484,9 @@ export interface ApplicationSummary {
   Name?: string;
   SpdxLicenseId?: string;
 }
-const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    Author: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    Description: S.optional(S.String),
-    HomePageUrl: S.optional(S.String),
-    Labels: S.optional(__listOf__string),
-    Name: S.optional(S.String),
-    SpdxLicenseId: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      Author: "author",
-      CreationTime: "creationTime",
-      Description: "description",
-      HomePageUrl: "homePageUrl",
-      Labels: "labels",
-      Name: "name",
-      SpdxLicenseId: "spdxLicenseId",
-    }),
-  ),
-).annotate({ identifier: "ApplicationSummary" }) as any as S.Schema<ApplicationSummary>;
+const ApplicationSummary = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ApplicationSummary>;
 export type __listOfApplicationSummary = ApplicationSummary[];
-const __listOfApplicationSummary = /*@__PURE__*/ S.Array(ApplicationSummary);
+const __listOfApplicationSummary = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ListApplicationsResponse {
   Applications?: (ApplicationSummary & {
     ApplicationId: string;
@@ -905,58 +496,28 @@ export interface ListApplicationsResponse {
   })[];
   NextToken?: string;
 }
-const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Applications: S.optional(__listOfApplicationSummary),
-    NextToken: S.optional(S.String),
-  }).pipe(S.encodeKeys({ Applications: "applications", NextToken: "nextToken" })),
-).annotate({ identifier: "ListApplicationsResponse" }) as any as S.Schema<ListApplicationsResponse>;
+const ListApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListApplicationsResponse>;
 export interface ListApplicationVersionsRequest {
   ApplicationId: string;
   MaxItems?: number;
   NextToken?: string;
 }
-const ListApplicationVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/applications/{ApplicationId}/versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListApplicationVersionsRequest",
-}) as any as S.Schema<ListApplicationVersionsRequest>;
+const ListApplicationVersionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListApplicationVersionsRequest>;
 export interface VersionSummary {
   ApplicationId?: string;
   CreationTime?: string;
   SemanticVersion?: string;
   SourceCodeUrl?: string;
 }
-const VersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    SemanticVersion: S.optional(S.String),
-    SourceCodeUrl: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      CreationTime: "creationTime",
-      SemanticVersion: "semanticVersion",
-      SourceCodeUrl: "sourceCodeUrl",
-    }),
-  ),
-).annotate({ identifier: "VersionSummary" }) as any as S.Schema<VersionSummary>;
+const VersionSummary = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<VersionSummary>;
 export type __listOfVersionSummary = VersionSummary[];
-const __listOfVersionSummary = /*@__PURE__*/ S.Array(VersionSummary);
+const __listOfVersionSummary = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ListApplicationVersionsResponse {
   NextToken?: string;
   Versions?: (VersionSummary & {
@@ -965,36 +526,18 @@ export interface ListApplicationVersionsResponse {
     SemanticVersion: string;
   })[];
 }
-const ListApplicationVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Versions: S.optional(__listOfVersionSummary) }).pipe(
-    S.encodeKeys({ NextToken: "nextToken", Versions: "versions" }),
-  ),
-).annotate({
-  identifier: "ListApplicationVersionsResponse",
-}) as any as S.Schema<ListApplicationVersionsResponse>;
+const ListApplicationVersionsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListApplicationVersionsResponse>;
 export interface PutApplicationPolicyRequest {
   ApplicationId: string;
   Statements?: ApplicationPolicyStatement[];
 }
-const PutApplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    Statements: S.optional(__listOfApplicationPolicyStatement),
-  })
-    .pipe(S.encodeKeys({ Statements: "statements" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/applications/{ApplicationId}/policy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "PutApplicationPolicyRequest",
-}) as any as S.Schema<PutApplicationPolicyRequest>;
+const PutApplicationPolicyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PutApplicationPolicyRequest>;
 export interface PutApplicationPolicyResponse {
   Statements?: (ApplicationPolicyStatement & {
     Actions: __listOf__string;
@@ -1007,25 +550,10 @@ export interface UnshareApplicationRequest {
   ApplicationId: string;
   OrganizationId?: string;
 }
-const UnshareApplicationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    OrganizationId: S.optional(S.String),
-  })
-    .pipe(S.encodeKeys({ OrganizationId: "organizationId" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/applications/{ApplicationId}/unshare" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "UnshareApplicationRequest",
-}) as any as S.Schema<UnshareApplicationRequest>;
+const UnshareApplicationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<UnshareApplicationRequest>;
 export interface UnshareApplicationResponse {}
 const UnshareApplicationResponse =
   DeleteApplicationResponse as any as S.Schema<UnshareApplicationResponse>;
@@ -1038,37 +566,10 @@ export interface UpdateApplicationRequest {
   ReadmeBody?: string;
   ReadmeUrl?: string;
 }
-const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-    Author: S.optional(S.String),
-    Description: S.optional(S.String),
-    HomePageUrl: S.optional(S.String),
-    Labels: S.optional(__listOf__string),
-    ReadmeBody: S.optional(S.String),
-    ReadmeUrl: S.optional(S.String),
-  })
-    .pipe(
-      S.encodeKeys({
-        Author: "author",
-        Description: "description",
-        HomePageUrl: "homePageUrl",
-        Labels: "labels",
-        ReadmeBody: "readmeBody",
-        ReadmeUrl: "readmeUrl",
-      }),
-    )
-    .pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/applications/{ApplicationId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({ identifier: "UpdateApplicationRequest" }) as any as S.Schema<UpdateApplicationRequest>;
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {
   ApplicationId?: string;
   Author?: string;
@@ -1527,3 +1028,709 @@ export const updateApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplication",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Author: S.optional(S.String),
+          Description: S.optional(S.String),
+          HomePageUrl: S.optional(S.String),
+          Labels: S.optional(__listOf__string),
+          LicenseBody: S.optional(S.String),
+          LicenseUrl: S.optional(S.String),
+          Name: S.optional(S.String),
+          ReadmeBody: S.optional(S.String),
+          ReadmeUrl: S.optional(S.String),
+          SemanticVersion: S.optional(S.String),
+          SourceCodeArchiveUrl: S.optional(S.String),
+          SourceCodeUrl: S.optional(S.String),
+          SpdxLicenseId: S.optional(S.String),
+          TemplateBody: S.optional(S.String),
+          TemplateUrl: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              Author: "author",
+              Description: "description",
+              HomePageUrl: "homePageUrl",
+              Labels: "labels",
+              LicenseBody: "licenseBody",
+              LicenseUrl: "licenseUrl",
+              Name: "name",
+              ReadmeBody: "readmeBody",
+              ReadmeUrl: "readmeUrl",
+              SemanticVersion: "semanticVersion",
+              SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
+              SourceCodeUrl: "sourceCodeUrl",
+              SpdxLicenseId: "spdxLicenseId",
+              TemplateBody: "templateBody",
+              TemplateUrl: "templateUrl",
+            }),
+          )
+          .pipe(
+            T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
+          ),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AllowedPattern: S.optional(S.String),
+          AllowedValues: S.optional(__listOf__string),
+          ConstraintDescription: S.optional(S.String),
+          DefaultValue: S.optional(S.String),
+          Description: S.optional(S.String),
+          MaxLength: S.optional(S.Number),
+          MaxValue: S.optional(S.Number),
+          MinLength: S.optional(S.Number),
+          MinValue: S.optional(S.Number),
+          Name: S.optional(S.String),
+          NoEcho: S.optional(S.Boolean),
+          ReferencedByResources: S.optional(__listOf__string),
+          Type: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            AllowedPattern: "allowedPattern",
+            AllowedValues: "allowedValues",
+            ConstraintDescription: "constraintDescription",
+            DefaultValue: "defaultValue",
+            Description: "description",
+            MaxLength: "maxLength",
+            MaxValue: "maxValue",
+            MinLength: "minLength",
+            MinValue: "minValue",
+            Name: "name",
+            NoEcho: "noEcho",
+            ReferencedByResources: "referencedByResources",
+            Type: "type",
+          }),
+        ),
+      ).annotate({ identifier: "ParameterDefinition" });
+    case 3:
+      return S.Array(ParameterDefinition);
+    case 4:
+      return S.Array(Capability);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationTime: S.optional(S.String),
+          ParameterDefinitions: S.optional(__listOfParameterDefinition),
+          RequiredCapabilities: S.optional(__listOfCapability),
+          ResourcesSupported: S.optional(S.Boolean),
+          SemanticVersion: S.optional(S.String),
+          SourceCodeArchiveUrl: S.optional(S.String),
+          SourceCodeUrl: S.optional(S.String),
+          TemplateUrl: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ApplicationId: "applicationId",
+            CreationTime: "creationTime",
+            ParameterDefinitions: "parameterDefinitions",
+            RequiredCapabilities: "requiredCapabilities",
+            ResourcesSupported: "resourcesSupported",
+            SemanticVersion: "semanticVersion",
+            SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
+            SourceCodeUrl: "sourceCodeUrl",
+            TemplateUrl: "templateUrl",
+          }),
+        ),
+      ).annotate({ identifier: "Version" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          Author: S.optional(S.String),
+          CreationTime: S.optional(S.String),
+          Description: S.optional(S.String),
+          HomePageUrl: S.optional(S.String),
+          IsVerifiedAuthor: S.optional(S.Boolean),
+          Labels: S.optional(__listOf__string),
+          LicenseUrl: S.optional(S.String),
+          Name: S.optional(S.String),
+          ReadmeUrl: S.optional(S.String),
+          SpdxLicenseId: S.optional(S.String),
+          VerifiedAuthorUrl: S.optional(S.String),
+          Version: S.optional(Version),
+        }).pipe(
+          S.encodeKeys({
+            ApplicationId: "applicationId",
+            Author: "author",
+            CreationTime: "creationTime",
+            Description: "description",
+            HomePageUrl: "homePageUrl",
+            IsVerifiedAuthor: "isVerifiedAuthor",
+            Labels: "labels",
+            LicenseUrl: "licenseUrl",
+            Name: "name",
+            ReadmeUrl: "readmeUrl",
+            SpdxLicenseId: "spdxLicenseId",
+            VerifiedAuthorUrl: "verifiedAuthorUrl",
+            Version: "version",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateApplicationResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SemanticVersion: S.String.pipe(T.HttpLabel("SemanticVersion")),
+          SourceCodeArchiveUrl: S.optional(S.String),
+          SourceCodeUrl: S.optional(S.String),
+          TemplateBody: S.optional(S.String),
+          TemplateUrl: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
+              SourceCodeUrl: "sourceCodeUrl",
+              TemplateBody: "templateBody",
+              TemplateUrl: "templateUrl",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({
+                method: "PUT",
+                uri: "/applications/{ApplicationId}/versions/{SemanticVersion}",
+              }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateApplicationVersionRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationTime: S.optional(S.String),
+          ParameterDefinitions: S.optional(__listOfParameterDefinition),
+          RequiredCapabilities: S.optional(__listOfCapability),
+          ResourcesSupported: S.optional(S.Boolean),
+          SemanticVersion: S.optional(S.String),
+          SourceCodeArchiveUrl: S.optional(S.String),
+          SourceCodeUrl: S.optional(S.String),
+          TemplateUrl: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ApplicationId: "applicationId",
+            CreationTime: "creationTime",
+            ParameterDefinitions: "parameterDefinitions",
+            RequiredCapabilities: "requiredCapabilities",
+            ResourcesSupported: "resourcesSupported",
+            SemanticVersion: "semanticVersion",
+            SourceCodeArchiveUrl: "sourceCodeArchiveUrl",
+            SourceCodeUrl: "sourceCodeUrl",
+            TemplateUrl: "templateUrl",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateApplicationVersionResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Name: "name", Value: "value" }),
+        ),
+      ).annotate({ identifier: "ParameterValue" });
+    case 2:
+      return S.Array(ParameterValue);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String), Type: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Arn: "arn", Type: "type" }),
+        ),
+      ).annotate({ identifier: "RollbackTrigger" });
+    case 4:
+      return S.Array(RollbackTrigger);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          MonitoringTimeInMinutes: S.optional(S.Number),
+          RollbackTriggers: S.optional(__listOfRollbackTrigger),
+        }).pipe(
+          S.encodeKeys({
+            MonitoringTimeInMinutes: "monitoringTimeInMinutes",
+            RollbackTriggers: "rollbackTriggers",
+          }),
+        ),
+      ).annotate({ identifier: "RollbackConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Key: "key", Value: "value" }),
+        ),
+      ).annotate({ identifier: "Tag" });
+    case 7:
+      return S.Array(Tag);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          Capabilities: S.optional(__listOf__string),
+          ChangeSetName: S.optional(S.String),
+          ClientToken: S.optional(S.String),
+          Description: S.optional(S.String),
+          NotificationArns: S.optional(__listOf__string),
+          ParameterOverrides: S.optional(__listOfParameterValue),
+          ResourceTypes: S.optional(__listOf__string),
+          RollbackConfiguration: S.optional(RollbackConfiguration),
+          SemanticVersion: S.optional(S.String),
+          StackName: S.optional(S.String),
+          Tags: S.optional(__listOfTag),
+          TemplateId: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              Capabilities: "capabilities",
+              ChangeSetName: "changeSetName",
+              ClientToken: "clientToken",
+              Description: "description",
+              NotificationArns: "notificationArns",
+              ParameterOverrides: "parameterOverrides",
+              ResourceTypes: "resourceTypes",
+              RollbackConfiguration: "rollbackConfiguration",
+              SemanticVersion: "semanticVersion",
+              StackName: "stackName",
+              Tags: "tags",
+              TemplateId: "templateId",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/applications/{ApplicationId}/changesets" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateCloudFormationChangeSetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          ChangeSetId: S.optional(S.String),
+          SemanticVersion: S.optional(S.String),
+          StackId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ApplicationId: "applicationId",
+            ChangeSetId: "changeSetId",
+            SemanticVersion: "semanticVersion",
+            StackId: "stackId",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCloudFormationChangeSetResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SemanticVersion: S.optional(S.String),
+        })
+          .pipe(S.encodeKeys({ SemanticVersion: "semanticVersion" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/applications/{ApplicationId}/templates" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateCloudFormationTemplateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationTime: S.optional(S.String),
+          ExpirationTime: S.optional(S.String),
+          SemanticVersion: S.optional(S.String),
+          Status: S.optional(Status),
+          TemplateId: S.optional(S.String),
+          TemplateUrl: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ApplicationId: "applicationId",
+            CreationTime: "creationTime",
+            ExpirationTime: "expirationTime",
+            SemanticVersion: "semanticVersion",
+            Status: "status",
+            TemplateId: "templateId",
+            TemplateUrl: "templateUrl",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCloudFormationTemplateResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/applications/{ApplicationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteApplicationRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteApplicationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SemanticVersion: S.optional(S.String).pipe(T.HttpQuery("semanticVersion")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{ApplicationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetApplicationRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          Author: S.optional(S.String),
+          CreationTime: S.optional(S.String),
+          Description: S.optional(S.String),
+          HomePageUrl: S.optional(S.String),
+          IsVerifiedAuthor: S.optional(S.Boolean),
+          Labels: S.optional(__listOf__string),
+          LicenseUrl: S.optional(S.String),
+          Name: S.optional(S.String),
+          ReadmeUrl: S.optional(S.String),
+          SpdxLicenseId: S.optional(S.String),
+          VerifiedAuthorUrl: S.optional(S.String),
+          Version: S.optional(Version),
+        }).pipe(
+          S.encodeKeys({
+            ApplicationId: "applicationId",
+            Author: "author",
+            CreationTime: "creationTime",
+            Description: "description",
+            HomePageUrl: "homePageUrl",
+            IsVerifiedAuthor: "isVerifiedAuthor",
+            Labels: "labels",
+            LicenseUrl: "licenseUrl",
+            Name: "name",
+            ReadmeUrl: "readmeUrl",
+            SpdxLicenseId: "spdxLicenseId",
+            VerifiedAuthorUrl: "verifiedAuthorUrl",
+            Version: "version",
+          }),
+        ),
+      ).annotate({ identifier: "GetApplicationResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{ApplicationId}/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetApplicationPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Actions: S.optional(__listOf__string),
+          PrincipalOrgIDs: S.optional(__listOf__string),
+          Principals: S.optional(__listOf__string),
+          StatementId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Actions: "actions",
+            PrincipalOrgIDs: "principalOrgIDs",
+            Principals: "principals",
+            StatementId: "statementId",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplicationPolicyStatement",
+      });
+    case 2:
+      return S.Array(ApplicationPolicyStatement);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Statements: S.optional(__listOfApplicationPolicyStatement) }).pipe(
+          S.encodeKeys({ Statements: "statements" }),
+        ),
+      ).annotate({
+        identifier: "GetApplicationPolicyResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          TemplateId: S.String.pipe(T.HttpLabel("TemplateId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{ApplicationId}/templates/{TemplateId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCloudFormationTemplateRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          SemanticVersion: S.optional(S.String).pipe(T.HttpQuery("semanticVersion")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{ApplicationId}/dependencies" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListApplicationDependenciesRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          SemanticVersion: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({ ApplicationId: "applicationId", SemanticVersion: "semanticVersion" }),
+        ),
+      ).annotate({
+        identifier: "ApplicationDependencySummary",
+      });
+    case 7:
+      return S.Array(ApplicationDependencySummary);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Dependencies: S.optional(__listOfApplicationDependencySummary),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Dependencies: "dependencies", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "ListApplicationDependenciesResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListApplicationsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          Author: S.optional(S.String),
+          CreationTime: S.optional(S.String),
+          Description: S.optional(S.String),
+          HomePageUrl: S.optional(S.String),
+          Labels: S.optional(__listOf__string),
+          Name: S.optional(S.String),
+          SpdxLicenseId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ApplicationId: "applicationId",
+            Author: "author",
+            CreationTime: "creationTime",
+            Description: "description",
+            HomePageUrl: "homePageUrl",
+            Labels: "labels",
+            Name: "name",
+            SpdxLicenseId: "spdxLicenseId",
+          }),
+        ),
+      ).annotate({ identifier: "ApplicationSummary" });
+    case 3:
+      return S.Array(ApplicationSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Applications: S.optional(__listOfApplicationSummary),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Applications: "applications", NextToken: "nextToken" })),
+      ).annotate({ identifier: "ListApplicationsResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          MaxItems: S.optional(S.Number).pipe(T.HttpQuery("maxItems")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{ApplicationId}/versions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListApplicationVersionsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          CreationTime: S.optional(S.String),
+          SemanticVersion: S.optional(S.String),
+          SourceCodeUrl: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ApplicationId: "applicationId",
+            CreationTime: "creationTime",
+            SemanticVersion: "semanticVersion",
+            SourceCodeUrl: "sourceCodeUrl",
+          }),
+        ),
+      ).annotate({ identifier: "VersionSummary" });
+    case 7:
+      return S.Array(VersionSummary);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          Versions: S.optional(__listOfVersionSummary),
+        }).pipe(S.encodeKeys({ NextToken: "nextToken", Versions: "versions" })),
+      ).annotate({
+        identifier: "ListApplicationVersionsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          Statements: S.optional(__listOfApplicationPolicyStatement),
+        })
+          .pipe(S.encodeKeys({ Statements: "statements" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/applications/{ApplicationId}/policy" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "PutApplicationPolicyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          OrganizationId: S.optional(S.String),
+        })
+          .pipe(S.encodeKeys({ OrganizationId: "organizationId" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/applications/{ApplicationId}/unshare" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UnshareApplicationRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          Author: S.optional(S.String),
+          Description: S.optional(S.String),
+          HomePageUrl: S.optional(S.String),
+          Labels: S.optional(__listOf__string),
+          ReadmeBody: S.optional(S.String),
+          ReadmeUrl: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              Author: "author",
+              Description: "description",
+              HomePageUrl: "homePageUrl",
+              Labels: "labels",
+              ReadmeBody: "readmeBody",
+              ReadmeUrl: "readmeUrl",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PATCH", uri: "/applications/{ApplicationId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateApplicationRequest" });
+  }
+}

@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -230,18 +231,10 @@ export type AttachmentId = string;
 export interface AcceptAttachmentRequest {
   AttachmentId: string;
 }
-const AcceptAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/attachments/{AttachmentId}/accept" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "AcceptAttachmentRequest" }) as any as S.Schema<AcceptAttachmentRequest>;
+const AcceptAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptAttachmentRequest>;
 export type CoreNetworkId = string;
 export type CoreNetworkArn = string;
 export type AWSAccountId = string;
@@ -269,7 +262,7 @@ const AttachmentState = S.String;
 
 export type ExternalRegionCode = string;
 export type ExternalRegionCodeList = string[];
-const ExternalRegionCodeList = /*@__PURE__*/ S.Array(S.String);
+const ExternalRegionCodeList = /*@__PURE__*/ __L.at(__c0, 1);
 export type ResourceArn = string;
 export type ConstrainedString = string;
 export type NetworkFunctionGroupName = string;
@@ -279,37 +272,27 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface ProposedSegmentChange {
   Tags?: Tag[];
   AttachmentPolicyRuleNumber?: number;
   SegmentName?: string;
 }
-const ProposedSegmentChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Tags: S.optional(TagList),
-    AttachmentPolicyRuleNumber: S.optional(S.Number),
-    SegmentName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProposedSegmentChange" }) as any as S.Schema<ProposedSegmentChange>;
+const ProposedSegmentChange = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ProposedSegmentChange>;
 export interface ProposedNetworkFunctionGroupChange {
   Tags?: Tag[];
   AttachmentPolicyRuleNumber?: number;
   NetworkFunctionGroupName?: string;
 }
-const ProposedNetworkFunctionGroupChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Tags: S.optional(TagList),
-    AttachmentPolicyRuleNumber: S.optional(S.Number),
-    NetworkFunctionGroupName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProposedNetworkFunctionGroupChange",
-}) as any as S.Schema<ProposedNetworkFunctionGroupChange>;
+const ProposedNetworkFunctionGroupChange = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ProposedNetworkFunctionGroupChange>;
 export type AttachmentErrorCode =
   | "VPC_NOT_FOUND"
   | "SUBNET_NOT_FOUND"
@@ -334,16 +317,9 @@ export interface AttachmentError {
   ResourceArn?: string;
   RequestId?: string;
 }
-const AttachmentError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Code: S.optional(AttachmentErrorCode),
-    Message: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  }),
-).annotate({ identifier: "AttachmentError" }) as any as S.Schema<AttachmentError>;
+const AttachmentError = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AttachmentError>;
 export type AttachmentErrorList = AttachmentError[];
-const AttachmentErrorList = /*@__PURE__*/ S.Array(AttachmentError);
+const AttachmentErrorList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface Attachment {
   CoreNetworkId?: string;
   CoreNetworkArn?: string;
@@ -364,34 +340,14 @@ export interface Attachment {
   UpdatedAt?: Date;
   LastModificationErrors?: AttachmentError[];
 }
-const Attachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    CoreNetworkArn: S.optional(S.String),
-    AttachmentId: S.optional(S.String),
-    OwnerAccountId: S.optional(S.String),
-    AttachmentType: S.optional(AttachmentType),
-    State: S.optional(AttachmentState),
-    EdgeLocation: S.optional(S.String),
-    EdgeLocations: S.optional(ExternalRegionCodeList),
-    ResourceArn: S.optional(S.String),
-    AttachmentPolicyRuleNumber: S.optional(S.Number),
-    SegmentName: S.optional(S.String),
-    NetworkFunctionGroupName: S.optional(S.String),
-    Tags: S.optional(TagList),
-    ProposedSegmentChange: S.optional(ProposedSegmentChange),
-    ProposedNetworkFunctionGroupChange: S.optional(ProposedNetworkFunctionGroupChange),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModificationErrors: S.optional(AttachmentErrorList),
-  }),
-).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
+const Attachment = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Attachment>;
 export interface AcceptAttachmentResponse {
   Attachment?: Attachment;
 }
-const AcceptAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attachment: S.optional(Attachment) }),
-).annotate({ identifier: "AcceptAttachmentResponse" }) as any as S.Schema<AcceptAttachmentResponse>;
+const AcceptAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AcceptAttachmentResponse>;
 export type GlobalNetworkId = string;
 export type ConnectPeerId = string;
 export type DeviceId = string;
@@ -402,28 +358,10 @@ export interface AssociateConnectPeerRequest {
   DeviceId: string;
   LinkId?: string;
 }
-const AssociateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    ConnectPeerId: S.String,
-    DeviceId: S.String,
-    LinkId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/global-networks/{GlobalNetworkId}/connect-peer-associations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateConnectPeerRequest",
-}) as any as S.Schema<AssociateConnectPeerRequest>;
+const AssociateConnectPeerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AssociateConnectPeerRequest>;
 export type ConnectPeerAssociationState =
   | "PENDING"
   | "AVAILABLE"
@@ -439,23 +377,17 @@ export interface ConnectPeerAssociation {
   LinkId?: string;
   State?: ConnectPeerAssociationState;
 }
-const ConnectPeerAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectPeerId: S.optional(S.String),
-    GlobalNetworkId: S.optional(S.String),
-    DeviceId: S.optional(S.String),
-    LinkId: S.optional(S.String),
-    State: S.optional(ConnectPeerAssociationState),
-  }),
-).annotate({ identifier: "ConnectPeerAssociation" }) as any as S.Schema<ConnectPeerAssociation>;
+const ConnectPeerAssociation = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ConnectPeerAssociation>;
 export interface AssociateConnectPeerResponse {
   ConnectPeerAssociation?: ConnectPeerAssociation;
 }
-const AssociateConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectPeerAssociation: S.optional(ConnectPeerAssociation) }),
-).annotate({
-  identifier: "AssociateConnectPeerResponse",
-}) as any as S.Schema<AssociateConnectPeerResponse>;
+const AssociateConnectPeerResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AssociateConnectPeerResponse>;
 export type CustomerGatewayArn = string;
 export interface AssociateCustomerGatewayRequest {
   CustomerGatewayArn: string;
@@ -463,28 +395,10 @@ export interface AssociateCustomerGatewayRequest {
   DeviceId: string;
   LinkId?: string;
 }
-const AssociateCustomerGatewayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CustomerGatewayArn: S.String,
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    DeviceId: S.String,
-    LinkId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/global-networks/{GlobalNetworkId}/customer-gateway-associations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateCustomerGatewayRequest",
-}) as any as S.Schema<AssociateCustomerGatewayRequest>;
+const AssociateCustomerGatewayRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AssociateCustomerGatewayRequest>;
 export type CustomerGatewayAssociationState =
   | "PENDING"
   | "AVAILABLE"
@@ -500,46 +414,23 @@ export interface CustomerGatewayAssociation {
   LinkId?: string;
   State?: CustomerGatewayAssociationState;
 }
-const CustomerGatewayAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CustomerGatewayArn: S.optional(S.String),
-    GlobalNetworkId: S.optional(S.String),
-    DeviceId: S.optional(S.String),
-    LinkId: S.optional(S.String),
-    State: S.optional(CustomerGatewayAssociationState),
-  }),
-).annotate({
-  identifier: "CustomerGatewayAssociation",
-}) as any as S.Schema<CustomerGatewayAssociation>;
+const CustomerGatewayAssociation = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CustomerGatewayAssociation>;
 export interface AssociateCustomerGatewayResponse {
   CustomerGatewayAssociation?: CustomerGatewayAssociation;
 }
-const AssociateCustomerGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CustomerGatewayAssociation: S.optional(CustomerGatewayAssociation) }),
-).annotate({
-  identifier: "AssociateCustomerGatewayResponse",
-}) as any as S.Schema<AssociateCustomerGatewayResponse>;
+const AssociateCustomerGatewayResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AssociateCustomerGatewayResponse>;
 export interface AssociateLinkRequest {
   GlobalNetworkId: string;
   DeviceId: string;
   LinkId: string;
 }
-const AssociateLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    DeviceId: S.String,
-    LinkId: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/link-associations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "AssociateLinkRequest" }) as any as S.Schema<AssociateLinkRequest>;
+const AssociateLinkRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AssociateLinkRequest>;
 export type LinkAssociationState = "PENDING" | "AVAILABLE" | "DELETING" | "DELETED" | (string & {});
 const LinkAssociationState = S.String;
 
@@ -549,20 +440,14 @@ export interface LinkAssociation {
   LinkId?: string;
   LinkAssociationState?: LinkAssociationState;
 }
-const LinkAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.optional(S.String),
-    DeviceId: S.optional(S.String),
-    LinkId: S.optional(S.String),
-    LinkAssociationState: S.optional(LinkAssociationState),
-  }),
-).annotate({ identifier: "LinkAssociation" }) as any as S.Schema<LinkAssociation>;
+const LinkAssociation = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LinkAssociation>;
 export interface AssociateLinkResponse {
   LinkAssociation?: LinkAssociation;
 }
-const AssociateLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LinkAssociation: S.optional(LinkAssociation) }),
-).annotate({ identifier: "AssociateLinkResponse" }) as any as S.Schema<AssociateLinkResponse>;
+const AssociateLinkResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<AssociateLinkResponse>;
 export type TransitGatewayConnectPeerArn = string;
 export interface AssociateTransitGatewayConnectPeerRequest {
   GlobalNetworkId: string;
@@ -570,28 +455,10 @@ export interface AssociateTransitGatewayConnectPeerRequest {
   DeviceId: string;
   LinkId?: string;
 }
-const AssociateTransitGatewayConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    TransitGatewayConnectPeerArn: S.String,
-    DeviceId: S.String,
-    LinkId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/global-networks/{GlobalNetworkId}/transit-gateway-connect-peer-associations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateTransitGatewayConnectPeerRequest",
-}) as any as S.Schema<AssociateTransitGatewayConnectPeerRequest>;
+const AssociateTransitGatewayConnectPeerRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<AssociateTransitGatewayConnectPeerRequest>;
 export type TransitGatewayConnectPeerAssociationState =
   | "PENDING"
   | "AVAILABLE"
@@ -607,36 +474,27 @@ export interface TransitGatewayConnectPeerAssociation {
   LinkId?: string;
   State?: TransitGatewayConnectPeerAssociationState;
 }
-const TransitGatewayConnectPeerAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransitGatewayConnectPeerArn: S.optional(S.String),
-    GlobalNetworkId: S.optional(S.String),
-    DeviceId: S.optional(S.String),
-    LinkId: S.optional(S.String),
-    State: S.optional(TransitGatewayConnectPeerAssociationState),
-  }),
-).annotate({
-  identifier: "TransitGatewayConnectPeerAssociation",
-}) as any as S.Schema<TransitGatewayConnectPeerAssociation>;
+const TransitGatewayConnectPeerAssociation = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<TransitGatewayConnectPeerAssociation>;
 export interface AssociateTransitGatewayConnectPeerResponse {
   TransitGatewayConnectPeerAssociation?: TransitGatewayConnectPeerAssociation;
 }
-const AssociateTransitGatewayConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransitGatewayConnectPeerAssociation: S.optional(TransitGatewayConnectPeerAssociation),
-  }),
-).annotate({
-  identifier: "AssociateTransitGatewayConnectPeerResponse",
-}) as any as S.Schema<AssociateTransitGatewayConnectPeerResponse>;
+const AssociateTransitGatewayConnectPeerResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<AssociateTransitGatewayConnectPeerResponse>;
 export type TunnelProtocol = "GRE" | "NO_ENCAP" | (string & {});
 const TunnelProtocol = S.String;
 
 export interface ConnectAttachmentOptions {
   Protocol?: TunnelProtocol;
 }
-const ConnectAttachmentOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Protocol: S.optional(TunnelProtocol) }),
-).annotate({ identifier: "ConnectAttachmentOptions" }) as any as S.Schema<ConnectAttachmentOptions>;
+const ConnectAttachmentOptions = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ConnectAttachmentOptions>;
 export type ClientToken = string;
 export interface CreateConnectAttachmentRequest {
   CoreNetworkId: string;
@@ -647,41 +505,23 @@ export interface CreateConnectAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-const CreateConnectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String,
-    EdgeLocation: S.String,
-    TransportAttachmentId: S.String,
-    RoutingPolicyLabel: S.optional(S.String),
-    Options: ConnectAttachmentOptions,
-    Tags: S.optional(TagList),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/connect-attachments" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateConnectAttachmentRequest",
-}) as any as S.Schema<CreateConnectAttachmentRequest>;
+const CreateConnectAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateConnectAttachmentRequest>;
 export interface ConnectAttachment {
   Attachment?: Attachment;
   TransportAttachmentId?: string;
   Options?: ConnectAttachmentOptions;
 }
-const ConnectAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attachment: S.optional(Attachment),
-    TransportAttachmentId: S.optional(S.String),
-    Options: S.optional(ConnectAttachmentOptions),
-  }),
-).annotate({ identifier: "ConnectAttachment" }) as any as S.Schema<ConnectAttachment>;
+const ConnectAttachment = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ConnectAttachment>;
 export interface CreateConnectAttachmentResponse {
   ConnectAttachment?: ConnectAttachment;
 }
-const CreateConnectAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectAttachment: S.optional(ConnectAttachment) }),
-).annotate({
-  identifier: "CreateConnectAttachmentResponse",
-}) as any as S.Schema<CreateConnectAttachmentResponse>;
+const CreateConnectAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateConnectAttachmentResponse>;
 export interface CreateConnectionRequest {
   GlobalNetworkId: string;
   DeviceId: string;
@@ -691,26 +531,10 @@ export interface CreateConnectionRequest {
   Description?: string;
   Tags?: Tag[];
 }
-const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    DeviceId: S.String,
-    ConnectedDeviceId: S.String,
-    LinkId: S.optional(S.String),
-    ConnectedLinkId: S.optional(S.String),
-    Description: S.optional(S.String),
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/connections" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateConnectionRequest" }) as any as S.Schema<CreateConnectionRequest>;
+const CreateConnectionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateConnectionRequest>;
 export type ConnectionId = string;
 export type ConnectionArn = string;
 export type ConnectionState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
@@ -729,34 +553,19 @@ export interface Connection {
   State?: ConnectionState;
   Tags?: Tag[];
 }
-const Connection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectionId: S.optional(S.String),
-    ConnectionArn: S.optional(S.String),
-    GlobalNetworkId: S.optional(S.String),
-    DeviceId: S.optional(S.String),
-    ConnectedDeviceId: S.optional(S.String),
-    LinkId: S.optional(S.String),
-    ConnectedLinkId: S.optional(S.String),
-    Description: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    State: S.optional(ConnectionState),
-    Tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
+const Connection = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Connection>;
 export interface CreateConnectionResponse {
   Connection?: Connection;
 }
-const CreateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Connection: S.optional(Connection) }),
-).annotate({ identifier: "CreateConnectionResponse" }) as any as S.Schema<CreateConnectionResponse>;
+const CreateConnectionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateConnectionResponse>;
 export type IPAddress = string;
 export interface BgpOptions {
   PeerAsn?: number;
 }
-const BgpOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PeerAsn: S.optional(S.Number) }),
-).annotate({ identifier: "BgpOptions" }) as any as S.Schema<BgpOptions>;
+const BgpOptions = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<BgpOptions>;
 export type ConstrainedStringList = string[];
 const ConstrainedStringList = ExternalRegionCodeList as any as S.Schema<ConstrainedStringList>;
 export type SubnetArn = string;
@@ -770,18 +579,10 @@ export interface CreateConnectPeerRequest {
   ClientToken?: string;
   SubnetArn?: string;
 }
-const CreateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectAttachmentId: S.String,
-    CoreNetworkAddress: S.optional(S.String),
-    PeerAddress: S.String,
-    BgpOptions: S.optional(BgpOptions),
-    InsideCidrBlocks: S.optional(ConstrainedStringList),
-    Tags: S.optional(TagList),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    SubnetArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/connect-peers" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateConnectPeerRequest" }) as any as S.Schema<CreateConnectPeerRequest>;
+const CreateConnectPeerRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateConnectPeerRequest>;
 export type ConnectPeerState = "CREATING" | "FAILED" | "AVAILABLE" | "DELETING" | (string & {});
 const ConnectPeerState = S.String;
 
@@ -791,18 +592,12 @@ export interface ConnectPeerBgpConfiguration {
   CoreNetworkAddress?: string;
   PeerAddress?: string;
 }
-const ConnectPeerBgpConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkAsn: S.optional(S.Number),
-    PeerAsn: S.optional(S.Number),
-    CoreNetworkAddress: S.optional(S.String),
-    PeerAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectPeerBgpConfiguration",
-}) as any as S.Schema<ConnectPeerBgpConfiguration>;
+const ConnectPeerBgpConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ConnectPeerBgpConfiguration>;
 export type ConnectPeerBgpConfigurationList = ConnectPeerBgpConfiguration[];
-const ConnectPeerBgpConfigurationList = /*@__PURE__*/ S.Array(ConnectPeerBgpConfiguration);
+const ConnectPeerBgpConfigurationList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface ConnectPeerConfiguration {
   CoreNetworkAddress?: string;
   PeerAddress?: string;
@@ -810,15 +605,10 @@ export interface ConnectPeerConfiguration {
   Protocol?: TunnelProtocol;
   BgpConfigurations?: ConnectPeerBgpConfiguration[];
 }
-const ConnectPeerConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkAddress: S.optional(S.String),
-    PeerAddress: S.optional(S.String),
-    InsideCidrBlocks: S.optional(ConstrainedStringList),
-    Protocol: S.optional(TunnelProtocol),
-    BgpConfigurations: S.optional(ConnectPeerBgpConfigurationList),
-  }),
-).annotate({ identifier: "ConnectPeerConfiguration" }) as any as S.Schema<ConnectPeerConfiguration>;
+const ConnectPeerConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ConnectPeerConfiguration>;
 export type ConnectPeerErrorCode =
   | "EDGE_LOCATION_NO_FREE_IPS"
   | "EDGE_LOCATION_PEER_DUPLICATE"
@@ -847,28 +637,14 @@ export interface ConnectPeer {
   SubnetArn?: string;
   LastModificationErrors?: ConnectPeerError[];
 }
-const ConnectPeer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    ConnectAttachmentId: S.optional(S.String),
-    ConnectPeerId: S.optional(S.String),
-    EdgeLocation: S.optional(S.String),
-    State: S.optional(ConnectPeerState),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Configuration: S.optional(ConnectPeerConfiguration),
-    Tags: S.optional(TagList),
-    SubnetArn: S.optional(S.String),
-    LastModificationErrors: S.optional(ConnectPeerErrorList),
-  }),
-).annotate({ identifier: "ConnectPeer" }) as any as S.Schema<ConnectPeer>;
+const ConnectPeer = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ConnectPeer>;
 export interface CreateConnectPeerResponse {
   ConnectPeer?: ConnectPeer;
 }
-const CreateConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectPeer: S.optional(ConnectPeer) }),
-).annotate({
-  identifier: "CreateConnectPeerResponse",
-}) as any as S.Schema<CreateConnectPeerResponse>;
+const CreateConnectPeerResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateConnectPeerResponse>;
 export type CoreNetworkPolicyDocument = string;
 export interface CreateCoreNetworkRequest {
   GlobalNetworkId: string;
@@ -877,15 +653,10 @@ export interface CreateCoreNetworkRequest {
   PolicyDocument?: string;
   ClientToken?: string;
 }
-const CreateCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String,
-    Description: S.optional(S.String),
-    Tags: S.optional(TagList),
-    PolicyDocument: S.optional(S.String),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/core-networks" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateCoreNetworkRequest" }) as any as S.Schema<CreateCoreNetworkRequest>;
+const CreateCoreNetworkRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateCoreNetworkRequest>;
 export type CoreNetworkState = "CREATING" | "UPDATING" | "AVAILABLE" | "DELETING" | (string & {});
 const CoreNetworkState = S.String;
 
@@ -894,55 +665,36 @@ export interface CoreNetworkSegment {
   EdgeLocations?: string[];
   SharedSegments?: string[];
 }
-const CoreNetworkSegment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    EdgeLocations: S.optional(ExternalRegionCodeList),
-    SharedSegments: S.optional(ConstrainedStringList),
-  }),
-).annotate({ identifier: "CoreNetworkSegment" }) as any as S.Schema<CoreNetworkSegment>;
+const CoreNetworkSegment = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CoreNetworkSegment>;
 export type CoreNetworkSegmentList = CoreNetworkSegment[];
-const CoreNetworkSegmentList = /*@__PURE__*/ S.Array(CoreNetworkSegment);
+const CoreNetworkSegmentList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface ServiceInsertionSegments {
   SendVia?: string[];
   SendTo?: string[];
 }
-const ServiceInsertionSegments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SendVia: S.optional(ConstrainedStringList),
-    SendTo: S.optional(ConstrainedStringList),
-  }),
-).annotate({ identifier: "ServiceInsertionSegments" }) as any as S.Schema<ServiceInsertionSegments>;
+const ServiceInsertionSegments = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ServiceInsertionSegments>;
 export interface CoreNetworkNetworkFunctionGroup {
   Name?: string;
   EdgeLocations?: string[];
   Segments?: ServiceInsertionSegments;
 }
-const CoreNetworkNetworkFunctionGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    EdgeLocations: S.optional(ExternalRegionCodeList),
-    Segments: S.optional(ServiceInsertionSegments),
-  }),
-).annotate({
-  identifier: "CoreNetworkNetworkFunctionGroup",
-}) as any as S.Schema<CoreNetworkNetworkFunctionGroup>;
+const CoreNetworkNetworkFunctionGroup = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CoreNetworkNetworkFunctionGroup>;
 export type CoreNetworkNetworkFunctionGroupList = CoreNetworkNetworkFunctionGroup[];
-const CoreNetworkNetworkFunctionGroupList = /*@__PURE__*/ S.Array(CoreNetworkNetworkFunctionGroup);
+const CoreNetworkNetworkFunctionGroupList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface CoreNetworkEdge {
   EdgeLocation?: string;
   Asn?: number;
   InsideCidrBlocks?: string[];
 }
-const CoreNetworkEdge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EdgeLocation: S.optional(S.String),
-    Asn: S.optional(S.Number),
-    InsideCidrBlocks: S.optional(ConstrainedStringList),
-  }),
-).annotate({ identifier: "CoreNetworkEdge" }) as any as S.Schema<CoreNetworkEdge>;
+const CoreNetworkEdge = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CoreNetworkEdge>;
 export type CoreNetworkEdgeList = CoreNetworkEdge[];
-const CoreNetworkEdgeList = /*@__PURE__*/ S.Array(CoreNetworkEdge);
+const CoreNetworkEdgeList = /*@__PURE__*/ __L.at(__c5, 3);
 export interface CoreNetwork {
   GlobalNetworkId?: string;
   CoreNetworkId?: string;
@@ -955,28 +707,14 @@ export interface CoreNetwork {
   Edges?: CoreNetworkEdge[];
   Tags?: Tag[];
 }
-const CoreNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.optional(S.String),
-    CoreNetworkId: S.optional(S.String),
-    CoreNetworkArn: S.optional(S.String),
-    Description: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    State: S.optional(CoreNetworkState),
-    Segments: S.optional(CoreNetworkSegmentList),
-    NetworkFunctionGroups: S.optional(CoreNetworkNetworkFunctionGroupList),
-    Edges: S.optional(CoreNetworkEdgeList),
-    Tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "CoreNetwork" }) as any as S.Schema<CoreNetwork>;
+const CoreNetwork = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CoreNetwork>;
 export interface CreateCoreNetworkResponse {
   CoreNetwork?: CoreNetwork;
 }
-const CreateCoreNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CoreNetwork: S.optional(CoreNetwork) }),
-).annotate({
-  identifier: "CreateCoreNetworkResponse",
-}) as any as S.Schema<CreateCoreNetworkResponse>;
+const CreateCoreNetworkResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateCoreNetworkResponse>;
 export type PrefixListArn = string;
 export interface CreateCoreNetworkPrefixListAssociationRequest {
   CoreNetworkId: string;
@@ -984,49 +722,30 @@ export interface CreateCoreNetworkPrefixListAssociationRequest {
   PrefixListAlias: string;
   ClientToken?: string;
 }
-const CreateCoreNetworkPrefixListAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String,
-    PrefixListArn: S.String,
-    PrefixListAlias: S.String,
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/prefix-list" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateCoreNetworkPrefixListAssociationRequest",
-}) as any as S.Schema<CreateCoreNetworkPrefixListAssociationRequest>;
+const CreateCoreNetworkPrefixListAssociationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateCoreNetworkPrefixListAssociationRequest>;
 export interface CreateCoreNetworkPrefixListAssociationResponse {
   CoreNetworkId?: string;
   PrefixListArn?: string;
   PrefixListAlias?: string;
 }
-const CreateCoreNetworkPrefixListAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    PrefixListArn: S.optional(S.String),
-    PrefixListAlias: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateCoreNetworkPrefixListAssociationResponse",
-}) as any as S.Schema<CreateCoreNetworkPrefixListAssociationResponse>;
+const CreateCoreNetworkPrefixListAssociationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateCoreNetworkPrefixListAssociationResponse>;
 export interface AWSLocation {
   Zone?: string;
   SubnetArn?: string;
 }
-const AWSLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Zone: S.optional(S.String), SubnetArn: S.optional(S.String) }),
-).annotate({ identifier: "AWSLocation" }) as any as S.Schema<AWSLocation>;
+const AWSLocation = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<AWSLocation>;
 export interface Location {
   Address?: string;
   Latitude?: string;
   Longitude?: string;
 }
-const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: S.optional(S.String),
-    Latitude: S.optional(S.String),
-    Longitude: S.optional(S.String),
-  }),
-).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
+const Location = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Location>;
 export type SiteId = string;
 export interface CreateDeviceRequest {
   GlobalNetworkId: string;
@@ -1040,29 +759,7 @@ export interface CreateDeviceRequest {
   SiteId?: string;
   Tags?: Tag[];
 }
-const CreateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    AWSLocation: S.optional(AWSLocation),
-    Description: S.optional(S.String),
-    Type: S.optional(S.String),
-    Vendor: S.optional(S.String),
-    Model: S.optional(S.String),
-    SerialNumber: S.optional(S.String),
-    Location: S.optional(Location),
-    SiteId: S.optional(S.String),
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/devices" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateDeviceRequest" }) as any as S.Schema<CreateDeviceRequest>;
+const CreateDeviceRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CreateDeviceRequest>;
 export type DeviceArn = string;
 export type DeviceState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
 const DeviceState = S.String;
@@ -1083,30 +780,11 @@ export interface Device {
   State?: DeviceState;
   Tags?: Tag[];
 }
-const Device = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeviceId: S.optional(S.String),
-    DeviceArn: S.optional(S.String),
-    GlobalNetworkId: S.optional(S.String),
-    AWSLocation: S.optional(AWSLocation),
-    Description: S.optional(S.String),
-    Type: S.optional(S.String),
-    Vendor: S.optional(S.String),
-    Model: S.optional(S.String),
-    SerialNumber: S.optional(S.String),
-    Location: S.optional(Location),
-    SiteId: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    State: S.optional(DeviceState),
-    Tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
+const Device = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Device>;
 export interface CreateDeviceResponse {
   Device?: Device;
 }
-const CreateDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Device: S.optional(Device) }),
-).annotate({ identifier: "CreateDeviceResponse" }) as any as S.Schema<CreateDeviceResponse>;
+const CreateDeviceResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CreateDeviceResponse>;
 export type DirectConnectGatewayArn = string;
 export interface CreateDirectConnectGatewayAttachmentRequest {
   CoreNetworkId: string;
@@ -1116,55 +794,33 @@ export interface CreateDirectConnectGatewayAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-const CreateDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String,
-    DirectConnectGatewayArn: S.String,
-    RoutingPolicyLabel: S.optional(S.String),
-    EdgeLocations: ExternalRegionCodeList,
-    Tags: S.optional(TagList),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/direct-connect-gateway-attachments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateDirectConnectGatewayAttachmentRequest",
-}) as any as S.Schema<CreateDirectConnectGatewayAttachmentRequest>;
+const CreateDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateDirectConnectGatewayAttachmentRequest>;
 export interface DirectConnectGatewayAttachment {
   Attachment?: Attachment;
   DirectConnectGatewayArn?: string;
 }
-const DirectConnectGatewayAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attachment: S.optional(Attachment), DirectConnectGatewayArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DirectConnectGatewayAttachment",
-}) as any as S.Schema<DirectConnectGatewayAttachment>;
+const DirectConnectGatewayAttachment = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DirectConnectGatewayAttachment>;
 export interface CreateDirectConnectGatewayAttachmentResponse {
   DirectConnectGatewayAttachment?: DirectConnectGatewayAttachment;
 }
-const CreateDirectConnectGatewayAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectConnectGatewayAttachment: S.optional(DirectConnectGatewayAttachment) }),
-).annotate({
-  identifier: "CreateDirectConnectGatewayAttachmentResponse",
-}) as any as S.Schema<CreateDirectConnectGatewayAttachmentResponse>;
+const CreateDirectConnectGatewayAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateDirectConnectGatewayAttachmentResponse>;
 export interface CreateGlobalNetworkRequest {
   Description?: string;
   Tags?: Tag[];
 }
-const CreateGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Description: S.optional(S.String), Tags: S.optional(TagList) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/global-networks" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateGlobalNetworkRequest",
-}) as any as S.Schema<CreateGlobalNetworkRequest>;
+const CreateGlobalNetworkRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateGlobalNetworkRequest>;
 export type GlobalNetworkArn = string;
 export type GlobalNetworkState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
 const GlobalNetworkState = S.String;
@@ -1177,31 +833,19 @@ export interface GlobalNetwork {
   State?: GlobalNetworkState;
   Tags?: Tag[];
 }
-const GlobalNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.optional(S.String),
-    GlobalNetworkArn: S.optional(S.String),
-    Description: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    State: S.optional(GlobalNetworkState),
-    Tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "GlobalNetwork" }) as any as S.Schema<GlobalNetwork>;
+const GlobalNetwork = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GlobalNetwork>;
 export interface CreateGlobalNetworkResponse {
   GlobalNetwork?: GlobalNetwork;
 }
-const CreateGlobalNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GlobalNetwork: S.optional(GlobalNetwork) }),
-).annotate({
-  identifier: "CreateGlobalNetworkResponse",
-}) as any as S.Schema<CreateGlobalNetworkResponse>;
+const CreateGlobalNetworkResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CreateGlobalNetworkResponse>;
 export interface Bandwidth {
   UploadSpeed?: number;
   DownloadSpeed?: number;
 }
-const Bandwidth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UploadSpeed: S.optional(S.Number), DownloadSpeed: S.optional(S.Number) }),
-).annotate({ identifier: "Bandwidth" }) as any as S.Schema<Bandwidth>;
+const Bandwidth = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Bandwidth>;
 export interface CreateLinkRequest {
   GlobalNetworkId: string;
   Description?: string;
@@ -1211,26 +855,7 @@ export interface CreateLinkRequest {
   SiteId: string;
   Tags?: Tag[];
 }
-const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    Description: S.optional(S.String),
-    Type: S.optional(S.String),
-    Bandwidth: Bandwidth,
-    Provider: S.optional(S.String),
-    SiteId: S.String,
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/links" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateLinkRequest" }) as any as S.Schema<CreateLinkRequest>;
+const CreateLinkRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<CreateLinkRequest>;
 export type LinkArn = string;
 export type LinkState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
 const LinkState = S.String;
@@ -1248,50 +873,18 @@ export interface Link {
   State?: LinkState;
   Tags?: Tag[];
 }
-const Link = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LinkId: S.optional(S.String),
-    LinkArn: S.optional(S.String),
-    GlobalNetworkId: S.optional(S.String),
-    SiteId: S.optional(S.String),
-    Description: S.optional(S.String),
-    Type: S.optional(S.String),
-    Bandwidth: S.optional(Bandwidth),
-    Provider: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    State: S.optional(LinkState),
-    Tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
+const Link = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Link>;
 export interface CreateLinkResponse {
   Link?: Link;
 }
-const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Link: S.optional(Link) }),
-).annotate({ identifier: "CreateLinkResponse" }) as any as S.Schema<CreateLinkResponse>;
+const CreateLinkResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<CreateLinkResponse>;
 export interface CreateSiteRequest {
   GlobalNetworkId: string;
   Description?: string;
   Location?: Location;
   Tags?: Tag[];
 }
-const CreateSiteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    Description: S.optional(S.String),
-    Location: S.optional(Location),
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/sites" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateSiteRequest" }) as any as S.Schema<CreateSiteRequest>;
+const CreateSiteRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<CreateSiteRequest>;
 export type SiteArn = string;
 export type SiteState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
 const SiteState = S.String;
@@ -1306,24 +899,11 @@ export interface Site {
   State?: SiteState;
   Tags?: Tag[];
 }
-const Site = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SiteId: S.optional(S.String),
-    SiteArn: S.optional(S.String),
-    GlobalNetworkId: S.optional(S.String),
-    Description: S.optional(S.String),
-    Location: S.optional(Location),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    State: S.optional(SiteState),
-    Tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
+const Site = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<Site>;
 export interface CreateSiteResponse {
   Site?: Site;
 }
-const CreateSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Site: S.optional(Site) }),
-).annotate({ identifier: "CreateSiteResponse" }) as any as S.Schema<CreateSiteResponse>;
+const CreateSiteResponse = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<CreateSiteResponse>;
 export type VpnConnectionArn = string;
 export interface CreateSiteToSiteVpnAttachmentRequest {
   CoreNetworkId: string;
@@ -1332,41 +912,25 @@ export interface CreateSiteToSiteVpnAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-const CreateSiteToSiteVpnAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String,
-    VpnConnectionArn: S.String,
-    RoutingPolicyLabel: S.optional(S.String),
-    Tags: S.optional(TagList),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/site-to-site-vpn-attachments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateSiteToSiteVpnAttachmentRequest",
-}) as any as S.Schema<CreateSiteToSiteVpnAttachmentRequest>;
+const CreateSiteToSiteVpnAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateSiteToSiteVpnAttachmentRequest>;
 export interface SiteToSiteVpnAttachment {
   Attachment?: Attachment;
   VpnConnectionArn?: string;
 }
-const SiteToSiteVpnAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attachment: S.optional(Attachment), VpnConnectionArn: S.optional(S.String) }),
-).annotate({ identifier: "SiteToSiteVpnAttachment" }) as any as S.Schema<SiteToSiteVpnAttachment>;
+const SiteToSiteVpnAttachment = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<SiteToSiteVpnAttachment>;
 export interface CreateSiteToSiteVpnAttachmentResponse {
   SiteToSiteVpnAttachment?: SiteToSiteVpnAttachment;
 }
-const CreateSiteToSiteVpnAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SiteToSiteVpnAttachment: S.optional(SiteToSiteVpnAttachment) }),
-).annotate({
-  identifier: "CreateSiteToSiteVpnAttachmentResponse",
-}) as any as S.Schema<CreateSiteToSiteVpnAttachmentResponse>;
+const CreateSiteToSiteVpnAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreateSiteToSiteVpnAttachmentResponse>;
 export type TransitGatewayArn = string;
 export interface CreateTransitGatewayPeeringRequest {
   CoreNetworkId: string;
@@ -1374,25 +938,10 @@ export interface CreateTransitGatewayPeeringRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-const CreateTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String,
-    TransitGatewayArn: S.String,
-    Tags: S.optional(TagList),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/transit-gateway-peerings" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateTransitGatewayPeeringRequest",
-}) as any as S.Schema<CreateTransitGatewayPeeringRequest>;
+const CreateTransitGatewayPeeringRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<CreateTransitGatewayPeeringRequest>;
 export type PeeringId = string;
 export type PeeringType = "TRANSIT_GATEWAY" | (string & {});
 const PeeringType = S.String;
@@ -1413,9 +962,10 @@ const PeeringErrorCode = S.String;
 export interface PermissionsErrorContext {
   MissingPermission?: string;
 }
-const PermissionsErrorContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MissingPermission: S.optional(S.String) }),
-).annotate({ identifier: "PermissionsErrorContext" }) as any as S.Schema<PermissionsErrorContext>;
+const PermissionsErrorContext = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<PermissionsErrorContext>;
 export interface PeeringError {
   Code?: PeeringErrorCode;
   Message?: string;
@@ -1423,17 +973,9 @@ export interface PeeringError {
   RequestId?: string;
   MissingPermissionsContext?: PermissionsErrorContext;
 }
-const PeeringError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Code: S.optional(PeeringErrorCode),
-    Message: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    MissingPermissionsContext: S.optional(PermissionsErrorContext),
-  }),
-).annotate({ identifier: "PeeringError" }) as any as S.Schema<PeeringError>;
+const PeeringError = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<PeeringError>;
 export type PeeringErrorList = PeeringError[];
-const PeeringErrorList = /*@__PURE__*/ S.Array(PeeringError);
+const PeeringErrorList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface Peering {
   CoreNetworkId?: string;
   CoreNetworkArn?: string;
@@ -1447,42 +989,24 @@ export interface Peering {
   CreatedAt?: Date;
   LastModificationErrors?: PeeringError[];
 }
-const Peering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    CoreNetworkArn: S.optional(S.String),
-    PeeringId: S.optional(S.String),
-    OwnerAccountId: S.optional(S.String),
-    PeeringType: S.optional(PeeringType),
-    State: S.optional(PeeringState),
-    EdgeLocation: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    Tags: S.optional(TagList),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModificationErrors: S.optional(PeeringErrorList),
-  }),
-).annotate({ identifier: "Peering" }) as any as S.Schema<Peering>;
+const Peering = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Peering>;
 export type TransitGatewayPeeringAttachmentId = string;
 export interface TransitGatewayPeering {
   Peering?: Peering;
   TransitGatewayArn?: string;
   TransitGatewayPeeringAttachmentId?: string;
 }
-const TransitGatewayPeering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Peering: S.optional(Peering),
-    TransitGatewayArn: S.optional(S.String),
-    TransitGatewayPeeringAttachmentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "TransitGatewayPeering" }) as any as S.Schema<TransitGatewayPeering>;
+const TransitGatewayPeering = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<TransitGatewayPeering>;
 export interface CreateTransitGatewayPeeringResponse {
   TransitGatewayPeering?: TransitGatewayPeering;
 }
-const CreateTransitGatewayPeeringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TransitGatewayPeering: S.optional(TransitGatewayPeering) }),
-).annotate({
-  identifier: "CreateTransitGatewayPeeringResponse",
-}) as any as S.Schema<CreateTransitGatewayPeeringResponse>;
+const CreateTransitGatewayPeeringResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CreateTransitGatewayPeeringResponse>;
 export type TransitGatewayRouteTableArn = string;
 export interface CreateTransitGatewayRouteTableAttachmentRequest {
   PeeringId: string;
@@ -1491,48 +1015,26 @@ export interface CreateTransitGatewayRouteTableAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-const CreateTransitGatewayRouteTableAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PeeringId: S.String,
-    TransitGatewayRouteTableArn: S.String,
-    RoutingPolicyLabel: S.optional(S.String),
-    Tags: S.optional(TagList),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/transit-gateway-route-table-attachments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateTransitGatewayRouteTableAttachmentRequest",
-}) as any as S.Schema<CreateTransitGatewayRouteTableAttachmentRequest>;
+const CreateTransitGatewayRouteTableAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<CreateTransitGatewayRouteTableAttachmentRequest>;
 export interface TransitGatewayRouteTableAttachment {
   Attachment?: Attachment;
   PeeringId?: string;
   TransitGatewayRouteTableArn?: string;
 }
-const TransitGatewayRouteTableAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attachment: S.optional(Attachment),
-    PeeringId: S.optional(S.String),
-    TransitGatewayRouteTableArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TransitGatewayRouteTableAttachment",
-}) as any as S.Schema<TransitGatewayRouteTableAttachment>;
+const TransitGatewayRouteTableAttachment = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<TransitGatewayRouteTableAttachment>;
 export interface CreateTransitGatewayRouteTableAttachmentResponse {
   TransitGatewayRouteTableAttachment?: TransitGatewayRouteTableAttachment;
 }
-const CreateTransitGatewayRouteTableAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TransitGatewayRouteTableAttachment: S.optional(TransitGatewayRouteTableAttachment) }),
-).annotate({
-  identifier: "CreateTransitGatewayRouteTableAttachmentResponse",
-}) as any as S.Schema<CreateTransitGatewayRouteTableAttachmentResponse>;
+const CreateTransitGatewayRouteTableAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<CreateTransitGatewayRouteTableAttachmentResponse>;
 export type VpcArn = string;
 export type SubnetArnList = string[];
 const SubnetArnList = ExternalRegionCodeList as any as S.Schema<SubnetArnList>;
@@ -1542,14 +1044,7 @@ export interface VpcOptions {
   DnsSupport?: boolean;
   SecurityGroupReferencingSupport?: boolean;
 }
-const VpcOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Ipv6Support: S.optional(S.Boolean),
-    ApplianceModeSupport: S.optional(S.Boolean),
-    DnsSupport: S.optional(S.Boolean),
-    SecurityGroupReferencingSupport: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VpcOptions" }) as any as S.Schema<VpcOptions>;
+const VpcOptions = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<VpcOptions>;
 export interface CreateVpcAttachmentRequest {
   CoreNetworkId: string;
   VpcArn: string;
@@ -1559,54 +1054,30 @@ export interface CreateVpcAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-const CreateVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String,
-    VpcArn: S.String,
-    SubnetArns: SubnetArnList,
-    Options: S.optional(VpcOptions),
-    RoutingPolicyLabel: S.optional(S.String),
-    Tags: S.optional(TagList),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/vpc-attachments" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateVpcAttachmentRequest",
-}) as any as S.Schema<CreateVpcAttachmentRequest>;
+const CreateVpcAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CreateVpcAttachmentRequest>;
 export interface VpcAttachment {
   Attachment?: Attachment;
   SubnetArns?: string[];
   Options?: VpcOptions;
 }
-const VpcAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attachment: S.optional(Attachment),
-    SubnetArns: S.optional(SubnetArnList),
-    Options: S.optional(VpcOptions),
-  }),
-).annotate({ identifier: "VpcAttachment" }) as any as S.Schema<VpcAttachment>;
+const VpcAttachment = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<VpcAttachment>;
 export interface CreateVpcAttachmentResponse {
   VpcAttachment?: VpcAttachment;
 }
-const CreateVpcAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcAttachment: S.optional(VpcAttachment) }),
-).annotate({
-  identifier: "CreateVpcAttachmentResponse",
-}) as any as S.Schema<CreateVpcAttachmentResponse>;
+const CreateVpcAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CreateVpcAttachmentResponse>;
 export interface DeleteAttachmentRequest {
   AttachmentId: string;
 }
-const DeleteAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/attachments/{AttachmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteAttachmentRequest" }) as any as S.Schema<DeleteAttachmentRequest>;
+const DeleteAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeleteAttachmentRequest>;
 export interface DeleteAttachmentResponse {
   Attachment?: Attachment;
 }
@@ -1616,24 +1087,10 @@ export interface DeleteConnectionRequest {
   GlobalNetworkId: string;
   ConnectionId: string;
 }
-const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/global-networks/{GlobalNetworkId}/connections/{ConnectionId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
+const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {
   Connection?: Connection;
 }
@@ -1642,18 +1099,10 @@ const DeleteConnectionResponse =
 export interface DeleteConnectPeerRequest {
   ConnectPeerId: string;
 }
-const DeleteConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectPeerId: S.String.pipe(T.HttpLabel("ConnectPeerId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/connect-peers/{ConnectPeerId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteConnectPeerRequest" }) as any as S.Schema<DeleteConnectPeerRequest>;
+const DeleteConnectPeerRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DeleteConnectPeerRequest>;
 export interface DeleteConnectPeerResponse {
   ConnectPeer?: ConnectPeer;
 }
@@ -1662,18 +1111,10 @@ const DeleteConnectPeerResponse =
 export interface DeleteCoreNetworkRequest {
   CoreNetworkId: string;
 }
-const DeleteCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/core-networks/{CoreNetworkId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteCoreNetworkRequest" }) as any as S.Schema<DeleteCoreNetworkRequest>;
+const DeleteCoreNetworkRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DeleteCoreNetworkRequest>;
 export interface DeleteCoreNetworkResponse {
   CoreNetwork?: CoreNetwork;
 }
@@ -1683,26 +1124,10 @@ export interface DeleteCoreNetworkPolicyVersionRequest {
   CoreNetworkId: string;
   PolicyVersionId: number;
 }
-const DeleteCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/core-networks/{CoreNetworkId}/core-network-policy-versions/{PolicyVersionId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteCoreNetworkPolicyVersionRequest",
-}) as any as S.Schema<DeleteCoreNetworkPolicyVersionRequest>;
+const DeleteCoreNetworkPolicyVersionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DeleteCoreNetworkPolicyVersionRequest>;
 export type CoreNetworkPolicyAlias = "LIVE" | "LATEST" | (string & {});
 const CoreNetworkPolicyAlias = S.String;
 
@@ -1721,11 +1146,12 @@ export interface CoreNetworkPolicyError {
   Message: string;
   Path?: string;
 }
-const CoreNetworkPolicyError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.String, Message: S.String, Path: S.optional(S.String) }),
-).annotate({ identifier: "CoreNetworkPolicyError" }) as any as S.Schema<CoreNetworkPolicyError>;
+const CoreNetworkPolicyError = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<CoreNetworkPolicyError>;
 export type CoreNetworkPolicyErrorList = CoreNetworkPolicyError[];
-const CoreNetworkPolicyErrorList = /*@__PURE__*/ S.Array(CoreNetworkPolicyError);
+const CoreNetworkPolicyErrorList = /*@__PURE__*/ __L.at(__c11, 1);
 export type SynthesizedJsonCoreNetworkPolicyDocument = string;
 export interface CoreNetworkPolicy {
   CoreNetworkId?: string;
@@ -1737,78 +1163,35 @@ export interface CoreNetworkPolicy {
   PolicyErrors?: CoreNetworkPolicyError[];
   PolicyDocument?: string;
 }
-const CoreNetworkPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    PolicyVersionId: S.optional(S.Number),
-    Alias: S.optional(CoreNetworkPolicyAlias),
-    Description: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ChangeSetState: S.optional(ChangeSetState),
-    PolicyErrors: S.optional(CoreNetworkPolicyErrorList),
-    PolicyDocument: S.optional(S.String),
-  }),
-).annotate({ identifier: "CoreNetworkPolicy" }) as any as S.Schema<CoreNetworkPolicy>;
+const CoreNetworkPolicy = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<CoreNetworkPolicy>;
 export interface DeleteCoreNetworkPolicyVersionResponse {
   CoreNetworkPolicy?: CoreNetworkPolicy;
 }
-const DeleteCoreNetworkPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CoreNetworkPolicy: S.optional(CoreNetworkPolicy) }),
-).annotate({
-  identifier: "DeleteCoreNetworkPolicyVersionResponse",
-}) as any as S.Schema<DeleteCoreNetworkPolicyVersionResponse>;
+const DeleteCoreNetworkPolicyVersionResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DeleteCoreNetworkPolicyVersionResponse>;
 export interface DeleteCoreNetworkPrefixListAssociationRequest {
   CoreNetworkId: string;
   PrefixListArn: string;
 }
-const DeleteCoreNetworkPrefixListAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    PrefixListArn: S.String.pipe(T.HttpLabel("PrefixListArn")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/prefix-list/{PrefixListArn}/core-network/{CoreNetworkId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteCoreNetworkPrefixListAssociationRequest",
-}) as any as S.Schema<DeleteCoreNetworkPrefixListAssociationRequest>;
+const DeleteCoreNetworkPrefixListAssociationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DeleteCoreNetworkPrefixListAssociationRequest>;
 export interface DeleteCoreNetworkPrefixListAssociationResponse {
   CoreNetworkId?: string;
   PrefixListArn?: string;
 }
-const DeleteCoreNetworkPrefixListAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CoreNetworkId: S.optional(S.String), PrefixListArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteCoreNetworkPrefixListAssociationResponse",
-}) as any as S.Schema<DeleteCoreNetworkPrefixListAssociationResponse>;
+const DeleteCoreNetworkPrefixListAssociationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DeleteCoreNetworkPrefixListAssociationResponse>;
 export interface DeleteDeviceRequest {
   GlobalNetworkId: string;
   DeviceId: string;
 }
-const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    DeviceId: S.String.pipe(T.HttpLabel("DeviceId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/global-networks/{GlobalNetworkId}/devices/{DeviceId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteDeviceRequest" }) as any as S.Schema<DeleteDeviceRequest>;
+const DeleteDeviceRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<DeleteDeviceRequest>;
 export interface DeleteDeviceResponse {
   Device?: Device;
 }
@@ -1816,20 +1199,10 @@ const DeleteDeviceResponse = CreateDeviceResponse as any as S.Schema<DeleteDevic
 export interface DeleteGlobalNetworkRequest {
   GlobalNetworkId: string;
 }
-const DeleteGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/global-networks/{GlobalNetworkId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteGlobalNetworkRequest",
-}) as any as S.Schema<DeleteGlobalNetworkRequest>;
+const DeleteGlobalNetworkRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DeleteGlobalNetworkRequest>;
 export interface DeleteGlobalNetworkResponse {
   GlobalNetwork?: GlobalNetwork;
 }
@@ -1839,21 +1212,7 @@ export interface DeleteLinkRequest {
   GlobalNetworkId: string;
   LinkId: string;
 }
-const DeleteLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    LinkId: S.String.pipe(T.HttpLabel("LinkId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/global-networks/{GlobalNetworkId}/links/{LinkId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteLinkRequest" }) as any as S.Schema<DeleteLinkRequest>;
+const DeleteLinkRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<DeleteLinkRequest>;
 export interface DeleteLinkResponse {
   Link?: Link;
 }
@@ -1861,57 +1220,34 @@ const DeleteLinkResponse = CreateLinkResponse as any as S.Schema<DeleteLinkRespo
 export interface DeletePeeringRequest {
   PeeringId: string;
 }
-const DeletePeeringRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PeeringId: S.String.pipe(T.HttpLabel("PeeringId")) }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/peerings/{PeeringId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeletePeeringRequest" }) as any as S.Schema<DeletePeeringRequest>;
+const DeletePeeringRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DeletePeeringRequest>;
 export interface DeletePeeringResponse {
   Peering?: Peering;
 }
-const DeletePeeringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Peering: S.optional(Peering) }),
-).annotate({ identifier: "DeletePeeringResponse" }) as any as S.Schema<DeletePeeringResponse>;
+const DeletePeeringResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DeletePeeringResponse>;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
 }
-const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/resource-policy/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteResourcePolicyRequest",
-}) as any as S.Schema<DeleteResourcePolicyRequest>;
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+const DeleteResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteSiteRequest {
   GlobalNetworkId: string;
   SiteId: string;
 }
-const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    SiteId: S.String.pipe(T.HttpLabel("SiteId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/global-networks/{GlobalNetworkId}/sites/{SiteId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteSiteRequest" }) as any as S.Schema<DeleteSiteRequest>;
+const DeleteSiteRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<DeleteSiteRequest>;
 export interface DeleteSiteResponse {
   Site?: Site;
 }
@@ -1920,26 +1256,10 @@ export interface DeregisterTransitGatewayRequest {
   GlobalNetworkId: string;
   TransitGatewayArn: string;
 }
-const DeregisterTransitGatewayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    TransitGatewayArn: S.String.pipe(T.HttpLabel("TransitGatewayArn")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/global-networks/{GlobalNetworkId}/transit-gateway-registrations/{TransitGatewayArn}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeregisterTransitGatewayRequest",
-}) as any as S.Schema<DeregisterTransitGatewayRequest>;
+const DeregisterTransitGatewayRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DeregisterTransitGatewayRequest>;
 export type TransitGatewayRegistrationState =
   | "PENDING"
   | "AVAILABLE"
@@ -1953,33 +1273,26 @@ export interface TransitGatewayRegistrationStateReason {
   Code?: TransitGatewayRegistrationState;
   Message?: string;
 }
-const TransitGatewayRegistrationStateReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(TransitGatewayRegistrationState), Message: S.optional(S.String) }),
-).annotate({
-  identifier: "TransitGatewayRegistrationStateReason",
-}) as any as S.Schema<TransitGatewayRegistrationStateReason>;
+const TransitGatewayRegistrationStateReason = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<TransitGatewayRegistrationStateReason>;
 export interface TransitGatewayRegistration {
   GlobalNetworkId?: string;
   TransitGatewayArn?: string;
   State?: TransitGatewayRegistrationStateReason;
 }
-const TransitGatewayRegistration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.optional(S.String),
-    TransitGatewayArn: S.optional(S.String),
-    State: S.optional(TransitGatewayRegistrationStateReason),
-  }),
-).annotate({
-  identifier: "TransitGatewayRegistration",
-}) as any as S.Schema<TransitGatewayRegistration>;
+const TransitGatewayRegistration = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<TransitGatewayRegistration>;
 export interface DeregisterTransitGatewayResponse {
   TransitGatewayRegistration?: TransitGatewayRegistration;
 }
-const DeregisterTransitGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TransitGatewayRegistration: S.optional(TransitGatewayRegistration) }),
-).annotate({
-  identifier: "DeregisterTransitGatewayResponse",
-}) as any as S.Schema<DeregisterTransitGatewayResponse>;
+const DeregisterTransitGatewayResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<DeregisterTransitGatewayResponse>;
 export type GlobalNetworkIdList = string[];
 const GlobalNetworkIdList = ExternalRegionCodeList as any as S.Schema<GlobalNetworkIdList>;
 export type MaxResults = number;
@@ -1989,50 +1302,28 @@ export interface DescribeGlobalNetworksRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeGlobalNetworksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkIds: S.optional(GlobalNetworkIdList).pipe(T.HttpQuery("globalNetworkIds")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/global-networks" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeGlobalNetworksRequest",
-}) as any as S.Schema<DescribeGlobalNetworksRequest>;
+const DescribeGlobalNetworksRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DescribeGlobalNetworksRequest>;
 export type GlobalNetworkList = GlobalNetwork[];
-const GlobalNetworkList = /*@__PURE__*/ S.Array(GlobalNetwork);
+const GlobalNetworkList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface DescribeGlobalNetworksResponse {
   GlobalNetworks?: GlobalNetwork[];
   NextToken?: string;
 }
-const DescribeGlobalNetworksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GlobalNetworks: S.optional(GlobalNetworkList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "DescribeGlobalNetworksResponse",
-}) as any as S.Schema<DescribeGlobalNetworksResponse>;
+const DescribeGlobalNetworksResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<DescribeGlobalNetworksResponse>;
 export interface DisassociateConnectPeerRequest {
   GlobalNetworkId: string;
   ConnectPeerId: string;
 }
-const DisassociateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    ConnectPeerId: S.String.pipe(T.HttpLabel("ConnectPeerId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/global-networks/{GlobalNetworkId}/connect-peer-associations/{ConnectPeerId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateConnectPeerRequest",
-}) as any as S.Schema<DisassociateConnectPeerRequest>;
+const DisassociateConnectPeerRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DisassociateConnectPeerRequest>;
 export interface DisassociateConnectPeerResponse {
   ConnectPeerAssociation?: ConnectPeerAssociation;
 }
@@ -2042,26 +1333,10 @@ export interface DisassociateCustomerGatewayRequest {
   GlobalNetworkId: string;
   CustomerGatewayArn: string;
 }
-const DisassociateCustomerGatewayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    CustomerGatewayArn: S.String.pipe(T.HttpLabel("CustomerGatewayArn")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/global-networks/{GlobalNetworkId}/customer-gateway-associations/{CustomerGatewayArn}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateCustomerGatewayRequest",
-}) as any as S.Schema<DisassociateCustomerGatewayRequest>;
+const DisassociateCustomerGatewayRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DisassociateCustomerGatewayRequest>;
 export interface DisassociateCustomerGatewayResponse {
   CustomerGatewayAssociation?: CustomerGatewayAssociation;
 }
@@ -2072,22 +1347,10 @@ export interface DisassociateLinkRequest {
   DeviceId: string;
   LinkId: string;
 }
-const DisassociateLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    DeviceId: S.String.pipe(T.HttpQuery("deviceId")),
-    LinkId: S.String.pipe(T.HttpQuery("linkId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/global-networks/{GlobalNetworkId}/link-associations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DisassociateLinkRequest" }) as any as S.Schema<DisassociateLinkRequest>;
+const DisassociateLinkRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DisassociateLinkRequest>;
 export interface DisassociateLinkResponse {
   LinkAssociation?: LinkAssociation;
 }
@@ -2096,26 +1359,10 @@ export interface DisassociateTransitGatewayConnectPeerRequest {
   GlobalNetworkId: string;
   TransitGatewayConnectPeerArn: string;
 }
-const DisassociateTransitGatewayConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    TransitGatewayConnectPeerArn: S.String.pipe(T.HttpLabel("TransitGatewayConnectPeerArn")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/global-networks/{GlobalNetworkId}/transit-gateway-connect-peer-associations/{TransitGatewayConnectPeerArn}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateTransitGatewayConnectPeerRequest",
-}) as any as S.Schema<DisassociateTransitGatewayConnectPeerRequest>;
+const DisassociateTransitGatewayConnectPeerRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DisassociateTransitGatewayConnectPeerRequest>;
 export interface DisassociateTransitGatewayConnectPeerResponse {
   TransitGatewayConnectPeerAssociation?: TransitGatewayConnectPeerAssociation;
 }
@@ -2125,47 +1372,22 @@ export interface ExecuteCoreNetworkChangeSetRequest {
   CoreNetworkId: string;
   PolicyVersionId: number;
 }
-const ExecuteCoreNetworkChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/core-networks/{CoreNetworkId}/core-network-change-sets/{PolicyVersionId}/execute",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ExecuteCoreNetworkChangeSetRequest",
-}) as any as S.Schema<ExecuteCoreNetworkChangeSetRequest>;
+const ExecuteCoreNetworkChangeSetRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ExecuteCoreNetworkChangeSetRequest>;
 export interface ExecuteCoreNetworkChangeSetResponse {}
-const ExecuteCoreNetworkChangeSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExecuteCoreNetworkChangeSetResponse",
-}) as any as S.Schema<ExecuteCoreNetworkChangeSetResponse>;
+const ExecuteCoreNetworkChangeSetResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ExecuteCoreNetworkChangeSetResponse>;
 export interface GetConnectAttachmentRequest {
   AttachmentId: string;
 }
-const GetConnectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/connect-attachments/{AttachmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetConnectAttachmentRequest",
-}) as any as S.Schema<GetConnectAttachmentRequest>;
+const GetConnectAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetConnectAttachmentRequest>;
 export interface GetConnectAttachmentResponse {
   ConnectAttachment?: ConnectAttachment;
 }
@@ -2180,54 +1402,34 @@ export interface GetConnectionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    ConnectionIds: S.optional(ConnectionIdList).pipe(T.HttpQuery("connectionIds")),
-    DeviceId: S.optional(S.String).pipe(T.HttpQuery("deviceId")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/connections" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetConnectionsRequest" }) as any as S.Schema<GetConnectionsRequest>;
+const GetConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetConnectionsRequest>;
 export type ConnectionList = Connection[];
-const ConnectionList = /*@__PURE__*/ S.Array(Connection);
+const ConnectionList = /*@__PURE__*/ __L.at(__c14, 5);
 export interface GetConnectionsResponse {
   Connections?: Connection[];
   NextToken?: string;
 }
-const GetConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Connections: S.optional(ConnectionList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetConnectionsResponse" }) as any as S.Schema<GetConnectionsResponse>;
+const GetConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetConnectionsResponse>;
 export interface GetConnectPeerRequest {
   ConnectPeerId: string;
 }
-const GetConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectPeerId: S.String.pipe(T.HttpLabel("ConnectPeerId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/connect-peers/{ConnectPeerId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetConnectPeerRequest" }) as any as S.Schema<GetConnectPeerRequest>;
+const GetConnectPeerRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetConnectPeerRequest>;
 export interface GetConnectPeerResponse {
   ConnectPeer?: ConnectPeer;
 }
-const GetConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectPeer: S.optional(ConnectPeer) }),
-).annotate({ identifier: "GetConnectPeerResponse" }) as any as S.Schema<GetConnectPeerResponse>;
+const GetConnectPeerResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetConnectPeerResponse>;
 export type ConnectPeerIdList = string[];
 const ConnectPeerIdList = ExternalRegionCodeList as any as S.Schema<ConnectPeerIdList>;
 export interface GetConnectPeerAssociationsRequest {
@@ -2236,91 +1438,44 @@ export interface GetConnectPeerAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetConnectPeerAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    ConnectPeerIds: S.optional(ConnectPeerIdList).pipe(T.HttpQuery("connectPeerIds")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/global-networks/{GlobalNetworkId}/connect-peer-associations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetConnectPeerAssociationsRequest",
-}) as any as S.Schema<GetConnectPeerAssociationsRequest>;
+const GetConnectPeerAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetConnectPeerAssociationsRequest>;
 export type ConnectPeerAssociationList = ConnectPeerAssociation[];
-const ConnectPeerAssociationList = /*@__PURE__*/ S.Array(ConnectPeerAssociation);
+const ConnectPeerAssociationList = /*@__PURE__*/ __L.at(__c15, 2);
 export interface GetConnectPeerAssociationsResponse {
   ConnectPeerAssociations?: ConnectPeerAssociation[];
   NextToken?: string;
 }
-const GetConnectPeerAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectPeerAssociations: S.optional(ConnectPeerAssociationList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConnectPeerAssociationsResponse",
-}) as any as S.Schema<GetConnectPeerAssociationsResponse>;
+const GetConnectPeerAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GetConnectPeerAssociationsResponse>;
 export interface GetCoreNetworkRequest {
   CoreNetworkId: string;
 }
-const GetCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/core-networks/{CoreNetworkId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetCoreNetworkRequest" }) as any as S.Schema<GetCoreNetworkRequest>;
+const GetCoreNetworkRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetCoreNetworkRequest>;
 export interface GetCoreNetworkResponse {
   CoreNetwork?: CoreNetwork;
 }
-const GetCoreNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CoreNetwork: S.optional(CoreNetwork) }),
-).annotate({ identifier: "GetCoreNetworkResponse" }) as any as S.Schema<GetCoreNetworkResponse>;
+const GetCoreNetworkResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetCoreNetworkResponse>;
 export interface GetCoreNetworkChangeEventsRequest {
   CoreNetworkId: string;
   PolicyVersionId: number;
   MaxResults?: number;
   NextToken?: string;
 }
-const GetCoreNetworkChangeEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/core-networks/{CoreNetworkId}/core-network-change-events/{PolicyVersionId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCoreNetworkChangeEventsRequest",
-}) as any as S.Schema<GetCoreNetworkChangeEventsRequest>;
+const GetCoreNetworkChangeEventsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetCoreNetworkChangeEventsRequest>;
 export type ChangeType =
   | "CORE_NETWORK_SEGMENT"
   | "NETWORK_FUNCTION_GROUP"
@@ -2352,16 +1507,12 @@ export interface RoutingPolicyAssociationDetail {
   RoutingPolicyNames?: string[];
   SharedSegments?: string[];
 }
-const RoutingPolicyAssociationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RoutingPolicyNames: S.optional(ConstrainedStringList),
-    SharedSegments: S.optional(ConstrainedStringList),
-  }),
-).annotate({
-  identifier: "RoutingPolicyAssociationDetail",
-}) as any as S.Schema<RoutingPolicyAssociationDetail>;
+const RoutingPolicyAssociationDetail = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<RoutingPolicyAssociationDetail>;
 export type RoutingPolicyAssociationDetailsList = RoutingPolicyAssociationDetail[];
-const RoutingPolicyAssociationDetailsList = /*@__PURE__*/ S.Array(RoutingPolicyAssociationDetail);
+const RoutingPolicyAssociationDetailsList = /*@__PURE__*/ __L.at(__c16, 0);
 export interface CoreNetworkChangeEventValues {
   EdgeLocation?: string;
   PeerEdgeLocation?: string;
@@ -2372,20 +1523,10 @@ export interface CoreNetworkChangeEventValues {
   Cidr?: string;
   RoutingPolicyAssociationDetails?: RoutingPolicyAssociationDetail[];
 }
-const CoreNetworkChangeEventValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EdgeLocation: S.optional(S.String),
-    PeerEdgeLocation: S.optional(S.String),
-    RoutingPolicyDirection: S.optional(RoutingPolicyDirection),
-    SegmentName: S.optional(S.String),
-    NetworkFunctionGroupName: S.optional(S.String),
-    AttachmentId: S.optional(S.String),
-    Cidr: S.optional(S.String),
-    RoutingPolicyAssociationDetails: S.optional(RoutingPolicyAssociationDetailsList),
-  }),
-).annotate({
-  identifier: "CoreNetworkChangeEventValues",
-}) as any as S.Schema<CoreNetworkChangeEventValues>;
+const CoreNetworkChangeEventValues = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<CoreNetworkChangeEventValues>;
 export interface CoreNetworkChangeEvent {
   Type?: ChangeType;
   Action?: ChangeAction;
@@ -2394,58 +1535,30 @@ export interface CoreNetworkChangeEvent {
   Status?: ChangeStatus;
   Values?: CoreNetworkChangeEventValues;
 }
-const CoreNetworkChangeEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(ChangeType),
-    Action: S.optional(ChangeAction),
-    IdentifierPath: S.optional(S.String),
-    EventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(ChangeStatus),
-    Values: S.optional(CoreNetworkChangeEventValues),
-  }),
-).annotate({ identifier: "CoreNetworkChangeEvent" }) as any as S.Schema<CoreNetworkChangeEvent>;
+const CoreNetworkChangeEvent = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<CoreNetworkChangeEvent>;
 export type CoreNetworkChangeEventList = CoreNetworkChangeEvent[];
-const CoreNetworkChangeEventList = /*@__PURE__*/ S.Array(CoreNetworkChangeEvent);
+const CoreNetworkChangeEventList = /*@__PURE__*/ __L.at(__c16, 3);
 export interface GetCoreNetworkChangeEventsResponse {
   CoreNetworkChangeEvents?: CoreNetworkChangeEvent[];
   NextToken?: string;
 }
-const GetCoreNetworkChangeEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkChangeEvents: S.optional(CoreNetworkChangeEventList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCoreNetworkChangeEventsResponse",
-}) as any as S.Schema<GetCoreNetworkChangeEventsResponse>;
+const GetCoreNetworkChangeEventsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetCoreNetworkChangeEventsResponse>;
 export interface GetCoreNetworkChangeSetRequest {
   CoreNetworkId: string;
   PolicyVersionId: number;
   MaxResults?: number;
   NextToken?: string;
 }
-const GetCoreNetworkChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/core-networks/{CoreNetworkId}/core-network-change-sets/{PolicyVersionId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCoreNetworkChangeSetRequest",
-}) as any as S.Schema<GetCoreNetworkChangeSetRequest>;
+const GetCoreNetworkChangeSetRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetCoreNetworkChangeSetRequest>;
 export type SegmentActionServiceInsertion = "send-via" | "send-to" | (string & {});
 const SegmentActionServiceInsertion = S.String;
 
@@ -2457,56 +1570,44 @@ const WhenSentToSegmentsList = ExternalRegionCodeList as any as S.Schema<WhenSen
 export interface WhenSentTo {
   WhenSentToSegmentsList?: string[];
 }
-const WhenSentTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WhenSentToSegmentsList: S.optional(WhenSentToSegmentsList) }),
-).annotate({ identifier: "WhenSentTo" }) as any as S.Schema<WhenSentTo>;
+const WhenSentTo = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<WhenSentTo>;
 export interface NetworkFunctionGroup {
   Name?: string;
 }
-const NetworkFunctionGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "NetworkFunctionGroup" }) as any as S.Schema<NetworkFunctionGroup>;
+const NetworkFunctionGroup = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<NetworkFunctionGroup>;
 export type NetworkFunctionGroupList = NetworkFunctionGroup[];
-const NetworkFunctionGroupList = /*@__PURE__*/ S.Array(NetworkFunctionGroup);
+const NetworkFunctionGroupList = /*@__PURE__*/ __L.at(__c17, 0);
 export type EdgeSet = string[];
 const EdgeSet = ExternalRegionCodeList as any as S.Schema<EdgeSet>;
 export type EdgeSetList = string[][];
-const EdgeSetList = /*@__PURE__*/ S.Array(EdgeSet);
+const EdgeSetList = /*@__PURE__*/ __L.at(__c17, 1);
 export interface EdgeOverride {
   EdgeSets?: string[][];
   UseEdge?: string;
 }
-const EdgeOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EdgeSets: S.optional(EdgeSetList), UseEdge: S.optional(S.String) }),
-).annotate({ identifier: "EdgeOverride" }) as any as S.Schema<EdgeOverride>;
+const EdgeOverride = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<EdgeOverride>;
 export type WithEdgeOverridesList = EdgeOverride[];
-const WithEdgeOverridesList = /*@__PURE__*/ S.Array(EdgeOverride);
+const WithEdgeOverridesList = /*@__PURE__*/ __L.at(__c17, 3);
 export interface Via {
   NetworkFunctionGroups?: NetworkFunctionGroup[];
   WithEdgeOverrides?: EdgeOverride[];
 }
-const Via = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NetworkFunctionGroups: S.optional(NetworkFunctionGroupList),
-    WithEdgeOverrides: S.optional(WithEdgeOverridesList),
-  }),
-).annotate({ identifier: "Via" }) as any as S.Schema<Via>;
+const Via = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<Via>;
 export interface ServiceInsertionAction {
   Action?: SegmentActionServiceInsertion;
   Mode?: SendViaMode;
   WhenSentTo?: WhenSentTo;
   Via?: Via;
 }
-const ServiceInsertionAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(SegmentActionServiceInsertion),
-    Mode: S.optional(SendViaMode),
-    WhenSentTo: S.optional(WhenSentTo),
-    Via: S.optional(Via),
-  }),
-).annotate({ identifier: "ServiceInsertionAction" }) as any as S.Schema<ServiceInsertionAction>;
+const ServiceInsertionAction = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ServiceInsertionAction>;
 export type ServiceInsertionActionList = ServiceInsertionAction[];
-const ServiceInsertionActionList = /*@__PURE__*/ S.Array(ServiceInsertionAction);
+const ServiceInsertionActionList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface CoreNetworkChangeValues {
   SegmentName?: string;
   NetworkFunctionGroupName?: string;
@@ -2526,27 +1627,10 @@ export interface CoreNetworkChangeValues {
   AttachmentId?: string;
   RoutingPolicyAssociationDetails?: RoutingPolicyAssociationDetail[];
 }
-const CoreNetworkChangeValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SegmentName: S.optional(S.String),
-    NetworkFunctionGroupName: S.optional(S.String),
-    EdgeLocations: S.optional(ExternalRegionCodeList),
-    Asn: S.optional(S.Number),
-    Cidr: S.optional(S.String),
-    DestinationIdentifier: S.optional(S.String),
-    InsideCidrBlocks: S.optional(ConstrainedStringList),
-    SharedSegments: S.optional(ConstrainedStringList),
-    ServiceInsertionActions: S.optional(ServiceInsertionActionList),
-    VpnEcmpSupport: S.optional(S.Boolean),
-    DnsSupport: S.optional(S.Boolean),
-    SecurityGroupReferencingSupport: S.optional(S.Boolean),
-    RoutingPolicyDirection: S.optional(RoutingPolicyDirection),
-    RoutingPolicy: S.optional(S.String),
-    PeerEdgeLocations: S.optional(ExternalRegionCodeList),
-    AttachmentId: S.optional(S.String),
-    RoutingPolicyAssociationDetails: S.optional(RoutingPolicyAssociationDetailsList),
-  }),
-).annotate({ identifier: "CoreNetworkChangeValues" }) as any as S.Schema<CoreNetworkChangeValues>;
+const CoreNetworkChangeValues = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<CoreNetworkChangeValues>;
 export interface CoreNetworkChange {
   Type?: ChangeType;
   Action?: ChangeAction;
@@ -2555,53 +1639,26 @@ export interface CoreNetworkChange {
   NewValues?: CoreNetworkChangeValues;
   IdentifierPath?: string;
 }
-const CoreNetworkChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(ChangeType),
-    Action: S.optional(ChangeAction),
-    Identifier: S.optional(S.String),
-    PreviousValues: S.optional(CoreNetworkChangeValues),
-    NewValues: S.optional(CoreNetworkChangeValues),
-    IdentifierPath: S.optional(S.String),
-  }),
-).annotate({ identifier: "CoreNetworkChange" }) as any as S.Schema<CoreNetworkChange>;
+const CoreNetworkChange = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<CoreNetworkChange>;
 export type CoreNetworkChangeList = CoreNetworkChange[];
-const CoreNetworkChangeList = /*@__PURE__*/ S.Array(CoreNetworkChange);
+const CoreNetworkChangeList = /*@__PURE__*/ __L.at(__c18, 1);
 export interface GetCoreNetworkChangeSetResponse {
   CoreNetworkChanges?: CoreNetworkChange[];
   NextToken?: string;
 }
-const GetCoreNetworkChangeSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkChanges: S.optional(CoreNetworkChangeList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCoreNetworkChangeSetResponse",
-}) as any as S.Schema<GetCoreNetworkChangeSetResponse>;
+const GetCoreNetworkChangeSetResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetCoreNetworkChangeSetResponse>;
 export interface GetCoreNetworkPolicyRequest {
   CoreNetworkId: string;
   PolicyVersionId?: number;
   Alias?: CoreNetworkPolicyAlias;
 }
-const GetCoreNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    PolicyVersionId: S.optional(S.Number).pipe(T.HttpQuery("policyVersionId")),
-    Alias: S.optional(CoreNetworkPolicyAlias).pipe(T.HttpQuery("alias")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/core-networks/{CoreNetworkId}/core-network-policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCoreNetworkPolicyRequest",
-}) as any as S.Schema<GetCoreNetworkPolicyRequest>;
+const GetCoreNetworkPolicyRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetCoreNetworkPolicyRequest>;
 export interface GetCoreNetworkPolicyResponse {
   CoreNetworkPolicy?: CoreNetworkPolicy;
 }
@@ -2615,44 +1672,20 @@ export interface GetCustomerGatewayAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetCustomerGatewayAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    CustomerGatewayArns: S.optional(CustomerGatewayArnList).pipe(
-      T.HttpQuery("customerGatewayArns"),
-    ),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/global-networks/{GlobalNetworkId}/customer-gateway-associations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCustomerGatewayAssociationsRequest",
-}) as any as S.Schema<GetCustomerGatewayAssociationsRequest>;
+const GetCustomerGatewayAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetCustomerGatewayAssociationsRequest>;
 export type CustomerGatewayAssociationList = CustomerGatewayAssociation[];
-const CustomerGatewayAssociationList = /*@__PURE__*/ S.Array(CustomerGatewayAssociation);
+const CustomerGatewayAssociationList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface GetCustomerGatewayAssociationsResponse {
   CustomerGatewayAssociations?: CustomerGatewayAssociation[];
   NextToken?: string;
 }
-const GetCustomerGatewayAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CustomerGatewayAssociations: S.optional(CustomerGatewayAssociationList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCustomerGatewayAssociationsResponse",
-}) as any as S.Schema<GetCustomerGatewayAssociationsResponse>;
+const GetCustomerGatewayAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GetCustomerGatewayAssociationsResponse>;
 export type DeviceIdList = string[];
 const DeviceIdList = ExternalRegionCodeList as any as S.Schema<DeviceIdList>;
 export interface GetDevicesRequest {
@@ -2662,50 +1695,21 @@ export interface GetDevicesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    DeviceIds: S.optional(DeviceIdList).pipe(T.HttpQuery("deviceIds")),
-    SiteId: S.optional(S.String).pipe(T.HttpQuery("siteId")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/devices" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetDevicesRequest" }) as any as S.Schema<GetDevicesRequest>;
+const GetDevicesRequest = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<GetDevicesRequest>;
 export type DeviceList = Device[];
-const DeviceList = /*@__PURE__*/ S.Array(Device);
+const DeviceList = /*@__PURE__*/ __L.at(__c19, 0);
 export interface GetDevicesResponse {
   Devices?: Device[];
   NextToken?: string;
 }
-const GetDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Devices: S.optional(DeviceList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetDevicesResponse" }) as any as S.Schema<GetDevicesResponse>;
+const GetDevicesResponse = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<GetDevicesResponse>;
 export interface GetDirectConnectGatewayAttachmentRequest {
   AttachmentId: string;
 }
-const GetDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/direct-connect-gateway-attachments/{AttachmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetDirectConnectGatewayAttachmentRequest",
-}) as any as S.Schema<GetDirectConnectGatewayAttachmentRequest>;
+const GetDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<GetDirectConnectGatewayAttachmentRequest>;
 export interface GetDirectConnectGatewayAttachmentResponse {
   DirectConnectGatewayAttachment?: DirectConnectGatewayAttachment;
 }
@@ -2718,37 +1722,20 @@ export interface GetLinkAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetLinkAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    DeviceId: S.optional(S.String).pipe(T.HttpQuery("deviceId")),
-    LinkId: S.optional(S.String).pipe(T.HttpQuery("linkId")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/link-associations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetLinkAssociationsRequest",
-}) as any as S.Schema<GetLinkAssociationsRequest>;
+const GetLinkAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<GetLinkAssociationsRequest>;
 export type LinkAssociationList = LinkAssociation[];
-const LinkAssociationList = /*@__PURE__*/ S.Array(LinkAssociation);
+const LinkAssociationList = /*@__PURE__*/ __L.at(__c19, 4);
 export interface GetLinkAssociationsResponse {
   LinkAssociations?: LinkAssociation[];
   NextToken?: string;
 }
-const GetLinkAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LinkAssociations: S.optional(LinkAssociationList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetLinkAssociationsResponse",
-}) as any as S.Schema<GetLinkAssociationsResponse>;
+const GetLinkAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<GetLinkAssociationsResponse>;
 export type LinkIdList = string[];
 const LinkIdList = ExternalRegionCodeList as any as S.Schema<LinkIdList>;
 export interface GetLinksRequest {
@@ -2760,81 +1747,42 @@ export interface GetLinksRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetLinksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    LinkIds: S.optional(LinkIdList).pipe(T.HttpQuery("linkIds")),
-    SiteId: S.optional(S.String).pipe(T.HttpQuery("siteId")),
-    Type: S.optional(S.String).pipe(T.HttpQuery("type")),
-    Provider: S.optional(S.String).pipe(T.HttpQuery("provider")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/links" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetLinksRequest" }) as any as S.Schema<GetLinksRequest>;
+const GetLinksRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<GetLinksRequest>;
 export type LinkList = Link[];
-const LinkList = /*@__PURE__*/ S.Array(Link);
+const LinkList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface GetLinksResponse {
   Links?: Link[];
   NextToken?: string;
 }
-const GetLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Links: S.optional(LinkList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetLinksResponse" }) as any as S.Schema<GetLinksResponse>;
+const GetLinksResponse = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<GetLinksResponse>;
 export interface GetNetworkResourceCountsRequest {
   GlobalNetworkId: string;
   ResourceType?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const GetNetworkResourceCountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/network-resource-count" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetNetworkResourceCountsRequest",
-}) as any as S.Schema<GetNetworkResourceCountsRequest>;
+const GetNetworkResourceCountsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GetNetworkResourceCountsRequest>;
 export interface NetworkResourceCount {
   ResourceType?: string;
   Count?: number;
 }
-const NetworkResourceCount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceType: S.optional(S.String), Count: S.optional(S.Number) }),
-).annotate({ identifier: "NetworkResourceCount" }) as any as S.Schema<NetworkResourceCount>;
+const NetworkResourceCount = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<NetworkResourceCount>;
 export type NetworkResourceCountList = NetworkResourceCount[];
-const NetworkResourceCountList = /*@__PURE__*/ S.Array(NetworkResourceCount);
+const NetworkResourceCountList = /*@__PURE__*/ __L.at(__c20, 3);
 export interface GetNetworkResourceCountsResponse {
   NetworkResourceCounts?: NetworkResourceCount[];
   NextToken?: string;
 }
-const GetNetworkResourceCountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NetworkResourceCounts: S.optional(NetworkResourceCountList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNetworkResourceCountsResponse",
-}) as any as S.Schema<GetNetworkResourceCountsResponse>;
+const GetNetworkResourceCountsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GetNetworkResourceCountsResponse>;
 export interface GetNetworkResourceRelationshipsRequest {
   GlobalNetworkId: string;
   CoreNetworkId?: string;
@@ -2846,51 +1794,25 @@ export interface GetNetworkResourceRelationshipsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetNetworkResourceRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
-    RegisteredGatewayArn: S.optional(S.String).pipe(T.HttpQuery("registeredGatewayArn")),
-    AwsRegion: S.optional(S.String).pipe(T.HttpQuery("awsRegion")),
-    AccountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
-    ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
-    ResourceArn: S.optional(S.String).pipe(T.HttpQuery("resourceArn")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/global-networks/{GlobalNetworkId}/network-resource-relationships",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetNetworkResourceRelationshipsRequest",
-}) as any as S.Schema<GetNetworkResourceRelationshipsRequest>;
+const GetNetworkResourceRelationshipsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<GetNetworkResourceRelationshipsRequest>;
 export interface Relationship {
   From?: string;
   To?: string;
 }
-const Relationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ From: S.optional(S.String), To: S.optional(S.String) }),
-).annotate({ identifier: "Relationship" }) as any as S.Schema<Relationship>;
+const Relationship = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<Relationship>;
 export type RelationshipList = Relationship[];
-const RelationshipList = /*@__PURE__*/ S.Array(Relationship);
+const RelationshipList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface GetNetworkResourceRelationshipsResponse {
   Relationships?: Relationship[];
   NextToken?: string;
 }
-const GetNetworkResourceRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Relationships: S.optional(RelationshipList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetNetworkResourceRelationshipsResponse",
-}) as any as S.Schema<GetNetworkResourceRelationshipsResponse>;
+const GetNetworkResourceRelationshipsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetNetworkResourceRelationshipsResponse>;
 export interface GetNetworkResourcesRequest {
   GlobalNetworkId: string;
   CoreNetworkId?: string;
@@ -2902,35 +1824,12 @@ export interface GetNetworkResourcesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetNetworkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
-    RegisteredGatewayArn: S.optional(S.String).pipe(T.HttpQuery("registeredGatewayArn")),
-    AwsRegion: S.optional(S.String).pipe(T.HttpQuery("awsRegion")),
-    AccountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
-    ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
-    ResourceArn: S.optional(S.String).pipe(T.HttpQuery("resourceArn")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/network-resources" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetNetworkResourcesRequest",
-}) as any as S.Schema<GetNetworkResourcesRequest>;
+const GetNetworkResourcesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<GetNetworkResourcesRequest>;
 export type NetworkResourceMetadataMap = { [key: string]: string | undefined };
-const NetworkResourceMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const NetworkResourceMetadataMap = /*@__PURE__*/ __L.at(__c21, 2);
 export interface NetworkResource {
   RegisteredGatewayArn?: string;
   CoreNetworkId?: string;
@@ -2944,77 +1843,49 @@ export interface NetworkResource {
   Tags?: Tag[];
   Metadata?: { [key: string]: string | undefined };
 }
-const NetworkResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RegisteredGatewayArn: S.optional(S.String),
-    CoreNetworkId: S.optional(S.String),
-    AwsRegion: S.optional(S.String),
-    AccountId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    Definition: S.optional(S.String),
-    DefinitionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Tags: S.optional(TagList),
-    Metadata: S.optional(NetworkResourceMetadataMap),
-  }),
-).annotate({ identifier: "NetworkResource" }) as any as S.Schema<NetworkResource>;
+const NetworkResource = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<NetworkResource>;
 export type NetworkResourceList = NetworkResource[];
-const NetworkResourceList = /*@__PURE__*/ S.Array(NetworkResource);
+const NetworkResourceList = /*@__PURE__*/ __L.at(__c21, 4);
 export interface GetNetworkResourcesResponse {
   NetworkResources?: NetworkResource[];
   NextToken?: string;
 }
-const GetNetworkResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NetworkResources: S.optional(NetworkResourceList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetNetworkResourcesResponse",
-}) as any as S.Schema<GetNetworkResourcesResponse>;
+const GetNetworkResourcesResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GetNetworkResourcesResponse>;
 export interface CoreNetworkSegmentEdgeIdentifier {
   CoreNetworkId?: string;
   SegmentName?: string;
   EdgeLocation?: string;
 }
-const CoreNetworkSegmentEdgeIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    SegmentName: S.optional(S.String),
-    EdgeLocation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CoreNetworkSegmentEdgeIdentifier",
-}) as any as S.Schema<CoreNetworkSegmentEdgeIdentifier>;
+const CoreNetworkSegmentEdgeIdentifier = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<CoreNetworkSegmentEdgeIdentifier>;
 export interface CoreNetworkNetworkFunctionGroupIdentifier {
   CoreNetworkId?: string;
   NetworkFunctionGroupName?: string;
   EdgeLocation?: string;
 }
-const CoreNetworkNetworkFunctionGroupIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    NetworkFunctionGroupName: S.optional(S.String),
-    EdgeLocation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CoreNetworkNetworkFunctionGroupIdentifier",
-}) as any as S.Schema<CoreNetworkNetworkFunctionGroupIdentifier>;
+const CoreNetworkNetworkFunctionGroupIdentifier = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<CoreNetworkNetworkFunctionGroupIdentifier>;
 export interface RouteTableIdentifier {
   TransitGatewayRouteTableArn?: string;
   CoreNetworkSegmentEdge?: CoreNetworkSegmentEdgeIdentifier;
   CoreNetworkNetworkFunctionGroup?: CoreNetworkNetworkFunctionGroupIdentifier;
 }
-const RouteTableIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransitGatewayRouteTableArn: S.optional(S.String),
-    CoreNetworkSegmentEdge: S.optional(CoreNetworkSegmentEdgeIdentifier),
-    CoreNetworkNetworkFunctionGroup: S.optional(CoreNetworkNetworkFunctionGroupIdentifier),
-  }),
-).annotate({ identifier: "RouteTableIdentifier" }) as any as S.Schema<RouteTableIdentifier>;
+const RouteTableIdentifier = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<RouteTableIdentifier>;
 export type RouteState = "ACTIVE" | "BLACKHOLE" | (string & {});
 const RouteState = S.String;
 
 export type RouteStateList = RouteState[];
-const RouteStateList = /*@__PURE__*/ S.Array(RouteState);
+const RouteStateList = /*@__PURE__*/ __L.at(__c22, 1);
 export type RouteType = "PROPAGATED" | "STATIC" | (string & {});
 const RouteType = S.String;
 
@@ -3025,7 +1896,7 @@ export type FilterValue = string;
 export type FilterValues = string[];
 const FilterValues = ExternalRegionCodeList as any as S.Schema<FilterValues>;
 export type FilterMap = { [key: string]: string[] | undefined };
-const FilterMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FilterValues.pipe(S.optional));
+const FilterMap = /*@__PURE__*/ __L.at(__c22, 2);
 export interface GetNetworkRoutesRequest {
   GlobalNetworkId: string;
   RouteTableIdentifier: RouteTableIdentifier;
@@ -3038,29 +1909,10 @@ export interface GetNetworkRoutesRequest {
   Types?: RouteType[];
   DestinationFilters?: { [key: string]: string[] | undefined };
 }
-const GetNetworkRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    RouteTableIdentifier: RouteTableIdentifier,
-    ExactCidrMatches: S.optional(ConstrainedStringList),
-    LongestPrefixMatches: S.optional(ConstrainedStringList),
-    SubnetOfMatches: S.optional(ConstrainedStringList),
-    SupernetOfMatches: S.optional(ConstrainedStringList),
-    PrefixListIds: S.optional(ConstrainedStringList),
-    States: S.optional(RouteStateList),
-    Types: S.optional(RouteTypeList),
-    DestinationFilters: S.optional(FilterMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/network-routes" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetNetworkRoutesRequest" }) as any as S.Schema<GetNetworkRoutesRequest>;
+const GetNetworkRoutesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GetNetworkRoutesRequest>;
 export type RouteTableType =
   | "TRANSIT_GATEWAY_ROUTE_TABLE"
   | "CORE_NETWORK_SEGMENT"
@@ -3078,19 +1930,12 @@ export interface NetworkRouteDestination {
   ResourceType?: string;
   ResourceId?: string;
 }
-const NetworkRouteDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkAttachmentId: S.optional(S.String),
-    TransitGatewayAttachmentId: S.optional(S.String),
-    SegmentName: S.optional(S.String),
-    NetworkFunctionGroupName: S.optional(S.String),
-    EdgeLocation: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-  }),
-).annotate({ identifier: "NetworkRouteDestination" }) as any as S.Schema<NetworkRouteDestination>;
+const NetworkRouteDestination = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<NetworkRouteDestination>;
 export type NetworkRouteDestinationList = NetworkRouteDestination[];
-const NetworkRouteDestinationList = /*@__PURE__*/ S.Array(NetworkRouteDestination);
+const NetworkRouteDestinationList = /*@__PURE__*/ __L.at(__c22, 5);
 export interface NetworkRoute {
   DestinationCidrBlock?: string;
   Destinations?: NetworkRouteDestination[];
@@ -3098,17 +1943,9 @@ export interface NetworkRoute {
   State?: RouteState;
   Type?: RouteType;
 }
-const NetworkRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DestinationCidrBlock: S.optional(S.String),
-    Destinations: S.optional(NetworkRouteDestinationList),
-    PrefixListId: S.optional(S.String),
-    State: S.optional(RouteState),
-    Type: S.optional(RouteType),
-  }),
-).annotate({ identifier: "NetworkRoute" }) as any as S.Schema<NetworkRoute>;
+const NetworkRoute = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<NetworkRoute>;
 export type NetworkRouteList = NetworkRoute[];
-const NetworkRouteList = /*@__PURE__*/ S.Array(NetworkRoute);
+const NetworkRouteList = /*@__PURE__*/ __L.at(__c22, 7);
 export interface GetNetworkRoutesResponse {
   RouteTableArn?: string;
   CoreNetworkSegmentEdge?: CoreNetworkSegmentEdgeIdentifier;
@@ -3116,15 +1953,10 @@ export interface GetNetworkRoutesResponse {
   RouteTableTimestamp?: Date;
   NetworkRoutes?: NetworkRoute[];
 }
-const GetNetworkRoutesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RouteTableArn: S.optional(S.String),
-    CoreNetworkSegmentEdge: S.optional(CoreNetworkSegmentEdgeIdentifier),
-    RouteTableType: S.optional(RouteTableType),
-    RouteTableTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    NetworkRoutes: S.optional(NetworkRouteList),
-  }),
-).annotate({ identifier: "GetNetworkRoutesResponse" }) as any as S.Schema<GetNetworkRoutesResponse>;
+const GetNetworkRoutesResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<GetNetworkRoutesResponse>;
 export interface GetNetworkTelemetryRequest {
   GlobalNetworkId: string;
   CoreNetworkId?: string;
@@ -3136,30 +1968,10 @@ export interface GetNetworkTelemetryRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetNetworkTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
-    RegisteredGatewayArn: S.optional(S.String).pipe(T.HttpQuery("registeredGatewayArn")),
-    AwsRegion: S.optional(S.String).pipe(T.HttpQuery("awsRegion")),
-    AccountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
-    ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
-    ResourceArn: S.optional(S.String).pipe(T.HttpQuery("resourceArn")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/network-telemetry" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetNetworkTelemetryRequest",
-}) as any as S.Schema<GetNetworkTelemetryRequest>;
+const GetNetworkTelemetryRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GetNetworkTelemetryRequest>;
 export type ConnectionType = "BGP" | "IPSEC" | (string & {});
 const ConnectionType = S.String;
 
@@ -3171,13 +1983,7 @@ export interface ConnectionHealth {
   Status?: ConnectionStatus;
   Timestamp?: Date;
 }
-const ConnectionHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(ConnectionType),
-    Status: S.optional(ConnectionStatus),
-    Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ConnectionHealth" }) as any as S.Schema<ConnectionHealth>;
+const ConnectionHealth = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<ConnectionHealth>;
 export interface NetworkTelemetry {
   RegisteredGatewayArn?: string;
   CoreNetworkId?: string;
@@ -3189,76 +1995,40 @@ export interface NetworkTelemetry {
   Address?: string;
   Health?: ConnectionHealth;
 }
-const NetworkTelemetry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RegisteredGatewayArn: S.optional(S.String),
-    CoreNetworkId: S.optional(S.String),
-    AwsRegion: S.optional(S.String),
-    AccountId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    Address: S.optional(S.String),
-    Health: S.optional(ConnectionHealth),
-  }),
-).annotate({ identifier: "NetworkTelemetry" }) as any as S.Schema<NetworkTelemetry>;
+const NetworkTelemetry = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<NetworkTelemetry>;
 export type NetworkTelemetryList = NetworkTelemetry[];
-const NetworkTelemetryList = /*@__PURE__*/ S.Array(NetworkTelemetry);
+const NetworkTelemetryList = /*@__PURE__*/ __L.at(__c23, 4);
 export interface GetNetworkTelemetryResponse {
   NetworkTelemetry?: NetworkTelemetry[];
   NextToken?: string;
 }
-const GetNetworkTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NetworkTelemetry: S.optional(NetworkTelemetryList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetNetworkTelemetryResponse",
-}) as any as S.Schema<GetNetworkTelemetryResponse>;
+const GetNetworkTelemetryResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<GetNetworkTelemetryResponse>;
 export interface GetResourcePolicyRequest {
   ResourceArn: string;
 }
-const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/resource-policy/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetResourcePolicyRequest" }) as any as S.Schema<GetResourcePolicyRequest>;
+const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GetResourcePolicyRequest>;
 export type SynthesizedJsonResourcePolicyDocument = string;
 export interface GetResourcePolicyResponse {
   PolicyDocument?: string;
 }
-const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PolicyDocument: S.optional(S.String) }),
-).annotate({
-  identifier: "GetResourcePolicyResponse",
-}) as any as S.Schema<GetResourcePolicyResponse>;
+const GetResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GetResourcePolicyResponse>;
 export interface GetRouteAnalysisRequest {
   GlobalNetworkId: string;
   RouteAnalysisId: string;
 }
-const GetRouteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    RouteAnalysisId: S.String.pipe(T.HttpLabel("RouteAnalysisId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/global-networks/{GlobalNetworkId}/route-analyses/{RouteAnalysisId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetRouteAnalysisRequest" }) as any as S.Schema<GetRouteAnalysisRequest>;
+const GetRouteAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GetRouteAnalysisRequest>;
 export type RouteAnalysisStatus = "RUNNING" | "COMPLETED" | "FAILED" | (string & {});
 const RouteAnalysisStatus = S.String;
 
@@ -3268,15 +2038,10 @@ export interface RouteAnalysisEndpointOptions {
   TransitGatewayArn?: string;
   IpAddress?: string;
 }
-const RouteAnalysisEndpointOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransitGatewayAttachmentArn: S.optional(S.String),
-    TransitGatewayArn: S.optional(S.String),
-    IpAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RouteAnalysisEndpointOptions",
-}) as any as S.Schema<RouteAnalysisEndpointOptions>;
+const RouteAnalysisEndpointOptions = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<RouteAnalysisEndpointOptions>;
 export type RouteAnalysisCompletionResultCode = "CONNECTED" | "NOT_CONNECTED" | (string & {});
 const RouteAnalysisCompletionResultCode = S.String;
 
@@ -3304,13 +2069,10 @@ export interface RouteAnalysisCompletion {
   ReasonCode?: RouteAnalysisCompletionReasonCode;
   ReasonContext?: { [key: string]: string | undefined };
 }
-const RouteAnalysisCompletion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResultCode: S.optional(RouteAnalysisCompletionResultCode),
-    ReasonCode: S.optional(RouteAnalysisCompletionReasonCode),
-    ReasonContext: S.optional(ReasonContextMap),
-  }),
-).annotate({ identifier: "RouteAnalysisCompletion" }) as any as S.Schema<RouteAnalysisCompletion>;
+const RouteAnalysisCompletion = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<RouteAnalysisCompletion>;
 export interface NetworkResourceSummary {
   RegisteredGatewayArn?: string;
   ResourceArn?: string;
@@ -3319,40 +2081,23 @@ export interface NetworkResourceSummary {
   NameTag?: string;
   IsMiddlebox?: boolean;
 }
-const NetworkResourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RegisteredGatewayArn: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    Definition: S.optional(S.String),
-    NameTag: S.optional(S.String),
-    IsMiddlebox: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "NetworkResourceSummary" }) as any as S.Schema<NetworkResourceSummary>;
+const NetworkResourceSummary = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<NetworkResourceSummary>;
 export interface PathComponent {
   Sequence?: number;
   Resource?: NetworkResourceSummary;
   DestinationCidrBlock?: string;
 }
-const PathComponent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Sequence: S.optional(S.Number),
-    Resource: S.optional(NetworkResourceSummary),
-    DestinationCidrBlock: S.optional(S.String),
-  }),
-).annotate({ identifier: "PathComponent" }) as any as S.Schema<PathComponent>;
+const PathComponent = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<PathComponent>;
 export type PathComponentList = PathComponent[];
-const PathComponentList = /*@__PURE__*/ S.Array(PathComponent);
+const PathComponentList = /*@__PURE__*/ __L.at(__c24, 5);
 export interface RouteAnalysisPath {
   CompletionStatus?: RouteAnalysisCompletion;
   Path?: PathComponent[];
 }
-const RouteAnalysisPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CompletionStatus: S.optional(RouteAnalysisCompletion),
-    Path: S.optional(PathComponentList),
-  }),
-).annotate({ identifier: "RouteAnalysisPath" }) as any as S.Schema<RouteAnalysisPath>;
+const RouteAnalysisPath = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<RouteAnalysisPath>;
 export interface RouteAnalysis {
   GlobalNetworkId?: string;
   OwnerAccountId?: string;
@@ -3366,27 +2111,14 @@ export interface RouteAnalysis {
   ForwardPath?: RouteAnalysisPath;
   ReturnPath?: RouteAnalysisPath;
 }
-const RouteAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.optional(S.String),
-    OwnerAccountId: S.optional(S.String),
-    RouteAnalysisId: S.optional(S.String),
-    StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(RouteAnalysisStatus),
-    Source: S.optional(RouteAnalysisEndpointOptions),
-    Destination: S.optional(RouteAnalysisEndpointOptions),
-    IncludeReturnPath: S.optional(S.Boolean),
-    UseMiddleboxes: S.optional(S.Boolean),
-    ForwardPath: S.optional(RouteAnalysisPath),
-    ReturnPath: S.optional(RouteAnalysisPath),
-  }),
-).annotate({ identifier: "RouteAnalysis" }) as any as S.Schema<RouteAnalysis>;
+const RouteAnalysis = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<RouteAnalysis>;
 export interface GetRouteAnalysisResponse {
   RouteAnalysis?: RouteAnalysis;
 }
-const GetRouteAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RouteAnalysis: S.optional(RouteAnalysis) }),
-).annotate({ identifier: "GetRouteAnalysisResponse" }) as any as S.Schema<GetRouteAnalysisResponse>;
+const GetRouteAnalysisResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<GetRouteAnalysisResponse>;
 export type SiteIdList = string[];
 const SiteIdList = ExternalRegionCodeList as any as S.Schema<SiteIdList>;
 export interface GetSitesRequest {
@@ -3395,49 +2127,21 @@ export interface GetSitesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    SiteIds: S.optional(SiteIdList).pipe(T.HttpQuery("siteIds")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/sites" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSitesRequest" }) as any as S.Schema<GetSitesRequest>;
+const GetSitesRequest = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<GetSitesRequest>;
 export type SiteList = Site[];
-const SiteList = /*@__PURE__*/ S.Array(Site);
+const SiteList = /*@__PURE__*/ __L.at(__c25, 2);
 export interface GetSitesResponse {
   Sites?: Site[];
   NextToken?: string;
 }
-const GetSitesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Sites: S.optional(SiteList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetSitesResponse" }) as any as S.Schema<GetSitesResponse>;
+const GetSitesResponse = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<GetSitesResponse>;
 export interface GetSiteToSiteVpnAttachmentRequest {
   AttachmentId: string;
 }
-const GetSiteToSiteVpnAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/site-to-site-vpn-attachments/{AttachmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSiteToSiteVpnAttachmentRequest",
-}) as any as S.Schema<GetSiteToSiteVpnAttachmentRequest>;
+const GetSiteToSiteVpnAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<GetSiteToSiteVpnAttachmentRequest>;
 export interface GetSiteToSiteVpnAttachmentResponse {
   SiteToSiteVpnAttachment?: SiteToSiteVpnAttachment;
 }
@@ -3452,63 +2156,27 @@ export interface GetTransitGatewayConnectPeerAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetTransitGatewayConnectPeerAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    TransitGatewayConnectPeerArns: S.optional(TransitGatewayConnectPeerArnList).pipe(
-      T.HttpQuery("transitGatewayConnectPeerArns"),
-    ),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/global-networks/{GlobalNetworkId}/transit-gateway-connect-peer-associations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTransitGatewayConnectPeerAssociationsRequest",
-}) as any as S.Schema<GetTransitGatewayConnectPeerAssociationsRequest>;
+const GetTransitGatewayConnectPeerAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GetTransitGatewayConnectPeerAssociationsRequest>;
 export type TransitGatewayConnectPeerAssociationList = TransitGatewayConnectPeerAssociation[];
-const TransitGatewayConnectPeerAssociationList = /*@__PURE__*/ S.Array(
-  TransitGatewayConnectPeerAssociation,
-);
+const TransitGatewayConnectPeerAssociationList = /*@__PURE__*/ __L.at(__c25, 6);
 export interface GetTransitGatewayConnectPeerAssociationsResponse {
   TransitGatewayConnectPeerAssociations?: TransitGatewayConnectPeerAssociation[];
   NextToken?: string;
 }
-const GetTransitGatewayConnectPeerAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransitGatewayConnectPeerAssociations: S.optional(TransitGatewayConnectPeerAssociationList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTransitGatewayConnectPeerAssociationsResponse",
-}) as any as S.Schema<GetTransitGatewayConnectPeerAssociationsResponse>;
+const GetTransitGatewayConnectPeerAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GetTransitGatewayConnectPeerAssociationsResponse>;
 export interface GetTransitGatewayPeeringRequest {
   PeeringId: string;
 }
-const GetTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PeeringId: S.String.pipe(T.HttpLabel("PeeringId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/transit-gateway-peerings/{PeeringId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTransitGatewayPeeringRequest",
-}) as any as S.Schema<GetTransitGatewayPeeringRequest>;
+const GetTransitGatewayPeeringRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GetTransitGatewayPeeringRequest>;
 export interface GetTransitGatewayPeeringResponse {
   TransitGatewayPeering?: TransitGatewayPeering;
 }
@@ -3522,59 +2190,27 @@ export interface GetTransitGatewayRegistrationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetTransitGatewayRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    TransitGatewayArns: S.optional(TransitGatewayArnList).pipe(T.HttpQuery("transitGatewayArns")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/global-networks/{GlobalNetworkId}/transit-gateway-registrations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTransitGatewayRegistrationsRequest",
-}) as any as S.Schema<GetTransitGatewayRegistrationsRequest>;
+const GetTransitGatewayRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<GetTransitGatewayRegistrationsRequest>;
 export type TransitGatewayRegistrationList = TransitGatewayRegistration[];
-const TransitGatewayRegistrationList = /*@__PURE__*/ S.Array(TransitGatewayRegistration);
+const TransitGatewayRegistrationList = /*@__PURE__*/ __L.at(__c26, 2);
 export interface GetTransitGatewayRegistrationsResponse {
   TransitGatewayRegistrations?: TransitGatewayRegistration[];
   NextToken?: string;
 }
-const GetTransitGatewayRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransitGatewayRegistrations: S.optional(TransitGatewayRegistrationList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTransitGatewayRegistrationsResponse",
-}) as any as S.Schema<GetTransitGatewayRegistrationsResponse>;
+const GetTransitGatewayRegistrationsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<GetTransitGatewayRegistrationsResponse>;
 export interface GetTransitGatewayRouteTableAttachmentRequest {
   AttachmentId: string;
 }
-const GetTransitGatewayRouteTableAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/transit-gateway-route-table-attachments/{AttachmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTransitGatewayRouteTableAttachmentRequest",
-}) as any as S.Schema<GetTransitGatewayRouteTableAttachmentRequest>;
+const GetTransitGatewayRouteTableAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<GetTransitGatewayRouteTableAttachmentRequest>;
 export interface GetTransitGatewayRouteTableAttachmentResponse {
   TransitGatewayRouteTableAttachment?: TransitGatewayRouteTableAttachment;
 }
@@ -3583,81 +2219,47 @@ const GetTransitGatewayRouteTableAttachmentResponse =
 export interface GetVpcAttachmentRequest {
   AttachmentId: string;
 }
-const GetVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/vpc-attachments/{AttachmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetVpcAttachmentRequest" }) as any as S.Schema<GetVpcAttachmentRequest>;
+const GetVpcAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<GetVpcAttachmentRequest>;
 export interface GetVpcAttachmentResponse {
   VpcAttachment?: VpcAttachment;
 }
-const GetVpcAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcAttachment: S.optional(VpcAttachment) }),
-).annotate({ identifier: "GetVpcAttachmentResponse" }) as any as S.Schema<GetVpcAttachmentResponse>;
+const GetVpcAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<GetVpcAttachmentResponse>;
 export interface ListAttachmentRoutingPolicyAssociationsRequest {
   CoreNetworkId: string;
   AttachmentId?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAttachmentRoutingPolicyAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    AttachmentId: S.optional(S.String).pipe(T.HttpQuery("attachmentId")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/routing-policy-label/core-network/{CoreNetworkId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAttachmentRoutingPolicyAssociationsRequest",
-}) as any as S.Schema<ListAttachmentRoutingPolicyAssociationsRequest>;
+const ListAttachmentRoutingPolicyAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ListAttachmentRoutingPolicyAssociationsRequest>;
 export interface AttachmentRoutingPolicyAssociationSummary {
   AttachmentId?: string;
   PendingRoutingPolicies?: string[];
   AssociatedRoutingPolicies?: string[];
   RoutingPolicyLabel?: string;
 }
-const AttachmentRoutingPolicyAssociationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AttachmentId: S.optional(S.String),
-    PendingRoutingPolicies: S.optional(ConstrainedStringList),
-    AssociatedRoutingPolicies: S.optional(ConstrainedStringList),
-    RoutingPolicyLabel: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AttachmentRoutingPolicyAssociationSummary",
-}) as any as S.Schema<AttachmentRoutingPolicyAssociationSummary>;
+const AttachmentRoutingPolicyAssociationSummary = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<AttachmentRoutingPolicyAssociationSummary>;
 export type AttachmentRoutingPolicyAssociationsList = AttachmentRoutingPolicyAssociationSummary[];
-const AttachmentRoutingPolicyAssociationsList = /*@__PURE__*/ S.Array(
-  AttachmentRoutingPolicyAssociationSummary,
-);
+const AttachmentRoutingPolicyAssociationsList = /*@__PURE__*/ __L.at(__c27, 1);
 export interface ListAttachmentRoutingPolicyAssociationsResponse {
   AttachmentRoutingPolicyAssociations?: AttachmentRoutingPolicyAssociationSummary[];
   NextToken?: string;
 }
-const ListAttachmentRoutingPolicyAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AttachmentRoutingPolicyAssociations: S.optional(AttachmentRoutingPolicyAssociationsList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAttachmentRoutingPolicyAssociationsResponse",
-}) as any as S.Schema<ListAttachmentRoutingPolicyAssociationsResponse>;
+const ListAttachmentRoutingPolicyAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListAttachmentRoutingPolicyAssociationsResponse>;
 export interface ListAttachmentsRequest {
   CoreNetworkId?: string;
   AttachmentType?: AttachmentType;
@@ -3666,39 +2268,30 @@ export interface ListAttachmentsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
-    AttachmentType: S.optional(AttachmentType).pipe(T.HttpQuery("attachmentType")),
-    EdgeLocation: S.optional(S.String).pipe(T.HttpQuery("edgeLocation")),
-    State: S.optional(AttachmentState).pipe(T.HttpQuery("state")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/attachments" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListAttachmentsRequest" }) as any as S.Schema<ListAttachmentsRequest>;
+const ListAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListAttachmentsRequest>;
 export type AttachmentList = Attachment[];
-const AttachmentList = /*@__PURE__*/ S.Array(Attachment);
+const AttachmentList = /*@__PURE__*/ __L.at(__c27, 4);
 export interface ListAttachmentsResponse {
   Attachments?: Attachment[];
   NextToken?: string;
 }
-const ListAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attachments: S.optional(AttachmentList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListAttachmentsResponse" }) as any as S.Schema<ListAttachmentsResponse>;
+const ListAttachmentsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<ListAttachmentsResponse>;
 export interface ListConnectPeersRequest {
   CoreNetworkId?: string;
   ConnectAttachmentId?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListConnectPeersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
-    ConnectAttachmentId: S.optional(S.String).pipe(T.HttpQuery("connectAttachmentId")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/connect-peers" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListConnectPeersRequest" }) as any as S.Schema<ListConnectPeersRequest>;
+const ListConnectPeersRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ListConnectPeersRequest>;
 export interface ConnectPeerSummary {
   CoreNetworkId?: string;
   ConnectAttachmentId?: string;
@@ -3709,50 +2302,26 @@ export interface ConnectPeerSummary {
   Tags?: Tag[];
   SubnetArn?: string;
 }
-const ConnectPeerSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    ConnectAttachmentId: S.optional(S.String),
-    ConnectPeerId: S.optional(S.String),
-    EdgeLocation: S.optional(S.String),
-    ConnectPeerState: S.optional(ConnectPeerState),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Tags: S.optional(TagList),
-    SubnetArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConnectPeerSummary" }) as any as S.Schema<ConnectPeerSummary>;
+const ConnectPeerSummary = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<ConnectPeerSummary>;
 export type ConnectPeerSummaryList = ConnectPeerSummary[];
-const ConnectPeerSummaryList = /*@__PURE__*/ S.Array(ConnectPeerSummary);
+const ConnectPeerSummaryList = /*@__PURE__*/ __L.at(__c28, 0);
 export interface ListConnectPeersResponse {
   ConnectPeers?: ConnectPeerSummary[];
   NextToken?: string;
 }
-const ListConnectPeersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectPeers: S.optional(ConnectPeerSummaryList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListConnectPeersResponse" }) as any as S.Schema<ListConnectPeersResponse>;
+const ListConnectPeersResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ListConnectPeersResponse>;
 export interface ListCoreNetworkPolicyVersionsRequest {
   CoreNetworkId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListCoreNetworkPolicyVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/core-networks/{CoreNetworkId}/core-network-policy-versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCoreNetworkPolicyVersionsRequest",
-}) as any as S.Schema<ListCoreNetworkPolicyVersionsRequest>;
+const ListCoreNetworkPolicyVersionsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<ListCoreNetworkPolicyVersionsRequest>;
 export interface CoreNetworkPolicyVersion {
   CoreNetworkId?: string;
   PolicyVersionId?: number;
@@ -3761,81 +2330,49 @@ export interface CoreNetworkPolicyVersion {
   CreatedAt?: Date;
   ChangeSetState?: ChangeSetState;
 }
-const CoreNetworkPolicyVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    PolicyVersionId: S.optional(S.Number),
-    Alias: S.optional(CoreNetworkPolicyAlias),
-    Description: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ChangeSetState: S.optional(ChangeSetState),
-  }),
-).annotate({ identifier: "CoreNetworkPolicyVersion" }) as any as S.Schema<CoreNetworkPolicyVersion>;
+const CoreNetworkPolicyVersion = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<CoreNetworkPolicyVersion>;
 export type CoreNetworkPolicyVersionList = CoreNetworkPolicyVersion[];
-const CoreNetworkPolicyVersionList = /*@__PURE__*/ S.Array(CoreNetworkPolicyVersion);
+const CoreNetworkPolicyVersionList = /*@__PURE__*/ __L.at(__c28, 4);
 export interface ListCoreNetworkPolicyVersionsResponse {
   CoreNetworkPolicyVersions?: CoreNetworkPolicyVersion[];
   NextToken?: string;
 }
-const ListCoreNetworkPolicyVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkPolicyVersions: S.optional(CoreNetworkPolicyVersionList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCoreNetworkPolicyVersionsResponse",
-}) as any as S.Schema<ListCoreNetworkPolicyVersionsResponse>;
+const ListCoreNetworkPolicyVersionsResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<ListCoreNetworkPolicyVersionsResponse>;
 export interface ListCoreNetworkPrefixListAssociationsRequest {
   CoreNetworkId: string;
   PrefixListArn?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListCoreNetworkPrefixListAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    PrefixListArn: S.optional(S.String).pipe(T.HttpQuery("prefixListArn")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/prefix-list/core-network/{CoreNetworkId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCoreNetworkPrefixListAssociationsRequest",
-}) as any as S.Schema<ListCoreNetworkPrefixListAssociationsRequest>;
+const ListCoreNetworkPrefixListAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<ListCoreNetworkPrefixListAssociationsRequest>;
 export interface PrefixListAssociation {
   CoreNetworkId?: string;
   PrefixListArn?: string;
   PrefixListAlias?: string;
 }
-const PrefixListAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    PrefixListArn: S.optional(S.String),
-    PrefixListAlias: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrefixListAssociation" }) as any as S.Schema<PrefixListAssociation>;
+const PrefixListAssociation = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<PrefixListAssociation>;
 export type PrefixListAssociationList = PrefixListAssociation[];
-const PrefixListAssociationList = /*@__PURE__*/ S.Array(PrefixListAssociation);
+const PrefixListAssociationList = /*@__PURE__*/ __L.at(__c29, 0);
 export interface ListCoreNetworkPrefixListAssociationsResponse {
   PrefixListAssociations?: PrefixListAssociation[];
   NextToken?: string;
 }
-const ListCoreNetworkPrefixListAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrefixListAssociations: S.optional(PrefixListAssociationList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCoreNetworkPrefixListAssociationsResponse",
-}) as any as S.Schema<ListCoreNetworkPrefixListAssociationsResponse>;
+const ListCoreNetworkPrefixListAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<ListCoreNetworkPrefixListAssociationsResponse>;
 export interface ListCoreNetworkRoutingInformationRequest {
   CoreNetworkId: string;
   SegmentName: string;
@@ -3848,34 +2385,10 @@ export interface ListCoreNetworkRoutingInformationRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListCoreNetworkRoutingInformationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    SegmentName: S.String,
-    EdgeLocation: S.String,
-    NextHopFilters: S.optional(FilterMap),
-    LocalPreferenceMatches: S.optional(ConstrainedStringList),
-    ExactAsPathMatches: S.optional(ConstrainedStringList),
-    MedMatches: S.optional(ConstrainedStringList),
-    CommunityMatches: S.optional(ConstrainedStringList),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/core-networks/{CoreNetworkId}/core-network-routing-information",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCoreNetworkRoutingInformationRequest",
-}) as any as S.Schema<ListCoreNetworkRoutingInformationRequest>;
+const ListCoreNetworkRoutingInformationRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<ListCoreNetworkRoutingInformationRequest>;
 export interface RoutingInformationNextHop {
   IpAddress?: string;
   CoreNetworkAttachmentId?: string;
@@ -3884,18 +2397,10 @@ export interface RoutingInformationNextHop {
   SegmentName?: string;
   EdgeLocation?: string;
 }
-const RoutingInformationNextHop = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IpAddress: S.optional(S.String),
-    CoreNetworkAttachmentId: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    SegmentName: S.optional(S.String),
-    EdgeLocation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoutingInformationNextHop",
-}) as any as S.Schema<RoutingInformationNextHop>;
+const RoutingInformationNextHop = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<RoutingInformationNextHop>;
 export interface CoreNetworkRoutingInformation {
   Prefix?: string;
   NextHop?: RoutingInformationNextHop;
@@ -3904,42 +2409,28 @@ export interface CoreNetworkRoutingInformation {
   AsPath?: string[];
   Communities?: string[];
 }
-const CoreNetworkRoutingInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Prefix: S.optional(S.String),
-    NextHop: S.optional(RoutingInformationNextHop),
-    LocalPreference: S.optional(S.String),
-    Med: S.optional(S.String),
-    AsPath: S.optional(ConstrainedStringList),
-    Communities: S.optional(ConstrainedStringList),
-  }),
-).annotate({
-  identifier: "CoreNetworkRoutingInformation",
-}) as any as S.Schema<CoreNetworkRoutingInformation>;
+const CoreNetworkRoutingInformation = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<CoreNetworkRoutingInformation>;
 export type CoreNetworkRoutingInformationList = CoreNetworkRoutingInformation[];
-const CoreNetworkRoutingInformationList = /*@__PURE__*/ S.Array(CoreNetworkRoutingInformation);
+const CoreNetworkRoutingInformationList = /*@__PURE__*/ __L.at(__c29, 5);
 export interface ListCoreNetworkRoutingInformationResponse {
   CoreNetworkRoutingInformation?: CoreNetworkRoutingInformation[];
   NextToken?: string;
 }
-const ListCoreNetworkRoutingInformationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkRoutingInformation: S.optional(CoreNetworkRoutingInformationList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCoreNetworkRoutingInformationResponse",
-}) as any as S.Schema<ListCoreNetworkRoutingInformationResponse>;
+const ListCoreNetworkRoutingInformationResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<ListCoreNetworkRoutingInformationResponse>;
 export interface ListCoreNetworksRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListCoreNetworksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/core-networks" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListCoreNetworksRequest" }) as any as S.Schema<ListCoreNetworksRequest>;
+const ListCoreNetworksRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<ListCoreNetworksRequest>;
 export interface CoreNetworkSummary {
   CoreNetworkId?: string;
   CoreNetworkArn?: string;
@@ -3949,47 +2440,25 @@ export interface CoreNetworkSummary {
   Description?: string;
   Tags?: Tag[];
 }
-const CoreNetworkSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    CoreNetworkArn: S.optional(S.String),
-    GlobalNetworkId: S.optional(S.String),
-    OwnerAccountId: S.optional(S.String),
-    State: S.optional(CoreNetworkState),
-    Description: S.optional(S.String),
-    Tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "CoreNetworkSummary" }) as any as S.Schema<CoreNetworkSummary>;
+const CoreNetworkSummary = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<CoreNetworkSummary>;
 export type CoreNetworkSummaryList = CoreNetworkSummary[];
-const CoreNetworkSummaryList = /*@__PURE__*/ S.Array(CoreNetworkSummary);
+const CoreNetworkSummaryList = /*@__PURE__*/ __L.at(__c30, 1);
 export interface ListCoreNetworksResponse {
   CoreNetworks?: CoreNetworkSummary[];
   NextToken?: string;
 }
-const ListCoreNetworksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CoreNetworks: S.optional(CoreNetworkSummaryList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListCoreNetworksResponse" }) as any as S.Schema<ListCoreNetworksResponse>;
+const ListCoreNetworksResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<ListCoreNetworksResponse>;
 export interface ListOrganizationServiceAccessStatusRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListOrganizationServiceAccessStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/organizations/service-access" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListOrganizationServiceAccessStatusRequest",
-}) as any as S.Schema<ListOrganizationServiceAccessStatusRequest>;
+const ListOrganizationServiceAccessStatusRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ListOrganizationServiceAccessStatusRequest>;
 export type OrganizationId = string;
 export type OrganizationAwsServiceAccessStatus = string;
 export type SLRDeploymentStatus = string;
@@ -3998,34 +2467,24 @@ export interface AccountStatus {
   AccountId?: string;
   SLRDeploymentStatus?: string;
 }
-const AccountStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String), SLRDeploymentStatus: S.optional(S.String) }),
-).annotate({ identifier: "AccountStatus" }) as any as S.Schema<AccountStatus>;
+const AccountStatus = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<AccountStatus>;
 export type AccountStatusList = AccountStatus[];
-const AccountStatusList = /*@__PURE__*/ S.Array(AccountStatus);
+const AccountStatusList = /*@__PURE__*/ __L.at(__c30, 5);
 export interface OrganizationStatus {
   OrganizationId?: string;
   OrganizationAwsServiceAccessStatus?: string;
   SLRDeploymentStatus?: string;
   AccountStatusList?: AccountStatus[];
 }
-const OrganizationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OrganizationId: S.optional(S.String),
-    OrganizationAwsServiceAccessStatus: S.optional(S.String),
-    SLRDeploymentStatus: S.optional(S.String),
-    AccountStatusList: S.optional(AccountStatusList).pipe(T.XmlName("OrganizationStatus")),
-  }),
-).annotate({ identifier: "OrganizationStatus" }) as any as S.Schema<OrganizationStatus>;
+const OrganizationStatus = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<OrganizationStatus>;
 export interface ListOrganizationServiceAccessStatusResponse {
   OrganizationStatus?: OrganizationStatus;
   NextToken?: string;
 }
-const ListOrganizationServiceAccessStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OrganizationStatus: S.optional(OrganizationStatus), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListOrganizationServiceAccessStatusResponse",
-}) as any as S.Schema<ListOrganizationServiceAccessStatusResponse>;
+const ListOrganizationServiceAccessStatusResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ListOrganizationServiceAccessStatusResponse>;
 export interface ListPeeringsRequest {
   CoreNetworkId?: string;
   PeeringType?: PeeringType;
@@ -4034,75 +2493,50 @@ export interface ListPeeringsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
-    PeeringType: S.optional(PeeringType).pipe(T.HttpQuery("peeringType")),
-    EdgeLocation: S.optional(S.String).pipe(T.HttpQuery("edgeLocation")),
-    State: S.optional(PeeringState).pipe(T.HttpQuery("state")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/peerings" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListPeeringsRequest" }) as any as S.Schema<ListPeeringsRequest>;
+const ListPeeringsRequest = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<ListPeeringsRequest>;
 export type PeeringList = Peering[];
-const PeeringList = /*@__PURE__*/ S.Array(Peering);
+const PeeringList = /*@__PURE__*/ __L.at(__c31, 1);
 export interface ListPeeringsResponse {
   Peerings?: Peering[];
   NextToken?: string;
 }
-const ListPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Peerings: S.optional(PeeringList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListPeeringsResponse" }) as any as S.Schema<ListPeeringsResponse>;
+const ListPeeringsResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<ListPeeringsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   TagList?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagList: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutAttachmentRoutingPolicyLabelRequest {
   CoreNetworkId: string;
   AttachmentId: string;
   RoutingPolicyLabel: string;
   ClientToken?: string;
 }
-const PutAttachmentRoutingPolicyLabelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String,
-    AttachmentId: S.String,
-    RoutingPolicyLabel: S.String,
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/routing-policy-label" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutAttachmentRoutingPolicyLabelRequest",
-}) as any as S.Schema<PutAttachmentRoutingPolicyLabelRequest>;
+const PutAttachmentRoutingPolicyLabelRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<PutAttachmentRoutingPolicyLabelRequest>;
 export interface PutAttachmentRoutingPolicyLabelResponse {
   CoreNetworkId?: string;
   AttachmentId?: string;
   RoutingPolicyLabel?: string;
 }
-const PutAttachmentRoutingPolicyLabelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.optional(S.String),
-    AttachmentId: S.optional(S.String),
-    RoutingPolicyLabel: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PutAttachmentRoutingPolicyLabelResponse",
-}) as any as S.Schema<PutAttachmentRoutingPolicyLabelResponse>;
+const PutAttachmentRoutingPolicyLabelResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<PutAttachmentRoutingPolicyLabelResponse>;
 export interface PutCoreNetworkPolicyRequest {
   CoreNetworkId: string;
   PolicyDocument: string;
@@ -4110,26 +2544,10 @@ export interface PutCoreNetworkPolicyRequest {
   LatestVersionId?: number;
   ClientToken?: string;
 }
-const PutCoreNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    PolicyDocument: S.String,
-    Description: S.optional(S.String),
-    LatestVersionId: S.optional(S.Number),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/core-networks/{CoreNetworkId}/core-network-policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutCoreNetworkPolicyRequest",
-}) as any as S.Schema<PutCoreNetworkPolicyRequest>;
+const PutCoreNetworkPolicyRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<PutCoreNetworkPolicyRequest>;
 export interface PutCoreNetworkPolicyResponse {
   CoreNetworkPolicy?: CoreNetworkPolicy;
 }
@@ -4139,21 +2557,10 @@ export interface PutResourcePolicyRequest {
   PolicyDocument: string;
   ResourceArn: string;
 }
-const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PolicyDocument: S.String,
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/resource-policy/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PutResourcePolicyRequest" }) as any as S.Schema<PutResourcePolicyRequest>;
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {}
 const PutResourcePolicyResponse =
   DeleteResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
@@ -4161,26 +2568,10 @@ export interface RegisterTransitGatewayRequest {
   GlobalNetworkId: string;
   TransitGatewayArn: string;
 }
-const RegisterTransitGatewayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    TransitGatewayArn: S.String,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/global-networks/{GlobalNetworkId}/transit-gateway-registrations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RegisterTransitGatewayRequest",
-}) as any as S.Schema<RegisterTransitGatewayRequest>;
+const RegisterTransitGatewayRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<RegisterTransitGatewayRequest>;
 export interface RegisterTransitGatewayResponse {
   TransitGatewayRegistration?: TransitGatewayRegistration;
 }
@@ -4189,18 +2580,10 @@ const RegisterTransitGatewayResponse =
 export interface RejectAttachmentRequest {
   AttachmentId: string;
 }
-const RejectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/attachments/{AttachmentId}/reject" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "RejectAttachmentRequest" }) as any as S.Schema<RejectAttachmentRequest>;
+const RejectAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<RejectAttachmentRequest>;
 export interface RejectAttachmentResponse {
   Attachment?: Attachment;
 }
@@ -4210,26 +2593,10 @@ export interface RemoveAttachmentRoutingPolicyLabelRequest {
   CoreNetworkId: string;
   AttachmentId: string;
 }
-const RemoveAttachmentRoutingPolicyLabelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/routing-policy-label/core-network/{CoreNetworkId}/attachment/{AttachmentId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RemoveAttachmentRoutingPolicyLabelRequest",
-}) as any as S.Schema<RemoveAttachmentRoutingPolicyLabelRequest>;
+const RemoveAttachmentRoutingPolicyLabelRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<RemoveAttachmentRoutingPolicyLabelRequest>;
 export interface RemoveAttachmentRoutingPolicyLabelResponse {
   CoreNetworkId?: string;
   AttachmentId?: string;
@@ -4241,26 +2608,10 @@ export interface RestoreCoreNetworkPolicyVersionRequest {
   CoreNetworkId: string;
   PolicyVersionId: number;
 }
-const RestoreCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/core-networks/{CoreNetworkId}/core-network-policy-versions/{PolicyVersionId}/restore",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RestoreCoreNetworkPolicyVersionRequest",
-}) as any as S.Schema<RestoreCoreNetworkPolicyVersionRequest>;
+const RestoreCoreNetworkPolicyVersionRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<RestoreCoreNetworkPolicyVersionRequest>;
 export interface RestoreCoreNetworkPolicyVersionResponse {
   CoreNetworkPolicy?: CoreNetworkPolicy;
 }
@@ -4270,37 +2621,25 @@ export type Action = string;
 export interface StartOrganizationServiceAccessUpdateRequest {
   Action: string;
 }
-const StartOrganizationServiceAccessUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Action: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/organizations/service-access" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartOrganizationServiceAccessUpdateRequest",
-}) as any as S.Schema<StartOrganizationServiceAccessUpdateRequest>;
+const StartOrganizationServiceAccessUpdateRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<StartOrganizationServiceAccessUpdateRequest>;
 export interface StartOrganizationServiceAccessUpdateResponse {
   OrganizationStatus?: OrganizationStatus;
 }
-const StartOrganizationServiceAccessUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OrganizationStatus: S.optional(OrganizationStatus) }),
-).annotate({
-  identifier: "StartOrganizationServiceAccessUpdateResponse",
-}) as any as S.Schema<StartOrganizationServiceAccessUpdateResponse>;
+const StartOrganizationServiceAccessUpdateResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<StartOrganizationServiceAccessUpdateResponse>;
 export interface RouteAnalysisEndpointOptionsSpecification {
   TransitGatewayAttachmentArn?: string;
   IpAddress?: string;
 }
-const RouteAnalysisEndpointOptionsSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TransitGatewayAttachmentArn: S.optional(S.String), IpAddress: S.optional(S.String) }),
-).annotate({
-  identifier: "RouteAnalysisEndpointOptionsSpecification",
-}) as any as S.Schema<RouteAnalysisEndpointOptionsSpecification>;
+const RouteAnalysisEndpointOptionsSpecification = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<RouteAnalysisEndpointOptionsSpecification>;
 export interface StartRouteAnalysisRequest {
   GlobalNetworkId: string;
   Source: RouteAnalysisEndpointOptionsSpecification;
@@ -4308,43 +2647,22 @@ export interface StartRouteAnalysisRequest {
   IncludeReturnPath?: boolean;
   UseMiddleboxes?: boolean;
 }
-const StartRouteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    Source: RouteAnalysisEndpointOptionsSpecification,
-    Destination: RouteAnalysisEndpointOptionsSpecification,
-    IncludeReturnPath: S.optional(S.Boolean),
-    UseMiddleboxes: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/route-analyses" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartRouteAnalysisRequest",
-}) as any as S.Schema<StartRouteAnalysisRequest>;
+const StartRouteAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<StartRouteAnalysisRequest>;
 export interface StartRouteAnalysisResponse {
   RouteAnalysis?: RouteAnalysis;
 }
-const StartRouteAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RouteAnalysis: S.optional(RouteAnalysis) }),
-).annotate({
-  identifier: "StartRouteAnalysisResponse",
-}) as any as S.Schema<StartRouteAnalysisResponse>;
+const StartRouteAnalysisResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<StartRouteAnalysisResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -4353,14 +2671,10 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse =
   DeleteResourcePolicyResponse as any as S.Schema<UntagResourceResponse>;
@@ -4371,27 +2685,10 @@ export interface UpdateConnectionRequest {
   ConnectedLinkId?: string;
   Description?: string;
 }
-const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")),
-    LinkId: S.optional(S.String),
-    ConnectedLinkId: S.optional(S.String),
-    Description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/global-networks/{GlobalNetworkId}/connections/{ConnectionId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateConnectionRequest" }) as any as S.Schema<UpdateConnectionRequest>;
+const UpdateConnectionRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<UpdateConnectionRequest>;
 export interface UpdateConnectionResponse {
   Connection?: Connection;
 }
@@ -4401,21 +2698,10 @@ export interface UpdateCoreNetworkRequest {
   CoreNetworkId: string;
   Description?: string;
 }
-const UpdateCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
-    Description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/core-networks/{CoreNetworkId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateCoreNetworkRequest" }) as any as S.Schema<UpdateCoreNetworkRequest>;
+const UpdateCoreNetworkRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<UpdateCoreNetworkRequest>;
 export interface UpdateCoreNetworkResponse {
   CoreNetwork?: CoreNetwork;
 }
@@ -4433,29 +2719,7 @@ export interface UpdateDeviceRequest {
   Location?: Location;
   SiteId?: string;
 }
-const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    DeviceId: S.String.pipe(T.HttpLabel("DeviceId")),
-    AWSLocation: S.optional(AWSLocation),
-    Description: S.optional(S.String),
-    Type: S.optional(S.String),
-    Vendor: S.optional(S.String),
-    Model: S.optional(S.String),
-    SerialNumber: S.optional(S.String),
-    Location: S.optional(Location),
-    SiteId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/global-networks/{GlobalNetworkId}/devices/{DeviceId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateDeviceRequest" }) as any as S.Schema<UpdateDeviceRequest>;
+const UpdateDeviceRequest = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<UpdateDeviceRequest>;
 export interface UpdateDeviceResponse {
   Device?: Device;
 }
@@ -4464,23 +2728,10 @@ export interface UpdateDirectConnectGatewayAttachmentRequest {
   AttachmentId: string;
   EdgeLocations?: string[];
 }
-const UpdateDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")),
-    EdgeLocations: S.optional(ExternalRegionCodeList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/direct-connect-gateway-attachments/{AttachmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateDirectConnectGatewayAttachmentRequest",
-}) as any as S.Schema<UpdateDirectConnectGatewayAttachmentRequest>;
+const UpdateDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<UpdateDirectConnectGatewayAttachmentRequest>;
 export interface UpdateDirectConnectGatewayAttachmentResponse {
   DirectConnectGatewayAttachment?: DirectConnectGatewayAttachment;
 }
@@ -4490,23 +2741,10 @@ export interface UpdateGlobalNetworkRequest {
   GlobalNetworkId: string;
   Description?: string;
 }
-const UpdateGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    Description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/global-networks/{GlobalNetworkId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateGlobalNetworkRequest",
-}) as any as S.Schema<UpdateGlobalNetworkRequest>;
+const UpdateGlobalNetworkRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<UpdateGlobalNetworkRequest>;
 export interface UpdateGlobalNetworkResponse {
   GlobalNetwork?: GlobalNetwork;
 }
@@ -4520,25 +2758,7 @@ export interface UpdateLinkRequest {
   Bandwidth?: Bandwidth;
   Provider?: string;
 }
-const UpdateLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    LinkId: S.String.pipe(T.HttpLabel("LinkId")),
-    Description: S.optional(S.String),
-    Type: S.optional(S.String),
-    Bandwidth: S.optional(Bandwidth),
-    Provider: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/global-networks/{GlobalNetworkId}/links/{LinkId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateLinkRequest" }) as any as S.Schema<UpdateLinkRequest>;
+const UpdateLinkRequest = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<UpdateLinkRequest>;
 export interface UpdateLinkResponse {
   Link?: Link;
 }
@@ -4548,59 +2768,25 @@ export interface UpdateNetworkResourceMetadataRequest {
   ResourceArn: string;
   Metadata: { [key: string]: string | undefined };
 }
-const UpdateNetworkResourceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    Metadata: NetworkResourceMetadataMap,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/global-networks/{GlobalNetworkId}/network-resources/{ResourceArn}/metadata",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateNetworkResourceMetadataRequest",
-}) as any as S.Schema<UpdateNetworkResourceMetadataRequest>;
+const UpdateNetworkResourceMetadataRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<UpdateNetworkResourceMetadataRequest>;
 export interface UpdateNetworkResourceMetadataResponse {
   ResourceArn?: string;
   Metadata?: { [key: string]: string | undefined };
 }
-const UpdateNetworkResourceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.optional(S.String), Metadata: S.optional(NetworkResourceMetadataMap) }),
-).annotate({
-  identifier: "UpdateNetworkResourceMetadataResponse",
-}) as any as S.Schema<UpdateNetworkResourceMetadataResponse>;
+const UpdateNetworkResourceMetadataResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<UpdateNetworkResourceMetadataResponse>;
 export interface UpdateSiteRequest {
   GlobalNetworkId: string;
   SiteId: string;
   Description?: string;
   Location?: Location;
 }
-const UpdateSiteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
-    SiteId: S.String.pipe(T.HttpLabel("SiteId")),
-    Description: S.optional(S.String),
-    Location: S.optional(Location),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/global-networks/{GlobalNetworkId}/sites/{SiteId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateSiteRequest" }) as any as S.Schema<UpdateSiteRequest>;
+const UpdateSiteRequest = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<UpdateSiteRequest>;
 export interface UpdateSiteResponse {
   Site?: Site;
 }
@@ -4611,25 +2797,10 @@ export interface UpdateVpcAttachmentRequest {
   RemoveSubnetArns?: string[];
   Options?: VpcOptions;
 }
-const UpdateVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")),
-    AddSubnetArns: S.optional(SubnetArnList),
-    RemoveSubnetArns: S.optional(SubnetArnList),
-    Options: S.optional(VpcOptions),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/vpc-attachments/{AttachmentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateVpcAttachmentRequest",
-}) as any as S.Schema<UpdateVpcAttachmentRequest>;
+const UpdateVpcAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<UpdateVpcAttachmentRequest>;
 export interface UpdateVpcAttachmentResponse {
   VpcAttachment?: VpcAttachment;
 }
@@ -4652,11 +2823,12 @@ export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c34, 7);
 export type AcceptAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -7852,3 +6024,3150 @@ export const updateVpcAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateVpcAttachment",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/attachments/{AttachmentId}/accept" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AcceptAttachmentRequest" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 3:
+      return S.Array(Tag);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Tags: S.optional(TagList),
+          AttachmentPolicyRuleNumber: S.optional(S.Number),
+          SegmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProposedSegmentChange" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Tags: S.optional(TagList),
+          AttachmentPolicyRuleNumber: S.optional(S.Number),
+          NetworkFunctionGroupName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProposedNetworkFunctionGroupChange",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Code: S.optional(AttachmentErrorCode),
+          Message: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          RequestId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttachmentError" });
+    case 7:
+      return S.Array(AttachmentError);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          CoreNetworkArn: S.optional(S.String),
+          AttachmentId: S.optional(S.String),
+          OwnerAccountId: S.optional(S.String),
+          AttachmentType: S.optional(AttachmentType),
+          State: S.optional(AttachmentState),
+          EdgeLocation: S.optional(S.String),
+          EdgeLocations: S.optional(ExternalRegionCodeList),
+          ResourceArn: S.optional(S.String),
+          AttachmentPolicyRuleNumber: S.optional(S.Number),
+          SegmentName: S.optional(S.String),
+          NetworkFunctionGroupName: S.optional(S.String),
+          Tags: S.optional(TagList),
+          ProposedSegmentChange: S.optional(ProposedSegmentChange),
+          ProposedNetworkFunctionGroupChange: S.optional(ProposedNetworkFunctionGroupChange),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastModificationErrors: S.optional(AttachmentErrorList),
+        }),
+      ).annotate({ identifier: "Attachment" });
+    case 1:
+      return S.suspend(() => S.Struct({ Attachment: S.optional(Attachment) })).annotate({
+        identifier: "AcceptAttachmentResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          ConnectPeerId: S.String,
+          DeviceId: S.String,
+          LinkId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/global-networks/{GlobalNetworkId}/connect-peer-associations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateConnectPeerRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectPeerId: S.optional(S.String),
+          GlobalNetworkId: S.optional(S.String),
+          DeviceId: S.optional(S.String),
+          LinkId: S.optional(S.String),
+          State: S.optional(ConnectPeerAssociationState),
+        }),
+      ).annotate({ identifier: "ConnectPeerAssociation" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ConnectPeerAssociation: S.optional(ConnectPeerAssociation) }),
+      ).annotate({
+        identifier: "AssociateConnectPeerResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CustomerGatewayArn: S.String,
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          DeviceId: S.String,
+          LinkId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/global-networks/{GlobalNetworkId}/customer-gateway-associations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateCustomerGatewayRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CustomerGatewayArn: S.optional(S.String),
+          GlobalNetworkId: S.optional(S.String),
+          DeviceId: S.optional(S.String),
+          LinkId: S.optional(S.String),
+          State: S.optional(CustomerGatewayAssociationState),
+        }),
+      ).annotate({
+        identifier: "CustomerGatewayAssociation",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ CustomerGatewayAssociation: S.optional(CustomerGatewayAssociation) }),
+      ).annotate({
+        identifier: "AssociateCustomerGatewayResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          DeviceId: S.String,
+          LinkId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/link-associations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AssociateLinkRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.optional(S.String),
+          DeviceId: S.optional(S.String),
+          LinkId: S.optional(S.String),
+          LinkAssociationState: S.optional(LinkAssociationState),
+        }),
+      ).annotate({ identifier: "LinkAssociation" });
+    case 2:
+      return S.suspend(() => S.Struct({ LinkAssociation: S.optional(LinkAssociation) })).annotate({
+        identifier: "AssociateLinkResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          TransitGatewayConnectPeerArn: S.String,
+          DeviceId: S.String,
+          LinkId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/global-networks/{GlobalNetworkId}/transit-gateway-connect-peer-associations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateTransitGatewayConnectPeerRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TransitGatewayConnectPeerArn: S.optional(S.String),
+          GlobalNetworkId: S.optional(S.String),
+          DeviceId: S.optional(S.String),
+          LinkId: S.optional(S.String),
+          State: S.optional(TransitGatewayConnectPeerAssociationState),
+        }),
+      ).annotate({
+        identifier: "TransitGatewayConnectPeerAssociation",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TransitGatewayConnectPeerAssociation: S.optional(TransitGatewayConnectPeerAssociation),
+        }),
+      ).annotate({
+        identifier: "AssociateTransitGatewayConnectPeerResponse",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ Protocol: S.optional(TunnelProtocol) })).annotate({
+        identifier: "ConnectAttachmentOptions",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String,
+          EdgeLocation: S.String,
+          TransportAttachmentId: S.String,
+          RoutingPolicyLabel: S.optional(S.String),
+          Options: ConnectAttachmentOptions,
+          Tags: S.optional(TagList),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/connect-attachments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateConnectAttachmentRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Attachment: S.optional(Attachment),
+          TransportAttachmentId: S.optional(S.String),
+          Options: S.optional(ConnectAttachmentOptions),
+        }),
+      ).annotate({ identifier: "ConnectAttachment" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ConnectAttachment: S.optional(ConnectAttachment) }),
+      ).annotate({
+        identifier: "CreateConnectAttachmentResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          DeviceId: S.String,
+          ConnectedDeviceId: S.String,
+          LinkId: S.optional(S.String),
+          ConnectedLinkId: S.optional(S.String),
+          Description: S.optional(S.String),
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/connections" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateConnectionRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectionId: S.optional(S.String),
+          ConnectionArn: S.optional(S.String),
+          GlobalNetworkId: S.optional(S.String),
+          DeviceId: S.optional(S.String),
+          ConnectedDeviceId: S.optional(S.String),
+          LinkId: S.optional(S.String),
+          ConnectedLinkId: S.optional(S.String),
+          Description: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          State: S.optional(ConnectionState),
+          Tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "Connection" });
+    case 4:
+      return S.suspend(() => S.Struct({ Connection: S.optional(Connection) })).annotate({
+        identifier: "CreateConnectionResponse",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ PeerAsn: S.optional(S.Number) })).annotate({
+        identifier: "BgpOptions",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectAttachmentId: S.String,
+          CoreNetworkAddress: S.optional(S.String),
+          PeerAddress: S.String,
+          BgpOptions: S.optional(BgpOptions),
+          InsideCidrBlocks: S.optional(ConstrainedStringList),
+          Tags: S.optional(TagList),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          SubnetArn: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/connect-peers" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateConnectPeerRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkAsn: S.optional(S.Number),
+          PeerAsn: S.optional(S.Number),
+          CoreNetworkAddress: S.optional(S.String),
+          PeerAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConnectPeerBgpConfiguration",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ConnectPeerBgpConfiguration);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkAddress: S.optional(S.String),
+          PeerAddress: S.optional(S.String),
+          InsideCidrBlocks: S.optional(ConstrainedStringList),
+          Protocol: S.optional(TunnelProtocol),
+          BgpConfigurations: S.optional(ConnectPeerBgpConfigurationList),
+        }),
+      ).annotate({ identifier: "ConnectPeerConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          ConnectAttachmentId: S.optional(S.String),
+          ConnectPeerId: S.optional(S.String),
+          EdgeLocation: S.optional(S.String),
+          State: S.optional(ConnectPeerState),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Configuration: S.optional(ConnectPeerConfiguration),
+          Tags: S.optional(TagList),
+          SubnetArn: S.optional(S.String),
+          LastModificationErrors: S.optional(ConnectPeerErrorList),
+        }),
+      ).annotate({ identifier: "ConnectPeer" });
+    case 3:
+      return S.suspend(() => S.Struct({ ConnectPeer: S.optional(ConnectPeer) })).annotate({
+        identifier: "CreateConnectPeerResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String,
+          Description: S.optional(S.String),
+          Tags: S.optional(TagList),
+          PolicyDocument: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/core-networks" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateCoreNetworkRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          EdgeLocations: S.optional(ExternalRegionCodeList),
+          SharedSegments: S.optional(ConstrainedStringList),
+        }),
+      ).annotate({ identifier: "CoreNetworkSegment" });
+    case 6:
+      return S.Array(CoreNetworkSegment);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SendVia: S.optional(ConstrainedStringList),
+          SendTo: S.optional(ConstrainedStringList),
+        }),
+      ).annotate({ identifier: "ServiceInsertionSegments" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          EdgeLocations: S.optional(ExternalRegionCodeList),
+          Segments: S.optional(ServiceInsertionSegments),
+        }),
+      ).annotate({
+        identifier: "CoreNetworkNetworkFunctionGroup",
+      });
+    case 1:
+      return S.Array(CoreNetworkNetworkFunctionGroup);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EdgeLocation: S.optional(S.String),
+          Asn: S.optional(S.Number),
+          InsideCidrBlocks: S.optional(ConstrainedStringList),
+        }),
+      ).annotate({ identifier: "CoreNetworkEdge" });
+    case 3:
+      return S.Array(CoreNetworkEdge);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.optional(S.String),
+          CoreNetworkId: S.optional(S.String),
+          CoreNetworkArn: S.optional(S.String),
+          Description: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          State: S.optional(CoreNetworkState),
+          Segments: S.optional(CoreNetworkSegmentList),
+          NetworkFunctionGroups: S.optional(CoreNetworkNetworkFunctionGroupList),
+          Edges: S.optional(CoreNetworkEdgeList),
+          Tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "CoreNetwork" });
+    case 5:
+      return S.suspend(() => S.Struct({ CoreNetwork: S.optional(CoreNetwork) })).annotate({
+        identifier: "CreateCoreNetworkResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String,
+          PrefixListArn: S.String,
+          PrefixListAlias: S.String,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/prefix-list" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateCoreNetworkPrefixListAssociationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          PrefixListArn: S.optional(S.String),
+          PrefixListAlias: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateCoreNetworkPrefixListAssociationResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Zone: S.optional(S.String), SubnetArn: S.optional(S.String) }),
+      ).annotate({ identifier: "AWSLocation" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          Latitude: S.optional(S.String),
+          Longitude: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Location" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          AWSLocation: S.optional(AWSLocation),
+          Description: S.optional(S.String),
+          Type: S.optional(S.String),
+          Vendor: S.optional(S.String),
+          Model: S.optional(S.String),
+          SerialNumber: S.optional(S.String),
+          Location: S.optional(Location),
+          SiteId: S.optional(S.String),
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/devices" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateDeviceRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DeviceId: S.optional(S.String),
+          DeviceArn: S.optional(S.String),
+          GlobalNetworkId: S.optional(S.String),
+          AWSLocation: S.optional(AWSLocation),
+          Description: S.optional(S.String),
+          Type: S.optional(S.String),
+          Vendor: S.optional(S.String),
+          Model: S.optional(S.String),
+          SerialNumber: S.optional(S.String),
+          Location: S.optional(Location),
+          SiteId: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          State: S.optional(DeviceState),
+          Tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "Device" });
+    case 4:
+      return S.suspend(() => S.Struct({ Device: S.optional(Device) })).annotate({
+        identifier: "CreateDeviceResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String,
+          DirectConnectGatewayArn: S.String,
+          RoutingPolicyLabel: S.optional(S.String),
+          EdgeLocations: ExternalRegionCodeList,
+          Tags: S.optional(TagList),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/direct-connect-gateway-attachments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDirectConnectGatewayAttachmentRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Attachment: S.optional(Attachment),
+          DirectConnectGatewayArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DirectConnectGatewayAttachment",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DirectConnectGatewayAttachment: S.optional(DirectConnectGatewayAttachment) }),
+      ).annotate({
+        identifier: "CreateDirectConnectGatewayAttachmentResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Description: S.optional(S.String), Tags: S.optional(TagList) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/global-networks" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateGlobalNetworkRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.optional(S.String),
+          GlobalNetworkArn: S.optional(S.String),
+          Description: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          State: S.optional(GlobalNetworkState),
+          Tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "GlobalNetwork" });
+    case 2:
+      return S.suspend(() => S.Struct({ GlobalNetwork: S.optional(GlobalNetwork) })).annotate({
+        identifier: "CreateGlobalNetworkResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ UploadSpeed: S.optional(S.Number), DownloadSpeed: S.optional(S.Number) }),
+      ).annotate({ identifier: "Bandwidth" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          Description: S.optional(S.String),
+          Type: S.optional(S.String),
+          Bandwidth: Bandwidth,
+          Provider: S.optional(S.String),
+          SiteId: S.String,
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/links" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateLinkRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          LinkId: S.optional(S.String),
+          LinkArn: S.optional(S.String),
+          GlobalNetworkId: S.optional(S.String),
+          SiteId: S.optional(S.String),
+          Description: S.optional(S.String),
+          Type: S.optional(S.String),
+          Bandwidth: S.optional(Bandwidth),
+          Provider: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          State: S.optional(LinkState),
+          Tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "Link" });
+    case 6:
+      return S.suspend(() => S.Struct({ Link: S.optional(Link) })).annotate({
+        identifier: "CreateLinkResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          Description: S.optional(S.String),
+          Location: S.optional(Location),
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/sites" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateSiteRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SiteId: S.optional(S.String),
+          SiteArn: S.optional(S.String),
+          GlobalNetworkId: S.optional(S.String),
+          Description: S.optional(S.String),
+          Location: S.optional(Location),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          State: S.optional(SiteState),
+          Tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "Site" });
+    case 1:
+      return S.suspend(() => S.Struct({ Site: S.optional(Site) })).annotate({
+        identifier: "CreateSiteResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String,
+          VpnConnectionArn: S.String,
+          RoutingPolicyLabel: S.optional(S.String),
+          Tags: S.optional(TagList),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/site-to-site-vpn-attachments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateSiteToSiteVpnAttachmentRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Attachment: S.optional(Attachment), VpnConnectionArn: S.optional(S.String) }),
+      ).annotate({ identifier: "SiteToSiteVpnAttachment" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ SiteToSiteVpnAttachment: S.optional(SiteToSiteVpnAttachment) }),
+      ).annotate({
+        identifier: "CreateSiteToSiteVpnAttachmentResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String,
+          TransitGatewayArn: S.String,
+          Tags: S.optional(TagList),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/transit-gateway-peerings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateTransitGatewayPeeringRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ MissingPermission: S.optional(S.String) })).annotate({
+        identifier: "PermissionsErrorContext",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Code: S.optional(PeeringErrorCode),
+          Message: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          MissingPermissionsContext: S.optional(PermissionsErrorContext),
+        }),
+      ).annotate({ identifier: "PeeringError" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PeeringError);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          CoreNetworkArn: S.optional(S.String),
+          PeeringId: S.optional(S.String),
+          OwnerAccountId: S.optional(S.String),
+          PeeringType: S.optional(PeeringType),
+          State: S.optional(PeeringState),
+          EdgeLocation: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          Tags: S.optional(TagList),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastModificationErrors: S.optional(PeeringErrorList),
+        }),
+      ).annotate({ identifier: "Peering" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Peering: S.optional(Peering),
+          TransitGatewayArn: S.optional(S.String),
+          TransitGatewayPeeringAttachmentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransitGatewayPeering" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ TransitGatewayPeering: S.optional(TransitGatewayPeering) }),
+      ).annotate({
+        identifier: "CreateTransitGatewayPeeringResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          PeeringId: S.String,
+          TransitGatewayRouteTableArn: S.String,
+          RoutingPolicyLabel: S.optional(S.String),
+          Tags: S.optional(TagList),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/transit-gateway-route-table-attachments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateTransitGatewayRouteTableAttachmentRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Attachment: S.optional(Attachment),
+          PeeringId: S.optional(S.String),
+          TransitGatewayRouteTableArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TransitGatewayRouteTableAttachment",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TransitGatewayRouteTableAttachment: S.optional(TransitGatewayRouteTableAttachment),
+        }),
+      ).annotate({
+        identifier: "CreateTransitGatewayRouteTableAttachmentResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Ipv6Support: S.optional(S.Boolean),
+          ApplianceModeSupport: S.optional(S.Boolean),
+          DnsSupport: S.optional(S.Boolean),
+          SecurityGroupReferencingSupport: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "VpcOptions" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String,
+          VpcArn: S.String,
+          SubnetArns: SubnetArnList,
+          Options: S.optional(VpcOptions),
+          RoutingPolicyLabel: S.optional(S.String),
+          Tags: S.optional(TagList),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/vpc-attachments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateVpcAttachmentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Attachment: S.optional(Attachment),
+          SubnetArns: S.optional(SubnetArnList),
+          Options: S.optional(VpcOptions),
+        }),
+      ).annotate({ identifier: "VpcAttachment" });
+    case 2:
+      return S.suspend(() => S.Struct({ VpcAttachment: S.optional(VpcAttachment) })).annotate({
+        identifier: "CreateVpcAttachmentResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/attachments/{AttachmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAttachmentRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/global-networks/{GlobalNetworkId}/connections/{ConnectionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteConnectionRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ConnectPeerId: S.String.pipe(T.HttpLabel("ConnectPeerId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/connect-peers/{ConnectPeerId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteConnectPeerRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/core-networks/{CoreNetworkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteCoreNetworkRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/core-networks/{CoreNetworkId}/core-network-policy-versions/{PolicyVersionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteCoreNetworkPolicyVersionRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ErrorCode: S.String, Message: S.String, Path: S.optional(S.String) }),
+      ).annotate({ identifier: "CoreNetworkPolicyError" });
+    case 1:
+      return S.Array(CoreNetworkPolicyError);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          PolicyVersionId: S.optional(S.Number),
+          Alias: S.optional(CoreNetworkPolicyAlias),
+          Description: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ChangeSetState: S.optional(ChangeSetState),
+          PolicyErrors: S.optional(CoreNetworkPolicyErrorList),
+          PolicyDocument: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CoreNetworkPolicy" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ CoreNetworkPolicy: S.optional(CoreNetworkPolicy) }),
+      ).annotate({
+        identifier: "DeleteCoreNetworkPolicyVersionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          PrefixListArn: S.String.pipe(T.HttpLabel("PrefixListArn")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/prefix-list/{PrefixListArn}/core-network/{CoreNetworkId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteCoreNetworkPrefixListAssociationRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ CoreNetworkId: S.optional(S.String), PrefixListArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DeleteCoreNetworkPrefixListAssociationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          DeviceId: S.String.pipe(T.HttpLabel("DeviceId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/global-networks/{GlobalNetworkId}/devices/{DeviceId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDeviceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/global-networks/{GlobalNetworkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteGlobalNetworkRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          LinkId: S.String.pipe(T.HttpLabel("LinkId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/global-networks/{GlobalNetworkId}/links/{LinkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteLinkRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ PeeringId: S.String.pipe(T.HttpLabel("PeeringId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/peerings/{PeeringId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeletePeeringRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ Peering: S.optional(Peering) })).annotate({
+        identifier: "DeletePeeringResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/resource-policy/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePolicyRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteResourcePolicyResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          SiteId: S.String.pipe(T.HttpLabel("SiteId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/global-networks/{GlobalNetworkId}/sites/{SiteId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSiteRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          TransitGatewayArn: S.String.pipe(T.HttpLabel("TransitGatewayArn")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/global-networks/{GlobalNetworkId}/transit-gateway-registrations/{TransitGatewayArn}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeregisterTransitGatewayRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Code: S.optional(TransitGatewayRegistrationState),
+          Message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TransitGatewayRegistrationStateReason",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.optional(S.String),
+          TransitGatewayArn: S.optional(S.String),
+          State: S.optional(TransitGatewayRegistrationStateReason),
+        }),
+      ).annotate({
+        identifier: "TransitGatewayRegistration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ TransitGatewayRegistration: S.optional(TransitGatewayRegistration) }),
+      ).annotate({
+        identifier: "DeregisterTransitGatewayResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkIds: S.optional(GlobalNetworkIdList).pipe(T.HttpQuery("globalNetworkIds")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/global-networks" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeGlobalNetworksRequest",
+      });
+    case 3:
+      return S.Array(GlobalNetwork);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworks: S.optional(GlobalNetworkList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeGlobalNetworksResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          ConnectPeerId: S.String.pipe(T.HttpLabel("ConnectPeerId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/global-networks/{GlobalNetworkId}/connect-peer-associations/{ConnectPeerId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateConnectPeerRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          CustomerGatewayArn: S.String.pipe(T.HttpLabel("CustomerGatewayArn")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/global-networks/{GlobalNetworkId}/customer-gateway-associations/{CustomerGatewayArn}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateCustomerGatewayRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          DeviceId: S.String.pipe(T.HttpQuery("deviceId")),
+          LinkId: S.String.pipe(T.HttpQuery("linkId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/global-networks/{GlobalNetworkId}/link-associations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DisassociateLinkRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          TransitGatewayConnectPeerArn: S.String.pipe(T.HttpLabel("TransitGatewayConnectPeerArn")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/global-networks/{GlobalNetworkId}/transit-gateway-connect-peer-associations/{TransitGatewayConnectPeerArn}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateTransitGatewayConnectPeerRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/core-networks/{CoreNetworkId}/core-network-change-sets/{PolicyVersionId}/execute",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ExecuteCoreNetworkChangeSetRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ExecuteCoreNetworkChangeSetResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/connect-attachments/{AttachmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetConnectAttachmentRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          ConnectionIds: S.optional(ConnectionIdList).pipe(T.HttpQuery("connectionIds")),
+          DeviceId: S.optional(S.String).pipe(T.HttpQuery("deviceId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/connections" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetConnectionsRequest" });
+    case 5:
+      return S.Array(Connection);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Connections: S.optional(ConnectionList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetConnectionsResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ConnectPeerId: S.String.pipe(T.HttpLabel("ConnectPeerId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/connect-peers/{ConnectPeerId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetConnectPeerRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ConnectPeer: S.optional(ConnectPeer) })).annotate({
+        identifier: "GetConnectPeerResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          ConnectPeerIds: S.optional(ConnectPeerIdList).pipe(T.HttpQuery("connectPeerIds")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/global-networks/{GlobalNetworkId}/connect-peer-associations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetConnectPeerAssociationsRequest",
+      });
+    case 2:
+      return S.Array(ConnectPeerAssociation);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectPeerAssociations: S.optional(ConnectPeerAssociationList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetConnectPeerAssociationsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/core-networks/{CoreNetworkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetCoreNetworkRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ CoreNetwork: S.optional(CoreNetwork) })).annotate({
+        identifier: "GetCoreNetworkResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/core-networks/{CoreNetworkId}/core-network-change-events/{PolicyVersionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCoreNetworkChangeEventsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          RoutingPolicyNames: S.optional(ConstrainedStringList),
+          SharedSegments: S.optional(ConstrainedStringList),
+        }),
+      ).annotate({
+        identifier: "RoutingPolicyAssociationDetail",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(RoutingPolicyAssociationDetail);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EdgeLocation: S.optional(S.String),
+          PeerEdgeLocation: S.optional(S.String),
+          RoutingPolicyDirection: S.optional(RoutingPolicyDirection),
+          SegmentName: S.optional(S.String),
+          NetworkFunctionGroupName: S.optional(S.String),
+          AttachmentId: S.optional(S.String),
+          Cidr: S.optional(S.String),
+          RoutingPolicyAssociationDetails: S.optional(RoutingPolicyAssociationDetailsList),
+        }),
+      ).annotate({
+        identifier: "CoreNetworkChangeEventValues",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(ChangeType),
+          Action: S.optional(ChangeAction),
+          IdentifierPath: S.optional(S.String),
+          EventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(ChangeStatus),
+          Values: S.optional(CoreNetworkChangeEventValues),
+        }),
+      ).annotate({ identifier: "CoreNetworkChangeEvent" });
+    case 3:
+      return S.Array(CoreNetworkChangeEvent);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkChangeEvents: S.optional(CoreNetworkChangeEventList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetCoreNetworkChangeEventsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/core-networks/{CoreNetworkId}/core-network-change-sets/{PolicyVersionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCoreNetworkChangeSetRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ WhenSentToSegmentsList: S.optional(WhenSentToSegmentsList) }),
+      ).annotate({ identifier: "WhenSentTo" });
+    case 7:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+        identifier: "NetworkFunctionGroup",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(NetworkFunctionGroup);
+    case 1:
+      return S.Array(EdgeSet);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ EdgeSets: S.optional(EdgeSetList), UseEdge: S.optional(S.String) }),
+      ).annotate({ identifier: "EdgeOverride" });
+    case 3:
+      return S.Array(EdgeOverride);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          NetworkFunctionGroups: S.optional(NetworkFunctionGroupList),
+          WithEdgeOverrides: S.optional(WithEdgeOverridesList),
+        }),
+      ).annotate({ identifier: "Via" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(SegmentActionServiceInsertion),
+          Mode: S.optional(SendViaMode),
+          WhenSentTo: S.optional(WhenSentTo),
+          Via: S.optional(Via),
+        }),
+      ).annotate({ identifier: "ServiceInsertionAction" });
+    case 6:
+      return S.Array(ServiceInsertionAction);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SegmentName: S.optional(S.String),
+          NetworkFunctionGroupName: S.optional(S.String),
+          EdgeLocations: S.optional(ExternalRegionCodeList),
+          Asn: S.optional(S.Number),
+          Cidr: S.optional(S.String),
+          DestinationIdentifier: S.optional(S.String),
+          InsideCidrBlocks: S.optional(ConstrainedStringList),
+          SharedSegments: S.optional(ConstrainedStringList),
+          ServiceInsertionActions: S.optional(ServiceInsertionActionList),
+          VpnEcmpSupport: S.optional(S.Boolean),
+          DnsSupport: S.optional(S.Boolean),
+          SecurityGroupReferencingSupport: S.optional(S.Boolean),
+          RoutingPolicyDirection: S.optional(RoutingPolicyDirection),
+          RoutingPolicy: S.optional(S.String),
+          PeerEdgeLocations: S.optional(ExternalRegionCodeList),
+          AttachmentId: S.optional(S.String),
+          RoutingPolicyAssociationDetails: S.optional(RoutingPolicyAssociationDetailsList),
+        }),
+      ).annotate({ identifier: "CoreNetworkChangeValues" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(ChangeType),
+          Action: S.optional(ChangeAction),
+          Identifier: S.optional(S.String),
+          PreviousValues: S.optional(CoreNetworkChangeValues),
+          NewValues: S.optional(CoreNetworkChangeValues),
+          IdentifierPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CoreNetworkChange" });
+    case 1:
+      return S.Array(CoreNetworkChange);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkChanges: S.optional(CoreNetworkChangeList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetCoreNetworkChangeSetResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          PolicyVersionId: S.optional(S.Number).pipe(T.HttpQuery("policyVersionId")),
+          Alias: S.optional(CoreNetworkPolicyAlias).pipe(T.HttpQuery("alias")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/core-networks/{CoreNetworkId}/core-network-policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCoreNetworkPolicyRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          CustomerGatewayArns: S.optional(CustomerGatewayArnList).pipe(
+            T.HttpQuery("customerGatewayArns"),
+          ),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/global-networks/{GlobalNetworkId}/customer-gateway-associations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCustomerGatewayAssociationsRequest",
+      });
+    case 5:
+      return S.Array(CustomerGatewayAssociation);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CustomerGatewayAssociations: S.optional(CustomerGatewayAssociationList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetCustomerGatewayAssociationsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          DeviceIds: S.optional(DeviceIdList).pipe(T.HttpQuery("deviceIds")),
+          SiteId: S.optional(S.String).pipe(T.HttpQuery("siteId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/devices" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDevicesRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Device);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Devices: S.optional(DeviceList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetDevicesResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/direct-connect-gateway-attachments/{AttachmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetDirectConnectGatewayAttachmentRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          DeviceId: S.optional(S.String).pipe(T.HttpQuery("deviceId")),
+          LinkId: S.optional(S.String).pipe(T.HttpQuery("linkId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/link-associations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetLinkAssociationsRequest",
+      });
+    case 4:
+      return S.Array(LinkAssociation);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          LinkAssociations: S.optional(LinkAssociationList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetLinkAssociationsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          LinkIds: S.optional(LinkIdList).pipe(T.HttpQuery("linkIds")),
+          SiteId: S.optional(S.String).pipe(T.HttpQuery("siteId")),
+          Type: S.optional(S.String).pipe(T.HttpQuery("type")),
+          Provider: S.optional(S.String).pipe(T.HttpQuery("provider")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/links" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetLinksRequest" });
+    case 7:
+      return S.Array(Link);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Links: S.optional(LinkList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetLinksResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/global-networks/{GlobalNetworkId}/network-resource-count",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetNetworkResourceCountsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceType: S.optional(S.String), Count: S.optional(S.Number) }),
+      ).annotate({ identifier: "NetworkResourceCount" });
+    case 3:
+      return S.Array(NetworkResourceCount);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          NetworkResourceCounts: S.optional(NetworkResourceCountList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetNetworkResourceCountsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
+          RegisteredGatewayArn: S.optional(S.String).pipe(T.HttpQuery("registeredGatewayArn")),
+          AwsRegion: S.optional(S.String).pipe(T.HttpQuery("awsRegion")),
+          AccountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
+          ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
+          ResourceArn: S.optional(S.String).pipe(T.HttpQuery("resourceArn")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/global-networks/{GlobalNetworkId}/network-resource-relationships",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetNetworkResourceRelationshipsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ From: S.optional(S.String), To: S.optional(S.String) }),
+      ).annotate({ identifier: "Relationship" });
+    case 7:
+      return S.Array(Relationship);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Relationships: S.optional(RelationshipList), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetNetworkResourceRelationshipsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
+          RegisteredGatewayArn: S.optional(S.String).pipe(T.HttpQuery("registeredGatewayArn")),
+          AwsRegion: S.optional(S.String).pipe(T.HttpQuery("awsRegion")),
+          AccountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
+          ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
+          ResourceArn: S.optional(S.String).pipe(T.HttpQuery("resourceArn")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/network-resources" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetNetworkResourcesRequest",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RegisteredGatewayArn: S.optional(S.String),
+          CoreNetworkId: S.optional(S.String),
+          AwsRegion: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          ResourceId: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          Definition: S.optional(S.String),
+          DefinitionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Tags: S.optional(TagList),
+          Metadata: S.optional(NetworkResourceMetadataMap),
+        }),
+      ).annotate({ identifier: "NetworkResource" });
+    case 4:
+      return S.Array(NetworkResource);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          NetworkResources: S.optional(NetworkResourceList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetNetworkResourcesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          SegmentName: S.optional(S.String),
+          EdgeLocation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CoreNetworkSegmentEdgeIdentifier",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          NetworkFunctionGroupName: S.optional(S.String),
+          EdgeLocation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CoreNetworkNetworkFunctionGroupIdentifier",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TransitGatewayRouteTableArn: S.optional(S.String),
+          CoreNetworkSegmentEdge: S.optional(CoreNetworkSegmentEdgeIdentifier),
+          CoreNetworkNetworkFunctionGroup: S.optional(CoreNetworkNetworkFunctionGroupIdentifier),
+        }),
+      ).annotate({ identifier: "RouteTableIdentifier" });
+    case 1:
+      return S.Array(RouteState);
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ FilterValues.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          RouteTableIdentifier: RouteTableIdentifier,
+          ExactCidrMatches: S.optional(ConstrainedStringList),
+          LongestPrefixMatches: S.optional(ConstrainedStringList),
+          SubnetOfMatches: S.optional(ConstrainedStringList),
+          SupernetOfMatches: S.optional(ConstrainedStringList),
+          PrefixListIds: S.optional(ConstrainedStringList),
+          States: S.optional(RouteStateList),
+          Types: S.optional(RouteTypeList),
+          DestinationFilters: S.optional(FilterMap),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/network-routes" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetNetworkRoutesRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkAttachmentId: S.optional(S.String),
+          TransitGatewayAttachmentId: S.optional(S.String),
+          SegmentName: S.optional(S.String),
+          NetworkFunctionGroupName: S.optional(S.String),
+          EdgeLocation: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          ResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkRouteDestination" });
+    case 5:
+      return S.Array(NetworkRouteDestination);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DestinationCidrBlock: S.optional(S.String),
+          Destinations: S.optional(NetworkRouteDestinationList),
+          PrefixListId: S.optional(S.String),
+          State: S.optional(RouteState),
+          Type: S.optional(RouteType),
+        }),
+      ).annotate({ identifier: "NetworkRoute" });
+    case 7:
+      return S.Array(NetworkRoute);
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RouteTableArn: S.optional(S.String),
+          CoreNetworkSegmentEdge: S.optional(CoreNetworkSegmentEdgeIdentifier),
+          RouteTableType: S.optional(RouteTableType),
+          RouteTableTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          NetworkRoutes: S.optional(NetworkRouteList),
+        }),
+      ).annotate({ identifier: "GetNetworkRoutesResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
+          RegisteredGatewayArn: S.optional(S.String).pipe(T.HttpQuery("registeredGatewayArn")),
+          AwsRegion: S.optional(S.String).pipe(T.HttpQuery("awsRegion")),
+          AccountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
+          ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
+          ResourceArn: S.optional(S.String).pipe(T.HttpQuery("resourceArn")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/network-telemetry" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetNetworkTelemetryRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(ConnectionType),
+          Status: S.optional(ConnectionStatus),
+          Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ConnectionHealth" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RegisteredGatewayArn: S.optional(S.String),
+          CoreNetworkId: S.optional(S.String),
+          AwsRegion: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          ResourceId: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          Address: S.optional(S.String),
+          Health: S.optional(ConnectionHealth),
+        }),
+      ).annotate({ identifier: "NetworkTelemetry" });
+    case 4:
+      return S.Array(NetworkTelemetry);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          NetworkTelemetry: S.optional(NetworkTelemetryList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetNetworkTelemetryResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/resource-policy/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetResourcePolicyRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ PolicyDocument: S.optional(S.String) })).annotate({
+        identifier: "GetResourcePolicyResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          RouteAnalysisId: S.String.pipe(T.HttpLabel("RouteAnalysisId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/global-networks/{GlobalNetworkId}/route-analyses/{RouteAnalysisId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetRouteAnalysisRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TransitGatewayAttachmentArn: S.optional(S.String),
+          TransitGatewayArn: S.optional(S.String),
+          IpAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RouteAnalysisEndpointOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ResultCode: S.optional(RouteAnalysisCompletionResultCode),
+          ReasonCode: S.optional(RouteAnalysisCompletionReasonCode),
+          ReasonContext: S.optional(ReasonContextMap),
+        }),
+      ).annotate({ identifier: "RouteAnalysisCompletion" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RegisteredGatewayArn: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          Definition: S.optional(S.String),
+          NameTag: S.optional(S.String),
+          IsMiddlebox: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "NetworkResourceSummary" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Sequence: S.optional(S.Number),
+          Resource: S.optional(NetworkResourceSummary),
+          DestinationCidrBlock: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PathComponent" });
+    case 5:
+      return S.Array(PathComponent);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CompletionStatus: S.optional(RouteAnalysisCompletion),
+          Path: S.optional(PathComponentList),
+        }),
+      ).annotate({ identifier: "RouteAnalysisPath" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.optional(S.String),
+          OwnerAccountId: S.optional(S.String),
+          RouteAnalysisId: S.optional(S.String),
+          StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(RouteAnalysisStatus),
+          Source: S.optional(RouteAnalysisEndpointOptions),
+          Destination: S.optional(RouteAnalysisEndpointOptions),
+          IncludeReturnPath: S.optional(S.Boolean),
+          UseMiddleboxes: S.optional(S.Boolean),
+          ForwardPath: S.optional(RouteAnalysisPath),
+          ReturnPath: S.optional(RouteAnalysisPath),
+        }),
+      ).annotate({ identifier: "RouteAnalysis" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RouteAnalysis: S.optional(RouteAnalysis) })).annotate({
+        identifier: "GetRouteAnalysisResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          SiteIds: S.optional(SiteIdList).pipe(T.HttpQuery("siteIds")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/global-networks/{GlobalNetworkId}/sites" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSitesRequest" });
+    case 2:
+      return S.Array(Site);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Sites: S.optional(SiteList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetSitesResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/site-to-site-vpn-attachments/{AttachmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSiteToSiteVpnAttachmentRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          TransitGatewayConnectPeerArns: S.optional(TransitGatewayConnectPeerArnList).pipe(
+            T.HttpQuery("transitGatewayConnectPeerArns"),
+          ),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/global-networks/{GlobalNetworkId}/transit-gateway-connect-peer-associations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTransitGatewayConnectPeerAssociationsRequest",
+      });
+    case 6:
+      return S.Array(TransitGatewayConnectPeerAssociation);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TransitGatewayConnectPeerAssociations: S.optional(
+            TransitGatewayConnectPeerAssociationList,
+          ),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetTransitGatewayConnectPeerAssociationsResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PeeringId: S.String.pipe(T.HttpLabel("PeeringId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/transit-gateway-peerings/{PeeringId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTransitGatewayPeeringRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          TransitGatewayArns: S.optional(TransitGatewayArnList).pipe(
+            T.HttpQuery("transitGatewayArns"),
+          ),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/global-networks/{GlobalNetworkId}/transit-gateway-registrations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTransitGatewayRegistrationsRequest",
+      });
+    case 2:
+      return S.Array(TransitGatewayRegistration);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TransitGatewayRegistrations: S.optional(TransitGatewayRegistrationList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetTransitGatewayRegistrationsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/transit-gateway-route-table-attachments/{AttachmentId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTransitGatewayRouteTableAttachmentRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/vpc-attachments/{AttachmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetVpcAttachmentRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ VpcAttachment: S.optional(VpcAttachment) })).annotate({
+        identifier: "GetVpcAttachmentResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          AttachmentId: S.optional(S.String).pipe(T.HttpQuery("attachmentId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/routing-policy-label/core-network/{CoreNetworkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAttachmentRoutingPolicyAssociationsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AttachmentId: S.optional(S.String),
+          PendingRoutingPolicies: S.optional(ConstrainedStringList),
+          AssociatedRoutingPolicies: S.optional(ConstrainedStringList),
+          RoutingPolicyLabel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AttachmentRoutingPolicyAssociationSummary",
+      });
+    case 1:
+      return S.Array(AttachmentRoutingPolicyAssociationSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AttachmentRoutingPolicyAssociations: S.optional(AttachmentRoutingPolicyAssociationsList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAttachmentRoutingPolicyAssociationsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
+          AttachmentType: S.optional(AttachmentType).pipe(T.HttpQuery("attachmentType")),
+          EdgeLocation: S.optional(S.String).pipe(T.HttpQuery("edgeLocation")),
+          State: S.optional(AttachmentState).pipe(T.HttpQuery("state")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/attachments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListAttachmentsRequest" });
+    case 4:
+      return S.Array(Attachment);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Attachments: S.optional(AttachmentList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAttachmentsResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
+          ConnectAttachmentId: S.optional(S.String).pipe(T.HttpQuery("connectAttachmentId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/connect-peers" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListConnectPeersRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          ConnectAttachmentId: S.optional(S.String),
+          ConnectPeerId: S.optional(S.String),
+          EdgeLocation: S.optional(S.String),
+          ConnectPeerState: S.optional(ConnectPeerState),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Tags: S.optional(TagList),
+          SubnetArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectPeerSummary" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ConnectPeerSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectPeers: S.optional(ConnectPeerSummaryList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListConnectPeersResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/core-networks/{CoreNetworkId}/core-network-policy-versions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCoreNetworkPolicyVersionsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          PolicyVersionId: S.optional(S.Number),
+          Alias: S.optional(CoreNetworkPolicyAlias),
+          Description: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ChangeSetState: S.optional(ChangeSetState),
+        }),
+      ).annotate({ identifier: "CoreNetworkPolicyVersion" });
+    case 4:
+      return S.Array(CoreNetworkPolicyVersion);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkPolicyVersions: S.optional(CoreNetworkPolicyVersionList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCoreNetworkPolicyVersionsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          PrefixListArn: S.optional(S.String).pipe(T.HttpQuery("prefixListArn")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/prefix-list/core-network/{CoreNetworkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCoreNetworkPrefixListAssociationsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          PrefixListArn: S.optional(S.String),
+          PrefixListAlias: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrefixListAssociation" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PrefixListAssociation);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PrefixListAssociations: S.optional(PrefixListAssociationList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCoreNetworkPrefixListAssociationsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          SegmentName: S.String,
+          EdgeLocation: S.String,
+          NextHopFilters: S.optional(FilterMap),
+          LocalPreferenceMatches: S.optional(ConstrainedStringList),
+          ExactAsPathMatches: S.optional(ConstrainedStringList),
+          MedMatches: S.optional(ConstrainedStringList),
+          CommunityMatches: S.optional(ConstrainedStringList),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/core-networks/{CoreNetworkId}/core-network-routing-information",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCoreNetworkRoutingInformationRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          IpAddress: S.optional(S.String),
+          CoreNetworkAttachmentId: S.optional(S.String),
+          ResourceId: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          SegmentName: S.optional(S.String),
+          EdgeLocation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RoutingInformationNextHop",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Prefix: S.optional(S.String),
+          NextHop: S.optional(RoutingInformationNextHop),
+          LocalPreference: S.optional(S.String),
+          Med: S.optional(S.String),
+          AsPath: S.optional(ConstrainedStringList),
+          Communities: S.optional(ConstrainedStringList),
+        }),
+      ).annotate({
+        identifier: "CoreNetworkRoutingInformation",
+      });
+    case 5:
+      return S.Array(CoreNetworkRoutingInformation);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkRoutingInformation: S.optional(CoreNetworkRoutingInformationList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCoreNetworkRoutingInformationResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/core-networks" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListCoreNetworksRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          CoreNetworkArn: S.optional(S.String),
+          GlobalNetworkId: S.optional(S.String),
+          OwnerAccountId: S.optional(S.String),
+          State: S.optional(CoreNetworkState),
+          Description: S.optional(S.String),
+          Tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "CoreNetworkSummary" });
+    case 1:
+      return S.Array(CoreNetworkSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworks: S.optional(CoreNetworkSummaryList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListCoreNetworksResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/organizations/service-access" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationServiceAccessStatusRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), SLRDeploymentStatus: S.optional(S.String) }),
+      ).annotate({ identifier: "AccountStatus" });
+    case 5:
+      return S.Array(AccountStatus);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationId: S.optional(S.String),
+          OrganizationAwsServiceAccessStatus: S.optional(S.String),
+          SLRDeploymentStatus: S.optional(S.String),
+          AccountStatusList: S.optional(AccountStatusList).pipe(T.XmlName("OrganizationStatus")),
+        }),
+      ).annotate({ identifier: "OrganizationStatus" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationStatus: S.optional(OrganizationStatus),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationServiceAccessStatusResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
+          PeeringType: S.optional(PeeringType).pipe(T.HttpQuery("peeringType")),
+          EdgeLocation: S.optional(S.String).pipe(T.HttpQuery("edgeLocation")),
+          State: S.optional(PeeringState).pipe(T.HttpQuery("state")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/peerings" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListPeeringsRequest" });
+    case 1:
+      return S.Array(Peering);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Peerings: S.optional(PeeringList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPeeringsResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ TagList: S.optional(TagList) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String,
+          AttachmentId: S.String,
+          RoutingPolicyLabel: S.String,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/routing-policy-label" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutAttachmentRoutingPolicyLabelRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.optional(S.String),
+          AttachmentId: S.optional(S.String),
+          RoutingPolicyLabel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PutAttachmentRoutingPolicyLabelResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          PolicyDocument: S.String,
+          Description: S.optional(S.String),
+          LatestVersionId: S.optional(S.Number),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/core-networks/{CoreNetworkId}/core-network-policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutCoreNetworkPolicyRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PolicyDocument: S.String,
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/resource-policy/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutResourcePolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          TransitGatewayArn: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/global-networks/{GlobalNetworkId}/transit-gateway-registrations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RegisterTransitGatewayRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/attachments/{AttachmentId}/reject" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "RejectAttachmentRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/routing-policy-label/core-network/{CoreNetworkId}/attachment/{AttachmentId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RemoveAttachmentRoutingPolicyLabelRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/core-networks/{CoreNetworkId}/core-network-policy-versions/{PolicyVersionId}/restore",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RestoreCoreNetworkPolicyVersionRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Action: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/organizations/service-access" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartOrganizationServiceAccessUpdateRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ OrganizationStatus: S.optional(OrganizationStatus) }),
+      ).annotate({
+        identifier: "StartOrganizationServiceAccessUpdateResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TransitGatewayAttachmentArn: S.optional(S.String),
+          IpAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RouteAnalysisEndpointOptionsSpecification",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          Source: RouteAnalysisEndpointOptionsSpecification,
+          Destination: RouteAnalysisEndpointOptionsSpecification,
+          IncludeReturnPath: S.optional(S.Boolean),
+          UseMiddleboxes: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/global-networks/{GlobalNetworkId}/route-analyses" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartRouteAnalysisRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ RouteAnalysis: S.optional(RouteAnalysis) })).annotate({
+        identifier: "StartRouteAnalysisResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagList }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")),
+          LinkId: S.optional(S.String),
+          ConnectedLinkId: S.optional(S.String),
+          Description: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/global-networks/{GlobalNetworkId}/connections/{ConnectionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateConnectionRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
+          Description: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/core-networks/{CoreNetworkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateCoreNetworkRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          DeviceId: S.String.pipe(T.HttpLabel("DeviceId")),
+          AWSLocation: S.optional(AWSLocation),
+          Description: S.optional(S.String),
+          Type: S.optional(S.String),
+          Vendor: S.optional(S.String),
+          Model: S.optional(S.String),
+          SerialNumber: S.optional(S.String),
+          Location: S.optional(Location),
+          SiteId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/global-networks/{GlobalNetworkId}/devices/{DeviceId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateDeviceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")),
+          EdgeLocations: S.optional(ExternalRegionCodeList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/direct-connect-gateway-attachments/{AttachmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateDirectConnectGatewayAttachmentRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          Description: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/global-networks/{GlobalNetworkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateGlobalNetworkRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          LinkId: S.String.pipe(T.HttpLabel("LinkId")),
+          Description: S.optional(S.String),
+          Type: S.optional(S.String),
+          Bandwidth: S.optional(Bandwidth),
+          Provider: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/global-networks/{GlobalNetworkId}/links/{LinkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateLinkRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          Metadata: NetworkResourceMetadataMap,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/global-networks/{GlobalNetworkId}/network-resources/{ResourceArn}/metadata",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkResourceMetadataRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.optional(S.String),
+          Metadata: S.optional(NetworkResourceMetadataMap),
+        }),
+      ).annotate({
+        identifier: "UpdateNetworkResourceMetadataResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
+          SiteId: S.String.pipe(T.HttpLabel("SiteId")),
+          Description: S.optional(S.String),
+          Location: S.optional(Location),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/global-networks/{GlobalNetworkId}/sites/{SiteId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSiteRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")),
+          AddSubnetArns: S.optional(SubnetArnList),
+          RemoveSubnetArns: S.optional(SubnetArnList),
+          Options: S.optional(VpcOptions),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/vpc-attachments/{AttachmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVpcAttachmentRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ Name: S.String, Message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 7:
+      return S.Array(ValidationExceptionField);
+  }
+}

@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
@@ -129,35 +130,29 @@ export interface AcceptPortfolioShareInput {
   PortfolioId: string;
   PortfolioShareType?: PortfolioShareType;
 }
-const AcceptPortfolioShareInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    PortfolioShareType: S.optional(PortfolioShareType),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AcceptPortfolioShareInput",
-}) as any as S.Schema<AcceptPortfolioShareInput>;
+const AcceptPortfolioShareInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptPortfolioShareInput>;
 export interface AcceptPortfolioShareOutput {}
-const AcceptPortfolioShareOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AcceptPortfolioShareOutput",
-}) as any as S.Schema<AcceptPortfolioShareOutput>;
+const AcceptPortfolioShareOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptPortfolioShareOutput>;
 export type BudgetName = string;
 export interface AssociateBudgetWithResourceInput {
   BudgetName: string;
   ResourceId: string;
 }
-const AssociateBudgetWithResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AssociateBudgetWithResourceInput",
-}) as any as S.Schema<AssociateBudgetWithResourceInput>;
+const AssociateBudgetWithResourceInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AssociateBudgetWithResourceInput>;
 export interface AssociateBudgetWithResourceOutput {}
-const AssociateBudgetWithResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssociateBudgetWithResourceOutput",
-}) as any as S.Schema<AssociateBudgetWithResourceOutput>;
+const AssociateBudgetWithResourceOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssociateBudgetWithResourceOutput>;
 export type PrincipalARN = string;
 export type PrincipalType = "IAM" | "IAM_PATTERN" | (string & {});
 const PrincipalType = S.String;
@@ -168,16 +163,10 @@ export interface AssociatePrincipalWithPortfolioInput {
   PrincipalARN: string;
   PrincipalType: PrincipalType;
 }
-const AssociatePrincipalWithPortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    PrincipalARN: S.String,
-    PrincipalType: PrincipalType,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AssociatePrincipalWithPortfolioInput",
-}) as any as S.Schema<AssociatePrincipalWithPortfolioInput>;
+const AssociatePrincipalWithPortfolioInput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociatePrincipalWithPortfolioInput>;
 export interface AssociatePrincipalWithPortfolioOutput {}
 const AssociatePrincipalWithPortfolioOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<AssociatePrincipalWithPortfolioOutput>;
@@ -187,16 +176,10 @@ export interface AssociateProductWithPortfolioInput {
   PortfolioId: string;
   SourcePortfolioId?: string;
 }
-const AssociateProductWithPortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.String,
-    PortfolioId: S.String,
-    SourcePortfolioId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AssociateProductWithPortfolioInput",
-}) as any as S.Schema<AssociateProductWithPortfolioInput>;
+const AssociateProductWithPortfolioInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateProductWithPortfolioInput>;
 export interface AssociateProductWithPortfolioOutput {}
 const AssociateProductWithPortfolioOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<AssociateProductWithPortfolioOutput>;
@@ -208,17 +191,10 @@ export interface AssociateServiceActionWithProvisioningArtifactInput {
   AcceptLanguage?: string;
   IdempotencyToken?: string;
 }
-const AssociateServiceActionWithProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductId: S.String,
-    ProvisioningArtifactId: S.String,
-    ServiceActionId: S.String,
-    AcceptLanguage: S.optional(S.String),
-    IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AssociateServiceActionWithProvisioningArtifactInput",
-}) as any as S.Schema<AssociateServiceActionWithProvisioningArtifactInput>;
+const AssociateServiceActionWithProvisioningArtifactInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AssociateServiceActionWithProvisioningArtifactInput>;
 export interface AssociateServiceActionWithProvisioningArtifactOutput {}
 const AssociateServiceActionWithProvisioningArtifactOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<AssociateServiceActionWithProvisioningArtifactOutput>;
@@ -228,13 +204,10 @@ export interface AssociateTagOptionWithResourceInput {
   ResourceId: string;
   TagOptionId: string;
 }
-const AssociateTagOptionWithResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceId: S.String, TagOptionId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AssociateTagOptionWithResourceInput",
-}) as any as S.Schema<AssociateTagOptionWithResourceInput>;
+const AssociateTagOptionWithResourceInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AssociateTagOptionWithResourceInput>;
 export interface AssociateTagOptionWithResourceOutput {}
 const AssociateTagOptionWithResourceOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<AssociateTagOptionWithResourceOutput>;
@@ -243,23 +216,20 @@ export interface ServiceActionAssociation {
   ProductId: string;
   ProvisioningArtifactId: string;
 }
-const ServiceActionAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServiceActionId: S.String, ProductId: S.String, ProvisioningArtifactId: S.String }),
-).annotate({ identifier: "ServiceActionAssociation" }) as any as S.Schema<ServiceActionAssociation>;
+const ServiceActionAssociation = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ServiceActionAssociation>;
 export type ServiceActionAssociations = ServiceActionAssociation[];
-const ServiceActionAssociations = /*@__PURE__*/ S.Array(ServiceActionAssociation);
+const ServiceActionAssociations = /*@__PURE__*/ __L.at(__c1, 1);
 export interface BatchAssociateServiceActionWithProvisioningArtifactInput {
   ServiceActionAssociations: ServiceActionAssociation[];
   AcceptLanguage?: string;
 }
-const BatchAssociateServiceActionWithProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceActionAssociations: ServiceActionAssociations,
-    AcceptLanguage: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "BatchAssociateServiceActionWithProvisioningArtifactInput",
-}) as any as S.Schema<BatchAssociateServiceActionWithProvisioningArtifactInput>;
+const BatchAssociateServiceActionWithProvisioningArtifactInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BatchAssociateServiceActionWithProvisioningArtifactInput>;
 export type ServiceActionAssociationErrorCode =
   | "DUPLICATE_RESOURCE"
   | "INTERNAL_FAILURE"
@@ -278,39 +248,27 @@ export interface FailedServiceActionAssociation {
   ErrorCode?: ServiceActionAssociationErrorCode;
   ErrorMessage?: string;
 }
-const FailedServiceActionAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceActionId: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    ProvisioningArtifactId: S.optional(S.String),
-    ErrorCode: S.optional(ServiceActionAssociationErrorCode),
-    ErrorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FailedServiceActionAssociation",
-}) as any as S.Schema<FailedServiceActionAssociation>;
+const FailedServiceActionAssociation = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<FailedServiceActionAssociation>;
 export type FailedServiceActionAssociations = FailedServiceActionAssociation[];
-const FailedServiceActionAssociations = /*@__PURE__*/ S.Array(FailedServiceActionAssociation);
+const FailedServiceActionAssociations = /*@__PURE__*/ __L.at(__c1, 4);
 export interface BatchAssociateServiceActionWithProvisioningArtifactOutput {
   FailedServiceActionAssociations?: FailedServiceActionAssociation[];
 }
-const BatchAssociateServiceActionWithProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FailedServiceActionAssociations: S.optional(FailedServiceActionAssociations) }),
-).annotate({
-  identifier: "BatchAssociateServiceActionWithProvisioningArtifactOutput",
-}) as any as S.Schema<BatchAssociateServiceActionWithProvisioningArtifactOutput>;
+const BatchAssociateServiceActionWithProvisioningArtifactOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BatchAssociateServiceActionWithProvisioningArtifactOutput>;
 export interface BatchDisassociateServiceActionFromProvisioningArtifactInput {
   ServiceActionAssociations: ServiceActionAssociation[];
   AcceptLanguage?: string;
 }
-const BatchDisassociateServiceActionFromProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceActionAssociations: ServiceActionAssociations,
-    AcceptLanguage: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "BatchDisassociateServiceActionFromProvisioningArtifactInput",
-}) as any as S.Schema<BatchDisassociateServiceActionFromProvisioningArtifactInput>;
+const BatchDisassociateServiceActionFromProvisioningArtifactInput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BatchDisassociateServiceActionFromProvisioningArtifactInput>;
 export interface BatchDisassociateServiceActionFromProvisioningArtifactOutput {
   FailedServiceActionAssociations?: FailedServiceActionAssociation[];
 }
@@ -325,19 +283,14 @@ export type ProvisioningArtifactPropertyValue = string;
 export type SourceProvisioningArtifactPropertiesMap = {
   [key in ProvisioningArtifactPropertyName]?: string;
 };
-const SourceProvisioningArtifactPropertiesMap = /*@__PURE__*/ S.Record(
-  ProvisioningArtifactPropertyName,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const SourceProvisioningArtifactPropertiesMap = /*@__PURE__*/ __L.at(__c1, 7);
 export type SourceProvisioningArtifactProperties = { [key: string]: string | undefined }[];
-const SourceProvisioningArtifactProperties = /*@__PURE__*/ S.Array(
-  SourceProvisioningArtifactPropertiesMap,
-);
+const SourceProvisioningArtifactProperties = /*@__PURE__*/ __L.at(__c2, 0);
 export type CopyOption = "CopyTags" | (string & {});
 const CopyOption = S.String;
 
 export type CopyOptions = CopyOption[];
-const CopyOptions = /*@__PURE__*/ S.Array(CopyOption);
+const CopyOptions = /*@__PURE__*/ __L.at(__c2, 1);
 export interface CopyProductInput {
   AcceptLanguage?: string;
   SourceProductArn: string;
@@ -347,23 +300,11 @@ export interface CopyProductInput {
   CopyOptions?: CopyOption[];
   IdempotencyToken: string;
 }
-const CopyProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    SourceProductArn: S.String,
-    TargetProductId: S.optional(S.String),
-    TargetProductName: S.optional(S.String),
-    SourceProvisioningArtifactIdentifiers: S.optional(SourceProvisioningArtifactProperties),
-    CopyOptions: S.optional(CopyOptions),
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CopyProductInput" }) as any as S.Schema<CopyProductInput>;
+const CopyProductInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CopyProductInput>;
 export interface CopyProductOutput {
   CopyProductToken?: string;
 }
-const CopyProductOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CopyProductToken: S.optional(S.String) }),
-).annotate({ identifier: "CopyProductOutput" }) as any as S.Schema<CopyProductOutput>;
+const CopyProductOutput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CopyProductOutput>;
 export type ConstraintParameters = string;
 export type ConstraintType = string;
 export type ConstraintDescription = string;
@@ -376,17 +317,10 @@ export interface CreateConstraintInput {
   Description?: string;
   IdempotencyToken: string;
 }
-const CreateConstraintInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    ProductId: S.String,
-    Parameters: S.String,
-    Type: S.String,
-    Description: S.optional(S.String),
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateConstraintInput" }) as any as S.Schema<CreateConstraintInput>;
+const CreateConstraintInput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateConstraintInput>;
 export type AccountId = string;
 export interface ConstraintDetail {
   ConstraintId?: string;
@@ -396,16 +330,7 @@ export interface ConstraintDetail {
   ProductId?: string;
   PortfolioId?: string;
 }
-const ConstraintDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConstraintId: S.optional(S.String),
-    Type: S.optional(S.String),
-    Description: S.optional(S.String),
-    Owner: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    PortfolioId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConstraintDetail" }) as any as S.Schema<ConstraintDetail>;
+const ConstraintDetail = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ConstraintDetail>;
 export type Status = "AVAILABLE" | "CREATING" | "FAILED" | (string & {});
 const Status = S.String;
 
@@ -414,13 +339,10 @@ export interface CreateConstraintOutput {
   ConstraintParameters?: string;
   Status?: Status;
 }
-const CreateConstraintOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConstraintDetail: S.optional(ConstraintDetail),
-    ConstraintParameters: S.optional(S.String),
-    Status: S.optional(Status),
-  }),
-).annotate({ identifier: "CreateConstraintOutput" }) as any as S.Schema<CreateConstraintOutput>;
+const CreateConstraintOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateConstraintOutput>;
 export type PortfolioDisplayName = string;
 export type PortfolioDescription = string;
 export type ProviderName = string;
@@ -430,11 +352,9 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Tag>;
 export type AddTags = Tag[];
-const AddTags = /*@__PURE__*/ S.Array(Tag);
+const AddTags = /*@__PURE__*/ __L.at(__c3, 0);
 export interface CreatePortfolioInput {
   AcceptLanguage?: string;
   DisplayName: string;
@@ -443,16 +363,7 @@ export interface CreatePortfolioInput {
   Tags?: Tag[];
   IdempotencyToken: string;
 }
-const CreatePortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    DisplayName: S.String,
-    Description: S.optional(S.String),
-    ProviderName: S.String,
-    Tags: S.optional(AddTags),
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreatePortfolioInput" }) as any as S.Schema<CreatePortfolioInput>;
+const CreatePortfolioInput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CreatePortfolioInput>;
 export type ResourceARN = string;
 export type CreationTime = Date;
 export interface PortfolioDetail {
@@ -463,25 +374,17 @@ export interface PortfolioDetail {
   CreatedTime?: Date;
   ProviderName?: string;
 }
-const PortfolioDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    ARN: S.optional(S.String),
-    DisplayName: S.optional(S.String),
-    Description: S.optional(S.String),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ProviderName: S.optional(S.String),
-  }),
-).annotate({ identifier: "PortfolioDetail" }) as any as S.Schema<PortfolioDetail>;
+const PortfolioDetail = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PortfolioDetail>;
 export type Tags = Tag[];
 const Tags = AddTags as any as S.Schema<Tags>;
 export interface CreatePortfolioOutput {
   PortfolioDetail?: PortfolioDetail;
   Tags?: Tag[];
 }
-const CreatePortfolioOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PortfolioDetail: S.optional(PortfolioDetail), Tags: S.optional(Tags) }),
-).annotate({ identifier: "CreatePortfolioOutput" }) as any as S.Schema<CreatePortfolioOutput>;
+const CreatePortfolioOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreatePortfolioOutput>;
 export type OrganizationNodeType =
   | "ORGANIZATION"
   | "ORGANIZATIONAL_UNIT"
@@ -494,9 +397,7 @@ export interface OrganizationNode {
   Type?: OrganizationNodeType;
   Value?: string;
 }
-const OrganizationNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(OrganizationNodeType), Value: S.optional(S.String) }),
-).annotate({ identifier: "OrganizationNode" }) as any as S.Schema<OrganizationNode>;
+const OrganizationNode = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<OrganizationNode>;
 export interface CreatePortfolioShareInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -505,26 +406,17 @@ export interface CreatePortfolioShareInput {
   ShareTagOptions?: boolean;
   SharePrincipals?: boolean;
 }
-const CreatePortfolioShareInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    AccountId: S.optional(S.String),
-    OrganizationNode: S.optional(OrganizationNode),
-    ShareTagOptions: S.optional(S.Boolean),
-    SharePrincipals: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreatePortfolioShareInput",
-}) as any as S.Schema<CreatePortfolioShareInput>;
+const CreatePortfolioShareInput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreatePortfolioShareInput>;
 export interface CreatePortfolioShareOutput {
   PortfolioShareToken?: string;
 }
-const CreatePortfolioShareOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PortfolioShareToken: S.optional(S.String) }),
-).annotate({
-  identifier: "CreatePortfolioShareOutput",
-}) as any as S.Schema<CreatePortfolioShareOutput>;
+const CreatePortfolioShareOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreatePortfolioShareOutput>;
 export type ProductViewOwner = string;
 export type ProductViewShortDescription = string;
 export type SupportDescription = string;
@@ -544,10 +436,7 @@ export type ProvisioningArtifactDescription = string;
 export type ProvisioningArtifactInfoKey = string;
 export type ProvisioningArtifactInfoValue = string;
 export type ProvisioningArtifactInfo = { [key: string]: string | undefined };
-const ProvisioningArtifactInfo = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const ProvisioningArtifactInfo = /*@__PURE__*/ __L.at(__c3, 7);
 export type ProvisioningArtifactType =
   | "CLOUD_FORMATION_TEMPLATE"
   | "MARKETPLACE_AMI"
@@ -566,17 +455,10 @@ export interface ProvisioningArtifactProperties {
   Type?: ProvisioningArtifactType;
   DisableTemplateValidation?: boolean;
 }
-const ProvisioningArtifactProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    Info: S.optional(ProvisioningArtifactInfo),
-    Type: S.optional(ProvisioningArtifactType),
-    DisableTemplateValidation: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ProvisioningArtifactProperties",
-}) as any as S.Schema<ProvisioningArtifactProperties>;
+const ProvisioningArtifactProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ProvisioningArtifactProperties>;
 export type SourceType = "CODESTAR" | (string & {});
 const SourceType = S.String;
 
@@ -590,29 +472,19 @@ export interface CodeStarParameters {
   Branch: string;
   ArtifactPath: string;
 }
-const CodeStarParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectionArn: S.String,
-    Repository: S.String,
-    Branch: S.String,
-    ArtifactPath: S.String,
-  }),
-).annotate({ identifier: "CodeStarParameters" }) as any as S.Schema<CodeStarParameters>;
+const CodeStarParameters = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CodeStarParameters>;
 export interface SourceConnectionParameters {
   CodeStar?: CodeStarParameters;
 }
-const SourceConnectionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CodeStar: S.optional(CodeStarParameters) }),
-).annotate({
-  identifier: "SourceConnectionParameters",
-}) as any as S.Schema<SourceConnectionParameters>;
+const SourceConnectionParameters = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<SourceConnectionParameters>;
 export interface SourceConnection {
   Type?: SourceType;
   ConnectionParameters: SourceConnectionParameters;
 }
-const SourceConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(SourceType), ConnectionParameters: SourceConnectionParameters }),
-).annotate({ identifier: "SourceConnection" }) as any as S.Schema<SourceConnection>;
+const SourceConnection = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<SourceConnection>;
 export interface CreateProductInput {
   AcceptLanguage?: string;
   Name: string;
@@ -628,23 +500,7 @@ export interface CreateProductInput {
   IdempotencyToken: string;
   SourceConnection?: SourceConnection;
 }
-const CreateProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    Name: S.String,
-    Owner: S.String,
-    Description: S.optional(S.String),
-    Distributor: S.optional(S.String),
-    SupportDescription: S.optional(S.String),
-    SupportEmail: S.optional(S.String),
-    SupportUrl: S.optional(S.String),
-    ProductType: ProductType,
-    Tags: S.optional(AddTags),
-    ProvisioningArtifactParameters: S.optional(ProvisioningArtifactProperties),
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-    SourceConnection: S.optional(SourceConnection),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateProductInput" }) as any as S.Schema<CreateProductInput>;
+const CreateProductInput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateProductInput>;
 export type ProductViewDistributor = string;
 export type HasDefaultPath = boolean;
 export interface ProductViewSummary {
@@ -660,21 +516,7 @@ export interface ProductViewSummary {
   SupportDescription?: string;
   SupportUrl?: string;
 }
-const ProductViewSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Owner: S.optional(S.String),
-    ShortDescription: S.optional(S.String),
-    Type: S.optional(ProductType),
-    Distributor: S.optional(S.String),
-    HasDefaultPath: S.optional(S.Boolean),
-    SupportEmail: S.optional(S.String),
-    SupportDescription: S.optional(S.String),
-    SupportUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProductViewSummary" }) as any as S.Schema<ProductViewSummary>;
+const ProductViewSummary = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ProductViewSummary>;
 export type CreatedTime = Date;
 export type LastSyncTime = Date;
 export type LastSyncStatus = "SUCCEEDED" | "FAILED" | (string & {});
@@ -689,27 +531,16 @@ export interface LastSync {
   LastSuccessfulSyncTime?: Date;
   LastSuccessfulSyncProvisioningArtifactId?: string;
 }
-const LastSync = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LastSyncTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastSyncStatus: S.optional(LastSyncStatus),
-    LastSyncStatusMessage: S.optional(S.String),
-    LastSuccessfulSyncTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastSuccessfulSyncProvisioningArtifactId: S.optional(S.String),
-  }),
-).annotate({ identifier: "LastSync" }) as any as S.Schema<LastSync>;
+const LastSync = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<LastSync>;
 export interface SourceConnectionDetail {
   Type?: SourceType;
   ConnectionParameters?: SourceConnectionParameters;
   LastSync?: LastSync;
 }
-const SourceConnectionDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(SourceType),
-    ConnectionParameters: S.optional(SourceConnectionParameters),
-    LastSync: S.optional(LastSync),
-  }),
-).annotate({ identifier: "SourceConnectionDetail" }) as any as S.Schema<SourceConnectionDetail>;
+const SourceConnectionDetail = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<SourceConnectionDetail>;
 export interface ProductViewDetail {
   ProductViewSummary?: ProductViewSummary;
   Status?: Status;
@@ -717,15 +548,7 @@ export interface ProductViewDetail {
   CreatedTime?: Date;
   SourceConnection?: SourceConnectionDetail;
 }
-const ProductViewDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductViewSummary: S.optional(ProductViewSummary),
-    Status: S.optional(Status),
-    ProductARN: S.optional(S.String),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    SourceConnection: S.optional(SourceConnectionDetail),
-  }),
-).annotate({ identifier: "ProductViewDetail" }) as any as S.Schema<ProductViewDetail>;
+const ProductViewDetail = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ProductViewDetail>;
 export type ProvisioningArtifactActive = boolean;
 export type ProvisioningArtifactGuidance = "DEFAULT" | "DEPRECATED" | (string & {});
 const ProvisioningArtifactGuidance = S.String;
@@ -741,39 +564,23 @@ export interface ProvisioningArtifactDetail {
   Guidance?: ProvisioningArtifactGuidance;
   SourceRevision?: string;
 }
-const ProvisioningArtifactDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    Type: S.optional(ProvisioningArtifactType),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Active: S.optional(S.Boolean),
-    Guidance: S.optional(ProvisioningArtifactGuidance),
-    SourceRevision: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProvisioningArtifactDetail",
-}) as any as S.Schema<ProvisioningArtifactDetail>;
+const ProvisioningArtifactDetail = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ProvisioningArtifactDetail>;
 export interface CreateProductOutput {
   ProductViewDetail?: ProductViewDetail;
   ProvisioningArtifactDetail?: ProvisioningArtifactDetail;
   Tags?: Tag[];
 }
-const CreateProductOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductViewDetail: S.optional(ProductViewDetail),
-    ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
-    Tags: S.optional(Tags),
-  }),
-).annotate({ identifier: "CreateProductOutput" }) as any as S.Schema<CreateProductOutput>;
+const CreateProductOutput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CreateProductOutput>;
 export type ProvisionedProductPlanName = string;
 export type ProvisionedProductPlanType = "CLOUDFORMATION" | (string & {});
 const ProvisionedProductPlanType = S.String;
 
 export type NotificationArn = string;
 export type NotificationArns = string[];
-const NotificationArns = /*@__PURE__*/ S.Array(S.String);
+const NotificationArns = /*@__PURE__*/ __L.at(__c5, 3);
 export type ProvisionedProductName = string;
 export type ParameterKey = string;
 export type ParameterValue = string;
@@ -783,17 +590,12 @@ export interface UpdateProvisioningParameter {
   Value?: string;
   UsePreviousValue?: boolean;
 }
-const UpdateProvisioningParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Value: S.optional(S.String),
-    UsePreviousValue: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateProvisioningParameter",
-}) as any as S.Schema<UpdateProvisioningParameter>;
+const UpdateProvisioningParameter = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<UpdateProvisioningParameter>;
 export type UpdateProvisioningParameters = UpdateProvisioningParameter[];
-const UpdateProvisioningParameters = /*@__PURE__*/ S.Array(UpdateProvisioningParameter);
+const UpdateProvisioningParameters = /*@__PURE__*/ __L.at(__c5, 5);
 export interface CreateProvisionedProductPlanInput {
   AcceptLanguage?: string;
   PlanName: string;
@@ -807,23 +609,10 @@ export interface CreateProvisionedProductPlanInput {
   IdempotencyToken: string;
   Tags?: Tag[];
 }
-const CreateProvisionedProductPlanInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PlanName: S.String,
-    PlanType: ProvisionedProductPlanType,
-    NotificationArns: S.optional(NotificationArns),
-    PathId: S.optional(S.String),
-    ProductId: S.String,
-    ProvisionedProductName: S.String,
-    ProvisioningArtifactId: S.String,
-    ProvisioningParameters: S.optional(UpdateProvisioningParameters),
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-    Tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateProvisionedProductPlanInput",
-}) as any as S.Schema<CreateProvisionedProductPlanInput>;
+const CreateProvisionedProductPlanInput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateProvisionedProductPlanInput>;
 export interface CreateProvisionedProductPlanOutput {
   PlanName?: string;
   PlanId?: string;
@@ -831,47 +620,29 @@ export interface CreateProvisionedProductPlanOutput {
   ProvisionedProductName?: string;
   ProvisioningArtifactId?: string;
 }
-const CreateProvisionedProductPlanOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PlanName: S.optional(S.String),
-    PlanId: S.optional(S.String),
-    ProvisionProductId: S.optional(S.String),
-    ProvisionedProductName: S.optional(S.String),
-    ProvisioningArtifactId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateProvisionedProductPlanOutput",
-}) as any as S.Schema<CreateProvisionedProductPlanOutput>;
+const CreateProvisionedProductPlanOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateProvisionedProductPlanOutput>;
 export interface CreateProvisioningArtifactInput {
   AcceptLanguage?: string;
   ProductId: string;
   Parameters: ProvisioningArtifactProperties;
   IdempotencyToken: string;
 }
-const CreateProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.String,
-    Parameters: ProvisioningArtifactProperties,
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateProvisioningArtifactInput",
-}) as any as S.Schema<CreateProvisioningArtifactInput>;
+const CreateProvisioningArtifactInput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateProvisioningArtifactInput>;
 export interface CreateProvisioningArtifactOutput {
   ProvisioningArtifactDetail?: ProvisioningArtifactDetail;
   Info?: { [key: string]: string | undefined };
   Status?: Status;
 }
-const CreateProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
-    Info: S.optional(ProvisioningArtifactInfo),
-    Status: S.optional(Status),
-  }),
-).annotate({
-  identifier: "CreateProvisioningArtifactOutput",
-}) as any as S.Schema<CreateProvisioningArtifactOutput>;
+const CreateProvisioningArtifactOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateProvisioningArtifactOutput>;
 export type ServiceActionName = string;
 export type ServiceActionDefinitionType = "SSM_AUTOMATION" | (string & {});
 const ServiceActionDefinitionType = S.String;
@@ -895,59 +666,36 @@ export interface CreateServiceActionInput {
   AcceptLanguage?: string;
   IdempotencyToken: string;
 }
-const CreateServiceActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    DefinitionType: ServiceActionDefinitionType,
-    Definition: ServiceActionDefinitionMap,
-    Description: S.optional(S.String),
-    AcceptLanguage: S.optional(S.String),
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateServiceActionInput" }) as any as S.Schema<CreateServiceActionInput>;
+const CreateServiceActionInput = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateServiceActionInput>;
 export interface ServiceActionSummary {
   Id?: string;
   Name?: string;
   Description?: string;
   DefinitionType?: ServiceActionDefinitionType;
 }
-const ServiceActionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    DefinitionType: S.optional(ServiceActionDefinitionType),
-  }),
-).annotate({ identifier: "ServiceActionSummary" }) as any as S.Schema<ServiceActionSummary>;
+const ServiceActionSummary = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ServiceActionSummary>;
 export interface ServiceActionDetail {
   ServiceActionSummary?: ServiceActionSummary;
   Definition?: { [key: string]: string | undefined };
 }
-const ServiceActionDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceActionSummary: S.optional(ServiceActionSummary),
-    Definition: S.optional(ServiceActionDefinitionMap),
-  }),
-).annotate({ identifier: "ServiceActionDetail" }) as any as S.Schema<ServiceActionDetail>;
+const ServiceActionDetail = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ServiceActionDetail>;
 export interface CreateServiceActionOutput {
   ServiceActionDetail?: ServiceActionDetail;
 }
-const CreateServiceActionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServiceActionDetail: S.optional(ServiceActionDetail) }),
-).annotate({
-  identifier: "CreateServiceActionOutput",
-}) as any as S.Schema<CreateServiceActionOutput>;
+const CreateServiceActionOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateServiceActionOutput>;
 export type TagOptionKey = string;
 export type TagOptionValue = string;
 export interface CreateTagOptionInput {
   Key: string;
   Value: string;
 }
-const CreateTagOptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateTagOptionInput" }) as any as S.Schema<CreateTagOptionInput>;
+const CreateTagOptionInput = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<CreateTagOptionInput>;
 export type TagOptionActive = boolean;
 export type Owner = string;
 export interface TagOptionDetail {
@@ -957,30 +705,22 @@ export interface TagOptionDetail {
   Id?: string;
   Owner?: string;
 }
-const TagOptionDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Value: S.optional(S.String),
-    Active: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    Owner: S.optional(S.String),
-  }),
-).annotate({ identifier: "TagOptionDetail" }) as any as S.Schema<TagOptionDetail>;
+const TagOptionDetail = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<TagOptionDetail>;
 export interface CreateTagOptionOutput {
   TagOptionDetail?: TagOptionDetail;
 }
-const CreateTagOptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagOptionDetail: S.optional(TagOptionDetail) }),
-).annotate({ identifier: "CreateTagOptionOutput" }) as any as S.Schema<CreateTagOptionOutput>;
+const CreateTagOptionOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateTagOptionOutput>;
 export interface DeleteConstraintInput {
   AcceptLanguage?: string;
   Id: string;
 }
-const DeleteConstraintInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteConstraintInput" }) as any as S.Schema<DeleteConstraintInput>;
+const DeleteConstraintInput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteConstraintInput>;
 export interface DeleteConstraintOutput {}
 const DeleteConstraintOutput =
   AcceptPortfolioShareOutput as any as S.Schema<DeleteConstraintOutput>;
@@ -988,11 +728,7 @@ export interface DeletePortfolioInput {
   AcceptLanguage?: string;
   Id: string;
 }
-const DeletePortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeletePortfolioInput" }) as any as S.Schema<DeletePortfolioInput>;
+const DeletePortfolioInput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeletePortfolioInput>;
 export interface DeletePortfolioOutput {}
 const DeletePortfolioOutput = AcceptPortfolioShareOutput as any as S.Schema<DeletePortfolioOutput>;
 export interface DeletePortfolioShareInput {
@@ -1001,16 +737,10 @@ export interface DeletePortfolioShareInput {
   AccountId?: string;
   OrganizationNode?: OrganizationNode;
 }
-const DeletePortfolioShareInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    AccountId: S.optional(S.String),
-    OrganizationNode: S.optional(OrganizationNode),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DeletePortfolioShareInput",
-}) as any as S.Schema<DeletePortfolioShareInput>;
+const DeletePortfolioShareInput = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeletePortfolioShareInput>;
 export interface DeletePortfolioShareOutput {
   PortfolioShareToken?: string;
 }
@@ -1020,11 +750,7 @@ export interface DeleteProductInput {
   AcceptLanguage?: string;
   Id: string;
 }
-const DeleteProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteProductInput" }) as any as S.Schema<DeleteProductInput>;
+const DeleteProductInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DeleteProductInput>;
 export interface DeleteProductOutput {}
 const DeleteProductOutput = AcceptPortfolioShareOutput as any as S.Schema<DeleteProductOutput>;
 export type IgnoreErrors = boolean;
@@ -1033,15 +759,10 @@ export interface DeleteProvisionedProductPlanInput {
   PlanId: string;
   IgnoreErrors?: boolean;
 }
-const DeleteProvisionedProductPlanInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PlanId: S.String,
-    IgnoreErrors: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DeleteProvisionedProductPlanInput",
-}) as any as S.Schema<DeleteProvisionedProductPlanInput>;
+const DeleteProvisionedProductPlanInput = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteProvisionedProductPlanInput>;
 export interface DeleteProvisionedProductPlanOutput {}
 const DeleteProvisionedProductPlanOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<DeleteProvisionedProductPlanOutput>;
@@ -1050,15 +771,10 @@ export interface DeleteProvisioningArtifactInput {
   ProductId: string;
   ProvisioningArtifactId: string;
 }
-const DeleteProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.String,
-    ProvisioningArtifactId: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DeleteProvisioningArtifactInput",
-}) as any as S.Schema<DeleteProvisioningArtifactInput>;
+const DeleteProvisioningArtifactInput = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteProvisioningArtifactInput>;
 export interface DeleteProvisioningArtifactOutput {}
 const DeleteProvisioningArtifactOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<DeleteProvisioningArtifactOutput>;
@@ -1067,35 +783,27 @@ export interface DeleteServiceActionInput {
   AcceptLanguage?: string;
   IdempotencyToken?: string;
 }
-const DeleteServiceActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    AcceptLanguage: S.optional(S.String),
-    IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DeleteServiceActionInput" }) as any as S.Schema<DeleteServiceActionInput>;
+const DeleteServiceActionInput = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteServiceActionInput>;
 export interface DeleteServiceActionOutput {}
 const DeleteServiceActionOutput =
   AcceptPortfolioShareOutput as any as S.Schema<DeleteServiceActionOutput>;
 export interface DeleteTagOptionInput {
   Id: string;
 }
-const DeleteTagOptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpQuery("id")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteTagOptionInput" }) as any as S.Schema<DeleteTagOptionInput>;
+const DeleteTagOptionInput = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DeleteTagOptionInput>;
 export interface DeleteTagOptionOutput {}
 const DeleteTagOptionOutput = AcceptPortfolioShareOutput as any as S.Schema<DeleteTagOptionOutput>;
 export interface DescribeConstraintInput {
   AcceptLanguage?: string;
   Id: string;
 }
-const DescribeConstraintInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeConstraintInput" }) as any as S.Schema<DescribeConstraintInput>;
+const DescribeConstraintInput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DescribeConstraintInput>;
 export interface DescribeConstraintOutput {
   ConstraintDetail?: ConstraintDetail;
   ConstraintParameters?: string;
@@ -1107,13 +815,10 @@ export interface DescribeCopyProductStatusInput {
   AcceptLanguage?: string;
   CopyProductToken: string;
 }
-const DescribeCopyProductStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceptLanguage: S.optional(S.String), CopyProductToken: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeCopyProductStatusInput",
-}) as any as S.Schema<DescribeCopyProductStatusInput>;
+const DescribeCopyProductStatusInput = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DescribeCopyProductStatusInput>;
 export type CopyProductStatus = "SUCCEEDED" | "IN_PROGRESS" | "FAILED" | (string & {});
 const CopyProductStatus = S.String;
 
@@ -1123,48 +828,36 @@ export interface DescribeCopyProductStatusOutput {
   TargetProductId?: string;
   StatusDetail?: string;
 }
-const DescribeCopyProductStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CopyProductStatus: S.optional(CopyProductStatus),
-    TargetProductId: S.optional(S.String),
-    StatusDetail: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DescribeCopyProductStatusOutput",
-}) as any as S.Schema<DescribeCopyProductStatusOutput>;
+const DescribeCopyProductStatusOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DescribeCopyProductStatusOutput>;
 export interface DescribePortfolioInput {
   AcceptLanguage?: string;
   Id: string;
 }
-const DescribePortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribePortfolioInput" }) as any as S.Schema<DescribePortfolioInput>;
+const DescribePortfolioInput = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DescribePortfolioInput>;
 export type TagOptionDetails = TagOptionDetail[];
-const TagOptionDetails = /*@__PURE__*/ S.Array(TagOptionDetail);
+const TagOptionDetails = /*@__PURE__*/ __L.at(__c8, 5);
 export interface BudgetDetail {
   BudgetName?: string;
 }
-const BudgetDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BudgetName: S.optional(S.String) }),
-).annotate({ identifier: "BudgetDetail" }) as any as S.Schema<BudgetDetail>;
+const BudgetDetail = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<BudgetDetail>;
 export type Budgets = BudgetDetail[];
-const Budgets = /*@__PURE__*/ S.Array(BudgetDetail);
+const Budgets = /*@__PURE__*/ __L.at(__c8, 7);
 export interface DescribePortfolioOutput {
   PortfolioDetail?: PortfolioDetail;
   Tags?: Tag[];
   TagOptions?: TagOptionDetail[];
   Budgets?: BudgetDetail[];
 }
-const DescribePortfolioOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PortfolioDetail: S.optional(PortfolioDetail),
-    Tags: S.optional(Tags),
-    TagOptions: S.optional(TagOptionDetails),
-    Budgets: S.optional(Budgets),
-  }),
-).annotate({ identifier: "DescribePortfolioOutput" }) as any as S.Schema<DescribePortfolioOutput>;
+const DescribePortfolioOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DescribePortfolioOutput>;
 export type DescribePortfolioShareType =
   | "ACCOUNT"
   | "ORGANIZATION"
@@ -1181,16 +874,10 @@ export interface DescribePortfolioSharesInput {
   PageToken?: string;
   PageSize?: number;
 }
-const DescribePortfolioSharesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PortfolioId: S.String,
-    Type: DescribePortfolioShareType,
-    PageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribePortfolioSharesInput",
-}) as any as S.Schema<DescribePortfolioSharesInput>;
+const DescribePortfolioSharesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DescribePortfolioSharesInput>;
 export interface PortfolioShareDetail {
   PrincipalId?: string;
   Type?: DescribePortfolioShareType;
@@ -1198,39 +885,24 @@ export interface PortfolioShareDetail {
   ShareTagOptions?: boolean;
   SharePrincipals?: boolean;
 }
-const PortfolioShareDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrincipalId: S.optional(S.String),
-    Type: S.optional(DescribePortfolioShareType),
-    Accepted: S.optional(S.Boolean),
-    ShareTagOptions: S.optional(S.Boolean),
-    SharePrincipals: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "PortfolioShareDetail" }) as any as S.Schema<PortfolioShareDetail>;
+const PortfolioShareDetail = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<PortfolioShareDetail>;
 export type PortfolioShareDetails = PortfolioShareDetail[];
-const PortfolioShareDetails = /*@__PURE__*/ S.Array(PortfolioShareDetail);
+const PortfolioShareDetails = /*@__PURE__*/ __L.at(__c9, 3);
 export interface DescribePortfolioSharesOutput {
   NextPageToken?: string;
   PortfolioShareDetails?: PortfolioShareDetail[];
 }
-const DescribePortfolioSharesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextPageToken: S.optional(S.String),
-    PortfolioShareDetails: S.optional(PortfolioShareDetails),
-  }),
-).annotate({
-  identifier: "DescribePortfolioSharesOutput",
-}) as any as S.Schema<DescribePortfolioSharesOutput>;
+const DescribePortfolioSharesOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DescribePortfolioSharesOutput>;
 export interface DescribePortfolioShareStatusInput {
   PortfolioShareToken: string;
 }
-const DescribePortfolioShareStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PortfolioShareToken: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribePortfolioShareStatusInput",
-}) as any as S.Schema<DescribePortfolioShareStatusInput>;
+const DescribePortfolioShareStatusInput = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DescribePortfolioShareStatusInput>;
 export type ShareStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
@@ -1250,25 +922,14 @@ export interface ShareError {
   Message?: string;
   Error?: string;
 }
-const ShareError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Accounts: S.optional(Namespaces),
-    Message: S.optional(S.String),
-    Error: S.optional(S.String),
-  }),
-).annotate({ identifier: "ShareError" }) as any as S.Schema<ShareError>;
+const ShareError = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ShareError>;
 export type ShareErrors = ShareError[];
-const ShareErrors = /*@__PURE__*/ S.Array(ShareError);
+const ShareErrors = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ShareDetails {
   SuccessfulShares?: string[];
   ShareErrors?: ShareError[];
 }
-const ShareDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SuccessfulShares: S.optional(SuccessfulShares),
-    ShareErrors: S.optional(ShareErrors),
-  }),
-).annotate({ identifier: "ShareDetails" }) as any as S.Schema<ShareDetails>;
+const ShareDetails = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ShareDetails>;
 export interface DescribePortfolioShareStatusOutput {
   PortfolioShareToken?: string;
   PortfolioId?: string;
@@ -1276,29 +937,19 @@ export interface DescribePortfolioShareStatusOutput {
   Status?: ShareStatus;
   ShareDetails?: ShareDetails;
 }
-const DescribePortfolioShareStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PortfolioShareToken: S.optional(S.String),
-    PortfolioId: S.optional(S.String),
-    OrganizationNodeValue: S.optional(S.String),
-    Status: S.optional(ShareStatus),
-    ShareDetails: S.optional(ShareDetails),
-  }),
-).annotate({
-  identifier: "DescribePortfolioShareStatusOutput",
-}) as any as S.Schema<DescribePortfolioShareStatusOutput>;
+const DescribePortfolioShareStatusOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DescribePortfolioShareStatusOutput>;
 export interface DescribeProductInput {
   AcceptLanguage?: string;
   Id?: string;
   Name?: string;
 }
-const DescribeProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeProductInput" }) as any as S.Schema<DescribeProductInput>;
+const DescribeProductInput = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DescribeProductInput>;
 export type ProvisioningArtifactCreatedTime = Date;
 export interface ProvisioningArtifact {
   Id?: string;
@@ -1307,57 +958,40 @@ export interface ProvisioningArtifact {
   CreatedTime?: Date;
   Guidance?: ProvisioningArtifactGuidance;
 }
-const ProvisioningArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Guidance: S.optional(ProvisioningArtifactGuidance),
-  }),
-).annotate({ identifier: "ProvisioningArtifact" }) as any as S.Schema<ProvisioningArtifact>;
+const ProvisioningArtifact = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ProvisioningArtifact>;
 export type ProvisioningArtifacts = ProvisioningArtifact[];
-const ProvisioningArtifacts = /*@__PURE__*/ S.Array(ProvisioningArtifact);
+const ProvisioningArtifacts = /*@__PURE__*/ __L.at(__c10, 4);
 export type PortfolioName = string;
 export interface LaunchPath {
   Id?: string;
   Name?: string;
 }
-const LaunchPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({ identifier: "LaunchPath" }) as any as S.Schema<LaunchPath>;
+const LaunchPath = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<LaunchPath>;
 export type LaunchPaths = LaunchPath[];
-const LaunchPaths = /*@__PURE__*/ S.Array(LaunchPath);
+const LaunchPaths = /*@__PURE__*/ __L.at(__c10, 6);
 export interface DescribeProductOutput {
   ProductViewSummary?: ProductViewSummary;
   ProvisioningArtifacts?: ProvisioningArtifact[];
   Budgets?: BudgetDetail[];
   LaunchPaths?: LaunchPath[];
 }
-const DescribeProductOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductViewSummary: S.optional(ProductViewSummary),
-    ProvisioningArtifacts: S.optional(ProvisioningArtifacts),
-    Budgets: S.optional(Budgets),
-    LaunchPaths: S.optional(LaunchPaths),
-  }),
-).annotate({ identifier: "DescribeProductOutput" }) as any as S.Schema<DescribeProductOutput>;
+const DescribeProductOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DescribeProductOutput>;
 export interface DescribeProductAsAdminInput {
   AcceptLanguage?: string;
   Id?: string;
   Name?: string;
   SourcePortfolioId?: string;
 }
-const DescribeProductAsAdminInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    SourcePortfolioId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeProductAsAdminInput",
-}) as any as S.Schema<DescribeProductAsAdminInput>;
+const DescribeProductAsAdminInput = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DescribeProductAsAdminInput>;
 export interface ProvisioningArtifactSummary {
   Id?: string;
   Name?: string;
@@ -1365,19 +999,12 @@ export interface ProvisioningArtifactSummary {
   CreatedTime?: Date;
   ProvisioningArtifactMetadata?: { [key: string]: string | undefined };
 }
-const ProvisioningArtifactSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ProvisioningArtifactMetadata: S.optional(ProvisioningArtifactInfo),
-  }),
-).annotate({
-  identifier: "ProvisioningArtifactSummary",
-}) as any as S.Schema<ProvisioningArtifactSummary>;
+const ProvisioningArtifactSummary = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ProvisioningArtifactSummary>;
 export type ProvisioningArtifactSummaries = ProvisioningArtifactSummary[];
-const ProvisioningArtifactSummaries = /*@__PURE__*/ S.Array(ProvisioningArtifactSummary);
+const ProvisioningArtifactSummaries = /*@__PURE__*/ __L.at(__c11, 2);
 export interface DescribeProductAsAdminOutput {
   ProductViewDetail?: ProductViewDetail;
   ProvisioningArtifactSummaries?: ProvisioningArtifactSummary[];
@@ -1385,52 +1012,35 @@ export interface DescribeProductAsAdminOutput {
   TagOptions?: TagOptionDetail[];
   Budgets?: BudgetDetail[];
 }
-const DescribeProductAsAdminOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductViewDetail: S.optional(ProductViewDetail),
-    ProvisioningArtifactSummaries: S.optional(ProvisioningArtifactSummaries),
-    Tags: S.optional(Tags),
-    TagOptions: S.optional(TagOptionDetails),
-    Budgets: S.optional(Budgets),
-  }),
-).annotate({
-  identifier: "DescribeProductAsAdminOutput",
-}) as any as S.Schema<DescribeProductAsAdminOutput>;
+const DescribeProductAsAdminOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DescribeProductAsAdminOutput>;
 export interface DescribeProductViewInput {
   AcceptLanguage?: string;
   Id: string;
 }
-const DescribeProductViewInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeProductViewInput" }) as any as S.Schema<DescribeProductViewInput>;
+const DescribeProductViewInput = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DescribeProductViewInput>;
 export interface DescribeProductViewOutput {
   ProductViewSummary?: ProductViewSummary;
   ProvisioningArtifacts?: ProvisioningArtifact[];
 }
-const DescribeProductViewOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductViewSummary: S.optional(ProductViewSummary),
-    ProvisioningArtifacts: S.optional(ProvisioningArtifacts),
-  }),
-).annotate({
-  identifier: "DescribeProductViewOutput",
-}) as any as S.Schema<DescribeProductViewOutput>;
+const DescribeProductViewOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DescribeProductViewOutput>;
 export interface DescribeProvisionedProductInput {
   AcceptLanguage?: string;
   Id?: string;
   Name?: string;
 }
-const DescribeProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeProvisionedProductInput",
-}) as any as S.Schema<DescribeProvisionedProductInput>;
+const DescribeProvisionedProductInput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DescribeProvisionedProductInput>;
 export type ProvisionedProductNameOrArn = string;
 export type ProvisionedProductType = string;
 export type ProvisionedProductId = string;
@@ -1462,45 +1072,25 @@ export interface ProvisionedProductDetail {
   ProvisioningArtifactId?: string;
   LaunchRoleArn?: string;
 }
-const ProvisionedProductDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Type: S.optional(S.String),
-    Id: S.optional(S.String),
-    Status: S.optional(ProvisionedProductStatus),
-    StatusMessage: S.optional(S.String),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    IdempotencyToken: S.optional(S.String),
-    LastRecordId: S.optional(S.String),
-    LastProvisioningRecordId: S.optional(S.String),
-    LastSuccessfulProvisioningRecordId: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    ProvisioningArtifactId: S.optional(S.String),
-    LaunchRoleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProvisionedProductDetail" }) as any as S.Schema<ProvisionedProductDetail>;
+const ProvisionedProductDetail = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ProvisionedProductDetail>;
 export type CloudWatchDashboardName = string;
 export interface CloudWatchDashboard {
   Name?: string;
 }
-const CloudWatchDashboard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "CloudWatchDashboard" }) as any as S.Schema<CloudWatchDashboard>;
+const CloudWatchDashboard = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<CloudWatchDashboard>;
 export type CloudWatchDashboards = CloudWatchDashboard[];
-const CloudWatchDashboards = /*@__PURE__*/ S.Array(CloudWatchDashboard);
+const CloudWatchDashboards = /*@__PURE__*/ __L.at(__c12, 1);
 export interface DescribeProvisionedProductOutput {
   ProvisionedProductDetail?: ProvisionedProductDetail;
   CloudWatchDashboards?: CloudWatchDashboard[];
 }
-const DescribeProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionedProductDetail: S.optional(ProvisionedProductDetail),
-    CloudWatchDashboards: S.optional(CloudWatchDashboards),
-  }),
-).annotate({
-  identifier: "DescribeProvisionedProductOutput",
-}) as any as S.Schema<DescribeProvisionedProductOutput>;
+const DescribeProvisionedProductOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DescribeProvisionedProductOutput>;
 export type PageSize = number;
 export interface DescribeProvisionedProductPlanInput {
   AcceptLanguage?: string;
@@ -1508,16 +1098,10 @@ export interface DescribeProvisionedProductPlanInput {
   PageSize?: number;
   PageToken?: string;
 }
-const DescribeProvisionedProductPlanInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PlanId: S.String,
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeProvisionedProductPlanInput",
-}) as any as S.Schema<DescribeProvisionedProductPlanInput>;
+const DescribeProvisionedProductPlanInput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DescribeProvisionedProductPlanInput>;
 export type ProvisionedProductPlanStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_SUCCESS"
@@ -1547,27 +1131,10 @@ export interface ProvisionedProductPlanDetails {
   Tags?: Tag[];
   StatusMessage?: string;
 }
-const ProvisionedProductPlanDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    PathId: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    PlanName: S.optional(S.String),
-    PlanId: S.optional(S.String),
-    ProvisionProductId: S.optional(S.String),
-    ProvisionProductName: S.optional(S.String),
-    PlanType: S.optional(ProvisionedProductPlanType),
-    ProvisioningArtifactId: S.optional(S.String),
-    Status: S.optional(ProvisionedProductPlanStatus),
-    UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    NotificationArns: S.optional(NotificationArns),
-    ProvisioningParameters: S.optional(UpdateProvisioningParameters),
-    Tags: S.optional(Tags),
-    StatusMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProvisionedProductPlanDetails",
-}) as any as S.Schema<ProvisionedProductPlanDetails>;
+const ProvisionedProductPlanDetails = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ProvisionedProductPlanDetails>;
 export type ChangeAction = "ADD" | "MODIFY" | "REMOVE" | (string & {});
 const ChangeAction = S.String;
 
@@ -1598,13 +1165,10 @@ export interface ResourceTargetDefinition {
   Name?: string;
   RequiresRecreation?: RequiresRecreation;
 }
-const ResourceTargetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attribute: S.optional(ResourceAttribute),
-    Name: S.optional(S.String),
-    RequiresRecreation: S.optional(RequiresRecreation),
-  }),
-).annotate({ identifier: "ResourceTargetDefinition" }) as any as S.Schema<ResourceTargetDefinition>;
+const ResourceTargetDefinition = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ResourceTargetDefinition>;
 export type EvaluationType = "STATIC" | "DYNAMIC" | (string & {});
 const EvaluationType = S.String;
 
@@ -1614,15 +1178,12 @@ export interface ResourceChangeDetail {
   Evaluation?: EvaluationType;
   CausingEntity?: string;
 }
-const ResourceChangeDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Target: S.optional(ResourceTargetDefinition),
-    Evaluation: S.optional(EvaluationType),
-    CausingEntity: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourceChangeDetail" }) as any as S.Schema<ResourceChangeDetail>;
+const ResourceChangeDetail = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ResourceChangeDetail>;
 export type ResourceChangeDetails = ResourceChangeDetail[];
-const ResourceChangeDetails = /*@__PURE__*/ S.Array(ResourceChangeDetail);
+const ResourceChangeDetails = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ResourceChange {
   Action?: ChangeAction;
   LogicalResourceId?: string;
@@ -1632,33 +1193,18 @@ export interface ResourceChange {
   Scope?: ResourceAttribute[];
   Details?: ResourceChangeDetail[];
 }
-const ResourceChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(ChangeAction),
-    LogicalResourceId: S.optional(S.String),
-    PhysicalResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    Replacement: S.optional(Replacement),
-    Scope: S.optional(Scope),
-    Details: S.optional(ResourceChangeDetails),
-  }),
-).annotate({ identifier: "ResourceChange" }) as any as S.Schema<ResourceChange>;
+const ResourceChange = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ResourceChange>;
 export type ResourceChanges = ResourceChange[];
-const ResourceChanges = /*@__PURE__*/ S.Array(ResourceChange);
+const ResourceChanges = /*@__PURE__*/ __L.at(__c13, 1);
 export interface DescribeProvisionedProductPlanOutput {
   ProvisionedProductPlanDetails?: ProvisionedProductPlanDetails;
   ResourceChanges?: ResourceChange[];
   NextPageToken?: string;
 }
-const DescribeProvisionedProductPlanOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionedProductPlanDetails: S.optional(ProvisionedProductPlanDetails),
-    ResourceChanges: S.optional(ResourceChanges),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DescribeProvisionedProductPlanOutput",
-}) as any as S.Schema<DescribeProvisionedProductPlanOutput>;
+const DescribeProvisionedProductPlanOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DescribeProvisionedProductPlanOutput>;
 export type Verbose = boolean;
 export interface DescribeProvisioningArtifactInput {
   AcceptLanguage?: string;
@@ -1669,19 +1215,10 @@ export interface DescribeProvisioningArtifactInput {
   Verbose?: boolean;
   IncludeProvisioningArtifactParameters?: boolean;
 }
-const DescribeProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProvisioningArtifactId: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    ProvisioningArtifactName: S.optional(S.String),
-    ProductName: S.optional(S.String),
-    Verbose: S.optional(S.Boolean),
-    IncludeProvisioningArtifactParameters: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeProvisioningArtifactInput",
-}) as any as S.Schema<DescribeProvisioningArtifactInput>;
+const DescribeProvisioningArtifactInput = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DescribeProvisioningArtifactInput>;
 export type DefaultValue = string;
 export type ParameterType = string;
 export type NoEcho = boolean;
@@ -1697,17 +1234,10 @@ export interface ParameterConstraints {
   MaxValue?: string;
   MinValue?: string;
 }
-const ParameterConstraints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AllowedValues: S.optional(AllowedValues),
-    AllowedPattern: S.optional(S.String),
-    ConstraintDescription: S.optional(S.String),
-    MaxLength: S.optional(S.String),
-    MinLength: S.optional(S.String),
-    MaxValue: S.optional(S.String),
-    MinValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "ParameterConstraints" }) as any as S.Schema<ParameterConstraints>;
+const ParameterConstraints = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ParameterConstraints>;
 export interface ProvisioningArtifactParameter {
   ParameterKey?: string;
   DefaultValue?: string;
@@ -1716,36 +1246,22 @@ export interface ProvisioningArtifactParameter {
   Description?: string;
   ParameterConstraints?: ParameterConstraints;
 }
-const ProvisioningArtifactParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ParameterKey: S.optional(S.String),
-    DefaultValue: S.optional(S.String),
-    ParameterType: S.optional(S.String),
-    IsNoEcho: S.optional(S.Boolean),
-    Description: S.optional(S.String),
-    ParameterConstraints: S.optional(ParameterConstraints),
-  }),
-).annotate({
-  identifier: "ProvisioningArtifactParameter",
-}) as any as S.Schema<ProvisioningArtifactParameter>;
+const ProvisioningArtifactParameter = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ProvisioningArtifactParameter>;
 export type ProvisioningArtifactParameters = ProvisioningArtifactParameter[];
-const ProvisioningArtifactParameters = /*@__PURE__*/ S.Array(ProvisioningArtifactParameter);
+const ProvisioningArtifactParameters = /*@__PURE__*/ __L.at(__c13, 6);
 export interface DescribeProvisioningArtifactOutput {
   ProvisioningArtifactDetail?: ProvisioningArtifactDetail;
   Info?: { [key: string]: string | undefined };
   Status?: Status;
   ProvisioningArtifactParameters?: ProvisioningArtifactParameter[];
 }
-const DescribeProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
-    Info: S.optional(ProvisioningArtifactInfo),
-    Status: S.optional(Status),
-    ProvisioningArtifactParameters: S.optional(ProvisioningArtifactParameters),
-  }),
-).annotate({
-  identifier: "DescribeProvisioningArtifactOutput",
-}) as any as S.Schema<DescribeProvisioningArtifactOutput>;
+const DescribeProvisioningArtifactOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DescribeProvisioningArtifactOutput>;
 export interface DescribeProvisioningParametersInput {
   AcceptLanguage?: string;
   ProductId?: string;
@@ -1755,50 +1271,35 @@ export interface DescribeProvisioningParametersInput {
   PathId?: string;
   PathName?: string;
 }
-const DescribeProvisioningParametersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    ProductName: S.optional(S.String),
-    ProvisioningArtifactId: S.optional(S.String),
-    ProvisioningArtifactName: S.optional(S.String),
-    PathId: S.optional(S.String),
-    PathName: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeProvisioningParametersInput",
-}) as any as S.Schema<DescribeProvisioningParametersInput>;
+const DescribeProvisioningParametersInput = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DescribeProvisioningParametersInput>;
 export interface ConstraintSummary {
   Type?: string;
   Description?: string;
 }
-const ConstraintSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(S.String), Description: S.optional(S.String) }),
-).annotate({ identifier: "ConstraintSummary" }) as any as S.Schema<ConstraintSummary>;
+const ConstraintSummary = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ConstraintSummary>;
 export type ConstraintSummaries = ConstraintSummary[];
-const ConstraintSummaries = /*@__PURE__*/ S.Array(ConstraintSummary);
+const ConstraintSummaries = /*@__PURE__*/ __L.at(__c14, 2);
 export type InstructionType = string;
 export type InstructionValue = string;
 export interface UsageInstruction {
   Type?: string;
   Value?: string;
 }
-const UsageInstruction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "UsageInstruction" }) as any as S.Schema<UsageInstruction>;
+const UsageInstruction = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<UsageInstruction>;
 export type UsageInstructions = UsageInstruction[];
-const UsageInstructions = /*@__PURE__*/ S.Array(UsageInstruction);
+const UsageInstructions = /*@__PURE__*/ __L.at(__c14, 4);
 export type TagOptionValues = string[];
 const TagOptionValues = NotificationArns as any as S.Schema<TagOptionValues>;
 export interface TagOptionSummary {
   Key?: string;
   Values?: string[];
 }
-const TagOptionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Values: S.optional(TagOptionValues) }),
-).annotate({ identifier: "TagOptionSummary" }) as any as S.Schema<TagOptionSummary>;
+const TagOptionSummary = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<TagOptionSummary>;
 export type TagOptionSummaries = TagOptionSummary[];
-const TagOptionSummaries = /*@__PURE__*/ S.Array(TagOptionSummary);
+const TagOptionSummaries = /*@__PURE__*/ __L.at(__c14, 6);
 export type StackSetAccounts = string[];
 const StackSetAccounts = NotificationArns as any as S.Schema<StackSetAccounts>;
 export type Region = string;
@@ -1808,27 +1309,22 @@ export interface ProvisioningArtifactPreferences {
   StackSetAccounts?: string[];
   StackSetRegions?: string[];
 }
-const ProvisioningArtifactPreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StackSetAccounts: S.optional(StackSetAccounts),
-    StackSetRegions: S.optional(StackSetRegions),
-  }),
-).annotate({
-  identifier: "ProvisioningArtifactPreferences",
-}) as any as S.Schema<ProvisioningArtifactPreferences>;
+const ProvisioningArtifactPreferences = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ProvisioningArtifactPreferences>;
 export type ProvisioningArtifactOutputKey = string;
 export type OutputDescription = string;
 export interface ProvisioningArtifactOutput {
   Key?: string;
   Description?: string;
 }
-const ProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Description: S.optional(S.String) }),
-).annotate({
-  identifier: "ProvisioningArtifactOutput",
-}) as any as S.Schema<ProvisioningArtifactOutput>;
+const ProvisioningArtifactOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ProvisioningArtifactOutput>;
 export type ProvisioningArtifactOutputs = ProvisioningArtifactOutput[];
-const ProvisioningArtifactOutputs = /*@__PURE__*/ S.Array(ProvisioningArtifactOutput);
+const ProvisioningArtifactOutputs = /*@__PURE__*/ __L.at(__c15, 1);
 export interface DescribeProvisioningParametersOutput {
   ProvisioningArtifactParameters?: ProvisioningArtifactParameter[];
   ConstraintSummaries?: ConstraintSummary[];
@@ -1838,33 +1334,17 @@ export interface DescribeProvisioningParametersOutput {
   ProvisioningArtifactOutputs?: ProvisioningArtifactOutput[];
   ProvisioningArtifactOutputKeys?: ProvisioningArtifactOutput[];
 }
-const DescribeProvisioningParametersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisioningArtifactParameters: S.optional(ProvisioningArtifactParameters),
-    ConstraintSummaries: S.optional(ConstraintSummaries),
-    UsageInstructions: S.optional(UsageInstructions),
-    TagOptions: S.optional(TagOptionSummaries),
-    ProvisioningArtifactPreferences: S.optional(ProvisioningArtifactPreferences),
-    ProvisioningArtifactOutputs: S.optional(ProvisioningArtifactOutputs),
-    ProvisioningArtifactOutputKeys: S.optional(ProvisioningArtifactOutputs),
-  }),
-).annotate({
-  identifier: "DescribeProvisioningParametersOutput",
-}) as any as S.Schema<DescribeProvisioningParametersOutput>;
+const DescribeProvisioningParametersOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<DescribeProvisioningParametersOutput>;
 export interface DescribeRecordInput {
   AcceptLanguage?: string;
   Id: string;
   PageToken?: string;
   PageSize?: number;
 }
-const DescribeRecordInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    Id: S.String,
-    PageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeRecordInput" }) as any as S.Schema<DescribeRecordInput>;
+const DescribeRecordInput = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<DescribeRecordInput>;
 export type RecordStatus =
   | "CREATED"
   | "IN_PROGRESS"
@@ -1881,22 +1361,18 @@ export interface RecordError {
   Code?: string;
   Description?: string;
 }
-const RecordError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(S.String), Description: S.optional(S.String) }),
-).annotate({ identifier: "RecordError" }) as any as S.Schema<RecordError>;
+const RecordError = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<RecordError>;
 export type RecordErrors = RecordError[];
-const RecordErrors = /*@__PURE__*/ S.Array(RecordError);
+const RecordErrors = /*@__PURE__*/ __L.at(__c15, 5);
 export type RecordTagKey = string;
 export type RecordTagValue = string;
 export interface RecordTag {
   Key?: string;
   Value?: string;
 }
-const RecordTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "RecordTag" }) as any as S.Schema<RecordTag>;
+const RecordTag = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<RecordTag>;
 export type RecordTags = RecordTag[];
-const RecordTags = /*@__PURE__*/ S.Array(RecordTag);
+const RecordTags = /*@__PURE__*/ __L.at(__c15, 7);
 export interface RecordDetail {
   RecordId?: string;
   ProvisionedProductName?: string;
@@ -1913,24 +1389,7 @@ export interface RecordDetail {
   RecordTags?: RecordTag[];
   LaunchRoleArn?: string;
 }
-const RecordDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecordId: S.optional(S.String),
-    ProvisionedProductName: S.optional(S.String),
-    Status: S.optional(RecordStatus),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ProvisionedProductType: S.optional(S.String),
-    RecordType: S.optional(S.String),
-    ProvisionedProductId: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    ProvisioningArtifactId: S.optional(S.String),
-    PathId: S.optional(S.String),
-    RecordErrors: S.optional(RecordErrors),
-    RecordTags: S.optional(RecordTags),
-    LaunchRoleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "RecordDetail" }) as any as S.Schema<RecordDetail>;
+const RecordDetail = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<RecordDetail>;
 export type OutputKey = string;
 export type OutputValue = string;
 export interface RecordOutput {
@@ -1938,38 +1397,26 @@ export interface RecordOutput {
   OutputValue?: string;
   Description?: string;
 }
-const RecordOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OutputKey: S.optional(S.String),
-    OutputValue: S.optional(S.String),
-    Description: S.optional(S.String),
-  }),
-).annotate({ identifier: "RecordOutput" }) as any as S.Schema<RecordOutput>;
+const RecordOutput = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<RecordOutput>;
 export type RecordOutputs = RecordOutput[];
-const RecordOutputs = /*@__PURE__*/ S.Array(RecordOutput);
+const RecordOutputs = /*@__PURE__*/ __L.at(__c16, 2);
 export interface DescribeRecordOutput {
   RecordDetail?: RecordDetail;
   RecordOutputs?: RecordOutput[];
   NextPageToken?: string;
 }
-const DescribeRecordOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecordDetail: S.optional(RecordDetail),
-    RecordOutputs: S.optional(RecordOutputs),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "DescribeRecordOutput" }) as any as S.Schema<DescribeRecordOutput>;
+const DescribeRecordOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DescribeRecordOutput>;
 export interface DescribeServiceActionInput {
   Id: string;
   AcceptLanguage?: string;
 }
-const DescribeServiceActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String, AcceptLanguage: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeServiceActionInput",
-}) as any as S.Schema<DescribeServiceActionInput>;
+const DescribeServiceActionInput = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DescribeServiceActionInput>;
 export interface DescribeServiceActionOutput {
   ServiceActionDetail?: ServiceActionDetail;
 }
@@ -1980,15 +1427,10 @@ export interface DescribeServiceActionExecutionParametersInput {
   ServiceActionId: string;
   AcceptLanguage?: string;
 }
-const DescribeServiceActionExecutionParametersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionedProductId: S.String,
-    ServiceActionId: S.String,
-    AcceptLanguage: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeServiceActionExecutionParametersInput",
-}) as any as S.Schema<DescribeServiceActionExecutionParametersInput>;
+const DescribeServiceActionExecutionParametersInput = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DescribeServiceActionExecutionParametersInput>;
 export type ExecutionParameterKey = string;
 export type ExecutionParameterType = string;
 export type ExecutionParameterValue = string;
@@ -2000,41 +1442,32 @@ export interface ExecutionParameter {
   Type?: string;
   DefaultValues?: string[];
 }
-const ExecutionParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Type: S.optional(S.String),
-    DefaultValues: S.optional(ExecutionParameterValueList),
-  }),
-).annotate({ identifier: "ExecutionParameter" }) as any as S.Schema<ExecutionParameter>;
+const ExecutionParameter = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<ExecutionParameter>;
 export type ExecutionParameters = ExecutionParameter[];
-const ExecutionParameters = /*@__PURE__*/ S.Array(ExecutionParameter);
+const ExecutionParameters = /*@__PURE__*/ __L.at(__c16, 7);
 export interface DescribeServiceActionExecutionParametersOutput {
   ServiceActionParameters?: ExecutionParameter[];
 }
-const DescribeServiceActionExecutionParametersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServiceActionParameters: S.optional(ExecutionParameters) }),
-).annotate({
-  identifier: "DescribeServiceActionExecutionParametersOutput",
-}) as any as S.Schema<DescribeServiceActionExecutionParametersOutput>;
+const DescribeServiceActionExecutionParametersOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DescribeServiceActionExecutionParametersOutput>;
 export interface DescribeTagOptionInput {
   Id: string;
 }
-const DescribeTagOptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpQuery("id")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeTagOptionInput" }) as any as S.Schema<DescribeTagOptionInput>;
+const DescribeTagOptionInput = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DescribeTagOptionInput>;
 export interface DescribeTagOptionOutput {
   TagOptionDetail?: TagOptionDetail;
 }
 const DescribeTagOptionOutput = CreateTagOptionOutput as any as S.Schema<DescribeTagOptionOutput>;
 export interface DisableAWSOrganizationsAccessInput {}
-const DisableAWSOrganizationsAccessInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DisableAWSOrganizationsAccessInput",
-}) as any as S.Schema<DisableAWSOrganizationsAccessInput>;
+const DisableAWSOrganizationsAccessInput = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<DisableAWSOrganizationsAccessInput>;
 export interface DisableAWSOrganizationsAccessOutput {}
 const DisableAWSOrganizationsAccessOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<DisableAWSOrganizationsAccessOutput>;
@@ -2042,13 +1475,10 @@ export interface DisassociateBudgetFromResourceInput {
   BudgetName: string;
   ResourceId: string;
 }
-const DisassociateBudgetFromResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DisassociateBudgetFromResourceInput",
-}) as any as S.Schema<DisassociateBudgetFromResourceInput>;
+const DisassociateBudgetFromResourceInput = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DisassociateBudgetFromResourceInput>;
 export interface DisassociateBudgetFromResourceOutput {}
 const DisassociateBudgetFromResourceOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<DisassociateBudgetFromResourceOutput>;
@@ -2058,16 +1488,10 @@ export interface DisassociatePrincipalFromPortfolioInput {
   PrincipalARN: string;
   PrincipalType?: PrincipalType;
 }
-const DisassociatePrincipalFromPortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    PrincipalARN: S.String,
-    PrincipalType: S.optional(PrincipalType),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DisassociatePrincipalFromPortfolioInput",
-}) as any as S.Schema<DisassociatePrincipalFromPortfolioInput>;
+const DisassociatePrincipalFromPortfolioInput = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DisassociatePrincipalFromPortfolioInput>;
 export interface DisassociatePrincipalFromPortfolioOutput {}
 const DisassociatePrincipalFromPortfolioOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<DisassociatePrincipalFromPortfolioOutput>;
@@ -2076,15 +1500,10 @@ export interface DisassociateProductFromPortfolioInput {
   ProductId: string;
   PortfolioId: string;
 }
-const DisassociateProductFromPortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.String,
-    PortfolioId: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DisassociateProductFromPortfolioInput",
-}) as any as S.Schema<DisassociateProductFromPortfolioInput>;
+const DisassociateProductFromPortfolioInput = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DisassociateProductFromPortfolioInput>;
 export interface DisassociateProductFromPortfolioOutput {}
 const DisassociateProductFromPortfolioOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<DisassociateProductFromPortfolioOutput>;
@@ -2095,17 +1514,10 @@ export interface DisassociateServiceActionFromProvisioningArtifactInput {
   AcceptLanguage?: string;
   IdempotencyToken?: string;
 }
-const DisassociateServiceActionFromProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductId: S.String,
-    ProvisioningArtifactId: S.String,
-    ServiceActionId: S.String,
-    AcceptLanguage: S.optional(S.String),
-    IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DisassociateServiceActionFromProvisioningArtifactInput",
-}) as any as S.Schema<DisassociateServiceActionFromProvisioningArtifactInput>;
+const DisassociateServiceActionFromProvisioningArtifactInput = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<DisassociateServiceActionFromProvisioningArtifactInput>;
 export interface DisassociateServiceActionFromProvisioningArtifactOutput {}
 const DisassociateServiceActionFromProvisioningArtifactOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<DisassociateServiceActionFromProvisioningArtifactOutput>;
@@ -2113,23 +1525,18 @@ export interface DisassociateTagOptionFromResourceInput {
   ResourceId: string;
   TagOptionId: string;
 }
-const DisassociateTagOptionFromResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceId: S.String.pipe(T.HttpQuery("resourceId")),
-    TagOptionId: S.String.pipe(T.HttpQuery("tagOptionId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DisassociateTagOptionFromResourceInput",
-}) as any as S.Schema<DisassociateTagOptionFromResourceInput>;
+const DisassociateTagOptionFromResourceInput = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<DisassociateTagOptionFromResourceInput>;
 export interface DisassociateTagOptionFromResourceOutput {}
 const DisassociateTagOptionFromResourceOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<DisassociateTagOptionFromResourceOutput>;
 export interface EnableAWSOrganizationsAccessInput {}
-const EnableAWSOrganizationsAccessInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "EnableAWSOrganizationsAccessInput",
-}) as any as S.Schema<EnableAWSOrganizationsAccessInput>;
+const EnableAWSOrganizationsAccessInput = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<EnableAWSOrganizationsAccessInput>;
 export interface EnableAWSOrganizationsAccessOutput {}
 const EnableAWSOrganizationsAccessOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<EnableAWSOrganizationsAccessOutput>;
@@ -2138,28 +1545,19 @@ export interface ExecuteProvisionedProductPlanInput {
   PlanId: string;
   IdempotencyToken: string;
 }
-const ExecuteProvisionedProductPlanInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PlanId: S.String,
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ExecuteProvisionedProductPlanInput",
-}) as any as S.Schema<ExecuteProvisionedProductPlanInput>;
+const ExecuteProvisionedProductPlanInput = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ExecuteProvisionedProductPlanInput>;
 export interface ExecuteProvisionedProductPlanOutput {
   RecordDetail?: RecordDetail;
 }
-const ExecuteProvisionedProductPlanOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecordDetail: S.optional(RecordDetail) }),
-).annotate({
-  identifier: "ExecuteProvisionedProductPlanOutput",
-}) as any as S.Schema<ExecuteProvisionedProductPlanOutput>;
+const ExecuteProvisionedProductPlanOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ExecuteProvisionedProductPlanOutput>;
 export type ExecutionParameterMap = { [key: string]: string[] | undefined };
-const ExecutionParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ExecutionParameterValueList.pipe(S.optional),
-);
+const ExecutionParameterMap = /*@__PURE__*/ __L.at(__c18, 3);
 export interface ExecuteProvisionedProductServiceActionInput {
   ProvisionedProductId: string;
   ServiceActionId: string;
@@ -2167,39 +1565,30 @@ export interface ExecuteProvisionedProductServiceActionInput {
   AcceptLanguage?: string;
   Parameters?: { [key: string]: string[] | undefined };
 }
-const ExecuteProvisionedProductServiceActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionedProductId: S.String,
-    ServiceActionId: S.String,
-    ExecuteToken: S.String.pipe(T.IdempotencyToken()),
-    AcceptLanguage: S.optional(S.String),
-    Parameters: S.optional(ExecutionParameterMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ExecuteProvisionedProductServiceActionInput",
-}) as any as S.Schema<ExecuteProvisionedProductServiceActionInput>;
+const ExecuteProvisionedProductServiceActionInput = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ExecuteProvisionedProductServiceActionInput>;
 export interface ExecuteProvisionedProductServiceActionOutput {
   RecordDetail?: RecordDetail;
 }
 const ExecuteProvisionedProductServiceActionOutput =
   ExecuteProvisionedProductPlanOutput as any as S.Schema<ExecuteProvisionedProductServiceActionOutput>;
 export interface GetAWSOrganizationsAccessStatusInput {}
-const GetAWSOrganizationsAccessStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetAWSOrganizationsAccessStatusInput",
-}) as any as S.Schema<GetAWSOrganizationsAccessStatusInput>;
+const GetAWSOrganizationsAccessStatusInput = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GetAWSOrganizationsAccessStatusInput>;
 export type AccessStatus = "ENABLED" | "UNDER_CHANGE" | "DISABLED" | (string & {});
 const AccessStatus = S.String;
 
 export interface GetAWSOrganizationsAccessStatusOutput {
   AccessStatus?: AccessStatus;
 }
-const GetAWSOrganizationsAccessStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccessStatus: S.optional(AccessStatus) }),
-).annotate({
-  identifier: "GetAWSOrganizationsAccessStatusOutput",
-}) as any as S.Schema<GetAWSOrganizationsAccessStatusOutput>;
+const GetAWSOrganizationsAccessStatusOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GetAWSOrganizationsAccessStatusOutput>;
 export type OutputKeys = string[];
 const OutputKeys = NotificationArns as any as S.Schema<OutputKeys>;
 export interface GetProvisionedProductOutputsInput {
@@ -2210,27 +1599,18 @@ export interface GetProvisionedProductOutputsInput {
   PageSize?: number;
   PageToken?: string;
 }
-const GetProvisionedProductOutputsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProvisionedProductId: S.optional(S.String),
-    ProvisionedProductName: S.optional(S.String),
-    OutputKeys: S.optional(OutputKeys),
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetProvisionedProductOutputsInput",
-}) as any as S.Schema<GetProvisionedProductOutputsInput>;
+const GetProvisionedProductOutputsInput = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<GetProvisionedProductOutputsInput>;
 export interface GetProvisionedProductOutputsOutput {
   Outputs?: RecordOutput[];
   NextPageToken?: string;
 }
-const GetProvisionedProductOutputsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Outputs: S.optional(RecordOutputs), NextPageToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetProvisionedProductOutputsOutput",
-}) as any as S.Schema<GetProvisionedProductOutputsOutput>;
+const GetProvisionedProductOutputsOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetProvisionedProductOutputsOutput>;
 export type PhysicalId = string;
 export interface ImportAsProvisionedProductInput {
   AcceptLanguage?: string;
@@ -2240,18 +1620,10 @@ export interface ImportAsProvisionedProductInput {
   PhysicalId: string;
   IdempotencyToken: string;
 }
-const ImportAsProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.String,
-    ProvisioningArtifactId: S.String,
-    ProvisionedProductName: S.String,
-    PhysicalId: S.String,
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ImportAsProvisionedProductInput",
-}) as any as S.Schema<ImportAsProvisionedProductInput>;
+const ImportAsProvisionedProductInput = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ImportAsProvisionedProductInput>;
 export interface ImportAsProvisionedProductOutput {
   RecordDetail?: RecordDetail;
 }
@@ -2263,52 +1635,38 @@ export interface ListAcceptedPortfolioSharesInput {
   PageSize?: number;
   PortfolioShareType?: PortfolioShareType;
 }
-const ListAcceptedPortfolioSharesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-    PortfolioShareType: S.optional(PortfolioShareType),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAcceptedPortfolioSharesInput",
-}) as any as S.Schema<ListAcceptedPortfolioSharesInput>;
+const ListAcceptedPortfolioSharesInput = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListAcceptedPortfolioSharesInput>;
 export type PortfolioDetails = PortfolioDetail[];
-const PortfolioDetails = /*@__PURE__*/ S.Array(PortfolioDetail);
+const PortfolioDetails = /*@__PURE__*/ __L.at(__c19, 3);
 export interface ListAcceptedPortfolioSharesOutput {
   PortfolioDetails?: PortfolioDetail[];
   NextPageToken?: string;
 }
-const ListAcceptedPortfolioSharesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PortfolioDetails: S.optional(PortfolioDetails), NextPageToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAcceptedPortfolioSharesOutput",
-}) as any as S.Schema<ListAcceptedPortfolioSharesOutput>;
+const ListAcceptedPortfolioSharesOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListAcceptedPortfolioSharesOutput>;
 export interface ListBudgetsForResourceInput {
   AcceptLanguage?: string;
   ResourceId: string;
   PageSize?: number;
   PageToken?: string;
 }
-const ListBudgetsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ResourceId: S.String,
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListBudgetsForResourceInput",
-}) as any as S.Schema<ListBudgetsForResourceInput>;
+const ListBudgetsForResourceInput = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListBudgetsForResourceInput>;
 export interface ListBudgetsForResourceOutput {
   Budgets?: BudgetDetail[];
   NextPageToken?: string;
 }
-const ListBudgetsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Budgets: S.optional(Budgets), NextPageToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListBudgetsForResourceOutput",
-}) as any as S.Schema<ListBudgetsForResourceOutput>;
+const ListBudgetsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListBudgetsForResourceOutput>;
 export interface ListConstraintsForPortfolioInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -2316,71 +1674,47 @@ export interface ListConstraintsForPortfolioInput {
   PageSize?: number;
   PageToken?: string;
 }
-const ListConstraintsForPortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    ProductId: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListConstraintsForPortfolioInput",
-}) as any as S.Schema<ListConstraintsForPortfolioInput>;
+const ListConstraintsForPortfolioInput = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListConstraintsForPortfolioInput>;
 export type ConstraintDetails = ConstraintDetail[];
-const ConstraintDetails = /*@__PURE__*/ S.Array(ConstraintDetail);
+const ConstraintDetails = /*@__PURE__*/ __L.at(__c20, 0);
 export interface ListConstraintsForPortfolioOutput {
   ConstraintDetails?: ConstraintDetail[];
   NextPageToken?: string;
 }
-const ListConstraintsForPortfolioOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConstraintDetails: S.optional(ConstraintDetails),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListConstraintsForPortfolioOutput",
-}) as any as S.Schema<ListConstraintsForPortfolioOutput>;
+const ListConstraintsForPortfolioOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListConstraintsForPortfolioOutput>;
 export interface ListLaunchPathsInput {
   AcceptLanguage?: string;
   ProductId: string;
   PageSize?: number;
   PageToken?: string;
 }
-const ListLaunchPathsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.String,
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListLaunchPathsInput" }) as any as S.Schema<ListLaunchPathsInput>;
+const ListLaunchPathsInput = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListLaunchPathsInput>;
 export interface LaunchPathSummary {
   Id?: string;
   ConstraintSummaries?: ConstraintSummary[];
   Tags?: Tag[];
   Name?: string;
 }
-const LaunchPathSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    ConstraintSummaries: S.optional(ConstraintSummaries),
-    Tags: S.optional(Tags),
-    Name: S.optional(S.String),
-  }),
-).annotate({ identifier: "LaunchPathSummary" }) as any as S.Schema<LaunchPathSummary>;
+const LaunchPathSummary = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<LaunchPathSummary>;
 export type LaunchPathSummaries = LaunchPathSummary[];
-const LaunchPathSummaries = /*@__PURE__*/ S.Array(LaunchPathSummary);
+const LaunchPathSummaries = /*@__PURE__*/ __L.at(__c20, 4);
 export interface ListLaunchPathsOutput {
   LaunchPathSummaries?: LaunchPathSummary[];
   NextPageToken?: string;
 }
-const ListLaunchPathsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LaunchPathSummaries: S.optional(LaunchPathSummaries),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListLaunchPathsOutput" }) as any as S.Schema<ListLaunchPathsOutput>;
+const ListLaunchPathsOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListLaunchPathsOutput>;
 export interface ListOrganizationPortfolioAccessInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -2388,31 +1722,20 @@ export interface ListOrganizationPortfolioAccessInput {
   PageToken?: string;
   PageSize?: number;
 }
-const ListOrganizationPortfolioAccessInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    OrganizationNodeType: OrganizationNodeType,
-    PageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListOrganizationPortfolioAccessInput",
-}) as any as S.Schema<ListOrganizationPortfolioAccessInput>;
+const ListOrganizationPortfolioAccessInput = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListOrganizationPortfolioAccessInput>;
 export type OrganizationNodes = OrganizationNode[];
-const OrganizationNodes = /*@__PURE__*/ S.Array(OrganizationNode);
+const OrganizationNodes = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ListOrganizationPortfolioAccessOutput {
   OrganizationNodes?: OrganizationNode[];
   NextPageToken?: string;
 }
-const ListOrganizationPortfolioAccessOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OrganizationNodes: S.optional(OrganizationNodes),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOrganizationPortfolioAccessOutput",
-}) as any as S.Schema<ListOrganizationPortfolioAccessOutput>;
+const ListOrganizationPortfolioAccessOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListOrganizationPortfolioAccessOutput>;
 export interface ListPortfolioAccessInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -2420,61 +1743,44 @@ export interface ListPortfolioAccessInput {
   PageToken?: string;
   PageSize?: number;
 }
-const ListPortfolioAccessInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    OrganizationParentId: S.optional(S.String),
-    PageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListPortfolioAccessInput" }) as any as S.Schema<ListPortfolioAccessInput>;
+const ListPortfolioAccessInput = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListPortfolioAccessInput>;
 export type AccountIds = string[];
 const AccountIds = NotificationArns as any as S.Schema<AccountIds>;
 export interface ListPortfolioAccessOutput {
   AccountIds?: string[];
   NextPageToken?: string;
 }
-const ListPortfolioAccessOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountIds: S.optional(AccountIds), NextPageToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPortfolioAccessOutput",
-}) as any as S.Schema<ListPortfolioAccessOutput>;
+const ListPortfolioAccessOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListPortfolioAccessOutput>;
 export interface ListPortfoliosInput {
   AcceptLanguage?: string;
   PageToken?: string;
   PageSize?: number;
 }
-const ListPortfoliosInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListPortfoliosInput" }) as any as S.Schema<ListPortfoliosInput>;
+const ListPortfoliosInput = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<ListPortfoliosInput>;
 export interface ListPortfoliosOutput {
   PortfolioDetails?: PortfolioDetail[];
   NextPageToken?: string;
 }
-const ListPortfoliosOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PortfolioDetails: S.optional(PortfolioDetails), NextPageToken: S.optional(S.String) }),
-).annotate({ identifier: "ListPortfoliosOutput" }) as any as S.Schema<ListPortfoliosOutput>;
+const ListPortfoliosOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ListPortfoliosOutput>;
 export interface ListPortfoliosForProductInput {
   AcceptLanguage?: string;
   ProductId: string;
   PageToken?: string;
   PageSize?: number;
 }
-const ListPortfoliosForProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.String,
-    PageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListPortfoliosForProductInput",
-}) as any as S.Schema<ListPortfoliosForProductInput>;
+const ListPortfoliosForProductInput = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ListPortfoliosForProductInput>;
 export interface ListPortfoliosForProductOutput {
   PortfolioDetails?: PortfolioDetail[];
   NextPageToken?: string;
@@ -2487,34 +1793,25 @@ export interface ListPrincipalsForPortfolioInput {
   PageSize?: number;
   PageToken?: string;
 }
-const ListPrincipalsForPortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListPrincipalsForPortfolioInput",
-}) as any as S.Schema<ListPrincipalsForPortfolioInput>;
+const ListPrincipalsForPortfolioInput = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListPrincipalsForPortfolioInput>;
 export interface Principal {
   PrincipalARN?: string;
   PrincipalType?: PrincipalType;
 }
-const Principal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PrincipalARN: S.optional(S.String), PrincipalType: S.optional(PrincipalType) }),
-).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
+const Principal = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<Principal>;
 export type Principals = Principal[];
-const Principals = /*@__PURE__*/ S.Array(Principal);
+const Principals = /*@__PURE__*/ __L.at(__c22, 0);
 export interface ListPrincipalsForPortfolioOutput {
   Principals?: Principal[];
   NextPageToken?: string;
 }
-const ListPrincipalsForPortfolioOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Principals: S.optional(Principals), NextPageToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPrincipalsForPortfolioOutput",
-}) as any as S.Schema<ListPrincipalsForPortfolioOutput>;
+const ListPrincipalsForPortfolioOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListPrincipalsForPortfolioOutput>;
 export type AccessLevelFilterKey = "Account" | "Role" | "User" | (string & {});
 const AccessLevelFilterKey = S.String;
 
@@ -2523,9 +1820,7 @@ export interface AccessLevelFilter {
   Key?: AccessLevelFilterKey;
   Value?: string;
 }
-const AccessLevelFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(AccessLevelFilterKey), Value: S.optional(S.String) }),
-).annotate({ identifier: "AccessLevelFilter" }) as any as S.Schema<AccessLevelFilter>;
+const AccessLevelFilter = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<AccessLevelFilter>;
 export interface ListProvisionedProductPlansInput {
   AcceptLanguage?: string;
   ProvisionProductId?: string;
@@ -2533,17 +1828,10 @@ export interface ListProvisionedProductPlansInput {
   PageToken?: string;
   AccessLevelFilter?: AccessLevelFilter;
 }
-const ListProvisionedProductPlansInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProvisionProductId: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-    AccessLevelFilter: S.optional(AccessLevelFilter),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListProvisionedProductPlansInput",
-}) as any as S.Schema<ListProvisionedProductPlansInput>;
+const ListProvisionedProductPlansInput = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListProvisionedProductPlansInput>;
 export interface ProvisionedProductPlanSummary {
   PlanName?: string;
   PlanId?: string;
@@ -2552,108 +1840,76 @@ export interface ProvisionedProductPlanSummary {
   PlanType?: ProvisionedProductPlanType;
   ProvisioningArtifactId?: string;
 }
-const ProvisionedProductPlanSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PlanName: S.optional(S.String),
-    PlanId: S.optional(S.String),
-    ProvisionProductId: S.optional(S.String),
-    ProvisionProductName: S.optional(S.String),
-    PlanType: S.optional(ProvisionedProductPlanType),
-    ProvisioningArtifactId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProvisionedProductPlanSummary",
-}) as any as S.Schema<ProvisionedProductPlanSummary>;
+const ProvisionedProductPlanSummary = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ProvisionedProductPlanSummary>;
 export type ProvisionedProductPlans = ProvisionedProductPlanSummary[];
-const ProvisionedProductPlans = /*@__PURE__*/ S.Array(ProvisionedProductPlanSummary);
+const ProvisionedProductPlans = /*@__PURE__*/ __L.at(__c22, 5);
 export interface ListProvisionedProductPlansOutput {
   ProvisionedProductPlans?: ProvisionedProductPlanSummary[];
   NextPageToken?: string;
 }
-const ListProvisionedProductPlansOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionedProductPlans: S.optional(ProvisionedProductPlans),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProvisionedProductPlansOutput",
-}) as any as S.Schema<ListProvisionedProductPlansOutput>;
+const ListProvisionedProductPlansOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListProvisionedProductPlansOutput>;
 export interface ListProvisioningArtifactsInput {
   AcceptLanguage?: string;
   ProductId: string;
 }
-const ListProvisioningArtifactsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceptLanguage: S.optional(S.String), ProductId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListProvisioningArtifactsInput",
-}) as any as S.Schema<ListProvisioningArtifactsInput>;
+const ListProvisioningArtifactsInput = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ListProvisioningArtifactsInput>;
 export type ProvisioningArtifactDetails = ProvisioningArtifactDetail[];
-const ProvisioningArtifactDetails = /*@__PURE__*/ S.Array(ProvisioningArtifactDetail);
+const ProvisioningArtifactDetails = /*@__PURE__*/ __L.at(__c23, 0);
 export interface ListProvisioningArtifactsOutput {
   ProvisioningArtifactDetails?: ProvisioningArtifactDetail[];
   NextPageToken?: string;
 }
-const ListProvisioningArtifactsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisioningArtifactDetails: S.optional(ProvisioningArtifactDetails),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProvisioningArtifactsOutput",
-}) as any as S.Schema<ListProvisioningArtifactsOutput>;
+const ListProvisioningArtifactsOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<ListProvisioningArtifactsOutput>;
 export interface ListProvisioningArtifactsForServiceActionInput {
   ServiceActionId: string;
   PageSize?: number;
   PageToken?: string;
   AcceptLanguage?: string;
 }
-const ListProvisioningArtifactsForServiceActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceActionId: S.String,
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-    AcceptLanguage: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListProvisioningArtifactsForServiceActionInput",
-}) as any as S.Schema<ListProvisioningArtifactsForServiceActionInput>;
+const ListProvisioningArtifactsForServiceActionInput = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ListProvisioningArtifactsForServiceActionInput>;
 export interface ProvisioningArtifactView {
   ProductViewSummary?: ProductViewSummary;
   ProvisioningArtifact?: ProvisioningArtifact;
 }
-const ProvisioningArtifactView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductViewSummary: S.optional(ProductViewSummary),
-    ProvisioningArtifact: S.optional(ProvisioningArtifact),
-  }),
-).annotate({ identifier: "ProvisioningArtifactView" }) as any as S.Schema<ProvisioningArtifactView>;
+const ProvisioningArtifactView = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ProvisioningArtifactView>;
 export type ProvisioningArtifactViews = ProvisioningArtifactView[];
-const ProvisioningArtifactViews = /*@__PURE__*/ S.Array(ProvisioningArtifactView);
+const ProvisioningArtifactViews = /*@__PURE__*/ __L.at(__c23, 4);
 export interface ListProvisioningArtifactsForServiceActionOutput {
   ProvisioningArtifactViews?: ProvisioningArtifactView[];
   NextPageToken?: string;
 }
-const ListProvisioningArtifactsForServiceActionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisioningArtifactViews: S.optional(ProvisioningArtifactViews),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProvisioningArtifactsForServiceActionOutput",
-}) as any as S.Schema<ListProvisioningArtifactsForServiceActionOutput>;
+const ListProvisioningArtifactsForServiceActionOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ListProvisioningArtifactsForServiceActionOutput>;
 export type SearchFilterKey = string;
 export type SearchFilterValue = string;
 export interface ListRecordHistorySearchFilter {
   Key?: string;
   Value?: string;
 }
-const ListRecordHistorySearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({
-  identifier: "ListRecordHistorySearchFilter",
-}) as any as S.Schema<ListRecordHistorySearchFilter>;
+const ListRecordHistorySearchFilter = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ListRecordHistorySearchFilter>;
 export interface ListRecordHistoryInput {
   AcceptLanguage?: string;
   AccessLevelFilter?: AccessLevelFilter;
@@ -2661,24 +1917,20 @@ export interface ListRecordHistoryInput {
   PageSize?: number;
   PageToken?: string;
 }
-const ListRecordHistoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    AccessLevelFilter: S.optional(AccessLevelFilter),
-    SearchFilter: S.optional(ListRecordHistorySearchFilter),
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListRecordHistoryInput" }) as any as S.Schema<ListRecordHistoryInput>;
+const ListRecordHistoryInput = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ListRecordHistoryInput>;
 export type RecordDetails = RecordDetail[];
-const RecordDetails = /*@__PURE__*/ S.Array(RecordDetail);
+const RecordDetails = /*@__PURE__*/ __L.at(__c24, 0);
 export interface ListRecordHistoryOutput {
   RecordDetails?: RecordDetail[];
   NextPageToken?: string;
 }
-const ListRecordHistoryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecordDetails: S.optional(RecordDetails), NextPageToken: S.optional(S.String) }),
-).annotate({ identifier: "ListRecordHistoryOutput" }) as any as S.Schema<ListRecordHistoryOutput>;
+const ListRecordHistoryOutput = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListRecordHistoryOutput>;
 export type ResourceType = string;
 export interface ListResourcesForTagOptionInput {
   TagOptionId: string;
@@ -2686,16 +1938,10 @@ export interface ListResourcesForTagOptionInput {
   PageSize?: number;
   PageToken?: string;
 }
-const ListResourcesForTagOptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TagOptionId: S.String.pipe(T.HttpQuery("tagOptionId")),
-    ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
-    PageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
-    PageToken: S.optional(S.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListResourcesForTagOptionInput",
-}) as any as S.Schema<ListResourcesForTagOptionInput>;
+const ListResourcesForTagOptionInput = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ListResourcesForTagOptionInput>;
 export type ResourceDetailId = string;
 export type ResourceDetailARN = string;
 export type ResourceDetailName = string;
@@ -2708,50 +1954,36 @@ export interface ResourceDetail {
   Description?: string;
   CreatedTime?: Date;
 }
-const ResourceDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    ARN: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ResourceDetail" }) as any as S.Schema<ResourceDetail>;
+const ResourceDetail = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<ResourceDetail>;
 export type ResourceDetails = ResourceDetail[];
-const ResourceDetails = /*@__PURE__*/ S.Array(ResourceDetail);
+const ResourceDetails = /*@__PURE__*/ __L.at(__c24, 4);
 export interface ListResourcesForTagOptionOutput {
   ResourceDetails?: ResourceDetail[];
   PageToken?: string;
 }
-const ListResourcesForTagOptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceDetails: S.optional(ResourceDetails), PageToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListResourcesForTagOptionOutput",
-}) as any as S.Schema<ListResourcesForTagOptionOutput>;
+const ListResourcesForTagOptionOutput = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListResourcesForTagOptionOutput>;
 export interface ListServiceActionsInput {
   AcceptLanguage?: string;
   PageSize?: number;
   PageToken?: string;
 }
-const ListServiceActionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListServiceActionsInput" }) as any as S.Schema<ListServiceActionsInput>;
+const ListServiceActionsInput = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListServiceActionsInput>;
 export type ServiceActionSummaries = ServiceActionSummary[];
-const ServiceActionSummaries = /*@__PURE__*/ S.Array(ServiceActionSummary);
+const ServiceActionSummaries = /*@__PURE__*/ __L.at(__c24, 7);
 export interface ListServiceActionsOutput {
   ServiceActionSummaries?: ServiceActionSummary[];
   NextPageToken?: string;
 }
-const ListServiceActionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceActionSummaries: S.optional(ServiceActionSummaries),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListServiceActionsOutput" }) as any as S.Schema<ListServiceActionsOutput>;
+const ListServiceActionsOutput = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ListServiceActionsOutput>;
 export interface ListServiceActionsForProvisioningArtifactInput {
   ProductId: string;
   ProvisioningArtifactId: string;
@@ -2759,45 +1991,28 @@ export interface ListServiceActionsForProvisioningArtifactInput {
   PageToken?: string;
   AcceptLanguage?: string;
 }
-const ListServiceActionsForProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductId: S.String,
-    ProvisioningArtifactId: S.String,
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-    AcceptLanguage: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListServiceActionsForProvisioningArtifactInput",
-}) as any as S.Schema<ListServiceActionsForProvisioningArtifactInput>;
+const ListServiceActionsForProvisioningArtifactInput = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListServiceActionsForProvisioningArtifactInput>;
 export interface ListServiceActionsForProvisioningArtifactOutput {
   ServiceActionSummaries?: ServiceActionSummary[];
   NextPageToken?: string;
 }
-const ListServiceActionsForProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceActionSummaries: S.optional(ServiceActionSummaries),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListServiceActionsForProvisioningArtifactOutput",
-}) as any as S.Schema<ListServiceActionsForProvisioningArtifactOutput>;
+const ListServiceActionsForProvisioningArtifactOutput = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<ListServiceActionsForProvisioningArtifactOutput>;
 export interface ListStackInstancesForProvisionedProductInput {
   AcceptLanguage?: string;
   ProvisionedProductId: string;
   PageToken?: string;
   PageSize?: number;
 }
-const ListStackInstancesForProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProvisionedProductId: S.String,
-    PageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListStackInstancesForProvisionedProductInput",
-}) as any as S.Schema<ListStackInstancesForProvisionedProductInput>;
+const ListStackInstancesForProvisionedProductInput = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListStackInstancesForProvisionedProductInput>;
 export type StackInstanceStatus = "CURRENT" | "OUTDATED" | "INOPERABLE" | (string & {});
 const StackInstanceStatus = S.String;
 
@@ -2806,55 +2021,40 @@ export interface StackInstance {
   Region?: string;
   StackInstanceStatus?: StackInstanceStatus;
 }
-const StackInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Account: S.optional(S.String),
-    Region: S.optional(S.String),
-    StackInstanceStatus: S.optional(StackInstanceStatus),
-  }),
-).annotate({ identifier: "StackInstance" }) as any as S.Schema<StackInstance>;
+const StackInstance = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<StackInstance>;
 export type StackInstances = StackInstance[];
-const StackInstances = /*@__PURE__*/ S.Array(StackInstance);
+const StackInstances = /*@__PURE__*/ __L.at(__c25, 5);
 export interface ListStackInstancesForProvisionedProductOutput {
   StackInstances?: StackInstance[];
   NextPageToken?: string;
 }
-const ListStackInstancesForProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StackInstances: S.optional(StackInstances), NextPageToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListStackInstancesForProvisionedProductOutput",
-}) as any as S.Schema<ListStackInstancesForProvisionedProductOutput>;
+const ListStackInstancesForProvisionedProductOutput = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListStackInstancesForProvisionedProductOutput>;
 export interface ListTagOptionsFilters {
   Key?: string;
   Value?: string;
   Active?: boolean;
 }
-const ListTagOptionsFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Value: S.optional(S.String),
-    Active: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ListTagOptionsFilters" }) as any as S.Schema<ListTagOptionsFilters>;
+const ListTagOptionsFilters = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<ListTagOptionsFilters>;
 export interface ListTagOptionsInput {
   Filters?: ListTagOptionsFilters;
   PageSize?: number;
   PageToken?: string;
 }
-const ListTagOptionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Filters: S.optional(ListTagOptionsFilters),
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListTagOptionsInput" }) as any as S.Schema<ListTagOptionsInput>;
+const ListTagOptionsInput = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<ListTagOptionsInput>;
 export interface ListTagOptionsOutput {
   TagOptionDetails?: TagOptionDetail[];
   PageToken?: string;
 }
-const ListTagOptionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagOptionDetails: S.optional(TagOptionDetails), PageToken: S.optional(S.String) }),
-).annotate({ identifier: "ListTagOptionsOutput" }) as any as S.Schema<ListTagOptionsOutput>;
+const ListTagOptionsOutput = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<ListTagOptionsOutput>;
 export type EngineWorkflowToken = string;
 export type EngineWorkflowStatus = "SUCCEEDED" | "FAILED" | (string & {});
 const EngineWorkflowStatus = S.String;
@@ -2871,11 +2071,10 @@ const UniqueTagResourceIdentifier =
 export interface EngineWorkflowResourceIdentifier {
   UniqueTag?: UniqueTagResourceIdentifier;
 }
-const EngineWorkflowResourceIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UniqueTag: S.optional(UniqueTagResourceIdentifier) }),
-).annotate({
-  identifier: "EngineWorkflowResourceIdentifier",
-}) as any as S.Schema<EngineWorkflowResourceIdentifier>;
+const EngineWorkflowResourceIdentifier = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<EngineWorkflowResourceIdentifier>;
 export interface NotifyProvisionProductEngineWorkflowResultInput {
   WorkflowToken: string;
   RecordId: string;
@@ -2885,19 +2084,10 @@ export interface NotifyProvisionProductEngineWorkflowResultInput {
   Outputs?: RecordOutput[];
   IdempotencyToken: string;
 }
-const NotifyProvisionProductEngineWorkflowResultInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WorkflowToken: S.String,
-    RecordId: S.String,
-    Status: EngineWorkflowStatus,
-    FailureReason: S.optional(S.String),
-    ResourceIdentifier: S.optional(EngineWorkflowResourceIdentifier),
-    Outputs: S.optional(RecordOutputs),
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "NotifyProvisionProductEngineWorkflowResultInput",
-}) as any as S.Schema<NotifyProvisionProductEngineWorkflowResultInput>;
+const NotifyProvisionProductEngineWorkflowResultInput = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<NotifyProvisionProductEngineWorkflowResultInput>;
 export interface NotifyProvisionProductEngineWorkflowResultOutput {}
 const NotifyProvisionProductEngineWorkflowResultOutput =
   AssociateBudgetWithResourceOutput as any as S.Schema<NotifyProvisionProductEngineWorkflowResultOutput>;
@@ -2908,23 +2098,15 @@ export interface NotifyTerminateProvisionedProductEngineWorkflowResultInput {
   FailureReason?: string;
   IdempotencyToken: string;
 }
-const NotifyTerminateProvisionedProductEngineWorkflowResultInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WorkflowToken: S.String,
-    RecordId: S.String,
-    Status: EngineWorkflowStatus,
-    FailureReason: S.optional(S.String),
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "NotifyTerminateProvisionedProductEngineWorkflowResultInput",
-}) as any as S.Schema<NotifyTerminateProvisionedProductEngineWorkflowResultInput>;
+const NotifyTerminateProvisionedProductEngineWorkflowResultInput = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<NotifyTerminateProvisionedProductEngineWorkflowResultInput>;
 export interface NotifyTerminateProvisionedProductEngineWorkflowResultOutput {}
-const NotifyTerminateProvisionedProductEngineWorkflowResultOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotifyTerminateProvisionedProductEngineWorkflowResultOutput",
-}) as any as S.Schema<NotifyTerminateProvisionedProductEngineWorkflowResultOutput>;
+const NotifyTerminateProvisionedProductEngineWorkflowResultOutput = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<NotifyTerminateProvisionedProductEngineWorkflowResultOutput>;
 export interface NotifyUpdateProvisionedProductEngineWorkflowResultInput {
   WorkflowToken: string;
   RecordId: string;
@@ -2933,18 +2115,10 @@ export interface NotifyUpdateProvisionedProductEngineWorkflowResultInput {
   Outputs?: RecordOutput[];
   IdempotencyToken: string;
 }
-const NotifyUpdateProvisionedProductEngineWorkflowResultInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WorkflowToken: S.String,
-    RecordId: S.String,
-    Status: EngineWorkflowStatus,
-    FailureReason: S.optional(S.String),
-    Outputs: S.optional(RecordOutputs),
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "NotifyUpdateProvisionedProductEngineWorkflowResultInput",
-}) as any as S.Schema<NotifyUpdateProvisionedProductEngineWorkflowResultInput>;
+const NotifyUpdateProvisionedProductEngineWorkflowResultInput = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<NotifyUpdateProvisionedProductEngineWorkflowResultInput>;
 export interface NotifyUpdateProvisionedProductEngineWorkflowResultOutput {}
 const NotifyUpdateProvisionedProductEngineWorkflowResultOutput =
   NotifyTerminateProvisionedProductEngineWorkflowResultOutput as any as S.Schema<NotifyUpdateProvisionedProductEngineWorkflowResultOutput>;
@@ -2966,16 +2140,10 @@ export interface ProvisioningPreferences {
   StackSetMaxConcurrencyCount?: number;
   StackSetMaxConcurrencyPercentage?: number;
 }
-const ProvisioningPreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StackSetAccounts: S.optional(StackSetAccounts),
-    StackSetRegions: S.optional(StackSetRegions),
-    StackSetFailureToleranceCount: S.optional(S.Number),
-    StackSetFailureTolerancePercentage: S.optional(S.Number),
-    StackSetMaxConcurrencyCount: S.optional(S.Number),
-    StackSetMaxConcurrencyPercentage: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ProvisioningPreferences" }) as any as S.Schema<ProvisioningPreferences>;
+const ProvisioningPreferences = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ProvisioningPreferences>;
 export interface ProvisionProductInput {
   AcceptLanguage?: string;
   ProductId?: string;
@@ -2991,43 +2159,26 @@ export interface ProvisionProductInput {
   NotificationArns?: string[];
   ProvisionToken: string;
 }
-const ProvisionProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    ProductName: S.optional(S.String),
-    ProvisioningArtifactId: S.optional(S.String),
-    ProvisioningArtifactName: S.optional(S.String),
-    PathId: S.optional(S.String),
-    PathName: S.optional(S.String),
-    ProvisionedProductName: S.String,
-    ProvisioningParameters: S.optional(ProvisioningParameters),
-    ProvisioningPreferences: S.optional(ProvisioningPreferences),
-    Tags: S.optional(Tags),
-    NotificationArns: S.optional(NotificationArns),
-    ProvisionToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ProvisionProductInput" }) as any as S.Schema<ProvisionProductInput>;
+const ProvisionProductInput = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ProvisionProductInput>;
 export interface ProvisionProductOutput {
   RecordDetail?: RecordDetail;
 }
-const ProvisionProductOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecordDetail: S.optional(RecordDetail) }),
-).annotate({ identifier: "ProvisionProductOutput" }) as any as S.Schema<ProvisionProductOutput>;
+const ProvisionProductOutput = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ProvisionProductOutput>;
 export interface RejectPortfolioShareInput {
   AcceptLanguage?: string;
   PortfolioId: string;
   PortfolioShareType?: PortfolioShareType;
 }
-const RejectPortfolioShareInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    PortfolioShareType: S.optional(PortfolioShareType),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RejectPortfolioShareInput",
-}) as any as S.Schema<RejectPortfolioShareInput>;
+const RejectPortfolioShareInput = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<RejectPortfolioShareInput>;
 export interface RejectPortfolioShareOutput {}
 const RejectPortfolioShareOutput =
   AcceptPortfolioShareOutput as any as S.Schema<RejectPortfolioShareOutput>;
@@ -3037,30 +2188,20 @@ export interface ScanProvisionedProductsInput {
   PageSize?: number;
   PageToken?: string;
 }
-const ScanProvisionedProductsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    AccessLevelFilter: S.optional(AccessLevelFilter),
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ScanProvisionedProductsInput",
-}) as any as S.Schema<ScanProvisionedProductsInput>;
+const ScanProvisionedProductsInput = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ScanProvisionedProductsInput>;
 export type ProvisionedProductDetails = ProvisionedProductDetail[];
-const ProvisionedProductDetails = /*@__PURE__*/ S.Array(ProvisionedProductDetail);
+const ProvisionedProductDetails = /*@__PURE__*/ __L.at(__c27, 4);
 export interface ScanProvisionedProductsOutput {
   ProvisionedProducts?: ProvisionedProductDetail[];
   NextPageToken?: string;
 }
-const ScanProvisionedProductsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionedProducts: S.optional(ProvisionedProductDetails),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScanProvisionedProductsOutput",
-}) as any as S.Schema<ScanProvisionedProductsOutput>;
+const ScanProvisionedProductsOutput = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<ScanProvisionedProductsOutput>;
 export type ProductViewFilterBy =
   | "FullTextSearch"
   | "Owner"
@@ -3073,10 +2214,7 @@ export type ProductViewFilterValue = string;
 export type ProductViewFilterValues = string[];
 const ProductViewFilterValues = NotificationArns as any as S.Schema<ProductViewFilterValues>;
 export type ProductViewFilters = { [key in ProductViewFilterBy]?: string[] };
-const ProductViewFilters = /*@__PURE__*/ S.Record(
-  ProductViewFilterBy,
-  /*@__PURE__*/ ProductViewFilterValues.pipe(S.optional),
-);
+const ProductViewFilters = /*@__PURE__*/ __L.at(__c27, 6);
 export type ProductViewSortBy = "Title" | "VersionCount" | "CreationDate" | (string & {});
 const ProductViewSortBy = S.String;
 
@@ -3091,18 +2229,9 @@ export interface SearchProductsInput {
   SortOrder?: SortOrder;
   PageToken?: string;
 }
-const SearchProductsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    Filters: S.optional(ProductViewFilters),
-    PageSize: S.optional(S.Number),
-    SortBy: S.optional(ProductViewSortBy),
-    SortOrder: S.optional(SortOrder),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "SearchProductsInput" }) as any as S.Schema<SearchProductsInput>;
+const SearchProductsInput = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<SearchProductsInput>;
 export type ProductViewSummaries = ProductViewSummary[];
-const ProductViewSummaries = /*@__PURE__*/ S.Array(ProductViewSummary);
+const ProductViewSummaries = /*@__PURE__*/ __L.at(__c28, 0);
 export type ProductViewAggregationType = string;
 export type AttributeValue = string;
 export type ApproximateCount = number;
@@ -3110,30 +2239,23 @@ export interface ProductViewAggregationValue {
   Value?: string;
   ApproximateCount?: number;
 }
-const ProductViewAggregationValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.String), ApproximateCount: S.optional(S.Number) }),
-).annotate({
-  identifier: "ProductViewAggregationValue",
-}) as any as S.Schema<ProductViewAggregationValue>;
+const ProductViewAggregationValue = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ProductViewAggregationValue>;
 export type ProductViewAggregationValues = ProductViewAggregationValue[];
-const ProductViewAggregationValues = /*@__PURE__*/ S.Array(ProductViewAggregationValue);
+const ProductViewAggregationValues = /*@__PURE__*/ __L.at(__c28, 2);
 export type ProductViewAggregations = { [key: string]: ProductViewAggregationValue[] | undefined };
-const ProductViewAggregations = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ProductViewAggregationValues.pipe(S.optional),
-);
+const ProductViewAggregations = /*@__PURE__*/ __L.at(__c28, 3);
 export interface SearchProductsOutput {
   ProductViewSummaries?: ProductViewSummary[];
   ProductViewAggregations?: { [key: string]: ProductViewAggregationValue[] | undefined };
   NextPageToken?: string;
 }
-const SearchProductsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductViewSummaries: S.optional(ProductViewSummaries),
-    ProductViewAggregations: S.optional(ProductViewAggregations),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "SearchProductsOutput" }) as any as S.Schema<SearchProductsOutput>;
+const SearchProductsOutput = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<SearchProductsOutput>;
 export type ProductSource = "ACCOUNT" | (string & {});
 const ProductSource = S.String;
 
@@ -3147,34 +2269,20 @@ export interface SearchProductsAsAdminInput {
   PageSize?: number;
   ProductSource?: ProductSource;
 }
-const SearchProductsAsAdminInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.optional(S.String),
-    Filters: S.optional(ProductViewFilters),
-    SortBy: S.optional(ProductViewSortBy),
-    SortOrder: S.optional(SortOrder),
-    PageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-    ProductSource: S.optional(ProductSource),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SearchProductsAsAdminInput",
-}) as any as S.Schema<SearchProductsAsAdminInput>;
+const SearchProductsAsAdminInput = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<SearchProductsAsAdminInput>;
 export type ProductViewDetails = ProductViewDetail[];
-const ProductViewDetails = /*@__PURE__*/ S.Array(ProductViewDetail);
+const ProductViewDetails = /*@__PURE__*/ __L.at(__c28, 6);
 export interface SearchProductsAsAdminOutput {
   ProductViewDetails?: ProductViewDetail[];
   NextPageToken?: string;
 }
-const SearchProductsAsAdminOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProductViewDetails: S.optional(ProductViewDetails),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchProductsAsAdminOutput",
-}) as any as S.Schema<SearchProductsAsAdminOutput>;
+const SearchProductsAsAdminOutput = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<SearchProductsAsAdminOutput>;
 export type ProvisionedProductViewFilterBy = "SearchQuery" | (string & {});
 const ProvisionedProductViewFilterBy = S.String;
 
@@ -3183,10 +2291,7 @@ export type ProvisionedProductViewFilterValues = string[];
 const ProvisionedProductViewFilterValues =
   NotificationArns as any as S.Schema<ProvisionedProductViewFilterValues>;
 export type ProvisionedProductFilters = { [key in ProvisionedProductViewFilterBy]?: string[] };
-const ProvisionedProductFilters = /*@__PURE__*/ S.Record(
-  ProvisionedProductViewFilterBy,
-  /*@__PURE__*/ ProvisionedProductViewFilterValues.pipe(S.optional),
-);
+const ProvisionedProductFilters = /*@__PURE__*/ __L.at(__c29, 0);
 export type SortField = string;
 export type SearchProvisionedProductsPageSize = number;
 export interface SearchProvisionedProductsInput {
@@ -3198,19 +2303,10 @@ export interface SearchProvisionedProductsInput {
   PageSize?: number;
   PageToken?: string;
 }
-const SearchProvisionedProductsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    AccessLevelFilter: S.optional(AccessLevelFilter),
-    Filters: S.optional(ProvisionedProductFilters),
-    SortBy: S.optional(S.String),
-    SortOrder: S.optional(SortOrder),
-    PageSize: S.optional(S.Number),
-    PageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SearchProvisionedProductsInput",
-}) as any as S.Schema<SearchProvisionedProductsInput>;
+const SearchProvisionedProductsInput = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<SearchProvisionedProductsInput>;
 export type UserArn = string;
 export type UserArnSession = string;
 export interface ProvisionedProductAttribute {
@@ -3234,48 +2330,22 @@ export interface ProvisionedProductAttribute {
   UserArn?: string;
   UserArnSession?: string;
 }
-const ProvisionedProductAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Type: S.optional(S.String),
-    Id: S.optional(S.String),
-    Status: S.optional(ProvisionedProductStatus),
-    StatusMessage: S.optional(S.String),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    IdempotencyToken: S.optional(S.String),
-    LastRecordId: S.optional(S.String),
-    LastProvisioningRecordId: S.optional(S.String),
-    LastSuccessfulProvisioningRecordId: S.optional(S.String),
-    Tags: S.optional(Tags),
-    PhysicalId: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    ProductName: S.optional(S.String),
-    ProvisioningArtifactId: S.optional(S.String),
-    ProvisioningArtifactName: S.optional(S.String),
-    UserArn: S.optional(S.String),
-    UserArnSession: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProvisionedProductAttribute",
-}) as any as S.Schema<ProvisionedProductAttribute>;
+const ProvisionedProductAttribute = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<ProvisionedProductAttribute>;
 export type ProvisionedProductAttributes = ProvisionedProductAttribute[];
-const ProvisionedProductAttributes = /*@__PURE__*/ S.Array(ProvisionedProductAttribute);
+const ProvisionedProductAttributes = /*@__PURE__*/ __L.at(__c29, 3);
 export type TotalResultsCount = number;
 export interface SearchProvisionedProductsOutput {
   ProvisionedProducts?: ProvisionedProductAttribute[];
   TotalResultsCount?: number;
   NextPageToken?: string;
 }
-const SearchProvisionedProductsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionedProducts: S.optional(ProvisionedProductAttributes),
-    TotalResultsCount: S.optional(S.Number),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchProvisionedProductsOutput",
-}) as any as S.Schema<SearchProvisionedProductsOutput>;
+const SearchProvisionedProductsOutput = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<SearchProvisionedProductsOutput>;
 export type RetainPhysicalResources = boolean;
 export interface TerminateProvisionedProductInput {
   ProvisionedProductName?: string;
@@ -3285,18 +2355,10 @@ export interface TerminateProvisionedProductInput {
   AcceptLanguage?: string;
   RetainPhysicalResources?: boolean;
 }
-const TerminateProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionedProductName: S.optional(S.String),
-    ProvisionedProductId: S.optional(S.String),
-    TerminateToken: S.String.pipe(T.IdempotencyToken()),
-    IgnoreErrors: S.optional(S.Boolean),
-    AcceptLanguage: S.optional(S.String),
-    RetainPhysicalResources: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "TerminateProvisionedProductInput",
-}) as any as S.Schema<TerminateProvisionedProductInput>;
+const TerminateProvisionedProductInput = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<TerminateProvisionedProductInput>;
 export interface TerminateProvisionedProductOutput {
   RecordDetail?: RecordDetail;
 }
@@ -3308,14 +2370,10 @@ export interface UpdateConstraintInput {
   Description?: string;
   Parameters?: string;
 }
-const UpdateConstraintInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    Id: S.String,
-    Description: S.optional(S.String),
-    Parameters: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateConstraintInput" }) as any as S.Schema<UpdateConstraintInput>;
+const UpdateConstraintInput = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<UpdateConstraintInput>;
 export interface UpdateConstraintOutput {
   ConstraintDetail?: ConstraintDetail;
   ConstraintParameters?: string;
@@ -3333,17 +2391,10 @@ export interface UpdatePortfolioInput {
   AddTags?: Tag[];
   RemoveTags?: string[];
 }
-const UpdatePortfolioInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    Id: S.String,
-    DisplayName: S.optional(S.String),
-    Description: S.optional(S.String),
-    ProviderName: S.optional(S.String),
-    AddTags: S.optional(AddTags),
-    RemoveTags: S.optional(TagKeys),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdatePortfolioInput" }) as any as S.Schema<UpdatePortfolioInput>;
+const UpdatePortfolioInput = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<UpdatePortfolioInput>;
 export interface UpdatePortfolioOutput {
   PortfolioDetail?: PortfolioDetail;
   Tags?: Tag[];
@@ -3357,27 +2408,18 @@ export interface UpdatePortfolioShareInput {
   ShareTagOptions?: boolean;
   SharePrincipals?: boolean;
 }
-const UpdatePortfolioShareInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    PortfolioId: S.String,
-    AccountId: S.optional(S.String),
-    OrganizationNode: S.optional(OrganizationNode),
-    ShareTagOptions: S.optional(S.Boolean),
-    SharePrincipals: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdatePortfolioShareInput",
-}) as any as S.Schema<UpdatePortfolioShareInput>;
+const UpdatePortfolioShareInput = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<UpdatePortfolioShareInput>;
 export interface UpdatePortfolioShareOutput {
   PortfolioShareToken?: string;
   Status?: ShareStatus;
 }
-const UpdatePortfolioShareOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PortfolioShareToken: S.optional(S.String), Status: S.optional(ShareStatus) }),
-).annotate({
-  identifier: "UpdatePortfolioShareOutput",
-}) as any as S.Schema<UpdatePortfolioShareOutput>;
+const UpdatePortfolioShareOutput = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<UpdatePortfolioShareOutput>;
 export interface UpdateProductInput {
   AcceptLanguage?: string;
   Id: string;
@@ -3392,29 +2434,12 @@ export interface UpdateProductInput {
   RemoveTags?: string[];
   SourceConnection?: SourceConnection;
 }
-const UpdateProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    Id: S.String,
-    Name: S.optional(S.String),
-    Owner: S.optional(S.String),
-    Description: S.optional(S.String),
-    Distributor: S.optional(S.String),
-    SupportDescription: S.optional(S.String),
-    SupportEmail: S.optional(S.String),
-    SupportUrl: S.optional(S.String),
-    AddTags: S.optional(AddTags),
-    RemoveTags: S.optional(TagKeys),
-    SourceConnection: S.optional(SourceConnection),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateProductInput" }) as any as S.Schema<UpdateProductInput>;
+const UpdateProductInput = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<UpdateProductInput>;
 export interface UpdateProductOutput {
   ProductViewDetail?: ProductViewDetail;
   Tags?: Tag[];
 }
-const UpdateProductOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProductViewDetail: S.optional(ProductViewDetail), Tags: S.optional(Tags) }),
-).annotate({ identifier: "UpdateProductOutput" }) as any as S.Schema<UpdateProductOutput>;
+const UpdateProductOutput = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<UpdateProductOutput>;
 export type StackSetOperationType = "CREATE" | "UPDATE" | "DELETE" | (string & {});
 const StackSetOperationType = S.String;
 
@@ -3427,19 +2452,10 @@ export interface UpdateProvisioningPreferences {
   StackSetMaxConcurrencyPercentage?: number;
   StackSetOperationType?: StackSetOperationType;
 }
-const UpdateProvisioningPreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StackSetAccounts: S.optional(StackSetAccounts),
-    StackSetRegions: S.optional(StackSetRegions),
-    StackSetFailureToleranceCount: S.optional(S.Number),
-    StackSetFailureTolerancePercentage: S.optional(S.Number),
-    StackSetMaxConcurrencyCount: S.optional(S.Number),
-    StackSetMaxConcurrencyPercentage: S.optional(S.Number),
-    StackSetOperationType: S.optional(StackSetOperationType),
-  }),
-).annotate({
-  identifier: "UpdateProvisioningPreferences",
-}) as any as S.Schema<UpdateProvisioningPreferences>;
+const UpdateProvisioningPreferences = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<UpdateProvisioningPreferences>;
 export interface UpdateProvisionedProductInput {
   AcceptLanguage?: string;
   ProvisionedProductName?: string;
@@ -3455,25 +2471,10 @@ export interface UpdateProvisionedProductInput {
   Tags?: Tag[];
   UpdateToken: string;
 }
-const UpdateProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProvisionedProductName: S.optional(S.String),
-    ProvisionedProductId: S.optional(S.String),
-    ProductId: S.optional(S.String),
-    ProductName: S.optional(S.String),
-    ProvisioningArtifactId: S.optional(S.String),
-    ProvisioningArtifactName: S.optional(S.String),
-    PathId: S.optional(S.String),
-    PathName: S.optional(S.String),
-    ProvisioningParameters: S.optional(UpdateProvisioningParameters),
-    ProvisioningPreferences: S.optional(UpdateProvisioningPreferences),
-    Tags: S.optional(Tags),
-    UpdateToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateProvisionedProductInput",
-}) as any as S.Schema<UpdateProvisionedProductInput>;
+const UpdateProvisionedProductInput = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<UpdateProvisionedProductInput>;
 export interface UpdateProvisionedProductOutput {
   RecordDetail?: RecordDetail;
 }
@@ -3490,32 +2491,20 @@ export interface UpdateProvisionedProductPropertiesInput {
   ProvisionedProductProperties: { [key: string]: string | undefined };
   IdempotencyToken: string;
 }
-const UpdateProvisionedProductPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProvisionedProductId: S.String,
-    ProvisionedProductProperties: ProvisionedProductProperties,
-    IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateProvisionedProductPropertiesInput",
-}) as any as S.Schema<UpdateProvisionedProductPropertiesInput>;
+const UpdateProvisionedProductPropertiesInput = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<UpdateProvisionedProductPropertiesInput>;
 export interface UpdateProvisionedProductPropertiesOutput {
   ProvisionedProductId?: string;
   ProvisionedProductProperties?: { [key: string]: string | undefined };
   RecordId?: string;
   Status?: RecordStatus;
 }
-const UpdateProvisionedProductPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisionedProductId: S.optional(S.String),
-    ProvisionedProductProperties: S.optional(ProvisionedProductProperties),
-    RecordId: S.optional(S.String),
-    Status: S.optional(RecordStatus),
-  }),
-).annotate({
-  identifier: "UpdateProvisionedProductPropertiesOutput",
-}) as any as S.Schema<UpdateProvisionedProductPropertiesOutput>;
+const UpdateProvisionedProductPropertiesOutput = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<UpdateProvisionedProductPropertiesOutput>;
 export interface UpdateProvisioningArtifactInput {
   AcceptLanguage?: string;
   ProductId: string;
@@ -3525,19 +2514,10 @@ export interface UpdateProvisioningArtifactInput {
   Active?: boolean;
   Guidance?: ProvisioningArtifactGuidance;
 }
-const UpdateProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcceptLanguage: S.optional(S.String),
-    ProductId: S.String,
-    ProvisioningArtifactId: S.String,
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    Active: S.optional(S.Boolean),
-    Guidance: S.optional(ProvisioningArtifactGuidance),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateProvisioningArtifactInput",
-}) as any as S.Schema<UpdateProvisioningArtifactInput>;
+const UpdateProvisioningArtifactInput = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<UpdateProvisioningArtifactInput>;
 export interface UpdateProvisioningArtifactOutput {
   ProvisioningArtifactDetail?: ProvisioningArtifactDetail;
   Info?: { [key: string]: string | undefined };
@@ -3552,15 +2532,10 @@ export interface UpdateServiceActionInput {
   Description?: string;
   AcceptLanguage?: string;
 }
-const UpdateServiceActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    Name: S.optional(S.String),
-    Definition: S.optional(ServiceActionDefinitionMap),
-    Description: S.optional(S.String),
-    AcceptLanguage: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateServiceActionInput" }) as any as S.Schema<UpdateServiceActionInput>;
+const UpdateServiceActionInput = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<UpdateServiceActionInput>;
 export interface UpdateServiceActionOutput {
   ServiceActionDetail?: ServiceActionDetail;
 }
@@ -3571,11 +2546,10 @@ export interface UpdateTagOptionInput {
   Value?: string;
   Active?: boolean;
 }
-const UpdateTagOptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String, Value: S.optional(S.String), Active: S.optional(S.Boolean) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateTagOptionInput" }) as any as S.Schema<UpdateTagOptionInput>;
+const UpdateTagOptionInput = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<UpdateTagOptionInput>;
 export interface UpdateTagOptionOutput {
   TagOptionDetail?: TagOptionDetail;
 }
@@ -5941,3 +4915,2125 @@ export const updateTagOption: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTagOption",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          PortfolioShareType: S.optional(PortfolioShareType),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AcceptPortfolioShareInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptPortfolioShareOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AssociateBudgetWithResourceInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssociateBudgetWithResourceOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          PrincipalARN: S.String,
+          PrincipalType: PrincipalType,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AssociatePrincipalWithPortfolioInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.String,
+          PortfolioId: S.String,
+          SourcePortfolioId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AssociateProductWithPortfolioInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ProductId: S.String,
+          ProvisioningArtifactId: S.String,
+          ServiceActionId: S.String,
+          AcceptLanguage: S.optional(S.String),
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AssociateServiceActionWithProvisioningArtifactInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ResourceId: S.String, TagOptionId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AssociateTagOptionWithResourceInput",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceActionId: S.String,
+          ProductId: S.String,
+          ProvisioningArtifactId: S.String,
+        }),
+      ).annotate({ identifier: "ServiceActionAssociation" });
+    case 1:
+      return S.Array(ServiceActionAssociation);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceActionAssociations: ServiceActionAssociations,
+          AcceptLanguage: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "BatchAssociateServiceActionWithProvisioningArtifactInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceActionId: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ProvisioningArtifactId: S.optional(S.String),
+          ErrorCode: S.optional(ServiceActionAssociationErrorCode),
+          ErrorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FailedServiceActionAssociation",
+      });
+    case 4:
+      return S.Array(FailedServiceActionAssociation);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ FailedServiceActionAssociations: S.optional(FailedServiceActionAssociations) }),
+      ).annotate({
+        identifier: "BatchAssociateServiceActionWithProvisioningArtifactOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceActionAssociations: ServiceActionAssociations,
+          AcceptLanguage: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "BatchDisassociateServiceActionFromProvisioningArtifactInput",
+      });
+    case 7:
+      return S.Record(ProvisioningArtifactPropertyName, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SourceProvisioningArtifactPropertiesMap);
+    case 1:
+      return S.Array(CopyOption);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          SourceProductArn: S.String,
+          TargetProductId: S.optional(S.String),
+          TargetProductName: S.optional(S.String),
+          SourceProvisioningArtifactIdentifiers: S.optional(SourceProvisioningArtifactProperties),
+          CopyOptions: S.optional(CopyOptions),
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CopyProductInput" });
+    case 3:
+      return S.suspend(() => S.Struct({ CopyProductToken: S.optional(S.String) })).annotate({
+        identifier: "CopyProductOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          ProductId: S.String,
+          Parameters: S.String,
+          Type: S.String,
+          Description: S.optional(S.String),
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateConstraintInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ConstraintId: S.optional(S.String),
+          Type: S.optional(S.String),
+          Description: S.optional(S.String),
+          Owner: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          PortfolioId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConstraintDetail" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ConstraintDetail: S.optional(ConstraintDetail),
+          ConstraintParameters: S.optional(S.String),
+          Status: S.optional(Status),
+        }),
+      ).annotate({ identifier: "CreateConstraintOutput" });
+    case 7:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Tag);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          DisplayName: S.String,
+          Description: S.optional(S.String),
+          ProviderName: S.String,
+          Tags: S.optional(AddTags),
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreatePortfolioInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          ARN: S.optional(S.String),
+          DisplayName: S.optional(S.String),
+          Description: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ProviderName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PortfolioDetail" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ PortfolioDetail: S.optional(PortfolioDetail), Tags: S.optional(Tags) }),
+      ).annotate({ identifier: "CreatePortfolioOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Type: S.optional(OrganizationNodeType), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "OrganizationNode" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          AccountId: S.optional(S.String),
+          OrganizationNode: S.optional(OrganizationNode),
+          ShareTagOptions: S.optional(S.Boolean),
+          SharePrincipals: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreatePortfolioShareInput",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ PortfolioShareToken: S.optional(S.String) })).annotate({
+        identifier: "CreatePortfolioShareOutput",
+      });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          Info: S.optional(ProvisioningArtifactInfo),
+          Type: S.optional(ProvisioningArtifactType),
+          DisableTemplateValidation: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ProvisioningArtifactProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectionArn: S.String,
+          Repository: S.String,
+          Branch: S.String,
+          ArtifactPath: S.String,
+        }),
+      ).annotate({ identifier: "CodeStarParameters" });
+    case 2:
+      return S.suspend(() => S.Struct({ CodeStar: S.optional(CodeStarParameters) })).annotate({
+        identifier: "SourceConnectionParameters",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(SourceType),
+          ConnectionParameters: SourceConnectionParameters,
+        }),
+      ).annotate({ identifier: "SourceConnection" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          Name: S.String,
+          Owner: S.String,
+          Description: S.optional(S.String),
+          Distributor: S.optional(S.String),
+          SupportDescription: S.optional(S.String),
+          SupportEmail: S.optional(S.String),
+          SupportUrl: S.optional(S.String),
+          ProductType: ProductType,
+          Tags: S.optional(AddTags),
+          ProvisioningArtifactParameters: S.optional(ProvisioningArtifactProperties),
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+          SourceConnection: S.optional(SourceConnection),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateProductInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          Name: S.optional(S.String),
+          Owner: S.optional(S.String),
+          ShortDescription: S.optional(S.String),
+          Type: S.optional(ProductType),
+          Distributor: S.optional(S.String),
+          HasDefaultPath: S.optional(S.Boolean),
+          SupportEmail: S.optional(S.String),
+          SupportDescription: S.optional(S.String),
+          SupportUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductViewSummary" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          LastSyncTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastSyncStatus: S.optional(LastSyncStatus),
+          LastSyncStatusMessage: S.optional(S.String),
+          LastSuccessfulSyncTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastSuccessfulSyncProvisioningArtifactId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LastSync" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(SourceType),
+          ConnectionParameters: S.optional(SourceConnectionParameters),
+          LastSync: S.optional(LastSync),
+        }),
+      ).annotate({ identifier: "SourceConnectionDetail" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewSummary: S.optional(ProductViewSummary),
+          Status: S.optional(Status),
+          ProductARN: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SourceConnection: S.optional(SourceConnectionDetail),
+        }),
+      ).annotate({ identifier: "ProductViewDetail" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          Type: S.optional(ProvisioningArtifactType),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Active: S.optional(S.Boolean),
+          Guidance: S.optional(ProvisioningArtifactGuidance),
+          SourceRevision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProvisioningArtifactDetail",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewDetail: S.optional(ProductViewDetail),
+          ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
+          Tags: S.optional(Tags),
+        }),
+      ).annotate({ identifier: "CreateProductOutput" });
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Value: S.optional(S.String),
+          UsePreviousValue: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "UpdateProvisioningParameter",
+      });
+    case 5:
+      return S.Array(UpdateProvisioningParameter);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PlanName: S.String,
+          PlanType: ProvisionedProductPlanType,
+          NotificationArns: S.optional(NotificationArns),
+          PathId: S.optional(S.String),
+          ProductId: S.String,
+          ProvisionedProductName: S.String,
+          ProvisioningArtifactId: S.String,
+          ProvisioningParameters: S.optional(UpdateProvisioningParameters),
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+          Tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateProvisionedProductPlanInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          PlanName: S.optional(S.String),
+          PlanId: S.optional(S.String),
+          ProvisionProductId: S.optional(S.String),
+          ProvisionedProductName: S.optional(S.String),
+          ProvisioningArtifactId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProvisionedProductPlanOutput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.String,
+          Parameters: ProvisioningArtifactProperties,
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateProvisioningArtifactInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
+          Info: S.optional(ProvisioningArtifactInfo),
+          Status: S.optional(Status),
+        }),
+      ).annotate({
+        identifier: "CreateProvisioningArtifactOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          DefinitionType: ServiceActionDefinitionType,
+          Definition: ServiceActionDefinitionMap,
+          Description: S.optional(S.String),
+          AcceptLanguage: S.optional(S.String),
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateServiceActionInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          DefinitionType: S.optional(ServiceActionDefinitionType),
+        }),
+      ).annotate({ identifier: "ServiceActionSummary" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceActionSummary: S.optional(ServiceActionSummary),
+          Definition: S.optional(ServiceActionDefinitionMap),
+        }),
+      ).annotate({ identifier: "ServiceActionDetail" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ServiceActionDetail: S.optional(ServiceActionDetail) }),
+      ).annotate({
+        identifier: "CreateServiceActionOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Key: S.String, Value: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateTagOptionInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Value: S.optional(S.String),
+          Active: S.optional(S.Boolean),
+          Id: S.optional(S.String),
+          Owner: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TagOptionDetail" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ TagOptionDetail: S.optional(TagOptionDetail) })).annotate({
+        identifier: "CreateTagOptionOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteConstraintInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeletePortfolioInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          AccountId: S.optional(S.String),
+          OrganizationNode: S.optional(OrganizationNode),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeletePortfolioShareInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteProductInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PlanId: S.String,
+          IgnoreErrors: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteProvisionedProductPlanInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.String,
+          ProvisioningArtifactId: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteProvisioningArtifactInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          AcceptLanguage: S.optional(S.String),
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteServiceActionInput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpQuery("id")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteTagOptionInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeConstraintInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AcceptLanguage: S.optional(S.String), CopyProductToken: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeCopyProductStatusInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CopyProductStatus: S.optional(CopyProductStatus),
+          TargetProductId: S.optional(S.String),
+          StatusDetail: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeCopyProductStatusOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribePortfolioInput" });
+    case 5:
+      return S.Array(TagOptionDetail);
+    case 6:
+      return S.suspend(() => S.Struct({ BudgetName: S.optional(S.String) })).annotate({
+        identifier: "BudgetDetail",
+      });
+    case 7:
+      return S.Array(BudgetDetail);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PortfolioDetail: S.optional(PortfolioDetail),
+          Tags: S.optional(Tags),
+          TagOptions: S.optional(TagOptionDetails),
+          Budgets: S.optional(Budgets),
+        }),
+      ).annotate({ identifier: "DescribePortfolioOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PortfolioId: S.String,
+          Type: DescribePortfolioShareType,
+          PageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribePortfolioSharesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          PrincipalId: S.optional(S.String),
+          Type: S.optional(DescribePortfolioShareType),
+          Accepted: S.optional(S.Boolean),
+          ShareTagOptions: S.optional(S.Boolean),
+          SharePrincipals: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PortfolioShareDetail" });
+    case 3:
+      return S.Array(PortfolioShareDetail);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          NextPageToken: S.optional(S.String),
+          PortfolioShareDetails: S.optional(PortfolioShareDetails),
+        }),
+      ).annotate({
+        identifier: "DescribePortfolioSharesOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ PortfolioShareToken: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribePortfolioShareStatusInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Accounts: S.optional(Namespaces),
+          Message: S.optional(S.String),
+          Error: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ShareError" });
+    case 7:
+      return S.Array(ShareError);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SuccessfulShares: S.optional(SuccessfulShares),
+          ShareErrors: S.optional(ShareErrors),
+        }),
+      ).annotate({ identifier: "ShareDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PortfolioShareToken: S.optional(S.String),
+          PortfolioId: S.optional(S.String),
+          OrganizationNodeValue: S.optional(S.String),
+          Status: S.optional(ShareStatus),
+          ShareDetails: S.optional(ShareDetails),
+        }),
+      ).annotate({
+        identifier: "DescribePortfolioShareStatusOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeProductInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Guidance: S.optional(ProvisioningArtifactGuidance),
+        }),
+      ).annotate({ identifier: "ProvisioningArtifact" });
+    case 4:
+      return S.Array(ProvisioningArtifact);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String) }),
+      ).annotate({ identifier: "LaunchPath" });
+    case 6:
+      return S.Array(LaunchPath);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewSummary: S.optional(ProductViewSummary),
+          ProvisioningArtifacts: S.optional(ProvisioningArtifacts),
+          Budgets: S.optional(Budgets),
+          LaunchPaths: S.optional(LaunchPaths),
+        }),
+      ).annotate({ identifier: "DescribeProductOutput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          SourcePortfolioId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeProductAsAdminInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ProvisioningArtifactMetadata: S.optional(ProvisioningArtifactInfo),
+        }),
+      ).annotate({
+        identifier: "ProvisioningArtifactSummary",
+      });
+    case 2:
+      return S.Array(ProvisioningArtifactSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewDetail: S.optional(ProductViewDetail),
+          ProvisioningArtifactSummaries: S.optional(ProvisioningArtifactSummaries),
+          Tags: S.optional(Tags),
+          TagOptions: S.optional(TagOptionDetails),
+          Budgets: S.optional(Budgets),
+        }),
+      ).annotate({
+        identifier: "DescribeProductAsAdminOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeProductViewInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewSummary: S.optional(ProductViewSummary),
+          ProvisioningArtifacts: S.optional(ProvisioningArtifacts),
+        }),
+      ).annotate({
+        identifier: "DescribeProductViewOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeProvisionedProductInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Arn: S.optional(S.String),
+          Type: S.optional(S.String),
+          Id: S.optional(S.String),
+          Status: S.optional(ProvisionedProductStatus),
+          StatusMessage: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IdempotencyToken: S.optional(S.String),
+          LastRecordId: S.optional(S.String),
+          LastProvisioningRecordId: S.optional(S.String),
+          LastSuccessfulProvisioningRecordId: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ProvisioningArtifactId: S.optional(S.String),
+          LaunchRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProvisionedProductDetail" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+        identifier: "CloudWatchDashboard",
+      });
+    case 1:
+      return S.Array(CloudWatchDashboard);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProductDetail: S.optional(ProvisionedProductDetail),
+          CloudWatchDashboards: S.optional(CloudWatchDashboards),
+        }),
+      ).annotate({
+        identifier: "DescribeProvisionedProductOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PlanId: S.String,
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeProvisionedProductPlanInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          PathId: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          PlanName: S.optional(S.String),
+          PlanId: S.optional(S.String),
+          ProvisionProductId: S.optional(S.String),
+          ProvisionProductName: S.optional(S.String),
+          PlanType: S.optional(ProvisionedProductPlanType),
+          ProvisioningArtifactId: S.optional(S.String),
+          Status: S.optional(ProvisionedProductPlanStatus),
+          UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          NotificationArns: S.optional(NotificationArns),
+          ProvisioningParameters: S.optional(UpdateProvisioningParameters),
+          Tags: S.optional(Tags),
+          StatusMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProvisionedProductPlanDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Attribute: S.optional(ResourceAttribute),
+          Name: S.optional(S.String),
+          RequiresRecreation: S.optional(RequiresRecreation),
+        }),
+      ).annotate({ identifier: "ResourceTargetDefinition" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Target: S.optional(ResourceTargetDefinition),
+          Evaluation: S.optional(EvaluationType),
+          CausingEntity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceChangeDetail" });
+    case 7:
+      return S.Array(ResourceChangeDetail);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(ChangeAction),
+          LogicalResourceId: S.optional(S.String),
+          PhysicalResourceId: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          Replacement: S.optional(Replacement),
+          Scope: S.optional(Scope),
+          Details: S.optional(ResourceChangeDetails),
+        }),
+      ).annotate({ identifier: "ResourceChange" });
+    case 1:
+      return S.Array(ResourceChange);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProductPlanDetails: S.optional(ProvisionedProductPlanDetails),
+          ResourceChanges: S.optional(ResourceChanges),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeProvisionedProductPlanOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProvisioningArtifactId: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ProvisioningArtifactName: S.optional(S.String),
+          ProductName: S.optional(S.String),
+          Verbose: S.optional(S.Boolean),
+          IncludeProvisioningArtifactParameters: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeProvisioningArtifactInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AllowedValues: S.optional(AllowedValues),
+          AllowedPattern: S.optional(S.String),
+          ConstraintDescription: S.optional(S.String),
+          MaxLength: S.optional(S.String),
+          MinLength: S.optional(S.String),
+          MaxValue: S.optional(S.String),
+          MinValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ParameterConstraints" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ParameterKey: S.optional(S.String),
+          DefaultValue: S.optional(S.String),
+          ParameterType: S.optional(S.String),
+          IsNoEcho: S.optional(S.Boolean),
+          Description: S.optional(S.String),
+          ParameterConstraints: S.optional(ParameterConstraints),
+        }),
+      ).annotate({
+        identifier: "ProvisioningArtifactParameter",
+      });
+    case 6:
+      return S.Array(ProvisioningArtifactParameter);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisioningArtifactDetail: S.optional(ProvisioningArtifactDetail),
+          Info: S.optional(ProvisioningArtifactInfo),
+          Status: S.optional(Status),
+          ProvisioningArtifactParameters: S.optional(ProvisioningArtifactParameters),
+        }),
+      ).annotate({
+        identifier: "DescribeProvisioningArtifactOutput",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ProductName: S.optional(S.String),
+          ProvisioningArtifactId: S.optional(S.String),
+          ProvisioningArtifactName: S.optional(S.String),
+          PathId: S.optional(S.String),
+          PathName: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeProvisioningParametersInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Type: S.optional(S.String), Description: S.optional(S.String) }),
+      ).annotate({ identifier: "ConstraintSummary" });
+    case 2:
+      return S.Array(ConstraintSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Type: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "UsageInstruction" });
+    case 4:
+      return S.Array(UsageInstruction);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Values: S.optional(TagOptionValues) }),
+      ).annotate({ identifier: "TagOptionSummary" });
+    case 6:
+      return S.Array(TagOptionSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StackSetAccounts: S.optional(StackSetAccounts),
+          StackSetRegions: S.optional(StackSetRegions),
+        }),
+      ).annotate({
+        identifier: "ProvisioningArtifactPreferences",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Description: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ProvisioningArtifactOutput",
+      });
+    case 1:
+      return S.Array(ProvisioningArtifactOutput);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisioningArtifactParameters: S.optional(ProvisioningArtifactParameters),
+          ConstraintSummaries: S.optional(ConstraintSummaries),
+          UsageInstructions: S.optional(UsageInstructions),
+          TagOptions: S.optional(TagOptionSummaries),
+          ProvisioningArtifactPreferences: S.optional(ProvisioningArtifactPreferences),
+          ProvisioningArtifactOutputs: S.optional(ProvisioningArtifactOutputs),
+          ProvisioningArtifactOutputKeys: S.optional(ProvisioningArtifactOutputs),
+        }),
+      ).annotate({
+        identifier: "DescribeProvisioningParametersOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          Id: S.String,
+          PageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeRecordInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Code: S.optional(S.String), Description: S.optional(S.String) }),
+      ).annotate({ identifier: "RecordError" });
+    case 5:
+      return S.Array(RecordError);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "RecordTag" });
+    case 7:
+      return S.Array(RecordTag);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RecordId: S.optional(S.String),
+          ProvisionedProductName: S.optional(S.String),
+          Status: S.optional(RecordStatus),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ProvisionedProductType: S.optional(S.String),
+          RecordType: S.optional(S.String),
+          ProvisionedProductId: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ProvisioningArtifactId: S.optional(S.String),
+          PathId: S.optional(S.String),
+          RecordErrors: S.optional(RecordErrors),
+          RecordTags: S.optional(RecordTags),
+          LaunchRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecordDetail" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          OutputKey: S.optional(S.String),
+          OutputValue: S.optional(S.String),
+          Description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecordOutput" });
+    case 2:
+      return S.Array(RecordOutput);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RecordDetail: S.optional(RecordDetail),
+          RecordOutputs: S.optional(RecordOutputs),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DescribeRecordOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String, AcceptLanguage: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeServiceActionInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProductId: S.String,
+          ServiceActionId: S.String,
+          AcceptLanguage: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeServiceActionExecutionParametersInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Type: S.optional(S.String),
+          DefaultValues: S.optional(ExecutionParameterValueList),
+        }),
+      ).annotate({ identifier: "ExecutionParameter" });
+    case 7:
+      return S.Array(ExecutionParameter);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceActionParameters: S.optional(ExecutionParameters) }),
+      ).annotate({
+        identifier: "DescribeServiceActionExecutionParametersOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String.pipe(T.HttpQuery("id")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeTagOptionInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisableAWSOrganizationsAccessInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisassociateBudgetFromResourceInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          PrincipalARN: S.String,
+          PrincipalType: S.optional(PrincipalType),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DisassociatePrincipalFromPortfolioInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.String,
+          PortfolioId: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DisassociateProductFromPortfolioInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ProductId: S.String,
+          ProvisioningArtifactId: S.String,
+          ServiceActionId: S.String,
+          AcceptLanguage: S.optional(S.String),
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DisassociateServiceActionFromProvisioningArtifactInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceId: S.String.pipe(T.HttpQuery("resourceId")),
+          TagOptionId: S.String.pipe(T.HttpQuery("tagOptionId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DisassociateTagOptionFromResourceInput",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "EnableAWSOrganizationsAccessInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PlanId: S.String,
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ExecuteProvisionedProductPlanInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ RecordDetail: S.optional(RecordDetail) })).annotate({
+        identifier: "ExecuteProvisionedProductPlanOutput",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ ExecutionParameterValueList.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProductId: S.String,
+          ServiceActionId: S.String,
+          ExecuteToken: S.String.pipe(T.IdempotencyToken()),
+          AcceptLanguage: S.optional(S.String),
+          Parameters: S.optional(ExecutionParameterMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ExecuteProvisionedProductServiceActionInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAWSOrganizationsAccessStatusInput",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ AccessStatus: S.optional(AccessStatus) })).annotate({
+        identifier: "GetAWSOrganizationsAccessStatusOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProvisionedProductId: S.optional(S.String),
+          ProvisionedProductName: S.optional(S.String),
+          OutputKeys: S.optional(OutputKeys),
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetProvisionedProductOutputsInput",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Outputs: S.optional(RecordOutputs), NextPageToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetProvisionedProductOutputsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.String,
+          ProvisioningArtifactId: S.String,
+          ProvisionedProductName: S.String,
+          PhysicalId: S.String,
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ImportAsProvisionedProductInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+          PortfolioShareType: S.optional(PortfolioShareType),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAcceptedPortfolioSharesInput",
+      });
+    case 3:
+      return S.Array(PortfolioDetail);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          PortfolioDetails: S.optional(PortfolioDetails),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAcceptedPortfolioSharesOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ResourceId: S.String,
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListBudgetsForResourceInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Budgets: S.optional(Budgets), NextPageToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListBudgetsForResourceOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          ProductId: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListConstraintsForPortfolioInput",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ConstraintDetail);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ConstraintDetails: S.optional(ConstraintDetails),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListConstraintsForPortfolioOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.String,
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListLaunchPathsInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          ConstraintSummaries: S.optional(ConstraintSummaries),
+          Tags: S.optional(Tags),
+          Name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LaunchPathSummary" });
+    case 4:
+      return S.Array(LaunchPathSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          LaunchPathSummaries: S.optional(LaunchPathSummaries),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListLaunchPathsOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          OrganizationNodeType: OrganizationNodeType,
+          PageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListOrganizationPortfolioAccessInput",
+      });
+    case 7:
+      return S.Array(OrganizationNode);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationNodes: S.optional(OrganizationNodes),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationPortfolioAccessOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          OrganizationParentId: S.optional(S.String),
+          PageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListPortfolioAccessInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AccountIds: S.optional(AccountIds), NextPageToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListPortfolioAccessOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListPortfoliosInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          PortfolioDetails: S.optional(PortfolioDetails),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListPortfoliosOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.String,
+          PageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListPortfoliosForProductInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListPrincipalsForPortfolioInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ PrincipalARN: S.optional(S.String), PrincipalType: S.optional(PrincipalType) }),
+      ).annotate({ identifier: "Principal" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Principal);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Principals: S.optional(Principals), NextPageToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListPrincipalsForPortfolioOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(AccessLevelFilterKey), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "AccessLevelFilter" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProvisionProductId: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+          AccessLevelFilter: S.optional(AccessLevelFilter),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListProvisionedProductPlansInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          PlanName: S.optional(S.String),
+          PlanId: S.optional(S.String),
+          ProvisionProductId: S.optional(S.String),
+          ProvisionProductName: S.optional(S.String),
+          PlanType: S.optional(ProvisionedProductPlanType),
+          ProvisioningArtifactId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProvisionedProductPlanSummary",
+      });
+    case 5:
+      return S.Array(ProvisionedProductPlanSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProductPlans: S.optional(ProvisionedProductPlans),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListProvisionedProductPlansOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ AcceptLanguage: S.optional(S.String), ProductId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListProvisioningArtifactsInput",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ProvisioningArtifactDetail);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisioningArtifactDetails: S.optional(ProvisioningArtifactDetails),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListProvisioningArtifactsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceActionId: S.String,
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+          AcceptLanguage: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListProvisioningArtifactsForServiceActionInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewSummary: S.optional(ProductViewSummary),
+          ProvisioningArtifact: S.optional(ProvisioningArtifact),
+        }),
+      ).annotate({ identifier: "ProvisioningArtifactView" });
+    case 4:
+      return S.Array(ProvisioningArtifactView);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisioningArtifactViews: S.optional(ProvisioningArtifactViews),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListProvisioningArtifactsForServiceActionOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListRecordHistorySearchFilter",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          AccessLevelFilter: S.optional(AccessLevelFilter),
+          SearchFilter: S.optional(ListRecordHistorySearchFilter),
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListRecordHistoryInput" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(RecordDetail);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ RecordDetails: S.optional(RecordDetails), NextPageToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRecordHistoryOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TagOptionId: S.String.pipe(T.HttpQuery("tagOptionId")),
+          ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
+          PageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
+          PageToken: S.optional(S.String).pipe(T.HttpQuery("pageToken")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListResourcesForTagOptionInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          ARN: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ResourceDetail" });
+    case 4:
+      return S.Array(ResourceDetail);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ResourceDetails: S.optional(ResourceDetails), PageToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListResourcesForTagOptionOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListServiceActionsInput" });
+    case 7:
+      return S.Array(ServiceActionSummary);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceActionSummaries: S.optional(ServiceActionSummaries),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListServiceActionsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ProductId: S.String,
+          ProvisioningArtifactId: S.String,
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+          AcceptLanguage: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListServiceActionsForProvisioningArtifactInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceActionSummaries: S.optional(ServiceActionSummaries),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListServiceActionsForProvisioningArtifactOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProvisionedProductId: S.String,
+          PageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListStackInstancesForProvisionedProductInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Account: S.optional(S.String),
+          Region: S.optional(S.String),
+          StackInstanceStatus: S.optional(StackInstanceStatus),
+        }),
+      ).annotate({ identifier: "StackInstance" });
+    case 5:
+      return S.Array(StackInstance);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          StackInstances: S.optional(StackInstances),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListStackInstancesForProvisionedProductOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Value: S.optional(S.String),
+          Active: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ListTagOptionsFilters" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(ListTagOptionsFilters),
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListTagOptionsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TagOptionDetails: S.optional(TagOptionDetails),
+          PageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListTagOptionsOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ UniqueTag: S.optional(UniqueTagResourceIdentifier) }),
+      ).annotate({
+        identifier: "EngineWorkflowResourceIdentifier",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          WorkflowToken: S.String,
+          RecordId: S.String,
+          Status: EngineWorkflowStatus,
+          FailureReason: S.optional(S.String),
+          ResourceIdentifier: S.optional(EngineWorkflowResourceIdentifier),
+          Outputs: S.optional(RecordOutputs),
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "NotifyProvisionProductEngineWorkflowResultInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          WorkflowToken: S.String,
+          RecordId: S.String,
+          Status: EngineWorkflowStatus,
+          FailureReason: S.optional(S.String),
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "NotifyTerminateProvisionedProductEngineWorkflowResultInput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "NotifyTerminateProvisionedProductEngineWorkflowResultOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          WorkflowToken: S.String,
+          RecordId: S.String,
+          Status: EngineWorkflowStatus,
+          FailureReason: S.optional(S.String),
+          Outputs: S.optional(RecordOutputs),
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "NotifyUpdateProvisionedProductEngineWorkflowResultInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StackSetAccounts: S.optional(StackSetAccounts),
+          StackSetRegions: S.optional(StackSetRegions),
+          StackSetFailureToleranceCount: S.optional(S.Number),
+          StackSetFailureTolerancePercentage: S.optional(S.Number),
+          StackSetMaxConcurrencyCount: S.optional(S.Number),
+          StackSetMaxConcurrencyPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ProvisioningPreferences" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ProductName: S.optional(S.String),
+          ProvisioningArtifactId: S.optional(S.String),
+          ProvisioningArtifactName: S.optional(S.String),
+          PathId: S.optional(S.String),
+          PathName: S.optional(S.String),
+          ProvisionedProductName: S.String,
+          ProvisioningParameters: S.optional(ProvisioningParameters),
+          ProvisioningPreferences: S.optional(ProvisioningPreferences),
+          Tags: S.optional(Tags),
+          NotificationArns: S.optional(NotificationArns),
+          ProvisionToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ProvisionProductInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ RecordDetail: S.optional(RecordDetail) })).annotate({
+        identifier: "ProvisionProductOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          PortfolioShareType: S.optional(PortfolioShareType),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RejectPortfolioShareInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          AccessLevelFilter: S.optional(AccessLevelFilter),
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ScanProvisionedProductsInput",
+      });
+    case 4:
+      return S.Array(ProvisionedProductDetail);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProducts: S.optional(ProvisionedProductDetails),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ScanProvisionedProductsOutput",
+      });
+    case 6:
+      return S.Record(ProductViewFilterBy, /*@__PURE__*/ ProductViewFilterValues.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          Filters: S.optional(ProductViewFilters),
+          PageSize: S.optional(S.Number),
+          SortBy: S.optional(ProductViewSortBy),
+          SortOrder: S.optional(SortOrder),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SearchProductsInput" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ProductViewSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Value: S.optional(S.String), ApproximateCount: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "ProductViewAggregationValue",
+      });
+    case 2:
+      return S.Array(ProductViewAggregationValue);
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ ProductViewAggregationValues.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewSummaries: S.optional(ProductViewSummaries),
+          ProductViewAggregations: S.optional(ProductViewAggregations),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SearchProductsOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.optional(S.String),
+          Filters: S.optional(ProductViewFilters),
+          SortBy: S.optional(ProductViewSortBy),
+          SortOrder: S.optional(SortOrder),
+          PageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+          ProductSource: S.optional(ProductSource),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SearchProductsAsAdminInput",
+      });
+    case 6:
+      return S.Array(ProductViewDetail);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewDetails: S.optional(ProductViewDetails),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SearchProductsAsAdminOutput",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(
+        ProvisionedProductViewFilterBy,
+        /*@__PURE__*/ ProvisionedProductViewFilterValues.pipe(S.optional),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          AccessLevelFilter: S.optional(AccessLevelFilter),
+          Filters: S.optional(ProvisionedProductFilters),
+          SortBy: S.optional(S.String),
+          SortOrder: S.optional(SortOrder),
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SearchProvisionedProductsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Arn: S.optional(S.String),
+          Type: S.optional(S.String),
+          Id: S.optional(S.String),
+          Status: S.optional(ProvisionedProductStatus),
+          StatusMessage: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IdempotencyToken: S.optional(S.String),
+          LastRecordId: S.optional(S.String),
+          LastProvisioningRecordId: S.optional(S.String),
+          LastSuccessfulProvisioningRecordId: S.optional(S.String),
+          Tags: S.optional(Tags),
+          PhysicalId: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ProductName: S.optional(S.String),
+          ProvisioningArtifactId: S.optional(S.String),
+          ProvisioningArtifactName: S.optional(S.String),
+          UserArn: S.optional(S.String),
+          UserArnSession: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProvisionedProductAttribute",
+      });
+    case 3:
+      return S.Array(ProvisionedProductAttribute);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProducts: S.optional(ProvisionedProductAttributes),
+          TotalResultsCount: S.optional(S.Number),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SearchProvisionedProductsOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProductName: S.optional(S.String),
+          ProvisionedProductId: S.optional(S.String),
+          TerminateToken: S.String.pipe(T.IdempotencyToken()),
+          IgnoreErrors: S.optional(S.Boolean),
+          AcceptLanguage: S.optional(S.String),
+          RetainPhysicalResources: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "TerminateProvisionedProductInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          Id: S.String,
+          Description: S.optional(S.String),
+          Parameters: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateConstraintInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          Id: S.String,
+          DisplayName: S.optional(S.String),
+          Description: S.optional(S.String),
+          ProviderName: S.optional(S.String),
+          AddTags: S.optional(AddTags),
+          RemoveTags: S.optional(TagKeys),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdatePortfolioInput" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          AccountId: S.optional(S.String),
+          OrganizationNode: S.optional(OrganizationNode),
+          ShareTagOptions: S.optional(S.Boolean),
+          SharePrincipals: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdatePortfolioShareInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ PortfolioShareToken: S.optional(S.String), Status: S.optional(ShareStatus) }),
+      ).annotate({
+        identifier: "UpdatePortfolioShareOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          Id: S.String,
+          Name: S.optional(S.String),
+          Owner: S.optional(S.String),
+          Description: S.optional(S.String),
+          Distributor: S.optional(S.String),
+          SupportDescription: S.optional(S.String),
+          SupportEmail: S.optional(S.String),
+          SupportUrl: S.optional(S.String),
+          AddTags: S.optional(AddTags),
+          RemoveTags: S.optional(TagKeys),
+          SourceConnection: S.optional(SourceConnection),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateProductInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ProductViewDetail: S.optional(ProductViewDetail), Tags: S.optional(Tags) }),
+      ).annotate({ identifier: "UpdateProductOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          StackSetAccounts: S.optional(StackSetAccounts),
+          StackSetRegions: S.optional(StackSetRegions),
+          StackSetFailureToleranceCount: S.optional(S.Number),
+          StackSetFailureTolerancePercentage: S.optional(S.Number),
+          StackSetMaxConcurrencyCount: S.optional(S.Number),
+          StackSetMaxConcurrencyPercentage: S.optional(S.Number),
+          StackSetOperationType: S.optional(StackSetOperationType),
+        }),
+      ).annotate({
+        identifier: "UpdateProvisioningPreferences",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProvisionedProductName: S.optional(S.String),
+          ProvisionedProductId: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ProductName: S.optional(S.String),
+          ProvisioningArtifactId: S.optional(S.String),
+          ProvisioningArtifactName: S.optional(S.String),
+          PathId: S.optional(S.String),
+          PathName: S.optional(S.String),
+          ProvisioningParameters: S.optional(UpdateProvisioningParameters),
+          ProvisioningPreferences: S.optional(UpdateProvisioningPreferences),
+          Tags: S.optional(Tags),
+          UpdateToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateProvisionedProductInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProvisionedProductId: S.String,
+          ProvisionedProductProperties: ProvisionedProductProperties,
+          IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateProvisionedProductPropertiesInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProductId: S.optional(S.String),
+          ProvisionedProductProperties: S.optional(ProvisionedProductProperties),
+          RecordId: S.optional(S.String),
+          Status: S.optional(RecordStatus),
+        }),
+      ).annotate({
+        identifier: "UpdateProvisionedProductPropertiesOutput",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          ProductId: S.String,
+          ProvisioningArtifactId: S.String,
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          Active: S.optional(S.Boolean),
+          Guidance: S.optional(ProvisioningArtifactGuidance),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateProvisioningArtifactInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          Name: S.optional(S.String),
+          Definition: S.optional(ServiceActionDefinitionMap),
+          Description: S.optional(S.String),
+          AcceptLanguage: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateServiceActionInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String, Value: S.optional(S.String), Active: S.optional(S.Boolean) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateTagOptionInput" });
+  }
+}

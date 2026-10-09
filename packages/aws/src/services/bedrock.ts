@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -138,39 +139,26 @@ export class ValidationException
   ).pipe(C.withBadRequestError) {}
 export type AdvancedPromptOptimizationJobIdentifier = string;
 export type AdvancedPromptOptimizationJobIdentifiers = string[];
-const AdvancedPromptOptimizationJobIdentifiers = /*@__PURE__*/ S.Array(S.String);
+const AdvancedPromptOptimizationJobIdentifiers = /*@__PURE__*/ __L.at(__c0, 0);
 export interface BatchDeleteAdvancedPromptOptimizationJobRequest {
   jobIdentifiers: string[];
 }
-const BatchDeleteAdvancedPromptOptimizationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifiers: AdvancedPromptOptimizationJobIdentifiers }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/advanced-prompt-optimization-job/batch-delete" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchDeleteAdvancedPromptOptimizationJobRequest",
-}) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobRequest>;
+const BatchDeleteAdvancedPromptOptimizationJobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobRequest>;
 export interface BatchDeleteAdvancedPromptOptimizationJobError_ {
   jobIdentifier: string;
   code: string;
   message?: string;
 }
-const BatchDeleteAdvancedPromptOptimizationJobError_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: S.String, code: S.String, message: S.optional(S.String) }),
-).annotate({
-  identifier: "BatchDeleteAdvancedPromptOptimizationJobError",
-}) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobError_>;
+const BatchDeleteAdvancedPromptOptimizationJobError_ = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobError_>;
 export type BatchDeleteAdvancedPromptOptimizationJobErrors =
   BatchDeleteAdvancedPromptOptimizationJobError_[];
-const BatchDeleteAdvancedPromptOptimizationJobErrors = /*@__PURE__*/ S.Array(
-  BatchDeleteAdvancedPromptOptimizationJobError_,
-);
+const BatchDeleteAdvancedPromptOptimizationJobErrors = /*@__PURE__*/ __L.at(__c0, 3);
 export type AdvancedPromptOptimizationJobStatus =
   | "InProgress"
   | "Completed"
@@ -186,60 +174,42 @@ export interface BatchDeleteAdvancedPromptOptimizationJobItem {
   jobIdentifier: string;
   jobStatus: AdvancedPromptOptimizationJobStatus;
 }
-const BatchDeleteAdvancedPromptOptimizationJobItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: S.String, jobStatus: AdvancedPromptOptimizationJobStatus }),
-).annotate({
-  identifier: "BatchDeleteAdvancedPromptOptimizationJobItem",
-}) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobItem>;
+const BatchDeleteAdvancedPromptOptimizationJobItem = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobItem>;
 export type BatchDeleteAdvancedPromptOptimizationJobItems =
   BatchDeleteAdvancedPromptOptimizationJobItem[];
-const BatchDeleteAdvancedPromptOptimizationJobItems = /*@__PURE__*/ S.Array(
-  BatchDeleteAdvancedPromptOptimizationJobItem,
-);
+const BatchDeleteAdvancedPromptOptimizationJobItems = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchDeleteAdvancedPromptOptimizationJobResponse {
   errors: BatchDeleteAdvancedPromptOptimizationJobError_[];
   advancedPromptOptimizationJobs: BatchDeleteAdvancedPromptOptimizationJobItem[];
 }
-const BatchDeleteAdvancedPromptOptimizationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: BatchDeleteAdvancedPromptOptimizationJobErrors,
-    advancedPromptOptimizationJobs: BatchDeleteAdvancedPromptOptimizationJobItems,
-  }),
-).annotate({
-  identifier: "BatchDeleteAdvancedPromptOptimizationJobResponse",
-}) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobResponse>;
+const BatchDeleteAdvancedPromptOptimizationJobResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobResponse>;
 export type EvaluationJobIdentifier = string | redacted.Redacted<string>;
 export type EvaluationJobIdentifiers = (string | redacted.Redacted<string>)[];
-const EvaluationJobIdentifiers = /*@__PURE__*/ S.Array(SensitiveString);
+const EvaluationJobIdentifiers = /*@__PURE__*/ __L.at(__c0, 7);
 export interface BatchDeleteEvaluationJobRequest {
   jobIdentifiers: (string | redacted.Redacted<string>)[];
 }
-const BatchDeleteEvaluationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifiers: EvaluationJobIdentifiers }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/evaluation-jobs/batch-delete" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchDeleteEvaluationJobRequest",
-}) as any as S.Schema<BatchDeleteEvaluationJobRequest>;
+const BatchDeleteEvaluationJobRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchDeleteEvaluationJobRequest>;
 export interface BatchDeleteEvaluationJobError_ {
   jobIdentifier: string | redacted.Redacted<string>;
   code: string;
   message?: string;
 }
-const BatchDeleteEvaluationJobError_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: SensitiveString, code: S.String, message: S.optional(S.String) }),
-).annotate({
-  identifier: "BatchDeleteEvaluationJobError",
-}) as any as S.Schema<BatchDeleteEvaluationJobError_>;
+const BatchDeleteEvaluationJobError_ = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchDeleteEvaluationJobError_>;
 export type BatchDeleteEvaluationJobErrors = BatchDeleteEvaluationJobError_[];
-const BatchDeleteEvaluationJobErrors = /*@__PURE__*/ S.Array(BatchDeleteEvaluationJobError_);
+const BatchDeleteEvaluationJobErrors = /*@__PURE__*/ __L.at(__c1, 2);
 export type EvaluationJobStatus =
   | "InProgress"
   | "Completed"
@@ -254,57 +224,35 @@ export interface BatchDeleteEvaluationJobItem {
   jobIdentifier: string | redacted.Redacted<string>;
   jobStatus: EvaluationJobStatus;
 }
-const BatchDeleteEvaluationJobItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: SensitiveString, jobStatus: EvaluationJobStatus }),
-).annotate({
-  identifier: "BatchDeleteEvaluationJobItem",
-}) as any as S.Schema<BatchDeleteEvaluationJobItem>;
+const BatchDeleteEvaluationJobItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<BatchDeleteEvaluationJobItem>;
 export type BatchDeleteEvaluationJobItems = BatchDeleteEvaluationJobItem[];
-const BatchDeleteEvaluationJobItems = /*@__PURE__*/ S.Array(BatchDeleteEvaluationJobItem);
+const BatchDeleteEvaluationJobItems = /*@__PURE__*/ __L.at(__c1, 4);
 export interface BatchDeleteEvaluationJobResponse {
   errors: BatchDeleteEvaluationJobError_[];
   evaluationJobs: BatchDeleteEvaluationJobItem[];
 }
-const BatchDeleteEvaluationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: BatchDeleteEvaluationJobErrors,
-    evaluationJobs: BatchDeleteEvaluationJobItems,
-  }),
-).annotate({
-  identifier: "BatchDeleteEvaluationJobResponse",
-}) as any as S.Schema<BatchDeleteEvaluationJobResponse>;
+const BatchDeleteEvaluationJobResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BatchDeleteEvaluationJobResponse>;
 export type AutomatedReasoningPolicyArn = string;
 export type AutomatedReasoningPolicyBuildWorkflowId = string;
 export interface CancelAutomatedReasoningPolicyBuildWorkflowRequest {
   policyArn: string;
   buildWorkflowId: string;
 }
-const CancelAutomatedReasoningPolicyBuildWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/cancel",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CancelAutomatedReasoningPolicyBuildWorkflowRequest",
-}) as any as S.Schema<CancelAutomatedReasoningPolicyBuildWorkflowRequest>;
+const CancelAutomatedReasoningPolicyBuildWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CancelAutomatedReasoningPolicyBuildWorkflowRequest>;
 export interface CancelAutomatedReasoningPolicyBuildWorkflowResponse {}
-const CancelAutomatedReasoningPolicyBuildWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelAutomatedReasoningPolicyBuildWorkflowResponse",
-}) as any as S.Schema<CancelAutomatedReasoningPolicyBuildWorkflowResponse>;
+const CancelAutomatedReasoningPolicyBuildWorkflowResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CancelAutomatedReasoningPolicyBuildWorkflowResponse>;
 export type AdvancedPromptOptimizationJobName = string;
 export type AdvancedPromptOptimizationJobDescription = string;
 export type IdempotencyToken = string;
@@ -312,11 +260,10 @@ export type S3Uri = string;
 export interface AdvancedPromptOptimizationInputConfig {
   s3Uri: string;
 }
-const AdvancedPromptOptimizationInputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Uri: S.String }),
-).annotate({
-  identifier: "AdvancedPromptOptimizationInputConfig",
-}) as any as S.Schema<AdvancedPromptOptimizationInputConfig>;
+const AdvancedPromptOptimizationInputConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AdvancedPromptOptimizationInputConfig>;
 export type S3UriFolder = string;
 export interface AdvancedPromptOptimizationOutputConfig {
   s3Uri: string;
@@ -330,11 +277,9 @@ export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c2, 2);
 export type AdvancedPromptOptimizationModelIdentifier = string;
 export type NonEmptyStringList = string[];
 const NonEmptyStringList =
@@ -345,35 +290,22 @@ export interface InferenceConfiguration {
   topP?: number;
   stopSequences?: string[];
 }
-const InferenceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxTokens: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    topP: S.optional(S.Number),
-    stopSequences: S.optional(NonEmptyStringList),
-  }),
-).annotate({ identifier: "InferenceConfiguration" }) as any as S.Schema<InferenceConfiguration>;
+const InferenceConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<InferenceConfiguration>;
 export type AdditionalModelRequestFieldsKey = string;
 export type AdditionalModelRequestFieldsValue = unknown;
 export type AdditionalModelRequestFields = { [key: string]: any | undefined };
-const AdditionalModelRequestFields = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Any.pipe(S.optional),
-);
+const AdditionalModelRequestFields = /*@__PURE__*/ __L.at(__c2, 4);
 export interface ModelConfiguration {
   modelId: string;
   inferenceConfig?: InferenceConfiguration;
   additionalModelRequestFields?: { [key: string]: any | undefined };
 }
-const ModelConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelId: S.String,
-    inferenceConfig: S.optional(InferenceConfiguration),
-    additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
-  }),
-).annotate({ identifier: "ModelConfiguration" }) as any as S.Schema<ModelConfiguration>;
+const ModelConfiguration = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ModelConfiguration>;
 export type ModelConfigurations = ModelConfiguration[];
-const ModelConfigurations = /*@__PURE__*/ S.Array(ModelConfiguration);
+const ModelConfigurations = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateAdvancedPromptOptimizationJobRequest {
   jobName: string;
   jobDescription?: string;
@@ -384,38 +316,18 @@ export interface CreateAdvancedPromptOptimizationJobRequest {
   tags?: Tag[];
   modelConfigurations: ModelConfiguration[];
 }
-const CreateAdvancedPromptOptimizationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    jobDescription: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    inputConfig: AdvancedPromptOptimizationInputConfig,
-    outputConfig: AdvancedPromptOptimizationOutputConfig,
-    encryptionKeyArn: S.optional(S.String),
-    tags: S.optional(TagList),
-    modelConfigurations: ModelConfigurations,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/advanced-prompt-optimization-jobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateAdvancedPromptOptimizationJobRequest",
-}) as any as S.Schema<CreateAdvancedPromptOptimizationJobRequest>;
+const CreateAdvancedPromptOptimizationJobRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateAdvancedPromptOptimizationJobRequest>;
 export type AdvancedPromptOptimizationJobArn = string;
 export interface CreateAdvancedPromptOptimizationJobResponse {
   jobArn: string;
 }
-const CreateAdvancedPromptOptimizationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobArn: S.String }),
-).annotate({
-  identifier: "CreateAdvancedPromptOptimizationJobResponse",
-}) as any as S.Schema<CreateAdvancedPromptOptimizationJobResponse>;
+const CreateAdvancedPromptOptimizationJobResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateAdvancedPromptOptimizationJobResponse>;
 export type AutomatedReasoningPolicyName = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyDescription = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyFormatVersion = string;
@@ -429,34 +341,24 @@ export interface AutomatedReasoningPolicyDefinitionTypeValue {
   value: string;
   description?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyDefinitionTypeValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.String, description: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDefinitionTypeValue",
-}) as any as S.Schema<AutomatedReasoningPolicyDefinitionTypeValue>;
+const AutomatedReasoningPolicyDefinitionTypeValue = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<AutomatedReasoningPolicyDefinitionTypeValue>;
 export type AutomatedReasoningPolicyDefinitionTypeValueList =
   AutomatedReasoningPolicyDefinitionTypeValue[];
-const AutomatedReasoningPolicyDefinitionTypeValueList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyDefinitionTypeValue,
-);
+const AutomatedReasoningPolicyDefinitionTypeValueList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface AutomatedReasoningPolicyDefinitionType {
   name: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
   values: AutomatedReasoningPolicyDefinitionTypeValue[];
 }
-const AutomatedReasoningPolicyDefinitionType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    values: AutomatedReasoningPolicyDefinitionTypeValueList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDefinitionType",
-}) as any as S.Schema<AutomatedReasoningPolicyDefinitionType>;
+const AutomatedReasoningPolicyDefinitionType = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AutomatedReasoningPolicyDefinitionType>;
 export type AutomatedReasoningPolicyDefinitionTypeList = AutomatedReasoningPolicyDefinitionType[];
-const AutomatedReasoningPolicyDefinitionTypeList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyDefinitionType,
-);
+const AutomatedReasoningPolicyDefinitionTypeList = /*@__PURE__*/ __L.at(__c3, 4);
 export type AutomatedReasoningPolicyDefinitionRuleId = string;
 export type AutomatedReasoningPolicyDefinitionRuleExpression = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyDefinitionRuleAlternateExpression =
@@ -467,19 +369,12 @@ export interface AutomatedReasoningPolicyDefinitionRule {
   expression: string | redacted.Redacted<string>;
   alternateExpression?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyDefinitionRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    expression: SensitiveString,
-    alternateExpression: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDefinitionRule",
-}) as any as S.Schema<AutomatedReasoningPolicyDefinitionRule>;
+const AutomatedReasoningPolicyDefinitionRule = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<AutomatedReasoningPolicyDefinitionRule>;
 export type AutomatedReasoningPolicyDefinitionRuleList = AutomatedReasoningPolicyDefinitionRule[];
-const AutomatedReasoningPolicyDefinitionRuleList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyDefinitionRule,
-);
+const AutomatedReasoningPolicyDefinitionRuleList = /*@__PURE__*/ __L.at(__c3, 6);
 export type AutomatedReasoningPolicyDefinitionVariableName = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyDefinitionVariableDescription =
   | string
@@ -489,32 +384,23 @@ export interface AutomatedReasoningPolicyDefinitionVariable {
   type: string | redacted.Redacted<string>;
   description: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyDefinitionVariable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SensitiveString, type: SensitiveString, description: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDefinitionVariable",
-}) as any as S.Schema<AutomatedReasoningPolicyDefinitionVariable>;
+const AutomatedReasoningPolicyDefinitionVariable = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<AutomatedReasoningPolicyDefinitionVariable>;
 export type AutomatedReasoningPolicyDefinitionVariableList =
   AutomatedReasoningPolicyDefinitionVariable[];
-const AutomatedReasoningPolicyDefinitionVariableList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyDefinitionVariable,
-);
+const AutomatedReasoningPolicyDefinitionVariableList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface AutomatedReasoningPolicyDefinition {
   version?: string;
   types?: AutomatedReasoningPolicyDefinitionType[];
   rules?: AutomatedReasoningPolicyDefinitionRule[];
   variables?: AutomatedReasoningPolicyDefinitionVariable[];
 }
-const AutomatedReasoningPolicyDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    types: S.optional(AutomatedReasoningPolicyDefinitionTypeList),
-    rules: S.optional(AutomatedReasoningPolicyDefinitionRuleList),
-    variables: S.optional(AutomatedReasoningPolicyDefinitionVariableList),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDefinition",
-}) as any as S.Schema<AutomatedReasoningPolicyDefinition>;
+const AutomatedReasoningPolicyDefinition = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<AutomatedReasoningPolicyDefinition>;
 export type KmsKeyId = string;
 export interface CreateAutomatedReasoningPolicyRequest {
   name: string | redacted.Redacted<string>;
@@ -524,27 +410,10 @@ export interface CreateAutomatedReasoningPolicyRequest {
   kmsKeyId?: string;
   tags?: Tag[];
 }
-const CreateAutomatedReasoningPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    policyDefinition: S.optional(AutomatedReasoningPolicyDefinition),
-    kmsKeyId: S.optional(S.String),
-    tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/automated-reasoning-policies" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateAutomatedReasoningPolicyRequest",
-}) as any as S.Schema<CreateAutomatedReasoningPolicyRequest>;
+const CreateAutomatedReasoningPolicyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateAutomatedReasoningPolicyRequest>;
 export type AutomatedReasoningPolicyVersion = string;
 export type AutomatedReasoningPolicyHash = string;
 export interface CreateAutomatedReasoningPolicyResponse {
@@ -556,19 +425,10 @@ export interface CreateAutomatedReasoningPolicyResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-const CreateAutomatedReasoningPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    version: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    definitionHash: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "CreateAutomatedReasoningPolicyResponse",
-}) as any as S.Schema<CreateAutomatedReasoningPolicyResponse>;
+const CreateAutomatedReasoningPolicyResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateAutomatedReasoningPolicyResponse>;
 export type AutomatedReasoningPolicyTestGuardContent = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyTestQueryContent = string | redacted.Redacted<string>;
 export type AutomatedReasoningCheckResult =
@@ -591,62 +451,29 @@ export interface CreateAutomatedReasoningPolicyTestCaseRequest {
   clientRequestToken?: string;
   confidenceThreshold?: number;
 }
-const CreateAutomatedReasoningPolicyTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    guardContent: SensitiveString,
-    queryContent: S.optional(SensitiveString),
-    expectedAggregatedFindingsResult: AutomatedReasoningCheckResult,
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    confidenceThreshold: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/automated-reasoning-policies/{policyArn}/test-cases" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateAutomatedReasoningPolicyTestCaseRequest",
-}) as any as S.Schema<CreateAutomatedReasoningPolicyTestCaseRequest>;
+const CreateAutomatedReasoningPolicyTestCaseRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateAutomatedReasoningPolicyTestCaseRequest>;
 export type AutomatedReasoningPolicyTestCaseId = string;
 export interface CreateAutomatedReasoningPolicyTestCaseResponse {
   policyArn: string;
   testCaseId: string;
 }
-const CreateAutomatedReasoningPolicyTestCaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyArn: S.String, testCaseId: S.String }),
-).annotate({
-  identifier: "CreateAutomatedReasoningPolicyTestCaseResponse",
-}) as any as S.Schema<CreateAutomatedReasoningPolicyTestCaseResponse>;
+const CreateAutomatedReasoningPolicyTestCaseResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateAutomatedReasoningPolicyTestCaseResponse>;
 export interface CreateAutomatedReasoningPolicyVersionRequest {
   policyArn: string;
   clientRequestToken?: string;
   lastUpdatedDefinitionHash: string;
   tags?: Tag[];
 }
-const CreateAutomatedReasoningPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    lastUpdatedDefinitionHash: S.String,
-    tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/automated-reasoning-policies/{policyArn}/versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateAutomatedReasoningPolicyVersionRequest",
-}) as any as S.Schema<CreateAutomatedReasoningPolicyVersionRequest>;
+const CreateAutomatedReasoningPolicyVersionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateAutomatedReasoningPolicyVersionRequest>;
 export interface CreateAutomatedReasoningPolicyVersionResponse {
   policyArn: string;
   version: string;
@@ -655,42 +482,27 @@ export interface CreateAutomatedReasoningPolicyVersionResponse {
   definitionHash: string;
   createdAt: Date;
 }
-const CreateAutomatedReasoningPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    version: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    definitionHash: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "CreateAutomatedReasoningPolicyVersionResponse",
-}) as any as S.Schema<CreateAutomatedReasoningPolicyVersionResponse>;
+const CreateAutomatedReasoningPolicyVersionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateAutomatedReasoningPolicyVersionResponse>;
 export type CustomModelName = string;
 export interface S3DataSource {
   s3Uri: string;
 }
-const S3DataSource = /*@__PURE__*/ S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-  identifier: "S3DataSource",
-}) as any as S.Schema<S3DataSource>;
+const S3DataSource = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<S3DataSource>;
 export type ModelDataSource = { s3DataSource: S3DataSource };
-const ModelDataSource = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ s3DataSource: S3DataSource }),
-]);
+const ModelDataSource = /*@__PURE__*/ __L.at(__c5, 1);
 export type ModelPackageArn = string;
 export interface ModelPackageArnDataSource {
   modelPackageArn: string;
 }
-const ModelPackageArnDataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelPackageArn: S.String }),
-).annotate({
-  identifier: "ModelPackageArnDataSource",
-}) as any as S.Schema<ModelPackageArnDataSource>;
+const ModelPackageArnDataSource = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ModelPackageArnDataSource>;
 export type CustomModelDataSource = { modelPackageArnDataSource: ModelPackageArnDataSource };
-const CustomModelDataSource = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ modelPackageArnDataSource: ModelPackageArnDataSource }),
-]);
+const CustomModelDataSource = /*@__PURE__*/ __L.at(__c5, 3);
 export type RoleArn = string;
 export interface CreateCustomModelRequest {
   modelName: string;
@@ -701,35 +513,18 @@ export interface CreateCustomModelRequest {
   modelTags?: Tag[];
   clientRequestToken?: string;
 }
-const CreateCustomModelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelName: S.String,
-    modelSourceConfig: S.optional(ModelDataSource),
-    customModelDataSource: S.optional(CustomModelDataSource),
-    modelKmsKeyArn: S.optional(S.String),
-    roleArn: S.optional(S.String),
-    modelTags: S.optional(TagList),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/custom-models/create-custom-model" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateCustomModelRequest" }) as any as S.Schema<CreateCustomModelRequest>;
+const CreateCustomModelRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateCustomModelRequest>;
 export type ModelArn = string;
 export interface CreateCustomModelResponse {
   modelArn: string;
 }
-const CreateCustomModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelArn: S.String }),
-).annotate({
-  identifier: "CreateCustomModelResponse",
-}) as any as S.Schema<CreateCustomModelResponse>;
+const CreateCustomModelResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateCustomModelResponse>;
 export type ModelDeploymentName = string;
 export type CustomModelArn = string;
 export type CustomModelDeploymentDescription = string;
@@ -740,35 +535,18 @@ export interface CreateCustomModelDeploymentRequest {
   tags?: Tag[];
   clientRequestToken?: string;
 }
-const CreateCustomModelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelDeploymentName: S.String,
-    modelArn: S.String,
-    description: S.optional(S.String),
-    tags: S.optional(TagList),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/model-customization/custom-model-deployments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateCustomModelDeploymentRequest",
-}) as any as S.Schema<CreateCustomModelDeploymentRequest>;
+const CreateCustomModelDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateCustomModelDeploymentRequest>;
 export type CustomModelDeploymentArn = string;
 export interface CreateCustomModelDeploymentResponse {
   customModelDeploymentArn: string;
 }
-const CreateCustomModelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ customModelDeploymentArn: S.String }),
-).annotate({
-  identifier: "CreateCustomModelDeploymentResponse",
-}) as any as S.Schema<CreateCustomModelDeploymentResponse>;
+const CreateCustomModelDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateCustomModelDeploymentResponse>;
 export type EvaluationJobName = string;
 export type EvaluationJobDescription = string | redacted.Redacted<string>;
 export type ApplicationType = "ModelEvaluation" | "RagEvaluation" | (string & {});
@@ -785,16 +563,12 @@ const EvaluationTaskType = S.String;
 
 export type EvaluationDatasetName = string | redacted.Redacted<string>;
 export type EvaluationDatasetLocation = { s3Uri: string };
-const EvaluationDatasetLocation = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ s3Uri: S.String }),
-]);
+const EvaluationDatasetLocation = /*@__PURE__*/ __L.at(__c6, 0);
 export interface EvaluationDataset {
   name: string | redacted.Redacted<string>;
   datasetLocation?: EvaluationDatasetLocation;
 }
-const EvaluationDataset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SensitiveString, datasetLocation: S.optional(EvaluationDatasetLocation) }),
-).annotate({ identifier: "EvaluationDataset" }) as any as S.Schema<EvaluationDataset>;
+const EvaluationDataset = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<EvaluationDataset>;
 export type EvaluationMetricName = string | redacted.Redacted<string>;
 export type EvaluationMetricNames = (string | redacted.Redacted<string>)[];
 const EvaluationMetricNames = EvaluationJobIdentifiers as any as S.Schema<EvaluationMetricNames>;
@@ -803,120 +577,93 @@ export interface EvaluationDatasetMetricConfig {
   dataset: EvaluationDataset;
   metricNames: (string | redacted.Redacted<string>)[];
 }
-const EvaluationDatasetMetricConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskType: EvaluationTaskType,
-    dataset: EvaluationDataset,
-    metricNames: EvaluationMetricNames,
-  }),
-).annotate({
-  identifier: "EvaluationDatasetMetricConfig",
-}) as any as S.Schema<EvaluationDatasetMetricConfig>;
+const EvaluationDatasetMetricConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<EvaluationDatasetMetricConfig>;
 export type EvaluationDatasetMetricConfigs = EvaluationDatasetMetricConfig[];
-const EvaluationDatasetMetricConfigs = /*@__PURE__*/ S.Array(EvaluationDatasetMetricConfig);
+const EvaluationDatasetMetricConfigs = /*@__PURE__*/ __L.at(__c6, 3);
 export type EvaluatorModelIdentifier = string;
 export interface BedrockEvaluatorModel {
   modelIdentifier: string;
 }
-const BedrockEvaluatorModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelIdentifier: S.String }),
-).annotate({ identifier: "BedrockEvaluatorModel" }) as any as S.Schema<BedrockEvaluatorModel>;
+const BedrockEvaluatorModel = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<BedrockEvaluatorModel>;
 export type BedrockEvaluatorModels = BedrockEvaluatorModel[];
-const BedrockEvaluatorModels = /*@__PURE__*/ S.Array(BedrockEvaluatorModel);
+const BedrockEvaluatorModels = /*@__PURE__*/ __L.at(__c6, 5);
 export type EvaluatorModelConfig = { bedrockEvaluatorModels: BedrockEvaluatorModel[] };
-const EvaluatorModelConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ bedrockEvaluatorModels: BedrockEvaluatorModels }),
-]);
+const EvaluatorModelConfig = /*@__PURE__*/ __L.at(__c6, 6);
 export type MetricName = string | redacted.Redacted<string>;
 export type CustomMetricInstructions = string;
 export type RatingScaleItemDefinition = string;
 export type RatingScaleItemValue =
   | { stringValue: string; floatValue?: never }
   | { stringValue?: never; floatValue: number };
-const RatingScaleItemValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-  /*@__PURE__*/ S.Struct({ floatValue: S.Number }),
-]);
+const RatingScaleItemValue = /*@__PURE__*/ __L.at(__c6, 7);
 export interface RatingScaleItem {
   definition: string;
   value: RatingScaleItemValue;
 }
-const RatingScaleItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ definition: S.String, value: RatingScaleItemValue }),
-).annotate({ identifier: "RatingScaleItem" }) as any as S.Schema<RatingScaleItem>;
+const RatingScaleItem = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<RatingScaleItem>;
 export type RatingScale = RatingScaleItem[];
-const RatingScale = /*@__PURE__*/ S.Array(RatingScaleItem);
+const RatingScale = /*@__PURE__*/ __L.at(__c7, 1);
 export interface CustomMetricDefinition {
   name: string | redacted.Redacted<string>;
   instructions: string;
   ratingScale?: RatingScaleItem[];
 }
-const CustomMetricDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SensitiveString, instructions: S.String, ratingScale: S.optional(RatingScale) }),
-).annotate({ identifier: "CustomMetricDefinition" }) as any as S.Schema<CustomMetricDefinition>;
+const CustomMetricDefinition = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CustomMetricDefinition>;
 export type AutomatedEvaluationCustomMetricSource = {
   customMetricDefinition: CustomMetricDefinition;
 };
-const AutomatedEvaluationCustomMetricSource = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ customMetricDefinition: CustomMetricDefinition }),
-]);
+const AutomatedEvaluationCustomMetricSource = /*@__PURE__*/ __L.at(__c7, 3);
 export type AutomatedEvaluationCustomMetrics = AutomatedEvaluationCustomMetricSource[];
-const AutomatedEvaluationCustomMetrics = /*@__PURE__*/ S.Array(
-  AutomatedEvaluationCustomMetricSource,
-);
+const AutomatedEvaluationCustomMetrics = /*@__PURE__*/ __L.at(__c7, 4);
 export interface CustomMetricBedrockEvaluatorModel {
   modelIdentifier: string;
 }
-const CustomMetricBedrockEvaluatorModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelIdentifier: S.String }),
-).annotate({
-  identifier: "CustomMetricBedrockEvaluatorModel",
-}) as any as S.Schema<CustomMetricBedrockEvaluatorModel>;
+const CustomMetricBedrockEvaluatorModel = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CustomMetricBedrockEvaluatorModel>;
 export type CustomMetricBedrockEvaluatorModels = CustomMetricBedrockEvaluatorModel[];
-const CustomMetricBedrockEvaluatorModels = /*@__PURE__*/ S.Array(CustomMetricBedrockEvaluatorModel);
+const CustomMetricBedrockEvaluatorModels = /*@__PURE__*/ __L.at(__c7, 6);
 export interface CustomMetricEvaluatorModelConfig {
   bedrockEvaluatorModels: CustomMetricBedrockEvaluatorModel[];
 }
-const CustomMetricEvaluatorModelConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bedrockEvaluatorModels: CustomMetricBedrockEvaluatorModels }),
-).annotate({
-  identifier: "CustomMetricEvaluatorModelConfig",
-}) as any as S.Schema<CustomMetricEvaluatorModelConfig>;
+const CustomMetricEvaluatorModelConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CustomMetricEvaluatorModelConfig>;
 export interface AutomatedEvaluationCustomMetricConfig {
   customMetrics: AutomatedEvaluationCustomMetricSource[];
   evaluatorModelConfig: CustomMetricEvaluatorModelConfig;
 }
-const AutomatedEvaluationCustomMetricConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customMetrics: AutomatedEvaluationCustomMetrics,
-    evaluatorModelConfig: CustomMetricEvaluatorModelConfig,
-  }),
-).annotate({
-  identifier: "AutomatedEvaluationCustomMetricConfig",
-}) as any as S.Schema<AutomatedEvaluationCustomMetricConfig>;
+const AutomatedEvaluationCustomMetricConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<AutomatedEvaluationCustomMetricConfig>;
 export interface AutomatedEvaluationConfig {
   datasetMetricConfigs: EvaluationDatasetMetricConfig[];
   evaluatorModelConfig?: EvaluatorModelConfig;
   customMetricConfig?: AutomatedEvaluationCustomMetricConfig;
 }
-const AutomatedEvaluationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetMetricConfigs: EvaluationDatasetMetricConfigs,
-    evaluatorModelConfig: S.optional(EvaluatorModelConfig),
-    customMetricConfig: S.optional(AutomatedEvaluationCustomMetricConfig),
-  }),
-).annotate({
-  identifier: "AutomatedEvaluationConfig",
-}) as any as S.Schema<AutomatedEvaluationConfig>;
+const AutomatedEvaluationConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<AutomatedEvaluationConfig>;
 export type SageMakerFlowDefinitionArn = string;
 export type HumanTaskInstructions = string | redacted.Redacted<string>;
 export interface HumanWorkflowConfig {
   flowDefinitionArn: string;
   instructions?: string | redacted.Redacted<string>;
 }
-const HumanWorkflowConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ flowDefinitionArn: S.String, instructions: S.optional(SensitiveString) }),
-).annotate({ identifier: "HumanWorkflowConfig" }) as any as S.Schema<HumanWorkflowConfig>;
+const HumanWorkflowConfig = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<HumanWorkflowConfig>;
 export type EvaluationMetricDescription = string | redacted.Redacted<string>;
 export type EvaluationRatingMethod = string;
 export interface HumanEvaluationCustomMetric {
@@ -924,36 +671,25 @@ export interface HumanEvaluationCustomMetric {
   description?: string | redacted.Redacted<string>;
   ratingMethod: string;
 }
-const HumanEvaluationCustomMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    ratingMethod: S.String,
-  }),
-).annotate({
-  identifier: "HumanEvaluationCustomMetric",
-}) as any as S.Schema<HumanEvaluationCustomMetric>;
+const HumanEvaluationCustomMetric = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<HumanEvaluationCustomMetric>;
 export type HumanEvaluationCustomMetrics = HumanEvaluationCustomMetric[];
-const HumanEvaluationCustomMetrics = /*@__PURE__*/ S.Array(HumanEvaluationCustomMetric);
+const HumanEvaluationCustomMetrics = /*@__PURE__*/ __L.at(__c8, 4);
 export interface HumanEvaluationConfig {
   humanWorkflowConfig?: HumanWorkflowConfig;
   customMetrics?: HumanEvaluationCustomMetric[];
   datasetMetricConfigs: EvaluationDatasetMetricConfig[];
 }
-const HumanEvaluationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    humanWorkflowConfig: S.optional(HumanWorkflowConfig),
-    customMetrics: S.optional(HumanEvaluationCustomMetrics),
-    datasetMetricConfigs: EvaluationDatasetMetricConfigs,
-  }),
-).annotate({ identifier: "HumanEvaluationConfig" }) as any as S.Schema<HumanEvaluationConfig>;
+const HumanEvaluationConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<HumanEvaluationConfig>;
 export type EvaluationConfig =
   | { automated: AutomatedEvaluationConfig; human?: never }
   | { automated?: never; human: HumanEvaluationConfig };
-const EvaluationConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ automated: AutomatedEvaluationConfig }),
-  /*@__PURE__*/ S.Struct({ human: HumanEvaluationConfig }),
-]);
+const EvaluationConfig = /*@__PURE__*/ __L.at(__c8, 6);
 export type EvaluationBedrockModelIdentifier = string;
 export type EvaluationModelInferenceParams = string | redacted.Redacted<string>;
 export type PerformanceConfigLatency = "standard" | "optimized" | (string & {});
@@ -962,39 +698,33 @@ const PerformanceConfigLatency = S.String;
 export interface PerformanceConfiguration {
   latency?: PerformanceConfigLatency;
 }
-const PerformanceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ latency: S.optional(PerformanceConfigLatency) }),
-).annotate({ identifier: "PerformanceConfiguration" }) as any as S.Schema<PerformanceConfiguration>;
+const PerformanceConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<PerformanceConfiguration>;
 export interface EvaluationBedrockModel {
   modelIdentifier: string;
   inferenceParams?: string | redacted.Redacted<string>;
   performanceConfig?: PerformanceConfiguration;
 }
-const EvaluationBedrockModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelIdentifier: S.String,
-    inferenceParams: S.optional(SensitiveString),
-    performanceConfig: S.optional(PerformanceConfiguration),
-  }),
-).annotate({ identifier: "EvaluationBedrockModel" }) as any as S.Schema<EvaluationBedrockModel>;
+const EvaluationBedrockModel = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<EvaluationBedrockModel>;
 export type EvaluationPrecomputedInferenceSourceIdentifier = string;
 export interface EvaluationPrecomputedInferenceSource {
   inferenceSourceIdentifier: string;
 }
-const EvaluationPrecomputedInferenceSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inferenceSourceIdentifier: S.String }),
-).annotate({
-  identifier: "EvaluationPrecomputedInferenceSource",
-}) as any as S.Schema<EvaluationPrecomputedInferenceSource>;
+const EvaluationPrecomputedInferenceSource = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<EvaluationPrecomputedInferenceSource>;
 export type EvaluationModelConfig =
   | { bedrockModel: EvaluationBedrockModel; precomputedInferenceSource?: never }
   | { bedrockModel?: never; precomputedInferenceSource: EvaluationPrecomputedInferenceSource };
-const EvaluationModelConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ bedrockModel: EvaluationBedrockModel }),
-  /*@__PURE__*/ S.Struct({ precomputedInferenceSource: EvaluationPrecomputedInferenceSource }),
-]);
+const EvaluationModelConfig = /*@__PURE__*/ __L.at(__c9, 2);
 export type EvaluationModelConfigs = EvaluationModelConfig[];
-const EvaluationModelConfigs = /*@__PURE__*/ S.Array(EvaluationModelConfig);
+const EvaluationModelConfigs = /*@__PURE__*/ __L.at(__c9, 3);
 export type KnowledgeBaseId = string;
 export type SearchType = "HYBRID" | "SEMANTIC" | (string & {});
 const SearchType = S.String;
@@ -1005,13 +735,9 @@ export interface FilterAttribute {
   key: string;
   value: any;
 }
-const FilterAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.Any }),
-).annotate({ identifier: "FilterAttribute" }) as any as S.Schema<FilterAttribute>;
+const FilterAttribute = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<FilterAttribute>;
 export type RetrievalFilterList = RetrievalFilter[];
-const RetrievalFilterList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => RetrievalFilter).annotate({ identifier: "RetrievalFilter" }),
-) as any as S.Schema<RetrievalFilterList>;
+const RetrievalFilterList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<RetrievalFilterList>;
 export type RetrievalFilter =
   | {
       equals: FilterAttribute;
@@ -1208,29 +934,7 @@ export type RetrievalFilter =
       andAll?: never;
       orAll: RetrievalFilter[];
     };
-const RetrievalFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ equals: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ notEquals: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ greaterThan: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ greaterThanOrEquals: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ lessThan: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ lessThanOrEquals: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ in: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ notIn: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ startsWith: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ listContains: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({ stringContains: FilterAttribute }),
-  /*@__PURE__*/ S.Struct({
-    andAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
-      identifier: "RetrievalFilterList",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    orAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
-      identifier: "RetrievalFilterList",
-    }),
-  }),
-]) as any as S.Schema<RetrievalFilter>;
+const RetrievalFilter = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<RetrievalFilter>;
 export type AttributeType = "STRING" | "NUMBER" | "BOOLEAN" | "STRING_LIST" | (string & {});
 const AttributeType = S.String;
 
@@ -1239,21 +943,21 @@ export interface MetadataAttributeSchema {
   type: AttributeType;
   description: string;
 }
-const MetadataAttributeSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, type: AttributeType, description: S.String }),
-).annotate({ identifier: "MetadataAttributeSchema" }) as any as S.Schema<MetadataAttributeSchema>;
+const MetadataAttributeSchema = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<MetadataAttributeSchema>;
 export type MetadataAttributeSchemaList = MetadataAttributeSchema[];
-const MetadataAttributeSchemaList = /*@__PURE__*/ S.Array(MetadataAttributeSchema);
+const MetadataAttributeSchemaList = /*@__PURE__*/ __L.at(__c10, 0);
 export type BedrockModelArn = string;
 export interface ImplicitFilterConfiguration {
   metadataAttributes: MetadataAttributeSchema[];
   modelArn: string;
 }
-const ImplicitFilterConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metadataAttributes: MetadataAttributeSchemaList, modelArn: S.String }),
-).annotate({
-  identifier: "ImplicitFilterConfiguration",
-}) as any as S.Schema<ImplicitFilterConfiguration>;
+const ImplicitFilterConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ImplicitFilterConfiguration>;
 export type VectorSearchRerankingConfigurationType = "BEDROCK_RERANKING_MODEL" | (string & {});
 const VectorSearchRerankingConfigurationType = S.String;
 
@@ -1262,70 +966,48 @@ export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
   additionalModelRequestFields?: { [key: string]: any | undefined };
 }
-const VectorSearchBedrockRerankingModelConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelArn: S.String,
-    additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
-  }),
-).annotate({
-  identifier: "VectorSearchBedrockRerankingModelConfiguration",
-}) as any as S.Schema<VectorSearchBedrockRerankingModelConfiguration>;
+const VectorSearchBedrockRerankingModelConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<VectorSearchBedrockRerankingModelConfiguration>;
 export type RerankingMetadataSelectionMode = "SELECTIVE" | "ALL" | (string & {});
 const RerankingMetadataSelectionMode = S.String;
 
 export interface FieldForReranking {
   fieldName: string;
 }
-const FieldForReranking = /*@__PURE__*/ S.suspend(() => S.Struct({ fieldName: S.String })).annotate(
-  { identifier: "FieldForReranking" },
-) as any as S.Schema<FieldForReranking>;
+const FieldForReranking = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<FieldForReranking>;
 export type FieldsForReranking = FieldForReranking[];
-const FieldsForReranking = /*@__PURE__*/ S.Array(FieldForReranking);
+const FieldsForReranking = /*@__PURE__*/ __L.at(__c10, 4);
 export type RerankingMetadataSelectiveModeConfiguration =
   | { fieldsToInclude: FieldForReranking[]; fieldsToExclude?: never }
   | { fieldsToInclude?: never; fieldsToExclude: FieldForReranking[] };
-const RerankingMetadataSelectiveModeConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ fieldsToInclude: FieldsForReranking }),
-  /*@__PURE__*/ S.Struct({ fieldsToExclude: FieldsForReranking }),
-]);
+const RerankingMetadataSelectiveModeConfiguration = /*@__PURE__*/ __L.at(__c10, 5);
 export interface MetadataConfigurationForReranking {
   selectionMode: RerankingMetadataSelectionMode;
   selectiveModeConfiguration?: RerankingMetadataSelectiveModeConfiguration;
 }
-const MetadataConfigurationForReranking = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selectionMode: RerankingMetadataSelectionMode,
-    selectiveModeConfiguration: S.optional(RerankingMetadataSelectiveModeConfiguration),
-  }),
-).annotate({
-  identifier: "MetadataConfigurationForReranking",
-}) as any as S.Schema<MetadataConfigurationForReranking>;
+const MetadataConfigurationForReranking = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<MetadataConfigurationForReranking>;
 export interface VectorSearchBedrockRerankingConfiguration {
   modelConfiguration: VectorSearchBedrockRerankingModelConfiguration;
   numberOfRerankedResults?: number;
   metadataConfiguration?: MetadataConfigurationForReranking;
 }
-const VectorSearchBedrockRerankingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelConfiguration: VectorSearchBedrockRerankingModelConfiguration,
-    numberOfRerankedResults: S.optional(S.Number),
-    metadataConfiguration: S.optional(MetadataConfigurationForReranking),
-  }),
-).annotate({
-  identifier: "VectorSearchBedrockRerankingConfiguration",
-}) as any as S.Schema<VectorSearchBedrockRerankingConfiguration>;
+const VectorSearchBedrockRerankingConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<VectorSearchBedrockRerankingConfiguration>;
 export interface VectorSearchRerankingConfiguration {
   type: VectorSearchRerankingConfigurationType;
   bedrockRerankingConfiguration?: VectorSearchBedrockRerankingConfiguration;
 }
-const VectorSearchRerankingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: VectorSearchRerankingConfigurationType,
-    bedrockRerankingConfiguration: S.optional(VectorSearchBedrockRerankingConfiguration),
-  }),
-).annotate({
-  identifier: "VectorSearchRerankingConfiguration",
-}) as any as S.Schema<VectorSearchRerankingConfiguration>;
+const VectorSearchRerankingConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<VectorSearchRerankingConfiguration>;
 export interface KnowledgeBaseVectorSearchConfiguration {
   numberOfResults?: number;
   overrideSearchType?: SearchType;
@@ -1333,35 +1015,22 @@ export interface KnowledgeBaseVectorSearchConfiguration {
   implicitFilterConfiguration?: ImplicitFilterConfiguration;
   rerankingConfiguration?: VectorSearchRerankingConfiguration;
 }
-const KnowledgeBaseVectorSearchConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numberOfResults: S.optional(S.Number),
-    overrideSearchType: S.optional(SearchType),
-    filter: S.optional(RetrievalFilter),
-    implicitFilterConfiguration: S.optional(ImplicitFilterConfiguration),
-    rerankingConfiguration: S.optional(VectorSearchRerankingConfiguration),
-  }),
-).annotate({
-  identifier: "KnowledgeBaseVectorSearchConfiguration",
-}) as any as S.Schema<KnowledgeBaseVectorSearchConfiguration>;
+const KnowledgeBaseVectorSearchConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<KnowledgeBaseVectorSearchConfiguration>;
 export interface KnowledgeBaseRetrievalConfiguration {
   vectorSearchConfiguration: KnowledgeBaseVectorSearchConfiguration;
 }
-const KnowledgeBaseRetrievalConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vectorSearchConfiguration: KnowledgeBaseVectorSearchConfiguration }),
-).annotate({
-  identifier: "KnowledgeBaseRetrievalConfiguration",
-}) as any as S.Schema<KnowledgeBaseRetrievalConfiguration>;
+const KnowledgeBaseRetrievalConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<KnowledgeBaseRetrievalConfiguration>;
 export interface RetrieveConfig {
   knowledgeBaseId: string;
   knowledgeBaseRetrievalConfiguration: KnowledgeBaseRetrievalConfiguration;
 }
-const RetrieveConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    knowledgeBaseId: S.String,
-    knowledgeBaseRetrievalConfiguration: KnowledgeBaseRetrievalConfiguration,
-  }),
-).annotate({ identifier: "RetrieveConfig" }) as any as S.Schema<RetrieveConfig>;
+const RetrieveConfig = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<RetrieveConfig>;
 export type RetrieveAndGenerateType = "KNOWLEDGE_BASE" | "EXTERNAL_SOURCES" | (string & {});
 const RetrieveAndGenerateType = S.String;
 
@@ -1369,16 +1038,15 @@ export type TextPromptTemplate = string | redacted.Redacted<string>;
 export interface PromptTemplate {
   textPromptTemplate?: string | redacted.Redacted<string>;
 }
-const PromptTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ textPromptTemplate: S.optional(SensitiveString) }),
-).annotate({ identifier: "PromptTemplate" }) as any as S.Schema<PromptTemplate>;
+const PromptTemplate = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<PromptTemplate>;
 export interface GuardrailConfiguration {
   guardrailId: string;
   guardrailVersion: string;
 }
-const GuardrailConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ guardrailId: S.String, guardrailVersion: S.String }),
-).annotate({ identifier: "GuardrailConfiguration" }) as any as S.Schema<GuardrailConfiguration>;
+const GuardrailConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GuardrailConfiguration>;
 export type Temperature = number;
 export type TopP = number;
 export type MaxTokens = number;
@@ -1391,53 +1059,38 @@ export interface TextInferenceConfig {
   maxTokens?: number;
   stopSequences?: string[];
 }
-const TextInferenceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    temperature: S.optional(S.Number),
-    topP: S.optional(S.Number),
-    maxTokens: S.optional(S.Number),
-    stopSequences: S.optional(RAGStopSequences),
-  }),
-).annotate({ identifier: "TextInferenceConfig" }) as any as S.Schema<TextInferenceConfig>;
+const TextInferenceConfig = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<TextInferenceConfig>;
 export interface KbInferenceConfig {
   textInferenceConfig?: TextInferenceConfig;
 }
-const KbInferenceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ textInferenceConfig: S.optional(TextInferenceConfig) }),
-).annotate({ identifier: "KbInferenceConfig" }) as any as S.Schema<KbInferenceConfig>;
+const KbInferenceConfig = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<KbInferenceConfig>;
 export interface GenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   kbInferenceConfig?: KbInferenceConfig;
   additionalModelRequestFields?: { [key: string]: any | undefined };
 }
-const GenerationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promptTemplate: S.optional(PromptTemplate),
-    guardrailConfiguration: S.optional(GuardrailConfiguration),
-    kbInferenceConfig: S.optional(KbInferenceConfig),
-    additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
-  }),
-).annotate({ identifier: "GenerationConfiguration" }) as any as S.Schema<GenerationConfiguration>;
+const GenerationConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GenerationConfiguration>;
 export type QueryTransformationType = "QUERY_DECOMPOSITION" | (string & {});
 const QueryTransformationType = S.String;
 
 export interface QueryTransformationConfiguration {
   type: QueryTransformationType;
 }
-const QueryTransformationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: QueryTransformationType }),
-).annotate({
-  identifier: "QueryTransformationConfiguration",
-}) as any as S.Schema<QueryTransformationConfiguration>;
+const QueryTransformationConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<QueryTransformationConfiguration>;
 export interface OrchestrationConfiguration {
   queryTransformationConfiguration: QueryTransformationConfiguration;
 }
-const OrchestrationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ queryTransformationConfiguration: QueryTransformationConfiguration }),
-).annotate({
-  identifier: "OrchestrationConfiguration",
-}) as any as S.Schema<OrchestrationConfiguration>;
+const OrchestrationConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<OrchestrationConfiguration>;
 export interface KnowledgeBaseRetrieveAndGenerateConfiguration {
   knowledgeBaseId: string;
   modelArn: string;
@@ -1445,17 +1098,10 @@ export interface KnowledgeBaseRetrieveAndGenerateConfiguration {
   generationConfiguration?: GenerationConfiguration;
   orchestrationConfiguration?: OrchestrationConfiguration;
 }
-const KnowledgeBaseRetrieveAndGenerateConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    knowledgeBaseId: S.String,
-    modelArn: S.String,
-    retrievalConfiguration: S.optional(KnowledgeBaseRetrievalConfiguration),
-    generationConfiguration: S.optional(GenerationConfiguration),
-    orchestrationConfiguration: S.optional(OrchestrationConfiguration),
-  }),
-).annotate({
-  identifier: "KnowledgeBaseRetrieveAndGenerateConfiguration",
-}) as any as S.Schema<KnowledgeBaseRetrieveAndGenerateConfiguration>;
+const KnowledgeBaseRetrieveAndGenerateConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<KnowledgeBaseRetrieveAndGenerateConfiguration>;
 export type ExternalSourceType = "S3" | "BYTE_CONTENT" | (string & {});
 const ExternalSourceType = S.String;
 
@@ -1463,9 +1109,7 @@ export type KBS3Uri = string;
 export interface S3ObjectDoc {
   uri: string;
 }
-const S3ObjectDoc = /*@__PURE__*/ S.suspend(() => S.Struct({ uri: S.String })).annotate({
-  identifier: "S3ObjectDoc",
-}) as any as S.Schema<S3ObjectDoc>;
+const S3ObjectDoc = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<S3ObjectDoc>;
 export type Identifier = string | redacted.Redacted<string>;
 export type ContentType = string;
 export type ByteContentBlob = Uint8Array | redacted.Redacted<Uint8Array>;
@@ -1474,83 +1118,55 @@ export interface ByteContentDoc {
   contentType: string;
   data: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-const ByteContentDoc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: SensitiveString, contentType: S.String, data: SensitiveBlob }),
-).annotate({ identifier: "ByteContentDoc" }) as any as S.Schema<ByteContentDoc>;
+const ByteContentDoc = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ByteContentDoc>;
 export interface ExternalSource {
   sourceType: ExternalSourceType;
   s3Location?: S3ObjectDoc;
   byteContent?: ByteContentDoc;
 }
-const ExternalSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceType: ExternalSourceType,
-    s3Location: S.optional(S3ObjectDoc),
-    byteContent: S.optional(ByteContentDoc),
-  }),
-).annotate({ identifier: "ExternalSource" }) as any as S.Schema<ExternalSource>;
+const ExternalSource = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ExternalSource>;
 export type ExternalSources = ExternalSource[];
-const ExternalSources = /*@__PURE__*/ S.Array(ExternalSource);
+const ExternalSources = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ExternalSourcesGenerationConfiguration {
   promptTemplate?: PromptTemplate;
   guardrailConfiguration?: GuardrailConfiguration;
   kbInferenceConfig?: KbInferenceConfig;
   additionalModelRequestFields?: { [key: string]: any | undefined };
 }
-const ExternalSourcesGenerationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promptTemplate: S.optional(PromptTemplate),
-    guardrailConfiguration: S.optional(GuardrailConfiguration),
-    kbInferenceConfig: S.optional(KbInferenceConfig),
-    additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
-  }),
-).annotate({
-  identifier: "ExternalSourcesGenerationConfiguration",
-}) as any as S.Schema<ExternalSourcesGenerationConfiguration>;
+const ExternalSourcesGenerationConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ExternalSourcesGenerationConfiguration>;
 export interface ExternalSourcesRetrieveAndGenerateConfiguration {
   modelArn: string;
   sources: ExternalSource[];
   generationConfiguration?: ExternalSourcesGenerationConfiguration;
 }
-const ExternalSourcesRetrieveAndGenerateConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelArn: S.String,
-    sources: ExternalSources,
-    generationConfiguration: S.optional(ExternalSourcesGenerationConfiguration),
-  }),
-).annotate({
-  identifier: "ExternalSourcesRetrieveAndGenerateConfiguration",
-}) as any as S.Schema<ExternalSourcesRetrieveAndGenerateConfiguration>;
+const ExternalSourcesRetrieveAndGenerateConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ExternalSourcesRetrieveAndGenerateConfiguration>;
 export interface RetrieveAndGenerateConfiguration {
   type: RetrieveAndGenerateType;
   knowledgeBaseConfiguration?: KnowledgeBaseRetrieveAndGenerateConfiguration;
   externalSourcesConfiguration?: ExternalSourcesRetrieveAndGenerateConfiguration;
 }
-const RetrieveAndGenerateConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RetrieveAndGenerateType,
-    knowledgeBaseConfiguration: S.optional(KnowledgeBaseRetrieveAndGenerateConfiguration),
-    externalSourcesConfiguration: S.optional(ExternalSourcesRetrieveAndGenerateConfiguration),
-  }),
-).annotate({
-  identifier: "RetrieveAndGenerateConfiguration",
-}) as any as S.Schema<RetrieveAndGenerateConfiguration>;
+const RetrieveAndGenerateConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<RetrieveAndGenerateConfiguration>;
 export type KnowledgeBaseConfig =
   | { retrieveConfig: RetrieveConfig; retrieveAndGenerateConfig?: never }
   | { retrieveConfig?: never; retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration };
-const KnowledgeBaseConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ retrieveConfig: RetrieveConfig }),
-  /*@__PURE__*/ S.Struct({ retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration }),
-]);
+const KnowledgeBaseConfig = /*@__PURE__*/ __L.at(__c13, 3);
 export type EvaluationPrecomputedRagSourceIdentifier = string;
 export interface EvaluationPrecomputedRetrieveSourceConfig {
   ragSourceIdentifier: string;
 }
-const EvaluationPrecomputedRetrieveSourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ragSourceIdentifier: S.String }),
-).annotate({
-  identifier: "EvaluationPrecomputedRetrieveSourceConfig",
-}) as any as S.Schema<EvaluationPrecomputedRetrieveSourceConfig>;
+const EvaluationPrecomputedRetrieveSourceConfig = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<EvaluationPrecomputedRetrieveSourceConfig>;
 export interface EvaluationPrecomputedRetrieveAndGenerateSourceConfig {
   ragSourceIdentifier: string;
 }
@@ -1565,31 +1181,20 @@ export type EvaluationPrecomputedRagSourceConfig =
       retrieveSourceConfig?: never;
       retrieveAndGenerateSourceConfig: EvaluationPrecomputedRetrieveAndGenerateSourceConfig;
     };
-const EvaluationPrecomputedRagSourceConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ retrieveSourceConfig: EvaluationPrecomputedRetrieveSourceConfig }),
-  /*@__PURE__*/ S.Struct({
-    retrieveAndGenerateSourceConfig: EvaluationPrecomputedRetrieveAndGenerateSourceConfig,
-  }),
-]);
+const EvaluationPrecomputedRagSourceConfig = /*@__PURE__*/ __L.at(__c13, 5);
 export type RAGConfig =
   | { knowledgeBaseConfig: KnowledgeBaseConfig; precomputedRagSourceConfig?: never }
   | {
       knowledgeBaseConfig?: never;
       precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig;
     };
-const RAGConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ knowledgeBaseConfig: KnowledgeBaseConfig }),
-  /*@__PURE__*/ S.Struct({ precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig }),
-]);
+const RAGConfig = /*@__PURE__*/ __L.at(__c13, 6);
 export type RagConfigs = RAGConfig[];
-const RagConfigs = /*@__PURE__*/ S.Array(RAGConfig);
+const RagConfigs = /*@__PURE__*/ __L.at(__c13, 7);
 export type EvaluationInferenceConfig =
   | { models: EvaluationModelConfig[]; ragConfigs?: never }
   | { models?: never; ragConfigs: RAGConfig[] };
-const EvaluationInferenceConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ models: EvaluationModelConfigs }),
-  /*@__PURE__*/ S.Struct({ ragConfigs: RagConfigs }),
-]);
+const EvaluationInferenceConfig = /*@__PURE__*/ __L.at(__c14, 0);
 export interface EvaluationOutputDataConfig {
   s3Uri: string;
 }
@@ -1607,22 +1212,10 @@ export interface CreateEvaluationJobRequest {
   inferenceConfig: EvaluationInferenceConfig;
   outputDataConfig: EvaluationOutputDataConfig;
 }
-const CreateEvaluationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    jobDescription: S.optional(SensitiveString),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    roleArn: S.String,
-    customerEncryptionKeyId: S.optional(S.String),
-    jobTags: S.optional(TagList),
-    applicationType: S.optional(ApplicationType),
-    evaluationConfig: EvaluationConfig,
-    inferenceConfig: EvaluationInferenceConfig,
-    outputDataConfig: EvaluationOutputDataConfig,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/evaluation-jobs" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateEvaluationJobRequest",
-}) as any as S.Schema<CreateEvaluationJobRequest>;
+const CreateEvaluationJobRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<CreateEvaluationJobRequest>;
 export type EvaluationJobArn = string;
 export interface CreateEvaluationJobResponse {
   jobArn: string;
@@ -1635,28 +1228,17 @@ export interface CreateFoundationModelAgreementRequest {
   offerToken: string;
   modelId: string;
 }
-const CreateFoundationModelAgreementRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ offerToken: S.String, modelId: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/create-foundation-model-agreement" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateFoundationModelAgreementRequest",
-}) as any as S.Schema<CreateFoundationModelAgreementRequest>;
+const CreateFoundationModelAgreementRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<CreateFoundationModelAgreementRequest>;
 export interface CreateFoundationModelAgreementResponse {
   modelId: string;
 }
-const CreateFoundationModelAgreementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelId: S.String }),
-).annotate({
-  identifier: "CreateFoundationModelAgreementResponse",
-}) as any as S.Schema<CreateFoundationModelAgreementResponse>;
+const CreateFoundationModelAgreementResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<CreateFoundationModelAgreementResponse>;
 export type GuardrailName = string | redacted.Redacted<string>;
 export type GuardrailDescription = string | redacted.Redacted<string>;
 export type GuardrailTopicName = string | redacted.Redacted<string>;
@@ -1680,43 +1262,30 @@ export interface GuardrailTopicConfig {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-const GuardrailTopicConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    definition: SensitiveString,
-    examples: S.optional(GuardrailTopicExamples),
-    type: GuardrailTopicType,
-    inputAction: S.optional(GuardrailTopicAction),
-    outputAction: S.optional(GuardrailTopicAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailTopicConfig" }) as any as S.Schema<GuardrailTopicConfig>;
+const GuardrailTopicConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GuardrailTopicConfig>;
 export type GuardrailTopicsConfig = GuardrailTopicConfig[];
-const GuardrailTopicsConfig = /*@__PURE__*/ S.Array(GuardrailTopicConfig);
+const GuardrailTopicsConfig = /*@__PURE__*/ __L.at(__c14, 5);
 export type GuardrailTopicsTierName = "CLASSIC" | "STANDARD" | (string & {});
 const GuardrailTopicsTierName = S.String;
 
 export interface GuardrailTopicsTierConfig {
   tierName: GuardrailTopicsTierName;
 }
-const GuardrailTopicsTierConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tierName: GuardrailTopicsTierName }),
-).annotate({
-  identifier: "GuardrailTopicsTierConfig",
-}) as any as S.Schema<GuardrailTopicsTierConfig>;
+const GuardrailTopicsTierConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GuardrailTopicsTierConfig>;
 export interface GuardrailTopicPolicyConfig {
   topicsConfig: GuardrailTopicConfig[];
   tierConfig?: GuardrailTopicsTierConfig;
 }
-const GuardrailTopicPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topicsConfig: GuardrailTopicsConfig,
-    tierConfig: S.optional(GuardrailTopicsTierConfig),
-  }),
-).annotate({
-  identifier: "GuardrailTopicPolicyConfig",
-}) as any as S.Schema<GuardrailTopicPolicyConfig>;
+const GuardrailTopicPolicyConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GuardrailTopicPolicyConfig>;
 export type GuardrailContentFilterType =
   | "SEXUAL"
   | "VIOLENCE"
@@ -1734,7 +1303,7 @@ export type GuardrailModality = "TEXT" | "IMAGE" | (string & {});
 const GuardrailModality = S.String;
 
 export type GuardrailModalities = GuardrailModality[];
-const GuardrailModalities = /*@__PURE__*/ S.Array(GuardrailModality);
+const GuardrailModalities = /*@__PURE__*/ __L.at(__c15, 0);
 export type GuardrailContentFilterAction = "BLOCK" | "NONE" | (string & {});
 const GuardrailContentFilterAction = S.String;
 
@@ -1749,23 +1318,12 @@ export interface GuardrailContentFilterConfig {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-const GuardrailContentFilterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GuardrailContentFilterType,
-    inputStrength: GuardrailFilterStrength,
-    outputStrength: GuardrailFilterStrength,
-    inputModalities: S.optional(GuardrailModalities),
-    outputModalities: S.optional(GuardrailModalities),
-    inputAction: S.optional(GuardrailContentFilterAction),
-    outputAction: S.optional(GuardrailContentFilterAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GuardrailContentFilterConfig",
-}) as any as S.Schema<GuardrailContentFilterConfig>;
+const GuardrailContentFilterConfig = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GuardrailContentFilterConfig>;
 export type GuardrailContentFiltersConfig = GuardrailContentFilterConfig[];
-const GuardrailContentFiltersConfig = /*@__PURE__*/ S.Array(GuardrailContentFilterConfig);
+const GuardrailContentFiltersConfig = /*@__PURE__*/ __L.at(__c15, 2);
 export type GuardrailContentFiltersTierName = "CLASSIC" | "STANDARD" | (string & {});
 export interface GuardrailContentFiltersTierConfig {
   tierName: GuardrailContentFiltersTierName;
@@ -1776,14 +1334,10 @@ export interface GuardrailContentPolicyConfig {
   filtersConfig: GuardrailContentFilterConfig[];
   tierConfig?: GuardrailContentFiltersTierConfig;
 }
-const GuardrailContentPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filtersConfig: GuardrailContentFiltersConfig,
-    tierConfig: S.optional(GuardrailContentFiltersTierConfig),
-  }),
-).annotate({
-  identifier: "GuardrailContentPolicyConfig",
-}) as any as S.Schema<GuardrailContentPolicyConfig>;
+const GuardrailContentPolicyConfig = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GuardrailContentPolicyConfig>;
 export type GuardrailWordAction = "BLOCK" | "NONE" | (string & {});
 const GuardrailWordAction = S.String;
 
@@ -1794,17 +1348,9 @@ export interface GuardrailWordConfig {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-const GuardrailWordConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    inputAction: S.optional(GuardrailWordAction),
-    outputAction: S.optional(GuardrailWordAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailWordConfig" }) as any as S.Schema<GuardrailWordConfig>;
+const GuardrailWordConfig = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<GuardrailWordConfig>;
 export type GuardrailWordsConfig = GuardrailWordConfig[];
-const GuardrailWordsConfig = /*@__PURE__*/ S.Array(GuardrailWordConfig);
+const GuardrailWordsConfig = /*@__PURE__*/ __L.at(__c15, 5);
 export type GuardrailManagedWordsType = "PROFANITY" | (string & {});
 const GuardrailManagedWordsType = S.String;
 
@@ -1815,31 +1361,20 @@ export interface GuardrailManagedWordsConfig {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-const GuardrailManagedWordsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GuardrailManagedWordsType,
-    inputAction: S.optional(GuardrailWordAction),
-    outputAction: S.optional(GuardrailWordAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GuardrailManagedWordsConfig",
-}) as any as S.Schema<GuardrailManagedWordsConfig>;
+const GuardrailManagedWordsConfig = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GuardrailManagedWordsConfig>;
 export type GuardrailManagedWordListsConfig = GuardrailManagedWordsConfig[];
-const GuardrailManagedWordListsConfig = /*@__PURE__*/ S.Array(GuardrailManagedWordsConfig);
+const GuardrailManagedWordListsConfig = /*@__PURE__*/ __L.at(__c15, 7);
 export interface GuardrailWordPolicyConfig {
   wordsConfig?: GuardrailWordConfig[];
   managedWordListsConfig?: GuardrailManagedWordsConfig[];
 }
-const GuardrailWordPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    wordsConfig: S.optional(GuardrailWordsConfig),
-    managedWordListsConfig: S.optional(GuardrailManagedWordListsConfig),
-  }),
-).annotate({
-  identifier: "GuardrailWordPolicyConfig",
-}) as any as S.Schema<GuardrailWordPolicyConfig>;
+const GuardrailWordPolicyConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GuardrailWordPolicyConfig>;
 export type GuardrailPiiEntityType =
   | "ADDRESS"
   | "AGE"
@@ -1886,18 +1421,12 @@ export interface GuardrailPiiEntityConfig {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-const GuardrailPiiEntityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GuardrailPiiEntityType,
-    action: GuardrailSensitiveInformationAction,
-    inputAction: S.optional(GuardrailSensitiveInformationAction),
-    outputAction: S.optional(GuardrailSensitiveInformationAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailPiiEntityConfig" }) as any as S.Schema<GuardrailPiiEntityConfig>;
+const GuardrailPiiEntityConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GuardrailPiiEntityConfig>;
 export type GuardrailPiiEntitiesConfig = GuardrailPiiEntityConfig[];
-const GuardrailPiiEntitiesConfig = /*@__PURE__*/ S.Array(GuardrailPiiEntityConfig);
+const GuardrailPiiEntitiesConfig = /*@__PURE__*/ __L.at(__c16, 2);
 export interface GuardrailRegexConfig {
   name: string;
   description?: string;
@@ -1908,32 +1437,20 @@ export interface GuardrailRegexConfig {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-const GuardrailRegexConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    pattern: S.String,
-    action: GuardrailSensitiveInformationAction,
-    inputAction: S.optional(GuardrailSensitiveInformationAction),
-    outputAction: S.optional(GuardrailSensitiveInformationAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailRegexConfig" }) as any as S.Schema<GuardrailRegexConfig>;
+const GuardrailRegexConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GuardrailRegexConfig>;
 export type GuardrailRegexesConfig = GuardrailRegexConfig[];
-const GuardrailRegexesConfig = /*@__PURE__*/ S.Array(GuardrailRegexConfig);
+const GuardrailRegexesConfig = /*@__PURE__*/ __L.at(__c16, 4);
 export interface GuardrailSensitiveInformationPolicyConfig {
   piiEntitiesConfig?: GuardrailPiiEntityConfig[];
   regexesConfig?: GuardrailRegexConfig[];
 }
-const GuardrailSensitiveInformationPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    piiEntitiesConfig: S.optional(GuardrailPiiEntitiesConfig),
-    regexesConfig: S.optional(GuardrailRegexesConfig),
-  }),
-).annotate({
-  identifier: "GuardrailSensitiveInformationPolicyConfig",
-}) as any as S.Schema<GuardrailSensitiveInformationPolicyConfig>;
+const GuardrailSensitiveInformationPolicyConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GuardrailSensitiveInformationPolicyConfig>;
 export type GuardrailContextualGroundingFilterType = "GROUNDING" | "RELEVANCE" | (string & {});
 const GuardrailContextualGroundingFilterType = S.String;
 
@@ -1946,28 +1463,19 @@ export interface GuardrailContextualGroundingFilterConfig {
   action?: GuardrailContextualGroundingAction;
   enabled?: boolean;
 }
-const GuardrailContextualGroundingFilterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GuardrailContextualGroundingFilterType,
-    threshold: S.Number,
-    action: S.optional(GuardrailContextualGroundingAction),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GuardrailContextualGroundingFilterConfig",
-}) as any as S.Schema<GuardrailContextualGroundingFilterConfig>;
+const GuardrailContextualGroundingFilterConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GuardrailContextualGroundingFilterConfig>;
 export type GuardrailContextualGroundingFiltersConfig = GuardrailContextualGroundingFilterConfig[];
-const GuardrailContextualGroundingFiltersConfig = /*@__PURE__*/ S.Array(
-  GuardrailContextualGroundingFilterConfig,
-);
+const GuardrailContextualGroundingFiltersConfig = /*@__PURE__*/ __L.at(__c16, 7);
 export interface GuardrailContextualGroundingPolicyConfig {
   filtersConfig: GuardrailContextualGroundingFilterConfig[];
 }
-const GuardrailContextualGroundingPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filtersConfig: GuardrailContextualGroundingFiltersConfig }),
-).annotate({
-  identifier: "GuardrailContextualGroundingPolicyConfig",
-}) as any as S.Schema<GuardrailContextualGroundingPolicyConfig>;
+const GuardrailContextualGroundingPolicyConfig = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GuardrailContextualGroundingPolicyConfig>;
 export type AutomatedReasoningPolicyArnList = string[];
 const AutomatedReasoningPolicyArnList =
   AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyArnList>;
@@ -1976,23 +1484,18 @@ export interface GuardrailAutomatedReasoningPolicyConfig {
   policies: string[];
   confidenceThreshold?: number;
 }
-const GuardrailAutomatedReasoningPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policies: AutomatedReasoningPolicyArnList,
-    confidenceThreshold: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GuardrailAutomatedReasoningPolicyConfig",
-}) as any as S.Schema<GuardrailAutomatedReasoningPolicyConfig>;
+const GuardrailAutomatedReasoningPolicyConfig = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GuardrailAutomatedReasoningPolicyConfig>;
 export type GuardrailCrossRegionGuardrailProfileIdentifier = string;
 export interface GuardrailCrossRegionConfig {
   guardrailProfileIdentifier: string;
 }
-const GuardrailCrossRegionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ guardrailProfileIdentifier: S.String }),
-).annotate({
-  identifier: "GuardrailCrossRegionConfig",
-}) as any as S.Schema<GuardrailCrossRegionConfig>;
+const GuardrailCrossRegionConfig = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GuardrailCrossRegionConfig>;
 export type GuardrailBlockedMessaging = string | redacted.Redacted<string>;
 export interface CreateGuardrailRequest {
   name: string | redacted.Redacted<string>;
@@ -2010,24 +1513,10 @@ export interface CreateGuardrailRequest {
   tags?: Tag[];
   clientRequestToken?: string;
 }
-const CreateGuardrailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    topicPolicyConfig: S.optional(GuardrailTopicPolicyConfig),
-    contentPolicyConfig: S.optional(GuardrailContentPolicyConfig),
-    wordPolicyConfig: S.optional(GuardrailWordPolicyConfig),
-    sensitiveInformationPolicyConfig: S.optional(GuardrailSensitiveInformationPolicyConfig),
-    contextualGroundingPolicyConfig: S.optional(GuardrailContextualGroundingPolicyConfig),
-    automatedReasoningPolicyConfig: S.optional(GuardrailAutomatedReasoningPolicyConfig),
-    crossRegionConfig: S.optional(GuardrailCrossRegionConfig),
-    blockedInputMessaging: SensitiveString,
-    blockedOutputsMessaging: SensitiveString,
-    kmsKeyId: S.optional(S.String),
-    tags: S.optional(TagList),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/guardrails" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateGuardrailRequest" }) as any as S.Schema<CreateGuardrailRequest>;
+const CreateGuardrailRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<CreateGuardrailRequest>;
 export type GuardrailId = string;
 export type GuardrailArn = string;
 export type GuardrailDraftVersion = string;
@@ -2037,55 +1526,34 @@ export interface CreateGuardrailResponse {
   version: string;
   createdAt: Date;
 }
-const CreateGuardrailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guardrailId: S.String,
-    guardrailArn: S.String,
-    version: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "CreateGuardrailResponse" }) as any as S.Schema<CreateGuardrailResponse>;
+const CreateGuardrailResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<CreateGuardrailResponse>;
 export type GuardrailIdentifier = string;
 export interface CreateGuardrailVersionRequest {
   guardrailIdentifier: string;
   description?: string | redacted.Redacted<string>;
   clientRequestToken?: string;
 }
-const CreateGuardrailVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guardrailIdentifier: S.String.pipe(T.HttpLabel("guardrailIdentifier")),
-    description: S.optional(SensitiveString),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/guardrails/{guardrailIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateGuardrailVersionRequest",
-}) as any as S.Schema<CreateGuardrailVersionRequest>;
+const CreateGuardrailVersionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<CreateGuardrailVersionRequest>;
 export type GuardrailNumericalVersion = string;
 export interface CreateGuardrailVersionResponse {
   guardrailId: string;
   version: string;
 }
-const CreateGuardrailVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ guardrailId: S.String, version: S.String }),
-).annotate({
-  identifier: "CreateGuardrailVersionResponse",
-}) as any as S.Schema<CreateGuardrailVersionResponse>;
+const CreateGuardrailVersionResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<CreateGuardrailVersionResponse>;
 export type InferenceProfileName = string;
 export type InferenceProfileDescription = string | redacted.Redacted<string>;
 export type InferenceProfileModelSourceArn = string;
 export type InferenceProfileModelSource = { copyFrom: string };
-const InferenceProfileModelSource = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ copyFrom: S.String }),
-]);
+const InferenceProfileModelSource = /*@__PURE__*/ __L.at(__c17, 7);
 export interface CreateInferenceProfileRequest {
   inferenceProfileName: string;
   description?: string | redacted.Redacted<string>;
@@ -2093,19 +1561,10 @@ export interface CreateInferenceProfileRequest {
   modelSource: InferenceProfileModelSource;
   tags?: Tag[];
 }
-const CreateInferenceProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inferenceProfileName: S.String,
-    description: S.optional(SensitiveString),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    modelSource: InferenceProfileModelSource,
-    tags: S.optional(TagList),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/inference-profiles" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateInferenceProfileRequest",
-}) as any as S.Schema<CreateInferenceProfileRequest>;
+const CreateInferenceProfileRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<CreateInferenceProfileRequest>;
 export type InferenceProfileArn = string;
 export type InferenceProfileStatus = "ACTIVE" | (string & {});
 const InferenceProfileStatus = S.String;
@@ -2114,11 +1573,10 @@ export interface CreateInferenceProfileResponse {
   inferenceProfileArn: string;
   status?: InferenceProfileStatus;
 }
-const CreateInferenceProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inferenceProfileArn: S.String, status: S.optional(InferenceProfileStatus) }),
-).annotate({
-  identifier: "CreateInferenceProfileResponse",
-}) as any as S.Schema<CreateInferenceProfileResponse>;
+const CreateInferenceProfileResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<CreateInferenceProfileResponse>;
 export type ModelSourceIdentifier = string;
 export type InstanceCount = number;
 export type InstanceType = string;
@@ -2133,9 +1591,7 @@ export interface VpcConfig {
   subnetIds: string[];
   securityGroupIds: string[];
 }
-const VpcConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ subnetIds: SubnetIds, securityGroupIds: SecurityGroupIds }),
-).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
+const VpcConfig = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<VpcConfig>;
 export interface SageMakerEndpoint {
   initialInstanceCount: number;
   instanceType: string;
@@ -2143,19 +1599,9 @@ export interface SageMakerEndpoint {
   kmsEncryptionKey?: string;
   vpc?: VpcConfig;
 }
-const SageMakerEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    initialInstanceCount: S.Number,
-    instanceType: S.String,
-    executionRole: S.String,
-    kmsEncryptionKey: S.optional(S.String),
-    vpc: S.optional(VpcConfig),
-  }),
-).annotate({ identifier: "SageMakerEndpoint" }) as any as S.Schema<SageMakerEndpoint>;
+const SageMakerEndpoint = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<SageMakerEndpoint>;
 export type EndpointConfig = { sageMaker: SageMakerEndpoint };
-const EndpointConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ sageMaker: SageMakerEndpoint }),
-]);
+const EndpointConfig = /*@__PURE__*/ __L.at(__c18, 4);
 export type AcceptEula = boolean;
 export type EndpointName = string;
 export interface CreateMarketplaceModelEndpointRequest {
@@ -2166,27 +1612,10 @@ export interface CreateMarketplaceModelEndpointRequest {
   clientRequestToken?: string;
   tags?: Tag[];
 }
-const CreateMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelSourceIdentifier: S.String,
-    endpointConfig: EndpointConfig,
-    acceptEula: S.optional(S.Boolean),
-    endpointName: S.String,
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/marketplace-model/endpoints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateMarketplaceModelEndpointRequest",
-}) as any as S.Schema<CreateMarketplaceModelEndpointRequest>;
+const CreateMarketplaceModelEndpointRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<CreateMarketplaceModelEndpointRequest>;
 export type Arn = string;
 export type Status = "REGISTERED" | "INCOMPATIBLE_ENDPOINT" | (string & {});
 const Status = S.String;
@@ -2202,27 +1631,17 @@ export interface MarketplaceModelEndpoint {
   endpointStatus: string;
   endpointStatusMessage?: string;
 }
-const MarketplaceModelEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpointArn: S.String,
-    modelSourceIdentifier: S.String,
-    status: S.optional(Status),
-    statusMessage: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endpointConfig: EndpointConfig,
-    endpointStatus: S.String,
-    endpointStatusMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "MarketplaceModelEndpoint" }) as any as S.Schema<MarketplaceModelEndpoint>;
+const MarketplaceModelEndpoint = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<MarketplaceModelEndpoint>;
 export interface CreateMarketplaceModelEndpointResponse {
   marketplaceModelEndpoint: MarketplaceModelEndpoint;
 }
-const CreateMarketplaceModelEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ marketplaceModelEndpoint: MarketplaceModelEndpoint }),
-).annotate({
-  identifier: "CreateMarketplaceModelEndpointResponse",
-}) as any as S.Schema<CreateMarketplaceModelEndpointResponse>;
+const CreateMarketplaceModelEndpointResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<CreateMarketplaceModelEndpointResponse>;
 export interface CreateModelCopyJobRequest {
   sourceModelArn: string;
   targetModelName: string;
@@ -2230,17 +1649,10 @@ export interface CreateModelCopyJobRequest {
   targetModelTags?: Tag[];
   clientRequestToken?: string;
 }
-const CreateModelCopyJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceModelArn: S.String,
-    targetModelName: S.String,
-    modelKmsKeyId: S.optional(S.String),
-    targetModelTags: S.optional(TagList),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/model-copy-jobs" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateModelCopyJobRequest",
-}) as any as S.Schema<CreateModelCopyJobRequest>;
+const CreateModelCopyJobRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<CreateModelCopyJobRequest>;
 export type ModelCopyJobArn = string;
 export interface CreateModelCopyJobResponse {
   jobArn: string;
@@ -2262,21 +1674,17 @@ export type UsePromptResponse = boolean;
 export type InvocationLogSource = { s3Uri: string };
 const InvocationLogSource = EvaluationDatasetLocation as any as S.Schema<InvocationLogSource>;
 export type RequestMetadataMap = { [key: string]: string | undefined };
-const RequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const RequestMetadataMap = /*@__PURE__*/ __L.at(__c19, 1);
 export interface RequestMetadataBaseFilters {
   equals?: { [key: string]: string | undefined };
   notEquals?: { [key: string]: string | undefined };
 }
-const RequestMetadataBaseFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ equals: S.optional(RequestMetadataMap), notEquals: S.optional(RequestMetadataMap) }),
-).annotate({
-  identifier: "RequestMetadataBaseFilters",
-}) as any as S.Schema<RequestMetadataBaseFilters>;
+const RequestMetadataBaseFilters = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<RequestMetadataBaseFilters>;
 export type RequestMetadataFiltersList = RequestMetadataBaseFilters[];
-const RequestMetadataFiltersList = /*@__PURE__*/ S.Array(RequestMetadataBaseFilters);
+const RequestMetadataFiltersList = /*@__PURE__*/ __L.at(__c19, 3);
 export type RequestMetadataFilters =
   | {
       equals: { [key: string]: string | undefined };
@@ -2292,49 +1700,38 @@ export type RequestMetadataFilters =
     }
   | { equals?: never; notEquals?: never; andAll: RequestMetadataBaseFilters[]; orAll?: never }
   | { equals?: never; notEquals?: never; andAll?: never; orAll: RequestMetadataBaseFilters[] };
-const RequestMetadataFilters = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ equals: RequestMetadataMap }),
-  /*@__PURE__*/ S.Struct({ notEquals: RequestMetadataMap }),
-  /*@__PURE__*/ S.Struct({ andAll: RequestMetadataFiltersList }),
-  /*@__PURE__*/ S.Struct({ orAll: RequestMetadataFiltersList }),
-]);
+const RequestMetadataFilters = /*@__PURE__*/ __L.at(__c19, 4);
 export interface InvocationLogsConfig {
   usePromptResponse?: boolean;
   invocationLogSource: InvocationLogSource;
   requestMetadataFilters?: RequestMetadataFilters;
 }
-const InvocationLogsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    usePromptResponse: S.optional(S.Boolean),
-    invocationLogSource: InvocationLogSource,
-    requestMetadataFilters: S.optional(RequestMetadataFilters),
-  }),
-).annotate({ identifier: "InvocationLogsConfig" }) as any as S.Schema<InvocationLogsConfig>;
+const InvocationLogsConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<InvocationLogsConfig>;
 export interface TrainingDataConfig {
   s3Uri?: string;
   invocationLogsConfig?: InvocationLogsConfig;
 }
-const TrainingDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Uri: S.optional(S.String), invocationLogsConfig: S.optional(InvocationLogsConfig) }),
-).annotate({ identifier: "TrainingDataConfig" }) as any as S.Schema<TrainingDataConfig>;
+const TrainingDataConfig = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<TrainingDataConfig>;
 export interface Validator {
   s3Uri: string;
 }
 const Validator = S3DataSource as any as S.Schema<Validator>;
 export type Validators = Validator[];
-const Validators = /*@__PURE__*/ S.Array(Validator);
+const Validators = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ValidationDataConfig {
   validators: Validator[];
 }
-const ValidationDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ validators: Validators }),
-).annotate({ identifier: "ValidationDataConfig" }) as any as S.Schema<ValidationDataConfig>;
+const ValidationDataConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ValidationDataConfig>;
 export interface OutputDataConfig {
   s3Uri: string;
 }
-const OutputDataConfig = /*@__PURE__*/ S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-  identifier: "OutputDataConfig",
-}) as any as S.Schema<OutputDataConfig>;
+const OutputDataConfig = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<OutputDataConfig>;
 export type ModelCustomizationHyperParameters = { [key: string]: string | undefined };
 const ModelCustomizationHyperParameters =
   RequestMetadataMap as any as S.Schema<ModelCustomizationHyperParameters>;
@@ -2343,29 +1740,18 @@ export interface TeacherModelConfig {
   teacherModelIdentifier: string;
   maxResponseLengthForInference?: number;
 }
-const TeacherModelConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    teacherModelIdentifier: S.String,
-    maxResponseLengthForInference: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TeacherModelConfig" }) as any as S.Schema<TeacherModelConfig>;
+const TeacherModelConfig = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<TeacherModelConfig>;
 export interface DistillationConfig {
   teacherModelConfig: TeacherModelConfig;
 }
-const DistillationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ teacherModelConfig: TeacherModelConfig }),
-).annotate({ identifier: "DistillationConfig" }) as any as S.Schema<DistillationConfig>;
+const DistillationConfig = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<DistillationConfig>;
 export type LambdaArn = string;
 export interface LambdaGraderConfig {
   lambdaArn: string;
 }
-const LambdaGraderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lambdaArn: S.String }),
-).annotate({ identifier: "LambdaGraderConfig" }) as any as S.Schema<LambdaGraderConfig>;
+const LambdaGraderConfig = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<LambdaGraderConfig>;
 export type GraderConfig = { lambdaGrader: LambdaGraderConfig };
-const GraderConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ lambdaGrader: LambdaGraderConfig }),
-]);
+const GraderConfig = /*@__PURE__*/ __L.at(__c20, 5);
 export type EpochCount = number;
 export type RFTBatchSize = number;
 export type RFTLearningRate = number;
@@ -2386,35 +1772,16 @@ export interface RFTHyperParameters {
   reasoningEffort?: ReasoningEffort;
   evalInterval?: number;
 }
-const RFTHyperParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    epochCount: S.optional(S.Number),
-    batchSize: S.optional(S.Number),
-    learningRate: S.optional(S.Number),
-    maxPromptLength: S.optional(S.Number),
-    trainingSamplePerPrompt: S.optional(S.Number),
-    inferenceMaxTokens: S.optional(S.Number),
-    reasoningEffort: S.optional(ReasoningEffort),
-    evalInterval: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RFTHyperParameters" }) as any as S.Schema<RFTHyperParameters>;
+const RFTHyperParameters = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<RFTHyperParameters>;
 export interface RFTConfig {
   graderConfig?: GraderConfig;
   hyperParameters?: RFTHyperParameters;
 }
-const RFTConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    graderConfig: S.optional(GraderConfig),
-    hyperParameters: S.optional(RFTHyperParameters),
-  }),
-).annotate({ identifier: "RFTConfig" }) as any as S.Schema<RFTConfig>;
+const RFTConfig = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<RFTConfig>;
 export type CustomizationConfig =
   | { distillationConfig: DistillationConfig; rftConfig?: never }
   | { distillationConfig?: never; rftConfig: RFTConfig };
-const CustomizationConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ distillationConfig: DistillationConfig }),
-  /*@__PURE__*/ S.Struct({ rftConfig: RFTConfig }),
-]);
+const CustomizationConfig = /*@__PURE__*/ __L.at(__c21, 0);
 export interface CreateModelCustomizationJobRequest {
   jobName: string;
   customModelName: string;
@@ -2432,36 +1799,10 @@ export interface CreateModelCustomizationJobRequest {
   vpcConfig?: VpcConfig;
   customizationConfig?: CustomizationConfig;
 }
-const CreateModelCustomizationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    customModelName: S.String,
-    roleArn: S.String,
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    baseModelIdentifier: S.String,
-    customizationType: S.optional(CustomizationType),
-    customModelKmsKeyId: S.optional(S.String),
-    jobTags: S.optional(TagList),
-    customModelTags: S.optional(TagList),
-    trainingDataConfig: TrainingDataConfig,
-    validationDataConfig: S.optional(ValidationDataConfig),
-    outputDataConfig: OutputDataConfig,
-    hyperParameters: S.optional(ModelCustomizationHyperParameters),
-    vpcConfig: S.optional(VpcConfig),
-    customizationConfig: S.optional(CustomizationConfig),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/model-customization-jobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateModelCustomizationJobRequest",
-}) as any as S.Schema<CreateModelCustomizationJobRequest>;
+const CreateModelCustomizationJobRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<CreateModelCustomizationJobRequest>;
 export type ModelCustomizationJobArn = string;
 export interface CreateModelCustomizationJobResponse {
   jobArn: string;
@@ -2480,23 +1821,10 @@ export interface CreateModelImportJobRequest {
   vpcConfig?: VpcConfig;
   importedModelKmsKeyId?: string;
 }
-const CreateModelImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    importedModelName: S.String,
-    roleArn: S.String,
-    modelDataSource: ModelDataSource,
-    jobTags: S.optional(TagList),
-    importedModelTags: S.optional(TagList),
-    clientRequestToken: S.optional(S.String),
-    vpcConfig: S.optional(VpcConfig),
-    importedModelKmsKeyId: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/model-import-jobs" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateModelImportJobRequest",
-}) as any as S.Schema<CreateModelImportJobRequest>;
+const CreateModelImportJobRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<CreateModelImportJobRequest>;
 export type ModelImportJobArn = string;
 export interface CreateModelImportJobResponse {
   jobArn: string;
@@ -2515,41 +1843,27 @@ export interface ModelInvocationJobS3InputDataConfig {
   s3Uri: string;
   s3BucketOwner?: string;
 }
-const ModelInvocationJobS3InputDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    s3InputFormat: S.optional(S3InputFormat),
-    s3Uri: S.String,
-    s3BucketOwner: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ModelInvocationJobS3InputDataConfig",
-}) as any as S.Schema<ModelInvocationJobS3InputDataConfig>;
+const ModelInvocationJobS3InputDataConfig = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ModelInvocationJobS3InputDataConfig>;
 export type ModelInvocationJobInputDataConfig = {
   s3InputDataConfig: ModelInvocationJobS3InputDataConfig;
 };
-const ModelInvocationJobInputDataConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ s3InputDataConfig: ModelInvocationJobS3InputDataConfig }),
-]);
+const ModelInvocationJobInputDataConfig = /*@__PURE__*/ __L.at(__c21, 4);
 export interface ModelInvocationJobS3OutputDataConfig {
   s3Uri: string;
   s3EncryptionKeyId?: string;
   s3BucketOwner?: string;
 }
-const ModelInvocationJobS3OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    s3Uri: S.String,
-    s3EncryptionKeyId: S.optional(S.String),
-    s3BucketOwner: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ModelInvocationJobS3OutputDataConfig",
-}) as any as S.Schema<ModelInvocationJobS3OutputDataConfig>;
+const ModelInvocationJobS3OutputDataConfig = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ModelInvocationJobS3OutputDataConfig>;
 export type ModelInvocationJobOutputDataConfig = {
   s3OutputDataConfig: ModelInvocationJobS3OutputDataConfig;
 };
-const ModelInvocationJobOutputDataConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ s3OutputDataConfig: ModelInvocationJobS3OutputDataConfig }),
-]);
+const ModelInvocationJobOutputDataConfig = /*@__PURE__*/ __L.at(__c21, 6);
 export type ModelInvocationJobTimeoutDurationInHours = number;
 export type ModelInvocationType = "InvokeModel" | "Converse" | (string & {});
 const ModelInvocationType = S.String;
@@ -2566,24 +1880,10 @@ export interface CreateModelInvocationJobRequest {
   tags?: Tag[];
   modelInvocationType?: ModelInvocationType;
 }
-const CreateModelInvocationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    roleArn: S.String,
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    modelId: S.String,
-    inputDataConfig: ModelInvocationJobInputDataConfig,
-    outputDataConfig: ModelInvocationJobOutputDataConfig,
-    vpcConfig: S.optional(VpcConfig),
-    timeoutDurationInHours: S.optional(S.Number),
-    tags: S.optional(TagList),
-    modelInvocationType: S.optional(ModelInvocationType),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/model-invocation-job" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateModelInvocationJobRequest",
-}) as any as S.Schema<CreateModelInvocationJobRequest>;
+const CreateModelInvocationJobRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<CreateModelInvocationJobRequest>;
 export type ModelInvocationJobArn = string;
 export interface CreateModelInvocationJobResponse {
   jobArn: string;
@@ -2595,18 +1895,17 @@ export type PromptRouterTargetModelArn = string;
 export interface PromptRouterTargetModel {
   modelArn?: string;
 }
-const PromptRouterTargetModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelArn: S.optional(S.String) }),
-).annotate({ identifier: "PromptRouterTargetModel" }) as any as S.Schema<PromptRouterTargetModel>;
+const PromptRouterTargetModel = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<PromptRouterTargetModel>;
 export type PromptRouterTargetModels = PromptRouterTargetModel[];
-const PromptRouterTargetModels = /*@__PURE__*/ S.Array(PromptRouterTargetModel);
+const PromptRouterTargetModels = /*@__PURE__*/ __L.at(__c22, 1);
 export type PromptRouterDescription = string | redacted.Redacted<string>;
 export interface RoutingCriteria {
   responseQualityDifference: number;
 }
-const RoutingCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ responseQualityDifference: S.Number }),
-).annotate({ identifier: "RoutingCriteria" }) as any as S.Schema<RoutingCriteria>;
+const RoutingCriteria = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<RoutingCriteria>;
 export interface CreatePromptRouterRequest {
   clientRequestToken?: string;
   promptRouterName: string;
@@ -2616,28 +1915,18 @@ export interface CreatePromptRouterRequest {
   fallbackModel: PromptRouterTargetModel;
   tags?: Tag[];
 }
-const CreatePromptRouterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    promptRouterName: S.String,
-    models: PromptRouterTargetModels,
-    description: S.optional(SensitiveString),
-    routingCriteria: RoutingCriteria,
-    fallbackModel: PromptRouterTargetModel,
-    tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/prompt-routers" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreatePromptRouterRequest",
-}) as any as S.Schema<CreatePromptRouterRequest>;
+const CreatePromptRouterRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<CreatePromptRouterRequest>;
 export type PromptRouterArn = string;
 export interface CreatePromptRouterResponse {
   promptRouterArn?: string;
 }
-const CreatePromptRouterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ promptRouterArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreatePromptRouterResponse",
-}) as any as S.Schema<CreatePromptRouterResponse>;
+const CreatePromptRouterResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<CreatePromptRouterResponse>;
 export type PositiveInteger = number;
 export type ProvisionedModelName = string;
 export type ModelIdentifier = string;
@@ -2652,57 +1941,26 @@ export interface CreateProvisionedModelThroughputRequest {
   commitmentDuration?: CommitmentDuration;
   tags?: Tag[];
 }
-const CreateProvisionedModelThroughputRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    modelUnits: S.Number,
-    provisionedModelName: S.String,
-    modelId: S.String,
-    commitmentDuration: S.optional(CommitmentDuration),
-    tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/provisioned-model-throughput" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateProvisionedModelThroughputRequest",
-}) as any as S.Schema<CreateProvisionedModelThroughputRequest>;
+const CreateProvisionedModelThroughputRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<CreateProvisionedModelThroughputRequest>;
 export type ProvisionedModelArn = string;
 export interface CreateProvisionedModelThroughputResponse {
   provisionedModelArn: string;
 }
-const CreateProvisionedModelThroughputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ provisionedModelArn: S.String }),
-).annotate({
-  identifier: "CreateProvisionedModelThroughputResponse",
-}) as any as S.Schema<CreateProvisionedModelThroughputResponse>;
+const CreateProvisionedModelThroughputResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<CreateProvisionedModelThroughputResponse>;
 export interface DeleteAutomatedReasoningPolicyRequest {
   policyArn: string;
   force?: boolean;
 }
-const DeleteAutomatedReasoningPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    force: S.optional(S.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/automated-reasoning-policies/{policyArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAutomatedReasoningPolicyRequest",
-}) as any as S.Schema<DeleteAutomatedReasoningPolicyRequest>;
+const DeleteAutomatedReasoningPolicyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<DeleteAutomatedReasoningPolicyRequest>;
 export interface DeleteAutomatedReasoningPolicyResponse {}
 const DeleteAutomatedReasoningPolicyResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteAutomatedReasoningPolicyResponse>;
@@ -2711,29 +1969,10 @@ export interface DeleteAutomatedReasoningPolicyBuildWorkflowRequest {
   buildWorkflowId: string;
   lastUpdatedAt: Date;
 }
-const DeleteAutomatedReasoningPolicyBuildWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(
-      T.HttpQuery("updatedAt"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAutomatedReasoningPolicyBuildWorkflowRequest",
-}) as any as S.Schema<DeleteAutomatedReasoningPolicyBuildWorkflowRequest>;
+const DeleteAutomatedReasoningPolicyBuildWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<DeleteAutomatedReasoningPolicyBuildWorkflowRequest>;
 export interface DeleteAutomatedReasoningPolicyBuildWorkflowResponse {}
 const DeleteAutomatedReasoningPolicyBuildWorkflowResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteAutomatedReasoningPolicyBuildWorkflowResponse>;
@@ -2742,74 +1981,33 @@ export interface DeleteAutomatedReasoningPolicyTestCaseRequest {
   testCaseId: string;
   lastUpdatedAt: Date;
 }
-const DeleteAutomatedReasoningPolicyTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    testCaseId: S.String.pipe(T.HttpLabel("testCaseId")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(
-      T.HttpQuery("updatedAt"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/automated-reasoning-policies/{policyArn}/test-cases/{testCaseId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAutomatedReasoningPolicyTestCaseRequest",
-}) as any as S.Schema<DeleteAutomatedReasoningPolicyTestCaseRequest>;
+const DeleteAutomatedReasoningPolicyTestCaseRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<DeleteAutomatedReasoningPolicyTestCaseRequest>;
 export interface DeleteAutomatedReasoningPolicyTestCaseResponse {}
 const DeleteAutomatedReasoningPolicyTestCaseResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteAutomatedReasoningPolicyTestCaseResponse>;
 export interface DeleteCustomModelRequest {
   modelIdentifier: string;
 }
-const DeleteCustomModelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/custom-models/{modelIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteCustomModelRequest" }) as any as S.Schema<DeleteCustomModelRequest>;
+const DeleteCustomModelRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<DeleteCustomModelRequest>;
 export interface DeleteCustomModelResponse {}
-const DeleteCustomModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCustomModelResponse",
-}) as any as S.Schema<DeleteCustomModelResponse>;
+const DeleteCustomModelResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<DeleteCustomModelResponse>;
 export type CustomModelDeploymentIdentifier = string;
 export interface DeleteCustomModelDeploymentRequest {
   customModelDeploymentIdentifier: string;
 }
-const DeleteCustomModelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customModelDeploymentIdentifier: S.String.pipe(T.HttpLabel("customModelDeploymentIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/model-customization/custom-model-deployments/{customModelDeploymentIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteCustomModelDeploymentRequest",
-}) as any as S.Schema<DeleteCustomModelDeploymentRequest>;
+const DeleteCustomModelDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<DeleteCustomModelDeploymentRequest>;
 export interface DeleteCustomModelDeploymentResponse {}
 const DeleteCustomModelDeploymentResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteCustomModelDeploymentResponse>;
@@ -2817,40 +2015,20 @@ export type AccountEnforcedGuardrailConfigurationId = string;
 export interface DeleteEnforcedGuardrailConfigurationRequest {
   configId: string;
 }
-const DeleteEnforcedGuardrailConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ configId: S.String.pipe(T.HttpLabel("configId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/enforcedGuardrailsConfiguration/{configId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteEnforcedGuardrailConfigurationRequest",
-}) as any as S.Schema<DeleteEnforcedGuardrailConfigurationRequest>;
+const DeleteEnforcedGuardrailConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<DeleteEnforcedGuardrailConfigurationRequest>;
 export interface DeleteEnforcedGuardrailConfigurationResponse {}
 const DeleteEnforcedGuardrailConfigurationResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteEnforcedGuardrailConfigurationResponse>;
 export interface DeleteFoundationModelAgreementRequest {
   modelId: string;
 }
-const DeleteFoundationModelAgreementRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelId: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/delete-foundation-model-agreement" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteFoundationModelAgreementRequest",
-}) as any as S.Schema<DeleteFoundationModelAgreementRequest>;
+const DeleteFoundationModelAgreementRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<DeleteFoundationModelAgreementRequest>;
 export interface DeleteFoundationModelAgreementResponse {}
 const DeleteFoundationModelAgreementResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteFoundationModelAgreementResponse>;
@@ -2858,21 +2036,10 @@ export interface DeleteGuardrailRequest {
   guardrailIdentifier: string;
   guardrailVersion?: string;
 }
-const DeleteGuardrailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guardrailIdentifier: S.String.pipe(T.HttpLabel("guardrailIdentifier")),
-    guardrailVersion: S.optional(S.String).pipe(T.HttpQuery("guardrailVersion")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/guardrails/{guardrailIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteGuardrailRequest" }) as any as S.Schema<DeleteGuardrailRequest>;
+const DeleteGuardrailRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<DeleteGuardrailRequest>;
 export interface DeleteGuardrailResponse {}
 const DeleteGuardrailResponse =
   DeleteCustomModelResponse as any as S.Schema<DeleteGuardrailResponse>;
@@ -2880,20 +2047,10 @@ export type ImportedModelIdentifier = string;
 export interface DeleteImportedModelRequest {
   modelIdentifier: string;
 }
-const DeleteImportedModelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/imported-models/{modelIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteImportedModelRequest",
-}) as any as S.Schema<DeleteImportedModelRequest>;
+const DeleteImportedModelRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<DeleteImportedModelRequest>;
 export interface DeleteImportedModelResponse {}
 const DeleteImportedModelResponse =
   DeleteCustomModelResponse as any as S.Schema<DeleteImportedModelResponse>;
@@ -2901,80 +2058,38 @@ export type InferenceProfileIdentifier = string;
 export interface DeleteInferenceProfileRequest {
   inferenceProfileIdentifier: string;
 }
-const DeleteInferenceProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inferenceProfileIdentifier: S.String.pipe(T.HttpLabel("inferenceProfileIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/inference-profiles/{inferenceProfileIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteInferenceProfileRequest",
-}) as any as S.Schema<DeleteInferenceProfileRequest>;
+const DeleteInferenceProfileRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<DeleteInferenceProfileRequest>;
 export interface DeleteInferenceProfileResponse {}
 const DeleteInferenceProfileResponse =
   DeleteCustomModelResponse as any as S.Schema<DeleteInferenceProfileResponse>;
 export interface DeleteMarketplaceModelEndpointRequest {
   endpointArn: string;
 }
-const DeleteMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpointArn: S.String.pipe(T.HttpLabel("endpointArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/marketplace-model/endpoints/{endpointArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteMarketplaceModelEndpointRequest",
-}) as any as S.Schema<DeleteMarketplaceModelEndpointRequest>;
+const DeleteMarketplaceModelEndpointRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<DeleteMarketplaceModelEndpointRequest>;
 export interface DeleteMarketplaceModelEndpointResponse {}
 const DeleteMarketplaceModelEndpointResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteMarketplaceModelEndpointResponse>;
 export interface DeleteModelInvocationLoggingConfigurationRequest {}
-const DeleteModelInvocationLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/logging/modelinvocations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteModelInvocationLoggingConfigurationRequest",
-}) as any as S.Schema<DeleteModelInvocationLoggingConfigurationRequest>;
+const DeleteModelInvocationLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<DeleteModelInvocationLoggingConfigurationRequest>;
 export interface DeleteModelInvocationLoggingConfigurationResponse {}
 const DeleteModelInvocationLoggingConfigurationResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteModelInvocationLoggingConfigurationResponse>;
 export interface DeletePromptRouterRequest {
   promptRouterArn: string;
 }
-const DeletePromptRouterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ promptRouterArn: S.String.pipe(T.HttpLabel("promptRouterArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/prompt-routers/{promptRouterArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePromptRouterRequest",
-}) as any as S.Schema<DeletePromptRouterRequest>;
+const DeletePromptRouterRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<DeletePromptRouterRequest>;
 export interface DeletePromptRouterResponse {}
 const DeletePromptRouterResponse =
   DeleteCustomModelResponse as any as S.Schema<DeletePromptRouterResponse>;
@@ -2982,20 +2097,10 @@ export type ProvisionedModelId = string;
 export interface DeleteProvisionedModelThroughputRequest {
   provisionedModelId: string;
 }
-const DeleteProvisionedModelThroughputRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ provisionedModelId: S.String.pipe(T.HttpLabel("provisionedModelId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/provisioned-model-throughput/{provisionedModelId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteProvisionedModelThroughputRequest",
-}) as any as S.Schema<DeleteProvisionedModelThroughputRequest>;
+const DeleteProvisionedModelThroughputRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<DeleteProvisionedModelThroughputRequest>;
 export interface DeleteProvisionedModelThroughputResponse {}
 const DeleteProvisionedModelThroughputResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeleteProvisionedModelThroughputResponse>;
@@ -3003,80 +2108,42 @@ export type ResourcePolicyResourceArn = string;
 export interface DeleteResourcePolicyRequest {
   resourceArn: string;
 }
-const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/resource-policy/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteResourcePolicyRequest",
-}) as any as S.Schema<DeleteResourcePolicyRequest>;
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
 const DeleteResourcePolicyResponse =
   DeleteCustomModelResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeregisterMarketplaceModelEndpointRequest {
   endpointArn: string;
 }
-const DeregisterMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpointArn: S.String.pipe(T.HttpLabel("endpointArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/marketplace-model/endpoints/{endpointArn}/registration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeregisterMarketplaceModelEndpointRequest",
-}) as any as S.Schema<DeregisterMarketplaceModelEndpointRequest>;
+const DeregisterMarketplaceModelEndpointRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<DeregisterMarketplaceModelEndpointRequest>;
 export interface DeregisterMarketplaceModelEndpointResponse {}
 const DeregisterMarketplaceModelEndpointResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<DeregisterMarketplaceModelEndpointResponse>;
 export interface ExportAutomatedReasoningPolicyVersionRequest {
   policyArn: string;
 }
-const ExportAutomatedReasoningPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyArn: S.String.pipe(T.HttpLabel("policyArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/automated-reasoning-policies/{policyArn}/export" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ExportAutomatedReasoningPolicyVersionRequest",
-}) as any as S.Schema<ExportAutomatedReasoningPolicyVersionRequest>;
+const ExportAutomatedReasoningPolicyVersionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ExportAutomatedReasoningPolicyVersionRequest>;
 export interface ExportAutomatedReasoningPolicyVersionResponse {
   policyDefinition: AutomatedReasoningPolicyDefinition;
 }
-const ExportAutomatedReasoningPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyDefinition: AutomatedReasoningPolicyDefinition.pipe(T.HttpPayload()).annotate({
-      identifier: "AutomatedReasoningPolicyDefinition",
-    }),
-  }),
-).annotate({
-  identifier: "ExportAutomatedReasoningPolicyVersionResponse",
-}) as any as S.Schema<ExportAutomatedReasoningPolicyVersionResponse>;
+const ExportAutomatedReasoningPolicyVersionResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ExportAutomatedReasoningPolicyVersionResponse>;
 export interface GetAccountDataRetentionRequest {}
-const GetAccountDataRetentionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(T.Http({ method: "GET", uri: "/data-retention" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAccountDataRetentionRequest",
-}) as any as S.Schema<GetAccountDataRetentionRequest>;
+const GetAccountDataRetentionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<GetAccountDataRetentionRequest>;
 export type DataRetentionMode =
   | "default"
   | "none"
@@ -3090,31 +2157,17 @@ export interface GetAccountDataRetentionResponse {
   mode: DataRetentionMode;
   updatedAt?: Date;
 }
-const GetAccountDataRetentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DataRetentionMode,
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "GetAccountDataRetentionResponse",
-}) as any as S.Schema<GetAccountDataRetentionResponse>;
+const GetAccountDataRetentionResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<GetAccountDataRetentionResponse>;
 export interface GetAdvancedPromptOptimizationJobRequest {
   jobIdentifier: string;
 }
-const GetAdvancedPromptOptimizationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/advanced-prompt-optimization-jobs/{jobIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAdvancedPromptOptimizationJobRequest",
-}) as any as S.Schema<GetAdvancedPromptOptimizationJobRequest>;
+const GetAdvancedPromptOptimizationJobRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<GetAdvancedPromptOptimizationJobRequest>;
 export type ErrorMessage = string;
 export interface GetAdvancedPromptOptimizationJobResponse {
   jobArn: string;
@@ -3129,40 +2182,17 @@ export interface GetAdvancedPromptOptimizationJobResponse {
   failureMessage?: string;
   modelConfigurations: ModelConfiguration[];
 }
-const GetAdvancedPromptOptimizationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    jobName: S.String,
-    jobDescription: S.optional(S.String),
-    jobStatus: AdvancedPromptOptimizationJobStatus,
-    inputConfig: AdvancedPromptOptimizationInputConfig,
-    outputConfig: AdvancedPromptOptimizationOutputConfig,
-    encryptionKeyArn: S.optional(S.String),
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    failureMessage: S.optional(S.String),
-    modelConfigurations: ModelConfigurations,
-  }),
-).annotate({
-  identifier: "GetAdvancedPromptOptimizationJobResponse",
-}) as any as S.Schema<GetAdvancedPromptOptimizationJobResponse>;
+const GetAdvancedPromptOptimizationJobResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GetAdvancedPromptOptimizationJobResponse>;
 export interface GetAutomatedReasoningPolicyRequest {
   policyArn: string;
 }
-const GetAutomatedReasoningPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyArn: S.String.pipe(T.HttpLabel("policyArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/automated-reasoning-policies/{policyArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyRequest",
-}) as any as S.Schema<GetAutomatedReasoningPolicyRequest>;
+const GetAutomatedReasoningPolicyRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<GetAutomatedReasoningPolicyRequest>;
 export type AutomatedReasoningPolicyId = string;
 export interface GetAutomatedReasoningPolicyResponse {
   policyArn: string;
@@ -3175,59 +2205,27 @@ export interface GetAutomatedReasoningPolicyResponse {
   createdAt?: Date;
   updatedAt: Date;
 }
-const GetAutomatedReasoningPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    name: SensitiveString,
-    version: S.String,
-    policyId: S.String,
-    description: S.optional(SensitiveString),
-    definitionHash: S.String,
-    kmsKeyArn: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyResponse",
-}) as any as S.Schema<GetAutomatedReasoningPolicyResponse>;
+const GetAutomatedReasoningPolicyResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GetAutomatedReasoningPolicyResponse>;
 export interface GetAutomatedReasoningPolicyAnnotationsRequest {
   policyArn: string;
   buildWorkflowId: string;
 }
-const GetAutomatedReasoningPolicyAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/annotations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyAnnotationsRequest",
-}) as any as S.Schema<GetAutomatedReasoningPolicyAnnotationsRequest>;
+const GetAutomatedReasoningPolicyAnnotationsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GetAutomatedReasoningPolicyAnnotationsRequest>;
 export interface AutomatedReasoningPolicyAddTypeAnnotation {
   name: string | redacted.Redacted<string>;
   description: string | redacted.Redacted<string>;
   values: AutomatedReasoningPolicyDefinitionTypeValue[];
 }
-const AutomatedReasoningPolicyAddTypeAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    description: SensitiveString,
-    values: AutomatedReasoningPolicyDefinitionTypeValueList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAddTypeAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyAddTypeAnnotation>;
+const AutomatedReasoningPolicyAddTypeAnnotation = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<AutomatedReasoningPolicyAddTypeAnnotation>;
 export interface AutomatedReasoningPolicyAddTypeValue {
   value: string;
   description?: string | redacted.Redacted<string>;
@@ -3239,23 +2237,17 @@ export interface AutomatedReasoningPolicyUpdateTypeValue {
   newValue?: string;
   description?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyUpdateTypeValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    newValue: S.optional(S.String),
-    description: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyUpdateTypeValue",
-}) as any as S.Schema<AutomatedReasoningPolicyUpdateTypeValue>;
+const AutomatedReasoningPolicyUpdateTypeValue = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<AutomatedReasoningPolicyUpdateTypeValue>;
 export interface AutomatedReasoningPolicyDeleteTypeValue {
   value: string;
 }
-const AutomatedReasoningPolicyDeleteTypeValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.String }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDeleteTypeValue",
-}) as any as S.Schema<AutomatedReasoningPolicyDeleteTypeValue>;
+const AutomatedReasoningPolicyDeleteTypeValue = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<AutomatedReasoningPolicyDeleteTypeValue>;
 export type AutomatedReasoningPolicyTypeValueAnnotation =
   | {
       addTypeValue: AutomatedReasoningPolicyAddTypeValue;
@@ -3272,40 +2264,27 @@ export type AutomatedReasoningPolicyTypeValueAnnotation =
       updateTypeValue?: never;
       deleteTypeValue: AutomatedReasoningPolicyDeleteTypeValue;
     };
-const AutomatedReasoningPolicyTypeValueAnnotation = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ addTypeValue: AutomatedReasoningPolicyAddTypeValue }),
-  /*@__PURE__*/ S.Struct({ updateTypeValue: AutomatedReasoningPolicyUpdateTypeValue }),
-  /*@__PURE__*/ S.Struct({ deleteTypeValue: AutomatedReasoningPolicyDeleteTypeValue }),
-]);
+const AutomatedReasoningPolicyTypeValueAnnotation = /*@__PURE__*/ __L.at(__c26, 4);
 export type AutomatedReasoningPolicyTypeValueAnnotationList =
   AutomatedReasoningPolicyTypeValueAnnotation[];
-const AutomatedReasoningPolicyTypeValueAnnotationList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyTypeValueAnnotation,
-);
+const AutomatedReasoningPolicyTypeValueAnnotationList = /*@__PURE__*/ __L.at(__c26, 5);
 export interface AutomatedReasoningPolicyUpdateTypeAnnotation {
   name: string | redacted.Redacted<string>;
   newName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
   values: AutomatedReasoningPolicyTypeValueAnnotation[];
 }
-const AutomatedReasoningPolicyUpdateTypeAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    newName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    values: AutomatedReasoningPolicyTypeValueAnnotationList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyUpdateTypeAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyUpdateTypeAnnotation>;
+const AutomatedReasoningPolicyUpdateTypeAnnotation = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<AutomatedReasoningPolicyUpdateTypeAnnotation>;
 export interface AutomatedReasoningPolicyDeleteTypeAnnotation {
   name: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyDeleteTypeAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDeleteTypeAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyDeleteTypeAnnotation>;
+const AutomatedReasoningPolicyDeleteTypeAnnotation = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<AutomatedReasoningPolicyDeleteTypeAnnotation>;
 export interface AutomatedReasoningPolicyAddVariableAnnotation {
   name: string | redacted.Redacted<string>;
   type: string | redacted.Redacted<string>;
@@ -3318,15 +2297,10 @@ export interface AutomatedReasoningPolicyUpdateVariableAnnotation {
   newName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyUpdateVariableAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    newName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyUpdateVariableAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyUpdateVariableAnnotation>;
+const AutomatedReasoningPolicyUpdateVariableAnnotation = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<AutomatedReasoningPolicyUpdateVariableAnnotation>;
 export interface AutomatedReasoningPolicyDeleteVariableAnnotation {
   name: string | redacted.Redacted<string>;
 }
@@ -3335,39 +2309,35 @@ const AutomatedReasoningPolicyDeleteVariableAnnotation =
 export interface AutomatedReasoningPolicyAddRuleAnnotation {
   expression: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyAddRuleAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ expression: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAddRuleAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyAddRuleAnnotation>;
+const AutomatedReasoningPolicyAddRuleAnnotation = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<AutomatedReasoningPolicyAddRuleAnnotation>;
 export interface AutomatedReasoningPolicyUpdateRuleAnnotation {
   ruleId: string;
   expression: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyUpdateRuleAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ruleId: S.String, expression: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyUpdateRuleAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyUpdateRuleAnnotation>;
+const AutomatedReasoningPolicyUpdateRuleAnnotation = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<AutomatedReasoningPolicyUpdateRuleAnnotation>;
 export interface AutomatedReasoningPolicyDeleteRuleAnnotation {
   ruleId: string;
 }
-const AutomatedReasoningPolicyDeleteRuleAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ruleId: S.String }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDeleteRuleAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyDeleteRuleAnnotation>;
+const AutomatedReasoningPolicyDeleteRuleAnnotation = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<AutomatedReasoningPolicyDeleteRuleAnnotation>;
 export type AutomatedReasoningPolicyAnnotationRuleNaturalLanguage =
   | string
   | redacted.Redacted<string>;
 export interface AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation {
   naturalLanguage: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ naturalLanguage: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation>;
+const AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation>;
 export type AutomatedReasoningPolicyDefinitionRuleIdList = string[];
 const AutomatedReasoningPolicyDefinitionRuleIdList =
   AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyDefinitionRuleIdList>;
@@ -3378,38 +2348,28 @@ export interface AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation {
   ruleIds?: string[];
   feedback: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleIds: S.optional(AutomatedReasoningPolicyDefinitionRuleIdList),
-    feedback: SensitiveString,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation>;
+const AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation>;
 export type AutomatedReasoningPolicyScenarioExpression = string | redacted.Redacted<string>;
 export interface AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation {
   ruleIds?: string[];
   scenarioExpression: string | redacted.Redacted<string>;
   feedback?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleIds: S.optional(AutomatedReasoningPolicyDefinitionRuleIdList),
-    scenarioExpression: SensitiveString,
-    feedback: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation>;
+const AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation>;
 export type AutomatedReasoningPolicyAnnotationIngestContent = string | redacted.Redacted<string>;
 export interface AutomatedReasoningPolicyIngestContentAnnotation {
   content: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyIngestContentAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ content: SensitiveString }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyIngestContentAnnotation",
-}) as any as S.Schema<AutomatedReasoningPolicyIngestContentAnnotation>;
+const AutomatedReasoningPolicyIngestContentAnnotation = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<AutomatedReasoningPolicyIngestContentAnnotation>;
 export type AutomatedReasoningPolicyAnnotation =
   | {
       addType: AutomatedReasoningPolicyAddTypeAnnotation;
@@ -3606,31 +2566,9 @@ export type AutomatedReasoningPolicyAnnotation =
       updateFromScenarioFeedback?: never;
       ingestContent: AutomatedReasoningPolicyIngestContentAnnotation;
     };
-const AutomatedReasoningPolicyAnnotation = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ addType: AutomatedReasoningPolicyAddTypeAnnotation }),
-  /*@__PURE__*/ S.Struct({ updateType: AutomatedReasoningPolicyUpdateTypeAnnotation }),
-  /*@__PURE__*/ S.Struct({ deleteType: AutomatedReasoningPolicyDeleteTypeAnnotation }),
-  /*@__PURE__*/ S.Struct({ addVariable: AutomatedReasoningPolicyAddVariableAnnotation }),
-  /*@__PURE__*/ S.Struct({ updateVariable: AutomatedReasoningPolicyUpdateVariableAnnotation }),
-  /*@__PURE__*/ S.Struct({ deleteVariable: AutomatedReasoningPolicyDeleteVariableAnnotation }),
-  /*@__PURE__*/ S.Struct({ addRule: AutomatedReasoningPolicyAddRuleAnnotation }),
-  /*@__PURE__*/ S.Struct({ updateRule: AutomatedReasoningPolicyUpdateRuleAnnotation }),
-  /*@__PURE__*/ S.Struct({ deleteRule: AutomatedReasoningPolicyDeleteRuleAnnotation }),
-  /*@__PURE__*/ S.Struct({
-    addRuleFromNaturalLanguage: AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation,
-  }),
-  /*@__PURE__*/ S.Struct({
-    updateFromRulesFeedback: AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation,
-  }),
-  /*@__PURE__*/ S.Struct({
-    updateFromScenarioFeedback: AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation,
-  }),
-  /*@__PURE__*/ S.Struct({ ingestContent: AutomatedReasoningPolicyIngestContentAnnotation }),
-]);
+const AutomatedReasoningPolicyAnnotation = /*@__PURE__*/ __L.at(__c28, 0);
 export type AutomatedReasoningPolicyAnnotationList = AutomatedReasoningPolicyAnnotation[];
-const AutomatedReasoningPolicyAnnotationList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyAnnotation,
-);
+const AutomatedReasoningPolicyAnnotationList = /*@__PURE__*/ __L.at(__c28, 1);
 export interface GetAutomatedReasoningPolicyAnnotationsResponse {
   policyArn: string;
   name: string | redacted.Redacted<string>;
@@ -3639,42 +2577,18 @@ export interface GetAutomatedReasoningPolicyAnnotationsResponse {
   annotationSetHash: string;
   updatedAt: Date;
 }
-const GetAutomatedReasoningPolicyAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    name: SensitiveString,
-    buildWorkflowId: S.String,
-    annotations: AutomatedReasoningPolicyAnnotationList,
-    annotationSetHash: S.String,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyAnnotationsResponse",
-}) as any as S.Schema<GetAutomatedReasoningPolicyAnnotationsResponse>;
+const GetAutomatedReasoningPolicyAnnotationsResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<GetAutomatedReasoningPolicyAnnotationsResponse>;
 export interface GetAutomatedReasoningPolicyBuildWorkflowRequest {
   policyArn: string;
   buildWorkflowId: string;
 }
-const GetAutomatedReasoningPolicyBuildWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyBuildWorkflowRequest",
-}) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowRequest>;
+const GetAutomatedReasoningPolicyBuildWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowRequest>;
 export type AutomatedReasoningPolicyBuildWorkflowStatus =
   | "SCHEDULED"
   | "CANCEL_REQUESTED"
@@ -3714,21 +2628,10 @@ export interface GetAutomatedReasoningPolicyBuildWorkflowResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-const GetAutomatedReasoningPolicyBuildWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    buildWorkflowId: S.String,
-    status: AutomatedReasoningPolicyBuildWorkflowStatus,
-    buildWorkflowType: AutomatedReasoningPolicyBuildWorkflowType,
-    documentName: S.optional(SensitiveString),
-    documentContentType: S.optional(AutomatedReasoningPolicyBuildDocumentContentType),
-    documentDescription: S.optional(SensitiveString),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyBuildWorkflowResponse",
-}) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResponse>;
+const GetAutomatedReasoningPolicyBuildWorkflowResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResponse>;
 export type AutomatedReasoningPolicyBuildResultAssetType =
   | "BUILD_LOG"
   | "QUALITY_REPORT"
@@ -3748,28 +2651,10 @@ export interface GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest {
   assetType: AutomatedReasoningPolicyBuildResultAssetType;
   assetId?: string;
 }
-const GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-    assetType: AutomatedReasoningPolicyBuildResultAssetType.pipe(T.HttpQuery("assetType")),
-    assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/result-assets",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest",
-}) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest>;
+const GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest>;
 export type AutomatedReasoningPolicyDefinitionTypeNameList = (string | redacted.Redacted<string>)[];
 const AutomatedReasoningPolicyDefinitionTypeNameList =
   EvaluationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyDefinitionTypeNameList>;
@@ -3777,16 +2662,13 @@ export interface AutomatedReasoningPolicyDefinitionTypeValuePair {
   typeName: string | redacted.Redacted<string>;
   valueName: string;
 }
-const AutomatedReasoningPolicyDefinitionTypeValuePair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ typeName: SensitiveString, valueName: S.String }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDefinitionTypeValuePair",
-}) as any as S.Schema<AutomatedReasoningPolicyDefinitionTypeValuePair>;
+const AutomatedReasoningPolicyDefinitionTypeValuePair = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<AutomatedReasoningPolicyDefinitionTypeValuePair>;
 export type AutomatedReasoningPolicyDefinitionTypeValuePairList =
   AutomatedReasoningPolicyDefinitionTypeValuePair[];
-const AutomatedReasoningPolicyDefinitionTypeValuePairList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyDefinitionTypeValuePair,
-);
+const AutomatedReasoningPolicyDefinitionTypeValuePairList = /*@__PURE__*/ __L.at(__c28, 7);
 export type AutomatedReasoningPolicyDefinitionVariableNameList = (
   | string
   | redacted.Redacted<string>
@@ -3803,18 +2685,12 @@ export interface AutomatedReasoningPolicyDisjointRuleSet {
   variables: (string | redacted.Redacted<string>)[];
   rules: string[];
 }
-const AutomatedReasoningPolicyDisjointRuleSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variables: AutomatedReasoningPolicyDefinitionVariableNameList,
-    rules: AutomatedReasoningPolicyDisjointedRuleIdList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDisjointRuleSet",
-}) as any as S.Schema<AutomatedReasoningPolicyDisjointRuleSet>;
+const AutomatedReasoningPolicyDisjointRuleSet = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<AutomatedReasoningPolicyDisjointRuleSet>;
 export type AutomatedReasoningPolicyDisjointRuleSetList = AutomatedReasoningPolicyDisjointRuleSet[];
-const AutomatedReasoningPolicyDisjointRuleSetList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyDisjointRuleSet,
-);
+const AutomatedReasoningPolicyDisjointRuleSetList = /*@__PURE__*/ __L.at(__c29, 1);
 export interface AutomatedReasoningPolicyDefinitionQualityReport {
   typeCount: number;
   variableCount: number;
@@ -3825,20 +2701,10 @@ export interface AutomatedReasoningPolicyDefinitionQualityReport {
   conflictingRules: string[];
   disjointRuleSets: AutomatedReasoningPolicyDisjointRuleSet[];
 }
-const AutomatedReasoningPolicyDefinitionQualityReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    typeCount: S.Number,
-    variableCount: S.Number,
-    ruleCount: S.Number,
-    unusedTypes: AutomatedReasoningPolicyDefinitionTypeNameList,
-    unusedTypeValues: AutomatedReasoningPolicyDefinitionTypeValuePairList,
-    unusedVariables: AutomatedReasoningPolicyDefinitionVariableNameList,
-    conflictingRules: AutomatedReasoningPolicyConflictedRuleIdList,
-    disjointRuleSets: AutomatedReasoningPolicyDisjointRuleSetList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDefinitionQualityReport",
-}) as any as S.Schema<AutomatedReasoningPolicyDefinitionQualityReport>;
+const AutomatedReasoningPolicyDefinitionQualityReport = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<AutomatedReasoningPolicyDefinitionQualityReport>;
 export type AutomatedReasoningPolicyAnnotationStatus = "APPLIED" | "FAILED" | (string & {});
 const AutomatedReasoningPolicyAnnotationStatus = S.String;
 
@@ -3848,11 +2714,10 @@ const AutomatedReasoningPolicyPlanning =
 export interface AutomatedReasoningPolicyAddTypeMutation {
   type: AutomatedReasoningPolicyDefinitionType;
 }
-const AutomatedReasoningPolicyAddTypeMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: AutomatedReasoningPolicyDefinitionType }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAddTypeMutation",
-}) as any as S.Schema<AutomatedReasoningPolicyAddTypeMutation>;
+const AutomatedReasoningPolicyAddTypeMutation = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<AutomatedReasoningPolicyAddTypeMutation>;
 export interface AutomatedReasoningPolicyUpdateTypeMutation {
   type: AutomatedReasoningPolicyDefinitionType;
 }
@@ -3866,11 +2731,10 @@ const AutomatedReasoningPolicyDeleteTypeMutation =
 export interface AutomatedReasoningPolicyAddVariableMutation {
   variable: AutomatedReasoningPolicyDefinitionVariable;
 }
-const AutomatedReasoningPolicyAddVariableMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ variable: AutomatedReasoningPolicyDefinitionVariable }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAddVariableMutation",
-}) as any as S.Schema<AutomatedReasoningPolicyAddVariableMutation>;
+const AutomatedReasoningPolicyAddVariableMutation = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<AutomatedReasoningPolicyAddVariableMutation>;
 export interface AutomatedReasoningPolicyUpdateVariableMutation {
   variable: AutomatedReasoningPolicyDefinitionVariable;
 }
@@ -3884,11 +2748,10 @@ const AutomatedReasoningPolicyDeleteVariableMutation =
 export interface AutomatedReasoningPolicyAddRuleMutation {
   rule: AutomatedReasoningPolicyDefinitionRule;
 }
-const AutomatedReasoningPolicyAddRuleMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ rule: AutomatedReasoningPolicyDefinitionRule }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAddRuleMutation",
-}) as any as S.Schema<AutomatedReasoningPolicyAddRuleMutation>;
+const AutomatedReasoningPolicyAddRuleMutation = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<AutomatedReasoningPolicyAddRuleMutation>;
 export interface AutomatedReasoningPolicyUpdateRuleMutation {
   rule: AutomatedReasoningPolicyDefinitionRule;
 }
@@ -3897,11 +2760,10 @@ const AutomatedReasoningPolicyUpdateRuleMutation =
 export interface AutomatedReasoningPolicyDeleteRuleMutation {
   id: string;
 }
-const AutomatedReasoningPolicyDeleteRuleMutation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyDeleteRuleMutation",
-}) as any as S.Schema<AutomatedReasoningPolicyDeleteRuleMutation>;
+const AutomatedReasoningPolicyDeleteRuleMutation = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<AutomatedReasoningPolicyDeleteRuleMutation>;
 export type AutomatedReasoningPolicyMutation =
   | {
       addType: AutomatedReasoningPolicyAddTypeMutation;
@@ -4002,24 +2864,11 @@ export type AutomatedReasoningPolicyMutation =
       updateRule?: never;
       deleteRule: AutomatedReasoningPolicyDeleteRuleMutation;
     };
-const AutomatedReasoningPolicyMutation = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ addType: AutomatedReasoningPolicyAddTypeMutation }),
-  /*@__PURE__*/ S.Struct({ updateType: AutomatedReasoningPolicyUpdateTypeMutation }),
-  /*@__PURE__*/ S.Struct({ deleteType: AutomatedReasoningPolicyDeleteTypeMutation }),
-  /*@__PURE__*/ S.Struct({ addVariable: AutomatedReasoningPolicyAddVariableMutation }),
-  /*@__PURE__*/ S.Struct({ updateVariable: AutomatedReasoningPolicyUpdateVariableMutation }),
-  /*@__PURE__*/ S.Struct({ deleteVariable: AutomatedReasoningPolicyDeleteVariableMutation }),
-  /*@__PURE__*/ S.Struct({ addRule: AutomatedReasoningPolicyAddRuleMutation }),
-  /*@__PURE__*/ S.Struct({ updateRule: AutomatedReasoningPolicyUpdateRuleMutation }),
-  /*@__PURE__*/ S.Struct({ deleteRule: AutomatedReasoningPolicyDeleteRuleMutation }),
-]);
+const AutomatedReasoningPolicyMutation = /*@__PURE__*/ __L.at(__c29, 7);
 export type AutomatedReasoningPolicyBuildStepContext =
   | { planning: AutomatedReasoningPolicyPlanning; mutation?: never }
   | { planning?: never; mutation: AutomatedReasoningPolicyMutation };
-const AutomatedReasoningPolicyBuildStepContext = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ planning: AutomatedReasoningPolicyPlanning }),
-  /*@__PURE__*/ S.Struct({ mutation: AutomatedReasoningPolicyMutation }),
-]);
+const AutomatedReasoningPolicyBuildStepContext = /*@__PURE__*/ __L.at(__c30, 0);
 export type AutomatedReasoningPolicyDefinitionElement =
   | {
       policyDefinitionVariable: AutomatedReasoningPolicyDefinitionVariable;
@@ -4036,11 +2885,7 @@ export type AutomatedReasoningPolicyDefinitionElement =
       policyDefinitionType?: never;
       policyDefinitionRule: AutomatedReasoningPolicyDefinitionRule;
     };
-const AutomatedReasoningPolicyDefinitionElement = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ policyDefinitionVariable: AutomatedReasoningPolicyDefinitionVariable }),
-  /*@__PURE__*/ S.Struct({ policyDefinitionType: AutomatedReasoningPolicyDefinitionType }),
-  /*@__PURE__*/ S.Struct({ policyDefinitionRule: AutomatedReasoningPolicyDefinitionRule }),
-]);
+const AutomatedReasoningPolicyDefinitionElement = /*@__PURE__*/ __L.at(__c30, 1);
 export type AutomatedReasoningPolicyBuildMessageType = "INFO" | "WARNING" | "ERROR" | (string & {});
 const AutomatedReasoningPolicyBuildMessageType = S.String;
 
@@ -4048,87 +2893,61 @@ export interface AutomatedReasoningPolicyBuildStepMessage {
   message: string;
   messageType: AutomatedReasoningPolicyBuildMessageType;
 }
-const AutomatedReasoningPolicyBuildStepMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.String, messageType: AutomatedReasoningPolicyBuildMessageType }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildStepMessage",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildStepMessage>;
+const AutomatedReasoningPolicyBuildStepMessage = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<AutomatedReasoningPolicyBuildStepMessage>;
 export type AutomatedReasoningPolicyBuildStepMessageList =
   AutomatedReasoningPolicyBuildStepMessage[];
-const AutomatedReasoningPolicyBuildStepMessageList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyBuildStepMessage,
-);
+const AutomatedReasoningPolicyBuildStepMessageList = /*@__PURE__*/ __L.at(__c30, 3);
 export interface AutomatedReasoningPolicyBuildStep {
   context: AutomatedReasoningPolicyBuildStepContext;
   priorElement?: AutomatedReasoningPolicyDefinitionElement;
   messages: AutomatedReasoningPolicyBuildStepMessage[];
 }
-const AutomatedReasoningPolicyBuildStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    context: AutomatedReasoningPolicyBuildStepContext,
-    priorElement: S.optional(AutomatedReasoningPolicyDefinitionElement),
-    messages: AutomatedReasoningPolicyBuildStepMessageList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildStep",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildStep>;
+const AutomatedReasoningPolicyBuildStep = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<AutomatedReasoningPolicyBuildStep>;
 export type AutomatedReasoningPolicyBuildStepList = AutomatedReasoningPolicyBuildStep[];
-const AutomatedReasoningPolicyBuildStepList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyBuildStep,
-);
+const AutomatedReasoningPolicyBuildStepList = /*@__PURE__*/ __L.at(__c30, 5);
 export interface AutomatedReasoningPolicyBuildLogEntry {
   annotation: AutomatedReasoningPolicyAnnotation;
   status: AutomatedReasoningPolicyAnnotationStatus;
   buildSteps: AutomatedReasoningPolicyBuildStep[];
 }
-const AutomatedReasoningPolicyBuildLogEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    annotation: AutomatedReasoningPolicyAnnotation,
-    status: AutomatedReasoningPolicyAnnotationStatus,
-    buildSteps: AutomatedReasoningPolicyBuildStepList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildLogEntry",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildLogEntry>;
+const AutomatedReasoningPolicyBuildLogEntry = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<AutomatedReasoningPolicyBuildLogEntry>;
 export type AutomatedReasoningPolicyBuildLogEntryList = AutomatedReasoningPolicyBuildLogEntry[];
-const AutomatedReasoningPolicyBuildLogEntryList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyBuildLogEntry,
-);
+const AutomatedReasoningPolicyBuildLogEntryList = /*@__PURE__*/ __L.at(__c30, 7);
 export interface AutomatedReasoningPolicyBuildLog {
   entries: AutomatedReasoningPolicyBuildLogEntry[];
 }
-const AutomatedReasoningPolicyBuildLog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entries: AutomatedReasoningPolicyBuildLogEntryList }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildLog",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildLog>;
+const AutomatedReasoningPolicyBuildLog = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<AutomatedReasoningPolicyBuildLog>;
 export interface AutomatedReasoningPolicyGeneratedTestCase {
   queryContent: string | redacted.Redacted<string>;
   guardContent: string | redacted.Redacted<string>;
   expectedAggregatedFindingsResult: AutomatedReasoningCheckResult;
 }
-const AutomatedReasoningPolicyGeneratedTestCase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queryContent: SensitiveString,
-    guardContent: SensitiveString,
-    expectedAggregatedFindingsResult: AutomatedReasoningCheckResult,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyGeneratedTestCase",
-}) as any as S.Schema<AutomatedReasoningPolicyGeneratedTestCase>;
+const AutomatedReasoningPolicyGeneratedTestCase = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<AutomatedReasoningPolicyGeneratedTestCase>;
 export type AutomatedReasoningPolicyGeneratedTestCaseList =
   AutomatedReasoningPolicyGeneratedTestCase[];
-const AutomatedReasoningPolicyGeneratedTestCaseList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyGeneratedTestCase,
-);
+const AutomatedReasoningPolicyGeneratedTestCaseList = /*@__PURE__*/ __L.at(__c31, 2);
 export interface AutomatedReasoningPolicyGeneratedTestCases {
   generatedTestCases: AutomatedReasoningPolicyGeneratedTestCase[];
 }
-const AutomatedReasoningPolicyGeneratedTestCases = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ generatedTestCases: AutomatedReasoningPolicyGeneratedTestCaseList }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyGeneratedTestCases",
-}) as any as S.Schema<AutomatedReasoningPolicyGeneratedTestCases>;
+const AutomatedReasoningPolicyGeneratedTestCases = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<AutomatedReasoningPolicyGeneratedTestCases>;
 export type AutomatedReasoningPolicyScenarioAlternateExpression =
   | string
   | redacted.Redacted<string>;
@@ -4138,56 +2957,39 @@ export interface AutomatedReasoningPolicyScenario {
   expectedResult: AutomatedReasoningCheckResult;
   ruleIds: string[];
 }
-const AutomatedReasoningPolicyScenario = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: SensitiveString,
-    alternateExpression: SensitiveString,
-    expectedResult: AutomatedReasoningCheckResult,
-    ruleIds: AutomatedReasoningPolicyDefinitionRuleIdList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyScenario",
-}) as any as S.Schema<AutomatedReasoningPolicyScenario>;
+const AutomatedReasoningPolicyScenario = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<AutomatedReasoningPolicyScenario>;
 export type AutomatedReasoningPolicyScenarioList = AutomatedReasoningPolicyScenario[];
-const AutomatedReasoningPolicyScenarioList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyScenario,
-);
+const AutomatedReasoningPolicyScenarioList = /*@__PURE__*/ __L.at(__c31, 5);
 export interface AutomatedReasoningPolicyScenarios {
   policyScenarios: AutomatedReasoningPolicyScenario[];
 }
-const AutomatedReasoningPolicyScenarios = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyScenarios: AutomatedReasoningPolicyScenarioList }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyScenarios",
-}) as any as S.Schema<AutomatedReasoningPolicyScenarios>;
+const AutomatedReasoningPolicyScenarios = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<AutomatedReasoningPolicyScenarios>;
 export type AutomatedReasoningPolicyBuildResultAssetName = string | redacted.Redacted<string>;
 export interface AutomatedReasoningPolicyBuildResultAssetManifestEntry {
   assetType: AutomatedReasoningPolicyBuildResultAssetType;
   assetName?: string | redacted.Redacted<string>;
   assetId?: string;
 }
-const AutomatedReasoningPolicyBuildResultAssetManifestEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assetType: AutomatedReasoningPolicyBuildResultAssetType,
-    assetName: S.optional(SensitiveString),
-    assetId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildResultAssetManifestEntry",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildResultAssetManifestEntry>;
+const AutomatedReasoningPolicyBuildResultAssetManifestEntry = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<AutomatedReasoningPolicyBuildResultAssetManifestEntry>;
 export type AutomatedReasoningPolicyBuildResultAssetManifestList =
   AutomatedReasoningPolicyBuildResultAssetManifestEntry[];
-const AutomatedReasoningPolicyBuildResultAssetManifestList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyBuildResultAssetManifestEntry,
-);
+const AutomatedReasoningPolicyBuildResultAssetManifestList = /*@__PURE__*/ __L.at(__c32, 0);
 export interface AutomatedReasoningPolicyBuildResultAssetManifest {
   entries: AutomatedReasoningPolicyBuildResultAssetManifestEntry[];
 }
-const AutomatedReasoningPolicyBuildResultAssetManifest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entries: AutomatedReasoningPolicyBuildResultAssetManifestList }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildResultAssetManifest",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildResultAssetManifest>;
+const AutomatedReasoningPolicyBuildResultAssetManifest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<AutomatedReasoningPolicyBuildResultAssetManifest>;
 export type AutomatedReasoningPolicyBuildDocumentBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export type AutomatedReasoningPolicyDocumentSha256 = string;
 export interface AutomatedReasoningPolicySourceDocument {
@@ -4197,17 +2999,10 @@ export interface AutomatedReasoningPolicySourceDocument {
   documentDescription?: string | redacted.Redacted<string>;
   documentHash: string;
 }
-const AutomatedReasoningPolicySourceDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: SensitiveBlob,
-    documentContentType: AutomatedReasoningPolicyBuildDocumentContentType,
-    documentName: SensitiveString,
-    documentDescription: S.optional(SensitiveString),
-    documentHash: S.String,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicySourceDocument",
-}) as any as S.Schema<AutomatedReasoningPolicySourceDocument>;
+const AutomatedReasoningPolicySourceDocument = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<AutomatedReasoningPolicySourceDocument>;
 export type AutomatedReasoningPolicyCoverageScore = number;
 export type AutomatedReasoningPolicyAccuracyScore = number;
 export type AutomatedReasoningPolicyDocumentId = string;
@@ -4216,16 +3011,13 @@ export interface AutomatedReasoningPolicyStatementReference {
   documentId: string;
   statementId: string;
 }
-const AutomatedReasoningPolicyStatementReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ documentId: S.String, statementId: S.String }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyStatementReference",
-}) as any as S.Schema<AutomatedReasoningPolicyStatementReference>;
+const AutomatedReasoningPolicyStatementReference = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<AutomatedReasoningPolicyStatementReference>;
 export type AutomatedReasoningPolicyStatementReferenceList =
   AutomatedReasoningPolicyStatementReference[];
-const AutomatedReasoningPolicyStatementReferenceList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyStatementReference,
-);
+const AutomatedReasoningPolicyStatementReferenceList = /*@__PURE__*/ __L.at(__c32, 4);
 export type AutomatedReasoningPolicyJustificationText = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyJustificationList = (string | redacted.Redacted<string>)[];
 const AutomatedReasoningPolicyJustificationList =
@@ -4237,24 +3029,14 @@ export interface AutomatedReasoningPolicyRuleReport {
   accuracyScore?: number;
   accuracyJustification?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyRuleReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rule: S.String,
-    groundingStatements: S.optional(AutomatedReasoningPolicyStatementReferenceList),
-    groundingJustifications: S.optional(AutomatedReasoningPolicyJustificationList),
-    accuracyScore: S.optional(S.Number),
-    accuracyJustification: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyRuleReport",
-}) as any as S.Schema<AutomatedReasoningPolicyRuleReport>;
+const AutomatedReasoningPolicyRuleReport = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<AutomatedReasoningPolicyRuleReport>;
 export type AutomatedReasoningPolicyRuleReportMap = {
   [key: string]: AutomatedReasoningPolicyRuleReport | undefined;
 };
-const AutomatedReasoningPolicyRuleReportMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ AutomatedReasoningPolicyRuleReport.pipe(S.optional),
-);
+const AutomatedReasoningPolicyRuleReportMap = /*@__PURE__*/ __L.at(__c32, 6);
 export interface AutomatedReasoningPolicyVariableReport {
   policyVariable: string | redacted.Redacted<string>;
   groundingStatements?: AutomatedReasoningPolicyStatementReference[];
@@ -4262,90 +3044,61 @@ export interface AutomatedReasoningPolicyVariableReport {
   accuracyScore?: number;
   accuracyJustification?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyVariableReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyVariable: SensitiveString,
-    groundingStatements: S.optional(AutomatedReasoningPolicyStatementReferenceList),
-    groundingJustifications: S.optional(AutomatedReasoningPolicyJustificationList),
-    accuracyScore: S.optional(S.Number),
-    accuracyJustification: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyVariableReport",
-}) as any as S.Schema<AutomatedReasoningPolicyVariableReport>;
+const AutomatedReasoningPolicyVariableReport = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<AutomatedReasoningPolicyVariableReport>;
 export type AutomatedReasoningPolicyVariableReportMap = {
   [key: string]: AutomatedReasoningPolicyVariableReport | undefined;
 };
-const AutomatedReasoningPolicyVariableReportMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ AutomatedReasoningPolicyVariableReport.pipe(S.optional),
-);
+const AutomatedReasoningPolicyVariableReportMap = /*@__PURE__*/ __L.at(__c33, 0);
 export type AutomatedReasoningPolicyStatementText = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyLineNumberList = number[];
-const AutomatedReasoningPolicyLineNumberList = /*@__PURE__*/ S.Array(S.Number);
+const AutomatedReasoningPolicyLineNumberList = /*@__PURE__*/ __L.at(__c33, 1);
 export interface AutomatedReasoningPolicyStatementLocation {
   lines: number[];
 }
-const AutomatedReasoningPolicyStatementLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lines: AutomatedReasoningPolicyLineNumberList }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyStatementLocation",
-}) as any as S.Schema<AutomatedReasoningPolicyStatementLocation>;
+const AutomatedReasoningPolicyStatementLocation = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<AutomatedReasoningPolicyStatementLocation>;
 export interface AutomatedReasoningPolicyAtomicStatement {
   id: string;
   text: string | redacted.Redacted<string>;
   location: AutomatedReasoningPolicyStatementLocation;
 }
-const AutomatedReasoningPolicyAtomicStatement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    text: SensitiveString,
-    location: AutomatedReasoningPolicyStatementLocation,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAtomicStatement",
-}) as any as S.Schema<AutomatedReasoningPolicyAtomicStatement>;
+const AutomatedReasoningPolicyAtomicStatement = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<AutomatedReasoningPolicyAtomicStatement>;
 export type AutomatedReasoningPolicyAtomicStatementList = AutomatedReasoningPolicyAtomicStatement[];
-const AutomatedReasoningPolicyAtomicStatementList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyAtomicStatement,
-);
+const AutomatedReasoningPolicyAtomicStatementList = /*@__PURE__*/ __L.at(__c33, 4);
 export type AutomatedReasoningPolicyLineText = string | redacted.Redacted<string>;
 export interface AutomatedReasoningPolicyAnnotatedLine {
   lineNumber?: number;
   lineText?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyAnnotatedLine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lineNumber: S.optional(S.Number), lineText: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAnnotatedLine",
-}) as any as S.Schema<AutomatedReasoningPolicyAnnotatedLine>;
+const AutomatedReasoningPolicyAnnotatedLine = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<AutomatedReasoningPolicyAnnotatedLine>;
 export type AutomatedReasoningPolicyAnnotatedContent = {
   line: AutomatedReasoningPolicyAnnotatedLine;
 };
-const AutomatedReasoningPolicyAnnotatedContent = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ line: AutomatedReasoningPolicyAnnotatedLine }),
-]);
+const AutomatedReasoningPolicyAnnotatedContent = /*@__PURE__*/ __L.at(__c33, 6);
 export type AutomatedReasoningPolicyAnnotatedContentList =
   AutomatedReasoningPolicyAnnotatedContent[];
-const AutomatedReasoningPolicyAnnotatedContentList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyAnnotatedContent,
-);
+const AutomatedReasoningPolicyAnnotatedContentList = /*@__PURE__*/ __L.at(__c33, 7);
 export interface AutomatedReasoningPolicyAnnotatedChunk {
   pageNumber?: number;
   content: AutomatedReasoningPolicyAnnotatedContent[];
 }
-const AutomatedReasoningPolicyAnnotatedChunk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageNumber: S.optional(S.Number),
-    content: AutomatedReasoningPolicyAnnotatedContentList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyAnnotatedChunk",
-}) as any as S.Schema<AutomatedReasoningPolicyAnnotatedChunk>;
+const AutomatedReasoningPolicyAnnotatedChunk = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<AutomatedReasoningPolicyAnnotatedChunk>;
 export type AutomatedReasoningPolicyAnnotatedChunkList = AutomatedReasoningPolicyAnnotatedChunk[];
-const AutomatedReasoningPolicyAnnotatedChunkList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyAnnotatedChunk,
-);
+const AutomatedReasoningPolicyAnnotatedChunkList = /*@__PURE__*/ __L.at(__c34, 1);
 export interface AutomatedReasoningPolicyReportSourceDocument {
   documentName: string | redacted.Redacted<string>;
   documentHash: string;
@@ -4353,22 +3106,13 @@ export interface AutomatedReasoningPolicyReportSourceDocument {
   atomicStatements: AutomatedReasoningPolicyAtomicStatement[];
   documentContent: AutomatedReasoningPolicyAnnotatedChunk[];
 }
-const AutomatedReasoningPolicyReportSourceDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentName: SensitiveString,
-    documentHash: S.String,
-    documentId: S.String,
-    atomicStatements: AutomatedReasoningPolicyAtomicStatementList,
-    documentContent: AutomatedReasoningPolicyAnnotatedChunkList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyReportSourceDocument",
-}) as any as S.Schema<AutomatedReasoningPolicyReportSourceDocument>;
+const AutomatedReasoningPolicyReportSourceDocument = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<AutomatedReasoningPolicyReportSourceDocument>;
 export type AutomatedReasoningPolicyReportSourceDocumentList =
   AutomatedReasoningPolicyReportSourceDocument[];
-const AutomatedReasoningPolicyReportSourceDocumentList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyReportSourceDocument,
-);
+const AutomatedReasoningPolicyReportSourceDocumentList = /*@__PURE__*/ __L.at(__c34, 3);
 export interface AutomatedReasoningPolicyFidelityReport {
   coverageScore: number;
   accuracyScore: number;
@@ -4376,17 +3120,10 @@ export interface AutomatedReasoningPolicyFidelityReport {
   variableReports: { [key: string]: AutomatedReasoningPolicyVariableReport | undefined };
   documentSources: AutomatedReasoningPolicyReportSourceDocument[];
 }
-const AutomatedReasoningPolicyFidelityReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coverageScore: S.Number,
-    accuracyScore: S.Number,
-    ruleReports: AutomatedReasoningPolicyRuleReportMap,
-    variableReports: AutomatedReasoningPolicyVariableReportMap,
-    documentSources: AutomatedReasoningPolicyReportSourceDocumentList,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyFidelityReport",
-}) as any as S.Schema<AutomatedReasoningPolicyFidelityReport>;
+const AutomatedReasoningPolicyFidelityReport = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<AutomatedReasoningPolicyFidelityReport>;
 export type AutomatedReasoningPolicyBuildResultAssets =
   | {
       policyDefinition: AutomatedReasoningPolicyDefinition;
@@ -4468,87 +3205,40 @@ export type AutomatedReasoningPolicyBuildResultAssets =
       document?: never;
       fidelityReport: AutomatedReasoningPolicyFidelityReport;
     };
-const AutomatedReasoningPolicyBuildResultAssets = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ policyDefinition: AutomatedReasoningPolicyDefinition }),
-  /*@__PURE__*/ S.Struct({ qualityReport: AutomatedReasoningPolicyDefinitionQualityReport }),
-  /*@__PURE__*/ S.Struct({ buildLog: AutomatedReasoningPolicyBuildLog }),
-  /*@__PURE__*/ S.Struct({ generatedTestCases: AutomatedReasoningPolicyGeneratedTestCases }),
-  /*@__PURE__*/ S.Struct({ policyScenarios: AutomatedReasoningPolicyScenarios }),
-  /*@__PURE__*/ S.Struct({ assetManifest: AutomatedReasoningPolicyBuildResultAssetManifest }),
-  /*@__PURE__*/ S.Struct({ document: AutomatedReasoningPolicySourceDocument }),
-  /*@__PURE__*/ S.Struct({ fidelityReport: AutomatedReasoningPolicyFidelityReport }),
-]);
+const AutomatedReasoningPolicyBuildResultAssets = /*@__PURE__*/ __L.at(__c34, 5);
 export interface GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse {
   policyArn: string;
   buildWorkflowId: string;
   buildWorkflowAssets?: AutomatedReasoningPolicyBuildResultAssets;
 }
-const GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    buildWorkflowId: S.String,
-    buildWorkflowAssets: S.optional(AutomatedReasoningPolicyBuildResultAssets),
-  }),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse",
-}) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse>;
+const GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse>;
 export interface GetAutomatedReasoningPolicyNextScenarioRequest {
   policyArn: string;
   buildWorkflowId: string;
 }
-const GetAutomatedReasoningPolicyNextScenarioRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/scenarios",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyNextScenarioRequest",
-}) as any as S.Schema<GetAutomatedReasoningPolicyNextScenarioRequest>;
+const GetAutomatedReasoningPolicyNextScenarioRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GetAutomatedReasoningPolicyNextScenarioRequest>;
 export interface GetAutomatedReasoningPolicyNextScenarioResponse {
   policyArn: string;
   scenario?: AutomatedReasoningPolicyScenario;
 }
-const GetAutomatedReasoningPolicyNextScenarioResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyArn: S.String, scenario: S.optional(AutomatedReasoningPolicyScenario) }),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyNextScenarioResponse",
-}) as any as S.Schema<GetAutomatedReasoningPolicyNextScenarioResponse>;
+const GetAutomatedReasoningPolicyNextScenarioResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<GetAutomatedReasoningPolicyNextScenarioResponse>;
 export interface GetAutomatedReasoningPolicyTestCaseRequest {
   policyArn: string;
   testCaseId: string;
 }
-const GetAutomatedReasoningPolicyTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    testCaseId: S.String.pipe(T.HttpLabel("testCaseId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/automated-reasoning-policies/{policyArn}/test-cases/{testCaseId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyTestCaseRequest",
-}) as any as S.Schema<GetAutomatedReasoningPolicyTestCaseRequest>;
+const GetAutomatedReasoningPolicyTestCaseRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<GetAutomatedReasoningPolicyTestCaseRequest>;
 export interface AutomatedReasoningPolicyTestCase {
   testCaseId: string;
   guardContent: string | redacted.Redacted<string>;
@@ -4558,54 +3248,27 @@ export interface AutomatedReasoningPolicyTestCase {
   updatedAt: Date;
   confidenceThreshold?: number;
 }
-const AutomatedReasoningPolicyTestCase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    testCaseId: S.String,
-    guardContent: SensitiveString,
-    queryContent: S.optional(SensitiveString),
-    expectedAggregatedFindingsResult: S.optional(AutomatedReasoningCheckResult),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    confidenceThreshold: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyTestCase",
-}) as any as S.Schema<AutomatedReasoningPolicyTestCase>;
+const AutomatedReasoningPolicyTestCase = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<AutomatedReasoningPolicyTestCase>;
 export interface GetAutomatedReasoningPolicyTestCaseResponse {
   policyArn: string;
   testCase: AutomatedReasoningPolicyTestCase;
 }
-const GetAutomatedReasoningPolicyTestCaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyArn: S.String, testCase: AutomatedReasoningPolicyTestCase }),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyTestCaseResponse",
-}) as any as S.Schema<GetAutomatedReasoningPolicyTestCaseResponse>;
+const GetAutomatedReasoningPolicyTestCaseResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<GetAutomatedReasoningPolicyTestCaseResponse>;
 export interface GetAutomatedReasoningPolicyTestResultRequest {
   policyArn: string;
   buildWorkflowId: string;
   testCaseId: string;
 }
-const GetAutomatedReasoningPolicyTestResultRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-    testCaseId: S.String.pipe(T.HttpLabel("testCaseId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/test-cases/{testCaseId}/test-results",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyTestResultRequest",
-}) as any as S.Schema<GetAutomatedReasoningPolicyTestResultRequest>;
+const GetAutomatedReasoningPolicyTestResultRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<GetAutomatedReasoningPolicyTestResultRequest>;
 export type AutomatedReasoningPolicyTestRunStatus =
   | "NOT_STARTED"
   | "SCHEDULED"
@@ -4621,28 +3284,22 @@ export interface AutomatedReasoningLogicStatement {
   logic: string | redacted.Redacted<string>;
   naturalLanguage?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningLogicStatement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ logic: SensitiveString, naturalLanguage: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "AutomatedReasoningLogicStatement",
-}) as any as S.Schema<AutomatedReasoningLogicStatement>;
+const AutomatedReasoningLogicStatement = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<AutomatedReasoningLogicStatement>;
 export type AutomatedReasoningLogicStatementList = AutomatedReasoningLogicStatement[];
-const AutomatedReasoningLogicStatementList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningLogicStatement,
-);
+const AutomatedReasoningLogicStatementList = /*@__PURE__*/ __L.at(__c35, 6);
 export interface AutomatedReasoningCheckInputTextReference {
   text?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningCheckInputTextReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ text: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "AutomatedReasoningCheckInputTextReference",
-}) as any as S.Schema<AutomatedReasoningCheckInputTextReference>;
+const AutomatedReasoningCheckInputTextReference = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<AutomatedReasoningCheckInputTextReference>;
 export type AutomatedReasoningCheckInputTextReferenceList =
   AutomatedReasoningCheckInputTextReference[];
-const AutomatedReasoningCheckInputTextReferenceList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningCheckInputTextReference,
-);
+const AutomatedReasoningCheckInputTextReferenceList = /*@__PURE__*/ __L.at(__c36, 0);
 export interface AutomatedReasoningCheckTranslation {
   premises?: AutomatedReasoningLogicStatement[];
   claims: AutomatedReasoningLogicStatement[];
@@ -4650,36 +3307,27 @@ export interface AutomatedReasoningCheckTranslation {
   untranslatedClaims?: AutomatedReasoningCheckInputTextReference[];
   confidence: number;
 }
-const AutomatedReasoningCheckTranslation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    premises: S.optional(AutomatedReasoningLogicStatementList),
-    claims: AutomatedReasoningLogicStatementList,
-    untranslatedPremises: S.optional(AutomatedReasoningCheckInputTextReferenceList),
-    untranslatedClaims: S.optional(AutomatedReasoningCheckInputTextReferenceList),
-    confidence: S.Number,
-  }),
-).annotate({
-  identifier: "AutomatedReasoningCheckTranslation",
-}) as any as S.Schema<AutomatedReasoningCheckTranslation>;
+const AutomatedReasoningCheckTranslation = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<AutomatedReasoningCheckTranslation>;
 export interface AutomatedReasoningCheckScenario {
   statements?: AutomatedReasoningLogicStatement[];
 }
-const AutomatedReasoningCheckScenario = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statements: S.optional(AutomatedReasoningLogicStatementList) }),
-).annotate({
-  identifier: "AutomatedReasoningCheckScenario",
-}) as any as S.Schema<AutomatedReasoningCheckScenario>;
+const AutomatedReasoningCheckScenario = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<AutomatedReasoningCheckScenario>;
 export interface AutomatedReasoningCheckRule {
   id?: string;
   policyVersionArn?: string;
 }
-const AutomatedReasoningCheckRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), policyVersionArn: S.optional(S.String) }),
-).annotate({
-  identifier: "AutomatedReasoningCheckRule",
-}) as any as S.Schema<AutomatedReasoningCheckRule>;
+const AutomatedReasoningCheckRule = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<AutomatedReasoningCheckRule>;
 export type AutomatedReasoningCheckRuleList = AutomatedReasoningCheckRule[];
-const AutomatedReasoningCheckRuleList = /*@__PURE__*/ S.Array(AutomatedReasoningCheckRule);
+const AutomatedReasoningCheckRuleList = /*@__PURE__*/ __L.at(__c36, 4);
 export type AutomatedReasoningCheckLogicWarningType =
   | "ALWAYS_TRUE"
   | "ALWAYS_FALSE"
@@ -4691,61 +3339,39 @@ export interface AutomatedReasoningCheckLogicWarning {
   premises?: AutomatedReasoningLogicStatement[];
   claims?: AutomatedReasoningLogicStatement[];
 }
-const AutomatedReasoningCheckLogicWarning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AutomatedReasoningCheckLogicWarningType),
-    premises: S.optional(AutomatedReasoningLogicStatementList),
-    claims: S.optional(AutomatedReasoningLogicStatementList),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningCheckLogicWarning",
-}) as any as S.Schema<AutomatedReasoningCheckLogicWarning>;
+const AutomatedReasoningCheckLogicWarning = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<AutomatedReasoningCheckLogicWarning>;
 export interface AutomatedReasoningCheckValidFinding {
   translation?: AutomatedReasoningCheckTranslation;
   claimsTrueScenario?: AutomatedReasoningCheckScenario;
   supportingRules?: AutomatedReasoningCheckRule[];
   logicWarning?: AutomatedReasoningCheckLogicWarning;
 }
-const AutomatedReasoningCheckValidFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    translation: S.optional(AutomatedReasoningCheckTranslation),
-    claimsTrueScenario: S.optional(AutomatedReasoningCheckScenario),
-    supportingRules: S.optional(AutomatedReasoningCheckRuleList),
-    logicWarning: S.optional(AutomatedReasoningCheckLogicWarning),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningCheckValidFinding",
-}) as any as S.Schema<AutomatedReasoningCheckValidFinding>;
+const AutomatedReasoningCheckValidFinding = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<AutomatedReasoningCheckValidFinding>;
 export interface AutomatedReasoningCheckInvalidFinding {
   translation?: AutomatedReasoningCheckTranslation;
   contradictingRules?: AutomatedReasoningCheckRule[];
   logicWarning?: AutomatedReasoningCheckLogicWarning;
 }
-const AutomatedReasoningCheckInvalidFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    translation: S.optional(AutomatedReasoningCheckTranslation),
-    contradictingRules: S.optional(AutomatedReasoningCheckRuleList),
-    logicWarning: S.optional(AutomatedReasoningCheckLogicWarning),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningCheckInvalidFinding",
-}) as any as S.Schema<AutomatedReasoningCheckInvalidFinding>;
+const AutomatedReasoningCheckInvalidFinding = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<AutomatedReasoningCheckInvalidFinding>;
 export interface AutomatedReasoningCheckSatisfiableFinding {
   translation?: AutomatedReasoningCheckTranslation;
   claimsTrueScenario?: AutomatedReasoningCheckScenario;
   claimsFalseScenario?: AutomatedReasoningCheckScenario;
   logicWarning?: AutomatedReasoningCheckLogicWarning;
 }
-const AutomatedReasoningCheckSatisfiableFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    translation: S.optional(AutomatedReasoningCheckTranslation),
-    claimsTrueScenario: S.optional(AutomatedReasoningCheckScenario),
-    claimsFalseScenario: S.optional(AutomatedReasoningCheckScenario),
-    logicWarning: S.optional(AutomatedReasoningCheckLogicWarning),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningCheckSatisfiableFinding",
-}) as any as S.Schema<AutomatedReasoningCheckSatisfiableFinding>;
+const AutomatedReasoningCheckSatisfiableFinding = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<AutomatedReasoningCheckSatisfiableFinding>;
 export interface AutomatedReasoningCheckImpossibleFinding {
   translation?: AutomatedReasoningCheckTranslation;
   contradictingRules?: AutomatedReasoningCheckRule[];
@@ -4754,38 +3380,27 @@ export interface AutomatedReasoningCheckImpossibleFinding {
 const AutomatedReasoningCheckImpossibleFinding =
   AutomatedReasoningCheckInvalidFinding as any as S.Schema<AutomatedReasoningCheckImpossibleFinding>;
 export type AutomatedReasoningCheckTranslationList = AutomatedReasoningCheckTranslation[];
-const AutomatedReasoningCheckTranslationList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningCheckTranslation,
-);
+const AutomatedReasoningCheckTranslationList = /*@__PURE__*/ __L.at(__c37, 1);
 export interface AutomatedReasoningCheckTranslationOption {
   translations?: AutomatedReasoningCheckTranslation[];
 }
-const AutomatedReasoningCheckTranslationOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ translations: S.optional(AutomatedReasoningCheckTranslationList) }),
-).annotate({
-  identifier: "AutomatedReasoningCheckTranslationOption",
-}) as any as S.Schema<AutomatedReasoningCheckTranslationOption>;
+const AutomatedReasoningCheckTranslationOption = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<AutomatedReasoningCheckTranslationOption>;
 export type AutomatedReasoningCheckTranslationOptionList =
   AutomatedReasoningCheckTranslationOption[];
-const AutomatedReasoningCheckTranslationOptionList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningCheckTranslationOption,
-);
+const AutomatedReasoningCheckTranslationOptionList = /*@__PURE__*/ __L.at(__c37, 3);
 export type AutomatedReasoningCheckDifferenceScenarioList = AutomatedReasoningCheckScenario[];
-const AutomatedReasoningCheckDifferenceScenarioList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningCheckScenario,
-);
+const AutomatedReasoningCheckDifferenceScenarioList = /*@__PURE__*/ __L.at(__c37, 4);
 export interface AutomatedReasoningCheckTranslationAmbiguousFinding {
   options?: AutomatedReasoningCheckTranslationOption[];
   differenceScenarios?: AutomatedReasoningCheckScenario[];
 }
-const AutomatedReasoningCheckTranslationAmbiguousFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(AutomatedReasoningCheckTranslationOptionList),
-    differenceScenarios: S.optional(AutomatedReasoningCheckDifferenceScenarioList),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningCheckTranslationAmbiguousFinding",
-}) as any as S.Schema<AutomatedReasoningCheckTranslationAmbiguousFinding>;
+const AutomatedReasoningCheckTranslationAmbiguousFinding = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<AutomatedReasoningCheckTranslationAmbiguousFinding>;
 export interface AutomatedReasoningCheckTooComplexFinding {}
 const AutomatedReasoningCheckTooComplexFinding =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<AutomatedReasoningCheckTooComplexFinding>;
@@ -4856,19 +3471,9 @@ export type AutomatedReasoningCheckFinding =
       tooComplex?: never;
       noTranslations: AutomatedReasoningCheckNoTranslationsFinding;
     };
-const AutomatedReasoningCheckFinding = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ valid: AutomatedReasoningCheckValidFinding }),
-  /*@__PURE__*/ S.Struct({ invalid: AutomatedReasoningCheckInvalidFinding }),
-  /*@__PURE__*/ S.Struct({ satisfiable: AutomatedReasoningCheckSatisfiableFinding }),
-  /*@__PURE__*/ S.Struct({ impossible: AutomatedReasoningCheckImpossibleFinding }),
-  /*@__PURE__*/ S.Struct({
-    translationAmbiguous: AutomatedReasoningCheckTranslationAmbiguousFinding,
-  }),
-  /*@__PURE__*/ S.Struct({ tooComplex: AutomatedReasoningCheckTooComplexFinding }),
-  /*@__PURE__*/ S.Struct({ noTranslations: AutomatedReasoningCheckNoTranslationsFinding }),
-]);
+const AutomatedReasoningCheckFinding = /*@__PURE__*/ __L.at(__c37, 6);
 export type AutomatedReasoningCheckFindingList = AutomatedReasoningCheckFinding[];
-const AutomatedReasoningCheckFindingList = /*@__PURE__*/ S.Array(AutomatedReasoningCheckFinding);
+const AutomatedReasoningCheckFindingList = /*@__PURE__*/ __L.at(__c37, 7);
 export type AutomatedReasoningPolicyTestRunResult = "PASSED" | "FAILED" | (string & {});
 const AutomatedReasoningPolicyTestRunResult = S.String;
 
@@ -4881,57 +3486,35 @@ export interface AutomatedReasoningPolicyTestResult {
   aggregatedTestFindingsResult?: AutomatedReasoningCheckResult;
   updatedAt: Date;
 }
-const AutomatedReasoningPolicyTestResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    testCase: AutomatedReasoningPolicyTestCase,
-    policyArn: S.String,
-    testRunStatus: AutomatedReasoningPolicyTestRunStatus,
-    testFindings: S.optional(AutomatedReasoningCheckFindingList),
-    testRunResult: S.optional(AutomatedReasoningPolicyTestRunResult),
-    aggregatedTestFindingsResult: S.optional(AutomatedReasoningCheckResult),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyTestResult",
-}) as any as S.Schema<AutomatedReasoningPolicyTestResult>;
+const AutomatedReasoningPolicyTestResult = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<AutomatedReasoningPolicyTestResult>;
 export interface GetAutomatedReasoningPolicyTestResultResponse {
   testResult: AutomatedReasoningPolicyTestResult;
 }
-const GetAutomatedReasoningPolicyTestResultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ testResult: AutomatedReasoningPolicyTestResult }),
-).annotate({
-  identifier: "GetAutomatedReasoningPolicyTestResultResponse",
-}) as any as S.Schema<GetAutomatedReasoningPolicyTestResultResponse>;
+const GetAutomatedReasoningPolicyTestResultResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<GetAutomatedReasoningPolicyTestResultResponse>;
 export interface GetCustomModelRequest {
   modelIdentifier: string;
 }
-const GetCustomModelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/custom-models/{modelIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetCustomModelRequest" }) as any as S.Schema<GetCustomModelRequest>;
+const GetCustomModelRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<GetCustomModelRequest>;
 export type MetricFloat = number;
 export interface TrainingMetrics {
   trainingLoss?: number;
 }
-const TrainingMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trainingLoss: S.optional(S.Number) }),
-).annotate({ identifier: "TrainingMetrics" }) as any as S.Schema<TrainingMetrics>;
+const TrainingMetrics = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<TrainingMetrics>;
 export interface ValidatorMetric {
   validationLoss?: number;
 }
-const ValidatorMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ validationLoss: S.optional(S.Number) }),
-).annotate({ identifier: "ValidatorMetric" }) as any as S.Schema<ValidatorMetric>;
+const ValidatorMetric = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<ValidatorMetric>;
 export type ValidationMetrics = ValidatorMetric[];
-const ValidationMetrics = /*@__PURE__*/ S.Array(ValidatorMetric);
+const ValidationMetrics = /*@__PURE__*/ __L.at(__c38, 5);
 export type ModelStatus = "Active" | "Creating" | "Failed" | (string & {});
 const ModelStatus = S.String;
 
@@ -4954,49 +3537,17 @@ export interface GetCustomModelResponse {
   modelStatus?: ModelStatus;
   failureMessage?: string;
 }
-const GetCustomModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelArn: S.String,
-    modelName: S.String,
-    jobName: S.optional(S.String),
-    jobArn: S.optional(S.String),
-    baseModelArn: S.optional(S.String),
-    customizationType: S.optional(CustomizationType),
-    modelKmsKeyArn: S.optional(S.String),
-    hyperParameters: S.optional(ModelCustomizationHyperParameters),
-    trainingDataConfig: S.optional(TrainingDataConfig),
-    validationDataConfig: S.optional(ValidationDataConfig),
-    outputDataConfig: S.optional(OutputDataConfig),
-    trainingMetrics: S.optional(TrainingMetrics),
-    validationMetrics: S.optional(ValidationMetrics),
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    customizationConfig: S.optional(CustomizationConfig),
-    modelStatus: S.optional(ModelStatus),
-    failureMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetCustomModelResponse" }) as any as S.Schema<GetCustomModelResponse>;
+const GetCustomModelResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<GetCustomModelResponse>;
 export interface GetCustomModelDeploymentRequest {
   customModelDeploymentIdentifier: string;
 }
-const GetCustomModelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customModelDeploymentIdentifier: S.String.pipe(T.HttpLabel("customModelDeploymentIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/model-customization/custom-model-deployments/{customModelDeploymentIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCustomModelDeploymentRequest",
-}) as any as S.Schema<GetCustomModelDeploymentRequest>;
+const GetCustomModelDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<GetCustomModelDeploymentRequest>;
 export type CustomModelDeploymentStatus = "Creating" | "Active" | "Failed" | (string & {});
 const CustomModelDeploymentStatus = S.String;
 
@@ -5011,11 +3562,10 @@ export interface CustomModelDeploymentUpdateDetails {
   modelArn: string;
   updateStatus: CustomModelDeploymentUpdateStatus;
 }
-const CustomModelDeploymentUpdateDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelArn: S.String, updateStatus: CustomModelDeploymentUpdateStatus }),
-).annotate({
-  identifier: "CustomModelDeploymentUpdateDetails",
-}) as any as S.Schema<CustomModelDeploymentUpdateDetails>;
+const CustomModelDeploymentUpdateDetails = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<CustomModelDeploymentUpdateDetails>;
 export interface GetCustomModelDeploymentResponse {
   customModelDeploymentArn: string;
   modelDeploymentName: string;
@@ -5027,36 +3577,17 @@ export interface GetCustomModelDeploymentResponse {
   failureMessage?: string;
   lastUpdatedAt?: Date;
 }
-const GetCustomModelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customModelDeploymentArn: S.String,
-    modelDeploymentName: S.String,
-    modelArn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: CustomModelDeploymentStatus,
-    description: S.optional(S.String),
-    updateDetails: S.optional(CustomModelDeploymentUpdateDetails),
-    failureMessage: S.optional(S.String),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "GetCustomModelDeploymentResponse",
-}) as any as S.Schema<GetCustomModelDeploymentResponse>;
+const GetCustomModelDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<GetCustomModelDeploymentResponse>;
 export interface GetEvaluationJobRequest {
   jobIdentifier: string | redacted.Redacted<string>;
 }
-const GetEvaluationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: SensitiveString.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/evaluation-jobs/{jobIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetEvaluationJobRequest" }) as any as S.Schema<GetEvaluationJobRequest>;
+const GetEvaluationJobRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<GetEvaluationJobRequest>;
 export type EvaluationJobType = "Human" | "Automated" | (string & {});
 const EvaluationJobType = S.String;
 
@@ -5078,42 +3609,18 @@ export interface GetEvaluationJobResponse {
   lastModifiedTime?: Date;
   failureMessages?: string[];
 }
-const GetEvaluationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobName: S.String,
-    status: EvaluationJobStatus,
-    jobArn: S.String,
-    jobDescription: S.optional(SensitiveString),
-    roleArn: S.String,
-    customerEncryptionKeyId: S.optional(S.String),
-    jobType: EvaluationJobType,
-    applicationType: S.optional(ApplicationType),
-    evaluationConfig: EvaluationConfig,
-    inferenceConfig: EvaluationInferenceConfig,
-    outputDataConfig: EvaluationOutputDataConfig,
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    failureMessages: S.optional(ErrorMessages),
-  }),
-).annotate({ identifier: "GetEvaluationJobResponse" }) as any as S.Schema<GetEvaluationJobResponse>;
+const GetEvaluationJobResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<GetEvaluationJobResponse>;
 export type GetFoundationModelIdentifier = string;
 export interface GetFoundationModelRequest {
   modelIdentifier: string;
 }
-const GetFoundationModelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/foundation-models/{modelIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetFoundationModelRequest",
-}) as any as S.Schema<GetFoundationModelRequest>;
+const GetFoundationModelRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<GetFoundationModelRequest>;
 export type FoundationModelArn = string;
 export type BrandedName = string;
 export type ModelModality = "TEXT" | "IMAGE" | "EMBEDDING" | (string & {});
@@ -5145,15 +3652,10 @@ export interface FoundationModelLifecycle {
   legacyTime?: Date;
   publicExtendedAccessTime?: Date;
 }
-const FoundationModelLifecycle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: FoundationModelLifecycleStatus,
-    startOfLifeTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    endOfLifeTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    legacyTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    publicExtendedAccessTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "FoundationModelLifecycle" }) as any as S.Schema<FoundationModelLifecycle>;
+const FoundationModelLifecycle = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<FoundationModelLifecycle>;
 export interface FoundationModelDetails {
   modelArn: string;
   modelId: string;
@@ -5166,45 +3668,24 @@ export interface FoundationModelDetails {
   inferenceTypesSupported?: InferenceType[];
   modelLifecycle?: FoundationModelLifecycle;
 }
-const FoundationModelDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelArn: S.String,
-    modelId: S.String,
-    modelName: S.optional(S.String),
-    providerName: S.optional(S.String),
-    inputModalities: S.optional(ModelModalityList),
-    outputModalities: S.optional(ModelModalityList),
-    responseStreamingSupported: S.optional(S.Boolean),
-    customizationsSupported: S.optional(ModelCustomizationList),
-    inferenceTypesSupported: S.optional(InferenceTypeList),
-    modelLifecycle: S.optional(FoundationModelLifecycle),
-  }),
-).annotate({ identifier: "FoundationModelDetails" }) as any as S.Schema<FoundationModelDetails>;
+const FoundationModelDetails = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<FoundationModelDetails>;
 export interface GetFoundationModelResponse {
   modelDetails?: FoundationModelDetails;
 }
-const GetFoundationModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelDetails: S.optional(FoundationModelDetails) }),
-).annotate({
-  identifier: "GetFoundationModelResponse",
-}) as any as S.Schema<GetFoundationModelResponse>;
+const GetFoundationModelResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<GetFoundationModelResponse>;
 export interface GetFoundationModelAvailabilityRequest {
   modelId: string;
 }
-const GetFoundationModelAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelId: S.String.pipe(T.HttpLabel("modelId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/foundation-model-availability/{modelId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetFoundationModelAvailabilityRequest",
-}) as any as S.Schema<GetFoundationModelAvailabilityRequest>;
+const GetFoundationModelAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<GetFoundationModelAvailabilityRequest>;
 export type AgreementStatus = "AVAILABLE" | "PENDING" | "NOT_AVAILABLE" | "ERROR" | (string & {});
 const AgreementStatus = S.String;
 
@@ -5212,9 +3693,10 @@ export interface AgreementAvailability {
   status: AgreementStatus;
   errorMessage?: string;
 }
-const AgreementAvailability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: AgreementStatus, errorMessage: S.optional(S.String) }),
-).annotate({ identifier: "AgreementAvailability" }) as any as S.Schema<AgreementAvailability>;
+const AgreementAvailability = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<AgreementAvailability>;
 export type AuthorizationStatus = "AUTHORIZED" | "NOT_AUTHORIZED" | (string & {});
 const AuthorizationStatus = S.String;
 
@@ -5231,37 +3713,16 @@ export interface GetFoundationModelAvailabilityResponse {
   entitlementAvailability: EntitlementAvailability;
   regionAvailability: RegionAvailability;
 }
-const GetFoundationModelAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelId: S.String,
-    agreementAvailability: AgreementAvailability,
-    authorizationStatus: AuthorizationStatus,
-    entitlementAvailability: EntitlementAvailability,
-    regionAvailability: RegionAvailability,
-  }),
-).annotate({
-  identifier: "GetFoundationModelAvailabilityResponse",
-}) as any as S.Schema<GetFoundationModelAvailabilityResponse>;
+const GetFoundationModelAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<GetFoundationModelAvailabilityResponse>;
 export type GuardrailVersion = string;
 export interface GetGuardrailRequest {
   guardrailIdentifier: string;
   guardrailVersion?: string;
 }
-const GetGuardrailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guardrailIdentifier: S.String.pipe(T.HttpLabel("guardrailIdentifier")),
-    guardrailVersion: S.optional(S.String).pipe(T.HttpQuery("guardrailVersion")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/guardrails/{guardrailIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetGuardrailRequest" }) as any as S.Schema<GetGuardrailRequest>;
+const GetGuardrailRequest = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<GetGuardrailRequest>;
 export type GuardrailStatus =
   | "CREATING"
   | "UPDATING"
@@ -5282,33 +3743,21 @@ export interface GuardrailTopic {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-const GuardrailTopic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    definition: SensitiveString,
-    examples: S.optional(GuardrailTopicExamples),
-    type: S.optional(GuardrailTopicType),
-    inputAction: S.optional(GuardrailTopicAction),
-    outputAction: S.optional(GuardrailTopicAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailTopic" }) as any as S.Schema<GuardrailTopic>;
+const GuardrailTopic = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<GuardrailTopic>;
 export type GuardrailTopics = GuardrailTopic[];
-const GuardrailTopics = /*@__PURE__*/ S.Array(GuardrailTopic);
+const GuardrailTopics = /*@__PURE__*/ __L.at(__c40, 5);
 export interface GuardrailTopicsTier {
   tierName: GuardrailTopicsTierName;
 }
-const GuardrailTopicsTier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tierName: GuardrailTopicsTierName }),
-).annotate({ identifier: "GuardrailTopicsTier" }) as any as S.Schema<GuardrailTopicsTier>;
+const GuardrailTopicsTier = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<GuardrailTopicsTier>;
 export interface GuardrailTopicPolicy {
   topics: GuardrailTopic[];
   tier?: GuardrailTopicsTier;
 }
-const GuardrailTopicPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ topics: GuardrailTopics, tier: S.optional(GuardrailTopicsTier) }),
-).annotate({ identifier: "GuardrailTopicPolicy" }) as any as S.Schema<GuardrailTopicPolicy>;
+const GuardrailTopicPolicy = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<GuardrailTopicPolicy>;
 export interface GuardrailContentFilter {
   type: GuardrailContentFilterType;
   inputStrength: GuardrailFilterStrength;
@@ -5320,21 +3769,12 @@ export interface GuardrailContentFilter {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-const GuardrailContentFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GuardrailContentFilterType,
-    inputStrength: GuardrailFilterStrength,
-    outputStrength: GuardrailFilterStrength,
-    inputModalities: S.optional(GuardrailModalities),
-    outputModalities: S.optional(GuardrailModalities),
-    inputAction: S.optional(GuardrailContentFilterAction),
-    outputAction: S.optional(GuardrailContentFilterAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailContentFilter" }) as any as S.Schema<GuardrailContentFilter>;
+const GuardrailContentFilter = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<GuardrailContentFilter>;
 export type GuardrailContentFilters = GuardrailContentFilter[];
-const GuardrailContentFilters = /*@__PURE__*/ S.Array(GuardrailContentFilter);
+const GuardrailContentFilters = /*@__PURE__*/ __L.at(__c41, 1);
 export interface GuardrailContentFiltersTier {
   tierName: GuardrailContentFiltersTierName;
 }
@@ -5344,12 +3784,10 @@ export interface GuardrailContentPolicy {
   filters?: GuardrailContentFilter[];
   tier?: GuardrailContentFiltersTier;
 }
-const GuardrailContentPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filters: S.optional(GuardrailContentFilters),
-    tier: S.optional(GuardrailContentFiltersTier),
-  }),
-).annotate({ identifier: "GuardrailContentPolicy" }) as any as S.Schema<GuardrailContentPolicy>;
+const GuardrailContentPolicy = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<GuardrailContentPolicy>;
 export interface GuardrailWord {
   text: string;
   inputAction?: GuardrailWordAction;
@@ -5366,27 +3804,17 @@ export interface GuardrailManagedWords {
   inputEnabled?: boolean;
   outputEnabled?: boolean;
 }
-const GuardrailManagedWords = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GuardrailManagedWordsType,
-    inputAction: S.optional(GuardrailWordAction),
-    outputAction: S.optional(GuardrailWordAction),
-    inputEnabled: S.optional(S.Boolean),
-    outputEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GuardrailManagedWords" }) as any as S.Schema<GuardrailManagedWords>;
+const GuardrailManagedWords = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<GuardrailManagedWords>;
 export type GuardrailManagedWordLists = GuardrailManagedWords[];
-const GuardrailManagedWordLists = /*@__PURE__*/ S.Array(GuardrailManagedWords);
+const GuardrailManagedWordLists = /*@__PURE__*/ __L.at(__c41, 4);
 export interface GuardrailWordPolicy {
   words?: GuardrailWord[];
   managedWordLists?: GuardrailManagedWords[];
 }
-const GuardrailWordPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    words: S.optional(GuardrailWords),
-    managedWordLists: S.optional(GuardrailManagedWordLists),
-  }),
-).annotate({ identifier: "GuardrailWordPolicy" }) as any as S.Schema<GuardrailWordPolicy>;
+const GuardrailWordPolicy = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<GuardrailWordPolicy>;
 export interface GuardrailPiiEntity {
   type: GuardrailPiiEntityType;
   action: GuardrailSensitiveInformationAction;
@@ -5413,14 +3841,10 @@ export interface GuardrailSensitiveInformationPolicy {
   piiEntities?: GuardrailPiiEntity[];
   regexes?: GuardrailRegex[];
 }
-const GuardrailSensitiveInformationPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    piiEntities: S.optional(GuardrailPiiEntities),
-    regexes: S.optional(GuardrailRegexes),
-  }),
-).annotate({
-  identifier: "GuardrailSensitiveInformationPolicy",
-}) as any as S.Schema<GuardrailSensitiveInformationPolicy>;
+const GuardrailSensitiveInformationPolicy = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<GuardrailSensitiveInformationPolicy>;
 export interface GuardrailContextualGroundingFilter {
   type: GuardrailContextualGroundingFilterType;
   threshold: number;
@@ -5433,11 +3857,10 @@ const GuardrailContextualGroundingFilters =
 export interface GuardrailContextualGroundingPolicy {
   filters: GuardrailContextualGroundingFilter[];
 }
-const GuardrailContextualGroundingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filters: GuardrailContextualGroundingFilters }),
-).annotate({
-  identifier: "GuardrailContextualGroundingPolicy",
-}) as any as S.Schema<GuardrailContextualGroundingPolicy>;
+const GuardrailContextualGroundingPolicy = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<GuardrailContextualGroundingPolicy>;
 export interface GuardrailAutomatedReasoningPolicy {
   policies: string[];
   confidenceThreshold?: number;
@@ -5450,11 +3873,10 @@ export interface GuardrailCrossRegionDetails {
   guardrailProfileId?: string;
   guardrailProfileArn?: string;
 }
-const GuardrailCrossRegionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ guardrailProfileId: S.optional(S.String), guardrailProfileArn: S.optional(S.String) }),
-).annotate({
-  identifier: "GuardrailCrossRegionDetails",
-}) as any as S.Schema<GuardrailCrossRegionDetails>;
+const GuardrailCrossRegionDetails = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<GuardrailCrossRegionDetails>;
 export type GuardrailStatusReason = string | redacted.Redacted<string>;
 export type GuardrailStatusReasons = (string | redacted.Redacted<string>)[];
 const GuardrailStatusReasons = EvaluationJobIdentifiers as any as S.Schema<GuardrailStatusReasons>;
@@ -5484,45 +3906,17 @@ export interface GetGuardrailResponse {
   blockedOutputsMessaging: string | redacted.Redacted<string>;
   kmsKeyArn?: string;
 }
-const GetGuardrailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    guardrailId: S.String,
-    guardrailArn: S.String,
-    version: S.String,
-    status: GuardrailStatus,
-    topicPolicy: S.optional(GuardrailTopicPolicy),
-    contentPolicy: S.optional(GuardrailContentPolicy),
-    wordPolicy: S.optional(GuardrailWordPolicy),
-    sensitiveInformationPolicy: S.optional(GuardrailSensitiveInformationPolicy),
-    contextualGroundingPolicy: S.optional(GuardrailContextualGroundingPolicy),
-    automatedReasoningPolicy: S.optional(GuardrailAutomatedReasoningPolicy),
-    crossRegionDetails: S.optional(GuardrailCrossRegionDetails),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    statusReasons: S.optional(GuardrailStatusReasons),
-    failureRecommendations: S.optional(GuardrailFailureRecommendations),
-    blockedInputMessaging: SensitiveString,
-    blockedOutputsMessaging: SensitiveString,
-    kmsKeyArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetGuardrailResponse" }) as any as S.Schema<GetGuardrailResponse>;
+const GetGuardrailResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<GetGuardrailResponse>;
 export interface GetImportedModelRequest {
   modelIdentifier: string;
 }
-const GetImportedModelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/imported-models/{modelIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetImportedModelRequest" }) as any as S.Schema<GetImportedModelRequest>;
+const GetImportedModelRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<GetImportedModelRequest>;
 export type ImportedModelArn = string;
 export type InstructSupported = boolean;
 export type CustomModelUnitsVersion = string;
@@ -5530,12 +3924,7 @@ export interface CustomModelUnits {
   customModelUnitsPerModelCopy?: number;
   customModelUnitsVersion?: string;
 }
-const CustomModelUnits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customModelUnitsPerModelCopy: S.optional(S.Number),
-    customModelUnitsVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "CustomModelUnits" }) as any as S.Schema<CustomModelUnits>;
+const CustomModelUnits = /*@__PURE__*/ __L.at(__c42, 3) as any as S.Schema<CustomModelUnits>;
 export interface GetImportedModelResponse {
   modelArn?: string;
   modelName?: string;
@@ -5548,39 +3937,17 @@ export interface GetImportedModelResponse {
   instructSupported?: boolean;
   customModelUnits?: CustomModelUnits;
 }
-const GetImportedModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelArn: S.optional(S.String),
-    modelName: S.optional(S.String),
-    jobName: S.optional(S.String),
-    jobArn: S.optional(S.String),
-    modelDataSource: S.optional(ModelDataSource),
-    creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    modelArchitecture: S.optional(S.String),
-    modelKmsKeyArn: S.optional(S.String),
-    instructSupported: S.optional(S.Boolean),
-    customModelUnits: S.optional(CustomModelUnits),
-  }),
-).annotate({ identifier: "GetImportedModelResponse" }) as any as S.Schema<GetImportedModelResponse>;
+const GetImportedModelResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<GetImportedModelResponse>;
 export interface GetInferenceProfileRequest {
   inferenceProfileIdentifier: string;
 }
-const GetInferenceProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inferenceProfileIdentifier: S.String.pipe(T.HttpLabel("inferenceProfileIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/inference-profiles/{inferenceProfileIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetInferenceProfileRequest",
-}) as any as S.Schema<GetInferenceProfileRequest>;
+const GetInferenceProfileRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<GetInferenceProfileRequest>;
 export interface InferenceProfileModel {
   modelArn?: string;
 }
@@ -5601,61 +3968,31 @@ export interface GetInferenceProfileResponse {
   status: InferenceProfileStatus;
   type: InferenceProfileType;
 }
-const GetInferenceProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inferenceProfileName: S.String,
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    inferenceProfileArn: S.String,
-    models: InferenceProfileModels,
-    inferenceProfileId: S.String,
-    status: InferenceProfileStatus,
-    type: InferenceProfileType,
-  }),
-).annotate({
-  identifier: "GetInferenceProfileResponse",
-}) as any as S.Schema<GetInferenceProfileResponse>;
+const GetInferenceProfileResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<GetInferenceProfileResponse>;
 export interface GetMarketplaceModelEndpointRequest {
   endpointArn: string;
 }
-const GetMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpointArn: S.String.pipe(T.HttpLabel("endpointArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/marketplace-model/endpoints/{endpointArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetMarketplaceModelEndpointRequest",
-}) as any as S.Schema<GetMarketplaceModelEndpointRequest>;
+const GetMarketplaceModelEndpointRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<GetMarketplaceModelEndpointRequest>;
 export interface GetMarketplaceModelEndpointResponse {
   marketplaceModelEndpoint?: MarketplaceModelEndpoint;
 }
-const GetMarketplaceModelEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ marketplaceModelEndpoint: S.optional(MarketplaceModelEndpoint) }),
-).annotate({
-  identifier: "GetMarketplaceModelEndpointResponse",
-}) as any as S.Schema<GetMarketplaceModelEndpointResponse>;
+const GetMarketplaceModelEndpointResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<GetMarketplaceModelEndpointResponse>;
 export interface GetModelCopyJobRequest {
   jobArn: string;
 }
-const GetModelCopyJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobArn: S.String.pipe(T.HttpLabel("jobArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/model-copy-jobs/{jobArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetModelCopyJobRequest" }) as any as S.Schema<GetModelCopyJobRequest>;
+const GetModelCopyJobRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<GetModelCopyJobRequest>;
 export type ModelCopyJobStatus = "InProgress" | "Completed" | "Failed" | (string & {});
 const ModelCopyJobStatus = S.String;
 
@@ -5672,39 +4009,18 @@ export interface GetModelCopyJobResponse {
   failureMessage?: string;
   sourceModelName?: string;
 }
-const GetModelCopyJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    status: ModelCopyJobStatus,
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    targetModelArn: S.String,
-    targetModelName: S.optional(S.String),
-    sourceAccountId: S.String,
-    sourceModelArn: S.String,
-    targetModelKmsKeyArn: S.optional(S.String),
-    targetModelTags: S.optional(TagList),
-    failureMessage: S.optional(S.String),
-    sourceModelName: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetModelCopyJobResponse" }) as any as S.Schema<GetModelCopyJobResponse>;
+const GetModelCopyJobResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<GetModelCopyJobResponse>;
 export type ModelCustomizationJobIdentifier = string;
 export interface GetModelCustomizationJobRequest {
   jobIdentifier: string;
 }
-const GetModelCustomizationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/model-customization-jobs/{jobIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetModelCustomizationJobRequest",
-}) as any as S.Schema<GetModelCustomizationJobRequest>;
+const GetModelCustomizationJobRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<GetModelCustomizationJobRequest>;
 export type ModelCustomizationJobStatus =
   | "InProgress"
   | "Completed"
@@ -5729,13 +4045,7 @@ export interface ValidationDetails {
   creationTime?: Date;
   lastModifiedTime?: Date;
 }
-const ValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(JobStatusDetails),
-    creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ValidationDetails" }) as any as S.Schema<ValidationDetails>;
+const ValidationDetails = /*@__PURE__*/ __L.at(__c43, 4) as any as S.Schema<ValidationDetails>;
 export interface DataProcessingDetails {
   status?: JobStatusDetails;
   creationTime?: Date;
@@ -5753,13 +4063,7 @@ export interface StatusDetails {
   dataProcessingDetails?: DataProcessingDetails;
   trainingDetails?: TrainingDetails;
 }
-const StatusDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validationDetails: S.optional(ValidationDetails),
-    dataProcessingDetails: S.optional(DataProcessingDetails),
-    trainingDetails: S.optional(TrainingDetails),
-  }),
-).annotate({ identifier: "StatusDetails" }) as any as S.Schema<StatusDetails>;
+const StatusDetails = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<StatusDetails>;
 export interface GetModelCustomizationJobResponse {
   jobArn: string;
   jobName: string;
@@ -5785,51 +4089,18 @@ export interface GetModelCustomizationJobResponse {
   vpcConfig?: VpcConfig;
   customizationConfig?: CustomizationConfig;
 }
-const GetModelCustomizationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    jobName: S.String,
-    outputModelName: S.String,
-    outputModelArn: S.optional(S.String),
-    clientRequestToken: S.optional(S.String),
-    roleArn: S.String,
-    status: S.optional(ModelCustomizationJobStatus),
-    statusDetails: S.optional(StatusDetails),
-    failureMessage: S.optional(S.String),
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    baseModelArn: S.String,
-    hyperParameters: S.optional(ModelCustomizationHyperParameters),
-    trainingDataConfig: TrainingDataConfig,
-    validationDataConfig: ValidationDataConfig,
-    outputDataConfig: OutputDataConfig,
-    customizationType: S.optional(CustomizationType),
-    outputModelKmsKeyArn: S.optional(S.String),
-    trainingMetrics: S.optional(TrainingMetrics),
-    validationMetrics: S.optional(ValidationMetrics),
-    vpcConfig: S.optional(VpcConfig),
-    customizationConfig: S.optional(CustomizationConfig),
-  }),
-).annotate({
-  identifier: "GetModelCustomizationJobResponse",
-}) as any as S.Schema<GetModelCustomizationJobResponse>;
+const GetModelCustomizationJobResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<GetModelCustomizationJobResponse>;
 export type ModelImportJobIdentifier = string;
 export interface GetModelImportJobRequest {
   jobIdentifier: string;
 }
-const GetModelImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/model-import-jobs/{jobIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetModelImportJobRequest" }) as any as S.Schema<GetModelImportJobRequest>;
+const GetModelImportJobRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<GetModelImportJobRequest>;
 export type ModelImportJobStatus = "InProgress" | "Completed" | "Failed" | (string & {});
 const ModelImportJobStatus = S.String;
 
@@ -5848,43 +4119,18 @@ export interface GetModelImportJobResponse {
   vpcConfig?: VpcConfig;
   importedModelKmsKeyArn?: string;
 }
-const GetModelImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.optional(S.String),
-    jobName: S.optional(S.String),
-    importedModelName: S.optional(S.String),
-    importedModelArn: S.optional(S.String),
-    roleArn: S.optional(S.String),
-    modelDataSource: S.optional(ModelDataSource),
-    status: S.optional(ModelImportJobStatus),
-    failureMessage: S.optional(S.String),
-    creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    vpcConfig: S.optional(VpcConfig),
-    importedModelKmsKeyArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetModelImportJobResponse",
-}) as any as S.Schema<GetModelImportJobResponse>;
+const GetModelImportJobResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<GetModelImportJobResponse>;
 export type ModelInvocationJobIdentifier = string;
 export interface GetModelInvocationJobRequest {
   jobIdentifier: string;
 }
-const GetModelInvocationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/model-invocation-job/{jobIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetModelInvocationJobRequest",
-}) as any as S.Schema<GetModelInvocationJobRequest>;
+const GetModelInvocationJobRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<GetModelInvocationJobRequest>;
 export type ModelInvocationJobStatus =
   | "Submitted"
   | "InProgress"
@@ -5923,47 +4169,15 @@ export interface GetModelInvocationJobResponse {
   successRecordCount?: number;
   errorRecordCount?: number;
 }
-const GetModelInvocationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    jobName: S.optional(S.String),
-    modelId: S.String,
-    clientRequestToken: S.optional(S.String),
-    roleArn: S.String,
-    status: S.optional(ModelInvocationJobStatus),
-    message: S.optional(SensitiveString),
-    submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    inputDataConfig: ModelInvocationJobInputDataConfig,
-    outputDataConfig: ModelInvocationJobOutputDataConfig,
-    vpcConfig: S.optional(VpcConfig),
-    timeoutDurationInHours: S.optional(S.Number),
-    jobExpirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    modelInvocationType: S.optional(ModelInvocationType),
-    totalRecordCount: S.optional(S.Number),
-    processedRecordCount: S.optional(S.Number),
-    successRecordCount: S.optional(S.Number),
-    errorRecordCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetModelInvocationJobResponse",
-}) as any as S.Schema<GetModelInvocationJobResponse>;
+const GetModelInvocationJobResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<GetModelInvocationJobResponse>;
 export interface GetModelInvocationLoggingConfigurationRequest {}
-const GetModelInvocationLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/logging/modelinvocations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetModelInvocationLoggingConfigurationRequest",
-}) as any as S.Schema<GetModelInvocationLoggingConfigurationRequest>;
+const GetModelInvocationLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<GetModelInvocationLoggingConfigurationRequest>;
 export type LogGroupName = string;
 export type BucketName = string;
 export type KeyPrefix = string;
@@ -5971,21 +4185,13 @@ export interface S3Config {
   bucketName: string;
   keyPrefix?: string;
 }
-const S3Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bucketName: S.String, keyPrefix: S.optional(S.String) }),
-).annotate({ identifier: "S3Config" }) as any as S.Schema<S3Config>;
+const S3Config = /*@__PURE__*/ __L.at(__c44, 4) as any as S.Schema<S3Config>;
 export interface CloudWatchConfig {
   logGroupName: string;
   roleArn: string;
   largeDataDeliveryS3Config?: S3Config;
 }
-const CloudWatchConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logGroupName: S.String,
-    roleArn: S.String,
-    largeDataDeliveryS3Config: S.optional(S3Config),
-  }),
-).annotate({ identifier: "CloudWatchConfig" }) as any as S.Schema<CloudWatchConfig>;
+const CloudWatchConfig = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<CloudWatchConfig>;
 export interface LoggingConfig {
   cloudWatchConfig?: CloudWatchConfig;
   s3Config?: S3Config;
@@ -5995,40 +4201,21 @@ export interface LoggingConfig {
   videoDataDeliveryEnabled?: boolean;
   audioDataDeliveryEnabled?: boolean;
 }
-const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudWatchConfig: S.optional(CloudWatchConfig),
-    s3Config: S.optional(S3Config),
-    textDataDeliveryEnabled: S.optional(S.Boolean),
-    imageDataDeliveryEnabled: S.optional(S.Boolean),
-    embeddingDataDeliveryEnabled: S.optional(S.Boolean),
-    videoDataDeliveryEnabled: S.optional(S.Boolean),
-    audioDataDeliveryEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
+const LoggingConfig = /*@__PURE__*/ __L.at(__c44, 6) as any as S.Schema<LoggingConfig>;
 export interface GetModelInvocationLoggingConfigurationResponse {
   loggingConfig?: LoggingConfig;
 }
-const GetModelInvocationLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ loggingConfig: S.optional(LoggingConfig) }),
-).annotate({
-  identifier: "GetModelInvocationLoggingConfigurationResponse",
-}) as any as S.Schema<GetModelInvocationLoggingConfigurationResponse>;
+const GetModelInvocationLoggingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<GetModelInvocationLoggingConfigurationResponse>;
 export interface GetPromptRouterRequest {
   promptRouterArn: string;
 }
-const GetPromptRouterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ promptRouterArn: S.String.pipe(T.HttpLabel("promptRouterArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/prompt-routers/{promptRouterArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetPromptRouterRequest" }) as any as S.Schema<GetPromptRouterRequest>;
+const GetPromptRouterRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<GetPromptRouterRequest>;
 export type PromptRouterStatus = "AVAILABLE" | (string & {});
 const PromptRouterStatus = S.String;
 
@@ -6047,37 +4234,17 @@ export interface GetPromptRouterResponse {
   status: PromptRouterStatus;
   type: PromptRouterType;
 }
-const GetPromptRouterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promptRouterName: S.String,
-    routingCriteria: RoutingCriteria,
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    promptRouterArn: S.String,
-    models: PromptRouterTargetModels,
-    fallbackModel: PromptRouterTargetModel,
-    status: PromptRouterStatus,
-    type: PromptRouterType,
-  }),
-).annotate({ identifier: "GetPromptRouterResponse" }) as any as S.Schema<GetPromptRouterResponse>;
+const GetPromptRouterResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<GetPromptRouterResponse>;
 export interface GetProvisionedModelThroughputRequest {
   provisionedModelId: string;
 }
-const GetProvisionedModelThroughputRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ provisionedModelId: S.String.pipe(T.HttpLabel("provisionedModelId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/provisioned-model-throughput/{provisionedModelId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetProvisionedModelThroughputRequest",
-}) as any as S.Schema<GetProvisionedModelThroughputRequest>;
+const GetProvisionedModelThroughputRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<GetProvisionedModelThroughputRequest>;
 export type ProvisionedModelStatus =
   | "Creating"
   | "InService"
@@ -6101,73 +4268,38 @@ export interface GetProvisionedModelThroughputResponse {
   commitmentDuration?: CommitmentDuration;
   commitmentExpirationTime?: Date;
 }
-const GetProvisionedModelThroughputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelUnits: S.Number,
-    desiredModelUnits: S.Number,
-    provisionedModelName: S.String,
-    provisionedModelArn: S.String,
-    modelArn: S.String,
-    desiredModelArn: S.String,
-    foundationModelArn: S.String,
-    status: ProvisionedModelStatus,
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    failureMessage: S.optional(S.String),
-    commitmentDuration: S.optional(CommitmentDuration),
-    commitmentExpirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "GetProvisionedModelThroughputResponse",
-}) as any as S.Schema<GetProvisionedModelThroughputResponse>;
+const GetProvisionedModelThroughputResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<GetProvisionedModelThroughputResponse>;
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
-const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/resource-policy/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetResourcePolicyRequest" }) as any as S.Schema<GetResourcePolicyRequest>;
+const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<GetResourcePolicyRequest>;
 export type ResourcePolicyDocument = string;
 export interface GetResourcePolicyResponse {
   resourcePolicy?: string;
 }
-const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourcePolicy: S.optional(S.String) }),
-).annotate({
-  identifier: "GetResourcePolicyResponse",
-}) as any as S.Schema<GetResourcePolicyResponse>;
+const GetResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<GetResourcePolicyResponse>;
 export interface GetUseCaseForModelAccessRequest {}
-const GetUseCaseForModelAccessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/use-case-for-model-access" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetUseCaseForModelAccessRequest",
-}) as any as S.Schema<GetUseCaseForModelAccessRequest>;
+const GetUseCaseForModelAccessRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<GetUseCaseForModelAccessRequest>;
 export type AcknowledgementFormDataBody = Uint8Array;
 export interface GetUseCaseForModelAccessResponse {
   formData: Uint8Array;
 }
-const GetUseCaseForModelAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ formData: T.Blob }),
-).annotate({
-  identifier: "GetUseCaseForModelAccessResponse",
-}) as any as S.Schema<GetUseCaseForModelAccessResponse>;
+const GetUseCaseForModelAccessResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<GetUseCaseForModelAccessResponse>;
 export type MaxResults = number;
 export type PaginationToken = string;
 export type SortJobsBy = "CreationTime" | (string & {});
@@ -6182,25 +4314,10 @@ export interface ListAdvancedPromptOptimizationJobsRequest {
   sortBy?: SortJobsBy;
   sortOrder?: SortOrder;
 }
-const ListAdvancedPromptOptimizationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/advanced-prompt-optimization-jobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAdvancedPromptOptimizationJobsRequest",
-}) as any as S.Schema<ListAdvancedPromptOptimizationJobsRequest>;
+const ListAdvancedPromptOptimizationJobsRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<ListAdvancedPromptOptimizationJobsRequest>;
 export interface AdvancedPromptOptimizationJobSummary {
   jobArn: string;
   jobName: string;
@@ -6208,56 +4325,29 @@ export interface AdvancedPromptOptimizationJobSummary {
   creationTime: Date;
   lastModifiedTime?: Date;
 }
-const AdvancedPromptOptimizationJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    jobName: S.String,
-    jobStatus: AdvancedPromptOptimizationJobStatus,
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "AdvancedPromptOptimizationJobSummary",
-}) as any as S.Schema<AdvancedPromptOptimizationJobSummary>;
+const AdvancedPromptOptimizationJobSummary = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<AdvancedPromptOptimizationJobSummary>;
 export type AdvancedPromptOptimizationJobSummaries = AdvancedPromptOptimizationJobSummary[];
-const AdvancedPromptOptimizationJobSummaries = /*@__PURE__*/ S.Array(
-  AdvancedPromptOptimizationJobSummary,
-);
+const AdvancedPromptOptimizationJobSummaries = /*@__PURE__*/ __L.at(__c46, 2);
 export interface ListAdvancedPromptOptimizationJobsResponse {
   jobSummaries?: AdvancedPromptOptimizationJobSummary[];
   nextToken?: string;
 }
-const ListAdvancedPromptOptimizationJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobSummaries: S.optional(AdvancedPromptOptimizationJobSummaries),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAdvancedPromptOptimizationJobsResponse",
-}) as any as S.Schema<ListAdvancedPromptOptimizationJobsResponse>;
+const ListAdvancedPromptOptimizationJobsResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<ListAdvancedPromptOptimizationJobsResponse>;
 export interface ListAutomatedReasoningPoliciesRequest {
   policyArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAutomatedReasoningPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.optional(S.String).pipe(T.HttpQuery("policyArn")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/automated-reasoning-policies" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAutomatedReasoningPoliciesRequest",
-}) as any as S.Schema<ListAutomatedReasoningPoliciesRequest>;
+const ListAutomatedReasoningPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<ListAutomatedReasoningPoliciesRequest>;
 export interface AutomatedReasoningPolicySummary {
   policyArn: string;
   name: string | redacted.Redacted<string>;
@@ -6267,56 +4357,29 @@ export interface AutomatedReasoningPolicySummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const AutomatedReasoningPolicySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    version: S.String,
-    policyId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicySummary",
-}) as any as S.Schema<AutomatedReasoningPolicySummary>;
+const AutomatedReasoningPolicySummary = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<AutomatedReasoningPolicySummary>;
 export type AutomatedReasoningPolicySummaries = AutomatedReasoningPolicySummary[];
-const AutomatedReasoningPolicySummaries = /*@__PURE__*/ S.Array(AutomatedReasoningPolicySummary);
+const AutomatedReasoningPolicySummaries = /*@__PURE__*/ __L.at(__c46, 6);
 export interface ListAutomatedReasoningPoliciesResponse {
   automatedReasoningPolicySummaries: AutomatedReasoningPolicySummary[];
   nextToken?: string;
 }
-const ListAutomatedReasoningPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    automatedReasoningPolicySummaries: AutomatedReasoningPolicySummaries,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAutomatedReasoningPoliciesResponse",
-}) as any as S.Schema<ListAutomatedReasoningPoliciesResponse>;
+const ListAutomatedReasoningPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<ListAutomatedReasoningPoliciesResponse>;
 export interface ListAutomatedReasoningPolicyBuildWorkflowsRequest {
   policyArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAutomatedReasoningPolicyBuildWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/automated-reasoning-policies/{policyArn}/build-workflows" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAutomatedReasoningPolicyBuildWorkflowsRequest",
-}) as any as S.Schema<ListAutomatedReasoningPolicyBuildWorkflowsRequest>;
+const ListAutomatedReasoningPolicyBuildWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<ListAutomatedReasoningPolicyBuildWorkflowsRequest>;
 export interface AutomatedReasoningPolicyBuildWorkflowSummary {
   policyArn: string;
   buildWorkflowId: string;
@@ -6325,110 +4388,60 @@ export interface AutomatedReasoningPolicyBuildWorkflowSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const AutomatedReasoningPolicyBuildWorkflowSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    buildWorkflowId: S.String,
-    status: AutomatedReasoningPolicyBuildWorkflowStatus,
-    buildWorkflowType: AutomatedReasoningPolicyBuildWorkflowType,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildWorkflowSummary",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildWorkflowSummary>;
+const AutomatedReasoningPolicyBuildWorkflowSummary = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<AutomatedReasoningPolicyBuildWorkflowSummary>;
 export type AutomatedReasoningPolicyBuildWorkflowSummaries =
   AutomatedReasoningPolicyBuildWorkflowSummary[];
-const AutomatedReasoningPolicyBuildWorkflowSummaries = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyBuildWorkflowSummary,
-);
+const AutomatedReasoningPolicyBuildWorkflowSummaries = /*@__PURE__*/ __L.at(__c47, 2);
 export interface ListAutomatedReasoningPolicyBuildWorkflowsResponse {
   automatedReasoningPolicyBuildWorkflowSummaries: AutomatedReasoningPolicyBuildWorkflowSummary[];
   nextToken?: string;
 }
-const ListAutomatedReasoningPolicyBuildWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    automatedReasoningPolicyBuildWorkflowSummaries: AutomatedReasoningPolicyBuildWorkflowSummaries,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAutomatedReasoningPolicyBuildWorkflowsResponse",
-}) as any as S.Schema<ListAutomatedReasoningPolicyBuildWorkflowsResponse>;
+const ListAutomatedReasoningPolicyBuildWorkflowsResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<ListAutomatedReasoningPolicyBuildWorkflowsResponse>;
 export interface ListAutomatedReasoningPolicyTestCasesRequest {
   policyArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAutomatedReasoningPolicyTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/automated-reasoning-policies/{policyArn}/test-cases" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAutomatedReasoningPolicyTestCasesRequest",
-}) as any as S.Schema<ListAutomatedReasoningPolicyTestCasesRequest>;
+const ListAutomatedReasoningPolicyTestCasesRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<ListAutomatedReasoningPolicyTestCasesRequest>;
 export type AutomatedReasoningPolicyTestCaseList = AutomatedReasoningPolicyTestCase[];
-const AutomatedReasoningPolicyTestCaseList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyTestCase,
-);
+const AutomatedReasoningPolicyTestCaseList = /*@__PURE__*/ __L.at(__c47, 5);
 export interface ListAutomatedReasoningPolicyTestCasesResponse {
   testCases: AutomatedReasoningPolicyTestCase[];
   nextToken?: string;
 }
-const ListAutomatedReasoningPolicyTestCasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ testCases: AutomatedReasoningPolicyTestCaseList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAutomatedReasoningPolicyTestCasesResponse",
-}) as any as S.Schema<ListAutomatedReasoningPolicyTestCasesResponse>;
+const ListAutomatedReasoningPolicyTestCasesResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<ListAutomatedReasoningPolicyTestCasesResponse>;
 export interface ListAutomatedReasoningPolicyTestResultsRequest {
   policyArn: string;
   buildWorkflowId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAutomatedReasoningPolicyTestResultsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/test-results",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAutomatedReasoningPolicyTestResultsRequest",
-}) as any as S.Schema<ListAutomatedReasoningPolicyTestResultsRequest>;
+const ListAutomatedReasoningPolicyTestResultsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<ListAutomatedReasoningPolicyTestResultsRequest>;
 export type AutomatedReasoningPolicyTestList = AutomatedReasoningPolicyTestResult[];
-const AutomatedReasoningPolicyTestList = /*@__PURE__*/ S.Array(AutomatedReasoningPolicyTestResult);
+const AutomatedReasoningPolicyTestList = /*@__PURE__*/ __L.at(__c48, 0);
 export interface ListAutomatedReasoningPolicyTestResultsResponse {
   testResults: AutomatedReasoningPolicyTestResult[];
   nextToken?: string;
 }
-const ListAutomatedReasoningPolicyTestResultsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ testResults: AutomatedReasoningPolicyTestList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAutomatedReasoningPolicyTestResultsResponse",
-}) as any as S.Schema<ListAutomatedReasoningPolicyTestResultsResponse>;
+const ListAutomatedReasoningPolicyTestResultsResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<ListAutomatedReasoningPolicyTestResultsResponse>;
 export type SortModelsBy = "CreationTime" | (string & {});
 const SortModelsBy = S.String;
 
@@ -6443,34 +4456,10 @@ export interface ListCustomModelDeploymentsRequest {
   statusEquals?: CustomModelDeploymentStatus;
   modelArnEquals?: string;
 }
-const ListCustomModelDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("createdBefore"),
-    ),
-    createdAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("createdAfter"),
-    ),
-    nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortModelsBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    statusEquals: S.optional(CustomModelDeploymentStatus).pipe(T.HttpQuery("statusEquals")),
-    modelArnEquals: S.optional(S.String).pipe(T.HttpQuery("modelArnEquals")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/model-customization/custom-model-deployments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCustomModelDeploymentsRequest",
-}) as any as S.Schema<ListCustomModelDeploymentsRequest>;
+const ListCustomModelDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<ListCustomModelDeploymentsRequest>;
 export interface CustomModelDeploymentSummary {
   customModelDeploymentArn: string;
   customModelDeploymentName: string;
@@ -6480,33 +4469,20 @@ export interface CustomModelDeploymentSummary {
   lastUpdatedAt?: Date;
   failureMessage?: string;
 }
-const CustomModelDeploymentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customModelDeploymentArn: S.String,
-    customModelDeploymentName: S.String,
-    modelArn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: CustomModelDeploymentStatus,
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    failureMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomModelDeploymentSummary",
-}) as any as S.Schema<CustomModelDeploymentSummary>;
+const CustomModelDeploymentSummary = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<CustomModelDeploymentSummary>;
 export type CustomModelDeploymentSummaryList = CustomModelDeploymentSummary[];
-const CustomModelDeploymentSummaryList = /*@__PURE__*/ S.Array(CustomModelDeploymentSummary);
+const CustomModelDeploymentSummaryList = /*@__PURE__*/ __L.at(__c48, 4);
 export interface ListCustomModelDeploymentsResponse {
   nextToken?: string;
   modelDeploymentSummaries?: CustomModelDeploymentSummary[];
 }
-const ListCustomModelDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    modelDeploymentSummaries: S.optional(CustomModelDeploymentSummaryList),
-  }),
-).annotate({
-  identifier: "ListCustomModelDeploymentsResponse",
-}) as any as S.Schema<ListCustomModelDeploymentsResponse>;
+const ListCustomModelDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  5,
+) as any as S.Schema<ListCustomModelDeploymentsResponse>;
 export interface ListCustomModelsRequest {
   creationTimeBefore?: Date;
   creationTimeAfter?: Date;
@@ -6520,25 +4496,10 @@ export interface ListCustomModelsRequest {
   isOwned?: boolean;
   modelStatus?: ModelStatus;
 }
-const ListCustomModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeBefore"),
-    ),
-    creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeAfter"),
-    ),
-    nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
-    baseModelArnEquals: S.optional(S.String).pipe(T.HttpQuery("baseModelArnEquals")),
-    foundationModelArnEquals: S.optional(S.String).pipe(T.HttpQuery("foundationModelArnEquals")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortModelsBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    isOwned: S.optional(S.Boolean).pipe(T.HttpQuery("isOwned")),
-    modelStatus: S.optional(ModelStatus).pipe(T.HttpQuery("modelStatus")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/custom-models" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListCustomModelsRequest" }) as any as S.Schema<ListCustomModelsRequest>;
+const ListCustomModelsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<ListCustomModelsRequest>;
 export type ModelName = string;
 export interface CustomModelSummary {
   modelArn: string;
@@ -6550,44 +4511,24 @@ export interface CustomModelSummary {
   ownerAccountId?: string;
   modelStatus?: ModelStatus;
 }
-const CustomModelSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelArn: S.String,
-    modelName: S.String,
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    baseModelArn: S.String,
-    baseModelName: S.String,
-    customizationType: S.optional(CustomizationType),
-    ownerAccountId: S.optional(S.String),
-    modelStatus: S.optional(ModelStatus),
-  }),
-).annotate({ identifier: "CustomModelSummary" }) as any as S.Schema<CustomModelSummary>;
+const CustomModelSummary = /*@__PURE__*/ __L.at(__c48, 7) as any as S.Schema<CustomModelSummary>;
 export type CustomModelSummaryList = CustomModelSummary[];
-const CustomModelSummaryList = /*@__PURE__*/ S.Array(CustomModelSummary);
+const CustomModelSummaryList = /*@__PURE__*/ __L.at(__c49, 0);
 export interface ListCustomModelsResponse {
   nextToken?: string;
   modelSummaries?: CustomModelSummary[];
 }
-const ListCustomModelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), modelSummaries: S.optional(CustomModelSummaryList) }),
-).annotate({ identifier: "ListCustomModelsResponse" }) as any as S.Schema<ListCustomModelsResponse>;
+const ListCustomModelsResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<ListCustomModelsResponse>;
 export interface ListEnforcedGuardrailsConfigurationRequest {
   nextToken?: string;
 }
-const ListEnforcedGuardrailsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/enforcedGuardrailsConfiguration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEnforcedGuardrailsConfigurationRequest",
-}) as any as S.Schema<ListEnforcedGuardrailsConfigurationRequest>;
+const ListEnforcedGuardrailsConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<ListEnforcedGuardrailsConfigurationRequest>;
 export type InputTags = "HONOR" | "IGNORE" | (string & {});
 const InputTags = S.String;
 
@@ -6598,12 +4539,10 @@ export interface SelectiveContentGuarding {
   system?: SelectiveGuardingMode;
   messages?: SelectiveGuardingMode;
 }
-const SelectiveContentGuarding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    system: S.optional(SelectiveGuardingMode),
-    messages: S.optional(SelectiveGuardingMode),
-  }),
-).annotate({ identifier: "SelectiveContentGuarding" }) as any as S.Schema<SelectiveContentGuarding>;
+const SelectiveContentGuarding = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<SelectiveContentGuarding>;
 export type ConfigurationOwner = string;
 export type IncludedModelId = string;
 export type IncludedModelsList = string[];
@@ -6617,9 +4556,7 @@ export interface ModelEnforcement {
   includedModels: string[];
   excludedModels: string[];
 }
-const ModelEnforcement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ includedModels: IncludedModelsList, excludedModels: ExcludedModelsList }),
-).annotate({ identifier: "ModelEnforcement" }) as any as S.Schema<ModelEnforcement>;
+const ModelEnforcement = /*@__PURE__*/ __L.at(__c49, 4) as any as S.Schema<ModelEnforcement>;
 export interface AccountEnforcedGuardrailOutputConfiguration {
   configId?: string;
   guardrailArn?: string;
@@ -6634,41 +4571,21 @@ export interface AccountEnforcedGuardrailOutputConfiguration {
   owner?: string;
   modelEnforcement?: ModelEnforcement;
 }
-const AccountEnforcedGuardrailOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configId: S.optional(S.String),
-    guardrailArn: S.optional(S.String),
-    guardrailId: S.optional(S.String),
-    inputTags: S.optional(InputTags),
-    selectiveContentGuarding: S.optional(SelectiveContentGuarding),
-    guardrailVersion: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedBy: S.optional(S.String),
-    owner: S.optional(S.String),
-    modelEnforcement: S.optional(ModelEnforcement),
-  }),
-).annotate({
-  identifier: "AccountEnforcedGuardrailOutputConfiguration",
-}) as any as S.Schema<AccountEnforcedGuardrailOutputConfiguration>;
+const AccountEnforcedGuardrailOutputConfiguration = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<AccountEnforcedGuardrailOutputConfiguration>;
 export type AccountEnforcedGuardrailsOutputConfiguration =
   AccountEnforcedGuardrailOutputConfiguration[];
-const AccountEnforcedGuardrailsOutputConfiguration = /*@__PURE__*/ S.Array(
-  AccountEnforcedGuardrailOutputConfiguration,
-);
+const AccountEnforcedGuardrailsOutputConfiguration = /*@__PURE__*/ __L.at(__c49, 6);
 export interface ListEnforcedGuardrailsConfigurationResponse {
   guardrailsConfig: AccountEnforcedGuardrailOutputConfiguration[];
   nextToken?: string;
 }
-const ListEnforcedGuardrailsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guardrailsConfig: AccountEnforcedGuardrailsOutputConfiguration,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEnforcedGuardrailsConfigurationResponse",
-}) as any as S.Schema<ListEnforcedGuardrailsConfigurationResponse>;
+const ListEnforcedGuardrailsConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<ListEnforcedGuardrailsConfigurationResponse>;
 export interface ListEvaluationJobsRequest {
   creationTimeAfter?: Date;
   creationTimeBefore?: Date;
@@ -6680,25 +4597,10 @@ export interface ListEvaluationJobsRequest {
   sortBy?: SortJobsBy;
   sortOrder?: SortOrder;
 }
-const ListEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeAfter"),
-    ),
-    creationTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeBefore"),
-    ),
-    statusEquals: S.optional(EvaluationJobStatus).pipe(T.HttpQuery("statusEquals")),
-    applicationTypeEquals: S.optional(ApplicationType).pipe(T.HttpQuery("applicationTypeEquals")),
-    nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/evaluation-jobs" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListEvaluationJobsRequest",
-}) as any as S.Schema<ListEvaluationJobsRequest>;
+const ListEvaluationJobsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<ListEvaluationJobsRequest>;
 export type EvaluationTaskTypes = EvaluationTaskType[];
 const EvaluationTaskTypes = GuardrailModalities as any as S.Schema<EvaluationTaskTypes>;
 export type EvaluationBedrockModelIdentifiers = string[];
@@ -6717,16 +4619,10 @@ export interface EvaluationModelConfigSummary {
   bedrockModelIdentifiers?: string[];
   precomputedInferenceSourceIdentifiers?: string[];
 }
-const EvaluationModelConfigSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bedrockModelIdentifiers: S.optional(EvaluationBedrockModelIdentifiers),
-    precomputedInferenceSourceIdentifiers: S.optional(
-      EvaluationPrecomputedInferenceSourceIdentifiers,
-    ),
-  }),
-).annotate({
-  identifier: "EvaluationModelConfigSummary",
-}) as any as S.Schema<EvaluationModelConfigSummary>;
+const EvaluationModelConfigSummary = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<EvaluationModelConfigSummary>;
 export type EvaluationPrecomputedRagSourceIdentifiers = string[];
 const EvaluationPrecomputedRagSourceIdentifiers =
   AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<EvaluationPrecomputedRagSourceIdentifiers>;
@@ -6734,26 +4630,18 @@ export interface EvaluationRagConfigSummary {
   bedrockKnowledgeBaseIdentifiers?: string[];
   precomputedRagSourceIdentifiers?: string[];
 }
-const EvaluationRagConfigSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bedrockKnowledgeBaseIdentifiers: S.optional(EvaluationBedrockKnowledgeBaseIdentifiers),
-    precomputedRagSourceIdentifiers: S.optional(EvaluationPrecomputedRagSourceIdentifiers),
-  }),
-).annotate({
-  identifier: "EvaluationRagConfigSummary",
-}) as any as S.Schema<EvaluationRagConfigSummary>;
+const EvaluationRagConfigSummary = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<EvaluationRagConfigSummary>;
 export interface EvaluationInferenceConfigSummary {
   modelConfigSummary?: EvaluationModelConfigSummary;
   ragConfigSummary?: EvaluationRagConfigSummary;
 }
-const EvaluationInferenceConfigSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelConfigSummary: S.optional(EvaluationModelConfigSummary),
-    ragConfigSummary: S.optional(EvaluationRagConfigSummary),
-  }),
-).annotate({
-  identifier: "EvaluationInferenceConfigSummary",
-}) as any as S.Schema<EvaluationInferenceConfigSummary>;
+const EvaluationInferenceConfigSummary = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<EvaluationInferenceConfigSummary>;
 export interface EvaluationSummary {
   jobArn: string;
   jobName: string;
@@ -6768,33 +4656,17 @@ export interface EvaluationSummary {
   inferenceConfigSummary?: EvaluationInferenceConfigSummary;
   applicationType?: ApplicationType;
 }
-const EvaluationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    jobName: S.String,
-    status: EvaluationJobStatus,
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    jobType: EvaluationJobType,
-    evaluationTaskTypes: EvaluationTaskTypes,
-    modelIdentifiers: S.optional(EvaluationBedrockModelIdentifiers),
-    ragIdentifiers: S.optional(EvaluationBedrockKnowledgeBaseIdentifiers),
-    evaluatorModelIdentifiers: S.optional(EvaluatorModelIdentifiers),
-    customMetricsEvaluatorModelIdentifiers: S.optional(EvaluatorModelIdentifiers),
-    inferenceConfigSummary: S.optional(EvaluationInferenceConfigSummary),
-    applicationType: S.optional(ApplicationType),
-  }),
-).annotate({ identifier: "EvaluationSummary" }) as any as S.Schema<EvaluationSummary>;
+const EvaluationSummary = /*@__PURE__*/ __L.at(__c50, 4) as any as S.Schema<EvaluationSummary>;
 export type EvaluationSummaries = EvaluationSummary[];
-const EvaluationSummaries = /*@__PURE__*/ S.Array(EvaluationSummary);
+const EvaluationSummaries = /*@__PURE__*/ __L.at(__c50, 5);
 export interface ListEvaluationJobsResponse {
   nextToken?: string;
   jobSummaries?: EvaluationSummary[];
 }
-const ListEvaluationJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), jobSummaries: S.optional(EvaluationSummaries) }),
-).annotate({
-  identifier: "ListEvaluationJobsResponse",
-}) as any as S.Schema<ListEvaluationJobsResponse>;
+const ListEvaluationJobsResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<ListEvaluationJobsResponse>;
 export type OfferType = "ALL" | "PUBLIC" | (string & {});
 const OfferType = S.String;
 
@@ -6802,23 +4674,10 @@ export interface ListFoundationModelAgreementOffersRequest {
   modelId: string;
   offerType?: OfferType;
 }
-const ListFoundationModelAgreementOffersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelId: S.String.pipe(T.HttpLabel("modelId")),
-    offerType: S.optional(OfferType).pipe(T.HttpQuery("offerType")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/list-foundation-model-agreement-offers/{modelId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListFoundationModelAgreementOffersRequest",
-}) as any as S.Schema<ListFoundationModelAgreementOffersRequest>;
+const ListFoundationModelAgreementOffersRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<ListFoundationModelAgreementOffersRequest>;
 export type OfferId = string;
 export interface DimensionalPriceRate {
   dimension?: string;
@@ -6826,73 +4685,51 @@ export interface DimensionalPriceRate {
   description?: string;
   unit?: string;
 }
-const DimensionalPriceRate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimension: S.optional(S.String),
-    price: S.optional(S.String),
-    description: S.optional(S.String),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "DimensionalPriceRate" }) as any as S.Schema<DimensionalPriceRate>;
+const DimensionalPriceRate = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<DimensionalPriceRate>;
 export type RateCard = DimensionalPriceRate[];
-const RateCard = /*@__PURE__*/ S.Array(DimensionalPriceRate);
+const RateCard = /*@__PURE__*/ __L.at(__c51, 1);
 export interface PricingTerm {
   rateCard: DimensionalPriceRate[];
 }
-const PricingTerm = /*@__PURE__*/ S.suspend(() => S.Struct({ rateCard: RateCard })).annotate({
-  identifier: "PricingTerm",
-}) as any as S.Schema<PricingTerm>;
+const PricingTerm = /*@__PURE__*/ __L.at(__c51, 2) as any as S.Schema<PricingTerm>;
 export interface LegalTerm {
   url?: string;
 }
-const LegalTerm = /*@__PURE__*/ S.suspend(() => S.Struct({ url: S.optional(S.String) })).annotate({
-  identifier: "LegalTerm",
-}) as any as S.Schema<LegalTerm>;
+const LegalTerm = /*@__PURE__*/ __L.at(__c51, 3) as any as S.Schema<LegalTerm>;
 export interface SupportTerm {
   refundPolicyDescription?: string;
 }
-const SupportTerm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ refundPolicyDescription: S.optional(S.String) }),
-).annotate({ identifier: "SupportTerm" }) as any as S.Schema<SupportTerm>;
+const SupportTerm = /*@__PURE__*/ __L.at(__c51, 4) as any as S.Schema<SupportTerm>;
 export interface ValidityTerm {
   agreementDuration?: string;
 }
-const ValidityTerm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agreementDuration: S.optional(S.String) }),
-).annotate({ identifier: "ValidityTerm" }) as any as S.Schema<ValidityTerm>;
+const ValidityTerm = /*@__PURE__*/ __L.at(__c51, 5) as any as S.Schema<ValidityTerm>;
 export interface TermDetails {
   usageBasedPricingTerm: PricingTerm;
   legalTerm: LegalTerm;
   supportTerm: SupportTerm;
   validityTerm?: ValidityTerm;
 }
-const TermDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    usageBasedPricingTerm: PricingTerm,
-    legalTerm: LegalTerm,
-    supportTerm: SupportTerm,
-    validityTerm: S.optional(ValidityTerm),
-  }),
-).annotate({ identifier: "TermDetails" }) as any as S.Schema<TermDetails>;
+const TermDetails = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<TermDetails>;
 export interface Offer {
   offerId?: string;
   offerToken: string;
   termDetails: TermDetails;
 }
-const Offer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ offerId: S.optional(S.String), offerToken: S.String, termDetails: TermDetails }),
-).annotate({ identifier: "Offer" }) as any as S.Schema<Offer>;
+const Offer = /*@__PURE__*/ __L.at(__c51, 7) as any as S.Schema<Offer>;
 export type Offers = Offer[];
-const Offers = /*@__PURE__*/ S.Array(Offer);
+const Offers = /*@__PURE__*/ __L.at(__c52, 0);
 export interface ListFoundationModelAgreementOffersResponse {
   modelId: string;
   offers: Offer[];
 }
-const ListFoundationModelAgreementOffersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelId: S.String, offers: Offers }),
-).annotate({
-  identifier: "ListFoundationModelAgreementOffersResponse",
-}) as any as S.Schema<ListFoundationModelAgreementOffersResponse>;
+const ListFoundationModelAgreementOffersResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<ListFoundationModelAgreementOffersResponse>;
 export type Provider = string;
 export interface ListFoundationModelsRequest {
   byProvider?: string;
@@ -6900,18 +4737,10 @@ export interface ListFoundationModelsRequest {
   byOutputModality?: ModelModality;
   byInferenceType?: InferenceType;
 }
-const ListFoundationModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    byProvider: S.optional(S.String).pipe(T.HttpQuery("byProvider")),
-    byCustomizationType: S.optional(ModelCustomization).pipe(T.HttpQuery("byCustomizationType")),
-    byOutputModality: S.optional(ModelModality).pipe(T.HttpQuery("byOutputModality")),
-    byInferenceType: S.optional(InferenceType).pipe(T.HttpQuery("byInferenceType")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/foundation-models" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListFoundationModelsRequest",
-}) as any as S.Schema<ListFoundationModelsRequest>;
+const ListFoundationModelsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<ListFoundationModelsRequest>;
 export interface FoundationModelSummary {
   modelArn: string;
   modelId: string;
@@ -6926,27 +4755,23 @@ export interface FoundationModelSummary {
 }
 const FoundationModelSummary = FoundationModelDetails as any as S.Schema<FoundationModelSummary>;
 export type FoundationModelSummaryList = FoundationModelSummary[];
-const FoundationModelSummaryList = /*@__PURE__*/ S.Array(FoundationModelSummary);
+const FoundationModelSummaryList = /*@__PURE__*/ __L.at(__c52, 3);
 export interface ListFoundationModelsResponse {
   modelSummaries?: FoundationModelSummary[];
 }
-const ListFoundationModelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ modelSummaries: S.optional(FoundationModelSummaryList) }),
-).annotate({
-  identifier: "ListFoundationModelsResponse",
-}) as any as S.Schema<ListFoundationModelsResponse>;
+const ListFoundationModelsResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<ListFoundationModelsResponse>;
 export interface ListGuardrailsRequest {
   guardrailIdentifier?: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guardrailIdentifier: S.optional(S.String).pipe(T.HttpQuery("guardrailIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/guardrails" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListGuardrailsRequest" }) as any as S.Schema<ListGuardrailsRequest>;
+const ListGuardrailsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<ListGuardrailsRequest>;
 export interface GuardrailSummary {
   id: string;
   arn: string;
@@ -6958,28 +4783,17 @@ export interface GuardrailSummary {
   updatedAt: Date;
   crossRegionDetails?: GuardrailCrossRegionDetails;
 }
-const GuardrailSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    status: GuardrailStatus,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    version: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    crossRegionDetails: S.optional(GuardrailCrossRegionDetails),
-  }),
-).annotate({ identifier: "GuardrailSummary" }) as any as S.Schema<GuardrailSummary>;
+const GuardrailSummary = /*@__PURE__*/ __L.at(__c52, 6) as any as S.Schema<GuardrailSummary>;
 export type GuardrailSummaries = GuardrailSummary[];
-const GuardrailSummaries = /*@__PURE__*/ S.Array(GuardrailSummary);
+const GuardrailSummaries = /*@__PURE__*/ __L.at(__c52, 7);
 export interface ListGuardrailsResponse {
   guardrails: GuardrailSummary[];
   nextToken?: string;
 }
-const ListGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ guardrails: GuardrailSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListGuardrailsResponse" }) as any as S.Schema<ListGuardrailsResponse>;
+const ListGuardrailsResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<ListGuardrailsResponse>;
 export interface ListImportedModelsRequest {
   creationTimeBefore?: Date;
   creationTimeAfter?: Date;
@@ -6989,23 +4803,10 @@ export interface ListImportedModelsRequest {
   sortBy?: SortModelsBy;
   sortOrder?: SortOrder;
 }
-const ListImportedModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeBefore"),
-    ),
-    creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeAfter"),
-    ),
-    nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortModelsBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/imported-models" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListImportedModelsRequest",
-}) as any as S.Schema<ListImportedModelsRequest>;
+const ListImportedModelsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<ListImportedModelsRequest>;
 export type ModelArchitecture = string;
 export interface ImportedModelSummary {
   modelArn: string;
@@ -7014,45 +4815,29 @@ export interface ImportedModelSummary {
   instructSupported?: boolean;
   modelArchitecture?: string;
 }
-const ImportedModelSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelArn: S.String,
-    modelName: S.String,
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    instructSupported: S.optional(S.Boolean),
-    modelArchitecture: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImportedModelSummary" }) as any as S.Schema<ImportedModelSummary>;
+const ImportedModelSummary = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<ImportedModelSummary>;
 export type ImportedModelSummaryList = ImportedModelSummary[];
-const ImportedModelSummaryList = /*@__PURE__*/ S.Array(ImportedModelSummary);
+const ImportedModelSummaryList = /*@__PURE__*/ __L.at(__c53, 3);
 export interface ListImportedModelsResponse {
   nextToken?: string;
   modelSummaries?: ImportedModelSummary[];
 }
-const ListImportedModelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    modelSummaries: S.optional(ImportedModelSummaryList),
-  }),
-).annotate({
-  identifier: "ListImportedModelsResponse",
-}) as any as S.Schema<ListImportedModelsResponse>;
+const ListImportedModelsResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<ListImportedModelsResponse>;
 export interface ListInferenceProfilesRequest {
   maxResults?: number;
   nextToken?: string;
   typeEquals?: InferenceProfileType;
 }
-const ListInferenceProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    typeEquals: S.optional(InferenceProfileType).pipe(T.HttpQuery("type")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/inference-profiles" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListInferenceProfilesRequest",
-}) as any as S.Schema<ListInferenceProfilesRequest>;
+const ListInferenceProfilesRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<ListInferenceProfilesRequest>;
 export interface InferenceProfileSummary {
   inferenceProfileName: string;
   description?: string | redacted.Redacted<string>;
@@ -7064,56 +4849,29 @@ export interface InferenceProfileSummary {
   status: InferenceProfileStatus;
   type: InferenceProfileType;
 }
-const InferenceProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inferenceProfileName: S.String,
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    inferenceProfileArn: S.String,
-    models: InferenceProfileModels,
-    inferenceProfileId: S.String,
-    status: InferenceProfileStatus,
-    type: InferenceProfileType,
-  }),
-).annotate({ identifier: "InferenceProfileSummary" }) as any as S.Schema<InferenceProfileSummary>;
+const InferenceProfileSummary = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<InferenceProfileSummary>;
 export type InferenceProfileSummaries = InferenceProfileSummary[];
-const InferenceProfileSummaries = /*@__PURE__*/ S.Array(InferenceProfileSummary);
+const InferenceProfileSummaries = /*@__PURE__*/ __L.at(__c53, 7);
 export interface ListInferenceProfilesResponse {
   inferenceProfileSummaries?: InferenceProfileSummary[];
   nextToken?: string;
 }
-const ListInferenceProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inferenceProfileSummaries: S.optional(InferenceProfileSummaries),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListInferenceProfilesResponse",
-}) as any as S.Schema<ListInferenceProfilesResponse>;
+const ListInferenceProfilesResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<ListInferenceProfilesResponse>;
 export interface ListMarketplaceModelEndpointsRequest {
   maxResults?: number;
   nextToken?: string;
   modelSourceEquals?: string;
 }
-const ListMarketplaceModelEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    modelSourceEquals: S.optional(S.String).pipe(T.HttpQuery("modelSourceIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/marketplace-model/endpoints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListMarketplaceModelEndpointsRequest",
-}) as any as S.Schema<ListMarketplaceModelEndpointsRequest>;
+const ListMarketplaceModelEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<ListMarketplaceModelEndpointsRequest>;
 export interface MarketplaceModelEndpointSummary {
   endpointArn: string;
   modelSourceIdentifier: string;
@@ -7122,32 +4880,20 @@ export interface MarketplaceModelEndpointSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const MarketplaceModelEndpointSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpointArn: S.String,
-    modelSourceIdentifier: S.String,
-    status: S.optional(Status),
-    statusMessage: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "MarketplaceModelEndpointSummary",
-}) as any as S.Schema<MarketplaceModelEndpointSummary>;
+const MarketplaceModelEndpointSummary = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<MarketplaceModelEndpointSummary>;
 export type MarketplaceModelEndpointSummaries = MarketplaceModelEndpointSummary[];
-const MarketplaceModelEndpointSummaries = /*@__PURE__*/ S.Array(MarketplaceModelEndpointSummary);
+const MarketplaceModelEndpointSummaries = /*@__PURE__*/ __L.at(__c54, 3);
 export interface ListMarketplaceModelEndpointsResponse {
   marketplaceModelEndpoints?: MarketplaceModelEndpointSummary[];
   nextToken?: string;
 }
-const ListMarketplaceModelEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    marketplaceModelEndpoints: S.optional(MarketplaceModelEndpointSummaries),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListMarketplaceModelEndpointsResponse",
-}) as any as S.Schema<ListMarketplaceModelEndpointsResponse>;
+const ListMarketplaceModelEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<ListMarketplaceModelEndpointsResponse>;
 export interface ListModelCopyJobsRequest {
   creationTimeAfter?: Date;
   creationTimeBefore?: Date;
@@ -7160,24 +4906,10 @@ export interface ListModelCopyJobsRequest {
   sortBy?: SortJobsBy;
   sortOrder?: SortOrder;
 }
-const ListModelCopyJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeAfter"),
-    ),
-    creationTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeBefore"),
-    ),
-    statusEquals: S.optional(ModelCopyJobStatus).pipe(T.HttpQuery("statusEquals")),
-    sourceAccountEquals: S.optional(S.String).pipe(T.HttpQuery("sourceAccountEquals")),
-    sourceModelArnEquals: S.optional(S.String).pipe(T.HttpQuery("sourceModelArnEquals")),
-    targetModelNameContains: S.optional(S.String).pipe(T.HttpQuery("outputModelNameContains")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/model-copy-jobs" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListModelCopyJobsRequest" }) as any as S.Schema<ListModelCopyJobsRequest>;
+const ListModelCopyJobsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<ListModelCopyJobsRequest>;
 export interface ModelCopyJobSummary {
   jobArn: string;
   status: ModelCopyJobStatus;
@@ -7193,19 +4925,15 @@ export interface ModelCopyJobSummary {
 }
 const ModelCopyJobSummary = GetModelCopyJobResponse as any as S.Schema<ModelCopyJobSummary>;
 export type ModelCopyJobSummaries = ModelCopyJobSummary[];
-const ModelCopyJobSummaries = /*@__PURE__*/ S.Array(ModelCopyJobSummary);
+const ModelCopyJobSummaries = /*@__PURE__*/ __L.at(__c54, 6);
 export interface ListModelCopyJobsResponse {
   nextToken?: string;
   modelCopyJobSummaries?: ModelCopyJobSummary[];
 }
-const ListModelCopyJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    modelCopyJobSummaries: S.optional(ModelCopyJobSummaries),
-  }),
-).annotate({
-  identifier: "ListModelCopyJobsResponse",
-}) as any as S.Schema<ListModelCopyJobsResponse>;
+const ListModelCopyJobsResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<ListModelCopyJobsResponse>;
 export type FineTuningJobStatus =
   | "InProgress"
   | "Completed"
@@ -7225,33 +4953,10 @@ export interface ListModelCustomizationJobsRequest {
   sortBy?: SortJobsBy;
   sortOrder?: SortOrder;
 }
-const ListModelCustomizationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeAfter"),
-    ),
-    creationTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeBefore"),
-    ),
-    statusEquals: S.optional(FineTuningJobStatus).pipe(T.HttpQuery("statusEquals")),
-    nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/model-customization-jobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListModelCustomizationJobsRequest",
-}) as any as S.Schema<ListModelCustomizationJobsRequest>;
+const ListModelCustomizationJobsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<ListModelCustomizationJobsRequest>;
 export interface ModelCustomizationJobSummary {
   jobArn: string;
   baseModelArn: string;
@@ -7265,37 +4970,20 @@ export interface ModelCustomizationJobSummary {
   customModelName?: string;
   customizationType?: CustomizationType;
 }
-const ModelCustomizationJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    baseModelArn: S.String,
-    jobName: S.String,
-    status: ModelCustomizationJobStatus,
-    statusDetails: S.optional(StatusDetails),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    customModelArn: S.optional(S.String),
-    customModelName: S.optional(S.String),
-    customizationType: S.optional(CustomizationType),
-  }),
-).annotate({
-  identifier: "ModelCustomizationJobSummary",
-}) as any as S.Schema<ModelCustomizationJobSummary>;
+const ModelCustomizationJobSummary = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<ModelCustomizationJobSummary>;
 export type ModelCustomizationJobSummaries = ModelCustomizationJobSummary[];
-const ModelCustomizationJobSummaries = /*@__PURE__*/ S.Array(ModelCustomizationJobSummary);
+const ModelCustomizationJobSummaries = /*@__PURE__*/ __L.at(__c55, 2);
 export interface ListModelCustomizationJobsResponse {
   nextToken?: string;
   modelCustomizationJobSummaries?: ModelCustomizationJobSummary[];
 }
-const ListModelCustomizationJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    modelCustomizationJobSummaries: S.optional(ModelCustomizationJobSummaries),
-  }),
-).annotate({
-  identifier: "ListModelCustomizationJobsResponse",
-}) as any as S.Schema<ListModelCustomizationJobsResponse>;
+const ListModelCustomizationJobsResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<ListModelCustomizationJobsResponse>;
 export interface ListModelImportJobsRequest {
   creationTimeAfter?: Date;
   creationTimeBefore?: Date;
@@ -7306,26 +4994,10 @@ export interface ListModelImportJobsRequest {
   sortBy?: SortJobsBy;
   sortOrder?: SortOrder;
 }
-const ListModelImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeAfter"),
-    ),
-    creationTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeBefore"),
-    ),
-    statusEquals: S.optional(ModelImportJobStatus).pipe(T.HttpQuery("statusEquals")),
-    nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/model-import-jobs" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListModelImportJobsRequest",
-}) as any as S.Schema<ListModelImportJobsRequest>;
+const ListModelImportJobsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  4,
+) as any as S.Schema<ListModelImportJobsRequest>;
 export interface ModelImportJobSummary {
   jobArn: string;
   jobName: string;
@@ -7336,32 +5008,20 @@ export interface ModelImportJobSummary {
   importedModelArn?: string;
   importedModelName?: string;
 }
-const ModelImportJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    jobName: S.String,
-    status: ModelImportJobStatus,
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    importedModelArn: S.optional(S.String),
-    importedModelName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ModelImportJobSummary" }) as any as S.Schema<ModelImportJobSummary>;
+const ModelImportJobSummary = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<ModelImportJobSummary>;
 export type ModelImportJobSummaries = ModelImportJobSummary[];
-const ModelImportJobSummaries = /*@__PURE__*/ S.Array(ModelImportJobSummary);
+const ModelImportJobSummaries = /*@__PURE__*/ __L.at(__c55, 6);
 export interface ListModelImportJobsResponse {
   nextToken?: string;
   modelImportJobSummaries?: ModelImportJobSummary[];
 }
-const ListModelImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    modelImportJobSummaries: S.optional(ModelImportJobSummaries),
-  }),
-).annotate({
-  identifier: "ListModelImportJobsResponse",
-}) as any as S.Schema<ListModelImportJobsResponse>;
+const ListModelImportJobsResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<ListModelImportJobsResponse>;
 export interface ListModelInvocationJobsRequest {
   submitTimeAfter?: Date;
   submitTimeBefore?: Date;
@@ -7372,26 +5032,10 @@ export interface ListModelInvocationJobsRequest {
   sortBy?: SortJobsBy;
   sortOrder?: SortOrder;
 }
-const ListModelInvocationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    submitTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("submitTimeAfter"),
-    ),
-    submitTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("submitTimeBefore"),
-    ),
-    statusEquals: S.optional(ModelInvocationJobStatus).pipe(T.HttpQuery("statusEquals")),
-    nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/model-invocation-jobs" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListModelInvocationJobsRequest",
-}) as any as S.Schema<ListModelInvocationJobsRequest>;
+const ListModelInvocationJobsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  0,
+) as any as S.Schema<ListModelInvocationJobsRequest>;
 export interface ModelInvocationJobSummary {
   jobArn: string;
   jobName: string;
@@ -7414,58 +5058,29 @@ export interface ModelInvocationJobSummary {
   successRecordCount?: number;
   errorRecordCount?: number;
 }
-const ModelInvocationJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.String,
-    jobName: S.String,
-    modelId: S.String,
-    clientRequestToken: S.optional(S.String),
-    roleArn: S.String,
-    status: S.optional(ModelInvocationJobStatus),
-    message: S.optional(SensitiveString),
-    submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    inputDataConfig: ModelInvocationJobInputDataConfig,
-    outputDataConfig: ModelInvocationJobOutputDataConfig,
-    vpcConfig: S.optional(VpcConfig),
-    timeoutDurationInHours: S.optional(S.Number),
-    jobExpirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    modelInvocationType: S.optional(ModelInvocationType),
-    totalRecordCount: S.optional(S.Number),
-    processedRecordCount: S.optional(S.Number),
-    successRecordCount: S.optional(S.Number),
-    errorRecordCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ModelInvocationJobSummary",
-}) as any as S.Schema<ModelInvocationJobSummary>;
+const ModelInvocationJobSummary = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<ModelInvocationJobSummary>;
 export type ModelInvocationJobSummaries = ModelInvocationJobSummary[];
-const ModelInvocationJobSummaries = /*@__PURE__*/ S.Array(ModelInvocationJobSummary);
+const ModelInvocationJobSummaries = /*@__PURE__*/ __L.at(__c56, 2);
 export interface ListModelInvocationJobsResponse {
   nextToken?: string;
   invocationJobSummaries?: ModelInvocationJobSummary[];
 }
-const ListModelInvocationJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    invocationJobSummaries: S.optional(ModelInvocationJobSummaries),
-  }),
-).annotate({
-  identifier: "ListModelInvocationJobsResponse",
-}) as any as S.Schema<ListModelInvocationJobsResponse>;
+const ListModelInvocationJobsResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<ListModelInvocationJobsResponse>;
 export interface ListPromptRoutersRequest {
   maxResults?: number;
   nextToken?: string;
   type?: PromptRouterType;
 }
-const ListPromptRoutersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    type: S.optional(PromptRouterType).pipe(T.HttpQuery("type")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/prompt-routers" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListPromptRoutersRequest" }) as any as S.Schema<ListPromptRoutersRequest>;
+const ListPromptRoutersRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<ListPromptRoutersRequest>;
 export interface PromptRouterSummary {
   promptRouterName: string;
   routingCriteria: RoutingCriteria;
@@ -7480,7 +5095,7 @@ export interface PromptRouterSummary {
 }
 const PromptRouterSummary = GetPromptRouterResponse as any as S.Schema<PromptRouterSummary>;
 export type PromptRouterSummaries = PromptRouterSummary[];
-const PromptRouterSummaries = /*@__PURE__*/ S.Array(PromptRouterSummary);
+const PromptRouterSummaries = /*@__PURE__*/ __L.at(__c56, 5);
 export interface ListPromptRoutersResponse {
   promptRouterSummaries?: (PromptRouterSummary & {
     models: (PromptRouterTargetModel & { modelArn: PromptRouterTargetModelArn })[];
@@ -7488,14 +5103,10 @@ export interface ListPromptRoutersResponse {
   })[];
   nextToken?: string;
 }
-const ListPromptRoutersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    promptRouterSummaries: S.optional(PromptRouterSummaries),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPromptRoutersResponse",
-}) as any as S.Schema<ListPromptRoutersResponse>;
+const ListPromptRoutersResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  6,
+) as any as S.Schema<ListPromptRoutersResponse>;
 export type SortByProvisionedModels = "CreationTime" | (string & {});
 const SortByProvisionedModels = S.String;
 
@@ -7510,34 +5121,10 @@ export interface ListProvisionedModelThroughputsRequest {
   sortBy?: SortByProvisionedModels;
   sortOrder?: SortOrder;
 }
-const ListProvisionedModelThroughputsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeAfter"),
-    ),
-    creationTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-      T.HttpQuery("creationTimeBefore"),
-    ),
-    statusEquals: S.optional(ProvisionedModelStatus).pipe(T.HttpQuery("statusEquals")),
-    modelArnEquals: S.optional(S.String).pipe(T.HttpQuery("modelArnEquals")),
-    nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortByProvisionedModels).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/provisioned-model-throughputs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListProvisionedModelThroughputsRequest",
-}) as any as S.Schema<ListProvisionedModelThroughputsRequest>;
+const ListProvisionedModelThroughputsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<ListProvisionedModelThroughputsRequest>;
 export interface ProvisionedModelSummary {
   provisionedModelName: string;
   provisionedModelArn: string;
@@ -7552,65 +5139,42 @@ export interface ProvisionedModelSummary {
   creationTime: Date;
   lastModifiedTime: Date;
 }
-const ProvisionedModelSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisionedModelName: S.String,
-    provisionedModelArn: S.String,
-    modelArn: S.String,
-    desiredModelArn: S.String,
-    foundationModelArn: S.String,
-    modelUnits: S.Number,
-    desiredModelUnits: S.Number,
-    status: ProvisionedModelStatus,
-    commitmentDuration: S.optional(CommitmentDuration),
-    commitmentExpirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "ProvisionedModelSummary" }) as any as S.Schema<ProvisionedModelSummary>;
+const ProvisionedModelSummary = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<ProvisionedModelSummary>;
 export type ProvisionedModelSummaries = ProvisionedModelSummary[];
-const ProvisionedModelSummaries = /*@__PURE__*/ S.Array(ProvisionedModelSummary);
+const ProvisionedModelSummaries = /*@__PURE__*/ __L.at(__c57, 1);
 export interface ListProvisionedModelThroughputsResponse {
   nextToken?: string;
   provisionedModelSummaries?: ProvisionedModelSummary[];
 }
-const ListProvisionedModelThroughputsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    provisionedModelSummaries: S.optional(ProvisionedModelSummaries),
-  }),
-).annotate({
-  identifier: "ListProvisionedModelThroughputsResponse",
-}) as any as S.Schema<ListProvisionedModelThroughputsResponse>;
+const ListProvisionedModelThroughputsResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<ListProvisionedModelThroughputsResponse>;
 export type TaggableResourcesArn = string;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceARN: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/listTagsForResource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutAccountDataRetentionRequest {
   mode: DataRetentionMode;
 }
-const PutAccountDataRetentionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ mode: DataRetentionMode }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/data-retention" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutAccountDataRetentionRequest",
-}) as any as S.Schema<PutAccountDataRetentionRequest>;
+const PutAccountDataRetentionRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<PutAccountDataRetentionRequest>;
 export interface PutAccountDataRetentionResponse {
   mode: DataRetentionMode;
   updatedAt?: Date;
@@ -7623,68 +5187,34 @@ export interface AccountEnforcedGuardrailInferenceInputConfiguration {
   selectiveContentGuarding?: SelectiveContentGuarding;
   modelEnforcement?: ModelEnforcement;
 }
-const AccountEnforcedGuardrailInferenceInputConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guardrailIdentifier: S.String,
-    guardrailVersion: S.String,
-    selectiveContentGuarding: S.optional(SelectiveContentGuarding),
-    modelEnforcement: S.optional(ModelEnforcement),
-  }),
-).annotate({
-  identifier: "AccountEnforcedGuardrailInferenceInputConfiguration",
-}) as any as S.Schema<AccountEnforcedGuardrailInferenceInputConfiguration>;
+const AccountEnforcedGuardrailInferenceInputConfiguration = /*@__PURE__*/ __L.at(
+  __c57,
+  6,
+) as any as S.Schema<AccountEnforcedGuardrailInferenceInputConfiguration>;
 export interface PutEnforcedGuardrailConfigurationRequest {
   configId?: string;
   guardrailInferenceConfig: AccountEnforcedGuardrailInferenceInputConfiguration;
 }
-const PutEnforcedGuardrailConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configId: S.optional(S.String),
-    guardrailInferenceConfig: AccountEnforcedGuardrailInferenceInputConfiguration,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/enforcedGuardrailsConfiguration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutEnforcedGuardrailConfigurationRequest",
-}) as any as S.Schema<PutEnforcedGuardrailConfigurationRequest>;
+const PutEnforcedGuardrailConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<PutEnforcedGuardrailConfigurationRequest>;
 export interface PutEnforcedGuardrailConfigurationResponse {
   configId?: string;
   updatedAt?: Date;
   updatedBy?: string;
 }
-const PutEnforcedGuardrailConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configId: S.optional(S.String),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PutEnforcedGuardrailConfigurationResponse",
-}) as any as S.Schema<PutEnforcedGuardrailConfigurationResponse>;
+const PutEnforcedGuardrailConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<PutEnforcedGuardrailConfigurationResponse>;
 export interface PutModelInvocationLoggingConfigurationRequest {
   loggingConfig: LoggingConfig;
 }
-const PutModelInvocationLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ loggingConfig: LoggingConfig }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/logging/modelinvocations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutModelInvocationLoggingConfigurationRequest",
-}) as any as S.Schema<PutModelInvocationLoggingConfigurationRequest>;
+const PutModelInvocationLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  1,
+) as any as S.Schema<PutModelInvocationLoggingConfigurationRequest>;
 export interface PutModelInvocationLoggingConfigurationResponse {}
 const PutModelInvocationLoggingConfigurationResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<PutModelInvocationLoggingConfigurationResponse>;
@@ -7692,36 +5222,24 @@ export interface PutResourcePolicyRequest {
   resourceArn: string;
   resourcePolicy: string;
 }
-const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, resourcePolicy: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/resource-policy" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutResourcePolicyRequest" }) as any as S.Schema<PutResourcePolicyRequest>;
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  2,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {
   resourceArn?: string;
 }
-const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.optional(S.String) }),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+const PutResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<PutResourcePolicyResponse>;
 export interface PutUseCaseForModelAccessRequest {
   formData: Uint8Array;
 }
-const PutUseCaseForModelAccessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ formData: T.Blob }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/use-case-for-model-access" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutUseCaseForModelAccessRequest",
-}) as any as S.Schema<PutUseCaseForModelAccessRequest>;
+const PutUseCaseForModelAccessRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<PutUseCaseForModelAccessRequest>;
 export interface PutUseCaseForModelAccessResponse {}
 const PutUseCaseForModelAccessResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<PutUseCaseForModelAccessResponse>;
@@ -7729,26 +5247,10 @@ export interface RegisterMarketplaceModelEndpointRequest {
   endpointIdentifier: string;
   modelSourceIdentifier: string;
 }
-const RegisterMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpointIdentifier: S.String.pipe(T.HttpLabel("endpointIdentifier")),
-    modelSourceIdentifier: S.String,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/marketplace-model/endpoints/{endpointIdentifier}/registration",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RegisterMarketplaceModelEndpointRequest",
-}) as any as S.Schema<RegisterMarketplaceModelEndpointRequest>;
+const RegisterMarketplaceModelEndpointRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  5,
+) as any as S.Schema<RegisterMarketplaceModelEndpointRequest>;
 export interface RegisterMarketplaceModelEndpointResponse {
   marketplaceModelEndpoint: MarketplaceModelEndpoint;
 }
@@ -7760,29 +5262,20 @@ export interface AutomatedReasoningPolicyBuildWorkflowDocument {
   documentName: string | redacted.Redacted<string>;
   documentDescription?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyBuildWorkflowDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: SensitiveBlob,
-    documentContentType: AutomatedReasoningPolicyBuildDocumentContentType,
-    documentName: SensitiveString,
-    documentDescription: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildWorkflowDocument",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildWorkflowDocument>;
+const AutomatedReasoningPolicyBuildWorkflowDocument = /*@__PURE__*/ __L.at(
+  __c58,
+  6,
+) as any as S.Schema<AutomatedReasoningPolicyBuildWorkflowDocument>;
 export type AutomatedReasoningPolicyBuildWorkflowDocumentList =
   AutomatedReasoningPolicyBuildWorkflowDocument[];
-const AutomatedReasoningPolicyBuildWorkflowDocumentList = /*@__PURE__*/ S.Array(
-  AutomatedReasoningPolicyBuildWorkflowDocument,
-);
+const AutomatedReasoningPolicyBuildWorkflowDocumentList = /*@__PURE__*/ __L.at(__c58, 7);
 export interface AutomatedReasoningPolicyBuildWorkflowRepairContent {
   annotations: AutomatedReasoningPolicyAnnotation[];
 }
-const AutomatedReasoningPolicyBuildWorkflowRepairContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ annotations: AutomatedReasoningPolicyAnnotationList }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildWorkflowRepairContent",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildWorkflowRepairContent>;
+const AutomatedReasoningPolicyBuildWorkflowRepairContent = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<AutomatedReasoningPolicyBuildWorkflowRepairContent>;
 export type AutomatedReasoningPolicyGenerateFidelityReportDocumentList =
   AutomatedReasoningPolicyBuildWorkflowDocument[];
 const AutomatedReasoningPolicyGenerateFidelityReportDocumentList =
@@ -7790,9 +5283,7 @@ const AutomatedReasoningPolicyGenerateFidelityReportDocumentList =
 export type AutomatedReasoningPolicyGenerateFidelityReportContent = {
   documents: AutomatedReasoningPolicyBuildWorkflowDocument[];
 };
-const AutomatedReasoningPolicyGenerateFidelityReportContent = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ documents: AutomatedReasoningPolicyGenerateFidelityReportDocumentList }),
-]);
+const AutomatedReasoningPolicyGenerateFidelityReportContent = /*@__PURE__*/ __L.at(__c59, 1);
 export type AutomatedReasoningPolicyIterativeRefinementDocumentList =
   AutomatedReasoningPolicyBuildWorkflowDocument[];
 const AutomatedReasoningPolicyIterativeRefinementDocumentList =
@@ -7802,14 +5293,10 @@ export interface AutomatedReasoningPolicyIterativeRefinementContent {
   documents: AutomatedReasoningPolicyBuildWorkflowDocument[];
   feedback?: string | redacted.Redacted<string>;
 }
-const AutomatedReasoningPolicyIterativeRefinementContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documents: AutomatedReasoningPolicyIterativeRefinementDocumentList,
-    feedback: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyIterativeRefinementContent",
-}) as any as S.Schema<AutomatedReasoningPolicyIterativeRefinementContent>;
+const AutomatedReasoningPolicyIterativeRefinementContent = /*@__PURE__*/ __L.at(
+  __c59,
+  2,
+) as any as S.Schema<AutomatedReasoningPolicyIterativeRefinementContent>;
 export type AutomatedReasoningPolicyWorkflowTypeContent =
   | {
       documents: AutomatedReasoningPolicyBuildWorkflowDocument[];
@@ -7835,74 +5322,33 @@ export type AutomatedReasoningPolicyWorkflowTypeContent =
       generateFidelityReportContent?: never;
       iterativeRefinementContent: AutomatedReasoningPolicyIterativeRefinementContent;
     };
-const AutomatedReasoningPolicyWorkflowTypeContent = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ documents: AutomatedReasoningPolicyBuildWorkflowDocumentList }),
-  /*@__PURE__*/ S.Struct({
-    policyRepairAssets: AutomatedReasoningPolicyBuildWorkflowRepairContent,
-  }),
-  /*@__PURE__*/ S.Struct({
-    generateFidelityReportContent: AutomatedReasoningPolicyGenerateFidelityReportContent,
-  }),
-  /*@__PURE__*/ S.Struct({
-    iterativeRefinementContent: AutomatedReasoningPolicyIterativeRefinementContent,
-  }),
-]);
+const AutomatedReasoningPolicyWorkflowTypeContent = /*@__PURE__*/ __L.at(__c59, 3);
 export interface AutomatedReasoningPolicyBuildWorkflowSource {
   policyDefinition?: AutomatedReasoningPolicyDefinition;
   workflowContent?: AutomatedReasoningPolicyWorkflowTypeContent;
 }
-const AutomatedReasoningPolicyBuildWorkflowSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyDefinition: S.optional(AutomatedReasoningPolicyDefinition),
-    workflowContent: S.optional(AutomatedReasoningPolicyWorkflowTypeContent),
-  }),
-).annotate({
-  identifier: "AutomatedReasoningPolicyBuildWorkflowSource",
-}) as any as S.Schema<AutomatedReasoningPolicyBuildWorkflowSource>;
+const AutomatedReasoningPolicyBuildWorkflowSource = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<AutomatedReasoningPolicyBuildWorkflowSource>;
 export interface StartAutomatedReasoningPolicyBuildWorkflowRequest {
   policyArn: string;
   buildWorkflowType: AutomatedReasoningPolicyBuildWorkflowType;
   clientRequestToken?: string;
   sourceContent: AutomatedReasoningPolicyBuildWorkflowSource;
 }
-const StartAutomatedReasoningPolicyBuildWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowType: AutomatedReasoningPolicyBuildWorkflowType.pipe(
-      T.HttpLabel("buildWorkflowType"),
-    ),
-    clientRequestToken: S.optional(S.String).pipe(
-      T.HttpHeader("x-amz-client-token"),
-      T.IdempotencyToken(),
-    ),
-    sourceContent: AutomatedReasoningPolicyBuildWorkflowSource.pipe(T.HttpPayload()).annotate({
-      identifier: "AutomatedReasoningPolicyBuildWorkflowSource",
-    }),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowType}/start",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartAutomatedReasoningPolicyBuildWorkflowRequest",
-}) as any as S.Schema<StartAutomatedReasoningPolicyBuildWorkflowRequest>;
+const StartAutomatedReasoningPolicyBuildWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  5,
+) as any as S.Schema<StartAutomatedReasoningPolicyBuildWorkflowRequest>;
 export interface StartAutomatedReasoningPolicyBuildWorkflowResponse {
   policyArn: string;
   buildWorkflowId: string;
 }
-const StartAutomatedReasoningPolicyBuildWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyArn: S.String, buildWorkflowId: S.String }),
-).annotate({
-  identifier: "StartAutomatedReasoningPolicyBuildWorkflowResponse",
-}) as any as S.Schema<StartAutomatedReasoningPolicyBuildWorkflowResponse>;
+const StartAutomatedReasoningPolicyBuildWorkflowResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<StartAutomatedReasoningPolicyBuildWorkflowResponse>;
 export type AutomatedReasoningPolicyTestCaseIdList = string[];
 const AutomatedReasoningPolicyTestCaseIdList =
   AdvancedPromptOptimizationJobIdentifiers as any as S.Schema<AutomatedReasoningPolicyTestCaseIdList>;
@@ -7912,111 +5358,54 @@ export interface StartAutomatedReasoningPolicyTestWorkflowRequest {
   testCaseIds?: string[];
   clientRequestToken?: string;
 }
-const StartAutomatedReasoningPolicyTestWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-    testCaseIds: S.optional(AutomatedReasoningPolicyTestCaseIdList),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/test-workflows",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartAutomatedReasoningPolicyTestWorkflowRequest",
-}) as any as S.Schema<StartAutomatedReasoningPolicyTestWorkflowRequest>;
+const StartAutomatedReasoningPolicyTestWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  7,
+) as any as S.Schema<StartAutomatedReasoningPolicyTestWorkflowRequest>;
 export interface StartAutomatedReasoningPolicyTestWorkflowResponse {
   policyArn: string;
 }
-const StartAutomatedReasoningPolicyTestWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyArn: S.String }),
-).annotate({
-  identifier: "StartAutomatedReasoningPolicyTestWorkflowResponse",
-}) as any as S.Schema<StartAutomatedReasoningPolicyTestWorkflowResponse>;
+const StartAutomatedReasoningPolicyTestWorkflowResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<StartAutomatedReasoningPolicyTestWorkflowResponse>;
 export interface StopAdvancedPromptOptimizationJobRequest {
   jobIdentifier: string;
 }
-const StopAdvancedPromptOptimizationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/advanced-prompt-optimization-jobs/{jobIdentifier}/stop" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StopAdvancedPromptOptimizationJobRequest",
-}) as any as S.Schema<StopAdvancedPromptOptimizationJobRequest>;
+const StopAdvancedPromptOptimizationJobRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  1,
+) as any as S.Schema<StopAdvancedPromptOptimizationJobRequest>;
 export interface StopAdvancedPromptOptimizationJobResponse {}
 const StopAdvancedPromptOptimizationJobResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<StopAdvancedPromptOptimizationJobResponse>;
 export interface StopEvaluationJobRequest {
   jobIdentifier: string | redacted.Redacted<string>;
 }
-const StopEvaluationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: SensitiveString.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/evaluation-job/{jobIdentifier}/stop" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StopEvaluationJobRequest" }) as any as S.Schema<StopEvaluationJobRequest>;
+const StopEvaluationJobRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  2,
+) as any as S.Schema<StopEvaluationJobRequest>;
 export interface StopEvaluationJobResponse {}
 const StopEvaluationJobResponse =
   DeleteCustomModelResponse as any as S.Schema<StopEvaluationJobResponse>;
 export interface StopModelCustomizationJobRequest {
   jobIdentifier: string;
 }
-const StopModelCustomizationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/model-customization-jobs/{jobIdentifier}/stop" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StopModelCustomizationJobRequest",
-}) as any as S.Schema<StopModelCustomizationJobRequest>;
+const StopModelCustomizationJobRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  3,
+) as any as S.Schema<StopModelCustomizationJobRequest>;
 export interface StopModelCustomizationJobResponse {}
 const StopModelCustomizationJobResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<StopModelCustomizationJobResponse>;
 export interface StopModelInvocationJobRequest {
   jobIdentifier: string;
 }
-const StopModelInvocationJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/model-invocation-job/{jobIdentifier}/stop" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StopModelInvocationJobRequest",
-}) as any as S.Schema<StopModelInvocationJobRequest>;
+const StopModelInvocationJobRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<StopModelInvocationJobRequest>;
 export interface StopModelInvocationJobResponse {}
 const StopModelInvocationJobResponse =
   DeleteCustomModelResponse as any as S.Schema<StopModelInvocationJobResponse>;
@@ -8024,11 +5413,7 @@ export interface TagResourceRequest {
   resourceARN: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceARN: S.String, tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tagResource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c60, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteCustomModelResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -8037,11 +5422,10 @@ export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceARN: S.String, tagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/untagResource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  6,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = DeleteCustomModelResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAutomatedReasoningPolicyRequest {
@@ -8050,85 +5434,40 @@ export interface UpdateAutomatedReasoningPolicyRequest {
   name?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
 }
-const UpdateAutomatedReasoningPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    policyDefinition: AutomatedReasoningPolicyDefinition,
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/automated-reasoning-policies/{policyArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAutomatedReasoningPolicyRequest",
-}) as any as S.Schema<UpdateAutomatedReasoningPolicyRequest>;
+const UpdateAutomatedReasoningPolicyRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  7,
+) as any as S.Schema<UpdateAutomatedReasoningPolicyRequest>;
 export interface UpdateAutomatedReasoningPolicyResponse {
   policyArn: string;
   name: string | redacted.Redacted<string>;
   definitionHash: string;
   updatedAt: Date;
 }
-const UpdateAutomatedReasoningPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    name: SensitiveString,
-    definitionHash: S.String,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "UpdateAutomatedReasoningPolicyResponse",
-}) as any as S.Schema<UpdateAutomatedReasoningPolicyResponse>;
+const UpdateAutomatedReasoningPolicyResponse = /*@__PURE__*/ __L.at(
+  __c61,
+  0,
+) as any as S.Schema<UpdateAutomatedReasoningPolicyResponse>;
 export interface UpdateAutomatedReasoningPolicyAnnotationsRequest {
   policyArn: string;
   buildWorkflowId: string;
   annotations: AutomatedReasoningPolicyAnnotation[];
   lastUpdatedAnnotationSetHash: string;
 }
-const UpdateAutomatedReasoningPolicyAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
-    annotations: AutomatedReasoningPolicyAnnotationList,
-    lastUpdatedAnnotationSetHash: S.String,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/annotations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAutomatedReasoningPolicyAnnotationsRequest",
-}) as any as S.Schema<UpdateAutomatedReasoningPolicyAnnotationsRequest>;
+const UpdateAutomatedReasoningPolicyAnnotationsRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  1,
+) as any as S.Schema<UpdateAutomatedReasoningPolicyAnnotationsRequest>;
 export interface UpdateAutomatedReasoningPolicyAnnotationsResponse {
   policyArn: string;
   buildWorkflowId: string;
   annotationSetHash: string;
   updatedAt: Date;
 }
-const UpdateAutomatedReasoningPolicyAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String,
-    buildWorkflowId: S.String,
-    annotationSetHash: S.String,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "UpdateAutomatedReasoningPolicyAnnotationsResponse",
-}) as any as S.Schema<UpdateAutomatedReasoningPolicyAnnotationsResponse>;
+const UpdateAutomatedReasoningPolicyAnnotationsResponse = /*@__PURE__*/ __L.at(
+  __c61,
+  2,
+) as any as S.Schema<UpdateAutomatedReasoningPolicyAnnotationsResponse>;
 export interface UpdateAutomatedReasoningPolicyTestCaseRequest {
   policyArn: string;
   testCaseId: string;
@@ -8139,32 +5478,10 @@ export interface UpdateAutomatedReasoningPolicyTestCaseRequest {
   confidenceThreshold?: number;
   clientRequestToken?: string;
 }
-const UpdateAutomatedReasoningPolicyTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyArn: S.String.pipe(T.HttpLabel("policyArn")),
-    testCaseId: S.String.pipe(T.HttpLabel("testCaseId")),
-    guardContent: SensitiveString,
-    queryContent: S.optional(SensitiveString),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    expectedAggregatedFindingsResult: AutomatedReasoningCheckResult,
-    confidenceThreshold: S.optional(S.Number),
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/automated-reasoning-policies/{policyArn}/test-cases/{testCaseId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAutomatedReasoningPolicyTestCaseRequest",
-}) as any as S.Schema<UpdateAutomatedReasoningPolicyTestCaseRequest>;
+const UpdateAutomatedReasoningPolicyTestCaseRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  3,
+) as any as S.Schema<UpdateAutomatedReasoningPolicyTestCaseRequest>;
 export interface UpdateAutomatedReasoningPolicyTestCaseResponse {
   policyArn: string;
   testCaseId: string;
@@ -8175,26 +5492,10 @@ export interface UpdateCustomModelDeploymentRequest {
   modelArn: string;
   customModelDeploymentIdentifier: string;
 }
-const UpdateCustomModelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelArn: S.String,
-    customModelDeploymentIdentifier: S.String.pipe(T.HttpLabel("customModelDeploymentIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/model-customization/custom-model-deployments/{customModelDeploymentIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateCustomModelDeploymentRequest",
-}) as any as S.Schema<UpdateCustomModelDeploymentRequest>;
+const UpdateCustomModelDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  4,
+) as any as S.Schema<UpdateCustomModelDeploymentRequest>;
 export interface UpdateCustomModelDeploymentResponse {
   customModelDeploymentArn: string;
 }
@@ -8215,69 +5516,29 @@ export interface UpdateGuardrailRequest {
   blockedOutputsMessaging: string | redacted.Redacted<string>;
   kmsKeyId?: string;
 }
-const UpdateGuardrailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guardrailIdentifier: S.String.pipe(T.HttpLabel("guardrailIdentifier")),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    topicPolicyConfig: S.optional(GuardrailTopicPolicyConfig),
-    contentPolicyConfig: S.optional(GuardrailContentPolicyConfig),
-    wordPolicyConfig: S.optional(GuardrailWordPolicyConfig),
-    sensitiveInformationPolicyConfig: S.optional(GuardrailSensitiveInformationPolicyConfig),
-    contextualGroundingPolicyConfig: S.optional(GuardrailContextualGroundingPolicyConfig),
-    automatedReasoningPolicyConfig: S.optional(GuardrailAutomatedReasoningPolicyConfig),
-    crossRegionConfig: S.optional(GuardrailCrossRegionConfig),
-    blockedInputMessaging: SensitiveString,
-    blockedOutputsMessaging: SensitiveString,
-    kmsKeyId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/guardrails/{guardrailIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateGuardrailRequest" }) as any as S.Schema<UpdateGuardrailRequest>;
+const UpdateGuardrailRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  5,
+) as any as S.Schema<UpdateGuardrailRequest>;
 export interface UpdateGuardrailResponse {
   guardrailId: string;
   guardrailArn: string;
   version: string;
   updatedAt: Date;
 }
-const UpdateGuardrailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guardrailId: S.String,
-    guardrailArn: S.String,
-    version: S.String,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "UpdateGuardrailResponse" }) as any as S.Schema<UpdateGuardrailResponse>;
+const UpdateGuardrailResponse = /*@__PURE__*/ __L.at(
+  __c61,
+  6,
+) as any as S.Schema<UpdateGuardrailResponse>;
 export interface UpdateMarketplaceModelEndpointRequest {
   endpointArn: string;
   endpointConfig: EndpointConfig;
   clientRequestToken?: string;
 }
-const UpdateMarketplaceModelEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpointArn: S.String.pipe(T.HttpLabel("endpointArn")),
-    endpointConfig: EndpointConfig,
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/marketplace-model/endpoints/{endpointArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateMarketplaceModelEndpointRequest",
-}) as any as S.Schema<UpdateMarketplaceModelEndpointRequest>;
+const UpdateMarketplaceModelEndpointRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  7,
+) as any as S.Schema<UpdateMarketplaceModelEndpointRequest>;
 export interface UpdateMarketplaceModelEndpointResponse {
   marketplaceModelEndpoint: MarketplaceModelEndpoint;
 }
@@ -8288,24 +5549,10 @@ export interface UpdateProvisionedModelThroughputRequest {
   desiredProvisionedModelName?: string;
   desiredModelId?: string;
 }
-const UpdateProvisionedModelThroughputRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisionedModelId: S.String.pipe(T.HttpLabel("provisionedModelId")),
-    desiredProvisionedModelName: S.optional(S.String),
-    desiredModelId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/provisioned-model-throughput/{provisionedModelId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateProvisionedModelThroughputRequest",
-}) as any as S.Schema<UpdateProvisionedModelThroughputRequest>;
+const UpdateProvisionedModelThroughputRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  0,
+) as any as S.Schema<UpdateProvisionedModelThroughputRequest>;
 export interface UpdateProvisionedModelThroughputResponse {}
 const UpdateProvisionedModelThroughputResponse =
   CancelAutomatedReasoningPolicyBuildWorkflowResponse as any as S.Schema<UpdateProvisionedModelThroughputResponse>;
@@ -11903,3 +9150,4951 @@ export const updateProvisionedModelThroughput: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProvisionedModelThroughput",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifiers: AdvancedPromptOptimizationJobIdentifiers }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/advanced-prompt-optimization-job/batch-delete" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteAdvancedPromptOptimizationJobRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: S.String, code: S.String, message: S.optional(S.String) }),
+      ).annotate({
+        identifier: "BatchDeleteAdvancedPromptOptimizationJobError",
+      });
+    case 3:
+      return S.Array(BatchDeleteAdvancedPromptOptimizationJobError_);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: S.String, jobStatus: AdvancedPromptOptimizationJobStatus }),
+      ).annotate({
+        identifier: "BatchDeleteAdvancedPromptOptimizationJobItem",
+      });
+    case 5:
+      return S.Array(BatchDeleteAdvancedPromptOptimizationJobItem);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          errors: BatchDeleteAdvancedPromptOptimizationJobErrors,
+          advancedPromptOptimizationJobs: BatchDeleteAdvancedPromptOptimizationJobItems,
+        }),
+      ).annotate({
+        identifier: "BatchDeleteAdvancedPromptOptimizationJobResponse",
+      });
+    case 7:
+      return S.Array(SensitiveString);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifiers: EvaluationJobIdentifiers }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/evaluation-jobs/batch-delete" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteEvaluationJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: SensitiveString, code: S.String, message: S.optional(S.String) }),
+      ).annotate({
+        identifier: "BatchDeleteEvaluationJobError",
+      });
+    case 2:
+      return S.Array(BatchDeleteEvaluationJobError_);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: SensitiveString, jobStatus: EvaluationJobStatus }),
+      ).annotate({
+        identifier: "BatchDeleteEvaluationJobItem",
+      });
+    case 4:
+      return S.Array(BatchDeleteEvaluationJobItem);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          errors: BatchDeleteEvaluationJobErrors,
+          evaluationJobs: BatchDeleteEvaluationJobItems,
+        }),
+      ).annotate({
+        identifier: "BatchDeleteEvaluationJobResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/cancel",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelAutomatedReasoningPolicyBuildWorkflowRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelAutomatedReasoningPolicyBuildWorkflowResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
+        identifier: "AdvancedPromptOptimizationInputConfig",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 2:
+      return S.Array(Tag);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxTokens: S.optional(S.Number),
+          temperature: S.optional(S.Number),
+          topP: S.optional(S.Number),
+          stopSequences: S.optional(NonEmptyStringList),
+        }),
+      ).annotate({ identifier: "InferenceConfiguration" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String,
+          inferenceConfig: S.optional(InferenceConfiguration),
+          additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
+        }),
+      ).annotate({ identifier: "ModelConfiguration" });
+    case 6:
+      return S.Array(ModelConfiguration);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          jobDescription: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          inputConfig: AdvancedPromptOptimizationInputConfig,
+          outputConfig: AdvancedPromptOptimizationOutputConfig,
+          encryptionKeyArn: S.optional(S.String),
+          tags: S.optional(TagList),
+          modelConfigurations: ModelConfigurations,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/advanced-prompt-optimization-jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateAdvancedPromptOptimizationJobRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ jobArn: S.String })).annotate({
+        identifier: "CreateAdvancedPromptOptimizationJobResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ value: S.String, description: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyDefinitionTypeValue",
+      });
+    case 2:
+      return S.Array(AutomatedReasoningPolicyDefinitionTypeValue);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          values: AutomatedReasoningPolicyDefinitionTypeValueList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyDefinitionType",
+      });
+    case 4:
+      return S.Array(AutomatedReasoningPolicyDefinitionType);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          expression: SensitiveString,
+          alternateExpression: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyDefinitionRule",
+      });
+    case 6:
+      return S.Array(AutomatedReasoningPolicyDefinitionRule);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ name: SensitiveString, type: SensitiveString, description: SensitiveString }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyDefinitionVariable",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AutomatedReasoningPolicyDefinitionVariable);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          types: S.optional(AutomatedReasoningPolicyDefinitionTypeList),
+          rules: S.optional(AutomatedReasoningPolicyDefinitionRuleList),
+          variables: S.optional(AutomatedReasoningPolicyDefinitionVariableList),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyDefinition",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          policyDefinition: S.optional(AutomatedReasoningPolicyDefinition),
+          kmsKeyId: S.optional(S.String),
+          tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/automated-reasoning-policies" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateAutomatedReasoningPolicyRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          version: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          definitionHash: S.optional(S.String),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "CreateAutomatedReasoningPolicyResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          guardContent: SensitiveString,
+          queryContent: S.optional(SensitiveString),
+          expectedAggregatedFindingsResult: AutomatedReasoningCheckResult,
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          confidenceThreshold: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/automated-reasoning-policies/{policyArn}/test-cases" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateAutomatedReasoningPolicyTestCaseRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ policyArn: S.String, testCaseId: S.String })).annotate({
+        identifier: "CreateAutomatedReasoningPolicyTestCaseResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          lastUpdatedDefinitionHash: S.String,
+          tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/automated-reasoning-policies/{policyArn}/versions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateAutomatedReasoningPolicyVersionRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          version: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          definitionHash: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "CreateAutomatedReasoningPolicyVersionResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
+        identifier: "S3DataSource",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3DataSource: S3DataSource })]);
+    case 2:
+      return S.suspend(() => S.Struct({ modelPackageArn: S.String })).annotate({
+        identifier: "ModelPackageArnDataSource",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ modelPackageArnDataSource: ModelPackageArnDataSource }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          modelName: S.String,
+          modelSourceConfig: S.optional(ModelDataSource),
+          customModelDataSource: S.optional(CustomModelDataSource),
+          modelKmsKeyArn: S.optional(S.String),
+          roleArn: S.optional(S.String),
+          modelTags: S.optional(TagList),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/custom-models/create-custom-model" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateCustomModelRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ modelArn: S.String })).annotate({
+        identifier: "CreateCustomModelResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          modelDeploymentName: S.String,
+          modelArn: S.String,
+          description: S.optional(S.String),
+          tags: S.optional(TagList),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/model-customization/custom-model-deployments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateCustomModelDeploymentRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ customModelDeploymentArn: S.String })).annotate({
+        identifier: "CreateCustomModelDeploymentResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3Uri: S.String })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: SensitiveString, datasetLocation: S.optional(EvaluationDatasetLocation) }),
+      ).annotate({ identifier: "EvaluationDataset" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          taskType: EvaluationTaskType,
+          dataset: EvaluationDataset,
+          metricNames: EvaluationMetricNames,
+        }),
+      ).annotate({
+        identifier: "EvaluationDatasetMetricConfig",
+      });
+    case 3:
+      return S.Array(EvaluationDatasetMetricConfig);
+    case 4:
+      return S.suspend(() => S.Struct({ modelIdentifier: S.String })).annotate({
+        identifier: "BedrockEvaluatorModel",
+      });
+    case 5:
+      return S.Array(BedrockEvaluatorModel);
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ bedrockEvaluatorModels: BedrockEvaluatorModels })]);
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ floatValue: S.Number }),
+      ]);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ definition: S.String, value: RatingScaleItemValue }),
+      ).annotate({ identifier: "RatingScaleItem" });
+    case 1:
+      return S.Array(RatingScaleItem);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          instructions: S.String,
+          ratingScale: S.optional(RatingScale),
+        }),
+      ).annotate({ identifier: "CustomMetricDefinition" });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ customMetricDefinition: CustomMetricDefinition })]);
+    case 4:
+      return S.Array(AutomatedEvaluationCustomMetricSource);
+    case 5:
+      return S.suspend(() => S.Struct({ modelIdentifier: S.String })).annotate({
+        identifier: "CustomMetricBedrockEvaluatorModel",
+      });
+    case 6:
+      return S.Array(CustomMetricBedrockEvaluatorModel);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ bedrockEvaluatorModels: CustomMetricBedrockEvaluatorModels }),
+      ).annotate({
+        identifier: "CustomMetricEvaluatorModelConfig",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customMetrics: AutomatedEvaluationCustomMetrics,
+          evaluatorModelConfig: CustomMetricEvaluatorModelConfig,
+        }),
+      ).annotate({
+        identifier: "AutomatedEvaluationCustomMetricConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datasetMetricConfigs: EvaluationDatasetMetricConfigs,
+          evaluatorModelConfig: S.optional(EvaluatorModelConfig),
+          customMetricConfig: S.optional(AutomatedEvaluationCustomMetricConfig),
+        }),
+      ).annotate({
+        identifier: "AutomatedEvaluationConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ flowDefinitionArn: S.String, instructions: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "HumanWorkflowConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          ratingMethod: S.String,
+        }),
+      ).annotate({
+        identifier: "HumanEvaluationCustomMetric",
+      });
+    case 4:
+      return S.Array(HumanEvaluationCustomMetric);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          humanWorkflowConfig: S.optional(HumanWorkflowConfig),
+          customMetrics: S.optional(HumanEvaluationCustomMetrics),
+          datasetMetricConfigs: EvaluationDatasetMetricConfigs,
+        }),
+      ).annotate({ identifier: "HumanEvaluationConfig" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ automated: AutomatedEvaluationConfig }),
+        /*@__PURE__*/ S.Struct({ human: HumanEvaluationConfig }),
+      ]);
+    case 7:
+      return S.suspend(() => S.Struct({ latency: S.optional(PerformanceConfigLatency) })).annotate({
+        identifier: "PerformanceConfiguration",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modelIdentifier: S.String,
+          inferenceParams: S.optional(SensitiveString),
+          performanceConfig: S.optional(PerformanceConfiguration),
+        }),
+      ).annotate({ identifier: "EvaluationBedrockModel" });
+    case 1:
+      return S.suspend(() => S.Struct({ inferenceSourceIdentifier: S.String })).annotate({
+        identifier: "EvaluationPrecomputedInferenceSource",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ bedrockModel: EvaluationBedrockModel }),
+        /*@__PURE__*/ S.Struct({
+          precomputedInferenceSource: EvaluationPrecomputedInferenceSource,
+        }),
+      ]);
+    case 3:
+      return S.Array(EvaluationModelConfig);
+    case 4:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.Any })).annotate({
+        identifier: "FilterAttribute",
+      });
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => RetrievalFilter).annotate({ identifier: "RetrievalFilter" }),
+      );
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ equals: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ notEquals: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ greaterThan: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ greaterThanOrEquals: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ lessThan: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ lessThanOrEquals: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ in: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ notIn: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ startsWith: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ listContains: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({ stringContains: FilterAttribute }),
+        /*@__PURE__*/ S.Struct({
+          andAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
+            identifier: "RetrievalFilterList",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          orAll: /*@__PURE__*/ S.suspend(() => RetrievalFilterList).annotate({
+            identifier: "RetrievalFilterList",
+          }),
+        }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ key: S.String, type: AttributeType, description: S.String }),
+      ).annotate({ identifier: "MetadataAttributeSchema" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(MetadataAttributeSchema);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ metadataAttributes: MetadataAttributeSchemaList, modelArn: S.String }),
+      ).annotate({
+        identifier: "ImplicitFilterConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          modelArn: S.String,
+          additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
+        }),
+      ).annotate({
+        identifier: "VectorSearchBedrockRerankingModelConfiguration",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ fieldName: S.String })).annotate({
+        identifier: "FieldForReranking",
+      });
+    case 4:
+      return S.Array(FieldForReranking);
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ fieldsToInclude: FieldsForReranking }),
+        /*@__PURE__*/ S.Struct({ fieldsToExclude: FieldsForReranking }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          selectionMode: RerankingMetadataSelectionMode,
+          selectiveModeConfiguration: S.optional(RerankingMetadataSelectiveModeConfiguration),
+        }),
+      ).annotate({
+        identifier: "MetadataConfigurationForReranking",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          modelConfiguration: VectorSearchBedrockRerankingModelConfiguration,
+          numberOfRerankedResults: S.optional(S.Number),
+          metadataConfiguration: S.optional(MetadataConfigurationForReranking),
+        }),
+      ).annotate({
+        identifier: "VectorSearchBedrockRerankingConfiguration",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: VectorSearchRerankingConfigurationType,
+          bedrockRerankingConfiguration: S.optional(VectorSearchBedrockRerankingConfiguration),
+        }),
+      ).annotate({
+        identifier: "VectorSearchRerankingConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          numberOfResults: S.optional(S.Number),
+          overrideSearchType: S.optional(SearchType),
+          filter: S.optional(RetrievalFilter),
+          implicitFilterConfiguration: S.optional(ImplicitFilterConfiguration),
+          rerankingConfiguration: S.optional(VectorSearchRerankingConfiguration),
+        }),
+      ).annotate({
+        identifier: "KnowledgeBaseVectorSearchConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ vectorSearchConfiguration: KnowledgeBaseVectorSearchConfiguration }),
+      ).annotate({
+        identifier: "KnowledgeBaseRetrievalConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeBaseId: S.String,
+          knowledgeBaseRetrievalConfiguration: KnowledgeBaseRetrievalConfiguration,
+        }),
+      ).annotate({ identifier: "RetrieveConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ textPromptTemplate: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "PromptTemplate" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ guardrailId: S.String, guardrailVersion: S.String }),
+      ).annotate({ identifier: "GuardrailConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          temperature: S.optional(S.Number),
+          topP: S.optional(S.Number),
+          maxTokens: S.optional(S.Number),
+          stopSequences: S.optional(RAGStopSequences),
+        }),
+      ).annotate({ identifier: "TextInferenceConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ textInferenceConfig: S.optional(TextInferenceConfig) }),
+      ).annotate({ identifier: "KbInferenceConfig" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          promptTemplate: S.optional(PromptTemplate),
+          guardrailConfiguration: S.optional(GuardrailConfiguration),
+          kbInferenceConfig: S.optional(KbInferenceConfig),
+          additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
+        }),
+      ).annotate({ identifier: "GenerationConfiguration" });
+    case 1:
+      return S.suspend(() => S.Struct({ type: QueryTransformationType })).annotate({
+        identifier: "QueryTransformationConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ queryTransformationConfiguration: QueryTransformationConfiguration }),
+      ).annotate({
+        identifier: "OrchestrationConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeBaseId: S.String,
+          modelArn: S.String,
+          retrievalConfiguration: S.optional(KnowledgeBaseRetrievalConfiguration),
+          generationConfiguration: S.optional(GenerationConfiguration),
+          orchestrationConfiguration: S.optional(OrchestrationConfiguration),
+        }),
+      ).annotate({
+        identifier: "KnowledgeBaseRetrieveAndGenerateConfiguration",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ uri: S.String })).annotate({
+        identifier: "S3ObjectDoc",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ identifier: SensitiveString, contentType: S.String, data: SensitiveBlob }),
+      ).annotate({ identifier: "ByteContentDoc" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          sourceType: ExternalSourceType,
+          s3Location: S.optional(S3ObjectDoc),
+          byteContent: S.optional(ByteContentDoc),
+        }),
+      ).annotate({ identifier: "ExternalSource" });
+    case 7:
+      return S.Array(ExternalSource);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          promptTemplate: S.optional(PromptTemplate),
+          guardrailConfiguration: S.optional(GuardrailConfiguration),
+          kbInferenceConfig: S.optional(KbInferenceConfig),
+          additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
+        }),
+      ).annotate({
+        identifier: "ExternalSourcesGenerationConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          modelArn: S.String,
+          sources: ExternalSources,
+          generationConfiguration: S.optional(ExternalSourcesGenerationConfiguration),
+        }),
+      ).annotate({
+        identifier: "ExternalSourcesRetrieveAndGenerateConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: RetrieveAndGenerateType,
+          knowledgeBaseConfiguration: S.optional(KnowledgeBaseRetrieveAndGenerateConfiguration),
+          externalSourcesConfiguration: S.optional(ExternalSourcesRetrieveAndGenerateConfiguration),
+        }),
+      ).annotate({
+        identifier: "RetrieveAndGenerateConfiguration",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ retrieveConfig: RetrieveConfig }),
+        /*@__PURE__*/ S.Struct({ retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration }),
+      ]);
+    case 4:
+      return S.suspend(() => S.Struct({ ragSourceIdentifier: S.String })).annotate({
+        identifier: "EvaluationPrecomputedRetrieveSourceConfig",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ retrieveSourceConfig: EvaluationPrecomputedRetrieveSourceConfig }),
+        /*@__PURE__*/ S.Struct({
+          retrieveAndGenerateSourceConfig: EvaluationPrecomputedRetrieveAndGenerateSourceConfig,
+        }),
+      ]);
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ knowledgeBaseConfig: KnowledgeBaseConfig }),
+        /*@__PURE__*/ S.Struct({
+          precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig,
+        }),
+      ]);
+    case 7:
+      return S.Array(RAGConfig);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ models: EvaluationModelConfigs }),
+        /*@__PURE__*/ S.Struct({ ragConfigs: RagConfigs }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          jobDescription: S.optional(SensitiveString),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          roleArn: S.String,
+          customerEncryptionKeyId: S.optional(S.String),
+          jobTags: S.optional(TagList),
+          applicationType: S.optional(ApplicationType),
+          evaluationConfig: EvaluationConfig,
+          inferenceConfig: EvaluationInferenceConfig,
+          outputDataConfig: EvaluationOutputDataConfig,
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/evaluation-jobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateEvaluationJobRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ offerToken: S.String, modelId: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/create-foundation-model-agreement" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateFoundationModelAgreementRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ modelId: S.String })).annotate({
+        identifier: "CreateFoundationModelAgreementResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          definition: SensitiveString,
+          examples: S.optional(GuardrailTopicExamples),
+          type: GuardrailTopicType,
+          inputAction: S.optional(GuardrailTopicAction),
+          outputAction: S.optional(GuardrailTopicAction),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailTopicConfig" });
+    case 5:
+      return S.Array(GuardrailTopicConfig);
+    case 6:
+      return S.suspend(() => S.Struct({ tierName: GuardrailTopicsTierName })).annotate({
+        identifier: "GuardrailTopicsTierConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          topicsConfig: GuardrailTopicsConfig,
+          tierConfig: S.optional(GuardrailTopicsTierConfig),
+        }),
+      ).annotate({
+        identifier: "GuardrailTopicPolicyConfig",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(GuardrailModality);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: GuardrailContentFilterType,
+          inputStrength: GuardrailFilterStrength,
+          outputStrength: GuardrailFilterStrength,
+          inputModalities: S.optional(GuardrailModalities),
+          outputModalities: S.optional(GuardrailModalities),
+          inputAction: S.optional(GuardrailContentFilterAction),
+          outputAction: S.optional(GuardrailContentFilterAction),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GuardrailContentFilterConfig",
+      });
+    case 2:
+      return S.Array(GuardrailContentFilterConfig);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          filtersConfig: GuardrailContentFiltersConfig,
+          tierConfig: S.optional(GuardrailContentFiltersTierConfig),
+        }),
+      ).annotate({
+        identifier: "GuardrailContentPolicyConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.String,
+          inputAction: S.optional(GuardrailWordAction),
+          outputAction: S.optional(GuardrailWordAction),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailWordConfig" });
+    case 5:
+      return S.Array(GuardrailWordConfig);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: GuardrailManagedWordsType,
+          inputAction: S.optional(GuardrailWordAction),
+          outputAction: S.optional(GuardrailWordAction),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GuardrailManagedWordsConfig",
+      });
+    case 7:
+      return S.Array(GuardrailManagedWordsConfig);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          wordsConfig: S.optional(GuardrailWordsConfig),
+          managedWordListsConfig: S.optional(GuardrailManagedWordListsConfig),
+        }),
+      ).annotate({
+        identifier: "GuardrailWordPolicyConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: GuardrailPiiEntityType,
+          action: GuardrailSensitiveInformationAction,
+          inputAction: S.optional(GuardrailSensitiveInformationAction),
+          outputAction: S.optional(GuardrailSensitiveInformationAction),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailPiiEntityConfig" });
+    case 2:
+      return S.Array(GuardrailPiiEntityConfig);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          pattern: S.String,
+          action: GuardrailSensitiveInformationAction,
+          inputAction: S.optional(GuardrailSensitiveInformationAction),
+          outputAction: S.optional(GuardrailSensitiveInformationAction),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailRegexConfig" });
+    case 4:
+      return S.Array(GuardrailRegexConfig);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          piiEntitiesConfig: S.optional(GuardrailPiiEntitiesConfig),
+          regexesConfig: S.optional(GuardrailRegexesConfig),
+        }),
+      ).annotate({
+        identifier: "GuardrailSensitiveInformationPolicyConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: GuardrailContextualGroundingFilterType,
+          threshold: S.Number,
+          action: S.optional(GuardrailContextualGroundingAction),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GuardrailContextualGroundingFilterConfig",
+      });
+    case 7:
+      return S.Array(GuardrailContextualGroundingFilterConfig);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ filtersConfig: GuardrailContextualGroundingFiltersConfig }),
+      ).annotate({
+        identifier: "GuardrailContextualGroundingPolicyConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policies: AutomatedReasoningPolicyArnList,
+          confidenceThreshold: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GuardrailAutomatedReasoningPolicyConfig",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ guardrailProfileIdentifier: S.String })).annotate({
+        identifier: "GuardrailCrossRegionConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          topicPolicyConfig: S.optional(GuardrailTopicPolicyConfig),
+          contentPolicyConfig: S.optional(GuardrailContentPolicyConfig),
+          wordPolicyConfig: S.optional(GuardrailWordPolicyConfig),
+          sensitiveInformationPolicyConfig: S.optional(GuardrailSensitiveInformationPolicyConfig),
+          contextualGroundingPolicyConfig: S.optional(GuardrailContextualGroundingPolicyConfig),
+          automatedReasoningPolicyConfig: S.optional(GuardrailAutomatedReasoningPolicyConfig),
+          crossRegionConfig: S.optional(GuardrailCrossRegionConfig),
+          blockedInputMessaging: SensitiveString,
+          blockedOutputsMessaging: SensitiveString,
+          kmsKeyId: S.optional(S.String),
+          tags: S.optional(TagList),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/guardrails" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateGuardrailRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailId: S.String,
+          guardrailArn: S.String,
+          version: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "CreateGuardrailResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailIdentifier: S.String.pipe(T.HttpLabel("guardrailIdentifier")),
+          description: S.optional(SensitiveString),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/guardrails/{guardrailIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateGuardrailVersionRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ guardrailId: S.String, version: S.String })).annotate({
+        identifier: "CreateGuardrailVersionResponse",
+      });
+    case 7:
+      return S.Union([/*@__PURE__*/ S.Struct({ copyFrom: S.String })]);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inferenceProfileName: S.String,
+          description: S.optional(SensitiveString),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          modelSource: InferenceProfileModelSource,
+          tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/inference-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateInferenceProfileRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ inferenceProfileArn: S.String, status: S.optional(InferenceProfileStatus) }),
+      ).annotate({
+        identifier: "CreateInferenceProfileResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ subnetIds: SubnetIds, securityGroupIds: SecurityGroupIds }),
+      ).annotate({ identifier: "VpcConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          initialInstanceCount: S.Number,
+          instanceType: S.String,
+          executionRole: S.String,
+          kmsEncryptionKey: S.optional(S.String),
+          vpc: S.optional(VpcConfig),
+        }),
+      ).annotate({ identifier: "SageMakerEndpoint" });
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ sageMaker: SageMakerEndpoint })]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          modelSourceIdentifier: S.String,
+          endpointConfig: EndpointConfig,
+          acceptEula: S.optional(S.Boolean),
+          endpointName: S.String,
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/marketplace-model/endpoints" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateMarketplaceModelEndpointRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          endpointArn: S.String,
+          modelSourceIdentifier: S.String,
+          status: S.optional(Status),
+          statusMessage: S.optional(S.String),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endpointConfig: EndpointConfig,
+          endpointStatus: S.String,
+          endpointStatusMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MarketplaceModelEndpoint" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ marketplaceModelEndpoint: MarketplaceModelEndpoint }),
+      ).annotate({
+        identifier: "CreateMarketplaceModelEndpointResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceModelArn: S.String,
+          targetModelName: S.String,
+          modelKmsKeyId: S.optional(S.String),
+          targetModelTags: S.optional(TagList),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/model-copy-jobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateModelCopyJobRequest",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          equals: S.optional(RequestMetadataMap),
+          notEquals: S.optional(RequestMetadataMap),
+        }),
+      ).annotate({
+        identifier: "RequestMetadataBaseFilters",
+      });
+    case 3:
+      return S.Array(RequestMetadataBaseFilters);
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ equals: RequestMetadataMap }),
+        /*@__PURE__*/ S.Struct({ notEquals: RequestMetadataMap }),
+        /*@__PURE__*/ S.Struct({ andAll: RequestMetadataFiltersList }),
+        /*@__PURE__*/ S.Struct({ orAll: RequestMetadataFiltersList }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          usePromptResponse: S.optional(S.Boolean),
+          invocationLogSource: InvocationLogSource,
+          requestMetadataFilters: S.optional(RequestMetadataFilters),
+        }),
+      ).annotate({ identifier: "InvocationLogsConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          s3Uri: S.optional(S.String),
+          invocationLogsConfig: S.optional(InvocationLogsConfig),
+        }),
+      ).annotate({ identifier: "TrainingDataConfig" });
+    case 7:
+      return S.Array(Validator);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ validators: Validators })).annotate({
+        identifier: "ValidationDataConfig",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
+        identifier: "OutputDataConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          teacherModelIdentifier: S.String,
+          maxResponseLengthForInference: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TeacherModelConfig" });
+    case 3:
+      return S.suspend(() => S.Struct({ teacherModelConfig: TeacherModelConfig })).annotate({
+        identifier: "DistillationConfig",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ lambdaArn: S.String })).annotate({
+        identifier: "LambdaGraderConfig",
+      });
+    case 5:
+      return S.Union([/*@__PURE__*/ S.Struct({ lambdaGrader: LambdaGraderConfig })]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          epochCount: S.optional(S.Number),
+          batchSize: S.optional(S.Number),
+          learningRate: S.optional(S.Number),
+          maxPromptLength: S.optional(S.Number),
+          trainingSamplePerPrompt: S.optional(S.Number),
+          inferenceMaxTokens: S.optional(S.Number),
+          reasoningEffort: S.optional(ReasoningEffort),
+          evalInterval: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RFTHyperParameters" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          graderConfig: S.optional(GraderConfig),
+          hyperParameters: S.optional(RFTHyperParameters),
+        }),
+      ).annotate({ identifier: "RFTConfig" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ distillationConfig: DistillationConfig }),
+        /*@__PURE__*/ S.Struct({ rftConfig: RFTConfig }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          customModelName: S.String,
+          roleArn: S.String,
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          baseModelIdentifier: S.String,
+          customizationType: S.optional(CustomizationType),
+          customModelKmsKeyId: S.optional(S.String),
+          jobTags: S.optional(TagList),
+          customModelTags: S.optional(TagList),
+          trainingDataConfig: TrainingDataConfig,
+          validationDataConfig: S.optional(ValidationDataConfig),
+          outputDataConfig: OutputDataConfig,
+          hyperParameters: S.optional(ModelCustomizationHyperParameters),
+          vpcConfig: S.optional(VpcConfig),
+          customizationConfig: S.optional(CustomizationConfig),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/model-customization-jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateModelCustomizationJobRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          importedModelName: S.String,
+          roleArn: S.String,
+          modelDataSource: ModelDataSource,
+          jobTags: S.optional(TagList),
+          importedModelTags: S.optional(TagList),
+          clientRequestToken: S.optional(S.String),
+          vpcConfig: S.optional(VpcConfig),
+          importedModelKmsKeyId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/model-import-jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateModelImportJobRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          s3InputFormat: S.optional(S3InputFormat),
+          s3Uri: S.String,
+          s3BucketOwner: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ModelInvocationJobS3InputDataConfig",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ s3InputDataConfig: ModelInvocationJobS3InputDataConfig }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          s3Uri: S.String,
+          s3EncryptionKeyId: S.optional(S.String),
+          s3BucketOwner: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ModelInvocationJobS3OutputDataConfig",
+      });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ s3OutputDataConfig: ModelInvocationJobS3OutputDataConfig }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          roleArn: S.String,
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          modelId: S.String,
+          inputDataConfig: ModelInvocationJobInputDataConfig,
+          outputDataConfig: ModelInvocationJobOutputDataConfig,
+          vpcConfig: S.optional(VpcConfig),
+          timeoutDurationInHours: S.optional(S.Number),
+          tags: S.optional(TagList),
+          modelInvocationType: S.optional(ModelInvocationType),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/model-invocation-job" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateModelInvocationJobRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ modelArn: S.optional(S.String) })).annotate({
+        identifier: "PromptRouterTargetModel",
+      });
+    case 1:
+      return S.Array(PromptRouterTargetModel);
+    case 2:
+      return S.suspend(() => S.Struct({ responseQualityDifference: S.Number })).annotate({
+        identifier: "RoutingCriteria",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          promptRouterName: S.String,
+          models: PromptRouterTargetModels,
+          description: S.optional(SensitiveString),
+          routingCriteria: RoutingCriteria,
+          fallbackModel: PromptRouterTargetModel,
+          tags: S.optional(TagList),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/prompt-routers" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreatePromptRouterRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ promptRouterArn: S.optional(S.String) })).annotate({
+        identifier: "CreatePromptRouterResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          modelUnits: S.Number,
+          provisionedModelName: S.String,
+          modelId: S.String,
+          commitmentDuration: S.optional(CommitmentDuration),
+          tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/provisioned-model-throughput" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateProvisionedModelThroughputRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ provisionedModelArn: S.String })).annotate({
+        identifier: "CreateProvisionedModelThroughputResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          force: S.optional(S.Boolean).pipe(T.HttpQuery("force")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/automated-reasoning-policies/{policyArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAutomatedReasoningPolicyRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+          lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(
+            T.HttpQuery("updatedAt"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAutomatedReasoningPolicyBuildWorkflowRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          testCaseId: S.String.pipe(T.HttpLabel("testCaseId")),
+          lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(
+            T.HttpQuery("updatedAt"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/automated-reasoning-policies/{policyArn}/test-cases/{testCaseId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAutomatedReasoningPolicyTestCaseRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/custom-models/{modelIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteCustomModelRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCustomModelResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          customModelDeploymentIdentifier: S.String.pipe(
+            T.HttpLabel("customModelDeploymentIdentifier"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/model-customization/custom-model-deployments/{customModelDeploymentIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteCustomModelDeploymentRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ configId: S.String.pipe(T.HttpLabel("configId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/enforcedGuardrailsConfiguration/{configId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteEnforcedGuardrailConfigurationRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ modelId: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/delete-foundation-model-agreement" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteFoundationModelAgreementRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailIdentifier: S.String.pipe(T.HttpLabel("guardrailIdentifier")),
+          guardrailVersion: S.optional(S.String).pipe(T.HttpQuery("guardrailVersion")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/guardrails/{guardrailIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteGuardrailRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/imported-models/{modelIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteImportedModelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inferenceProfileIdentifier: S.String.pipe(T.HttpLabel("inferenceProfileIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/inference-profiles/{inferenceProfileIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteInferenceProfileRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ endpointArn: S.String.pipe(T.HttpLabel("endpointArn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/marketplace-model/endpoints/{endpointArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteMarketplaceModelEndpointRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/logging/modelinvocations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteModelInvocationLoggingConfigurationRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ promptRouterArn: S.String.pipe(T.HttpLabel("promptRouterArn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/prompt-routers/{promptRouterArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePromptRouterRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ provisionedModelId: S.String.pipe(T.HttpLabel("provisionedModelId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/provisioned-model-throughput/{provisionedModelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteProvisionedModelThroughputRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/resource-policy/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePolicyRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ endpointArn: S.String.pipe(T.HttpLabel("endpointArn")) }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/marketplace-model/endpoints/{endpointArn}/registration",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeregisterMarketplaceModelEndpointRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ policyArn: S.String.pipe(T.HttpLabel("policyArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/automated-reasoning-policies/{policyArn}/export" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ExportAutomatedReasoningPolicyVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policyDefinition: AutomatedReasoningPolicyDefinition.pipe(T.HttpPayload()).annotate({
+            identifier: "AutomatedReasoningPolicyDefinition",
+          }),
+        }),
+      ).annotate({
+        identifier: "ExportAutomatedReasoningPolicyVersionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "GET", uri: "/data-retention" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAccountDataRetentionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          mode: DataRetentionMode,
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "GetAccountDataRetentionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/advanced-prompt-optimization-jobs/{jobIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAdvancedPromptOptimizationJobRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          jobName: S.String,
+          jobDescription: S.optional(S.String),
+          jobStatus: AdvancedPromptOptimizationJobStatus,
+          inputConfig: AdvancedPromptOptimizationInputConfig,
+          outputConfig: AdvancedPromptOptimizationOutputConfig,
+          encryptionKeyArn: S.optional(S.String),
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          failureMessage: S.optional(S.String),
+          modelConfigurations: ModelConfigurations,
+        }),
+      ).annotate({
+        identifier: "GetAdvancedPromptOptimizationJobResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ policyArn: S.String.pipe(T.HttpLabel("policyArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/automated-reasoning-policies/{policyArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          name: SensitiveString,
+          version: S.String,
+          policyId: S.String,
+          description: S.optional(SensitiveString),
+          definitionHash: S.String,
+          kmsKeyArn: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/annotations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyAnnotationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          description: SensitiveString,
+          values: AutomatedReasoningPolicyDefinitionTypeValueList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyAddTypeAnnotation",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          newValue: S.optional(S.String),
+          description: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyUpdateTypeValue",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ value: S.String })).annotate({
+        identifier: "AutomatedReasoningPolicyDeleteTypeValue",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ addTypeValue: AutomatedReasoningPolicyAddTypeValue }),
+        /*@__PURE__*/ S.Struct({ updateTypeValue: AutomatedReasoningPolicyUpdateTypeValue }),
+        /*@__PURE__*/ S.Struct({ deleteTypeValue: AutomatedReasoningPolicyDeleteTypeValue }),
+      ]);
+    case 5:
+      return S.Array(AutomatedReasoningPolicyTypeValueAnnotation);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          newName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          values: AutomatedReasoningPolicyTypeValueAnnotationList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyUpdateTypeAnnotation",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ name: SensitiveString })).annotate({
+        identifier: "AutomatedReasoningPolicyDeleteTypeAnnotation",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          newName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyUpdateVariableAnnotation",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ expression: SensitiveString })).annotate({
+        identifier: "AutomatedReasoningPolicyAddRuleAnnotation",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ ruleId: S.String, expression: SensitiveString })).annotate({
+        identifier: "AutomatedReasoningPolicyUpdateRuleAnnotation",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ ruleId: S.String })).annotate({
+        identifier: "AutomatedReasoningPolicyDeleteRuleAnnotation",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ naturalLanguage: SensitiveString })).annotate({
+        identifier: "AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ruleIds: S.optional(AutomatedReasoningPolicyDefinitionRuleIdList),
+          feedback: SensitiveString,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ruleIds: S.optional(AutomatedReasoningPolicyDefinitionRuleIdList),
+          scenarioExpression: SensitiveString,
+          feedback: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ content: SensitiveString })).annotate({
+        identifier: "AutomatedReasoningPolicyIngestContentAnnotation",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ addType: AutomatedReasoningPolicyAddTypeAnnotation }),
+        /*@__PURE__*/ S.Struct({ updateType: AutomatedReasoningPolicyUpdateTypeAnnotation }),
+        /*@__PURE__*/ S.Struct({ deleteType: AutomatedReasoningPolicyDeleteTypeAnnotation }),
+        /*@__PURE__*/ S.Struct({ addVariable: AutomatedReasoningPolicyAddVariableAnnotation }),
+        /*@__PURE__*/ S.Struct({
+          updateVariable: AutomatedReasoningPolicyUpdateVariableAnnotation,
+        }),
+        /*@__PURE__*/ S.Struct({
+          deleteVariable: AutomatedReasoningPolicyDeleteVariableAnnotation,
+        }),
+        /*@__PURE__*/ S.Struct({ addRule: AutomatedReasoningPolicyAddRuleAnnotation }),
+        /*@__PURE__*/ S.Struct({ updateRule: AutomatedReasoningPolicyUpdateRuleAnnotation }),
+        /*@__PURE__*/ S.Struct({ deleteRule: AutomatedReasoningPolicyDeleteRuleAnnotation }),
+        /*@__PURE__*/ S.Struct({
+          addRuleFromNaturalLanguage: AutomatedReasoningPolicyAddRuleFromNaturalLanguageAnnotation,
+        }),
+        /*@__PURE__*/ S.Struct({
+          updateFromRulesFeedback: AutomatedReasoningPolicyUpdateFromRuleFeedbackAnnotation,
+        }),
+        /*@__PURE__*/ S.Struct({
+          updateFromScenarioFeedback: AutomatedReasoningPolicyUpdateFromScenarioFeedbackAnnotation,
+        }),
+        /*@__PURE__*/ S.Struct({ ingestContent: AutomatedReasoningPolicyIngestContentAnnotation }),
+      ]);
+    case 1:
+      return S.Array(AutomatedReasoningPolicyAnnotation);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          name: SensitiveString,
+          buildWorkflowId: S.String,
+          annotations: AutomatedReasoningPolicyAnnotationList,
+          annotationSetHash: S.String,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyAnnotationsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyBuildWorkflowRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          buildWorkflowId: S.String,
+          status: AutomatedReasoningPolicyBuildWorkflowStatus,
+          buildWorkflowType: AutomatedReasoningPolicyBuildWorkflowType,
+          documentName: S.optional(SensitiveString),
+          documentContentType: S.optional(AutomatedReasoningPolicyBuildDocumentContentType),
+          documentDescription: S.optional(SensitiveString),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyBuildWorkflowResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+          assetType: AutomatedReasoningPolicyBuildResultAssetType.pipe(T.HttpQuery("assetType")),
+          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/result-assets",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyBuildWorkflowResultAssetsRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ typeName: SensitiveString, valueName: S.String })).annotate(
+        {
+          identifier: "AutomatedReasoningPolicyDefinitionTypeValuePair",
+        },
+      );
+    case 7:
+      return S.Array(AutomatedReasoningPolicyDefinitionTypeValuePair);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          variables: AutomatedReasoningPolicyDefinitionVariableNameList,
+          rules: AutomatedReasoningPolicyDisjointedRuleIdList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyDisjointRuleSet",
+      });
+    case 1:
+      return S.Array(AutomatedReasoningPolicyDisjointRuleSet);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          typeCount: S.Number,
+          variableCount: S.Number,
+          ruleCount: S.Number,
+          unusedTypes: AutomatedReasoningPolicyDefinitionTypeNameList,
+          unusedTypeValues: AutomatedReasoningPolicyDefinitionTypeValuePairList,
+          unusedVariables: AutomatedReasoningPolicyDefinitionVariableNameList,
+          conflictingRules: AutomatedReasoningPolicyConflictedRuleIdList,
+          disjointRuleSets: AutomatedReasoningPolicyDisjointRuleSetList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyDefinitionQualityReport",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ type: AutomatedReasoningPolicyDefinitionType })).annotate({
+        identifier: "AutomatedReasoningPolicyAddTypeMutation",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ variable: AutomatedReasoningPolicyDefinitionVariable }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyAddVariableMutation",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ rule: AutomatedReasoningPolicyDefinitionRule })).annotate({
+        identifier: "AutomatedReasoningPolicyAddRuleMutation",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ id: S.String })).annotate({
+        identifier: "AutomatedReasoningPolicyDeleteRuleMutation",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ addType: AutomatedReasoningPolicyAddTypeMutation }),
+        /*@__PURE__*/ S.Struct({ updateType: AutomatedReasoningPolicyUpdateTypeMutation }),
+        /*@__PURE__*/ S.Struct({ deleteType: AutomatedReasoningPolicyDeleteTypeMutation }),
+        /*@__PURE__*/ S.Struct({ addVariable: AutomatedReasoningPolicyAddVariableMutation }),
+        /*@__PURE__*/ S.Struct({ updateVariable: AutomatedReasoningPolicyUpdateVariableMutation }),
+        /*@__PURE__*/ S.Struct({ deleteVariable: AutomatedReasoningPolicyDeleteVariableMutation }),
+        /*@__PURE__*/ S.Struct({ addRule: AutomatedReasoningPolicyAddRuleMutation }),
+        /*@__PURE__*/ S.Struct({ updateRule: AutomatedReasoningPolicyUpdateRuleMutation }),
+        /*@__PURE__*/ S.Struct({ deleteRule: AutomatedReasoningPolicyDeleteRuleMutation }),
+      ]);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ planning: AutomatedReasoningPolicyPlanning }),
+        /*@__PURE__*/ S.Struct({ mutation: AutomatedReasoningPolicyMutation }),
+      ]);
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          policyDefinitionVariable: AutomatedReasoningPolicyDefinitionVariable,
+        }),
+        /*@__PURE__*/ S.Struct({ policyDefinitionType: AutomatedReasoningPolicyDefinitionType }),
+        /*@__PURE__*/ S.Struct({ policyDefinitionRule: AutomatedReasoningPolicyDefinitionRule }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ message: S.String, messageType: AutomatedReasoningPolicyBuildMessageType }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildStepMessage",
+      });
+    case 3:
+      return S.Array(AutomatedReasoningPolicyBuildStepMessage);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          context: AutomatedReasoningPolicyBuildStepContext,
+          priorElement: S.optional(AutomatedReasoningPolicyDefinitionElement),
+          messages: AutomatedReasoningPolicyBuildStepMessageList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildStep",
+      });
+    case 5:
+      return S.Array(AutomatedReasoningPolicyBuildStep);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: AutomatedReasoningPolicyAnnotation,
+          status: AutomatedReasoningPolicyAnnotationStatus,
+          buildSteps: AutomatedReasoningPolicyBuildStepList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildLogEntry",
+      });
+    case 7:
+      return S.Array(AutomatedReasoningPolicyBuildLogEntry);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ entries: AutomatedReasoningPolicyBuildLogEntryList }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildLog",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          queryContent: SensitiveString,
+          guardContent: SensitiveString,
+          expectedAggregatedFindingsResult: AutomatedReasoningCheckResult,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyGeneratedTestCase",
+      });
+    case 2:
+      return S.Array(AutomatedReasoningPolicyGeneratedTestCase);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ generatedTestCases: AutomatedReasoningPolicyGeneratedTestCaseList }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyGeneratedTestCases",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          expression: SensitiveString,
+          alternateExpression: SensitiveString,
+          expectedResult: AutomatedReasoningCheckResult,
+          ruleIds: AutomatedReasoningPolicyDefinitionRuleIdList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyScenario",
+      });
+    case 5:
+      return S.Array(AutomatedReasoningPolicyScenario);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ policyScenarios: AutomatedReasoningPolicyScenarioList }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyScenarios",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          assetType: AutomatedReasoningPolicyBuildResultAssetType,
+          assetName: S.optional(SensitiveString),
+          assetId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildResultAssetManifestEntry",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AutomatedReasoningPolicyBuildResultAssetManifestEntry);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ entries: AutomatedReasoningPolicyBuildResultAssetManifestList }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildResultAssetManifest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          document: SensitiveBlob,
+          documentContentType: AutomatedReasoningPolicyBuildDocumentContentType,
+          documentName: SensitiveString,
+          documentDescription: S.optional(SensitiveString),
+          documentHash: S.String,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicySourceDocument",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ documentId: S.String, statementId: S.String })).annotate({
+        identifier: "AutomatedReasoningPolicyStatementReference",
+      });
+    case 4:
+      return S.Array(AutomatedReasoningPolicyStatementReference);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          rule: S.String,
+          groundingStatements: S.optional(AutomatedReasoningPolicyStatementReferenceList),
+          groundingJustifications: S.optional(AutomatedReasoningPolicyJustificationList),
+          accuracyScore: S.optional(S.Number),
+          accuracyJustification: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyRuleReport",
+      });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ AutomatedReasoningPolicyRuleReport.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyVariable: SensitiveString,
+          groundingStatements: S.optional(AutomatedReasoningPolicyStatementReferenceList),
+          groundingJustifications: S.optional(AutomatedReasoningPolicyJustificationList),
+          accuracyScore: S.optional(S.Number),
+          accuracyJustification: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyVariableReport",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ AutomatedReasoningPolicyVariableReport.pipe(S.optional),
+      );
+    case 1:
+      return S.Array(S.Number);
+    case 2:
+      return S.suspend(() => S.Struct({ lines: AutomatedReasoningPolicyLineNumberList })).annotate({
+        identifier: "AutomatedReasoningPolicyStatementLocation",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          text: SensitiveString,
+          location: AutomatedReasoningPolicyStatementLocation,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyAtomicStatement",
+      });
+    case 4:
+      return S.Array(AutomatedReasoningPolicyAtomicStatement);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ lineNumber: S.optional(S.Number), lineText: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyAnnotatedLine",
+      });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ line: AutomatedReasoningPolicyAnnotatedLine })]);
+    case 7:
+      return S.Array(AutomatedReasoningPolicyAnnotatedContent);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageNumber: S.optional(S.Number),
+          content: AutomatedReasoningPolicyAnnotatedContentList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyAnnotatedChunk",
+      });
+    case 1:
+      return S.Array(AutomatedReasoningPolicyAnnotatedChunk);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          documentName: SensitiveString,
+          documentHash: S.String,
+          documentId: S.String,
+          atomicStatements: AutomatedReasoningPolicyAtomicStatementList,
+          documentContent: AutomatedReasoningPolicyAnnotatedChunkList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyReportSourceDocument",
+      });
+    case 3:
+      return S.Array(AutomatedReasoningPolicyReportSourceDocument);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          coverageScore: S.Number,
+          accuracyScore: S.Number,
+          ruleReports: AutomatedReasoningPolicyRuleReportMap,
+          variableReports: AutomatedReasoningPolicyVariableReportMap,
+          documentSources: AutomatedReasoningPolicyReportSourceDocumentList,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyFidelityReport",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ policyDefinition: AutomatedReasoningPolicyDefinition }),
+        /*@__PURE__*/ S.Struct({ qualityReport: AutomatedReasoningPolicyDefinitionQualityReport }),
+        /*@__PURE__*/ S.Struct({ buildLog: AutomatedReasoningPolicyBuildLog }),
+        /*@__PURE__*/ S.Struct({ generatedTestCases: AutomatedReasoningPolicyGeneratedTestCases }),
+        /*@__PURE__*/ S.Struct({ policyScenarios: AutomatedReasoningPolicyScenarios }),
+        /*@__PURE__*/ S.Struct({ assetManifest: AutomatedReasoningPolicyBuildResultAssetManifest }),
+        /*@__PURE__*/ S.Struct({ document: AutomatedReasoningPolicySourceDocument }),
+        /*@__PURE__*/ S.Struct({ fidelityReport: AutomatedReasoningPolicyFidelityReport }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          buildWorkflowId: S.String,
+          buildWorkflowAssets: S.optional(AutomatedReasoningPolicyBuildResultAssets),
+        }),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyBuildWorkflowResultAssetsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/scenarios",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyNextScenarioRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ policyArn: S.String, scenario: S.optional(AutomatedReasoningPolicyScenario) }),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyNextScenarioResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          testCaseId: S.String.pipe(T.HttpLabel("testCaseId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/automated-reasoning-policies/{policyArn}/test-cases/{testCaseId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyTestCaseRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          testCaseId: S.String,
+          guardContent: SensitiveString,
+          queryContent: S.optional(SensitiveString),
+          expectedAggregatedFindingsResult: S.optional(AutomatedReasoningCheckResult),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          confidenceThreshold: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyTestCase",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ policyArn: S.String, testCase: AutomatedReasoningPolicyTestCase }),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyTestCaseResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+          testCaseId: S.String.pipe(T.HttpLabel("testCaseId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/test-cases/{testCaseId}/test-results",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAutomatedReasoningPolicyTestResultRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ logic: SensitiveString, naturalLanguage: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "AutomatedReasoningLogicStatement",
+      });
+    case 6:
+      return S.Array(AutomatedReasoningLogicStatement);
+    case 7:
+      return S.suspend(() => S.Struct({ text: S.optional(SensitiveString) })).annotate({
+        identifier: "AutomatedReasoningCheckInputTextReference",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AutomatedReasoningCheckInputTextReference);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          premises: S.optional(AutomatedReasoningLogicStatementList),
+          claims: AutomatedReasoningLogicStatementList,
+          untranslatedPremises: S.optional(AutomatedReasoningCheckInputTextReferenceList),
+          untranslatedClaims: S.optional(AutomatedReasoningCheckInputTextReferenceList),
+          confidence: S.Number,
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningCheckTranslation",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ statements: S.optional(AutomatedReasoningLogicStatementList) }),
+      ).annotate({
+        identifier: "AutomatedReasoningCheckScenario",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), policyVersionArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "AutomatedReasoningCheckRule",
+      });
+    case 4:
+      return S.Array(AutomatedReasoningCheckRule);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(AutomatedReasoningCheckLogicWarningType),
+          premises: S.optional(AutomatedReasoningLogicStatementList),
+          claims: S.optional(AutomatedReasoningLogicStatementList),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningCheckLogicWarning",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          translation: S.optional(AutomatedReasoningCheckTranslation),
+          claimsTrueScenario: S.optional(AutomatedReasoningCheckScenario),
+          supportingRules: S.optional(AutomatedReasoningCheckRuleList),
+          logicWarning: S.optional(AutomatedReasoningCheckLogicWarning),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningCheckValidFinding",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          translation: S.optional(AutomatedReasoningCheckTranslation),
+          contradictingRules: S.optional(AutomatedReasoningCheckRuleList),
+          logicWarning: S.optional(AutomatedReasoningCheckLogicWarning),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningCheckInvalidFinding",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          translation: S.optional(AutomatedReasoningCheckTranslation),
+          claimsTrueScenario: S.optional(AutomatedReasoningCheckScenario),
+          claimsFalseScenario: S.optional(AutomatedReasoningCheckScenario),
+          logicWarning: S.optional(AutomatedReasoningCheckLogicWarning),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningCheckSatisfiableFinding",
+      });
+    case 1:
+      return S.Array(AutomatedReasoningCheckTranslation);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ translations: S.optional(AutomatedReasoningCheckTranslationList) }),
+      ).annotate({
+        identifier: "AutomatedReasoningCheckTranslationOption",
+      });
+    case 3:
+      return S.Array(AutomatedReasoningCheckTranslationOption);
+    case 4:
+      return S.Array(AutomatedReasoningCheckScenario);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(AutomatedReasoningCheckTranslationOptionList),
+          differenceScenarios: S.optional(AutomatedReasoningCheckDifferenceScenarioList),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningCheckTranslationAmbiguousFinding",
+      });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ valid: AutomatedReasoningCheckValidFinding }),
+        /*@__PURE__*/ S.Struct({ invalid: AutomatedReasoningCheckInvalidFinding }),
+        /*@__PURE__*/ S.Struct({ satisfiable: AutomatedReasoningCheckSatisfiableFinding }),
+        /*@__PURE__*/ S.Struct({ impossible: AutomatedReasoningCheckImpossibleFinding }),
+        /*@__PURE__*/ S.Struct({
+          translationAmbiguous: AutomatedReasoningCheckTranslationAmbiguousFinding,
+        }),
+        /*@__PURE__*/ S.Struct({ tooComplex: AutomatedReasoningCheckTooComplexFinding }),
+        /*@__PURE__*/ S.Struct({ noTranslations: AutomatedReasoningCheckNoTranslationsFinding }),
+      ]);
+    case 7:
+      return S.Array(AutomatedReasoningCheckFinding);
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          testCase: AutomatedReasoningPolicyTestCase,
+          policyArn: S.String,
+          testRunStatus: AutomatedReasoningPolicyTestRunStatus,
+          testFindings: S.optional(AutomatedReasoningCheckFindingList),
+          testRunResult: S.optional(AutomatedReasoningPolicyTestRunResult),
+          aggregatedTestFindingsResult: S.optional(AutomatedReasoningCheckResult),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyTestResult",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ testResult: AutomatedReasoningPolicyTestResult })).annotate(
+        {
+          identifier: "GetAutomatedReasoningPolicyTestResultResponse",
+        },
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/custom-models/{modelIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetCustomModelRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ trainingLoss: S.optional(S.Number) })).annotate({
+        identifier: "TrainingMetrics",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ validationLoss: S.optional(S.Number) })).annotate({
+        identifier: "ValidatorMetric",
+      });
+    case 5:
+      return S.Array(ValidatorMetric);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          modelArn: S.String,
+          modelName: S.String,
+          jobName: S.optional(S.String),
+          jobArn: S.optional(S.String),
+          baseModelArn: S.optional(S.String),
+          customizationType: S.optional(CustomizationType),
+          modelKmsKeyArn: S.optional(S.String),
+          hyperParameters: S.optional(ModelCustomizationHyperParameters),
+          trainingDataConfig: S.optional(TrainingDataConfig),
+          validationDataConfig: S.optional(ValidationDataConfig),
+          outputDataConfig: S.optional(OutputDataConfig),
+          trainingMetrics: S.optional(TrainingMetrics),
+          validationMetrics: S.optional(ValidationMetrics),
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          customizationConfig: S.optional(CustomizationConfig),
+          modelStatus: S.optional(ModelStatus),
+          failureMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetCustomModelResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          customModelDeploymentIdentifier: S.String.pipe(
+            T.HttpLabel("customModelDeploymentIdentifier"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/model-customization/custom-model-deployments/{customModelDeploymentIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCustomModelDeploymentRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ modelArn: S.String, updateStatus: CustomModelDeploymentUpdateStatus }),
+      ).annotate({
+        identifier: "CustomModelDeploymentUpdateDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customModelDeploymentArn: S.String,
+          modelDeploymentName: S.String,
+          modelArn: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          status: CustomModelDeploymentStatus,
+          description: S.optional(S.String),
+          updateDetails: S.optional(CustomModelDeploymentUpdateDetails),
+          failureMessage: S.optional(S.String),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "GetCustomModelDeploymentResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: SensitiveString.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/evaluation-jobs/{jobIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetEvaluationJobRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          status: EvaluationJobStatus,
+          jobArn: S.String,
+          jobDescription: S.optional(SensitiveString),
+          roleArn: S.String,
+          customerEncryptionKeyId: S.optional(S.String),
+          jobType: EvaluationJobType,
+          applicationType: S.optional(ApplicationType),
+          evaluationConfig: EvaluationConfig,
+          inferenceConfig: EvaluationInferenceConfig,
+          outputDataConfig: EvaluationOutputDataConfig,
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          failureMessages: S.optional(ErrorMessages),
+        }),
+      ).annotate({ identifier: "GetEvaluationJobResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/foundation-models/{modelIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetFoundationModelRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: FoundationModelLifecycleStatus,
+          startOfLifeTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          endOfLifeTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          legacyTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          publicExtendedAccessTime: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+        }),
+      ).annotate({ identifier: "FoundationModelLifecycle" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          modelArn: S.String,
+          modelId: S.String,
+          modelName: S.optional(S.String),
+          providerName: S.optional(S.String),
+          inputModalities: S.optional(ModelModalityList),
+          outputModalities: S.optional(ModelModalityList),
+          responseStreamingSupported: S.optional(S.Boolean),
+          customizationsSupported: S.optional(ModelCustomizationList),
+          inferenceTypesSupported: S.optional(InferenceTypeList),
+          modelLifecycle: S.optional(FoundationModelLifecycle),
+        }),
+      ).annotate({ identifier: "FoundationModelDetails" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ modelDetails: S.optional(FoundationModelDetails) }),
+      ).annotate({
+        identifier: "GetFoundationModelResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ modelId: S.String.pipe(T.HttpLabel("modelId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/foundation-model-availability/{modelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetFoundationModelAvailabilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ status: AgreementStatus, errorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "AgreementAvailability" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String,
+          agreementAvailability: AgreementAvailability,
+          authorizationStatus: AuthorizationStatus,
+          entitlementAvailability: EntitlementAvailability,
+          regionAvailability: RegionAvailability,
+        }),
+      ).annotate({
+        identifier: "GetFoundationModelAvailabilityResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailIdentifier: S.String.pipe(T.HttpLabel("guardrailIdentifier")),
+          guardrailVersion: S.optional(S.String).pipe(T.HttpQuery("guardrailVersion")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/guardrails/{guardrailIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetGuardrailRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          definition: SensitiveString,
+          examples: S.optional(GuardrailTopicExamples),
+          type: S.optional(GuardrailTopicType),
+          inputAction: S.optional(GuardrailTopicAction),
+          outputAction: S.optional(GuardrailTopicAction),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailTopic" });
+    case 5:
+      return S.Array(GuardrailTopic);
+    case 6:
+      return S.suspend(() => S.Struct({ tierName: GuardrailTopicsTierName })).annotate({
+        identifier: "GuardrailTopicsTier",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ topics: GuardrailTopics, tier: S.optional(GuardrailTopicsTier) }),
+      ).annotate({ identifier: "GuardrailTopicPolicy" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: GuardrailContentFilterType,
+          inputStrength: GuardrailFilterStrength,
+          outputStrength: GuardrailFilterStrength,
+          inputModalities: S.optional(GuardrailModalities),
+          outputModalities: S.optional(GuardrailModalities),
+          inputAction: S.optional(GuardrailContentFilterAction),
+          outputAction: S.optional(GuardrailContentFilterAction),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailContentFilter" });
+    case 1:
+      return S.Array(GuardrailContentFilter);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(GuardrailContentFilters),
+          tier: S.optional(GuardrailContentFiltersTier),
+        }),
+      ).annotate({ identifier: "GuardrailContentPolicy" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: GuardrailManagedWordsType,
+          inputAction: S.optional(GuardrailWordAction),
+          outputAction: S.optional(GuardrailWordAction),
+          inputEnabled: S.optional(S.Boolean),
+          outputEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailManagedWords" });
+    case 4:
+      return S.Array(GuardrailManagedWords);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          words: S.optional(GuardrailWords),
+          managedWordLists: S.optional(GuardrailManagedWordLists),
+        }),
+      ).annotate({ identifier: "GuardrailWordPolicy" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          piiEntities: S.optional(GuardrailPiiEntities),
+          regexes: S.optional(GuardrailRegexes),
+        }),
+      ).annotate({
+        identifier: "GuardrailSensitiveInformationPolicy",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ filters: GuardrailContextualGroundingFilters })).annotate({
+        identifier: "GuardrailContextualGroundingPolicy",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailProfileId: S.optional(S.String),
+          guardrailProfileArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GuardrailCrossRegionDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          guardrailId: S.String,
+          guardrailArn: S.String,
+          version: S.String,
+          status: GuardrailStatus,
+          topicPolicy: S.optional(GuardrailTopicPolicy),
+          contentPolicy: S.optional(GuardrailContentPolicy),
+          wordPolicy: S.optional(GuardrailWordPolicy),
+          sensitiveInformationPolicy: S.optional(GuardrailSensitiveInformationPolicy),
+          contextualGroundingPolicy: S.optional(GuardrailContextualGroundingPolicy),
+          automatedReasoningPolicy: S.optional(GuardrailAutomatedReasoningPolicy),
+          crossRegionDetails: S.optional(GuardrailCrossRegionDetails),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          statusReasons: S.optional(GuardrailStatusReasons),
+          failureRecommendations: S.optional(GuardrailFailureRecommendations),
+          blockedInputMessaging: SensitiveString,
+          blockedOutputsMessaging: SensitiveString,
+          kmsKeyArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetGuardrailResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ modelIdentifier: S.String.pipe(T.HttpLabel("modelIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/imported-models/{modelIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetImportedModelRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          customModelUnitsPerModelCopy: S.optional(S.Number),
+          customModelUnitsVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomModelUnits" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          modelArn: S.optional(S.String),
+          modelName: S.optional(S.String),
+          jobName: S.optional(S.String),
+          jobArn: S.optional(S.String),
+          modelDataSource: S.optional(ModelDataSource),
+          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          modelArchitecture: S.optional(S.String),
+          modelKmsKeyArn: S.optional(S.String),
+          instructSupported: S.optional(S.Boolean),
+          customModelUnits: S.optional(CustomModelUnits),
+        }),
+      ).annotate({ identifier: "GetImportedModelResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          inferenceProfileIdentifier: S.String.pipe(T.HttpLabel("inferenceProfileIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/inference-profiles/{inferenceProfileIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetInferenceProfileRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          inferenceProfileName: S.String,
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          inferenceProfileArn: S.String,
+          models: InferenceProfileModels,
+          inferenceProfileId: S.String,
+          status: InferenceProfileStatus,
+          type: InferenceProfileType,
+        }),
+      ).annotate({
+        identifier: "GetInferenceProfileResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ endpointArn: S.String.pipe(T.HttpLabel("endpointArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/marketplace-model/endpoints/{endpointArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetMarketplaceModelEndpointRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ marketplaceModelEndpoint: S.optional(MarketplaceModelEndpoint) }),
+      ).annotate({
+        identifier: "GetMarketplaceModelEndpointResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ jobArn: S.String.pipe(T.HttpLabel("jobArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/model-copy-jobs/{jobArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetModelCopyJobRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          status: ModelCopyJobStatus,
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          targetModelArn: S.String,
+          targetModelName: S.optional(S.String),
+          sourceAccountId: S.String,
+          sourceModelArn: S.String,
+          targetModelKmsKeyArn: S.optional(S.String),
+          targetModelTags: S.optional(TagList),
+          failureMessage: S.optional(S.String),
+          sourceModelName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetModelCopyJobResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/model-customization-jobs/{jobIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetModelCustomizationJobRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(JobStatusDetails),
+          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ValidationDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          validationDetails: S.optional(ValidationDetails),
+          dataProcessingDetails: S.optional(DataProcessingDetails),
+          trainingDetails: S.optional(TrainingDetails),
+        }),
+      ).annotate({ identifier: "StatusDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          jobName: S.String,
+          outputModelName: S.String,
+          outputModelArn: S.optional(S.String),
+          clientRequestToken: S.optional(S.String),
+          roleArn: S.String,
+          status: S.optional(ModelCustomizationJobStatus),
+          statusDetails: S.optional(StatusDetails),
+          failureMessage: S.optional(S.String),
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          baseModelArn: S.String,
+          hyperParameters: S.optional(ModelCustomizationHyperParameters),
+          trainingDataConfig: TrainingDataConfig,
+          validationDataConfig: ValidationDataConfig,
+          outputDataConfig: OutputDataConfig,
+          customizationType: S.optional(CustomizationType),
+          outputModelKmsKeyArn: S.optional(S.String),
+          trainingMetrics: S.optional(TrainingMetrics),
+          validationMetrics: S.optional(ValidationMetrics),
+          vpcConfig: S.optional(VpcConfig),
+          customizationConfig: S.optional(CustomizationConfig),
+        }),
+      ).annotate({
+        identifier: "GetModelCustomizationJobResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/model-import-jobs/{jobIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetModelImportJobRequest" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.optional(S.String),
+          jobName: S.optional(S.String),
+          importedModelName: S.optional(S.String),
+          importedModelArn: S.optional(S.String),
+          roleArn: S.optional(S.String),
+          modelDataSource: S.optional(ModelDataSource),
+          status: S.optional(ModelImportJobStatus),
+          failureMessage: S.optional(S.String),
+          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          vpcConfig: S.optional(VpcConfig),
+          importedModelKmsKeyArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetModelImportJobResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/model-invocation-job/{jobIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetModelInvocationJobRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          jobName: S.optional(S.String),
+          modelId: S.String,
+          clientRequestToken: S.optional(S.String),
+          roleArn: S.String,
+          status: S.optional(ModelInvocationJobStatus),
+          message: S.optional(SensitiveString),
+          submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          inputDataConfig: ModelInvocationJobInputDataConfig,
+          outputDataConfig: ModelInvocationJobOutputDataConfig,
+          vpcConfig: S.optional(VpcConfig),
+          timeoutDurationInHours: S.optional(S.Number),
+          jobExpirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          modelInvocationType: S.optional(ModelInvocationType),
+          totalRecordCount: S.optional(S.Number),
+          processedRecordCount: S.optional(S.Number),
+          successRecordCount: S.optional(S.Number),
+          errorRecordCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetModelInvocationJobResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/logging/modelinvocations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetModelInvocationLoggingConfigurationRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ bucketName: S.String, keyPrefix: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Config" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          logGroupName: S.String,
+          roleArn: S.String,
+          largeDataDeliveryS3Config: S.optional(S3Config),
+        }),
+      ).annotate({ identifier: "CloudWatchConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cloudWatchConfig: S.optional(CloudWatchConfig),
+          s3Config: S.optional(S3Config),
+          textDataDeliveryEnabled: S.optional(S.Boolean),
+          imageDataDeliveryEnabled: S.optional(S.Boolean),
+          embeddingDataDeliveryEnabled: S.optional(S.Boolean),
+          videoDataDeliveryEnabled: S.optional(S.Boolean),
+          audioDataDeliveryEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LoggingConfig" });
+    case 7:
+      return S.suspend(() => S.Struct({ loggingConfig: S.optional(LoggingConfig) })).annotate({
+        identifier: "GetModelInvocationLoggingConfigurationResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ promptRouterArn: S.String.pipe(T.HttpLabel("promptRouterArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/prompt-routers/{promptRouterArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetPromptRouterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          promptRouterName: S.String,
+          routingCriteria: RoutingCriteria,
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          promptRouterArn: S.String,
+          models: PromptRouterTargetModels,
+          fallbackModel: PromptRouterTargetModel,
+          status: PromptRouterStatus,
+          type: PromptRouterType,
+        }),
+      ).annotate({ identifier: "GetPromptRouterResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ provisionedModelId: S.String.pipe(T.HttpLabel("provisionedModelId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/provisioned-model-throughput/{provisionedModelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetProvisionedModelThroughputRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          modelUnits: S.Number,
+          desiredModelUnits: S.Number,
+          provisionedModelName: S.String,
+          provisionedModelArn: S.String,
+          modelArn: S.String,
+          desiredModelArn: S.String,
+          foundationModelArn: S.String,
+          status: ProvisionedModelStatus,
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          failureMessage: S.optional(S.String),
+          commitmentDuration: S.optional(CommitmentDuration),
+          commitmentExpirationTime: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+        }),
+      ).annotate({
+        identifier: "GetProvisionedModelThroughputResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/resource-policy/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetResourcePolicyRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ resourcePolicy: S.optional(S.String) })).annotate({
+        identifier: "GetResourcePolicyResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/use-case-for-model-access" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetUseCaseForModelAccessRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ formData: T.Blob })).annotate({
+        identifier: "GetUseCaseForModelAccessResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/advanced-prompt-optimization-jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAdvancedPromptOptimizationJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          jobName: S.String,
+          jobStatus: AdvancedPromptOptimizationJobStatus,
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "AdvancedPromptOptimizationJobSummary",
+      });
+    case 2:
+      return S.Array(AdvancedPromptOptimizationJobSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          jobSummaries: S.optional(AdvancedPromptOptimizationJobSummaries),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAdvancedPromptOptimizationJobsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.optional(S.String).pipe(T.HttpQuery("policyArn")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/automated-reasoning-policies" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAutomatedReasoningPoliciesRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          version: S.String,
+          policyId: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicySummary",
+      });
+    case 6:
+      return S.Array(AutomatedReasoningPolicySummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          automatedReasoningPolicySummaries: AutomatedReasoningPolicySummaries,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAutomatedReasoningPoliciesResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAutomatedReasoningPolicyBuildWorkflowsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          buildWorkflowId: S.String,
+          status: AutomatedReasoningPolicyBuildWorkflowStatus,
+          buildWorkflowType: AutomatedReasoningPolicyBuildWorkflowType,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildWorkflowSummary",
+      });
+    case 2:
+      return S.Array(AutomatedReasoningPolicyBuildWorkflowSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          automatedReasoningPolicyBuildWorkflowSummaries:
+            AutomatedReasoningPolicyBuildWorkflowSummaries,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAutomatedReasoningPolicyBuildWorkflowsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/automated-reasoning-policies/{policyArn}/test-cases" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAutomatedReasoningPolicyTestCasesRequest",
+      });
+    case 5:
+      return S.Array(AutomatedReasoningPolicyTestCase);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          testCases: AutomatedReasoningPolicyTestCaseList,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAutomatedReasoningPolicyTestCasesResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/test-results",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAutomatedReasoningPolicyTestResultsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AutomatedReasoningPolicyTestResult);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          testResults: AutomatedReasoningPolicyTestList,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAutomatedReasoningPolicyTestResultsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("createdBefore"),
+          ),
+          createdAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("createdAfter"),
+          ),
+          nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortModelsBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          statusEquals: S.optional(CustomModelDeploymentStatus).pipe(T.HttpQuery("statusEquals")),
+          modelArnEquals: S.optional(S.String).pipe(T.HttpQuery("modelArnEquals")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/model-customization/custom-model-deployments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCustomModelDeploymentsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          customModelDeploymentArn: S.String,
+          customModelDeploymentName: S.String,
+          modelArn: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          status: CustomModelDeploymentStatus,
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          failureMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomModelDeploymentSummary",
+      });
+    case 4:
+      return S.Array(CustomModelDeploymentSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          modelDeploymentSummaries: S.optional(CustomModelDeploymentSummaryList),
+        }),
+      ).annotate({
+        identifier: "ListCustomModelDeploymentsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          creationTimeBefore: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ).pipe(T.HttpQuery("creationTimeBefore")),
+          creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("creationTimeAfter"),
+          ),
+          nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
+          baseModelArnEquals: S.optional(S.String).pipe(T.HttpQuery("baseModelArnEquals")),
+          foundationModelArnEquals: S.optional(S.String).pipe(
+            T.HttpQuery("foundationModelArnEquals"),
+          ),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortModelsBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          isOwned: S.optional(S.Boolean).pipe(T.HttpQuery("isOwned")),
+          modelStatus: S.optional(ModelStatus).pipe(T.HttpQuery("modelStatus")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/custom-models" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListCustomModelsRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          modelArn: S.String,
+          modelName: S.String,
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          baseModelArn: S.String,
+          baseModelName: S.String,
+          customizationType: S.optional(CustomizationType),
+          ownerAccountId: S.optional(S.String),
+          modelStatus: S.optional(ModelStatus),
+        }),
+      ).annotate({ identifier: "CustomModelSummary" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CustomModelSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          modelSummaries: S.optional(CustomModelSummaryList),
+        }),
+      ).annotate({ identifier: "ListCustomModelsResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/enforcedGuardrailsConfiguration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEnforcedGuardrailsConfigurationRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          system: S.optional(SelectiveGuardingMode),
+          messages: S.optional(SelectiveGuardingMode),
+        }),
+      ).annotate({ identifier: "SelectiveContentGuarding" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ includedModels: IncludedModelsList, excludedModels: ExcludedModelsList }),
+      ).annotate({ identifier: "ModelEnforcement" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          configId: S.optional(S.String),
+          guardrailArn: S.optional(S.String),
+          guardrailId: S.optional(S.String),
+          inputTags: S.optional(InputTags),
+          selectiveContentGuarding: S.optional(SelectiveContentGuarding),
+          guardrailVersion: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedBy: S.optional(S.String),
+          owner: S.optional(S.String),
+          modelEnforcement: S.optional(ModelEnforcement),
+        }),
+      ).annotate({
+        identifier: "AccountEnforcedGuardrailOutputConfiguration",
+      });
+    case 6:
+      return S.Array(AccountEnforcedGuardrailOutputConfiguration);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailsConfig: AccountEnforcedGuardrailsOutputConfiguration,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEnforcedGuardrailsConfigurationResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("creationTimeAfter"),
+          ),
+          creationTimeBefore: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ).pipe(T.HttpQuery("creationTimeBefore")),
+          statusEquals: S.optional(EvaluationJobStatus).pipe(T.HttpQuery("statusEquals")),
+          applicationTypeEquals: S.optional(ApplicationType).pipe(
+            T.HttpQuery("applicationTypeEquals"),
+          ),
+          nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/evaluation-jobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListEvaluationJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bedrockModelIdentifiers: S.optional(EvaluationBedrockModelIdentifiers),
+          precomputedInferenceSourceIdentifiers: S.optional(
+            EvaluationPrecomputedInferenceSourceIdentifiers,
+          ),
+        }),
+      ).annotate({
+        identifier: "EvaluationModelConfigSummary",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bedrockKnowledgeBaseIdentifiers: S.optional(EvaluationBedrockKnowledgeBaseIdentifiers),
+          precomputedRagSourceIdentifiers: S.optional(EvaluationPrecomputedRagSourceIdentifiers),
+        }),
+      ).annotate({
+        identifier: "EvaluationRagConfigSummary",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          modelConfigSummary: S.optional(EvaluationModelConfigSummary),
+          ragConfigSummary: S.optional(EvaluationRagConfigSummary),
+        }),
+      ).annotate({
+        identifier: "EvaluationInferenceConfigSummary",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          jobName: S.String,
+          status: EvaluationJobStatus,
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          jobType: EvaluationJobType,
+          evaluationTaskTypes: EvaluationTaskTypes,
+          modelIdentifiers: S.optional(EvaluationBedrockModelIdentifiers),
+          ragIdentifiers: S.optional(EvaluationBedrockKnowledgeBaseIdentifiers),
+          evaluatorModelIdentifiers: S.optional(EvaluatorModelIdentifiers),
+          customMetricsEvaluatorModelIdentifiers: S.optional(EvaluatorModelIdentifiers),
+          inferenceConfigSummary: S.optional(EvaluationInferenceConfigSummary),
+          applicationType: S.optional(ApplicationType),
+        }),
+      ).annotate({ identifier: "EvaluationSummary" });
+    case 5:
+      return S.Array(EvaluationSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          jobSummaries: S.optional(EvaluationSummaries),
+        }),
+      ).annotate({
+        identifier: "ListEvaluationJobsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String.pipe(T.HttpLabel("modelId")),
+          offerType: S.optional(OfferType).pipe(T.HttpQuery("offerType")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/list-foundation-model-agreement-offers/{modelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListFoundationModelAgreementOffersRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dimension: S.optional(S.String),
+          price: S.optional(S.String),
+          description: S.optional(S.String),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionalPriceRate" });
+    case 1:
+      return S.Array(DimensionalPriceRate);
+    case 2:
+      return S.suspend(() => S.Struct({ rateCard: RateCard })).annotate({
+        identifier: "PricingTerm",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ url: S.optional(S.String) })).annotate({
+        identifier: "LegalTerm",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ refundPolicyDescription: S.optional(S.String) })).annotate({
+        identifier: "SupportTerm",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ agreementDuration: S.optional(S.String) })).annotate({
+        identifier: "ValidityTerm",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          usageBasedPricingTerm: PricingTerm,
+          legalTerm: LegalTerm,
+          supportTerm: SupportTerm,
+          validityTerm: S.optional(ValidityTerm),
+        }),
+      ).annotate({ identifier: "TermDetails" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ offerId: S.optional(S.String), offerToken: S.String, termDetails: TermDetails }),
+      ).annotate({ identifier: "Offer" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Offer);
+    case 1:
+      return S.suspend(() => S.Struct({ modelId: S.String, offers: Offers })).annotate({
+        identifier: "ListFoundationModelAgreementOffersResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          byProvider: S.optional(S.String).pipe(T.HttpQuery("byProvider")),
+          byCustomizationType: S.optional(ModelCustomization).pipe(
+            T.HttpQuery("byCustomizationType"),
+          ),
+          byOutputModality: S.optional(ModelModality).pipe(T.HttpQuery("byOutputModality")),
+          byInferenceType: S.optional(InferenceType).pipe(T.HttpQuery("byInferenceType")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/foundation-models" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListFoundationModelsRequest",
+      });
+    case 3:
+      return S.Array(FoundationModelSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ modelSummaries: S.optional(FoundationModelSummaryList) }),
+      ).annotate({
+        identifier: "ListFoundationModelsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailIdentifier: S.optional(S.String).pipe(T.HttpQuery("guardrailIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/guardrails" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListGuardrailsRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          status: GuardrailStatus,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          version: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          crossRegionDetails: S.optional(GuardrailCrossRegionDetails),
+        }),
+      ).annotate({ identifier: "GuardrailSummary" });
+    case 7:
+      return S.Array(GuardrailSummary);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ guardrails: GuardrailSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListGuardrailsResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          creationTimeBefore: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ).pipe(T.HttpQuery("creationTimeBefore")),
+          creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("creationTimeAfter"),
+          ),
+          nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortModelsBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/imported-models" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListImportedModelsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          modelArn: S.String,
+          modelName: S.String,
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          instructSupported: S.optional(S.Boolean),
+          modelArchitecture: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportedModelSummary" });
+    case 3:
+      return S.Array(ImportedModelSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          modelSummaries: S.optional(ImportedModelSummaryList),
+        }),
+      ).annotate({
+        identifier: "ListImportedModelsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          typeEquals: S.optional(InferenceProfileType).pipe(T.HttpQuery("type")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/inference-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListInferenceProfilesRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          inferenceProfileName: S.String,
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          inferenceProfileArn: S.String,
+          models: InferenceProfileModels,
+          inferenceProfileId: S.String,
+          status: InferenceProfileStatus,
+          type: InferenceProfileType,
+        }),
+      ).annotate({ identifier: "InferenceProfileSummary" });
+    case 7:
+      return S.Array(InferenceProfileSummary);
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inferenceProfileSummaries: S.optional(InferenceProfileSummaries),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListInferenceProfilesResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          modelSourceEquals: S.optional(S.String).pipe(T.HttpQuery("modelSourceIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/marketplace-model/endpoints" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListMarketplaceModelEndpointsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          endpointArn: S.String,
+          modelSourceIdentifier: S.String,
+          status: S.optional(Status),
+          statusMessage: S.optional(S.String),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "MarketplaceModelEndpointSummary",
+      });
+    case 3:
+      return S.Array(MarketplaceModelEndpointSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          marketplaceModelEndpoints: S.optional(MarketplaceModelEndpointSummaries),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListMarketplaceModelEndpointsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("creationTimeAfter"),
+          ),
+          creationTimeBefore: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ).pipe(T.HttpQuery("creationTimeBefore")),
+          statusEquals: S.optional(ModelCopyJobStatus).pipe(T.HttpQuery("statusEquals")),
+          sourceAccountEquals: S.optional(S.String).pipe(T.HttpQuery("sourceAccountEquals")),
+          sourceModelArnEquals: S.optional(S.String).pipe(T.HttpQuery("sourceModelArnEquals")),
+          targetModelNameContains: S.optional(S.String).pipe(
+            T.HttpQuery("outputModelNameContains"),
+          ),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/model-copy-jobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListModelCopyJobsRequest" });
+    case 6:
+      return S.Array(ModelCopyJobSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          modelCopyJobSummaries: S.optional(ModelCopyJobSummaries),
+        }),
+      ).annotate({
+        identifier: "ListModelCopyJobsResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("creationTimeAfter"),
+          ),
+          creationTimeBefore: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ).pipe(T.HttpQuery("creationTimeBefore")),
+          statusEquals: S.optional(FineTuningJobStatus).pipe(T.HttpQuery("statusEquals")),
+          nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/model-customization-jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListModelCustomizationJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          baseModelArn: S.String,
+          jobName: S.String,
+          status: ModelCustomizationJobStatus,
+          statusDetails: S.optional(StatusDetails),
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          customModelArn: S.optional(S.String),
+          customModelName: S.optional(S.String),
+          customizationType: S.optional(CustomizationType),
+        }),
+      ).annotate({
+        identifier: "ModelCustomizationJobSummary",
+      });
+    case 2:
+      return S.Array(ModelCustomizationJobSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          modelCustomizationJobSummaries: S.optional(ModelCustomizationJobSummaries),
+        }),
+      ).annotate({
+        identifier: "ListModelCustomizationJobsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("creationTimeAfter"),
+          ),
+          creationTimeBefore: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ).pipe(T.HttpQuery("creationTimeBefore")),
+          statusEquals: S.optional(ModelImportJobStatus).pipe(T.HttpQuery("statusEquals")),
+          nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/model-import-jobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListModelImportJobsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          jobName: S.String,
+          status: ModelImportJobStatus,
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          importedModelArn: S.optional(S.String),
+          importedModelName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ModelImportJobSummary" });
+    case 6:
+      return S.Array(ModelImportJobSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          modelImportJobSummaries: S.optional(ModelImportJobSummaries),
+        }),
+      ).annotate({
+        identifier: "ListModelImportJobsResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          submitTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("submitTimeAfter"),
+          ),
+          submitTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("submitTimeBefore"),
+          ),
+          statusEquals: S.optional(ModelInvocationJobStatus).pipe(T.HttpQuery("statusEquals")),
+          nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/model-invocation-jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListModelInvocationJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          jobName: S.String,
+          modelId: S.String,
+          clientRequestToken: S.optional(S.String),
+          roleArn: S.String,
+          status: S.optional(ModelInvocationJobStatus),
+          message: S.optional(SensitiveString),
+          submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          inputDataConfig: ModelInvocationJobInputDataConfig,
+          outputDataConfig: ModelInvocationJobOutputDataConfig,
+          vpcConfig: S.optional(VpcConfig),
+          timeoutDurationInHours: S.optional(S.Number),
+          jobExpirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          modelInvocationType: S.optional(ModelInvocationType),
+          totalRecordCount: S.optional(S.Number),
+          processedRecordCount: S.optional(S.Number),
+          successRecordCount: S.optional(S.Number),
+          errorRecordCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ModelInvocationJobSummary",
+      });
+    case 2:
+      return S.Array(ModelInvocationJobSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          invocationJobSummaries: S.optional(ModelInvocationJobSummaries),
+        }),
+      ).annotate({
+        identifier: "ListModelInvocationJobsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          type: S.optional(PromptRouterType).pipe(T.HttpQuery("type")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/prompt-routers" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListPromptRoutersRequest" });
+    case 5:
+      return S.Array(PromptRouterSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          promptRouterSummaries: S.optional(PromptRouterSummaries),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListPromptRoutersResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          creationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("creationTimeAfter"),
+          ),
+          creationTimeBefore: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ).pipe(T.HttpQuery("creationTimeBefore")),
+          statusEquals: S.optional(ProvisionedModelStatus).pipe(T.HttpQuery("statusEquals")),
+          modelArnEquals: S.optional(S.String).pipe(T.HttpQuery("modelArnEquals")),
+          nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortByProvisionedModels).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/provisioned-model-throughputs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListProvisionedModelThroughputsRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisionedModelName: S.String,
+          provisionedModelArn: S.String,
+          modelArn: S.String,
+          desiredModelArn: S.String,
+          foundationModelArn: S.String,
+          modelUnits: S.Number,
+          desiredModelUnits: S.Number,
+          status: ProvisionedModelStatus,
+          commitmentDuration: S.optional(CommitmentDuration),
+          commitmentExpirationTime: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "ProvisionedModelSummary" });
+    case 1:
+      return S.Array(ProvisionedModelSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          provisionedModelSummaries: S.optional(ProvisionedModelSummaries),
+        }),
+      ).annotate({
+        identifier: "ListProvisionedModelThroughputsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ resourceARN: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/listTagsForResource" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagList) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ mode: DataRetentionMode }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/data-retention" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "PutAccountDataRetentionRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailIdentifier: S.String,
+          guardrailVersion: S.String,
+          selectiveContentGuarding: S.optional(SelectiveContentGuarding),
+          modelEnforcement: S.optional(ModelEnforcement),
+        }),
+      ).annotate({
+        identifier: "AccountEnforcedGuardrailInferenceInputConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          configId: S.optional(S.String),
+          guardrailInferenceConfig: AccountEnforcedGuardrailInferenceInputConfiguration,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/enforcedGuardrailsConfiguration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutEnforcedGuardrailConfigurationRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configId: S.optional(S.String),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PutEnforcedGuardrailConfigurationResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ loggingConfig: LoggingConfig }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/logging/modelinvocations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutModelInvocationLoggingConfigurationRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, resourcePolicy: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/resource-policy" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutResourcePolicyRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ resourceArn: S.optional(S.String) })).annotate({
+        identifier: "PutResourcePolicyResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ formData: T.Blob }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/use-case-for-model-access" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutUseCaseForModelAccessRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          endpointIdentifier: S.String.pipe(T.HttpLabel("endpointIdentifier")),
+          modelSourceIdentifier: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/marketplace-model/endpoints/{endpointIdentifier}/registration",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RegisterMarketplaceModelEndpointRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          document: SensitiveBlob,
+          documentContentType: AutomatedReasoningPolicyBuildDocumentContentType,
+          documentName: SensitiveString,
+          documentDescription: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildWorkflowDocument",
+      });
+    case 7:
+      return S.Array(AutomatedReasoningPolicyBuildWorkflowDocument);
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ annotations: AutomatedReasoningPolicyAnnotationList }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildWorkflowRepairContent",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          documents: AutomatedReasoningPolicyGenerateFidelityReportDocumentList,
+        }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          documents: AutomatedReasoningPolicyIterativeRefinementDocumentList,
+          feedback: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyIterativeRefinementContent",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ documents: AutomatedReasoningPolicyBuildWorkflowDocumentList }),
+        /*@__PURE__*/ S.Struct({
+          policyRepairAssets: AutomatedReasoningPolicyBuildWorkflowRepairContent,
+        }),
+        /*@__PURE__*/ S.Struct({
+          generateFidelityReportContent: AutomatedReasoningPolicyGenerateFidelityReportContent,
+        }),
+        /*@__PURE__*/ S.Struct({
+          iterativeRefinementContent: AutomatedReasoningPolicyIterativeRefinementContent,
+        }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyDefinition: S.optional(AutomatedReasoningPolicyDefinition),
+          workflowContent: S.optional(AutomatedReasoningPolicyWorkflowTypeContent),
+        }),
+      ).annotate({
+        identifier: "AutomatedReasoningPolicyBuildWorkflowSource",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowType: AutomatedReasoningPolicyBuildWorkflowType.pipe(
+            T.HttpLabel("buildWorkflowType"),
+          ),
+          clientRequestToken: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-client-token"),
+            T.IdempotencyToken(),
+          ),
+          sourceContent: AutomatedReasoningPolicyBuildWorkflowSource.pipe(T.HttpPayload()).annotate(
+            {
+              identifier: "AutomatedReasoningPolicyBuildWorkflowSource",
+            },
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowType}/start",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartAutomatedReasoningPolicyBuildWorkflowRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ policyArn: S.String, buildWorkflowId: S.String })).annotate(
+        {
+          identifier: "StartAutomatedReasoningPolicyBuildWorkflowResponse",
+        },
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+          testCaseIds: S.optional(AutomatedReasoningPolicyTestCaseIdList),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/test-workflows",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartAutomatedReasoningPolicyTestWorkflowRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ policyArn: S.String })).annotate({
+        identifier: "StartAutomatedReasoningPolicyTestWorkflowResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/advanced-prompt-optimization-jobs/{jobIdentifier}/stop",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StopAdvancedPromptOptimizationJobRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: SensitiveString.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/evaluation-job/{jobIdentifier}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopEvaluationJobRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/model-customization-jobs/{jobIdentifier}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StopModelCustomizationJobRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/model-invocation-job/{jobIdentifier}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StopModelInvocationJobRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceARN: S.String, tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/tagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ resourceARN: S.String, tagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/untagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          policyDefinition: AutomatedReasoningPolicyDefinition,
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/automated-reasoning-policies/{policyArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateAutomatedReasoningPolicyRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          name: SensitiveString,
+          definitionHash: S.String,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "UpdateAutomatedReasoningPolicyResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          buildWorkflowId: S.String.pipe(T.HttpLabel("buildWorkflowId")),
+          annotations: AutomatedReasoningPolicyAnnotationList,
+          lastUpdatedAnnotationSetHash: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/automated-reasoning-policies/{policyArn}/build-workflows/{buildWorkflowId}/annotations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateAutomatedReasoningPolicyAnnotationsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String,
+          buildWorkflowId: S.String,
+          annotationSetHash: S.String,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "UpdateAutomatedReasoningPolicyAnnotationsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyArn: S.String.pipe(T.HttpLabel("policyArn")),
+          testCaseId: S.String.pipe(T.HttpLabel("testCaseId")),
+          guardContent: SensitiveString,
+          queryContent: S.optional(SensitiveString),
+          lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          expectedAggregatedFindingsResult: AutomatedReasoningCheckResult,
+          confidenceThreshold: S.optional(S.Number),
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/automated-reasoning-policies/{policyArn}/test-cases/{testCaseId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateAutomatedReasoningPolicyTestCaseRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          modelArn: S.String,
+          customModelDeploymentIdentifier: S.String.pipe(
+            T.HttpLabel("customModelDeploymentIdentifier"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/model-customization/custom-model-deployments/{customModelDeploymentIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateCustomModelDeploymentRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailIdentifier: S.String.pipe(T.HttpLabel("guardrailIdentifier")),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          topicPolicyConfig: S.optional(GuardrailTopicPolicyConfig),
+          contentPolicyConfig: S.optional(GuardrailContentPolicyConfig),
+          wordPolicyConfig: S.optional(GuardrailWordPolicyConfig),
+          sensitiveInformationPolicyConfig: S.optional(GuardrailSensitiveInformationPolicyConfig),
+          contextualGroundingPolicyConfig: S.optional(GuardrailContextualGroundingPolicyConfig),
+          automatedReasoningPolicyConfig: S.optional(GuardrailAutomatedReasoningPolicyConfig),
+          crossRegionConfig: S.optional(GuardrailCrossRegionConfig),
+          blockedInputMessaging: SensitiveString,
+          blockedOutputsMessaging: SensitiveString,
+          kmsKeyId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/guardrails/{guardrailIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateGuardrailRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailId: S.String,
+          guardrailArn: S.String,
+          version: S.String,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "UpdateGuardrailResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          endpointArn: S.String.pipe(T.HttpLabel("endpointArn")),
+          endpointConfig: EndpointConfig,
+          clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/marketplace-model/endpoints/{endpointArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateMarketplaceModelEndpointRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisionedModelId: S.String.pipe(T.HttpLabel("provisionedModelId")),
+          desiredProvisionedModelName: S.optional(S.String),
+          desiredModelId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/provisioned-model-throughput/{provisionedModelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateProvisionedModelThroughputRequest",
+      });
+  }
+}

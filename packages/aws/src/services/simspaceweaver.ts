@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -124,48 +125,29 @@ export interface S3Destination {
   BucketName: string;
   ObjectKeyPrefix?: string;
 }
-const S3Destination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BucketName: S.String, ObjectKeyPrefix: S.optional(S.String) }),
-).annotate({ identifier: "S3Destination" }) as any as S.Schema<S3Destination>;
+const S3Destination = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<S3Destination>;
 export interface CreateSnapshotInput {
   Simulation: string;
   Destination: S3Destination;
 }
-const CreateSnapshotInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Simulation: S.String, Destination: S3Destination }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/createsnapshot" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateSnapshotInput",
-}) as any as S.Schema<CreateSnapshotInput>;
+const CreateSnapshotInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateSnapshotInput>;
 export interface CreateSnapshotOutput {}
-const CreateSnapshotOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSnapshotOutput",
-}) as any as S.Schema<CreateSnapshotOutput>;
+const CreateSnapshotOutput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateSnapshotOutput>;
 export interface DeleteAppInput {
   Simulation: string;
   Domain: string;
   App: string;
 }
-const DeleteAppInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Simulation: S.String.pipe(T.HttpQuery("simulation")),
-    Domain: S.String.pipe(T.HttpQuery("domain")),
-    App: S.String.pipe(T.HttpQuery("app")),
-  }).pipe(T.all(T.Http({ method: "DELETE", uri: "/deleteapp" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DeleteAppInput" }) as any as S.Schema<DeleteAppInput>;
+const DeleteAppInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteAppInput>;
 export interface DeleteAppOutput {}
 const DeleteAppOutput = CreateSnapshotOutput as any as S.Schema<DeleteAppOutput>;
 export interface DeleteSimulationInput {
   Simulation: string;
 }
-const DeleteSimulationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Simulation: S.String.pipe(T.HttpQuery("simulation")) }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/deletesimulation" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteSimulationInput",
-}) as any as S.Schema<DeleteSimulationInput>;
+const DeleteSimulationInput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteSimulationInput>;
 export interface DeleteSimulationOutput {}
 const DeleteSimulationOutput = CreateSnapshotOutput as any as S.Schema<DeleteSimulationOutput>;
 export type SimSpaceWeaverLongResourceName = string;
@@ -174,53 +156,36 @@ export interface DescribeAppInput {
   Domain: string;
   App: string;
 }
-const DescribeAppInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Simulation: S.String.pipe(T.HttpQuery("simulation")),
-    Domain: S.String.pipe(T.HttpQuery("domain")),
-    App: S.String.pipe(T.HttpQuery("app")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/describeapp" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeAppInput",
-}) as any as S.Schema<DescribeAppInput>;
+const DescribeAppInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DescribeAppInput>;
 export type SimulationAppStatus = string;
 export type SimulationAppTargetStatus = string;
 export type NonEmptyString = string;
 export type LaunchCommandList = string[];
-const LaunchCommandList = /*@__PURE__*/ S.Array(S.String);
+const LaunchCommandList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface LaunchOverrides {
   LaunchCommands?: string[];
 }
-const LaunchOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LaunchCommands: S.optional(LaunchCommandList) }),
-).annotate({
-  identifier: "LaunchOverrides",
-}) as any as S.Schema<LaunchOverrides>;
+const LaunchOverrides = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<LaunchOverrides>;
 export type Description = string;
 export type PortNumber = number;
 export interface SimulationAppPortMapping {
   Declared?: number;
   Actual?: number;
 }
-const SimulationAppPortMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Declared: S.optional(S.Number), Actual: S.optional(S.Number) }),
-).annotate({
-  identifier: "SimulationAppPortMapping",
-}) as any as S.Schema<SimulationAppPortMapping>;
+const SimulationAppPortMapping = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<SimulationAppPortMapping>;
 export type AppPortMappings = SimulationAppPortMapping[];
-const AppPortMappings = /*@__PURE__*/ S.Array(SimulationAppPortMapping);
+const AppPortMappings = /*@__PURE__*/ __L.at(__c1, 1);
 export interface SimulationAppEndpointInfo {
   Address?: string;
   IngressPortMappings?: SimulationAppPortMapping[];
 }
-const SimulationAppEndpointInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: S.optional(S.String),
-    IngressPortMappings: S.optional(AppPortMappings),
-  }),
-).annotate({
-  identifier: "SimulationAppEndpointInfo",
-}) as any as S.Schema<SimulationAppEndpointInfo>;
+const SimulationAppEndpointInfo = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SimulationAppEndpointInfo>;
 export interface DescribeAppOutput {
   Name?: string;
   Simulation?: string;
@@ -231,30 +196,14 @@ export interface DescribeAppOutput {
   Description?: string;
   EndpointInfo?: SimulationAppEndpointInfo;
 }
-const DescribeAppOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Simulation: S.optional(S.String),
-    Domain: S.optional(S.String),
-    Status: S.optional(S.String),
-    TargetStatus: S.optional(S.String),
-    LaunchOverrides: S.optional(LaunchOverrides),
-    Description: S.optional(S.String),
-    EndpointInfo: S.optional(SimulationAppEndpointInfo),
-  }),
-).annotate({
-  identifier: "DescribeAppOutput",
-}) as any as S.Schema<DescribeAppOutput>;
+const DescribeAppOutput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DescribeAppOutput>;
 export interface DescribeSimulationInput {
   Simulation: string;
 }
-const DescribeSimulationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Simulation: S.String.pipe(T.HttpQuery("simulation")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/describesimulation" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeSimulationInput",
-}) as any as S.Schema<DescribeSimulationInput>;
+const DescribeSimulationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DescribeSimulationInput>;
 export type UUID = string;
 export type SimSpaceWeaverArn = string;
 export type RoleArn = string;
@@ -265,73 +214,48 @@ export interface S3Location {
   BucketName: string;
   ObjectKey: string;
 }
-const S3Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BucketName: S.String, ObjectKey: S.String }),
-).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
+const S3Location = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<S3Location>;
 export type OptionalString = string;
 export type LogGroupArn = string;
 export interface CloudWatchLogsLogGroup {
   LogGroupArn?: string;
 }
-const CloudWatchLogsLogGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LogGroupArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CloudWatchLogsLogGroup",
-}) as any as S.Schema<CloudWatchLogsLogGroup>;
+const CloudWatchLogsLogGroup = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CloudWatchLogsLogGroup>;
 export interface LogDestination {
   CloudWatchLogsLogGroup?: CloudWatchLogsLogGroup;
 }
-const LogDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CloudWatchLogsLogGroup: S.optional(CloudWatchLogsLogGroup) }),
-).annotate({ identifier: "LogDestination" }) as any as S.Schema<LogDestination>;
+const LogDestination = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<LogDestination>;
 export type LogDestinations = LogDestination[];
-const LogDestinations = /*@__PURE__*/ S.Array(LogDestination);
+const LogDestinations = /*@__PURE__*/ __L.at(__c2, 0);
 export interface LoggingConfiguration {
   Destinations?: LogDestination[];
 }
-const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Destinations: S.optional(LogDestinations) }),
-).annotate({
-  identifier: "LoggingConfiguration",
-}) as any as S.Schema<LoggingConfiguration>;
+const LoggingConfiguration = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LoggingConfiguration>;
 export type LifecycleManagementStrategy = string;
 export interface Domain {
   Name?: string;
   Lifecycle?: string;
 }
-const Domain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Lifecycle: S.optional(S.String) }),
-).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
+const Domain = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Domain>;
 export type DomainList = Domain[];
-const DomainList = /*@__PURE__*/ S.Array(Domain);
+const DomainList = /*@__PURE__*/ __L.at(__c2, 3);
 export type ClockStatus = string;
 export type ClockTargetStatus = string;
 export interface SimulationClock {
   Status?: string;
   TargetStatus?: string;
 }
-const SimulationClock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(S.String),
-    TargetStatus: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SimulationClock",
-}) as any as S.Schema<SimulationClock>;
+const SimulationClock = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SimulationClock>;
 export type SimulationClockList = SimulationClock[];
-const SimulationClockList = /*@__PURE__*/ S.Array(SimulationClock);
+const SimulationClockList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface LiveSimulationState {
   Domains?: Domain[];
   Clocks?: SimulationClock[];
 }
-const LiveSimulationState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Domains: S.optional(DomainList),
-    Clocks: S.optional(SimulationClockList),
-  }),
-).annotate({
-  identifier: "LiveSimulationState",
-}) as any as S.Schema<LiveSimulationState>;
+const LiveSimulationState = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LiveSimulationState>;
 export type TimeToLiveString = string;
 export interface DescribeSimulationOutput {
   Name?: string;
@@ -350,27 +274,10 @@ export interface DescribeSimulationOutput {
   SnapshotS3Location?: S3Location;
   StartError?: string;
 }
-const DescribeSimulationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    ExecutionId: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Description: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(S.String),
-    TargetStatus: S.optional(S.String),
-    SchemaS3Location: S.optional(S3Location),
-    SchemaError: S.optional(S.String),
-    LoggingConfiguration: S.optional(LoggingConfiguration),
-    LiveSimulationState: S.optional(LiveSimulationState),
-    MaximumDuration: S.optional(S.String),
-    SnapshotS3Location: S.optional(S3Location),
-    StartError: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DescribeSimulationOutput",
-}) as any as S.Schema<DescribeSimulationOutput>;
+const DescribeSimulationOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DescribeSimulationOutput>;
 export type PositiveInteger = number;
 export interface ListAppsInput {
   Simulation: string;
@@ -378,14 +285,7 @@ export interface ListAppsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAppsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Simulation: S.String.pipe(T.HttpQuery("simulation")),
-    Domain: S.optional(S.String).pipe(T.HttpQuery("domain")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/listapps" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListAppsInput" }) as any as S.Schema<ListAppsInput>;
+const ListAppsInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListAppsInput>;
 export interface SimulationAppMetadata {
   Name?: string;
   Simulation?: string;
@@ -393,41 +293,22 @@ export interface SimulationAppMetadata {
   Status?: string;
   TargetStatus?: string;
 }
-const SimulationAppMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Simulation: S.optional(S.String),
-    Domain: S.optional(S.String),
-    Status: S.optional(S.String),
-    TargetStatus: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SimulationAppMetadata",
-}) as any as S.Schema<SimulationAppMetadata>;
+const SimulationAppMetadata = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<SimulationAppMetadata>;
 export type SimulationAppList = SimulationAppMetadata[];
-const SimulationAppList = /*@__PURE__*/ S.Array(SimulationAppMetadata);
+const SimulationAppList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface ListAppsOutput {
   Apps?: SimulationAppMetadata[];
   NextToken?: string;
 }
-const ListAppsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Apps: S.optional(SimulationAppList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListAppsOutput" }) as any as S.Schema<ListAppsOutput>;
+const ListAppsOutput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListAppsOutput>;
 export interface ListSimulationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListSimulationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/listsimulations" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListSimulationsInput",
-}) as any as S.Schema<ListSimulationsInput>;
+const ListSimulationsInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListSimulationsInput>;
 export interface SimulationMetadata {
   Name?: string;
   Arn?: string;
@@ -435,53 +316,35 @@ export interface SimulationMetadata {
   Status?: string;
   TargetStatus?: string;
 }
-const SimulationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Arn: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(S.String),
-    TargetStatus: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SimulationMetadata",
-}) as any as S.Schema<SimulationMetadata>;
+const SimulationMetadata = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SimulationMetadata>;
 export type SimulationList = SimulationMetadata[];
-const SimulationList = /*@__PURE__*/ S.Array(SimulationMetadata);
+const SimulationList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ListSimulationsOutput {
   Simulations?: SimulationMetadata[];
   NextToken?: string;
 }
-const ListSimulationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Simulations: S.optional(SimulationList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSimulationsOutput",
-}) as any as S.Schema<ListSimulationsOutput>;
+const ListSimulationsOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListSimulationsOutput>;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceInput",
-}) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListTagsForResourceInput>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ListTagsForResourceOutput {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export type ClientToken = string | redacted.Redacted<string>;
 export interface StartAppInput {
   ClientToken?: string | redacted.Redacted<string>;
@@ -491,38 +354,17 @@ export interface StartAppInput {
   Description?: string;
   LaunchOverrides?: LaunchOverrides;
 }
-const StartAppInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-    Simulation: S.String,
-    Domain: S.String,
-    Name: S.String,
-    Description: S.optional(S.String),
-    LaunchOverrides: S.optional(LaunchOverrides),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/startapp" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "StartAppInput" }) as any as S.Schema<StartAppInput>;
+const StartAppInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<StartAppInput>;
 export interface StartAppOutput {
   Name?: string;
   Domain?: string;
   Simulation?: string;
 }
-const StartAppOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Domain: S.optional(S.String),
-    Simulation: S.optional(S.String),
-  }),
-).annotate({ identifier: "StartAppOutput" }) as any as S.Schema<StartAppOutput>;
+const StartAppOutput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<StartAppOutput>;
 export interface StartClockInput {
   Simulation: string;
 }
-const StartClockInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Simulation: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/startclock" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartClockInput",
-}) as any as S.Schema<StartClockInput>;
+const StartClockInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<StartClockInput>;
 export interface StartClockOutput {}
 const StartClockOutput = CreateSnapshotOutput as any as S.Schema<StartClockOutput>;
 export interface StartSimulationInput {
@@ -535,82 +377,41 @@ export interface StartSimulationInput {
   Tags?: { [key: string]: string | undefined };
   SnapshotS3Location?: S3Location;
 }
-const StartSimulationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-    Name: S.String,
-    Description: S.optional(S.String),
-    RoleArn: S.String,
-    SchemaS3Location: S.optional(S3Location),
-    MaximumDuration: S.optional(S.String),
-    Tags: S.optional(TagMap),
-    SnapshotS3Location: S.optional(S3Location),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/startsimulation" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "StartSimulationInput",
-}) as any as S.Schema<StartSimulationInput>;
+const StartSimulationInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<StartSimulationInput>;
 export interface StartSimulationOutput {
   Arn?: string;
   ExecutionId?: string;
   CreationTime?: Date;
 }
-const StartSimulationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ExecutionId: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "StartSimulationOutput",
-}) as any as S.Schema<StartSimulationOutput>;
+const StartSimulationOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<StartSimulationOutput>;
 export interface StopAppInput {
   Simulation: string;
   Domain: string;
   App: string;
 }
-const StopAppInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Simulation: S.String, Domain: S.String, App: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/stopapp" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StopAppInput" }) as any as S.Schema<StopAppInput>;
+const StopAppInput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<StopAppInput>;
 export interface StopAppOutput {}
 const StopAppOutput = CreateSnapshotOutput as any as S.Schema<StopAppOutput>;
 export interface StopClockInput {
   Simulation: string;
 }
-const StopClockInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Simulation: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/stopclock" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StopClockInput" }) as any as S.Schema<StopClockInput>;
+const StopClockInput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<StopClockInput>;
 export interface StopClockOutput {}
 const StopClockOutput = CreateSnapshotOutput as any as S.Schema<StopClockOutput>;
 export interface StopSimulationInput {
   Simulation: string;
 }
-const StopSimulationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Simulation: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/stopsimulation" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StopSimulationInput",
-}) as any as S.Schema<StopSimulationInput>;
+const StopSimulationInput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<StopSimulationInput>;
 export interface StopSimulationOutput {}
 const StopSimulationOutput = CreateSnapshotOutput as any as S.Schema<StopSimulationOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    Tags: TagMap,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "TagResourceInput",
-}) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
 const TagResourceOutput = CreateSnapshotOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
@@ -619,16 +420,7 @@ export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UntagResourceInput",
-}) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
 const UntagResourceOutput = CreateSnapshotOutput as any as S.Schema<UntagResourceOutput>;
 export type CreateSnapshotError =
@@ -1133,3 +925,396 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ BucketName: S.String, ObjectKeyPrefix: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Destination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Simulation: S.String, Destination: S3Destination }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/createsnapshot" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateSnapshotInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateSnapshotOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Simulation: S.String.pipe(T.HttpQuery("simulation")),
+          Domain: S.String.pipe(T.HttpQuery("domain")),
+          App: S.String.pipe(T.HttpQuery("app")),
+        }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/deleteapp" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteAppInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Simulation: S.String.pipe(T.HttpQuery("simulation")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/deletesimulation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteSimulationInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Simulation: S.String.pipe(T.HttpQuery("simulation")),
+          Domain: S.String.pipe(T.HttpQuery("domain")),
+          App: S.String.pipe(T.HttpQuery("app")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/describeapp" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeAppInput",
+      });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() => S.Struct({ LaunchCommands: S.optional(LaunchCommandList) })).annotate({
+        identifier: "LaunchOverrides",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Declared: S.optional(S.Number), Actual: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "SimulationAppPortMapping",
+      });
+    case 1:
+      return S.Array(SimulationAppPortMapping);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          IngressPortMappings: S.optional(AppPortMappings),
+        }),
+      ).annotate({
+        identifier: "SimulationAppEndpointInfo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Simulation: S.optional(S.String),
+          Domain: S.optional(S.String),
+          Status: S.optional(S.String),
+          TargetStatus: S.optional(S.String),
+          LaunchOverrides: S.optional(LaunchOverrides),
+          Description: S.optional(S.String),
+          EndpointInfo: S.optional(SimulationAppEndpointInfo),
+        }),
+      ).annotate({
+        identifier: "DescribeAppOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Simulation: S.String.pipe(T.HttpQuery("simulation")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/describesimulation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeSimulationInput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ BucketName: S.String, ObjectKey: S.String })).annotate({
+        identifier: "S3Location",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ LogGroupArn: S.optional(S.String) })).annotate({
+        identifier: "CloudWatchLogsLogGroup",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ CloudWatchLogsLogGroup: S.optional(CloudWatchLogsLogGroup) }),
+      ).annotate({ identifier: "LogDestination" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(LogDestination);
+    case 1:
+      return S.suspend(() => S.Struct({ Destinations: S.optional(LogDestinations) })).annotate({
+        identifier: "LoggingConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Lifecycle: S.optional(S.String) }),
+      ).annotate({ identifier: "Domain" });
+    case 3:
+      return S.Array(Domain);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          TargetStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SimulationClock",
+      });
+    case 5:
+      return S.Array(SimulationClock);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Domains: S.optional(DomainList),
+          Clocks: S.optional(SimulationClockList),
+        }),
+      ).annotate({
+        identifier: "LiveSimulationState",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          ExecutionId: S.optional(S.String),
+          Arn: S.optional(S.String),
+          Description: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(S.String),
+          TargetStatus: S.optional(S.String),
+          SchemaS3Location: S.optional(S3Location),
+          SchemaError: S.optional(S.String),
+          LoggingConfiguration: S.optional(LoggingConfiguration),
+          LiveSimulationState: S.optional(LiveSimulationState),
+          MaximumDuration: S.optional(S.String),
+          SnapshotS3Location: S.optional(S3Location),
+          StartError: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeSimulationOutput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Simulation: S.String.pipe(T.HttpQuery("simulation")),
+          Domain: S.optional(S.String).pipe(T.HttpQuery("domain")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/listapps" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListAppsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Simulation: S.optional(S.String),
+          Domain: S.optional(S.String),
+          Status: S.optional(S.String),
+          TargetStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SimulationAppMetadata",
+      });
+    case 2:
+      return S.Array(SimulationAppMetadata);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Apps: S.optional(SimulationAppList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListAppsOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/listsimulations" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListSimulationsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Arn: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(S.String),
+          TargetStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SimulationMetadata",
+      });
+    case 6:
+      return S.Array(SimulationMetadata);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Simulations: S.optional(SimulationList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListSimulationsOutput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceInput",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
+          Simulation: S.String,
+          Domain: S.String,
+          Name: S.String,
+          Description: S.optional(S.String),
+          LaunchOverrides: S.optional(LaunchOverrides),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/startapp" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartAppInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Domain: S.optional(S.String),
+          Simulation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StartAppOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Simulation: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/startclock" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StartClockInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
+          Name: S.String,
+          Description: S.optional(S.String),
+          RoleArn: S.String,
+          SchemaS3Location: S.optional(S3Location),
+          MaximumDuration: S.optional(S.String),
+          Tags: S.optional(TagMap),
+          SnapshotS3Location: S.optional(S3Location),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/startsimulation" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StartSimulationInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          ExecutionId: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "StartSimulationOutput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Simulation: S.String, Domain: S.String, App: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/stopapp" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopAppInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Simulation: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/stopclock" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopClockInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Simulation: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/stopsimulation" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StopSimulationInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          Tags: TagMap,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "TagResourceInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UntagResourceInput",
+      });
+  }
+}

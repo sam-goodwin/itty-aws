@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -126,19 +127,15 @@ export interface AssociateEntityToThingRequest {
   entityId: string;
   namespaceVersion?: number;
 }
-const AssociateEntityToThingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.String,
-    entityId: S.String,
-    namespaceVersion: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AssociateEntityToThingRequest",
-}) as any as S.Schema<AssociateEntityToThingRequest>;
+const AssociateEntityToThingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateEntityToThingRequest>;
 export interface AssociateEntityToThingResponse {}
-const AssociateEntityToThingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssociateEntityToThingResponse",
-}) as any as S.Schema<AssociateEntityToThingResponse>;
+const AssociateEntityToThingResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateEntityToThingResponse>;
 export type DefinitionLanguage = "GRAPHQL" | (string & {});
 const DefinitionLanguage = S.String;
 
@@ -147,21 +144,15 @@ export interface DefinitionDocument {
   language: DefinitionLanguage;
   text: string;
 }
-const DefinitionDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ language: DefinitionLanguage, text: S.String }),
-).annotate({ identifier: "DefinitionDocument" }) as any as S.Schema<DefinitionDocument>;
+const DefinitionDocument = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DefinitionDocument>;
 export interface CreateFlowTemplateRequest {
   definition: DefinitionDocument;
   compatibleNamespaceVersion?: number;
 }
-const CreateFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: DefinitionDocument,
-    compatibleNamespaceVersion: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateFlowTemplateRequest",
-}) as any as S.Schema<CreateFlowTemplateRequest>;
+const CreateFlowTemplateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateFlowTemplateRequest>;
 export type Arn = string;
 export interface FlowTemplateSummary {
   id?: string;
@@ -169,33 +160,23 @@ export interface FlowTemplateSummary {
   revisionNumber?: number;
   createdAt?: Date;
 }
-const FlowTemplateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    arn: S.optional(S.String),
-    revisionNumber: S.optional(S.Number),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "FlowTemplateSummary" }) as any as S.Schema<FlowTemplateSummary>;
+const FlowTemplateSummary = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FlowTemplateSummary>;
 export interface CreateFlowTemplateResponse {
   summary?: FlowTemplateSummary;
 }
-const CreateFlowTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summary: S.optional(FlowTemplateSummary) }),
-).annotate({
-  identifier: "CreateFlowTemplateResponse",
-}) as any as S.Schema<CreateFlowTemplateResponse>;
+const CreateFlowTemplateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateFlowTemplateResponse>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 7);
 export type DeploymentTarget = "GREENGRASS" | "CLOUD" | (string & {});
 const DeploymentTarget = S.String;
 
@@ -207,9 +188,7 @@ export interface MetricsConfiguration {
   cloudMetricEnabled?: boolean;
   metricRuleRoleArn?: string;
 }
-const MetricsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cloudMetricEnabled: S.optional(S.Boolean), metricRuleRoleArn: S.optional(S.String) }),
-).annotate({ identifier: "MetricsConfiguration" }) as any as S.Schema<MetricsConfiguration>;
+const MetricsConfiguration = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MetricsConfiguration>;
 export interface CreateSystemInstanceRequest {
   tags?: Tag[];
   definition: DefinitionDocument;
@@ -219,19 +198,10 @@ export interface CreateSystemInstanceRequest {
   metricsConfiguration?: MetricsConfiguration;
   flowActionsRoleArn?: string;
 }
-const CreateSystemInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(TagList),
-    definition: DefinitionDocument,
-    target: DeploymentTarget,
-    greengrassGroupName: S.optional(S.String),
-    s3BucketName: S.optional(S.String),
-    metricsConfiguration: S.optional(MetricsConfiguration),
-    flowActionsRoleArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateSystemInstanceRequest",
-}) as any as S.Schema<CreateSystemInstanceRequest>;
+const CreateSystemInstanceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateSystemInstanceRequest>;
 export type SystemInstanceDeploymentStatus =
   | "NOT_DEPLOYED"
   | "BOOTSTRAP"
@@ -257,39 +227,25 @@ export interface SystemInstanceSummary {
   greengrassGroupId?: string;
   greengrassGroupVersionId?: string;
 }
-const SystemInstanceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    arn: S.optional(S.String),
-    status: S.optional(SystemInstanceDeploymentStatus),
-    target: S.optional(DeploymentTarget),
-    greengrassGroupName: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    greengrassGroupId: S.optional(S.String),
-    greengrassGroupVersionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemInstanceSummary" }) as any as S.Schema<SystemInstanceSummary>;
+const SystemInstanceSummary = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SystemInstanceSummary>;
 export interface CreateSystemInstanceResponse {
   summary?: SystemInstanceSummary;
 }
-const CreateSystemInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summary: S.optional(SystemInstanceSummary) }),
-).annotate({
-  identifier: "CreateSystemInstanceResponse",
-}) as any as S.Schema<CreateSystemInstanceResponse>;
+const CreateSystemInstanceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateSystemInstanceResponse>;
 export interface CreateSystemTemplateRequest {
   definition: DefinitionDocument;
   compatibleNamespaceVersion?: number;
 }
-const CreateSystemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: DefinitionDocument,
-    compatibleNamespaceVersion: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateSystemTemplateRequest",
-}) as any as S.Schema<CreateSystemTemplateRequest>;
+const CreateSystemTemplateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateSystemTemplateRequest>;
 export interface SystemTemplateSummary {
   id?: string;
   arn?: string;
@@ -305,109 +261,92 @@ const CreateSystemTemplateResponse =
 export interface DeleteFlowTemplateRequest {
   id: string;
 }
-const DeleteFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteFlowTemplateRequest",
-}) as any as S.Schema<DeleteFlowTemplateRequest>;
+const DeleteFlowTemplateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteFlowTemplateRequest>;
 export interface DeleteFlowTemplateResponse {}
 const DeleteFlowTemplateResponse =
   AssociateEntityToThingResponse as any as S.Schema<DeleteFlowTemplateResponse>;
 export interface DeleteNamespaceRequest {}
-const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DeleteNamespaceRequest" }) as any as S.Schema<DeleteNamespaceRequest>;
+const DeleteNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteNamespaceRequest>;
 export type NamespaceName = string;
 export interface DeleteNamespaceResponse {
   namespaceArn?: string;
   namespaceName?: string;
 }
-const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ namespaceArn: S.optional(S.String), namespaceName: S.optional(S.String) }),
-).annotate({ identifier: "DeleteNamespaceResponse" }) as any as S.Schema<DeleteNamespaceResponse>;
+const DeleteNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteNamespaceResponse>;
 export interface DeleteSystemInstanceRequest {
   id?: string;
 }
-const DeleteSystemInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteSystemInstanceRequest",
-}) as any as S.Schema<DeleteSystemInstanceRequest>;
+const DeleteSystemInstanceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteSystemInstanceRequest>;
 export interface DeleteSystemInstanceResponse {}
 const DeleteSystemInstanceResponse =
   AssociateEntityToThingResponse as any as S.Schema<DeleteSystemInstanceResponse>;
 export interface DeleteSystemTemplateRequest {
   id: string;
 }
-const DeleteSystemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteSystemTemplateRequest",
-}) as any as S.Schema<DeleteSystemTemplateRequest>;
+const DeleteSystemTemplateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteSystemTemplateRequest>;
 export interface DeleteSystemTemplateResponse {}
 const DeleteSystemTemplateResponse =
   AssociateEntityToThingResponse as any as S.Schema<DeleteSystemTemplateResponse>;
 export interface DeploySystemInstanceRequest {
   id?: string;
 }
-const DeploySystemInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeploySystemInstanceRequest",
-}) as any as S.Schema<DeploySystemInstanceRequest>;
+const DeploySystemInstanceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeploySystemInstanceRequest>;
 export type GreengrassDeploymentId = string;
 export interface DeploySystemInstanceResponse {
   summary: SystemInstanceSummary;
   greengrassDeploymentId?: string;
 }
-const DeploySystemInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summary: SystemInstanceSummary, greengrassDeploymentId: S.optional(S.String) }),
-).annotate({
-  identifier: "DeploySystemInstanceResponse",
-}) as any as S.Schema<DeploySystemInstanceResponse>;
+const DeploySystemInstanceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeploySystemInstanceResponse>;
 export interface DeprecateFlowTemplateRequest {
   id: string;
 }
-const DeprecateFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeprecateFlowTemplateRequest",
-}) as any as S.Schema<DeprecateFlowTemplateRequest>;
+const DeprecateFlowTemplateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeprecateFlowTemplateRequest>;
 export interface DeprecateFlowTemplateResponse {}
 const DeprecateFlowTemplateResponse =
   AssociateEntityToThingResponse as any as S.Schema<DeprecateFlowTemplateResponse>;
 export interface DeprecateSystemTemplateRequest {
   id: string;
 }
-const DeprecateSystemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeprecateSystemTemplateRequest",
-}) as any as S.Schema<DeprecateSystemTemplateRequest>;
+const DeprecateSystemTemplateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeprecateSystemTemplateRequest>;
 export interface DeprecateSystemTemplateResponse {}
-const DeprecateSystemTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeprecateSystemTemplateResponse",
-}) as any as S.Schema<DeprecateSystemTemplateResponse>;
+const DeprecateSystemTemplateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeprecateSystemTemplateResponse>;
 export interface DescribeNamespaceRequest {
   namespaceName?: string;
 }
-const DescribeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ namespaceName: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeNamespaceRequest" }) as any as S.Schema<DescribeNamespaceRequest>;
+const DescribeNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DescribeNamespaceRequest>;
 export interface DescribeNamespaceResponse {
   namespaceArn?: string;
   namespaceName?: string;
@@ -415,17 +354,10 @@ export interface DescribeNamespaceResponse {
   trackingNamespaceVersion?: number;
   namespaceVersion?: number;
 }
-const DescribeNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaceArn: S.optional(S.String),
-    namespaceName: S.optional(S.String),
-    trackingNamespaceName: S.optional(S.String),
-    trackingNamespaceVersion: S.optional(S.Number),
-    namespaceVersion: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DescribeNamespaceResponse",
-}) as any as S.Schema<DescribeNamespaceResponse>;
+const DescribeNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DescribeNamespaceResponse>;
 export type EntityType =
   | "DEVICE"
   | "SERVICE"
@@ -444,28 +376,22 @@ export interface DissociateEntityFromThingRequest {
   thingName: string;
   entityType: EntityType;
 }
-const DissociateEntityFromThingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ thingName: S.String, entityType: EntityType }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DissociateEntityFromThingRequest",
-}) as any as S.Schema<DissociateEntityFromThingRequest>;
+const DissociateEntityFromThingRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DissociateEntityFromThingRequest>;
 export interface DissociateEntityFromThingResponse {}
-const DissociateEntityFromThingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DissociateEntityFromThingResponse",
-}) as any as S.Schema<DissociateEntityFromThingResponse>;
+const DissociateEntityFromThingResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DissociateEntityFromThingResponse>;
 export type Urns = string[];
-const Urns = /*@__PURE__*/ S.Array(S.String);
+const Urns = /*@__PURE__*/ __L.at(__c3, 3);
 export interface GetEntitiesRequest {
   ids: string[];
   namespaceVersion?: number;
 }
-const GetEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ids: Urns, namespaceVersion: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetEntitiesRequest" }) as any as S.Schema<GetEntitiesRequest>;
+const GetEntitiesRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetEntitiesRequest>;
 export interface EntityDescription {
   id?: string;
   arn?: string;
@@ -473,50 +399,37 @@ export interface EntityDescription {
   createdAt?: Date;
   definition?: DefinitionDocument;
 }
-const EntityDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    arn: S.optional(S.String),
-    type: S.optional(EntityType),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    definition: S.optional(DefinitionDocument),
-  }),
-).annotate({ identifier: "EntityDescription" }) as any as S.Schema<EntityDescription>;
+const EntityDescription = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<EntityDescription>;
 export type EntityDescriptions = EntityDescription[];
-const EntityDescriptions = /*@__PURE__*/ S.Array(EntityDescription);
+const EntityDescriptions = /*@__PURE__*/ __L.at(__c3, 6);
 export interface GetEntitiesResponse {
   descriptions?: EntityDescription[];
 }
-const GetEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ descriptions: S.optional(EntityDescriptions) }),
-).annotate({ identifier: "GetEntitiesResponse" }) as any as S.Schema<GetEntitiesResponse>;
+const GetEntitiesResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetEntitiesResponse>;
 export interface GetFlowTemplateRequest {
   id: string;
   revisionNumber?: number;
 }
-const GetFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, revisionNumber: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetFlowTemplateRequest" }) as any as S.Schema<GetFlowTemplateRequest>;
+const GetFlowTemplateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetFlowTemplateRequest>;
 export interface FlowTemplateDescription {
   summary?: FlowTemplateSummary;
   definition?: DefinitionDocument;
   validatedNamespaceVersion?: number;
 }
-const FlowTemplateDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    summary: S.optional(FlowTemplateSummary),
-    definition: S.optional(DefinitionDocument),
-    validatedNamespaceVersion: S.optional(S.Number),
-  }),
-).annotate({ identifier: "FlowTemplateDescription" }) as any as S.Schema<FlowTemplateDescription>;
+const FlowTemplateDescription = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<FlowTemplateDescription>;
 export interface GetFlowTemplateResponse {
   description?: FlowTemplateDescription;
 }
-const GetFlowTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ description: S.optional(FlowTemplateDescription) }),
-).annotate({ identifier: "GetFlowTemplateResponse" }) as any as S.Schema<GetFlowTemplateResponse>;
+const GetFlowTemplateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetFlowTemplateResponse>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface GetFlowTemplateRevisionsRequest {
@@ -524,32 +437,25 @@ export interface GetFlowTemplateRevisionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const GetFlowTemplateRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetFlowTemplateRevisionsRequest",
-}) as any as S.Schema<GetFlowTemplateRevisionsRequest>;
+const GetFlowTemplateRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetFlowTemplateRevisionsRequest>;
 export type FlowTemplateSummaries = FlowTemplateSummary[];
-const FlowTemplateSummaries = /*@__PURE__*/ S.Array(FlowTemplateSummary);
+const FlowTemplateSummaries = /*@__PURE__*/ __L.at(__c4, 4);
 export interface GetFlowTemplateRevisionsResponse {
   summaries?: FlowTemplateSummary[];
   nextToken?: string;
 }
-const GetFlowTemplateRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summaries: S.optional(FlowTemplateSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetFlowTemplateRevisionsResponse",
-}) as any as S.Schema<GetFlowTemplateRevisionsResponse>;
+const GetFlowTemplateRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetFlowTemplateRevisionsResponse>;
 export interface GetNamespaceDeletionStatusRequest {}
-const GetNamespaceDeletionStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetNamespaceDeletionStatusRequest",
-}) as any as S.Schema<GetNamespaceDeletionStatusRequest>;
+const GetNamespaceDeletionStatusRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetNamespaceDeletionStatusRequest>;
 export type NamespaceDeletionStatus = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | (string & {});
 const NamespaceDeletionStatus = S.String;
 
@@ -563,34 +469,24 @@ export interface GetNamespaceDeletionStatusResponse {
   errorCode?: NamespaceDeletionStatusErrorCodes;
   errorMessage?: string;
 }
-const GetNamespaceDeletionStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaceArn: S.optional(S.String),
-    namespaceName: S.optional(S.String),
-    status: S.optional(NamespaceDeletionStatus),
-    errorCode: S.optional(NamespaceDeletionStatusErrorCodes),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNamespaceDeletionStatusResponse",
-}) as any as S.Schema<GetNamespaceDeletionStatusResponse>;
+const GetNamespaceDeletionStatusResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetNamespaceDeletionStatusResponse>;
 export interface GetSystemInstanceRequest {
   id: string;
 }
-const GetSystemInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetSystemInstanceRequest" }) as any as S.Schema<GetSystemInstanceRequest>;
+const GetSystemInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetSystemInstanceRequest>;
 export interface DependencyRevision {
   id?: string;
   revisionNumber?: number;
 }
-const DependencyRevision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), revisionNumber: S.optional(S.Number) }),
-).annotate({ identifier: "DependencyRevision" }) as any as S.Schema<DependencyRevision>;
+const DependencyRevision = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DependencyRevision>;
 export type DependencyRevisions = DependencyRevision[];
-const DependencyRevisions = /*@__PURE__*/ S.Array(DependencyRevision);
+const DependencyRevisions = /*@__PURE__*/ __L.at(__c5, 2);
 export interface SystemInstanceDescription {
   summary?: SystemInstanceSummary;
   definition?: DefinitionDocument;
@@ -600,72 +496,50 @@ export interface SystemInstanceDescription {
   validatedDependencyRevisions?: DependencyRevision[];
   flowActionsRoleArn?: string;
 }
-const SystemInstanceDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    summary: S.optional(SystemInstanceSummary),
-    definition: S.optional(DefinitionDocument),
-    s3BucketName: S.optional(S.String),
-    metricsConfiguration: S.optional(MetricsConfiguration),
-    validatedNamespaceVersion: S.optional(S.Number),
-    validatedDependencyRevisions: S.optional(DependencyRevisions),
-    flowActionsRoleArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SystemInstanceDescription",
-}) as any as S.Schema<SystemInstanceDescription>;
+const SystemInstanceDescription = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<SystemInstanceDescription>;
 export interface GetSystemInstanceResponse {
   description?: SystemInstanceDescription;
 }
-const GetSystemInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ description: S.optional(SystemInstanceDescription) }),
-).annotate({
-  identifier: "GetSystemInstanceResponse",
-}) as any as S.Schema<GetSystemInstanceResponse>;
+const GetSystemInstanceResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetSystemInstanceResponse>;
 export interface GetSystemTemplateRequest {
   id: string;
   revisionNumber?: number;
 }
-const GetSystemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, revisionNumber: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetSystemTemplateRequest" }) as any as S.Schema<GetSystemTemplateRequest>;
+const GetSystemTemplateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetSystemTemplateRequest>;
 export interface SystemTemplateDescription {
   summary?: SystemTemplateSummary;
   definition?: DefinitionDocument;
   validatedNamespaceVersion?: number;
 }
-const SystemTemplateDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    summary: S.optional(SystemTemplateSummary),
-    definition: S.optional(DefinitionDocument),
-    validatedNamespaceVersion: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SystemTemplateDescription",
-}) as any as S.Schema<SystemTemplateDescription>;
+const SystemTemplateDescription = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<SystemTemplateDescription>;
 export interface GetSystemTemplateResponse {
   description?: SystemTemplateDescription;
 }
-const GetSystemTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ description: S.optional(SystemTemplateDescription) }),
-).annotate({
-  identifier: "GetSystemTemplateResponse",
-}) as any as S.Schema<GetSystemTemplateResponse>;
+const GetSystemTemplateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetSystemTemplateResponse>;
 export interface GetSystemTemplateRevisionsRequest {
   id: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetSystemTemplateRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetSystemTemplateRevisionsRequest",
-}) as any as S.Schema<GetSystemTemplateRevisionsRequest>;
+const GetSystemTemplateRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetSystemTemplateRevisionsRequest>;
 export type SystemTemplateSummaries = SystemTemplateSummary[];
 export interface GetSystemTemplateRevisionsResponse {
   summaries?: SystemTemplateSummary[];
@@ -677,11 +551,10 @@ export type UploadId = string;
 export interface GetUploadStatusRequest {
   uploadId: string;
 }
-const GetUploadStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ uploadId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetUploadStatusRequest" }) as any as S.Schema<GetUploadStatusRequest>;
+const GetUploadStatusRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetUploadStatusRequest>;
 export type UploadStatus = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | (string & {});
 const UploadStatus = S.String;
 
@@ -696,32 +569,20 @@ export interface GetUploadStatusResponse {
   failureReason?: string[];
   createdDate: Date;
 }
-const GetUploadStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uploadId: S.String,
-    uploadStatus: UploadStatus,
-    namespaceArn: S.optional(S.String),
-    namespaceName: S.optional(S.String),
-    namespaceVersion: S.optional(S.Number),
-    failureReason: S.optional(StringList),
-    createdDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "GetUploadStatusResponse" }) as any as S.Schema<GetUploadStatusResponse>;
+const GetUploadStatusResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetUploadStatusResponse>;
 export type FlowExecutionId = string;
 export interface ListFlowExecutionMessagesRequest {
   flowExecutionId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListFlowExecutionMessagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flowExecutionId: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListFlowExecutionMessagesRequest",
-}) as any as S.Schema<ListFlowExecutionMessagesRequest>;
+const ListFlowExecutionMessagesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListFlowExecutionMessagesRequest>;
 export type FlowExecutionMessageId = string;
 export type FlowExecutionEventType =
   | "EXECUTION_STARTED"
@@ -751,51 +612,37 @@ export interface FlowExecutionMessage {
   timestamp?: Date;
   payload?: string;
 }
-const FlowExecutionMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messageId: S.optional(S.String),
-    eventType: S.optional(FlowExecutionEventType),
-    timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    payload: S.optional(S.String),
-  }),
-).annotate({ identifier: "FlowExecutionMessage" }) as any as S.Schema<FlowExecutionMessage>;
+const FlowExecutionMessage = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<FlowExecutionMessage>;
 export type FlowExecutionMessages = FlowExecutionMessage[];
-const FlowExecutionMessages = /*@__PURE__*/ S.Array(FlowExecutionMessage);
+const FlowExecutionMessages = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ListFlowExecutionMessagesResponse {
   messages?: FlowExecutionMessage[];
   nextToken?: string;
 }
-const ListFlowExecutionMessagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ messages: S.optional(FlowExecutionMessages), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListFlowExecutionMessagesResponse",
-}) as any as S.Schema<ListFlowExecutionMessagesResponse>;
+const ListFlowExecutionMessagesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListFlowExecutionMessagesResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   maxResults?: number;
   resourceArn: string;
   nextToken?: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number),
-    resourceArn: S.String,
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
   nextToken?: string;
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type EntityTypes = EntityType[];
-const EntityTypes = /*@__PURE__*/ S.Array(EntityType);
+const EntityTypes = /*@__PURE__*/ __L.at(__c7, 1);
 export type EntityFilterName =
   | "NAME"
   | "NAMESPACE"
@@ -811,11 +658,9 @@ export interface EntityFilter {
   name?: EntityFilterName;
   value?: string[];
 }
-const EntityFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(EntityFilterName), value: S.optional(EntityFilterValues) }),
-).annotate({ identifier: "EntityFilter" }) as any as S.Schema<EntityFilter>;
+const EntityFilter = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<EntityFilter>;
 export type EntityFilters = EntityFilter[];
-const EntityFilters = /*@__PURE__*/ S.Array(EntityFilter);
+const EntityFilters = /*@__PURE__*/ __L.at(__c7, 3);
 export interface SearchEntitiesRequest {
   entityTypes: EntityType[];
   filters?: EntityFilter[];
@@ -823,22 +668,18 @@ export interface SearchEntitiesRequest {
   maxResults?: number;
   namespaceVersion?: number;
 }
-const SearchEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityTypes: EntityTypes,
-    filters: S.optional(EntityFilters),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    namespaceVersion: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "SearchEntitiesRequest" }) as any as S.Schema<SearchEntitiesRequest>;
+const SearchEntitiesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<SearchEntitiesRequest>;
 export interface SearchEntitiesResponse {
   descriptions?: EntityDescription[];
   nextToken?: string;
 }
-const SearchEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ descriptions: S.optional(EntityDescriptions), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "SearchEntitiesResponse" }) as any as S.Schema<SearchEntitiesResponse>;
+const SearchEntitiesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<SearchEntitiesResponse>;
 export interface SearchFlowExecutionsRequest {
   systemInstanceId: string;
   flowExecutionId?: string;
@@ -847,18 +688,10 @@ export interface SearchFlowExecutionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const SearchFlowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    systemInstanceId: S.String,
-    flowExecutionId: S.optional(S.String),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SearchFlowExecutionsRequest",
-}) as any as S.Schema<SearchFlowExecutionsRequest>;
+const SearchFlowExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<SearchFlowExecutionsRequest>;
 export type FlowExecutionStatus = "RUNNING" | "ABORTED" | "SUCCEEDED" | "FAILED" | (string & {});
 const FlowExecutionStatus = S.String;
 
@@ -870,27 +703,17 @@ export interface FlowExecutionSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const FlowExecutionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flowExecutionId: S.optional(S.String),
-    status: S.optional(FlowExecutionStatus),
-    systemInstanceId: S.optional(S.String),
-    flowTemplateId: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "FlowExecutionSummary" }) as any as S.Schema<FlowExecutionSummary>;
+const FlowExecutionSummary = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<FlowExecutionSummary>;
 export type FlowExecutionSummaries = FlowExecutionSummary[];
-const FlowExecutionSummaries = /*@__PURE__*/ S.Array(FlowExecutionSummary);
+const FlowExecutionSummaries = /*@__PURE__*/ __L.at(__c8, 0);
 export interface SearchFlowExecutionsResponse {
   summaries?: FlowExecutionSummary[];
   nextToken?: string;
 }
-const SearchFlowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summaries: S.optional(FlowExecutionSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "SearchFlowExecutionsResponse",
-}) as any as S.Schema<SearchFlowExecutionsResponse>;
+const SearchFlowExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<SearchFlowExecutionsResponse>;
 export type FlowTemplateFilterName = "DEVICE_MODEL_ID" | (string & {});
 const FlowTemplateFilterName = S.String;
 
@@ -901,25 +724,18 @@ export interface FlowTemplateFilter {
   name: FlowTemplateFilterName;
   value: string[];
 }
-const FlowTemplateFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: FlowTemplateFilterName, value: FlowTemplateFilterValues }),
-).annotate({ identifier: "FlowTemplateFilter" }) as any as S.Schema<FlowTemplateFilter>;
+const FlowTemplateFilter = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<FlowTemplateFilter>;
 export type FlowTemplateFilters = FlowTemplateFilter[];
-const FlowTemplateFilters = /*@__PURE__*/ S.Array(FlowTemplateFilter);
+const FlowTemplateFilters = /*@__PURE__*/ __L.at(__c8, 3);
 export interface SearchFlowTemplatesRequest {
   filters?: FlowTemplateFilter[];
   nextToken?: string;
   maxResults?: number;
 }
-const SearchFlowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filters: S.optional(FlowTemplateFilters),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SearchFlowTemplatesRequest",
-}) as any as S.Schema<SearchFlowTemplatesRequest>;
+const SearchFlowTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<SearchFlowTemplatesRequest>;
 export interface SearchFlowTemplatesResponse {
   summaries?: FlowTemplateSummary[];
   nextToken?: string;
@@ -940,39 +756,28 @@ export interface SystemInstanceFilter {
   name?: SystemInstanceFilterName;
   value?: string[];
 }
-const SystemInstanceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(SystemInstanceFilterName),
-    value: S.optional(SystemInstanceFilterValues),
-  }),
-).annotate({ identifier: "SystemInstanceFilter" }) as any as S.Schema<SystemInstanceFilter>;
+const SystemInstanceFilter = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<SystemInstanceFilter>;
 export type SystemInstanceFilters = SystemInstanceFilter[];
-const SystemInstanceFilters = /*@__PURE__*/ S.Array(SystemInstanceFilter);
+const SystemInstanceFilters = /*@__PURE__*/ __L.at(__c8, 6);
 export interface SearchSystemInstancesRequest {
   filters?: SystemInstanceFilter[];
   nextToken?: string;
   maxResults?: number;
 }
-const SearchSystemInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filters: S.optional(SystemInstanceFilters),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SearchSystemInstancesRequest",
-}) as any as S.Schema<SearchSystemInstancesRequest>;
+const SearchSystemInstancesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<SearchSystemInstancesRequest>;
 export type SystemInstanceSummaries = SystemInstanceSummary[];
-const SystemInstanceSummaries = /*@__PURE__*/ S.Array(SystemInstanceSummary);
+const SystemInstanceSummaries = /*@__PURE__*/ __L.at(__c9, 0);
 export interface SearchSystemInstancesResponse {
   summaries?: SystemInstanceSummary[];
   nextToken?: string;
 }
-const SearchSystemInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summaries: S.optional(SystemInstanceSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "SearchSystemInstancesResponse",
-}) as any as S.Schema<SearchSystemInstancesResponse>;
+const SearchSystemInstancesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<SearchSystemInstancesResponse>;
 export type SystemTemplateFilterName = "FLOW_TEMPLATE_ID" | (string & {});
 const SystemTemplateFilterName = S.String;
 
@@ -983,25 +788,18 @@ export interface SystemTemplateFilter {
   name: SystemTemplateFilterName;
   value: string[];
 }
-const SystemTemplateFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SystemTemplateFilterName, value: SystemTemplateFilterValues }),
-).annotate({ identifier: "SystemTemplateFilter" }) as any as S.Schema<SystemTemplateFilter>;
+const SystemTemplateFilter = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<SystemTemplateFilter>;
 export type SystemTemplateFilters = SystemTemplateFilter[];
-const SystemTemplateFilters = /*@__PURE__*/ S.Array(SystemTemplateFilter);
+const SystemTemplateFilters = /*@__PURE__*/ __L.at(__c9, 3);
 export interface SearchSystemTemplatesRequest {
   filters?: SystemTemplateFilter[];
   nextToken?: string;
   maxResults?: number;
 }
-const SearchSystemTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filters: S.optional(SystemTemplateFilters),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SearchSystemTemplatesRequest",
-}) as any as S.Schema<SearchSystemTemplatesRequest>;
+const SearchSystemTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<SearchSystemTemplatesRequest>;
 export interface SearchSystemTemplatesResponse {
   summaries?: SystemTemplateSummary[];
   nextToken?: string;
@@ -1014,52 +812,37 @@ export interface SearchThingsRequest {
   maxResults?: number;
   namespaceVersion?: number;
 }
-const SearchThingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityId: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    namespaceVersion: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "SearchThingsRequest" }) as any as S.Schema<SearchThingsRequest>;
+const SearchThingsRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<SearchThingsRequest>;
 export type ThingArn = string;
 export interface Thing {
   thingArn?: string;
   thingName?: string;
 }
-const Thing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ thingArn: S.optional(S.String), thingName: S.optional(S.String) }),
-).annotate({ identifier: "Thing" }) as any as S.Schema<Thing>;
+const Thing = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<Thing>;
 export type Things = Thing[];
-const Things = /*@__PURE__*/ S.Array(Thing);
+const Things = /*@__PURE__*/ __L.at(__c9, 7);
 export interface SearchThingsResponse {
   things?: Thing[];
   nextToken?: string;
 }
-const SearchThingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ things: S.optional(Things), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "SearchThingsResponse" }) as any as S.Schema<SearchThingsResponse>;
+const SearchThingsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<SearchThingsResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = AssociateEntityToThingResponse as any as S.Schema<TagResourceResponse>;
 export interface UndeploySystemInstanceRequest {
   id?: string;
 }
-const UndeploySystemInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UndeploySystemInstanceRequest",
-}) as any as S.Schema<UndeploySystemInstanceRequest>;
+const UndeploySystemInstanceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<UndeploySystemInstanceRequest>;
 export interface UndeploySystemInstanceResponse {
   summary?: SystemInstanceSummary;
 }
@@ -1071,11 +854,10 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse =
   AssociateEntityToThingResponse as any as S.Schema<UntagResourceResponse>;
@@ -1084,15 +866,10 @@ export interface UpdateFlowTemplateRequest {
   definition: DefinitionDocument;
   compatibleNamespaceVersion?: number;
 }
-const UpdateFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    definition: DefinitionDocument,
-    compatibleNamespaceVersion: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateFlowTemplateRequest",
-}) as any as S.Schema<UpdateFlowTemplateRequest>;
+const UpdateFlowTemplateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<UpdateFlowTemplateRequest>;
 export interface UpdateFlowTemplateResponse {
   summary?: FlowTemplateSummary;
 }
@@ -1103,15 +880,10 @@ export interface UpdateSystemTemplateRequest {
   definition: DefinitionDocument;
   compatibleNamespaceVersion?: number;
 }
-const UpdateSystemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    definition: DefinitionDocument,
-    compatibleNamespaceVersion: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateSystemTemplateRequest",
-}) as any as S.Schema<UpdateSystemTemplateRequest>;
+const UpdateSystemTemplateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<UpdateSystemTemplateRequest>;
 export interface UpdateSystemTemplateResponse {
   summary?: SystemTemplateSummary;
 }
@@ -1124,23 +896,17 @@ export interface UploadEntityDefinitionsRequest {
   syncWithPublicNamespace?: boolean;
   deprecateExistingEntities?: boolean;
 }
-const UploadEntityDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document: S.optional(DefinitionDocument),
-    syncWithPublicNamespace: S.optional(S.Boolean),
-    deprecateExistingEntities: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UploadEntityDefinitionsRequest",
-}) as any as S.Schema<UploadEntityDefinitionsRequest>;
+const UploadEntityDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<UploadEntityDefinitionsRequest>;
 export interface UploadEntityDefinitionsResponse {
   uploadId: string;
 }
-const UploadEntityDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ uploadId: S.String }),
-).annotate({
-  identifier: "UploadEntityDefinitionsResponse",
-}) as any as S.Schema<UploadEntityDefinitionsResponse>;
+const UploadEntityDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<UploadEntityDefinitionsResponse>;
 export type ErrorMessage = string;
 export type AssociateEntityToThingError =
   | InternalFailureException
@@ -2230,3 +1996,638 @@ export const uploadEntityDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "UploadEntityDefinitions",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          thingName: S.String,
+          entityId: S.String,
+          namespaceVersion: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AssociateEntityToThingRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssociateEntityToThingResponse",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ language: DefinitionLanguage, text: S.String })).annotate({
+        identifier: "DefinitionDocument",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          definition: DefinitionDocument,
+          compatibleNamespaceVersion: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateFlowTemplateRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          revisionNumber: S.optional(S.Number),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "FlowTemplateSummary" });
+    case 5:
+      return S.suspend(() => S.Struct({ summary: S.optional(FlowTemplateSummary) })).annotate({
+        identifier: "CreateFlowTemplateResponse",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 7:
+      return S.Array(Tag);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudMetricEnabled: S.optional(S.Boolean),
+          metricRuleRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricsConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(TagList),
+          definition: DefinitionDocument,
+          target: DeploymentTarget,
+          greengrassGroupName: S.optional(S.String),
+          s3BucketName: S.optional(S.String),
+          metricsConfiguration: S.optional(MetricsConfiguration),
+          flowActionsRoleArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateSystemInstanceRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          status: S.optional(SystemInstanceDeploymentStatus),
+          target: S.optional(DeploymentTarget),
+          greengrassGroupName: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          greengrassGroupId: S.optional(S.String),
+          greengrassGroupVersionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemInstanceSummary" });
+    case 3:
+      return S.suspend(() => S.Struct({ summary: S.optional(SystemInstanceSummary) })).annotate({
+        identifier: "CreateSystemInstanceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          definition: DefinitionDocument,
+          compatibleNamespaceVersion: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateSystemTemplateRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteFlowTemplateRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteNamespaceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ namespaceArn: S.optional(S.String), namespaceName: S.optional(S.String) }),
+      ).annotate({ identifier: "DeleteNamespaceResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteSystemInstanceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteSystemTemplateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeploySystemInstanceRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ summary: SystemInstanceSummary, greengrassDeploymentId: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DeploySystemInstanceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeprecateFlowTemplateRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeprecateSystemTemplateRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeprecateSystemTemplateResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ namespaceName: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeNamespaceRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespaceArn: S.optional(S.String),
+          namespaceName: S.optional(S.String),
+          trackingNamespaceName: S.optional(S.String),
+          trackingNamespaceVersion: S.optional(S.Number),
+          namespaceVersion: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DescribeNamespaceResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ thingName: S.String, entityType: EntityType }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DissociateEntityFromThingRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DissociateEntityFromThingResponse",
+      });
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ids: Urns, namespaceVersion: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetEntitiesRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          type: S.optional(EntityType),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          definition: S.optional(DefinitionDocument),
+        }),
+      ).annotate({ identifier: "EntityDescription" });
+    case 6:
+      return S.Array(EntityDescription);
+    case 7:
+      return S.suspend(() => S.Struct({ descriptions: S.optional(EntityDescriptions) })).annotate({
+        identifier: "GetEntitiesResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String, revisionNumber: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetFlowTemplateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(FlowTemplateSummary),
+          definition: S.optional(DefinitionDocument),
+          validatedNamespaceVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FlowTemplateDescription" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ description: S.optional(FlowTemplateDescription) }),
+      ).annotate({ identifier: "GetFlowTemplateResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetFlowTemplateRevisionsRequest",
+      });
+    case 4:
+      return S.Array(FlowTemplateSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ summaries: S.optional(FlowTemplateSummaries), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetFlowTemplateRevisionsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetNamespaceDeletionStatusRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          namespaceArn: S.optional(S.String),
+          namespaceName: S.optional(S.String),
+          status: S.optional(NamespaceDeletionStatus),
+          errorCode: S.optional(NamespaceDeletionStatusErrorCodes),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetNamespaceDeletionStatusResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetSystemInstanceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), revisionNumber: S.optional(S.Number) }),
+      ).annotate({ identifier: "DependencyRevision" });
+    case 2:
+      return S.Array(DependencyRevision);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(SystemInstanceSummary),
+          definition: S.optional(DefinitionDocument),
+          s3BucketName: S.optional(S.String),
+          metricsConfiguration: S.optional(MetricsConfiguration),
+          validatedNamespaceVersion: S.optional(S.Number),
+          validatedDependencyRevisions: S.optional(DependencyRevisions),
+          flowActionsRoleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SystemInstanceDescription",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ description: S.optional(SystemInstanceDescription) }),
+      ).annotate({
+        identifier: "GetSystemInstanceResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ id: S.String, revisionNumber: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetSystemTemplateRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(SystemTemplateSummary),
+          definition: S.optional(DefinitionDocument),
+          validatedNamespaceVersion: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SystemTemplateDescription",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ description: S.optional(SystemTemplateDescription) }),
+      ).annotate({
+        identifier: "GetSystemTemplateResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetSystemTemplateRevisionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ uploadId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetUploadStatusRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          uploadId: S.String,
+          uploadStatus: UploadStatus,
+          namespaceArn: S.optional(S.String),
+          namespaceName: S.optional(S.String),
+          namespaceVersion: S.optional(S.Number),
+          failureReason: S.optional(StringList),
+          createdDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "GetUploadStatusResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          flowExecutionId: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListFlowExecutionMessagesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          messageId: S.optional(S.String),
+          eventType: S.optional(FlowExecutionEventType),
+          timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          payload: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FlowExecutionMessage" });
+    case 5:
+      return S.Array(FlowExecutionMessage);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ messages: S.optional(FlowExecutionMessages), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListFlowExecutionMessagesResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number),
+          resourceArn: S.String,
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ tags: S.optional(TagList), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 1:
+      return S.Array(EntityType);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(EntityFilterName), value: S.optional(EntityFilterValues) }),
+      ).annotate({ identifier: "EntityFilter" });
+    case 3:
+      return S.Array(EntityFilter);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          entityTypes: EntityTypes,
+          filters: S.optional(EntityFilters),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          namespaceVersion: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SearchEntitiesRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ descriptions: S.optional(EntityDescriptions), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchEntitiesResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          systemInstanceId: S.String,
+          flowExecutionId: S.optional(S.String),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SearchFlowExecutionsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          flowExecutionId: S.optional(S.String),
+          status: S.optional(FlowExecutionStatus),
+          systemInstanceId: S.optional(S.String),
+          flowTemplateId: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "FlowExecutionSummary" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(FlowExecutionSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          summaries: S.optional(FlowExecutionSummaries),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SearchFlowExecutionsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: FlowTemplateFilterName, value: FlowTemplateFilterValues }),
+      ).annotate({ identifier: "FlowTemplateFilter" });
+    case 3:
+      return S.Array(FlowTemplateFilter);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(FlowTemplateFilters),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SearchFlowTemplatesRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(SystemInstanceFilterName),
+          value: S.optional(SystemInstanceFilterValues),
+        }),
+      ).annotate({ identifier: "SystemInstanceFilter" });
+    case 6:
+      return S.Array(SystemInstanceFilter);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(SystemInstanceFilters),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SearchSystemInstancesRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SystemInstanceSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          summaries: S.optional(SystemInstanceSummaries),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SearchSystemInstancesResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: SystemTemplateFilterName, value: SystemTemplateFilterValues }),
+      ).annotate({ identifier: "SystemTemplateFilter" });
+    case 3:
+      return S.Array(SystemTemplateFilter);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(SystemTemplateFilters),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SearchSystemTemplatesRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          namespaceVersion: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SearchThingsRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ thingArn: S.optional(S.String), thingName: S.optional(S.String) }),
+      ).annotate({ identifier: "Thing" });
+    case 7:
+      return S.Array(Thing);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ things: S.optional(Things), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchThingsResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UndeploySystemInstanceRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          definition: DefinitionDocument,
+          compatibleNamespaceVersion: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateFlowTemplateRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          definition: DefinitionDocument,
+          compatibleNamespaceVersion: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateSystemTemplateRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          document: S.optional(DefinitionDocument),
+          syncWithPublicNamespace: S.optional(S.Boolean),
+          deprecateExistingEntities: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UploadEntityDefinitionsRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ uploadId: S.String })).annotate({
+        identifier: "UploadEntityDefinitionsResponse",
+      });
+  }
+}

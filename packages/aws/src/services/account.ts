@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -176,55 +177,38 @@ export interface AcceptPrimaryEmailUpdateRequest {
   PrimaryEmail: string | redacted.Redacted<string>;
   Otp: string | redacted.Redacted<string>;
 }
-const AcceptPrimaryEmailUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.String, PrimaryEmail: SensitiveString, Otp: SensitiveString }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/acceptPrimaryEmailUpdate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AcceptPrimaryEmailUpdateRequest",
-}) as any as S.Schema<AcceptPrimaryEmailUpdateRequest>;
+const AcceptPrimaryEmailUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptPrimaryEmailUpdateRequest>;
 export type PrimaryEmailUpdateStatus = string;
 export interface AcceptPrimaryEmailUpdateResponse {
   Status?: string;
 }
-const AcceptPrimaryEmailUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(S.String) }),
-).annotate({
-  identifier: "AcceptPrimaryEmailUpdateResponse",
-}) as any as S.Schema<AcceptPrimaryEmailUpdateResponse>;
+const AcceptPrimaryEmailUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptPrimaryEmailUpdateResponse>;
 export type AlternateContactType = string;
 export interface DeleteAlternateContactRequest {
   AlternateContactType: string;
   AccountId?: string;
 }
-const DeleteAlternateContactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AlternateContactType: S.String, AccountId: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/deleteAlternateContact" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteAlternateContactRequest",
-}) as any as S.Schema<DeleteAlternateContactRequest>;
+const DeleteAlternateContactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteAlternateContactRequest>;
 export interface DeleteAlternateContactResponse {}
-const DeleteAlternateContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAlternateContactResponse",
-}) as any as S.Schema<DeleteAlternateContactResponse>;
+const DeleteAlternateContactResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteAlternateContactResponse>;
 export type RegionName = string;
 export interface DisableRegionRequest {
   AccountId?: string;
   RegionName: string;
 }
-const DisableRegionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/disableRegion" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DisableRegionRequest" }) as any as S.Schema<DisableRegionRequest>;
+const DisableRegionRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DisableRegionRequest>;
 export interface DisableRegionResponse {}
 const DisableRegionResponse =
   DeleteAlternateContactResponse as any as S.Schema<DisableRegionResponse>;
@@ -232,24 +216,17 @@ export interface EnableRegionRequest {
   AccountId?: string;
   RegionName: string;
 }
-const EnableRegionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/enableRegion" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "EnableRegionRequest" }) as any as S.Schema<EnableRegionRequest>;
+const EnableRegionRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EnableRegionRequest>;
 export interface EnableRegionResponse {}
 const EnableRegionResponse =
   DeleteAlternateContactResponse as any as S.Schema<EnableRegionResponse>;
 export interface GetAccountInformationRequest {
   AccountId?: string;
 }
-const GetAccountInformationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/getAccountInformation" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAccountInformationRequest",
-}) as any as S.Schema<GetAccountInformationRequest>;
+const GetAccountInformationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetAccountInformationRequest>;
 export type AccountName = string | redacted.Redacted<string>;
 export type AccountCreatedDate = Date;
 export type AccountState = string;
@@ -259,27 +236,18 @@ export interface GetAccountInformationResponse {
   AccountCreatedDate?: Date;
   AccountState?: string;
 }
-const GetAccountInformationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountId: S.optional(S.String),
-    AccountName: S.optional(SensitiveString),
-    AccountCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    AccountState: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAccountInformationResponse",
-}) as any as S.Schema<GetAccountInformationResponse>;
+const GetAccountInformationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAccountInformationResponse>;
 export interface GetAlternateContactRequest {
   AlternateContactType: string;
   AccountId?: string;
 }
-const GetAlternateContactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AlternateContactType: S.String, AccountId: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/getAlternateContact" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAlternateContactRequest",
-}) as any as S.Schema<GetAlternateContactRequest>;
+const GetAlternateContactRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetAlternateContactRequest>;
 export type Name = string | redacted.Redacted<string>;
 export type Title = string | redacted.Redacted<string>;
 export type EmailAddress = string | redacted.Redacted<string>;
@@ -291,33 +259,21 @@ export interface AlternateContact {
   PhoneNumber?: string | redacted.Redacted<string>;
   AlternateContactType?: string;
 }
-const AlternateContact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(SensitiveString),
-    Title: S.optional(SensitiveString),
-    EmailAddress: S.optional(SensitiveString),
-    PhoneNumber: S.optional(SensitiveString),
-    AlternateContactType: S.optional(S.String),
-  }),
-).annotate({ identifier: "AlternateContact" }) as any as S.Schema<AlternateContact>;
+const AlternateContact = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AlternateContact>;
 export interface GetAlternateContactResponse {
   AlternateContact?: AlternateContact;
 }
-const GetAlternateContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AlternateContact: S.optional(AlternateContact) }),
-).annotate({
-  identifier: "GetAlternateContactResponse",
-}) as any as S.Schema<GetAlternateContactResponse>;
+const GetAlternateContactResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetAlternateContactResponse>;
 export interface GetContactInformationRequest {
   AccountId?: string;
 }
-const GetContactInformationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/getContactInformation" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetContactInformationRequest",
-}) as any as S.Schema<GetContactInformationRequest>;
+const GetContactInformationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetContactInformationRequest>;
 export type FullName = string | redacted.Redacted<string>;
 export type AddressLine = string | redacted.Redacted<string>;
 export type City = string | redacted.Redacted<string>;
@@ -342,167 +298,107 @@ export interface ContactInformation {
   CompanyName?: string | redacted.Redacted<string>;
   WebsiteUrl?: string | redacted.Redacted<string>;
 }
-const ContactInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FullName: SensitiveString,
-    AddressLine1: SensitiveString,
-    AddressLine2: S.optional(SensitiveString),
-    AddressLine3: S.optional(SensitiveString),
-    City: SensitiveString,
-    StateOrRegion: S.optional(SensitiveString),
-    DistrictOrCounty: S.optional(SensitiveString),
-    PostalCode: SensitiveString,
-    CountryCode: SensitiveString,
-    PhoneNumber: SensitiveString,
-    CompanyName: S.optional(SensitiveString),
-    WebsiteUrl: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "ContactInformation" }) as any as S.Schema<ContactInformation>;
+const ContactInformation = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ContactInformation>;
 export type PhoneNumberVerificationStatus = string;
 export interface GetContactInformationResponse {
   ContactInformation?: ContactInformation;
   VerificationStatus?: string;
 }
-const GetContactInformationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContactInformation: S.optional(ContactInformation),
-    VerificationStatus: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetContactInformationResponse",
-}) as any as S.Schema<GetContactInformationResponse>;
+const GetContactInformationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetContactInformationResponse>;
 export interface GetGovCloudAccountInformationRequest {
   StandardAccountId?: string;
 }
-const GetGovCloudAccountInformationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StandardAccountId: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/getGovCloudAccountInformation" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetGovCloudAccountInformationRequest",
-}) as any as S.Schema<GetGovCloudAccountInformationRequest>;
+const GetGovCloudAccountInformationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetGovCloudAccountInformationRequest>;
 export type AwsAccountState = string;
 export interface GetGovCloudAccountInformationResponse {
   GovCloudAccountId: string;
   AccountState: string;
 }
-const GetGovCloudAccountInformationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GovCloudAccountId: S.String, AccountState: S.String }),
-).annotate({
-  identifier: "GetGovCloudAccountInformationResponse",
-}) as any as S.Schema<GetGovCloudAccountInformationResponse>;
+const GetGovCloudAccountInformationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetGovCloudAccountInformationResponse>;
 export interface GetPrimaryEmailRequest {
   AccountId: string;
 }
-const GetPrimaryEmailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/getPrimaryEmail" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetPrimaryEmailRequest" }) as any as S.Schema<GetPrimaryEmailRequest>;
+const GetPrimaryEmailRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetPrimaryEmailRequest>;
 export interface GetPrimaryEmailResponse {
   PrimaryEmail?: string | redacted.Redacted<string>;
 }
-const GetPrimaryEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PrimaryEmail: S.optional(SensitiveString) }),
-).annotate({ identifier: "GetPrimaryEmailResponse" }) as any as S.Schema<GetPrimaryEmailResponse>;
+const GetPrimaryEmailResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetPrimaryEmailResponse>;
 export interface GetPrimaryEmailUpdateStatusRequest {
   AccountId?: string;
 }
-const GetPrimaryEmailUpdateStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/getPrimaryEmailUpdateStatus" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPrimaryEmailUpdateStatusRequest",
-}) as any as S.Schema<GetPrimaryEmailUpdateStatusRequest>;
+const GetPrimaryEmailUpdateStatusRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetPrimaryEmailUpdateStatusRequest>;
 export interface GetPrimaryEmailUpdateStatusResponse {
   Status: string;
   UpdatedAt?: Date;
 }
-const GetPrimaryEmailUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.String,
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "GetPrimaryEmailUpdateStatusResponse",
-}) as any as S.Schema<GetPrimaryEmailUpdateStatusResponse>;
+const GetPrimaryEmailUpdateStatusResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetPrimaryEmailUpdateStatusResponse>;
 export interface GetRegionOptStatusRequest {
   AccountId?: string;
   RegionName: string;
 }
-const GetRegionOptStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/getRegionOptStatus" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetRegionOptStatusRequest",
-}) as any as S.Schema<GetRegionOptStatusRequest>;
+const GetRegionOptStatusRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetRegionOptStatusRequest>;
 export type RegionOptStatus = string;
 export interface GetRegionOptStatusResponse {
   RegionName?: string;
   RegionOptStatus?: string;
 }
-const GetRegionOptStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RegionName: S.optional(S.String), RegionOptStatus: S.optional(S.String) }),
-).annotate({
-  identifier: "GetRegionOptStatusResponse",
-}) as any as S.Schema<GetRegionOptStatusResponse>;
+const GetRegionOptStatusResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetRegionOptStatusResponse>;
 export type RegionOptStatusList = string[];
-const RegionOptStatusList = /*@__PURE__*/ S.Array(S.String);
+const RegionOptStatusList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface ListRegionsRequest {
   AccountId?: string;
   MaxResults?: number;
   NextToken?: string;
   RegionOptStatusContains?: string[];
 }
-const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountId: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    RegionOptStatusContains: S.optional(RegionOptStatusList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/listRegions" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListRegionsRequest" }) as any as S.Schema<ListRegionsRequest>;
+const ListRegionsRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListRegionsRequest>;
 export interface Region {
   RegionName?: string;
   RegionOptStatus?: string;
 }
-const Region = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RegionName: S.optional(S.String), RegionOptStatus: S.optional(S.String) }),
-).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
+const Region = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Region>;
 export type RegionOptList = Region[];
-const RegionOptList = /*@__PURE__*/ S.Array(Region);
+const RegionOptList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ListRegionsResponse {
   NextToken?: string;
   Regions?: Region[];
 }
-const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Regions: S.optional(RegionOptList) }),
-).annotate({ identifier: "ListRegionsResponse" }) as any as S.Schema<ListRegionsResponse>;
+const ListRegionsResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListRegionsResponse>;
 export interface PutAccountNameRequest {
   AccountName: string | redacted.Redacted<string>;
   AccountId?: string;
 }
-const PutAccountNameRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountName: SensitiveString, AccountId: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/putAccountName" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutAccountNameRequest" }) as any as S.Schema<PutAccountNameRequest>;
+const PutAccountNameRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PutAccountNameRequest>;
 export interface PutAccountNameResponse {}
 const PutAccountNameResponse =
   DeleteAlternateContactResponse as any as S.Schema<PutAccountNameResponse>;
@@ -514,20 +410,10 @@ export interface PutAlternateContactRequest {
   AlternateContactType: string;
   AccountId?: string;
 }
-const PutAlternateContactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: SensitiveString,
-    Title: SensitiveString,
-    EmailAddress: SensitiveString,
-    PhoneNumber: SensitiveString,
-    AlternateContactType: S.String,
-    AccountId: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/putAlternateContact" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutAlternateContactRequest",
-}) as any as S.Schema<PutAlternateContactRequest>;
+const PutAlternateContactRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<PutAlternateContactRequest>;
 export interface PutAlternateContactResponse {}
 const PutAlternateContactResponse =
   DeleteAlternateContactResponse as any as S.Schema<PutAlternateContactResponse>;
@@ -535,33 +421,20 @@ export interface PutContactInformationRequest {
   ContactInformation: ContactInformation;
   AccountId?: string;
 }
-const PutContactInformationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ContactInformation: ContactInformation, AccountId: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/putContactInformation" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutContactInformationRequest",
-}) as any as S.Schema<PutContactInformationRequest>;
+const PutContactInformationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PutContactInformationRequest>;
 export interface PutContactInformationResponse {}
 const PutContactInformationResponse =
   DeleteAlternateContactResponse as any as S.Schema<PutContactInformationResponse>;
 export interface SendPhoneNumberVerificationRequest {
   AccountId?: string;
 }
-const SendPhoneNumberVerificationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/sendPhoneNumberVerification" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "SendPhoneNumberVerificationRequest",
-}) as any as S.Schema<SendPhoneNumberVerificationRequest>;
+const SendPhoneNumberVerificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<SendPhoneNumberVerificationRequest>;
 export interface SendPhoneNumberVerificationResponse {
   Status?: string;
 }
@@ -571,20 +444,10 @@ export interface StartPrimaryEmailUpdateRequest {
   AccountId: string;
   PrimaryEmail: string | redacted.Redacted<string>;
 }
-const StartPrimaryEmailUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.String, PrimaryEmail: SensitiveString }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/startPrimaryEmailUpdate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartPrimaryEmailUpdateRequest",
-}) as any as S.Schema<StartPrimaryEmailUpdateRequest>;
+const StartPrimaryEmailUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<StartPrimaryEmailUpdateRequest>;
 export interface StartPrimaryEmailUpdateResponse {
   Status?: string;
 }
@@ -594,11 +457,10 @@ export interface VerifyPhoneNumberRequest {
   AccountId?: string;
   Otp: string | redacted.Redacted<string>;
 }
-const VerifyPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String), Otp: SensitiveString }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/verifyPhoneNumber" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "VerifyPhoneNumberRequest" }) as any as S.Schema<VerifyPhoneNumberRequest>;
+const VerifyPhoneNumberRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<VerifyPhoneNumberRequest>;
 export interface VerifyPhoneNumberResponse {
   Status?: string;
 }
@@ -610,11 +472,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string | redacted.Redacted<string>;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: SensitiveString }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c4, 2);
 export type AcceptPrimaryEmailUpdateError =
   | AccessDeniedException
   | ConflictException
@@ -1181,3 +1044,364 @@ export const verifyPhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "VerifyPhoneNumber",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.String, PrimaryEmail: SensitiveString, Otp: SensitiveString }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/acceptPrimaryEmailUpdate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AcceptPrimaryEmailUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "AcceptPrimaryEmailUpdateResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AlternateContactType: S.String, AccountId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/deleteAlternateContact" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAlternateContactRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAlternateContactResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/disableRegion" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DisableRegionRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/enableRegion" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "EnableRegionRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getAccountInformation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAccountInformationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          AccountName: S.optional(SensitiveString),
+          AccountCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          AccountState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetAccountInformationResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AlternateContactType: S.String, AccountId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getAlternateContact" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAlternateContactRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(SensitiveString),
+          Title: S.optional(SensitiveString),
+          EmailAddress: S.optional(SensitiveString),
+          PhoneNumber: S.optional(SensitiveString),
+          AlternateContactType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlternateContact" });
+    case 2:
+      return S.suspend(() => S.Struct({ AlternateContact: S.optional(AlternateContact) })).annotate(
+        {
+          identifier: "GetAlternateContactResponse",
+        },
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getContactInformation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetContactInformationRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          FullName: SensitiveString,
+          AddressLine1: SensitiveString,
+          AddressLine2: S.optional(SensitiveString),
+          AddressLine3: S.optional(SensitiveString),
+          City: SensitiveString,
+          StateOrRegion: S.optional(SensitiveString),
+          DistrictOrCounty: S.optional(SensitiveString),
+          PostalCode: SensitiveString,
+          CountryCode: SensitiveString,
+          PhoneNumber: SensitiveString,
+          CompanyName: S.optional(SensitiveString),
+          WebsiteUrl: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "ContactInformation" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ContactInformation: S.optional(ContactInformation),
+          VerificationStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetContactInformationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ StandardAccountId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getGovCloudAccountInformation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetGovCloudAccountInformationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ GovCloudAccountId: S.String, AccountState: S.String }),
+      ).annotate({
+        identifier: "GetGovCloudAccountInformationResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/getPrimaryEmail" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetPrimaryEmailRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ PrimaryEmail: S.optional(SensitiveString) })).annotate({
+        identifier: "GetPrimaryEmailResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getPrimaryEmailUpdateStatus" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPrimaryEmailUpdateStatusRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.String,
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "GetPrimaryEmailUpdateStatusResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), RegionName: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getRegionOptStatus" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRegionOptStatusRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ RegionName: S.optional(S.String), RegionOptStatus: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetRegionOptStatusResponse",
+      });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          RegionOptStatusContains: S.optional(RegionOptStatusList),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/listRegions" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListRegionsRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RegionName: S.optional(S.String), RegionOptStatus: S.optional(S.String) }),
+      ).annotate({ identifier: "Region" });
+    case 1:
+      return S.Array(Region);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Regions: S.optional(RegionOptList) }),
+      ).annotate({ identifier: "ListRegionsResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AccountName: SensitiveString, AccountId: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/putAccountName" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutAccountNameRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Name: SensitiveString,
+          Title: SensitiveString,
+          EmailAddress: SensitiveString,
+          PhoneNumber: SensitiveString,
+          AlternateContactType: S.String,
+          AccountId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/putAlternateContact" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutAlternateContactRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ContactInformation: ContactInformation, AccountId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/putContactInformation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutContactInformationRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/sendPhoneNumberVerification" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "SendPhoneNumberVerificationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.String, PrimaryEmail: SensitiveString }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/startPrimaryEmailUpdate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartPrimaryEmailUpdateRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), Otp: SensitiveString }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/verifyPhoneNumber" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "VerifyPhoneNumberRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ name: S.String, message: SensitiveString })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 2:
+      return S.Array(ValidationExceptionField);
+  }
+}

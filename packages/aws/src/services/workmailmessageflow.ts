@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -97,21 +98,17 @@ export type MessageIdType = string;
 export interface GetRawMessageContentRequest {
   messageId: string;
 }
-const GetRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ messageId: S.String.pipe(T.HttpLabel("messageId")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/messages/{messageId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetRawMessageContentRequest",
-}) as any as S.Schema<GetRawMessageContentRequest>;
+const GetRawMessageContentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetRawMessageContentRequest>;
 export interface GetRawMessageContentResponse {
   messageContent: T.StreamingOutputBody;
 }
-const GetRawMessageContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ messageContent: T.StreamingOutput.pipe(T.HttpPayload()) }),
-).annotate({
-  identifier: "GetRawMessageContentResponse",
-}) as any as S.Schema<GetRawMessageContentResponse>;
+const GetRawMessageContentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetRawMessageContentResponse>;
 export type S3BucketIdType = string;
 export type S3KeyIdType = string;
 export type S3VersionType = string;
@@ -120,30 +117,24 @@ export interface S3Reference {
   key: string;
   objectVersion?: string;
 }
-const S3Reference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bucket: S.String, key: S.String, objectVersion: S.optional(S.String) }),
-).annotate({ identifier: "S3Reference" }) as any as S.Schema<S3Reference>;
+const S3Reference = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<S3Reference>;
 export interface RawMessageContent {
   s3Reference: S3Reference;
 }
-const RawMessageContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Reference: S3Reference }),
-).annotate({ identifier: "RawMessageContent" }) as any as S.Schema<RawMessageContent>;
+const RawMessageContent = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<RawMessageContent>;
 export interface PutRawMessageContentRequest {
   messageId: string;
   content: RawMessageContent;
 }
-const PutRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ messageId: S.String.pipe(T.HttpLabel("messageId")), content: RawMessageContent }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/messages/{messageId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutRawMessageContentRequest",
-}) as any as S.Schema<PutRawMessageContentRequest>;
+const PutRawMessageContentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PutRawMessageContentRequest>;
 export interface PutRawMessageContentResponse {}
-const PutRawMessageContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutRawMessageContentResponse",
-}) as any as S.Schema<PutRawMessageContentResponse>;
+const PutRawMessageContentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PutRawMessageContentResponse>;
 export type ErrorMessage = string;
 export type GetRawMessageContentError = ResourceNotFoundException | CommonErrors;
 /**
@@ -195,3 +186,60 @@ export const putRawMessageContent: API.OperationMethod<
   retry: Retry,
   operationName: "PutRawMessageContent",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ messageId: S.String.pipe(T.HttpLabel("messageId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/messages/{messageId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRawMessageContentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ messageContent: T.StreamingOutput.pipe(T.HttpPayload()) }),
+      ).annotate({
+        identifier: "GetRawMessageContentResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ bucket: S.String, key: S.String, objectVersion: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Reference" });
+    case 3:
+      return S.suspend(() => S.Struct({ s3Reference: S3Reference })).annotate({
+        identifier: "RawMessageContent",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          messageId: S.String.pipe(T.HttpLabel("messageId")),
+          content: RawMessageContent,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/messages/{messageId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutRawMessageContentRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PutRawMessageContentResponse",
+      });
+  }
+}

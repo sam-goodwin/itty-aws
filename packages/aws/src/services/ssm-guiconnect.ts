@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -119,102 +120,62 @@ export type ClientToken = string;
 export interface DeleteConnectionRecordingPreferencesRequest {
   ClientToken?: string;
 }
-const DeleteConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/DeleteConnectionRecordingPreferences" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteConnectionRecordingPreferencesRequest",
-}) as any as S.Schema<DeleteConnectionRecordingPreferencesRequest>;
+const DeleteConnectionRecordingPreferencesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteConnectionRecordingPreferencesRequest>;
 export interface DeleteConnectionRecordingPreferencesResponse {
   ClientToken?: string;
 }
-const DeleteConnectionRecordingPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ClientToken: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteConnectionRecordingPreferencesResponse",
-}) as any as S.Schema<DeleteConnectionRecordingPreferencesResponse>;
+const DeleteConnectionRecordingPreferencesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteConnectionRecordingPreferencesResponse>;
 export interface GetConnectionRecordingPreferencesRequest {}
-const GetConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GetConnectionRecordingPreferences" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetConnectionRecordingPreferencesRequest",
-}) as any as S.Schema<GetConnectionRecordingPreferencesRequest>;
+const GetConnectionRecordingPreferencesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetConnectionRecordingPreferencesRequest>;
 export type AccountId = string;
 export type BucketName = string;
 export interface S3Bucket {
   BucketOwner: string;
   BucketName: string;
 }
-const S3Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BucketOwner: S.String, BucketName: S.String }),
-).annotate({ identifier: "S3Bucket" }) as any as S.Schema<S3Bucket>;
+const S3Bucket = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<S3Bucket>;
 export type S3Buckets = S3Bucket[];
-const S3Buckets = /*@__PURE__*/ S.Array(S3Bucket);
+const S3Buckets = /*@__PURE__*/ __L.at(__c0, 4);
 export interface RecordingDestinations {
   S3Buckets: S3Bucket[];
 }
-const RecordingDestinations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Buckets: S3Buckets }),
-).annotate({ identifier: "RecordingDestinations" }) as any as S.Schema<RecordingDestinations>;
+const RecordingDestinations = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RecordingDestinations>;
 export interface ConnectionRecordingPreferences {
   RecordingDestinations: RecordingDestinations;
   KMSKeyArn: string;
 }
-const ConnectionRecordingPreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecordingDestinations: RecordingDestinations, KMSKeyArn: S.String }),
-).annotate({
-  identifier: "ConnectionRecordingPreferences",
-}) as any as S.Schema<ConnectionRecordingPreferences>;
+const ConnectionRecordingPreferences = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ConnectionRecordingPreferences>;
 export interface GetConnectionRecordingPreferencesResponse {
   ClientToken?: string;
   ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
 }
-const GetConnectionRecordingPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String),
-    ConnectionRecordingPreferences: S.optional(ConnectionRecordingPreferences),
-  }),
-).annotate({
-  identifier: "GetConnectionRecordingPreferencesResponse",
-}) as any as S.Schema<GetConnectionRecordingPreferencesResponse>;
+const GetConnectionRecordingPreferencesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetConnectionRecordingPreferencesResponse>;
 export interface UpdateConnectionRecordingPreferencesRequest {
   ConnectionRecordingPreferences: ConnectionRecordingPreferences;
   ClientToken?: string;
 }
-const UpdateConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectionRecordingPreferences: ConnectionRecordingPreferences,
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/UpdateConnectionRecordingPreferences" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateConnectionRecordingPreferencesRequest",
-}) as any as S.Schema<UpdateConnectionRecordingPreferencesRequest>;
+const UpdateConnectionRecordingPreferencesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateConnectionRecordingPreferencesRequest>;
 export interface UpdateConnectionRecordingPreferencesResponse {
   ClientToken?: string;
   ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
@@ -323,3 +284,90 @@ export const updateConnectionRecordingPreferences: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnectionRecordingPreferences",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/DeleteConnectionRecordingPreferences" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteConnectionRecordingPreferencesRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ ClientToken: S.optional(S.String) })).annotate({
+        identifier: "DeleteConnectionRecordingPreferencesResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GetConnectionRecordingPreferences" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetConnectionRecordingPreferencesRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ BucketOwner: S.String, BucketName: S.String })).annotate({
+        identifier: "S3Bucket",
+      });
+    case 4:
+      return S.Array(S3Bucket);
+    case 5:
+      return S.suspend(() => S.Struct({ S3Buckets: S3Buckets })).annotate({
+        identifier: "RecordingDestinations",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ RecordingDestinations: RecordingDestinations, KMSKeyArn: S.String }),
+      ).annotate({
+        identifier: "ConnectionRecordingPreferences",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String),
+          ConnectionRecordingPreferences: S.optional(ConnectionRecordingPreferences),
+        }),
+      ).annotate({
+        identifier: "GetConnectionRecordingPreferencesResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectionRecordingPreferences: ConnectionRecordingPreferences,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/UpdateConnectionRecordingPreferences" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateConnectionRecordingPreferencesRequest",
+      });
+  }
+}

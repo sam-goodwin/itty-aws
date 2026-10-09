@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -89,7 +90,7 @@ export type PlatformId = string;
 export type Arn = string;
 export type CertificateHash = string;
 export type CertificateHashes = string[];
-const CertificateHashes = /*@__PURE__*/ S.Array(S.String);
+const CertificateHashes = /*@__PURE__*/ __L.at(__c0, 0);
 export interface GetRevocationStatusRequest {
   signatureTimestamp: Date;
   platformId: string;
@@ -97,30 +98,20 @@ export interface GetRevocationStatusRequest {
   jobArn: string;
   certificateHashes: string[];
 }
-const GetRevocationStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signatureTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
-      T.HttpQuery("signatureTimestamp"),
-    ),
-    platformId: S.String.pipe(T.HttpQuery("platformId")),
-    profileVersionArn: S.String.pipe(T.HttpQuery("profileVersionArn")),
-    jobArn: S.String.pipe(T.HttpQuery("jobArn")),
-    certificateHashes: CertificateHashes.pipe(T.HttpQuery("certificateHashes")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/revocations" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetRevocationStatusRequest",
-}) as any as S.Schema<GetRevocationStatusRequest>;
+const GetRevocationStatusRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetRevocationStatusRequest>;
 export type RevokedEntity = string;
 export type RevokedEntities = string[];
 const RevokedEntities = CertificateHashes as any as S.Schema<RevokedEntities>;
 export interface GetRevocationStatusResponse {
   revokedEntities?: string[];
 }
-const GetRevocationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ revokedEntities: S.optional(RevokedEntities) }),
-).annotate({
-  identifier: "GetRevocationStatusResponse",
-}) as any as S.Schema<GetRevocationStatusResponse>;
+const GetRevocationStatusResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetRevocationStatusResponse>;
 export type GetRevocationStatusError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -148,3 +139,31 @@ export const getRevocationStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetRevocationStatus",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          signatureTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+            T.HttpQuery("signatureTimestamp"),
+          ),
+          platformId: S.String.pipe(T.HttpQuery("platformId")),
+          profileVersionArn: S.String.pipe(T.HttpQuery("profileVersionArn")),
+          jobArn: S.String.pipe(T.HttpQuery("jobArn")),
+          certificateHashes: CertificateHashes.pipe(T.HttpQuery("certificateHashes")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/revocations" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetRevocationStatusRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ revokedEntities: S.optional(RevokedEntities) })).annotate({
+        identifier: "GetRevocationStatusResponse",
+      });
+  }
+}

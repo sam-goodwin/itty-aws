@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -107,17 +108,10 @@ export interface GetRoleCredentialsRequest {
   accountId: string;
   accessToken: string | redacted.Redacted<string>;
 }
-const GetRoleCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    roleName: S.String.pipe(T.HttpQuery("role_name")),
-    accountId: S.String.pipe(T.HttpQuery("account_id")),
-    accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/federation/credentials" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetRoleCredentialsRequest",
-}) as any as S.Schema<GetRoleCredentialsRequest>;
+const GetRoleCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetRoleCredentialsRequest>;
 export type AccessKeyType = string;
 export type SecretAccessKeyType = string | redacted.Redacted<string>;
 export type SessionTokenType = string | redacted.Redacted<string>;
@@ -128,22 +122,14 @@ export interface RoleCredentials {
   sessionToken?: string | redacted.Redacted<string>;
   expiration?: number;
 }
-const RoleCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKeyId: S.optional(S.String),
-    secretAccessKey: S.optional(SensitiveString),
-    sessionToken: S.optional(SensitiveString),
-    expiration: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RoleCredentials" }) as any as S.Schema<RoleCredentials>;
+const RoleCredentials = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<RoleCredentials>;
 export interface GetRoleCredentialsResponse {
   roleCredentials?: RoleCredentials;
 }
-const GetRoleCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ roleCredentials: S.optional(RoleCredentials) }),
-).annotate({
-  identifier: "GetRoleCredentialsResponse",
-}) as any as S.Schema<GetRoleCredentialsResponse>;
+const GetRoleCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetRoleCredentialsResponse>;
 export type NextTokenType = string;
 export type MaxResultType = number;
 export interface ListAccountRolesRequest {
@@ -152,44 +138,31 @@ export interface ListAccountRolesRequest {
   accessToken: string | redacted.Redacted<string>;
   accountId: string;
 }
-const ListAccountRolesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_result")),
-    accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
-    accountId: S.String.pipe(T.HttpQuery("account_id")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/assignment/roles" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListAccountRolesRequest" }) as any as S.Schema<ListAccountRolesRequest>;
+const ListAccountRolesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ListAccountRolesRequest>;
 export interface RoleInfo {
   roleName?: string;
   accountId?: string;
 }
-const RoleInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ roleName: S.optional(S.String), accountId: S.optional(S.String) }),
-).annotate({ identifier: "RoleInfo" }) as any as S.Schema<RoleInfo>;
+const RoleInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<RoleInfo>;
 export type RoleListType = RoleInfo[];
-const RoleListType = /*@__PURE__*/ S.Array(RoleInfo);
+const RoleListType = /*@__PURE__*/ __L.at(__c0, 5);
 export interface ListAccountRolesResponse {
   nextToken?: string;
   roleList?: RoleInfo[];
 }
-const ListAccountRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), roleList: S.optional(RoleListType) }),
-).annotate({ identifier: "ListAccountRolesResponse" }) as any as S.Schema<ListAccountRolesResponse>;
+const ListAccountRolesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListAccountRolesResponse>;
 export interface ListAccountsRequest {
   nextToken?: string;
   maxResults?: number;
   accessToken: string | redacted.Redacted<string>;
 }
-const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_result")),
-    accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/assignment/accounts" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
+const ListAccountsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListAccountsRequest>;
 export type AccountNameType = string;
 export type EmailAddressType = string;
 export interface AccountInfo {
@@ -197,34 +170,20 @@ export interface AccountInfo {
   accountName?: string;
   emailAddress?: string;
 }
-const AccountInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    accountName: S.optional(S.String),
-    emailAddress: S.optional(S.String),
-  }),
-).annotate({ identifier: "AccountInfo" }) as any as S.Schema<AccountInfo>;
+const AccountInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AccountInfo>;
 export type AccountListType = AccountInfo[];
-const AccountListType = /*@__PURE__*/ S.Array(AccountInfo);
+const AccountListType = /*@__PURE__*/ __L.at(__c1, 1);
 export interface ListAccountsResponse {
   nextToken?: string;
   accountList?: AccountInfo[];
 }
-const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), accountList: S.optional(AccountListType) }),
-).annotate({ identifier: "ListAccountsResponse" }) as any as S.Schema<ListAccountsResponse>;
+const ListAccountsResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListAccountsResponse>;
 export interface LogoutRequest {
   accessToken: string | redacted.Redacted<string>;
 }
-const LogoutRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/logout" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "LogoutRequest" }) as any as S.Schema<LogoutRequest>;
+const LogoutRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<LogoutRequest>;
 export interface LogoutResponse {}
-const LogoutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LogoutResponse",
-}) as any as S.Schema<LogoutResponse>;
+const LogoutResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<LogoutResponse>;
 export type ErrorDescription = string;
 export type GetRoleCredentialsError =
   | InvalidRequestException
@@ -361,3 +320,107 @@ export const logout: API.OperationMethod<
   retry: Retry,
   operationName: "Logout",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleName: S.String.pipe(T.HttpQuery("role_name")),
+          accountId: S.String.pipe(T.HttpQuery("account_id")),
+          accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/federation/credentials" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRoleCredentialsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accessKeyId: S.optional(S.String),
+          secretAccessKey: S.optional(SensitiveString),
+          sessionToken: S.optional(SensitiveString),
+          expiration: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RoleCredentials" });
+    case 2:
+      return S.suspend(() => S.Struct({ roleCredentials: S.optional(RoleCredentials) })).annotate({
+        identifier: "GetRoleCredentialsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_result")),
+          accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
+          accountId: S.String.pipe(T.HttpQuery("account_id")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/assignment/roles" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListAccountRolesRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ roleName: S.optional(S.String), accountId: S.optional(S.String) }),
+      ).annotate({ identifier: "RoleInfo" });
+    case 5:
+      return S.Array(RoleInfo);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), roleList: S.optional(RoleListType) }),
+      ).annotate({ identifier: "ListAccountRolesResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max_result")),
+          accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/assignment/accounts" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListAccountsRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          accountName: S.optional(S.String),
+          emailAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountInfo" });
+    case 1:
+      return S.Array(AccountInfo);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), accountList: S.optional(AccountListType) }),
+      ).annotate({ identifier: "ListAccountsResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/logout" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "LogoutRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "LogoutResponse",
+      });
+  }
+}

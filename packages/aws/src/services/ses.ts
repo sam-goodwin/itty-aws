@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -516,40 +517,32 @@ export interface CloneReceiptRuleSetRequest {
   RuleSetName: string;
   OriginalRuleSetName: string;
 }
-const CloneReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String, OriginalRuleSetName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CloneReceiptRuleSetRequest",
-}) as any as S.Schema<CloneReceiptRuleSetRequest>;
+const CloneReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CloneReceiptRuleSetRequest>;
 export interface CloneReceiptRuleSetResponse {}
-const CloneReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "CloneReceiptRuleSetResponse",
-}) as any as S.Schema<CloneReceiptRuleSetResponse>;
+const CloneReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CloneReceiptRuleSetResponse>;
 export type ConfigurationSetName = string;
 export interface ConfigurationSet {
   Name: string;
 }
-const ConfigurationSet = /*@__PURE__*/ S.suspend(() => S.Struct({ Name: S.String })).annotate({
-  identifier: "ConfigurationSet",
-}) as any as S.Schema<ConfigurationSet>;
+const ConfigurationSet = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ConfigurationSet>;
 export interface CreateConfigurationSetRequest {
   ConfigurationSet: ConfigurationSet;
 }
-const CreateConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSet: ConfigurationSet }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateConfigurationSetRequest",
-}) as any as S.Schema<CreateConfigurationSetRequest>;
+const CreateConfigurationSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateConfigurationSetRequest>;
 export interface CreateConfigurationSetResponse {}
-const CreateConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CreateConfigurationSetResponse",
-}) as any as S.Schema<CreateConfigurationSetResponse>;
+const CreateConfigurationSetResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateConfigurationSetResponse>;
 export type EventDestinationName = string;
 export type Enabled = boolean;
 export type EventType =
@@ -565,17 +558,16 @@ export type EventType =
 const EventType = S.String;
 
 export type EventTypes = EventType[];
-const EventTypes = /*@__PURE__*/ S.Array(EventType);
+const EventTypes = /*@__PURE__*/ __L.at(__c0, 5);
 export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
   IAMRoleARN: string;
   DeliveryStreamARN: string;
 }
-const KinesisFirehoseDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IAMRoleARN: S.String, DeliveryStreamARN: S.String }),
-).annotate({
-  identifier: "KinesisFirehoseDestination",
-}) as any as S.Schema<KinesisFirehoseDestination>;
+const KinesisFirehoseDestination = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<KinesisFirehoseDestination>;
 export type DimensionName = string;
 export type DimensionValueSource = "messageTag" | "emailHeader" | "linkTag" | (string & {});
 const DimensionValueSource = S.String;
@@ -586,29 +578,23 @@ export interface CloudWatchDimensionConfiguration {
   DimensionValueSource: DimensionValueSource;
   DefaultDimensionValue: string;
 }
-const CloudWatchDimensionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DimensionName: S.String,
-    DimensionValueSource: DimensionValueSource,
-    DefaultDimensionValue: S.String,
-  }),
-).annotate({
-  identifier: "CloudWatchDimensionConfiguration",
-}) as any as S.Schema<CloudWatchDimensionConfiguration>;
+const CloudWatchDimensionConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CloudWatchDimensionConfiguration>;
 export type CloudWatchDimensionConfigurations = CloudWatchDimensionConfiguration[];
-const CloudWatchDimensionConfigurations = /*@__PURE__*/ S.Array(CloudWatchDimensionConfiguration);
+const CloudWatchDimensionConfigurations = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CloudWatchDestination {
   DimensionConfigurations: CloudWatchDimensionConfiguration[];
 }
-const CloudWatchDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DimensionConfigurations: CloudWatchDimensionConfigurations }),
-).annotate({ identifier: "CloudWatchDestination" }) as any as S.Schema<CloudWatchDestination>;
+const CloudWatchDestination = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CloudWatchDestination>;
 export interface SNSDestination {
   TopicARN: string;
 }
-const SNSDestination = /*@__PURE__*/ S.suspend(() => S.Struct({ TopicARN: S.String })).annotate({
-  identifier: "SNSDestination",
-}) as any as S.Schema<SNSDestination>;
+const SNSDestination = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SNSDestination>;
 export interface EventDestination {
   Name: string;
   Enabled?: boolean;
@@ -617,57 +603,38 @@ export interface EventDestination {
   CloudWatchDestination?: CloudWatchDestination;
   SNSDestination?: SNSDestination;
 }
-const EventDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Enabled: S.optional(S.Boolean),
-    MatchingEventTypes: EventTypes,
-    KinesisFirehoseDestination: S.optional(KinesisFirehoseDestination),
-    CloudWatchDestination: S.optional(CloudWatchDestination),
-    SNSDestination: S.optional(SNSDestination),
-  }),
-).annotate({ identifier: "EventDestination" }) as any as S.Schema<EventDestination>;
+const EventDestination = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EventDestination>;
 export interface CreateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination: EventDestination;
 }
-const CreateConfigurationSetEventDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String, EventDestination: EventDestination }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateConfigurationSetEventDestinationRequest",
-}) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>;
+const CreateConfigurationSetEventDestinationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>;
 export interface CreateConfigurationSetEventDestinationResponse {}
-const CreateConfigurationSetEventDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CreateConfigurationSetEventDestinationResponse",
-}) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>;
+const CreateConfigurationSetEventDestinationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>;
 export type CustomRedirectDomain = string;
 export interface TrackingOptions {
   CustomRedirectDomain?: string;
 }
-const TrackingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CustomRedirectDomain: S.optional(S.String) }),
-).annotate({ identifier: "TrackingOptions" }) as any as S.Schema<TrackingOptions>;
+const TrackingOptions = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TrackingOptions>;
 export interface CreateConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
   TrackingOptions: TrackingOptions;
 }
-const CreateConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String, TrackingOptions: TrackingOptions }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateConfigurationSetTrackingOptionsRequest",
-}) as any as S.Schema<CreateConfigurationSetTrackingOptionsRequest>;
+const CreateConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateConfigurationSetTrackingOptionsRequest>;
 export interface CreateConfigurationSetTrackingOptionsResponse {}
-const CreateConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CreateConfigurationSetTrackingOptionsResponse",
-}) as any as S.Schema<CreateConfigurationSetTrackingOptionsResponse>;
+const CreateConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateConfigurationSetTrackingOptionsResponse>;
 export type TemplateName = string;
 export type FromAddress = string;
 export type Subject = string;
@@ -682,24 +649,15 @@ export interface CreateCustomVerificationEmailTemplateRequest {
   SuccessRedirectionURL: string;
   FailureRedirectionURL: string;
 }
-const CreateCustomVerificationEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String,
-    FromEmailAddress: S.String,
-    TemplateSubject: S.String,
-    TemplateContent: S.String,
-    SuccessRedirectionURL: S.String,
-    FailureRedirectionURL: S.String,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateCustomVerificationEmailTemplateRequest",
-}) as any as S.Schema<CreateCustomVerificationEmailTemplateRequest>;
+const CreateCustomVerificationEmailTemplateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateCustomVerificationEmailTemplateRequest>;
 export interface CreateCustomVerificationEmailTemplateResponse {}
-const CreateCustomVerificationEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CreateCustomVerificationEmailTemplateResponse",
-}) as any as S.Schema<CreateCustomVerificationEmailTemplateResponse>;
+const CreateCustomVerificationEmailTemplateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateCustomVerificationEmailTemplateResponse>;
 export type ReceiptFilterName = string;
 export type ReceiptFilterPolicy = "Block" | "Allow" | (string & {});
 const ReceiptFilterPolicy = S.String;
@@ -709,37 +667,31 @@ export interface ReceiptIpFilter {
   Policy: ReceiptFilterPolicy;
   Cidr: string;
 }
-const ReceiptIpFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policy: ReceiptFilterPolicy, Cidr: S.String }),
-).annotate({ identifier: "ReceiptIpFilter" }) as any as S.Schema<ReceiptIpFilter>;
+const ReceiptIpFilter = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ReceiptIpFilter>;
 export interface ReceiptFilter {
   Name: string;
   IpFilter: ReceiptIpFilter;
 }
-const ReceiptFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, IpFilter: ReceiptIpFilter }),
-).annotate({ identifier: "ReceiptFilter" }) as any as S.Schema<ReceiptFilter>;
+const ReceiptFilter = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ReceiptFilter>;
 export interface CreateReceiptFilterRequest {
   Filter: ReceiptFilter;
 }
-const CreateReceiptFilterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Filter: ReceiptFilter }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateReceiptFilterRequest",
-}) as any as S.Schema<CreateReceiptFilterRequest>;
+const CreateReceiptFilterRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateReceiptFilterRequest>;
 export interface CreateReceiptFilterResponse {}
-const CreateReceiptFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "CreateReceiptFilterResponse",
-}) as any as S.Schema<CreateReceiptFilterResponse>;
+const CreateReceiptFilterResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateReceiptFilterResponse>;
 export type ReceiptRuleName = string;
 export type TlsPolicy = "Require" | "Optional" | (string & {});
 const TlsPolicy = S.String;
 
 export type Recipient = string;
 export type RecipientsList = string[];
-const RecipientsList = /*@__PURE__*/ S.Array(S.String);
+const RecipientsList = /*@__PURE__*/ __L.at(__c2, 7);
 export type S3BucketName = string;
 export type S3KeyPrefix = string;
 export type IAMRoleARN = string;
@@ -750,15 +702,7 @@ export interface S3Action {
   KmsKeyArn?: string;
   IamRoleArn?: string;
 }
-const S3Action = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TopicArn: S.optional(S.String),
-    BucketName: S.String,
-    ObjectKeyPrefix: S.optional(S.String),
-    KmsKeyArn: S.optional(S.String),
-    IamRoleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "S3Action" }) as any as S.Schema<S3Action>;
+const S3Action = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<S3Action>;
 export type BounceSmtpReplyCode = string;
 export type BounceStatusCode = string;
 export type BounceMessage = string;
@@ -770,22 +714,12 @@ export interface BounceAction {
   Message: string;
   Sender: string;
 }
-const BounceAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TopicArn: S.optional(S.String),
-    SmtpReplyCode: S.String,
-    StatusCode: S.optional(S.String),
-    Message: S.String,
-    Sender: S.String,
-  }),
-).annotate({ identifier: "BounceAction" }) as any as S.Schema<BounceAction>;
+const BounceAction = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<BounceAction>;
 export interface WorkmailAction {
   TopicArn?: string;
   OrganizationArn: string;
 }
-const WorkmailAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TopicArn: S.optional(S.String), OrganizationArn: S.String }),
-).annotate({ identifier: "WorkmailAction" }) as any as S.Schema<WorkmailAction>;
+const WorkmailAction = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<WorkmailAction>;
 export type InvocationType = "Event" | "RequestResponse" | (string & {});
 const InvocationType = S.String;
 
@@ -794,13 +728,7 @@ export interface LambdaAction {
   FunctionArn: string;
   InvocationType?: InvocationType;
 }
-const LambdaAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TopicArn: S.optional(S.String),
-    FunctionArn: S.String,
-    InvocationType: S.optional(InvocationType),
-  }),
-).annotate({ identifier: "LambdaAction" }) as any as S.Schema<LambdaAction>;
+const LambdaAction = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<LambdaAction>;
 export type StopScope = "RuleSet" | (string & {});
 const StopScope = S.String;
 
@@ -808,18 +736,14 @@ export interface StopAction {
   Scope: StopScope;
   TopicArn?: string;
 }
-const StopAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Scope: StopScope, TopicArn: S.optional(S.String) }),
-).annotate({ identifier: "StopAction" }) as any as S.Schema<StopAction>;
+const StopAction = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<StopAction>;
 export type HeaderName = string;
 export type HeaderValue = string;
 export interface AddHeaderAction {
   HeaderName: string;
   HeaderValue: string;
 }
-const AddHeaderAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HeaderName: S.String, HeaderValue: S.String }),
-).annotate({ identifier: "AddHeaderAction" }) as any as S.Schema<AddHeaderAction>;
+const AddHeaderAction = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AddHeaderAction>;
 export type SNSActionEncoding = "UTF-8" | "Base64" | (string & {});
 const SNSActionEncoding = S.String;
 
@@ -827,17 +751,13 @@ export interface SNSAction {
   TopicArn: string;
   Encoding?: SNSActionEncoding;
 }
-const SNSAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TopicArn: S.String, Encoding: S.optional(SNSActionEncoding) }),
-).annotate({ identifier: "SNSAction" }) as any as S.Schema<SNSAction>;
+const SNSAction = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SNSAction>;
 export type ConnectInstanceArn = string;
 export interface ConnectAction {
   InstanceARN: string;
   IAMRoleARN: string;
 }
-const ConnectAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InstanceARN: S.String, IAMRoleARN: S.String }),
-).annotate({ identifier: "ConnectAction" }) as any as S.Schema<ConnectAction>;
+const ConnectAction = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ConnectAction>;
 export interface ReceiptAction {
   S3Action?: S3Action;
   BounceAction?: BounceAction;
@@ -848,20 +768,9 @@ export interface ReceiptAction {
   SNSAction?: SNSAction;
   ConnectAction?: ConnectAction;
 }
-const ReceiptAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    S3Action: S.optional(S3Action),
-    BounceAction: S.optional(BounceAction),
-    WorkmailAction: S.optional(WorkmailAction),
-    LambdaAction: S.optional(LambdaAction),
-    StopAction: S.optional(StopAction),
-    AddHeaderAction: S.optional(AddHeaderAction),
-    SNSAction: S.optional(SNSAction),
-    ConnectAction: S.optional(ConnectAction),
-  }),
-).annotate({ identifier: "ReceiptAction" }) as any as S.Schema<ReceiptAction>;
+const ReceiptAction = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ReceiptAction>;
 export type ReceiptActionsList = ReceiptAction[];
-const ReceiptActionsList = /*@__PURE__*/ S.Array(ReceiptAction);
+const ReceiptActionsList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ReceiptRule {
   Name: string;
   Enabled?: boolean;
@@ -870,44 +779,33 @@ export interface ReceiptRule {
   Actions?: ReceiptAction[];
   ScanEnabled?: boolean;
 }
-const ReceiptRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Enabled: S.optional(S.Boolean),
-    TlsPolicy: S.optional(TlsPolicy),
-    Recipients: S.optional(RecipientsList),
-    Actions: S.optional(ReceiptActionsList),
-    ScanEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ReceiptRule" }) as any as S.Schema<ReceiptRule>;
+const ReceiptRule = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ReceiptRule>;
 export interface CreateReceiptRuleRequest {
   RuleSetName: string;
   After?: string;
   Rule: ReceiptRule;
 }
-const CreateReceiptRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String, After: S.optional(S.String), Rule: ReceiptRule }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateReceiptRuleRequest" }) as any as S.Schema<CreateReceiptRuleRequest>;
+const CreateReceiptRuleRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateReceiptRuleRequest>;
 export interface CreateReceiptRuleResponse {}
-const CreateReceiptRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "CreateReceiptRuleResponse",
-}) as any as S.Schema<CreateReceiptRuleResponse>;
+const CreateReceiptRuleResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateReceiptRuleResponse>;
 export interface CreateReceiptRuleSetRequest {
   RuleSetName: string;
 }
-const CreateReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateReceiptRuleSetRequest",
-}) as any as S.Schema<CreateReceiptRuleSetRequest>;
+const CreateReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateReceiptRuleSetRequest>;
 export interface CreateReceiptRuleSetResponse {}
-const CreateReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "CreateReceiptRuleSetResponse",
-}) as any as S.Schema<CreateReceiptRuleSetResponse>;
+const CreateReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateReceiptRuleSetResponse>;
 export type SubjectPart = string;
 export type TextPart = string;
 export type HtmlPart = string;
@@ -917,219 +815,179 @@ export interface Template {
   TextPart?: string;
   HtmlPart?: string;
 }
-const Template = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String,
-    SubjectPart: S.optional(S.String),
-    TextPart: S.optional(S.String),
-    HtmlPart: S.optional(S.String),
-  }),
-).annotate({ identifier: "Template" }) as any as S.Schema<Template>;
+const Template = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Template>;
 export interface CreateTemplateRequest {
   Template: Template;
 }
-const CreateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Template: Template }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateTemplateRequest" }) as any as S.Schema<CreateTemplateRequest>;
+const CreateTemplateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateTemplateRequest>;
 export interface CreateTemplateResponse {}
-const CreateTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "CreateTemplateResponse",
-}) as any as S.Schema<CreateTemplateResponse>;
+const CreateTemplateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateTemplateResponse>;
 export interface DeleteConfigurationSetRequest {
   ConfigurationSetName: string;
 }
-const DeleteConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteConfigurationSetRequest",
-}) as any as S.Schema<DeleteConfigurationSetRequest>;
+const DeleteConfigurationSetRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteConfigurationSetRequest>;
 export interface DeleteConfigurationSetResponse {}
-const DeleteConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConfigurationSetResponse",
-}) as any as S.Schema<DeleteConfigurationSetResponse>;
+const DeleteConfigurationSetResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteConfigurationSetResponse>;
 export interface DeleteConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
 }
-const DeleteConfigurationSetEventDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String, EventDestinationName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteConfigurationSetEventDestinationRequest",
-}) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>;
+const DeleteConfigurationSetEventDestinationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>;
 export interface DeleteConfigurationSetEventDestinationResponse {}
-const DeleteConfigurationSetEventDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConfigurationSetEventDestinationResponse",
-}) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>;
+const DeleteConfigurationSetEventDestinationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>;
 export interface DeleteConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
 }
-const DeleteConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteConfigurationSetTrackingOptionsRequest",
-}) as any as S.Schema<DeleteConfigurationSetTrackingOptionsRequest>;
+const DeleteConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteConfigurationSetTrackingOptionsRequest>;
 export interface DeleteConfigurationSetTrackingOptionsResponse {}
-const DeleteConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConfigurationSetTrackingOptionsResponse",
-}) as any as S.Schema<DeleteConfigurationSetTrackingOptionsResponse>;
+const DeleteConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteConfigurationSetTrackingOptionsResponse>;
 export interface DeleteCustomVerificationEmailTemplateRequest {
   TemplateName: string;
 }
-const DeleteCustomVerificationEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TemplateName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteCustomVerificationEmailTemplateRequest",
-}) as any as S.Schema<DeleteCustomVerificationEmailTemplateRequest>;
+const DeleteCustomVerificationEmailTemplateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteCustomVerificationEmailTemplateRequest>;
 export interface DeleteCustomVerificationEmailTemplateResponse {}
-const DeleteCustomVerificationEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteCustomVerificationEmailTemplateResponse",
-}) as any as S.Schema<DeleteCustomVerificationEmailTemplateResponse>;
+const DeleteCustomVerificationEmailTemplateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteCustomVerificationEmailTemplateResponse>;
 export type Identity = string;
 export interface DeleteIdentityRequest {
   Identity: string;
 }
-const DeleteIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identity: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteIdentityRequest" }) as any as S.Schema<DeleteIdentityRequest>;
+const DeleteIdentityRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteIdentityRequest>;
 export interface DeleteIdentityResponse {}
-const DeleteIdentityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteIdentityResponse",
-}) as any as S.Schema<DeleteIdentityResponse>;
+const DeleteIdentityResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteIdentityResponse>;
 export type PolicyName = string;
 export interface DeleteIdentityPolicyRequest {
   Identity: string;
   PolicyName: string;
 }
-const DeleteIdentityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identity: S.String, PolicyName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteIdentityPolicyRequest",
-}) as any as S.Schema<DeleteIdentityPolicyRequest>;
+const DeleteIdentityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteIdentityPolicyRequest>;
 export interface DeleteIdentityPolicyResponse {}
-const DeleteIdentityPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteIdentityPolicyResponse",
-}) as any as S.Schema<DeleteIdentityPolicyResponse>;
+const DeleteIdentityPolicyResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteIdentityPolicyResponse>;
 export interface DeleteReceiptFilterRequest {
   FilterName: string;
 }
-const DeleteReceiptFilterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FilterName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteReceiptFilterRequest",
-}) as any as S.Schema<DeleteReceiptFilterRequest>;
+const DeleteReceiptFilterRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteReceiptFilterRequest>;
 export interface DeleteReceiptFilterResponse {}
-const DeleteReceiptFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteReceiptFilterResponse",
-}) as any as S.Schema<DeleteReceiptFilterResponse>;
+const DeleteReceiptFilterResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteReceiptFilterResponse>;
 export interface DeleteReceiptRuleRequest {
   RuleSetName: string;
   RuleName: string;
 }
-const DeleteReceiptRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String, RuleName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteReceiptRuleRequest" }) as any as S.Schema<DeleteReceiptRuleRequest>;
+const DeleteReceiptRuleRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteReceiptRuleRequest>;
 export interface DeleteReceiptRuleResponse {}
-const DeleteReceiptRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteReceiptRuleResponse",
-}) as any as S.Schema<DeleteReceiptRuleResponse>;
+const DeleteReceiptRuleResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteReceiptRuleResponse>;
 export interface DeleteReceiptRuleSetRequest {
   RuleSetName: string;
 }
-const DeleteReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteReceiptRuleSetRequest",
-}) as any as S.Schema<DeleteReceiptRuleSetRequest>;
+const DeleteReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteReceiptRuleSetRequest>;
 export interface DeleteReceiptRuleSetResponse {}
-const DeleteReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteReceiptRuleSetResponse",
-}) as any as S.Schema<DeleteReceiptRuleSetResponse>;
+const DeleteReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteReceiptRuleSetResponse>;
 export interface DeleteTemplateRequest {
   TemplateName: string;
 }
-const DeleteTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TemplateName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteTemplateRequest" }) as any as S.Schema<DeleteTemplateRequest>;
+const DeleteTemplateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteTemplateRequest>;
 export interface DeleteTemplateResponse {}
-const DeleteTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteTemplateResponse",
-}) as any as S.Schema<DeleteTemplateResponse>;
+const DeleteTemplateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteTemplateResponse>;
 export interface DeleteVerifiedEmailAddressRequest {
   EmailAddress: string;
 }
-const DeleteVerifiedEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EmailAddress: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteVerifiedEmailAddressRequest",
-}) as any as S.Schema<DeleteVerifiedEmailAddressRequest>;
+const DeleteVerifiedEmailAddressRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteVerifiedEmailAddressRequest>;
 export interface DeleteVerifiedEmailAddressResponse {}
-const DeleteVerifiedEmailAddressResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteVerifiedEmailAddressResponse",
-}) as any as S.Schema<DeleteVerifiedEmailAddressResponse>;
+const DeleteVerifiedEmailAddressResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteVerifiedEmailAddressResponse>;
 export interface DescribeActiveReceiptRuleSetRequest {}
-const DescribeActiveReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeActiveReceiptRuleSetRequest",
-}) as any as S.Schema<DescribeActiveReceiptRuleSetRequest>;
+const DescribeActiveReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DescribeActiveReceiptRuleSetRequest>;
 export interface ReceiptRuleSetMetadata {
   Name?: string;
   CreatedTimestamp?: Date;
 }
-const ReceiptRuleSetMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ReceiptRuleSetMetadata" }) as any as S.Schema<ReceiptRuleSetMetadata>;
+const ReceiptRuleSetMetadata = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ReceiptRuleSetMetadata>;
 export type ReceiptRulesList = ReceiptRule[];
-const ReceiptRulesList = /*@__PURE__*/ S.Array(ReceiptRule);
+const ReceiptRulesList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface DescribeActiveReceiptRuleSetResponse {
   Metadata?: ReceiptRuleSetMetadata;
   Rules?: ReceiptRule[];
 }
-const DescribeActiveReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Metadata: S.optional(ReceiptRuleSetMetadata),
-    Rules: S.optional(ReceiptRulesList),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeActiveReceiptRuleSetResponse",
-}) as any as S.Schema<DescribeActiveReceiptRuleSetResponse>;
+const DescribeActiveReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DescribeActiveReceiptRuleSetResponse>;
 export type ConfigurationSetAttribute =
   | "eventDestinations"
   | "trackingOptions"
@@ -1139,40 +997,28 @@ export type ConfigurationSetAttribute =
 const ConfigurationSetAttribute = S.String;
 
 export type ConfigurationSetAttributeList = ConfigurationSetAttribute[];
-const ConfigurationSetAttributeList = /*@__PURE__*/ S.Array(ConfigurationSetAttribute);
+const ConfigurationSetAttributeList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface DescribeConfigurationSetRequest {
   ConfigurationSetName: string;
   ConfigurationSetAttributeNames?: ConfigurationSetAttribute[];
 }
-const DescribeConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConfigurationSetName: S.String,
-    ConfigurationSetAttributeNames: S.optional(ConfigurationSetAttributeList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeConfigurationSetRequest",
-}) as any as S.Schema<DescribeConfigurationSetRequest>;
+const DescribeConfigurationSetRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DescribeConfigurationSetRequest>;
 export type EventDestinations = EventDestination[];
-const EventDestinations = /*@__PURE__*/ S.Array(EventDestination);
+const EventDestinations = /*@__PURE__*/ __L.at(__c8, 6);
 export interface DeliveryOptions {
   TlsPolicy?: TlsPolicy;
 }
-const DeliveryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TlsPolicy: S.optional(TlsPolicy) }),
-).annotate({ identifier: "DeliveryOptions" }) as any as S.Schema<DeliveryOptions>;
+const DeliveryOptions = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DeliveryOptions>;
 export type LastFreshStart = Date;
 export interface ReputationOptions {
   SendingEnabled?: boolean;
   ReputationMetricsEnabled?: boolean;
   LastFreshStart?: Date;
 }
-const ReputationOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SendingEnabled: S.optional(S.Boolean),
-    ReputationMetricsEnabled: S.optional(S.Boolean),
-    LastFreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ReputationOptions" }) as any as S.Schema<ReputationOptions>;
+const ReputationOptions = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ReputationOptions>;
 export interface DescribeConfigurationSetResponse {
   ConfigurationSet?: ConfigurationSet;
   EventDestinations?: EventDestination[];
@@ -1180,82 +1026,59 @@ export interface DescribeConfigurationSetResponse {
   DeliveryOptions?: DeliveryOptions;
   ReputationOptions?: ReputationOptions;
 }
-const DescribeConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConfigurationSet: S.optional(ConfigurationSet),
-    EventDestinations: S.optional(EventDestinations),
-    TrackingOptions: S.optional(TrackingOptions),
-    DeliveryOptions: S.optional(DeliveryOptions),
-    ReputationOptions: S.optional(ReputationOptions),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeConfigurationSetResponse",
-}) as any as S.Schema<DescribeConfigurationSetResponse>;
+const DescribeConfigurationSetResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DescribeConfigurationSetResponse>;
 export interface DescribeReceiptRuleRequest {
   RuleSetName: string;
   RuleName: string;
 }
-const DescribeReceiptRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String, RuleName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeReceiptRuleRequest",
-}) as any as S.Schema<DescribeReceiptRuleRequest>;
+const DescribeReceiptRuleRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DescribeReceiptRuleRequest>;
 export interface DescribeReceiptRuleResponse {
   Rule?: ReceiptRule;
 }
-const DescribeReceiptRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Rule: S.optional(ReceiptRule) }).pipe(ns),
-).annotate({
-  identifier: "DescribeReceiptRuleResponse",
-}) as any as S.Schema<DescribeReceiptRuleResponse>;
+const DescribeReceiptRuleResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DescribeReceiptRuleResponse>;
 export interface DescribeReceiptRuleSetRequest {
   RuleSetName: string;
 }
-const DescribeReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeReceiptRuleSetRequest",
-}) as any as S.Schema<DescribeReceiptRuleSetRequest>;
+const DescribeReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DescribeReceiptRuleSetRequest>;
 export interface DescribeReceiptRuleSetResponse {
   Metadata?: ReceiptRuleSetMetadata;
   Rules?: ReceiptRule[];
 }
-const DescribeReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Metadata: S.optional(ReceiptRuleSetMetadata),
-    Rules: S.optional(ReceiptRulesList),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeReceiptRuleSetResponse",
-}) as any as S.Schema<DescribeReceiptRuleSetResponse>;
+const DescribeReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DescribeReceiptRuleSetResponse>;
 export interface GetAccountSendingEnabledRequest {}
-const GetAccountSendingEnabledRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetAccountSendingEnabledRequest",
-}) as any as S.Schema<GetAccountSendingEnabledRequest>;
+const GetAccountSendingEnabledRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetAccountSendingEnabledRequest>;
 export interface GetAccountSendingEnabledResponse {
   Enabled?: boolean;
 }
-const GetAccountSendingEnabledResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(ns),
-).annotate({
-  identifier: "GetAccountSendingEnabledResponse",
-}) as any as S.Schema<GetAccountSendingEnabledResponse>;
+const GetAccountSendingEnabledResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetAccountSendingEnabledResponse>;
 export interface GetCustomVerificationEmailTemplateRequest {
   TemplateName: string;
 }
-const GetCustomVerificationEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TemplateName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetCustomVerificationEmailTemplateRequest",
-}) as any as S.Schema<GetCustomVerificationEmailTemplateRequest>;
+const GetCustomVerificationEmailTemplateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetCustomVerificationEmailTemplateRequest>;
 export interface GetCustomVerificationEmailTemplateResponse {
   TemplateName?: string;
   FromEmailAddress?: string;
@@ -1264,30 +1087,19 @@ export interface GetCustomVerificationEmailTemplateResponse {
   SuccessRedirectionURL?: string;
   FailureRedirectionURL?: string;
 }
-const GetCustomVerificationEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.optional(S.String),
-    FromEmailAddress: S.optional(S.String),
-    TemplateSubject: S.optional(S.String),
-    TemplateContent: S.optional(S.String),
-    SuccessRedirectionURL: S.optional(S.String),
-    FailureRedirectionURL: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetCustomVerificationEmailTemplateResponse",
-}) as any as S.Schema<GetCustomVerificationEmailTemplateResponse>;
+const GetCustomVerificationEmailTemplateResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetCustomVerificationEmailTemplateResponse>;
 export type IdentityList = string[];
-const IdentityList = /*@__PURE__*/ S.Array(S.String);
+const IdentityList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface GetIdentityDkimAttributesRequest {
   Identities: string[];
 }
-const GetIdentityDkimAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identities: IdentityList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetIdentityDkimAttributesRequest",
-}) as any as S.Schema<GetIdentityDkimAttributesRequest>;
+const GetIdentityDkimAttributesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetIdentityDkimAttributesRequest>;
 export type VerificationStatus =
   | "Pending"
   | "Success"
@@ -1299,42 +1111,32 @@ const VerificationStatus = S.String;
 
 export type VerificationToken = string;
 export type VerificationTokenList = string[];
-const VerificationTokenList = /*@__PURE__*/ S.Array(S.String);
+const VerificationTokenList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface IdentityDkimAttributes {
   DkimEnabled: boolean;
   DkimVerificationStatus: VerificationStatus;
   DkimTokens?: string[];
 }
-const IdentityDkimAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DkimEnabled: S.Boolean,
-    DkimVerificationStatus: VerificationStatus,
-    DkimTokens: S.optional(VerificationTokenList),
-  }),
-).annotate({ identifier: "IdentityDkimAttributes" }) as any as S.Schema<IdentityDkimAttributes>;
+const IdentityDkimAttributes = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<IdentityDkimAttributes>;
 export type DkimAttributes = { [key: string]: IdentityDkimAttributes | undefined };
-const DkimAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ IdentityDkimAttributes.pipe(S.optional),
-);
+const DkimAttributes = /*@__PURE__*/ __L.at(__c10, 6);
 export interface GetIdentityDkimAttributesResponse {
   DkimAttributes: { [key: string]: IdentityDkimAttributes | undefined };
 }
-const GetIdentityDkimAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DkimAttributes: DkimAttributes }).pipe(ns),
-).annotate({
-  identifier: "GetIdentityDkimAttributesResponse",
-}) as any as S.Schema<GetIdentityDkimAttributesResponse>;
+const GetIdentityDkimAttributesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetIdentityDkimAttributesResponse>;
 export interface GetIdentityMailFromDomainAttributesRequest {
   Identities: string[];
 }
-const GetIdentityMailFromDomainAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identities: IdentityList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetIdentityMailFromDomainAttributesRequest",
-}) as any as S.Schema<GetIdentityMailFromDomainAttributesRequest>;
+const GetIdentityMailFromDomainAttributesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetIdentityMailFromDomainAttributesRequest>;
 export type MailFromDomainName = string;
 export type CustomMailFromStatus =
   | "Pending"
@@ -1352,40 +1154,28 @@ export interface IdentityMailFromDomainAttributes {
   MailFromDomainStatus: CustomMailFromStatus;
   BehaviorOnMXFailure: BehaviorOnMXFailure;
 }
-const IdentityMailFromDomainAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MailFromDomain: S.String,
-    MailFromDomainStatus: CustomMailFromStatus,
-    BehaviorOnMXFailure: BehaviorOnMXFailure,
-  }),
-).annotate({
-  identifier: "IdentityMailFromDomainAttributes",
-}) as any as S.Schema<IdentityMailFromDomainAttributes>;
+const IdentityMailFromDomainAttributes = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<IdentityMailFromDomainAttributes>;
 export type MailFromDomainAttributes = {
   [key: string]: IdentityMailFromDomainAttributes | undefined;
 };
-const MailFromDomainAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ IdentityMailFromDomainAttributes.pipe(S.optional),
-);
+const MailFromDomainAttributes = /*@__PURE__*/ __L.at(__c11, 2);
 export interface GetIdentityMailFromDomainAttributesResponse {
   MailFromDomainAttributes: { [key: string]: IdentityMailFromDomainAttributes | undefined };
 }
-const GetIdentityMailFromDomainAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MailFromDomainAttributes: MailFromDomainAttributes }).pipe(ns),
-).annotate({
-  identifier: "GetIdentityMailFromDomainAttributesResponse",
-}) as any as S.Schema<GetIdentityMailFromDomainAttributesResponse>;
+const GetIdentityMailFromDomainAttributesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetIdentityMailFromDomainAttributesResponse>;
 export interface GetIdentityNotificationAttributesRequest {
   Identities: string[];
 }
-const GetIdentityNotificationAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identities: IdentityList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetIdentityNotificationAttributesRequest",
-}) as any as S.Schema<GetIdentityNotificationAttributesRequest>;
+const GetIdentityNotificationAttributesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetIdentityNotificationAttributesRequest>;
 export type NotificationTopic = string;
 export interface IdentityNotificationAttributes {
   BounceTopic: string;
@@ -1396,92 +1186,65 @@ export interface IdentityNotificationAttributes {
   HeadersInComplaintNotificationsEnabled?: boolean;
   HeadersInDeliveryNotificationsEnabled?: boolean;
 }
-const IdentityNotificationAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BounceTopic: S.String,
-    ComplaintTopic: S.String,
-    DeliveryTopic: S.String,
-    ForwardingEnabled: S.Boolean,
-    HeadersInBounceNotificationsEnabled: S.optional(S.Boolean),
-    HeadersInComplaintNotificationsEnabled: S.optional(S.Boolean),
-    HeadersInDeliveryNotificationsEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "IdentityNotificationAttributes",
-}) as any as S.Schema<IdentityNotificationAttributes>;
+const IdentityNotificationAttributes = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<IdentityNotificationAttributes>;
 export type NotificationAttributes = { [key: string]: IdentityNotificationAttributes | undefined };
-const NotificationAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ IdentityNotificationAttributes.pipe(S.optional),
-);
+const NotificationAttributes = /*@__PURE__*/ __L.at(__c11, 6);
 export interface GetIdentityNotificationAttributesResponse {
   NotificationAttributes: { [key: string]: IdentityNotificationAttributes | undefined };
 }
-const GetIdentityNotificationAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NotificationAttributes: NotificationAttributes }).pipe(ns),
-).annotate({
-  identifier: "GetIdentityNotificationAttributesResponse",
-}) as any as S.Schema<GetIdentityNotificationAttributesResponse>;
+const GetIdentityNotificationAttributesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetIdentityNotificationAttributesResponse>;
 export type PolicyNameList = string[];
-const PolicyNameList = /*@__PURE__*/ S.Array(S.String);
+const PolicyNameList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface GetIdentityPoliciesRequest {
   Identity: string;
   PolicyNames: string[];
 }
-const GetIdentityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identity: S.String, PolicyNames: PolicyNameList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetIdentityPoliciesRequest",
-}) as any as S.Schema<GetIdentityPoliciesRequest>;
+const GetIdentityPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetIdentityPoliciesRequest>;
 export type Policy = string;
 export type PolicyMap = { [key: string]: string | undefined };
-const PolicyMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const PolicyMap = /*@__PURE__*/ __L.at(__c12, 2);
 export interface GetIdentityPoliciesResponse {
   Policies: { [key: string]: string | undefined };
 }
-const GetIdentityPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policies: PolicyMap }).pipe(ns),
-).annotate({
-  identifier: "GetIdentityPoliciesResponse",
-}) as any as S.Schema<GetIdentityPoliciesResponse>;
+const GetIdentityPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetIdentityPoliciesResponse>;
 export interface GetIdentityVerificationAttributesRequest {
   Identities: string[];
 }
-const GetIdentityVerificationAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identities: IdentityList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetIdentityVerificationAttributesRequest",
-}) as any as S.Schema<GetIdentityVerificationAttributesRequest>;
+const GetIdentityVerificationAttributesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetIdentityVerificationAttributesRequest>;
 export interface IdentityVerificationAttributes {
   VerificationStatus: VerificationStatus;
   VerificationToken?: string;
 }
-const IdentityVerificationAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VerificationStatus: VerificationStatus, VerificationToken: S.optional(S.String) }),
-).annotate({
-  identifier: "IdentityVerificationAttributes",
-}) as any as S.Schema<IdentityVerificationAttributes>;
+const IdentityVerificationAttributes = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<IdentityVerificationAttributes>;
 export type VerificationAttributes = { [key: string]: IdentityVerificationAttributes | undefined };
-const VerificationAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ IdentityVerificationAttributes.pipe(S.optional),
-);
+const VerificationAttributes = /*@__PURE__*/ __L.at(__c12, 6);
 export interface GetIdentityVerificationAttributesResponse {
   VerificationAttributes: { [key: string]: IdentityVerificationAttributes | undefined };
 }
-const GetIdentityVerificationAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VerificationAttributes: VerificationAttributes }).pipe(ns),
-).annotate({
-  identifier: "GetIdentityVerificationAttributesResponse",
-}) as any as S.Schema<GetIdentityVerificationAttributesResponse>;
+const GetIdentityVerificationAttributesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetIdentityVerificationAttributesResponse>;
 export interface GetSendQuotaRequest {}
-const GetSendQuotaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetSendQuotaRequest" }) as any as S.Schema<GetSendQuotaRequest>;
+const GetSendQuotaRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<GetSendQuotaRequest>;
 export type Max24HourSend = number;
 export type MaxSendRate = number;
 export type SentLast24Hours = number;
@@ -1490,17 +1253,15 @@ export interface GetSendQuotaResponse {
   MaxSendRate?: number;
   SentLast24Hours?: number;
 }
-const GetSendQuotaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Max24HourSend: S.optional(S.Number),
-    MaxSendRate: S.optional(S.Number),
-    SentLast24Hours: S.optional(S.Number),
-  }).pipe(ns),
-).annotate({ identifier: "GetSendQuotaResponse" }) as any as S.Schema<GetSendQuotaResponse>;
+const GetSendQuotaResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetSendQuotaResponse>;
 export interface GetSendStatisticsRequest {}
-const GetSendStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetSendStatisticsRequest" }) as any as S.Schema<GetSendStatisticsRequest>;
+const GetSendStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetSendStatisticsRequest>;
 export type Counter = number;
 export interface SendDataPoint {
   Timestamp?: Date;
@@ -1509,78 +1270,53 @@ export interface SendDataPoint {
   Complaints?: number;
   Rejects?: number;
 }
-const SendDataPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DeliveryAttempts: S.optional(S.Number),
-    Bounces: S.optional(S.Number),
-    Complaints: S.optional(S.Number),
-    Rejects: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SendDataPoint" }) as any as S.Schema<SendDataPoint>;
+const SendDataPoint = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<SendDataPoint>;
 export type SendDataPointList = SendDataPoint[];
-const SendDataPointList = /*@__PURE__*/ S.Array(SendDataPoint);
+const SendDataPointList = /*@__PURE__*/ __L.at(__c13, 4);
 export interface GetSendStatisticsResponse {
   SendDataPoints?: SendDataPoint[];
 }
-const GetSendStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SendDataPoints: S.optional(SendDataPointList) }).pipe(ns),
-).annotate({
-  identifier: "GetSendStatisticsResponse",
-}) as any as S.Schema<GetSendStatisticsResponse>;
+const GetSendStatisticsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetSendStatisticsResponse>;
 export interface GetTemplateRequest {
   TemplateName: string;
 }
-const GetTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TemplateName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetTemplateRequest" }) as any as S.Schema<GetTemplateRequest>;
+const GetTemplateRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<GetTemplateRequest>;
 export interface GetTemplateResponse {
   Template?: Template;
 }
-const GetTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Template: S.optional(Template) }).pipe(ns),
-).annotate({ identifier: "GetTemplateResponse" }) as any as S.Schema<GetTemplateResponse>;
+const GetTemplateResponse = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<GetTemplateResponse>;
 export type NextToken = string;
 export type MaxItems = number;
 export interface ListConfigurationSetsRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-const ListConfigurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), MaxItems: S.optional(S.Number) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListConfigurationSetsRequest",
-}) as any as S.Schema<ListConfigurationSetsRequest>;
+const ListConfigurationSetsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListConfigurationSetsRequest>;
 export type ConfigurationSets = ConfigurationSet[];
-const ConfigurationSets = /*@__PURE__*/ S.Array(ConfigurationSet);
+const ConfigurationSets = /*@__PURE__*/ __L.at(__c14, 1);
 export interface ListConfigurationSetsResponse {
   ConfigurationSets?: ConfigurationSet[];
   NextToken?: string;
 }
-const ListConfigurationSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConfigurationSets: S.optional(ConfigurationSets),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListConfigurationSetsResponse",
-}) as any as S.Schema<ListConfigurationSetsResponse>;
+const ListConfigurationSetsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListConfigurationSetsResponse>;
 export type MaxResults = number;
 export interface ListCustomVerificationEmailTemplatesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCustomVerificationEmailTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListCustomVerificationEmailTemplatesRequest",
-}) as any as S.Schema<ListCustomVerificationEmailTemplatesRequest>;
+const ListCustomVerificationEmailTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListCustomVerificationEmailTemplatesRequest>;
 export interface CustomVerificationEmailTemplate {
   TemplateName?: string;
   FromEmailAddress?: string;
@@ -1588,31 +1324,20 @@ export interface CustomVerificationEmailTemplate {
   SuccessRedirectionURL?: string;
   FailureRedirectionURL?: string;
 }
-const CustomVerificationEmailTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.optional(S.String),
-    FromEmailAddress: S.optional(S.String),
-    TemplateSubject: S.optional(S.String),
-    SuccessRedirectionURL: S.optional(S.String),
-    FailureRedirectionURL: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomVerificationEmailTemplate",
-}) as any as S.Schema<CustomVerificationEmailTemplate>;
+const CustomVerificationEmailTemplate = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<CustomVerificationEmailTemplate>;
 export type CustomVerificationEmailTemplates = CustomVerificationEmailTemplate[];
-const CustomVerificationEmailTemplates = /*@__PURE__*/ S.Array(CustomVerificationEmailTemplate);
+const CustomVerificationEmailTemplates = /*@__PURE__*/ __L.at(__c14, 5);
 export interface ListCustomVerificationEmailTemplatesResponse {
   CustomVerificationEmailTemplates?: CustomVerificationEmailTemplate[];
   NextToken?: string;
 }
-const ListCustomVerificationEmailTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CustomVerificationEmailTemplates: S.optional(CustomVerificationEmailTemplates),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListCustomVerificationEmailTemplatesResponse",
-}) as any as S.Schema<ListCustomVerificationEmailTemplatesResponse>;
+const ListCustomVerificationEmailTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListCustomVerificationEmailTemplatesResponse>;
 export type IdentityType = "EmailAddress" | "Domain" | (string & {});
 const IdentityType = S.String;
 
@@ -1621,173 +1346,141 @@ export interface ListIdentitiesRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-const ListIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityType: S.optional(IdentityType),
-    NextToken: S.optional(S.String),
-    MaxItems: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListIdentitiesRequest" }) as any as S.Schema<ListIdentitiesRequest>;
+const ListIdentitiesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListIdentitiesRequest>;
 export interface ListIdentitiesResponse {
   Identities: string[];
   NextToken?: string;
 }
-const ListIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identities: IdentityList, NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListIdentitiesResponse" }) as any as S.Schema<ListIdentitiesResponse>;
+const ListIdentitiesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListIdentitiesResponse>;
 export interface ListIdentityPoliciesRequest {
   Identity: string;
 }
-const ListIdentityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identity: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListIdentityPoliciesRequest",
-}) as any as S.Schema<ListIdentityPoliciesRequest>;
+const ListIdentityPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListIdentityPoliciesRequest>;
 export interface ListIdentityPoliciesResponse {
   PolicyNames: string[];
 }
-const ListIdentityPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PolicyNames: PolicyNameList }).pipe(ns),
-).annotate({
-  identifier: "ListIdentityPoliciesResponse",
-}) as any as S.Schema<ListIdentityPoliciesResponse>;
+const ListIdentityPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListIdentityPoliciesResponse>;
 export interface ListReceiptFiltersRequest {}
-const ListReceiptFiltersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListReceiptFiltersRequest",
-}) as any as S.Schema<ListReceiptFiltersRequest>;
+const ListReceiptFiltersRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListReceiptFiltersRequest>;
 export type ReceiptFilterList = ReceiptFilter[];
-const ReceiptFilterList = /*@__PURE__*/ S.Array(ReceiptFilter);
+const ReceiptFilterList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListReceiptFiltersResponse {
   Filters?: ReceiptFilter[];
 }
-const ListReceiptFiltersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Filters: S.optional(ReceiptFilterList) }).pipe(ns),
-).annotate({
-  identifier: "ListReceiptFiltersResponse",
-}) as any as S.Schema<ListReceiptFiltersResponse>;
+const ListReceiptFiltersResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListReceiptFiltersResponse>;
 export interface ListReceiptRuleSetsRequest {
   NextToken?: string;
 }
-const ListReceiptRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListReceiptRuleSetsRequest",
-}) as any as S.Schema<ListReceiptRuleSetsRequest>;
+const ListReceiptRuleSetsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListReceiptRuleSetsRequest>;
 export type ReceiptRuleSetsLists = ReceiptRuleSetMetadata[];
-const ReceiptRuleSetsLists = /*@__PURE__*/ S.Array(ReceiptRuleSetMetadata);
+const ReceiptRuleSetsLists = /*@__PURE__*/ __L.at(__c15, 7);
 export interface ListReceiptRuleSetsResponse {
   RuleSets?: ReceiptRuleSetMetadata[];
   NextToken?: string;
 }
-const ListReceiptRuleSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSets: S.optional(ReceiptRuleSetsLists), NextToken: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "ListReceiptRuleSetsResponse",
-}) as any as S.Schema<ListReceiptRuleSetsResponse>;
+const ListReceiptRuleSetsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListReceiptRuleSetsResponse>;
 export interface ListTemplatesRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-const ListTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), MaxItems: S.optional(S.Number) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTemplatesRequest" }) as any as S.Schema<ListTemplatesRequest>;
+const ListTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListTemplatesRequest>;
 export interface TemplateMetadata {
   Name?: string;
   CreatedTimestamp?: Date;
 }
-const TemplateMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "TemplateMetadata" }) as any as S.Schema<TemplateMetadata>;
+const TemplateMetadata = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<TemplateMetadata>;
 export type TemplateMetadataList = TemplateMetadata[];
-const TemplateMetadataList = /*@__PURE__*/ S.Array(TemplateMetadata);
+const TemplateMetadataList = /*@__PURE__*/ __L.at(__c16, 3);
 export interface ListTemplatesResponse {
   TemplatesMetadata?: TemplateMetadata[];
   NextToken?: string;
 }
-const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplatesMetadata: S.optional(TemplateMetadataList),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "ListTemplatesResponse" }) as any as S.Schema<ListTemplatesResponse>;
+const ListTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListTemplatesResponse>;
 export interface ListVerifiedEmailAddressesRequest {}
-const ListVerifiedEmailAddressesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListVerifiedEmailAddressesRequest",
-}) as any as S.Schema<ListVerifiedEmailAddressesRequest>;
+const ListVerifiedEmailAddressesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListVerifiedEmailAddressesRequest>;
 export type AddressList = string[];
-const AddressList = /*@__PURE__*/ S.Array(S.String);
+const AddressList = /*@__PURE__*/ __L.at(__c16, 6);
 export interface ListVerifiedEmailAddressesResponse {
   VerifiedEmailAddresses?: string[];
 }
-const ListVerifiedEmailAddressesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VerifiedEmailAddresses: S.optional(AddressList) }).pipe(ns),
-).annotate({
-  identifier: "ListVerifiedEmailAddressesResponse",
-}) as any as S.Schema<ListVerifiedEmailAddressesResponse>;
+const ListVerifiedEmailAddressesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListVerifiedEmailAddressesResponse>;
 export interface PutConfigurationSetDeliveryOptionsRequest {
   ConfigurationSetName: string;
   DeliveryOptions?: DeliveryOptions;
 }
-const PutConfigurationSetDeliveryOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String, DeliveryOptions: S.optional(DeliveryOptions) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutConfigurationSetDeliveryOptionsRequest",
-}) as any as S.Schema<PutConfigurationSetDeliveryOptionsRequest>;
+const PutConfigurationSetDeliveryOptionsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<PutConfigurationSetDeliveryOptionsRequest>;
 export interface PutConfigurationSetDeliveryOptionsResponse {}
-const PutConfigurationSetDeliveryOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutConfigurationSetDeliveryOptionsResponse",
-}) as any as S.Schema<PutConfigurationSetDeliveryOptionsResponse>;
+const PutConfigurationSetDeliveryOptionsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<PutConfigurationSetDeliveryOptionsResponse>;
 export interface PutIdentityPolicyRequest {
   Identity: string;
   PolicyName: string;
   Policy: string;
 }
-const PutIdentityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identity: S.String, PolicyName: S.String, Policy: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutIdentityPolicyRequest" }) as any as S.Schema<PutIdentityPolicyRequest>;
+const PutIdentityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<PutIdentityPolicyRequest>;
 export interface PutIdentityPolicyResponse {}
-const PutIdentityPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "PutIdentityPolicyResponse",
-}) as any as S.Schema<PutIdentityPolicyResponse>;
+const PutIdentityPolicyResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<PutIdentityPolicyResponse>;
 export type ReceiptRuleNamesList = string[];
-const ReceiptRuleNamesList = /*@__PURE__*/ S.Array(S.String);
+const ReceiptRuleNamesList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ReorderReceiptRuleSetRequest {
   RuleSetName: string;
   RuleNames: string[];
 }
-const ReorderReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String, RuleNames: ReceiptRuleNamesList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ReorderReceiptRuleSetRequest",
-}) as any as S.Schema<ReorderReceiptRuleSetRequest>;
+const ReorderReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ReorderReceiptRuleSetRequest>;
 export interface ReorderReceiptRuleSetResponse {}
-const ReorderReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  {
-    identifier: "ReorderReceiptRuleSetResponse",
-  },
+const ReorderReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
 ) as any as S.Schema<ReorderReceiptRuleSetResponse>;
 export type MessageId = string;
 export type Explanation = string;
@@ -1799,23 +1492,15 @@ export interface ExtensionField {
   Name: string;
   Value: string;
 }
-const ExtensionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Value: S.String }),
-).annotate({ identifier: "ExtensionField" }) as any as S.Schema<ExtensionField>;
+const ExtensionField = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ExtensionField>;
 export type ExtensionFieldList = ExtensionField[];
-const ExtensionFieldList = /*@__PURE__*/ S.Array(ExtensionField);
+const ExtensionFieldList = /*@__PURE__*/ __L.at(__c18, 0);
 export interface MessageDsn {
   ReportingMta: string;
   ArrivalDate?: Date;
   ExtensionFields?: ExtensionField[];
 }
-const MessageDsn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReportingMta: S.String,
-    ArrivalDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ExtensionFields: S.optional(ExtensionFieldList),
-  }),
-).annotate({ identifier: "MessageDsn" }) as any as S.Schema<MessageDsn>;
+const MessageDsn = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<MessageDsn>;
 export type BounceType =
   | "DoesNotExist"
   | "MessageTooLarge"
@@ -1842,33 +1527,19 @@ export interface RecipientDsnFields {
   LastAttemptDate?: Date;
   ExtensionFields?: ExtensionField[];
 }
-const RecipientDsnFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FinalRecipient: S.optional(S.String),
-    Action: DsnAction,
-    RemoteMta: S.optional(S.String),
-    Status: S.String,
-    DiagnosticCode: S.optional(S.String),
-    LastAttemptDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ExtensionFields: S.optional(ExtensionFieldList),
-  }),
-).annotate({ identifier: "RecipientDsnFields" }) as any as S.Schema<RecipientDsnFields>;
+const RecipientDsnFields = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<RecipientDsnFields>;
 export interface BouncedRecipientInfo {
   Recipient: string;
   RecipientArn?: string;
   BounceType?: BounceType;
   RecipientDsnFields?: RecipientDsnFields;
 }
-const BouncedRecipientInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Recipient: S.String,
-    RecipientArn: S.optional(S.String),
-    BounceType: S.optional(BounceType),
-    RecipientDsnFields: S.optional(RecipientDsnFields),
-  }),
-).annotate({ identifier: "BouncedRecipientInfo" }) as any as S.Schema<BouncedRecipientInfo>;
+const BouncedRecipientInfo = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<BouncedRecipientInfo>;
 export type BouncedRecipientInfoList = BouncedRecipientInfo[];
-const BouncedRecipientInfoList = /*@__PURE__*/ S.Array(BouncedRecipientInfo);
+const BouncedRecipientInfoList = /*@__PURE__*/ __L.at(__c18, 4);
 export interface SendBounceRequest {
   OriginalMessageId: string;
   BounceSender: string;
@@ -1877,60 +1548,38 @@ export interface SendBounceRequest {
   BouncedRecipientInfoList: BouncedRecipientInfo[];
   BounceSenderArn?: string;
 }
-const SendBounceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OriginalMessageId: S.String,
-    BounceSender: S.String,
-    Explanation: S.optional(S.String),
-    MessageDsn: S.optional(MessageDsn),
-    BouncedRecipientInfoList: BouncedRecipientInfoList,
-    BounceSenderArn: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "SendBounceRequest" }) as any as S.Schema<SendBounceRequest>;
+const SendBounceRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<SendBounceRequest>;
 export interface SendBounceResponse {
   MessageId?: string;
 }
-const SendBounceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MessageId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "SendBounceResponse" }) as any as S.Schema<SendBounceResponse>;
+const SendBounceResponse = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<SendBounceResponse>;
 export type MessageTagName = string;
 export type MessageTagValue = string;
 export interface MessageTag {
   Name: string;
   Value: string;
 }
-const MessageTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Value: S.String }),
-).annotate({ identifier: "MessageTag" }) as any as S.Schema<MessageTag>;
+const MessageTag = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<MessageTag>;
 export type MessageTagList = MessageTag[];
-const MessageTagList = /*@__PURE__*/ S.Array(MessageTag);
+const MessageTagList = /*@__PURE__*/ __L.at(__c19, 0);
 export type TemplateData = string;
 export interface Destination {
   ToAddresses?: string[];
   CcAddresses?: string[];
   BccAddresses?: string[];
 }
-const Destination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ToAddresses: S.optional(AddressList),
-    CcAddresses: S.optional(AddressList),
-    BccAddresses: S.optional(AddressList),
-  }),
-).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
+const Destination = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<Destination>;
 export interface BulkEmailDestination {
   Destination: Destination;
   ReplacementTags?: MessageTag[];
   ReplacementTemplateData?: string;
 }
-const BulkEmailDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Destination: Destination,
-    ReplacementTags: S.optional(MessageTagList),
-    ReplacementTemplateData: S.optional(S.String),
-  }),
-).annotate({ identifier: "BulkEmailDestination" }) as any as S.Schema<BulkEmailDestination>;
+const BulkEmailDestination = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<BulkEmailDestination>;
 export type BulkEmailDestinationList = BulkEmailDestination[];
-const BulkEmailDestinationList = /*@__PURE__*/ S.Array(BulkEmailDestination);
+const BulkEmailDestinationList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface SendBulkTemplatedEmailRequest {
   Source: string;
   SourceArn?: string;
@@ -1944,23 +1593,10 @@ export interface SendBulkTemplatedEmailRequest {
   DefaultTemplateData: string;
   Destinations: BulkEmailDestination[];
 }
-const SendBulkTemplatedEmailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Source: S.String,
-    SourceArn: S.optional(S.String),
-    ReplyToAddresses: S.optional(AddressList),
-    ReturnPath: S.optional(S.String),
-    ReturnPathArn: S.optional(S.String),
-    ConfigurationSetName: S.optional(S.String),
-    DefaultTags: S.optional(MessageTagList),
-    Template: S.String,
-    TemplateArn: S.optional(S.String),
-    DefaultTemplateData: S.String,
-    Destinations: BulkEmailDestinationList,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SendBulkTemplatedEmailRequest",
-}) as any as S.Schema<SendBulkTemplatedEmailRequest>;
+const SendBulkTemplatedEmailRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<SendBulkTemplatedEmailRequest>;
 export type BulkEmailStatus =
   | "Success"
   | "MessageRejected"
@@ -1984,70 +1620,52 @@ export interface BulkEmailDestinationStatus {
   Error?: string;
   MessageId?: string;
 }
-const BulkEmailDestinationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(BulkEmailStatus),
-    Error: S.optional(S.String),
-    MessageId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BulkEmailDestinationStatus",
-}) as any as S.Schema<BulkEmailDestinationStatus>;
+const BulkEmailDestinationStatus = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<BulkEmailDestinationStatus>;
 export type BulkEmailDestinationStatusList = BulkEmailDestinationStatus[];
-const BulkEmailDestinationStatusList = /*@__PURE__*/ S.Array(BulkEmailDestinationStatus);
+const BulkEmailDestinationStatusList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface SendBulkTemplatedEmailResponse {
   Status: BulkEmailDestinationStatus[];
 }
-const SendBulkTemplatedEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: BulkEmailDestinationStatusList }).pipe(ns),
-).annotate({
-  identifier: "SendBulkTemplatedEmailResponse",
-}) as any as S.Schema<SendBulkTemplatedEmailResponse>;
+const SendBulkTemplatedEmailResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<SendBulkTemplatedEmailResponse>;
 export interface SendCustomVerificationEmailRequest {
   EmailAddress: string;
   TemplateName: string;
   ConfigurationSetName?: string;
 }
-const SendCustomVerificationEmailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EmailAddress: S.String,
-    TemplateName: S.String,
-    ConfigurationSetName: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SendCustomVerificationEmailRequest",
-}) as any as S.Schema<SendCustomVerificationEmailRequest>;
+const SendCustomVerificationEmailRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<SendCustomVerificationEmailRequest>;
 export interface SendCustomVerificationEmailResponse {
   MessageId?: string;
 }
-const SendCustomVerificationEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MessageId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "SendCustomVerificationEmailResponse",
-}) as any as S.Schema<SendCustomVerificationEmailResponse>;
+const SendCustomVerificationEmailResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<SendCustomVerificationEmailResponse>;
 export type MessageData = string;
 export type Charset = string;
 export interface Content {
   Data: string;
   Charset?: string;
 }
-const Content = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Data: S.String, Charset: S.optional(S.String) }),
-).annotate({ identifier: "Content" }) as any as S.Schema<Content>;
+const Content = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<Content>;
 export interface Body {
   Text?: Content;
   Html?: Content;
 }
-const Body = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Text: S.optional(Content), Html: S.optional(Content) }),
-).annotate({ identifier: "Body" }) as any as S.Schema<Body>;
+const Body = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<Body>;
 export interface Message {
   Subject: Content;
   Body: Body;
 }
-const Message = /*@__PURE__*/ S.suspend(() => S.Struct({ Subject: Content, Body: Body })).annotate({
-  identifier: "Message",
-}) as any as S.Schema<Message>;
+const Message = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<Message>;
 export interface SendEmailRequest {
   Source: string;
   Destination: Destination;
@@ -2059,32 +1677,16 @@ export interface SendEmailRequest {
   Tags?: MessageTag[];
   ConfigurationSetName?: string;
 }
-const SendEmailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Source: S.String,
-    Destination: Destination,
-    Message: Message,
-    ReplyToAddresses: S.optional(AddressList),
-    ReturnPath: S.optional(S.String),
-    SourceArn: S.optional(S.String),
-    ReturnPathArn: S.optional(S.String),
-    Tags: S.optional(MessageTagList),
-    ConfigurationSetName: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "SendEmailRequest" }) as any as S.Schema<SendEmailRequest>;
+const SendEmailRequest = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<SendEmailRequest>;
 export interface SendEmailResponse {
   MessageId: string;
 }
-const SendEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MessageId: S.String }).pipe(ns),
-).annotate({ identifier: "SendEmailResponse" }) as any as S.Schema<SendEmailResponse>;
+const SendEmailResponse = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<SendEmailResponse>;
 export type RawMessageData = Uint8Array;
 export interface RawMessage {
   Data: Uint8Array;
 }
-const RawMessage = /*@__PURE__*/ S.suspend(() => S.Struct({ Data: T.Blob })).annotate({
-  identifier: "RawMessage",
-}) as any as S.Schema<RawMessage>;
+const RawMessage = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<RawMessage>;
 export interface SendRawEmailRequest {
   Source?: string;
   Destinations?: string[];
@@ -2095,24 +1697,14 @@ export interface SendRawEmailRequest {
   Tags?: MessageTag[];
   ConfigurationSetName?: string;
 }
-const SendRawEmailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Source: S.optional(S.String),
-    Destinations: S.optional(AddressList),
-    RawMessage: RawMessage,
-    FromArn: S.optional(S.String),
-    SourceArn: S.optional(S.String),
-    ReturnPathArn: S.optional(S.String),
-    Tags: S.optional(MessageTagList),
-    ConfigurationSetName: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "SendRawEmailRequest" }) as any as S.Schema<SendRawEmailRequest>;
+const SendRawEmailRequest = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<SendRawEmailRequest>;
 export interface SendRawEmailResponse {
   MessageId: string;
 }
-const SendRawEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MessageId: S.String }).pipe(ns),
-).annotate({ identifier: "SendRawEmailResponse" }) as any as S.Schema<SendRawEmailResponse>;
+const SendRawEmailResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<SendRawEmailResponse>;
 export interface SendTemplatedEmailRequest {
   Source: string;
   Destination: Destination;
@@ -2126,81 +1718,55 @@ export interface SendTemplatedEmailRequest {
   TemplateArn?: string;
   TemplateData: string;
 }
-const SendTemplatedEmailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Source: S.String,
-    Destination: Destination,
-    ReplyToAddresses: S.optional(AddressList),
-    ReturnPath: S.optional(S.String),
-    SourceArn: S.optional(S.String),
-    ReturnPathArn: S.optional(S.String),
-    Tags: S.optional(MessageTagList),
-    ConfigurationSetName: S.optional(S.String),
-    Template: S.String,
-    TemplateArn: S.optional(S.String),
-    TemplateData: S.String,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SendTemplatedEmailRequest",
-}) as any as S.Schema<SendTemplatedEmailRequest>;
+const SendTemplatedEmailRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<SendTemplatedEmailRequest>;
 export interface SendTemplatedEmailResponse {
   MessageId: string;
 }
-const SendTemplatedEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MessageId: S.String }).pipe(ns),
-).annotate({
-  identifier: "SendTemplatedEmailResponse",
-}) as any as S.Schema<SendTemplatedEmailResponse>;
+const SendTemplatedEmailResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<SendTemplatedEmailResponse>;
 export interface SetActiveReceiptRuleSetRequest {
   RuleSetName?: string;
 }
-const SetActiveReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SetActiveReceiptRuleSetRequest",
-}) as any as S.Schema<SetActiveReceiptRuleSetRequest>;
+const SetActiveReceiptRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<SetActiveReceiptRuleSetRequest>;
 export interface SetActiveReceiptRuleSetResponse {}
-const SetActiveReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetActiveReceiptRuleSetResponse",
-}) as any as S.Schema<SetActiveReceiptRuleSetResponse>;
+const SetActiveReceiptRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<SetActiveReceiptRuleSetResponse>;
 export interface SetIdentityDkimEnabledRequest {
   Identity: string;
   DkimEnabled: boolean;
 }
-const SetIdentityDkimEnabledRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identity: S.String, DkimEnabled: S.Boolean }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SetIdentityDkimEnabledRequest",
-}) as any as S.Schema<SetIdentityDkimEnabledRequest>;
+const SetIdentityDkimEnabledRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<SetIdentityDkimEnabledRequest>;
 export interface SetIdentityDkimEnabledResponse {}
-const SetIdentityDkimEnabledResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetIdentityDkimEnabledResponse",
-}) as any as S.Schema<SetIdentityDkimEnabledResponse>;
+const SetIdentityDkimEnabledResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<SetIdentityDkimEnabledResponse>;
 export interface SetIdentityFeedbackForwardingEnabledRequest {
   Identity: string;
   ForwardingEnabled: boolean;
 }
-const SetIdentityFeedbackForwardingEnabledRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identity: S.String, ForwardingEnabled: S.Boolean }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SetIdentityFeedbackForwardingEnabledRequest",
-}) as any as S.Schema<SetIdentityFeedbackForwardingEnabledRequest>;
+const SetIdentityFeedbackForwardingEnabledRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<SetIdentityFeedbackForwardingEnabledRequest>;
 export interface SetIdentityFeedbackForwardingEnabledResponse {}
-const SetIdentityFeedbackForwardingEnabledResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetIdentityFeedbackForwardingEnabledResponse",
-}) as any as S.Schema<SetIdentityFeedbackForwardingEnabledResponse>;
+const SetIdentityFeedbackForwardingEnabledResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<SetIdentityFeedbackForwardingEnabledResponse>;
 export type NotificationType = "Bounce" | "Complaint" | "Delivery" | (string & {});
 const NotificationType = S.String;
 
@@ -2209,181 +1775,137 @@ export interface SetIdentityHeadersInNotificationsEnabledRequest {
   NotificationType: NotificationType;
   Enabled: boolean;
 }
-const SetIdentityHeadersInNotificationsEnabledRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identity: S.String, NotificationType: NotificationType, Enabled: S.Boolean }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SetIdentityHeadersInNotificationsEnabledRequest",
-}) as any as S.Schema<SetIdentityHeadersInNotificationsEnabledRequest>;
+const SetIdentityHeadersInNotificationsEnabledRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<SetIdentityHeadersInNotificationsEnabledRequest>;
 export interface SetIdentityHeadersInNotificationsEnabledResponse {}
-const SetIdentityHeadersInNotificationsEnabledResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetIdentityHeadersInNotificationsEnabledResponse",
-}) as any as S.Schema<SetIdentityHeadersInNotificationsEnabledResponse>;
+const SetIdentityHeadersInNotificationsEnabledResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<SetIdentityHeadersInNotificationsEnabledResponse>;
 export interface SetIdentityMailFromDomainRequest {
   Identity: string;
   MailFromDomain?: string;
   BehaviorOnMXFailure?: BehaviorOnMXFailure;
 }
-const SetIdentityMailFromDomainRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identity: S.String,
-    MailFromDomain: S.optional(S.String),
-    BehaviorOnMXFailure: S.optional(BehaviorOnMXFailure),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SetIdentityMailFromDomainRequest",
-}) as any as S.Schema<SetIdentityMailFromDomainRequest>;
+const SetIdentityMailFromDomainRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<SetIdentityMailFromDomainRequest>;
 export interface SetIdentityMailFromDomainResponse {}
-const SetIdentityMailFromDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetIdentityMailFromDomainResponse",
-}) as any as S.Schema<SetIdentityMailFromDomainResponse>;
+const SetIdentityMailFromDomainResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<SetIdentityMailFromDomainResponse>;
 export interface SetIdentityNotificationTopicRequest {
   Identity: string;
   NotificationType: NotificationType;
   SnsTopic?: string;
 }
-const SetIdentityNotificationTopicRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identity: S.String,
-    NotificationType: NotificationType,
-    SnsTopic: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SetIdentityNotificationTopicRequest",
-}) as any as S.Schema<SetIdentityNotificationTopicRequest>;
+const SetIdentityNotificationTopicRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<SetIdentityNotificationTopicRequest>;
 export interface SetIdentityNotificationTopicResponse {}
-const SetIdentityNotificationTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetIdentityNotificationTopicResponse",
-}) as any as S.Schema<SetIdentityNotificationTopicResponse>;
+const SetIdentityNotificationTopicResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<SetIdentityNotificationTopicResponse>;
 export interface SetReceiptRulePositionRequest {
   RuleSetName: string;
   RuleName: string;
   After?: string;
 }
-const SetReceiptRulePositionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String, RuleName: S.String, After: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SetReceiptRulePositionRequest",
-}) as any as S.Schema<SetReceiptRulePositionRequest>;
+const SetReceiptRulePositionRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<SetReceiptRulePositionRequest>;
 export interface SetReceiptRulePositionResponse {}
-const SetReceiptRulePositionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetReceiptRulePositionResponse",
-}) as any as S.Schema<SetReceiptRulePositionResponse>;
+const SetReceiptRulePositionResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<SetReceiptRulePositionResponse>;
 export interface TestRenderTemplateRequest {
   TemplateName: string;
   TemplateData: string;
 }
-const TestRenderTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TemplateName: S.String, TemplateData: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "TestRenderTemplateRequest",
-}) as any as S.Schema<TestRenderTemplateRequest>;
+const TestRenderTemplateRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<TestRenderTemplateRequest>;
 export type RenderedTemplate = string;
 export interface TestRenderTemplateResponse {
   RenderedTemplate?: string;
 }
-const TestRenderTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RenderedTemplate: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "TestRenderTemplateResponse",
-}) as any as S.Schema<TestRenderTemplateResponse>;
+const TestRenderTemplateResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<TestRenderTemplateResponse>;
 export interface UpdateAccountSendingEnabledRequest {
   Enabled?: boolean;
 }
-const UpdateAccountSendingEnabledRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateAccountSendingEnabledRequest",
-}) as any as S.Schema<UpdateAccountSendingEnabledRequest>;
+const UpdateAccountSendingEnabledRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<UpdateAccountSendingEnabledRequest>;
 export interface UpdateAccountSendingEnabledResponse {}
-const UpdateAccountSendingEnabledResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateAccountSendingEnabledResponse",
-}) as any as S.Schema<UpdateAccountSendingEnabledResponse>;
+const UpdateAccountSendingEnabledResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<UpdateAccountSendingEnabledResponse>;
 export interface UpdateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination: EventDestination;
 }
-const UpdateConfigurationSetEventDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String, EventDestination: EventDestination }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateConfigurationSetEventDestinationRequest",
-}) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>;
+const UpdateConfigurationSetEventDestinationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>;
 export interface UpdateConfigurationSetEventDestinationResponse {}
-const UpdateConfigurationSetEventDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateConfigurationSetEventDestinationResponse",
-}) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
+const UpdateConfigurationSetEventDestinationResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
 export interface UpdateConfigurationSetReputationMetricsEnabledRequest {
   ConfigurationSetName: string;
   Enabled: boolean;
 }
-const UpdateConfigurationSetReputationMetricsEnabledRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String, Enabled: S.Boolean }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateConfigurationSetReputationMetricsEnabledRequest",
-}) as any as S.Schema<UpdateConfigurationSetReputationMetricsEnabledRequest>;
+const UpdateConfigurationSetReputationMetricsEnabledRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<UpdateConfigurationSetReputationMetricsEnabledRequest>;
 export interface UpdateConfigurationSetReputationMetricsEnabledResponse {}
-const UpdateConfigurationSetReputationMetricsEnabledResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateConfigurationSetReputationMetricsEnabledResponse",
-}) as any as S.Schema<UpdateConfigurationSetReputationMetricsEnabledResponse>;
+const UpdateConfigurationSetReputationMetricsEnabledResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<UpdateConfigurationSetReputationMetricsEnabledResponse>;
 export interface UpdateConfigurationSetSendingEnabledRequest {
   ConfigurationSetName: string;
   Enabled: boolean;
 }
-const UpdateConfigurationSetSendingEnabledRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String, Enabled: S.Boolean }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateConfigurationSetSendingEnabledRequest",
-}) as any as S.Schema<UpdateConfigurationSetSendingEnabledRequest>;
+const UpdateConfigurationSetSendingEnabledRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<UpdateConfigurationSetSendingEnabledRequest>;
 export interface UpdateConfigurationSetSendingEnabledResponse {}
-const UpdateConfigurationSetSendingEnabledResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateConfigurationSetSendingEnabledResponse",
-}) as any as S.Schema<UpdateConfigurationSetSendingEnabledResponse>;
+const UpdateConfigurationSetSendingEnabledResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<UpdateConfigurationSetSendingEnabledResponse>;
 export interface UpdateConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
   TrackingOptions: TrackingOptions;
 }
-const UpdateConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSetName: S.String, TrackingOptions: TrackingOptions }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateConfigurationSetTrackingOptionsRequest",
-}) as any as S.Schema<UpdateConfigurationSetTrackingOptionsRequest>;
+const UpdateConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateConfigurationSetTrackingOptionsRequest>;
 export interface UpdateConfigurationSetTrackingOptionsResponse {}
-const UpdateConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateConfigurationSetTrackingOptionsResponse",
-}) as any as S.Schema<UpdateConfigurationSetTrackingOptionsResponse>;
+const UpdateConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<UpdateConfigurationSetTrackingOptionsResponse>;
 export interface UpdateCustomVerificationEmailTemplateRequest {
   TemplateName: string;
   FromEmailAddress?: string;
@@ -2392,110 +1914,93 @@ export interface UpdateCustomVerificationEmailTemplateRequest {
   SuccessRedirectionURL?: string;
   FailureRedirectionURL?: string;
 }
-const UpdateCustomVerificationEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateName: S.String,
-    FromEmailAddress: S.optional(S.String),
-    TemplateSubject: S.optional(S.String),
-    TemplateContent: S.optional(S.String),
-    SuccessRedirectionURL: S.optional(S.String),
-    FailureRedirectionURL: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateCustomVerificationEmailTemplateRequest",
-}) as any as S.Schema<UpdateCustomVerificationEmailTemplateRequest>;
+const UpdateCustomVerificationEmailTemplateRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<UpdateCustomVerificationEmailTemplateRequest>;
 export interface UpdateCustomVerificationEmailTemplateResponse {}
-const UpdateCustomVerificationEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateCustomVerificationEmailTemplateResponse",
-}) as any as S.Schema<UpdateCustomVerificationEmailTemplateResponse>;
+const UpdateCustomVerificationEmailTemplateResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<UpdateCustomVerificationEmailTemplateResponse>;
 export interface UpdateReceiptRuleRequest {
   RuleSetName: string;
   Rule: ReceiptRule;
 }
-const UpdateReceiptRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetName: S.String, Rule: ReceiptRule }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateReceiptRuleRequest" }) as any as S.Schema<UpdateReceiptRuleRequest>;
+const UpdateReceiptRuleRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<UpdateReceiptRuleRequest>;
 export interface UpdateReceiptRuleResponse {}
-const UpdateReceiptRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateReceiptRuleResponse",
-}) as any as S.Schema<UpdateReceiptRuleResponse>;
+const UpdateReceiptRuleResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<UpdateReceiptRuleResponse>;
 export interface UpdateTemplateRequest {
   Template: Template;
 }
-const UpdateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Template: Template }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateTemplateRequest" }) as any as S.Schema<UpdateTemplateRequest>;
+const UpdateTemplateRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<UpdateTemplateRequest>;
 export interface UpdateTemplateResponse {}
-const UpdateTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateTemplateResponse",
-}) as any as S.Schema<UpdateTemplateResponse>;
+const UpdateTemplateResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<UpdateTemplateResponse>;
 export type Domain = string;
 export interface VerifyDomainDkimRequest {
   Domain: string;
 }
-const VerifyDomainDkimRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Domain: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "VerifyDomainDkimRequest" }) as any as S.Schema<VerifyDomainDkimRequest>;
+const VerifyDomainDkimRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<VerifyDomainDkimRequest>;
 export interface VerifyDomainDkimResponse {
   DkimTokens: string[];
 }
-const VerifyDomainDkimResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DkimTokens: VerificationTokenList }).pipe(ns),
-).annotate({ identifier: "VerifyDomainDkimResponse" }) as any as S.Schema<VerifyDomainDkimResponse>;
+const VerifyDomainDkimResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<VerifyDomainDkimResponse>;
 export interface VerifyDomainIdentityRequest {
   Domain: string;
 }
-const VerifyDomainIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Domain: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "VerifyDomainIdentityRequest",
-}) as any as S.Schema<VerifyDomainIdentityRequest>;
+const VerifyDomainIdentityRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<VerifyDomainIdentityRequest>;
 export interface VerifyDomainIdentityResponse {
   VerificationToken: string;
 }
-const VerifyDomainIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VerificationToken: S.String }).pipe(ns),
-).annotate({
-  identifier: "VerifyDomainIdentityResponse",
-}) as any as S.Schema<VerifyDomainIdentityResponse>;
+const VerifyDomainIdentityResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<VerifyDomainIdentityResponse>;
 export interface VerifyEmailAddressRequest {
   EmailAddress: string;
 }
-const VerifyEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EmailAddress: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "VerifyEmailAddressRequest",
-}) as any as S.Schema<VerifyEmailAddressRequest>;
+const VerifyEmailAddressRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<VerifyEmailAddressRequest>;
 export interface VerifyEmailAddressResponse {}
-const VerifyEmailAddressResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "VerifyEmailAddressResponse",
-}) as any as S.Schema<VerifyEmailAddressResponse>;
+const VerifyEmailAddressResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<VerifyEmailAddressResponse>;
 export interface VerifyEmailIdentityRequest {
   EmailAddress: string;
 }
-const VerifyEmailIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EmailAddress: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "VerifyEmailIdentityRequest",
-}) as any as S.Schema<VerifyEmailIdentityRequest>;
+const VerifyEmailIdentityRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<VerifyEmailIdentityRequest>;
 export interface VerifyEmailIdentityResponse {}
-const VerifyEmailIdentityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "VerifyEmailIdentityResponse",
-}) as any as S.Schema<VerifyEmailIdentityResponse>;
+const VerifyEmailIdentityResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<VerifyEmailIdentityResponse>;
 export type RuleOrRuleSetName = string;
 export type ErrorMessage = string;
 export type CloneReceiptRuleSetError =
@@ -4657,3 +4162,1414 @@ export const verifyEmailIdentity: API.OperationMethod<
   retry: Retry,
   operationName: "VerifyEmailIdentity",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String, OriginalRuleSetName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CloneReceiptRuleSetRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CloneReceiptRuleSetResponse",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
+        identifier: "ConfigurationSet",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSet: ConfigurationSet }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateConfigurationSetRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CreateConfigurationSetResponse",
+      });
+    case 5:
+      return S.Array(EventType);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ IAMRoleARN: S.String, DeliveryStreamARN: S.String }),
+      ).annotate({
+        identifier: "KinesisFirehoseDestination",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          DimensionName: S.String,
+          DimensionValueSource: DimensionValueSource,
+          DefaultDimensionValue: S.String,
+        }),
+      ).annotate({
+        identifier: "CloudWatchDimensionConfiguration",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CloudWatchDimensionConfiguration);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DimensionConfigurations: CloudWatchDimensionConfigurations }),
+      ).annotate({ identifier: "CloudWatchDestination" });
+    case 2:
+      return S.suspend(() => S.Struct({ TopicARN: S.String })).annotate({
+        identifier: "SNSDestination",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Enabled: S.optional(S.Boolean),
+          MatchingEventTypes: EventTypes,
+          KinesisFirehoseDestination: S.optional(KinesisFirehoseDestination),
+          CloudWatchDestination: S.optional(CloudWatchDestination),
+          SNSDestination: S.optional(SNSDestination),
+        }),
+      ).annotate({ identifier: "EventDestination" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String, EventDestination: EventDestination }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateConfigurationSetEventDestinationRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CreateConfigurationSetEventDestinationResponse",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ CustomRedirectDomain: S.optional(S.String) })).annotate({
+        identifier: "TrackingOptions",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String, TrackingOptions: TrackingOptions }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateConfigurationSetTrackingOptionsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CreateConfigurationSetTrackingOptionsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String,
+          FromEmailAddress: S.String,
+          TemplateSubject: S.String,
+          TemplateContent: S.String,
+          SuccessRedirectionURL: S.String,
+          FailureRedirectionURL: S.String,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateCustomVerificationEmailTemplateRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CreateCustomVerificationEmailTemplateResponse",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Policy: ReceiptFilterPolicy, Cidr: S.String })).annotate({
+        identifier: "ReceiptIpFilter",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ Name: S.String, IpFilter: ReceiptIpFilter })).annotate({
+        identifier: "ReceiptFilter",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Filter: ReceiptFilter }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateReceiptFilterRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CreateReceiptFilterResponse",
+      });
+    case 7:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TopicArn: S.optional(S.String),
+          BucketName: S.String,
+          ObjectKeyPrefix: S.optional(S.String),
+          KmsKeyArn: S.optional(S.String),
+          IamRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3Action" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TopicArn: S.optional(S.String),
+          SmtpReplyCode: S.String,
+          StatusCode: S.optional(S.String),
+          Message: S.String,
+          Sender: S.String,
+        }),
+      ).annotate({ identifier: "BounceAction" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ TopicArn: S.optional(S.String), OrganizationArn: S.String }),
+      ).annotate({ identifier: "WorkmailAction" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TopicArn: S.optional(S.String),
+          FunctionArn: S.String,
+          InvocationType: S.optional(InvocationType),
+        }),
+      ).annotate({ identifier: "LambdaAction" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Scope: StopScope, TopicArn: S.optional(S.String) }),
+      ).annotate({ identifier: "StopAction" });
+    case 5:
+      return S.suspend(() => S.Struct({ HeaderName: S.String, HeaderValue: S.String })).annotate({
+        identifier: "AddHeaderAction",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ TopicArn: S.String, Encoding: S.optional(SNSActionEncoding) }),
+      ).annotate({ identifier: "SNSAction" });
+    case 7:
+      return S.suspend(() => S.Struct({ InstanceARN: S.String, IAMRoleARN: S.String })).annotate({
+        identifier: "ConnectAction",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          S3Action: S.optional(S3Action),
+          BounceAction: S.optional(BounceAction),
+          WorkmailAction: S.optional(WorkmailAction),
+          LambdaAction: S.optional(LambdaAction),
+          StopAction: S.optional(StopAction),
+          AddHeaderAction: S.optional(AddHeaderAction),
+          SNSAction: S.optional(SNSAction),
+          ConnectAction: S.optional(ConnectAction),
+        }),
+      ).annotate({ identifier: "ReceiptAction" });
+    case 1:
+      return S.Array(ReceiptAction);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Enabled: S.optional(S.Boolean),
+          TlsPolicy: S.optional(TlsPolicy),
+          Recipients: S.optional(RecipientsList),
+          Actions: S.optional(ReceiptActionsList),
+          ScanEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ReceiptRule" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String, After: S.optional(S.String), Rule: ReceiptRule }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateReceiptRuleRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CreateReceiptRuleResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateReceiptRuleSetRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CreateReceiptRuleSetResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String,
+          SubjectPart: S.optional(S.String),
+          TextPart: S.optional(S.String),
+          HtmlPart: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Template" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Template: Template }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateTemplateRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CreateTemplateResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationSetRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteConfigurationSetResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String, EventDestinationName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationSetEventDestinationRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteConfigurationSetEventDestinationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationSetTrackingOptionsRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteConfigurationSetTrackingOptionsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TemplateName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteCustomVerificationEmailTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteCustomVerificationEmailTemplateResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Identity: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteIdentityRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteIdentityResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Identity: S.String, PolicyName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteIdentityPolicyRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteIdentityPolicyResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ FilterName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteReceiptFilterRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteReceiptFilterResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String, RuleName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteReceiptRuleRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteReceiptRuleResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteReceiptRuleSetRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteReceiptRuleSetResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ TemplateName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteTemplateRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteTemplateResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ EmailAddress: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteVerifiedEmailAddressRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteVerifiedEmailAddressResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeActiveReceiptRuleSetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ReceiptRuleSetMetadata" });
+    case 2:
+      return S.Array(ReceiptRule);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Metadata: S.optional(ReceiptRuleSetMetadata),
+          Rules: S.optional(ReceiptRulesList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeActiveReceiptRuleSetResponse",
+      });
+    case 4:
+      return S.Array(ConfigurationSetAttribute);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSetName: S.String,
+          ConfigurationSetAttributeNames: S.optional(ConfigurationSetAttributeList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeConfigurationSetRequest",
+      });
+    case 6:
+      return S.Array(EventDestination);
+    case 7:
+      return S.suspend(() => S.Struct({ TlsPolicy: S.optional(TlsPolicy) })).annotate({
+        identifier: "DeliveryOptions",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SendingEnabled: S.optional(S.Boolean),
+          ReputationMetricsEnabled: S.optional(S.Boolean),
+          LastFreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ReputationOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSet: S.optional(ConfigurationSet),
+          EventDestinations: S.optional(EventDestinations),
+          TrackingOptions: S.optional(TrackingOptions),
+          DeliveryOptions: S.optional(DeliveryOptions),
+          ReputationOptions: S.optional(ReputationOptions),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeConfigurationSetResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String, RuleName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeReceiptRuleRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Rule: S.optional(ReceiptRule) }).pipe(ns)).annotate({
+        identifier: "DescribeReceiptRuleResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeReceiptRuleSetRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Metadata: S.optional(ReceiptRuleSetMetadata),
+          Rules: S.optional(ReceiptRulesList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeReceiptRuleSetResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAccountSendingEnabledRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(ns)).annotate({
+        identifier: "GetAccountSendingEnabledResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TemplateName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetCustomVerificationEmailTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.optional(S.String),
+          FromEmailAddress: S.optional(S.String),
+          TemplateSubject: S.optional(S.String),
+          TemplateContent: S.optional(S.String),
+          SuccessRedirectionURL: S.optional(S.String),
+          FailureRedirectionURL: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetCustomVerificationEmailTemplateResponse",
+      });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Identities: IdentityList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetIdentityDkimAttributesRequest",
+      });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DkimEnabled: S.Boolean,
+          DkimVerificationStatus: VerificationStatus,
+          DkimTokens: S.optional(VerificationTokenList),
+        }),
+      ).annotate({ identifier: "IdentityDkimAttributes" });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ IdentityDkimAttributes.pipe(S.optional));
+    case 7:
+      return S.suspend(() => S.Struct({ DkimAttributes: DkimAttributes }).pipe(ns)).annotate({
+        identifier: "GetIdentityDkimAttributesResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Identities: IdentityList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetIdentityMailFromDomainAttributesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MailFromDomain: S.String,
+          MailFromDomainStatus: CustomMailFromStatus,
+          BehaviorOnMXFailure: BehaviorOnMXFailure,
+        }),
+      ).annotate({
+        identifier: "IdentityMailFromDomainAttributes",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ IdentityMailFromDomainAttributes.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ MailFromDomainAttributes: MailFromDomainAttributes }).pipe(ns),
+      ).annotate({
+        identifier: "GetIdentityMailFromDomainAttributesResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Identities: IdentityList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetIdentityNotificationAttributesRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          BounceTopic: S.String,
+          ComplaintTopic: S.String,
+          DeliveryTopic: S.String,
+          ForwardingEnabled: S.Boolean,
+          HeadersInBounceNotificationsEnabled: S.optional(S.Boolean),
+          HeadersInComplaintNotificationsEnabled: S.optional(S.Boolean),
+          HeadersInDeliveryNotificationsEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "IdentityNotificationAttributes",
+      });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ IdentityNotificationAttributes.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ NotificationAttributes: NotificationAttributes }).pipe(ns),
+      ).annotate({
+        identifier: "GetIdentityNotificationAttributesResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Identity: S.String, PolicyNames: PolicyNameList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetIdentityPoliciesRequest",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 3:
+      return S.suspend(() => S.Struct({ Policies: PolicyMap }).pipe(ns)).annotate({
+        identifier: "GetIdentityPoliciesResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Identities: IdentityList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetIdentityVerificationAttributesRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          VerificationStatus: VerificationStatus,
+          VerificationToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IdentityVerificationAttributes",
+      });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ IdentityVerificationAttributes.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ VerificationAttributes: VerificationAttributes }).pipe(ns),
+      ).annotate({
+        identifier: "GetIdentityVerificationAttributesResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetSendQuotaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Max24HourSend: S.optional(S.Number),
+          MaxSendRate: S.optional(S.Number),
+          SentLast24Hours: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetSendQuotaResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetSendStatisticsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          DeliveryAttempts: S.optional(S.Number),
+          Bounces: S.optional(S.Number),
+          Complaints: S.optional(S.Number),
+          Rejects: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SendDataPoint" });
+    case 4:
+      return S.Array(SendDataPoint);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ SendDataPoints: S.optional(SendDataPointList) }).pipe(ns),
+      ).annotate({
+        identifier: "GetSendStatisticsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ TemplateName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetTemplateRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ Template: S.optional(Template) }).pipe(ns)).annotate({
+        identifier: "GetTemplateResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), MaxItems: S.optional(S.Number) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListConfigurationSetsRequest",
+      });
+    case 1:
+      return S.Array(ConfigurationSet);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSets: S.optional(ConfigurationSets),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListConfigurationSetsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListCustomVerificationEmailTemplatesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.optional(S.String),
+          FromEmailAddress: S.optional(S.String),
+          TemplateSubject: S.optional(S.String),
+          SuccessRedirectionURL: S.optional(S.String),
+          FailureRedirectionURL: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomVerificationEmailTemplate",
+      });
+    case 5:
+      return S.Array(CustomVerificationEmailTemplate);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CustomVerificationEmailTemplates: S.optional(CustomVerificationEmailTemplates),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListCustomVerificationEmailTemplatesResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          IdentityType: S.optional(IdentityType),
+          NextToken: S.optional(S.String),
+          MaxItems: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListIdentitiesRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Identities: IdentityList, NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListIdentitiesResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Identity: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListIdentityPoliciesRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ PolicyNames: PolicyNameList }).pipe(ns)).annotate({
+        identifier: "ListIdentityPoliciesResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListReceiptFiltersRequest",
+      });
+    case 4:
+      return S.Array(ReceiptFilter);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Filters: S.optional(ReceiptFilterList) }).pipe(ns),
+      ).annotate({
+        identifier: "ListReceiptFiltersResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListReceiptRuleSetsRequest",
+      });
+    case 7:
+      return S.Array(ReceiptRuleSetMetadata);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleSets: S.optional(ReceiptRuleSetsLists),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListReceiptRuleSetsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), MaxItems: S.optional(S.Number) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListTemplatesRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "TemplateMetadata" });
+    case 3:
+      return S.Array(TemplateMetadata);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TemplatesMetadata: S.optional(TemplateMetadataList),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListTemplatesResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListVerifiedEmailAddressesRequest",
+      });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ VerifiedEmailAddresses: S.optional(AddressList) }).pipe(ns),
+      ).annotate({
+        identifier: "ListVerifiedEmailAddressesResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSetName: S.String,
+          DeliveryOptions: S.optional(DeliveryOptions),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "PutConfigurationSetDeliveryOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutConfigurationSetDeliveryOptionsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Identity: S.String, PolicyName: S.String, Policy: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutIdentityPolicyRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutIdentityPolicyResponse",
+      });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String, RuleNames: ReceiptRuleNamesList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ReorderReceiptRuleSetRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "ReorderReceiptRuleSetResponse",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
+        identifier: "ExtensionField",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ExtensionField);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ReportingMta: S.String,
+          ArrivalDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          ExtensionFields: S.optional(ExtensionFieldList),
+        }),
+      ).annotate({ identifier: "MessageDsn" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          FinalRecipient: S.optional(S.String),
+          Action: DsnAction,
+          RemoteMta: S.optional(S.String),
+          Status: S.String,
+          DiagnosticCode: S.optional(S.String),
+          LastAttemptDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          ExtensionFields: S.optional(ExtensionFieldList),
+        }),
+      ).annotate({ identifier: "RecipientDsnFields" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Recipient: S.String,
+          RecipientArn: S.optional(S.String),
+          BounceType: S.optional(BounceType),
+          RecipientDsnFields: S.optional(RecipientDsnFields),
+        }),
+      ).annotate({ identifier: "BouncedRecipientInfo" });
+    case 4:
+      return S.Array(BouncedRecipientInfo);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          OriginalMessageId: S.String,
+          BounceSender: S.String,
+          Explanation: S.optional(S.String),
+          MessageDsn: S.optional(MessageDsn),
+          BouncedRecipientInfoList: BouncedRecipientInfoList,
+          BounceSenderArn: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SendBounceRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "SendBounceResponse",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
+        identifier: "MessageTag",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(MessageTag);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ToAddresses: S.optional(AddressList),
+          CcAddresses: S.optional(AddressList),
+          BccAddresses: S.optional(AddressList),
+        }),
+      ).annotate({ identifier: "Destination" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Destination: Destination,
+          ReplacementTags: S.optional(MessageTagList),
+          ReplacementTemplateData: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BulkEmailDestination" });
+    case 3:
+      return S.Array(BulkEmailDestination);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Source: S.String,
+          SourceArn: S.optional(S.String),
+          ReplyToAddresses: S.optional(AddressList),
+          ReturnPath: S.optional(S.String),
+          ReturnPathArn: S.optional(S.String),
+          ConfigurationSetName: S.optional(S.String),
+          DefaultTags: S.optional(MessageTagList),
+          Template: S.String,
+          TemplateArn: S.optional(S.String),
+          DefaultTemplateData: S.String,
+          Destinations: BulkEmailDestinationList,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SendBulkTemplatedEmailRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(BulkEmailStatus),
+          Error: S.optional(S.String),
+          MessageId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BulkEmailDestinationStatus",
+      });
+    case 6:
+      return S.Array(BulkEmailDestinationStatus);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Status: BulkEmailDestinationStatusList }).pipe(ns),
+      ).annotate({
+        identifier: "SendBulkTemplatedEmailResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailAddress: S.String,
+          TemplateName: S.String,
+          ConfigurationSetName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SendCustomVerificationEmailRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "SendCustomVerificationEmailResponse",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Data: S.String, Charset: S.optional(S.String) })).annotate({
+        identifier: "Content",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Text: S.optional(Content), Html: S.optional(Content) }),
+      ).annotate({ identifier: "Body" });
+    case 4:
+      return S.suspend(() => S.Struct({ Subject: Content, Body: Body })).annotate({
+        identifier: "Message",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Source: S.String,
+          Destination: Destination,
+          Message: Message,
+          ReplyToAddresses: S.optional(AddressList),
+          ReturnPath: S.optional(S.String),
+          SourceArn: S.optional(S.String),
+          ReturnPathArn: S.optional(S.String),
+          Tags: S.optional(MessageTagList),
+          ConfigurationSetName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SendEmailRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ MessageId: S.String }).pipe(ns)).annotate({
+        identifier: "SendEmailResponse",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Data: T.Blob })).annotate({
+        identifier: "RawMessage",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Source: S.optional(S.String),
+          Destinations: S.optional(AddressList),
+          RawMessage: RawMessage,
+          FromArn: S.optional(S.String),
+          SourceArn: S.optional(S.String),
+          ReturnPathArn: S.optional(S.String),
+          Tags: S.optional(MessageTagList),
+          ConfigurationSetName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SendRawEmailRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ MessageId: S.String }).pipe(ns)).annotate({
+        identifier: "SendRawEmailResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Source: S.String,
+          Destination: Destination,
+          ReplyToAddresses: S.optional(AddressList),
+          ReturnPath: S.optional(S.String),
+          SourceArn: S.optional(S.String),
+          ReturnPathArn: S.optional(S.String),
+          Tags: S.optional(MessageTagList),
+          ConfigurationSetName: S.optional(S.String),
+          Template: S.String,
+          TemplateArn: S.optional(S.String),
+          TemplateData: S.String,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SendTemplatedEmailRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ MessageId: S.String }).pipe(ns)).annotate({
+        identifier: "SendTemplatedEmailResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "SetActiveReceiptRuleSetRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "SetActiveReceiptRuleSetResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Identity: S.String, DkimEnabled: S.Boolean }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "SetIdentityDkimEnabledRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "SetIdentityDkimEnabledResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Identity: S.String, ForwardingEnabled: S.Boolean }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "SetIdentityFeedbackForwardingEnabledRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "SetIdentityFeedbackForwardingEnabledResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Identity: S.String,
+          NotificationType: NotificationType,
+          Enabled: S.Boolean,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SetIdentityHeadersInNotificationsEnabledRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "SetIdentityHeadersInNotificationsEnabledResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Identity: S.String,
+          MailFromDomain: S.optional(S.String),
+          BehaviorOnMXFailure: S.optional(BehaviorOnMXFailure),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SetIdentityMailFromDomainRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "SetIdentityMailFromDomainResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Identity: S.String,
+          NotificationType: NotificationType,
+          SnsTopic: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SetIdentityNotificationTopicRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "SetIdentityNotificationTopicResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String, RuleName: S.String, After: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "SetReceiptRulePositionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "SetReceiptRulePositionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ TemplateName: S.String, TemplateData: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "TestRenderTemplateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ RenderedTemplate: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "TestRenderTemplateResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateAccountSendingEnabledRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateAccountSendingEnabledResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String, EventDestination: EventDestination }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateConfigurationSetEventDestinationRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateConfigurationSetEventDestinationResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String, Enabled: S.Boolean }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateConfigurationSetReputationMetricsEnabledRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateConfigurationSetReputationMetricsEnabledResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String, Enabled: S.Boolean }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateConfigurationSetSendingEnabledRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateConfigurationSetSendingEnabledResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String, TrackingOptions: TrackingOptions }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateConfigurationSetTrackingOptionsRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateConfigurationSetTrackingOptionsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String,
+          FromEmailAddress: S.optional(S.String),
+          TemplateSubject: S.optional(S.String),
+          TemplateContent: S.optional(S.String),
+          SuccessRedirectionURL: S.optional(S.String),
+          FailureRedirectionURL: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateCustomVerificationEmailTemplateRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateCustomVerificationEmailTemplateResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RuleSetName: S.String, Rule: ReceiptRule }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateReceiptRuleRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateReceiptRuleResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Template: Template }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateTemplateRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateTemplateResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Domain: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "VerifyDomainDkimRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ DkimTokens: VerificationTokenList }).pipe(ns)).annotate({
+        identifier: "VerifyDomainDkimResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Domain: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "VerifyDomainIdentityRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ VerificationToken: S.String }).pipe(ns)).annotate({
+        identifier: "VerifyDomainIdentityResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ EmailAddress: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "VerifyEmailAddressRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "VerifyEmailAddressResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ EmailAddress: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "VerifyEmailIdentityRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "VerifyEmailIdentityResponse",
+      });
+  }
+}

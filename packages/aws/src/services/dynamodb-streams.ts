@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
@@ -164,23 +165,14 @@ export interface ShardFilter {
   Type?: ShardFilterType;
   ShardId?: string;
 }
-const ShardFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(ShardFilterType), ShardId: S.optional(S.String) }),
-).annotate({ identifier: "ShardFilter" }) as any as S.Schema<ShardFilter>;
+const ShardFilter = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ShardFilter>;
 export interface DescribeStreamInput {
   StreamArn: string;
   Limit?: number;
   ExclusiveStartShardId?: string;
   ShardFilter?: ShardFilter;
 }
-const DescribeStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamArn: S.String,
-    Limit: S.optional(S.Number),
-    ExclusiveStartShardId: S.optional(S.String),
-    ShardFilter: S.optional(ShardFilter),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeStreamInput" }) as any as S.Schema<DescribeStreamInput>;
+const DescribeStreamInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DescribeStreamInput>;
 export type StreamStatus = "ENABLING" | "ENABLED" | "DISABLING" | "DISABLED" | (string & {});
 const StreamStatus = S.String;
 
@@ -201,36 +193,23 @@ export interface KeySchemaElement {
   AttributeName: string;
   KeyType: KeyType;
 }
-const KeySchemaElement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributeName: S.String, KeyType: KeyType }),
-).annotate({ identifier: "KeySchemaElement" }) as any as S.Schema<KeySchemaElement>;
+const KeySchemaElement = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<KeySchemaElement>;
 export type KeySchema = KeySchemaElement[];
-const KeySchema = /*@__PURE__*/ S.Array(KeySchemaElement);
+const KeySchema = /*@__PURE__*/ __L.at(__c0, 3);
 export type SequenceNumber = string;
 export interface SequenceNumberRange {
   StartingSequenceNumber?: string;
   EndingSequenceNumber?: string;
 }
-const SequenceNumberRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartingSequenceNumber: S.optional(S.String),
-    EndingSequenceNumber: S.optional(S.String),
-  }),
-).annotate({ identifier: "SequenceNumberRange" }) as any as S.Schema<SequenceNumberRange>;
+const SequenceNumberRange = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SequenceNumberRange>;
 export interface Shard {
   ShardId?: string;
   SequenceNumberRange?: SequenceNumberRange;
   ParentShardId?: string;
 }
-const Shard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ShardId: S.optional(S.String),
-    SequenceNumberRange: S.optional(SequenceNumberRange),
-    ParentShardId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Shard" }) as any as S.Schema<Shard>;
+const Shard = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Shard>;
 export type ShardDescriptionList = Shard[];
-const ShardDescriptionList = /*@__PURE__*/ S.Array(Shard);
+const ShardDescriptionList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface StreamDescription {
   StreamArn?: string;
   StreamLabel?: string;
@@ -242,35 +221,17 @@ export interface StreamDescription {
   Shards?: Shard[];
   LastEvaluatedShardId?: string;
 }
-const StreamDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamArn: S.optional(S.String),
-    StreamLabel: S.optional(S.String),
-    StreamStatus: S.optional(StreamStatus),
-    StreamViewType: S.optional(StreamViewType),
-    CreationRequestDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    TableName: S.optional(S.String),
-    KeySchema: S.optional(KeySchema),
-    Shards: S.optional(ShardDescriptionList),
-    LastEvaluatedShardId: S.optional(S.String),
-  }),
-).annotate({ identifier: "StreamDescription" }) as any as S.Schema<StreamDescription>;
+const StreamDescription = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StreamDescription>;
 export interface DescribeStreamOutput {
   StreamDescription?: StreamDescription;
 }
-const DescribeStreamOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StreamDescription: S.optional(StreamDescription) }).pipe(ns),
-).annotate({ identifier: "DescribeStreamOutput" }) as any as S.Schema<DescribeStreamOutput>;
+const DescribeStreamOutput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DescribeStreamOutput>;
 export type ShardIterator = string;
 export interface GetRecordsInput {
   ShardIterator: string;
   Limit?: number;
 }
-const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ShardIterator: S.String, Limit: S.optional(S.Number) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetRecordsInput" }) as any as S.Schema<GetRecordsInput>;
+const GetRecordsInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetRecordsInput>;
 export type OperationType = "INSERT" | "MODIFY" | "REMOVE" | (string & {});
 const OperationType = S.String;
 
@@ -279,22 +240,15 @@ export type StringAttributeValue = string;
 export type NumberAttributeValue = string;
 export type BinaryAttributeValue = Uint8Array;
 export type StringSetAttributeValue = string[];
-const StringSetAttributeValue = /*@__PURE__*/ S.Array(S.String);
+const StringSetAttributeValue = /*@__PURE__*/ __L.at(__c1, 2);
 export type NumberSetAttributeValue = string[];
 const NumberSetAttributeValue = StringSetAttributeValue as any as S.Schema<NumberSetAttributeValue>;
 export type BinarySetAttributeValue = Uint8Array[];
-const BinarySetAttributeValue = /*@__PURE__*/ S.Array(T.Blob);
+const BinarySetAttributeValue = /*@__PURE__*/ __L.at(__c1, 3);
 export type MapAttributeValue = { [key: string]: AttributeValue | undefined };
-const MapAttributeValue = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => AttributeValue)
-    .annotate({ identifier: "AttributeValue" })
-    .pipe(S.optional),
-) as any as S.Schema<MapAttributeValue>;
+const MapAttributeValue = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<MapAttributeValue>;
 export type ListAttributeValue = AttributeValue[];
-const ListAttributeValue = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
-) as any as S.Schema<ListAttributeValue>;
+const ListAttributeValue = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListAttributeValue>;
 export type NullAttributeValue = boolean;
 export type BooleanAttributeValue = boolean;
 export type AttributeValue =
@@ -418,33 +372,9 @@ export type AttributeValue =
       NULL?: never;
       BOOL: boolean;
     };
-const AttributeValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ S: S.String }),
-  /*@__PURE__*/ S.Struct({ N: S.String }),
-  /*@__PURE__*/ S.Struct({ B: T.Blob }),
-  /*@__PURE__*/ S.Struct({ SS: StringSetAttributeValue }),
-  /*@__PURE__*/ S.Struct({ NS: NumberSetAttributeValue }),
-  /*@__PURE__*/ S.Struct({ BS: BinarySetAttributeValue }),
-  /*@__PURE__*/ S.Struct({
-    M: /*@__PURE__*/ S.suspend(() => MapAttributeValue).annotate({
-      identifier: "MapAttributeValue",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    L: /*@__PURE__*/ S.suspend(() => ListAttributeValue).annotate({
-      identifier: "ListAttributeValue",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({ NULL: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ BOOL: S.Boolean }),
-]) as any as S.Schema<AttributeValue>;
+const AttributeValue = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AttributeValue>;
 export type AttributeMap = { [key: string]: AttributeValue | undefined };
-const AttributeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => AttributeValue)
-    .annotate({ identifier: "AttributeValue" })
-    .pipe(S.optional),
-);
+const AttributeMap = /*@__PURE__*/ __L.at(__c1, 7);
 export type PositiveLongObject = number;
 export interface StreamRecord {
   ApproximateCreationDateTime?: Date;
@@ -455,24 +385,12 @@ export interface StreamRecord {
   SizeBytes?: number;
   StreamViewType?: StreamViewType;
 }
-const StreamRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApproximateCreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Keys: S.optional(AttributeMap),
-    NewImage: S.optional(AttributeMap),
-    OldImage: S.optional(AttributeMap),
-    SequenceNumber: S.optional(S.String),
-    SizeBytes: S.optional(S.Number),
-    StreamViewType: S.optional(StreamViewType),
-  }),
-).annotate({ identifier: "StreamRecord" }) as any as S.Schema<StreamRecord>;
+const StreamRecord = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<StreamRecord>;
 export interface Identity {
   PrincipalId?: string;
   Type?: string;
 }
-const Identity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PrincipalId: S.optional(S.String), Type: S.optional(S.String) }),
-).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
+const Identity = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Identity>;
 export interface Record {
   eventID?: string;
   eventName?: OperationType;
@@ -482,26 +400,14 @@ export interface Record {
   dynamodb?: StreamRecord;
   userIdentity?: Identity;
 }
-const Record = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventID: S.optional(S.String),
-    eventName: S.optional(OperationType),
-    eventVersion: S.optional(S.String),
-    eventSource: S.optional(S.String),
-    awsRegion: S.optional(S.String),
-    dynamodb: S.optional(StreamRecord),
-    userIdentity: S.optional(Identity),
-  }),
-).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
+const Record = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Record>;
 export type RecordList = Record[];
-const RecordList = /*@__PURE__*/ S.Array(Record);
+const RecordList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface GetRecordsOutput {
   Records?: Record[];
   NextShardIterator?: string;
 }
-const GetRecordsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Records: S.optional(RecordList), NextShardIterator: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "GetRecordsOutput" }) as any as S.Schema<GetRecordsOutput>;
+const GetRecordsOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetRecordsOutput>;
 export type ShardIteratorType =
   | "TRIM_HORIZON"
   | "LATEST"
@@ -516,55 +422,36 @@ export interface GetShardIteratorInput {
   ShardIteratorType: ShardIteratorType;
   SequenceNumber?: string;
 }
-const GetShardIteratorInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamArn: S.String,
-    ShardId: S.String,
-    ShardIteratorType: ShardIteratorType,
-    SequenceNumber: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetShardIteratorInput" }) as any as S.Schema<GetShardIteratorInput>;
+const GetShardIteratorInput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetShardIteratorInput>;
 export interface GetShardIteratorOutput {
   ShardIterator?: string;
 }
-const GetShardIteratorOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ShardIterator: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "GetShardIteratorOutput" }) as any as S.Schema<GetShardIteratorOutput>;
+const GetShardIteratorOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetShardIteratorOutput>;
 export interface ListStreamsInput {
   TableName?: string;
   Limit?: number;
   ExclusiveStartStreamArn?: string;
 }
-const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TableName: S.optional(S.String),
-    Limit: S.optional(S.Number),
-    ExclusiveStartStreamArn: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListStreamsInput" }) as any as S.Schema<ListStreamsInput>;
+const ListStreamsInput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListStreamsInput>;
 export interface Stream {
   StreamArn?: string;
   TableName?: string;
   StreamLabel?: string;
 }
-const Stream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamArn: S.optional(S.String),
-    TableName: S.optional(S.String),
-    StreamLabel: S.optional(S.String),
-  }),
-).annotate({ identifier: "Stream" }) as any as S.Schema<Stream>;
+const Stream = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Stream>;
 export type StreamList = Stream[];
-const StreamList = /*@__PURE__*/ S.Array(Stream);
+const StreamList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ListStreamsOutput {
   Streams?: Stream[];
   LastEvaluatedStreamArn?: string;
 }
-const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Streams: S.optional(StreamList), LastEvaluatedStreamArn: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({ identifier: "ListStreamsOutput" }) as any as S.Schema<ListStreamsOutput>;
+const ListStreamsOutput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListStreamsOutput>;
 export type ErrorMessage = string;
 export type DescribeStreamError = InternalServerError | ResourceNotFoundException | CommonErrors;
 /**
@@ -680,3 +567,198 @@ export const listStreams: API.OperationMethod<
   retry: Retry,
   operationName: "ListStreams",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Type: S.optional(ShardFilterType), ShardId: S.optional(S.String) }),
+      ).annotate({ identifier: "ShardFilter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamArn: S.String,
+          Limit: S.optional(S.Number),
+          ExclusiveStartShardId: S.optional(S.String),
+          ShardFilter: S.optional(ShardFilter),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeStreamInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ AttributeName: S.String, KeyType: KeyType })).annotate({
+        identifier: "KeySchemaElement",
+      });
+    case 3:
+      return S.Array(KeySchemaElement);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          StartingSequenceNumber: S.optional(S.String),
+          EndingSequenceNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SequenceNumberRange" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ShardId: S.optional(S.String),
+          SequenceNumberRange: S.optional(SequenceNumberRange),
+          ParentShardId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Shard" });
+    case 6:
+      return S.Array(Shard);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StreamArn: S.optional(S.String),
+          StreamLabel: S.optional(S.String),
+          StreamStatus: S.optional(StreamStatus),
+          StreamViewType: S.optional(StreamViewType),
+          CreationRequestDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          TableName: S.optional(S.String),
+          KeySchema: S.optional(KeySchema),
+          Shards: S.optional(ShardDescriptionList),
+          LastEvaluatedShardId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamDescription" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ StreamDescription: S.optional(StreamDescription) }).pipe(ns),
+      ).annotate({ identifier: "DescribeStreamOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ShardIterator: S.String, Limit: S.optional(S.Number) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetRecordsInput" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.Array(T.Blob);
+    case 4:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => AttributeValue)
+          .annotate({ identifier: "AttributeValue" })
+          .pipe(S.optional),
+      );
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+      );
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ S: S.String }),
+        /*@__PURE__*/ S.Struct({ N: S.String }),
+        /*@__PURE__*/ S.Struct({ B: T.Blob }),
+        /*@__PURE__*/ S.Struct({ SS: StringSetAttributeValue }),
+        /*@__PURE__*/ S.Struct({ NS: NumberSetAttributeValue }),
+        /*@__PURE__*/ S.Struct({ BS: BinarySetAttributeValue }),
+        /*@__PURE__*/ S.Struct({
+          M: /*@__PURE__*/ S.suspend(() => MapAttributeValue).annotate({
+            identifier: "MapAttributeValue",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          L: /*@__PURE__*/ S.suspend(() => ListAttributeValue).annotate({
+            identifier: "ListAttributeValue",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({ NULL: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ BOOL: S.Boolean }),
+      ]);
+    case 7:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => AttributeValue)
+          .annotate({ identifier: "AttributeValue" })
+          .pipe(S.optional),
+      );
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApproximateCreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Keys: S.optional(AttributeMap),
+          NewImage: S.optional(AttributeMap),
+          OldImage: S.optional(AttributeMap),
+          SequenceNumber: S.optional(S.String),
+          SizeBytes: S.optional(S.Number),
+          StreamViewType: S.optional(StreamViewType),
+        }),
+      ).annotate({ identifier: "StreamRecord" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ PrincipalId: S.optional(S.String), Type: S.optional(S.String) }),
+      ).annotate({ identifier: "Identity" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          eventID: S.optional(S.String),
+          eventName: S.optional(OperationType),
+          eventVersion: S.optional(S.String),
+          eventSource: S.optional(S.String),
+          awsRegion: S.optional(S.String),
+          dynamodb: S.optional(StreamRecord),
+          userIdentity: S.optional(Identity),
+        }),
+      ).annotate({ identifier: "Record" });
+    case 3:
+      return S.Array(Record);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Records: S.optional(RecordList), NextShardIterator: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "GetRecordsOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          StreamArn: S.String,
+          ShardId: S.String,
+          ShardIteratorType: ShardIteratorType,
+          SequenceNumber: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetShardIteratorInput" });
+    case 6:
+      return S.suspend(() => S.Struct({ ShardIterator: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "GetShardIteratorOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TableName: S.optional(S.String),
+          Limit: S.optional(S.Number),
+          ExclusiveStartStreamArn: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListStreamsInput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StreamArn: S.optional(S.String),
+          TableName: S.optional(S.String),
+          StreamLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Stream" });
+    case 1:
+      return S.Array(Stream);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Streams: S.optional(StreamList),
+          LastEvaluatedStreamArn: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListStreamsOutput" });
+  }
+}

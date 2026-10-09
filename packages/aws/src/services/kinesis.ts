@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as stream from "effect/Stream";
@@ -811,7 +812,7 @@ export type StreamName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c0, 0);
 export type StreamARN = string;
 export type StreamId = string;
 export interface AddTagsToStreamInput {
@@ -820,29 +821,12 @@ export interface AddTagsToStreamInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const AddTagsToStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    Tags: TagMap,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "AddTagsToStreamInput" }) as any as S.Schema<AddTagsToStreamInput>;
+const AddTagsToStreamInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddTagsToStreamInput>;
 export interface AddTagsToStreamResponse {}
-const AddTagsToStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "AddTagsToStreamResponse",
-}) as any as S.Schema<AddTagsToStreamResponse>;
+const AddTagsToStreamResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddTagsToStreamResponse>;
 export type ChannelName = string;
 export type RoleARN = string;
 export type RecordFormatType = "GSR_JSON" | "JSON" | "STRING" | "BYTE_ARRAY" | (string & {});
@@ -853,20 +837,17 @@ export interface RecordConfiguration {
   RecordFormatType: RecordFormatType;
   GSRSchemaARN?: string;
 }
-const RecordConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecordFormatType: RecordFormatType, GSRSchemaARN: S.optional(S.String) }),
-).annotate({ identifier: "RecordConfiguration" }) as any as S.Schema<RecordConfiguration>;
+const RecordConfiguration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<RecordConfiguration>;
 export interface ChannelStreamConfiguration {
   StreamARN: string;
   RecordConfiguration: RecordConfiguration;
 }
-const ChannelStreamConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StreamARN: S.String, RecordConfiguration: RecordConfiguration }),
-).annotate({
-  identifier: "ChannelStreamConfiguration",
-}) as any as S.Schema<ChannelStreamConfiguration>;
+const ChannelStreamConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ChannelStreamConfiguration>;
 export type ChannelStreamConfigurationList = ChannelStreamConfiguration[];
-const ChannelStreamConfigurationList = /*@__PURE__*/ S.Array(ChannelStreamConfiguration);
+const ChannelStreamConfigurationList = /*@__PURE__*/ __L.at(__c0, 5);
 export type DataFreshnessInSeconds = number;
 export type BucketARN = string;
 export type ExpectedBucketOwner = string;
@@ -876,15 +857,10 @@ export interface DeadLetterQueueS3Configuration {
   ExpectedBucketOwner: string;
   ErrorOutputPrefix?: string;
 }
-const DeadLetterQueueS3Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BucketARN: S.String,
-    ExpectedBucketOwner: S.String,
-    ErrorOutputPrefix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeadLetterQueueS3Configuration",
-}) as any as S.Schema<DeadLetterQueueS3Configuration>;
+const DeadLetterQueueS3Configuration = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeadLetterQueueS3Configuration>;
 export type S3OutputKeyTemplate = string;
 export type S3StorageClass = "STANDARD" | "INTELLIGENT_TIERING" | "GLACIER_IR" | (string & {});
 const S3StorageClass = S.String;
@@ -899,29 +875,19 @@ export interface S3StorageConfiguration {
   StorageClass?: S3StorageClass;
   CompressionType: S3CompressionType;
 }
-const S3StorageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BucketARN: S.String,
-    ExpectedBucketOwner: S.String,
-    OutputKeyTemplate: S.optional(S.String),
-    StorageClass: S.optional(S3StorageClass),
-    CompressionType: S3CompressionType,
-  }),
-).annotate({ identifier: "S3StorageConfiguration" }) as any as S.Schema<S3StorageConfiguration>;
+const S3StorageConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<S3StorageConfiguration>;
 export interface S3DestinationConfiguration {
   DataFreshnessInSeconds?: number;
   DeadLetterQueueS3Configuration?: DeadLetterQueueS3Configuration;
   StorageConfiguration: S3StorageConfiguration;
 }
-const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataFreshnessInSeconds: S.optional(S.Number),
-    DeadLetterQueueS3Configuration: S.optional(DeadLetterQueueS3Configuration),
-    StorageConfiguration: S3StorageConfiguration,
-  }),
-).annotate({
-  identifier: "S3DestinationConfiguration",
-}) as any as S.Schema<S3DestinationConfiguration>;
+const S3DestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<S3DestinationConfiguration>;
 export type TableBucketARN = string;
 export type S3TablesNamespace = string;
 export type S3TablesTableName = string;
@@ -936,17 +902,13 @@ export interface PartitionField {
   Transform: PartitionTransform;
   SourceName: string;
 }
-const PartitionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Transform: PartitionTransform, SourceName: S.String }),
-).annotate({ identifier: "PartitionField" }) as any as S.Schema<PartitionField>;
+const PartitionField = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PartitionField>;
 export type PartitionFieldList = PartitionField[];
-const PartitionFieldList = /*@__PURE__*/ S.Array(PartitionField);
+const PartitionFieldList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface PartitionSpec {
   PartitionFields: PartitionField[];
 }
-const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PartitionFields: PartitionFieldList }),
-).annotate({ identifier: "PartitionSpec" }) as any as S.Schema<PartitionSpec>;
+const PartitionSpec = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PartitionSpec>;
 export interface S3TablesConfiguration {
   TableBucketARN: string;
   Namespace: string;
@@ -954,31 +916,21 @@ export interface S3TablesConfiguration {
   CompressionType: S3TablesCompressionType;
   PartitionSpec?: PartitionSpec;
 }
-const S3TablesConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TableBucketARN: S.String,
-    Namespace: S.String,
-    TableName: S.String,
-    CompressionType: S3TablesCompressionType,
-    PartitionSpec: S.optional(PartitionSpec),
-  }),
-).annotate({ identifier: "S3TablesConfiguration" }) as any as S.Schema<S3TablesConfiguration>;
+const S3TablesConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<S3TablesConfiguration>;
 export type S3TablesConfigurationList = S3TablesConfiguration[];
-const S3TablesConfigurationList = /*@__PURE__*/ S.Array(S3TablesConfiguration);
+const S3TablesConfigurationList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface S3TablesDestinationConfiguration {
   DataFreshnessInSeconds?: number;
   DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration;
   S3TablesConfigurationList: S3TablesConfiguration[];
 }
-const S3TablesDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataFreshnessInSeconds: S.optional(S.Number),
-    DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration,
-    S3TablesConfigurationList: S3TablesConfigurationList,
-  }),
-).annotate({
-  identifier: "S3TablesDestinationConfiguration",
-}) as any as S.Schema<S3TablesDestinationConfiguration>;
+const S3TablesDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<S3TablesDestinationConfiguration>;
 export type ChannelEncryptionType = "KMS" | (string & {});
 const ChannelEncryptionType = S.String;
 
@@ -987,11 +939,10 @@ export interface ChannelEncryptionConfiguration {
   EncryptionType: ChannelEncryptionType;
   KeyId: string;
 }
-const ChannelEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EncryptionType: ChannelEncryptionType, KeyId: S.String }),
-).annotate({
-  identifier: "ChannelEncryptionConfiguration",
-}) as any as S.Schema<ChannelEncryptionConfiguration>;
+const ChannelEncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ChannelEncryptionConfiguration>;
 export type CloudWatchLogGroupName = string;
 export type CloudWatchLogStreamName = string;
 export interface CloudWatchLogs {
@@ -999,21 +950,14 @@ export interface CloudWatchLogs {
   LogGroupName?: string;
   LogStreamName?: string;
 }
-const CloudWatchLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Enabled: S.Boolean,
-    LogGroupName: S.optional(S.String),
-    LogStreamName: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudWatchLogs" }) as any as S.Schema<CloudWatchLogs>;
+const CloudWatchLogs = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CloudWatchLogs>;
 export interface ChannelLoggingConfiguration {
   CloudWatchLogs: CloudWatchLogs;
 }
-const ChannelLoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CloudWatchLogs: CloudWatchLogs }),
-).annotate({
-  identifier: "ChannelLoggingConfiguration",
-}) as any as S.Schema<ChannelLoggingConfiguration>;
+const ChannelLoggingConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ChannelLoggingConfiguration>;
 export interface CreateChannelInput {
   ChannelName: string;
   ServiceExecutionRoleARN: string;
@@ -1024,29 +968,7 @@ export interface CreateChannelInput {
   Tags?: { [key: string]: string | undefined };
   LoggingConfiguration?: ChannelLoggingConfiguration;
 }
-const CreateChannelInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelName: S.String,
-    ServiceExecutionRoleARN: S.String,
-    StreamConfigurationList: ChannelStreamConfigurationList,
-    S3DestinationConfiguration: S.optional(S3DestinationConfiguration),
-    S3TablesDestinationConfiguration: S.optional(S3TablesDestinationConfiguration),
-    EncryptionConfiguration: S.optional(ChannelEncryptionConfiguration),
-    Tags: S.optional(TagMap),
-    LoggingConfiguration: S.optional(ChannelLoggingConfiguration),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "CreateChannelInput" }) as any as S.Schema<CreateChannelInput>;
+const CreateChannelInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateChannelInput>;
 export type ChannelARN = string;
 export type ChannelId = string;
 export type ChannelStatus =
@@ -1064,41 +986,30 @@ export interface ChannelStreamDescription {
   StreamCreationTimestamp: Date;
   RecordConfiguration: RecordConfiguration;
 }
-const ChannelStreamDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.String,
-    StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    RecordConfiguration: RecordConfiguration,
-  }),
-).annotate({ identifier: "ChannelStreamDescription" }) as any as S.Schema<ChannelStreamDescription>;
+const ChannelStreamDescription = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ChannelStreamDescription>;
 export type ChannelStreamDescriptionList = ChannelStreamDescription[];
-const ChannelStreamDescriptionList = /*@__PURE__*/ S.Array(ChannelStreamDescription);
+const ChannelStreamDescriptionList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface S3DestinationDescription {
   DataFreshnessInSeconds: number;
   DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration;
   StorageConfiguration: S3StorageConfiguration;
 }
-const S3DestinationDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataFreshnessInSeconds: S.Number,
-    DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration,
-    StorageConfiguration: S3StorageConfiguration,
-  }),
-).annotate({ identifier: "S3DestinationDescription" }) as any as S.Schema<S3DestinationDescription>;
+const S3DestinationDescription = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<S3DestinationDescription>;
 export interface S3TablesDestinationDescription {
   DataFreshnessInSeconds: number;
   DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration;
   S3TablesConfigurationList: S3TablesConfiguration[];
 }
-const S3TablesDestinationDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataFreshnessInSeconds: S.Number,
-    DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration,
-    S3TablesConfigurationList: S3TablesConfigurationList,
-  }),
-).annotate({
-  identifier: "S3TablesDestinationDescription",
-}) as any as S.Schema<S3TablesDestinationDescription>;
+const S3TablesDestinationDescription = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<S3TablesDestinationDescription>;
 export interface ChannelDescription {
   ChannelName: string;
   ChannelARN: string;
@@ -1113,28 +1024,11 @@ export interface ChannelDescription {
   EncryptionConfiguration?: ChannelEncryptionConfiguration;
   LoggingConfiguration: ChannelLoggingConfiguration;
 }
-const ChannelDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelName: S.String,
-    ChannelARN: S.String,
-    ChannelId: S.String,
-    ChannelStatus: ChannelStatus,
-    ChannelStatusReason: S.optional(S.String),
-    ChannelCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ServiceExecutionRoleARN: S.String,
-    StreamConfigurationList: ChannelStreamDescriptionList,
-    S3DestinationConfiguration: S.optional(S3DestinationDescription),
-    S3TablesDestinationConfiguration: S.optional(S3TablesDestinationDescription),
-    EncryptionConfiguration: S.optional(ChannelEncryptionConfiguration),
-    LoggingConfiguration: ChannelLoggingConfiguration,
-  }),
-).annotate({ identifier: "ChannelDescription" }) as any as S.Schema<ChannelDescription>;
+const ChannelDescription = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ChannelDescription>;
 export interface CreateChannelOutput {
   ChannelDescription: ChannelDescription;
 }
-const CreateChannelOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChannelDescription: ChannelDescription }).pipe(ns),
-).annotate({ identifier: "CreateChannelOutput" }) as any as S.Schema<CreateChannelOutput>;
+const CreateChannelOutput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CreateChannelOutput>;
 export type PositiveIntegerObject = number;
 export type StreamMode = "PROVISIONED" | "ON_DEMAND" | (string & {});
 const StreamMode = S.String;
@@ -1142,9 +1036,7 @@ const StreamMode = S.String;
 export interface StreamModeDetails {
   StreamMode: StreamMode;
 }
-const StreamModeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StreamMode: StreamMode }),
-).annotate({ identifier: "StreamModeDetails" }) as any as S.Schema<StreamModeDetails>;
+const StreamModeDetails = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<StreamModeDetails>;
 export type NaturalIntegerObject = number;
 export type MaxRecordSizeInKiB = number;
 export type RecordDistributionStrategy = "AUTO" | "USER_PARTITION_KEY" | (string & {});
@@ -1159,32 +1051,9 @@ export interface CreateStreamInput {
   MaxRecordSizeInKiB?: number;
   RecordDistributionStrategy?: RecordDistributionStrategy;
 }
-const CreateStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.String,
-    ShardCount: S.optional(S.Number),
-    StreamModeDetails: S.optional(StreamModeDetails),
-    Tags: S.optional(TagMap),
-    WarmThroughputMiBps: S.optional(S.Number),
-    MaxRecordSizeInKiB: S.optional(S.Number),
-    RecordDistributionStrategy: S.optional(RecordDistributionStrategy),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "CreateStreamInput" }) as any as S.Schema<CreateStreamInput>;
+const CreateStreamInput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreateStreamInput>;
 export interface CreateStreamResponse {}
-const CreateStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "CreateStreamResponse",
-}) as any as S.Schema<CreateStreamResponse>;
+const CreateStreamResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreateStreamResponse>;
 export type RetentionPeriodHours = number;
 export interface DecreaseStreamRetentionPeriodInput {
   StreamName?: string;
@@ -1192,50 +1061,19 @@ export interface DecreaseStreamRetentionPeriodInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const DecreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    RetentionPeriodHours: S.Number,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DecreaseStreamRetentionPeriodInput",
-}) as any as S.Schema<DecreaseStreamRetentionPeriodInput>;
+const DecreaseStreamRetentionPeriodInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DecreaseStreamRetentionPeriodInput>;
 export interface DecreaseStreamRetentionPeriodResponse {}
-const DecreaseStreamRetentionPeriodResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DecreaseStreamRetentionPeriodResponse",
-}) as any as S.Schema<DecreaseStreamRetentionPeriodResponse>;
+const DecreaseStreamRetentionPeriodResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DecreaseStreamRetentionPeriodResponse>;
 export interface DeleteChannelInput {
   ChannelARN: string;
 }
-const DeleteChannelInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChannelARN: S.String.pipe(T.ContextParam("ChannelARN")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "DeleteChannelInput" }) as any as S.Schema<DeleteChannelInput>;
+const DeleteChannelInput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DeleteChannelInput>;
 export interface DeleteChannelResponse {}
 const DeleteChannelResponse = CreateStreamResponse as any as S.Schema<DeleteChannelResponse>;
 export type ResourceARN = string;
@@ -1243,25 +1081,10 @@ export interface DeleteResourcePolicyInput {
   ResourceARN: string;
   StreamId?: string;
 }
-const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DeleteResourcePolicyInput",
-}) as any as S.Schema<DeleteResourcePolicyInput>;
+const DeleteResourcePolicyInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyResponse {}
 const DeleteResourcePolicyResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<DeleteResourcePolicyResponse>;
@@ -1271,25 +1094,7 @@ export interface DeleteStreamInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const DeleteStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    EnforceConsumerDeletion: S.optional(S.Boolean),
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "DeleteStreamInput" }) as any as S.Schema<DeleteStreamInput>;
+const DeleteStreamInput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteStreamInput>;
 export interface DeleteStreamResponse {}
 const DeleteStreamResponse = CreateStreamResponse as any as S.Schema<DeleteStreamResponse>;
 export type ConsumerName = string;
@@ -1300,47 +1105,18 @@ export interface DeregisterStreamConsumerInput {
   ConsumerARN?: string;
   StreamId?: string;
 }
-const DeregisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    ConsumerName: S.optional(S.String),
-    ConsumerARN: S.optional(S.String).pipe(T.ContextParam("ConsumerARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DeregisterStreamConsumerInput",
-}) as any as S.Schema<DeregisterStreamConsumerInput>;
+const DeregisterStreamConsumerInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeregisterStreamConsumerInput>;
 export interface DeregisterStreamConsumerResponse {}
 const DeregisterStreamConsumerResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<DeregisterStreamConsumerResponse>;
 export interface DescribeAccountSettingsInput {}
-const DescribeAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DescribeAccountSettingsInput",
-}) as any as S.Schema<DescribeAccountSettingsInput>;
+const DescribeAccountSettingsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DescribeAccountSettingsInput>;
 export type MinimumThroughputBillingCommitmentOutputStatus =
   | "ENABLED"
   | "DISABLED"
@@ -1354,62 +1130,27 @@ export interface MinimumThroughputBillingCommitmentOutput {
   EndedAt?: Date;
   EarliestAllowedEndAt?: Date;
 }
-const MinimumThroughputBillingCommitmentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: MinimumThroughputBillingCommitmentOutputStatus,
-    StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EarliestAllowedEndAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "MinimumThroughputBillingCommitmentOutput",
-}) as any as S.Schema<MinimumThroughputBillingCommitmentOutput>;
+const MinimumThroughputBillingCommitmentOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<MinimumThroughputBillingCommitmentOutput>;
 export interface DescribeAccountSettingsOutput {
   MinimumThroughputBillingCommitment?: MinimumThroughputBillingCommitmentOutput;
 }
-const DescribeAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MinimumThroughputBillingCommitment: S.optional(MinimumThroughputBillingCommitmentOutput),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeAccountSettingsOutput",
-}) as any as S.Schema<DescribeAccountSettingsOutput>;
+const DescribeAccountSettingsOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DescribeAccountSettingsOutput>;
 export interface DescribeChannelInput {
   ChannelARN: string;
 }
-const DescribeChannelInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChannelARN: S.String.pipe(T.ContextParam("ChannelARN")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "DescribeChannelInput" }) as any as S.Schema<DescribeChannelInput>;
+const DescribeChannelInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DescribeChannelInput>;
 export interface DescribeChannelOutput {
   ChannelDescription: ChannelDescription;
 }
 const DescribeChannelOutput = CreateChannelOutput as any as S.Schema<DescribeChannelOutput>;
 export interface DescribeLimitsInput {}
-const DescribeLimitsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "DescribeLimitsInput" }) as any as S.Schema<DescribeLimitsInput>;
+const DescribeLimitsInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<DescribeLimitsInput>;
 export type ShardCountObject = number;
 export type OnDemandStreamCountObject = number;
 export type OnDemandStreamCountLimitObject = number;
@@ -1422,16 +1163,7 @@ export interface DescribeLimitsOutput {
   ChannelCount?: number;
   ChannelCountLimit?: number;
 }
-const DescribeLimitsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ShardLimit: S.Number,
-    OpenShardCount: S.Number,
-    OnDemandStreamCount: S.Number,
-    OnDemandStreamCountLimit: S.Number,
-    ChannelCount: S.optional(S.Number),
-    ChannelCountLimit: S.optional(S.Number),
-  }).pipe(ns),
-).annotate({ identifier: "DescribeLimitsOutput" }) as any as S.Schema<DescribeLimitsOutput>;
+const DescribeLimitsOutput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DescribeLimitsOutput>;
 export type DescribeStreamInputLimit = number;
 export type ShardId = string;
 export interface DescribeStreamInput {
@@ -1441,26 +1173,7 @@ export interface DescribeStreamInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const DescribeStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    Limit: S.optional(S.Number),
-    ExclusiveStartShardId: S.optional(S.String),
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "DescribeStreamInput" }) as any as S.Schema<DescribeStreamInput>;
+const DescribeStreamInput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DescribeStreamInput>;
 export type StreamStatus = "CREATING" | "DELETING" | "ACTIVE" | "UPDATING" | (string & {});
 const StreamStatus = S.String;
 
@@ -1469,17 +1182,13 @@ export interface HashKeyRange {
   StartingHashKey: string;
   EndingHashKey: string;
 }
-const HashKeyRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StartingHashKey: S.String, EndingHashKey: S.String }),
-).annotate({ identifier: "HashKeyRange" }) as any as S.Schema<HashKeyRange>;
+const HashKeyRange = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<HashKeyRange>;
 export type SequenceNumber = string;
 export interface SequenceNumberRange {
   StartingSequenceNumber: string;
   EndingSequenceNumber?: string;
 }
-const SequenceNumberRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StartingSequenceNumber: S.String, EndingSequenceNumber: S.optional(S.String) }),
-).annotate({ identifier: "SequenceNumberRange" }) as any as S.Schema<SequenceNumberRange>;
+const SequenceNumberRange = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SequenceNumberRange>;
 export interface Shard {
   ShardId: string;
   ParentShardId?: string;
@@ -1487,17 +1196,9 @@ export interface Shard {
   HashKeyRange: HashKeyRange;
   SequenceNumberRange: SequenceNumberRange;
 }
-const Shard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ShardId: S.String,
-    ParentShardId: S.optional(S.String),
-    AdjacentParentShardId: S.optional(S.String),
-    HashKeyRange: HashKeyRange,
-    SequenceNumberRange: SequenceNumberRange,
-  }),
-).annotate({ identifier: "Shard" }) as any as S.Schema<Shard>;
+const Shard = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Shard>;
 export type ShardList = Shard[];
-const ShardList = /*@__PURE__*/ S.Array(Shard);
+const ShardList = /*@__PURE__*/ __L.at(__c5, 4);
 export type MetricsName =
   | "IncomingBytes"
   | "IncomingRecords"
@@ -1511,15 +1212,13 @@ export type MetricsName =
 const MetricsName = S.String;
 
 export type MetricsNameList = MetricsName[];
-const MetricsNameList = /*@__PURE__*/ S.Array(MetricsName);
+const MetricsNameList = /*@__PURE__*/ __L.at(__c5, 5);
 export interface EnhancedMetrics {
   ShardLevelMetrics?: MetricsName[];
 }
-const EnhancedMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ShardLevelMetrics: S.optional(MetricsNameList) }),
-).annotate({ identifier: "EnhancedMetrics" }) as any as S.Schema<EnhancedMetrics>;
+const EnhancedMetrics = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<EnhancedMetrics>;
 export type EnhancedMonitoringList = EnhancedMetrics[];
-const EnhancedMonitoringList = /*@__PURE__*/ S.Array(EnhancedMetrics);
+const EnhancedMonitoringList = /*@__PURE__*/ __L.at(__c5, 7);
 export type EncryptionType = "NONE" | "KMS" | (string & {});
 const EncryptionType = S.String;
 
@@ -1536,54 +1235,21 @@ export interface StreamDescription {
   EncryptionType?: EncryptionType;
   KeyId?: string;
 }
-const StreamDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.String,
-    StreamARN: S.String,
-    StreamStatus: StreamStatus,
-    StreamModeDetails: S.optional(StreamModeDetails),
-    Shards: ShardList,
-    HasMoreShards: S.Boolean,
-    RetentionPeriodHours: S.Number,
-    StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EnhancedMonitoring: EnhancedMonitoringList,
-    EncryptionType: S.optional(EncryptionType),
-    KeyId: S.optional(S.String),
-  }),
-).annotate({ identifier: "StreamDescription" }) as any as S.Schema<StreamDescription>;
+const StreamDescription = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<StreamDescription>;
 export interface DescribeStreamOutput {
   StreamDescription: StreamDescription;
 }
-const DescribeStreamOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StreamDescription: StreamDescription }).pipe(ns),
-).annotate({ identifier: "DescribeStreamOutput" }) as any as S.Schema<DescribeStreamOutput>;
+const DescribeStreamOutput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DescribeStreamOutput>;
 export interface DescribeStreamConsumerInput {
   StreamARN?: string;
   ConsumerName?: string;
   ConsumerARN?: string;
   StreamId?: string;
 }
-const DescribeStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    ConsumerName: S.optional(S.String),
-    ConsumerARN: S.optional(S.String).pipe(T.ContextParam("ConsumerARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DescribeStreamConsumerInput",
-}) as any as S.Schema<DescribeStreamConsumerInput>;
+const DescribeStreamConsumerInput = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DescribeStreamConsumerInput>;
 export type ConsumerStatus = "CREATING" | "DELETING" | "ACTIVE" | (string & {});
 const ConsumerStatus = S.String;
 
@@ -1594,56 +1260,29 @@ export interface ConsumerDescription {
   ConsumerCreationTimestamp: Date;
   StreamARN: string;
 }
-const ConsumerDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConsumerName: S.String,
-    ConsumerARN: S.String,
-    ConsumerStatus: ConsumerStatus,
-    ConsumerCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    StreamARN: S.String,
-  }),
-).annotate({ identifier: "ConsumerDescription" }) as any as S.Schema<ConsumerDescription>;
+const ConsumerDescription = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ConsumerDescription>;
 export interface DescribeStreamConsumerOutput {
   ConsumerDescription: ConsumerDescription;
 }
-const DescribeStreamConsumerOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConsumerDescription: ConsumerDescription }).pipe(ns),
-).annotate({
-  identifier: "DescribeStreamConsumerOutput",
-}) as any as S.Schema<DescribeStreamConsumerOutput>;
+const DescribeStreamConsumerOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DescribeStreamConsumerOutput>;
 export interface DescribeStreamSummaryInput {
   StreamName?: string;
   StreamARN?: string;
   StreamId?: string;
 }
-const DescribeStreamSummaryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DescribeStreamSummaryInput",
-}) as any as S.Schema<DescribeStreamSummaryInput>;
+const DescribeStreamSummaryInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DescribeStreamSummaryInput>;
 export type ConsumerCountObject = number;
 export interface WarmThroughputObject {
   TargetMiBps?: number;
   CurrentMiBps?: number;
 }
-const WarmThroughputObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TargetMiBps: S.optional(S.Number), CurrentMiBps: S.optional(S.Number) }),
-).annotate({ identifier: "WarmThroughputObject" }) as any as S.Schema<WarmThroughputObject>;
+const WarmThroughputObject = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<WarmThroughputObject>;
 export interface StreamDescriptionSummary {
   StreamName: string;
   StreamARN: string;
@@ -1662,102 +1301,47 @@ export interface StreamDescriptionSummary {
   ChannelCount?: number;
   RecordDistributionStrategy?: RecordDistributionStrategy;
 }
-const StreamDescriptionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.String,
-    StreamARN: S.String,
-    StreamId: S.optional(S.String),
-    StreamStatus: StreamStatus,
-    StreamModeDetails: S.optional(StreamModeDetails),
-    RetentionPeriodHours: S.Number,
-    StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EnhancedMonitoring: EnhancedMonitoringList,
-    EncryptionType: S.optional(EncryptionType),
-    KeyId: S.optional(S.String),
-    OpenShardCount: S.optional(S.Number),
-    ConsumerCount: S.optional(S.Number),
-    WarmThroughput: S.optional(WarmThroughputObject),
-    MaxRecordSizeInKiB: S.optional(S.Number),
-    ChannelCount: S.optional(S.Number),
-    RecordDistributionStrategy: S.optional(RecordDistributionStrategy),
-  }),
-).annotate({ identifier: "StreamDescriptionSummary" }) as any as S.Schema<StreamDescriptionSummary>;
+const StreamDescriptionSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<StreamDescriptionSummary>;
 export interface DescribeStreamSummaryOutput {
   StreamDescriptionSummary: StreamDescriptionSummary;
 }
-const DescribeStreamSummaryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StreamDescriptionSummary: StreamDescriptionSummary }).pipe(ns),
-).annotate({
-  identifier: "DescribeStreamSummaryOutput",
-}) as any as S.Schema<DescribeStreamSummaryOutput>;
+const DescribeStreamSummaryOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DescribeStreamSummaryOutput>;
 export interface DisableEnhancedMonitoringInput {
   StreamName?: string;
   ShardLevelMetrics: MetricsName[];
   StreamARN?: string;
   StreamId?: string;
 }
-const DisableEnhancedMonitoringInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    ShardLevelMetrics: MetricsNameList,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DisableEnhancedMonitoringInput",
-}) as any as S.Schema<DisableEnhancedMonitoringInput>;
+const DisableEnhancedMonitoringInput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DisableEnhancedMonitoringInput>;
 export interface EnhancedMonitoringOutput {
   StreamName?: string;
   CurrentShardLevelMetrics?: MetricsName[];
   DesiredShardLevelMetrics?: MetricsName[];
   StreamARN?: string;
 }
-const EnhancedMonitoringOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    CurrentShardLevelMetrics: S.optional(MetricsNameList),
-    DesiredShardLevelMetrics: S.optional(MetricsNameList),
-    StreamARN: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "EnhancedMonitoringOutput" }) as any as S.Schema<EnhancedMonitoringOutput>;
+const EnhancedMonitoringOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<EnhancedMonitoringOutput>;
 export interface EnableEnhancedMonitoringInput {
   StreamName?: string;
   ShardLevelMetrics: MetricsName[];
   StreamARN?: string;
   StreamId?: string;
 }
-const EnableEnhancedMonitoringInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    ShardLevelMetrics: MetricsNameList,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "EnableEnhancedMonitoringInput",
-}) as any as S.Schema<EnableEnhancedMonitoringInput>;
+const EnableEnhancedMonitoringInput = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<EnableEnhancedMonitoringInput>;
 export type ShardIterator = string;
 export type GetRecordsInputLimit = number;
 export interface GetRecordsInput {
@@ -1767,26 +1351,7 @@ export interface GetRecordsInput {
   StreamId?: string;
   DryRun?: boolean;
 }
-const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ShardIterator: S.String,
-    Limit: S.optional(S.Number),
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    DryRun: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "data" } }),
-    ),
-  ),
-).annotate({ identifier: "GetRecordsInput" }) as any as S.Schema<GetRecordsInput>;
+const GetRecordsInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetRecordsInput>;
 export type Data = Uint8Array;
 export type PartitionKey = string;
 export interface Record {
@@ -1796,72 +1361,43 @@ export interface Record {
   PartitionKey?: string;
   EncryptionType?: EncryptionType;
 }
-const Record = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SequenceNumber: S.String,
-    ApproximateArrivalTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Data: T.Blob,
-    PartitionKey: S.optional(S.String),
-    EncryptionType: S.optional(EncryptionType),
-  }),
-).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
+const Record = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Record>;
 export type RecordList = Record[];
-const RecordList = /*@__PURE__*/ S.Array(Record);
+const RecordList = /*@__PURE__*/ __L.at(__c7, 6);
 export type MillisBehindLatest = number;
 export type ShardIdList = string[];
-const ShardIdList = /*@__PURE__*/ S.Array(S.String);
+const ShardIdList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface ChildShard {
   ShardId: string;
   ParentShards: string[];
   HashKeyRange: HashKeyRange;
 }
-const ChildShard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ShardId: S.String, ParentShards: ShardIdList, HashKeyRange: HashKeyRange }),
-).annotate({ identifier: "ChildShard" }) as any as S.Schema<ChildShard>;
+const ChildShard = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ChildShard>;
 export type ChildShardList = ChildShard[];
-const ChildShardList = /*@__PURE__*/ S.Array(ChildShard);
+const ChildShardList = /*@__PURE__*/ __L.at(__c8, 1);
 export interface GetRecordsOutput {
   Records: Record[];
   NextShardIterator?: string;
   MillisBehindLatest?: number;
   ChildShards?: ChildShard[];
 }
-const GetRecordsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Records: RecordList,
-    NextShardIterator: S.optional(S.String),
-    MillisBehindLatest: S.optional(S.Number),
-    ChildShards: S.optional(ChildShardList),
-  }).pipe(ns),
-).annotate({ identifier: "GetRecordsOutput" }) as any as S.Schema<GetRecordsOutput>;
+const GetRecordsOutput = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetRecordsOutput>;
 export interface GetResourcePolicyInput {
   ResourceARN: string;
   StreamId?: string;
 }
-const GetResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "GetResourcePolicyInput" }) as any as S.Schema<GetResourcePolicyInput>;
+const GetResourcePolicyInput = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetResourcePolicyInput>;
 export type Policy = string;
 export interface GetResourcePolicyOutput {
   Policy: string;
 }
-const GetResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policy: S.String }).pipe(ns),
-).annotate({ identifier: "GetResourcePolicyOutput" }) as any as S.Schema<GetResourcePolicyOutput>;
+const GetResourcePolicyOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetResourcePolicyOutput>;
 export type ShardIteratorType =
   | "AT_SEQUENCE_NUMBER"
   | "AFTER_SEQUENCE_NUMBER"
@@ -1881,62 +1417,27 @@ export interface GetShardIteratorInput {
   StreamId?: string;
   DryRun?: boolean;
 }
-const GetShardIteratorInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    ShardId: S.String,
-    ShardIteratorType: ShardIteratorType,
-    StartingSequenceNumber: S.optional(S.String),
-    Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    DryRun: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "data" } }),
-    ),
-  ),
-).annotate({ identifier: "GetShardIteratorInput" }) as any as S.Schema<GetShardIteratorInput>;
+const GetShardIteratorInput = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetShardIteratorInput>;
 export interface GetShardIteratorOutput {
   ShardIterator?: string;
 }
-const GetShardIteratorOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ShardIterator: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "GetShardIteratorOutput" }) as any as S.Schema<GetShardIteratorOutput>;
+const GetShardIteratorOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetShardIteratorOutput>;
 export interface IncreaseStreamRetentionPeriodInput {
   StreamName?: string;
   RetentionPeriodHours: number;
   StreamARN?: string;
   StreamId?: string;
 }
-const IncreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    RetentionPeriodHours: S.Number,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "IncreaseStreamRetentionPeriodInput",
-}) as any as S.Schema<IncreaseStreamRetentionPeriodInput>;
+const IncreaseStreamRetentionPeriodInput = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<IncreaseStreamRetentionPeriodInput>;
 export interface IncreaseStreamRetentionPeriodResponse {}
 const IncreaseStreamRetentionPeriodResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<IncreaseStreamRetentionPeriodResponse>;
@@ -1944,14 +1445,9 @@ export interface StreamFilter {
   StreamARN: string;
   StreamCreationTimestamp?: Date;
 }
-const StreamFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.String,
-    StreamCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "StreamFilter" }) as any as S.Schema<StreamFilter>;
+const StreamFilter = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<StreamFilter>;
 export type StreamFilterList = StreamFilter[];
-const StreamFilterList = /*@__PURE__*/ S.Array(StreamFilter);
+const StreamFilterList = /*@__PURE__*/ __L.at(__c9, 1);
 export type ListChannelsInputLimit = number;
 export type NextToken = string;
 export interface ListChannelsInput {
@@ -1959,24 +1455,7 @@ export interface ListChannelsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListChannelsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamFilter: S.optional(StreamFilterList),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "ListChannelsInput" }) as any as S.Schema<ListChannelsInput>;
+const ListChannelsInput = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ListChannelsInput>;
 export type ChannelDestinationType = "S3" | "S3_TABLES" | (string & {});
 const ChannelDestinationType = S.String;
 
@@ -1984,14 +1463,12 @@ export interface ChannelStreamIdentifier {
   StreamARN: string;
   StreamCreationTimestamp: Date;
 }
-const ChannelStreamIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.String,
-    StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "ChannelStreamIdentifier" }) as any as S.Schema<ChannelStreamIdentifier>;
+const ChannelStreamIdentifier = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ChannelStreamIdentifier>;
 export type ChannelStreamIdentifierList = ChannelStreamIdentifier[];
-const ChannelStreamIdentifierList = /*@__PURE__*/ S.Array(ChannelStreamIdentifier);
+const ChannelStreamIdentifierList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface ChannelSummary {
   ChannelName: string;
   ChannelARN: string;
@@ -2002,27 +1479,14 @@ export interface ChannelSummary {
   ChannelDestinationType: ChannelDestinationType;
   Streams: ChannelStreamIdentifier[];
 }
-const ChannelSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelName: S.String,
-    ChannelARN: S.String,
-    ChannelId: S.String,
-    ChannelStatus: ChannelStatus,
-    ChannelStatusReason: S.optional(S.String),
-    ChannelCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ChannelDestinationType: ChannelDestinationType,
-    Streams: ChannelStreamIdentifierList,
-  }),
-).annotate({ identifier: "ChannelSummary" }) as any as S.Schema<ChannelSummary>;
+const ChannelSummary = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ChannelSummary>;
 export type ChannelSummaryList = ChannelSummary[];
-const ChannelSummaryList = /*@__PURE__*/ S.Array(ChannelSummary);
+const ChannelSummaryList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface ListChannelsOutput {
   ChannelSummaries: ChannelSummary[];
   NextToken?: string;
 }
-const ListChannelsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChannelSummaries: ChannelSummaryList, NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListChannelsOutput" }) as any as S.Schema<ListChannelsOutput>;
+const ListChannelsOutput = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListChannelsOutput>;
 export type ListShardsInputLimit = number;
 export type ShardFilterType =
   | "AFTER_SHARD_ID"
@@ -2039,13 +1503,7 @@ export interface ShardFilter {
   ShardId?: string;
   Timestamp?: Date;
 }
-const ShardFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: ShardFilterType,
-    ShardId: S.optional(S.String),
-    Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ShardFilter" }) as any as S.Schema<ShardFilter>;
+const ShardFilter = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ShardFilter>;
 export interface ListShardsInput {
   StreamName?: string;
   NextToken?: string;
@@ -2056,36 +1514,12 @@ export interface ListShardsInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const ListShardsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    NextToken: S.optional(S.String),
-    ExclusiveStartShardId: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    StreamCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ShardFilter: S.optional(ShardFilter),
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "ListShardsInput" }) as any as S.Schema<ListShardsInput>;
+const ListShardsInput = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ListShardsInput>;
 export interface ListShardsOutput {
   Shards?: Shard[];
   NextToken?: string;
 }
-const ListShardsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Shards: S.optional(ShardList), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListShardsOutput" }) as any as S.Schema<ListShardsOutput>;
+const ListShardsOutput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ListShardsOutput>;
 export type ListStreamConsumersInputLimit = number;
 export interface ListStreamConsumersInput {
   StreamARN: string;
@@ -2094,75 +1528,34 @@ export interface ListStreamConsumersInput {
   StreamCreationTimestamp?: Date;
   StreamId?: string;
 }
-const ListStreamConsumersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    StreamCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "ListStreamConsumersInput" }) as any as S.Schema<ListStreamConsumersInput>;
+const ListStreamConsumersInput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListStreamConsumersInput>;
 export interface Consumer {
   ConsumerName: string;
   ConsumerARN: string;
   ConsumerStatus: ConsumerStatus;
   ConsumerCreationTimestamp: Date;
 }
-const Consumer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConsumerName: S.String,
-    ConsumerARN: S.String,
-    ConsumerStatus: ConsumerStatus,
-    ConsumerCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "Consumer" }) as any as S.Schema<Consumer>;
+const Consumer = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Consumer>;
 export type ConsumerList = Consumer[];
-const ConsumerList = /*@__PURE__*/ S.Array(Consumer);
+const ConsumerList = /*@__PURE__*/ __L.at(__c10, 5);
 export interface ListStreamConsumersOutput {
   Consumers?: Consumer[];
   NextToken?: string;
 }
-const ListStreamConsumersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Consumers: S.optional(ConsumerList), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListStreamConsumersOutput",
-}) as any as S.Schema<ListStreamConsumersOutput>;
+const ListStreamConsumersOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListStreamConsumersOutput>;
 export type ListStreamsInputLimit = number;
 export interface ListStreamsInput {
   Limit?: number;
   ExclusiveStartStreamName?: string;
   NextToken?: string;
 }
-const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Limit: S.optional(S.Number),
-    ExclusiveStartStreamName: S.optional(S.String),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "ListStreamsInput" }) as any as S.Schema<ListStreamsInput>;
+const ListStreamsInput = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ListStreamsInput>;
 export type StreamNameList = string[];
 const StreamNameList = ShardIdList as any as S.Schema<StreamNameList>;
 export interface StreamSummary {
@@ -2172,69 +1565,38 @@ export interface StreamSummary {
   StreamModeDetails?: StreamModeDetails;
   StreamCreationTimestamp?: Date;
 }
-const StreamSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.String,
-    StreamARN: S.String,
-    StreamStatus: StreamStatus,
-    StreamModeDetails: S.optional(StreamModeDetails),
-    StreamCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "StreamSummary" }) as any as S.Schema<StreamSummary>;
+const StreamSummary = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<StreamSummary>;
 export type StreamSummaryList = StreamSummary[];
-const StreamSummaryList = /*@__PURE__*/ S.Array(StreamSummary);
+const StreamSummaryList = /*@__PURE__*/ __L.at(__c11, 1);
 export interface ListStreamsOutput {
   StreamNames: string[];
   HasMoreStreams: boolean;
   NextToken?: string;
   StreamSummaries?: StreamSummary[];
 }
-const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamNames: StreamNameList,
-    HasMoreStreams: S.Boolean,
-    NextToken: S.optional(S.String),
-    StreamSummaries: S.optional(StreamSummaryList),
-  }).pipe(ns),
-).annotate({ identifier: "ListStreamsOutput" }) as any as S.Schema<ListStreamsOutput>;
+const ListStreamsOutput = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ListStreamsOutput>;
 export interface ListTagsForResourceInput {
   ResourceARN: string;
   StreamId?: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface Tag {
   Key: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c11, 5);
 export interface ListTagsForResourceOutput {
   Tags?: Tag[];
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList) }).pipe(ns),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export type ListTagsForStreamInputLimit = number;
 export interface ListTagsForStreamInput {
   StreamName?: string;
@@ -2243,33 +1605,18 @@ export interface ListTagsForStreamInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const ListTagsForStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    ExclusiveStartTagKey: S.optional(S.String),
-    Limit: S.optional(S.Number),
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "ListTagsForStreamInput" }) as any as S.Schema<ListTagsForStreamInput>;
+const ListTagsForStreamInput = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListTagsForStreamInput>;
 export interface ListTagsForStreamOutput {
   Tags: Tag[];
   HasMoreTags: boolean;
 }
-const ListTagsForStreamOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: TagList, HasMoreTags: S.Boolean }).pipe(ns),
-).annotate({ identifier: "ListTagsForStreamOutput" }) as any as S.Schema<ListTagsForStreamOutput>;
+const ListTagsForStreamOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListTagsForStreamOutput>;
 export interface MergeShardsInput {
   StreamName?: string;
   ShardToMerge: string;
@@ -2277,26 +1624,7 @@ export interface MergeShardsInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const MergeShardsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    ShardToMerge: S.String,
-    AdjacentShardToMerge: S.String,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "MergeShardsInput" }) as any as S.Schema<MergeShardsInput>;
+const MergeShardsInput = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<MergeShardsInput>;
 export interface MergeShardsResponse {}
 const MergeShardsResponse = CreateStreamResponse as any as S.Schema<MergeShardsResponse>;
 export interface PutRecordInput {
@@ -2309,55 +1637,24 @@ export interface PutRecordInput {
   StreamId?: string;
   DryRun?: boolean;
 }
-const PutRecordInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    Data: T.Blob,
-    PartitionKey: S.optional(S.String),
-    ExplicitHashKey: S.optional(S.String),
-    SequenceNumberForOrdering: S.optional(S.String),
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    DryRun: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "data" } }),
-    ),
-  ),
-).annotate({ identifier: "PutRecordInput" }) as any as S.Schema<PutRecordInput>;
+const PutRecordInput = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<PutRecordInput>;
 export interface PutRecordOutput {
   ShardId: string;
   SequenceNumber: string;
   EncryptionType?: EncryptionType;
 }
-const PutRecordOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ShardId: S.String,
-    SequenceNumber: S.String,
-    EncryptionType: S.optional(EncryptionType),
-  }).pipe(ns),
-).annotate({ identifier: "PutRecordOutput" }) as any as S.Schema<PutRecordOutput>;
+const PutRecordOutput = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<PutRecordOutput>;
 export interface PutRecordsRequestEntry {
   Data: Uint8Array;
   ExplicitHashKey?: string;
   PartitionKey?: string;
 }
-const PutRecordsRequestEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Data: T.Blob,
-    ExplicitHashKey: S.optional(S.String),
-    PartitionKey: S.optional(S.String),
-  }),
-).annotate({ identifier: "PutRecordsRequestEntry" }) as any as S.Schema<PutRecordsRequestEntry>;
+const PutRecordsRequestEntry = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<PutRecordsRequestEntry>;
 export type PutRecordsRequestEntryList = PutRecordsRequestEntry[];
-const PutRecordsRequestEntryList = /*@__PURE__*/ S.Array(PutRecordsRequestEntry);
+const PutRecordsRequestEntryList = /*@__PURE__*/ __L.at(__c12, 5);
 export interface PutRecordsInput {
   Records: PutRecordsRequestEntry[];
   StreamName?: string;
@@ -2365,26 +1662,7 @@ export interface PutRecordsInput {
   StreamId?: string;
   DryRun?: boolean;
 }
-const PutRecordsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Records: PutRecordsRequestEntryList,
-    StreamName: S.optional(S.String),
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    DryRun: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "data" } }),
-    ),
-  ),
-).annotate({ identifier: "PutRecordsInput" }) as any as S.Schema<PutRecordsInput>;
+const PutRecordsInput = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<PutRecordsInput>;
 export type ErrorCode = string;
 export type ErrorMessage = string;
 export interface PutRecordsResultEntry {
@@ -2393,51 +1671,27 @@ export interface PutRecordsResultEntry {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-const PutRecordsResultEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SequenceNumber: S.optional(S.String),
-    ShardId: S.optional(S.String),
-    ErrorCode: S.optional(S.String),
-    ErrorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "PutRecordsResultEntry" }) as any as S.Schema<PutRecordsResultEntry>;
+const PutRecordsResultEntry = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<PutRecordsResultEntry>;
 export type PutRecordsResultEntryList = PutRecordsResultEntry[];
-const PutRecordsResultEntryList = /*@__PURE__*/ S.Array(PutRecordsResultEntry);
+const PutRecordsResultEntryList = /*@__PURE__*/ __L.at(__c13, 0);
 export interface PutRecordsOutput {
   FailedRecordCount?: number;
   Records: PutRecordsResultEntry[];
   EncryptionType?: EncryptionType;
 }
-const PutRecordsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FailedRecordCount: S.optional(S.Number),
-    Records: PutRecordsResultEntryList,
-    EncryptionType: S.optional(EncryptionType),
-  }).pipe(ns),
-).annotate({ identifier: "PutRecordsOutput" }) as any as S.Schema<PutRecordsOutput>;
+const PutRecordsOutput = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<PutRecordsOutput>;
 export interface PutResourcePolicyInput {
   ResourceARN: string;
   StreamId?: string;
   Policy: string;
 }
-const PutResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    Policy: S.String,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "PutResourcePolicyInput" }) as any as S.Schema<PutResourcePolicyInput>;
+const PutResourcePolicyInput = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<PutResourcePolicyInput>;
 export interface PutResourcePolicyResponse {}
 const PutResourcePolicyResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<PutResourcePolicyResponse>;
@@ -2447,35 +1701,17 @@ export interface RegisterStreamConsumerInput {
   StreamId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const RegisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
-    ConsumerName: S.String,
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "RegisterStreamConsumerInput",
-}) as any as S.Schema<RegisterStreamConsumerInput>;
+const RegisterStreamConsumerInput = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<RegisterStreamConsumerInput>;
 export interface RegisterStreamConsumerOutput {
   Consumer: Consumer;
 }
-const RegisterStreamConsumerOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Consumer: Consumer }).pipe(ns),
-).annotate({
-  identifier: "RegisterStreamConsumerOutput",
-}) as any as S.Schema<RegisterStreamConsumerOutput>;
+const RegisterStreamConsumerOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<RegisterStreamConsumerOutput>;
 export type TagKeyList = string[];
 const TagKeyList = ShardIdList as any as S.Schema<TagKeyList>;
 export interface RemoveTagsFromStreamInput {
@@ -2484,27 +1720,10 @@ export interface RemoveTagsFromStreamInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const RemoveTagsFromStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    TagKeys: TagKeyList,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "RemoveTagsFromStreamInput",
-}) as any as S.Schema<RemoveTagsFromStreamInput>;
+const RemoveTagsFromStreamInput = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<RemoveTagsFromStreamInput>;
 export interface RemoveTagsFromStreamResponse {}
 const RemoveTagsFromStreamResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<RemoveTagsFromStreamResponse>;
@@ -2515,26 +1734,7 @@ export interface SplitShardInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const SplitShardInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    ShardToSplit: S.String,
-    NewStartingHashKey: S.String,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "SplitShardInput" }) as any as S.Schema<SplitShardInput>;
+const SplitShardInput = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<SplitShardInput>;
 export interface SplitShardResponse {}
 const SplitShardResponse = CreateStreamResponse as any as S.Schema<SplitShardResponse>;
 export interface StartStreamEncryptionInput {
@@ -2544,28 +1744,10 @@ export interface StartStreamEncryptionInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const StartStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    EncryptionType: EncryptionType,
-    KeyId: S.String,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "StartStreamEncryptionInput",
-}) as any as S.Schema<StartStreamEncryptionInput>;
+const StartStreamEncryptionInput = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<StartStreamEncryptionInput>;
 export interface StartStreamEncryptionResponse {}
 const StartStreamEncryptionResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<StartStreamEncryptionResponse>;
@@ -2576,28 +1758,10 @@ export interface StopStreamEncryptionInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const StopStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    EncryptionType: EncryptionType,
-    KeyId: S.String,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "StopStreamEncryptionInput",
-}) as any as S.Schema<StopStreamEncryptionInput>;
+const StopStreamEncryptionInput = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<StopStreamEncryptionInput>;
 export interface StopStreamEncryptionResponse {}
 const StopStreamEncryptionResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<StopStreamEncryptionResponse>;
@@ -2606,13 +1770,7 @@ export interface StartingPosition {
   SequenceNumber?: string;
   Timestamp?: Date;
 }
-const StartingPosition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: ShardIteratorType,
-    SequenceNumber: S.optional(S.String),
-    Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "StartingPosition" }) as any as S.Schema<StartingPosition>;
+const StartingPosition = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<StartingPosition>;
 export interface SubscribeToShardInput {
   ConsumerARN: string;
   StreamId?: string;
@@ -2620,40 +1778,20 @@ export interface SubscribeToShardInput {
   StartingPosition: StartingPosition;
   DryRun?: boolean;
 }
-const SubscribeToShardInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConsumerARN: S.String.pipe(T.ContextParam("ConsumerARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    ShardId: S.String,
-    StartingPosition: StartingPosition,
-    DryRun: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "data" } }),
-    ),
-  ),
-).annotate({ identifier: "SubscribeToShardInput" }) as any as S.Schema<SubscribeToShardInput>;
+const SubscribeToShardInput = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<SubscribeToShardInput>;
 export interface SubscribeToShardEvent {
   Records: Record[];
   ContinuationSequenceNumber: string;
   MillisBehindLatest: number;
   ChildShards?: ChildShard[];
 }
-const SubscribeToShardEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Records: RecordList,
-    ContinuationSequenceNumber: S.String,
-    MillisBehindLatest: S.Number,
-    ChildShards: S.optional(ChildShardList),
-  }),
-).annotate({ identifier: "SubscribeToShardEvent" }) as any as S.Schema<SubscribeToShardEvent>;
+const SubscribeToShardEvent = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<SubscribeToShardEvent>;
 export type SubscribeToShardEventStream =
   | {
       SubscribeToShardEvent: SubscribeToShardEvent;
@@ -2775,85 +1913,22 @@ export type SubscribeToShardEventStream =
       KMSThrottlingException?: never;
       InternalFailureException: InternalFailureException;
     };
-const SubscribeToShardEventStream = /*@__PURE__*/ T.EventStream(
-  /*@__PURE__*/ S.Union([
-    /*@__PURE__*/ S.Struct({ SubscribeToShardEvent: SubscribeToShardEvent }),
-    /*@__PURE__*/ S.Struct({
-      ResourceNotFoundException: /*@__PURE__*/ S.suspend(() => ResourceNotFoundException).annotate({
-        identifier: "ResourceNotFoundException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      ResourceInUseException: /*@__PURE__*/ S.suspend(() => ResourceInUseException).annotate({
-        identifier: "ResourceInUseException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      KMSDisabledException: /*@__PURE__*/ S.suspend(() => KMSDisabledException).annotate({
-        identifier: "KMSDisabledException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      KMSInvalidStateException: /*@__PURE__*/ S.suspend(() => KMSInvalidStateException).annotate({
-        identifier: "KMSInvalidStateException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      KMSAccessDeniedException: /*@__PURE__*/ S.suspend(() => KMSAccessDeniedException).annotate({
-        identifier: "KMSAccessDeniedException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      KMSNotFoundException: /*@__PURE__*/ S.suspend(() => KMSNotFoundException).annotate({
-        identifier: "KMSNotFoundException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      KMSOptInRequired: /*@__PURE__*/ S.suspend(() => KMSOptInRequired).annotate({
-        identifier: "KMSOptInRequired",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      KMSThrottlingException: /*@__PURE__*/ S.suspend(() => KMSThrottlingException).annotate({
-        identifier: "KMSThrottlingException",
-      }),
-    }),
-    /*@__PURE__*/ S.Struct({
-      InternalFailureException: /*@__PURE__*/ S.suspend(() => InternalFailureException).annotate({
-        identifier: "InternalFailureException",
-      }),
-    }),
-  ]),
-) as any as S.Schema<stream.Stream<SubscribeToShardEventStream, Error, never>>;
+const SubscribeToShardEventStream = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<
+  stream.Stream<SubscribeToShardEventStream, Error, never>
+>;
 export interface SubscribeToShardOutput {
   EventStream: stream.Stream<SubscribeToShardEventStream, Error, never>;
 }
-const SubscribeToShardOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EventStream: SubscribeToShardEventStream }).pipe(ns),
-).annotate({ identifier: "SubscribeToShardOutput" }) as any as S.Schema<SubscribeToShardOutput>;
+const SubscribeToShardOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<SubscribeToShardOutput>;
 export interface TagResourceInput {
   Tags: { [key: string]: string | undefined };
   ResourceARN: string;
   StreamId?: string;
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Tags: TagMap,
-    ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
 const TagResourceResponse = CreateStreamResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceInput {
@@ -2861,24 +1936,7 @@ export interface UntagResourceInput {
   ResourceARN: string;
   StreamId?: string;
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TagKeys: TagKeyList,
-    ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = CreateStreamResponse as any as S.Schema<UntagResourceResponse>;
 export type MinimumThroughputBillingCommitmentInputStatus = "ENABLED" | "DISABLED" | (string & {});
@@ -2887,30 +1945,17 @@ const MinimumThroughputBillingCommitmentInputStatus = S.String;
 export interface MinimumThroughputBillingCommitmentInput {
   Status: MinimumThroughputBillingCommitmentInputStatus;
 }
-const MinimumThroughputBillingCommitmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: MinimumThroughputBillingCommitmentInputStatus }),
-).annotate({
-  identifier: "MinimumThroughputBillingCommitmentInput",
-}) as any as S.Schema<MinimumThroughputBillingCommitmentInput>;
+const MinimumThroughputBillingCommitmentInput = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<MinimumThroughputBillingCommitmentInput>;
 export interface UpdateAccountSettingsInput {
   MinimumThroughputBillingCommitment: MinimumThroughputBillingCommitmentInput;
 }
-const UpdateAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MinimumThroughputBillingCommitment: MinimumThroughputBillingCommitmentInput }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAccountSettingsInput",
-}) as any as S.Schema<UpdateAccountSettingsInput>;
+const UpdateAccountSettingsInput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UpdateAccountSettingsInput>;
 export interface UpdateAccountSettingsOutput {
   MinimumThroughputBillingCommitment?: MinimumThroughputBillingCommitmentOutput;
 }
@@ -2919,64 +1964,40 @@ const UpdateAccountSettingsOutput =
 export interface S3DestinationUpdateInput {
   DataFreshnessInSeconds: number;
 }
-const S3DestinationUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataFreshnessInSeconds: S.Number }),
-).annotate({ identifier: "S3DestinationUpdateInput" }) as any as S.Schema<S3DestinationUpdateInput>;
+const S3DestinationUpdateInput = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<S3DestinationUpdateInput>;
 export interface S3TablesDestinationUpdateInput {
   DataFreshnessInSeconds: number;
 }
-const S3TablesDestinationUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataFreshnessInSeconds: S.Number }),
-).annotate({
-  identifier: "S3TablesDestinationUpdateInput",
-}) as any as S.Schema<S3TablesDestinationUpdateInput>;
+const S3TablesDestinationUpdateInput = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<S3TablesDestinationUpdateInput>;
 export interface CloudWatchLogsUpdateInput {
   Enabled: boolean;
   LogGroupName?: string;
   LogStreamName?: string;
 }
-const CloudWatchLogsUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Enabled: S.Boolean,
-    LogGroupName: S.optional(S.String),
-    LogStreamName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudWatchLogsUpdateInput",
-}) as any as S.Schema<CloudWatchLogsUpdateInput>;
+const CloudWatchLogsUpdateInput = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<CloudWatchLogsUpdateInput>;
 export interface ChannelLoggingUpdateInput {
   CloudWatchLogs: CloudWatchLogsUpdateInput;
 }
-const ChannelLoggingUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CloudWatchLogs: CloudWatchLogsUpdateInput }),
-).annotate({
-  identifier: "ChannelLoggingUpdateInput",
-}) as any as S.Schema<ChannelLoggingUpdateInput>;
+const ChannelLoggingUpdateInput = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ChannelLoggingUpdateInput>;
 export interface UpdateChannelInput {
   ChannelARN: string;
   S3DestinationConfiguration?: S3DestinationUpdateInput;
   S3TablesDestinationConfiguration?: S3TablesDestinationUpdateInput;
   LoggingConfiguration?: ChannelLoggingUpdateInput;
 }
-const UpdateChannelInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelARN: S.String.pipe(T.ContextParam("ChannelARN")),
-    S3DestinationConfiguration: S.optional(S3DestinationUpdateInput),
-    S3TablesDestinationConfiguration: S.optional(S3TablesDestinationUpdateInput),
-    LoggingConfiguration: S.optional(ChannelLoggingUpdateInput),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "UpdateChannelInput" }) as any as S.Schema<UpdateChannelInput>;
+const UpdateChannelInput = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<UpdateChannelInput>;
 export interface UpdateChannelOutput {
   ChannelDescription: ChannelDescription;
 }
@@ -2986,24 +2007,10 @@ export interface UpdateMaxRecordSizeInput {
   StreamId?: string;
   MaxRecordSizeInKiB: number;
 }
-const UpdateMaxRecordSizeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    MaxRecordSizeInKiB: S.Number,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "UpdateMaxRecordSizeInput" }) as any as S.Schema<UpdateMaxRecordSizeInput>;
+const UpdateMaxRecordSizeInput = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<UpdateMaxRecordSizeInput>;
 export interface UpdateMaxRecordSizeResponse {}
 const UpdateMaxRecordSizeResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<UpdateMaxRecordSizeResponse>;
@@ -3017,65 +2024,30 @@ export interface UpdateShardCountInput {
   StreamARN?: string;
   StreamId?: string;
 }
-const UpdateShardCountInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    TargetShardCount: S.Number,
-    ScalingType: ScalingType,
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "UpdateShardCountInput" }) as any as S.Schema<UpdateShardCountInput>;
+const UpdateShardCountInput = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<UpdateShardCountInput>;
 export interface UpdateShardCountOutput {
   StreamName?: string;
   CurrentShardCount?: number;
   TargetShardCount?: number;
   StreamARN?: string;
 }
-const UpdateShardCountOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    CurrentShardCount: S.optional(S.Number),
-    TargetShardCount: S.optional(S.Number),
-    StreamARN: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "UpdateShardCountOutput" }) as any as S.Schema<UpdateShardCountOutput>;
+const UpdateShardCountOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<UpdateShardCountOutput>;
 export interface UpdateStreamModeInput {
   StreamARN: string;
   StreamId?: string;
   StreamModeDetails: StreamModeDetails;
   WarmThroughputMiBps?: number;
 }
-const UpdateStreamModeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    StreamModeDetails: StreamModeDetails,
-    WarmThroughputMiBps: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({ identifier: "UpdateStreamModeInput" }) as any as S.Schema<UpdateStreamModeInput>;
+const UpdateStreamModeInput = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<UpdateStreamModeInput>;
 export interface UpdateStreamModeResponse {}
 const UpdateStreamModeResponse =
   AddTagsToStreamResponse as any as S.Schema<UpdateStreamModeResponse>;
@@ -3084,26 +2056,10 @@ export interface UpdateStreamRecordDistributionStrategyInput {
   StreamId?: string;
   RecordDistributionStrategy: RecordDistributionStrategy;
 }
-const UpdateStreamRecordDistributionStrategyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    RecordDistributionStrategy: RecordDistributionStrategy,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "UpdateStreamRecordDistributionStrategyInput",
-}) as any as S.Schema<UpdateStreamRecordDistributionStrategyInput>;
+const UpdateStreamRecordDistributionStrategyInput = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<UpdateStreamRecordDistributionStrategyInput>;
 export interface UpdateStreamRecordDistributionStrategyResponse {}
 const UpdateStreamRecordDistributionStrategyResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<UpdateStreamRecordDistributionStrategyResponse>;
@@ -3113,41 +2069,19 @@ export interface UpdateStreamWarmThroughputInput {
   StreamId?: string;
   WarmThroughputMiBps: number;
 }
-const UpdateStreamWarmThroughputInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-    StreamName: S.optional(S.String),
-    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    WarmThroughputMiBps: S.Number,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ OperationType: { value: "control" } }),
-    ),
-  ),
-).annotate({
-  identifier: "UpdateStreamWarmThroughputInput",
-}) as any as S.Schema<UpdateStreamWarmThroughputInput>;
+const UpdateStreamWarmThroughputInput = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<UpdateStreamWarmThroughputInput>;
 export interface UpdateStreamWarmThroughputOutput {
   StreamARN?: string;
   StreamName?: string;
   WarmThroughput?: WarmThroughputObject;
 }
-const UpdateStreamWarmThroughputOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamARN: S.optional(S.String),
-    StreamName: S.optional(S.String),
-    WarmThroughput: S.optional(WarmThroughputObject),
-  }).pipe(ns),
-).annotate({
-  identifier: "UpdateStreamWarmThroughputOutput",
-}) as any as S.Schema<UpdateStreamWarmThroughputOutput>;
+const UpdateStreamWarmThroughputOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<UpdateStreamWarmThroughputOutput>;
 export type AddTagsToStreamError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -5300,3 +4234,1599 @@ export const updateStreamWarmThroughput: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateStreamWarmThroughput",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          Tags: TagMap,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "AddTagsToStreamInput" });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AddTagsToStreamResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ RecordFormatType: RecordFormatType, GSRSchemaARN: S.optional(S.String) }),
+      ).annotate({ identifier: "RecordConfiguration" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ StreamARN: S.String, RecordConfiguration: RecordConfiguration }),
+      ).annotate({
+        identifier: "ChannelStreamConfiguration",
+      });
+    case 5:
+      return S.Array(ChannelStreamConfiguration);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          BucketARN: S.String,
+          ExpectedBucketOwner: S.String,
+          ErrorOutputPrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeadLetterQueueS3Configuration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          BucketARN: S.String,
+          ExpectedBucketOwner: S.String,
+          OutputKeyTemplate: S.optional(S.String),
+          StorageClass: S.optional(S3StorageClass),
+          CompressionType: S3CompressionType,
+        }),
+      ).annotate({ identifier: "S3StorageConfiguration" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DataFreshnessInSeconds: S.optional(S.Number),
+          DeadLetterQueueS3Configuration: S.optional(DeadLetterQueueS3Configuration),
+          StorageConfiguration: S3StorageConfiguration,
+        }),
+      ).annotate({
+        identifier: "S3DestinationConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Transform: PartitionTransform, SourceName: S.String }),
+      ).annotate({ identifier: "PartitionField" });
+    case 2:
+      return S.Array(PartitionField);
+    case 3:
+      return S.suspend(() => S.Struct({ PartitionFields: PartitionFieldList })).annotate({
+        identifier: "PartitionSpec",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TableBucketARN: S.String,
+          Namespace: S.String,
+          TableName: S.String,
+          CompressionType: S3TablesCompressionType,
+          PartitionSpec: S.optional(PartitionSpec),
+        }),
+      ).annotate({ identifier: "S3TablesConfiguration" });
+    case 5:
+      return S.Array(S3TablesConfiguration);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DataFreshnessInSeconds: S.optional(S.Number),
+          DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration,
+          S3TablesConfigurationList: S3TablesConfigurationList,
+        }),
+      ).annotate({
+        identifier: "S3TablesDestinationConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ EncryptionType: ChannelEncryptionType, KeyId: S.String }),
+      ).annotate({
+        identifier: "ChannelEncryptionConfiguration",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Enabled: S.Boolean,
+          LogGroupName: S.optional(S.String),
+          LogStreamName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudWatchLogs" });
+    case 1:
+      return S.suspend(() => S.Struct({ CloudWatchLogs: CloudWatchLogs })).annotate({
+        identifier: "ChannelLoggingConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelName: S.String,
+          ServiceExecutionRoleARN: S.String,
+          StreamConfigurationList: ChannelStreamConfigurationList,
+          S3DestinationConfiguration: S.optional(S3DestinationConfiguration),
+          S3TablesDestinationConfiguration: S.optional(S3TablesDestinationConfiguration),
+          EncryptionConfiguration: S.optional(ChannelEncryptionConfiguration),
+          Tags: S.optional(TagMap),
+          LoggingConfiguration: S.optional(ChannelLoggingConfiguration),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "CreateChannelInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.String,
+          StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          RecordConfiguration: RecordConfiguration,
+        }),
+      ).annotate({ identifier: "ChannelStreamDescription" });
+    case 4:
+      return S.Array(ChannelStreamDescription);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DataFreshnessInSeconds: S.Number,
+          DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration,
+          StorageConfiguration: S3StorageConfiguration,
+        }),
+      ).annotate({ identifier: "S3DestinationDescription" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DataFreshnessInSeconds: S.Number,
+          DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration,
+          S3TablesConfigurationList: S3TablesConfigurationList,
+        }),
+      ).annotate({
+        identifier: "S3TablesDestinationDescription",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelName: S.String,
+          ChannelARN: S.String,
+          ChannelId: S.String,
+          ChannelStatus: ChannelStatus,
+          ChannelStatusReason: S.optional(S.String),
+          ChannelCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ServiceExecutionRoleARN: S.String,
+          StreamConfigurationList: ChannelStreamDescriptionList,
+          S3DestinationConfiguration: S.optional(S3DestinationDescription),
+          S3TablesDestinationConfiguration: S.optional(S3TablesDestinationDescription),
+          EncryptionConfiguration: S.optional(ChannelEncryptionConfiguration),
+          LoggingConfiguration: ChannelLoggingConfiguration,
+        }),
+      ).annotate({ identifier: "ChannelDescription" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelDescription: ChannelDescription }).pipe(ns),
+      ).annotate({ identifier: "CreateChannelOutput" });
+    case 1:
+      return S.suspend(() => S.Struct({ StreamMode: StreamMode })).annotate({
+        identifier: "StreamModeDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.String,
+          ShardCount: S.optional(S.Number),
+          StreamModeDetails: S.optional(StreamModeDetails),
+          Tags: S.optional(TagMap),
+          WarmThroughputMiBps: S.optional(S.Number),
+          MaxRecordSizeInKiB: S.optional(S.Number),
+          RecordDistributionStrategy: S.optional(RecordDistributionStrategy),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "CreateStreamInput" });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CreateStreamResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          RetentionPeriodHours: S.Number,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DecreaseStreamRetentionPeriodInput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DecreaseStreamRetentionPeriodResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ChannelARN: S.String.pipe(T.ContextParam("ChannelARN")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "DeleteChannelInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePolicyInput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          EnforceConsumerDeletion: S.optional(S.Boolean),
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "DeleteStreamInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          ConsumerName: S.optional(S.String),
+          ConsumerARN: S.optional(S.String).pipe(T.ContextParam("ConsumerARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DeregisterStreamConsumerInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAccountSettingsInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Status: MinimumThroughputBillingCommitmentOutputStatus,
+          StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EarliestAllowedEndAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "MinimumThroughputBillingCommitmentOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          MinimumThroughputBillingCommitment: S.optional(MinimumThroughputBillingCommitmentOutput),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeAccountSettingsOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ChannelARN: S.String.pipe(T.ContextParam("ChannelARN")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "DescribeChannelInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "DescribeLimitsInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ShardLimit: S.Number,
+          OpenShardCount: S.Number,
+          OnDemandStreamCount: S.Number,
+          OnDemandStreamCountLimit: S.Number,
+          ChannelCount: S.optional(S.Number),
+          ChannelCountLimit: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeLimitsOutput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          Limit: S.optional(S.Number),
+          ExclusiveStartShardId: S.optional(S.String),
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "DescribeStreamInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ StartingHashKey: S.String, EndingHashKey: S.String }),
+      ).annotate({ identifier: "HashKeyRange" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ StartingSequenceNumber: S.String, EndingSequenceNumber: S.optional(S.String) }),
+      ).annotate({ identifier: "SequenceNumberRange" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ShardId: S.String,
+          ParentShardId: S.optional(S.String),
+          AdjacentParentShardId: S.optional(S.String),
+          HashKeyRange: HashKeyRange,
+          SequenceNumberRange: SequenceNumberRange,
+        }),
+      ).annotate({ identifier: "Shard" });
+    case 4:
+      return S.Array(Shard);
+    case 5:
+      return S.Array(MetricsName);
+    case 6:
+      return S.suspend(() => S.Struct({ ShardLevelMetrics: S.optional(MetricsNameList) })).annotate(
+        { identifier: "EnhancedMetrics" },
+      );
+    case 7:
+      return S.Array(EnhancedMetrics);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.String,
+          StreamARN: S.String,
+          StreamStatus: StreamStatus,
+          StreamModeDetails: S.optional(StreamModeDetails),
+          Shards: ShardList,
+          HasMoreShards: S.Boolean,
+          RetentionPeriodHours: S.Number,
+          StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EnhancedMonitoring: EnhancedMonitoringList,
+          EncryptionType: S.optional(EncryptionType),
+          KeyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamDescription" });
+    case 1:
+      return S.suspend(() => S.Struct({ StreamDescription: StreamDescription }).pipe(ns)).annotate({
+        identifier: "DescribeStreamOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          ConsumerName: S.optional(S.String),
+          ConsumerARN: S.optional(S.String).pipe(T.ContextParam("ConsumerARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeStreamConsumerInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ConsumerName: S.String,
+          ConsumerARN: S.String,
+          ConsumerStatus: ConsumerStatus,
+          ConsumerCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          StreamARN: S.String,
+        }),
+      ).annotate({ identifier: "ConsumerDescription" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ConsumerDescription: ConsumerDescription }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeStreamConsumerOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeStreamSummaryInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ TargetMiBps: S.optional(S.Number), CurrentMiBps: S.optional(S.Number) }),
+      ).annotate({ identifier: "WarmThroughputObject" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.String,
+          StreamARN: S.String,
+          StreamId: S.optional(S.String),
+          StreamStatus: StreamStatus,
+          StreamModeDetails: S.optional(StreamModeDetails),
+          RetentionPeriodHours: S.Number,
+          StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EnhancedMonitoring: EnhancedMonitoringList,
+          EncryptionType: S.optional(EncryptionType),
+          KeyId: S.optional(S.String),
+          OpenShardCount: S.optional(S.Number),
+          ConsumerCount: S.optional(S.Number),
+          WarmThroughput: S.optional(WarmThroughputObject),
+          MaxRecordSizeInKiB: S.optional(S.Number),
+          ChannelCount: S.optional(S.Number),
+          RecordDistributionStrategy: S.optional(RecordDistributionStrategy),
+        }),
+      ).annotate({ identifier: "StreamDescriptionSummary" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ StreamDescriptionSummary: StreamDescriptionSummary }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeStreamSummaryOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          ShardLevelMetrics: MetricsNameList,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DisableEnhancedMonitoringInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          CurrentShardLevelMetrics: S.optional(MetricsNameList),
+          DesiredShardLevelMetrics: S.optional(MetricsNameList),
+          StreamARN: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "EnhancedMonitoringOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          ShardLevelMetrics: MetricsNameList,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "EnableEnhancedMonitoringInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ShardIterator: S.String,
+          Limit: S.optional(S.Number),
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          DryRun: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "data" } }),
+          ),
+        ),
+      ).annotate({ identifier: "GetRecordsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          SequenceNumber: S.String,
+          ApproximateArrivalTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Data: T.Blob,
+          PartitionKey: S.optional(S.String),
+          EncryptionType: S.optional(EncryptionType),
+        }),
+      ).annotate({ identifier: "Record" });
+    case 6:
+      return S.Array(Record);
+    case 7:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ShardId: S.String, ParentShards: ShardIdList, HashKeyRange: HashKeyRange }),
+      ).annotate({ identifier: "ChildShard" });
+    case 1:
+      return S.Array(ChildShard);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Records: RecordList,
+          NextShardIterator: S.optional(S.String),
+          MillisBehindLatest: S.optional(S.Number),
+          ChildShards: S.optional(ChildShardList),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetRecordsOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "GetResourcePolicyInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ Policy: S.String }).pipe(ns)).annotate({
+        identifier: "GetResourcePolicyOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          ShardId: S.String,
+          ShardIteratorType: ShardIteratorType,
+          StartingSequenceNumber: S.optional(S.String),
+          Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          DryRun: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "data" } }),
+          ),
+        ),
+      ).annotate({ identifier: "GetShardIteratorInput" });
+    case 6:
+      return S.suspend(() => S.Struct({ ShardIterator: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "GetShardIteratorOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          RetentionPeriodHours: S.Number,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "IncreaseStreamRetentionPeriodInput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.String,
+          StreamCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "StreamFilter" });
+    case 1:
+      return S.Array(StreamFilter);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StreamFilter: S.optional(StreamFilterList),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ListChannelsInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.String,
+          StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "ChannelStreamIdentifier" });
+    case 4:
+      return S.Array(ChannelStreamIdentifier);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelName: S.String,
+          ChannelARN: S.String,
+          ChannelId: S.String,
+          ChannelStatus: ChannelStatus,
+          ChannelStatusReason: S.optional(S.String),
+          ChannelCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ChannelDestinationType: ChannelDestinationType,
+          Streams: ChannelStreamIdentifierList,
+        }),
+      ).annotate({ identifier: "ChannelSummary" });
+    case 6:
+      return S.Array(ChannelSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ChannelSummaries: ChannelSummaryList, NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "ListChannelsOutput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Type: ShardFilterType,
+          ShardId: S.optional(S.String),
+          Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ShardFilter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          ExclusiveStartShardId: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          StreamCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ShardFilter: S.optional(ShardFilter),
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ListShardsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Shards: S.optional(ShardList), NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListShardsOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          StreamCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ListStreamConsumersInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ConsumerName: S.String,
+          ConsumerARN: S.String,
+          ConsumerStatus: ConsumerStatus,
+          ConsumerCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "Consumer" });
+    case 5:
+      return S.Array(Consumer);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Consumers: S.optional(ConsumerList), NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ListStreamConsumersOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Limit: S.optional(S.Number),
+          ExclusiveStartStreamName: S.optional(S.String),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ListStreamsInput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.String,
+          StreamARN: S.String,
+          StreamStatus: StreamStatus,
+          StreamModeDetails: S.optional(StreamModeDetails),
+          StreamCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "StreamSummary" });
+    case 1:
+      return S.Array(StreamSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StreamNames: StreamNameList,
+          HasMoreStreams: S.Boolean,
+          NextToken: S.optional(S.String),
+          StreamSummaries: S.optional(StreamSummaryList),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListStreamsOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
+        identifier: "Tag",
+      });
+    case 5:
+      return S.Array(Tag);
+    case 6:
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) }).pipe(ns)).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          ExclusiveStartTagKey: S.optional(S.String),
+          Limit: S.optional(S.Number),
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ListTagsForStreamInput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Tags: TagList, HasMoreTags: S.Boolean }).pipe(ns)).annotate(
+        { identifier: "ListTagsForStreamOutput" },
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          ShardToMerge: S.String,
+          AdjacentShardToMerge: S.String,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "MergeShardsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          Data: T.Blob,
+          PartitionKey: S.optional(S.String),
+          ExplicitHashKey: S.optional(S.String),
+          SequenceNumberForOrdering: S.optional(S.String),
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          DryRun: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "data" } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutRecordInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ShardId: S.String,
+          SequenceNumber: S.String,
+          EncryptionType: S.optional(EncryptionType),
+        }).pipe(ns),
+      ).annotate({ identifier: "PutRecordOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Data: T.Blob,
+          ExplicitHashKey: S.optional(S.String),
+          PartitionKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PutRecordsRequestEntry" });
+    case 5:
+      return S.Array(PutRecordsRequestEntry);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Records: PutRecordsRequestEntryList,
+          StreamName: S.optional(S.String),
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          DryRun: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "data" } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutRecordsInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SequenceNumber: S.optional(S.String),
+          ShardId: S.optional(S.String),
+          ErrorCode: S.optional(S.String),
+          ErrorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PutRecordsResultEntry" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PutRecordsResultEntry);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FailedRecordCount: S.optional(S.Number),
+          Records: PutRecordsResultEntryList,
+          EncryptionType: S.optional(EncryptionType),
+        }).pipe(ns),
+      ).annotate({ identifier: "PutRecordsOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          Policy: S.String,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutResourcePolicyInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
+          ConsumerName: S.String,
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          Tags: S.optional(TagMap),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "RegisterStreamConsumerInput",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ Consumer: Consumer }).pipe(ns)).annotate({
+        identifier: "RegisterStreamConsumerOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          TagKeys: TagKeyList,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "RemoveTagsFromStreamInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          ShardToSplit: S.String,
+          NewStartingHashKey: S.String,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "SplitShardInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          EncryptionType: EncryptionType,
+          KeyId: S.String,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "StartStreamEncryptionInput",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          EncryptionType: EncryptionType,
+          KeyId: S.String,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "StopStreamEncryptionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Type: ShardIteratorType,
+          SequenceNumber: S.optional(S.String),
+          Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "StartingPosition" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ConsumerARN: S.String.pipe(T.ContextParam("ConsumerARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          ShardId: S.String,
+          StartingPosition: StartingPosition,
+          DryRun: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "data" } }),
+          ),
+        ),
+      ).annotate({ identifier: "SubscribeToShardInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Records: RecordList,
+          ContinuationSequenceNumber: S.String,
+          MillisBehindLatest: S.Number,
+          ChildShards: S.optional(ChildShardList),
+        }),
+      ).annotate({ identifier: "SubscribeToShardEvent" });
+    case 4:
+      return T.EventStream(
+        /*@__PURE__*/ S.Union([
+          /*@__PURE__*/ S.Struct({ SubscribeToShardEvent: SubscribeToShardEvent }),
+          /*@__PURE__*/ S.Struct({
+            ResourceNotFoundException: /*@__PURE__*/ S.suspend(
+              () => ResourceNotFoundException,
+            ).annotate({
+              identifier: "ResourceNotFoundException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            ResourceInUseException: /*@__PURE__*/ S.suspend(() => ResourceInUseException).annotate({
+              identifier: "ResourceInUseException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            KMSDisabledException: /*@__PURE__*/ S.suspend(() => KMSDisabledException).annotate({
+              identifier: "KMSDisabledException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            KMSInvalidStateException: /*@__PURE__*/ S.suspend(
+              () => KMSInvalidStateException,
+            ).annotate({
+              identifier: "KMSInvalidStateException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            KMSAccessDeniedException: /*@__PURE__*/ S.suspend(
+              () => KMSAccessDeniedException,
+            ).annotate({
+              identifier: "KMSAccessDeniedException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            KMSNotFoundException: /*@__PURE__*/ S.suspend(() => KMSNotFoundException).annotate({
+              identifier: "KMSNotFoundException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            KMSOptInRequired: /*@__PURE__*/ S.suspend(() => KMSOptInRequired).annotate({
+              identifier: "KMSOptInRequired",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            KMSThrottlingException: /*@__PURE__*/ S.suspend(() => KMSThrottlingException).annotate({
+              identifier: "KMSThrottlingException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            InternalFailureException: /*@__PURE__*/ S.suspend(
+              () => InternalFailureException,
+            ).annotate({
+              identifier: "InternalFailureException",
+            }),
+          }),
+        ]),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ EventStream: SubscribeToShardEventStream }).pipe(ns),
+      ).annotate({ identifier: "SubscribeToShardOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Tags: TagMap,
+          ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TagKeys: TagKeyList,
+          ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Status: MinimumThroughputBillingCommitmentInputStatus }),
+      ).annotate({
+        identifier: "MinimumThroughputBillingCommitmentInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MinimumThroughputBillingCommitment: MinimumThroughputBillingCommitmentInput,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateAccountSettingsInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ DataFreshnessInSeconds: S.Number })).annotate({
+        identifier: "S3DestinationUpdateInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ DataFreshnessInSeconds: S.Number })).annotate({
+        identifier: "S3TablesDestinationUpdateInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Enabled: S.Boolean,
+          LogGroupName: S.optional(S.String),
+          LogStreamName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CloudWatchLogsUpdateInput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ CloudWatchLogs: CloudWatchLogsUpdateInput })).annotate({
+        identifier: "ChannelLoggingUpdateInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelARN: S.String.pipe(T.ContextParam("ChannelARN")),
+          S3DestinationConfiguration: S.optional(S3DestinationUpdateInput),
+          S3TablesDestinationConfiguration: S.optional(S3TablesDestinationUpdateInput),
+          LoggingConfiguration: S.optional(ChannelLoggingUpdateInput),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "UpdateChannelInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          MaxRecordSizeInKiB: S.Number,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "UpdateMaxRecordSizeInput" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          TargetShardCount: S.Number,
+          ScalingType: ScalingType,
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "UpdateShardCountInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          CurrentShardCount: S.optional(S.Number),
+          TargetShardCount: S.optional(S.Number),
+          StreamARN: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "UpdateShardCountOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          StreamModeDetails: StreamModeDetails,
+          WarmThroughputMiBps: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({ identifier: "UpdateStreamModeInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          RecordDistributionStrategy: RecordDistributionStrategy,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateStreamRecordDistributionStrategyInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+          StreamName: S.optional(S.String),
+          StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+          WarmThroughputMiBps: S.Number,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ OperationType: { value: "control" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateStreamWarmThroughputInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          StreamARN: S.optional(S.String),
+          StreamName: S.optional(S.String),
+          WarmThroughput: S.optional(WarmThroughputObject),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "UpdateStreamWarmThroughputOutput",
+      });
+  }
+}

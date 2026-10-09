@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -184,17 +185,15 @@ export type BoxedBoolean = boolean;
 export type BoxedLong = number;
 export type BoxedDouble = number;
 export type BooleanArray = boolean[];
-const BooleanArray = /*@__PURE__*/ S.Array(S.Boolean).pipe(/*@__PURE__*/ T.Sparse());
+const BooleanArray = /*@__PURE__*/ __L.at(__c0, 0);
 export type LongArray = number[];
-const LongArray = /*@__PURE__*/ S.Array(S.Number).pipe(/*@__PURE__*/ T.Sparse());
+const LongArray = /*@__PURE__*/ __L.at(__c0, 1);
 export type DoubleArray = number[];
 const DoubleArray = LongArray as any as S.Schema<DoubleArray>;
 export type StringArray = string[];
-const StringArray = /*@__PURE__*/ S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
+const StringArray = /*@__PURE__*/ __L.at(__c0, 2);
 export type ArrayOfArray = ArrayValue[];
-const ArrayOfArray = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => ArrayValue).annotate({ identifier: "ArrayValue" }),
-).pipe(/*@__PURE__*/ T.Sparse()) as any as S.Schema<ArrayOfArray>;
+const ArrayOfArray = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ArrayOfArray>;
 export type ArrayValue =
   | {
       booleanValues: boolean[];
@@ -231,17 +230,7 @@ export type ArrayValue =
       stringValues?: never;
       arrayValues: ArrayValue[];
     };
-const ArrayValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ booleanValues: BooleanArray }),
-  /*@__PURE__*/ S.Struct({ longValues: LongArray }),
-  /*@__PURE__*/ S.Struct({ doubleValues: DoubleArray }),
-  /*@__PURE__*/ S.Struct({ stringValues: StringArray }),
-  /*@__PURE__*/ S.Struct({
-    arrayValues: /*@__PURE__*/ S.suspend(() => ArrayOfArray).annotate({
-      identifier: "ArrayOfArray",
-    }),
-  }),
-]) as any as S.Schema<ArrayValue>;
+const ArrayValue = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ArrayValue>;
 export type Field =
   | {
       isNull: boolean;
@@ -306,15 +295,7 @@ export type Field =
       blobValue?: never;
       arrayValue: ArrayValue;
     };
-const Field = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ longValue: S.Number }),
-  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
-  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-  /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
-  /*@__PURE__*/ S.Struct({ arrayValue: ArrayValue }),
-]);
+const Field = /*@__PURE__*/ __L.at(__c0, 5);
 export type TypeHint = "JSON" | "UUID" | "TIMESTAMP" | "DATE" | "TIME" | "DECIMAL" | (string & {});
 const TypeHint = S.String;
 
@@ -323,17 +304,11 @@ export interface SqlParameter {
   value?: Field;
   typeHint?: TypeHint;
 }
-const SqlParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(Field),
-    typeHint: S.optional(TypeHint),
-  }),
-).annotate({ identifier: "SqlParameter" }) as any as S.Schema<SqlParameter>;
+const SqlParameter = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SqlParameter>;
 export type SqlParametersList = SqlParameter[];
-const SqlParametersList = /*@__PURE__*/ S.Array(SqlParameter);
+const SqlParametersList = /*@__PURE__*/ __L.at(__c0, 7);
 export type SqlParameterSets = SqlParameter[][];
-const SqlParameterSets = /*@__PURE__*/ S.Array(SqlParametersList);
+const SqlParameterSets = /*@__PURE__*/ __L.at(__c1, 0);
 export type Id = string;
 export interface BatchExecuteStatementRequest {
   resourceArn: string;
@@ -344,78 +319,59 @@ export interface BatchExecuteStatementRequest {
   parameterSets?: SqlParameter[][];
   transactionId?: string;
 }
-const BatchExecuteStatementRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String,
-    secretArn: S.String,
-    sql: S.String,
-    database: S.optional(S.String),
-    schema: S.optional(S.String),
-    parameterSets: S.optional(SqlParameterSets),
-    transactionId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/BatchExecute" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "BatchExecuteStatementRequest",
-}) as any as S.Schema<BatchExecuteStatementRequest>;
+const BatchExecuteStatementRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchExecuteStatementRequest>;
 export type FieldList = Field[];
-const FieldList = /*@__PURE__*/ S.Array(Field);
+const FieldList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface UpdateResult {
   generatedFields?: Field[];
 }
-const UpdateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ generatedFields: S.optional(FieldList) }),
-).annotate({ identifier: "UpdateResult" }) as any as S.Schema<UpdateResult>;
+const UpdateResult = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<UpdateResult>;
 export type UpdateResults = UpdateResult[];
-const UpdateResults = /*@__PURE__*/ S.Array(UpdateResult);
+const UpdateResults = /*@__PURE__*/ __L.at(__c1, 4);
 export interface BatchExecuteStatementResponse {
   updateResults?: UpdateResult[];
 }
-const BatchExecuteStatementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ updateResults: S.optional(UpdateResults) }),
-).annotate({
-  identifier: "BatchExecuteStatementResponse",
-}) as any as S.Schema<BatchExecuteStatementResponse>;
+const BatchExecuteStatementResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BatchExecuteStatementResponse>;
 export interface BeginTransactionRequest {
   resourceArn: string;
   secretArn: string;
   database?: string;
   schema?: string;
 }
-const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String,
-    secretArn: S.String,
-    database: S.optional(S.String),
-    schema: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/BeginTransaction" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "BeginTransactionRequest" }) as any as S.Schema<BeginTransactionRequest>;
+const BeginTransactionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BeginTransactionRequest>;
 export interface BeginTransactionResponse {
   transactionId?: string;
 }
-const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ transactionId: S.optional(S.String) }),
-).annotate({ identifier: "BeginTransactionResponse" }) as any as S.Schema<BeginTransactionResponse>;
+const BeginTransactionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BeginTransactionResponse>;
 export interface CommitTransactionRequest {
   resourceArn: string;
   secretArn: string;
   transactionId: string;
 }
-const CommitTransactionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, secretArn: S.String, transactionId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/CommitTransaction" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CommitTransactionRequest" }) as any as S.Schema<CommitTransactionRequest>;
+const CommitTransactionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CommitTransactionRequest>;
 export type TransactionStatus = string;
 export interface CommitTransactionResponse {
   transactionStatus?: string;
 }
-const CommitTransactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ transactionStatus: S.optional(S.String) }),
-).annotate({
-  identifier: "CommitTransactionResponse",
-}) as any as S.Schema<CommitTransactionResponse>;
+const CommitTransactionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CommitTransactionResponse>;
 export interface ExecuteSqlRequest {
   dbClusterOrInstanceArn: string;
   awsSecretStoreArn: string;
@@ -423,15 +379,7 @@ export interface ExecuteSqlRequest {
   database?: string;
   schema?: string;
 }
-const ExecuteSqlRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbClusterOrInstanceArn: S.String,
-    awsSecretStoreArn: S.String,
-    sqlStatements: S.String,
-    database: S.optional(S.String),
-    schema: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/ExecuteSql" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ExecuteSqlRequest" }) as any as S.Schema<ExecuteSqlRequest>;
+const ExecuteSqlRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ExecuteSqlRequest>;
 export interface ColumnMetadata {
   name?: string;
   type?: number;
@@ -448,49 +396,22 @@ export interface ColumnMetadata {
   scale?: number;
   arrayBaseColumnType?: number;
 }
-const ColumnMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.Number),
-    typeName: S.optional(S.String),
-    label: S.optional(S.String),
-    schemaName: S.optional(S.String),
-    tableName: S.optional(S.String),
-    isAutoIncrement: S.optional(S.Boolean),
-    isSigned: S.optional(S.Boolean),
-    isCurrency: S.optional(S.Boolean),
-    isCaseSensitive: S.optional(S.Boolean),
-    nullable: S.optional(S.Number),
-    precision: S.optional(S.Number),
-    scale: S.optional(S.Number),
-    arrayBaseColumnType: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ColumnMetadata" }) as any as S.Schema<ColumnMetadata>;
+const ColumnMetadata = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ColumnMetadata>;
 export type Metadata = ColumnMetadata[];
-const Metadata = /*@__PURE__*/ S.Array(ColumnMetadata);
+const Metadata = /*@__PURE__*/ __L.at(__c2, 4);
 export interface ResultSetMetadata {
   columnCount?: number;
   columnMetadata?: ColumnMetadata[];
 }
-const ResultSetMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ columnCount: S.optional(S.Number), columnMetadata: S.optional(Metadata) }),
-).annotate({ identifier: "ResultSetMetadata" }) as any as S.Schema<ResultSetMetadata>;
+const ResultSetMetadata = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ResultSetMetadata>;
 export type BoxedInteger = number;
 export type BoxedFloat = number;
 export type ArrayValueList = Value[];
-const ArrayValueList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => Value).annotate({ identifier: "Value" }),
-) as any as S.Schema<ArrayValueList>;
+const ArrayValueList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ArrayValueList>;
 export interface StructValue {
   attributes?: Value[];
 }
-const StructValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(
-      S.suspend(() => ArrayValueList).annotate({ identifier: "ArrayValueList" }),
-    ),
-  }),
-).annotate({ identifier: "StructValue" }) as any as S.Schema<StructValue>;
+const StructValue = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<StructValue>;
 export type Value =
   | {
       isNull: boolean;
@@ -612,61 +533,32 @@ export type Value =
       arrayValues?: never;
       structValue: StructValue;
     };
-const Value = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ bitValue: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ bigIntValue: S.Number }),
-  /*@__PURE__*/ S.Struct({ intValue: S.Number }),
-  /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
-  /*@__PURE__*/ S.Struct({ realValue: S.Number }),
-  /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-  /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
-  /*@__PURE__*/ S.Struct({
-    arrayValues: /*@__PURE__*/ S.suspend(() => ArrayValueList).annotate({
-      identifier: "ArrayValueList",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    structValue: /*@__PURE__*/ S.suspend((): S.Schema<StructValue> => StructValue).annotate({
-      identifier: "StructValue",
-    }),
-  }),
-]) as any as S.Schema<Value>;
+const Value = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Value>;
 export type Row = Value[];
-const Row = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => Value).annotate({ identifier: "Value" }),
-);
+const Row = /*@__PURE__*/ __L.at(__c3, 1);
 export interface Record {
   values?: Value[];
 }
-const Record = /*@__PURE__*/ S.suspend(() => S.Struct({ values: S.optional(Row) })).annotate({
-  identifier: "Record",
-}) as any as S.Schema<Record>;
+const Record = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Record>;
 export type Records = Record[];
-const Records = /*@__PURE__*/ S.Array(Record);
+const Records = /*@__PURE__*/ __L.at(__c3, 3);
 export interface ResultFrame {
   resultSetMetadata?: ResultSetMetadata;
   records?: Record[];
 }
-const ResultFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resultSetMetadata: S.optional(ResultSetMetadata), records: S.optional(Records) }),
-).annotate({ identifier: "ResultFrame" }) as any as S.Schema<ResultFrame>;
+const ResultFrame = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ResultFrame>;
 export type RecordsUpdated = number;
 export interface SqlStatementResult {
   resultFrame?: ResultFrame;
   numberOfRecordsUpdated?: number;
 }
-const SqlStatementResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resultFrame: S.optional(ResultFrame), numberOfRecordsUpdated: S.optional(S.Number) }),
-).annotate({ identifier: "SqlStatementResult" }) as any as S.Schema<SqlStatementResult>;
+const SqlStatementResult = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SqlStatementResult>;
 export type SqlStatementResults = SqlStatementResult[];
-const SqlStatementResults = /*@__PURE__*/ S.Array(SqlStatementResult);
+const SqlStatementResults = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ExecuteSqlResponse {
   sqlStatementResults?: SqlStatementResult[];
 }
-const ExecuteSqlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sqlStatementResults: S.optional(SqlStatementResults) }),
-).annotate({ identifier: "ExecuteSqlResponse" }) as any as S.Schema<ExecuteSqlResponse>;
+const ExecuteSqlResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ExecuteSqlResponse>;
 export type DecimalReturnType = "STRING" | "DOUBLE_OR_LONG" | (string & {});
 const DecimalReturnType = S.String;
 
@@ -677,12 +569,7 @@ export interface ResultSetOptions {
   decimalReturnType?: DecimalReturnType;
   longReturnType?: LongReturnType;
 }
-const ResultSetOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    decimalReturnType: S.optional(DecimalReturnType),
-    longReturnType: S.optional(LongReturnType),
-  }),
-).annotate({ identifier: "ResultSetOptions" }) as any as S.Schema<ResultSetOptions>;
+const ResultSetOptions = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ResultSetOptions>;
 export type RecordsFormatType = "NONE" | "JSON" | (string & {});
 const RecordsFormatType = S.String;
 
@@ -699,23 +586,12 @@ export interface ExecuteStatementRequest {
   resultSetOptions?: ResultSetOptions;
   formatRecordsAs?: RecordsFormatType;
 }
-const ExecuteStatementRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String,
-    secretArn: S.String,
-    sql: S.String,
-    database: S.optional(S.String),
-    schema: S.optional(S.String),
-    parameters: S.optional(SqlParametersList),
-    transactionId: S.optional(S.String),
-    includeResultMetadata: S.optional(S.Boolean),
-    continueAfterTimeout: S.optional(S.Boolean),
-    resultSetOptions: S.optional(ResultSetOptions),
-    formatRecordsAs: S.optional(RecordsFormatType),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/Execute" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ExecuteStatementRequest" }) as any as S.Schema<ExecuteStatementRequest>;
+const ExecuteStatementRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ExecuteStatementRequest>;
 export type SqlRecords = Field[][];
-const SqlRecords = /*@__PURE__*/ S.Array(FieldList);
+const SqlRecords = /*@__PURE__*/ __L.at(__c4, 2);
 export type FormattedSqlRecords = string;
 export interface ExecuteStatementResponse {
   records?: Field[][];
@@ -724,27 +600,19 @@ export interface ExecuteStatementResponse {
   generatedFields?: Field[];
   formattedRecords?: string;
 }
-const ExecuteStatementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    records: S.optional(SqlRecords),
-    columnMetadata: S.optional(Metadata),
-    numberOfRecordsUpdated: S.optional(S.Number),
-    generatedFields: S.optional(FieldList),
-    formattedRecords: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExecuteStatementResponse" }) as any as S.Schema<ExecuteStatementResponse>;
+const ExecuteStatementResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ExecuteStatementResponse>;
 export interface RollbackTransactionRequest {
   resourceArn: string;
   secretArn: string;
   transactionId: string;
 }
-const RollbackTransactionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, secretArn: S.String, transactionId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/RollbackTransaction" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RollbackTransactionRequest",
-}) as any as S.Schema<RollbackTransactionRequest>;
+const RollbackTransactionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<RollbackTransactionRequest>;
 export interface RollbackTransactionResponse {
   transactionStatus?: string;
 }
@@ -1052,3 +920,275 @@ export const rollbackTransaction: API.OperationMethod<
   retry: Retry,
   operationName: "RollbackTransaction",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Boolean).pipe(/*@__PURE__*/ T.Sparse());
+    case 1:
+      return S.Array(S.Number).pipe(/*@__PURE__*/ T.Sparse());
+    case 2:
+      return S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
+    case 3:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => ArrayValue).annotate({ identifier: "ArrayValue" }),
+      ).pipe(/*@__PURE__*/ T.Sparse());
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ booleanValues: BooleanArray }),
+        /*@__PURE__*/ S.Struct({ longValues: LongArray }),
+        /*@__PURE__*/ S.Struct({ doubleValues: DoubleArray }),
+        /*@__PURE__*/ S.Struct({ stringValues: StringArray }),
+        /*@__PURE__*/ S.Struct({
+          arrayValues: /*@__PURE__*/ S.suspend(() => ArrayOfArray).annotate({
+            identifier: "ArrayOfArray",
+          }),
+        }),
+      ]);
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ longValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
+        /*@__PURE__*/ S.Struct({ arrayValue: ArrayValue }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(Field),
+          typeHint: S.optional(TypeHint),
+        }),
+      ).annotate({ identifier: "SqlParameter" });
+    case 7:
+      return S.Array(SqlParameter);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SqlParametersList);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String,
+          secretArn: S.String,
+          sql: S.String,
+          database: S.optional(S.String),
+          schema: S.optional(S.String),
+          parameterSets: S.optional(SqlParameterSets),
+          transactionId: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/BatchExecute" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchExecuteStatementRequest",
+      });
+    case 2:
+      return S.Array(Field);
+    case 3:
+      return S.suspend(() => S.Struct({ generatedFields: S.optional(FieldList) })).annotate({
+        identifier: "UpdateResult",
+      });
+    case 4:
+      return S.Array(UpdateResult);
+    case 5:
+      return S.suspend(() => S.Struct({ updateResults: S.optional(UpdateResults) })).annotate({
+        identifier: "BatchExecuteStatementResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String,
+          secretArn: S.String,
+          database: S.optional(S.String),
+          schema: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/BeginTransaction" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BeginTransactionRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ transactionId: S.optional(S.String) })).annotate({
+        identifier: "BeginTransactionResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, secretArn: S.String, transactionId: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CommitTransaction" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CommitTransactionRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ transactionStatus: S.optional(S.String) })).annotate({
+        identifier: "CommitTransactionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dbClusterOrInstanceArn: S.String,
+          awsSecretStoreArn: S.String,
+          sqlStatements: S.String,
+          database: S.optional(S.String),
+          schema: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/ExecuteSql" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ExecuteSqlRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.Number),
+          typeName: S.optional(S.String),
+          label: S.optional(S.String),
+          schemaName: S.optional(S.String),
+          tableName: S.optional(S.String),
+          isAutoIncrement: S.optional(S.Boolean),
+          isSigned: S.optional(S.Boolean),
+          isCurrency: S.optional(S.Boolean),
+          isCaseSensitive: S.optional(S.Boolean),
+          nullable: S.optional(S.Number),
+          precision: S.optional(S.Number),
+          scale: S.optional(S.Number),
+          arrayBaseColumnType: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ColumnMetadata" });
+    case 4:
+      return S.Array(ColumnMetadata);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ columnCount: S.optional(S.Number), columnMetadata: S.optional(Metadata) }),
+      ).annotate({ identifier: "ResultSetMetadata" });
+    case 6:
+      return S.Array(/*@__PURE__*/ S.suspend(() => Value).annotate({ identifier: "Value" }));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(
+            S.suspend(() => ArrayValueList).annotate({ identifier: "ArrayValueList" }),
+          ),
+        }),
+      ).annotate({ identifier: "StructValue" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ bitValue: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ bigIntValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ intValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ realValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
+        /*@__PURE__*/ S.Struct({
+          arrayValues: /*@__PURE__*/ S.suspend(() => ArrayValueList).annotate({
+            identifier: "ArrayValueList",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          structValue: /*@__PURE__*/ S.suspend((): S.Schema<StructValue> => StructValue).annotate({
+            identifier: "StructValue",
+          }),
+        }),
+      ]);
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => Value).annotate({ identifier: "Value" }));
+    case 2:
+      return S.suspend(() => S.Struct({ values: S.optional(Row) })).annotate({
+        identifier: "Record",
+      });
+    case 3:
+      return S.Array(Record);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resultSetMetadata: S.optional(ResultSetMetadata),
+          records: S.optional(Records),
+        }),
+      ).annotate({ identifier: "ResultFrame" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resultFrame: S.optional(ResultFrame),
+          numberOfRecordsUpdated: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SqlStatementResult" });
+    case 6:
+      return S.Array(SqlStatementResult);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ sqlStatementResults: S.optional(SqlStatementResults) }),
+      ).annotate({ identifier: "ExecuteSqlResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          decimalReturnType: S.optional(DecimalReturnType),
+          longReturnType: S.optional(LongReturnType),
+        }),
+      ).annotate({ identifier: "ResultSetOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String,
+          secretArn: S.String,
+          sql: S.String,
+          database: S.optional(S.String),
+          schema: S.optional(S.String),
+          parameters: S.optional(SqlParametersList),
+          transactionId: S.optional(S.String),
+          includeResultMetadata: S.optional(S.Boolean),
+          continueAfterTimeout: S.optional(S.Boolean),
+          resultSetOptions: S.optional(ResultSetOptions),
+          formatRecordsAs: S.optional(RecordsFormatType),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/Execute" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ExecuteStatementRequest" });
+    case 2:
+      return S.Array(FieldList);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          records: S.optional(SqlRecords),
+          columnMetadata: S.optional(Metadata),
+          numberOfRecordsUpdated: S.optional(S.Number),
+          generatedFields: S.optional(FieldList),
+          formattedRecords: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExecuteStatementResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, secretArn: S.String, transactionId: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/RollbackTransaction" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RollbackTransactionRequest",
+      });
+  }
+}

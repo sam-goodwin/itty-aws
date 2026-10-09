@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -176,35 +177,14 @@ export interface GetGlyphsRequest {
   FontStack: string;
   FontUnicodeRange: string;
 }
-const GetGlyphsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FontStack: S.String.pipe(T.HttpLabel("FontStack")),
-    FontUnicodeRange: S.String.pipe(T.HttpLabel("FontUnicodeRange")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/glyphs/{FontStack}/{FontUnicodeRange}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetGlyphsRequest" }) as any as S.Schema<GetGlyphsRequest>;
+const GetGlyphsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetGlyphsRequest>;
 export interface GetGlyphsResponse {
   Blob?: Uint8Array;
   ContentType?: string;
   CacheControl?: string;
   ETag?: string;
 }
-const GetGlyphsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({ identifier: "GetGlyphsResponse" }) as any as S.Schema<GetGlyphsResponse>;
+const GetGlyphsResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GetGlyphsResponse>;
 export type MapStyle = "Standard" | "Monochrome" | "Hybrid" | "Satellite" | (string & {});
 const MapStyle = S.String;
 
@@ -220,26 +200,7 @@ export interface GetSpritesRequest {
   ColorScheme: ColorScheme;
   Variant: Variant;
 }
-const GetSpritesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FileName: S.String.pipe(T.HttpLabel("FileName")),
-    Style: MapStyle.pipe(T.HttpLabel("Style")),
-    ColorScheme: ColorScheme.pipe(T.HttpLabel("ColorScheme")),
-    Variant: Variant.pipe(T.HttpLabel("Variant")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/styles/{Style}/{ColorScheme}/{Variant}/sprites/{FileName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSpritesRequest" }) as any as S.Schema<GetSpritesRequest>;
+const GetSpritesRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetSpritesRequest>;
 export interface GetSpritesResponse {
   Blob?: Uint8Array;
   ContentType?: string;
@@ -296,32 +257,7 @@ export interface GetStaticMapRequest {
   Width: number;
   Zoom?: number;
 }
-const GetStaticMapRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BoundingBox: S.optional(SensitiveString).pipe(T.HttpQuery("bounding-box")),
-    BoundedPositions: S.optional(SensitiveString).pipe(T.HttpQuery("bounded-positions")),
-    Center: S.optional(SensitiveString).pipe(T.HttpQuery("center")),
-    ColorScheme: S.optional(ColorScheme).pipe(T.HttpQuery("color-scheme")),
-    CompactOverlay: S.optional(SensitiveString).pipe(T.HttpQuery("compact-overlay")),
-    CropLabels: S.optional(S.Boolean).pipe(T.HttpQuery("crop-labels")),
-    GeoJsonOverlay: S.optional(SensitiveString).pipe(T.HttpQuery("geojson-overlay")),
-    Height: S.Number.pipe(T.HttpQuery("height")),
-    Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-    LabelSize: S.optional(LabelSize).pipe(T.HttpQuery("label-size")),
-    Language: S.optional(S.String).pipe(T.HttpQuery("lang")),
-    Padding: S.optional(S.Number).pipe(T.HttpQuery("padding")),
-    PoliticalView: S.optional(SensitiveString).pipe(T.HttpQuery("political-view")),
-    PointsOfInterests: S.optional(MapFeatureMode).pipe(T.HttpQuery("pois")),
-    Radius: S.optional(S.Number).pipe(T.HttpQuery("radius")),
-    FileName: S.String.pipe(T.HttpLabel("FileName")),
-    ScaleBarUnit: S.optional(ScaleBarUnit).pipe(T.HttpQuery("scale-unit")),
-    Style: S.optional(StaticMapStyle).pipe(T.HttpQuery("style")),
-    Width: S.Number.pipe(T.HttpQuery("width")),
-    Zoom: S.optional(S.Number).pipe(T.HttpQuery("zoom")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/v2/static/{FileName}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetStaticMapRequest" }) as any as S.Schema<GetStaticMapRequest>;
+const GetStaticMapRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetStaticMapRequest>;
 export interface GetStaticMapResponse {
   Blob?: Uint8Array;
   ContentType?: string;
@@ -329,15 +265,7 @@ export interface GetStaticMapResponse {
   ETag?: string;
   PricingBucket: string;
 }
-const GetStaticMapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-    PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-  }),
-).annotate({ identifier: "GetStaticMapResponse" }) as any as S.Schema<GetStaticMapResponse>;
+const GetStaticMapResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetStaticMapResponse>;
 export type Terrain = "Hillshade" | "Terrain3D" | (string & {});
 const Terrain = S.String;
 
@@ -351,7 +279,7 @@ export type TravelMode = "Transit" | "Truck" | (string & {});
 const TravelMode = S.String;
 
 export type TravelModeList = TravelMode[];
-const TravelModeList = /*@__PURE__*/ S.Array(TravelMode);
+const TravelModeList = /*@__PURE__*/ __L.at(__c0, 5);
 export type Buildings = "Buildings3D" | (string & {});
 const Buildings = S.String;
 
@@ -391,48 +319,20 @@ export interface GetStyleDescriptorRequest {
   PoiCategories?: PoiCategory[];
   Key?: string | redacted.Redacted<string>;
 }
-const GetStyleDescriptorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Style: MapStyle.pipe(T.HttpLabel("Style")),
-    ColorScheme: S.optional(ColorScheme).pipe(T.HttpQuery("color-scheme")),
-    PoliticalView: S.optional(SensitiveString).pipe(T.HttpQuery("political-view")),
-    Terrain: S.optional(Terrain).pipe(T.HttpQuery("terrain")),
-    ContourDensity: S.optional(ContourDensity).pipe(T.HttpQuery("contour-density")),
-    Traffic: S.optional(Traffic).pipe(T.HttpQuery("traffic")),
-    TravelModes: S.optional(TravelModeList).pipe(T.HttpQuery("travel-modes")),
-    Buildings: S.optional(Buildings).pipe(T.HttpQuery("buildings")),
-    PoiDensity: S.optional(PoiDensity).pipe(T.HttpQuery("poi-density")),
-    PoiCategories: S.optional(PoiCategoryList).pipe(T.HttpQuery("poi-categories")),
-    Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/styles/{Style}/descriptor" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetStyleDescriptorRequest",
-}) as any as S.Schema<GetStyleDescriptorRequest>;
+const GetStyleDescriptorRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetStyleDescriptorRequest>;
 export interface GetStyleDescriptorResponse {
   Blob?: Uint8Array;
   ContentType?: string;
   CacheControl?: string;
   ETag?: string;
 }
-const GetStyleDescriptorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({
-  identifier: "GetStyleDescriptorResponse",
-}) as any as S.Schema<GetStyleDescriptorResponse>;
+const GetStyleDescriptorResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetStyleDescriptorResponse>;
 export type TileAdditionalFeature =
   | "ContourLines"
   | "Hillshade"
@@ -451,27 +351,7 @@ export interface GetTileRequest {
   Y: string | redacted.Redacted<string>;
   Key?: string | redacted.Redacted<string>;
 }
-const GetTileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdditionalFeatures: S.optional(TileAdditionalFeatureList).pipe(
-      T.HttpQuery("additional-features"),
-    ),
-    Tileset: S.String.pipe(T.HttpLabel("Tileset")),
-    Z: SensitiveString.pipe(T.HttpLabel("Z")),
-    X: SensitiveString.pipe(T.HttpLabel("X")),
-    Y: SensitiveString.pipe(T.HttpLabel("Y")),
-    Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/tiles/{Tileset}/{Z}/{X}/{Y}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetTileRequest" }) as any as S.Schema<GetTileRequest>;
+const GetTileRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetTileRequest>;
 export interface GetTileResponse {
   Blob?: Uint8Array;
   ContentType?: string;
@@ -494,13 +374,12 @@ export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }).pipe(
-    S.encodeKeys({ Name: "name", Message: "message" }),
-  ),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c1, 2);
 export type GetGlyphsError = CommonErrors;
 /**
  * `GetGlyphs` returns the map's glyphs.
@@ -628,3 +507,173 @@ export const getTile: API.OperationMethod<
   retry: Retry,
   operationName: "GetTile",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FontStack: S.String.pipe(T.HttpLabel("FontStack")),
+          FontUnicodeRange: S.String.pipe(T.HttpLabel("FontUnicodeRange")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/glyphs/{FontStack}/{FontUnicodeRange}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetGlyphsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+        }),
+      ).annotate({ identifier: "GetGlyphsResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          FileName: S.String.pipe(T.HttpLabel("FileName")),
+          Style: MapStyle.pipe(T.HttpLabel("Style")),
+          ColorScheme: ColorScheme.pipe(T.HttpLabel("ColorScheme")),
+          Variant: Variant.pipe(T.HttpLabel("Variant")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/styles/{Style}/{ColorScheme}/{Variant}/sprites/{FileName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSpritesRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          BoundingBox: S.optional(SensitiveString).pipe(T.HttpQuery("bounding-box")),
+          BoundedPositions: S.optional(SensitiveString).pipe(T.HttpQuery("bounded-positions")),
+          Center: S.optional(SensitiveString).pipe(T.HttpQuery("center")),
+          ColorScheme: S.optional(ColorScheme).pipe(T.HttpQuery("color-scheme")),
+          CompactOverlay: S.optional(SensitiveString).pipe(T.HttpQuery("compact-overlay")),
+          CropLabels: S.optional(S.Boolean).pipe(T.HttpQuery("crop-labels")),
+          GeoJsonOverlay: S.optional(SensitiveString).pipe(T.HttpQuery("geojson-overlay")),
+          Height: S.Number.pipe(T.HttpQuery("height")),
+          Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
+          LabelSize: S.optional(LabelSize).pipe(T.HttpQuery("label-size")),
+          Language: S.optional(S.String).pipe(T.HttpQuery("lang")),
+          Padding: S.optional(S.Number).pipe(T.HttpQuery("padding")),
+          PoliticalView: S.optional(SensitiveString).pipe(T.HttpQuery("political-view")),
+          PointsOfInterests: S.optional(MapFeatureMode).pipe(T.HttpQuery("pois")),
+          Radius: S.optional(S.Number).pipe(T.HttpQuery("radius")),
+          FileName: S.String.pipe(T.HttpLabel("FileName")),
+          ScaleBarUnit: S.optional(ScaleBarUnit).pipe(T.HttpQuery("scale-unit")),
+          Style: S.optional(StaticMapStyle).pipe(T.HttpQuery("style")),
+          Width: S.Number.pipe(T.HttpQuery("width")),
+          Zoom: S.optional(S.Number).pipe(T.HttpQuery("zoom")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/static/{FileName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetStaticMapRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+          PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
+        }),
+      ).annotate({ identifier: "GetStaticMapResponse" });
+    case 5:
+      return S.Array(TravelMode);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Style: MapStyle.pipe(T.HttpLabel("Style")),
+          ColorScheme: S.optional(ColorScheme).pipe(T.HttpQuery("color-scheme")),
+          PoliticalView: S.optional(SensitiveString).pipe(T.HttpQuery("political-view")),
+          Terrain: S.optional(Terrain).pipe(T.HttpQuery("terrain")),
+          ContourDensity: S.optional(ContourDensity).pipe(T.HttpQuery("contour-density")),
+          Traffic: S.optional(Traffic).pipe(T.HttpQuery("traffic")),
+          TravelModes: S.optional(TravelModeList).pipe(T.HttpQuery("travel-modes")),
+          Buildings: S.optional(Buildings).pipe(T.HttpQuery("buildings")),
+          PoiDensity: S.optional(PoiDensity).pipe(T.HttpQuery("poi-density")),
+          PoiCategories: S.optional(PoiCategoryList).pipe(T.HttpQuery("poi-categories")),
+          Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/styles/{Style}/descriptor" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetStyleDescriptorRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+        }),
+      ).annotate({
+        identifier: "GetStyleDescriptorResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AdditionalFeatures: S.optional(TileAdditionalFeatureList).pipe(
+            T.HttpQuery("additional-features"),
+          ),
+          Tileset: S.String.pipe(T.HttpLabel("Tileset")),
+          Z: SensitiveString.pipe(T.HttpLabel("Z")),
+          X: SensitiveString.pipe(T.HttpLabel("X")),
+          Y: SensitiveString.pipe(T.HttpLabel("Y")),
+          Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/tiles/{Tileset}/{Z}/{X}/{Y}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetTileRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Message: S.String }).pipe(
+          S.encodeKeys({ Name: "name", Message: "message" }),
+        ),
+      ).annotate({ identifier: "ValidationExceptionField" });
+    case 2:
+      return S.Array(ValidationExceptionField);
+  }
+}

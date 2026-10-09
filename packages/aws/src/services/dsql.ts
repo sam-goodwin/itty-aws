@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -123,19 +124,20 @@ export type KmsEncryptionKey = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c0, 0);
 export type ClientToken = string;
 export type Region = string;
 export type ClusterArn = string;
 export type ClusterArnList = string[];
-const ClusterArnList = /*@__PURE__*/ S.Array(S.String);
+const ClusterArnList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface MultiRegionProperties {
   witnessRegion?: string;
   clusters?: string[];
 }
-const MultiRegionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ witnessRegion: S.optional(S.String), clusters: S.optional(ClusterArnList) }),
-).annotate({ identifier: "MultiRegionProperties" }) as any as S.Schema<MultiRegionProperties>;
+const MultiRegionProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<MultiRegionProperties>;
 export type PolicyDocument = string;
 export type BypassPolicyLockoutSafetyCheck = boolean;
 export interface CreateClusterInput {
@@ -147,17 +149,7 @@ export interface CreateClusterInput {
   policy?: string;
   bypassPolicyLockoutSafetyCheck?: boolean;
 }
-const CreateClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletionProtectionEnabled: S.optional(S.Boolean),
-    kmsEncryptionKey: S.optional(S.String),
-    tags: S.optional(TagMap),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    multiRegionProperties: S.optional(MultiRegionProperties),
-    policy: S.optional(S.String),
-    bypassPolicyLockoutSafetyCheck: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/cluster" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateClusterInput" }) as any as S.Schema<CreateClusterInput>;
+const CreateClusterInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateClusterInput>;
 export type ClusterId = string;
 export type ClusterStatus =
   | "CREATING"
@@ -191,13 +183,7 @@ export interface EncryptionDetails {
   kmsKeyArn?: string;
   encryptionStatus: EncryptionStatus;
 }
-const EncryptionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionType: EncryptionType,
-    kmsKeyArn: S.optional(S.String),
-    encryptionStatus: EncryptionStatus,
-  }),
-).annotate({ identifier: "EncryptionDetails" }) as any as S.Schema<EncryptionDetails>;
+const EncryptionDetails = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<EncryptionDetails>;
 export type Endpoint = string;
 export interface CreateClusterOutput {
   identifier: string;
@@ -209,31 +195,19 @@ export interface CreateClusterOutput {
   deletionProtectionEnabled: boolean;
   endpoint?: string;
 }
-const CreateClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    arn: S.String,
-    status: ClusterStatus,
-    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    multiRegionProperties: S.optional(MultiRegionProperties),
-    encryptionDetails: S.optional(EncryptionDetails),
-    deletionProtectionEnabled: S.Boolean,
-    endpoint: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateClusterOutput" }) as any as S.Schema<CreateClusterOutput>;
+const CreateClusterOutput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateClusterOutput>;
 export type KinesisStreamArn = string;
 export type RoleArn = string;
 export interface KinesisTargetDefinition {
   streamArn: string;
   roleArn: string;
 }
-const KinesisTargetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ streamArn: S.String, roleArn: S.String }),
-).annotate({ identifier: "KinesisTargetDefinition" }) as any as S.Schema<KinesisTargetDefinition>;
+const KinesisTargetDefinition = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<KinesisTargetDefinition>;
 export type TargetDefinition = { kinesis: KinesisTargetDefinition };
-const TargetDefinition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ kinesis: KinesisTargetDefinition }),
-]);
+const TargetDefinition = /*@__PURE__*/ __L.at(__c0, 7);
 export type StreamOrdering = "UNORDERED" | (string & {});
 const StreamOrdering = S.String;
 
@@ -248,25 +222,7 @@ export interface CreateStreamInput {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-const CreateStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
-    targetDefinition: TargetDefinition,
-    ordering: StreamOrdering,
-    format: StreamFormat,
-    tags: S.optional(TagMap),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/stream/{clusterIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateStreamInput" }) as any as S.Schema<CreateStreamInput>;
+const CreateStreamInput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateStreamInput>;
 export type StreamId = string;
 export type StreamArn = string;
 export type StreamStatus =
@@ -289,94 +245,42 @@ export interface CreateStreamOutput {
   ordering: StreamOrdering;
   format: StreamFormat;
 }
-const CreateStreamOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterIdentifier: S.String,
-    streamIdentifier: S.String,
-    arn: S.String,
-    status: StreamStatus,
-    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ordering: StreamOrdering,
-    format: StreamFormat,
-  }),
-).annotate({ identifier: "CreateStreamOutput" }) as any as S.Schema<CreateStreamOutput>;
+const CreateStreamOutput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateStreamOutput>;
 export interface DeleteClusterInput {
   identifier: string;
   clientToken?: string;
 }
-const DeleteClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("client-token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/cluster/{identifier}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteClusterInput" }) as any as S.Schema<DeleteClusterInput>;
+const DeleteClusterInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteClusterInput>;
 export interface DeleteClusterOutput {
   identifier: string;
   arn: string;
   status: ClusterStatus;
   creationTime: Date;
 }
-const DeleteClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    arn: S.String,
-    status: ClusterStatus,
-    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "DeleteClusterOutput" }) as any as S.Schema<DeleteClusterOutput>;
+const DeleteClusterOutput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteClusterOutput>;
 export type PolicyVersion = string;
 export interface DeleteClusterPolicyInput {
   identifier: string;
   expectedPolicyVersion?: string;
   clientToken?: string;
 }
-const DeleteClusterPolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    expectedPolicyVersion: S.optional(S.String).pipe(T.HttpQuery("expected-policy-version")),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("client-token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/cluster/{identifier}/policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteClusterPolicyInput" }) as any as S.Schema<DeleteClusterPolicyInput>;
+const DeleteClusterPolicyInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteClusterPolicyInput>;
 export interface DeleteClusterPolicyOutput {
   policyVersion: string;
 }
-const DeleteClusterPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyVersion: S.String }),
-).annotate({
-  identifier: "DeleteClusterPolicyOutput",
-}) as any as S.Schema<DeleteClusterPolicyOutput>;
+const DeleteClusterPolicyOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteClusterPolicyOutput>;
 export interface DeleteStreamInput {
   clusterIdentifier: string;
   streamIdentifier: string;
   clientToken?: string;
 }
-const DeleteStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
-    streamIdentifier: S.String.pipe(T.HttpLabel("streamIdentifier")),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("client-token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/stream/{clusterIdentifier}/{streamIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteStreamInput" }) as any as S.Schema<DeleteStreamInput>;
+const DeleteStreamInput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteStreamInput>;
 export interface DeleteStreamOutput {
   clusterIdentifier: string;
   streamIdentifier: string;
@@ -384,23 +288,11 @@ export interface DeleteStreamOutput {
   status: StreamStatus;
   creationTime: Date;
 }
-const DeleteStreamOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterIdentifier: S.String,
-    streamIdentifier: S.String,
-    arn: S.String,
-    status: StreamStatus,
-    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "DeleteStreamOutput" }) as any as S.Schema<DeleteStreamOutput>;
+const DeleteStreamOutput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteStreamOutput>;
 export interface GetClusterInput {
   identifier: string;
 }
-const GetClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/cluster/{identifier}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetClusterInput" }) as any as S.Schema<GetClusterInput>;
+const GetClusterInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetClusterInput>;
 export interface GetClusterOutput {
   identifier: string;
   arn: string;
@@ -412,60 +304,27 @@ export interface GetClusterOutput {
   encryptionDetails?: EncryptionDetails;
   endpoint?: string;
 }
-const GetClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    arn: S.String,
-    status: ClusterStatus,
-    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    deletionProtectionEnabled: S.Boolean,
-    multiRegionProperties: S.optional(MultiRegionProperties),
-    tags: S.optional(TagMap),
-    encryptionDetails: S.optional(EncryptionDetails),
-    endpoint: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetClusterOutput" }) as any as S.Schema<GetClusterOutput>;
+const GetClusterOutput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetClusterOutput>;
 export interface GetClusterPolicyInput {
   identifier: string;
 }
-const GetClusterPolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/cluster/{identifier}/policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetClusterPolicyInput" }) as any as S.Schema<GetClusterPolicyInput>;
+const GetClusterPolicyInput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetClusterPolicyInput>;
 export interface GetClusterPolicyOutput {
   policy: string;
   policyVersion: string;
 }
-const GetClusterPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.String, policyVersion: S.String }),
-).annotate({ identifier: "GetClusterPolicyOutput" }) as any as S.Schema<GetClusterPolicyOutput>;
+const GetClusterPolicyOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetClusterPolicyOutput>;
 export interface GetStreamInput {
   clusterIdentifier: string;
   streamIdentifier: string;
 }
-const GetStreamInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
-    streamIdentifier: S.String.pipe(T.HttpLabel("streamIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/stream/{clusterIdentifier}/{streamIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetStreamInput" }) as any as S.Schema<GetStreamInput>;
+const GetStreamInput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetStreamInput>;
 export type StreamFailureErrorCode =
   | "KINESIS_THROUGHPUT_EXCEEDED"
   | "KINESIS_STREAM_NOT_FOUND"
@@ -482,12 +341,7 @@ export interface StatusReason {
   error: StreamFailureErrorCode;
   updatedAt: Date;
 }
-const StatusReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: StreamFailureErrorCode,
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "StatusReason" }) as any as S.Schema<StatusReason>;
+const StatusReason = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<StatusReason>;
 export interface GetStreamOutput {
   clusterIdentifier: string;
   streamIdentifier: string;
@@ -500,97 +354,49 @@ export interface GetStreamOutput {
   statusReason?: StatusReason;
   tags?: { [key: string]: string | undefined };
 }
-const GetStreamOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterIdentifier: S.String,
-    streamIdentifier: S.String,
-    arn: S.String,
-    status: StreamStatus,
-    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ordering: StreamOrdering,
-    format: StreamFormat,
-    targetDefinition: S.optional(TargetDefinition),
-    statusReason: S.optional(StatusReason),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "GetStreamOutput" }) as any as S.Schema<GetStreamOutput>;
+const GetStreamOutput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetStreamOutput>;
 export interface GetVpcEndpointServiceNameInput {
   identifier: string;
 }
-const GetVpcEndpointServiceNameInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/clusters/{identifier}/vpc-endpoint-service-name" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetVpcEndpointServiceNameInput",
-}) as any as S.Schema<GetVpcEndpointServiceNameInput>;
+const GetVpcEndpointServiceNameInput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetVpcEndpointServiceNameInput>;
 export type ServiceName = string;
 export type ClusterVpcEndpoint = string;
 export interface GetVpcEndpointServiceNameOutput {
   serviceName: string;
   clusterVpcEndpoint?: string;
 }
-const GetVpcEndpointServiceNameOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceName: S.String, clusterVpcEndpoint: S.optional(S.String) }),
-).annotate({
-  identifier: "GetVpcEndpointServiceNameOutput",
-}) as any as S.Schema<GetVpcEndpointServiceNameOutput>;
+const GetVpcEndpointServiceNameOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetVpcEndpointServiceNameOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListClustersInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListClustersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/cluster" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListClustersInput" }) as any as S.Schema<ListClustersInput>;
+const ListClustersInput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListClustersInput>;
 export interface ClusterSummary {
   identifier: string;
   arn: string;
 }
-const ClusterSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String, arn: S.String }),
-).annotate({ identifier: "ClusterSummary" }) as any as S.Schema<ClusterSummary>;
+const ClusterSummary = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ClusterSummary>;
 export type ClusterList = ClusterSummary[];
-const ClusterList = /*@__PURE__*/ S.Array(ClusterSummary);
+const ClusterList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface ListClustersOutput {
   nextToken?: string;
   clusters: ClusterSummary[];
 }
-const ListClustersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), clusters: ClusterList }),
-).annotate({ identifier: "ListClustersOutput" }) as any as S.Schema<ListClustersOutput>;
+const ListClustersOutput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListClustersOutput>;
 export interface ListStreamsInput {
   clusterIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/stream/{clusterIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListStreamsInput" }) as any as S.Schema<ListStreamsInput>;
+const ListStreamsInput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ListStreamsInput>;
 export interface StreamSummary {
   clusterIdentifier: string;
   streamIdentifier: string;
@@ -598,41 +404,29 @@ export interface StreamSummary {
   creationTime: Date;
   status: StreamStatus;
 }
-const StreamSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterIdentifier: S.String,
-    streamIdentifier: S.String,
-    arn: S.String,
-    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: StreamStatus,
-  }),
-).annotate({ identifier: "StreamSummary" }) as any as S.Schema<StreamSummary>;
+const StreamSummary = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<StreamSummary>;
 export type StreamList = StreamSummary[];
-const StreamList = /*@__PURE__*/ S.Array(StreamSummary);
+const StreamList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface ListStreamsOutput {
   nextToken?: string;
   streams: StreamSummary[];
 }
-const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), streams: StreamList }),
-).annotate({ identifier: "ListStreamsOutput" }) as any as S.Schema<ListStreamsOutput>;
+const ListStreamsOutput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListStreamsOutput>;
 export type Arn = string;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface PutClusterPolicyInput {
   identifier: string;
   policy: string;
@@ -640,57 +434,31 @@ export interface PutClusterPolicyInput {
   expectedPolicyVersion?: string;
   clientToken?: string;
 }
-const PutClusterPolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    policy: S.String,
-    bypassPolicyLockoutSafetyCheck: S.optional(S.Boolean),
-    expectedPolicyVersion: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/cluster/{identifier}/policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PutClusterPolicyInput" }) as any as S.Schema<PutClusterPolicyInput>;
+const PutClusterPolicyInput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<PutClusterPolicyInput>;
 export interface PutClusterPolicyOutput {
   policyVersion: string;
 }
-const PutClusterPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyVersion: S.String }),
-).annotate({ identifier: "PutClusterPolicyOutput" }) as any as S.Schema<PutClusterPolicyOutput>;
+const PutClusterPolicyOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<PutClusterPolicyOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
 const TagKeyList = ClusterArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateClusterInput {
@@ -700,17 +468,7 @@ export interface UpdateClusterInput {
   clientToken?: string;
   multiRegionProperties?: MultiRegionProperties;
 }
-const UpdateClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    deletionProtectionEnabled: S.optional(S.Boolean),
-    kmsEncryptionKey: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    multiRegionProperties: S.optional(MultiRegionProperties),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/cluster/{identifier}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateClusterInput" }) as any as S.Schema<UpdateClusterInput>;
+const UpdateClusterInput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<UpdateClusterInput>;
 export interface UpdateClusterOutput {
   identifier: string;
   arn: string;
@@ -731,11 +489,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c5, 2);
 export type CreateClusterError =
   | ConflictException
   | ServiceQuotaExceededException
@@ -1192,3 +951,432 @@ export const updateCluster: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCluster",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ witnessRegion: S.optional(S.String), clusters: S.optional(ClusterArnList) }),
+      ).annotate({ identifier: "MultiRegionProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          deletionProtectionEnabled: S.optional(S.Boolean),
+          kmsEncryptionKey: S.optional(S.String),
+          tags: S.optional(TagMap),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          multiRegionProperties: S.optional(MultiRegionProperties),
+          policy: S.optional(S.String),
+          bypassPolicyLockoutSafetyCheck: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/cluster" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateClusterInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionType: EncryptionType,
+          kmsKeyArn: S.optional(S.String),
+          encryptionStatus: EncryptionStatus,
+        }),
+      ).annotate({ identifier: "EncryptionDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          arn: S.String,
+          status: ClusterStatus,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          multiRegionProperties: S.optional(MultiRegionProperties),
+          encryptionDetails: S.optional(EncryptionDetails),
+          deletionProtectionEnabled: S.Boolean,
+          endpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateClusterOutput" });
+    case 6:
+      return S.suspend(() => S.Struct({ streamArn: S.String, roleArn: S.String })).annotate({
+        identifier: "KinesisTargetDefinition",
+      });
+    case 7:
+      return S.Union([/*@__PURE__*/ S.Struct({ kinesis: KinesisTargetDefinition })]);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
+          targetDefinition: TargetDefinition,
+          ordering: StreamOrdering,
+          format: StreamFormat,
+          tags: S.optional(TagMap),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/stream/{clusterIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateStreamInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentifier: S.String,
+          streamIdentifier: S.String,
+          arn: S.String,
+          status: StreamStatus,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ordering: StreamOrdering,
+          format: StreamFormat,
+        }),
+      ).annotate({ identifier: "CreateStreamOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("client-token"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/cluster/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteClusterInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          arn: S.String,
+          status: ClusterStatus,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "DeleteClusterOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          expectedPolicyVersion: S.optional(S.String).pipe(T.HttpQuery("expected-policy-version")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("client-token"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/cluster/{identifier}/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteClusterPolicyInput" });
+    case 5:
+      return S.suspend(() => S.Struct({ policyVersion: S.String })).annotate({
+        identifier: "DeleteClusterPolicyOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
+          streamIdentifier: S.String.pipe(T.HttpLabel("streamIdentifier")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("client-token"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/stream/{clusterIdentifier}/{streamIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteStreamInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentifier: S.String,
+          streamIdentifier: S.String,
+          arn: S.String,
+          status: StreamStatus,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "DeleteStreamOutput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/cluster/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetClusterInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          arn: S.String,
+          status: ClusterStatus,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          deletionProtectionEnabled: S.Boolean,
+          multiRegionProperties: S.optional(MultiRegionProperties),
+          tags: S.optional(TagMap),
+          encryptionDetails: S.optional(EncryptionDetails),
+          endpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetClusterOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/cluster/{identifier}/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetClusterPolicyInput" });
+    case 3:
+      return S.suspend(() => S.Struct({ policy: S.String, policyVersion: S.String })).annotate({
+        identifier: "GetClusterPolicyOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
+          streamIdentifier: S.String.pipe(T.HttpLabel("streamIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/stream/{clusterIdentifier}/{streamIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetStreamInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          error: StreamFailureErrorCode,
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "StatusReason" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentifier: S.String,
+          streamIdentifier: S.String,
+          arn: S.String,
+          status: StreamStatus,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ordering: StreamOrdering,
+          format: StreamFormat,
+          targetDefinition: S.optional(TargetDefinition),
+          statusReason: S.optional(StatusReason),
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({ identifier: "GetStreamOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/clusters/{identifier}/vpc-endpoint-service-name" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetVpcEndpointServiceNameInput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ serviceName: S.String, clusterVpcEndpoint: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetVpcEndpointServiceNameOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/cluster" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListClustersInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ identifier: S.String, arn: S.String })).annotate({
+        identifier: "ClusterSummary",
+      });
+    case 3:
+      return S.Array(ClusterSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), clusters: ClusterList }),
+      ).annotate({ identifier: "ListClustersOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/stream/{clusterIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListStreamsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentifier: S.String,
+          streamIdentifier: S.String,
+          arn: S.String,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: StreamStatus,
+        }),
+      ).annotate({ identifier: "StreamSummary" });
+    case 7:
+      return S.Array(StreamSummary);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), streams: StreamList }),
+      ).annotate({ identifier: "ListStreamsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          policy: S.String,
+          bypassPolicyLockoutSafetyCheck: S.optional(S.Boolean),
+          expectedPolicyVersion: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/cluster/{identifier}/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutClusterPolicyInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ policyVersion: S.String })).annotate({
+        identifier: "PutClusterPolicyOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          deletionProtectionEnabled: S.optional(S.Boolean),
+          kmsEncryptionKey: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          multiRegionProperties: S.optional(MultiRegionProperties),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/cluster/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateClusterInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 2:
+      return S.Array(ValidationExceptionField);
+  }
+}

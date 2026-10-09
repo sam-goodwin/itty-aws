@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -186,68 +187,38 @@ export interface DeleteConnectionRequest {
   cleanSession?: boolean;
   preventWillMessage?: boolean;
 }
-const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String.pipe(T.HttpLabel("clientId")),
-    cleanSession: S.optional(S.Boolean).pipe(T.HttpQuery("cleanSession")),
-    preventWillMessage: S.optional(S.Boolean).pipe(T.HttpQuery("preventWillMessage")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/connections/{clientId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
+const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {}
-const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectionResponse",
-}) as any as S.Schema<DeleteConnectionResponse>;
+const DeleteConnectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteConnectionResponse>;
 export type ThingName = string;
 export type ShadowName = string;
 export interface DeleteThingShadowRequest {
   thingName: string;
   shadowName?: string;
 }
-const DeleteThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.String.pipe(T.HttpLabel("thingName")),
-    shadowName: S.optional(S.String).pipe(T.HttpQuery("name")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/things/{thingName}/shadow" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteThingShadowRequest" }) as any as S.Schema<DeleteThingShadowRequest>;
+const DeleteThingShadowRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteThingShadowRequest>;
 export interface DeleteThingShadowResponse {
   payload: T.StreamingOutputBody;
 }
-const DeleteThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ payload: T.StreamingOutput.pipe(T.HttpPayload()) }),
-).annotate({
-  identifier: "DeleteThingShadowResponse",
-}) as any as S.Schema<DeleteThingShadowResponse>;
+const DeleteThingShadowResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteThingShadowResponse>;
 export type IncludeSocketInformation = boolean;
 export interface GetConnectionRequest {
   clientId: string;
   includeSocketInformation?: boolean;
 }
-const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String.pipe(T.HttpLabel("clientId")),
-    includeSocketInformation: S.optional(S.Boolean).pipe(T.HttpQuery("includeSocketInformation")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/connections/{clientId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetConnectionRequest" }) as any as S.Schema<GetConnectionRequest>;
+const GetConnectionRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetConnectionRequest>;
 export type Connected = boolean;
 export type SourceIp = string;
 export type SourcePort = number;
@@ -273,35 +244,18 @@ export interface GetConnectionResponse {
   clientId?: string;
   vpcEndpointId?: string;
 }
-const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connected: S.optional(S.Boolean),
-    thingName: S.optional(S.String),
-    cleanSession: S.optional(S.Boolean),
-    sourceIp: S.optional(S.String),
-    sourcePort: S.optional(S.Number),
-    targetIp: S.optional(S.String),
-    targetPort: S.optional(S.Number),
-    keepAliveDuration: S.optional(S.Number),
-    connectedSince: S.optional(S.Number),
-    disconnectedSince: S.optional(S.Number),
-    disconnectReason: S.optional(S.String),
-    sessionExpiry: S.optional(S.Number),
-    clientId: S.optional(S.String),
-    vpcEndpointId: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetConnectionResponse" }) as any as S.Schema<GetConnectionResponse>;
+const GetConnectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetConnectionResponse>;
 export type Topic = string;
 export interface GetRetainedMessageRequest {
   topic: string;
 }
-const GetRetainedMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ topic: S.String.pipe(T.HttpLabel("topic")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/retainedMessage/{topic}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetRetainedMessageRequest",
-}) as any as S.Schema<GetRetainedMessageRequest>;
+const GetRetainedMessageRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetRetainedMessageRequest>;
 export type Payload = Uint8Array;
 export type Qos = number;
 export type UserPropertiesBlob = Uint8Array;
@@ -312,42 +266,25 @@ export interface GetRetainedMessageResponse {
   lastModifiedTime?: number;
   userProperties?: Uint8Array;
 }
-const GetRetainedMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(S.String),
-    payload: S.optional(T.Blob),
-    qos: S.optional(S.Number),
-    lastModifiedTime: S.optional(S.Number),
-    userProperties: S.optional(T.Blob),
-  }),
-).annotate({
-  identifier: "GetRetainedMessageResponse",
-}) as any as S.Schema<GetRetainedMessageResponse>;
+const GetRetainedMessageResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetRetainedMessageResponse>;
 export interface GetThingShadowRequest {
   thingName: string;
   shadowName?: string;
 }
-const GetThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.String.pipe(T.HttpLabel("thingName")),
-    shadowName: S.optional(S.String).pipe(T.HttpQuery("name")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/things/{thingName}/shadow" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetThingShadowRequest" }) as any as S.Schema<GetThingShadowRequest>;
+const GetThingShadowRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetThingShadowRequest>;
 export interface GetThingShadowResponse {
   payload?: T.StreamingOutputBody;
 }
-const GetThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
-).annotate({ identifier: "GetThingShadowResponse" }) as any as S.Schema<GetThingShadowResponse>;
+const GetThingShadowResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetThingShadowResponse>;
 export type NextToken = string;
 export type PageSize = number;
 export interface ListNamedShadowsForThingRequest {
@@ -355,53 +292,30 @@ export interface ListNamedShadowsForThingRequest {
   nextToken?: string;
   pageSize?: number;
 }
-const ListNamedShadowsForThingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.String.pipe(T.HttpLabel("thingName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    pageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/api/things/shadow/ListNamedShadowsForThing/{thingName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListNamedShadowsForThingRequest",
-}) as any as S.Schema<ListNamedShadowsForThingRequest>;
+const ListNamedShadowsForThingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListNamedShadowsForThingRequest>;
 export type NamedShadowList = string[];
-const NamedShadowList = /*@__PURE__*/ S.Array(S.String);
+const NamedShadowList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface ListNamedShadowsForThingResponse {
   results?: string[];
   nextToken?: string;
   timestamp?: number;
 }
-const ListNamedShadowsForThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(NamedShadowList),
-    nextToken: S.optional(S.String),
-    timestamp: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListNamedShadowsForThingResponse",
-}) as any as S.Schema<ListNamedShadowsForThingResponse>;
+const ListNamedShadowsForThingResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListNamedShadowsForThingResponse>;
 export type MaxResults = number;
 export interface ListRetainedMessagesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListRetainedMessagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/retainedMessage" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListRetainedMessagesRequest",
-}) as any as S.Schema<ListRetainedMessagesRequest>;
+const ListRetainedMessagesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListRetainedMessagesRequest>;
 export type PayloadSize = number;
 export interface RetainedMessageSummary {
   topic?: string;
@@ -409,65 +323,45 @@ export interface RetainedMessageSummary {
   qos?: number;
   lastModifiedTime?: number;
 }
-const RetainedMessageSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(S.String),
-    payloadSize: S.optional(S.Number),
-    qos: S.optional(S.Number),
-    lastModifiedTime: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RetainedMessageSummary" }) as any as S.Schema<RetainedMessageSummary>;
+const RetainedMessageSummary = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<RetainedMessageSummary>;
 export type RetainedMessageList = RetainedMessageSummary[];
-const RetainedMessageList = /*@__PURE__*/ S.Array(RetainedMessageSummary);
+const RetainedMessageList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface ListRetainedMessagesResponse {
   retainedTopics?: RetainedMessageSummary[];
   nextToken?: string;
 }
-const ListRetainedMessagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ retainedTopics: S.optional(RetainedMessageList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListRetainedMessagesResponse",
-}) as any as S.Schema<ListRetainedMessagesResponse>;
+const ListRetainedMessagesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListRetainedMessagesResponse>;
 export interface ListSubscriptionsRequest {
   clientId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String.pipe(T.HttpLabel("clientId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/connections/{clientId}/subscriptions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
+const ListSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListSubscriptionsRequest>;
 export type TopicFilter = string;
 export interface SubscriptionSummary {
   topicFilter: string;
   qos: number;
 }
-const SubscriptionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ topicFilter: S.String, qos: S.Number }),
-).annotate({ identifier: "SubscriptionSummary" }) as any as S.Schema<SubscriptionSummary>;
+const SubscriptionSummary = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SubscriptionSummary>;
 export type SubscriptionList = SubscriptionSummary[];
-const SubscriptionList = /*@__PURE__*/ S.Array(SubscriptionSummary);
+const SubscriptionList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface ListSubscriptionsResponse {
   subscriptions?: SubscriptionSummary[];
   nextToken?: string;
 }
-const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ subscriptions: S.optional(SubscriptionList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSubscriptionsResponse",
-}) as any as S.Schema<ListSubscriptionsResponse>;
+const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListSubscriptionsResponse>;
 export type Retain = boolean;
 export type SynthesizedJsonUserProperties = string;
 export type PayloadFormatIndicator = "UNSPECIFIED_BYTES" | "UTF8_DATA" | (string & {});
@@ -489,22 +383,7 @@ export interface PublishRequest {
   correlationData?: string;
   messageExpiry?: number;
 }
-const PublishRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.String.pipe(T.HttpLabel("topic")),
-    qos: S.optional(S.Number).pipe(T.HttpQuery("qos")),
-    retain: S.optional(S.Boolean).pipe(T.HttpQuery("retain")),
-    payload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
-    userProperties: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-user-properties")),
-    payloadFormatIndicator: S.optional(PayloadFormatIndicator).pipe(
-      T.HttpHeader("x-amz-mqtt5-payload-format-indicator"),
-    ),
-    contentType: S.optional(S.String).pipe(T.HttpQuery("contentType")),
-    responseTopic: S.optional(S.String).pipe(T.HttpQuery("responseTopic")),
-    correlationData: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-correlation-data")),
-    messageExpiry: S.optional(S.Number).pipe(T.HttpQuery("messageExpiry")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/topics/{topic}" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "PublishRequest" }) as any as S.Schema<PublishRequest>;
+const PublishRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<PublishRequest>;
 export interface PublishResponse {}
 const PublishResponse = DeleteConnectionResponse as any as S.Schema<PublishResponse>;
 export type Confirmation = boolean;
@@ -521,71 +400,36 @@ export interface SendDirectMessageRequest {
   payloadFormatIndicator?: PayloadFormatIndicator;
   correlationData?: string;
 }
-const SendDirectMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String.pipe(T.HttpLabel("clientId")),
-    topic: S.String.pipe(T.HttpQuery("topic")),
-    contentType: S.optional(S.String).pipe(T.HttpQuery("contentType")),
-    responseTopic: S.optional(S.String).pipe(T.HttpQuery("responseTopic")),
-    confirmation: S.optional(S.Boolean).pipe(T.HttpQuery("confirmation")),
-    timeout: S.optional(S.Number).pipe(T.HttpQuery("timeout")),
-    payload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
-    userProperties: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-user-properties")),
-    payloadFormatIndicator: S.optional(PayloadFormatIndicator).pipe(
-      T.HttpHeader("x-amz-mqtt5-payload-format-indicator"),
-    ),
-    correlationData: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-correlation-data")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/connections/{clientId}/messages" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SendDirectMessageRequest" }) as any as S.Schema<SendDirectMessageRequest>;
+const SendDirectMessageRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<SendDirectMessageRequest>;
 export type ResponseMessage = string;
 export type TraceId = string;
 export interface SendDirectMessageResponse {
   message?: string;
   traceId?: string;
 }
-const SendDirectMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String), traceId: S.optional(S.String) }),
-).annotate({
-  identifier: "SendDirectMessageResponse",
-}) as any as S.Schema<SendDirectMessageResponse>;
+const SendDirectMessageResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<SendDirectMessageResponse>;
 export interface UpdateThingShadowRequest {
   thingName: string;
   shadowName?: string;
   payload: T.StreamingInputBody;
 }
-const UpdateThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.String.pipe(T.HttpLabel("thingName")),
-    shadowName: S.optional(S.String).pipe(T.HttpQuery("name")),
-    payload: T.StreamingInput.pipe(T.HttpPayload()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/things/{thingName}/shadow" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateThingShadowRequest" }) as any as S.Schema<UpdateThingShadowRequest>;
+const UpdateThingShadowRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdateThingShadowRequest>;
 export interface UpdateThingShadowResponse {
   payload?: T.StreamingOutputBody;
 }
-const UpdateThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
-).annotate({
-  identifier: "UpdateThingShadowResponse",
-}) as any as S.Schema<UpdateThingShadowResponse>;
+const UpdateThingShadowResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateThingShadowResponse>;
 export type ErrorMessage = string;
 export type DeleteConnectionError =
   | ForbiddenException
@@ -1041,3 +885,316 @@ export const updateThingShadow: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateThingShadow",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String.pipe(T.HttpLabel("clientId")),
+          cleanSession: S.optional(S.Boolean).pipe(T.HttpQuery("cleanSession")),
+          preventWillMessage: S.optional(S.Boolean).pipe(T.HttpQuery("preventWillMessage")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/connections/{clientId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteConnectionRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteConnectionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          thingName: S.String.pipe(T.HttpLabel("thingName")),
+          shadowName: S.optional(S.String).pipe(T.HttpQuery("name")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/things/{thingName}/shadow" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteThingShadowRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ payload: T.StreamingOutput.pipe(T.HttpPayload()) }),
+      ).annotate({
+        identifier: "DeleteThingShadowResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String.pipe(T.HttpLabel("clientId")),
+          includeSocketInformation: S.optional(S.Boolean).pipe(
+            T.HttpQuery("includeSocketInformation"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/connections/{clientId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetConnectionRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          connected: S.optional(S.Boolean),
+          thingName: S.optional(S.String),
+          cleanSession: S.optional(S.Boolean),
+          sourceIp: S.optional(S.String),
+          sourcePort: S.optional(S.Number),
+          targetIp: S.optional(S.String),
+          targetPort: S.optional(S.Number),
+          keepAliveDuration: S.optional(S.Number),
+          connectedSince: S.optional(S.Number),
+          disconnectedSince: S.optional(S.Number),
+          disconnectReason: S.optional(S.String),
+          sessionExpiry: S.optional(S.Number),
+          clientId: S.optional(S.String),
+          vpcEndpointId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetConnectionResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ topic: S.String.pipe(T.HttpLabel("topic")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/retainedMessage/{topic}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRetainedMessageRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          topic: S.optional(S.String),
+          payload: S.optional(T.Blob),
+          qos: S.optional(S.Number),
+          lastModifiedTime: S.optional(S.Number),
+          userProperties: S.optional(T.Blob),
+        }),
+      ).annotate({
+        identifier: "GetRetainedMessageResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          thingName: S.String.pipe(T.HttpLabel("thingName")),
+          shadowName: S.optional(S.String).pipe(T.HttpQuery("name")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/things/{thingName}/shadow" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetThingShadowRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
+      ).annotate({ identifier: "GetThingShadowResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          thingName: S.String.pipe(T.HttpLabel("thingName")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          pageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/api/things/shadow/ListNamedShadowsForThing/{thingName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListNamedShadowsForThingRequest",
+      });
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(NamedShadowList),
+          nextToken: S.optional(S.String),
+          timestamp: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListNamedShadowsForThingResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/retainedMessage" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListRetainedMessagesRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          topic: S.optional(S.String),
+          payloadSize: S.optional(S.Number),
+          qos: S.optional(S.Number),
+          lastModifiedTime: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RetainedMessageSummary" });
+    case 7:
+      return S.Array(RetainedMessageSummary);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          retainedTopics: S.optional(RetainedMessageList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRetainedMessagesResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String.pipe(T.HttpLabel("clientId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/connections/{clientId}/subscriptions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListSubscriptionsRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ topicFilter: S.String, qos: S.Number })).annotate({
+        identifier: "SubscriptionSummary",
+      });
+    case 3:
+      return S.Array(SubscriptionSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ subscriptions: S.optional(SubscriptionList), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListSubscriptionsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          topic: S.String.pipe(T.HttpLabel("topic")),
+          qos: S.optional(S.Number).pipe(T.HttpQuery("qos")),
+          retain: S.optional(S.Boolean).pipe(T.HttpQuery("retain")),
+          payload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+          userProperties: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-user-properties")),
+          payloadFormatIndicator: S.optional(PayloadFormatIndicator).pipe(
+            T.HttpHeader("x-amz-mqtt5-payload-format-indicator"),
+          ),
+          contentType: S.optional(S.String).pipe(T.HttpQuery("contentType")),
+          responseTopic: S.optional(S.String).pipe(T.HttpQuery("responseTopic")),
+          correlationData: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-correlation-data")),
+          messageExpiry: S.optional(S.Number).pipe(T.HttpQuery("messageExpiry")),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/topics/{topic}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PublishRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String.pipe(T.HttpLabel("clientId")),
+          topic: S.String.pipe(T.HttpQuery("topic")),
+          contentType: S.optional(S.String).pipe(T.HttpQuery("contentType")),
+          responseTopic: S.optional(S.String).pipe(T.HttpQuery("responseTopic")),
+          confirmation: S.optional(S.Boolean).pipe(T.HttpQuery("confirmation")),
+          timeout: S.optional(S.Number).pipe(T.HttpQuery("timeout")),
+          payload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+          userProperties: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-user-properties")),
+          payloadFormatIndicator: S.optional(PayloadFormatIndicator).pipe(
+            T.HttpHeader("x-amz-mqtt5-payload-format-indicator"),
+          ),
+          correlationData: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-correlation-data")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/connections/{clientId}/messages" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendDirectMessageRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ message: S.optional(S.String), traceId: S.optional(S.String) }),
+      ).annotate({
+        identifier: "SendDirectMessageResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          thingName: S.String.pipe(T.HttpLabel("thingName")),
+          shadowName: S.optional(S.String).pipe(T.HttpQuery("name")),
+          payload: T.StreamingInput.pipe(T.HttpPayload()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/things/{thingName}/shadow" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateThingShadowRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
+      ).annotate({
+        identifier: "UpdateThingShadowResponse",
+      });
+  }
+}

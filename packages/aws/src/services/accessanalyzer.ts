@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -172,42 +173,30 @@ export interface ApplyArchiveRuleRequest {
   ruleName: string;
   clientToken?: string;
 }
-const ApplyArchiveRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String,
-    ruleName: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/archive-rule" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ApplyArchiveRuleRequest" }) as any as S.Schema<ApplyArchiveRuleRequest>;
+const ApplyArchiveRuleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApplyArchiveRuleRequest>;
 export interface ApplyArchiveRuleResponse {}
-const ApplyArchiveRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ApplyArchiveRuleResponse",
-}) as any as S.Schema<ApplyArchiveRuleResponse>;
+const ApplyArchiveRuleResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ApplyArchiveRuleResponse>;
 export type JobId = string;
 export interface CancelPolicyGenerationRequest {
   jobId: string;
 }
-const CancelPolicyGenerationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.String.pipe(T.HttpLabel("jobId")) }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/policy/generation/{jobId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CancelPolicyGenerationRequest",
-}) as any as S.Schema<CancelPolicyGenerationRequest>;
+const CancelPolicyGenerationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CancelPolicyGenerationRequest>;
 export interface CancelPolicyGenerationResponse {}
 const CancelPolicyGenerationResponse =
   ApplyArchiveRuleResponse as any as S.Schema<CancelPolicyGenerationResponse>;
 export type AccessCheckPolicyDocument = string | redacted.Redacted<string>;
 export type Action = string;
 export type ActionsList = string[];
-const ActionsList = /*@__PURE__*/ S.Array(S.String);
+const ActionsList = /*@__PURE__*/ __L.at(__c0, 3);
 export type Resource = string;
 export type ResourcesList = string[];
 const ResourcesList = ActionsList as any as S.Schema<ResourcesList>;
@@ -215,113 +204,65 @@ export interface Access {
   actions?: string[];
   resources?: string[];
 }
-const Access = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actions: S.optional(ActionsList), resources: S.optional(ResourcesList) }),
-).annotate({ identifier: "Access" }) as any as S.Schema<Access>;
+const Access = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Access>;
 export type AccessList = Access[];
-const AccessList = /*@__PURE__*/ S.Array(Access);
+const AccessList = /*@__PURE__*/ __L.at(__c0, 5);
 export type AccessCheckPolicyType = string;
 export interface CheckAccessNotGrantedRequest {
   policyDocument: string | redacted.Redacted<string>;
   access: Access[];
   policyType: string;
 }
-const CheckAccessNotGrantedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyDocument: SensitiveString, access: AccessList, policyType: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/policy/check-access-not-granted" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CheckAccessNotGrantedRequest",
-}) as any as S.Schema<CheckAccessNotGrantedRequest>;
+const CheckAccessNotGrantedRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CheckAccessNotGrantedRequest>;
 export type CheckAccessNotGrantedResult = string;
 export interface ReasonSummary {
   description?: string;
   statementIndex?: number;
   statementId?: string;
 }
-const ReasonSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    statementIndex: S.optional(S.Number),
-    statementId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReasonSummary" }) as any as S.Schema<ReasonSummary>;
+const ReasonSummary = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ReasonSummary>;
 export type ReasonSummaryList = ReasonSummary[];
-const ReasonSummaryList = /*@__PURE__*/ S.Array(ReasonSummary);
+const ReasonSummaryList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CheckAccessNotGrantedResponse {
   result?: string;
   message?: string;
   reasons?: ReasonSummary[];
 }
-const CheckAccessNotGrantedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String),
-    message: S.optional(S.String),
-    reasons: S.optional(ReasonSummaryList),
-  }),
-).annotate({
-  identifier: "CheckAccessNotGrantedResponse",
-}) as any as S.Schema<CheckAccessNotGrantedResponse>;
+const CheckAccessNotGrantedResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CheckAccessNotGrantedResponse>;
 export interface CheckNoNewAccessRequest {
   newPolicyDocument: string | redacted.Redacted<string>;
   existingPolicyDocument: string | redacted.Redacted<string>;
   policyType: string;
 }
-const CheckNoNewAccessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newPolicyDocument: SensitiveString,
-    existingPolicyDocument: SensitiveString,
-    policyType: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/policy/check-no-new-access" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CheckNoNewAccessRequest" }) as any as S.Schema<CheckNoNewAccessRequest>;
+const CheckNoNewAccessRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CheckNoNewAccessRequest>;
 export type CheckNoNewAccessResult = string;
 export interface CheckNoNewAccessResponse {
   result?: string;
   message?: string;
   reasons?: ReasonSummary[];
 }
-const CheckNoNewAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String),
-    message: S.optional(S.String),
-    reasons: S.optional(ReasonSummaryList),
-  }),
-).annotate({ identifier: "CheckNoNewAccessResponse" }) as any as S.Schema<CheckNoNewAccessResponse>;
+const CheckNoNewAccessResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CheckNoNewAccessResponse>;
 export type AccessCheckResourceType = string;
 export interface CheckNoPublicAccessRequest {
   policyDocument: string | redacted.Redacted<string>;
   resourceType: string;
 }
-const CheckNoPublicAccessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyDocument: SensitiveString, resourceType: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/policy/check-no-public-access" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CheckNoPublicAccessRequest",
-}) as any as S.Schema<CheckNoPublicAccessRequest>;
+const CheckNoPublicAccessRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CheckNoPublicAccessRequest>;
 export type CheckNoPublicAccessResult = string;
 export interface CheckNoPublicAccessResponse {
   result?: string;
@@ -343,42 +284,35 @@ export interface EbsSnapshotConfiguration {
   groups?: string[];
   kmsKeyId?: string;
 }
-const EbsSnapshotConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userIds: S.optional(EbsUserIdList),
-    groups: S.optional(EbsGroupList),
-    kmsKeyId: S.optional(S.String),
-  }),
-).annotate({ identifier: "EbsSnapshotConfiguration" }) as any as S.Schema<EbsSnapshotConfiguration>;
+const EbsSnapshotConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<EbsSnapshotConfiguration>;
 export type EcrRepositoryPolicy = string;
 export interface EcrRepositoryConfiguration {
   repositoryPolicy?: string;
 }
-const EcrRepositoryConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repositoryPolicy: S.optional(S.String) }),
-).annotate({
-  identifier: "EcrRepositoryConfiguration",
-}) as any as S.Schema<EcrRepositoryConfiguration>;
+const EcrRepositoryConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<EcrRepositoryConfiguration>;
 export type IamTrustPolicy = string;
 export interface IamRoleConfiguration {
   trustPolicy?: string;
 }
-const IamRoleConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trustPolicy: S.optional(S.String) }),
-).annotate({ identifier: "IamRoleConfiguration" }) as any as S.Schema<IamRoleConfiguration>;
+const IamRoleConfiguration = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<IamRoleConfiguration>;
 export type EfsFileSystemPolicy = string;
 export interface EfsFileSystemConfiguration {
   fileSystemPolicy?: string;
 }
-const EfsFileSystemConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fileSystemPolicy: S.optional(S.String) }),
-).annotate({
-  identifier: "EfsFileSystemConfiguration",
-}) as any as S.Schema<EfsFileSystemConfiguration>;
+const EfsFileSystemConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<EfsFileSystemConfiguration>;
 export type PolicyName = string;
 export type KmsKeyPolicy = string;
 export type KmsKeyPoliciesMap = { [key: string]: string | undefined };
-const KmsKeyPoliciesMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const KmsKeyPoliciesMap = /*@__PURE__*/ __L.at(__c2, 1);
 export type KmsGrantOperation = string;
 export type KmsGrantOperationsList = string[];
 const KmsGrantOperationsList = ActionsList as any as S.Schema<KmsGrantOperationsList>;
@@ -392,12 +326,7 @@ export interface KmsGrantConstraints {
   encryptionContextEquals?: { [key: string]: string | undefined };
   encryptionContextSubset?: { [key: string]: string | undefined };
 }
-const KmsGrantConstraints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionContextEquals: S.optional(KmsConstraintsMap),
-    encryptionContextSubset: S.optional(KmsConstraintsMap),
-  }),
-).annotate({ identifier: "KmsGrantConstraints" }) as any as S.Schema<KmsGrantConstraints>;
+const KmsGrantConstraints = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<KmsGrantConstraints>;
 export type IssuingAccount = string;
 export interface KmsGrantConfiguration {
   operations: string[];
@@ -406,56 +335,37 @@ export interface KmsGrantConfiguration {
   constraints?: KmsGrantConstraints;
   issuingAccount: string;
 }
-const KmsGrantConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: KmsGrantOperationsList,
-    granteePrincipal: S.String,
-    retiringPrincipal: S.optional(S.String),
-    constraints: S.optional(KmsGrantConstraints),
-    issuingAccount: S.String,
-  }),
-).annotate({ identifier: "KmsGrantConfiguration" }) as any as S.Schema<KmsGrantConfiguration>;
+const KmsGrantConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<KmsGrantConfiguration>;
 export type KmsGrantConfigurationsList = KmsGrantConfiguration[];
-const KmsGrantConfigurationsList = /*@__PURE__*/ S.Array(KmsGrantConfiguration);
+const KmsGrantConfigurationsList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface KmsKeyConfiguration {
   keyPolicies?: { [key: string]: string | undefined };
   grants?: KmsGrantConfiguration[];
 }
-const KmsKeyConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyPolicies: S.optional(KmsKeyPoliciesMap),
-    grants: S.optional(KmsGrantConfigurationsList),
-  }),
-).annotate({ identifier: "KmsKeyConfiguration" }) as any as S.Schema<KmsKeyConfiguration>;
+const KmsKeyConfiguration = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<KmsKeyConfiguration>;
 export type RdsDbClusterSnapshotAttributeName = string;
 export type RdsDbClusterSnapshotAccountId = string;
 export type RdsDbClusterSnapshotAccountIdsList = string[];
 const RdsDbClusterSnapshotAccountIdsList =
   ActionsList as any as S.Schema<RdsDbClusterSnapshotAccountIdsList>;
 export type RdsDbClusterSnapshotAttributeValue = { accountIds: string[] };
-const RdsDbClusterSnapshotAttributeValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ accountIds: RdsDbClusterSnapshotAccountIdsList }),
-]);
+const RdsDbClusterSnapshotAttributeValue = /*@__PURE__*/ __L.at(__c2, 6);
 export type RdsDbClusterSnapshotAttributesMap = {
   [key: string]: RdsDbClusterSnapshotAttributeValue | undefined;
 };
-const RdsDbClusterSnapshotAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ RdsDbClusterSnapshotAttributeValue.pipe(S.optional),
-);
+const RdsDbClusterSnapshotAttributesMap = /*@__PURE__*/ __L.at(__c2, 7);
 export type RdsDbClusterSnapshotKmsKeyId = string;
 export interface RdsDbClusterSnapshotConfiguration {
   attributes?: { [key: string]: RdsDbClusterSnapshotAttributeValue | undefined };
   kmsKeyId?: string;
 }
-const RdsDbClusterSnapshotConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(RdsDbClusterSnapshotAttributesMap),
-    kmsKeyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RdsDbClusterSnapshotConfiguration",
-}) as any as S.Schema<RdsDbClusterSnapshotConfiguration>;
+const RdsDbClusterSnapshotConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<RdsDbClusterSnapshotConfiguration>;
 export type RdsDbSnapshotAttributeName = string;
 export type RdsDbSnapshotAccountId = string;
 export type RdsDbSnapshotAccountIdsList = string[];
@@ -468,169 +378,134 @@ export interface RdsDbSnapshotConfiguration {
   attributes?: { [key: string]: RdsDbSnapshotAttributeValue | undefined };
   kmsKeyId?: string;
 }
-const RdsDbSnapshotConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributes: S.optional(RdsDbSnapshotAttributesMap), kmsKeyId: S.optional(S.String) }),
-).annotate({
-  identifier: "RdsDbSnapshotConfiguration",
-}) as any as S.Schema<RdsDbSnapshotConfiguration>;
+const RdsDbSnapshotConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RdsDbSnapshotConfiguration>;
 export type SecretsManagerSecretKmsId = string;
 export type SecretsManagerSecretPolicy = string;
 export interface SecretsManagerSecretConfiguration {
   kmsKeyId?: string;
   secretPolicy?: string;
 }
-const SecretsManagerSecretConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ kmsKeyId: S.optional(S.String), secretPolicy: S.optional(S.String) }),
-).annotate({
-  identifier: "SecretsManagerSecretConfiguration",
-}) as any as S.Schema<SecretsManagerSecretConfiguration>;
+const SecretsManagerSecretConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<SecretsManagerSecretConfiguration>;
 export type S3BucketPolicy = string;
 export type AclPermission = string;
 export type AclCanonicalId = string;
 export type AclUri = string;
 export type AclGrantee = { id: string; uri?: never } | { id?: never; uri: string };
-const AclGrantee = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ id: S.String }),
-  /*@__PURE__*/ S.Struct({ uri: S.String }),
-]);
+const AclGrantee = /*@__PURE__*/ __L.at(__c3, 3);
 export interface S3BucketAclGrantConfiguration {
   permission: string;
   grantee: AclGrantee;
 }
-const S3BucketAclGrantConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ permission: S.String, grantee: AclGrantee }),
-).annotate({
-  identifier: "S3BucketAclGrantConfiguration",
-}) as any as S.Schema<S3BucketAclGrantConfiguration>;
+const S3BucketAclGrantConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<S3BucketAclGrantConfiguration>;
 export type S3BucketAclGrantConfigurationsList = S3BucketAclGrantConfiguration[];
-const S3BucketAclGrantConfigurationsList = /*@__PURE__*/ S.Array(S3BucketAclGrantConfiguration);
+const S3BucketAclGrantConfigurationsList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface S3PublicAccessBlockConfiguration {
   ignorePublicAcls: boolean;
   restrictPublicBuckets: boolean;
 }
-const S3PublicAccessBlockConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ignorePublicAcls: S.Boolean, restrictPublicBuckets: S.Boolean }),
-).annotate({
-  identifier: "S3PublicAccessBlockConfiguration",
-}) as any as S.Schema<S3PublicAccessBlockConfiguration>;
+const S3PublicAccessBlockConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<S3PublicAccessBlockConfiguration>;
 export type AccessPointArn = string;
 export type AccessPointPolicy = string;
 export type VpcId = string;
 export interface VpcConfiguration {
   vpcId: string;
 }
-const VpcConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({ vpcId: S.String })).annotate({
-  identifier: "VpcConfiguration",
-}) as any as S.Schema<VpcConfiguration>;
+const VpcConfiguration = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<VpcConfiguration>;
 export interface InternetConfiguration {}
 const InternetConfiguration = ApplyArchiveRuleResponse as any as S.Schema<InternetConfiguration>;
 export type NetworkOriginConfiguration =
   | { vpcConfiguration: VpcConfiguration; internetConfiguration?: never }
   | { vpcConfiguration?: never; internetConfiguration: InternetConfiguration };
-const NetworkOriginConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ vpcConfiguration: VpcConfiguration }),
-  /*@__PURE__*/ S.Struct({ internetConfiguration: InternetConfiguration }),
-]);
+const NetworkOriginConfiguration = /*@__PURE__*/ __L.at(__c4, 0);
 export interface S3AccessPointConfiguration {
   accessPointPolicy?: string;
   publicAccessBlock?: S3PublicAccessBlockConfiguration;
   networkOrigin?: NetworkOriginConfiguration;
 }
-const S3AccessPointConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessPointPolicy: S.optional(S.String),
-    publicAccessBlock: S.optional(S3PublicAccessBlockConfiguration),
-    networkOrigin: S.optional(NetworkOriginConfiguration),
-  }),
-).annotate({
-  identifier: "S3AccessPointConfiguration",
-}) as any as S.Schema<S3AccessPointConfiguration>;
+const S3AccessPointConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<S3AccessPointConfiguration>;
 export type S3AccessPointConfigurationsMap = {
   [key: string]: S3AccessPointConfiguration | undefined;
 };
-const S3AccessPointConfigurationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S3AccessPointConfiguration.pipe(S.optional),
-);
+const S3AccessPointConfigurationsMap = /*@__PURE__*/ __L.at(__c4, 2);
 export interface S3BucketConfiguration {
   bucketPolicy?: string;
   bucketAclGrants?: S3BucketAclGrantConfiguration[];
   bucketPublicAccessBlock?: S3PublicAccessBlockConfiguration;
   accessPoints?: { [key: string]: S3AccessPointConfiguration | undefined };
 }
-const S3BucketConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucketPolicy: S.optional(S.String),
-    bucketAclGrants: S.optional(S3BucketAclGrantConfigurationsList),
-    bucketPublicAccessBlock: S.optional(S3PublicAccessBlockConfiguration),
-    accessPoints: S.optional(S3AccessPointConfigurationsMap),
-  }),
-).annotate({ identifier: "S3BucketConfiguration" }) as any as S.Schema<S3BucketConfiguration>;
+const S3BucketConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<S3BucketConfiguration>;
 export type SnsTopicPolicy = string;
 export interface SnsTopicConfiguration {
   topicPolicy?: string;
 }
-const SnsTopicConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ topicPolicy: S.optional(S.String) }),
-).annotate({ identifier: "SnsTopicConfiguration" }) as any as S.Schema<SnsTopicConfiguration>;
+const SnsTopicConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<SnsTopicConfiguration>;
 export type SqsQueuePolicy = string;
 export interface SqsQueueConfiguration {
   queuePolicy?: string;
 }
-const SqsQueueConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ queuePolicy: S.optional(S.String) }),
-).annotate({ identifier: "SqsQueueConfiguration" }) as any as S.Schema<SqsQueueConfiguration>;
+const SqsQueueConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<SqsQueueConfiguration>;
 export type S3ExpressDirectoryBucketPolicy = string;
 export type S3ExpressDirectoryAccessPointArn = string;
 export interface S3ExpressDirectoryAccessPointConfiguration {
   accessPointPolicy?: string;
   networkOrigin?: NetworkOriginConfiguration;
 }
-const S3ExpressDirectoryAccessPointConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessPointPolicy: S.optional(S.String),
-    networkOrigin: S.optional(NetworkOriginConfiguration),
-  }),
-).annotate({
-  identifier: "S3ExpressDirectoryAccessPointConfiguration",
-}) as any as S.Schema<S3ExpressDirectoryAccessPointConfiguration>;
+const S3ExpressDirectoryAccessPointConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<S3ExpressDirectoryAccessPointConfiguration>;
 export type S3ExpressDirectoryAccessPointConfigurationsMap = {
   [key: string]: S3ExpressDirectoryAccessPointConfiguration | undefined;
 };
-const S3ExpressDirectoryAccessPointConfigurationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S3ExpressDirectoryAccessPointConfiguration.pipe(S.optional),
-);
+const S3ExpressDirectoryAccessPointConfigurationsMap = /*@__PURE__*/ __L.at(__c4, 7);
 export interface S3ExpressDirectoryBucketConfiguration {
   bucketPolicy?: string;
   accessPoints?: { [key: string]: S3ExpressDirectoryAccessPointConfiguration | undefined };
 }
-const S3ExpressDirectoryBucketConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucketPolicy: S.optional(S.String),
-    accessPoints: S.optional(S3ExpressDirectoryAccessPointConfigurationsMap),
-  }),
-).annotate({
-  identifier: "S3ExpressDirectoryBucketConfiguration",
-}) as any as S.Schema<S3ExpressDirectoryBucketConfiguration>;
+const S3ExpressDirectoryBucketConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<S3ExpressDirectoryBucketConfiguration>;
 export type DynamodbStreamPolicy = string;
 export interface DynamodbStreamConfiguration {
   streamPolicy?: string;
 }
-const DynamodbStreamConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ streamPolicy: S.optional(S.String) }),
-).annotate({
-  identifier: "DynamodbStreamConfiguration",
-}) as any as S.Schema<DynamodbStreamConfiguration>;
+const DynamodbStreamConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DynamodbStreamConfiguration>;
 export type DynamodbTablePolicy = string;
 export interface DynamodbTableConfiguration {
   tablePolicy?: string;
 }
-const DynamodbTableConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tablePolicy: S.optional(S.String) }),
-).annotate({
-  identifier: "DynamodbTableConfiguration",
-}) as any as S.Schema<DynamodbTableConfiguration>;
+const DynamodbTableConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DynamodbTableConfiguration>;
 export type Configuration =
   | {
       ebsSnapshot: EbsSnapshotConfiguration;
@@ -856,50 +731,26 @@ export type Configuration =
       dynamodbStream?: never;
       dynamodbTable: DynamodbTableConfiguration;
     };
-const Configuration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ ebsSnapshot: EbsSnapshotConfiguration }),
-  /*@__PURE__*/ S.Struct({ ecrRepository: EcrRepositoryConfiguration }),
-  /*@__PURE__*/ S.Struct({ iamRole: IamRoleConfiguration }),
-  /*@__PURE__*/ S.Struct({ efsFileSystem: EfsFileSystemConfiguration }),
-  /*@__PURE__*/ S.Struct({ kmsKey: KmsKeyConfiguration }),
-  /*@__PURE__*/ S.Struct({ rdsDbClusterSnapshot: RdsDbClusterSnapshotConfiguration }),
-  /*@__PURE__*/ S.Struct({ rdsDbSnapshot: RdsDbSnapshotConfiguration }),
-  /*@__PURE__*/ S.Struct({ secretsManagerSecret: SecretsManagerSecretConfiguration }),
-  /*@__PURE__*/ S.Struct({ s3Bucket: S3BucketConfiguration }),
-  /*@__PURE__*/ S.Struct({ snsTopic: SnsTopicConfiguration }),
-  /*@__PURE__*/ S.Struct({ sqsQueue: SqsQueueConfiguration }),
-  /*@__PURE__*/ S.Struct({ s3ExpressDirectoryBucket: S3ExpressDirectoryBucketConfiguration }),
-  /*@__PURE__*/ S.Struct({ dynamodbStream: DynamodbStreamConfiguration }),
-  /*@__PURE__*/ S.Struct({ dynamodbTable: DynamodbTableConfiguration }),
-]);
+const Configuration = /*@__PURE__*/ __L.at(__c5, 3);
 export type ConfigurationsMap = { [key: string]: Configuration | undefined };
-const ConfigurationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ Configuration.pipe(S.optional),
-);
+const ConfigurationsMap = /*@__PURE__*/ __L.at(__c5, 4);
 export interface CreateAccessPreviewRequest {
   analyzerArn: string;
   configurations: { [key: string]: Configuration | undefined };
   clientToken?: string;
 }
-const CreateAccessPreviewRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String,
-    configurations: ConfigurationsMap,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/access-preview" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateAccessPreviewRequest",
-}) as any as S.Schema<CreateAccessPreviewRequest>;
+const CreateAccessPreviewRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateAccessPreviewRequest>;
 export type AccessPreviewId = string;
 export interface CreateAccessPreviewResponse {
   id: string;
 }
-const CreateAccessPreviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }),
-).annotate({
-  identifier: "CreateAccessPreviewResponse",
-}) as any as S.Schema<CreateAccessPreviewResponse>;
+const CreateAccessPreviewResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateAccessPreviewResponse>;
 export type AnalyzerName = string;
 export type Type = string;
 export type ValueList = string[];
@@ -910,58 +761,41 @@ export interface Criterion {
   contains?: string[];
   exists?: boolean;
 }
-const Criterion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eq: S.optional(ValueList),
-    neq: S.optional(ValueList),
-    contains: S.optional(ValueList),
-    exists: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "Criterion" }) as any as S.Schema<Criterion>;
+const Criterion = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Criterion>;
 export type FilterCriteriaMap = { [key: string]: Criterion | undefined };
-const FilterCriteriaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ Criterion.pipe(S.optional),
-);
+const FilterCriteriaMap = /*@__PURE__*/ __L.at(__c6, 0);
 export interface InlineArchiveRule {
   ruleName: string;
   filter: { [key: string]: Criterion | undefined };
 }
-const InlineArchiveRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ruleName: S.String, filter: FilterCriteriaMap }),
-).annotate({ identifier: "InlineArchiveRule" }) as any as S.Schema<InlineArchiveRule>;
+const InlineArchiveRule = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<InlineArchiveRule>;
 export type InlineArchiveRulesList = InlineArchiveRule[];
-const InlineArchiveRulesList = /*@__PURE__*/ S.Array(InlineArchiveRule);
+const InlineArchiveRulesList = /*@__PURE__*/ __L.at(__c6, 2);
 export type TagsMap = { [key: string]: string | undefined };
-const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagsMap = /*@__PURE__*/ __L.at(__c6, 3);
 export type AccountIdsList = string[];
 const AccountIdsList = ActionsList as any as S.Schema<AccountIdsList>;
 export type TagsList = { [key: string]: string | undefined }[];
-const TagsList = /*@__PURE__*/ S.Array(TagsMap);
+const TagsList = /*@__PURE__*/ __L.at(__c6, 4);
 export interface AnalysisRuleCriteria {
   accountIds?: string[];
   resourceTags?: { [key: string]: string | undefined }[];
 }
-const AnalysisRuleCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountIds: S.optional(AccountIdsList), resourceTags: S.optional(TagsList) }),
-).annotate({ identifier: "AnalysisRuleCriteria" }) as any as S.Schema<AnalysisRuleCriteria>;
+const AnalysisRuleCriteria = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AnalysisRuleCriteria>;
 export type AnalysisRuleCriteriaList = AnalysisRuleCriteria[];
-const AnalysisRuleCriteriaList = /*@__PURE__*/ S.Array(AnalysisRuleCriteria);
+const AnalysisRuleCriteriaList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface AnalysisRule {
   exclusions?: AnalysisRuleCriteria[];
 }
-const AnalysisRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exclusions: S.optional(AnalysisRuleCriteriaList) }),
-).annotate({ identifier: "AnalysisRule" }) as any as S.Schema<AnalysisRule>;
+const AnalysisRule = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<AnalysisRule>;
 export interface UnusedAccessConfiguration {
   unusedAccessAge?: number;
   analysisRule?: AnalysisRule;
 }
-const UnusedAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ unusedAccessAge: S.optional(S.Number), analysisRule: S.optional(AnalysisRule) }),
-).annotate({
-  identifier: "UnusedAccessConfiguration",
-}) as any as S.Schema<UnusedAccessConfiguration>;
+const UnusedAccessConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<UnusedAccessConfiguration>;
 export type ResourceType = string;
 export type ResourceTypeList = string[];
 const ResourceTypeList = ActionsList as any as S.Schema<ResourceTypeList>;
@@ -972,42 +806,30 @@ export interface InternalAccessAnalysisRuleCriteria {
   resourceTypes?: string[];
   resourceArns?: string[];
 }
-const InternalAccessAnalysisRuleCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountIds: S.optional(AccountIdsList),
-    resourceTypes: S.optional(ResourceTypeList),
-    resourceArns: S.optional(ResourceArnsList),
-  }),
-).annotate({
-  identifier: "InternalAccessAnalysisRuleCriteria",
-}) as any as S.Schema<InternalAccessAnalysisRuleCriteria>;
+const InternalAccessAnalysisRuleCriteria = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<InternalAccessAnalysisRuleCriteria>;
 export type InternalAccessAnalysisRuleCriteriaList = InternalAccessAnalysisRuleCriteria[];
-const InternalAccessAnalysisRuleCriteriaList = /*@__PURE__*/ S.Array(
-  InternalAccessAnalysisRuleCriteria,
-);
+const InternalAccessAnalysisRuleCriteriaList = /*@__PURE__*/ __L.at(__c7, 2);
 export interface InternalAccessAnalysisRule {
   inclusions?: InternalAccessAnalysisRuleCriteria[];
 }
-const InternalAccessAnalysisRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inclusions: S.optional(InternalAccessAnalysisRuleCriteriaList) }),
-).annotate({
-  identifier: "InternalAccessAnalysisRule",
-}) as any as S.Schema<InternalAccessAnalysisRule>;
+const InternalAccessAnalysisRule = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<InternalAccessAnalysisRule>;
 export interface InternalAccessConfiguration {
   analysisRule?: InternalAccessAnalysisRule;
 }
-const InternalAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ analysisRule: S.optional(InternalAccessAnalysisRule) }),
-).annotate({
-  identifier: "InternalAccessConfiguration",
-}) as any as S.Schema<InternalAccessConfiguration>;
+const InternalAccessConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<InternalAccessConfiguration>;
 export type AnalyzerConfiguration =
   | { unusedAccess: UnusedAccessConfiguration; internalAccess?: never }
   | { unusedAccess?: never; internalAccess: InternalAccessConfiguration };
-const AnalyzerConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ unusedAccess: UnusedAccessConfiguration }),
-  /*@__PURE__*/ S.Struct({ internalAccess: InternalAccessConfiguration }),
-]);
+const AnalyzerConfiguration = /*@__PURE__*/ __L.at(__c7, 5);
 export interface CreateAnalyzerRequest {
   analyzerName: string;
   type: string;
@@ -1016,45 +838,27 @@ export interface CreateAnalyzerRequest {
   clientToken?: string;
   configuration?: AnalyzerConfiguration;
 }
-const CreateAnalyzerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.String,
-    type: S.String,
-    archiveRules: S.optional(InlineArchiveRulesList),
-    tags: S.optional(TagsMap),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    configuration: S.optional(AnalyzerConfiguration),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/analyzer" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateAnalyzerRequest" }) as any as S.Schema<CreateAnalyzerRequest>;
+const CreateAnalyzerRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateAnalyzerRequest>;
 export interface CreateAnalyzerResponse {
   arn?: string;
 }
-const CreateAnalyzerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.optional(S.String) }),
-).annotate({ identifier: "CreateAnalyzerResponse" }) as any as S.Schema<CreateAnalyzerResponse>;
+const CreateAnalyzerResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateAnalyzerResponse>;
 export interface CreateArchiveRuleRequest {
   analyzerName: string;
   ruleName: string;
   filter: { [key: string]: Criterion | undefined };
   clientToken?: string;
 }
-const CreateArchiveRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
-    ruleName: S.String,
-    filter: FilterCriteriaMap,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/analyzer/{analyzerName}/archive-rule" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateArchiveRuleRequest" }) as any as S.Schema<CreateArchiveRuleRequest>;
+const CreateArchiveRuleRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateArchiveRuleRequest>;
 export interface CreateArchiveRuleResponse {}
 const CreateArchiveRuleResponse =
   ApplyArchiveRuleResponse as any as S.Schema<CreateArchiveRuleResponse>;
@@ -1064,45 +868,25 @@ export interface CreateServiceLinkedAnalyzerRequest {
   clientToken?: string;
   configuration?: AnalyzerConfiguration;
 }
-const CreateServiceLinkedAnalyzerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    archiveRules: S.optional(InlineArchiveRulesList),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    configuration: S.optional(AnalyzerConfiguration),
-  }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/service-linked-analyzer" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateServiceLinkedAnalyzerRequest",
-}) as any as S.Schema<CreateServiceLinkedAnalyzerRequest>;
+const CreateServiceLinkedAnalyzerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateServiceLinkedAnalyzerRequest>;
 export interface CreateServiceLinkedAnalyzerResponse {
   arn?: string;
 }
-const CreateServiceLinkedAnalyzerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateServiceLinkedAnalyzerResponse",
-}) as any as S.Schema<CreateServiceLinkedAnalyzerResponse>;
+const CreateServiceLinkedAnalyzerResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateServiceLinkedAnalyzerResponse>;
 export interface DeleteAnalyzerRequest {
   analyzerName: string;
   clientToken?: string;
 }
-const DeleteAnalyzerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/analyzer/{analyzerName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteAnalyzerRequest" }) as any as S.Schema<DeleteAnalyzerRequest>;
+const DeleteAnalyzerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteAnalyzerRequest>;
 export interface DeleteAnalyzerResponse {}
 const DeleteAnalyzerResponse = ApplyArchiveRuleResponse as any as S.Schema<DeleteAnalyzerResponse>;
 export interface DeleteArchiveRuleRequest {
@@ -1110,22 +894,10 @@ export interface DeleteArchiveRuleRequest {
   ruleName: string;
   clientToken?: string;
 }
-const DeleteArchiveRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
-    ruleName: S.String.pipe(T.HttpLabel("ruleName")),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/analyzer/{analyzerName}/archive-rule/{ruleName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteArchiveRuleRequest" }) as any as S.Schema<DeleteArchiveRuleRequest>;
+const DeleteArchiveRuleRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteArchiveRuleRequest>;
 export interface DeleteArchiveRuleResponse {}
 const DeleteArchiveRuleResponse =
   ApplyArchiveRuleResponse as any as S.Schema<DeleteArchiveRuleResponse>;
@@ -1133,41 +905,23 @@ export interface DeleteServiceLinkedAnalyzerRequest {
   analyzerName: string;
   clientToken?: string;
 }
-const DeleteServiceLinkedAnalyzerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/service-linked-analyzer/{analyzerName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteServiceLinkedAnalyzerRequest",
-}) as any as S.Schema<DeleteServiceLinkedAnalyzerRequest>;
+const DeleteServiceLinkedAnalyzerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteServiceLinkedAnalyzerRequest>;
 export interface DeleteServiceLinkedAnalyzerResponse {}
-const DeleteServiceLinkedAnalyzerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceLinkedAnalyzerResponse",
-}) as any as S.Schema<DeleteServiceLinkedAnalyzerResponse>;
+const DeleteServiceLinkedAnalyzerResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteServiceLinkedAnalyzerResponse>;
 export interface GenerateFindingRecommendationRequest {
   analyzerArn: string;
   id: string;
 }
-const GenerateFindingRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
-    id: S.String.pipe(T.HttpLabel("id")),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/recommendation/{id}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GenerateFindingRecommendationRequest",
-}) as any as S.Schema<GenerateFindingRecommendationRequest>;
+const GenerateFindingRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GenerateFindingRecommendationRequest>;
 export interface GenerateFindingRecommendationResponse {}
 const GenerateFindingRecommendationResponse =
   DeleteServiceLinkedAnalyzerResponse as any as S.Schema<GenerateFindingRecommendationResponse>;
@@ -1175,31 +929,19 @@ export interface GetAccessPreviewRequest {
   accessPreviewId: string;
   analyzerArn: string;
 }
-const GetAccessPreviewRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessPreviewId: S.String.pipe(T.HttpLabel("accessPreviewId")),
-    analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/access-preview/{accessPreviewId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetAccessPreviewRequest" }) as any as S.Schema<GetAccessPreviewRequest>;
+const GetAccessPreviewRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetAccessPreviewRequest>;
 export type AccessPreviewStatus = string;
 export type AccessPreviewStatusReasonCode = string;
 export interface AccessPreviewStatusReason {
   code: string;
 }
-const AccessPreviewStatusReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.String }),
-).annotate({
-  identifier: "AccessPreviewStatusReason",
-}) as any as S.Schema<AccessPreviewStatusReason>;
+const AccessPreviewStatusReason = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<AccessPreviewStatusReason>;
 export interface AccessPreview {
   id: string;
   analyzerArn: string;
@@ -1208,37 +950,23 @@ export interface AccessPreview {
   status: string;
   statusReason?: AccessPreviewStatusReason;
 }
-const AccessPreview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    analyzerArn: S.String,
-    configurations: ConfigurationsMap,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: S.String,
-    statusReason: S.optional(AccessPreviewStatusReason),
-  }),
-).annotate({ identifier: "AccessPreview" }) as any as S.Schema<AccessPreview>;
+const AccessPreview = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<AccessPreview>;
 export interface GetAccessPreviewResponse {
   accessPreview: AccessPreview;
 }
-const GetAccessPreviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessPreview: AccessPreview }),
-).annotate({ identifier: "GetAccessPreviewResponse" }) as any as S.Schema<GetAccessPreviewResponse>;
+const GetAccessPreviewResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetAccessPreviewResponse>;
 export type ResourceArn = string;
 export interface GetAnalyzedResourceRequest {
   analyzerArn: string;
   resourceArn: string;
 }
-const GetAnalyzedResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
-    resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/analyzed-resource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAnalyzedResourceRequest",
-}) as any as S.Schema<GetAnalyzedResourceRequest>;
+const GetAnalyzedResourceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetAnalyzedResourceRequest>;
 export type ActionList = string[];
 const ActionList = ActionsList as any as S.Schema<ActionList>;
 export type SharedViaList = string[];
@@ -1257,45 +985,24 @@ export interface AnalyzedResource {
   resourceOwnerAccount: string;
   error?: string;
 }
-const AnalyzedResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String,
-    resourceType: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    analyzedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    isPublic: S.Boolean,
-    actions: S.optional(ActionList),
-    sharedVia: S.optional(SharedViaList),
-    status: S.optional(S.String),
-    resourceOwnerAccount: S.String,
-    error: S.optional(S.String),
-  }),
-).annotate({ identifier: "AnalyzedResource" }) as any as S.Schema<AnalyzedResource>;
+const AnalyzedResource = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AnalyzedResource>;
 export interface GetAnalyzedResourceResponse {
   resource?: AnalyzedResource;
 }
-const GetAnalyzedResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resource: S.optional(AnalyzedResource) }),
-).annotate({
-  identifier: "GetAnalyzedResourceResponse",
-}) as any as S.Schema<GetAnalyzedResourceResponse>;
+const GetAnalyzedResourceResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetAnalyzedResourceResponse>;
 export interface GetAnalyzerRequest {
   analyzerName: string;
 }
-const GetAnalyzerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ analyzerName: S.String.pipe(T.HttpLabel("analyzerName")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/analyzer/{analyzerName}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetAnalyzerRequest" }) as any as S.Schema<GetAnalyzerRequest>;
+const GetAnalyzerRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetAnalyzerRequest>;
 export type AnalyzerStatus = string;
 export type ReasonCode = string;
 export interface StatusReason {
   code: string;
 }
-const StatusReason = /*@__PURE__*/ S.suspend(() => S.Struct({ code: S.String })).annotate({
-  identifier: "StatusReason",
-}) as any as S.Schema<StatusReason>;
+const StatusReason = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<StatusReason>;
 export interface AnalyzerSummary {
   arn: string;
   name: string;
@@ -1309,77 +1016,39 @@ export interface AnalyzerSummary {
   configuration?: AnalyzerConfiguration;
   managedBy?: string;
 }
-const AnalyzerSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    name: S.String,
-    type: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastResourceAnalyzed: S.optional(S.String),
-    lastResourceAnalyzedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    tags: S.optional(TagsMap),
-    status: S.String,
-    statusReason: S.optional(StatusReason),
-    configuration: S.optional(AnalyzerConfiguration),
-    managedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "AnalyzerSummary" }) as any as S.Schema<AnalyzerSummary>;
+const AnalyzerSummary = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<AnalyzerSummary>;
 export interface GetAnalyzerResponse {
   analyzer: AnalyzerSummary;
 }
-const GetAnalyzerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ analyzer: AnalyzerSummary }),
-).annotate({ identifier: "GetAnalyzerResponse" }) as any as S.Schema<GetAnalyzerResponse>;
+const GetAnalyzerResponse = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GetAnalyzerResponse>;
 export interface GetArchiveRuleRequest {
   analyzerName: string;
   ruleName: string;
 }
-const GetArchiveRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
-    ruleName: S.String.pipe(T.HttpLabel("ruleName")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/analyzer/{analyzerName}/archive-rule/{ruleName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetArchiveRuleRequest" }) as any as S.Schema<GetArchiveRuleRequest>;
+const GetArchiveRuleRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetArchiveRuleRequest>;
 export interface ArchiveRuleSummary {
   ruleName: string;
   filter: { [key: string]: Criterion | undefined };
   createdAt: Date;
   updatedAt: Date;
 }
-const ArchiveRuleSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleName: S.String,
-    filter: FilterCriteriaMap,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "ArchiveRuleSummary" }) as any as S.Schema<ArchiveRuleSummary>;
+const ArchiveRuleSummary = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ArchiveRuleSummary>;
 export interface GetArchiveRuleResponse {
   archiveRule: ArchiveRuleSummary;
 }
-const GetArchiveRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ archiveRule: ArchiveRuleSummary }),
-).annotate({ identifier: "GetArchiveRuleResponse" }) as any as S.Schema<GetArchiveRuleResponse>;
+const GetArchiveRuleResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetArchiveRuleResponse>;
 export type FindingId = string;
 export interface GetFindingRequest {
   analyzerArn: string;
   id: string;
 }
-const GetFindingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
-    id: S.String.pipe(T.HttpLabel("id")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/finding/{id}" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetFindingRequest" }) as any as S.Schema<GetFindingRequest>;
+const GetFindingRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetFindingRequest>;
 export type PrincipalMap = { [key: string]: string | undefined };
 const PrincipalMap = KmsKeyPoliciesMap as any as S.Schema<PrincipalMap>;
 export type ConditionKeyMap = { [key: string]: string | undefined };
@@ -1389,18 +1058,14 @@ export interface FindingSourceDetail {
   accessPointArn?: string;
   accessPointAccount?: string;
 }
-const FindingSourceDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessPointArn: S.optional(S.String), accessPointAccount: S.optional(S.String) }),
-).annotate({ identifier: "FindingSourceDetail" }) as any as S.Schema<FindingSourceDetail>;
+const FindingSourceDetail = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<FindingSourceDetail>;
 export interface FindingSource {
   type: string;
   detail?: FindingSourceDetail;
 }
-const FindingSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: S.String, detail: S.optional(FindingSourceDetail) }),
-).annotate({ identifier: "FindingSource" }) as any as S.Schema<FindingSource>;
+const FindingSource = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<FindingSource>;
 export type FindingSourceList = FindingSource[];
-const FindingSourceList = /*@__PURE__*/ S.Array(FindingSource);
+const FindingSourceList = /*@__PURE__*/ __L.at(__c11, 1);
 export type ResourceControlPolicyRestriction = string;
 export interface Finding {
   id: string;
@@ -1419,31 +1084,11 @@ export interface Finding {
   sources?: FindingSource[];
   resourceControlPolicyRestriction?: string;
 }
-const Finding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    principal: S.optional(PrincipalMap),
-    action: S.optional(ActionList),
-    resource: S.optional(S.String),
-    isPublic: S.optional(S.Boolean),
-    resourceType: S.String,
-    condition: ConditionKeyMap,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    analyzedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: S.String,
-    resourceOwnerAccount: S.String,
-    error: S.optional(S.String),
-    sources: S.optional(FindingSourceList),
-    resourceControlPolicyRestriction: S.optional(S.String),
-  }),
-).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
+const Finding = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Finding>;
 export interface GetFindingResponse {
   finding?: Finding;
 }
-const GetFindingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ finding: S.optional(Finding) }),
-).annotate({ identifier: "GetFindingResponse" }) as any as S.Schema<GetFindingResponse>;
+const GetFindingResponse = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<GetFindingResponse>;
 export type Token = string;
 export interface GetFindingRecommendationRequest {
   analyzerArn: string;
@@ -1451,25 +1096,15 @@ export interface GetFindingRecommendationRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const GetFindingRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
-    id: S.String.pipe(T.HttpLabel("id")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/recommendation/{id}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetFindingRecommendationRequest",
-}) as any as S.Schema<GetFindingRecommendationRequest>;
+const GetFindingRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetFindingRecommendationRequest>;
 export interface RecommendationError {
   code: string;
   message: string;
 }
-const RecommendationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.String, message: S.String }),
-).annotate({ identifier: "RecommendationError" }) as any as S.Schema<RecommendationError>;
+const RecommendationError = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<RecommendationError>;
 export type RecommendedRemediationAction = string;
 export interface UnusedPermissionsRecommendedStep {
   policyUpdatedAt?: Date;
@@ -1477,24 +1112,16 @@ export interface UnusedPermissionsRecommendedStep {
   recommendedPolicy?: string;
   existingPolicyId?: string;
 }
-const UnusedPermissionsRecommendedStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    recommendedAction: S.String,
-    recommendedPolicy: S.optional(S.String),
-    existingPolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UnusedPermissionsRecommendedStep",
-}) as any as S.Schema<UnusedPermissionsRecommendedStep>;
+const UnusedPermissionsRecommendedStep = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<UnusedPermissionsRecommendedStep>;
 export type RecommendedStep = {
   unusedPermissionsRecommendedStep: UnusedPermissionsRecommendedStep;
 };
-const RecommendedStep = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ unusedPermissionsRecommendedStep: UnusedPermissionsRecommendedStep }),
-]);
+const RecommendedStep = /*@__PURE__*/ __L.at(__c11, 7);
 export type RecommendedStepList = RecommendedStep[];
-const RecommendedStepList = /*@__PURE__*/ S.Array(RecommendedStep);
+const RecommendedStepList = /*@__PURE__*/ __L.at(__c12, 0);
 export type RecommendationType = string;
 export type Status = string;
 export interface GetFindingRecommendationResponse {
@@ -1507,139 +1134,81 @@ export interface GetFindingRecommendationResponse {
   recommendationType: string;
   status: string;
 }
-const GetFindingRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    completedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    nextToken: S.optional(S.String),
-    error: S.optional(RecommendationError),
-    resourceArn: S.String,
-    recommendedSteps: S.optional(RecommendedStepList),
-    recommendationType: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "GetFindingRecommendationResponse",
-}) as any as S.Schema<GetFindingRecommendationResponse>;
+const GetFindingRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetFindingRecommendationResponse>;
 export interface GetFindingsStatisticsRequest {
   analyzerArn: string;
 }
-const GetFindingsStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ analyzerArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/analyzer/findings/statistics" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetFindingsStatisticsRequest",
-}) as any as S.Schema<GetFindingsStatisticsRequest>;
+const GetFindingsStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetFindingsStatisticsRequest>;
 export interface ResourceTypeDetails {
   totalActivePublic?: number;
   totalActiveCrossAccount?: number;
   totalActiveErrors?: number;
 }
-const ResourceTypeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalActivePublic: S.optional(S.Number),
-    totalActiveCrossAccount: S.optional(S.Number),
-    totalActiveErrors: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ResourceTypeDetails" }) as any as S.Schema<ResourceTypeDetails>;
+const ResourceTypeDetails = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ResourceTypeDetails>;
 export type ResourceTypeStatisticsMap = { [key: string]: ResourceTypeDetails | undefined };
-const ResourceTypeStatisticsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ResourceTypeDetails.pipe(S.optional),
-);
+const ResourceTypeStatisticsMap = /*@__PURE__*/ __L.at(__c12, 4);
 export interface ExternalAccessFindingsStatistics {
   resourceTypeStatistics?: { [key: string]: ResourceTypeDetails | undefined };
   totalActiveFindings?: number;
   totalArchivedFindings?: number;
   totalResolvedFindings?: number;
 }
-const ExternalAccessFindingsStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceTypeStatistics: S.optional(ResourceTypeStatisticsMap),
-    totalActiveFindings: S.optional(S.Number),
-    totalArchivedFindings: S.optional(S.Number),
-    totalResolvedFindings: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ExternalAccessFindingsStatistics",
-}) as any as S.Schema<ExternalAccessFindingsStatistics>;
+const ExternalAccessFindingsStatistics = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ExternalAccessFindingsStatistics>;
 export interface InternalAccessResourceTypeDetails {
   totalActiveFindings?: number;
   totalResolvedFindings?: number;
   totalArchivedFindings?: number;
 }
-const InternalAccessResourceTypeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalActiveFindings: S.optional(S.Number),
-    totalResolvedFindings: S.optional(S.Number),
-    totalArchivedFindings: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InternalAccessResourceTypeDetails",
-}) as any as S.Schema<InternalAccessResourceTypeDetails>;
+const InternalAccessResourceTypeDetails = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<InternalAccessResourceTypeDetails>;
 export type InternalAccessResourceTypeStatisticsMap = {
   [key: string]: InternalAccessResourceTypeDetails | undefined;
 };
-const InternalAccessResourceTypeStatisticsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ InternalAccessResourceTypeDetails.pipe(S.optional),
-);
+const InternalAccessResourceTypeStatisticsMap = /*@__PURE__*/ __L.at(__c12, 7);
 export interface InternalAccessFindingsStatistics {
   resourceTypeStatistics?: { [key: string]: InternalAccessResourceTypeDetails | undefined };
   totalActiveFindings?: number;
   totalArchivedFindings?: number;
   totalResolvedFindings?: number;
 }
-const InternalAccessFindingsStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceTypeStatistics: S.optional(InternalAccessResourceTypeStatisticsMap),
-    totalActiveFindings: S.optional(S.Number),
-    totalArchivedFindings: S.optional(S.Number),
-    totalResolvedFindings: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InternalAccessFindingsStatistics",
-}) as any as S.Schema<InternalAccessFindingsStatistics>;
+const InternalAccessFindingsStatistics = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<InternalAccessFindingsStatistics>;
 export interface UnusedAccessTypeStatistics {
   unusedAccessType?: string;
   total?: number;
 }
-const UnusedAccessTypeStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ unusedAccessType: S.optional(S.String), total: S.optional(S.Number) }),
-).annotate({
-  identifier: "UnusedAccessTypeStatistics",
-}) as any as S.Schema<UnusedAccessTypeStatistics>;
+const UnusedAccessTypeStatistics = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<UnusedAccessTypeStatistics>;
 export type UnusedAccessTypeStatisticsList = UnusedAccessTypeStatistics[];
-const UnusedAccessTypeStatisticsList = /*@__PURE__*/ S.Array(UnusedAccessTypeStatistics);
+const UnusedAccessTypeStatisticsList = /*@__PURE__*/ __L.at(__c13, 2);
 export type FindingAggregationAccountDetailsMap = { [key: string]: number | undefined };
-const FindingAggregationAccountDetailsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+const FindingAggregationAccountDetailsMap = /*@__PURE__*/ __L.at(__c13, 3);
 export interface FindingAggregationAccountDetails {
   account?: string;
   numberOfActiveFindings?: number;
   details?: { [key: string]: number | undefined };
 }
-const FindingAggregationAccountDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.optional(S.String),
-    numberOfActiveFindings: S.optional(S.Number),
-    details: S.optional(FindingAggregationAccountDetailsMap),
-  }),
-).annotate({
-  identifier: "FindingAggregationAccountDetails",
-}) as any as S.Schema<FindingAggregationAccountDetails>;
+const FindingAggregationAccountDetails = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<FindingAggregationAccountDetails>;
 export type AccountAggregations = FindingAggregationAccountDetails[];
-const AccountAggregations = /*@__PURE__*/ S.Array(FindingAggregationAccountDetails);
+const AccountAggregations = /*@__PURE__*/ __L.at(__c13, 5);
 export interface UnusedAccessFindingsStatistics {
   unusedAccessTypeStatistics?: UnusedAccessTypeStatistics[];
   topAccounts?: FindingAggregationAccountDetails[];
@@ -1647,17 +1216,10 @@ export interface UnusedAccessFindingsStatistics {
   totalArchivedFindings?: number;
   totalResolvedFindings?: number;
 }
-const UnusedAccessFindingsStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unusedAccessTypeStatistics: S.optional(UnusedAccessTypeStatisticsList),
-    topAccounts: S.optional(AccountAggregations),
-    totalActiveFindings: S.optional(S.Number),
-    totalArchivedFindings: S.optional(S.Number),
-    totalResolvedFindings: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UnusedAccessFindingsStatistics",
-}) as any as S.Schema<UnusedAccessFindingsStatistics>;
+const UnusedAccessFindingsStatistics = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<UnusedAccessFindingsStatistics>;
 export type FindingsStatistics =
   | {
       externalAccessFindingsStatistics: ExternalAccessFindingsStatistics;
@@ -1674,39 +1236,24 @@ export type FindingsStatistics =
       internalAccessFindingsStatistics?: never;
       unusedAccessFindingsStatistics: UnusedAccessFindingsStatistics;
     };
-const FindingsStatistics = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ externalAccessFindingsStatistics: ExternalAccessFindingsStatistics }),
-  /*@__PURE__*/ S.Struct({ internalAccessFindingsStatistics: InternalAccessFindingsStatistics }),
-  /*@__PURE__*/ S.Struct({ unusedAccessFindingsStatistics: UnusedAccessFindingsStatistics }),
-]);
+const FindingsStatistics = /*@__PURE__*/ __L.at(__c13, 7);
 export type FindingsStatisticsList = FindingsStatistics[];
-const FindingsStatisticsList = /*@__PURE__*/ S.Array(FindingsStatistics);
+const FindingsStatisticsList = /*@__PURE__*/ __L.at(__c14, 0);
 export interface GetFindingsStatisticsResponse {
   findingsStatistics?: FindingsStatistics[];
   lastUpdatedAt?: Date;
 }
-const GetFindingsStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    findingsStatistics: S.optional(FindingsStatisticsList),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "GetFindingsStatisticsResponse",
-}) as any as S.Schema<GetFindingsStatisticsResponse>;
+const GetFindingsStatisticsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetFindingsStatisticsResponse>;
 export interface GetFindingV2Request {
   analyzerArn: string;
   id: string;
   maxResults?: number;
   nextToken?: string;
 }
-const GetFindingV2Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
-    id: S.String.pipe(T.HttpLabel("id")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/findingv2/{id}" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetFindingV2Request" }) as any as S.Schema<GetFindingV2Request>;
+const GetFindingV2Request = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<GetFindingV2Request>;
 export type InternalAccessType = string;
 export type PrincipalType = string;
 export type ServiceControlPolicyRestriction = string;
@@ -1721,19 +1268,10 @@ export interface InternalAccessDetails {
   resourceControlPolicyRestriction?: string;
   serviceControlPolicyRestriction?: string;
 }
-const InternalAccessDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(ActionList),
-    condition: S.optional(ConditionKeyMap),
-    principal: S.optional(PrincipalMap),
-    principalOwnerAccount: S.optional(S.String),
-    accessType: S.optional(S.String),
-    principalType: S.optional(S.String),
-    sources: S.optional(FindingSourceList),
-    resourceControlPolicyRestriction: S.optional(S.String),
-    serviceControlPolicyRestriction: S.optional(S.String),
-  }),
-).annotate({ identifier: "InternalAccessDetails" }) as any as S.Schema<InternalAccessDetails>;
+const InternalAccessDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<InternalAccessDetails>;
 export interface ExternalAccessDetails {
   action?: string[];
   condition: { [key: string]: string | undefined };
@@ -1742,66 +1280,48 @@ export interface ExternalAccessDetails {
   sources?: FindingSource[];
   resourceControlPolicyRestriction?: string;
 }
-const ExternalAccessDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(ActionList),
-    condition: ConditionKeyMap,
-    isPublic: S.optional(S.Boolean),
-    principal: S.optional(PrincipalMap),
-    sources: S.optional(FindingSourceList),
-    resourceControlPolicyRestriction: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExternalAccessDetails" }) as any as S.Schema<ExternalAccessDetails>;
+const ExternalAccessDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ExternalAccessDetails>;
 export interface UnusedAction {
   action: string;
   lastAccessed?: Date;
 }
-const UnusedAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "UnusedAction" }) as any as S.Schema<UnusedAction>;
+const UnusedAction = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<UnusedAction>;
 export type UnusedActionList = UnusedAction[];
-const UnusedActionList = /*@__PURE__*/ S.Array(UnusedAction);
+const UnusedActionList = /*@__PURE__*/ __L.at(__c14, 6);
 export interface UnusedPermissionDetails {
   actions?: UnusedAction[];
   serviceNamespace: string;
   lastAccessed?: Date;
 }
-const UnusedPermissionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actions: S.optional(UnusedActionList),
-    serviceNamespace: S.String,
-    lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "UnusedPermissionDetails" }) as any as S.Schema<UnusedPermissionDetails>;
+const UnusedPermissionDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<UnusedPermissionDetails>;
 export interface UnusedIamUserAccessKeyDetails {
   accessKeyId: string;
   lastAccessed?: Date;
 }
-const UnusedIamUserAccessKeyDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKeyId: S.String,
-    lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "UnusedIamUserAccessKeyDetails",
-}) as any as S.Schema<UnusedIamUserAccessKeyDetails>;
+const UnusedIamUserAccessKeyDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<UnusedIamUserAccessKeyDetails>;
 export interface UnusedIamRoleDetails {
   lastAccessed?: Date;
 }
-const UnusedIamRoleDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))) }),
-).annotate({ identifier: "UnusedIamRoleDetails" }) as any as S.Schema<UnusedIamRoleDetails>;
+const UnusedIamRoleDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UnusedIamRoleDetails>;
 export interface UnusedIamUserPasswordDetails {
   lastAccessed?: Date;
 }
-const UnusedIamUserPasswordDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))) }),
-).annotate({
-  identifier: "UnusedIamUserPasswordDetails",
-}) as any as S.Schema<UnusedIamUserPasswordDetails>;
+const UnusedIamUserPasswordDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<UnusedIamUserPasswordDetails>;
 export type FindingDetails =
   | {
       internalAccessDetails: InternalAccessDetails;
@@ -1851,16 +1371,9 @@ export type FindingDetails =
       unusedIamRoleDetails?: never;
       unusedIamUserPasswordDetails: UnusedIamUserPasswordDetails;
     };
-const FindingDetails = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ internalAccessDetails: InternalAccessDetails }),
-  /*@__PURE__*/ S.Struct({ externalAccessDetails: ExternalAccessDetails }),
-  /*@__PURE__*/ S.Struct({ unusedPermissionDetails: UnusedPermissionDetails }),
-  /*@__PURE__*/ S.Struct({ unusedIamUserAccessKeyDetails: UnusedIamUserAccessKeyDetails }),
-  /*@__PURE__*/ S.Struct({ unusedIamRoleDetails: UnusedIamRoleDetails }),
-  /*@__PURE__*/ S.Struct({ unusedIamUserPasswordDetails: UnusedIamUserPasswordDetails }),
-]);
+const FindingDetails = /*@__PURE__*/ __L.at(__c15, 3);
 export type FindingDetailsList = FindingDetails[];
-const FindingDetailsList = /*@__PURE__*/ S.Array(FindingDetails);
+const FindingDetailsList = /*@__PURE__*/ __L.at(__c15, 4);
 export type FindingType = string;
 export interface GetFindingV2Response {
   analyzedAt: Date;
@@ -1876,49 +1389,19 @@ export interface GetFindingV2Response {
   findingDetails: FindingDetails[];
   findingType?: string;
 }
-const GetFindingV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    error: S.optional(S.String),
-    id: S.String,
-    nextToken: S.optional(S.String),
-    resource: S.optional(S.String),
-    resourceType: S.String,
-    resourceOwnerAccount: S.String,
-    status: S.String,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    findingDetails: FindingDetailsList,
-    findingType: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetFindingV2Response" }) as any as S.Schema<GetFindingV2Response>;
+const GetFindingV2Response = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetFindingV2Response>;
 export interface GetGeneratedPolicyRequest {
   jobId: string;
   includeResourcePlaceholders?: boolean;
   includeServiceLevelTemplate?: boolean;
 }
-const GetGeneratedPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String.pipe(T.HttpLabel("jobId")),
-    includeResourcePlaceholders: S.optional(S.Boolean).pipe(
-      T.HttpQuery("includeResourcePlaceholders"),
-    ),
-    includeServiceLevelTemplate: S.optional(S.Boolean).pipe(
-      T.HttpQuery("includeServiceLevelTemplate"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/policy/generation/{jobId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetGeneratedPolicyRequest",
-}) as any as S.Schema<GetGeneratedPolicyRequest>;
+const GetGeneratedPolicyRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetGeneratedPolicyRequest>;
 export type JobStatus = string;
 export type JobErrorCode = string;
 export interface JobError {
@@ -1933,15 +1416,7 @@ export interface JobDetails {
   completedOn?: Date;
   jobError?: JobError;
 }
-const JobDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String,
-    status: S.String,
-    startedOn: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    completedOn: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    jobError: S.optional(JobError),
-  }),
-).annotate({ identifier: "JobDetails" }) as any as S.Schema<JobDetails>;
+const JobDetails = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<JobDetails>;
 export type PrincipalArn = string;
 export type CloudTrailArn = string;
 export type RegionList = string[];
@@ -1951,68 +1426,49 @@ export interface TrailProperties {
   regions?: string[];
   allRegions?: boolean;
 }
-const TrailProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudTrailArn: S.String,
-    regions: S.optional(RegionList),
-    allRegions: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TrailProperties" }) as any as S.Schema<TrailProperties>;
+const TrailProperties = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<TrailProperties>;
 export type TrailPropertiesList = TrailProperties[];
-const TrailPropertiesList = /*@__PURE__*/ S.Array(TrailProperties);
+const TrailPropertiesList = /*@__PURE__*/ __L.at(__c16, 1);
 export interface CloudTrailProperties {
   trailProperties: TrailProperties[];
   startTime: Date;
   endTime: Date;
 }
-const CloudTrailProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trailProperties: TrailPropertiesList,
-    startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "CloudTrailProperties" }) as any as S.Schema<CloudTrailProperties>;
+const CloudTrailProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<CloudTrailProperties>;
 export interface GeneratedPolicyProperties {
   isComplete?: boolean;
   principalArn: string;
   cloudTrailProperties?: CloudTrailProperties;
 }
-const GeneratedPolicyProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isComplete: S.optional(S.Boolean),
-    principalArn: S.String,
-    cloudTrailProperties: S.optional(CloudTrailProperties),
-  }),
-).annotate({
-  identifier: "GeneratedPolicyProperties",
-}) as any as S.Schema<GeneratedPolicyProperties>;
+const GeneratedPolicyProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GeneratedPolicyProperties>;
 export interface GeneratedPolicy {
   policy: string;
 }
-const GeneratedPolicy = /*@__PURE__*/ S.suspend(() => S.Struct({ policy: S.String })).annotate({
-  identifier: "GeneratedPolicy",
-}) as any as S.Schema<GeneratedPolicy>;
+const GeneratedPolicy = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<GeneratedPolicy>;
 export type GeneratedPolicyList = GeneratedPolicy[];
-const GeneratedPolicyList = /*@__PURE__*/ S.Array(GeneratedPolicy);
+const GeneratedPolicyList = /*@__PURE__*/ __L.at(__c16, 5);
 export interface GeneratedPolicyResult {
   properties: GeneratedPolicyProperties;
   generatedPolicies?: GeneratedPolicy[];
 }
-const GeneratedPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: GeneratedPolicyProperties,
-    generatedPolicies: S.optional(GeneratedPolicyList),
-  }),
-).annotate({ identifier: "GeneratedPolicyResult" }) as any as S.Schema<GeneratedPolicyResult>;
+const GeneratedPolicyResult = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GeneratedPolicyResult>;
 export interface GetGeneratedPolicyResponse {
   jobDetails: JobDetails;
   generatedPolicyResult: GeneratedPolicyResult;
 }
-const GetGeneratedPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobDetails: JobDetails, generatedPolicyResult: GeneratedPolicyResult }),
-).annotate({
-  identifier: "GetGeneratedPolicyResponse",
-}) as any as S.Schema<GetGeneratedPolicyResponse>;
+const GetGeneratedPolicyResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetGeneratedPolicyResponse>;
 export interface ListAccessPreviewFindingsRequest {
   accessPreviewId: string;
   analyzerArn: string;
@@ -2020,26 +1476,10 @@ export interface ListAccessPreviewFindingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListAccessPreviewFindingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessPreviewId: S.String.pipe(T.HttpLabel("accessPreviewId")),
-    analyzerArn: S.String,
-    filter: S.optional(FilterCriteriaMap),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/access-preview/{accessPreviewId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAccessPreviewFindingsRequest",
-}) as any as S.Schema<ListAccessPreviewFindingsRequest>;
+const ListAccessPreviewFindingsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListAccessPreviewFindingsRequest>;
 export type AccessPreviewFindingId = string;
 export type FindingChangeType = string;
 export interface AccessPreviewFinding {
@@ -2060,51 +1500,29 @@ export interface AccessPreviewFinding {
   sources?: FindingSource[];
   resourceControlPolicyRestriction?: string;
 }
-const AccessPreviewFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    existingFindingId: S.optional(S.String),
-    existingFindingStatus: S.optional(S.String),
-    principal: S.optional(PrincipalMap),
-    action: S.optional(ActionList),
-    condition: S.optional(ConditionKeyMap),
-    resource: S.optional(S.String),
-    isPublic: S.optional(S.Boolean),
-    resourceType: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    changeType: S.String,
-    status: S.String,
-    resourceOwnerAccount: S.String,
-    error: S.optional(S.String),
-    sources: S.optional(FindingSourceList),
-    resourceControlPolicyRestriction: S.optional(S.String),
-  }),
-).annotate({ identifier: "AccessPreviewFinding" }) as any as S.Schema<AccessPreviewFinding>;
+const AccessPreviewFinding = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<AccessPreviewFinding>;
 export type AccessPreviewFindingsList = AccessPreviewFinding[];
-const AccessPreviewFindingsList = /*@__PURE__*/ S.Array(AccessPreviewFinding);
+const AccessPreviewFindingsList = /*@__PURE__*/ __L.at(__c17, 2);
 export interface ListAccessPreviewFindingsResponse {
   findings: AccessPreviewFinding[];
   nextToken?: string;
 }
-const ListAccessPreviewFindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ findings: AccessPreviewFindingsList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAccessPreviewFindingsResponse",
-}) as any as S.Schema<ListAccessPreviewFindingsResponse>;
+const ListAccessPreviewFindingsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListAccessPreviewFindingsResponse>;
 export interface ListAccessPreviewsRequest {
   analyzerArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAccessPreviewsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/access-preview" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAccessPreviewsRequest",
-}) as any as S.Schema<ListAccessPreviewsRequest>;
+const ListAccessPreviewsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListAccessPreviewsRequest>;
 export interface AccessPreviewSummary {
   id: string;
   analyzerArn: string;
@@ -2112,122 +1530,93 @@ export interface AccessPreviewSummary {
   status: string;
   statusReason?: AccessPreviewStatusReason;
 }
-const AccessPreviewSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    analyzerArn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: S.String,
-    statusReason: S.optional(AccessPreviewStatusReason),
-  }),
-).annotate({ identifier: "AccessPreviewSummary" }) as any as S.Schema<AccessPreviewSummary>;
+const AccessPreviewSummary = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<AccessPreviewSummary>;
 export type AccessPreviewsList = AccessPreviewSummary[];
-const AccessPreviewsList = /*@__PURE__*/ S.Array(AccessPreviewSummary);
+const AccessPreviewsList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface ListAccessPreviewsResponse {
   accessPreviews: AccessPreviewSummary[];
   nextToken?: string;
 }
-const ListAccessPreviewsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessPreviews: AccessPreviewsList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAccessPreviewsResponse",
-}) as any as S.Schema<ListAccessPreviewsResponse>;
+const ListAccessPreviewsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListAccessPreviewsResponse>;
 export interface ListAnalyzedResourcesRequest {
   analyzerArn: string;
   resourceType?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAnalyzedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String,
-    resourceType: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/analyzed-resource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListAnalyzedResourcesRequest",
-}) as any as S.Schema<ListAnalyzedResourcesRequest>;
+const ListAnalyzedResourcesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListAnalyzedResourcesRequest>;
 export interface AnalyzedResourceSummary {
   resourceArn: string;
   resourceOwnerAccount: string;
   resourceType: string;
 }
-const AnalyzedResourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, resourceOwnerAccount: S.String, resourceType: S.String }),
-).annotate({ identifier: "AnalyzedResourceSummary" }) as any as S.Schema<AnalyzedResourceSummary>;
+const AnalyzedResourceSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<AnalyzedResourceSummary>;
 export type AnalyzedResourcesList = AnalyzedResourceSummary[];
-const AnalyzedResourcesList = /*@__PURE__*/ S.Array(AnalyzedResourceSummary);
+const AnalyzedResourcesList = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListAnalyzedResourcesResponse {
   analyzedResources: AnalyzedResourceSummary[];
   nextToken?: string;
 }
-const ListAnalyzedResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ analyzedResources: AnalyzedResourcesList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAnalyzedResourcesResponse",
-}) as any as S.Schema<ListAnalyzedResourcesResponse>;
+const ListAnalyzedResourcesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListAnalyzedResourcesResponse>;
 export interface ListAnalyzersRequest {
   nextToken?: string;
   maxResults?: number;
   type?: string;
 }
-const ListAnalyzersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    type: S.optional(S.String).pipe(T.HttpQuery("type")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/analyzer" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListAnalyzersRequest" }) as any as S.Schema<ListAnalyzersRequest>;
+const ListAnalyzersRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListAnalyzersRequest>;
 export type AnalyzersList = AnalyzerSummary[];
-const AnalyzersList = /*@__PURE__*/ S.Array(AnalyzerSummary);
+const AnalyzersList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface ListAnalyzersResponse {
   analyzers: AnalyzerSummary[];
   nextToken?: string;
 }
-const ListAnalyzersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ analyzers: AnalyzersList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListAnalyzersResponse" }) as any as S.Schema<ListAnalyzersResponse>;
+const ListAnalyzersResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListAnalyzersResponse>;
 export interface ListArchiveRulesRequest {
   analyzerName: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListArchiveRulesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/analyzer/{analyzerName}/archive-rule" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListArchiveRulesRequest" }) as any as S.Schema<ListArchiveRulesRequest>;
+const ListArchiveRulesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListArchiveRulesRequest>;
 export type ArchiveRulesList = ArchiveRuleSummary[];
-const ArchiveRulesList = /*@__PURE__*/ S.Array(ArchiveRuleSummary);
+const ArchiveRulesList = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListArchiveRulesResponse {
   archiveRules: ArchiveRuleSummary[];
   nextToken?: string;
 }
-const ListArchiveRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ archiveRules: ArchiveRulesList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListArchiveRulesResponse" }) as any as S.Schema<ListArchiveRulesResponse>;
+const ListArchiveRulesResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListArchiveRulesResponse>;
 export type OrderBy = string;
 export interface SortCriteria {
   attributeName?: string;
   orderBy?: string;
 }
-const SortCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributeName: S.optional(S.String), orderBy: S.optional(S.String) }),
-).annotate({ identifier: "SortCriteria" }) as any as S.Schema<SortCriteria>;
+const SortCriteria = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<SortCriteria>;
 export interface ListFindingsRequest {
   analyzerArn: string;
   filter?: { [key: string]: Criterion | undefined };
@@ -2235,15 +1624,7 @@ export interface ListFindingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListFindingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String,
-    filter: S.optional(FilterCriteriaMap),
-    sort: S.optional(SortCriteria),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/finding" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListFindingsRequest" }) as any as S.Schema<ListFindingsRequest>;
+const ListFindingsRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ListFindingsRequest>;
 export interface FindingSummary {
   id: string;
   principal?: { [key: string]: string | undefined };
@@ -2263,14 +1644,15 @@ export interface FindingSummary {
 }
 const FindingSummary = Finding as any as S.Schema<FindingSummary>;
 export type FindingsList = FindingSummary[];
-const FindingsList = /*@__PURE__*/ S.Array(FindingSummary);
+const FindingsList = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ListFindingsResponse {
   findings: FindingSummary[];
   nextToken?: string;
 }
-const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ findings: FindingsList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListFindingsResponse" }) as any as S.Schema<ListFindingsResponse>;
+const ListFindingsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListFindingsResponse>;
 export interface ListFindingsV2Request {
   analyzerArn: string;
   filter?: { [key: string]: Criterion | undefined };
@@ -2278,15 +1660,10 @@ export interface ListFindingsV2Request {
   nextToken?: string;
   sort?: SortCriteria;
 }
-const ListFindingsV2Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String,
-    filter: S.optional(FilterCriteriaMap),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    sort: S.optional(SortCriteria),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/findingv2" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListFindingsV2Request" }) as any as S.Schema<ListFindingsV2Request>;
+const ListFindingsV2Request = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListFindingsV2Request>;
 export interface FindingSummaryV2 {
   analyzedAt: Date;
   createdAt: Date;
@@ -2299,45 +1676,26 @@ export interface FindingSummaryV2 {
   updatedAt: Date;
   findingType?: string;
 }
-const FindingSummaryV2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    error: S.optional(S.String),
-    id: S.String,
-    resource: S.optional(S.String),
-    resourceType: S.String,
-    resourceOwnerAccount: S.String,
-    status: S.String,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    findingType: S.optional(S.String),
-  }),
-).annotate({ identifier: "FindingSummaryV2" }) as any as S.Schema<FindingSummaryV2>;
+const FindingSummaryV2 = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<FindingSummaryV2>;
 export type FindingsListV2 = FindingSummaryV2[];
-const FindingsListV2 = /*@__PURE__*/ S.Array(FindingSummaryV2);
+const FindingsListV2 = /*@__PURE__*/ __L.at(__c20, 0);
 export interface ListFindingsV2Response {
   findings: FindingSummaryV2[];
   nextToken?: string;
 }
-const ListFindingsV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ findings: FindingsListV2, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListFindingsV2Response" }) as any as S.Schema<ListFindingsV2Response>;
+const ListFindingsV2Response = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListFindingsV2Response>;
 export interface ListPolicyGenerationsRequest {
   principalArn?: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListPolicyGenerationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalArn: S.optional(S.String).pipe(T.HttpQuery("principalArn")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/policy/generation" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListPolicyGenerationsRequest",
-}) as any as S.Schema<ListPolicyGenerationsRequest>;
+const ListPolicyGenerationsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListPolicyGenerationsRequest>;
 export interface PolicyGeneration {
   jobId: string;
   principalArn: string;
@@ -2345,50 +1703,38 @@ export interface PolicyGeneration {
   startedOn: Date;
   completedOn?: Date;
 }
-const PolicyGeneration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String,
-    principalArn: S.String,
-    status: S.String,
-    startedOn: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    completedOn: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "PolicyGeneration" }) as any as S.Schema<PolicyGeneration>;
+const PolicyGeneration = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<PolicyGeneration>;
 export type PolicyGenerationList = PolicyGeneration[];
-const PolicyGenerationList = /*@__PURE__*/ S.Array(PolicyGeneration);
+const PolicyGenerationList = /*@__PURE__*/ __L.at(__c20, 4);
 export interface ListPolicyGenerationsResponse {
   policyGenerations: PolicyGeneration[];
   nextToken?: string;
 }
-const ListPolicyGenerationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyGenerations: PolicyGenerationList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPolicyGenerationsResponse",
-}) as any as S.Schema<ListPolicyGenerationsResponse>;
+const ListPolicyGenerationsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListPolicyGenerationsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagsMap) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PolicyGenerationDetails {
   principalArn: string;
 }
-const PolicyGenerationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalArn: S.String }),
-).annotate({ identifier: "PolicyGenerationDetails" }) as any as S.Schema<PolicyGenerationDetails>;
+const PolicyGenerationDetails = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<PolicyGenerationDetails>;
 export interface Trail {
   cloudTrailArn: string;
   regions?: string[];
@@ -2403,50 +1749,32 @@ export interface CloudTrailDetails {
   startTime: Date;
   endTime?: Date;
 }
-const CloudTrailDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trails: TrailList,
-    accessRole: S.String,
-    startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "CloudTrailDetails" }) as any as S.Schema<CloudTrailDetails>;
+const CloudTrailDetails = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<CloudTrailDetails>;
 export interface StartPolicyGenerationRequest {
   policyGenerationDetails: PolicyGenerationDetails;
   cloudTrailDetails?: CloudTrailDetails;
   clientToken?: string;
 }
-const StartPolicyGenerationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyGenerationDetails: PolicyGenerationDetails,
-    cloudTrailDetails: S.optional(CloudTrailDetails),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/policy/generation" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartPolicyGenerationRequest",
-}) as any as S.Schema<StartPolicyGenerationRequest>;
+const StartPolicyGenerationRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<StartPolicyGenerationRequest>;
 export interface StartPolicyGenerationResponse {
   jobId: string;
 }
-const StartPolicyGenerationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.String }),
-).annotate({
-  identifier: "StartPolicyGenerationResponse",
-}) as any as S.Schema<StartPolicyGenerationResponse>;
+const StartPolicyGenerationResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<StartPolicyGenerationResponse>;
 export interface StartResourceScanRequest {
   analyzerArn: string;
   resourceArn: string;
   resourceOwnerAccount?: string;
 }
-const StartResourceScanRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String,
-    resourceArn: S.String,
-    resourceOwnerAccount: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/resource/scan" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "StartResourceScanRequest" }) as any as S.Schema<StartResourceScanRequest>;
+const StartResourceScanRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<StartResourceScanRequest>;
 export interface StartResourceScanResponse {}
 const StartResourceScanResponse =
   ApplyArchiveRuleResponse as any as S.Schema<StartResourceScanResponse>;
@@ -2454,11 +1782,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = ApplyArchiveRuleResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
@@ -2467,57 +1791,37 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = ApplyArchiveRuleResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAnalyzerRequest {
   analyzerName: string;
   configuration?: AnalyzerConfiguration;
 }
-const UpdateAnalyzerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
-    configuration: S.optional(AnalyzerConfiguration),
-  }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/analyzer/{analyzerName}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateAnalyzerRequest" }) as any as S.Schema<UpdateAnalyzerRequest>;
+const UpdateAnalyzerRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<UpdateAnalyzerRequest>;
 export interface UpdateAnalyzerResponse {
   configuration?: AnalyzerConfiguration;
 }
-const UpdateAnalyzerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ configuration: S.optional(AnalyzerConfiguration) }),
-).annotate({ identifier: "UpdateAnalyzerResponse" }) as any as S.Schema<UpdateAnalyzerResponse>;
+const UpdateAnalyzerResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<UpdateAnalyzerResponse>;
 export interface UpdateArchiveRuleRequest {
   analyzerName: string;
   ruleName: string;
   filter: { [key: string]: Criterion | undefined };
   clientToken?: string;
 }
-const UpdateArchiveRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
-    ruleName: S.String.pipe(T.HttpLabel("ruleName")),
-    filter: FilterCriteriaMap,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/analyzer/{analyzerName}/archive-rule/{ruleName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateArchiveRuleRequest" }) as any as S.Schema<UpdateArchiveRuleRequest>;
+const UpdateArchiveRuleRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<UpdateArchiveRuleRequest>;
 export interface UpdateArchiveRuleResponse {}
 const UpdateArchiveRuleResponse =
   ApplyArchiveRuleResponse as any as S.Schema<UpdateArchiveRuleResponse>;
@@ -2531,15 +1835,10 @@ export interface UpdateFindingsRequest {
   resourceArn?: string;
   clientToken?: string;
 }
-const UpdateFindingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerArn: S.String,
-    status: S.String,
-    ids: S.optional(FindingIdList),
-    resourceArn: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/finding" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateFindingsRequest" }) as any as S.Schema<UpdateFindingsRequest>;
+const UpdateFindingsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<UpdateFindingsRequest>;
 export interface UpdateFindingsResponse {}
 const UpdateFindingsResponse = ApplyArchiveRuleResponse as any as S.Schema<UpdateFindingsResponse>;
 export type Locale = string;
@@ -2554,18 +1853,10 @@ export interface ValidatePolicyRequest {
   policyType: string;
   validatePolicyResourceType?: string;
 }
-const ValidatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locale: S.optional(S.String),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    policyDocument: S.String,
-    policyType: S.String,
-    validatePolicyResourceType: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/policy/validation" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ValidatePolicyRequest" }) as any as S.Schema<ValidatePolicyRequest>;
+const ValidatePolicyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ValidatePolicyRequest>;
 export type ValidatePolicyFindingType = string;
 export type IssueCode = string;
 export type LearnMoreLink = string;
@@ -2573,46 +1864,33 @@ export interface Substring {
   start: number;
   length: number;
 }
-const Substring = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ start: S.Number, length: S.Number }),
-).annotate({ identifier: "Substring" }) as any as S.Schema<Substring>;
+const Substring = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<Substring>;
 export type PathElement =
   | { index: number; key?: never; substring?: never; value?: never }
   | { index?: never; key: string; substring?: never; value?: never }
   | { index?: never; key?: never; substring: Substring; value?: never }
   | { index?: never; key?: never; substring?: never; value: string };
-const PathElement = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ index: S.Number }),
-  /*@__PURE__*/ S.Struct({ key: S.String }),
-  /*@__PURE__*/ S.Struct({ substring: Substring }),
-  /*@__PURE__*/ S.Struct({ value: S.String }),
-]);
+const PathElement = /*@__PURE__*/ __L.at(__c22, 5);
 export type PathElementList = PathElement[];
-const PathElementList = /*@__PURE__*/ S.Array(PathElement);
+const PathElementList = /*@__PURE__*/ __L.at(__c22, 6);
 export interface Position {
   line: number;
   column: number;
   offset: number;
 }
-const Position = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ line: S.Number, column: S.Number, offset: S.Number }),
-).annotate({ identifier: "Position" }) as any as S.Schema<Position>;
+const Position = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<Position>;
 export interface Span {
   start: Position;
   end: Position;
 }
-const Span = /*@__PURE__*/ S.suspend(() => S.Struct({ start: Position, end: Position })).annotate({
-  identifier: "Span",
-}) as any as S.Schema<Span>;
+const Span = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<Span>;
 export interface Location {
   path: PathElement[];
   span: Span;
 }
-const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ path: PathElementList, span: Span }),
-).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
+const Location = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<Location>;
 export type LocationList = Location[];
-const LocationList = /*@__PURE__*/ S.Array(Location);
+const LocationList = /*@__PURE__*/ __L.at(__c23, 2);
 export interface ValidatePolicyFinding {
   findingDetails: string;
   findingType: string;
@@ -2620,34 +1898,31 @@ export interface ValidatePolicyFinding {
   learnMoreLink: string;
   locations: Location[];
 }
-const ValidatePolicyFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    findingDetails: S.String,
-    findingType: S.String,
-    issueCode: S.String,
-    learnMoreLink: S.String,
-    locations: LocationList,
-  }),
-).annotate({ identifier: "ValidatePolicyFinding" }) as any as S.Schema<ValidatePolicyFinding>;
+const ValidatePolicyFinding = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ValidatePolicyFinding>;
 export type ValidatePolicyFindingList = ValidatePolicyFinding[];
-const ValidatePolicyFindingList = /*@__PURE__*/ S.Array(ValidatePolicyFinding);
+const ValidatePolicyFindingList = /*@__PURE__*/ __L.at(__c23, 4);
 export interface ValidatePolicyResponse {
   findings: ValidatePolicyFinding[];
   nextToken?: string;
 }
-const ValidatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ findings: ValidatePolicyFindingList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ValidatePolicyResponse" }) as any as S.Schema<ValidatePolicyResponse>;
+const ValidatePolicyResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ValidatePolicyResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c23, 7);
 export type ApplyArchiveRuleError =
   | AccessDeniedException
   | InternalServerException
@@ -3930,3 +3205,1578 @@ export const validatePolicy: API.PaginatedOperationMethod<
     pageSize: "maxResults",
   } as const,
 })) as any;
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String,
+          ruleName: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/archive-rule" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ApplyArchiveRuleRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ApplyArchiveRuleResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ jobId: S.String.pipe(T.HttpLabel("jobId")) }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/policy/generation/{jobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelPolicyGenerationRequest",
+      });
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ actions: S.optional(ActionsList), resources: S.optional(ResourcesList) }),
+      ).annotate({ identifier: "Access" });
+    case 5:
+      return S.Array(Access);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          policyDocument: SensitiveString,
+          access: AccessList,
+          policyType: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/policy/check-access-not-granted" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CheckAccessNotGrantedRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          statementIndex: S.optional(S.Number),
+          statementId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReasonSummary" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ReasonSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.optional(S.String),
+          message: S.optional(S.String),
+          reasons: S.optional(ReasonSummaryList),
+        }),
+      ).annotate({
+        identifier: "CheckAccessNotGrantedResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          newPolicyDocument: SensitiveString,
+          existingPolicyDocument: SensitiveString,
+          policyType: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/policy/check-no-new-access" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CheckNoNewAccessRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.optional(S.String),
+          message: S.optional(S.String),
+          reasons: S.optional(ReasonSummaryList),
+        }),
+      ).annotate({ identifier: "CheckNoNewAccessResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ policyDocument: SensitiveString, resourceType: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/policy/check-no-public-access" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CheckNoPublicAccessRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          userIds: S.optional(EbsUserIdList),
+          groups: S.optional(EbsGroupList),
+          kmsKeyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EbsSnapshotConfiguration" });
+    case 6:
+      return S.suspend(() => S.Struct({ repositoryPolicy: S.optional(S.String) })).annotate({
+        identifier: "EcrRepositoryConfiguration",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ trustPolicy: S.optional(S.String) })).annotate({
+        identifier: "IamRoleConfiguration",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ fileSystemPolicy: S.optional(S.String) })).annotate({
+        identifier: "EfsFileSystemConfiguration",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionContextEquals: S.optional(KmsConstraintsMap),
+          encryptionContextSubset: S.optional(KmsConstraintsMap),
+        }),
+      ).annotate({ identifier: "KmsGrantConstraints" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          operations: KmsGrantOperationsList,
+          granteePrincipal: S.String,
+          retiringPrincipal: S.optional(S.String),
+          constraints: S.optional(KmsGrantConstraints),
+          issuingAccount: S.String,
+        }),
+      ).annotate({ identifier: "KmsGrantConfiguration" });
+    case 4:
+      return S.Array(KmsGrantConfiguration);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          keyPolicies: S.optional(KmsKeyPoliciesMap),
+          grants: S.optional(KmsGrantConfigurationsList),
+        }),
+      ).annotate({ identifier: "KmsKeyConfiguration" });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ accountIds: RdsDbClusterSnapshotAccountIdsList })]);
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ RdsDbClusterSnapshotAttributeValue.pipe(S.optional));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(RdsDbClusterSnapshotAttributesMap),
+          kmsKeyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RdsDbClusterSnapshotConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(RdsDbSnapshotAttributesMap),
+          kmsKeyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RdsDbSnapshotConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ kmsKeyId: S.optional(S.String), secretPolicy: S.optional(S.String) }),
+      ).annotate({
+        identifier: "SecretsManagerSecretConfiguration",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ id: S.String }),
+        /*@__PURE__*/ S.Struct({ uri: S.String }),
+      ]);
+    case 4:
+      return S.suspend(() => S.Struct({ permission: S.String, grantee: AclGrantee })).annotate({
+        identifier: "S3BucketAclGrantConfiguration",
+      });
+    case 5:
+      return S.Array(S3BucketAclGrantConfiguration);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ignorePublicAcls: S.Boolean, restrictPublicBuckets: S.Boolean }),
+      ).annotate({
+        identifier: "S3PublicAccessBlockConfiguration",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ vpcId: S.String })).annotate({
+        identifier: "VpcConfiguration",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ vpcConfiguration: VpcConfiguration }),
+        /*@__PURE__*/ S.Struct({ internetConfiguration: InternetConfiguration }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accessPointPolicy: S.optional(S.String),
+          publicAccessBlock: S.optional(S3PublicAccessBlockConfiguration),
+          networkOrigin: S.optional(NetworkOriginConfiguration),
+        }),
+      ).annotate({
+        identifier: "S3AccessPointConfiguration",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S3AccessPointConfiguration.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          bucketPolicy: S.optional(S.String),
+          bucketAclGrants: S.optional(S3BucketAclGrantConfigurationsList),
+          bucketPublicAccessBlock: S.optional(S3PublicAccessBlockConfiguration),
+          accessPoints: S.optional(S3AccessPointConfigurationsMap),
+        }),
+      ).annotate({ identifier: "S3BucketConfiguration" });
+    case 4:
+      return S.suspend(() => S.Struct({ topicPolicy: S.optional(S.String) })).annotate({
+        identifier: "SnsTopicConfiguration",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ queuePolicy: S.optional(S.String) })).annotate({
+        identifier: "SqsQueueConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          accessPointPolicy: S.optional(S.String),
+          networkOrigin: S.optional(NetworkOriginConfiguration),
+        }),
+      ).annotate({
+        identifier: "S3ExpressDirectoryAccessPointConfiguration",
+      });
+    case 7:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S3ExpressDirectoryAccessPointConfiguration.pipe(S.optional),
+      );
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bucketPolicy: S.optional(S.String),
+          accessPoints: S.optional(S3ExpressDirectoryAccessPointConfigurationsMap),
+        }),
+      ).annotate({
+        identifier: "S3ExpressDirectoryBucketConfiguration",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ streamPolicy: S.optional(S.String) })).annotate({
+        identifier: "DynamodbStreamConfiguration",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ tablePolicy: S.optional(S.String) })).annotate({
+        identifier: "DynamodbTableConfiguration",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ ebsSnapshot: EbsSnapshotConfiguration }),
+        /*@__PURE__*/ S.Struct({ ecrRepository: EcrRepositoryConfiguration }),
+        /*@__PURE__*/ S.Struct({ iamRole: IamRoleConfiguration }),
+        /*@__PURE__*/ S.Struct({ efsFileSystem: EfsFileSystemConfiguration }),
+        /*@__PURE__*/ S.Struct({ kmsKey: KmsKeyConfiguration }),
+        /*@__PURE__*/ S.Struct({ rdsDbClusterSnapshot: RdsDbClusterSnapshotConfiguration }),
+        /*@__PURE__*/ S.Struct({ rdsDbSnapshot: RdsDbSnapshotConfiguration }),
+        /*@__PURE__*/ S.Struct({ secretsManagerSecret: SecretsManagerSecretConfiguration }),
+        /*@__PURE__*/ S.Struct({ s3Bucket: S3BucketConfiguration }),
+        /*@__PURE__*/ S.Struct({ snsTopic: SnsTopicConfiguration }),
+        /*@__PURE__*/ S.Struct({ sqsQueue: SqsQueueConfiguration }),
+        /*@__PURE__*/ S.Struct({ s3ExpressDirectoryBucket: S3ExpressDirectoryBucketConfiguration }),
+        /*@__PURE__*/ S.Struct({ dynamodbStream: DynamodbStreamConfiguration }),
+        /*@__PURE__*/ S.Struct({ dynamodbTable: DynamodbTableConfiguration }),
+      ]);
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ Configuration.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String,
+          configurations: ConfigurationsMap,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/access-preview" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateAccessPreviewRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ id: S.String })).annotate({
+        identifier: "CreateAccessPreviewResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          eq: S.optional(ValueList),
+          neq: S.optional(ValueList),
+          contains: S.optional(ValueList),
+          exists: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Criterion" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ Criterion.pipe(S.optional));
+    case 1:
+      return S.suspend(() => S.Struct({ ruleName: S.String, filter: FilterCriteriaMap })).annotate({
+        identifier: "InlineArchiveRule",
+      });
+    case 2:
+      return S.Array(InlineArchiveRule);
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 4:
+      return S.Array(TagsMap);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ accountIds: S.optional(AccountIdsList), resourceTags: S.optional(TagsList) }),
+      ).annotate({ identifier: "AnalysisRuleCriteria" });
+    case 6:
+      return S.Array(AnalysisRuleCriteria);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ exclusions: S.optional(AnalysisRuleCriteriaList) }),
+      ).annotate({ identifier: "AnalysisRule" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ unusedAccessAge: S.optional(S.Number), analysisRule: S.optional(AnalysisRule) }),
+      ).annotate({
+        identifier: "UnusedAccessConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountIds: S.optional(AccountIdsList),
+          resourceTypes: S.optional(ResourceTypeList),
+          resourceArns: S.optional(ResourceArnsList),
+        }),
+      ).annotate({
+        identifier: "InternalAccessAnalysisRuleCriteria",
+      });
+    case 2:
+      return S.Array(InternalAccessAnalysisRuleCriteria);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ inclusions: S.optional(InternalAccessAnalysisRuleCriteriaList) }),
+      ).annotate({
+        identifier: "InternalAccessAnalysisRule",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ analysisRule: S.optional(InternalAccessAnalysisRule) }),
+      ).annotate({
+        identifier: "InternalAccessConfiguration",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ unusedAccess: UnusedAccessConfiguration }),
+        /*@__PURE__*/ S.Struct({ internalAccess: InternalAccessConfiguration }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.String,
+          type: S.String,
+          archiveRules: S.optional(InlineArchiveRulesList),
+          tags: S.optional(TagsMap),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          configuration: S.optional(AnalyzerConfiguration),
+        }).pipe(T.all(T.Http({ method: "PUT", uri: "/analyzer" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateAnalyzerRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
+        identifier: "CreateAnalyzerResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
+          ruleName: S.String,
+          filter: FilterCriteriaMap,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/analyzer/{analyzerName}/archive-rule" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateArchiveRuleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          archiveRules: S.optional(InlineArchiveRulesList),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          configuration: S.optional(AnalyzerConfiguration),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/service-linked-analyzer" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateServiceLinkedAnalyzerRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
+        identifier: "CreateServiceLinkedAnalyzerResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/analyzer/{analyzerName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAnalyzerRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
+          ruleName: S.String.pipe(T.HttpLabel("ruleName")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/analyzer/{analyzerName}/archive-rule/{ruleName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteArchiveRuleRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/service-linked-analyzer/{analyzerName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteServiceLinkedAnalyzerRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteServiceLinkedAnalyzerResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
+          id: S.String.pipe(T.HttpLabel("id")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/recommendation/{id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GenerateFindingRecommendationRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessPreviewId: S.String.pipe(T.HttpLabel("accessPreviewId")),
+          analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/access-preview/{accessPreviewId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAccessPreviewRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ code: S.String })).annotate({
+        identifier: "AccessPreviewStatusReason",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          analyzerArn: S.String,
+          configurations: ConfigurationsMap,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          status: S.String,
+          statusReason: S.optional(AccessPreviewStatusReason),
+        }),
+      ).annotate({ identifier: "AccessPreview" });
+    case 3:
+      return S.suspend(() => S.Struct({ accessPreview: AccessPreview })).annotate({
+        identifier: "GetAccessPreviewResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
+          resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/analyzed-resource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAnalyzedResourceRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String,
+          resourceType: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          analyzedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          isPublic: S.Boolean,
+          actions: S.optional(ActionList),
+          sharedVia: S.optional(SharedViaList),
+          status: S.optional(S.String),
+          resourceOwnerAccount: S.String,
+          error: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnalyzedResource" });
+    case 6:
+      return S.suspend(() => S.Struct({ resource: S.optional(AnalyzedResource) })).annotate({
+        identifier: "GetAnalyzedResourceResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ analyzerName: S.String.pipe(T.HttpLabel("analyzerName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/analyzer/{analyzerName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAnalyzerRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ code: S.String })).annotate({
+        identifier: "StatusReason",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          name: S.String,
+          type: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastResourceAnalyzed: S.optional(S.String),
+          lastResourceAnalyzedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          tags: S.optional(TagsMap),
+          status: S.String,
+          statusReason: S.optional(StatusReason),
+          configuration: S.optional(AnalyzerConfiguration),
+          managedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnalyzerSummary" });
+    case 2:
+      return S.suspend(() => S.Struct({ analyzer: AnalyzerSummary })).annotate({
+        identifier: "GetAnalyzerResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
+          ruleName: S.String.pipe(T.HttpLabel("ruleName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/analyzer/{analyzerName}/archive-rule/{ruleName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetArchiveRuleRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ruleName: S.String,
+          filter: FilterCriteriaMap,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "ArchiveRuleSummary" });
+    case 5:
+      return S.suspend(() => S.Struct({ archiveRule: ArchiveRuleSummary })).annotate({
+        identifier: "GetArchiveRuleResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
+          id: S.String.pipe(T.HttpLabel("id")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/finding/{id}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetFindingRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          accessPointArn: S.optional(S.String),
+          accessPointAccount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FindingSourceDetail" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ type: S.String, detail: S.optional(FindingSourceDetail) }),
+      ).annotate({ identifier: "FindingSource" });
+    case 1:
+      return S.Array(FindingSource);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          principal: S.optional(PrincipalMap),
+          action: S.optional(ActionList),
+          resource: S.optional(S.String),
+          isPublic: S.optional(S.Boolean),
+          resourceType: S.String,
+          condition: ConditionKeyMap,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          analyzedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          status: S.String,
+          resourceOwnerAccount: S.String,
+          error: S.optional(S.String),
+          sources: S.optional(FindingSourceList),
+          resourceControlPolicyRestriction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Finding" });
+    case 3:
+      return S.suspend(() => S.Struct({ finding: S.optional(Finding) })).annotate({
+        identifier: "GetFindingResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
+          id: S.String.pipe(T.HttpLabel("id")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/recommendation/{id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetFindingRecommendationRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
+        identifier: "RecommendationError",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          policyUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          recommendedAction: S.String,
+          recommendedPolicy: S.optional(S.String),
+          existingPolicyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UnusedPermissionsRecommendedStep",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          unusedPermissionsRecommendedStep: UnusedPermissionsRecommendedStep,
+        }),
+      ]);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(RecommendedStep);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          completedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          nextToken: S.optional(S.String),
+          error: S.optional(RecommendationError),
+          resourceArn: S.String,
+          recommendedSteps: S.optional(RecommendedStepList),
+          recommendationType: S.String,
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "GetFindingRecommendationResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ analyzerArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/analyzer/findings/statistics" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetFindingsStatisticsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          totalActivePublic: S.optional(S.Number),
+          totalActiveCrossAccount: S.optional(S.Number),
+          totalActiveErrors: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ResourceTypeDetails" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ ResourceTypeDetails.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resourceTypeStatistics: S.optional(ResourceTypeStatisticsMap),
+          totalActiveFindings: S.optional(S.Number),
+          totalArchivedFindings: S.optional(S.Number),
+          totalResolvedFindings: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ExternalAccessFindingsStatistics",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          totalActiveFindings: S.optional(S.Number),
+          totalResolvedFindings: S.optional(S.Number),
+          totalArchivedFindings: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "InternalAccessResourceTypeDetails",
+      });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ InternalAccessResourceTypeDetails.pipe(S.optional));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceTypeStatistics: S.optional(InternalAccessResourceTypeStatisticsMap),
+          totalActiveFindings: S.optional(S.Number),
+          totalArchivedFindings: S.optional(S.Number),
+          totalResolvedFindings: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "InternalAccessFindingsStatistics",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ unusedAccessType: S.optional(S.String), total: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "UnusedAccessTypeStatistics",
+      });
+    case 2:
+      return S.Array(UnusedAccessTypeStatistics);
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.optional(S.String),
+          numberOfActiveFindings: S.optional(S.Number),
+          details: S.optional(FindingAggregationAccountDetailsMap),
+        }),
+      ).annotate({
+        identifier: "FindingAggregationAccountDetails",
+      });
+    case 5:
+      return S.Array(FindingAggregationAccountDetails);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          unusedAccessTypeStatistics: S.optional(UnusedAccessTypeStatisticsList),
+          topAccounts: S.optional(AccountAggregations),
+          totalActiveFindings: S.optional(S.Number),
+          totalArchivedFindings: S.optional(S.Number),
+          totalResolvedFindings: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "UnusedAccessFindingsStatistics",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          externalAccessFindingsStatistics: ExternalAccessFindingsStatistics,
+        }),
+        /*@__PURE__*/ S.Struct({
+          internalAccessFindingsStatistics: InternalAccessFindingsStatistics,
+        }),
+        /*@__PURE__*/ S.Struct({ unusedAccessFindingsStatistics: UnusedAccessFindingsStatistics }),
+      ]);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(FindingsStatistics);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          findingsStatistics: S.optional(FindingsStatisticsList),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "GetFindingsStatisticsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
+          id: S.String.pipe(T.HttpLabel("id")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/findingv2/{id}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetFindingV2Request" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(ActionList),
+          condition: S.optional(ConditionKeyMap),
+          principal: S.optional(PrincipalMap),
+          principalOwnerAccount: S.optional(S.String),
+          accessType: S.optional(S.String),
+          principalType: S.optional(S.String),
+          sources: S.optional(FindingSourceList),
+          resourceControlPolicyRestriction: S.optional(S.String),
+          serviceControlPolicyRestriction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InternalAccessDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(ActionList),
+          condition: ConditionKeyMap,
+          isPublic: S.optional(S.Boolean),
+          principal: S.optional(PrincipalMap),
+          sources: S.optional(FindingSourceList),
+          resourceControlPolicyRestriction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalAccessDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "UnusedAction" });
+    case 6:
+      return S.Array(UnusedAction);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(UnusedActionList),
+          serviceNamespace: S.String,
+          lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "UnusedPermissionDetails" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessKeyId: S.String,
+          lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "UnusedIamUserAccessKeyDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "UnusedIamRoleDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lastAccessed: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "UnusedIamUserPasswordDetails",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ internalAccessDetails: InternalAccessDetails }),
+        /*@__PURE__*/ S.Struct({ externalAccessDetails: ExternalAccessDetails }),
+        /*@__PURE__*/ S.Struct({ unusedPermissionDetails: UnusedPermissionDetails }),
+        /*@__PURE__*/ S.Struct({ unusedIamUserAccessKeyDetails: UnusedIamUserAccessKeyDetails }),
+        /*@__PURE__*/ S.Struct({ unusedIamRoleDetails: UnusedIamRoleDetails }),
+        /*@__PURE__*/ S.Struct({ unusedIamUserPasswordDetails: UnusedIamUserPasswordDetails }),
+      ]);
+    case 4:
+      return S.Array(FindingDetails);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          analyzedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          error: S.optional(S.String),
+          id: S.String,
+          nextToken: S.optional(S.String),
+          resource: S.optional(S.String),
+          resourceType: S.String,
+          resourceOwnerAccount: S.String,
+          status: S.String,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          findingDetails: FindingDetailsList,
+          findingType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetFindingV2Response" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+          includeResourcePlaceholders: S.optional(S.Boolean).pipe(
+            T.HttpQuery("includeResourcePlaceholders"),
+          ),
+          includeServiceLevelTemplate: S.optional(S.Boolean).pipe(
+            T.HttpQuery("includeServiceLevelTemplate"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/policy/generation/{jobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetGeneratedPolicyRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          status: S.String,
+          startedOn: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          completedOn: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          jobError: S.optional(JobError),
+        }),
+      ).annotate({ identifier: "JobDetails" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudTrailArn: S.String,
+          regions: S.optional(RegionList),
+          allRegions: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TrailProperties" });
+    case 1:
+      return S.Array(TrailProperties);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          trailProperties: TrailPropertiesList,
+          startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "CloudTrailProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          isComplete: S.optional(S.Boolean),
+          principalArn: S.String,
+          cloudTrailProperties: S.optional(CloudTrailProperties),
+        }),
+      ).annotate({
+        identifier: "GeneratedPolicyProperties",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ policy: S.String })).annotate({
+        identifier: "GeneratedPolicy",
+      });
+    case 5:
+      return S.Array(GeneratedPolicy);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          properties: GeneratedPolicyProperties,
+          generatedPolicies: S.optional(GeneratedPolicyList),
+        }),
+      ).annotate({ identifier: "GeneratedPolicyResult" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ jobDetails: JobDetails, generatedPolicyResult: GeneratedPolicyResult }),
+      ).annotate({
+        identifier: "GetGeneratedPolicyResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessPreviewId: S.String.pipe(T.HttpLabel("accessPreviewId")),
+          analyzerArn: S.String,
+          filter: S.optional(FilterCriteriaMap),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/access-preview/{accessPreviewId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAccessPreviewFindingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          existingFindingId: S.optional(S.String),
+          existingFindingStatus: S.optional(S.String),
+          principal: S.optional(PrincipalMap),
+          action: S.optional(ActionList),
+          condition: S.optional(ConditionKeyMap),
+          resource: S.optional(S.String),
+          isPublic: S.optional(S.Boolean),
+          resourceType: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          changeType: S.String,
+          status: S.String,
+          resourceOwnerAccount: S.String,
+          error: S.optional(S.String),
+          sources: S.optional(FindingSourceList),
+          resourceControlPolicyRestriction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccessPreviewFinding" });
+    case 2:
+      return S.Array(AccessPreviewFinding);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ findings: AccessPreviewFindingsList, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListAccessPreviewFindingsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String.pipe(T.HttpQuery("analyzerArn")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/access-preview" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListAccessPreviewsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          analyzerArn: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          status: S.String,
+          statusReason: S.optional(AccessPreviewStatusReason),
+        }),
+      ).annotate({ identifier: "AccessPreviewSummary" });
+    case 6:
+      return S.Array(AccessPreviewSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ accessPreviews: AccessPreviewsList, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListAccessPreviewsResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String,
+          resourceType: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/analyzed-resource" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAnalyzedResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, resourceOwnerAccount: S.String, resourceType: S.String }),
+      ).annotate({ identifier: "AnalyzedResourceSummary" });
+    case 2:
+      return S.Array(AnalyzedResourceSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ analyzedResources: AnalyzedResourcesList, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListAnalyzedResourcesResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          type: S.optional(S.String).pipe(T.HttpQuery("type")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/analyzer" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListAnalyzersRequest" });
+    case 5:
+      return S.Array(AnalyzerSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ analyzers: AnalyzersList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAnalyzersResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/analyzer/{analyzerName}/archive-rule" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListArchiveRulesRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ArchiveRuleSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ archiveRules: ArchiveRulesList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListArchiveRulesResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ attributeName: S.optional(S.String), orderBy: S.optional(S.String) }),
+      ).annotate({ identifier: "SortCriteria" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String,
+          filter: S.optional(FilterCriteriaMap),
+          sort: S.optional(SortCriteria),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/finding" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListFindingsRequest" });
+    case 4:
+      return S.Array(FindingSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ findings: FindingsList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListFindingsResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String,
+          filter: S.optional(FilterCriteriaMap),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          sort: S.optional(SortCriteria),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/findingv2" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListFindingsV2Request" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          analyzedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          error: S.optional(S.String),
+          id: S.String,
+          resource: S.optional(S.String),
+          resourceType: S.String,
+          resourceOwnerAccount: S.String,
+          status: S.String,
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          findingType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FindingSummaryV2" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(FindingSummaryV2);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ findings: FindingsListV2, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListFindingsV2Response" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          principalArn: S.optional(S.String).pipe(T.HttpQuery("principalArn")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/policy/generation" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListPolicyGenerationsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          principalArn: S.String,
+          status: S.String,
+          startedOn: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          completedOn: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "PolicyGeneration" });
+    case 4:
+      return S.Array(PolicyGeneration);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ policyGenerations: PolicyGenerationList, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListPolicyGenerationsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagsMap) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ principalArn: S.String })).annotate({
+        identifier: "PolicyGenerationDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          trails: TrailList,
+          accessRole: S.String,
+          startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CloudTrailDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          policyGenerationDetails: PolicyGenerationDetails,
+          cloudTrailDetails: S.optional(CloudTrailDetails),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/policy/generation" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StartPolicyGenerationRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ jobId: S.String })).annotate({
+        identifier: "StartPolicyGenerationResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String,
+          resourceArn: S.String,
+          resourceOwnerAccount: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/resource/scan" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartResourceScanRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
+          configuration: S.optional(AnalyzerConfiguration),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/analyzer/{analyzerName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateAnalyzerRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ configuration: S.optional(AnalyzerConfiguration) }),
+      ).annotate({ identifier: "UpdateAnalyzerResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.String.pipe(T.HttpLabel("analyzerName")),
+          ruleName: S.String.pipe(T.HttpLabel("ruleName")),
+          filter: FilterCriteriaMap,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/analyzer/{analyzerName}/archive-rule/{ruleName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateArchiveRuleRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerArn: S.String,
+          status: S.String,
+          ids: S.optional(FindingIdList),
+          resourceArn: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "PUT", uri: "/finding" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateFindingsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          locale: S.optional(S.String),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          policyDocument: S.String,
+          policyType: S.String,
+          validatePolicyResourceType: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/policy/validation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ValidatePolicyRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ start: S.Number, length: S.Number })).annotate({
+        identifier: "Substring",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ index: S.Number }),
+        /*@__PURE__*/ S.Struct({ key: S.String }),
+        /*@__PURE__*/ S.Struct({ substring: Substring }),
+        /*@__PURE__*/ S.Struct({ value: S.String }),
+      ]);
+    case 6:
+      return S.Array(PathElement);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ line: S.Number, column: S.Number, offset: S.Number }),
+      ).annotate({ identifier: "Position" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ start: Position, end: Position })).annotate({
+        identifier: "Span",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ path: PathElementList, span: Span })).annotate({
+        identifier: "Location",
+      });
+    case 2:
+      return S.Array(Location);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          findingDetails: S.String,
+          findingType: S.String,
+          issueCode: S.String,
+          learnMoreLink: S.String,
+          locations: LocationList,
+        }),
+      ).annotate({ identifier: "ValidatePolicyFinding" });
+    case 4:
+      return S.Array(ValidatePolicyFinding);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ findings: ValidatePolicyFindingList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ValidatePolicyResponse" });
+    case 6:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 7:
+      return S.Array(ValidationExceptionField);
+  }
+}

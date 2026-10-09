@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -377,46 +378,23 @@ export interface CreateOAuth2TokenRequestBody {
   codeVerifier?: string;
   refreshToken?: string | redacted.Redacted<string>;
 }
-const CreateOAuth2TokenRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    grantType: S.String,
-    code: S.optional(S.String),
-    redirectUri: S.optional(S.String),
-    codeVerifier: S.optional(S.String),
-    refreshToken: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "CreateOAuth2TokenRequestBody",
-}) as any as S.Schema<CreateOAuth2TokenRequestBody>;
+const CreateOAuth2TokenRequestBody = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateOAuth2TokenRequestBody>;
 export interface CreateOAuth2TokenRequest {
   tokenInput: CreateOAuth2TokenRequestBody;
 }
-const CreateOAuth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenInput: CreateOAuth2TokenRequestBody.pipe(T.HttpPayload()).annotate({
-      identifier: "CreateOAuth2TokenRequestBody",
-    }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/token" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ IsControlPlane: { value: false } }),
-    ),
-  ),
-).annotate({ identifier: "CreateOAuth2TokenRequest" }) as any as S.Schema<CreateOAuth2TokenRequest>;
+const CreateOAuth2TokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateOAuth2TokenRequest>;
 export interface AccessToken {
   accessKeyId: string;
   secretAccessKey: string;
   sessionToken: string;
 }
-const AccessToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessKeyId: S.String, secretAccessKey: S.String, sessionToken: S.String }),
-).annotate({ identifier: "AccessToken" }) as any as S.Schema<AccessToken>;
+const AccessToken = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AccessToken>;
 export type TokenType = string;
 export type ExpiresIn = number;
 export type IdToken = string;
@@ -427,51 +405,26 @@ export interface CreateOAuth2TokenResponseBody {
   refreshToken: string | redacted.Redacted<string>;
   idToken?: string;
 }
-const CreateOAuth2TokenResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessToken: AccessToken,
-    tokenType: S.String,
-    expiresIn: S.Number,
-    refreshToken: SensitiveString,
-    idToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateOAuth2TokenResponseBody",
-}) as any as S.Schema<CreateOAuth2TokenResponseBody>;
+const CreateOAuth2TokenResponseBody = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateOAuth2TokenResponseBody>;
 export interface CreateOAuth2TokenResponse {
   tokenOutput: CreateOAuth2TokenResponseBody;
 }
-const CreateOAuth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenOutput: CreateOAuth2TokenResponseBody.pipe(T.HttpPayload()).annotate({
-      identifier: "CreateOAuth2TokenResponseBody",
-    }),
-  }),
-).annotate({
-  identifier: "CreateOAuth2TokenResponse",
-}) as any as S.Schema<CreateOAuth2TokenResponse>;
+const CreateOAuth2TokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateOAuth2TokenResponse>;
 export type ClientCredentialsGrantType = string;
 export interface CreateOAuth2TokenWithIAMRequest {
   grantType: string;
   resource: string;
 }
-const CreateOAuth2TokenWithIAMRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ grantType: S.String, resource: S.String })
-    .pipe(S.encodeKeys({ grantType: "grant_type" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v1/token?x-amz-client-auth-method=iam" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ IsOAuthEndpoint: { value: true } }),
-      ),
-    ),
-).annotate({
-  identifier: "CreateOAuth2TokenWithIAMRequest",
-}) as any as S.Schema<CreateOAuth2TokenWithIAMRequest>;
+const CreateOAuth2TokenWithIAMRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateOAuth2TokenWithIAMRequest>;
 export type OAuthAccessToken = string | redacted.Redacted<string>;
 export type BearerTokenType = string;
 export type TokenExpiresIn = number;
@@ -480,90 +433,49 @@ export interface CreateOAuth2TokenWithIAMResponse {
   tokenType: string;
   expiresIn: number;
 }
-const CreateOAuth2TokenWithIAMResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessToken: SensitiveString, tokenType: S.String, expiresIn: S.Number }).pipe(
-    S.encodeKeys({ accessToken: "access_token", tokenType: "token_type", expiresIn: "expires_in" }),
-  ),
-).annotate({
-  identifier: "CreateOAuth2TokenWithIAMResponse",
-}) as any as S.Schema<CreateOAuth2TokenWithIAMResponse>;
+const CreateOAuth2TokenWithIAMResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateOAuth2TokenWithIAMResponse>;
 export type TargetId = string;
 export interface DeleteConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
-const DeleteConsoleAuthorizationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetId: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/delete-console-authorization-configuration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ IsControlPlane: { value: true } }),
-    ),
-  ),
-).annotate({
-  identifier: "DeleteConsoleAuthorizationConfigurationInput",
-}) as any as S.Schema<DeleteConsoleAuthorizationConfigurationInput>;
+const DeleteConsoleAuthorizationConfigurationInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteConsoleAuthorizationConfigurationInput>;
 export interface DeleteConsoleAuthorizationConfigurationOutput {
   targetId: string;
   scope: string;
   consoleAuthorizationEnabled: boolean;
 }
-const DeleteConsoleAuthorizationConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetId: S.String, scope: S.String, consoleAuthorizationEnabled: S.Boolean }),
-).annotate({
-  identifier: "DeleteConsoleAuthorizationConfigurationOutput",
-}) as any as S.Schema<DeleteConsoleAuthorizationConfigurationOutput>;
+const DeleteConsoleAuthorizationConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteConsoleAuthorizationConfigurationOutput>;
 export type StatementId = string;
 export type ClientToken = string;
 export interface DeleteResourcePermissionStatementInput {
   statementId: string;
   clientToken?: string;
 }
-const DeleteResourcePermissionStatementInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statementId: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/delete-resource-permission-statement" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ IsControlPlane: { value: true } }),
-    ),
-  ),
-).annotate({
-  identifier: "DeleteResourcePermissionStatementInput",
-}) as any as S.Schema<DeleteResourcePermissionStatementInput>;
+const DeleteResourcePermissionStatementInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteResourcePermissionStatementInput>;
 export interface DeleteResourcePermissionStatementOutput {}
-const DeleteResourcePermissionStatementOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourcePermissionStatementOutput",
-}) as any as S.Schema<DeleteResourcePermissionStatementOutput>;
+const DeleteResourcePermissionStatementOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteResourcePermissionStatementOutput>;
 export interface GetConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
-const GetConsoleAuthorizationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetId: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/get-console-authorization-configuration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ IsControlPlane: { value: true } }),
-    ),
-  ),
-).annotate({
-  identifier: "GetConsoleAuthorizationConfigurationInput",
-}) as any as S.Schema<GetConsoleAuthorizationConfigurationInput>;
+const GetConsoleAuthorizationConfigurationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetConsoleAuthorizationConfigurationInput>;
 export interface GetConsoleAuthorizationConfigurationOutput {
   targetId: string;
   scope: string;
@@ -572,30 +484,21 @@ export interface GetConsoleAuthorizationConfigurationOutput {
 const GetConsoleAuthorizationConfigurationOutput =
   DeleteConsoleAuthorizationConfigurationOutput as any as S.Schema<GetConsoleAuthorizationConfigurationOutput>;
 export interface GetResourcePolicyInput {}
-const GetResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/get-resource-policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ IsControlPlane: { value: true } }),
-    ),
-  ),
-).annotate({ identifier: "GetResourcePolicyInput" }) as any as S.Schema<GetResourcePolicyInput>;
+const GetResourcePolicyInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetResourcePolicyInput>;
 export type Principal = { [key: string]: string | undefined };
-const Principal = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Principal = /*@__PURE__*/ __L.at(__c1, 5);
 export type PolicyActions = string[];
-const PolicyActions = /*@__PURE__*/ S.Array(S.String);
+const PolicyActions = /*@__PURE__*/ __L.at(__c1, 6);
 export type ConditionType = string;
 export type ConditionValues = string[];
 const ConditionValues = PolicyActions as any as S.Schema<ConditionValues>;
 export type Condition = { [key: string]: string[] | undefined };
-const Condition = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ ConditionValues.pipe(S.optional));
+const Condition = /*@__PURE__*/ __L.at(__c1, 7);
 export type ConditionBlock = { [key: string]: { [key: string]: string[] | undefined } | undefined };
-const ConditionBlock = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Condition.pipe(S.optional));
+const ConditionBlock = /*@__PURE__*/ __L.at(__c2, 0);
 export interface PolicyStatement {
   effect?: string;
   principal?: { [key: string]: string | undefined };
@@ -603,65 +506,34 @@ export interface PolicyStatement {
   resource?: string;
   condition?: { [key: string]: { [key: string]: string[] | undefined } | undefined };
 }
-const PolicyStatement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effect: S.optional(S.String),
-    principal: S.optional(Principal),
-    action: S.optional(PolicyActions),
-    resource: S.optional(S.String),
-    condition: S.optional(ConditionBlock),
-  }).pipe(
-    S.encodeKeys({
-      effect: "Effect",
-      principal: "Principal",
-      action: "Action",
-      resource: "Resource",
-      condition: "Condition",
-    }),
-  ),
-).annotate({ identifier: "PolicyStatement" }) as any as S.Schema<PolicyStatement>;
+const PolicyStatement = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PolicyStatement>;
 export type PolicyStatements = PolicyStatement[];
-const PolicyStatements = /*@__PURE__*/ S.Array(PolicyStatement);
+const PolicyStatements = /*@__PURE__*/ __L.at(__c2, 2);
 export interface SigninResourceBasedPolicy {
   version?: string;
   statement?: PolicyStatement[];
 }
-const SigninResourceBasedPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ version: S.optional(S.String), statement: S.optional(PolicyStatements) }).pipe(
-    S.encodeKeys({ version: "Version", statement: "Statement" }),
-  ),
-).annotate({
-  identifier: "SigninResourceBasedPolicy",
-}) as any as S.Schema<SigninResourceBasedPolicy>;
+const SigninResourceBasedPolicy = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SigninResourceBasedPolicy>;
 export interface GetResourcePolicyOutput {
   signinResourceBasedPolicy: SigninResourceBasedPolicy;
 }
-const GetResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ signinResourceBasedPolicy: SigninResourceBasedPolicy }),
-).annotate({ identifier: "GetResourcePolicyOutput" }) as any as S.Schema<GetResourcePolicyOutput>;
+const GetResourcePolicyOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetResourcePolicyOutput>;
 export type IntrospectionToken = string | redacted.Redacted<string>;
 export type TokenTypeHint = string;
 export interface IntrospectOAuth2TokenWithIAMRequest {
   token: string | redacted.Redacted<string>;
   tokenTypeHint?: string;
 }
-const IntrospectOAuth2TokenWithIAMRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ token: SensitiveString, tokenTypeHint: S.optional(S.String) })
-    .pipe(S.encodeKeys({ tokenTypeHint: "token_type_hint" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v1/introspect?x-amz-client-auth-method=iam" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ IsOAuthEndpoint: { value: true } }),
-      ),
-    ),
-).annotate({
-  identifier: "IntrospectOAuth2TokenWithIAMRequest",
-}) as any as S.Schema<IntrospectOAuth2TokenWithIAMRequest>;
+const IntrospectOAuth2TokenWithIAMRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<IntrospectOAuth2TokenWithIAMRequest>;
 export type IntrospectedTokenType = string;
 export type AccountId = string;
 export interface IntrospectOAuth2TokenWithIAMResponse {
@@ -680,93 +552,45 @@ export interface IntrospectOAuth2TokenWithIAMResponse {
   signinSession?: string;
   resource?: string;
 }
-const IntrospectOAuth2TokenWithIAMResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-    clientId: S.optional(S.String),
-    userId: S.optional(S.String),
-    tokenType: S.optional(S.String),
-    exp: S.optional(S.Number),
-    iat: S.optional(S.Number),
-    nbf: S.optional(S.Number),
-    sub: S.optional(S.String),
-    aud: S.optional(S.String),
-    iss: S.optional(S.String),
-    jti: S.optional(S.String),
-    accountId: S.optional(S.String),
-    signinSession: S.optional(S.String),
-    resource: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      clientId: "client_id",
-      userId: "user_id",
-      tokenType: "token_type",
-      accountId: "account_id",
-      signinSession: "signin_session",
-    }),
-  ),
-).annotate({
-  identifier: "IntrospectOAuth2TokenWithIAMResponse",
-}) as any as S.Schema<IntrospectOAuth2TokenWithIAMResponse>;
+const IntrospectOAuth2TokenWithIAMResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<IntrospectOAuth2TokenWithIAMResponse>;
 export type ConsolePermissionMaxResults = number;
 export type NextToken = string;
 export interface ListResourcePermissionStatementsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListResourcePermissionStatementsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/list-resource-permission-statements" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ IsControlPlane: { value: true } }),
-    ),
-  ),
-).annotate({
-  identifier: "ListResourcePermissionStatementsInput",
-}) as any as S.Schema<ListResourcePermissionStatementsInput>;
+const ListResourcePermissionStatementsInput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListResourcePermissionStatementsInput>;
 export interface PermissionStatementSummary {
   sid: string;
   condition?: { [key: string]: { [key: string]: string[] | undefined } | undefined };
 }
-const PermissionStatementSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sid: S.String, condition: S.optional(ConditionBlock) }),
-).annotate({
-  identifier: "PermissionStatementSummary",
-}) as any as S.Schema<PermissionStatementSummary>;
+const PermissionStatementSummary = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PermissionStatementSummary>;
 export type PermissionStatementSummaries = PermissionStatementSummary[];
-const PermissionStatementSummaries = /*@__PURE__*/ S.Array(PermissionStatementSummary);
+const PermissionStatementSummaries = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ListResourcePermissionStatementsOutput {
   permissionStatements: PermissionStatementSummary[];
   nextToken?: string;
 }
-const ListResourcePermissionStatementsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ permissionStatements: PermissionStatementSummaries, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListResourcePermissionStatementsOutput",
-}) as any as S.Schema<ListResourcePermissionStatementsOutput>;
+const ListResourcePermissionStatementsOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListResourcePermissionStatementsOutput>;
 export interface PutConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
-const PutConsoleAuthorizationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetId: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/put-console-authorization-configuration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ IsControlPlane: { value: true } }),
-    ),
-  ),
-).annotate({
-  identifier: "PutConsoleAuthorizationConfigurationInput",
-}) as any as S.Schema<PutConsoleAuthorizationConfigurationInput>;
+const PutConsoleAuthorizationConfigurationInput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PutConsoleAuthorizationConfigurationInput>;
 export interface PutConsoleAuthorizationConfigurationOutput {
   targetId: string;
   scope: string;
@@ -790,57 +614,25 @@ export interface PutResourcePermissionStatementInput {
   excludedPrincipal?: string;
   clientToken?: string;
 }
-const PutResourcePermissionStatementInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceVpc: S.optional(S.String),
-    signinSourceVpce: S.optional(S.String),
-    consoleSourceVpce: S.optional(S.String),
-    vpcSourceIp: S.optional(S.String),
-    sourceIp: S.optional(S.String),
-    requestedRegion: S.optional(S.String),
-    excludedPrincipal: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/put-resource-permission-statement" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ IsControlPlane: { value: true } }),
-    ),
-  ),
-).annotate({
-  identifier: "PutResourcePermissionStatementInput",
-}) as any as S.Schema<PutResourcePermissionStatementInput>;
+const PutResourcePermissionStatementInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<PutResourcePermissionStatementInput>;
 export interface PutResourcePermissionStatementOutput {
   statementId: string;
 }
-const PutResourcePermissionStatementOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statementId: S.String }),
-).annotate({
-  identifier: "PutResourcePermissionStatementOutput",
-}) as any as S.Schema<PutResourcePermissionStatementOutput>;
+const PutResourcePermissionStatementOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PutResourcePermissionStatementOutput>;
 export type RevocationToken = string | redacted.Redacted<string>;
 export interface RevokeOAuth2TokenWithIAMRequest {
   token: string | redacted.Redacted<string>;
 }
-const RevokeOAuth2TokenWithIAMRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ token: SensitiveString }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/revoke?x-amz-client-auth-method=iam" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ IsOAuthEndpoint: { value: true } }),
-    ),
-  ),
-).annotate({
-  identifier: "RevokeOAuth2TokenWithIAMRequest",
-}) as any as S.Schema<RevokeOAuth2TokenWithIAMRequest>;
+const RevokeOAuth2TokenWithIAMRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<RevokeOAuth2TokenWithIAMRequest>;
 export interface RevokeOAuth2TokenWithIAMResponse {}
 const RevokeOAuth2TokenWithIAMResponse =
   DeleteResourcePermissionStatementOutput as any as S.Schema<RevokeOAuth2TokenWithIAMResponse>;
@@ -1231,3 +1023,364 @@ export const revokeOAuth2TokenWithIAM: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeOAuth2TokenWithIAM",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String,
+          grantType: S.String,
+          code: S.optional(S.String),
+          redirectUri: S.optional(S.String),
+          codeVerifier: S.optional(S.String),
+          refreshToken: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "CreateOAuth2TokenRequestBody",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tokenInput: CreateOAuth2TokenRequestBody.pipe(T.HttpPayload()).annotate({
+            identifier: "CreateOAuth2TokenRequestBody",
+          }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/token" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ IsControlPlane: { value: false } }),
+          ),
+        ),
+      ).annotate({ identifier: "CreateOAuth2TokenRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ accessKeyId: S.String, secretAccessKey: S.String, sessionToken: S.String }),
+      ).annotate({ identifier: "AccessToken" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accessToken: AccessToken,
+          tokenType: S.String,
+          expiresIn: S.Number,
+          refreshToken: SensitiveString,
+          idToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateOAuth2TokenResponseBody",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          tokenOutput: CreateOAuth2TokenResponseBody.pipe(T.HttpPayload()).annotate({
+            identifier: "CreateOAuth2TokenResponseBody",
+          }),
+        }),
+      ).annotate({
+        identifier: "CreateOAuth2TokenResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ grantType: S.String, resource: S.String })
+          .pipe(S.encodeKeys({ grantType: "grant_type" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/v1/token?x-amz-client-auth-method=iam" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+              T.StaticContextParams({ IsOAuthEndpoint: { value: true } }),
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateOAuth2TokenWithIAMRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ accessToken: SensitiveString, tokenType: S.String, expiresIn: S.Number }).pipe(
+          S.encodeKeys({
+            accessToken: "access_token",
+            tokenType: "token_type",
+            expiresIn: "expires_in",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOAuth2TokenWithIAMResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ targetId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/delete-console-authorization-configuration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ IsControlPlane: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteConsoleAuthorizationConfigurationInput",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ targetId: S.String, scope: S.String, consoleAuthorizationEnabled: S.Boolean }),
+      ).annotate({
+        identifier: "DeleteConsoleAuthorizationConfigurationOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          statementId: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/delete-resource-permission-statement" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ IsControlPlane: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePermissionStatementInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteResourcePermissionStatementOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ targetId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/get-console-authorization-configuration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ IsControlPlane: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "GetConsoleAuthorizationConfigurationInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/get-resource-policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ IsControlPlane: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "GetResourcePolicyInput" });
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ ConditionValues.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ Condition.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          effect: S.optional(S.String),
+          principal: S.optional(Principal),
+          action: S.optional(PolicyActions),
+          resource: S.optional(S.String),
+          condition: S.optional(ConditionBlock),
+        }).pipe(
+          S.encodeKeys({
+            effect: "Effect",
+            principal: "Principal",
+            action: "Action",
+            resource: "Resource",
+            condition: "Condition",
+          }),
+        ),
+      ).annotate({ identifier: "PolicyStatement" });
+    case 2:
+      return S.Array(PolicyStatement);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ version: S.optional(S.String), statement: S.optional(PolicyStatements) }).pipe(
+          S.encodeKeys({ version: "Version", statement: "Statement" }),
+        ),
+      ).annotate({
+        identifier: "SigninResourceBasedPolicy",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ signinResourceBasedPolicy: SigninResourceBasedPolicy }),
+      ).annotate({ identifier: "GetResourcePolicyOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ token: SensitiveString, tokenTypeHint: S.optional(S.String) })
+          .pipe(S.encodeKeys({ tokenTypeHint: "token_type_hint" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/v1/introspect?x-amz-client-auth-method=iam" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+              T.StaticContextParams({ IsOAuthEndpoint: { value: true } }),
+            ),
+          ),
+      ).annotate({
+        identifier: "IntrospectOAuth2TokenWithIAMRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          clientId: S.optional(S.String),
+          userId: S.optional(S.String),
+          tokenType: S.optional(S.String),
+          exp: S.optional(S.Number),
+          iat: S.optional(S.Number),
+          nbf: S.optional(S.Number),
+          sub: S.optional(S.String),
+          aud: S.optional(S.String),
+          iss: S.optional(S.String),
+          jti: S.optional(S.String),
+          accountId: S.optional(S.String),
+          signinSession: S.optional(S.String),
+          resource: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            clientId: "client_id",
+            userId: "user_id",
+            tokenType: "token_type",
+            accountId: "account_id",
+            signinSession: "signin_session",
+          }),
+        ),
+      ).annotate({
+        identifier: "IntrospectOAuth2TokenWithIAMResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-resource-permission-statements" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ IsControlPlane: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListResourcePermissionStatementsInput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ sid: S.String, condition: S.optional(ConditionBlock) }),
+      ).annotate({
+        identifier: "PermissionStatementSummary",
+      });
+    case 1:
+      return S.Array(PermissionStatementSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          permissionStatements: PermissionStatementSummaries,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListResourcePermissionStatementsOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ targetId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/put-console-authorization-configuration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ IsControlPlane: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutConsoleAuthorizationConfigurationInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sourceVpc: S.optional(S.String),
+          signinSourceVpce: S.optional(S.String),
+          consoleSourceVpce: S.optional(S.String),
+          vpcSourceIp: S.optional(S.String),
+          sourceIp: S.optional(S.String),
+          requestedRegion: S.optional(S.String),
+          excludedPrincipal: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/put-resource-permission-statement" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ IsControlPlane: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutResourcePermissionStatementInput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ statementId: S.String })).annotate({
+        identifier: "PutResourcePermissionStatementOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ token: SensitiveString }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/revoke?x-amz-client-auth-method=iam" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ IsOAuthEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "RevokeOAuth2TokenWithIAMRequest",
+      });
+  }
+}

@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -163,43 +164,33 @@ export class TooManyTagsException
   ).pipe(C.withBadRequestError) {}
 export type TraceId = string;
 export type TraceIdList = string[];
-const TraceIdList = /*@__PURE__*/ S.Array(S.String);
+const TraceIdList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface BatchGetTracesRequest {
   TraceIds: string[];
   NextToken?: string;
 }
-const BatchGetTracesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TraceIds: TraceIdList, NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/Traces" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "BatchGetTracesRequest" }) as any as S.Schema<BatchGetTracesRequest>;
+const BatchGetTracesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchGetTracesRequest>;
 export type SegmentId = string;
 export type SegmentDocument = string;
 export interface Segment {
   Id?: string;
   Document?: string;
 }
-const Segment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Document: S.optional(S.String) }),
-).annotate({ identifier: "Segment" }) as any as S.Schema<Segment>;
+const Segment = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Segment>;
 export type SegmentList = Segment[];
-const SegmentList = /*@__PURE__*/ S.Array(Segment);
+const SegmentList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface Trace {
   Id?: string;
   Duration?: number;
   LimitExceeded?: boolean;
   Segments?: Segment[];
 }
-const Trace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Duration: S.optional(S.Number),
-    LimitExceeded: S.optional(S.Boolean),
-    Segments: S.optional(SegmentList),
-  }),
-).annotate({ identifier: "Trace" }) as any as S.Schema<Trace>;
+const Trace = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Trace>;
 export type TraceList = Trace[];
-const TraceList = /*@__PURE__*/ S.Array(Trace);
+const TraceList = /*@__PURE__*/ __L.at(__c0, 5);
 export type UnprocessedTraceIdList = string[];
 const UnprocessedTraceIdList = TraceIdList as any as S.Schema<UnprocessedTraceIdList>;
 export interface BatchGetTracesResult {
@@ -207,82 +198,57 @@ export interface BatchGetTracesResult {
   UnprocessedTraceIds?: string[];
   NextToken?: string;
 }
-const BatchGetTracesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Traces: S.optional(TraceList),
-    UnprocessedTraceIds: S.optional(UnprocessedTraceIdList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "BatchGetTracesResult" }) as any as S.Schema<BatchGetTracesResult>;
+const BatchGetTracesResult = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BatchGetTracesResult>;
 export type RetrievalToken = string;
 export interface CancelTraceRetrievalRequest {
   RetrievalToken: string;
 }
-const CancelTraceRetrievalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RetrievalToken: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/CancelTraceRetrieval" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CancelTraceRetrievalRequest",
-}) as any as S.Schema<CancelTraceRetrievalRequest>;
+const CancelTraceRetrievalRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CancelTraceRetrievalRequest>;
 export interface CancelTraceRetrievalResult {}
-const CancelTraceRetrievalResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelTraceRetrievalResult",
-}) as any as S.Schema<CancelTraceRetrievalResult>;
+const CancelTraceRetrievalResult = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CancelTraceRetrievalResult>;
 export type GroupName = string;
 export type FilterExpression = string;
 export interface InsightsConfiguration {
   InsightsEnabled?: boolean;
   NotificationsEnabled?: boolean;
 }
-const InsightsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InsightsEnabled: S.optional(S.Boolean), NotificationsEnabled: S.optional(S.Boolean) }),
-).annotate({ identifier: "InsightsConfiguration" }) as any as S.Schema<InsightsConfiguration>;
+const InsightsConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<InsightsConfiguration>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface CreateGroupRequest {
   GroupName: string;
   FilterExpression?: string;
   InsightsConfiguration?: InsightsConfiguration;
   Tags?: Tag[];
 }
-const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupName: S.String,
-    FilterExpression: S.optional(S.String),
-    InsightsConfiguration: S.optional(InsightsConfiguration),
-    Tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/CreateGroup" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateGroupRequest" }) as any as S.Schema<CreateGroupRequest>;
+const CreateGroupRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateGroupRequest>;
 export interface Group {
   GroupName?: string;
   GroupARN?: string;
   FilterExpression?: string;
   InsightsConfiguration?: InsightsConfiguration;
 }
-const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupName: S.optional(S.String),
-    GroupARN: S.optional(S.String),
-    FilterExpression: S.optional(S.String),
-    InsightsConfiguration: S.optional(InsightsConfiguration),
-  }),
-).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
+const Group = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Group>;
 export interface CreateGroupResult {
   Group?: Group;
 }
-const CreateGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Group: S.optional(Group) }),
-).annotate({ identifier: "CreateGroupResult" }) as any as S.Schema<CreateGroupResult>;
+const CreateGroupResult = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateGroupResult>;
 export type RuleName = string;
 export type ResourceARN = string;
 export type Priority = number;
@@ -297,16 +263,14 @@ export type Version = number;
 export type AttributeKey = string;
 export type AttributeValue = string;
 export type AttributeMap = { [key: string]: string | undefined };
-const AttributeMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const AttributeMap = /*@__PURE__*/ __L.at(__c1, 7);
 export type MaxRate = number;
 export type CooldownWindowMinutes = number;
 export interface SamplingRateBoost {
   MaxRate: number;
   CooldownWindowMinutes: number;
 }
-const SamplingRateBoost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaxRate: S.Number, CooldownWindowMinutes: S.Number }),
-).annotate({ identifier: "SamplingRateBoost" }) as any as S.Schema<SamplingRateBoost>;
+const SamplingRateBoost = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SamplingRateBoost>;
 export interface SamplingRule {
   RuleName?: string;
   RuleARN?: string;
@@ -323,63 +287,34 @@ export interface SamplingRule {
   Attributes?: { [key: string]: string | undefined };
   SamplingRateBoost?: SamplingRateBoost;
 }
-const SamplingRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleName: S.optional(S.String),
-    RuleARN: S.optional(S.String),
-    ResourceARN: S.String,
-    Priority: S.Number,
-    FixedRate: S.Number,
-    ReservoirSize: S.Number,
-    ServiceName: S.String,
-    ServiceType: S.String,
-    Host: S.String,
-    HTTPMethod: S.String,
-    URLPath: S.String,
-    Version: S.Number,
-    Attributes: S.optional(AttributeMap),
-    SamplingRateBoost: S.optional(SamplingRateBoost),
-  }),
-).annotate({ identifier: "SamplingRule" }) as any as S.Schema<SamplingRule>;
+const SamplingRule = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SamplingRule>;
 export interface CreateSamplingRuleRequest {
   SamplingRule: SamplingRule;
   Tags?: Tag[];
 }
-const CreateSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SamplingRule: SamplingRule, Tags: S.optional(TagList) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/CreateSamplingRule" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateSamplingRuleRequest",
-}) as any as S.Schema<CreateSamplingRuleRequest>;
+const CreateSamplingRuleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateSamplingRuleRequest>;
 export interface SamplingRuleRecord {
   SamplingRule?: SamplingRule;
   CreatedAt?: Date;
   ModifiedAt?: Date;
 }
-const SamplingRuleRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SamplingRule: S.optional(SamplingRule),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "SamplingRuleRecord" }) as any as S.Schema<SamplingRuleRecord>;
+const SamplingRuleRecord = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SamplingRuleRecord>;
 export interface CreateSamplingRuleResult {
   SamplingRuleRecord?: SamplingRuleRecord;
 }
-const CreateSamplingRuleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SamplingRuleRecord: S.optional(SamplingRuleRecord) }),
-).annotate({ identifier: "CreateSamplingRuleResult" }) as any as S.Schema<CreateSamplingRuleResult>;
+const CreateSamplingRuleResult = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateSamplingRuleResult>;
 export type GroupARN = string;
 export interface DeleteGroupRequest {
   GroupName?: string;
   GroupARN?: string;
 }
-const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GroupName: S.optional(S.String), GroupARN: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/DeleteGroup" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
+const DeleteGroupRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResult {}
 const DeleteGroupResult = CancelTraceRetrievalResult as any as S.Schema<DeleteGroupResult>;
 export type PolicyName = string;
@@ -388,13 +323,10 @@ export interface DeleteResourcePolicyRequest {
   PolicyName: string;
   PolicyRevisionId?: string;
 }
-const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PolicyName: S.String, PolicyRevisionId: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/DeleteResourcePolicy" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteResourcePolicyRequest",
-}) as any as S.Schema<DeleteResourcePolicyRequest>;
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResult {}
 const DeleteResourcePolicyResult =
   CancelTraceRetrievalResult as any as S.Schema<DeleteResourcePolicyResult>;
@@ -402,26 +334,20 @@ export interface DeleteSamplingRuleRequest {
   RuleName?: string;
   RuleARN?: string;
 }
-const DeleteSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleName: S.optional(S.String), RuleARN: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/DeleteSamplingRule" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteSamplingRuleRequest",
-}) as any as S.Schema<DeleteSamplingRuleRequest>;
+const DeleteSamplingRuleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteSamplingRuleRequest>;
 export interface DeleteSamplingRuleResult {
   SamplingRuleRecord?: SamplingRuleRecord;
 }
 const DeleteSamplingRuleResult =
   CreateSamplingRuleResult as any as S.Schema<DeleteSamplingRuleResult>;
 export interface GetEncryptionConfigRequest {}
-const GetEncryptionConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(T.Http({ method: "POST", uri: "/EncryptionConfig" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetEncryptionConfigRequest",
-}) as any as S.Schema<GetEncryptionConfigRequest>;
+const GetEncryptionConfigRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetEncryptionConfigRequest>;
 export type EncryptionStatus = "UPDATING" | "ACTIVE" | (string & {});
 const EncryptionStatus = S.String;
 
@@ -433,30 +359,19 @@ export interface EncryptionConfig {
   Status?: EncryptionStatus;
   Type?: EncryptionType;
 }
-const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    KeyId: S.optional(S.String),
-    Status: S.optional(EncryptionStatus),
-    Type: S.optional(EncryptionType),
-  }),
-).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
+const EncryptionConfig = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<EncryptionConfig>;
 export interface GetEncryptionConfigResult {
   EncryptionConfig?: EncryptionConfig;
 }
-const GetEncryptionConfigResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EncryptionConfig: S.optional(EncryptionConfig) }),
-).annotate({
-  identifier: "GetEncryptionConfigResult",
-}) as any as S.Schema<GetEncryptionConfigResult>;
+const GetEncryptionConfigResult = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetEncryptionConfigResult>;
 export interface GetGroupRequest {
   GroupName?: string;
   GroupARN?: string;
 }
-const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GroupName: S.optional(S.String), GroupARN: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/GetGroup" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetGroupRequest" }) as any as S.Schema<GetGroupRequest>;
+const GetGroupRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetGroupRequest>;
 export interface GetGroupResult {
   Group?: Group;
 }
@@ -465,11 +380,7 @@ export type GetGroupsNextToken = string;
 export interface GetGroupsRequest {
   NextToken?: string;
 }
-const GetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/Groups" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetGroupsRequest" }) as any as S.Schema<GetGroupsRequest>;
+const GetGroupsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetGroupsRequest>;
 export interface GroupSummary {
   GroupName?: string;
   GroupARN?: string;
@@ -478,63 +389,50 @@ export interface GroupSummary {
 }
 const GroupSummary = Group as any as S.Schema<GroupSummary>;
 export type GroupSummaryList = GroupSummary[];
-const GroupSummaryList = /*@__PURE__*/ S.Array(GroupSummary);
+const GroupSummaryList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface GetGroupsResult {
   Groups?: GroupSummary[];
   NextToken?: string;
 }
-const GetGroupsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Groups: S.optional(GroupSummaryList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetGroupsResult" }) as any as S.Schema<GetGroupsResult>;
+const GetGroupsResult = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetGroupsResult>;
 export interface GetIndexingRulesRequest {
   NextToken?: string;
 }
-const GetIndexingRulesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/GetIndexingRules" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetIndexingRulesRequest" }) as any as S.Schema<GetIndexingRulesRequest>;
+const GetIndexingRulesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetIndexingRulesRequest>;
 export interface ProbabilisticRuleValue {
   DesiredSamplingPercentage: number;
   ActualSamplingPercentage?: number;
 }
-const ProbabilisticRuleValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DesiredSamplingPercentage: S.Number, ActualSamplingPercentage: S.optional(S.Number) }),
-).annotate({ identifier: "ProbabilisticRuleValue" }) as any as S.Schema<ProbabilisticRuleValue>;
+const ProbabilisticRuleValue = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ProbabilisticRuleValue>;
 export type IndexingRuleValue = { Probabilistic: ProbabilisticRuleValue };
-const IndexingRuleValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Probabilistic: ProbabilisticRuleValue }),
-]);
+const IndexingRuleValue = /*@__PURE__*/ __L.at(__c4, 1);
 export interface IndexingRule {
   Name?: string;
   ModifiedAt?: Date;
   Rule?: IndexingRuleValue;
 }
-const IndexingRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    ModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Rule: S.optional(IndexingRuleValue),
-  }),
-).annotate({ identifier: "IndexingRule" }) as any as S.Schema<IndexingRule>;
+const IndexingRule = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<IndexingRule>;
 export type IndexingRuleList = IndexingRule[];
-const IndexingRuleList = /*@__PURE__*/ S.Array(IndexingRule);
+const IndexingRuleList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface GetIndexingRulesResult {
   IndexingRules?: IndexingRule[];
   NextToken?: string;
 }
-const GetIndexingRulesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IndexingRules: S.optional(IndexingRuleList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetIndexingRulesResult" }) as any as S.Schema<GetIndexingRulesResult>;
+const GetIndexingRulesResult = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetIndexingRulesResult>;
 export type InsightId = string;
 export interface GetInsightRequest {
   InsightId: string;
 }
-const GetInsightRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InsightId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/Insight" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetInsightRequest" }) as any as S.Schema<GetInsightRequest>;
+const GetInsightRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetInsightRequest>;
 export type ServiceNames = string[];
 const ServiceNames = TraceIdList as any as S.Schema<ServiceNames>;
 export interface ServiceId {
@@ -543,19 +441,12 @@ export interface ServiceId {
   AccountId?: string;
   Type?: string;
 }
-const ServiceId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Names: S.optional(ServiceNames),
-    AccountId: S.optional(S.String),
-    Type: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceId" }) as any as S.Schema<ServiceId>;
+const ServiceId = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ServiceId>;
 export type InsightCategory = "FAULT" | (string & {});
 const InsightCategory = S.String;
 
 export type InsightCategoryList = InsightCategory[];
-const InsightCategoryList = /*@__PURE__*/ S.Array(InsightCategory);
+const InsightCategoryList = /*@__PURE__*/ __L.at(__c4, 7);
 export type InsightState = "ACTIVE" | "CLOSED" | (string & {});
 const InsightState = S.String;
 
@@ -565,21 +456,16 @@ export interface RequestImpactStatistics {
   OkCount?: number;
   TotalCount?: number;
 }
-const RequestImpactStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FaultCount: S.optional(S.Number),
-    OkCount: S.optional(S.Number),
-    TotalCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RequestImpactStatistics" }) as any as S.Schema<RequestImpactStatistics>;
+const RequestImpactStatistics = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<RequestImpactStatistics>;
 export interface AnomalousService {
   ServiceId?: ServiceId;
 }
-const AnomalousService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServiceId: S.optional(ServiceId) }),
-).annotate({ identifier: "AnomalousService" }) as any as S.Schema<AnomalousService>;
+const AnomalousService = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AnomalousService>;
 export type AnomalousServiceList = AnomalousService[];
-const AnomalousServiceList = /*@__PURE__*/ S.Array(AnomalousService);
+const AnomalousServiceList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface Insight {
   InsightId?: string;
   GroupARN?: string;
@@ -594,28 +480,11 @@ export interface Insight {
   RootCauseServiceRequestImpactStatistics?: RequestImpactStatistics;
   TopAnomalousServices?: AnomalousService[];
 }
-const Insight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InsightId: S.optional(S.String),
-    GroupARN: S.optional(S.String),
-    GroupName: S.optional(S.String),
-    RootCauseServiceId: S.optional(ServiceId),
-    Categories: S.optional(InsightCategoryList),
-    State: S.optional(InsightState),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Summary: S.optional(S.String),
-    ClientRequestImpactStatistics: S.optional(RequestImpactStatistics),
-    RootCauseServiceRequestImpactStatistics: S.optional(RequestImpactStatistics),
-    TopAnomalousServices: S.optional(AnomalousServiceList),
-  }),
-).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
+const Insight = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Insight>;
 export interface GetInsightResult {
   Insight?: Insight;
 }
-const GetInsightResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Insight: S.optional(Insight) }),
-).annotate({ identifier: "GetInsightResult" }) as any as S.Schema<GetInsightResult>;
+const GetInsightResult = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetInsightResult>;
 export type GetInsightEventsMaxResults = number;
 export type Token = string;
 export interface GetInsightEventsRequest {
@@ -623,13 +492,10 @@ export interface GetInsightEventsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetInsightEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InsightId: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/InsightEvents" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetInsightEventsRequest" }) as any as S.Schema<GetInsightEventsRequest>;
+const GetInsightEventsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetInsightEventsRequest>;
 export type EventSummaryText = string;
 export interface InsightEvent {
   Summary?: string;
@@ -638,50 +504,36 @@ export interface InsightEvent {
   RootCauseServiceRequestImpactStatistics?: RequestImpactStatistics;
   TopAnomalousServices?: AnomalousService[];
 }
-const InsightEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Summary: S.optional(S.String),
-    EventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ClientRequestImpactStatistics: S.optional(RequestImpactStatistics),
-    RootCauseServiceRequestImpactStatistics: S.optional(RequestImpactStatistics),
-    TopAnomalousServices: S.optional(AnomalousServiceList),
-  }),
-).annotate({ identifier: "InsightEvent" }) as any as S.Schema<InsightEvent>;
+const InsightEvent = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<InsightEvent>;
 export type InsightEventList = InsightEvent[];
-const InsightEventList = /*@__PURE__*/ S.Array(InsightEvent);
+const InsightEventList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface GetInsightEventsResult {
   InsightEvents?: InsightEvent[];
   NextToken?: string;
 }
-const GetInsightEventsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InsightEvents: S.optional(InsightEventList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetInsightEventsResult" }) as any as S.Schema<GetInsightEventsResult>;
+const GetInsightEventsResult = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetInsightEventsResult>;
 export interface GetInsightImpactGraphRequest {
   InsightId: string;
   StartTime: Date;
   EndTime: Date;
   NextToken?: string;
 }
-const GetInsightImpactGraphRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InsightId: S.String,
-    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/InsightImpactGraph" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetInsightImpactGraphRequest",
-}) as any as S.Schema<GetInsightImpactGraphRequest>;
+const GetInsightImpactGraphRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetInsightImpactGraphRequest>;
 export interface InsightImpactGraphEdge {
   ReferenceId?: number;
 }
-const InsightImpactGraphEdge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReferenceId: S.optional(S.Number) }),
-).annotate({ identifier: "InsightImpactGraphEdge" }) as any as S.Schema<InsightImpactGraphEdge>;
+const InsightImpactGraphEdge = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<InsightImpactGraphEdge>;
 export type InsightImpactGraphEdgeList = InsightImpactGraphEdge[];
-const InsightImpactGraphEdgeList = /*@__PURE__*/ S.Array(InsightImpactGraphEdge);
+const InsightImpactGraphEdgeList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface InsightImpactGraphService {
   ReferenceId?: number;
   Type?: string;
@@ -690,20 +542,12 @@ export interface InsightImpactGraphService {
   AccountId?: string;
   Edges?: InsightImpactGraphEdge[];
 }
-const InsightImpactGraphService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReferenceId: S.optional(S.Number),
-    Type: S.optional(S.String),
-    Name: S.optional(S.String),
-    Names: S.optional(ServiceNames),
-    AccountId: S.optional(S.String),
-    Edges: S.optional(InsightImpactGraphEdgeList),
-  }),
-).annotate({
-  identifier: "InsightImpactGraphService",
-}) as any as S.Schema<InsightImpactGraphService>;
+const InsightImpactGraphService = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<InsightImpactGraphService>;
 export type InsightImpactGraphServiceList = InsightImpactGraphService[];
-const InsightImpactGraphServiceList = /*@__PURE__*/ S.Array(InsightImpactGraphService);
+const InsightImpactGraphServiceList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface GetInsightImpactGraphResult {
   InsightId?: string;
   StartTime?: Date;
@@ -713,19 +557,10 @@ export interface GetInsightImpactGraphResult {
   Services?: InsightImpactGraphService[];
   NextToken?: string;
 }
-const GetInsightImpactGraphResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InsightId: S.optional(S.String),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ServiceGraphStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ServiceGraphEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Services: S.optional(InsightImpactGraphServiceList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetInsightImpactGraphResult",
-}) as any as S.Schema<GetInsightImpactGraphResult>;
+const GetInsightImpactGraphResult = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetInsightImpactGraphResult>;
 export type InsightStateList = InsightState[];
 const InsightStateList = InsightCategoryList as any as S.Schema<InsightStateList>;
 export type GetInsightSummariesMaxResults = number;
@@ -738,21 +573,10 @@ export interface GetInsightSummariesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetInsightSummariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    States: S.optional(InsightStateList),
-    GroupARN: S.optional(S.String),
-    GroupName: S.optional(S.String),
-    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/InsightSummaries" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetInsightSummariesRequest",
-}) as any as S.Schema<GetInsightSummariesRequest>;
+const GetInsightSummariesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetInsightSummariesRequest>;
 export interface InsightSummary {
   InsightId?: string;
   GroupARN?: string;
@@ -768,52 +592,25 @@ export interface InsightSummary {
   TopAnomalousServices?: AnomalousService[];
   LastUpdateTime?: Date;
 }
-const InsightSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InsightId: S.optional(S.String),
-    GroupARN: S.optional(S.String),
-    GroupName: S.optional(S.String),
-    RootCauseServiceId: S.optional(ServiceId),
-    Categories: S.optional(InsightCategoryList),
-    State: S.optional(InsightState),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Summary: S.optional(S.String),
-    ClientRequestImpactStatistics: S.optional(RequestImpactStatistics),
-    RootCauseServiceRequestImpactStatistics: S.optional(RequestImpactStatistics),
-    TopAnomalousServices: S.optional(AnomalousServiceList),
-    LastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "InsightSummary" }) as any as S.Schema<InsightSummary>;
+const InsightSummary = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<InsightSummary>;
 export type InsightSummaryList = InsightSummary[];
-const InsightSummaryList = /*@__PURE__*/ S.Array(InsightSummary);
+const InsightSummaryList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface GetInsightSummariesResult {
   InsightSummaries?: InsightSummary[];
   NextToken?: string;
 }
-const GetInsightSummariesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InsightSummaries: S.optional(InsightSummaryList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetInsightSummariesResult",
-}) as any as S.Schema<GetInsightSummariesResult>;
+const GetInsightSummariesResult = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetInsightSummariesResult>;
 export interface GetRetrievedTracesGraphRequest {
   RetrievalToken: string;
   NextToken?: string;
 }
-const GetRetrievedTracesGraphRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RetrievalToken: S.String, NextToken: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GetRetrievedTracesGraph" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetRetrievedTracesGraphRequest",
-}) as any as S.Schema<GetRetrievedTracesGraphRequest>;
+const GetRetrievedTracesGraphRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetRetrievedTracesGraphRequest>;
 export type RetrievalStatus =
   | "SCHEDULED"
   | "RUNNING"
@@ -829,20 +626,12 @@ export interface ErrorStatistics {
   OtherCount?: number;
   TotalCount?: number;
 }
-const ErrorStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ThrottleCount: S.optional(S.Number),
-    OtherCount: S.optional(S.Number),
-    TotalCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ErrorStatistics" }) as any as S.Schema<ErrorStatistics>;
+const ErrorStatistics = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ErrorStatistics>;
 export interface FaultStatistics {
   OtherCount?: number;
   TotalCount?: number;
 }
-const FaultStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OtherCount: S.optional(S.Number), TotalCount: S.optional(S.Number) }),
-).annotate({ identifier: "FaultStatistics" }) as any as S.Schema<FaultStatistics>;
+const FaultStatistics = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<FaultStatistics>;
 export interface EdgeStatistics {
   OkCount?: number;
   ErrorStatistics?: ErrorStatistics;
@@ -850,24 +639,14 @@ export interface EdgeStatistics {
   TotalCount?: number;
   TotalResponseTime?: number;
 }
-const EdgeStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OkCount: S.optional(S.Number),
-    ErrorStatistics: S.optional(ErrorStatistics),
-    FaultStatistics: S.optional(FaultStatistics),
-    TotalCount: S.optional(S.Number),
-    TotalResponseTime: S.optional(S.Number),
-  }),
-).annotate({ identifier: "EdgeStatistics" }) as any as S.Schema<EdgeStatistics>;
+const EdgeStatistics = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<EdgeStatistics>;
 export interface HistogramEntry {
   Value?: number;
   Count?: number;
 }
-const HistogramEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.Number), Count: S.optional(S.Number) }),
-).annotate({ identifier: "HistogramEntry" }) as any as S.Schema<HistogramEntry>;
+const HistogramEntry = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<HistogramEntry>;
 export type Histogram = HistogramEntry[];
-const Histogram = /*@__PURE__*/ S.Array(HistogramEntry);
+const Histogram = /*@__PURE__*/ __L.at(__c8, 0);
 export type AliasNames = string[];
 const AliasNames = TraceIdList as any as S.Schema<AliasNames>;
 export interface Alias {
@@ -875,15 +654,9 @@ export interface Alias {
   Names?: string[];
   Type?: string;
 }
-const Alias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Names: S.optional(AliasNames),
-    Type: S.optional(S.String),
-  }),
-).annotate({ identifier: "Alias" }) as any as S.Schema<Alias>;
+const Alias = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Alias>;
 export type AliasList = Alias[];
-const AliasList = /*@__PURE__*/ S.Array(Alias);
+const AliasList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface Edge {
   ReferenceId?: number;
   StartTime?: Date;
@@ -894,20 +667,9 @@ export interface Edge {
   EdgeType?: string;
   ReceivedEventAgeHistogram?: HistogramEntry[];
 }
-const Edge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReferenceId: S.optional(S.Number),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    SummaryStatistics: S.optional(EdgeStatistics),
-    ResponseTimeHistogram: S.optional(Histogram),
-    Aliases: S.optional(AliasList),
-    EdgeType: S.optional(S.String),
-    ReceivedEventAgeHistogram: S.optional(Histogram),
-  }),
-).annotate({ identifier: "Edge" }) as any as S.Schema<Edge>;
+const Edge = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Edge>;
 export type EdgeList = Edge[];
-const EdgeList = /*@__PURE__*/ S.Array(Edge);
+const EdgeList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface ServiceStatistics {
   OkCount?: number;
   ErrorStatistics?: ErrorStatistics;
@@ -931,97 +693,55 @@ export interface Service {
   DurationHistogram?: HistogramEntry[];
   ResponseTimeHistogram?: HistogramEntry[];
 }
-const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReferenceId: S.optional(S.Number),
-    Name: S.optional(S.String),
-    Names: S.optional(ServiceNames),
-    Root: S.optional(S.Boolean),
-    AccountId: S.optional(S.String),
-    Type: S.optional(S.String),
-    State: S.optional(S.String),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Edges: S.optional(EdgeList),
-    SummaryStatistics: S.optional(ServiceStatistics),
-    DurationHistogram: S.optional(Histogram),
-    ResponseTimeHistogram: S.optional(Histogram),
-  }),
-).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
+const Service = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Service>;
 export interface GraphLink {
   ReferenceType?: string;
   SourceTraceId?: string;
   DestinationTraceIds?: string[];
 }
-const GraphLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReferenceType: S.optional(S.String),
-    SourceTraceId: S.optional(S.String),
-    DestinationTraceIds: S.optional(TraceIdList),
-  }),
-).annotate({ identifier: "GraphLink" }) as any as S.Schema<GraphLink>;
+const GraphLink = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GraphLink>;
 export type LinksList = GraphLink[];
-const LinksList = /*@__PURE__*/ S.Array(GraphLink);
+const LinksList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface RetrievedService {
   Service?: Service;
   Links?: GraphLink[];
 }
-const RetrievedService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Service: S.optional(Service), Links: S.optional(LinksList) }),
-).annotate({ identifier: "RetrievedService" }) as any as S.Schema<RetrievedService>;
+const RetrievedService = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<RetrievedService>;
 export type RetrievedServicesList = RetrievedService[];
-const RetrievedServicesList = /*@__PURE__*/ S.Array(RetrievedService);
+const RetrievedServicesList = /*@__PURE__*/ __L.at(__c9, 1);
 export interface GetRetrievedTracesGraphResult {
   RetrievalStatus?: RetrievalStatus;
   Services?: RetrievedService[];
   NextToken?: string;
 }
-const GetRetrievedTracesGraphResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RetrievalStatus: S.optional(RetrievalStatus),
-    Services: S.optional(RetrievedServicesList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetRetrievedTracesGraphResult",
-}) as any as S.Schema<GetRetrievedTracesGraphResult>;
+const GetRetrievedTracesGraphResult = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetRetrievedTracesGraphResult>;
 export interface GetSamplingRulesRequest {
   NextToken?: string;
 }
-const GetSamplingRulesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/GetSamplingRules" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetSamplingRulesRequest" }) as any as S.Schema<GetSamplingRulesRequest>;
+const GetSamplingRulesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetSamplingRulesRequest>;
 export type SamplingRuleRecordList = SamplingRuleRecord[];
-const SamplingRuleRecordList = /*@__PURE__*/ S.Array(SamplingRuleRecord);
+const SamplingRuleRecordList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface GetSamplingRulesResult {
   SamplingRuleRecords?: SamplingRuleRecord[];
   NextToken?: string;
 }
-const GetSamplingRulesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SamplingRuleRecords: S.optional(SamplingRuleRecordList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetSamplingRulesResult" }) as any as S.Schema<GetSamplingRulesResult>;
+const GetSamplingRulesResult = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetSamplingRulesResult>;
 export interface GetSamplingStatisticSummariesRequest {
   NextToken?: string;
 }
-const GetSamplingStatisticSummariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/SamplingStatisticSummaries" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSamplingStatisticSummariesRequest",
-}) as any as S.Schema<GetSamplingStatisticSummariesRequest>;
+const GetSamplingStatisticSummariesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetSamplingStatisticSummariesRequest>;
 export interface SamplingStatisticSummary {
   RuleName?: string;
   Timestamp?: Date;
@@ -1029,29 +749,20 @@ export interface SamplingStatisticSummary {
   BorrowCount?: number;
   SampledCount?: number;
 }
-const SamplingStatisticSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleName: S.optional(S.String),
-    Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RequestCount: S.optional(S.Number),
-    BorrowCount: S.optional(S.Number),
-    SampledCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SamplingStatisticSummary" }) as any as S.Schema<SamplingStatisticSummary>;
+const SamplingStatisticSummary = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<SamplingStatisticSummary>;
 export type SamplingStatisticSummaryList = SamplingStatisticSummary[];
-const SamplingStatisticSummaryList = /*@__PURE__*/ S.Array(SamplingStatisticSummary);
+const SamplingStatisticSummaryList = /*@__PURE__*/ __L.at(__c10, 0);
 export interface GetSamplingStatisticSummariesResult {
   SamplingStatisticSummaries?: SamplingStatisticSummary[];
   NextToken?: string;
 }
-const GetSamplingStatisticSummariesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SamplingStatisticSummaries: S.optional(SamplingStatisticSummaryList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSamplingStatisticSummariesResult",
-}) as any as S.Schema<GetSamplingStatisticSummariesResult>;
+const GetSamplingStatisticSummariesResult = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetSamplingStatisticSummariesResult>;
 export type ClientID = string;
 export type RequestCount = number;
 export type SampledCount = number;
@@ -1064,20 +775,12 @@ export interface SamplingStatisticsDocument {
   SampledCount: number;
   BorrowCount?: number;
 }
-const SamplingStatisticsDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleName: S.String,
-    ClientID: S.String,
-    Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    RequestCount: S.Number,
-    SampledCount: S.Number,
-    BorrowCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SamplingStatisticsDocument",
-}) as any as S.Schema<SamplingStatisticsDocument>;
+const SamplingStatisticsDocument = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<SamplingStatisticsDocument>;
 export type SamplingStatisticsDocumentList = SamplingStatisticsDocument[];
-const SamplingStatisticsDocumentList = /*@__PURE__*/ S.Array(SamplingStatisticsDocument);
+const SamplingStatisticsDocumentList = /*@__PURE__*/ __L.at(__c10, 3);
 export type AnomalyCount = number;
 export type TotalCount = number;
 export type SampledAnomalyCount = number;
@@ -1089,39 +792,25 @@ export interface SamplingBoostStatisticsDocument {
   TotalCount: number;
   SampledAnomalyCount: number;
 }
-const SamplingBoostStatisticsDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleName: S.String,
-    ServiceName: S.String,
-    Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    AnomalyCount: S.Number,
-    TotalCount: S.Number,
-    SampledAnomalyCount: S.Number,
-  }),
-).annotate({
-  identifier: "SamplingBoostStatisticsDocument",
-}) as any as S.Schema<SamplingBoostStatisticsDocument>;
+const SamplingBoostStatisticsDocument = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<SamplingBoostStatisticsDocument>;
 export type SamplingBoostStatisticsDocumentList = SamplingBoostStatisticsDocument[];
-const SamplingBoostStatisticsDocumentList = /*@__PURE__*/ S.Array(SamplingBoostStatisticsDocument);
+const SamplingBoostStatisticsDocumentList = /*@__PURE__*/ __L.at(__c10, 5);
 export interface GetSamplingTargetsRequest {
   SamplingStatisticsDocuments: SamplingStatisticsDocument[];
   SamplingBoostStatisticsDocuments?: SamplingBoostStatisticsDocument[];
 }
-const GetSamplingTargetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SamplingStatisticsDocuments: SamplingStatisticsDocumentList,
-    SamplingBoostStatisticsDocuments: S.optional(SamplingBoostStatisticsDocumentList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/SamplingTargets" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetSamplingTargetsRequest",
-}) as any as S.Schema<GetSamplingTargetsRequest>;
+const GetSamplingTargetsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetSamplingTargetsRequest>;
 export interface SamplingBoost {
   BoostRate: number;
   BoostRateTTL: Date;
 }
-const SamplingBoost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BoostRate: S.Number, BoostRateTTL: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
-).annotate({ identifier: "SamplingBoost" }) as any as S.Schema<SamplingBoost>;
+const SamplingBoost = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<SamplingBoost>;
 export interface SamplingTargetDocument {
   RuleName?: string;
   FixedRate?: number;
@@ -1130,46 +819,33 @@ export interface SamplingTargetDocument {
   Interval?: number;
   SamplingBoost?: SamplingBoost;
 }
-const SamplingTargetDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleName: S.optional(S.String),
-    FixedRate: S.optional(S.Number),
-    ReservoirQuota: S.optional(S.Number),
-    ReservoirQuotaTTL: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Interval: S.optional(S.Number),
-    SamplingBoost: S.optional(SamplingBoost),
-  }),
-).annotate({ identifier: "SamplingTargetDocument" }) as any as S.Schema<SamplingTargetDocument>;
+const SamplingTargetDocument = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<SamplingTargetDocument>;
 export type SamplingTargetDocumentList = SamplingTargetDocument[];
-const SamplingTargetDocumentList = /*@__PURE__*/ S.Array(SamplingTargetDocument);
+const SamplingTargetDocumentList = /*@__PURE__*/ __L.at(__c11, 1);
 export interface UnprocessedStatistics {
   RuleName?: string;
   ErrorCode?: string;
   Message?: string;
 }
-const UnprocessedStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleName: S.optional(S.String),
-    ErrorCode: S.optional(S.String),
-    Message: S.optional(S.String),
-  }),
-).annotate({ identifier: "UnprocessedStatistics" }) as any as S.Schema<UnprocessedStatistics>;
+const UnprocessedStatistics = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<UnprocessedStatistics>;
 export type UnprocessedStatisticsList = UnprocessedStatistics[];
-const UnprocessedStatisticsList = /*@__PURE__*/ S.Array(UnprocessedStatistics);
+const UnprocessedStatisticsList = /*@__PURE__*/ __L.at(__c11, 3);
 export interface GetSamplingTargetsResult {
   SamplingTargetDocuments?: SamplingTargetDocument[];
   LastRuleModification?: Date;
   UnprocessedStatistics?: UnprocessedStatistics[];
   UnprocessedBoostStatistics?: UnprocessedStatistics[];
 }
-const GetSamplingTargetsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SamplingTargetDocuments: S.optional(SamplingTargetDocumentList),
-    LastRuleModification: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UnprocessedStatistics: S.optional(UnprocessedStatisticsList),
-    UnprocessedBoostStatistics: S.optional(UnprocessedStatisticsList),
-  }),
-).annotate({ identifier: "GetSamplingTargetsResult" }) as any as S.Schema<GetSamplingTargetsResult>;
+const GetSamplingTargetsResult = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetSamplingTargetsResult>;
 export interface GetServiceGraphRequest {
   StartTime: Date;
   EndTime: Date;
@@ -1177,17 +853,12 @@ export interface GetServiceGraphRequest {
   GroupARN?: string;
   NextToken?: string;
 }
-const GetServiceGraphRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    GroupName: S.optional(S.String),
-    GroupARN: S.optional(S.String),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/ServiceGraph" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetServiceGraphRequest" }) as any as S.Schema<GetServiceGraphRequest>;
+const GetServiceGraphRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetServiceGraphRequest>;
 export type ServiceList = Service[];
-const ServiceList = /*@__PURE__*/ S.Array(Service);
+const ServiceList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface GetServiceGraphResult {
   StartTime?: Date;
   EndTime?: Date;
@@ -1195,15 +866,10 @@ export interface GetServiceGraphResult {
   ContainsOldGroupVersions?: boolean;
   NextToken?: string;
 }
-const GetServiceGraphResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Services: S.optional(ServiceList),
-    ContainsOldGroupVersions: S.optional(S.Boolean),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetServiceGraphResult" }) as any as S.Schema<GetServiceGraphResult>;
+const GetServiceGraphResult = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetServiceGraphResult>;
 export type EntitySelectorExpression = string;
 export interface GetTimeSeriesServiceStatisticsRequest {
   StartTime: Date;
@@ -1215,36 +881,15 @@ export interface GetTimeSeriesServiceStatisticsRequest {
   ForecastStatistics?: boolean;
   NextToken?: string;
 }
-const GetTimeSeriesServiceStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    GroupName: S.optional(S.String),
-    GroupARN: S.optional(S.String),
-    EntitySelectorExpression: S.optional(S.String),
-    Period: S.optional(S.Number),
-    ForecastStatistics: S.optional(S.Boolean),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/TimeSeriesServiceStatistics" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTimeSeriesServiceStatisticsRequest",
-}) as any as S.Schema<GetTimeSeriesServiceStatisticsRequest>;
+const GetTimeSeriesServiceStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetTimeSeriesServiceStatisticsRequest>;
 export interface ForecastStatistics {
   FaultCountHigh?: number;
   FaultCountLow?: number;
 }
-const ForecastStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FaultCountHigh: S.optional(S.Number), FaultCountLow: S.optional(S.Number) }),
-).annotate({ identifier: "ForecastStatistics" }) as any as S.Schema<ForecastStatistics>;
+const ForecastStatistics = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ForecastStatistics>;
 export interface TimeSeriesServiceStatistics {
   Timestamp?: Date;
   EdgeSummaryStatistics?: EdgeStatistics;
@@ -1252,64 +897,39 @@ export interface TimeSeriesServiceStatistics {
   ServiceForecastStatistics?: ForecastStatistics;
   ResponseTimeHistogram?: HistogramEntry[];
 }
-const TimeSeriesServiceStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EdgeSummaryStatistics: S.optional(EdgeStatistics),
-    ServiceSummaryStatistics: S.optional(ServiceStatistics),
-    ServiceForecastStatistics: S.optional(ForecastStatistics),
-    ResponseTimeHistogram: S.optional(Histogram),
-  }),
-).annotate({
-  identifier: "TimeSeriesServiceStatistics",
-}) as any as S.Schema<TimeSeriesServiceStatistics>;
+const TimeSeriesServiceStatistics = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<TimeSeriesServiceStatistics>;
 export type TimeSeriesServiceStatisticsList = TimeSeriesServiceStatistics[];
-const TimeSeriesServiceStatisticsList = /*@__PURE__*/ S.Array(TimeSeriesServiceStatistics);
+const TimeSeriesServiceStatisticsList = /*@__PURE__*/ __L.at(__c12, 3);
 export interface GetTimeSeriesServiceStatisticsResult {
   TimeSeriesServiceStatistics?: TimeSeriesServiceStatistics[];
   ContainsOldGroupVersions?: boolean;
   NextToken?: string;
 }
-const GetTimeSeriesServiceStatisticsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimeSeriesServiceStatistics: S.optional(TimeSeriesServiceStatisticsList),
-    ContainsOldGroupVersions: S.optional(S.Boolean),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTimeSeriesServiceStatisticsResult",
-}) as any as S.Schema<GetTimeSeriesServiceStatisticsResult>;
+const GetTimeSeriesServiceStatisticsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetTimeSeriesServiceStatisticsResult>;
 export interface GetTraceGraphRequest {
   TraceIds: string[];
   NextToken?: string;
 }
-const GetTraceGraphRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TraceIds: TraceIdList, NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/TraceGraph" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetTraceGraphRequest" }) as any as S.Schema<GetTraceGraphRequest>;
+const GetTraceGraphRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetTraceGraphRequest>;
 export interface GetTraceGraphResult {
   Services?: Service[];
   NextToken?: string;
 }
-const GetTraceGraphResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Services: S.optional(ServiceList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetTraceGraphResult" }) as any as S.Schema<GetTraceGraphResult>;
+const GetTraceGraphResult = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetTraceGraphResult>;
 export interface GetTraceSegmentDestinationRequest {}
-const GetTraceSegmentDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GetTraceSegmentDestination" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTraceSegmentDestinationRequest",
-}) as any as S.Schema<GetTraceSegmentDestinationRequest>;
+const GetTraceSegmentDestinationRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetTraceSegmentDestinationRequest>;
 export type TraceSegmentDestination = "XRay" | "CloudWatchLogs" | (string & {});
 const TraceSegmentDestination = S.String;
 
@@ -1320,14 +940,10 @@ export interface GetTraceSegmentDestinationResult {
   Destination?: TraceSegmentDestination;
   Status?: TraceSegmentDestinationStatus;
 }
-const GetTraceSegmentDestinationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Destination: S.optional(TraceSegmentDestination),
-    Status: S.optional(TraceSegmentDestinationStatus),
-  }),
-).annotate({
-  identifier: "GetTraceSegmentDestinationResult",
-}) as any as S.Schema<GetTraceSegmentDestinationResult>;
+const GetTraceSegmentDestinationResult = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetTraceSegmentDestinationResult>;
 export type TimeRangeType = "TraceId" | "Event" | "Service" | (string & {});
 const TimeRangeType = S.String;
 
@@ -1338,9 +954,7 @@ export interface SamplingStrategy {
   Name?: SamplingStrategyName;
   Value?: number;
 }
-const SamplingStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(SamplingStrategyName), Value: S.optional(S.Number) }),
-).annotate({ identifier: "SamplingStrategy" }) as any as S.Schema<SamplingStrategy>;
+const SamplingStrategy = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<SamplingStrategy>;
 export interface GetTraceSummariesRequest {
   StartTime: Date;
   EndTime: Date;
@@ -1350,17 +964,10 @@ export interface GetTraceSummariesRequest {
   FilterExpression?: string;
   NextToken?: string;
 }
-const GetTraceSummariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    TimeRangeType: S.optional(TimeRangeType),
-    Sampling: S.optional(S.Boolean),
-    SamplingStrategy: S.optional(SamplingStrategy),
-    FilterExpression: S.optional(S.String),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/TraceSummaries" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetTraceSummariesRequest" }) as any as S.Schema<GetTraceSummariesRequest>;
+const GetTraceSummariesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetTraceSummariesRequest>;
 export interface Http {
   HttpURL?: string;
   HttpStatus?: number;
@@ -1368,97 +975,70 @@ export interface Http {
   UserAgent?: string;
   ClientIp?: string;
 }
-const Http = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HttpURL: S.optional(S.String),
-    HttpStatus: S.optional(S.Number),
-    HttpMethod: S.optional(S.String),
-    UserAgent: S.optional(S.String),
-    ClientIp: S.optional(S.String),
-  }),
-).annotate({ identifier: "Http" }) as any as S.Schema<Http>;
+const Http = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<Http>;
 export type AnnotationKey = string;
 export type AnnotationValue =
   | { NumberValue: number; BooleanValue?: never; StringValue?: never }
   | { NumberValue?: never; BooleanValue: boolean; StringValue?: never }
   | { NumberValue?: never; BooleanValue?: never; StringValue: string };
-const AnnotationValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ NumberValue: S.Number }),
-  /*@__PURE__*/ S.Struct({ BooleanValue: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ StringValue: S.String }),
-]);
+const AnnotationValue = /*@__PURE__*/ __L.at(__c13, 4);
 export type ServiceIds = ServiceId[];
-const ServiceIds = /*@__PURE__*/ S.Array(ServiceId);
+const ServiceIds = /*@__PURE__*/ __L.at(__c13, 5);
 export interface ValueWithServiceIds {
   AnnotationValue?: AnnotationValue;
   ServiceIds?: ServiceId[];
 }
-const ValueWithServiceIds = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AnnotationValue: S.optional(AnnotationValue), ServiceIds: S.optional(ServiceIds) }),
-).annotate({ identifier: "ValueWithServiceIds" }) as any as S.Schema<ValueWithServiceIds>;
+const ValueWithServiceIds = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<ValueWithServiceIds>;
 export type ValuesWithServiceIds = ValueWithServiceIds[];
-const ValuesWithServiceIds = /*@__PURE__*/ S.Array(ValueWithServiceIds);
+const ValuesWithServiceIds = /*@__PURE__*/ __L.at(__c13, 7);
 export type Annotations = { [key: string]: ValueWithServiceIds[] | undefined };
-const Annotations = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ValuesWithServiceIds.pipe(S.optional),
-);
+const Annotations = /*@__PURE__*/ __L.at(__c14, 0);
 export interface TraceUser {
   UserName?: string;
   ServiceIds?: ServiceId[];
 }
-const TraceUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserName: S.optional(S.String), ServiceIds: S.optional(ServiceIds) }),
-).annotate({ identifier: "TraceUser" }) as any as S.Schema<TraceUser>;
+const TraceUser = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<TraceUser>;
 export type TraceUsers = TraceUser[];
-const TraceUsers = /*@__PURE__*/ S.Array(TraceUser);
+const TraceUsers = /*@__PURE__*/ __L.at(__c14, 2);
 export interface ResourceARNDetail {
   ARN?: string;
 }
-const ResourceARNDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ARN: S.optional(S.String) }),
-).annotate({ identifier: "ResourceARNDetail" }) as any as S.Schema<ResourceARNDetail>;
+const ResourceARNDetail = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<ResourceARNDetail>;
 export type TraceResourceARNs = ResourceARNDetail[];
-const TraceResourceARNs = /*@__PURE__*/ S.Array(ResourceARNDetail);
+const TraceResourceARNs = /*@__PURE__*/ __L.at(__c14, 4);
 export interface InstanceIdDetail {
   Id?: string;
 }
-const InstanceIdDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }),
-).annotate({ identifier: "InstanceIdDetail" }) as any as S.Schema<InstanceIdDetail>;
+const InstanceIdDetail = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<InstanceIdDetail>;
 export type TraceInstanceIds = InstanceIdDetail[];
-const TraceInstanceIds = /*@__PURE__*/ S.Array(InstanceIdDetail);
+const TraceInstanceIds = /*@__PURE__*/ __L.at(__c14, 6);
 export interface AvailabilityZoneDetail {
   Name?: string;
 }
-const AvailabilityZoneDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "AvailabilityZoneDetail" }) as any as S.Schema<AvailabilityZoneDetail>;
+const AvailabilityZoneDetail = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<AvailabilityZoneDetail>;
 export type TraceAvailabilityZones = AvailabilityZoneDetail[];
-const TraceAvailabilityZones = /*@__PURE__*/ S.Array(AvailabilityZoneDetail);
+const TraceAvailabilityZones = /*@__PURE__*/ __L.at(__c15, 0);
 export interface RootCauseException {
   Name?: string;
   Message?: string;
 }
-const RootCauseException = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Message: S.optional(S.String) }),
-).annotate({ identifier: "RootCauseException" }) as any as S.Schema<RootCauseException>;
+const RootCauseException = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<RootCauseException>;
 export type RootCauseExceptions = RootCauseException[];
-const RootCauseExceptions = /*@__PURE__*/ S.Array(RootCauseException);
+const RootCauseExceptions = /*@__PURE__*/ __L.at(__c15, 2);
 export interface FaultRootCauseEntity {
   Name?: string;
   Exceptions?: RootCauseException[];
   Remote?: boolean;
 }
-const FaultRootCauseEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Exceptions: S.optional(RootCauseExceptions),
-    Remote: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "FaultRootCauseEntity" }) as any as S.Schema<FaultRootCauseEntity>;
+const FaultRootCauseEntity = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<FaultRootCauseEntity>;
 export type FaultRootCauseEntityPath = FaultRootCauseEntity[];
-const FaultRootCauseEntityPath = /*@__PURE__*/ S.Array(FaultRootCauseEntity);
+const FaultRootCauseEntityPath = /*@__PURE__*/ __L.at(__c15, 4);
 export interface FaultRootCauseService {
   Name?: string;
   Names?: string[];
@@ -1467,30 +1047,19 @@ export interface FaultRootCauseService {
   EntityPath?: FaultRootCauseEntity[];
   Inferred?: boolean;
 }
-const FaultRootCauseService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Names: S.optional(ServiceNames),
-    Type: S.optional(S.String),
-    AccountId: S.optional(S.String),
-    EntityPath: S.optional(FaultRootCauseEntityPath),
-    Inferred: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "FaultRootCauseService" }) as any as S.Schema<FaultRootCauseService>;
+const FaultRootCauseService = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<FaultRootCauseService>;
 export type FaultRootCauseServices = FaultRootCauseService[];
-const FaultRootCauseServices = /*@__PURE__*/ S.Array(FaultRootCauseService);
+const FaultRootCauseServices = /*@__PURE__*/ __L.at(__c15, 6);
 export interface FaultRootCause {
   Services?: FaultRootCauseService[];
   ClientImpacting?: boolean;
 }
-const FaultRootCause = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Services: S.optional(FaultRootCauseServices),
-    ClientImpacting: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "FaultRootCause" }) as any as S.Schema<FaultRootCause>;
+const FaultRootCause = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<FaultRootCause>;
 export type FaultRootCauses = FaultRootCause[];
-const FaultRootCauses = /*@__PURE__*/ S.Array(FaultRootCause);
+const FaultRootCauses = /*@__PURE__*/ __L.at(__c16, 0);
 export interface ErrorRootCauseEntity {
   Name?: string;
   Exceptions?: RootCauseException[];
@@ -1517,17 +1086,12 @@ export interface ResponseTimeRootCauseEntity {
   Coverage?: number;
   Remote?: boolean;
 }
-const ResponseTimeRootCauseEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Coverage: S.optional(S.Number),
-    Remote: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ResponseTimeRootCauseEntity",
-}) as any as S.Schema<ResponseTimeRootCauseEntity>;
+const ResponseTimeRootCauseEntity = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ResponseTimeRootCauseEntity>;
 export type ResponseTimeRootCauseEntityPath = ResponseTimeRootCauseEntity[];
-const ResponseTimeRootCauseEntityPath = /*@__PURE__*/ S.Array(ResponseTimeRootCauseEntity);
+const ResponseTimeRootCauseEntityPath = /*@__PURE__*/ __L.at(__c16, 2);
 export interface ResponseTimeRootCauseService {
   Name?: string;
   Names?: string[];
@@ -1536,32 +1100,22 @@ export interface ResponseTimeRootCauseService {
   EntityPath?: ResponseTimeRootCauseEntity[];
   Inferred?: boolean;
 }
-const ResponseTimeRootCauseService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Names: S.optional(ServiceNames),
-    Type: S.optional(S.String),
-    AccountId: S.optional(S.String),
-    EntityPath: S.optional(ResponseTimeRootCauseEntityPath),
-    Inferred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ResponseTimeRootCauseService",
-}) as any as S.Schema<ResponseTimeRootCauseService>;
+const ResponseTimeRootCauseService = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ResponseTimeRootCauseService>;
 export type ResponseTimeRootCauseServices = ResponseTimeRootCauseService[];
-const ResponseTimeRootCauseServices = /*@__PURE__*/ S.Array(ResponseTimeRootCauseService);
+const ResponseTimeRootCauseServices = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ResponseTimeRootCause {
   Services?: ResponseTimeRootCauseService[];
   ClientImpacting?: boolean;
 }
-const ResponseTimeRootCause = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Services: S.optional(ResponseTimeRootCauseServices),
-    ClientImpacting: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ResponseTimeRootCause" }) as any as S.Schema<ResponseTimeRootCause>;
+const ResponseTimeRootCause = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ResponseTimeRootCause>;
 export type ResponseTimeRootCauses = ResponseTimeRootCause[];
-const ResponseTimeRootCauses = /*@__PURE__*/ S.Array(ResponseTimeRootCause);
+const ResponseTimeRootCauses = /*@__PURE__*/ __L.at(__c16, 6);
 export interface TraceSummary {
   Id?: string;
   StartTime?: Date;
@@ -1585,58 +1139,27 @@ export interface TraceSummary {
   Revision?: number;
   MatchedEventTime?: Date;
 }
-const TraceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Duration: S.optional(S.Number),
-    ResponseTime: S.optional(S.Number),
-    HasFault: S.optional(S.Boolean),
-    HasError: S.optional(S.Boolean),
-    HasThrottle: S.optional(S.Boolean),
-    IsPartial: S.optional(S.Boolean),
-    Http: S.optional(Http),
-    Annotations: S.optional(Annotations),
-    Users: S.optional(TraceUsers),
-    ServiceIds: S.optional(ServiceIds),
-    ResourceARNs: S.optional(TraceResourceARNs),
-    InstanceIds: S.optional(TraceInstanceIds),
-    AvailabilityZones: S.optional(TraceAvailabilityZones),
-    EntryPoint: S.optional(ServiceId),
-    FaultRootCauses: S.optional(FaultRootCauses),
-    ErrorRootCauses: S.optional(ErrorRootCauses),
-    ResponseTimeRootCauses: S.optional(ResponseTimeRootCauses),
-    Revision: S.optional(S.Number),
-    MatchedEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "TraceSummary" }) as any as S.Schema<TraceSummary>;
+const TraceSummary = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<TraceSummary>;
 export type TraceSummaryList = TraceSummary[];
-const TraceSummaryList = /*@__PURE__*/ S.Array(TraceSummary);
+const TraceSummaryList = /*@__PURE__*/ __L.at(__c17, 0);
 export interface GetTraceSummariesResult {
   TraceSummaries?: TraceSummary[];
   ApproximateTime?: Date;
   TracesProcessedCount?: number;
   NextToken?: string;
 }
-const GetTraceSummariesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TraceSummaries: S.optional(TraceSummaryList),
-    ApproximateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    TracesProcessedCount: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetTraceSummariesResult" }) as any as S.Schema<GetTraceSummariesResult>;
+const GetTraceSummariesResult = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GetTraceSummariesResult>;
 export type ResourcePolicyNextToken = string;
 export interface ListResourcePoliciesRequest {
   NextToken?: string;
 }
-const ListResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/ListResourcePolicies" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListResourcePoliciesRequest",
-}) as any as S.Schema<ListResourcePoliciesRequest>;
+const ListResourcePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListResourcePoliciesRequest>;
 export type PolicyDocument = string;
 export interface ResourcePolicy {
   PolicyName?: string;
@@ -1644,25 +1167,17 @@ export interface ResourcePolicy {
   PolicyRevisionId?: string;
   LastUpdatedTime?: Date;
 }
-const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PolicyName: S.optional(S.String),
-    PolicyDocument: S.optional(S.String),
-    PolicyRevisionId: S.optional(S.String),
-    LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ResourcePolicy" }) as any as S.Schema<ResourcePolicy>;
+const ResourcePolicy = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ResourcePolicy>;
 export type ResourcePolicyList = ResourcePolicy[];
-const ResourcePolicyList = /*@__PURE__*/ S.Array(ResourcePolicy);
+const ResourcePolicyList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ListResourcePoliciesResult {
   ResourcePolicies?: ResourcePolicy[];
   NextToken?: string;
 }
-const ListResourcePoliciesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourcePolicies: S.optional(ResourcePolicyList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListResourcePoliciesResult",
-}) as any as S.Schema<ListResourcePoliciesResult>;
+const ListResourcePoliciesResult = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListResourcePoliciesResult>;
 export type TraceFormatType = "XRAY" | "OTEL" | (string & {});
 const TraceFormatType = S.String;
 
@@ -1671,17 +1186,10 @@ export interface ListRetrievedTracesRequest {
   TraceFormat?: TraceFormatType;
   NextToken?: string;
 }
-const ListRetrievedTracesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RetrievalToken: S.String,
-    TraceFormat: S.optional(TraceFormatType),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/ListRetrievedTraces" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListRetrievedTracesRequest",
-}) as any as S.Schema<ListRetrievedTracesRequest>;
+const ListRetrievedTracesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListRetrievedTracesRequest>;
 export type SpanId = string;
 export type SpanDocument = string;
 export interface Span {
@@ -1695,64 +1203,45 @@ export interface RetrievedTrace {
   Duration?: number;
   Spans?: Span[];
 }
-const RetrievedTrace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Duration: S.optional(S.Number),
-    Spans: S.optional(SpanList),
-  }),
-).annotate({ identifier: "RetrievedTrace" }) as any as S.Schema<RetrievedTrace>;
+const RetrievedTrace = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<RetrievedTrace>;
 export type TraceSpanList = RetrievedTrace[];
-const TraceSpanList = /*@__PURE__*/ S.Array(RetrievedTrace);
+const TraceSpanList = /*@__PURE__*/ __L.at(__c18, 0);
 export interface ListRetrievedTracesResult {
   RetrievalStatus?: RetrievalStatus;
   TraceFormat?: TraceFormatType;
   Traces?: RetrievedTrace[];
   NextToken?: string;
 }
-const ListRetrievedTracesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RetrievalStatus: S.optional(RetrievalStatus),
-    TraceFormat: S.optional(TraceFormatType),
-    Traces: S.optional(TraceSpanList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRetrievedTracesResult",
-}) as any as S.Schema<ListRetrievedTracesResult>;
+const ListRetrievedTracesResult = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListRetrievedTracesResult>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
   NextToken?: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/ListTagsForResource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
   NextToken?: string;
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type EncryptionKeyId = string;
 export interface PutEncryptionConfigRequest {
   KeyId?: string;
   Type: EncryptionType;
 }
-const PutEncryptionConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KeyId: S.optional(S.String), Type: EncryptionType }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/PutEncryptionConfig" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutEncryptionConfigRequest",
-}) as any as S.Schema<PutEncryptionConfigRequest>;
+const PutEncryptionConfigRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<PutEncryptionConfigRequest>;
 export interface PutEncryptionConfigResult {
   EncryptionConfig?: EncryptionConfig;
 }
@@ -1764,22 +1253,17 @@ export interface PutResourcePolicyRequest {
   PolicyRevisionId?: string;
   BypassPolicyLockoutCheck?: boolean;
 }
-const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PolicyName: S.String,
-    PolicyDocument: S.String,
-    PolicyRevisionId: S.optional(S.String),
-    BypassPolicyLockoutCheck: S.optional(S.Boolean),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/PutResourcePolicy" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutResourcePolicyRequest" }) as any as S.Schema<PutResourcePolicyRequest>;
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResult {
   ResourcePolicy?: ResourcePolicy;
 }
-const PutResourcePolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourcePolicy: S.optional(ResourcePolicy) }),
-).annotate({ identifier: "PutResourcePolicyResult" }) as any as S.Schema<PutResourcePolicyResult>;
+const PutResourcePolicyResult = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<PutResourcePolicyResult>;
 export interface BackendConnectionErrors {
   TimeoutCount?: number;
   ConnectionRefusedCount?: number;
@@ -1788,16 +1272,10 @@ export interface BackendConnectionErrors {
   UnknownHostCount?: number;
   OtherCount?: number;
 }
-const BackendConnectionErrors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimeoutCount: S.optional(S.Number),
-    ConnectionRefusedCount: S.optional(S.Number),
-    HTTPCode4XXCount: S.optional(S.Number),
-    HTTPCode5XXCount: S.optional(S.Number),
-    UnknownHostCount: S.optional(S.Number),
-    OtherCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BackendConnectionErrors" }) as any as S.Schema<BackendConnectionErrors>;
+const BackendConnectionErrors = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<BackendConnectionErrors>;
 export interface TelemetryRecord {
   Timestamp: Date;
   SegmentsReceivedCount?: number;
@@ -1806,18 +1284,9 @@ export interface TelemetryRecord {
   SegmentsRejectedCount?: number;
   BackendConnectionErrors?: BackendConnectionErrors;
 }
-const TelemetryRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    SegmentsReceivedCount: S.optional(S.Number),
-    SegmentsSentCount: S.optional(S.Number),
-    SegmentsSpilloverCount: S.optional(S.Number),
-    SegmentsRejectedCount: S.optional(S.Number),
-    BackendConnectionErrors: S.optional(BackendConnectionErrors),
-  }),
-).annotate({ identifier: "TelemetryRecord" }) as any as S.Schema<TelemetryRecord>;
+const TelemetryRecord = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<TelemetryRecord>;
 export type TelemetryRecordList = TelemetryRecord[];
-const TelemetryRecordList = /*@__PURE__*/ S.Array(TelemetryRecord);
+const TelemetryRecordList = /*@__PURE__*/ __L.at(__c19, 1);
 export type EC2InstanceId = string;
 export type Hostname = string;
 export interface PutTelemetryRecordsRequest {
@@ -1826,18 +1295,10 @@ export interface PutTelemetryRecordsRequest {
   Hostname?: string;
   ResourceARN?: string;
 }
-const PutTelemetryRecordsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TelemetryRecords: TelemetryRecordList,
-    EC2InstanceId: S.optional(S.String),
-    Hostname: S.optional(S.String),
-    ResourceARN: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/TelemetryRecords" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutTelemetryRecordsRequest",
-}) as any as S.Schema<PutTelemetryRecordsRequest>;
+const PutTelemetryRecordsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<PutTelemetryRecordsRequest>;
 export interface PutTelemetryRecordsResult {}
 const PutTelemetryRecordsResult =
   CancelTraceRetrievalResult as any as S.Schema<PutTelemetryRecordsResult>;
@@ -1847,31 +1308,28 @@ const TraceSegmentDocumentList = TraceIdList as any as S.Schema<TraceSegmentDocu
 export interface PutTraceSegmentsRequest {
   TraceSegmentDocuments: string[];
 }
-const PutTraceSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TraceSegmentDocuments: TraceSegmentDocumentList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/TraceSegments" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutTraceSegmentsRequest" }) as any as S.Schema<PutTraceSegmentsRequest>;
+const PutTraceSegmentsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<PutTraceSegmentsRequest>;
 export interface UnprocessedTraceSegment {
   Id?: string;
   ErrorCode?: string;
   Message?: string;
 }
-const UnprocessedTraceSegment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    ErrorCode: S.optional(S.String),
-    Message: S.optional(S.String),
-  }),
-).annotate({ identifier: "UnprocessedTraceSegment" }) as any as S.Schema<UnprocessedTraceSegment>;
+const UnprocessedTraceSegment = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<UnprocessedTraceSegment>;
 export type UnprocessedTraceSegmentList = UnprocessedTraceSegment[];
-const UnprocessedTraceSegmentList = /*@__PURE__*/ S.Array(UnprocessedTraceSegment);
+const UnprocessedTraceSegmentList = /*@__PURE__*/ __L.at(__c19, 5);
 export interface PutTraceSegmentsResult {
   UnprocessedTraceSegments?: UnprocessedTraceSegment[];
 }
-const PutTraceSegmentsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedTraceSegments: S.optional(UnprocessedTraceSegmentList) }),
-).annotate({ identifier: "PutTraceSegmentsResult" }) as any as S.Schema<PutTraceSegmentsResult>;
+const PutTraceSegmentsResult = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<PutTraceSegmentsResult>;
 export type TraceIdListForRetrieval = string[];
 const TraceIdListForRetrieval = TraceIdList as any as S.Schema<TraceIdListForRetrieval>;
 export interface StartTraceRetrievalRequest {
@@ -1879,34 +1337,22 @@ export interface StartTraceRetrievalRequest {
   StartTime: Date;
   EndTime: Date;
 }
-const StartTraceRetrievalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TraceIds: TraceIdListForRetrieval,
-    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/StartTraceRetrieval" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartTraceRetrievalRequest",
-}) as any as S.Schema<StartTraceRetrievalRequest>;
+const StartTraceRetrievalRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<StartTraceRetrievalRequest>;
 export interface StartTraceRetrievalResult {
   RetrievalToken?: string;
 }
-const StartTraceRetrievalResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RetrievalToken: S.optional(S.String) }),
-).annotate({
-  identifier: "StartTraceRetrievalResult",
-}) as any as S.Schema<StartTraceRetrievalResult>;
+const StartTraceRetrievalResult = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<StartTraceRetrievalResult>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = CancelTraceRetrievalResult as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -1915,11 +1361,10 @@ export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = CancelTraceRetrievalResult as any as S.Schema<UntagResourceResponse>;
 export interface UpdateGroupRequest {
@@ -1928,14 +1373,7 @@ export interface UpdateGroupRequest {
   FilterExpression?: string;
   InsightsConfiguration?: InsightsConfiguration;
 }
-const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupName: S.optional(S.String),
-    GroupARN: S.optional(S.String),
-    FilterExpression: S.optional(S.String),
-    InsightsConfiguration: S.optional(InsightsConfiguration),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/UpdateGroup" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateGroupRequest" }) as any as S.Schema<UpdateGroupRequest>;
+const UpdateGroupRequest = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<UpdateGroupRequest>;
 export interface UpdateGroupResult {
   Group?: Group;
 }
@@ -1943,32 +1381,27 @@ const UpdateGroupResult = CreateGroupResult as any as S.Schema<UpdateGroupResult
 export interface ProbabilisticRuleValueUpdate {
   DesiredSamplingPercentage: number;
 }
-const ProbabilisticRuleValueUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DesiredSamplingPercentage: S.Number }),
-).annotate({
-  identifier: "ProbabilisticRuleValueUpdate",
-}) as any as S.Schema<ProbabilisticRuleValueUpdate>;
+const ProbabilisticRuleValueUpdate = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ProbabilisticRuleValueUpdate>;
 export type IndexingRuleValueUpdate = { Probabilistic: ProbabilisticRuleValueUpdate };
-const IndexingRuleValueUpdate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Probabilistic: ProbabilisticRuleValueUpdate }),
-]);
+const IndexingRuleValueUpdate = /*@__PURE__*/ __L.at(__c20, 5);
 export interface UpdateIndexingRuleRequest {
   Name: string;
   Rule: IndexingRuleValueUpdate;
 }
-const UpdateIndexingRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Rule: IndexingRuleValueUpdate }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/UpdateIndexingRule" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateIndexingRuleRequest",
-}) as any as S.Schema<UpdateIndexingRuleRequest>;
+const UpdateIndexingRuleRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<UpdateIndexingRuleRequest>;
 export interface UpdateIndexingRuleResult {
   IndexingRule?: IndexingRule;
 }
-const UpdateIndexingRuleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IndexingRule: S.optional(IndexingRule) }),
-).annotate({ identifier: "UpdateIndexingRuleResult" }) as any as S.Schema<UpdateIndexingRuleResult>;
+const UpdateIndexingRuleResult = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<UpdateIndexingRuleResult>;
 export interface SamplingRuleUpdate {
   RuleName?: string;
   RuleARN?: string;
@@ -1984,33 +1417,14 @@ export interface SamplingRuleUpdate {
   Attributes?: { [key: string]: string | undefined };
   SamplingRateBoost?: SamplingRateBoost;
 }
-const SamplingRuleUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleName: S.optional(S.String),
-    RuleARN: S.optional(S.String),
-    ResourceARN: S.optional(S.String),
-    Priority: S.optional(S.Number),
-    FixedRate: S.optional(S.Number),
-    ReservoirSize: S.optional(S.Number),
-    Host: S.optional(S.String),
-    ServiceName: S.optional(S.String),
-    ServiceType: S.optional(S.String),
-    HTTPMethod: S.optional(S.String),
-    URLPath: S.optional(S.String),
-    Attributes: S.optional(AttributeMap),
-    SamplingRateBoost: S.optional(SamplingRateBoost),
-  }),
-).annotate({ identifier: "SamplingRuleUpdate" }) as any as S.Schema<SamplingRuleUpdate>;
+const SamplingRuleUpdate = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<SamplingRuleUpdate>;
 export interface UpdateSamplingRuleRequest {
   SamplingRuleUpdate: SamplingRuleUpdate;
 }
-const UpdateSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SamplingRuleUpdate: SamplingRuleUpdate }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/UpdateSamplingRule" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateSamplingRuleRequest",
-}) as any as S.Schema<UpdateSamplingRuleRequest>;
+const UpdateSamplingRuleRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<UpdateSamplingRuleRequest>;
 export interface UpdateSamplingRuleResult {
   SamplingRuleRecord?: SamplingRuleRecord;
 }
@@ -2019,20 +1433,10 @@ const UpdateSamplingRuleResult =
 export interface UpdateTraceSegmentDestinationRequest {
   Destination?: TraceSegmentDestination;
 }
-const UpdateTraceSegmentDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Destination: S.optional(TraceSegmentDestination) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/UpdateTraceSegmentDestination" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateTraceSegmentDestinationRequest",
-}) as any as S.Schema<UpdateTraceSegmentDestinationRequest>;
+const UpdateTraceSegmentDestinationRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<UpdateTraceSegmentDestinationRequest>;
 export interface UpdateTraceSegmentDestinationResult {
   Destination?: TraceSegmentDestination;
   Status?: TraceSegmentDestinationStatus;
@@ -2998,3 +2402,1361 @@ export const updateTraceSegmentDestination: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTraceSegmentDestination",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ TraceIds: TraceIdList, NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/Traces" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetTracesRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Id: S.optional(S.String), Document: S.optional(S.String) }),
+      ).annotate({ identifier: "Segment" });
+    case 3:
+      return S.Array(Segment);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Duration: S.optional(S.Number),
+          LimitExceeded: S.optional(S.Boolean),
+          Segments: S.optional(SegmentList),
+        }),
+      ).annotate({ identifier: "Trace" });
+    case 5:
+      return S.Array(Trace);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Traces: S.optional(TraceList),
+          UnprocessedTraceIds: S.optional(UnprocessedTraceIdList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchGetTracesResult" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ RetrievalToken: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CancelTraceRetrieval" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelTraceRetrievalRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelTraceRetrievalResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          InsightsEnabled: S.optional(S.Boolean),
+          NotificationsEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "InsightsConfiguration" });
+    case 2:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 3:
+      return S.Array(Tag);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GroupName: S.String,
+          FilterExpression: S.optional(S.String),
+          InsightsConfiguration: S.optional(InsightsConfiguration),
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/CreateGroup" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateGroupRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          GroupName: S.optional(S.String),
+          GroupARN: S.optional(S.String),
+          FilterExpression: S.optional(S.String),
+          InsightsConfiguration: S.optional(InsightsConfiguration),
+        }),
+      ).annotate({ identifier: "Group" });
+    case 6:
+      return S.suspend(() => S.Struct({ Group: S.optional(Group) })).annotate({
+        identifier: "CreateGroupResult",
+      });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MaxRate: S.Number, CooldownWindowMinutes: S.Number }),
+      ).annotate({ identifier: "SamplingRateBoost" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RuleName: S.optional(S.String),
+          RuleARN: S.optional(S.String),
+          ResourceARN: S.String,
+          Priority: S.Number,
+          FixedRate: S.Number,
+          ReservoirSize: S.Number,
+          ServiceName: S.String,
+          ServiceType: S.String,
+          Host: S.String,
+          HTTPMethod: S.String,
+          URLPath: S.String,
+          Version: S.Number,
+          Attributes: S.optional(AttributeMap),
+          SamplingRateBoost: S.optional(SamplingRateBoost),
+        }),
+      ).annotate({ identifier: "SamplingRule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ SamplingRule: SamplingRule, Tags: S.optional(TagList) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CreateSamplingRule" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateSamplingRuleRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          SamplingRule: S.optional(SamplingRule),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "SamplingRuleRecord" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ SamplingRuleRecord: S.optional(SamplingRuleRecord) }),
+      ).annotate({ identifier: "CreateSamplingRuleResult" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ GroupName: S.optional(S.String), GroupARN: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/DeleteGroup" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteGroupRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ PolicyName: S.String, PolicyRevisionId: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/DeleteResourcePolicy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePolicyRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ RuleName: S.optional(S.String), RuleARN: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/DeleteSamplingRule" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteSamplingRuleRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/EncryptionConfig" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetEncryptionConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          KeyId: S.optional(S.String),
+          Status: S.optional(EncryptionStatus),
+          Type: S.optional(EncryptionType),
+        }),
+      ).annotate({ identifier: "EncryptionConfig" });
+    case 2:
+      return S.suspend(() => S.Struct({ EncryptionConfig: S.optional(EncryptionConfig) })).annotate(
+        {
+          identifier: "GetEncryptionConfigResult",
+        },
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ GroupName: S.optional(S.String), GroupARN: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/GetGroup" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetGroupRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/Groups" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetGroupsRequest" });
+    case 5:
+      return S.Array(GroupSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Groups: S.optional(GroupSummaryList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetGroupsResult" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/GetIndexingRules" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetIndexingRulesRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DesiredSamplingPercentage: S.Number,
+          ActualSamplingPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ProbabilisticRuleValue" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ Probabilistic: ProbabilisticRuleValue })]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          ModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Rule: S.optional(IndexingRuleValue),
+        }),
+      ).annotate({ identifier: "IndexingRule" });
+    case 3:
+      return S.Array(IndexingRule);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ IndexingRules: S.optional(IndexingRuleList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetIndexingRulesResult" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ InsightId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/Insight" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetInsightRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Names: S.optional(ServiceNames),
+          AccountId: S.optional(S.String),
+          Type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceId" });
+    case 7:
+      return S.Array(InsightCategory);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FaultCount: S.optional(S.Number),
+          OkCount: S.optional(S.Number),
+          TotalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RequestImpactStatistics" });
+    case 1:
+      return S.suspend(() => S.Struct({ ServiceId: S.optional(ServiceId) })).annotate({
+        identifier: "AnomalousService",
+      });
+    case 2:
+      return S.Array(AnomalousService);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          InsightId: S.optional(S.String),
+          GroupARN: S.optional(S.String),
+          GroupName: S.optional(S.String),
+          RootCauseServiceId: S.optional(ServiceId),
+          Categories: S.optional(InsightCategoryList),
+          State: S.optional(InsightState),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Summary: S.optional(S.String),
+          ClientRequestImpactStatistics: S.optional(RequestImpactStatistics),
+          RootCauseServiceRequestImpactStatistics: S.optional(RequestImpactStatistics),
+          TopAnomalousServices: S.optional(AnomalousServiceList),
+        }),
+      ).annotate({ identifier: "Insight" });
+    case 4:
+      return S.suspend(() => S.Struct({ Insight: S.optional(Insight) })).annotate({
+        identifier: "GetInsightResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          InsightId: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/InsightEvents" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetInsightEventsRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Summary: S.optional(S.String),
+          EventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ClientRequestImpactStatistics: S.optional(RequestImpactStatistics),
+          RootCauseServiceRequestImpactStatistics: S.optional(RequestImpactStatistics),
+          TopAnomalousServices: S.optional(AnomalousServiceList),
+        }),
+      ).annotate({ identifier: "InsightEvent" });
+    case 7:
+      return S.Array(InsightEvent);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ InsightEvents: S.optional(InsightEventList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetInsightEventsResult" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          InsightId: S.String,
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/InsightImpactGraph" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetInsightImpactGraphRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ ReferenceId: S.optional(S.Number) })).annotate({
+        identifier: "InsightImpactGraphEdge",
+      });
+    case 3:
+      return S.Array(InsightImpactGraphEdge);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ReferenceId: S.optional(S.Number),
+          Type: S.optional(S.String),
+          Name: S.optional(S.String),
+          Names: S.optional(ServiceNames),
+          AccountId: S.optional(S.String),
+          Edges: S.optional(InsightImpactGraphEdgeList),
+        }),
+      ).annotate({
+        identifier: "InsightImpactGraphService",
+      });
+    case 5:
+      return S.Array(InsightImpactGraphService);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          InsightId: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ServiceGraphStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ServiceGraphEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Services: S.optional(InsightImpactGraphServiceList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetInsightImpactGraphResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          States: S.optional(InsightStateList),
+          GroupARN: S.optional(S.String),
+          GroupName: S.optional(S.String),
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/InsightSummaries" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetInsightSummariesRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InsightId: S.optional(S.String),
+          GroupARN: S.optional(S.String),
+          GroupName: S.optional(S.String),
+          RootCauseServiceId: S.optional(ServiceId),
+          Categories: S.optional(InsightCategoryList),
+          State: S.optional(InsightState),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Summary: S.optional(S.String),
+          ClientRequestImpactStatistics: S.optional(RequestImpactStatistics),
+          RootCauseServiceRequestImpactStatistics: S.optional(RequestImpactStatistics),
+          TopAnomalousServices: S.optional(AnomalousServiceList),
+          LastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "InsightSummary" });
+    case 1:
+      return S.Array(InsightSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          InsightSummaries: S.optional(InsightSummaryList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetInsightSummariesResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ RetrievalToken: S.String, NextToken: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GetRetrievedTracesGraph" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRetrievedTracesGraphRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ThrottleCount: S.optional(S.Number),
+          OtherCount: S.optional(S.Number),
+          TotalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ErrorStatistics" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ OtherCount: S.optional(S.Number), TotalCount: S.optional(S.Number) }),
+      ).annotate({ identifier: "FaultStatistics" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          OkCount: S.optional(S.Number),
+          ErrorStatistics: S.optional(ErrorStatistics),
+          FaultStatistics: S.optional(FaultStatistics),
+          TotalCount: S.optional(S.Number),
+          TotalResponseTime: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EdgeStatistics" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Value: S.optional(S.Number), Count: S.optional(S.Number) }),
+      ).annotate({ identifier: "HistogramEntry" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(HistogramEntry);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Names: S.optional(AliasNames),
+          Type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Alias" });
+    case 2:
+      return S.Array(Alias);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ReferenceId: S.optional(S.Number),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SummaryStatistics: S.optional(EdgeStatistics),
+          ResponseTimeHistogram: S.optional(Histogram),
+          Aliases: S.optional(AliasList),
+          EdgeType: S.optional(S.String),
+          ReceivedEventAgeHistogram: S.optional(Histogram),
+        }),
+      ).annotate({ identifier: "Edge" });
+    case 4:
+      return S.Array(Edge);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ReferenceId: S.optional(S.Number),
+          Name: S.optional(S.String),
+          Names: S.optional(ServiceNames),
+          Root: S.optional(S.Boolean),
+          AccountId: S.optional(S.String),
+          Type: S.optional(S.String),
+          State: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Edges: S.optional(EdgeList),
+          SummaryStatistics: S.optional(ServiceStatistics),
+          DurationHistogram: S.optional(Histogram),
+          ResponseTimeHistogram: S.optional(Histogram),
+        }),
+      ).annotate({ identifier: "Service" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ReferenceType: S.optional(S.String),
+          SourceTraceId: S.optional(S.String),
+          DestinationTraceIds: S.optional(TraceIdList),
+        }),
+      ).annotate({ identifier: "GraphLink" });
+    case 7:
+      return S.Array(GraphLink);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Service: S.optional(Service), Links: S.optional(LinksList) }),
+      ).annotate({ identifier: "RetrievedService" });
+    case 1:
+      return S.Array(RetrievedService);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RetrievalStatus: S.optional(RetrievalStatus),
+          Services: S.optional(RetrievedServicesList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetRetrievedTracesGraphResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/GetSamplingRules" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetSamplingRulesRequest" });
+    case 4:
+      return S.Array(SamplingRuleRecord);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          SamplingRuleRecords: S.optional(SamplingRuleRecordList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSamplingRulesResult" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/SamplingStatisticSummaries" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSamplingStatisticSummariesRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          RuleName: S.optional(S.String),
+          Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RequestCount: S.optional(S.Number),
+          BorrowCount: S.optional(S.Number),
+          SampledCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SamplingStatisticSummary" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SamplingStatisticSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SamplingStatisticSummaries: S.optional(SamplingStatisticSummaryList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSamplingStatisticSummariesResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RuleName: S.String,
+          ClientID: S.String,
+          Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          RequestCount: S.Number,
+          SampledCount: S.Number,
+          BorrowCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SamplingStatisticsDocument",
+      });
+    case 3:
+      return S.Array(SamplingStatisticsDocument);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          RuleName: S.String,
+          ServiceName: S.String,
+          Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          AnomalyCount: S.Number,
+          TotalCount: S.Number,
+          SampledAnomalyCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "SamplingBoostStatisticsDocument",
+      });
+    case 5:
+      return S.Array(SamplingBoostStatisticsDocument);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          SamplingStatisticsDocuments: SamplingStatisticsDocumentList,
+          SamplingBoostStatisticsDocuments: S.optional(SamplingBoostStatisticsDocumentList),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/SamplingTargets" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetSamplingTargetsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          BoostRate: S.Number,
+          BoostRateTTL: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "SamplingBoost" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleName: S.optional(S.String),
+          FixedRate: S.optional(S.Number),
+          ReservoirQuota: S.optional(S.Number),
+          ReservoirQuotaTTL: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Interval: S.optional(S.Number),
+          SamplingBoost: S.optional(SamplingBoost),
+        }),
+      ).annotate({ identifier: "SamplingTargetDocument" });
+    case 1:
+      return S.Array(SamplingTargetDocument);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RuleName: S.optional(S.String),
+          ErrorCode: S.optional(S.String),
+          Message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UnprocessedStatistics" });
+    case 3:
+      return S.Array(UnprocessedStatistics);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SamplingTargetDocuments: S.optional(SamplingTargetDocumentList),
+          LastRuleModification: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UnprocessedStatistics: S.optional(UnprocessedStatisticsList),
+          UnprocessedBoostStatistics: S.optional(UnprocessedStatisticsList),
+        }),
+      ).annotate({ identifier: "GetSamplingTargetsResult" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          GroupName: S.optional(S.String),
+          GroupARN: S.optional(S.String),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/ServiceGraph" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetServiceGraphRequest" });
+    case 6:
+      return S.Array(Service);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Services: S.optional(ServiceList),
+          ContainsOldGroupVersions: S.optional(S.Boolean),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetServiceGraphResult" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          GroupName: S.optional(S.String),
+          GroupARN: S.optional(S.String),
+          EntitySelectorExpression: S.optional(S.String),
+          Period: S.optional(S.Number),
+          ForecastStatistics: S.optional(S.Boolean),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/TimeSeriesServiceStatistics" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTimeSeriesServiceStatisticsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ FaultCountHigh: S.optional(S.Number), FaultCountLow: S.optional(S.Number) }),
+      ).annotate({ identifier: "ForecastStatistics" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EdgeSummaryStatistics: S.optional(EdgeStatistics),
+          ServiceSummaryStatistics: S.optional(ServiceStatistics),
+          ServiceForecastStatistics: S.optional(ForecastStatistics),
+          ResponseTimeHistogram: S.optional(Histogram),
+        }),
+      ).annotate({
+        identifier: "TimeSeriesServiceStatistics",
+      });
+    case 3:
+      return S.Array(TimeSeriesServiceStatistics);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TimeSeriesServiceStatistics: S.optional(TimeSeriesServiceStatisticsList),
+          ContainsOldGroupVersions: S.optional(S.Boolean),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetTimeSeriesServiceStatisticsResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ TraceIds: TraceIdList, NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TraceGraph" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetTraceGraphRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Services: S.optional(ServiceList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetTraceGraphResult" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GetTraceSegmentDestination" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTraceSegmentDestinationRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Destination: S.optional(TraceSegmentDestination),
+          Status: S.optional(TraceSegmentDestinationStatus),
+        }),
+      ).annotate({
+        identifier: "GetTraceSegmentDestinationResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(SamplingStrategyName), Value: S.optional(S.Number) }),
+      ).annotate({ identifier: "SamplingStrategy" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          TimeRangeType: S.optional(TimeRangeType),
+          Sampling: S.optional(S.Boolean),
+          SamplingStrategy: S.optional(SamplingStrategy),
+          FilterExpression: S.optional(S.String),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TraceSummaries" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetTraceSummariesRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          HttpURL: S.optional(S.String),
+          HttpStatus: S.optional(S.Number),
+          HttpMethod: S.optional(S.String),
+          UserAgent: S.optional(S.String),
+          ClientIp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Http" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ NumberValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ BooleanValue: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ StringValue: S.String }),
+      ]);
+    case 5:
+      return S.Array(ServiceId);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AnnotationValue: S.optional(AnnotationValue),
+          ServiceIds: S.optional(ServiceIds),
+        }),
+      ).annotate({ identifier: "ValueWithServiceIds" });
+    case 7:
+      return S.Array(ValueWithServiceIds);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ ValuesWithServiceIds.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ UserName: S.optional(S.String), ServiceIds: S.optional(ServiceIds) }),
+      ).annotate({ identifier: "TraceUser" });
+    case 2:
+      return S.Array(TraceUser);
+    case 3:
+      return S.suspend(() => S.Struct({ ARN: S.optional(S.String) })).annotate({
+        identifier: "ResourceARNDetail",
+      });
+    case 4:
+      return S.Array(ResourceARNDetail);
+    case 5:
+      return S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
+        identifier: "InstanceIdDetail",
+      });
+    case 6:
+      return S.Array(InstanceIdDetail);
+    case 7:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+        identifier: "AvailabilityZoneDetail",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AvailabilityZoneDetail);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Message: S.optional(S.String) }),
+      ).annotate({ identifier: "RootCauseException" });
+    case 2:
+      return S.Array(RootCauseException);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Exceptions: S.optional(RootCauseExceptions),
+          Remote: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FaultRootCauseEntity" });
+    case 4:
+      return S.Array(FaultRootCauseEntity);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Names: S.optional(ServiceNames),
+          Type: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          EntityPath: S.optional(FaultRootCauseEntityPath),
+          Inferred: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FaultRootCauseService" });
+    case 6:
+      return S.Array(FaultRootCauseService);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Services: S.optional(FaultRootCauseServices),
+          ClientImpacting: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FaultRootCause" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(FaultRootCause);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Coverage: S.optional(S.Number),
+          Remote: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ResponseTimeRootCauseEntity",
+      });
+    case 2:
+      return S.Array(ResponseTimeRootCauseEntity);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Names: S.optional(ServiceNames),
+          Type: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          EntityPath: S.optional(ResponseTimeRootCauseEntityPath),
+          Inferred: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ResponseTimeRootCauseService",
+      });
+    case 4:
+      return S.Array(ResponseTimeRootCauseService);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Services: S.optional(ResponseTimeRootCauseServices),
+          ClientImpacting: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ResponseTimeRootCause" });
+    case 6:
+      return S.Array(ResponseTimeRootCause);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Duration: S.optional(S.Number),
+          ResponseTime: S.optional(S.Number),
+          HasFault: S.optional(S.Boolean),
+          HasError: S.optional(S.Boolean),
+          HasThrottle: S.optional(S.Boolean),
+          IsPartial: S.optional(S.Boolean),
+          Http: S.optional(Http),
+          Annotations: S.optional(Annotations),
+          Users: S.optional(TraceUsers),
+          ServiceIds: S.optional(ServiceIds),
+          ResourceARNs: S.optional(TraceResourceARNs),
+          InstanceIds: S.optional(TraceInstanceIds),
+          AvailabilityZones: S.optional(TraceAvailabilityZones),
+          EntryPoint: S.optional(ServiceId),
+          FaultRootCauses: S.optional(FaultRootCauses),
+          ErrorRootCauses: S.optional(ErrorRootCauses),
+          ResponseTimeRootCauses: S.optional(ResponseTimeRootCauses),
+          Revision: S.optional(S.Number),
+          MatchedEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "TraceSummary" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(TraceSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TraceSummaries: S.optional(TraceSummaryList),
+          ApproximateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          TracesProcessedCount: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetTraceSummariesResult" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListResourcePolicies" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListResourcePoliciesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          PolicyName: S.optional(S.String),
+          PolicyDocument: S.optional(S.String),
+          PolicyRevisionId: S.optional(S.String),
+          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ResourcePolicy" });
+    case 4:
+      return S.Array(ResourcePolicy);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ResourcePolicies: S.optional(ResourcePolicyList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListResourcePoliciesResult",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          RetrievalToken: S.String,
+          TraceFormat: S.optional(TraceFormatType),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListRetrievedTraces" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListRetrievedTracesRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Duration: S.optional(S.Number),
+          Spans: S.optional(SpanList),
+        }),
+      ).annotate({ identifier: "RetrievedTrace" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(RetrievedTrace);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RetrievalStatus: S.optional(RetrievalStatus),
+          TraceFormat: S.optional(TraceFormatType),
+          Traces: S.optional(TraceSpanList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRetrievedTracesResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, NextToken: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListTagsForResource" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ KeyId: S.optional(S.String), Type: EncryptionType }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/PutEncryptionConfig" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutEncryptionConfigRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          PolicyName: S.String,
+          PolicyDocument: S.String,
+          PolicyRevisionId: S.optional(S.String),
+          BypassPolicyLockoutCheck: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/PutResourcePolicy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutResourcePolicyRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ ResourcePolicy: S.optional(ResourcePolicy) })).annotate({
+        identifier: "PutResourcePolicyResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TimeoutCount: S.optional(S.Number),
+          ConnectionRefusedCount: S.optional(S.Number),
+          HTTPCode4XXCount: S.optional(S.Number),
+          HTTPCode5XXCount: S.optional(S.Number),
+          UnknownHostCount: S.optional(S.Number),
+          OtherCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BackendConnectionErrors" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          SegmentsReceivedCount: S.optional(S.Number),
+          SegmentsSentCount: S.optional(S.Number),
+          SegmentsSpilloverCount: S.optional(S.Number),
+          SegmentsRejectedCount: S.optional(S.Number),
+          BackendConnectionErrors: S.optional(BackendConnectionErrors),
+        }),
+      ).annotate({ identifier: "TelemetryRecord" });
+    case 1:
+      return S.Array(TelemetryRecord);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TelemetryRecords: TelemetryRecordList,
+          EC2InstanceId: S.optional(S.String),
+          Hostname: S.optional(S.String),
+          ResourceARN: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TelemetryRecords" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "PutTelemetryRecordsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ TraceSegmentDocuments: TraceSegmentDocumentList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TraceSegments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutTraceSegmentsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          ErrorCode: S.optional(S.String),
+          Message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UnprocessedTraceSegment" });
+    case 5:
+      return S.Array(UnprocessedTraceSegment);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ UnprocessedTraceSegments: S.optional(UnprocessedTraceSegmentList) }),
+      ).annotate({ identifier: "PutTraceSegmentsResult" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TraceIds: TraceIdListForRetrieval,
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/StartTraceRetrieval" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartTraceRetrievalRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RetrievalToken: S.optional(S.String) })).annotate({
+        identifier: "StartTraceRetrievalResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          GroupName: S.optional(S.String),
+          GroupARN: S.optional(S.String),
+          FilterExpression: S.optional(S.String),
+          InsightsConfiguration: S.optional(InsightsConfiguration),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/UpdateGroup" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateGroupRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ DesiredSamplingPercentage: S.Number })).annotate({
+        identifier: "ProbabilisticRuleValueUpdate",
+      });
+    case 5:
+      return S.Union([/*@__PURE__*/ S.Struct({ Probabilistic: ProbabilisticRuleValueUpdate })]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Rule: IndexingRuleValueUpdate }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/UpdateIndexingRule" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateIndexingRuleRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ IndexingRule: S.optional(IndexingRule) })).annotate({
+        identifier: "UpdateIndexingRuleResult",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleName: S.optional(S.String),
+          RuleARN: S.optional(S.String),
+          ResourceARN: S.optional(S.String),
+          Priority: S.optional(S.Number),
+          FixedRate: S.optional(S.Number),
+          ReservoirSize: S.optional(S.Number),
+          Host: S.optional(S.String),
+          ServiceName: S.optional(S.String),
+          ServiceType: S.optional(S.String),
+          HTTPMethod: S.optional(S.String),
+          URLPath: S.optional(S.String),
+          Attributes: S.optional(AttributeMap),
+          SamplingRateBoost: S.optional(SamplingRateBoost),
+        }),
+      ).annotate({ identifier: "SamplingRuleUpdate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ SamplingRuleUpdate: SamplingRuleUpdate }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/UpdateSamplingRule" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateSamplingRuleRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Destination: S.optional(TraceSegmentDestination) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/UpdateTraceSegmentDestination" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateTraceSegmentDestinationRequest",
+      });
+  }
+}

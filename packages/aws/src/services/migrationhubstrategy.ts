@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -135,20 +136,10 @@ export type ApplicationComponentId = string;
 export interface GetApplicationComponentDetailsRequest {
   applicationComponentId: string;
 }
-const GetApplicationComponentDetailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationComponentId: S.String.pipe(T.HttpLabel("applicationComponentId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/get-applicationcomponent-details/{applicationComponentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApplicationComponentDetailsRequest",
-}) as any as S.Schema<GetApplicationComponentDetailsRequest>;
+const GetApplicationComponentDetailsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetApplicationComponentDetailsRequest>;
 export type ResourceId = string;
 export type ResourceName = string;
 export type TransformationToolName = string;
@@ -159,13 +150,7 @@ export interface TransformationTool {
   description?: string;
   tranformationToolInstallationLink?: string;
 }
-const TransformationTool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    tranformationToolInstallationLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "TransformationTool" }) as any as S.Schema<TransformationTool>;
+const TransformationTool = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TransformationTool>;
 export type TargetDestination = string;
 export type Strategy = string;
 export interface RecommendationSet {
@@ -173,13 +158,7 @@ export interface RecommendationSet {
   targetDestination?: string;
   strategy?: string;
 }
-const RecommendationSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transformationTool: S.optional(TransformationTool),
-    targetDestination: S.optional(S.String),
-    strategy: S.optional(S.String),
-  }),
-).annotate({ identifier: "RecommendationSet" }) as any as S.Schema<RecommendationSet>;
+const RecommendationSet = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RecommendationSet>;
 export type SrcCodeOrDbAnalysisStatus = string;
 export type StatusMessage = string;
 export type Severity = string;
@@ -187,35 +166,25 @@ export interface AntipatternSeveritySummary {
   severity?: string;
   count?: number;
 }
-const AntipatternSeveritySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ severity: S.optional(S.String), count: S.optional(S.Number) }),
-).annotate({
-  identifier: "AntipatternSeveritySummary",
-}) as any as S.Schema<AntipatternSeveritySummary>;
+const AntipatternSeveritySummary = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AntipatternSeveritySummary>;
 export type ListAntipatternSeveritySummary = AntipatternSeveritySummary[];
-const ListAntipatternSeveritySummary = /*@__PURE__*/ S.Array(AntipatternSeveritySummary);
+const ListAntipatternSeveritySummary = /*@__PURE__*/ __L.at(__c0, 4);
 export interface DatabaseConfigDetail {
   secretName?: string;
 }
-const DatabaseConfigDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ secretName: S.optional(S.String) }),
-).annotate({ identifier: "DatabaseConfigDetail" }) as any as S.Schema<DatabaseConfigDetail>;
+const DatabaseConfigDetail = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DatabaseConfigDetail>;
 export interface SourceCodeRepository {
   repository?: string;
   branch?: string;
   versionControlType?: string;
   projectName?: string;
 }
-const SourceCodeRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository: S.optional(S.String),
-    branch: S.optional(S.String),
-    versionControlType: S.optional(S.String),
-    projectName: S.optional(S.String),
-  }),
-).annotate({ identifier: "SourceCodeRepository" }) as any as S.Schema<SourceCodeRepository>;
+const SourceCodeRepository = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SourceCodeRepository>;
 export type SourceCodeRepositories = SourceCodeRepository[];
-const SourceCodeRepositories = /*@__PURE__*/ S.Array(SourceCodeRepository);
+const SourceCodeRepositories = /*@__PURE__*/ __L.at(__c0, 7);
 export type AppType = string;
 export type ResourceSubType = string;
 export type InclusionStatus = string;
@@ -225,9 +194,7 @@ export interface S3Object {
   s3Bucket?: string;
   s3key?: string;
 }
-const S3Object = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Bucket: S.optional(S.String), s3key: S.optional(S.String) }),
-).annotate({ identifier: "S3Object" }) as any as S.Schema<S3Object>;
+const S3Object = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<S3Object>;
 export type AntipatternReportStatus = string;
 export type ServerId = string;
 export type RuntimeAnalysisStatus = string;
@@ -235,17 +202,12 @@ export type AppUnitErrorCategory = string;
 export interface AppUnitError {
   appUnitErrorCategory?: string;
 }
-const AppUnitError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ appUnitErrorCategory: S.optional(S.String) }),
-).annotate({ identifier: "AppUnitError" }) as any as S.Schema<AppUnitError>;
+const AppUnitError = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AppUnitError>;
 export type AnalysisType = string;
 export type AnalysisStatusUnion =
   | { runtimeAnalysisStatus: string; srcCodeOrDbAnalysisStatus?: never }
   | { runtimeAnalysisStatus?: never; srcCodeOrDbAnalysisStatus: string };
-const AnalysisStatusUnion = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ runtimeAnalysisStatus: S.String }),
-  /*@__PURE__*/ S.Struct({ srcCodeOrDbAnalysisStatus: S.String }),
-]);
+const AnalysisStatusUnion = /*@__PURE__*/ __L.at(__c1, 2);
 export type BinaryAnalyzerName = string;
 export type RunTimeAnalyzerName = string;
 export type SourceCodeAnalyzerName = string;
@@ -253,43 +215,28 @@ export type AnalyzerNameUnion =
   | { binaryAnalyzerName: string; runTimeAnalyzerName?: never; sourceCodeAnalyzerName?: never }
   | { binaryAnalyzerName?: never; runTimeAnalyzerName: string; sourceCodeAnalyzerName?: never }
   | { binaryAnalyzerName?: never; runTimeAnalyzerName?: never; sourceCodeAnalyzerName: string };
-const AnalyzerNameUnion = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ binaryAnalyzerName: S.String }),
-  /*@__PURE__*/ S.Struct({ runTimeAnalyzerName: S.String }),
-  /*@__PURE__*/ S.Struct({ sourceCodeAnalyzerName: S.String }),
-]);
+const AnalyzerNameUnion = /*@__PURE__*/ __L.at(__c1, 3);
 export interface AntipatternReportResult {
   analyzerName?: AnalyzerNameUnion;
   antiPatternReportS3Object?: S3Object;
   antipatternReportStatus?: string;
   antipatternReportStatusMessage?: string;
 }
-const AntipatternReportResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzerName: S.optional(AnalyzerNameUnion),
-    antiPatternReportS3Object: S.optional(S3Object),
-    antipatternReportStatus: S.optional(S.String),
-    antipatternReportStatusMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "AntipatternReportResult" }) as any as S.Schema<AntipatternReportResult>;
+const AntipatternReportResult = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AntipatternReportResult>;
 export type AntipatternReportResultList = AntipatternReportResult[];
-const AntipatternReportResultList = /*@__PURE__*/ S.Array(AntipatternReportResult);
+const AntipatternReportResultList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface Result {
   analysisType?: string;
   analysisStatus?: AnalysisStatusUnion;
   statusMessage?: string;
   antipatternReportResultList?: AntipatternReportResult[];
 }
-const Result = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analysisType: S.optional(S.String),
-    analysisStatus: S.optional(AnalysisStatusUnion),
-    statusMessage: S.optional(S.String),
-    antipatternReportResultList: S.optional(AntipatternReportResultList),
-  }),
-).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
+const Result = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Result>;
 export type ResultList = Result[];
-const ResultList = /*@__PURE__*/ S.Array(Result);
+const ResultList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface ApplicationComponentDetail {
   id?: string;
   name?: string;
@@ -315,116 +262,63 @@ export interface ApplicationComponentDetail {
   appUnitError?: AppUnitError;
   resultList?: Result[];
 }
-const ApplicationComponentDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    recommendationSet: S.optional(RecommendationSet),
-    analysisStatus: S.optional(S.String),
-    statusMessage: S.optional(S.String),
-    listAntipatternSeveritySummary: S.optional(ListAntipatternSeveritySummary),
-    databaseConfigDetail: S.optional(DatabaseConfigDetail),
-    sourceCodeRepositories: S.optional(SourceCodeRepositories),
-    appType: S.optional(S.String),
-    resourceSubType: S.optional(S.String),
-    inclusionStatus: S.optional(S.String),
-    antipatternReportS3Object: S.optional(S3Object),
-    antipatternReportStatus: S.optional(S.String),
-    antipatternReportStatusMessage: S.optional(S.String),
-    osVersion: S.optional(S.String),
-    osDriver: S.optional(S.String),
-    lastAnalyzedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    associatedServerId: S.optional(S.String),
-    moreServerAssociationExists: S.optional(S.Boolean),
-    runtimeStatus: S.optional(S.String),
-    runtimeStatusMessage: S.optional(S.String),
-    appUnitError: S.optional(AppUnitError),
-    resultList: S.optional(ResultList),
-  }),
-).annotate({
-  identifier: "ApplicationComponentDetail",
-}) as any as S.Schema<ApplicationComponentDetail>;
+const ApplicationComponentDetail = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ApplicationComponentDetail>;
 export interface AssociatedApplication {
   name?: string;
   id?: string;
 }
-const AssociatedApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), id: S.optional(S.String) }),
-).annotate({ identifier: "AssociatedApplication" }) as any as S.Schema<AssociatedApplication>;
+const AssociatedApplication = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AssociatedApplication>;
 export type AssociatedApplications = AssociatedApplication[];
-const AssociatedApplications = /*@__PURE__*/ S.Array(AssociatedApplication);
+const AssociatedApplications = /*@__PURE__*/ __L.at(__c2, 2);
 export type AssociatedServerIDs = string[];
-const AssociatedServerIDs = /*@__PURE__*/ S.Array(S.String);
+const AssociatedServerIDs = /*@__PURE__*/ __L.at(__c2, 3);
 export interface GetApplicationComponentDetailsResponse {
   applicationComponentDetail?: ApplicationComponentDetail;
   associatedApplications?: AssociatedApplication[];
   moreApplicationResource?: boolean;
   associatedServerIds?: string[];
 }
-const GetApplicationComponentDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationComponentDetail: S.optional(ApplicationComponentDetail),
-    associatedApplications: S.optional(AssociatedApplications),
-    moreApplicationResource: S.optional(S.Boolean),
-    associatedServerIds: S.optional(AssociatedServerIDs),
-  }),
-).annotate({
-  identifier: "GetApplicationComponentDetailsResponse",
-}) as any as S.Schema<GetApplicationComponentDetailsResponse>;
+const GetApplicationComponentDetailsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetApplicationComponentDetailsResponse>;
 export interface GetApplicationComponentStrategiesRequest {
   applicationComponentId: string;
 }
-const GetApplicationComponentStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationComponentId: S.String.pipe(T.HttpLabel("applicationComponentId")) }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/get-applicationcomponent-strategies/{applicationComponentId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApplicationComponentStrategiesRequest",
-}) as any as S.Schema<GetApplicationComponentStrategiesRequest>;
+const GetApplicationComponentStrategiesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetApplicationComponentStrategiesRequest>;
 export type StrategyRecommendation = string;
 export interface ApplicationComponentStrategy {
   recommendation?: RecommendationSet;
   status?: string;
   isPreferred?: boolean;
 }
-const ApplicationComponentStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommendation: S.optional(RecommendationSet),
-    status: S.optional(S.String),
-    isPreferred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ApplicationComponentStrategy",
-}) as any as S.Schema<ApplicationComponentStrategy>;
+const ApplicationComponentStrategy = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ApplicationComponentStrategy>;
 export type ApplicationComponentStrategies = ApplicationComponentStrategy[];
-const ApplicationComponentStrategies = /*@__PURE__*/ S.Array(ApplicationComponentStrategy);
+const ApplicationComponentStrategies = /*@__PURE__*/ __L.at(__c2, 7);
 export interface GetApplicationComponentStrategiesResponse {
   applicationComponentStrategies?: ApplicationComponentStrategy[];
 }
-const GetApplicationComponentStrategiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationComponentStrategies: S.optional(ApplicationComponentStrategies) }),
-).annotate({
-  identifier: "GetApplicationComponentStrategiesResponse",
-}) as any as S.Schema<GetApplicationComponentStrategiesResponse>;
+const GetApplicationComponentStrategiesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetApplicationComponentStrategiesResponse>;
 export type AsyncTaskId = string;
 export interface GetAssessmentRequest {
   id: string;
 }
-const GetAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/get-assessment/{id}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetAssessmentRequest" }) as any as S.Schema<GetAssessmentRequest>;
+const GetAssessmentRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetAssessmentRequest>;
 export type AssessmentStatus = string;
 export type AssessmentStatusMessage = string;
 export interface DataCollectionDetails {
@@ -437,18 +331,10 @@ export interface DataCollectionDetails {
   completionTime?: Date;
   statusMessage?: string;
 }
-const DataCollectionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    servers: S.optional(S.Number),
-    failed: S.optional(S.Number),
-    success: S.optional(S.Number),
-    inProgress: S.optional(S.Number),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    completionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    statusMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataCollectionDetails" }) as any as S.Schema<DataCollectionDetails>;
+const DataCollectionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DataCollectionDetails>;
 export type Condition = string;
 export type AssessmentTargetValues = string[];
 const AssessmentTargetValues = AssociatedServerIDs as any as S.Schema<AssessmentTargetValues>;
@@ -457,38 +343,25 @@ export interface AssessmentTarget {
   name: string;
   values: string[];
 }
-const AssessmentTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ condition: S.String, name: S.String, values: AssessmentTargetValues }),
-).annotate({ identifier: "AssessmentTarget" }) as any as S.Schema<AssessmentTarget>;
+const AssessmentTarget = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AssessmentTarget>;
 export type AssessmentTargets = AssessmentTarget[];
-const AssessmentTargets = /*@__PURE__*/ S.Array(AssessmentTarget);
+const AssessmentTargets = /*@__PURE__*/ __L.at(__c3, 4);
 export interface GetAssessmentResponse {
   id?: string;
   dataCollectionDetails?: DataCollectionDetails;
   assessmentTargets?: AssessmentTarget[];
 }
-const GetAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    dataCollectionDetails: S.optional(DataCollectionDetails),
-    assessmentTargets: S.optional(AssessmentTargets),
-  }),
-).annotate({ identifier: "GetAssessmentResponse" }) as any as S.Schema<GetAssessmentResponse>;
+const GetAssessmentResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetAssessmentResponse>;
 export interface GetImportFileTaskRequest {
   id: string;
 }
-const GetImportFileTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/get-import-file-task/{id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetImportFileTaskRequest" }) as any as S.Schema<GetImportFileTaskRequest>;
+const GetImportFileTaskRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetImportFileTaskRequest>;
 export type ImportFileTaskStatus = string;
 export type ImportS3Bucket = string;
 export type ImportS3Key = string;
@@ -505,61 +378,27 @@ export interface GetImportFileTaskResponse {
   numberOfRecordsFailed?: number;
   importName?: string;
 }
-const GetImportFileTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    status: S.optional(S.String),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    inputS3Bucket: S.optional(S.String),
-    inputS3Key: S.optional(S.String),
-    statusReportS3Bucket: S.optional(S.String),
-    statusReportS3Key: S.optional(S.String),
-    completionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    numberOfRecordsSuccess: S.optional(S.Number),
-    numberOfRecordsFailed: S.optional(S.Number),
-    importName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetImportFileTaskResponse",
-}) as any as S.Schema<GetImportFileTaskResponse>;
+const GetImportFileTaskResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetImportFileTaskResponse>;
 export interface GetLatestAssessmentIdRequest {}
-const GetLatestAssessmentIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/get-latest-assessment-id" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetLatestAssessmentIdRequest",
-}) as any as S.Schema<GetLatestAssessmentIdRequest>;
+const GetLatestAssessmentIdRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetLatestAssessmentIdRequest>;
 export interface GetLatestAssessmentIdResponse {
   id?: string;
 }
-const GetLatestAssessmentIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String) }),
-).annotate({
-  identifier: "GetLatestAssessmentIdResponse",
-}) as any as S.Schema<GetLatestAssessmentIdResponse>;
+const GetLatestAssessmentIdResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetLatestAssessmentIdResponse>;
 export interface GetPortfolioPreferencesRequest {}
-const GetPortfolioPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/get-portfolio-preferences" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPortfolioPreferencesRequest",
-}) as any as S.Schema<GetPortfolioPreferencesRequest>;
+const GetPortfolioPreferencesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetPortfolioPreferencesRequest>;
 export type BusinessGoalsInteger = number;
 export interface BusinessGoals {
   speedOfMigration?: number;
@@ -567,20 +406,14 @@ export interface BusinessGoals {
   modernizeInfrastructureWithCloudNativeTechnologies?: number;
   licenseCostReduction?: number;
 }
-const BusinessGoals = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    speedOfMigration: S.optional(S.Number),
-    reduceOperationalOverheadWithManagedServices: S.optional(S.Number),
-    modernizeInfrastructureWithCloudNativeTechnologies: S.optional(S.Number),
-    licenseCostReduction: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BusinessGoals" }) as any as S.Schema<BusinessGoals>;
+const BusinessGoals = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<BusinessGoals>;
 export interface PrioritizeBusinessGoals {
   businessGoals?: BusinessGoals;
 }
-const PrioritizeBusinessGoals = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ businessGoals: S.optional(BusinessGoals) }),
-).annotate({ identifier: "PrioritizeBusinessGoals" }) as any as S.Schema<PrioritizeBusinessGoals>;
+const PrioritizeBusinessGoals = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<PrioritizeBusinessGoals>;
 export type AwsManagedTargetDestination = string;
 export type AwsManagedTargetDestinations = string[];
 const AwsManagedTargetDestinations =
@@ -588,9 +421,7 @@ const AwsManagedTargetDestinations =
 export interface AwsManagedResources {
   targetDestination: string[];
 }
-const AwsManagedResources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetDestination: AwsManagedTargetDestinations }),
-).annotate({ identifier: "AwsManagedResources" }) as any as S.Schema<AwsManagedResources>;
+const AwsManagedResources = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<AwsManagedResources>;
 export type SelfManageTargetDestination = string;
 export type SelfManageTargetDestinations = string[];
 export interface SelfManageResources {
@@ -611,17 +442,14 @@ export type ManagementPreference =
       selfManageResources?: never;
       noPreference: NoManagementPreference;
     };
-const ManagementPreference = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ awsManagedResources: AwsManagedResources }),
-  /*@__PURE__*/ S.Struct({ selfManageResources: SelfManageResources }),
-  /*@__PURE__*/ S.Struct({ noPreference: NoManagementPreference }),
-]);
+const ManagementPreference = /*@__PURE__*/ __L.at(__c4, 6);
 export interface ApplicationPreferences {
   managementPreference?: ManagementPreference;
 }
-const ApplicationPreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ managementPreference: S.optional(ManagementPreference) }),
-).annotate({ identifier: "ApplicationPreferences" }) as any as S.Schema<ApplicationPreferences>;
+const ApplicationPreferences = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ApplicationPreferences>;
 export type DatabaseManagementPreference = string;
 export type HeterogeneousTargetDatabaseEngine = string;
 export type HeterogeneousTargetDatabaseEngines = string[];
@@ -630,9 +458,7 @@ const HeterogeneousTargetDatabaseEngines =
 export interface Heterogeneous {
   targetDatabaseEngine: string[];
 }
-const Heterogeneous = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetDatabaseEngine: HeterogeneousTargetDatabaseEngines }),
-).annotate({ identifier: "Heterogeneous" }) as any as S.Schema<Heterogeneous>;
+const Heterogeneous = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Heterogeneous>;
 export type HomogeneousTargetDatabaseEngine = string;
 export type HomogeneousTargetDatabaseEngines = string[];
 const HomogeneousTargetDatabaseEngines =
@@ -640,39 +466,27 @@ const HomogeneousTargetDatabaseEngines =
 export interface Homogeneous {
   targetDatabaseEngine?: string[];
 }
-const Homogeneous = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetDatabaseEngine: S.optional(HomogeneousTargetDatabaseEngines) }),
-).annotate({ identifier: "Homogeneous" }) as any as S.Schema<Homogeneous>;
+const Homogeneous = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Homogeneous>;
 export type TargetDatabaseEngine = string;
 export type TargetDatabaseEngines = string[];
 const TargetDatabaseEngines = AssociatedServerIDs as any as S.Schema<TargetDatabaseEngines>;
 export interface NoDatabaseMigrationPreference {
   targetDatabaseEngine: string[];
 }
-const NoDatabaseMigrationPreference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetDatabaseEngine: TargetDatabaseEngines }),
-).annotate({
-  identifier: "NoDatabaseMigrationPreference",
-}) as any as S.Schema<NoDatabaseMigrationPreference>;
+const NoDatabaseMigrationPreference = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<NoDatabaseMigrationPreference>;
 export type DatabaseMigrationPreference =
   | { heterogeneous: Heterogeneous; homogeneous?: never; noPreference?: never }
   | { heterogeneous?: never; homogeneous: Homogeneous; noPreference?: never }
   | { heterogeneous?: never; homogeneous?: never; noPreference: NoDatabaseMigrationPreference };
-const DatabaseMigrationPreference = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ heterogeneous: Heterogeneous }),
-  /*@__PURE__*/ S.Struct({ homogeneous: Homogeneous }),
-  /*@__PURE__*/ S.Struct({ noPreference: NoDatabaseMigrationPreference }),
-]);
+const DatabaseMigrationPreference = /*@__PURE__*/ __L.at(__c5, 3);
 export interface DatabasePreferences {
   databaseManagementPreference?: string;
   databaseMigrationPreference?: DatabaseMigrationPreference;
 }
-const DatabasePreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseManagementPreference: S.optional(S.String),
-    databaseMigrationPreference: S.optional(DatabaseMigrationPreference),
-  }),
-).annotate({ identifier: "DatabasePreferences" }) as any as S.Schema<DatabasePreferences>;
+const DatabasePreferences = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DatabasePreferences>;
 export type ApplicationMode = string;
 export interface GetPortfolioPreferencesResponse {
   prioritizeBusinessGoals?: PrioritizeBusinessGoals;
@@ -680,77 +494,58 @@ export interface GetPortfolioPreferencesResponse {
   databasePreferences?: DatabasePreferences;
   applicationMode?: string;
 }
-const GetPortfolioPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prioritizeBusinessGoals: S.optional(PrioritizeBusinessGoals),
-    applicationPreferences: S.optional(ApplicationPreferences),
-    databasePreferences: S.optional(DatabasePreferences),
-    applicationMode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPortfolioPreferencesResponse",
-}) as any as S.Schema<GetPortfolioPreferencesResponse>;
+const GetPortfolioPreferencesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetPortfolioPreferencesResponse>;
 export interface GetPortfolioSummaryRequest {}
-const GetPortfolioSummaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(T.Http({ method: "GET", uri: "/get-portfolio-summary" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetPortfolioSummaryRequest",
-}) as any as S.Schema<GetPortfolioSummaryRequest>;
+const GetPortfolioSummaryRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetPortfolioSummaryRequest>;
 export interface StrategySummary {
   strategy?: string;
   count?: number;
 }
-const StrategySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ strategy: S.optional(S.String), count: S.optional(S.Number) }),
-).annotate({ identifier: "StrategySummary" }) as any as S.Schema<StrategySummary>;
+const StrategySummary = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<StrategySummary>;
 export type ListStrategySummary = StrategySummary[];
-const ListStrategySummary = /*@__PURE__*/ S.Array(StrategySummary);
+const ListStrategySummary = /*@__PURE__*/ __L.at(__c6, 0);
 export interface ApplicationComponentSummary {
   appType?: string;
   count?: number;
 }
-const ApplicationComponentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ appType: S.optional(S.String), count: S.optional(S.Number) }),
-).annotate({
-  identifier: "ApplicationComponentSummary",
-}) as any as S.Schema<ApplicationComponentSummary>;
+const ApplicationComponentSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ApplicationComponentSummary>;
 export type ListApplicationComponentSummary = ApplicationComponentSummary[];
-const ListApplicationComponentSummary = /*@__PURE__*/ S.Array(ApplicationComponentSummary);
+const ListApplicationComponentSummary = /*@__PURE__*/ __L.at(__c6, 2);
 export type ServerOsType = string;
 export interface ServerSummary {
   ServerOsType?: string;
   count?: number;
 }
-const ServerSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServerOsType: S.optional(S.String), count: S.optional(S.Number) }),
-).annotate({ identifier: "ServerSummary" }) as any as S.Schema<ServerSummary>;
+const ServerSummary = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ServerSummary>;
 export type ListServerSummary = ServerSummary[];
-const ListServerSummary = /*@__PURE__*/ S.Array(ServerSummary);
+const ListServerSummary = /*@__PURE__*/ __L.at(__c6, 4);
 export interface ApplicationComponentStatusSummary {
   srcCodeOrDbAnalysisStatus?: string;
   count?: number;
 }
-const ApplicationComponentStatusSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ srcCodeOrDbAnalysisStatus: S.optional(S.String), count: S.optional(S.Number) }),
-).annotate({
-  identifier: "ApplicationComponentStatusSummary",
-}) as any as S.Schema<ApplicationComponentStatusSummary>;
+const ApplicationComponentStatusSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ApplicationComponentStatusSummary>;
 export type ListApplicationComponentStatusSummary = ApplicationComponentStatusSummary[];
-const ListApplicationComponentStatusSummary = /*@__PURE__*/ S.Array(
-  ApplicationComponentStatusSummary,
-);
+const ListApplicationComponentStatusSummary = /*@__PURE__*/ __L.at(__c6, 6);
 export type RunTimeAssessmentStatus = string;
 export interface ServerStatusSummary {
   runTimeAssessmentStatus?: string;
   count?: number;
 }
-const ServerStatusSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ runTimeAssessmentStatus: S.optional(S.String), count: S.optional(S.Number) }),
-).annotate({ identifier: "ServerStatusSummary" }) as any as S.Schema<ServerStatusSummary>;
+const ServerStatusSummary = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ServerStatusSummary>;
 export type ListServerStatusSummary = ServerStatusSummary[];
-const ListServerStatusSummary = /*@__PURE__*/ S.Array(ServerStatusSummary);
+const ListServerStatusSummary = /*@__PURE__*/ __L.at(__c7, 0);
 export interface AssessmentSummary {
   listServerStrategySummary?: StrategySummary[];
   listApplicationComponentStrategySummary?: StrategySummary[];
@@ -764,47 +559,22 @@ export interface AssessmentSummary {
   listApplicationComponentStatusSummary?: ApplicationComponentStatusSummary[];
   listServerStatusSummary?: ServerStatusSummary[];
 }
-const AssessmentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listServerStrategySummary: S.optional(ListStrategySummary),
-    listApplicationComponentStrategySummary: S.optional(ListStrategySummary),
-    listAntipatternSeveritySummary: S.optional(ListAntipatternSeveritySummary),
-    listApplicationComponentSummary: S.optional(ListApplicationComponentSummary),
-    listServerSummary: S.optional(ListServerSummary),
-    antipatternReportS3Object: S.optional(S3Object),
-    antipatternReportStatus: S.optional(S.String),
-    antipatternReportStatusMessage: S.optional(S.String),
-    lastAnalyzedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    listApplicationComponentStatusSummary: S.optional(ListApplicationComponentStatusSummary),
-    listServerStatusSummary: S.optional(ListServerStatusSummary),
-  }),
-).annotate({ identifier: "AssessmentSummary" }) as any as S.Schema<AssessmentSummary>;
+const AssessmentSummary = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<AssessmentSummary>;
 export interface GetPortfolioSummaryResponse {
   assessmentSummary?: AssessmentSummary;
 }
-const GetPortfolioSummaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ assessmentSummary: S.optional(AssessmentSummary) }),
-).annotate({
-  identifier: "GetPortfolioSummaryResponse",
-}) as any as S.Schema<GetPortfolioSummaryResponse>;
+const GetPortfolioSummaryResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetPortfolioSummaryResponse>;
 export type RecommendationTaskId = string;
 export interface GetRecommendationReportDetailsRequest {
   id: string;
 }
-const GetRecommendationReportDetailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/get-recommendation-report-details/{id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetRecommendationReportDetailsRequest",
-}) as any as S.Schema<GetRecommendationReportDetailsRequest>;
+const GetRecommendationReportDetailsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetRecommendationReportDetailsRequest>;
 export type RecommendationReportStatus = string;
 export type RecommendationReportStatusMessage = string;
 export type RecommendationReportTimeStamp = Date;
@@ -818,30 +588,18 @@ export interface RecommendationReportDetails {
   s3Bucket?: string;
   s3Keys?: string[];
 }
-const RecommendationReportDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    statusMessage: S.optional(S.String),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    completionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    s3Bucket: S.optional(S.String),
-    s3Keys: S.optional(S3Keys),
-  }),
-).annotate({
-  identifier: "RecommendationReportDetails",
-}) as any as S.Schema<RecommendationReportDetails>;
+const RecommendationReportDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<RecommendationReportDetails>;
 export interface GetRecommendationReportDetailsResponse {
   id?: string;
   recommendationReportDetails?: RecommendationReportDetails;
 }
-const GetRecommendationReportDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    recommendationReportDetails: S.optional(RecommendationReportDetails),
-  }),
-).annotate({
-  identifier: "GetRecommendationReportDetailsResponse",
-}) as any as S.Schema<GetRecommendationReportDetailsResponse>;
+const GetRecommendationReportDetailsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetRecommendationReportDetailsResponse>;
 export type NextToken = string;
 export type MaxResult = number;
 export interface GetServerDetailsRequest {
@@ -849,31 +607,17 @@ export interface GetServerDetailsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const GetServerDetailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverId: S.String.pipe(T.HttpLabel("serverId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/get-server-details/{serverId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetServerDetailsRequest" }) as any as S.Schema<GetServerDetailsRequest>;
+const GetServerDetailsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetServerDetailsRequest>;
 export type OSType = string;
 export type OSVersion = string;
 export interface OSInfo {
   type?: string;
   version?: string;
 }
-const OSInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: S.optional(S.String), version: S.optional(S.String) }),
-).annotate({ identifier: "OSInfo" }) as any as S.Schema<OSInfo>;
+const OSInfo = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<OSInfo>;
 export type InterfaceName = string;
 export type IPAddress = string;
 export type MacAddress = string;
@@ -884,37 +628,21 @@ export interface NetworkInfo {
   macAddress: string;
   netMask: string;
 }
-const NetworkInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interfaceName: S.String,
-    ipAddress: S.String,
-    macAddress: S.String,
-    netMask: S.String,
-  }),
-).annotate({ identifier: "NetworkInfo" }) as any as S.Schema<NetworkInfo>;
+const NetworkInfo = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<NetworkInfo>;
 export type NetworkInfoList = NetworkInfo[];
-const NetworkInfoList = /*@__PURE__*/ S.Array(NetworkInfo);
+const NetworkInfoList = /*@__PURE__*/ __L.at(__c8, 1);
 export interface SystemInfo {
   osInfo?: OSInfo;
   fileSystemType?: string;
   networkInfoList?: NetworkInfo[];
   cpuArchitecture?: string;
 }
-const SystemInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osInfo: S.optional(OSInfo),
-    fileSystemType: S.optional(S.String),
-    networkInfoList: S.optional(NetworkInfoList),
-    cpuArchitecture: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemInfo" }) as any as S.Schema<SystemInfo>;
+const SystemInfo = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<SystemInfo>;
 export type ServerErrorCategory = string;
 export interface ServerError {
   serverErrorCategory?: string;
 }
-const ServerError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serverErrorCategory: S.optional(S.String) }),
-).annotate({ identifier: "ServerError" }) as any as S.Schema<ServerError>;
+const ServerError = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ServerError>;
 export interface ServerDetail {
   id?: string;
   name?: string;
@@ -931,140 +659,78 @@ export interface ServerDetail {
   lastAnalyzedTimestamp?: Date;
   serverError?: ServerError;
 }
-const ServerDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    recommendationSet: S.optional(RecommendationSet),
-    dataCollectionStatus: S.optional(S.String),
-    statusMessage: S.optional(S.String),
-    listAntipatternSeveritySummary: S.optional(ListAntipatternSeveritySummary),
-    systemInfo: S.optional(SystemInfo),
-    applicationComponentStrategySummary: S.optional(ListStrategySummary),
-    antipatternReportS3Object: S.optional(S3Object),
-    antipatternReportStatus: S.optional(S.String),
-    antipatternReportStatusMessage: S.optional(S.String),
-    serverType: S.optional(S.String),
-    lastAnalyzedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    serverError: S.optional(ServerError),
-  }),
-).annotate({ identifier: "ServerDetail" }) as any as S.Schema<ServerDetail>;
+const ServerDetail = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ServerDetail>;
 export interface GetServerDetailsResponse {
   nextToken?: string;
   serverDetail?: ServerDetail;
   associatedApplications?: AssociatedApplication[];
 }
-const GetServerDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    serverDetail: S.optional(ServerDetail),
-    associatedApplications: S.optional(AssociatedApplications),
-  }),
-).annotate({ identifier: "GetServerDetailsResponse" }) as any as S.Schema<GetServerDetailsResponse>;
+const GetServerDetailsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetServerDetailsResponse>;
 export interface GetServerStrategiesRequest {
   serverId: string;
 }
-const GetServerStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serverId: S.String.pipe(T.HttpLabel("serverId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/get-server-strategies/{serverId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetServerStrategiesRequest",
-}) as any as S.Schema<GetServerStrategiesRequest>;
+const GetServerStrategiesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetServerStrategiesRequest>;
 export interface ServerStrategy {
   recommendation?: RecommendationSet;
   status?: string;
   numberOfApplicationComponents?: number;
   isPreferred?: boolean;
 }
-const ServerStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommendation: S.optional(RecommendationSet),
-    status: S.optional(S.String),
-    numberOfApplicationComponents: S.optional(S.Number),
-    isPreferred: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ServerStrategy" }) as any as S.Schema<ServerStrategy>;
+const ServerStrategy = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ServerStrategy>;
 export type ServerStrategies = ServerStrategy[];
-const ServerStrategies = /*@__PURE__*/ S.Array(ServerStrategy);
+const ServerStrategies = /*@__PURE__*/ __L.at(__c9, 0);
 export interface GetServerStrategiesResponse {
   serverStrategies?: ServerStrategy[];
 }
-const GetServerStrategiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serverStrategies: S.optional(ServerStrategies) }),
-).annotate({
-  identifier: "GetServerStrategiesResponse",
-}) as any as S.Schema<GetServerStrategiesResponse>;
+const GetServerStrategiesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetServerStrategiesResponse>;
 export type SortOrder = string;
 export interface ListAnalyzableServersRequest {
   sort?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAnalyzableServersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sort: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/list-analyzable-servers" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAnalyzableServersRequest",
-}) as any as S.Schema<ListAnalyzableServersRequest>;
+const ListAnalyzableServersRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListAnalyzableServersRequest>;
 export interface AnalyzableServerSummary {
   hostname?: string;
   ipAddress?: string;
   source?: string;
   vmId?: string;
 }
-const AnalyzableServerSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    source: S.optional(S.String),
-    vmId: S.optional(S.String),
-  }),
-).annotate({ identifier: "AnalyzableServerSummary" }) as any as S.Schema<AnalyzableServerSummary>;
+const AnalyzableServerSummary = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<AnalyzableServerSummary>;
 export type AnalyzableServerSummaryList = AnalyzableServerSummary[];
-const AnalyzableServerSummaryList = /*@__PURE__*/ S.Array(AnalyzableServerSummary);
+const AnalyzableServerSummaryList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface ListAnalyzableServersResponse {
   analyzableServers?: AnalyzableServerSummary[];
   nextToken?: string;
 }
-const ListAnalyzableServersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyzableServers: S.optional(AnalyzableServerSummaryList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAnalyzableServersResponse",
-}) as any as S.Schema<ListAnalyzableServersResponse>;
+const ListAnalyzableServersResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListAnalyzableServersResponse>;
 export type ApplicationComponentCriteria = string;
 export type GroupName = string;
 export interface Group {
   name?: string;
   value?: string;
 }
-const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
+const Group = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<Group>;
 export type GroupIds = Group[];
-const GroupIds = /*@__PURE__*/ S.Array(Group);
+const GroupIds = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ListApplicationComponentsRequest {
   applicationComponentCriteria?: string;
   filterValue?: string;
@@ -1073,110 +739,74 @@ export interface ListApplicationComponentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListApplicationComponentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationComponentCriteria: S.optional(S.String),
-    filterValue: S.optional(S.String),
-    sort: S.optional(S.String),
-    groupIdFilter: S.optional(GroupIds),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/list-applicationcomponents" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListApplicationComponentsRequest",
-}) as any as S.Schema<ListApplicationComponentsRequest>;
+const ListApplicationComponentsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListApplicationComponentsRequest>;
 export type ApplicationComponentDetails = ApplicationComponentDetail[];
-const ApplicationComponentDetails = /*@__PURE__*/ S.Array(ApplicationComponentDetail);
+const ApplicationComponentDetails = /*@__PURE__*/ __L.at(__c10, 1);
 export interface ListApplicationComponentsResponse {
   applicationComponentInfos?: ApplicationComponentDetail[];
   nextToken?: string;
 }
-const ListApplicationComponentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationComponentInfos: S.optional(ApplicationComponentDetails),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListApplicationComponentsResponse",
-}) as any as S.Schema<ListApplicationComponentsResponse>;
+const ListApplicationComponentsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListApplicationComponentsResponse>;
 export interface ListCollectorsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/list-collectors" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListCollectorsRequest" }) as any as S.Schema<ListCollectorsRequest>;
+const ListCollectorsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListCollectorsRequest>;
 export type CollectorHealth = string;
 export interface VcenterBasedRemoteInfo {
   vcenterConfigurationTimeStamp?: string;
   osType?: string;
 }
-const VcenterBasedRemoteInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vcenterConfigurationTimeStamp: S.optional(S.String), osType: S.optional(S.String) }),
-).annotate({ identifier: "VcenterBasedRemoteInfo" }) as any as S.Schema<VcenterBasedRemoteInfo>;
+const VcenterBasedRemoteInfo = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<VcenterBasedRemoteInfo>;
 export type VcenterBasedRemoteInfoList = VcenterBasedRemoteInfo[];
-const VcenterBasedRemoteInfoList = /*@__PURE__*/ S.Array(VcenterBasedRemoteInfo);
+const VcenterBasedRemoteInfoList = /*@__PURE__*/ __L.at(__c10, 5);
 export type AuthType = string;
 export interface IPAddressBasedRemoteInfo {
   ipAddressConfigurationTimeStamp?: string;
   authType?: string;
   osType?: string;
 }
-const IPAddressBasedRemoteInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAddressConfigurationTimeStamp: S.optional(S.String),
-    authType: S.optional(S.String),
-    osType: S.optional(S.String),
-  }),
-).annotate({ identifier: "IPAddressBasedRemoteInfo" }) as any as S.Schema<IPAddressBasedRemoteInfo>;
+const IPAddressBasedRemoteInfo = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<IPAddressBasedRemoteInfo>;
 export type IPAddressBasedRemoteInfoList = IPAddressBasedRemoteInfo[];
-const IPAddressBasedRemoteInfoList = /*@__PURE__*/ S.Array(IPAddressBasedRemoteInfo);
+const IPAddressBasedRemoteInfoList = /*@__PURE__*/ __L.at(__c10, 7);
 export type VersionControlType = string;
 export interface VersionControlInfo {
   versionControlType?: string;
   versionControlConfigurationTimeStamp?: string;
 }
-const VersionControlInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionControlType: S.optional(S.String),
-    versionControlConfigurationTimeStamp: S.optional(S.String),
-  }),
-).annotate({ identifier: "VersionControlInfo" }) as any as S.Schema<VersionControlInfo>;
+const VersionControlInfo = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<VersionControlInfo>;
 export type VersionControlInfoList = VersionControlInfo[];
-const VersionControlInfoList = /*@__PURE__*/ S.Array(VersionControlInfo);
+const VersionControlInfoList = /*@__PURE__*/ __L.at(__c11, 1);
 export type PipelineType = string;
 export interface PipelineInfo {
   pipelineType?: string;
   pipelineConfigurationTimeStamp?: string;
 }
-const PipelineInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pipelineType: S.optional(S.String),
-    pipelineConfigurationTimeStamp: S.optional(S.String),
-  }),
-).annotate({ identifier: "PipelineInfo" }) as any as S.Schema<PipelineInfo>;
+const PipelineInfo = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<PipelineInfo>;
 export type PipelineInfoList = PipelineInfo[];
-const PipelineInfoList = /*@__PURE__*/ S.Array(PipelineInfo);
+const PipelineInfoList = /*@__PURE__*/ __L.at(__c11, 3);
 export interface RemoteSourceCodeAnalysisServerInfo {
   remoteSourceCodeAnalysisServerConfigurationTimestamp?: string;
 }
-const RemoteSourceCodeAnalysisServerInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ remoteSourceCodeAnalysisServerConfigurationTimestamp: S.optional(S.String) }),
-).annotate({
-  identifier: "RemoteSourceCodeAnalysisServerInfo",
-}) as any as S.Schema<RemoteSourceCodeAnalysisServerInfo>;
+const RemoteSourceCodeAnalysisServerInfo = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<RemoteSourceCodeAnalysisServerInfo>;
 export interface ConfigurationSummary {
   vcenterBasedRemoteInfoList?: VcenterBasedRemoteInfo[];
   ipAddressBasedRemoteInfoList?: IPAddressBasedRemoteInfo[];
@@ -1184,15 +814,10 @@ export interface ConfigurationSummary {
   pipelineInfoList?: PipelineInfo[];
   remoteSourceCodeAnalysisServerInfo?: RemoteSourceCodeAnalysisServerInfo;
 }
-const ConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vcenterBasedRemoteInfoList: S.optional(VcenterBasedRemoteInfoList),
-    ipAddressBasedRemoteInfoList: S.optional(IPAddressBasedRemoteInfoList),
-    versionControlInfoList: S.optional(VersionControlInfoList),
-    pipelineInfoList: S.optional(PipelineInfoList),
-    remoteSourceCodeAnalysisServerInfo: S.optional(RemoteSourceCodeAnalysisServerInfo),
-  }),
-).annotate({ identifier: "ConfigurationSummary" }) as any as S.Schema<ConfigurationSummary>;
+const ConfigurationSummary = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ConfigurationSummary>;
 export interface Collector {
   collectorId?: string;
   ipAddress?: string;
@@ -1203,41 +828,25 @@ export interface Collector {
   lastActivityTimeStamp?: string;
   configurationSummary?: ConfigurationSummary;
 }
-const Collector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collectorId: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    hostName: S.optional(S.String),
-    collectorHealth: S.optional(S.String),
-    collectorVersion: S.optional(S.String),
-    registeredTimeStamp: S.optional(S.String),
-    lastActivityTimeStamp: S.optional(S.String),
-    configurationSummary: S.optional(ConfigurationSummary),
-  }),
-).annotate({ identifier: "Collector" }) as any as S.Schema<Collector>;
+const Collector = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<Collector>;
 export type Collectors = Collector[];
-const Collectors = /*@__PURE__*/ S.Array(Collector);
+const Collectors = /*@__PURE__*/ __L.at(__c11, 7);
 export interface ListCollectorsResponse {
   Collectors?: Collector[];
   nextToken?: string;
 }
-const ListCollectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Collectors: S.optional(Collectors), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListCollectorsResponse" }) as any as S.Schema<ListCollectorsResponse>;
+const ListCollectorsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListCollectorsResponse>;
 export interface ListImportFileTaskRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListImportFileTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/list-import-file-task" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListImportFileTaskRequest",
-}) as any as S.Schema<ListImportFileTaskRequest>;
+const ListImportFileTaskRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListImportFileTaskRequest>;
 export interface ImportFileTaskInformation {
   id?: string;
   status?: string;
@@ -1254,19 +863,15 @@ export interface ImportFileTaskInformation {
 const ImportFileTaskInformation =
   GetImportFileTaskResponse as any as S.Schema<ImportFileTaskInformation>;
 export type ListImportFileTaskInformation = ImportFileTaskInformation[];
-const ListImportFileTaskInformation = /*@__PURE__*/ S.Array(ImportFileTaskInformation);
+const ListImportFileTaskInformation = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ListImportFileTaskResponse {
   taskInfos?: ImportFileTaskInformation[];
   nextToken?: string;
 }
-const ListImportFileTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskInfos: S.optional(ListImportFileTaskInformation),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListImportFileTaskResponse",
-}) as any as S.Schema<ListImportFileTaskResponse>;
+const ListImportFileTaskResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListImportFileTaskResponse>;
 export type ServerCriteria = string;
 export interface ListServersRequest {
   serverCriteria?: string;
@@ -1276,54 +881,29 @@ export interface ListServersRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListServersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverCriteria: S.optional(S.String),
-    filterValue: S.optional(S.String),
-    sort: S.optional(S.String),
-    groupIdFilter: S.optional(GroupIds),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/list-servers" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListServersRequest" }) as any as S.Schema<ListServersRequest>;
+const ListServersRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ListServersRequest>;
 export type ServerDetails = ServerDetail[];
-const ServerDetails = /*@__PURE__*/ S.Array(ServerDetail);
+const ServerDetails = /*@__PURE__*/ __L.at(__c12, 5);
 export interface ListServersResponse {
   serverInfos?: ServerDetail[];
   nextToken?: string;
 }
-const ListServersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serverInfos: S.optional(ServerDetails), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListServersResponse" }) as any as S.Schema<ListServersResponse>;
+const ListServersResponse = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ListServersResponse>;
 export interface PutPortfolioPreferencesRequest {
   prioritizeBusinessGoals?: PrioritizeBusinessGoals;
   applicationPreferences?: ApplicationPreferences;
   databasePreferences?: DatabasePreferences;
   applicationMode?: string;
 }
-const PutPortfolioPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prioritizeBusinessGoals: S.optional(PrioritizeBusinessGoals),
-    applicationPreferences: S.optional(ApplicationPreferences),
-    databasePreferences: S.optional(DatabasePreferences),
-    applicationMode: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/put-portfolio-preferences" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutPortfolioPreferencesRequest",
-}) as any as S.Schema<PutPortfolioPreferencesRequest>;
+const PutPortfolioPreferencesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<PutPortfolioPreferencesRequest>;
 export interface PutPortfolioPreferencesResponse {}
-const PutPortfolioPreferencesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutPortfolioPreferencesResponse",
-}) as any as S.Schema<PutPortfolioPreferencesResponse>;
+const PutPortfolioPreferencesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<PutPortfolioPreferencesResponse>;
 export type AssessmentDataSourceType = string;
 export interface StartAssessmentRequest {
   s3bucketForAnalysisData?: string;
@@ -1331,22 +911,17 @@ export interface StartAssessmentRequest {
   assessmentTargets?: AssessmentTarget[];
   assessmentDataSourceType?: string;
 }
-const StartAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    s3bucketForAnalysisData: S.optional(S.String),
-    s3bucketForReportData: S.optional(S.String),
-    assessmentTargets: S.optional(AssessmentTargets),
-    assessmentDataSourceType: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/start-assessment" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StartAssessmentRequest" }) as any as S.Schema<StartAssessmentRequest>;
+const StartAssessmentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<StartAssessmentRequest>;
 export interface StartAssessmentResponse {
   assessmentId?: string;
 }
-const StartAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ assessmentId: S.optional(S.String) }),
-).annotate({ identifier: "StartAssessmentResponse" }) as any as S.Schema<StartAssessmentResponse>;
+const StartAssessmentResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<StartAssessmentResponse>;
 export type DataSourceType = string;
 export interface StartImportFileTaskRequest {
   name: string;
@@ -1356,20 +931,10 @@ export interface StartImportFileTaskRequest {
   groupId?: Group[];
   s3bucketForReportData?: string;
 }
-const StartImportFileTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    S3Bucket: S.String,
-    s3key: S.String,
-    dataSourceType: S.optional(S.String),
-    groupId: S.optional(GroupIds),
-    s3bucketForReportData: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/start-import-file-task" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartImportFileTaskRequest",
-}) as any as S.Schema<StartImportFileTaskRequest>;
+const StartImportFileTaskRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<StartImportFileTaskRequest>;
 export interface StartImportFileTaskResponse {
   id?: string;
 }
@@ -1380,20 +945,10 @@ export interface StartRecommendationReportGenerationRequest {
   outputFormat?: string;
   groupIdFilter?: Group[];
 }
-const StartRecommendationReportGenerationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ outputFormat: S.optional(S.String), groupIdFilter: S.optional(GroupIds) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/start-recommendation-report-generation" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartRecommendationReportGenerationRequest",
-}) as any as S.Schema<StartRecommendationReportGenerationRequest>;
+const StartRecommendationReportGenerationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<StartRecommendationReportGenerationRequest>;
 export interface StartRecommendationReportGenerationResponse {
   id?: string;
 }
@@ -1402,29 +957,22 @@ const StartRecommendationReportGenerationResponse =
 export interface StopAssessmentRequest {
   assessmentId: string;
 }
-const StopAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ assessmentId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/stop-assessment" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StopAssessmentRequest" }) as any as S.Schema<StopAssessmentRequest>;
+const StopAssessmentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<StopAssessmentRequest>;
 export interface StopAssessmentResponse {}
-const StopAssessmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopAssessmentResponse",
-}) as any as S.Schema<StopAssessmentResponse>;
+const StopAssessmentResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<StopAssessmentResponse>;
 export interface StrategyOption {
   strategy?: string;
   toolName?: string;
   targetDestination?: string;
   isPreferred?: boolean;
 }
-const StrategyOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strategy: S.optional(S.String),
-    toolName: S.optional(S.String),
-    targetDestination: S.optional(S.String),
-    isPreferred: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "StrategyOption" }) as any as S.Schema<StrategyOption>;
+const StrategyOption = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<StrategyOption>;
 export type VersionControl = string;
 export type SourceVersion = string;
 export type Location = string;
@@ -1435,16 +983,9 @@ export interface SourceCode {
   location?: string;
   projectName?: string;
 }
-const SourceCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionControl: S.optional(S.String),
-    sourceVersion: S.optional(S.String),
-    location: S.optional(S.String),
-    projectName: S.optional(S.String),
-  }),
-).annotate({ identifier: "SourceCode" }) as any as S.Schema<SourceCode>;
+const SourceCode = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<SourceCode>;
 export type SourceCodeList = SourceCode[];
-const SourceCodeList = /*@__PURE__*/ S.Array(SourceCode);
+const SourceCodeList = /*@__PURE__*/ __L.at(__c14, 1);
 export type SecretsManagerKey = string | redacted.Redacted<string>;
 export interface UpdateApplicationComponentConfigRequest {
   applicationComponentId: string;
@@ -1455,45 +996,23 @@ export interface UpdateApplicationComponentConfigRequest {
   configureOnly?: boolean;
   appType?: string;
 }
-const UpdateApplicationComponentConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationComponentId: S.String,
-    inclusionStatus: S.optional(S.String),
-    strategyOption: S.optional(StrategyOption),
-    sourceCodeList: S.optional(SourceCodeList),
-    secretsManagerKey: S.optional(SensitiveString),
-    configureOnly: S.optional(S.Boolean),
-    appType: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/update-applicationcomponent-config/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateApplicationComponentConfigRequest",
-}) as any as S.Schema<UpdateApplicationComponentConfigRequest>;
+const UpdateApplicationComponentConfigRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<UpdateApplicationComponentConfigRequest>;
 export interface UpdateApplicationComponentConfigResponse {}
-const UpdateApplicationComponentConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateApplicationComponentConfigResponse",
-}) as any as S.Schema<UpdateApplicationComponentConfigResponse>;
+const UpdateApplicationComponentConfigResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<UpdateApplicationComponentConfigResponse>;
 export interface UpdateServerConfigRequest {
   serverId: string;
   strategyOption?: StrategyOption;
 }
-const UpdateServerConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serverId: S.String, strategyOption: S.optional(StrategyOption) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/update-server-config/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateServerConfigRequest",
-}) as any as S.Schema<UpdateServerConfigRequest>;
+const UpdateServerConfigRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<UpdateServerConfigRequest>;
 export interface UpdateServerConfigResponse {}
 const UpdateServerConfigResponse =
   StopAssessmentResponse as any as S.Schema<UpdateServerConfigResponse>;
@@ -2153,3 +1672,987 @@ export const updateServerConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateServerConfig",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationComponentId: S.String.pipe(T.HttpLabel("applicationComponentId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/get-applicationcomponent-details/{applicationComponentId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetApplicationComponentDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          tranformationToolInstallationLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransformationTool" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          transformationTool: S.optional(TransformationTool),
+          targetDestination: S.optional(S.String),
+          strategy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecommendationSet" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ severity: S.optional(S.String), count: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "AntipatternSeveritySummary",
+      });
+    case 4:
+      return S.Array(AntipatternSeveritySummary);
+    case 5:
+      return S.suspend(() => S.Struct({ secretName: S.optional(S.String) })).annotate({
+        identifier: "DatabaseConfigDetail",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          repository: S.optional(S.String),
+          branch: S.optional(S.String),
+          versionControlType: S.optional(S.String),
+          projectName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SourceCodeRepository" });
+    case 7:
+      return S.Array(SourceCodeRepository);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ s3Bucket: S.optional(S.String), s3key: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Object" });
+    case 1:
+      return S.suspend(() => S.Struct({ appUnitErrorCategory: S.optional(S.String) })).annotate({
+        identifier: "AppUnitError",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ runtimeAnalysisStatus: S.String }),
+        /*@__PURE__*/ S.Struct({ srcCodeOrDbAnalysisStatus: S.String }),
+      ]);
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ binaryAnalyzerName: S.String }),
+        /*@__PURE__*/ S.Struct({ runTimeAnalyzerName: S.String }),
+        /*@__PURE__*/ S.Struct({ sourceCodeAnalyzerName: S.String }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          analyzerName: S.optional(AnalyzerNameUnion),
+          antiPatternReportS3Object: S.optional(S3Object),
+          antipatternReportStatus: S.optional(S.String),
+          antipatternReportStatusMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AntipatternReportResult" });
+    case 5:
+      return S.Array(AntipatternReportResult);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          analysisType: S.optional(S.String),
+          analysisStatus: S.optional(AnalysisStatusUnion),
+          statusMessage: S.optional(S.String),
+          antipatternReportResultList: S.optional(AntipatternReportResultList),
+        }),
+      ).annotate({ identifier: "Result" });
+    case 7:
+      return S.Array(Result);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          recommendationSet: S.optional(RecommendationSet),
+          analysisStatus: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+          listAntipatternSeveritySummary: S.optional(ListAntipatternSeveritySummary),
+          databaseConfigDetail: S.optional(DatabaseConfigDetail),
+          sourceCodeRepositories: S.optional(SourceCodeRepositories),
+          appType: S.optional(S.String),
+          resourceSubType: S.optional(S.String),
+          inclusionStatus: S.optional(S.String),
+          antipatternReportS3Object: S.optional(S3Object),
+          antipatternReportStatus: S.optional(S.String),
+          antipatternReportStatusMessage: S.optional(S.String),
+          osVersion: S.optional(S.String),
+          osDriver: S.optional(S.String),
+          lastAnalyzedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          associatedServerId: S.optional(S.String),
+          moreServerAssociationExists: S.optional(S.Boolean),
+          runtimeStatus: S.optional(S.String),
+          runtimeStatusMessage: S.optional(S.String),
+          appUnitError: S.optional(AppUnitError),
+          resultList: S.optional(ResultList),
+        }),
+      ).annotate({
+        identifier: "ApplicationComponentDetail",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), id: S.optional(S.String) }),
+      ).annotate({ identifier: "AssociatedApplication" });
+    case 2:
+      return S.Array(AssociatedApplication);
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          applicationComponentDetail: S.optional(ApplicationComponentDetail),
+          associatedApplications: S.optional(AssociatedApplications),
+          moreApplicationResource: S.optional(S.Boolean),
+          associatedServerIds: S.optional(AssociatedServerIDs),
+        }),
+      ).annotate({
+        identifier: "GetApplicationComponentDetailsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          applicationComponentId: S.String.pipe(T.HttpLabel("applicationComponentId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/get-applicationcomponent-strategies/{applicationComponentId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetApplicationComponentStrategiesRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          recommendation: S.optional(RecommendationSet),
+          status: S.optional(S.String),
+          isPreferred: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ApplicationComponentStrategy",
+      });
+    case 7:
+      return S.Array(ApplicationComponentStrategy);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ applicationComponentStrategies: S.optional(ApplicationComponentStrategies) }),
+      ).annotate({
+        identifier: "GetApplicationComponentStrategiesResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/get-assessment/{id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAssessmentRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          servers: S.optional(S.Number),
+          failed: S.optional(S.Number),
+          success: S.optional(S.Number),
+          inProgress: S.optional(S.Number),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          completionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          statusMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataCollectionDetails" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ condition: S.String, name: S.String, values: AssessmentTargetValues }),
+      ).annotate({ identifier: "AssessmentTarget" });
+    case 4:
+      return S.Array(AssessmentTarget);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          dataCollectionDetails: S.optional(DataCollectionDetails),
+          assessmentTargets: S.optional(AssessmentTargets),
+        }),
+      ).annotate({ identifier: "GetAssessmentResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/get-import-file-task/{id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetImportFileTaskRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          status: S.optional(S.String),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          inputS3Bucket: S.optional(S.String),
+          inputS3Key: S.optional(S.String),
+          statusReportS3Bucket: S.optional(S.String),
+          statusReportS3Key: S.optional(S.String),
+          completionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          numberOfRecordsSuccess: S.optional(S.Number),
+          numberOfRecordsFailed: S.optional(S.Number),
+          importName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetImportFileTaskResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/get-latest-assessment-id" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetLatestAssessmentIdRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ id: S.optional(S.String) })).annotate({
+        identifier: "GetLatestAssessmentIdResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/get-portfolio-preferences" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPortfolioPreferencesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          speedOfMigration: S.optional(S.Number),
+          reduceOperationalOverheadWithManagedServices: S.optional(S.Number),
+          modernizeInfrastructureWithCloudNativeTechnologies: S.optional(S.Number),
+          licenseCostReduction: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BusinessGoals" });
+    case 4:
+      return S.suspend(() => S.Struct({ businessGoals: S.optional(BusinessGoals) })).annotate({
+        identifier: "PrioritizeBusinessGoals",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ targetDestination: AwsManagedTargetDestinations }),
+      ).annotate({ identifier: "AwsManagedResources" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ awsManagedResources: AwsManagedResources }),
+        /*@__PURE__*/ S.Struct({ selfManageResources: SelfManageResources }),
+        /*@__PURE__*/ S.Struct({ noPreference: NoManagementPreference }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ managementPreference: S.optional(ManagementPreference) }),
+      ).annotate({ identifier: "ApplicationPreferences" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ targetDatabaseEngine: HeterogeneousTargetDatabaseEngines }),
+      ).annotate({ identifier: "Heterogeneous" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ targetDatabaseEngine: S.optional(HomogeneousTargetDatabaseEngines) }),
+      ).annotate({ identifier: "Homogeneous" });
+    case 2:
+      return S.suspend(() => S.Struct({ targetDatabaseEngine: TargetDatabaseEngines })).annotate({
+        identifier: "NoDatabaseMigrationPreference",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ heterogeneous: Heterogeneous }),
+        /*@__PURE__*/ S.Struct({ homogeneous: Homogeneous }),
+        /*@__PURE__*/ S.Struct({ noPreference: NoDatabaseMigrationPreference }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          databaseManagementPreference: S.optional(S.String),
+          databaseMigrationPreference: S.optional(DatabaseMigrationPreference),
+        }),
+      ).annotate({ identifier: "DatabasePreferences" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          prioritizeBusinessGoals: S.optional(PrioritizeBusinessGoals),
+          applicationPreferences: S.optional(ApplicationPreferences),
+          databasePreferences: S.optional(DatabasePreferences),
+          applicationMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPortfolioPreferencesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/get-portfolio-summary" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPortfolioSummaryRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ strategy: S.optional(S.String), count: S.optional(S.Number) }),
+      ).annotate({ identifier: "StrategySummary" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(StrategySummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ appType: S.optional(S.String), count: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "ApplicationComponentSummary",
+      });
+    case 2:
+      return S.Array(ApplicationComponentSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ServerOsType: S.optional(S.String), count: S.optional(S.Number) }),
+      ).annotate({ identifier: "ServerSummary" });
+    case 4:
+      return S.Array(ServerSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ srcCodeOrDbAnalysisStatus: S.optional(S.String), count: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "ApplicationComponentStatusSummary",
+      });
+    case 6:
+      return S.Array(ApplicationComponentStatusSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ runTimeAssessmentStatus: S.optional(S.String), count: S.optional(S.Number) }),
+      ).annotate({ identifier: "ServerStatusSummary" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ServerStatusSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          listServerStrategySummary: S.optional(ListStrategySummary),
+          listApplicationComponentStrategySummary: S.optional(ListStrategySummary),
+          listAntipatternSeveritySummary: S.optional(ListAntipatternSeveritySummary),
+          listApplicationComponentSummary: S.optional(ListApplicationComponentSummary),
+          listServerSummary: S.optional(ListServerSummary),
+          antipatternReportS3Object: S.optional(S3Object),
+          antipatternReportStatus: S.optional(S.String),
+          antipatternReportStatusMessage: S.optional(S.String),
+          lastAnalyzedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          listApplicationComponentStatusSummary: S.optional(ListApplicationComponentStatusSummary),
+          listServerStatusSummary: S.optional(ListServerStatusSummary),
+        }),
+      ).annotate({ identifier: "AssessmentSummary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ assessmentSummary: S.optional(AssessmentSummary) }),
+      ).annotate({
+        identifier: "GetPortfolioSummaryResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/get-recommendation-report-details/{id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRecommendationReportDetailsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          completionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          s3Bucket: S.optional(S.String),
+          s3Keys: S.optional(S3Keys),
+        }),
+      ).annotate({
+        identifier: "RecommendationReportDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          recommendationReportDetails: S.optional(RecommendationReportDetails),
+        }),
+      ).annotate({
+        identifier: "GetRecommendationReportDetailsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          serverId: S.String.pipe(T.HttpLabel("serverId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/get-server-details/{serverId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetServerDetailsRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(S.String), version: S.optional(S.String) }),
+      ).annotate({ identifier: "OSInfo" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          interfaceName: S.String,
+          ipAddress: S.String,
+          macAddress: S.String,
+          netMask: S.String,
+        }),
+      ).annotate({ identifier: "NetworkInfo" });
+    case 1:
+      return S.Array(NetworkInfo);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          osInfo: S.optional(OSInfo),
+          fileSystemType: S.optional(S.String),
+          networkInfoList: S.optional(NetworkInfoList),
+          cpuArchitecture: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemInfo" });
+    case 3:
+      return S.suspend(() => S.Struct({ serverErrorCategory: S.optional(S.String) })).annotate({
+        identifier: "ServerError",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          recommendationSet: S.optional(RecommendationSet),
+          dataCollectionStatus: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+          listAntipatternSeveritySummary: S.optional(ListAntipatternSeveritySummary),
+          systemInfo: S.optional(SystemInfo),
+          applicationComponentStrategySummary: S.optional(ListStrategySummary),
+          antipatternReportS3Object: S.optional(S3Object),
+          antipatternReportStatus: S.optional(S.String),
+          antipatternReportStatusMessage: S.optional(S.String),
+          serverType: S.optional(S.String),
+          lastAnalyzedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          serverError: S.optional(ServerError),
+        }),
+      ).annotate({ identifier: "ServerDetail" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          serverDetail: S.optional(ServerDetail),
+          associatedApplications: S.optional(AssociatedApplications),
+        }),
+      ).annotate({ identifier: "GetServerDetailsResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ serverId: S.String.pipe(T.HttpLabel("serverId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/get-server-strategies/{serverId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetServerStrategiesRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          recommendation: S.optional(RecommendationSet),
+          status: S.optional(S.String),
+          numberOfApplicationComponents: S.optional(S.Number),
+          isPreferred: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ServerStrategy" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ServerStrategy);
+    case 1:
+      return S.suspend(() => S.Struct({ serverStrategies: S.optional(ServerStrategies) })).annotate(
+        {
+          identifier: "GetServerStrategiesResponse",
+        },
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sort: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-analyzable-servers" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAnalyzableServersRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          hostname: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          source: S.optional(S.String),
+          vmId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnalyzableServerSummary" });
+    case 4:
+      return S.Array(AnalyzableServerSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          analyzableServers: S.optional(AnalyzableServerSummaryList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAnalyzableServersResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "Group" });
+    case 7:
+      return S.Array(Group);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationComponentCriteria: S.optional(S.String),
+          filterValue: S.optional(S.String),
+          sort: S.optional(S.String),
+          groupIdFilter: S.optional(GroupIds),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-applicationcomponents" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListApplicationComponentsRequest",
+      });
+    case 1:
+      return S.Array(ApplicationComponentDetail);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          applicationComponentInfos: S.optional(ApplicationComponentDetails),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListApplicationComponentsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/list-collectors" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListCollectorsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          vcenterConfigurationTimeStamp: S.optional(S.String),
+          osType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VcenterBasedRemoteInfo" });
+    case 5:
+      return S.Array(VcenterBasedRemoteInfo);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ipAddressConfigurationTimeStamp: S.optional(S.String),
+          authType: S.optional(S.String),
+          osType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IPAddressBasedRemoteInfo" });
+    case 7:
+      return S.Array(IPAddressBasedRemoteInfo);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          versionControlType: S.optional(S.String),
+          versionControlConfigurationTimeStamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VersionControlInfo" });
+    case 1:
+      return S.Array(VersionControlInfo);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pipelineType: S.optional(S.String),
+          pipelineConfigurationTimeStamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PipelineInfo" });
+    case 3:
+      return S.Array(PipelineInfo);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ remoteSourceCodeAnalysisServerConfigurationTimestamp: S.optional(S.String) }),
+      ).annotate({
+        identifier: "RemoteSourceCodeAnalysisServerInfo",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          vcenterBasedRemoteInfoList: S.optional(VcenterBasedRemoteInfoList),
+          ipAddressBasedRemoteInfoList: S.optional(IPAddressBasedRemoteInfoList),
+          versionControlInfoList: S.optional(VersionControlInfoList),
+          pipelineInfoList: S.optional(PipelineInfoList),
+          remoteSourceCodeAnalysisServerInfo: S.optional(RemoteSourceCodeAnalysisServerInfo),
+        }),
+      ).annotate({ identifier: "ConfigurationSummary" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          collectorId: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          hostName: S.optional(S.String),
+          collectorHealth: S.optional(S.String),
+          collectorVersion: S.optional(S.String),
+          registeredTimeStamp: S.optional(S.String),
+          lastActivityTimeStamp: S.optional(S.String),
+          configurationSummary: S.optional(ConfigurationSummary),
+        }),
+      ).annotate({ identifier: "Collector" });
+    case 7:
+      return S.Array(Collector);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Collectors: S.optional(Collectors), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListCollectorsResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/list-import-file-task" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListImportFileTaskRequest",
+      });
+    case 2:
+      return S.Array(ImportFileTaskInformation);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          taskInfos: S.optional(ListImportFileTaskInformation),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListImportFileTaskResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          serverCriteria: S.optional(S.String),
+          filterValue: S.optional(S.String),
+          sort: S.optional(S.String),
+          groupIdFilter: S.optional(GroupIds),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/list-servers" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListServersRequest" });
+    case 5:
+      return S.Array(ServerDetail);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ serverInfos: S.optional(ServerDetails), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListServersResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          prioritizeBusinessGoals: S.optional(PrioritizeBusinessGoals),
+          applicationPreferences: S.optional(ApplicationPreferences),
+          databasePreferences: S.optional(DatabasePreferences),
+          applicationMode: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/put-portfolio-preferences" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutPortfolioPreferencesRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PutPortfolioPreferencesResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          s3bucketForAnalysisData: S.optional(S.String),
+          s3bucketForReportData: S.optional(S.String),
+          assessmentTargets: S.optional(AssessmentTargets),
+          assessmentDataSourceType: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/start-assessment" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartAssessmentRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ assessmentId: S.optional(S.String) })).annotate({
+        identifier: "StartAssessmentResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          S3Bucket: S.String,
+          s3key: S.String,
+          dataSourceType: S.optional(S.String),
+          groupId: S.optional(GroupIds),
+          s3bucketForReportData: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/start-import-file-task" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartImportFileTaskRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ outputFormat: S.optional(S.String), groupIdFilter: S.optional(GroupIds) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/start-recommendation-report-generation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartRecommendationReportGenerationRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ assessmentId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/stop-assessment" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopAssessmentRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "StopAssessmentResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          strategy: S.optional(S.String),
+          toolName: S.optional(S.String),
+          targetDestination: S.optional(S.String),
+          isPreferred: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "StrategyOption" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          versionControl: S.optional(S.String),
+          sourceVersion: S.optional(S.String),
+          location: S.optional(S.String),
+          projectName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SourceCode" });
+    case 1:
+      return S.Array(SourceCode);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          applicationComponentId: S.String,
+          inclusionStatus: S.optional(S.String),
+          strategyOption: S.optional(StrategyOption),
+          sourceCodeList: S.optional(SourceCodeList),
+          secretsManagerKey: S.optional(SensitiveString),
+          configureOnly: S.optional(S.Boolean),
+          appType: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/update-applicationcomponent-config/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateApplicationComponentConfigRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UpdateApplicationComponentConfigResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ serverId: S.String, strategyOption: S.optional(StrategyOption) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/update-server-config/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateServerConfigRequest",
+      });
+  }
+}

@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -607,31 +608,25 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export type InstanceName = string;
 export type InstanceNameList = string[];
-const InstanceNameList = /*@__PURE__*/ S.Array(S.String);
+const InstanceNameList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface AddTagsToOnPremisesInstancesInput {
   tags: Tag[];
   instanceNames: string[];
 }
-const AddTagsToOnPremisesInstancesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: TagList, instanceNames: InstanceNameList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AddTagsToOnPremisesInstancesInput",
-}) as any as S.Schema<AddTagsToOnPremisesInstancesInput>;
+const AddTagsToOnPremisesInstancesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddTagsToOnPremisesInstancesInput>;
 export interface AddTagsToOnPremisesInstancesResponse {}
-const AddTagsToOnPremisesInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AddTagsToOnPremisesInstancesResponse",
-}) as any as S.Schema<AddTagsToOnPremisesInstancesResponse>;
+const AddTagsToOnPremisesInstancesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddTagsToOnPremisesInstancesResponse>;
 export type ApplicationName = string;
 export type RevisionLocationType = "S3" | "GitHub" | "String" | "AppSpecContent" | (string & {});
 const RevisionLocationType = S.String;
@@ -650,33 +645,21 @@ export interface S3Location {
   version?: string;
   eTag?: string;
 }
-const S3Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.optional(S.String),
-    key: S.optional(S.String),
-    bundleType: S.optional(BundleType),
-    version: S.optional(S.String),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
+const S3Location = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<S3Location>;
 export type Repository = string;
 export type CommitId = string;
 export interface GitHubLocation {
   repository?: string;
   commitId?: string;
 }
-const GitHubLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: S.optional(S.String), commitId: S.optional(S.String) }),
-).annotate({ identifier: "GitHubLocation" }) as any as S.Schema<GitHubLocation>;
+const GitHubLocation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GitHubLocation>;
 export type RawStringContent = string;
 export type RawStringSha256 = string;
 export interface RawString {
   content?: string;
   sha256?: string;
 }
-const RawString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ content: S.optional(S.String), sha256: S.optional(S.String) }),
-).annotate({ identifier: "RawString" }) as any as S.Schema<RawString>;
+const RawString = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RawString>;
 export interface AppSpecContent {
   content?: string;
   sha256?: string;
@@ -689,28 +672,17 @@ export interface RevisionLocation {
   string?: RawString;
   appSpecContent?: AppSpecContent;
 }
-const RevisionLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revisionType: S.optional(RevisionLocationType),
-    s3Location: S.optional(S3Location),
-    gitHubLocation: S.optional(GitHubLocation),
-    string: S.optional(RawString),
-    appSpecContent: S.optional(AppSpecContent),
-  }),
-).annotate({ identifier: "RevisionLocation" }) as any as S.Schema<RevisionLocation>;
+const RevisionLocation = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RevisionLocation>;
 export type RevisionLocationList = RevisionLocation[];
-const RevisionLocationList = /*@__PURE__*/ S.Array(RevisionLocation);
+const RevisionLocationList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface BatchGetApplicationRevisionsInput {
   applicationName: string;
   revisions: RevisionLocation[];
 }
-const BatchGetApplicationRevisionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationName: S.String, revisions: RevisionLocationList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "BatchGetApplicationRevisionsInput",
-}) as any as S.Schema<BatchGetApplicationRevisionsInput>;
+const BatchGetApplicationRevisionsInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BatchGetApplicationRevisionsInput>;
 export type ErrorMessage = string;
 export type Description = string;
 export type DeploymentGroupName = string;
@@ -723,53 +695,32 @@ export interface GenericRevisionInfo {
   lastUsedTime?: Date;
   registerTime?: Date;
 }
-const GenericRevisionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    deploymentGroups: S.optional(DeploymentGroupsList),
-    firstUsedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUsedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    registerTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "GenericRevisionInfo" }) as any as S.Schema<GenericRevisionInfo>;
+const GenericRevisionInfo = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GenericRevisionInfo>;
 export interface RevisionInfo {
   revisionLocation?: RevisionLocation;
   genericRevisionInfo?: GenericRevisionInfo;
 }
-const RevisionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    revisionLocation: S.optional(RevisionLocation),
-    genericRevisionInfo: S.optional(GenericRevisionInfo),
-  }),
-).annotate({ identifier: "RevisionInfo" }) as any as S.Schema<RevisionInfo>;
+const RevisionInfo = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RevisionInfo>;
 export type RevisionInfoList = RevisionInfo[];
-const RevisionInfoList = /*@__PURE__*/ S.Array(RevisionInfo);
+const RevisionInfoList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface BatchGetApplicationRevisionsOutput {
   applicationName?: string;
   errorMessage?: string;
   revisions?: RevisionInfo[];
 }
-const BatchGetApplicationRevisionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    revisions: S.optional(RevisionInfoList),
-  }).pipe(ns),
-).annotate({
-  identifier: "BatchGetApplicationRevisionsOutput",
-}) as any as S.Schema<BatchGetApplicationRevisionsOutput>;
+const BatchGetApplicationRevisionsOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BatchGetApplicationRevisionsOutput>;
 export type ApplicationsList = string[];
 const ApplicationsList = InstanceNameList as any as S.Schema<ApplicationsList>;
 export interface BatchGetApplicationsInput {
   applicationNames: string[];
 }
-const BatchGetApplicationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationNames: ApplicationsList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "BatchGetApplicationsInput",
-}) as any as S.Schema<BatchGetApplicationsInput>;
+const BatchGetApplicationsInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BatchGetApplicationsInput>;
 export type ApplicationId = string;
 export type GitHubAccountTokenName = string;
 export type ComputePlatform = "Server" | "Lambda" | "ECS" | (string & {});
@@ -783,37 +734,24 @@ export interface ApplicationInfo {
   gitHubAccountName?: string;
   computePlatform?: ComputePlatform;
 }
-const ApplicationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationId: S.optional(S.String),
-    applicationName: S.optional(S.String),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    linkedToGitHub: S.optional(S.Boolean),
-    gitHubAccountName: S.optional(S.String),
-    computePlatform: S.optional(ComputePlatform),
-  }),
-).annotate({ identifier: "ApplicationInfo" }) as any as S.Schema<ApplicationInfo>;
+const ApplicationInfo = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ApplicationInfo>;
 export type ApplicationsInfoList = ApplicationInfo[];
-const ApplicationsInfoList = /*@__PURE__*/ S.Array(ApplicationInfo);
+const ApplicationsInfoList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface BatchGetApplicationsOutput {
   applicationsInfo?: ApplicationInfo[];
 }
-const BatchGetApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationsInfo: S.optional(ApplicationsInfoList) }).pipe(ns),
-).annotate({
-  identifier: "BatchGetApplicationsOutput",
-}) as any as S.Schema<BatchGetApplicationsOutput>;
+const BatchGetApplicationsOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BatchGetApplicationsOutput>;
 export interface BatchGetDeploymentGroupsInput {
   applicationName: string;
   deploymentGroupNames: string[];
 }
-const BatchGetDeploymentGroupsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationName: S.String, deploymentGroupNames: DeploymentGroupsList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "BatchGetDeploymentGroupsInput",
-}) as any as S.Schema<BatchGetDeploymentGroupsInput>;
+const BatchGetDeploymentGroupsInput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<BatchGetDeploymentGroupsInput>;
 export type DeploymentGroupId = string;
 export type DeploymentConfigName = string;
 export type EC2TagFilterType = "KEY_ONLY" | "VALUE_ONLY" | "KEY_AND_VALUE" | (string & {});
@@ -824,15 +762,9 @@ export interface EC2TagFilter {
   Value?: string;
   Type?: EC2TagFilterType;
 }
-const EC2TagFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Value: S.optional(S.String),
-    Type: S.optional(EC2TagFilterType),
-  }),
-).annotate({ identifier: "EC2TagFilter" }) as any as S.Schema<EC2TagFilter>;
+const EC2TagFilter = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<EC2TagFilter>;
 export type EC2TagFilterList = EC2TagFilter[];
-const EC2TagFilterList = /*@__PURE__*/ S.Array(EC2TagFilter);
+const EC2TagFilterList = /*@__PURE__*/ __L.at(__c2, 5);
 export type TagFilterType = "KEY_ONLY" | "VALUE_ONLY" | "KEY_AND_VALUE" | (string & {});
 export interface TagFilter {
   Key?: string;
@@ -848,15 +780,9 @@ export interface AutoScalingGroup {
   hook?: string;
   terminationHook?: string;
 }
-const AutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    hook: S.optional(S.String),
-    terminationHook: S.optional(S.String),
-  }),
-).annotate({ identifier: "AutoScalingGroup" }) as any as S.Schema<AutoScalingGroup>;
+const AutoScalingGroup = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AutoScalingGroup>;
 export type AutoScalingGroupList = AutoScalingGroup[];
-const AutoScalingGroupList = /*@__PURE__*/ S.Array(AutoScalingGroup);
+const AutoScalingGroupList = /*@__PURE__*/ __L.at(__c2, 7);
 export type Role = string;
 export type TriggerName = string;
 export type TriggerTargetArn = string;
@@ -875,42 +801,28 @@ export type TriggerEventType =
 const TriggerEventType = S.String;
 
 export type TriggerEventTypeList = TriggerEventType[];
-const TriggerEventTypeList = /*@__PURE__*/ S.Array(TriggerEventType);
+const TriggerEventTypeList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface TriggerConfig {
   triggerName?: string;
   triggerTargetArn?: string;
   triggerEvents?: TriggerEventType[];
 }
-const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    triggerName: S.optional(S.String),
-    triggerTargetArn: S.optional(S.String),
-    triggerEvents: S.optional(TriggerEventTypeList),
-  }),
-).annotate({ identifier: "TriggerConfig" }) as any as S.Schema<TriggerConfig>;
+const TriggerConfig = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TriggerConfig>;
 export type TriggerConfigList = TriggerConfig[];
-const TriggerConfigList = /*@__PURE__*/ S.Array(TriggerConfig);
+const TriggerConfigList = /*@__PURE__*/ __L.at(__c3, 2);
 export type AlarmName = string;
 export interface Alarm {
   name?: string;
 }
-const Alarm = /*@__PURE__*/ S.suspend(() => S.Struct({ name: S.optional(S.String) })).annotate({
-  identifier: "Alarm",
-}) as any as S.Schema<Alarm>;
+const Alarm = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Alarm>;
 export type AlarmList = Alarm[];
-const AlarmList = /*@__PURE__*/ S.Array(Alarm);
+const AlarmList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface AlarmConfiguration {
   enabled?: boolean;
   ignorePollAlarmFailure?: boolean;
   alarms?: Alarm[];
 }
-const AlarmConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    ignorePollAlarmFailure: S.optional(S.Boolean),
-    alarms: S.optional(AlarmList),
-  }),
-).annotate({ identifier: "AlarmConfiguration" }) as any as S.Schema<AlarmConfiguration>;
+const AlarmConfiguration = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AlarmConfiguration>;
 export type AutoRollbackEvent =
   | "DEPLOYMENT_FAILURE"
   | "DEPLOYMENT_STOP_ON_ALARM"
@@ -922,11 +834,10 @@ export interface AutoRollbackConfiguration {
   enabled?: boolean;
   events?: AutoRollbackEvent[];
 }
-const AutoRollbackConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ enabled: S.optional(S.Boolean), events: S.optional(AutoRollbackEventsList) }),
-).annotate({
-  identifier: "AutoRollbackConfiguration",
-}) as any as S.Schema<AutoRollbackConfiguration>;
+const AutoRollbackConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<AutoRollbackConfiguration>;
 export type DeploymentType = "IN_PLACE" | "BLUE_GREEN" | (string & {});
 const DeploymentType = S.String;
 
@@ -937,12 +848,7 @@ export interface DeploymentStyle {
   deploymentType?: DeploymentType;
   deploymentOption?: DeploymentOption;
 }
-const DeploymentStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentType: S.optional(DeploymentType),
-    deploymentOption: S.optional(DeploymentOption),
-  }),
-).annotate({ identifier: "DeploymentStyle" }) as any as S.Schema<DeploymentStyle>;
+const DeploymentStyle = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DeploymentStyle>;
 export type OutdatedInstancesStrategy = "UPDATE" | "IGNORE" | (string & {});
 const OutdatedInstancesStrategy = S.String;
 
@@ -954,14 +860,10 @@ export interface BlueInstanceTerminationOption {
   action?: InstanceAction;
   terminationWaitTimeInMinutes?: number;
 }
-const BlueInstanceTerminationOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(InstanceAction),
-    terminationWaitTimeInMinutes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BlueInstanceTerminationOption",
-}) as any as S.Schema<BlueInstanceTerminationOption>;
+const BlueInstanceTerminationOption = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<BlueInstanceTerminationOption>;
 export type DeploymentReadyAction = "CONTINUE_DEPLOYMENT" | "STOP_DEPLOYMENT" | (string & {});
 const DeploymentReadyAction = S.String;
 
@@ -969,12 +871,10 @@ export interface DeploymentReadyOption {
   actionOnTimeout?: DeploymentReadyAction;
   waitTimeInMinutes?: number;
 }
-const DeploymentReadyOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionOnTimeout: S.optional(DeploymentReadyAction),
-    waitTimeInMinutes: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DeploymentReadyOption" }) as any as S.Schema<DeploymentReadyOption>;
+const DeploymentReadyOption = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeploymentReadyOption>;
 export type GreenFleetProvisioningAction =
   | "DISCOVER_EXISTING"
   | "COPY_AUTO_SCALING_GROUP"
@@ -984,25 +884,19 @@ const GreenFleetProvisioningAction = S.String;
 export interface GreenFleetProvisioningOption {
   action?: GreenFleetProvisioningAction;
 }
-const GreenFleetProvisioningOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ action: S.optional(GreenFleetProvisioningAction) }),
-).annotate({
-  identifier: "GreenFleetProvisioningOption",
-}) as any as S.Schema<GreenFleetProvisioningOption>;
+const GreenFleetProvisioningOption = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GreenFleetProvisioningOption>;
 export interface BlueGreenDeploymentConfiguration {
   terminateBlueInstancesOnDeploymentSuccess?: BlueInstanceTerminationOption;
   deploymentReadyOption?: DeploymentReadyOption;
   greenFleetProvisioningOption?: GreenFleetProvisioningOption;
 }
-const BlueGreenDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    terminateBlueInstancesOnDeploymentSuccess: S.optional(BlueInstanceTerminationOption),
-    deploymentReadyOption: S.optional(DeploymentReadyOption),
-    greenFleetProvisioningOption: S.optional(GreenFleetProvisioningOption),
-  }),
-).annotate({
-  identifier: "BlueGreenDeploymentConfiguration",
-}) as any as S.Schema<BlueGreenDeploymentConfiguration>;
+const BlueGreenDeploymentConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<BlueGreenDeploymentConfiguration>;
 export type ELBName = string;
 export interface ELBInfo {
   name?: string;
@@ -1022,35 +916,21 @@ const ListenerArnList = InstanceNameList as any as S.Schema<ListenerArnList>;
 export interface TrafficRoute {
   listenerArns?: string[];
 }
-const TrafficRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ listenerArns: S.optional(ListenerArnList) }),
-).annotate({ identifier: "TrafficRoute" }) as any as S.Schema<TrafficRoute>;
+const TrafficRoute = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<TrafficRoute>;
 export interface TargetGroupPairInfo {
   targetGroups?: TargetGroupInfo[];
   prodTrafficRoute?: TrafficRoute;
   testTrafficRoute?: TrafficRoute;
 }
-const TargetGroupPairInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetGroups: S.optional(TargetGroupInfoList),
-    prodTrafficRoute: S.optional(TrafficRoute),
-    testTrafficRoute: S.optional(TrafficRoute),
-  }),
-).annotate({ identifier: "TargetGroupPairInfo" }) as any as S.Schema<TargetGroupPairInfo>;
+const TargetGroupPairInfo = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<TargetGroupPairInfo>;
 export type TargetGroupPairInfoList = TargetGroupPairInfo[];
-const TargetGroupPairInfoList = /*@__PURE__*/ S.Array(TargetGroupPairInfo);
+const TargetGroupPairInfoList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface LoadBalancerInfo {
   elbInfoList?: ELBInfo[];
   targetGroupInfoList?: TargetGroupInfo[];
   targetGroupPairInfoList?: TargetGroupPairInfo[];
 }
-const LoadBalancerInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    elbInfoList: S.optional(ELBInfoList),
-    targetGroupInfoList: S.optional(TargetGroupInfoList),
-    targetGroupPairInfoList: S.optional(TargetGroupPairInfoList),
-  }),
-).annotate({ identifier: "LoadBalancerInfo" }) as any as S.Schema<LoadBalancerInfo>;
+const LoadBalancerInfo = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<LoadBalancerInfo>;
 export type DeploymentId = string;
 export type DeploymentStatus =
   | "Created"
@@ -1070,41 +950,28 @@ export interface LastDeploymentInfo {
   endTime?: Date;
   createTime?: Date;
 }
-const LastDeploymentInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    status: S.optional(DeploymentStatus),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "LastDeploymentInfo" }) as any as S.Schema<LastDeploymentInfo>;
+const LastDeploymentInfo = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<LastDeploymentInfo>;
 export type EC2TagSetList = EC2TagFilter[][];
-const EC2TagSetList = /*@__PURE__*/ S.Array(EC2TagFilterList);
+const EC2TagSetList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface EC2TagSet {
   ec2TagSetList?: EC2TagFilter[][];
 }
-const EC2TagSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ec2TagSetList: S.optional(EC2TagSetList) }),
-).annotate({ identifier: "EC2TagSet" }) as any as S.Schema<EC2TagSet>;
+const EC2TagSet = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<EC2TagSet>;
 export type OnPremisesTagSetList = TagFilter[][];
 const OnPremisesTagSetList = EC2TagSetList as any as S.Schema<OnPremisesTagSetList>;
 export interface OnPremisesTagSet {
   onPremisesTagSetList?: TagFilter[][];
 }
-const OnPremisesTagSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ onPremisesTagSetList: S.optional(OnPremisesTagSetList) }),
-).annotate({ identifier: "OnPremisesTagSet" }) as any as S.Schema<OnPremisesTagSet>;
+const OnPremisesTagSet = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<OnPremisesTagSet>;
 export type ECSServiceName = string;
 export type ECSClusterName = string;
 export interface ECSService {
   serviceName?: string;
   clusterName?: string;
 }
-const ECSService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceName: S.optional(S.String), clusterName: S.optional(S.String) }),
-).annotate({ identifier: "ECSService" }) as any as S.Schema<ECSService>;
+const ECSService = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ECSService>;
 export type ECSServiceList = ECSService[];
-const ECSServiceList = /*@__PURE__*/ S.Array(ECSService);
+const ECSServiceList = /*@__PURE__*/ __L.at(__c5, 5);
 export interface DeploymentGroupInfo {
   applicationName?: string;
   deploymentGroupId?: string;
@@ -1130,47 +997,17 @@ export interface DeploymentGroupInfo {
   ecsServices?: ECSService[];
   terminationHookEnabled?: boolean;
 }
-const DeploymentGroupInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.optional(S.String),
-    deploymentGroupId: S.optional(S.String),
-    deploymentGroupName: S.optional(S.String),
-    deploymentConfigName: S.optional(S.String),
-    ec2TagFilters: S.optional(EC2TagFilterList),
-    onPremisesInstanceTagFilters: S.optional(TagFilterList),
-    autoScalingGroups: S.optional(AutoScalingGroupList),
-    serviceRoleArn: S.optional(S.String),
-    targetRevision: S.optional(RevisionLocation),
-    triggerConfigurations: S.optional(TriggerConfigList),
-    alarmConfiguration: S.optional(AlarmConfiguration),
-    autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
-    deploymentStyle: S.optional(DeploymentStyle),
-    outdatedInstancesStrategy: S.optional(OutdatedInstancesStrategy),
-    blueGreenDeploymentConfiguration: S.optional(BlueGreenDeploymentConfiguration),
-    loadBalancerInfo: S.optional(LoadBalancerInfo),
-    lastSuccessfulDeployment: S.optional(LastDeploymentInfo),
-    lastAttemptedDeployment: S.optional(LastDeploymentInfo),
-    ec2TagSet: S.optional(EC2TagSet),
-    onPremisesTagSet: S.optional(OnPremisesTagSet),
-    computePlatform: S.optional(ComputePlatform),
-    ecsServices: S.optional(ECSServiceList),
-    terminationHookEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DeploymentGroupInfo" }) as any as S.Schema<DeploymentGroupInfo>;
+const DeploymentGroupInfo = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeploymentGroupInfo>;
 export type DeploymentGroupInfoList = DeploymentGroupInfo[];
-const DeploymentGroupInfoList = /*@__PURE__*/ S.Array(DeploymentGroupInfo);
+const DeploymentGroupInfoList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface BatchGetDeploymentGroupsOutput {
   deploymentGroupsInfo?: DeploymentGroupInfo[];
   errorMessage?: string;
 }
-const BatchGetDeploymentGroupsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentGroupsInfo: S.optional(DeploymentGroupInfoList),
-    errorMessage: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "BatchGetDeploymentGroupsOutput",
-}) as any as S.Schema<BatchGetDeploymentGroupsOutput>;
+const BatchGetDeploymentGroupsOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<BatchGetDeploymentGroupsOutput>;
 export type InstanceId = string;
 export type InstancesList = string[];
 const InstancesList = InstanceNameList as any as S.Schema<InstancesList>;
@@ -1178,13 +1015,10 @@ export interface BatchGetDeploymentInstancesInput {
   deploymentId: string;
   instanceIds: string[];
 }
-const BatchGetDeploymentInstancesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.String, instanceIds: InstancesList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "BatchGetDeploymentInstancesInput",
-}) as any as S.Schema<BatchGetDeploymentInstancesInput>;
+const BatchGetDeploymentInstancesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<BatchGetDeploymentInstancesInput>;
 export type InstanceStatus =
   | "Pending"
   | "InProgress"
@@ -1216,14 +1050,7 @@ export interface Diagnostics {
   message?: string;
   logTail?: string;
 }
-const Diagnostics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: S.optional(LifecycleErrorCode),
-    scriptName: S.optional(S.String),
-    message: S.optional(S.String),
-    logTail: S.optional(S.String),
-  }),
-).annotate({ identifier: "Diagnostics" }) as any as S.Schema<Diagnostics>;
+const Diagnostics = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Diagnostics>;
 export type LifecycleEventStatus =
   | "Pending"
   | "InProgress"
@@ -1241,17 +1068,9 @@ export interface LifecycleEvent {
   endTime?: Date;
   status?: LifecycleEventStatus;
 }
-const LifecycleEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lifecycleEventName: S.optional(S.String),
-    diagnostics: S.optional(Diagnostics),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    status: S.optional(LifecycleEventStatus),
-  }),
-).annotate({ identifier: "LifecycleEvent" }) as any as S.Schema<LifecycleEvent>;
+const LifecycleEvent = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<LifecycleEvent>;
 export type LifecycleEventList = LifecycleEvent[];
-const LifecycleEventList = /*@__PURE__*/ S.Array(LifecycleEvent);
+const LifecycleEventList = /*@__PURE__*/ __L.at(__c6, 4);
 export type InstanceType = "Blue" | "Green" | (string & {});
 const InstanceType = S.String;
 
@@ -1263,40 +1082,26 @@ export interface InstanceSummary {
   lifecycleEvents?: LifecycleEvent[];
   instanceType?: InstanceType;
 }
-const InstanceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    instanceId: S.optional(S.String),
-    status: S.optional(InstanceStatus),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lifecycleEvents: S.optional(LifecycleEventList),
-    instanceType: S.optional(InstanceType),
-  }),
-).annotate({ identifier: "InstanceSummary" }) as any as S.Schema<InstanceSummary>;
+const InstanceSummary = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<InstanceSummary>;
 export type InstanceSummaryList = InstanceSummary[];
-const InstanceSummaryList = /*@__PURE__*/ S.Array(InstanceSummary);
+const InstanceSummaryList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface BatchGetDeploymentInstancesOutput {
   instancesSummary?: InstanceSummary[];
   errorMessage?: string;
 }
-const BatchGetDeploymentInstancesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instancesSummary: S.optional(InstanceSummaryList),
-    errorMessage: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "BatchGetDeploymentInstancesOutput",
-}) as any as S.Schema<BatchGetDeploymentInstancesOutput>;
+const BatchGetDeploymentInstancesOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<BatchGetDeploymentInstancesOutput>;
 export type DeploymentsList = string[];
 const DeploymentsList = InstanceNameList as any as S.Schema<DeploymentsList>;
 export interface BatchGetDeploymentsInput {
   deploymentIds: string[];
 }
-const BatchGetDeploymentsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentIds: DeploymentsList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "BatchGetDeploymentsInput" }) as any as S.Schema<BatchGetDeploymentsInput>;
+const BatchGetDeploymentsInput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<BatchGetDeploymentsInput>;
 export type ErrorCode =
   | "AGENT_ISSUE"
   | "ALARM_ACTIVE"
@@ -1339,9 +1144,7 @@ export interface ErrorInformation {
   code?: ErrorCode;
   message?: string;
 }
-const ErrorInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(ErrorCode), message: S.optional(S.String) }),
-).annotate({ identifier: "ErrorInformation" }) as any as S.Schema<ErrorInformation>;
+const ErrorInformation = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ErrorInformation>;
 export type InstanceCount = number;
 export interface DeploymentOverview {
   Pending?: number;
@@ -1351,16 +1154,7 @@ export interface DeploymentOverview {
   Skipped?: number;
   Ready?: number;
 }
-const DeploymentOverview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Pending: S.optional(S.Number),
-    InProgress: S.optional(S.Number),
-    Succeeded: S.optional(S.Number),
-    Failed: S.optional(S.Number),
-    Skipped: S.optional(S.Number),
-    Ready: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DeploymentOverview" }) as any as S.Schema<DeploymentOverview>;
+const DeploymentOverview = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeploymentOverview>;
 export type DeploymentCreator =
   | "user"
   | "autoscaling"
@@ -1378,13 +1172,7 @@ export interface RollbackInfo {
   rollbackTriggeringDeploymentId?: string;
   rollbackMessage?: string;
 }
-const RollbackInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rollbackDeploymentId: S.optional(S.String),
-    rollbackTriggeringDeploymentId: S.optional(S.String),
-    rollbackMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "RollbackInfo" }) as any as S.Schema<RollbackInfo>;
+const RollbackInfo = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<RollbackInfo>;
 export type AutoScalingGroupNameList = string[];
 const AutoScalingGroupNameList = InstanceNameList as any as S.Schema<AutoScalingGroupNameList>;
 export interface TargetInstances {
@@ -1392,13 +1180,7 @@ export interface TargetInstances {
   autoScalingGroups?: string[];
   ec2TagSet?: EC2TagSet;
 }
-const TargetInstances = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tagFilters: S.optional(EC2TagFilterList),
-    autoScalingGroups: S.optional(AutoScalingGroupNameList),
-    ec2TagSet: S.optional(EC2TagSet),
-  }),
-).annotate({ identifier: "TargetInstances" }) as any as S.Schema<TargetInstances>;
+const TargetInstances = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<TargetInstances>;
 export type AdditionalDeploymentStatusInfo = string;
 export type FileExistsBehavior = "DISALLOW" | "OVERWRITE" | "RETAIN" | (string & {});
 const FileExistsBehavior = S.String;
@@ -1414,12 +1196,7 @@ export interface RelatedDeployments {
   autoUpdateOutdatedInstancesRootDeploymentId?: string;
   autoUpdateOutdatedInstancesDeploymentIds?: string[];
 }
-const RelatedDeployments = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoUpdateOutdatedInstancesRootDeploymentId: S.optional(S.String),
-    autoUpdateOutdatedInstancesDeploymentIds: S.optional(DeploymentsList),
-  }),
-).annotate({ identifier: "RelatedDeployments" }) as any as S.Schema<RelatedDeployments>;
+const RelatedDeployments = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<RelatedDeployments>;
 export interface DeploymentInfo {
   applicationName?: string;
   deploymentGroupName?: string;
@@ -1453,51 +1230,16 @@ export interface DeploymentInfo {
   relatedDeployments?: RelatedDeployments;
   overrideAlarmConfiguration?: AlarmConfiguration;
 }
-const DeploymentInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.optional(S.String),
-    deploymentGroupName: S.optional(S.String),
-    deploymentConfigName: S.optional(S.String),
-    deploymentId: S.optional(S.String),
-    previousRevision: S.optional(RevisionLocation),
-    revision: S.optional(RevisionLocation),
-    status: S.optional(DeploymentStatus),
-    errorInformation: S.optional(ErrorInformation),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    completeTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deploymentOverview: S.optional(DeploymentOverview),
-    description: S.optional(S.String),
-    creator: S.optional(DeploymentCreator),
-    ignoreApplicationStopFailures: S.optional(S.Boolean),
-    autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
-    updateOutdatedInstancesOnly: S.optional(S.Boolean),
-    rollbackInfo: S.optional(RollbackInfo),
-    deploymentStyle: S.optional(DeploymentStyle),
-    targetInstances: S.optional(TargetInstances),
-    instanceTerminationWaitTimeStarted: S.optional(S.Boolean),
-    blueGreenDeploymentConfiguration: S.optional(BlueGreenDeploymentConfiguration),
-    loadBalancerInfo: S.optional(LoadBalancerInfo),
-    additionalDeploymentStatusInfo: S.optional(S.String),
-    fileExistsBehavior: S.optional(FileExistsBehavior),
-    deploymentMode: S.optional(DeploymentMode),
-    deploymentStatusMessages: S.optional(DeploymentStatusMessageList),
-    computePlatform: S.optional(ComputePlatform),
-    externalId: S.optional(S.String),
-    relatedDeployments: S.optional(RelatedDeployments),
-    overrideAlarmConfiguration: S.optional(AlarmConfiguration),
-  }),
-).annotate({ identifier: "DeploymentInfo" }) as any as S.Schema<DeploymentInfo>;
+const DeploymentInfo = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DeploymentInfo>;
 export type DeploymentsInfoList = DeploymentInfo[];
-const DeploymentsInfoList = /*@__PURE__*/ S.Array(DeploymentInfo);
+const DeploymentsInfoList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface BatchGetDeploymentsOutput {
   deploymentsInfo?: DeploymentInfo[];
 }
-const BatchGetDeploymentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentsInfo: S.optional(DeploymentsInfoList) }).pipe(ns),
-).annotate({
-  identifier: "BatchGetDeploymentsOutput",
-}) as any as S.Schema<BatchGetDeploymentsOutput>;
+const BatchGetDeploymentsOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<BatchGetDeploymentsOutput>;
 export type TargetId = string;
 export type TargetIdList = string[];
 const TargetIdList = InstanceNameList as any as S.Schema<TargetIdList>;
@@ -1505,13 +1247,10 @@ export interface BatchGetDeploymentTargetsInput {
   deploymentId: string;
   targetIds: string[];
 }
-const BatchGetDeploymentTargetsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.String, targetIds: TargetIdList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "BatchGetDeploymentTargetsInput",
-}) as any as S.Schema<BatchGetDeploymentTargetsInput>;
+const BatchGetDeploymentTargetsInput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<BatchGetDeploymentTargetsInput>;
 export type DeploymentTargetType =
   | "InstanceTarget"
   | "LambdaTarget"
@@ -1544,17 +1283,7 @@ export interface InstanceTarget {
   lifecycleEvents?: LifecycleEvent[];
   instanceLabel?: TargetLabel;
 }
-const InstanceTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    targetId: S.optional(S.String),
-    targetArn: S.optional(S.String),
-    status: S.optional(TargetStatus),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lifecycleEvents: S.optional(LifecycleEventList),
-    instanceLabel: S.optional(TargetLabel),
-  }),
-).annotate({ identifier: "InstanceTarget" }) as any as S.Schema<InstanceTarget>;
+const InstanceTarget = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<InstanceTarget>;
 export type LambdaFunctionName = string;
 export type LambdaFunctionAlias = string;
 export type Version = string;
@@ -1566,15 +1295,7 @@ export interface LambdaFunctionInfo {
   targetVersion?: string;
   targetVersionWeight?: number;
 }
-const LambdaFunctionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    functionName: S.optional(S.String),
-    functionAlias: S.optional(S.String),
-    currentVersion: S.optional(S.String),
-    targetVersion: S.optional(S.String),
-    targetVersionWeight: S.optional(S.Number),
-  }),
-).annotate({ identifier: "LambdaFunctionInfo" }) as any as S.Schema<LambdaFunctionInfo>;
+const LambdaFunctionInfo = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<LambdaFunctionInfo>;
 export interface LambdaTarget {
   deploymentId?: string;
   targetId?: string;
@@ -1584,17 +1305,7 @@ export interface LambdaTarget {
   lifecycleEvents?: LifecycleEvent[];
   lambdaFunctionInfo?: LambdaFunctionInfo;
 }
-const LambdaTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    targetId: S.optional(S.String),
-    targetArn: S.optional(S.String),
-    status: S.optional(TargetStatus),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lifecycleEvents: S.optional(LifecycleEventList),
-    lambdaFunctionInfo: S.optional(LambdaFunctionInfo),
-  }),
-).annotate({ identifier: "LambdaTarget" }) as any as S.Schema<LambdaTarget>;
+const LambdaTarget = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<LambdaTarget>;
 export type ECSTaskSetIdentifier = string;
 export type ECSTaskSetCount = number;
 export type ECSTaskSetStatus = string;
@@ -1608,20 +1319,9 @@ export interface ECSTaskSet {
   targetGroup?: TargetGroupInfo;
   taskSetLabel?: TargetLabel;
 }
-const ECSTaskSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifer: S.optional(S.String),
-    desiredCount: S.optional(S.Number),
-    pendingCount: S.optional(S.Number),
-    runningCount: S.optional(S.Number),
-    status: S.optional(S.String),
-    trafficWeight: S.optional(S.Number),
-    targetGroup: S.optional(TargetGroupInfo),
-    taskSetLabel: S.optional(TargetLabel),
-  }),
-).annotate({ identifier: "ECSTaskSet" }) as any as S.Schema<ECSTaskSet>;
+const ECSTaskSet = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ECSTaskSet>;
 export type ECSTaskSetList = ECSTaskSet[];
-const ECSTaskSetList = /*@__PURE__*/ S.Array(ECSTaskSet);
+const ECSTaskSetList = /*@__PURE__*/ __L.at(__c8, 6);
 export interface ECSTarget {
   deploymentId?: string;
   targetId?: string;
@@ -1631,17 +1331,7 @@ export interface ECSTarget {
   status?: TargetStatus;
   taskSetsInfo?: ECSTaskSet[];
 }
-const ECSTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    targetId: S.optional(S.String),
-    targetArn: S.optional(S.String),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lifecycleEvents: S.optional(LifecycleEventList),
-    status: S.optional(TargetStatus),
-    taskSetsInfo: S.optional(ECSTaskSetList),
-  }),
-).annotate({ identifier: "ECSTarget" }) as any as S.Schema<ECSTarget>;
+const ECSTarget = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ECSTarget>;
 export type CloudFormationResourceType = string;
 export interface CloudFormationTarget {
   deploymentId?: string;
@@ -1652,17 +1342,7 @@ export interface CloudFormationTarget {
   resourceType?: string;
   targetVersionWeight?: number;
 }
-const CloudFormationTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    targetId: S.optional(S.String),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lifecycleEvents: S.optional(LifecycleEventList),
-    status: S.optional(TargetStatus),
-    resourceType: S.optional(S.String),
-    targetVersionWeight: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CloudFormationTarget" }) as any as S.Schema<CloudFormationTarget>;
+const CloudFormationTarget = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<CloudFormationTarget>;
 export interface DeploymentTarget {
   deploymentTargetType?: DeploymentTargetType;
   instanceTarget?: InstanceTarget;
@@ -1670,35 +1350,23 @@ export interface DeploymentTarget {
   ecsTarget?: ECSTarget;
   cloudFormationTarget?: CloudFormationTarget;
 }
-const DeploymentTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentTargetType: S.optional(DeploymentTargetType),
-    instanceTarget: S.optional(InstanceTarget),
-    lambdaTarget: S.optional(LambdaTarget),
-    ecsTarget: S.optional(ECSTarget),
-    cloudFormationTarget: S.optional(CloudFormationTarget),
-  }),
-).annotate({ identifier: "DeploymentTarget" }) as any as S.Schema<DeploymentTarget>;
+const DeploymentTarget = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeploymentTarget>;
 export type DeploymentTargetList = DeploymentTarget[];
-const DeploymentTargetList = /*@__PURE__*/ S.Array(DeploymentTarget);
+const DeploymentTargetList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface BatchGetDeploymentTargetsOutput {
   deploymentTargets?: DeploymentTarget[];
 }
-const BatchGetDeploymentTargetsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentTargets: S.optional(DeploymentTargetList) }).pipe(ns),
-).annotate({
-  identifier: "BatchGetDeploymentTargetsOutput",
-}) as any as S.Schema<BatchGetDeploymentTargetsOutput>;
+const BatchGetDeploymentTargetsOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<BatchGetDeploymentTargetsOutput>;
 export interface BatchGetOnPremisesInstancesInput {
   instanceNames: string[];
 }
-const BatchGetOnPremisesInstancesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceNames: InstanceNameList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "BatchGetOnPremisesInstancesInput",
-}) as any as S.Schema<BatchGetOnPremisesInstancesInput>;
+const BatchGetOnPremisesInstancesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<BatchGetOnPremisesInstancesInput>;
 export type IamSessionArn = string;
 export type IamUserArn = string;
 export type InstanceArn = string;
@@ -1711,27 +1379,16 @@ export interface InstanceInfo {
   deregisterTime?: Date;
   tags?: Tag[];
 }
-const InstanceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceName: S.optional(S.String),
-    iamSessionArn: S.optional(S.String),
-    iamUserArn: S.optional(S.String),
-    instanceArn: S.optional(S.String),
-    registerTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deregisterTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "InstanceInfo" }) as any as S.Schema<InstanceInfo>;
+const InstanceInfo = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<InstanceInfo>;
 export type InstanceInfoList = InstanceInfo[];
-const InstanceInfoList = /*@__PURE__*/ S.Array(InstanceInfo);
+const InstanceInfoList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface BatchGetOnPremisesInstancesOutput {
   instanceInfos?: InstanceInfo[];
 }
-const BatchGetOnPremisesInstancesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceInfos: S.optional(InstanceInfoList) }).pipe(ns),
-).annotate({
-  identifier: "BatchGetOnPremisesInstancesOutput",
-}) as any as S.Schema<BatchGetOnPremisesInstancesOutput>;
+const BatchGetOnPremisesInstancesOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<BatchGetOnPremisesInstancesOutput>;
 export type DeploymentWaitType = "READY_WAIT" | "TERMINATION_WAIT" | (string & {});
 const DeploymentWaitType = S.String;
 
@@ -1739,12 +1396,10 @@ export interface ContinueDeploymentInput {
   deploymentId?: string;
   deploymentWaitType?: DeploymentWaitType;
 }
-const ContinueDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    deploymentWaitType: S.optional(DeploymentWaitType),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ContinueDeploymentInput" }) as any as S.Schema<ContinueDeploymentInput>;
+const ContinueDeploymentInput = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ContinueDeploymentInput>;
 export interface ContinueDeploymentResponse {}
 const ContinueDeploymentResponse =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<ContinueDeploymentResponse>;
@@ -1753,19 +1408,17 @@ export interface CreateApplicationInput {
   computePlatform?: ComputePlatform;
   tags?: Tag[];
 }
-const CreateApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.String,
-    computePlatform: S.optional(ComputePlatform),
-    tags: S.optional(TagList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateApplicationInput" }) as any as S.Schema<CreateApplicationInput>;
+const CreateApplicationInput = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<CreateApplicationInput>;
 export interface CreateApplicationOutput {
   applicationId?: string;
 }
-const CreateApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateApplicationOutput" }) as any as S.Schema<CreateApplicationOutput>;
+const CreateApplicationOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CreateApplicationOutput>;
 export interface CreateDeploymentInput {
   applicationName: string;
   deploymentGroupName?: string;
@@ -1780,28 +1433,17 @@ export interface CreateDeploymentInput {
   deploymentMode?: DeploymentMode;
   overrideAlarmConfiguration?: AlarmConfiguration;
 }
-const CreateDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.String,
-    deploymentGroupName: S.optional(S.String),
-    revision: S.optional(RevisionLocation),
-    deploymentConfigName: S.optional(S.String),
-    description: S.optional(S.String),
-    ignoreApplicationStopFailures: S.optional(S.Boolean),
-    targetInstances: S.optional(TargetInstances),
-    autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
-    updateOutdatedInstancesOnly: S.optional(S.Boolean),
-    fileExistsBehavior: S.optional(FileExistsBehavior),
-    deploymentMode: S.optional(DeploymentMode),
-    overrideAlarmConfiguration: S.optional(AlarmConfiguration),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateDeploymentInput" }) as any as S.Schema<CreateDeploymentInput>;
+const CreateDeploymentInput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CreateDeploymentInput>;
 export interface CreateDeploymentOutput {
   deploymentId?: string;
 }
-const CreateDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateDeploymentOutput" }) as any as S.Schema<CreateDeploymentOutput>;
+const CreateDeploymentOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<CreateDeploymentOutput>;
 export type MinimumHealthyHostsType = "HOST_COUNT" | "FLEET_PERCENT" | (string & {});
 const MinimumHealthyHostsType = S.String;
 
@@ -1810,9 +1452,7 @@ export interface MinimumHealthyHosts {
   type?: MinimumHealthyHostsType;
   value?: number;
 }
-const MinimumHealthyHosts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: S.optional(MinimumHealthyHostsType), value: S.optional(S.Number) }),
-).annotate({ identifier: "MinimumHealthyHosts" }) as any as S.Schema<MinimumHealthyHosts>;
+const MinimumHealthyHosts = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<MinimumHealthyHosts>;
 export type TrafficRoutingType =
   | "TimeBasedCanary"
   | "TimeBasedLinear"
@@ -1826,28 +1466,21 @@ export interface TimeBasedCanary {
   canaryPercentage?: number;
   canaryInterval?: number;
 }
-const TimeBasedCanary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ canaryPercentage: S.optional(S.Number), canaryInterval: S.optional(S.Number) }),
-).annotate({ identifier: "TimeBasedCanary" }) as any as S.Schema<TimeBasedCanary>;
+const TimeBasedCanary = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<TimeBasedCanary>;
 export interface TimeBasedLinear {
   linearPercentage?: number;
   linearInterval?: number;
 }
-const TimeBasedLinear = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ linearPercentage: S.optional(S.Number), linearInterval: S.optional(S.Number) }),
-).annotate({ identifier: "TimeBasedLinear" }) as any as S.Schema<TimeBasedLinear>;
+const TimeBasedLinear = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<TimeBasedLinear>;
 export interface TrafficRoutingConfig {
   type?: TrafficRoutingType;
   timeBasedCanary?: TimeBasedCanary;
   timeBasedLinear?: TimeBasedLinear;
 }
-const TrafficRoutingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(TrafficRoutingType),
-    timeBasedCanary: S.optional(TimeBasedCanary),
-    timeBasedLinear: S.optional(TimeBasedLinear),
-  }),
-).annotate({ identifier: "TrafficRoutingConfig" }) as any as S.Schema<TrafficRoutingConfig>;
+const TrafficRoutingConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<TrafficRoutingConfig>;
 export type WaitTimeInSeconds = number;
 export type MinimumHealthyHostsPerZoneType = "HOST_COUNT" | "FLEET_PERCENT" | (string & {});
 const MinimumHealthyHostsPerZoneType = S.String;
@@ -1857,23 +1490,16 @@ export interface MinimumHealthyHostsPerZone {
   type?: MinimumHealthyHostsPerZoneType;
   value?: number;
 }
-const MinimumHealthyHostsPerZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: S.optional(MinimumHealthyHostsPerZoneType), value: S.optional(S.Number) }),
-).annotate({
-  identifier: "MinimumHealthyHostsPerZone",
-}) as any as S.Schema<MinimumHealthyHostsPerZone>;
+const MinimumHealthyHostsPerZone = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<MinimumHealthyHostsPerZone>;
 export interface ZonalConfig {
   firstZoneMonitorDurationInSeconds?: number;
   monitorDurationInSeconds?: number;
   minimumHealthyHostsPerZone?: MinimumHealthyHostsPerZone;
 }
-const ZonalConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstZoneMonitorDurationInSeconds: S.optional(S.Number),
-    monitorDurationInSeconds: S.optional(S.Number),
-    minimumHealthyHostsPerZone: S.optional(MinimumHealthyHostsPerZone),
-  }),
-).annotate({ identifier: "ZonalConfig" }) as any as S.Schema<ZonalConfig>;
+const ZonalConfig = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ZonalConfig>;
 export interface CreateDeploymentConfigInput {
   deploymentConfigName: string;
   minimumHealthyHosts?: MinimumHealthyHosts;
@@ -1881,26 +1507,18 @@ export interface CreateDeploymentConfigInput {
   computePlatform?: ComputePlatform;
   zonalConfig?: ZonalConfig;
 }
-const CreateDeploymentConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentConfigName: S.String,
-    minimumHealthyHosts: S.optional(MinimumHealthyHosts),
-    trafficRoutingConfig: S.optional(TrafficRoutingConfig),
-    computePlatform: S.optional(ComputePlatform),
-    zonalConfig: S.optional(ZonalConfig),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateDeploymentConfigInput",
-}) as any as S.Schema<CreateDeploymentConfigInput>;
+const CreateDeploymentConfigInput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CreateDeploymentConfigInput>;
 export type DeploymentConfigId = string;
 export interface CreateDeploymentConfigOutput {
   deploymentConfigId?: string;
 }
-const CreateDeploymentConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentConfigId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "CreateDeploymentConfigOutput",
-}) as any as S.Schema<CreateDeploymentConfigOutput>;
+const CreateDeploymentConfigOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<CreateDeploymentConfigOutput>;
 export interface CreateDeploymentGroupInput {
   applicationName: string;
   deploymentGroupName: string;
@@ -1922,60 +1540,34 @@ export interface CreateDeploymentGroupInput {
   tags?: Tag[];
   terminationHookEnabled?: boolean;
 }
-const CreateDeploymentGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.String,
-    deploymentGroupName: S.String,
-    deploymentConfigName: S.optional(S.String),
-    ec2TagFilters: S.optional(EC2TagFilterList),
-    onPremisesInstanceTagFilters: S.optional(TagFilterList),
-    autoScalingGroups: S.optional(AutoScalingGroupNameList),
-    serviceRoleArn: S.String,
-    triggerConfigurations: S.optional(TriggerConfigList),
-    alarmConfiguration: S.optional(AlarmConfiguration),
-    autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
-    outdatedInstancesStrategy: S.optional(OutdatedInstancesStrategy),
-    deploymentStyle: S.optional(DeploymentStyle),
-    blueGreenDeploymentConfiguration: S.optional(BlueGreenDeploymentConfiguration),
-    loadBalancerInfo: S.optional(LoadBalancerInfo),
-    ec2TagSet: S.optional(EC2TagSet),
-    ecsServices: S.optional(ECSServiceList),
-    onPremisesTagSet: S.optional(OnPremisesTagSet),
-    tags: S.optional(TagList),
-    terminationHookEnabled: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateDeploymentGroupInput",
-}) as any as S.Schema<CreateDeploymentGroupInput>;
+const CreateDeploymentGroupInput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<CreateDeploymentGroupInput>;
 export interface CreateDeploymentGroupOutput {
   deploymentGroupId?: string;
 }
-const CreateDeploymentGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentGroupId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "CreateDeploymentGroupOutput",
-}) as any as S.Schema<CreateDeploymentGroupOutput>;
+const CreateDeploymentGroupOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CreateDeploymentGroupOutput>;
 export interface DeleteApplicationInput {
   applicationName: string;
 }
-const DeleteApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteApplicationInput" }) as any as S.Schema<DeleteApplicationInput>;
+const DeleteApplicationInput = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DeleteApplicationInput>;
 export interface DeleteApplicationResponse {}
 const DeleteApplicationResponse =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteDeploymentConfigInput {
   deploymentConfigName: string;
 }
-const DeleteDeploymentConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentConfigName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteDeploymentConfigInput",
-}) as any as S.Schema<DeleteDeploymentConfigInput>;
+const DeleteDeploymentConfigInput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<DeleteDeploymentConfigInput>;
 export interface DeleteDeploymentConfigResponse {}
 const DeleteDeploymentConfigResponse =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<DeleteDeploymentConfigResponse>;
@@ -1983,126 +1575,94 @@ export interface DeleteDeploymentGroupInput {
   applicationName: string;
   deploymentGroupName: string;
 }
-const DeleteDeploymentGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationName: S.String, deploymentGroupName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteDeploymentGroupInput",
-}) as any as S.Schema<DeleteDeploymentGroupInput>;
+const DeleteDeploymentGroupInput = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DeleteDeploymentGroupInput>;
 export interface DeleteDeploymentGroupOutput {
   hooksNotCleanedUp?: AutoScalingGroup[];
 }
-const DeleteDeploymentGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ hooksNotCleanedUp: S.optional(AutoScalingGroupList) }).pipe(ns),
-).annotate({
-  identifier: "DeleteDeploymentGroupOutput",
-}) as any as S.Schema<DeleteDeploymentGroupOutput>;
+const DeleteDeploymentGroupOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DeleteDeploymentGroupOutput>;
 export interface DeleteGitHubAccountTokenInput {
   tokenName?: string;
 }
-const DeleteGitHubAccountTokenInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tokenName: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteGitHubAccountTokenInput",
-}) as any as S.Schema<DeleteGitHubAccountTokenInput>;
+const DeleteGitHubAccountTokenInput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DeleteGitHubAccountTokenInput>;
 export interface DeleteGitHubAccountTokenOutput {
   tokenName?: string;
 }
-const DeleteGitHubAccountTokenOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tokenName: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DeleteGitHubAccountTokenOutput",
-}) as any as S.Schema<DeleteGitHubAccountTokenOutput>;
+const DeleteGitHubAccountTokenOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<DeleteGitHubAccountTokenOutput>;
 export interface DeleteResourcesByExternalIdInput {
   externalId?: string;
 }
-const DeleteResourcesByExternalIdInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ externalId: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteResourcesByExternalIdInput",
-}) as any as S.Schema<DeleteResourcesByExternalIdInput>;
+const DeleteResourcesByExternalIdInput = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DeleteResourcesByExternalIdInput>;
 export interface DeleteResourcesByExternalIdOutput {}
 const DeleteResourcesByExternalIdOutput =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<DeleteResourcesByExternalIdOutput>;
 export interface DeregisterOnPremisesInstanceInput {
   instanceName: string;
 }
-const DeregisterOnPremisesInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeregisterOnPremisesInstanceInput",
-}) as any as S.Schema<DeregisterOnPremisesInstanceInput>;
+const DeregisterOnPremisesInstanceInput = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DeregisterOnPremisesInstanceInput>;
 export interface DeregisterOnPremisesInstanceResponse {}
 const DeregisterOnPremisesInstanceResponse =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<DeregisterOnPremisesInstanceResponse>;
 export interface GetApplicationInput {
   applicationName: string;
 }
-const GetApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetApplicationInput" }) as any as S.Schema<GetApplicationInput>;
+const GetApplicationInput = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetApplicationInput>;
 export interface GetApplicationOutput {
   application?: ApplicationInfo;
 }
-const GetApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ application: S.optional(ApplicationInfo) }).pipe(ns),
-).annotate({ identifier: "GetApplicationOutput" }) as any as S.Schema<GetApplicationOutput>;
+const GetApplicationOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetApplicationOutput>;
 export interface GetApplicationRevisionInput {
   applicationName: string;
   revision: RevisionLocation;
 }
-const GetApplicationRevisionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationName: S.String, revision: RevisionLocation }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetApplicationRevisionInput",
-}) as any as S.Schema<GetApplicationRevisionInput>;
+const GetApplicationRevisionInput = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetApplicationRevisionInput>;
 export interface GetApplicationRevisionOutput {
   applicationName?: string;
   revision?: RevisionLocation;
   revisionInfo?: GenericRevisionInfo;
 }
-const GetApplicationRevisionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.optional(S.String),
-    revision: S.optional(RevisionLocation),
-    revisionInfo: S.optional(GenericRevisionInfo),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetApplicationRevisionOutput",
-}) as any as S.Schema<GetApplicationRevisionOutput>;
+const GetApplicationRevisionOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetApplicationRevisionOutput>;
 export interface GetDeploymentInput {
   deploymentId: string;
 }
-const GetDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetDeploymentInput" }) as any as S.Schema<GetDeploymentInput>;
+const GetDeploymentInput = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GetDeploymentInput>;
 export interface GetDeploymentOutput {
   deploymentInfo?: DeploymentInfo;
 }
-const GetDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentInfo: S.optional(DeploymentInfo) }).pipe(ns),
-).annotate({ identifier: "GetDeploymentOutput" }) as any as S.Schema<GetDeploymentOutput>;
+const GetDeploymentOutput = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GetDeploymentOutput>;
 export interface GetDeploymentConfigInput {
   deploymentConfigName: string;
 }
-const GetDeploymentConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentConfigName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetDeploymentConfigInput" }) as any as S.Schema<GetDeploymentConfigInput>;
+const GetDeploymentConfigInput = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetDeploymentConfigInput>;
 export interface DeploymentConfigInfo {
   deploymentConfigId?: string;
   deploymentConfigName?: string;
@@ -2112,94 +1672,76 @@ export interface DeploymentConfigInfo {
   trafficRoutingConfig?: TrafficRoutingConfig;
   zonalConfig?: ZonalConfig;
 }
-const DeploymentConfigInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentConfigId: S.optional(S.String),
-    deploymentConfigName: S.optional(S.String),
-    minimumHealthyHosts: S.optional(MinimumHealthyHosts),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    computePlatform: S.optional(ComputePlatform),
-    trafficRoutingConfig: S.optional(TrafficRoutingConfig),
-    zonalConfig: S.optional(ZonalConfig),
-  }),
-).annotate({ identifier: "DeploymentConfigInfo" }) as any as S.Schema<DeploymentConfigInfo>;
+const DeploymentConfigInfo = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DeploymentConfigInfo>;
 export interface GetDeploymentConfigOutput {
   deploymentConfigInfo?: DeploymentConfigInfo;
 }
-const GetDeploymentConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentConfigInfo: S.optional(DeploymentConfigInfo) }).pipe(ns),
-).annotate({
-  identifier: "GetDeploymentConfigOutput",
-}) as any as S.Schema<GetDeploymentConfigOutput>;
+const GetDeploymentConfigOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetDeploymentConfigOutput>;
 export interface GetDeploymentGroupInput {
   applicationName: string;
   deploymentGroupName: string;
 }
-const GetDeploymentGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationName: S.String, deploymentGroupName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetDeploymentGroupInput" }) as any as S.Schema<GetDeploymentGroupInput>;
+const GetDeploymentGroupInput = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetDeploymentGroupInput>;
 export interface GetDeploymentGroupOutput {
   deploymentGroupInfo?: DeploymentGroupInfo;
 }
-const GetDeploymentGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentGroupInfo: S.optional(DeploymentGroupInfo) }).pipe(ns),
-).annotate({ identifier: "GetDeploymentGroupOutput" }) as any as S.Schema<GetDeploymentGroupOutput>;
+const GetDeploymentGroupOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetDeploymentGroupOutput>;
 export interface GetDeploymentInstanceInput {
   deploymentId: string;
   instanceId: string;
 }
-const GetDeploymentInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.String, instanceId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetDeploymentInstanceInput",
-}) as any as S.Schema<GetDeploymentInstanceInput>;
+const GetDeploymentInstanceInput = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetDeploymentInstanceInput>;
 export interface GetDeploymentInstanceOutput {
   instanceSummary?: InstanceSummary;
 }
-const GetDeploymentInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceSummary: S.optional(InstanceSummary) }).pipe(ns),
-).annotate({
-  identifier: "GetDeploymentInstanceOutput",
-}) as any as S.Schema<GetDeploymentInstanceOutput>;
+const GetDeploymentInstanceOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetDeploymentInstanceOutput>;
 export interface GetDeploymentTargetInput {
   deploymentId: string;
   targetId: string;
 }
-const GetDeploymentTargetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.String, targetId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetDeploymentTargetInput" }) as any as S.Schema<GetDeploymentTargetInput>;
+const GetDeploymentTargetInput = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetDeploymentTargetInput>;
 export interface GetDeploymentTargetOutput {
   deploymentTarget?: DeploymentTarget;
 }
-const GetDeploymentTargetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentTarget: S.optional(DeploymentTarget) }).pipe(ns),
-).annotate({
-  identifier: "GetDeploymentTargetOutput",
-}) as any as S.Schema<GetDeploymentTargetOutput>;
+const GetDeploymentTargetOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetDeploymentTargetOutput>;
 export interface GetOnPremisesInstanceInput {
   instanceName: string;
 }
-const GetOnPremisesInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetOnPremisesInstanceInput",
-}) as any as S.Schema<GetOnPremisesInstanceInput>;
+const GetOnPremisesInstanceInput = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetOnPremisesInstanceInput>;
 export interface GetOnPremisesInstanceOutput {
   instanceInfo?: InstanceInfo;
 }
-const GetOnPremisesInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceInfo: S.optional(InstanceInfo) }).pipe(ns),
-).annotate({
-  identifier: "GetOnPremisesInstanceOutput",
-}) as any as S.Schema<GetOnPremisesInstanceOutput>;
+const GetOnPremisesInstanceOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetOnPremisesInstanceOutput>;
 export type ApplicationRevisionSortBy =
   | "registerTime"
   | "firstUsedTime"
@@ -2223,96 +1765,67 @@ export interface ListApplicationRevisionsInput {
   deployed?: ListStateFilterAction;
   nextToken?: string;
 }
-const ListApplicationRevisionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.String,
-    sortBy: S.optional(ApplicationRevisionSortBy),
-    sortOrder: S.optional(SortOrder),
-    s3Bucket: S.optional(S.String),
-    s3KeyPrefix: S.optional(S.String),
-    deployed: S.optional(ListStateFilterAction),
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListApplicationRevisionsInput",
-}) as any as S.Schema<ListApplicationRevisionsInput>;
+const ListApplicationRevisionsInput = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListApplicationRevisionsInput>;
 export interface ListApplicationRevisionsOutput {
   revisions?: RevisionLocation[];
   nextToken?: string;
 }
-const ListApplicationRevisionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ revisions: S.optional(RevisionLocationList), nextToken: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "ListApplicationRevisionsOutput",
-}) as any as S.Schema<ListApplicationRevisionsOutput>;
+const ListApplicationRevisionsOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListApplicationRevisionsOutput>;
 export interface ListApplicationsInput {
   nextToken?: string;
 }
-const ListApplicationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListApplicationsInput" }) as any as S.Schema<ListApplicationsInput>;
+const ListApplicationsInput = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListApplicationsInput>;
 export interface ListApplicationsOutput {
   applications?: string[];
   nextToken?: string;
 }
-const ListApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applications: S.optional(ApplicationsList), nextToken: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({ identifier: "ListApplicationsOutput" }) as any as S.Schema<ListApplicationsOutput>;
+const ListApplicationsOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListApplicationsOutput>;
 export interface ListDeploymentConfigsInput {
   nextToken?: string;
 }
-const ListDeploymentConfigsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListDeploymentConfigsInput",
-}) as any as S.Schema<ListDeploymentConfigsInput>;
+const ListDeploymentConfigsInput = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListDeploymentConfigsInput>;
 export type DeploymentConfigsList = string[];
 const DeploymentConfigsList = InstanceNameList as any as S.Schema<DeploymentConfigsList>;
 export interface ListDeploymentConfigsOutput {
   deploymentConfigsList?: string[];
   nextToken?: string;
 }
-const ListDeploymentConfigsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentConfigsList: S.optional(DeploymentConfigsList),
-    nextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListDeploymentConfigsOutput",
-}) as any as S.Schema<ListDeploymentConfigsOutput>;
+const ListDeploymentConfigsOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListDeploymentConfigsOutput>;
 export interface ListDeploymentGroupsInput {
   applicationName: string;
   nextToken?: string;
 }
-const ListDeploymentGroupsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationName: S.String, nextToken: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListDeploymentGroupsInput",
-}) as any as S.Schema<ListDeploymentGroupsInput>;
+const ListDeploymentGroupsInput = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListDeploymentGroupsInput>;
 export interface ListDeploymentGroupsOutput {
   applicationName?: string;
   deploymentGroups?: string[];
   nextToken?: string;
 }
-const ListDeploymentGroupsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.optional(S.String),
-    deploymentGroups: S.optional(DeploymentGroupsList),
-    nextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListDeploymentGroupsOutput",
-}) as any as S.Schema<ListDeploymentGroupsOutput>;
+const ListDeploymentGroupsOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListDeploymentGroupsOutput>;
 export type InstanceStatusList = InstanceStatus[];
 const InstanceStatusList = TriggerEventTypeList as any as S.Schema<InstanceStatusList>;
 export type InstanceTypeList = InstanceType[];
@@ -2323,37 +1836,25 @@ export interface ListDeploymentInstancesInput {
   instanceStatusFilter?: InstanceStatus[];
   instanceTypeFilter?: InstanceType[];
 }
-const ListDeploymentInstancesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.String,
-    nextToken: S.optional(S.String),
-    instanceStatusFilter: S.optional(InstanceStatusList),
-    instanceTypeFilter: S.optional(InstanceTypeList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListDeploymentInstancesInput",
-}) as any as S.Schema<ListDeploymentInstancesInput>;
+const ListDeploymentInstancesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListDeploymentInstancesInput>;
 export interface ListDeploymentInstancesOutput {
   instancesList?: string[];
   nextToken?: string;
 }
-const ListDeploymentInstancesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instancesList: S.optional(InstancesList), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListDeploymentInstancesOutput",
-}) as any as S.Schema<ListDeploymentInstancesOutput>;
+const ListDeploymentInstancesOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListDeploymentInstancesOutput>;
 export type DeploymentStatusList = DeploymentStatus[];
 const DeploymentStatusList = TriggerEventTypeList as any as S.Schema<DeploymentStatusList>;
 export interface TimeRange {
   start?: Date;
   end?: Date;
 }
-const TimeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    end: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "TimeRange" }) as any as S.Schema<TimeRange>;
+const TimeRange = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<TimeRange>;
 export interface ListDeploymentsInput {
   applicationName?: string;
   deploymentGroupName?: string;
@@ -2362,23 +1863,18 @@ export interface ListDeploymentsInput {
   createTimeRange?: TimeRange;
   nextToken?: string;
 }
-const ListDeploymentsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.optional(S.String),
-    deploymentGroupName: S.optional(S.String),
-    externalId: S.optional(S.String),
-    includeOnlyStatuses: S.optional(DeploymentStatusList),
-    createTimeRange: S.optional(TimeRange),
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListDeploymentsInput" }) as any as S.Schema<ListDeploymentsInput>;
+const ListDeploymentsInput = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListDeploymentsInput>;
 export interface ListDeploymentsOutput {
   deployments?: string[];
   nextToken?: string;
 }
-const ListDeploymentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deployments: S.optional(DeploymentsList), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListDeploymentsOutput" }) as any as S.Schema<ListDeploymentsOutput>;
+const ListDeploymentsOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListDeploymentsOutput>;
 export type TargetFilterName = "TargetStatus" | "ServerInstanceLabel" | (string & {});
 const TargetFilterName = S.String;
 
@@ -2386,57 +1882,41 @@ export type FilterValue = string;
 export type FilterValueList = string[];
 const FilterValueList = InstanceNameList as any as S.Schema<FilterValueList>;
 export type TargetFilters = { [key in TargetFilterName]?: string[] };
-const TargetFilters = /*@__PURE__*/ S.Record(
-  TargetFilterName,
-  /*@__PURE__*/ FilterValueList.pipe(S.optional),
-);
+const TargetFilters = /*@__PURE__*/ __L.at(__c16, 5);
 export interface ListDeploymentTargetsInput {
   deploymentId: string;
   nextToken?: string;
   targetFilters?: { [key: string]: string[] | undefined };
 }
-const ListDeploymentTargetsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.String,
-    nextToken: S.optional(S.String),
-    targetFilters: S.optional(TargetFilters),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListDeploymentTargetsInput",
-}) as any as S.Schema<ListDeploymentTargetsInput>;
+const ListDeploymentTargetsInput = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListDeploymentTargetsInput>;
 export interface ListDeploymentTargetsOutput {
   targetIds?: string[];
   nextToken?: string;
 }
-const ListDeploymentTargetsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetIds: S.optional(TargetIdList), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListDeploymentTargetsOutput",
-}) as any as S.Schema<ListDeploymentTargetsOutput>;
+const ListDeploymentTargetsOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListDeploymentTargetsOutput>;
 export interface ListGitHubAccountTokenNamesInput {
   nextToken?: string;
 }
-const ListGitHubAccountTokenNamesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListGitHubAccountTokenNamesInput",
-}) as any as S.Schema<ListGitHubAccountTokenNamesInput>;
+const ListGitHubAccountTokenNamesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListGitHubAccountTokenNamesInput>;
 export type GitHubAccountTokenNameList = string[];
 const GitHubAccountTokenNameList = InstanceNameList as any as S.Schema<GitHubAccountTokenNameList>;
 export interface ListGitHubAccountTokenNamesOutput {
   tokenNameList?: string[];
   nextToken?: string;
 }
-const ListGitHubAccountTokenNamesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenNameList: S.optional(GitHubAccountTokenNameList),
-    nextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListGitHubAccountTokenNamesOutput",
-}) as any as S.Schema<ListGitHubAccountTokenNamesOutput>;
+const ListGitHubAccountTokenNamesOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListGitHubAccountTokenNamesOutput>;
 export type RegistrationStatus = "Registered" | "Deregistered" | (string & {});
 const RegistrationStatus = S.String;
 
@@ -2445,82 +1925,61 @@ export interface ListOnPremisesInstancesInput {
   tagFilters?: TagFilter[];
   nextToken?: string;
 }
-const ListOnPremisesInstancesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registrationStatus: S.optional(RegistrationStatus),
-    tagFilters: S.optional(TagFilterList),
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListOnPremisesInstancesInput",
-}) as any as S.Schema<ListOnPremisesInstancesInput>;
+const ListOnPremisesInstancesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListOnPremisesInstancesInput>;
 export interface ListOnPremisesInstancesOutput {
   instanceNames?: string[];
   nextToken?: string;
 }
-const ListOnPremisesInstancesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceNames: S.optional(InstanceNameList), nextToken: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "ListOnPremisesInstancesOutput",
-}) as any as S.Schema<ListOnPremisesInstancesOutput>;
+const ListOnPremisesInstancesOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListOnPremisesInstancesOutput>;
 export type Arn = string;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
   NextToken?: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, NextToken: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags?: Tag[];
   NextToken?: string;
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export type LifecycleEventHookExecutionId = string;
 export interface PutLifecycleEventHookExecutionStatusInput {
   deploymentId?: string;
   lifecycleEventHookExecutionId?: string;
   status?: LifecycleEventStatus;
 }
-const PutLifecycleEventHookExecutionStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    lifecycleEventHookExecutionId: S.optional(S.String),
-    status: S.optional(LifecycleEventStatus),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "PutLifecycleEventHookExecutionStatusInput",
-}) as any as S.Schema<PutLifecycleEventHookExecutionStatusInput>;
+const PutLifecycleEventHookExecutionStatusInput = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<PutLifecycleEventHookExecutionStatusInput>;
 export interface PutLifecycleEventHookExecutionStatusOutput {
   lifecycleEventHookExecutionId?: string;
 }
-const PutLifecycleEventHookExecutionStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lifecycleEventHookExecutionId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "PutLifecycleEventHookExecutionStatusOutput",
-}) as any as S.Schema<PutLifecycleEventHookExecutionStatusOutput>;
+const PutLifecycleEventHookExecutionStatusOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<PutLifecycleEventHookExecutionStatusOutput>;
 export interface RegisterApplicationRevisionInput {
   applicationName: string;
   description?: string;
   revision: RevisionLocation;
 }
-const RegisterApplicationRevisionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.String,
-    description: S.optional(S.String),
-    revision: RevisionLocation,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RegisterApplicationRevisionInput",
-}) as any as S.Schema<RegisterApplicationRevisionInput>;
+const RegisterApplicationRevisionInput = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<RegisterApplicationRevisionInput>;
 export interface RegisterApplicationRevisionResponse {}
 const RegisterApplicationRevisionResponse =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<RegisterApplicationRevisionResponse>;
@@ -2529,15 +1988,10 @@ export interface RegisterOnPremisesInstanceInput {
   iamSessionArn?: string;
   iamUserArn?: string;
 }
-const RegisterOnPremisesInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceName: S.String,
-    iamSessionArn: S.optional(S.String),
-    iamUserArn: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RegisterOnPremisesInstanceInput",
-}) as any as S.Schema<RegisterOnPremisesInstanceInput>;
+const RegisterOnPremisesInstanceInput = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<RegisterOnPremisesInstanceInput>;
 export interface RegisterOnPremisesInstanceResponse {}
 const RegisterOnPremisesInstanceResponse =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<RegisterOnPremisesInstanceResponse>;
@@ -2545,26 +1999,20 @@ export interface RemoveTagsFromOnPremisesInstancesInput {
   tags: Tag[];
   instanceNames: string[];
 }
-const RemoveTagsFromOnPremisesInstancesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: TagList, instanceNames: InstanceNameList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RemoveTagsFromOnPremisesInstancesInput",
-}) as any as S.Schema<RemoveTagsFromOnPremisesInstancesInput>;
+const RemoveTagsFromOnPremisesInstancesInput = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<RemoveTagsFromOnPremisesInstancesInput>;
 export interface RemoveTagsFromOnPremisesInstancesResponse {}
 const RemoveTagsFromOnPremisesInstancesResponse =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<RemoveTagsFromOnPremisesInstancesResponse>;
 export interface SkipWaitTimeForInstanceTerminationInput {
   deploymentId?: string;
 }
-const SkipWaitTimeForInstanceTerminationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SkipWaitTimeForInstanceTerminationInput",
-}) as any as S.Schema<SkipWaitTimeForInstanceTerminationInput>;
+const SkipWaitTimeForInstanceTerminationInput = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<SkipWaitTimeForInstanceTerminationInput>;
 export interface SkipWaitTimeForInstanceTerminationResponse {}
 const SkipWaitTimeForInstanceTerminationResponse =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<SkipWaitTimeForInstanceTerminationResponse>;
@@ -2572,11 +2020,7 @@ export interface StopDeploymentInput {
   deploymentId: string;
   autoRollbackEnabled?: boolean;
 }
-const StopDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.String, autoRollbackEnabled: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StopDeploymentInput" }) as any as S.Schema<StopDeploymentInput>;
+const StopDeploymentInput = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<StopDeploymentInput>;
 export type StopStatus = "Pending" | "Succeeded" | (string & {});
 const StopStatus = S.String;
 
@@ -2585,45 +2029,34 @@ export interface StopDeploymentOutput {
   status?: StopStatus;
   statusMessage?: string;
 }
-const StopDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(StopStatus), statusMessage: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "StopDeploymentOutput" }) as any as S.Schema<StopDeploymentOutput>;
+const StopDeploymentOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<StopDeploymentOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+const TagResourceOutput = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
 const TagKeyList = InstanceNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
 const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateApplicationInput {
   applicationName?: string;
   newApplicationName?: string;
 }
-const UpdateApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.optional(S.String),
-    newApplicationName: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateApplicationInput" }) as any as S.Schema<UpdateApplicationInput>;
+const UpdateApplicationInput = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<UpdateApplicationInput>;
 export interface UpdateApplicationResponse {}
 const UpdateApplicationResponse =
   AddTagsToOnPremisesInstancesResponse as any as S.Schema<UpdateApplicationResponse>;
@@ -2648,31 +2081,10 @@ export interface UpdateDeploymentGroupInput {
   onPremisesTagSet?: OnPremisesTagSet;
   terminationHookEnabled?: boolean;
 }
-const UpdateDeploymentGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.String,
-    currentDeploymentGroupName: S.String,
-    newDeploymentGroupName: S.optional(S.String),
-    deploymentConfigName: S.optional(S.String),
-    ec2TagFilters: S.optional(EC2TagFilterList),
-    onPremisesInstanceTagFilters: S.optional(TagFilterList),
-    autoScalingGroups: S.optional(AutoScalingGroupNameList),
-    serviceRoleArn: S.optional(S.String),
-    triggerConfigurations: S.optional(TriggerConfigList),
-    alarmConfiguration: S.optional(AlarmConfiguration),
-    autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
-    outdatedInstancesStrategy: S.optional(OutdatedInstancesStrategy),
-    deploymentStyle: S.optional(DeploymentStyle),
-    blueGreenDeploymentConfiguration: S.optional(BlueGreenDeploymentConfiguration),
-    loadBalancerInfo: S.optional(LoadBalancerInfo),
-    ec2TagSet: S.optional(EC2TagSet),
-    ecsServices: S.optional(ECSServiceList),
-    onPremisesTagSet: S.optional(OnPremisesTagSet),
-    terminationHookEnabled: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateDeploymentGroupInput",
-}) as any as S.Schema<UpdateDeploymentGroupInput>;
+const UpdateDeploymentGroupInput = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<UpdateDeploymentGroupInput>;
 export interface UpdateDeploymentGroupOutput {
   hooksNotCleanedUp?: AutoScalingGroup[];
 }
@@ -4373,3 +3785,1235 @@ export const updateDeploymentGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDeploymentGroup",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(Tag);
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ tags: TagList, instanceNames: InstanceNameList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AddTagsToOnPremisesInstancesInput",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AddTagsToOnPremisesInstancesResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.optional(S.String),
+          key: S.optional(S.String),
+          bundleType: S.optional(BundleType),
+          version: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3Location" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ repository: S.optional(S.String), commitId: S.optional(S.String) }),
+      ).annotate({ identifier: "GitHubLocation" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ content: S.optional(S.String), sha256: S.optional(S.String) }),
+      ).annotate({ identifier: "RawString" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          revisionType: S.optional(RevisionLocationType),
+          s3Location: S.optional(S3Location),
+          gitHubLocation: S.optional(GitHubLocation),
+          string: S.optional(RawString),
+          appSpecContent: S.optional(AppSpecContent),
+        }),
+      ).annotate({ identifier: "RevisionLocation" });
+    case 1:
+      return S.Array(RevisionLocation);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ applicationName: S.String, revisions: RevisionLocationList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchGetApplicationRevisionsInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          deploymentGroups: S.optional(DeploymentGroupsList),
+          firstUsedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUsedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          registerTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "GenericRevisionInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          revisionLocation: S.optional(RevisionLocation),
+          genericRevisionInfo: S.optional(GenericRevisionInfo),
+        }),
+      ).annotate({ identifier: "RevisionInfo" });
+    case 5:
+      return S.Array(RevisionInfo);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          revisions: S.optional(RevisionInfoList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetApplicationRevisionsOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ applicationNames: ApplicationsList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchGetApplicationsInput",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.optional(S.String),
+          applicationName: S.optional(S.String),
+          createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          linkedToGitHub: S.optional(S.Boolean),
+          gitHubAccountName: S.optional(S.String),
+          computePlatform: S.optional(ComputePlatform),
+        }),
+      ).annotate({ identifier: "ApplicationInfo" });
+    case 1:
+      return S.Array(ApplicationInfo);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ applicationsInfo: S.optional(ApplicationsInfoList) }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetApplicationsOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ applicationName: S.String, deploymentGroupNames: DeploymentGroupsList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchGetDeploymentGroupsInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Value: S.optional(S.String),
+          Type: S.optional(EC2TagFilterType),
+        }),
+      ).annotate({ identifier: "EC2TagFilter" });
+    case 5:
+      return S.Array(EC2TagFilter);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          hook: S.optional(S.String),
+          terminationHook: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutoScalingGroup" });
+    case 7:
+      return S.Array(AutoScalingGroup);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(TriggerEventType);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          triggerName: S.optional(S.String),
+          triggerTargetArn: S.optional(S.String),
+          triggerEvents: S.optional(TriggerEventTypeList),
+        }),
+      ).annotate({ identifier: "TriggerConfig" });
+    case 2:
+      return S.Array(TriggerConfig);
+    case 3:
+      return S.suspend(() => S.Struct({ name: S.optional(S.String) })).annotate({
+        identifier: "Alarm",
+      });
+    case 4:
+      return S.Array(Alarm);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          ignorePollAlarmFailure: S.optional(S.Boolean),
+          alarms: S.optional(AlarmList),
+        }),
+      ).annotate({ identifier: "AlarmConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ enabled: S.optional(S.Boolean), events: S.optional(AutoRollbackEventsList) }),
+      ).annotate({
+        identifier: "AutoRollbackConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentType: S.optional(DeploymentType),
+          deploymentOption: S.optional(DeploymentOption),
+        }),
+      ).annotate({ identifier: "DeploymentStyle" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(InstanceAction),
+          terminationWaitTimeInMinutes: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "BlueInstanceTerminationOption",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actionOnTimeout: S.optional(DeploymentReadyAction),
+          waitTimeInMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeploymentReadyOption" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ action: S.optional(GreenFleetProvisioningAction) }),
+      ).annotate({
+        identifier: "GreenFleetProvisioningOption",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          terminateBlueInstancesOnDeploymentSuccess: S.optional(BlueInstanceTerminationOption),
+          deploymentReadyOption: S.optional(DeploymentReadyOption),
+          greenFleetProvisioningOption: S.optional(GreenFleetProvisioningOption),
+        }),
+      ).annotate({
+        identifier: "BlueGreenDeploymentConfiguration",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ listenerArns: S.optional(ListenerArnList) })).annotate({
+        identifier: "TrafficRoute",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          targetGroups: S.optional(TargetGroupInfoList),
+          prodTrafficRoute: S.optional(TrafficRoute),
+          testTrafficRoute: S.optional(TrafficRoute),
+        }),
+      ).annotate({ identifier: "TargetGroupPairInfo" });
+    case 6:
+      return S.Array(TargetGroupPairInfo);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          elbInfoList: S.optional(ELBInfoList),
+          targetGroupInfoList: S.optional(TargetGroupInfoList),
+          targetGroupPairInfoList: S.optional(TargetGroupPairInfoList),
+        }),
+      ).annotate({ identifier: "LoadBalancerInfo" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          status: S.optional(DeploymentStatus),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "LastDeploymentInfo" });
+    case 1:
+      return S.Array(EC2TagFilterList);
+    case 2:
+      return S.suspend(() => S.Struct({ ec2TagSetList: S.optional(EC2TagSetList) })).annotate({
+        identifier: "EC2TagSet",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ onPremisesTagSetList: S.optional(OnPremisesTagSetList) }),
+      ).annotate({ identifier: "OnPremisesTagSet" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ serviceName: S.optional(S.String), clusterName: S.optional(S.String) }),
+      ).annotate({ identifier: "ECSService" });
+    case 5:
+      return S.Array(ECSService);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          deploymentGroupId: S.optional(S.String),
+          deploymentGroupName: S.optional(S.String),
+          deploymentConfigName: S.optional(S.String),
+          ec2TagFilters: S.optional(EC2TagFilterList),
+          onPremisesInstanceTagFilters: S.optional(TagFilterList),
+          autoScalingGroups: S.optional(AutoScalingGroupList),
+          serviceRoleArn: S.optional(S.String),
+          targetRevision: S.optional(RevisionLocation),
+          triggerConfigurations: S.optional(TriggerConfigList),
+          alarmConfiguration: S.optional(AlarmConfiguration),
+          autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
+          deploymentStyle: S.optional(DeploymentStyle),
+          outdatedInstancesStrategy: S.optional(OutdatedInstancesStrategy),
+          blueGreenDeploymentConfiguration: S.optional(BlueGreenDeploymentConfiguration),
+          loadBalancerInfo: S.optional(LoadBalancerInfo),
+          lastSuccessfulDeployment: S.optional(LastDeploymentInfo),
+          lastAttemptedDeployment: S.optional(LastDeploymentInfo),
+          ec2TagSet: S.optional(EC2TagSet),
+          onPremisesTagSet: S.optional(OnPremisesTagSet),
+          computePlatform: S.optional(ComputePlatform),
+          ecsServices: S.optional(ECSServiceList),
+          terminationHookEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DeploymentGroupInfo" });
+    case 7:
+      return S.Array(DeploymentGroupInfo);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentGroupsInfo: S.optional(DeploymentGroupInfoList),
+          errorMessage: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetDeploymentGroupsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String, instanceIds: InstancesList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchGetDeploymentInstancesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.optional(LifecycleErrorCode),
+          scriptName: S.optional(S.String),
+          message: S.optional(S.String),
+          logTail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Diagnostics" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          lifecycleEventName: S.optional(S.String),
+          diagnostics: S.optional(Diagnostics),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(LifecycleEventStatus),
+        }),
+      ).annotate({ identifier: "LifecycleEvent" });
+    case 4:
+      return S.Array(LifecycleEvent);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          instanceId: S.optional(S.String),
+          status: S.optional(InstanceStatus),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lifecycleEvents: S.optional(LifecycleEventList),
+          instanceType: S.optional(InstanceType),
+        }),
+      ).annotate({ identifier: "InstanceSummary" });
+    case 6:
+      return S.Array(InstanceSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          instancesSummary: S.optional(InstanceSummaryList),
+          errorMessage: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetDeploymentInstancesOutput",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ deploymentIds: DeploymentsList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetDeploymentsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ code: S.optional(ErrorCode), message: S.optional(S.String) }),
+      ).annotate({ identifier: "ErrorInformation" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Pending: S.optional(S.Number),
+          InProgress: S.optional(S.Number),
+          Succeeded: S.optional(S.Number),
+          Failed: S.optional(S.Number),
+          Skipped: S.optional(S.Number),
+          Ready: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeploymentOverview" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          rollbackDeploymentId: S.optional(S.String),
+          rollbackTriggeringDeploymentId: S.optional(S.String),
+          rollbackMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RollbackInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          tagFilters: S.optional(EC2TagFilterList),
+          autoScalingGroups: S.optional(AutoScalingGroupNameList),
+          ec2TagSet: S.optional(EC2TagSet),
+        }),
+      ).annotate({ identifier: "TargetInstances" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          autoUpdateOutdatedInstancesRootDeploymentId: S.optional(S.String),
+          autoUpdateOutdatedInstancesDeploymentIds: S.optional(DeploymentsList),
+        }),
+      ).annotate({ identifier: "RelatedDeployments" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          deploymentGroupName: S.optional(S.String),
+          deploymentConfigName: S.optional(S.String),
+          deploymentId: S.optional(S.String),
+          previousRevision: S.optional(RevisionLocation),
+          revision: S.optional(RevisionLocation),
+          status: S.optional(DeploymentStatus),
+          errorInformation: S.optional(ErrorInformation),
+          createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          completeTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deploymentOverview: S.optional(DeploymentOverview),
+          description: S.optional(S.String),
+          creator: S.optional(DeploymentCreator),
+          ignoreApplicationStopFailures: S.optional(S.Boolean),
+          autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
+          updateOutdatedInstancesOnly: S.optional(S.Boolean),
+          rollbackInfo: S.optional(RollbackInfo),
+          deploymentStyle: S.optional(DeploymentStyle),
+          targetInstances: S.optional(TargetInstances),
+          instanceTerminationWaitTimeStarted: S.optional(S.Boolean),
+          blueGreenDeploymentConfiguration: S.optional(BlueGreenDeploymentConfiguration),
+          loadBalancerInfo: S.optional(LoadBalancerInfo),
+          additionalDeploymentStatusInfo: S.optional(S.String),
+          fileExistsBehavior: S.optional(FileExistsBehavior),
+          deploymentMode: S.optional(DeploymentMode),
+          deploymentStatusMessages: S.optional(DeploymentStatusMessageList),
+          computePlatform: S.optional(ComputePlatform),
+          externalId: S.optional(S.String),
+          relatedDeployments: S.optional(RelatedDeployments),
+          overrideAlarmConfiguration: S.optional(AlarmConfiguration),
+        }),
+      ).annotate({ identifier: "DeploymentInfo" });
+    case 7:
+      return S.Array(DeploymentInfo);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ deploymentsInfo: S.optional(DeploymentsInfoList) }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetDeploymentsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String, targetIds: TargetIdList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchGetDeploymentTargetsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          targetId: S.optional(S.String),
+          targetArn: S.optional(S.String),
+          status: S.optional(TargetStatus),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lifecycleEvents: S.optional(LifecycleEventList),
+          instanceLabel: S.optional(TargetLabel),
+        }),
+      ).annotate({ identifier: "InstanceTarget" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          functionName: S.optional(S.String),
+          functionAlias: S.optional(S.String),
+          currentVersion: S.optional(S.String),
+          targetVersion: S.optional(S.String),
+          targetVersionWeight: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LambdaFunctionInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          targetId: S.optional(S.String),
+          targetArn: S.optional(S.String),
+          status: S.optional(TargetStatus),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lifecycleEvents: S.optional(LifecycleEventList),
+          lambdaFunctionInfo: S.optional(LambdaFunctionInfo),
+        }),
+      ).annotate({ identifier: "LambdaTarget" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          identifer: S.optional(S.String),
+          desiredCount: S.optional(S.Number),
+          pendingCount: S.optional(S.Number),
+          runningCount: S.optional(S.Number),
+          status: S.optional(S.String),
+          trafficWeight: S.optional(S.Number),
+          targetGroup: S.optional(TargetGroupInfo),
+          taskSetLabel: S.optional(TargetLabel),
+        }),
+      ).annotate({ identifier: "ECSTaskSet" });
+    case 6:
+      return S.Array(ECSTaskSet);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          targetId: S.optional(S.String),
+          targetArn: S.optional(S.String),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lifecycleEvents: S.optional(LifecycleEventList),
+          status: S.optional(TargetStatus),
+          taskSetsInfo: S.optional(ECSTaskSetList),
+        }),
+      ).annotate({ identifier: "ECSTarget" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          targetId: S.optional(S.String),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lifecycleEvents: S.optional(LifecycleEventList),
+          status: S.optional(TargetStatus),
+          resourceType: S.optional(S.String),
+          targetVersionWeight: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CloudFormationTarget" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentTargetType: S.optional(DeploymentTargetType),
+          instanceTarget: S.optional(InstanceTarget),
+          lambdaTarget: S.optional(LambdaTarget),
+          ecsTarget: S.optional(ECSTarget),
+          cloudFormationTarget: S.optional(CloudFormationTarget),
+        }),
+      ).annotate({ identifier: "DeploymentTarget" });
+    case 2:
+      return S.Array(DeploymentTarget);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ deploymentTargets: S.optional(DeploymentTargetList) }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetDeploymentTargetsOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ instanceNames: InstanceNameList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchGetOnPremisesInstancesInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          instanceName: S.optional(S.String),
+          iamSessionArn: S.optional(S.String),
+          iamUserArn: S.optional(S.String),
+          instanceArn: S.optional(S.String),
+          registerTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deregisterTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "InstanceInfo" });
+    case 6:
+      return S.Array(InstanceInfo);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ instanceInfos: S.optional(InstanceInfoList) }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetOnPremisesInstancesOutput",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          deploymentWaitType: S.optional(DeploymentWaitType),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ContinueDeploymentInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.String,
+          computePlatform: S.optional(ComputePlatform),
+          tags: S.optional(TagList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateApplicationInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ applicationId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateApplicationOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.String,
+          deploymentGroupName: S.optional(S.String),
+          revision: S.optional(RevisionLocation),
+          deploymentConfigName: S.optional(S.String),
+          description: S.optional(S.String),
+          ignoreApplicationStopFailures: S.optional(S.Boolean),
+          targetInstances: S.optional(TargetInstances),
+          autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
+          updateOutdatedInstancesOnly: S.optional(S.Boolean),
+          fileExistsBehavior: S.optional(FileExistsBehavior),
+          deploymentMode: S.optional(DeploymentMode),
+          overrideAlarmConfiguration: S.optional(AlarmConfiguration),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDeploymentInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ deploymentId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateDeploymentOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(MinimumHealthyHostsType), value: S.optional(S.Number) }),
+      ).annotate({ identifier: "MinimumHealthyHosts" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ canaryPercentage: S.optional(S.Number), canaryInterval: S.optional(S.Number) }),
+      ).annotate({ identifier: "TimeBasedCanary" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ linearPercentage: S.optional(S.Number), linearInterval: S.optional(S.Number) }),
+      ).annotate({ identifier: "TimeBasedLinear" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(TrafficRoutingType),
+          timeBasedCanary: S.optional(TimeBasedCanary),
+          timeBasedLinear: S.optional(TimeBasedLinear),
+        }),
+      ).annotate({ identifier: "TrafficRoutingConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(MinimumHealthyHostsPerZoneType), value: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "MinimumHealthyHostsPerZone",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          firstZoneMonitorDurationInSeconds: S.optional(S.Number),
+          monitorDurationInSeconds: S.optional(S.Number),
+          minimumHealthyHostsPerZone: S.optional(MinimumHealthyHostsPerZone),
+        }),
+      ).annotate({ identifier: "ZonalConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentConfigName: S.String,
+          minimumHealthyHosts: S.optional(MinimumHealthyHosts),
+          trafficRoutingConfig: S.optional(TrafficRoutingConfig),
+          computePlatform: S.optional(ComputePlatform),
+          zonalConfig: S.optional(ZonalConfig),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateDeploymentConfigInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ deploymentConfigId: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateDeploymentConfigOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.String,
+          deploymentGroupName: S.String,
+          deploymentConfigName: S.optional(S.String),
+          ec2TagFilters: S.optional(EC2TagFilterList),
+          onPremisesInstanceTagFilters: S.optional(TagFilterList),
+          autoScalingGroups: S.optional(AutoScalingGroupNameList),
+          serviceRoleArn: S.String,
+          triggerConfigurations: S.optional(TriggerConfigList),
+          alarmConfiguration: S.optional(AlarmConfiguration),
+          autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
+          outdatedInstancesStrategy: S.optional(OutdatedInstancesStrategy),
+          deploymentStyle: S.optional(DeploymentStyle),
+          blueGreenDeploymentConfiguration: S.optional(BlueGreenDeploymentConfiguration),
+          loadBalancerInfo: S.optional(LoadBalancerInfo),
+          ec2TagSet: S.optional(EC2TagSet),
+          ecsServices: S.optional(ECSServiceList),
+          onPremisesTagSet: S.optional(OnPremisesTagSet),
+          tags: S.optional(TagList),
+          terminationHookEnabled: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateDeploymentGroupInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ deploymentGroupId: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateDeploymentGroupOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ applicationName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteApplicationInput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ deploymentConfigName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteDeploymentConfigInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ applicationName: S.String, deploymentGroupName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteDeploymentGroupInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ hooksNotCleanedUp: S.optional(AutoScalingGroupList) }).pipe(ns),
+      ).annotate({
+        identifier: "DeleteDeploymentGroupOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ tokenName: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteGitHubAccountTokenInput",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ tokenName: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "DeleteGitHubAccountTokenOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ externalId: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcesByExternalIdInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ instanceName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeregisterOnPremisesInstanceInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ applicationName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetApplicationInput" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ application: S.optional(ApplicationInfo) }).pipe(ns),
+      ).annotate({ identifier: "GetApplicationOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ applicationName: S.String, revision: RevisionLocation }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetApplicationRevisionInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          revision: S.optional(RevisionLocation),
+          revisionInfo: S.optional(GenericRevisionInfo),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetApplicationRevisionOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetDeploymentInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ deploymentInfo: S.optional(DeploymentInfo) }).pipe(ns),
+      ).annotate({ identifier: "GetDeploymentOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ deploymentConfigName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetDeploymentConfigInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentConfigId: S.optional(S.String),
+          deploymentConfigName: S.optional(S.String),
+          minimumHealthyHosts: S.optional(MinimumHealthyHosts),
+          createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          computePlatform: S.optional(ComputePlatform),
+          trafficRoutingConfig: S.optional(TrafficRoutingConfig),
+          zonalConfig: S.optional(ZonalConfig),
+        }),
+      ).annotate({ identifier: "DeploymentConfigInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ deploymentConfigInfo: S.optional(DeploymentConfigInfo) }).pipe(ns),
+      ).annotate({
+        identifier: "GetDeploymentConfigOutput",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ applicationName: S.String, deploymentGroupName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetDeploymentGroupInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ deploymentGroupInfo: S.optional(DeploymentGroupInfo) }).pipe(ns),
+      ).annotate({ identifier: "GetDeploymentGroupOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String, instanceId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetDeploymentInstanceInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ instanceSummary: S.optional(InstanceSummary) }).pipe(ns),
+      ).annotate({
+        identifier: "GetDeploymentInstanceOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String, targetId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetDeploymentTargetInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ deploymentTarget: S.optional(DeploymentTarget) }).pipe(ns),
+      ).annotate({
+        identifier: "GetDeploymentTargetOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ instanceName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetOnPremisesInstanceInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ instanceInfo: S.optional(InstanceInfo) }).pipe(ns),
+      ).annotate({
+        identifier: "GetOnPremisesInstanceOutput",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.String,
+          sortBy: S.optional(ApplicationRevisionSortBy),
+          sortOrder: S.optional(SortOrder),
+          s3Bucket: S.optional(S.String),
+          s3KeyPrefix: S.optional(S.String),
+          deployed: S.optional(ListStateFilterAction),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListApplicationRevisionsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          revisions: S.optional(RevisionLocationList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListApplicationRevisionsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListApplicationsInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          applications: S.optional(ApplicationsList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListApplicationsOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListDeploymentConfigsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentConfigsList: S.optional(DeploymentConfigsList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListDeploymentConfigsOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ applicationName: S.String, nextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListDeploymentGroupsInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          deploymentGroups: S.optional(DeploymentGroupsList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListDeploymentGroupsOutput",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String,
+          nextToken: S.optional(S.String),
+          instanceStatusFilter: S.optional(InstanceStatusList),
+          instanceTypeFilter: S.optional(InstanceTypeList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListDeploymentInstancesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instancesList: S.optional(InstancesList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListDeploymentInstancesOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          end: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "TimeRange" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          deploymentGroupName: S.optional(S.String),
+          externalId: S.optional(S.String),
+          includeOnlyStatuses: S.optional(DeploymentStatusList),
+          createTimeRange: S.optional(TimeRange),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDeploymentsInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          deployments: S.optional(DeploymentsList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListDeploymentsOutput" });
+    case 5:
+      return S.Record(TargetFilterName, /*@__PURE__*/ FilterValueList.pipe(S.optional));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String,
+          nextToken: S.optional(S.String),
+          targetFilters: S.optional(TargetFilters),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListDeploymentTargetsInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ targetIds: S.optional(TargetIdList), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ListDeploymentTargetsOutput",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListGitHubAccountTokenNamesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tokenNameList: S.optional(GitHubAccountTokenNameList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListGitHubAccountTokenNamesOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          registrationStatus: S.optional(RegistrationStatus),
+          tagFilters: S.optional(TagFilterList),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListOnPremisesInstancesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instanceNames: S.optional(InstanceNameList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListOnPremisesInstancesOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, NextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          lifecycleEventHookExecutionId: S.optional(S.String),
+          status: S.optional(LifecycleEventStatus),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "PutLifecycleEventHookExecutionStatusInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ lifecycleEventHookExecutionId: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "PutLifecycleEventHookExecutionStatusOutput",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.String,
+          description: S.optional(S.String),
+          revision: RevisionLocation,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RegisterApplicationRevisionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instanceName: S.String,
+          iamSessionArn: S.optional(S.String),
+          iamUserArn: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RegisterOnPremisesInstanceInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ tags: TagList, instanceNames: InstanceNameList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RemoveTagsFromOnPremisesInstancesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "SkipWaitTimeForInstanceTerminationInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String, autoRollbackEnabled: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopDeploymentInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ status: S.optional(StopStatus), statusMessage: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "StopDeploymentOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "TagResourceOutput",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          newApplicationName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateApplicationInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.String,
+          currentDeploymentGroupName: S.String,
+          newDeploymentGroupName: S.optional(S.String),
+          deploymentConfigName: S.optional(S.String),
+          ec2TagFilters: S.optional(EC2TagFilterList),
+          onPremisesInstanceTagFilters: S.optional(TagFilterList),
+          autoScalingGroups: S.optional(AutoScalingGroupNameList),
+          serviceRoleArn: S.optional(S.String),
+          triggerConfigurations: S.optional(TriggerConfigList),
+          alarmConfiguration: S.optional(AlarmConfiguration),
+          autoRollbackConfiguration: S.optional(AutoRollbackConfiguration),
+          outdatedInstancesStrategy: S.optional(OutdatedInstancesStrategy),
+          deploymentStyle: S.optional(DeploymentStyle),
+          blueGreenDeploymentConfiguration: S.optional(BlueGreenDeploymentConfiguration),
+          loadBalancerInfo: S.optional(LoadBalancerInfo),
+          ec2TagSet: S.optional(EC2TagSet),
+          ecsServices: S.optional(ECSServiceList),
+          onPremisesTagSet: S.optional(OnPremisesTagSet),
+          terminationHookEnabled: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateDeploymentGroupInput",
+      });
+  }
+}

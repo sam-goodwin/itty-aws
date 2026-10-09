@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -131,17 +132,11 @@ export interface ScanSbomRequest {
   sbom: any;
   outputFormat?: OutputFormat;
 }
-const ScanSbomRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sbom: S.Any, outputFormat: S.optional(OutputFormat) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/scan/sbom" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ScanSbomRequest" }) as any as S.Schema<ScanSbomRequest>;
+const ScanSbomRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ScanSbomRequest>;
 export interface ScanSbomResponse {
   sbom?: any;
 }
-const ScanSbomResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sbom: S.optional(S.Any) }),
-).annotate({ identifier: "ScanSbomResponse" }) as any as S.Schema<ScanSbomResponse>;
+const ScanSbomResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ScanSbomResponse>;
 export type InternalServerExceptionReason = "FAILED_TO_GENERATE_SBOM" | "OTHER" | (string & {});
 const InternalServerExceptionReason = S.String;
 
@@ -158,11 +153,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFields = ValidationExceptionField[];
-const ValidationExceptionFields = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFields = /*@__PURE__*/ __L.at(__c0, 3);
 export type ScanSbomError =
   | AccessDeniedException
   | InternalServerException
@@ -192,3 +188,25 @@ export const scanSbom: API.OperationMethod<
   retry: Retry,
   operationName: "ScanSbom",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ sbom: S.Any, outputFormat: S.optional(OutputFormat) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/scan/sbom" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ScanSbomRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ sbom: S.optional(S.Any) })).annotate({
+        identifier: "ScanSbomResponse",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 3:
+      return S.Array(ValidationExceptionField);
+  }
+}

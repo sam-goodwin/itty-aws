@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
@@ -116,10 +117,7 @@ export type SnsTopicArn = string;
 export type OptionalKey = string;
 export type OptionalValue = string;
 export type CustomerDefinedValues = { [key: string]: string | undefined };
-const CustomerDefinedValues = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const CustomerDefinedValues = /*@__PURE__*/ __L.at(__c0, 0);
 export interface GenerateDataSetRequest {
   dataSetType: DataSetType;
   dataSetPublicationDate: Date;
@@ -129,24 +127,18 @@ export interface GenerateDataSetRequest {
   snsTopicArn: string;
   customerDefinedValues?: { [key: string]: string | undefined };
 }
-const GenerateDataSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataSetType: DataSetType,
-    dataSetPublicationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    roleNameArn: S.String,
-    destinationS3BucketName: S.String,
-    destinationS3Prefix: S.optional(S.String),
-    snsTopicArn: S.String,
-    customerDefinedValues: S.optional(CustomerDefinedValues),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GenerateDataSetRequest" }) as any as S.Schema<GenerateDataSetRequest>;
+const GenerateDataSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GenerateDataSetRequest>;
 export type DataSetRequestId = string;
 export interface GenerateDataSetResult {
   dataSetRequestId?: string;
 }
-const GenerateDataSetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataSetRequestId: S.optional(S.String) }),
-).annotate({ identifier: "GenerateDataSetResult" }) as any as S.Schema<GenerateDataSetResult>;
+const GenerateDataSetResult = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GenerateDataSetResult>;
 export type SupportDataSetType =
   | "customer_support_contacts_data"
   | "test_customer_support_contacts_data"
@@ -163,27 +155,17 @@ export interface StartSupportDataExportRequest {
   snsTopicArn: string;
   customerDefinedValues?: { [key: string]: string | undefined };
 }
-const StartSupportDataExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataSetType: SupportDataSetType,
-    fromDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    roleNameArn: S.String,
-    destinationS3BucketName: S.String,
-    destinationS3Prefix: S.optional(S.String),
-    snsTopicArn: S.String,
-    customerDefinedValues: S.optional(CustomerDefinedValues),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "StartSupportDataExportRequest",
-}) as any as S.Schema<StartSupportDataExportRequest>;
+const StartSupportDataExportRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<StartSupportDataExportRequest>;
 export interface StartSupportDataExportResult {
   dataSetRequestId?: string;
 }
-const StartSupportDataExportResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataSetRequestId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartSupportDataExportResult",
-}) as any as S.Schema<StartSupportDataExportResult>;
+const StartSupportDataExportResult = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<StartSupportDataExportResult>;
 export type ExceptionMessage = string;
 export type GenerateDataSetError = MarketplaceCommerceAnalyticsException | CommonErrors;
 /**
@@ -234,3 +216,45 @@ export const startSupportDataExport: API.OperationMethod<
   retry: Retry,
   operationName: "StartSupportDataExport",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dataSetType: DataSetType,
+          dataSetPublicationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          roleNameArn: S.String,
+          destinationS3BucketName: S.String,
+          destinationS3Prefix: S.optional(S.String),
+          snsTopicArn: S.String,
+          customerDefinedValues: S.optional(CustomerDefinedValues),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GenerateDataSetRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ dataSetRequestId: S.optional(S.String) })).annotate({
+        identifier: "GenerateDataSetResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dataSetType: SupportDataSetType,
+          fromDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          roleNameArn: S.String,
+          destinationS3BucketName: S.String,
+          destinationS3Prefix: S.optional(S.String),
+          snsTopicArn: S.String,
+          customerDefinedValues: S.optional(CustomerDefinedValues),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "StartSupportDataExportRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ dataSetRequestId: S.optional(S.String) })).annotate({
+        identifier: "StartSupportDataExportResult",
+      });
+  }
+}

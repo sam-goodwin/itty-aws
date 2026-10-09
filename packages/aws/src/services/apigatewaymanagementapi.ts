@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -100,84 +101,42 @@ export class PayloadTooLargeException
 export interface DeleteConnectionRequest {
   ConnectionId: string;
 }
-const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/@connections/{ConnectionId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
+const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {}
-const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectionResponse",
-}) as any as S.Schema<DeleteConnectionResponse>;
+const DeleteConnectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteConnectionResponse>;
 export interface GetConnectionRequest {
   ConnectionId: string;
 }
-const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/@connections/{ConnectionId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetConnectionRequest" }) as any as S.Schema<GetConnectionRequest>;
+const GetConnectionRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetConnectionRequest>;
 export type __timestampIso8601 = Date;
 export interface Identity {
   SourceIp?: string;
   UserAgent?: string;
 }
-const Identity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SourceIp: S.optional(S.String), UserAgent: S.optional(S.String) }).pipe(
-    S.encodeKeys({ SourceIp: "sourceIp", UserAgent: "userAgent" }),
-  ),
-).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
+const Identity = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Identity>;
 export interface GetConnectionResponse {
   ConnectedAt?: Date;
   Identity?: Identity & { SourceIp: string; UserAgent: string };
   LastActiveAt?: Date;
 }
-const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Identity: S.optional(Identity),
-    LastActiveAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }).pipe(
-    S.encodeKeys({
-      ConnectedAt: "connectedAt",
-      Identity: "identity",
-      LastActiveAt: "lastActiveAt",
-    }),
-  ),
-).annotate({ identifier: "GetConnectionResponse" }) as any as S.Schema<GetConnectionResponse>;
+const GetConnectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetConnectionResponse>;
 export interface PostToConnectionRequest {
   Data?: T.StreamingInputBody;
   ConnectionId: string;
 }
-const PostToConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Data: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
-    ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/@connections/{ConnectionId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PostToConnectionRequest" }) as any as S.Schema<PostToConnectionRequest>;
+const PostToConnectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PostToConnectionRequest>;
 export interface PostToConnectionResponse {}
 const PostToConnectionResponse =
   DeleteConnectionResponse as any as S.Schema<PostToConnectionResponse>;
@@ -247,3 +206,75 @@ export const postToConnection: API.OperationMethod<
   retry: Retry,
   operationName: "PostToConnection",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/@connections/{ConnectionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteConnectionRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteConnectionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/@connections/{ConnectionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetConnectionRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ SourceIp: S.optional(S.String), UserAgent: S.optional(S.String) }).pipe(
+          S.encodeKeys({ SourceIp: "sourceIp", UserAgent: "userAgent" }),
+        ),
+      ).annotate({ identifier: "Identity" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Identity: S.optional(Identity),
+          LastActiveAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }).pipe(
+          S.encodeKeys({
+            ConnectedAt: "connectedAt",
+            Identity: "identity",
+            LastActiveAt: "lastActiveAt",
+          }),
+        ),
+      ).annotate({ identifier: "GetConnectionResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Data: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+          ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/@connections/{ConnectionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PostToConnectionRequest" });
+  }
+}

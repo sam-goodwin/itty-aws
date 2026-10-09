@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -101,38 +102,29 @@ export type ChannelArn = string;
 export interface JoinStorageSessionInput {
   channelArn: string;
 }
-const JoinStorageSessionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ channelArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/joinStorageSession" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "JoinStorageSessionInput" }) as any as S.Schema<JoinStorageSessionInput>;
+const JoinStorageSessionInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<JoinStorageSessionInput>;
 export interface JoinStorageSessionResponse {}
-const JoinStorageSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "JoinStorageSessionResponse",
-}) as any as S.Schema<JoinStorageSessionResponse>;
+const JoinStorageSessionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<JoinStorageSessionResponse>;
 export type ClientId = string;
 export interface JoinStorageSessionAsViewerInput {
   channelArn: string;
   clientId: string;
 }
-const JoinStorageSessionAsViewerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ channelArn: S.String, clientId: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/joinStorageSessionAsViewer" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "JoinStorageSessionAsViewerInput",
-}) as any as S.Schema<JoinStorageSessionAsViewerInput>;
+const JoinStorageSessionAsViewerInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<JoinStorageSessionAsViewerInput>;
 export interface JoinStorageSessionAsViewerResponse {}
-const JoinStorageSessionAsViewerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "JoinStorageSessionAsViewerResponse",
-}) as any as S.Schema<JoinStorageSessionAsViewerResponse>;
+const JoinStorageSessionAsViewerResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<JoinStorageSessionAsViewerResponse>;
 export type JoinStorageSessionError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -246,3 +238,45 @@ export const joinStorageSessionAsViewer: API.OperationMethod<
   retry: Retry,
   operationName: "JoinStorageSessionAsViewer",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ channelArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/joinStorageSession" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "JoinStorageSessionInput" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "JoinStorageSessionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ channelArn: S.String, clientId: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/joinStorageSessionAsViewer" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "JoinStorageSessionAsViewerInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "JoinStorageSessionAsViewerResponse",
+      });
+  }
+}

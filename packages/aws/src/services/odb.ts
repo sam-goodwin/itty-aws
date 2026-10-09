@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -146,17 +147,15 @@ export class ValidationException
 export interface AcceptMarketplaceRegistrationInput {
   marketplaceRegistrationToken: string;
 }
-const AcceptMarketplaceRegistrationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ marketplaceRegistrationToken: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AcceptMarketplaceRegistrationInput",
-}) as any as S.Schema<AcceptMarketplaceRegistrationInput>;
+const AcceptMarketplaceRegistrationInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptMarketplaceRegistrationInput>;
 export interface AcceptMarketplaceRegistrationOutput {}
-const AcceptMarketplaceRegistrationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AcceptMarketplaceRegistrationOutput",
-}) as any as S.Schema<AcceptMarketplaceRegistrationOutput>;
+const AcceptMarketplaceRegistrationOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptMarketplaceRegistrationOutput>;
 export type RoleArn = string;
 export type SupportedAwsIntegration = "KmsTde" | (string & {});
 const SupportedAwsIntegration = S.String;
@@ -167,15 +166,10 @@ export interface AssociateIamRoleToResourceInput {
   awsIntegration: SupportedAwsIntegration;
   resourceArn: string;
 }
-const AssociateIamRoleToResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iamRoleArn: S.String,
-    awsIntegration: SupportedAwsIntegration,
-    resourceArn: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AssociateIamRoleToResourceInput",
-}) as any as S.Schema<AssociateIamRoleToResourceInput>;
+const AssociateIamRoleToResourceInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AssociateIamRoleToResourceInput>;
 export interface AssociateIamRoleToResourceOutput {}
 const AssociateIamRoleToResourceOutput =
   AcceptMarketplaceRegistrationOutput as any as S.Schema<AssociateIamRoleToResourceOutput>;
@@ -184,13 +178,10 @@ export interface AssociateVirtualMachinesToExadbVmClusterInput {
   exadbVmClusterId: string;
   desiredNodeCount: number;
 }
-const AssociateVirtualMachinesToExadbVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exadbVmClusterId: S.String, desiredNodeCount: S.Number }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AssociateVirtualMachinesToExadbVmClusterInput",
-}) as any as S.Schema<AssociateVirtualMachinesToExadbVmClusterInput>;
+const AssociateVirtualMachinesToExadbVmClusterInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssociateVirtualMachinesToExadbVmClusterInput>;
 export type ResourceStatus =
   | "AVAILABLE"
   | "FAILED"
@@ -208,16 +199,10 @@ export interface AssociateVirtualMachinesToExadbVmClusterOutput {
   statusReason?: string;
   exadbVmClusterId: string;
 }
-const AssociateVirtualMachinesToExadbVmClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    exadbVmClusterId: S.String,
-  }),
-).annotate({
-  identifier: "AssociateVirtualMachinesToExadbVmClusterOutput",
-}) as any as S.Schema<AssociateVirtualMachinesToExadbVmClusterOutput>;
+const AssociateVirtualMachinesToExadbVmClusterOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociateVirtualMachinesToExadbVmClusterOutput>;
 export type ResourceDisplayName = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type DbWorkload = "OLTP" | "AJD" | "APEX" | "LH" | (string & {});
@@ -238,11 +223,9 @@ const AutonomousMaintenanceScheduleType = S.String;
 export interface CustomerContact {
   email?: string | redacted.Redacted<string>;
 }
-const CustomerContact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ email: S.optional(SensitiveString) }),
-).annotate({ identifier: "CustomerContact" }) as any as S.Schema<CustomerContact>;
+const CustomerContact = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CustomerContact>;
 export type CustomerContacts = CustomerContact[];
-const CustomerContacts = /*@__PURE__*/ S.Array(CustomerContact);
+const CustomerContacts = /*@__PURE__*/ __L.at(__c0, 6);
 export interface ResourcePoolSummary {
   isDisabled?: boolean;
   poolSize?: number;
@@ -251,16 +234,7 @@ export interface ResourcePoolSummary {
   totalComputeCapacity?: number;
   availableComputeCapacity?: number;
 }
-const ResourcePoolSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isDisabled: S.optional(S.Boolean),
-    poolSize: S.optional(S.Number),
-    poolStorageSizeInTBs: S.optional(S.Number),
-    availableStorageCapacityInTBs: S.optional(S.Number),
-    totalComputeCapacity: S.optional(S.Number),
-    availableComputeCapacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ResourcePoolSummary" }) as any as S.Schema<ResourcePoolSummary>;
+const ResourcePoolSummary = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ResourcePoolSummary>;
 export type DayOfWeekName =
   | "MONDAY"
   | "TUESDAY"
@@ -275,49 +249,36 @@ const DayOfWeekName = S.String;
 export interface DayOfWeek {
   name?: DayOfWeekName;
 }
-const DayOfWeek = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(DayOfWeekName) }),
-).annotate({ identifier: "DayOfWeek" }) as any as S.Schema<DayOfWeek>;
+const DayOfWeek = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DayOfWeek>;
 export interface ScheduledOperationDetails {
   dayOfWeek: DayOfWeek;
   scheduledStartTime?: string;
   scheduledStopTime?: string;
 }
-const ScheduledOperationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dayOfWeek: DayOfWeek,
-    scheduledStartTime: S.optional(S.String),
-    scheduledStopTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScheduledOperationDetails",
-}) as any as S.Schema<ScheduledOperationDetails>;
+const ScheduledOperationDetails = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ScheduledOperationDetails>;
 export type ScheduledOperationDetailsList = ScheduledOperationDetails[];
-const ScheduledOperationDetailsList = /*@__PURE__*/ S.Array(ScheduledOperationDetails);
+const ScheduledOperationDetailsList = /*@__PURE__*/ __L.at(__c1, 2);
 export type StringList = string[];
-const StringList = /*@__PURE__*/ S.Array(S.String);
+const StringList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface TransportableTablespace {
   ttsBundleUrl?: string;
 }
-const TransportableTablespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ttsBundleUrl: S.optional(S.String) }),
-).annotate({ identifier: "TransportableTablespace" }) as any as S.Schema<TransportableTablespace>;
+const TransportableTablespace = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<TransportableTablespace>;
 export interface DatabaseTool {
   isEnabled?: boolean;
   name?: string;
   computeCount?: number;
   maxIdleTimeInMinutes?: number;
 }
-const DatabaseTool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isEnabled: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    computeCount: S.optional(S.Number),
-    maxIdleTimeInMinutes: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DatabaseTool" }) as any as S.Schema<DatabaseTool>;
+const DatabaseTool = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DatabaseTool>;
 export type DatabaseToolList = DatabaseTool[];
-const DatabaseToolList = /*@__PURE__*/ S.Array(DatabaseTool);
+const DatabaseToolList = /*@__PURE__*/ __L.at(__c1, 6);
 export type SourceType =
   | "NONE"
   | "DATABASE"
@@ -336,27 +297,21 @@ export interface DatabaseCloneConfiguration {
   sourceAutonomousDatabaseId: string;
   cloneType: CloneType;
 }
-const DatabaseCloneConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sourceAutonomousDatabaseId: S.String, cloneType: CloneType }),
-).annotate({
-  identifier: "DatabaseCloneConfiguration",
-}) as any as S.Schema<DatabaseCloneConfiguration>;
+const DatabaseCloneConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DatabaseCloneConfiguration>;
 export type IntegerList = number[];
-const IntegerList = /*@__PURE__*/ S.Array(S.Number);
+const IntegerList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface RestoreFromBackupConfiguration {
   autonomousDatabaseBackupId: string;
   cloneType: CloneType;
   cloneTableSpaceList?: number[];
 }
-const RestoreFromBackupConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseBackupId: S.String,
-    cloneType: CloneType,
-    cloneTableSpaceList: S.optional(IntegerList),
-  }),
-).annotate({
-  identifier: "RestoreFromBackupConfiguration",
-}) as any as S.Schema<RestoreFromBackupConfiguration>;
+const RestoreFromBackupConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<RestoreFromBackupConfiguration>;
 export interface PointInTimeRestoreConfiguration {
   sourceAutonomousDatabaseId: string;
   cloneType: CloneType;
@@ -364,25 +319,17 @@ export interface PointInTimeRestoreConfiguration {
   useLatestAvailableBackupTimestamp?: boolean;
   cloneTableSpaceList?: number[];
 }
-const PointInTimeRestoreConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceAutonomousDatabaseId: S.String,
-    cloneType: CloneType,
-    timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    useLatestAvailableBackupTimestamp: S.optional(S.Boolean),
-    cloneTableSpaceList: S.optional(IntegerList),
-  }),
-).annotate({
-  identifier: "PointInTimeRestoreConfiguration",
-}) as any as S.Schema<PointInTimeRestoreConfiguration>;
+const PointInTimeRestoreConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<PointInTimeRestoreConfiguration>;
 export interface CrossRegionDataGuardConfiguration {
   sourceAutonomousDatabaseArn: string;
 }
-const CrossRegionDataGuardConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sourceAutonomousDatabaseArn: S.String }),
-).annotate({
-  identifier: "CrossRegionDataGuardConfiguration",
-}) as any as S.Schema<CrossRegionDataGuardConfiguration>;
+const CrossRegionDataGuardConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CrossRegionDataGuardConfiguration>;
 export type DisasterRecoveryType = "ADG" | "BACKUP_BASED" | (string & {});
 const DisasterRecoveryType = S.String;
 
@@ -391,15 +338,10 @@ export interface CrossRegionDisasterRecoveryConfiguration {
   remoteDisasterRecoveryType: DisasterRecoveryType;
   isReplicateAutomaticBackups?: boolean;
 }
-const CrossRegionDisasterRecoveryConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceAutonomousDatabaseArn: S.String,
-    remoteDisasterRecoveryType: DisasterRecoveryType,
-    isReplicateAutomaticBackups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CrossRegionDisasterRecoveryConfiguration",
-}) as any as S.Schema<CrossRegionDisasterRecoveryConfiguration>;
+const CrossRegionDisasterRecoveryConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CrossRegionDisasterRecoveryConfiguration>;
 export type RefreshableMode = "AUTOMATIC" | "MANUAL" | (string & {});
 const RefreshableMode = S.String;
 
@@ -415,19 +357,10 @@ export interface CloneToRefreshableConfiguration {
   openMode?: OpenMode;
   cloneType?: CloneType;
 }
-const CloneToRefreshableConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceAutonomousDatabaseId: S.String,
-    refreshableMode: S.optional(RefreshableMode),
-    autoRefreshFrequencyInSeconds: S.optional(S.Number),
-    autoRefreshPointLagInSeconds: S.optional(S.Number),
-    timeOfAutoRefreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    openMode: S.optional(OpenMode),
-    cloneType: S.optional(CloneType),
-  }),
-).annotate({
-  identifier: "CloneToRefreshableConfiguration",
-}) as any as S.Schema<CloneToRefreshableConfiguration>;
+const CloneToRefreshableConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CloneToRefreshableConfiguration>;
 export type SourceConfiguration =
   | {
       databaseClone: DatabaseCloneConfiguration;
@@ -477,14 +410,7 @@ export type SourceConfiguration =
       crossRegionDisasterRecovery?: never;
       cloneToRefreshable: CloneToRefreshableConfiguration;
     };
-const SourceConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ databaseClone: DatabaseCloneConfiguration }),
-  /*@__PURE__*/ S.Struct({ restoreFromBackup: RestoreFromBackupConfiguration }),
-  /*@__PURE__*/ S.Struct({ pointInTimeRestore: PointInTimeRestoreConfiguration }),
-  /*@__PURE__*/ S.Struct({ crossRegionDataGuard: CrossRegionDataGuardConfiguration }),
-  /*@__PURE__*/ S.Struct({ crossRegionDisasterRecovery: CrossRegionDisasterRecoveryConfiguration }),
-  /*@__PURE__*/ S.Struct({ cloneToRefreshable: CloneToRefreshableConfiguration }),
-]);
+const SourceConfiguration = /*@__PURE__*/ __L.at(__c2, 6);
 export type EncryptionKeyProviderInput = "ORACLE_MANAGED" | "AWS_KMS" | (string & {});
 const EncryptionKeyProviderInput = S.String;
 
@@ -497,21 +423,14 @@ export interface AwsEncryptionKeyConfigurationInput {
   externalIdType?: ExternalIdType;
   kmsKeyId?: string;
 }
-const AwsEncryptionKeyConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iamRoleArn: S.optional(S.String),
-    externalIdType: S.optional(ExternalIdType),
-    kmsKeyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AwsEncryptionKeyConfigurationInput",
-}) as any as S.Schema<AwsEncryptionKeyConfigurationInput>;
+const AwsEncryptionKeyConfigurationInput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<AwsEncryptionKeyConfigurationInput>;
 export type EncryptionKeyConfigurationInput = {
   awsEncryptionKey: AwsEncryptionKeyConfigurationInput;
 };
-const EncryptionKeyConfigurationInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfigurationInput }),
-]);
+const EncryptionKeyConfigurationInput = /*@__PURE__*/ __L.at(__c3, 0);
 export type AdminPasswordSource =
   | "CUSTOMER_MANAGED_AWS_SECRET"
   | "API_REQUEST_PARAMETER"
@@ -524,26 +443,19 @@ export interface CustomerManagedAwsSecretConfigurationInput {
   iamRoleArn?: string;
   externalIdType?: ExternalIdType;
 }
-const CustomerManagedAwsSecretConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secretId: S.optional(S.String),
-    iamRoleArn: S.optional(S.String),
-    externalIdType: S.optional(ExternalIdType),
-  }),
-).annotate({
-  identifier: "CustomerManagedAwsSecretConfigurationInput",
-}) as any as S.Schema<CustomerManagedAwsSecretConfigurationInput>;
+const CustomerManagedAwsSecretConfigurationInput = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CustomerManagedAwsSecretConfigurationInput>;
 export type AdminPasswordSourceConfigurationInput = {
   customerManagedAwsSecret: CustomerManagedAwsSecretConfigurationInput;
 };
-const AdminPasswordSourceConfigurationInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfigurationInput }),
-]);
+const AdminPasswordSourceConfigurationInput = /*@__PURE__*/ __L.at(__c3, 2);
 export type GeneralInputString = string;
 export type TagKey = string;
 export type TagValue = string;
 export type RequestTagMap = { [key: string]: string | undefined };
-const RequestTagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const RequestTagMap = /*@__PURE__*/ __L.at(__c3, 3);
 export interface CreateAutonomousDatabaseInput {
   odbNetworkId?: string;
   displayName?: string;
@@ -587,53 +499,10 @@ export interface CreateAutonomousDatabaseInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    odbNetworkId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    dbName: S.optional(S.String),
-    adminPassword: S.optional(SensitiveString),
-    computeCount: S.optional(S.Number),
-    dataStorageSizeInTBs: S.optional(S.Number),
-    dataStorageSizeInGBs: S.optional(S.Number),
-    dbWorkload: S.optional(DbWorkload),
-    isAutoScalingEnabled: S.optional(S.Boolean),
-    isAutoScalingForStorageEnabled: S.optional(S.Boolean),
-    licenseModel: S.optional(LicenseModel),
-    characterSet: S.optional(S.String),
-    ncharacterSet: S.optional(S.String),
-    dbVersion: S.optional(S.String),
-    databaseEdition: S.optional(DatabaseEdition),
-    standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
-    autonomousMaintenanceScheduleType: S.optional(AutonomousMaintenanceScheduleType),
-    backupRetentionPeriodInDays: S.optional(S.Number),
-    byolComputeCountLimit: S.optional(S.Number),
-    cpuCoreCount: S.optional(S.Number),
-    customerContactsToSendToOCI: S.optional(CustomerContacts),
-    privateEndpointIp: S.optional(S.String),
-    privateEndpointLabel: S.optional(S.String),
-    resourcePoolLeaderId: S.optional(S.String),
-    resourcePoolSummary: S.optional(ResourcePoolSummary),
-    scheduledOperations: S.optional(ScheduledOperationDetailsList),
-    standbyAllowlistedIps: S.optional(StringList),
-    allowlistedIps: S.optional(StringList),
-    transportableTablespace: S.optional(TransportableTablespace),
-    isBackupRetentionLocked: S.optional(S.Boolean),
-    isLocalDataGuardEnabled: S.optional(S.Boolean),
-    isMtlsConnectionRequired: S.optional(S.Boolean),
-    dbToolsDetails: S.optional(DatabaseToolList),
-    source: S.optional(SourceType),
-    sourceConfiguration: S.optional(SourceConfiguration),
-    encryptionKeyProvider: S.optional(EncryptionKeyProviderInput),
-    encryptionKeyConfiguration: S.optional(EncryptionKeyConfigurationInput),
-    adminPasswordSource: S.optional(AdminPasswordSource),
-    adminPasswordSourceConfiguration: S.optional(AdminPasswordSourceConfigurationInput),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(RequestTagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateAutonomousDatabaseInput",
-}) as any as S.Schema<CreateAutonomousDatabaseInput>;
+const CreateAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateAutonomousDatabaseInput>;
 export type AutonomousDatabaseResourceStatus =
   | "AVAILABLE"
   | "FAILED"
@@ -666,16 +535,10 @@ export interface CreateAutonomousDatabaseOutput {
   status?: AutonomousDatabaseResourceStatus;
   statusReason?: string;
 }
-const CreateAutonomousDatabaseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseId: S.String,
-    displayName: S.optional(S.String),
-    status: S.optional(AutonomousDatabaseResourceStatus),
-    statusReason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateAutonomousDatabaseOutput",
-}) as any as S.Schema<CreateAutonomousDatabaseOutput>;
+const CreateAutonomousDatabaseOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateAutonomousDatabaseOutput>;
 export interface CreateAutonomousDatabaseBackupInput {
   autonomousDatabaseId: string;
   displayName?: string;
@@ -683,33 +546,20 @@ export interface CreateAutonomousDatabaseBackupInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateAutonomousDatabaseBackupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseId: S.String,
-    displayName: S.optional(S.String),
-    retentionPeriodInDays: S.optional(S.Number),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(RequestTagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateAutonomousDatabaseBackupInput",
-}) as any as S.Schema<CreateAutonomousDatabaseBackupInput>;
+const CreateAutonomousDatabaseBackupInput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateAutonomousDatabaseBackupInput>;
 export interface CreateAutonomousDatabaseBackupOutput {
   displayName?: string;
   status?: ResourceStatus;
   statusReason?: string;
   autonomousDatabaseBackupId: string;
 }
-const CreateAutonomousDatabaseBackupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    autonomousDatabaseBackupId: S.String,
-  }),
-).annotate({
-  identifier: "CreateAutonomousDatabaseBackupOutput",
-}) as any as S.Schema<CreateAutonomousDatabaseBackupOutput>;
+const CreateAutonomousDatabaseBackupOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateAutonomousDatabaseBackupOutput>;
 export type WalletType = "REGIONAL" | "INSTANCE" | (string & {});
 const WalletType = S.String;
 
@@ -732,29 +582,20 @@ export interface CreateAutonomousDatabaseWalletInput {
   passwordSourceConfiguration?: WalletPasswordSourceConfigurationInput;
   clientToken?: string;
 }
-const CreateAutonomousDatabaseWalletInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseId: S.String,
-    walletType: S.optional(WalletType),
-    password: S.optional(SensitiveString),
-    passwordSource: S.optional(WalletPasswordSource),
-    passwordSourceConfiguration: S.optional(WalletPasswordSourceConfigurationInput),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateAutonomousDatabaseWalletInput",
-}) as any as S.Schema<CreateAutonomousDatabaseWalletInput>;
+const CreateAutonomousDatabaseWalletInput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateAutonomousDatabaseWalletInput>;
 export type AutonomousDatabaseWalletFile = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface CreateAutonomousDatabaseWalletOutput {
   autonomousDatabaseWalletFile: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-const CreateAutonomousDatabaseWalletOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseWalletFile: SensitiveBlob }),
-).annotate({
-  identifier: "CreateAutonomousDatabaseWalletOutput",
-}) as any as S.Schema<CreateAutonomousDatabaseWalletOutput>;
+const CreateAutonomousDatabaseWalletOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateAutonomousDatabaseWalletOutput>;
 export type DaysOfWeek = DayOfWeek[];
-const DaysOfWeek = /*@__PURE__*/ S.Array(DayOfWeek);
+const DaysOfWeek = /*@__PURE__*/ __L.at(__c4, 2);
 export type HoursOfDay = number[];
 const HoursOfDay = IntegerList as any as S.Schema<HoursOfDay>;
 export type MonthName =
@@ -796,20 +637,7 @@ export interface MaintenanceWindow {
   skipRu?: boolean;
   weeksOfMonth?: number[];
 }
-const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customActionTimeoutInMins: S.optional(S.Number),
-    daysOfWeek: S.optional(DaysOfWeek),
-    hoursOfDay: S.optional(HoursOfDay),
-    isCustomActionTimeoutEnabled: S.optional(S.Boolean),
-    leadTimeInWeeks: S.optional(S.Number),
-    months: S.optional(Months),
-    patchingMode: S.optional(PatchingModeType),
-    preference: S.optional(PreferenceType),
-    skipRu: S.optional(S.Boolean),
-    weeksOfMonth: S.optional(WeeksOfMonth),
-  }),
-).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
+const MaintenanceWindow = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MaintenanceWindow>;
 export interface CreateCloudAutonomousVmClusterInput {
   cloudExadataInfrastructureId: string;
   odbNetworkId: string;
@@ -829,45 +657,20 @@ export interface CreateCloudAutonomousVmClusterInput {
   timeZone?: string;
   totalContainerDatabases: number;
 }
-const CreateCloudAutonomousVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureId: S.String,
-    odbNetworkId: S.String,
-    displayName: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    autonomousDataStorageSizeInTBs: S.Number,
-    cpuCoreCountPerNode: S.Number,
-    dbServers: S.optional(StringList),
-    description: S.optional(S.String),
-    isMtlsEnabledVmCluster: S.optional(S.Boolean),
-    licenseModel: S.optional(LicenseModel),
-    maintenanceWindow: S.optional(MaintenanceWindow),
-    memoryPerOracleComputeUnitInGBs: S.Number,
-    scanListenerPortNonTls: S.optional(S.Number),
-    scanListenerPortTls: S.optional(S.Number),
-    tags: S.optional(RequestTagMap),
-    timeZone: S.optional(S.String),
-    totalContainerDatabases: S.Number,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateCloudAutonomousVmClusterInput",
-}) as any as S.Schema<CreateCloudAutonomousVmClusterInput>;
+const CreateCloudAutonomousVmClusterInput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateCloudAutonomousVmClusterInput>;
 export interface CreateCloudAutonomousVmClusterOutput {
   displayName?: string;
   status?: ResourceStatus;
   statusReason?: string;
   cloudAutonomousVmClusterId: string;
 }
-const CreateCloudAutonomousVmClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    cloudAutonomousVmClusterId: S.String,
-  }),
-).annotate({
-  identifier: "CreateCloudAutonomousVmClusterOutput",
-}) as any as S.Schema<CreateCloudAutonomousVmClusterOutput>;
+const CreateCloudAutonomousVmClusterOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateCloudAutonomousVmClusterOutput>;
 export interface CreateCloudExadataInfrastructureInput {
   displayName: string;
   shape: string;
@@ -882,40 +685,20 @@ export interface CreateCloudExadataInfrastructureInput {
   databaseServerType?: string;
   storageServerType?: string;
 }
-const CreateCloudExadataInfrastructureInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    shape: S.String,
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-    tags: S.optional(RequestTagMap),
-    computeCount: S.Number,
-    customerContactsToSendToOCI: S.optional(CustomerContacts),
-    maintenanceWindow: S.optional(MaintenanceWindow),
-    storageCount: S.Number,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    databaseServerType: S.optional(S.String),
-    storageServerType: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateCloudExadataInfrastructureInput",
-}) as any as S.Schema<CreateCloudExadataInfrastructureInput>;
+const CreateCloudExadataInfrastructureInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateCloudExadataInfrastructureInput>;
 export interface CreateCloudExadataInfrastructureOutput {
   displayName?: string;
   status?: ResourceStatus;
   statusReason?: string;
   cloudExadataInfrastructureId: string;
 }
-const CreateCloudExadataInfrastructureOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    cloudExadataInfrastructureId: S.String,
-  }),
-).annotate({
-  identifier: "CreateCloudExadataInfrastructureOutput",
-}) as any as S.Schema<CreateCloudExadataInfrastructureOutput>;
+const CreateCloudExadataInfrastructureOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateCloudExadataInfrastructureOutput>;
 export type Hostname = string;
 export type ClusterName = string;
 export interface DataCollectionOptions {
@@ -923,13 +706,10 @@ export interface DataCollectionOptions {
   isHealthMonitoringEnabled?: boolean;
   isIncidentLogsEnabled?: boolean;
 }
-const DataCollectionOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isDiagnosticsEventsEnabled: S.optional(S.Boolean),
-    isHealthMonitoringEnabled: S.optional(S.Boolean),
-    isIncidentLogsEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DataCollectionOptions" }) as any as S.Schema<DataCollectionOptions>;
+const DataCollectionOptions = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DataCollectionOptions>;
 export interface CreateCloudVmClusterInput {
   cloudExadataInfrastructureId: string;
   cpuCoreCount: number;
@@ -953,49 +733,20 @@ export interface CreateCloudVmClusterInput {
   clientToken?: string;
   scanListenerPortTcp?: number;
 }
-const CreateCloudVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureId: S.String,
-    cpuCoreCount: S.Number,
-    displayName: S.String,
-    giVersion: S.String,
-    hostname: S.String,
-    sshPublicKeys: StringList,
-    odbNetworkId: S.String,
-    clusterName: S.optional(S.String),
-    dataCollectionOptions: S.optional(DataCollectionOptions),
-    dataStorageSizeInTBs: S.optional(S.Number),
-    dbNodeStorageSizeInGBs: S.optional(S.Number),
-    dbServers: S.optional(StringList),
-    tags: S.optional(RequestTagMap),
-    isLocalBackupEnabled: S.optional(S.Boolean),
-    isSparseDiskgroupEnabled: S.optional(S.Boolean),
-    licenseModel: S.optional(LicenseModel),
-    memorySizeInGBs: S.optional(S.Number),
-    systemVersion: S.optional(S.String),
-    timeZone: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    scanListenerPortTcp: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateCloudVmClusterInput",
-}) as any as S.Schema<CreateCloudVmClusterInput>;
+const CreateCloudVmClusterInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateCloudVmClusterInput>;
 export interface CreateCloudVmClusterOutput {
   displayName?: string;
   status?: ResourceStatus;
   statusReason?: string;
   cloudVmClusterId: string;
 }
-const CreateCloudVmClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    cloudVmClusterId: S.String,
-  }),
-).annotate({
-  identifier: "CreateCloudVmClusterOutput",
-}) as any as S.Schema<CreateCloudVmClusterOutput>;
+const CreateCloudVmClusterOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateCloudVmClusterOutput>;
 export type ShapeAttribute = "SMART_STORAGE" | "BLOCK_STORAGE" | (string & {});
 const ShapeAttribute = S.String;
 
@@ -1022,33 +773,10 @@ export interface CreateExadbVmClusterInput {
   timeZone?: string;
   clientToken?: string;
 }
-const CreateExadbVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    enabledEcpuCount: S.Number,
-    exascaleDbStorageVaultId: S.String,
-    gridImageId: S.String,
-    hostname: S.String,
-    nodeCount: S.Number,
-    odbNetworkId: S.String,
-    shape: S.String,
-    sshPublicKeys: StringList,
-    totalEcpuCount: S.Number,
-    vmFileSystemStorageTotalSizeInGBs: S.Number,
-    clusterName: S.optional(S.String),
-    dataCollectionOptions: S.optional(DataCollectionOptions),
-    licenseModel: S.optional(LicenseModel),
-    scanListenerPortTcp: S.optional(S.Number),
-    scanListenerPortTcpSsl: S.optional(S.Number),
-    shapeAttribute: S.optional(ShapeAttribute),
-    systemVersion: S.optional(S.String),
-    tags: S.optional(RequestTagMap),
-    timeZone: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateExadbVmClusterInput",
-}) as any as S.Schema<CreateExadbVmClusterInput>;
+const CreateExadbVmClusterInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateExadbVmClusterInput>;
 export interface CreateExadbVmClusterOutput {
   displayName?: string;
   status?: ResourceStatus;
@@ -1070,39 +798,20 @@ export interface CreateExascaleDbStorageVaultInput {
   timeZone?: string;
   clientToken?: string;
 }
-const CreateExascaleDbStorageVaultInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    highCapacityDatabaseStorageTotalSizeInGBs: S.Number,
-    additionalFlashCacheInPercent: S.optional(S.Number),
-    autoscaleLimitInGBs: S.optional(S.Number),
-    availabilityZoneId: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    description: S.optional(S.String),
-    isAutoscaleEnabled: S.optional(S.Boolean),
-    tags: S.optional(RequestTagMap),
-    timeZone: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateExascaleDbStorageVaultInput",
-}) as any as S.Schema<CreateExascaleDbStorageVaultInput>;
+const CreateExascaleDbStorageVaultInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateExascaleDbStorageVaultInput>;
 export interface CreateExascaleDbStorageVaultOutput {
   displayName?: string;
   status?: ResourceStatus;
   statusReason?: string;
   exascaleDbStorageVaultId: string;
 }
-const CreateExascaleDbStorageVaultOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    exascaleDbStorageVaultId: S.String,
-  }),
-).annotate({
-  identifier: "CreateExascaleDbStorageVaultOutput",
-}) as any as S.Schema<CreateExascaleDbStorageVaultOutput>;
+const CreateExascaleDbStorageVaultOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateExascaleDbStorageVaultOutput>;
 export type Access = "ENABLED" | "DISABLED" | (string & {});
 const Access = S.String;
 
@@ -1126,41 +835,20 @@ export interface CreateOdbNetworkInput {
   crossRegionS3RestoreSourcesToEnable?: string[];
   tags?: { [key: string]: string | undefined };
 }
-const CreateOdbNetworkInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-    clientSubnetCidr: S.String,
-    backupSubnetCidr: S.optional(S.String),
-    customDomainName: S.optional(S.String),
-    defaultDnsPrefix: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    s3Access: S.optional(Access),
-    zeroEtlAccess: S.optional(Access),
-    stsAccess: S.optional(Access),
-    kmsAccess: S.optional(Access),
-    s3PolicyDocument: S.optional(S.String),
-    stsPolicyDocument: S.optional(S.String),
-    kmsPolicyDocument: S.optional(S.String),
-    crossRegionS3RestoreSourcesToEnable: S.optional(StringList),
-    tags: S.optional(RequestTagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateOdbNetworkInput" }) as any as S.Schema<CreateOdbNetworkInput>;
+const CreateOdbNetworkInput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateOdbNetworkInput>;
 export interface CreateOdbNetworkOutput {
   displayName?: string;
   status?: ResourceStatus;
   statusReason?: string;
   odbNetworkId: string;
 }
-const CreateOdbNetworkOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    odbNetworkId: S.String,
-  }),
-).annotate({ identifier: "CreateOdbNetworkOutput" }) as any as S.Schema<CreateOdbNetworkOutput>;
+const CreateOdbNetworkOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateOdbNetworkOutput>;
 export type PeeredCidr = string;
 export type PeeredCidrList = string[];
 const PeeredCidrList = StringList as any as S.Schema<PeeredCidrList>;
@@ -1176,125 +864,90 @@ export interface CreateOdbPeeringConnectionInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateOdbPeeringConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    odbNetworkId: S.String,
-    peerNetworkId: S.String,
-    displayName: S.optional(S.String),
-    peerNetworkCidrsToBeAdded: S.optional(PeeredCidrList),
-    peerNetworkRouteTableIds: S.optional(PeerNetworkRouteTableIdList),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(RequestTagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateOdbPeeringConnectionInput",
-}) as any as S.Schema<CreateOdbPeeringConnectionInput>;
+const CreateOdbPeeringConnectionInput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateOdbPeeringConnectionInput>;
 export interface CreateOdbPeeringConnectionOutput {
   displayName?: string;
   status?: ResourceStatus;
   statusReason?: string;
   odbPeeringConnectionId: string;
 }
-const CreateOdbPeeringConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    odbPeeringConnectionId: S.String,
-  }),
-).annotate({
-  identifier: "CreateOdbPeeringConnectionOutput",
-}) as any as S.Schema<CreateOdbPeeringConnectionOutput>;
+const CreateOdbPeeringConnectionOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateOdbPeeringConnectionOutput>;
 export interface DeleteAutonomousDatabaseInput {
   autonomousDatabaseId: string;
 }
-const DeleteAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteAutonomousDatabaseInput",
-}) as any as S.Schema<DeleteAutonomousDatabaseInput>;
+const DeleteAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteAutonomousDatabaseInput>;
 export interface DeleteAutonomousDatabaseOutput {}
-const DeleteAutonomousDatabaseOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAutonomousDatabaseOutput",
-}) as any as S.Schema<DeleteAutonomousDatabaseOutput>;
+const DeleteAutonomousDatabaseOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteAutonomousDatabaseOutput>;
 export type ResourceId = string;
 export interface DeleteAutonomousDatabaseBackupInput {
   autonomousDatabaseBackupId: string;
 }
-const DeleteAutonomousDatabaseBackupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseBackupId: S.String.pipe(T.HttpLabel("autonomousDatabaseBackupId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DeleteAutonomousDatabaseBackupInput",
-}) as any as S.Schema<DeleteAutonomousDatabaseBackupInput>;
+const DeleteAutonomousDatabaseBackupInput = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteAutonomousDatabaseBackupInput>;
 export interface DeleteAutonomousDatabaseBackupOutput {}
 const DeleteAutonomousDatabaseBackupOutput =
   AcceptMarketplaceRegistrationOutput as any as S.Schema<DeleteAutonomousDatabaseBackupOutput>;
 export interface DeleteCloudAutonomousVmClusterInput {
   cloudAutonomousVmClusterId: string;
 }
-const DeleteCloudAutonomousVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudAutonomousVmClusterId: S.String.pipe(T.HttpLabel("cloudAutonomousVmClusterId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DeleteCloudAutonomousVmClusterInput",
-}) as any as S.Schema<DeleteCloudAutonomousVmClusterInput>;
+const DeleteCloudAutonomousVmClusterInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteCloudAutonomousVmClusterInput>;
 export interface DeleteCloudAutonomousVmClusterOutput {}
 const DeleteCloudAutonomousVmClusterOutput =
   AcceptMarketplaceRegistrationOutput as any as S.Schema<DeleteCloudAutonomousVmClusterOutput>;
 export interface DeleteCloudExadataInfrastructureInput {
   cloudExadataInfrastructureId: string;
 }
-const DeleteCloudExadataInfrastructureInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DeleteCloudExadataInfrastructureInput",
-}) as any as S.Schema<DeleteCloudExadataInfrastructureInput>;
+const DeleteCloudExadataInfrastructureInput = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteCloudExadataInfrastructureInput>;
 export interface DeleteCloudExadataInfrastructureOutput {}
 const DeleteCloudExadataInfrastructureOutput =
   AcceptMarketplaceRegistrationOutput as any as S.Schema<DeleteCloudExadataInfrastructureOutput>;
 export interface DeleteCloudVmClusterInput {
   cloudVmClusterId: string;
 }
-const DeleteCloudVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cloudVmClusterId: S.String.pipe(T.HttpLabel("cloudVmClusterId")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteCloudVmClusterInput",
-}) as any as S.Schema<DeleteCloudVmClusterInput>;
+const DeleteCloudVmClusterInput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteCloudVmClusterInput>;
 export interface DeleteCloudVmClusterOutput {}
 const DeleteCloudVmClusterOutput =
   DeleteAutonomousDatabaseOutput as any as S.Schema<DeleteCloudVmClusterOutput>;
 export interface DeleteExadbVmClusterInput {
   exadbVmClusterId: string;
 }
-const DeleteExadbVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exadbVmClusterId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteExadbVmClusterInput",
-}) as any as S.Schema<DeleteExadbVmClusterInput>;
+const DeleteExadbVmClusterInput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteExadbVmClusterInput>;
 export interface DeleteExadbVmClusterOutput {}
 const DeleteExadbVmClusterOutput =
   DeleteAutonomousDatabaseOutput as any as S.Schema<DeleteExadbVmClusterOutput>;
 export interface DeleteExascaleDbStorageVaultInput {
   exascaleDbStorageVaultId: string;
 }
-const DeleteExascaleDbStorageVaultInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exascaleDbStorageVaultId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteExascaleDbStorageVaultInput",
-}) as any as S.Schema<DeleteExascaleDbStorageVaultInput>;
+const DeleteExascaleDbStorageVaultInput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteExascaleDbStorageVaultInput>;
 export interface DeleteExascaleDbStorageVaultOutput {}
 const DeleteExascaleDbStorageVaultOutput =
   AcceptMarketplaceRegistrationOutput as any as S.Schema<DeleteExascaleDbStorageVaultOutput>;
@@ -1302,25 +955,20 @@ export interface DeleteOdbNetworkInput {
   odbNetworkId: string;
   deleteAssociatedResources: boolean;
 }
-const DeleteOdbNetworkInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    odbNetworkId: S.String.pipe(T.HttpLabel("odbNetworkId")),
-    deleteAssociatedResources: S.Boolean,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DeleteOdbNetworkInput" }) as any as S.Schema<DeleteOdbNetworkInput>;
+const DeleteOdbNetworkInput = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteOdbNetworkInput>;
 export interface DeleteOdbNetworkOutput {}
 const DeleteOdbNetworkOutput =
   DeleteAutonomousDatabaseOutput as any as S.Schema<DeleteOdbNetworkOutput>;
 export interface DeleteOdbPeeringConnectionInput {
   odbPeeringConnectionId: string;
 }
-const DeleteOdbPeeringConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ odbPeeringConnectionId: S.String.pipe(T.HttpLabel("odbPeeringConnectionId")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteOdbPeeringConnectionInput",
-}) as any as S.Schema<DeleteOdbPeeringConnectionInput>;
+const DeleteOdbPeeringConnectionInput = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteOdbPeeringConnectionInput>;
 export interface DeleteOdbPeeringConnectionOutput {}
 const DeleteOdbPeeringConnectionOutput =
   AcceptMarketplaceRegistrationOutput as any as S.Schema<DeleteOdbPeeringConnectionOutput>;
@@ -1329,15 +977,10 @@ export interface DisassociateIamRoleFromResourceInput {
   awsIntegration: SupportedAwsIntegration;
   resourceArn: string;
 }
-const DisassociateIamRoleFromResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iamRoleArn: S.String,
-    awsIntegration: SupportedAwsIntegration,
-    resourceArn: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DisassociateIamRoleFromResourceInput",
-}) as any as S.Schema<DisassociateIamRoleFromResourceInput>;
+const DisassociateIamRoleFromResourceInput = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DisassociateIamRoleFromResourceInput>;
 export interface DisassociateIamRoleFromResourceOutput {}
 const DisassociateIamRoleFromResourceOutput =
   AcceptMarketplaceRegistrationOutput as any as S.Schema<DisassociateIamRoleFromResourceOutput>;
@@ -1347,13 +990,10 @@ export interface DisassociateVirtualMachinesFromExadbVmClusterInput {
   exadbVmClusterId: string;
   dbNodeIds: string[];
 }
-const DisassociateVirtualMachinesFromExadbVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exadbVmClusterId: S.String, dbNodeIds: ResourceIdList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DisassociateVirtualMachinesFromExadbVmClusterInput",
-}) as any as S.Schema<DisassociateVirtualMachinesFromExadbVmClusterInput>;
+const DisassociateVirtualMachinesFromExadbVmClusterInput = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DisassociateVirtualMachinesFromExadbVmClusterInput>;
 export interface DisassociateVirtualMachinesFromExadbVmClusterOutput {
   displayName?: string;
   status?: ResourceStatus;
@@ -1367,13 +1007,10 @@ export interface FailoverAutonomousDatabaseInput {
   autonomousDatabaseId: string;
   peerDbArn?: string;
 }
-const FailoverAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseId: S.String, peerDbArn: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "FailoverAutonomousDatabaseInput",
-}) as any as S.Schema<FailoverAutonomousDatabaseInput>;
+const FailoverAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<FailoverAutonomousDatabaseInput>;
 export interface FailoverAutonomousDatabaseOutput {
   autonomousDatabaseId: string;
   displayName?: string;
@@ -1385,13 +1022,10 @@ const FailoverAutonomousDatabaseOutput =
 export interface GetAutonomousDatabaseInput {
   autonomousDatabaseId: string;
 }
-const GetAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAutonomousDatabaseInput",
-}) as any as S.Schema<GetAutonomousDatabaseInput>;
+const GetAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetAutonomousDatabaseInput>;
 export type DatabaseType = "REGULAR" | "CLONE" | (string & {});
 const DatabaseType = S.String;
 
@@ -1414,23 +1048,12 @@ export interface DatabaseConnectionStringProfile {
   tlsAuthentication?: string;
   value?: string;
 }
-const DatabaseConnectionStringProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    consumerGroup: S.optional(S.String),
-    displayName: S.optional(S.String),
-    hostFormat: S.optional(S.String),
-    isRegional: S.optional(S.Boolean),
-    protocol: S.optional(S.String),
-    sessionMode: S.optional(S.String),
-    syntaxFormat: S.optional(S.String),
-    tlsAuthentication: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseConnectionStringProfile",
-}) as any as S.Schema<DatabaseConnectionStringProfile>;
+const DatabaseConnectionStringProfile = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DatabaseConnectionStringProfile>;
 export type DatabaseConnectionStringProfileList = DatabaseConnectionStringProfile[];
-const DatabaseConnectionStringProfileList = /*@__PURE__*/ S.Array(DatabaseConnectionStringProfile);
+const DatabaseConnectionStringProfileList = /*@__PURE__*/ __L.at(__c8, 1);
 export interface AutonomousDatabaseConnectionStrings {
   allConnectionStrings?: { [key: string]: string | undefined };
   dedicated?: string;
@@ -1439,25 +1062,18 @@ export interface AutonomousDatabaseConnectionStrings {
   low?: string;
   profiles?: DatabaseConnectionStringProfile[];
 }
-const AutonomousDatabaseConnectionStrings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allConnectionStrings: S.optional(DatabaseConnectionStringMap),
-    dedicated: S.optional(S.String),
-    high: S.optional(S.String),
-    medium: S.optional(S.String),
-    low: S.optional(S.String),
-    profiles: S.optional(DatabaseConnectionStringProfileList),
-  }),
-).annotate({
-  identifier: "AutonomousDatabaseConnectionStrings",
-}) as any as S.Schema<AutonomousDatabaseConnectionStrings>;
+const AutonomousDatabaseConnectionStrings = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<AutonomousDatabaseConnectionStrings>;
 export interface AutonomousDatabaseApex {
   apexVersion?: string;
   ordsVersion?: string;
 }
-const AutonomousDatabaseApex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ apexVersion: S.optional(S.String), ordsVersion: S.optional(S.String) }),
-).annotate({ identifier: "AutonomousDatabaseApex" }) as any as S.Schema<AutonomousDatabaseApex>;
+const AutonomousDatabaseApex = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<AutonomousDatabaseApex>;
 export interface DatabaseStandbySummary {
   availabilityDomain?: string;
   lagTimeInSeconds?: number;
@@ -1469,21 +1085,10 @@ export interface DatabaseStandbySummary {
   timeMaintenanceBegin?: Date;
   timeMaintenanceEnd?: Date;
 }
-const DatabaseStandbySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availabilityDomain: S.optional(S.String),
-    lagTimeInSeconds: S.optional(S.Number),
-    status: S.optional(AutonomousDatabaseResourceStatus),
-    statusReason: S.optional(S.String),
-    maintenanceTargetComponent: S.optional(S.String),
-    timeDataGuardRoleChanged: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeDisasterRecoveryRoleChanged: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    timeMaintenanceBegin: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeMaintenanceEnd: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "DatabaseStandbySummary" }) as any as S.Schema<DatabaseStandbySummary>;
+const DatabaseStandbySummary = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DatabaseStandbySummary>;
 export type DataSafeStatus =
   | "REGISTERING"
   | "REGISTERED"
@@ -1524,21 +1129,10 @@ export interface AutonomousDatabaseConnectionUrls {
   spatialStudioUrl?: string;
   sqlDevWebUrl?: string;
 }
-const AutonomousDatabaseConnectionUrls = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apexUrl: S.optional(S.String),
-    databaseTransformsUrl: S.optional(S.String),
-    graphStudioUrl: S.optional(S.String),
-    machineLearningNotebookUrl: S.optional(S.String),
-    machineLearningUserManagementUrl: S.optional(S.String),
-    mongoDbUrl: S.optional(S.String),
-    ordsUrl: S.optional(S.String),
-    spatialStudioUrl: S.optional(S.String),
-    sqlDevWebUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutonomousDatabaseConnectionUrls",
-}) as any as S.Schema<AutonomousDatabaseConnectionUrls>;
+const AutonomousDatabaseConnectionUrls = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<AutonomousDatabaseConnectionUrls>;
 export type ComputeModel = "ECPU" | "OCPU" | (string & {});
 const ComputeModel = S.String;
 
@@ -1557,18 +1151,10 @@ export interface DisasterRecoveryConfiguration {
   isSnapshotStandby?: boolean;
   timeSnapshotStandbyEnabledTill?: Date;
 }
-const DisasterRecoveryConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disasterRecoveryType: S.optional(DisasterRecoveryType),
-    isReplicateAutomaticBackups: S.optional(S.Boolean),
-    isSnapshotStandby: S.optional(S.Boolean),
-    timeSnapshotStandbyEnabledTill: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "DisasterRecoveryConfiguration",
-}) as any as S.Schema<DisasterRecoveryConfiguration>;
+const DisasterRecoveryConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DisasterRecoveryConfiguration>;
 export type RefreshableStatus = "REFRESHING" | "NOT_REFRESHING" | (string & {});
 const RefreshableStatus = S.String;
 
@@ -1581,14 +1167,10 @@ export interface LongTermBackupSchedule {
   retentionPeriodInDays?: number;
   timeOfBackup?: Date;
 }
-const LongTermBackupSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isDisabled: S.optional(S.Boolean),
-    repeatCadence: S.optional(RepeatCadence),
-    retentionPeriodInDays: S.optional(S.Number),
-    timeOfBackup: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "LongTermBackupSchedule" }) as any as S.Schema<LongTermBackupSchedule>;
+const LongTermBackupSchedule = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<LongTermBackupSchedule>;
 export type EncryptionKeyProvider = "ORACLE_MANAGED" | "AWS_KMS" | "OKV" | "OCI" | (string & {});
 const EncryptionKeyProvider = S.String;
 
@@ -1603,11 +1185,10 @@ export interface OciEncryptionKeyConfiguration {
   kmsKeyId: string;
   vaultId: string;
 }
-const OciEncryptionKeyConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ kmsKeyId: S.String, vaultId: S.String }),
-).annotate({
-  identifier: "OciEncryptionKeyConfiguration",
-}) as any as S.Schema<OciEncryptionKeyConfiguration>;
+const OciEncryptionKeyConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<OciEncryptionKeyConfiguration>;
 export interface OkvEncryptionKeyConfiguration {
   certificateDirectoryName: string;
   certificateId?: string;
@@ -1615,17 +1196,10 @@ export interface OkvEncryptionKeyConfiguration {
   okvKmsKey: string;
   okvUri: string;
 }
-const OkvEncryptionKeyConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateDirectoryName: S.String,
-    certificateId: S.optional(S.String),
-    directoryName: S.String,
-    okvKmsKey: S.String,
-    okvUri: S.String,
-  }),
-).annotate({
-  identifier: "OkvEncryptionKeyConfiguration",
-}) as any as S.Schema<OkvEncryptionKeyConfiguration>;
+const OkvEncryptionKeyConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<OkvEncryptionKeyConfiguration>;
 export type EncryptionKeyConfiguration =
   | {
       awsEncryptionKey: AwsEncryptionKeyConfiguration;
@@ -1642,53 +1216,33 @@ export type EncryptionKeyConfiguration =
       ociEncryptionKey?: never;
       okvEncryptionKey: OkvEncryptionKeyConfiguration;
     };
-const EncryptionKeyConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfiguration }),
-  /*@__PURE__*/ S.Struct({ ociEncryptionKey: OciEncryptionKeyConfiguration }),
-  /*@__PURE__*/ S.Struct({ okvEncryptionKey: OkvEncryptionKeyConfiguration }),
-]);
+const EncryptionKeyConfiguration = /*@__PURE__*/ __L.at(__c9, 2);
 export interface EncryptionSummary {
   encryptionKeyProvider?: EncryptionKeyProvider;
   encryptionKeyConfiguration?: EncryptionKeyConfiguration;
 }
-const EncryptionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryptionKeyProvider: S.optional(EncryptionKeyProvider),
-    encryptionKeyConfiguration: S.optional(EncryptionKeyConfiguration),
-  }),
-).annotate({ identifier: "EncryptionSummary" }) as any as S.Schema<EncryptionSummary>;
+const EncryptionSummary = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<EncryptionSummary>;
 export interface CustomerManagedAwsSecretConfiguration {
   iamRoleArn?: string;
   secretId?: string;
   externalIdType?: ExternalIdType;
 }
-const CustomerManagedAwsSecretConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iamRoleArn: S.optional(S.String),
-    secretId: S.optional(S.String),
-    externalIdType: S.optional(ExternalIdType),
-  }),
-).annotate({
-  identifier: "CustomerManagedAwsSecretConfiguration",
-}) as any as S.Schema<CustomerManagedAwsSecretConfiguration>;
+const CustomerManagedAwsSecretConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<CustomerManagedAwsSecretConfiguration>;
 export type AdminPasswordSourceConfiguration = {
   customerManagedAwsSecret: CustomerManagedAwsSecretConfiguration;
 };
-const AdminPasswordSourceConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfiguration }),
-]);
+const AdminPasswordSourceConfiguration = /*@__PURE__*/ __L.at(__c9, 5);
 export interface AdminPasswordSourceSummary {
   adminPasswordSource?: AdminPasswordSource;
   adminPasswordSourceConfiguration?: AdminPasswordSourceConfiguration;
 }
-const AdminPasswordSourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminPasswordSource: S.optional(AdminPasswordSource),
-    adminPasswordSourceConfiguration: S.optional(AdminPasswordSourceConfiguration),
-  }),
-).annotate({
-  identifier: "AdminPasswordSourceSummary",
-}) as any as S.Schema<AdminPasswordSourceSummary>;
+const AdminPasswordSourceSummary = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<AdminPasswordSourceSummary>;
 export interface AutonomousDatabase {
   autonomousDatabaseId?: string;
   autonomousDatabaseArn?: string;
@@ -1795,140 +1349,21 @@ export interface AutonomousDatabase {
   timeUndeleted?: Date;
   adminPasswordSourceSummary?: AdminPasswordSourceSummary;
 }
-const AutonomousDatabase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseId: S.optional(S.String),
-    autonomousDatabaseArn: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    percentProgress: S.optional(S.Number),
-    ocid: S.optional(S.String),
-    ociUrl: S.optional(S.String),
-    displayName: S.optional(S.String),
-    dbName: S.optional(S.String),
-    sourceId: S.optional(S.String),
-    status: S.optional(AutonomousDatabaseResourceStatus),
-    statusReason: S.optional(S.String),
-    databaseType: S.optional(DatabaseType),
-    dbVersion: S.optional(S.String),
-    dbWorkload: S.optional(DbWorkload),
-    characterSet: S.optional(S.String),
-    ncharacterSet: S.optional(S.String),
-    databaseEdition: S.optional(DatabaseEdition),
-    licenseModel: S.optional(LicenseModel),
-    openMode: S.optional(OpenMode),
-    permissionLevel: S.optional(PermissionLevel),
-    isMtlsConnectionRequired: S.optional(S.Boolean),
-    autonomousMaintenanceScheduleType: S.optional(AutonomousMaintenanceScheduleType),
-    netServicesArchitecture: S.optional(NetServicesArchitecture),
-    availableUpgradeVersions: S.optional(StringList),
-    byolComputeCountLimit: S.optional(S.Number),
-    connectionStringDetails: S.optional(AutonomousDatabaseConnectionStrings),
-    serviceConsoleUrl: S.optional(S.String),
-    sqlWebDeveloperUrl: S.optional(S.String),
-    customerContacts: S.optional(CustomerContacts),
-    apexDetails: S.optional(AutonomousDatabaseApex),
-    standbyDb: S.optional(DatabaseStandbySummary),
-    localStandbyDb: S.optional(DatabaseStandbySummary),
-    dataSafeStatus: S.optional(DataSafeStatus),
-    databaseManagementStatus: S.optional(DatabaseManagementStatus),
-    operationsInsightsStatus: S.optional(OperationsInsightsStatus),
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-    maintenanceTargetComponent: S.optional(S.String),
-    connectionUrls: S.optional(AutonomousDatabaseConnectionUrls),
-    dbToolsDetails: S.optional(DatabaseToolList),
-    scheduledOperations: S.optional(ScheduledOperationDetailsList),
-    resourcePoolLeaderId: S.optional(S.String),
-    computeCount: S.optional(S.Number),
-    computeModel: S.optional(ComputeModel),
-    cpuCoreCount: S.optional(S.Number),
-    memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
-    provisionableCpus: S.optional(IntegerList),
-    isAutoScalingEnabled: S.optional(S.Boolean),
-    dataStorageSizeInTBs: S.optional(S.Number),
-    dataStorageSizeInGBs: S.optional(S.Number),
-    usedDataStorageSizeInTBs: S.optional(S.Number),
-    usedDataStorageSizeInGBs: S.optional(S.Number),
-    actualUsedDataStorageSizeInTBs: S.optional(S.Number),
-    allocatedStorageSizeInTBs: S.optional(S.Number),
-    inMemoryAreaInGBs: S.optional(S.Number),
-    isAutoScalingForStorageEnabled: S.optional(S.Boolean),
-    odbNetworkId: S.optional(S.String),
-    odbNetworkArn: S.optional(S.String),
-    privateEndpoint: S.optional(S.String),
-    privateEndpointIp: S.optional(S.String),
-    privateEndpointLabel: S.optional(S.String),
-    allowlistedIps: S.optional(StringList),
-    standbyAllowlistedIps: S.optional(StringList),
-    standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
-    isLocalDataGuardEnabled: S.optional(S.Boolean),
-    isRemoteDataGuardEnabled: S.optional(S.Boolean),
-    localDisasterRecoveryType: S.optional(DisasterRecoveryType),
-    role: S.optional(DataGuardRole),
-    peerDbIds: S.optional(StringList),
-    failedDataRecoveryInSeconds: S.optional(S.Number),
-    localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
-    remoteDisasterRecoveryConfiguration: S.optional(DisasterRecoveryConfiguration),
-    isRefreshableClone: S.optional(S.Boolean),
-    refreshableMode: S.optional(RefreshableMode),
-    refreshableStatus: S.optional(RefreshableStatus),
-    autoRefreshFrequencyInSeconds: S.optional(S.Number),
-    autoRefreshPointLagInSeconds: S.optional(S.Number),
-    isReconnectCloneEnabled: S.optional(S.Boolean),
-    cloneTableSpaceList: S.optional(IntegerList),
-    backupRetentionPeriodInDays: S.optional(S.Number),
-    longTermBackupSchedule: S.optional(LongTermBackupSchedule),
-    isBackupRetentionLocked: S.optional(S.Boolean),
-    totalBackupStorageSizeInGBs: S.optional(S.Number),
-    resourcePoolSummary: S.optional(ResourcePoolSummary),
-    encryptionSummary: S.optional(EncryptionSummary),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastBackup: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeMaintenanceBegin: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeMaintenanceEnd: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeLocalDataGuardEnabled: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeDataGuardRoleChanged: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastSwitchover: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastFailover: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastRefresh: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastRefreshPoint: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfNextRefresh: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfAutoRefreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeDeletionOfFreeAutonomousDatabase: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    timeReclamationOfFreeAutonomousDatabase: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    timeDisasterRecoveryRoleChanged: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    timeUntilReconnectCloneEnabled: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    nextLongTermBackupTimeStamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeUndeleted: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    adminPasswordSourceSummary: S.optional(AdminPasswordSourceSummary),
-  }),
-).annotate({ identifier: "AutonomousDatabase" }) as any as S.Schema<AutonomousDatabase>;
+const AutonomousDatabase = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<AutonomousDatabase>;
 export interface GetAutonomousDatabaseOutput {
   autonomousDatabase: AutonomousDatabase;
 }
-const GetAutonomousDatabaseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabase: AutonomousDatabase }),
-).annotate({
-  identifier: "GetAutonomousDatabaseOutput",
-}) as any as S.Schema<GetAutonomousDatabaseOutput>;
+const GetAutonomousDatabaseOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetAutonomousDatabaseOutput>;
 export interface GetAutonomousDatabaseBackupInput {
   autonomousDatabaseBackupId: string;
 }
-const GetAutonomousDatabaseBackupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseBackupId: S.String.pipe(T.HttpLabel("autonomousDatabaseBackupId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetAutonomousDatabaseBackupInput",
-}) as any as S.Schema<GetAutonomousDatabaseBackupInput>;
+const GetAutonomousDatabaseBackupInput = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetAutonomousDatabaseBackupInput>;
 export type AutonomousDatabaseBackupStatus =
   | "ACTIVE"
   | "CREATING"
@@ -1965,43 +1400,24 @@ export interface AutonomousDatabaseBackup {
   timeEnded?: Date;
   type?: AutonomousDatabaseBackupType;
 }
-const AutonomousDatabaseBackup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseBackupId: S.optional(S.String),
-    autonomousDatabaseBackupArn: S.optional(S.String),
-    autonomousDatabaseId: S.optional(S.String),
-    ocid: S.optional(S.String),
-    displayName: S.optional(S.String),
-    dbVersion: S.optional(S.String),
-    status: S.optional(AutonomousDatabaseBackupStatus),
-    statusReason: S.optional(S.String),
-    isAutomatic: S.optional(S.Boolean),
-    retentionPeriodInDays: S.optional(S.Number),
-    sizeInTBs: S.optional(S.Number),
-    timeAvailableTill: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeStarted: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeEnded: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    type: S.optional(AutonomousDatabaseBackupType),
-  }),
-).annotate({ identifier: "AutonomousDatabaseBackup" }) as any as S.Schema<AutonomousDatabaseBackup>;
+const AutonomousDatabaseBackup = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<AutonomousDatabaseBackup>;
 export interface GetAutonomousDatabaseBackupOutput {
   autonomousDatabaseBackup?: AutonomousDatabaseBackup;
 }
-const GetAutonomousDatabaseBackupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseBackup: S.optional(AutonomousDatabaseBackup) }),
-).annotate({
-  identifier: "GetAutonomousDatabaseBackupOutput",
-}) as any as S.Schema<GetAutonomousDatabaseBackupOutput>;
+const GetAutonomousDatabaseBackupOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetAutonomousDatabaseBackupOutput>;
 export interface GetAutonomousDatabaseWalletDetailsInput {
   autonomousDatabaseId: string;
 }
-const GetAutonomousDatabaseWalletDetailsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAutonomousDatabaseWalletDetailsInput",
-}) as any as S.Schema<GetAutonomousDatabaseWalletDetailsInput>;
+const GetAutonomousDatabaseWalletDetailsInput = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetAutonomousDatabaseWalletDetailsInput>;
 export type AutonomousDatabaseWalletStatus = "ACTIVE" | "UPDATING" | (string & {});
 const AutonomousDatabaseWalletStatus = S.String;
 
@@ -2014,46 +1430,33 @@ export interface WalletPasswordSourceSummary {
   passwordSource?: WalletPasswordSource;
   passwordSourceConfiguration?: WalletPasswordSourceConfiguration;
 }
-const WalletPasswordSourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    passwordSource: S.optional(WalletPasswordSource),
-    passwordSourceConfiguration: S.optional(WalletPasswordSourceConfiguration),
-  }),
-).annotate({
-  identifier: "WalletPasswordSourceSummary",
-}) as any as S.Schema<WalletPasswordSourceSummary>;
+const WalletPasswordSourceSummary = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<WalletPasswordSourceSummary>;
 export interface AutonomousDatabaseWalletDetails {
   status?: AutonomousDatabaseWalletStatus;
   timeRotated?: Date;
   passwordSourceSummary?: WalletPasswordSourceSummary;
 }
-const AutonomousDatabaseWalletDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(AutonomousDatabaseWalletStatus),
-    timeRotated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    passwordSourceSummary: S.optional(WalletPasswordSourceSummary),
-  }),
-).annotate({
-  identifier: "AutonomousDatabaseWalletDetails",
-}) as any as S.Schema<AutonomousDatabaseWalletDetails>;
+const AutonomousDatabaseWalletDetails = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<AutonomousDatabaseWalletDetails>;
 export interface GetAutonomousDatabaseWalletDetailsOutput {
   autonomousDatabaseWalletDetails: AutonomousDatabaseWalletDetails;
 }
-const GetAutonomousDatabaseWalletDetailsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseWalletDetails: AutonomousDatabaseWalletDetails }),
-).annotate({
-  identifier: "GetAutonomousDatabaseWalletDetailsOutput",
-}) as any as S.Schema<GetAutonomousDatabaseWalletDetailsOutput>;
+const GetAutonomousDatabaseWalletDetailsOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetAutonomousDatabaseWalletDetailsOutput>;
 export interface GetCloudAutonomousVmClusterInput {
   cloudAutonomousVmClusterId: string;
 }
-const GetCloudAutonomousVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudAutonomousVmClusterId: S.String.pipe(T.HttpLabel("cloudAutonomousVmClusterId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetCloudAutonomousVmClusterInput",
-}) as any as S.Schema<GetCloudAutonomousVmClusterInput>;
+const GetCloudAutonomousVmClusterInput = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetCloudAutonomousVmClusterInput>;
 export type IamRoleStatus =
   | "ASSOCIATING"
   | "DISASSOCIATING"
@@ -2071,16 +1474,9 @@ export interface IamRole {
   statusReason?: string;
   awsIntegration?: SupportedAwsIntegration;
 }
-const IamRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iamRoleArn: S.optional(S.String),
-    status: S.optional(IamRoleStatus),
-    statusReason: S.optional(S.String),
-    awsIntegration: S.optional(SupportedAwsIntegration),
-  }),
-).annotate({ identifier: "IamRole" }) as any as S.Schema<IamRole>;
+const IamRole = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<IamRole>;
 export type IamRoleList = IamRole[];
-const IamRoleList = /*@__PURE__*/ S.Array(IamRole);
+const IamRoleList = /*@__PURE__*/ __L.at(__c11, 2);
 export interface CloudAutonomousVmCluster {
   cloudAutonomousVmClusterId: string;
   cloudAutonomousVmClusterArn?: string;
@@ -2135,82 +1531,24 @@ export interface CloudAutonomousVmCluster {
   totalContainerDatabases?: number;
   iamRoles?: IamRole[];
 }
-const CloudAutonomousVmCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudAutonomousVmClusterId: S.String,
-    cloudAutonomousVmClusterArn: S.optional(S.String),
-    odbNetworkId: S.optional(S.String),
-    odbNetworkArn: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    percentProgress: S.optional(S.Number),
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    cloudExadataInfrastructureId: S.optional(S.String),
-    cloudExadataInfrastructureArn: S.optional(S.String),
-    autonomousDataStoragePercentage: S.optional(S.Number),
-    autonomousDataStorageSizeInTBs: S.optional(S.Number),
-    availableAutonomousDataStorageSizeInTBs: S.optional(S.Number),
-    availableContainerDatabases: S.optional(S.Number),
-    availableCpus: S.optional(S.Number),
-    computeModel: S.optional(ComputeModel),
-    cpuCoreCount: S.optional(S.Number),
-    cpuCoreCountPerNode: S.optional(S.Number),
-    cpuPercentage: S.optional(S.Number),
-    dataStorageSizeInGBs: S.optional(S.Number),
-    dataStorageSizeInTBs: S.optional(S.Number),
-    dbNodeStorageSizeInGBs: S.optional(S.Number),
-    dbServers: S.optional(StringList),
-    description: S.optional(S.String),
-    domain: S.optional(S.String),
-    exadataStorageInTBsLowestScaledValue: S.optional(S.Number),
-    hostname: S.optional(S.String),
-    ocid: S.optional(S.String),
-    ociUrl: S.optional(S.String),
-    isMtlsEnabledVmCluster: S.optional(S.Boolean),
-    licenseModel: S.optional(LicenseModel),
-    maintenanceWindow: S.optional(MaintenanceWindow),
-    maxAcdsLowestScaledValue: S.optional(S.Number),
-    memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
-    memorySizeInGBs: S.optional(S.Number),
-    nodeCount: S.optional(S.Number),
-    nonProvisionableAutonomousContainerDatabases: S.optional(S.Number),
-    provisionableAutonomousContainerDatabases: S.optional(S.Number),
-    provisionedAutonomousContainerDatabases: S.optional(S.Number),
-    provisionedCpus: S.optional(S.Number),
-    reclaimableCpus: S.optional(S.Number),
-    reservedCpus: S.optional(S.Number),
-    scanListenerPortNonTls: S.optional(S.Number),
-    scanListenerPortTls: S.optional(S.Number),
-    shape: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeDatabaseSslCertificateExpires: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    timeOrdsCertificateExpires: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeZone: S.optional(S.String),
-    totalContainerDatabases: S.optional(S.Number),
-    iamRoles: S.optional(IamRoleList),
-  }),
-).annotate({ identifier: "CloudAutonomousVmCluster" }) as any as S.Schema<CloudAutonomousVmCluster>;
+const CloudAutonomousVmCluster = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CloudAutonomousVmCluster>;
 export interface GetCloudAutonomousVmClusterOutput {
   cloudAutonomousVmCluster?: CloudAutonomousVmCluster;
 }
-const GetCloudAutonomousVmClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cloudAutonomousVmCluster: S.optional(CloudAutonomousVmCluster) }),
-).annotate({
-  identifier: "GetCloudAutonomousVmClusterOutput",
-}) as any as S.Schema<GetCloudAutonomousVmClusterOutput>;
+const GetCloudAutonomousVmClusterOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetCloudAutonomousVmClusterOutput>;
 export interface GetCloudExadataInfrastructureInput {
   cloudExadataInfrastructureId: string;
 }
-const GetCloudExadataInfrastructureInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetCloudExadataInfrastructureInput",
-}) as any as S.Schema<GetCloudExadataInfrastructureInput>;
+const GetCloudExadataInfrastructureInput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetCloudExadataInfrastructureInput>;
 export interface CloudExadataInfrastructure {
   cloudExadataInfrastructureId: string;
   displayName?: string;
@@ -2251,86 +1589,35 @@ export interface CloudExadataInfrastructure {
   storageServerType?: string;
   computeModel?: ComputeModel;
 }
-const CloudExadataInfrastructure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureId: S.String,
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    cloudExadataInfrastructureArn: S.optional(S.String),
-    activatedStorageCount: S.optional(S.Number),
-    additionalStorageCount: S.optional(S.Number),
-    availableStorageSizeInGBs: S.optional(S.Number),
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-    computeCount: S.optional(S.Number),
-    cpuCount: S.optional(S.Number),
-    customerContactsToSendToOCI: S.optional(CustomerContacts),
-    dataStorageSizeInTBs: S.optional(S.Number),
-    dbNodeStorageSizeInGBs: S.optional(S.Number),
-    dbServerVersion: S.optional(S.String),
-    lastMaintenanceRunId: S.optional(S.String),
-    maintenanceWindow: S.optional(MaintenanceWindow),
-    maxCpuCount: S.optional(S.Number),
-    maxDataStorageInTBs: S.optional(S.Number),
-    maxDbNodeStorageSizeInGBs: S.optional(S.Number),
-    maxMemoryInGBs: S.optional(S.Number),
-    memorySizeInGBs: S.optional(S.Number),
-    monthlyDbServerVersion: S.optional(S.String),
-    monthlyStorageServerVersion: S.optional(S.String),
-    nextMaintenanceRunId: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    ociUrl: S.optional(S.String),
-    ocid: S.optional(S.String),
-    shape: S.optional(S.String),
-    storageCount: S.optional(S.Number),
-    storageServerVersion: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    totalStorageSizeInGBs: S.optional(S.Number),
-    percentProgress: S.optional(S.Number),
-    databaseServerType: S.optional(S.String),
-    storageServerType: S.optional(S.String),
-    computeModel: S.optional(ComputeModel),
-  }),
-).annotate({
-  identifier: "CloudExadataInfrastructure",
-}) as any as S.Schema<CloudExadataInfrastructure>;
+const CloudExadataInfrastructure = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CloudExadataInfrastructure>;
 export interface GetCloudExadataInfrastructureOutput {
   cloudExadataInfrastructure?: CloudExadataInfrastructure;
 }
-const GetCloudExadataInfrastructureOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cloudExadataInfrastructure: S.optional(CloudExadataInfrastructure) }),
-).annotate({
-  identifier: "GetCloudExadataInfrastructureOutput",
-}) as any as S.Schema<GetCloudExadataInfrastructureOutput>;
+const GetCloudExadataInfrastructureOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetCloudExadataInfrastructureOutput>;
 export interface GetCloudExadataInfrastructureUnallocatedResourcesInput {
   cloudExadataInfrastructureId: string;
   dbServers?: string[];
 }
-const GetCloudExadataInfrastructureUnallocatedResourcesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
-    dbServers: S.optional(StringList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetCloudExadataInfrastructureUnallocatedResourcesInput",
-}) as any as S.Schema<GetCloudExadataInfrastructureUnallocatedResourcesInput>;
+const GetCloudExadataInfrastructureUnallocatedResourcesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetCloudExadataInfrastructureUnallocatedResourcesInput>;
 export interface CloudAutonomousVmClusterResourceDetails {
   cloudAutonomousVmClusterId?: string;
   unallocatedAdbStorageInTBs?: number;
 }
-const CloudAutonomousVmClusterResourceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudAutonomousVmClusterId: S.optional(S.String),
-    unallocatedAdbStorageInTBs: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CloudAutonomousVmClusterResourceDetails",
-}) as any as S.Schema<CloudAutonomousVmClusterResourceDetails>;
+const CloudAutonomousVmClusterResourceDetails = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CloudAutonomousVmClusterResourceDetails>;
 export type CloudAutonomousVmClusterResourceDetailsList = CloudAutonomousVmClusterResourceDetails[];
-const CloudAutonomousVmClusterResourceDetailsList = /*@__PURE__*/ S.Array(
-  CloudAutonomousVmClusterResourceDetails,
-);
+const CloudAutonomousVmClusterResourceDetailsList = /*@__PURE__*/ __L.at(__c12, 2);
 export interface CloudExadataInfrastructureUnallocatedResources {
   cloudAutonomousVmClusters?: CloudAutonomousVmClusterResourceDetails[];
   cloudExadataInfrastructureDisplayName?: string;
@@ -2340,39 +1627,24 @@ export interface CloudExadataInfrastructureUnallocatedResources {
   memoryInGBs?: number;
   ocpus?: number;
 }
-const CloudExadataInfrastructureUnallocatedResources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudAutonomousVmClusters: S.optional(CloudAutonomousVmClusterResourceDetailsList),
-    cloudExadataInfrastructureDisplayName: S.optional(S.String),
-    exadataStorageInTBs: S.optional(S.Number),
-    cloudExadataInfrastructureId: S.optional(S.String),
-    localStorageInGBs: S.optional(S.Number),
-    memoryInGBs: S.optional(S.Number),
-    ocpus: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CloudExadataInfrastructureUnallocatedResources",
-}) as any as S.Schema<CloudExadataInfrastructureUnallocatedResources>;
+const CloudExadataInfrastructureUnallocatedResources = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<CloudExadataInfrastructureUnallocatedResources>;
 export interface GetCloudExadataInfrastructureUnallocatedResourcesOutput {
   cloudExadataInfrastructureUnallocatedResources?: CloudExadataInfrastructureUnallocatedResources;
 }
-const GetCloudExadataInfrastructureUnallocatedResourcesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureUnallocatedResources: S.optional(
-      CloudExadataInfrastructureUnallocatedResources,
-    ),
-  }),
-).annotate({
-  identifier: "GetCloudExadataInfrastructureUnallocatedResourcesOutput",
-}) as any as S.Schema<GetCloudExadataInfrastructureUnallocatedResourcesOutput>;
+const GetCloudExadataInfrastructureUnallocatedResourcesOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetCloudExadataInfrastructureUnallocatedResourcesOutput>;
 export interface GetCloudVmClusterInput {
   cloudVmClusterId: string;
 }
-const GetCloudVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cloudVmClusterId: S.String.pipe(T.HttpLabel("cloudVmClusterId")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetCloudVmClusterInput" }) as any as S.Schema<GetCloudVmClusterInput>;
+const GetCloudVmClusterInput = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetCloudVmClusterInput>;
 export type DiskRedundancy = "HIGH" | "NORMAL" | (string & {});
 const DiskRedundancy = S.String;
 
@@ -2381,15 +1653,9 @@ export interface DbIormConfig {
   flashCacheLimit?: string;
   share?: number;
 }
-const DbIormConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbName: S.optional(S.String),
-    flashCacheLimit: S.optional(S.String),
-    share: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DbIormConfig" }) as any as S.Schema<DbIormConfig>;
+const DbIormConfig = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<DbIormConfig>;
 export type DbIormConfigList = DbIormConfig[];
-const DbIormConfigList = /*@__PURE__*/ S.Array(DbIormConfig);
+const DbIormConfigList = /*@__PURE__*/ __L.at(__c12, 7);
 export type IormLifecycleState =
   | "BOOTSTRAPPING"
   | "DISABLED"
@@ -2414,16 +1680,9 @@ export interface ExadataIormConfig {
   lifecycleState?: IormLifecycleState;
   objective?: Objective;
 }
-const ExadataIormConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbPlans: S.optional(DbIormConfigList),
-    lifecycleDetails: S.optional(S.String),
-    lifecycleState: S.optional(IormLifecycleState),
-    objective: S.optional(Objective),
-  }),
-).annotate({ identifier: "ExadataIormConfig" }) as any as S.Schema<ExadataIormConfig>;
+const ExadataIormConfig = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ExadataIormConfig>;
 export type SensitiveStringList = (string | redacted.Redacted<string>)[];
-const SensitiveStringList = /*@__PURE__*/ S.Array(SensitiveString);
+const SensitiveStringList = /*@__PURE__*/ __L.at(__c13, 1);
 export interface CloudVmCluster {
   cloudVmClusterId: string;
   displayName?: string;
@@ -2469,71 +1728,20 @@ export interface CloudVmCluster {
   computeModel?: ComputeModel;
   iamRoles?: IamRole[];
 }
-const CloudVmCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudVmClusterId: S.String,
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    cloudVmClusterArn: S.optional(S.String),
-    cloudExadataInfrastructureId: S.optional(S.String),
-    cloudExadataInfrastructureArn: S.optional(S.String),
-    clusterName: S.optional(S.String),
-    cpuCoreCount: S.optional(S.Number),
-    dataCollectionOptions: S.optional(DataCollectionOptions),
-    dataStorageSizeInTBs: S.optional(S.Number),
-    dbNodeStorageSizeInGBs: S.optional(S.Number),
-    dbServers: S.optional(StringList),
-    diskRedundancy: S.optional(DiskRedundancy),
-    giVersion: S.optional(S.String),
-    hostname: S.optional(S.String),
-    iormConfigCache: S.optional(ExadataIormConfig),
-    isLocalBackupEnabled: S.optional(S.Boolean),
-    isSparseDiskgroupEnabled: S.optional(S.Boolean),
-    lastUpdateHistoryEntryId: S.optional(S.String),
-    licenseModel: S.optional(LicenseModel),
-    listenerPort: S.optional(S.Number),
-    memorySizeInGBs: S.optional(S.Number),
-    nodeCount: S.optional(S.Number),
-    ocid: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    ociUrl: S.optional(S.String),
-    domain: S.optional(S.String),
-    scanDnsName: S.optional(S.String),
-    scanDnsRecordId: S.optional(S.String),
-    scanIpIds: S.optional(StringList),
-    shape: S.optional(S.String),
-    sshPublicKeys: S.optional(SensitiveStringList),
-    storageSizeInGBs: S.optional(S.Number),
-    systemVersion: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeZone: S.optional(S.String),
-    vipIds: S.optional(StringList),
-    odbNetworkId: S.optional(S.String),
-    odbNetworkArn: S.optional(S.String),
-    percentProgress: S.optional(S.Number),
-    computeModel: S.optional(ComputeModel),
-    iamRoles: S.optional(IamRoleList),
-  }),
-).annotate({ identifier: "CloudVmCluster" }) as any as S.Schema<CloudVmCluster>;
+const CloudVmCluster = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<CloudVmCluster>;
 export interface GetCloudVmClusterOutput {
   cloudVmCluster?: CloudVmCluster;
 }
-const GetCloudVmClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cloudVmCluster: S.optional(CloudVmCluster) }),
-).annotate({ identifier: "GetCloudVmClusterOutput" }) as any as S.Schema<GetCloudVmClusterOutput>;
+const GetCloudVmClusterOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetCloudVmClusterOutput>;
 export interface GetDbNodeInput {
   cloudVmClusterId?: string;
   exadbVmClusterId?: string;
   dbNodeId: string;
 }
-const GetDbNodeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudVmClusterId: S.optional(S.String),
-    exadbVmClusterId: S.optional(S.String),
-    dbNodeId: S.String.pipe(T.HttpLabel("dbNodeId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetDbNodeInput" }) as any as S.Schema<GetDbNodeInput>;
+const GetDbNodeInput = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GetDbNodeInput>;
 export type DbNodeResourceStatus =
   | "AVAILABLE"
   | "FAILED"
@@ -2580,54 +1788,16 @@ export interface DbNode {
   privateIpAddress?: string;
   floatingIpAddress?: string;
 }
-const DbNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbNodeId: S.optional(S.String),
-    dbNodeArn: S.optional(S.String),
-    status: S.optional(DbNodeResourceStatus),
-    statusReason: S.optional(S.String),
-    additionalDetails: S.optional(S.String),
-    backupIpId: S.optional(S.String),
-    backupVnic2Id: S.optional(S.String),
-    backupVnicId: S.optional(S.String),
-    cpuCoreCount: S.optional(S.Number),
-    dbNodeStorageSizeInGBs: S.optional(S.Number),
-    dbServerId: S.optional(S.String),
-    dbSystemId: S.optional(S.String),
-    faultDomain: S.optional(S.String),
-    hostIpId: S.optional(S.String),
-    hostname: S.optional(S.String),
-    ocid: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    maintenanceType: S.optional(DbNodeMaintenanceType),
-    memorySizeInGBs: S.optional(S.Number),
-    softwareStorageSizeInGB: S.optional(S.Number),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeMaintenanceWindowEnd: S.optional(S.String),
-    timeMaintenanceWindowStart: S.optional(S.String),
-    totalCpuCoreCount: S.optional(S.Number),
-    vnic2Id: S.optional(S.String),
-    vnicId: S.optional(S.String),
-    privateIpAddress: S.optional(S.String),
-    floatingIpAddress: S.optional(S.String),
-  }),
-).annotate({ identifier: "DbNode" }) as any as S.Schema<DbNode>;
+const DbNode = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<DbNode>;
 export interface GetDbNodeOutput {
   dbNode?: DbNode;
 }
-const GetDbNodeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dbNode: S.optional(DbNode) }),
-).annotate({ identifier: "GetDbNodeOutput" }) as any as S.Schema<GetDbNodeOutput>;
+const GetDbNodeOutput = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<GetDbNodeOutput>;
 export interface GetDbServerInput {
   cloudExadataInfrastructureId: string;
   dbServerId: string;
 }
-const GetDbServerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
-    dbServerId: S.String.pipe(T.HttpLabel("dbServerId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetDbServerInput" }) as any as S.Schema<GetDbServerInput>;
+const GetDbServerInput = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<GetDbServerInput>;
 export type DbServerPatchingStatus =
   | "COMPLETE"
   | "FAILED"
@@ -2642,14 +1812,10 @@ export interface DbServerPatchingDetails {
   timePatchingEnded?: string;
   timePatchingStarted?: string;
 }
-const DbServerPatchingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    estimatedPatchDuration: S.optional(S.Number),
-    patchingStatus: S.optional(DbServerPatchingStatus),
-    timePatchingEnded: S.optional(S.String),
-    timePatchingStarted: S.optional(S.String),
-  }),
-).annotate({ identifier: "DbServerPatchingDetails" }) as any as S.Schema<DbServerPatchingDetails>;
+const DbServerPatchingDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DbServerPatchingDetails>;
 export interface DbServer {
   dbServerId?: string;
   status?: ResourceStatus;
@@ -2672,55 +1838,28 @@ export interface DbServer {
   autonomousVmClusterIds?: string[];
   autonomousVirtualMachineIds?: string[];
 }
-const DbServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbServerId: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    cpuCoreCount: S.optional(S.Number),
-    dbNodeStorageSizeInGBs: S.optional(S.Number),
-    dbServerPatchingDetails: S.optional(DbServerPatchingDetails),
-    displayName: S.optional(S.String),
-    exadataInfrastructureId: S.optional(S.String),
-    ocid: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    maxCpuCount: S.optional(S.Number),
-    maxDbNodeStorageInGBs: S.optional(S.Number),
-    maxMemoryInGBs: S.optional(S.Number),
-    memorySizeInGBs: S.optional(S.Number),
-    shape: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    vmClusterIds: S.optional(StringList),
-    computeModel: S.optional(ComputeModel),
-    autonomousVmClusterIds: S.optional(StringList),
-    autonomousVirtualMachineIds: S.optional(StringList),
-  }),
-).annotate({ identifier: "DbServer" }) as any as S.Schema<DbServer>;
+const DbServer = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<DbServer>;
 export interface GetDbServerOutput {
   dbServer?: DbServer;
 }
-const GetDbServerOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dbServer: S.optional(DbServer) }),
-).annotate({ identifier: "GetDbServerOutput" }) as any as S.Schema<GetDbServerOutput>;
+const GetDbServerOutput = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<GetDbServerOutput>;
 export interface GetExadbVmClusterInput {
   exadbVmClusterId: string;
 }
-const GetExadbVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exadbVmClusterId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetExadbVmClusterInput" }) as any as S.Schema<GetExadbVmClusterInput>;
+const GetExadbVmClusterInput = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetExadbVmClusterInput>;
 export type GridImageType = "RELEASE_UPDATE" | "CUSTOM_IMAGE" | (string & {});
 const GridImageType = S.String;
 
 export interface ExadbVmClusterStorageDetails {
   totalSizeInGBs?: number;
 }
-const ExadbVmClusterStorageDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ totalSizeInGBs: S.optional(S.Number) }),
-).annotate({
-  identifier: "ExadbVmClusterStorageDetails",
-}) as any as S.Schema<ExadbVmClusterStorageDetails>;
+const ExadbVmClusterStorageDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ExadbVmClusterStorageDetails>;
 export interface ExadbVmCluster {
   exadbVmClusterId: string;
   clusterName?: string;
@@ -2767,81 +1906,33 @@ export interface ExadbVmCluster {
   vipIds?: string[];
   vmFileSystemStorage?: ExadbVmClusterStorageDetails;
 }
-const ExadbVmCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exadbVmClusterId: S.String,
-    clusterName: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    dataCollectionOptions: S.optional(DataCollectionOptions),
-    displayName: S.optional(S.String),
-    domain: S.optional(S.String),
-    enabledEcpuCount: S.optional(S.Number),
-    exadbVmClusterArn: S.optional(S.String),
-    exascaleDbStorageVaultArn: S.optional(S.String),
-    exascaleDbStorageVaultId: S.optional(S.String),
-    giVersion: S.optional(S.String),
-    gridImageId: S.optional(S.String),
-    gridImageType: S.optional(GridImageType),
-    hostname: S.optional(S.String),
-    iamRoles: S.optional(IamRoleList),
-    iormConfigCache: S.optional(ExadataIormConfig),
-    lastUpdateHistoryEntryId: S.optional(S.String),
-    licenseModel: S.optional(LicenseModel),
-    listenerPort: S.optional(S.Number),
-    memorySizeInGBs: S.optional(S.Number),
-    nodeCount: S.optional(S.Number),
-    ocid: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    ociUrl: S.optional(S.String),
-    odbNetworkArn: S.optional(S.String),
-    odbNetworkId: S.optional(S.String),
-    percentProgress: S.optional(S.Number),
-    scanDnsName: S.optional(S.String),
-    scanDnsRecordId: S.optional(S.String),
-    scanIpIds: S.optional(StringList),
-    scanListenerPortTcp: S.optional(S.Number),
-    scanListenerPortTcpSsl: S.optional(S.Number),
-    shape: S.optional(S.String),
-    shapeAttribute: S.optional(ShapeAttribute),
-    snapshotFileSystemStorage: S.optional(ExadbVmClusterStorageDetails),
-    sshPublicKeys: S.optional(StringList),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    systemVersion: S.optional(S.String),
-    timeZone: S.optional(S.String),
-    totalEcpuCount: S.optional(S.Number),
-    totalFileSystemStorage: S.optional(ExadbVmClusterStorageDetails),
-    vipIds: S.optional(StringList),
-    vmFileSystemStorage: S.optional(ExadbVmClusterStorageDetails),
-  }),
-).annotate({ identifier: "ExadbVmCluster" }) as any as S.Schema<ExadbVmCluster>;
+const ExadbVmCluster = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ExadbVmCluster>;
 export interface GetExadbVmClusterOutput {
   exadbVmCluster: ExadbVmCluster;
 }
-const GetExadbVmClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exadbVmCluster: ExadbVmCluster }),
-).annotate({ identifier: "GetExadbVmClusterOutput" }) as any as S.Schema<GetExadbVmClusterOutput>;
+const GetExadbVmClusterOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetExadbVmClusterOutput>;
 export interface GetExascaleDbStorageVaultInput {
   exascaleDbStorageVaultId: string;
 }
-const GetExascaleDbStorageVaultInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exascaleDbStorageVaultId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetExascaleDbStorageVaultInput",
-}) as any as S.Schema<GetExascaleDbStorageVaultInput>;
+const GetExascaleDbStorageVaultInput = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetExascaleDbStorageVaultInput>;
 export type ShapeAttributeList = ShapeAttribute[];
-const ShapeAttributeList = /*@__PURE__*/ S.Array(ShapeAttribute);
+const ShapeAttributeList = /*@__PURE__*/ __L.at(__c15, 0);
 export type ResourceArnList = string[];
 const ResourceArnList = StringList as any as S.Schema<ResourceArnList>;
 export interface ExascaleDbStorageDetails {
   availableSizeInGBs?: number;
   totalSizeInGBs?: number;
 }
-const ExascaleDbStorageDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ availableSizeInGBs: S.optional(S.Number), totalSizeInGBs: S.optional(S.Number) }),
-).annotate({ identifier: "ExascaleDbStorageDetails" }) as any as S.Schema<ExascaleDbStorageDetails>;
+const ExascaleDbStorageDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ExascaleDbStorageDetails>;
 export interface ExascaleDbStorageVault {
   exascaleDbStorageVaultId: string;
   additionalFlashCacheInPercent?: number;
@@ -2866,46 +1957,22 @@ export interface ExascaleDbStorageVault {
   statusReason?: string;
   timeZone?: string;
 }
-const ExascaleDbStorageVault = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exascaleDbStorageVaultId: S.String,
-    additionalFlashCacheInPercent: S.optional(S.Number),
-    attachedShapeAttributes: S.optional(ShapeAttributeList),
-    autoscaleLimitInGBs: S.optional(S.Number),
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    description: S.optional(S.String),
-    displayName: S.optional(S.String),
-    vmClusterArns: S.optional(ResourceArnList),
-    vmClusterCount: S.optional(S.Number),
-    vmClusterIds: S.optional(ResourceIdList),
-    exascaleDbStorageVaultArn: S.optional(S.String),
-    highCapacityDatabaseStorage: S.optional(ExascaleDbStorageDetails),
-    isAutoscaleEnabled: S.optional(S.Boolean),
-    ocid: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    ociUrl: S.optional(S.String),
-    percentProgress: S.optional(S.Number),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    timeZone: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExascaleDbStorageVault" }) as any as S.Schema<ExascaleDbStorageVault>;
+const ExascaleDbStorageVault = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ExascaleDbStorageVault>;
 export interface GetExascaleDbStorageVaultOutput {
   exascaleDbStorageVault: ExascaleDbStorageVault;
 }
-const GetExascaleDbStorageVaultOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exascaleDbStorageVault: ExascaleDbStorageVault }),
-).annotate({
-  identifier: "GetExascaleDbStorageVaultOutput",
-}) as any as S.Schema<GetExascaleDbStorageVaultOutput>;
+const GetExascaleDbStorageVaultOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GetExascaleDbStorageVaultOutput>;
 export interface GetOciOnboardingStatusInput {}
-const GetOciOnboardingStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetOciOnboardingStatusInput",
-}) as any as S.Schema<GetOciOnboardingStatusInput>;
+const GetOciOnboardingStatusInput = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetOciOnboardingStatusInput>;
 export type OciOnboardingStatus =
   | "NOT_STARTED"
   | "PENDING_LINK_GENERATION"
@@ -2930,16 +1997,7 @@ export interface OciIdentityDomain {
   statusReason?: string;
   accountSetupCloudFormationUrl?: string;
 }
-const OciIdentityDomain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ociIdentityDomainId: S.optional(S.String),
-    ociIdentityDomainResourceUrl: S.optional(S.String),
-    ociIdentityDomainUrl: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    accountSetupCloudFormationUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "OciIdentityDomain" }) as any as S.Schema<OciIdentityDomain>;
+const OciIdentityDomain = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<OciIdentityDomain>;
 export type OciAwsIntegration = "KmsTde" | "SecretsManager" | (string & {});
 const OciAwsIntegration = S.String;
 
@@ -2958,24 +2016,15 @@ export interface OciIamRole {
   status?: OciIamRoleStatus;
   statusReason?: string;
 }
-const OciIamRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iamRoleArn: S.optional(S.String),
-    awsIntegration: S.optional(OciAwsIntegration),
-    status: S.optional(OciIamRoleStatus),
-    statusReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "OciIamRole" }) as any as S.Schema<OciIamRole>;
+const OciIamRole = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<OciIamRole>;
 export type OciIamRoleList = OciIamRole[];
-const OciIamRoleList = /*@__PURE__*/ S.Array(OciIamRole);
+const OciIamRoleList = /*@__PURE__*/ __L.at(__c15, 7);
 export interface SubscriptionError {
   errorMessage?: string;
 }
-const SubscriptionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorMessage: S.optional(S.String) }),
-).annotate({ identifier: "SubscriptionError" }) as any as S.Schema<SubscriptionError>;
+const SubscriptionError = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<SubscriptionError>;
 export type SubscriptionErrors = SubscriptionError[];
-const SubscriptionErrors = /*@__PURE__*/ S.Array(SubscriptionError);
+const SubscriptionErrors = /*@__PURE__*/ __L.at(__c16, 1);
 export interface GetOciOnboardingStatusOutput {
   status?: OciOnboardingStatus;
   existingTenancyActivationLink?: string;
@@ -2986,37 +2035,24 @@ export interface GetOciOnboardingStatusOutput {
   linkedOciCompartmentId?: string;
   subscriptionErrors?: SubscriptionError[];
 }
-const GetOciOnboardingStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(OciOnboardingStatus),
-    existingTenancyActivationLink: S.optional(S.String),
-    newTenancyActivationLink: S.optional(S.String),
-    ociIdentityDomain: S.optional(OciIdentityDomain),
-    autonomousDatabaseOciIntegrationIamRoles: S.optional(OciIamRoleList),
-    linkedOciTenancyId: S.optional(S.String),
-    linkedOciCompartmentId: S.optional(S.String),
-    subscriptionErrors: S.optional(SubscriptionErrors),
-  }),
-).annotate({
-  identifier: "GetOciOnboardingStatusOutput",
-}) as any as S.Schema<GetOciOnboardingStatusOutput>;
+const GetOciOnboardingStatusOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<GetOciOnboardingStatusOutput>;
 export interface GetOdbNetworkInput {
   odbNetworkId: string;
 }
-const GetOdbNetworkInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ odbNetworkId: S.String.pipe(T.HttpLabel("odbNetworkId")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetOdbNetworkInput" }) as any as S.Schema<GetOdbNetworkInput>;
+const GetOdbNetworkInput = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<GetOdbNetworkInput>;
 export interface OciDnsForwardingConfig {
   domainName?: string;
   ociDnsListenerIp?: string;
 }
-const OciDnsForwardingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainName: S.optional(S.String), ociDnsListenerIp: S.optional(S.String) }),
-).annotate({ identifier: "OciDnsForwardingConfig" }) as any as S.Schema<OciDnsForwardingConfig>;
+const OciDnsForwardingConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<OciDnsForwardingConfig>;
 export type OciDnsForwardingConfigList = OciDnsForwardingConfig[];
-const OciDnsForwardingConfigList = /*@__PURE__*/ S.Array(OciDnsForwardingConfig);
+const OciDnsForwardingConfigList = /*@__PURE__*/ __L.at(__c16, 5);
 export type VpcEndpointType = "SERVICENETWORK" | (string & {});
 const VpcEndpointType = S.String;
 
@@ -3024,9 +2060,10 @@ export interface ServiceNetworkEndpoint {
   vpcEndpointId?: string;
   vpcEndpointType?: VpcEndpointType;
 }
-const ServiceNetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vpcEndpointId: S.optional(S.String), vpcEndpointType: S.optional(VpcEndpointType) }),
-).annotate({ identifier: "ServiceNetworkEndpoint" }) as any as S.Schema<ServiceNetworkEndpoint>;
+const ServiceNetworkEndpoint = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ServiceNetworkEndpoint>;
 export type ManagedResourceStatus =
   | "ENABLED"
   | "ENABLING"
@@ -3039,76 +2076,47 @@ export interface ManagedS3BackupAccess {
   status?: ManagedResourceStatus;
   ipv4Addresses?: string[];
 }
-const ManagedS3BackupAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(ManagedResourceStatus), ipv4Addresses: S.optional(StringList) }),
-).annotate({ identifier: "ManagedS3BackupAccess" }) as any as S.Schema<ManagedS3BackupAccess>;
+const ManagedS3BackupAccess = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ManagedS3BackupAccess>;
 export interface ZeroEtlAccess {
   status?: ManagedResourceStatus;
   cidr?: string;
 }
-const ZeroEtlAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(ManagedResourceStatus), cidr: S.optional(S.String) }),
-).annotate({ identifier: "ZeroEtlAccess" }) as any as S.Schema<ZeroEtlAccess>;
+const ZeroEtlAccess = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ZeroEtlAccess>;
 export interface S3Access {
   status?: ManagedResourceStatus;
   ipv4Addresses?: string[];
   domainName?: string;
   s3PolicyDocument?: string;
 }
-const S3Access = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ManagedResourceStatus),
-    ipv4Addresses: S.optional(StringList),
-    domainName: S.optional(S.String),
-    s3PolicyDocument: S.optional(S.String),
-  }),
-).annotate({ identifier: "S3Access" }) as any as S.Schema<S3Access>;
+const S3Access = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<S3Access>;
 export interface StsAccess {
   status?: ManagedResourceStatus;
   ipv4Addresses?: string[];
   domainName?: string;
   stsPolicyDocument?: string;
 }
-const StsAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ManagedResourceStatus),
-    ipv4Addresses: S.optional(StringList),
-    domainName: S.optional(S.String),
-    stsPolicyDocument: S.optional(S.String),
-  }),
-).annotate({ identifier: "StsAccess" }) as any as S.Schema<StsAccess>;
+const StsAccess = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<StsAccess>;
 export interface KmsAccess {
   status?: ManagedResourceStatus;
   ipv4Addresses?: string[];
   domainName?: string;
   kmsPolicyDocument?: string;
 }
-const KmsAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ManagedResourceStatus),
-    ipv4Addresses: S.optional(StringList),
-    domainName: S.optional(S.String),
-    kmsPolicyDocument: S.optional(S.String),
-  }),
-).annotate({ identifier: "KmsAccess" }) as any as S.Schema<KmsAccess>;
+const KmsAccess = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<KmsAccess>;
 export interface CrossRegionS3RestoreSourcesAccess {
   region?: string;
   ipv4Addresses?: string[];
   status?: ManagedResourceStatus;
 }
-const CrossRegionS3RestoreSourcesAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.optional(S.String),
-    ipv4Addresses: S.optional(StringList),
-    status: S.optional(ManagedResourceStatus),
-  }),
-).annotate({
-  identifier: "CrossRegionS3RestoreSourcesAccess",
-}) as any as S.Schema<CrossRegionS3RestoreSourcesAccess>;
+const CrossRegionS3RestoreSourcesAccess = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<CrossRegionS3RestoreSourcesAccess>;
 export type CrossRegionS3RestoreSourcesAccessList = CrossRegionS3RestoreSourcesAccess[];
-const CrossRegionS3RestoreSourcesAccessList = /*@__PURE__*/ S.Array(
-  CrossRegionS3RestoreSourcesAccess,
-);
+const CrossRegionS3RestoreSourcesAccessList = /*@__PURE__*/ __L.at(__c17, 5);
 export interface ManagedServices {
   serviceNetworkArn?: string;
   resourceGatewayArn?: string;
@@ -3121,20 +2129,7 @@ export interface ManagedServices {
   kmsAccess?: KmsAccess;
   crossRegionS3RestoreSourcesAccess?: CrossRegionS3RestoreSourcesAccess[];
 }
-const ManagedServices = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceNetworkArn: S.optional(S.String),
-    resourceGatewayArn: S.optional(S.String),
-    managedServicesIpv4Cidrs: S.optional(StringList),
-    serviceNetworkEndpoint: S.optional(ServiceNetworkEndpoint),
-    managedS3BackupAccess: S.optional(ManagedS3BackupAccess),
-    zeroEtlAccess: S.optional(ZeroEtlAccess),
-    s3Access: S.optional(S3Access),
-    stsAccess: S.optional(StsAccess),
-    kmsAccess: S.optional(KmsAccess),
-    crossRegionS3RestoreSourcesAccess: S.optional(CrossRegionS3RestoreSourcesAccessList),
-  }),
-).annotate({ identifier: "ManagedServices" }) as any as S.Schema<ManagedServices>;
+const ManagedServices = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ManagedServices>;
 export interface OdbNetwork {
   odbNetworkId: string;
   displayName?: string;
@@ -3159,48 +2154,18 @@ export interface OdbNetwork {
   managedServices?: ManagedServices;
   ec2PlacementGroupIds?: string[];
 }
-const OdbNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    odbNetworkId: S.String,
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    odbNetworkArn: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-    clientSubnetCidr: S.optional(S.String),
-    backupSubnetCidr: S.optional(S.String),
-    customDomainName: S.optional(S.String),
-    defaultDnsPrefix: S.optional(S.String),
-    peeredCidrs: S.optional(StringList),
-    ociNetworkAnchorId: S.optional(S.String),
-    ociNetworkAnchorUrl: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    ociVcnId: S.optional(S.String),
-    ociVcnUrl: S.optional(S.String),
-    ociDnsForwardingConfigs: S.optional(OciDnsForwardingConfigList),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    percentProgress: S.optional(S.Number),
-    managedServices: S.optional(ManagedServices),
-    ec2PlacementGroupIds: S.optional(ResourceIdList),
-  }),
-).annotate({ identifier: "OdbNetwork" }) as any as S.Schema<OdbNetwork>;
+const OdbNetwork = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<OdbNetwork>;
 export interface GetOdbNetworkOutput {
   odbNetwork?: OdbNetwork;
 }
-const GetOdbNetworkOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ odbNetwork: S.optional(OdbNetwork) }),
-).annotate({ identifier: "GetOdbNetworkOutput" }) as any as S.Schema<GetOdbNetworkOutput>;
+const GetOdbNetworkOutput = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<GetOdbNetworkOutput>;
 export interface GetOdbPeeringConnectionInput {
   odbPeeringConnectionId: string;
 }
-const GetOdbPeeringConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ odbPeeringConnectionId: S.String.pipe(T.HttpLabel("odbPeeringConnectionId")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetOdbPeeringConnectionInput",
-}) as any as S.Schema<GetOdbPeeringConnectionInput>;
+const GetOdbPeeringConnectionInput = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetOdbPeeringConnectionInput>;
 export interface OdbPeeringConnection {
   odbPeeringConnectionId: string;
   displayName?: string;
@@ -3214,39 +2179,25 @@ export interface OdbPeeringConnection {
   createdAt?: Date;
   percentProgress?: number;
 }
-const OdbPeeringConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    odbPeeringConnectionId: S.String,
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    odbPeeringConnectionArn: S.optional(S.String),
-    odbNetworkArn: S.optional(S.String),
-    peerNetworkArn: S.optional(S.String),
-    odbPeeringConnectionType: S.optional(S.String),
-    peerNetworkCidrs: S.optional(PeeredCidrList),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    percentProgress: S.optional(S.Number),
-  }),
-).annotate({ identifier: "OdbPeeringConnection" }) as any as S.Schema<OdbPeeringConnection>;
+const OdbPeeringConnection = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<OdbPeeringConnection>;
 export interface GetOdbPeeringConnectionOutput {
   odbPeeringConnection?: OdbPeeringConnection;
 }
-const GetOdbPeeringConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ odbPeeringConnection: S.optional(OdbPeeringConnection) }),
-).annotate({
-  identifier: "GetOdbPeeringConnectionOutput",
-}) as any as S.Schema<GetOdbPeeringConnectionOutput>;
+const GetOdbPeeringConnectionOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetOdbPeeringConnectionOutput>;
 export interface InitializeServiceInput {
   ociIdentityDomain?: boolean;
   autonomousDatabaseOciAwsSecretsManagerIntegration?: Access;
 }
-const InitializeServiceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ociIdentityDomain: S.optional(S.Boolean),
-    autonomousDatabaseOciAwsSecretsManagerIntegration: S.optional(Access),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "InitializeServiceInput" }) as any as S.Schema<InitializeServiceInput>;
+const InitializeServiceInput = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<InitializeServiceInput>;
 export interface InitializeServiceOutput {}
 const InitializeServiceOutput =
   DeleteAutonomousDatabaseOutput as any as S.Schema<InitializeServiceOutput>;
@@ -3257,17 +2208,10 @@ export interface ListAutonomousDatabaseBackupsInput {
   status?: AutonomousDatabaseBackupStatus;
   type?: AutonomousDatabaseBackupType;
 }
-const ListAutonomousDatabaseBackupsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
-    status: S.optional(AutonomousDatabaseBackupStatus),
-    type: S.optional(AutonomousDatabaseBackupType),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAutonomousDatabaseBackupsInput",
-}) as any as S.Schema<ListAutonomousDatabaseBackupsInput>;
+const ListAutonomousDatabaseBackupsInput = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListAutonomousDatabaseBackupsInput>;
 export interface AutonomousDatabaseBackupSummary {
   autonomousDatabaseBackupId?: string;
   autonomousDatabaseBackupArn?: string;
@@ -3285,41 +2229,20 @@ export interface AutonomousDatabaseBackupSummary {
   timeEnded?: Date;
   type?: AutonomousDatabaseBackupType;
 }
-const AutonomousDatabaseBackupSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseBackupId: S.optional(S.String),
-    autonomousDatabaseBackupArn: S.optional(S.String),
-    autonomousDatabaseId: S.optional(S.String),
-    ocid: S.optional(S.String),
-    displayName: S.optional(S.String),
-    dbVersion: S.optional(S.String),
-    status: S.optional(AutonomousDatabaseBackupStatus),
-    statusReason: S.optional(S.String),
-    isAutomatic: S.optional(S.Boolean),
-    retentionPeriodInDays: S.optional(S.Number),
-    sizeInTBs: S.optional(S.Number),
-    timeAvailableTill: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeStarted: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeEnded: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    type: S.optional(AutonomousDatabaseBackupType),
-  }),
-).annotate({
-  identifier: "AutonomousDatabaseBackupSummary",
-}) as any as S.Schema<AutonomousDatabaseBackupSummary>;
+const AutonomousDatabaseBackupSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<AutonomousDatabaseBackupSummary>;
 export type AutonomousDatabaseBackupList = AutonomousDatabaseBackupSummary[];
-const AutonomousDatabaseBackupList = /*@__PURE__*/ S.Array(AutonomousDatabaseBackupSummary);
+const AutonomousDatabaseBackupList = /*@__PURE__*/ __L.at(__c18, 7);
 export interface ListAutonomousDatabaseBackupsOutput {
   nextToken?: string;
   autonomousDatabaseBackups: AutonomousDatabaseBackupSummary[];
 }
-const ListAutonomousDatabaseBackupsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    autonomousDatabaseBackups: AutonomousDatabaseBackupList,
-  }),
-).annotate({
-  identifier: "ListAutonomousDatabaseBackupsOutput",
-}) as any as S.Schema<ListAutonomousDatabaseBackupsOutput>;
+const ListAutonomousDatabaseBackupsOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListAutonomousDatabaseBackupsOutput>;
 export type CharacterSetType = "DATABASE" | "NATIONAL" | (string & {});
 const CharacterSetType = S.String;
 
@@ -3328,53 +2251,36 @@ export interface ListAutonomousDatabaseCharacterSetsInput {
   nextToken?: string;
   characterSetType?: CharacterSetType;
 }
-const ListAutonomousDatabaseCharacterSetsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    characterSetType: S.optional(CharacterSetType),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAutonomousDatabaseCharacterSetsInput",
-}) as any as S.Schema<ListAutonomousDatabaseCharacterSetsInput>;
+const ListAutonomousDatabaseCharacterSetsInput = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListAutonomousDatabaseCharacterSetsInput>;
 export interface AutonomousDatabaseCharacterSetSummary {
   characterSet?: string;
 }
-const AutonomousDatabaseCharacterSetSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ characterSet: S.optional(S.String) }),
-).annotate({
-  identifier: "AutonomousDatabaseCharacterSetSummary",
-}) as any as S.Schema<AutonomousDatabaseCharacterSetSummary>;
+const AutonomousDatabaseCharacterSetSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<AutonomousDatabaseCharacterSetSummary>;
 export type AutonomousDatabaseCharacterSetList = AutonomousDatabaseCharacterSetSummary[];
-const AutonomousDatabaseCharacterSetList = /*@__PURE__*/ S.Array(
-  AutonomousDatabaseCharacterSetSummary,
-);
+const AutonomousDatabaseCharacterSetList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface ListAutonomousDatabaseCharacterSetsOutput {
   nextToken?: string;
   autonomousDatabaseCharacterSets: AutonomousDatabaseCharacterSetSummary[];
 }
-const ListAutonomousDatabaseCharacterSetsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    autonomousDatabaseCharacterSets: AutonomousDatabaseCharacterSetList,
-  }),
-).annotate({
-  identifier: "ListAutonomousDatabaseCharacterSetsOutput",
-}) as any as S.Schema<ListAutonomousDatabaseCharacterSetsOutput>;
+const ListAutonomousDatabaseCharacterSetsOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListAutonomousDatabaseCharacterSetsOutput>;
 export interface ListAutonomousDatabaseClonesInput {
   maxResults?: number;
   nextToken?: string;
   autonomousDatabaseId: string;
 }
-const ListAutonomousDatabaseClonesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAutonomousDatabaseClonesInput",
-}) as any as S.Schema<ListAutonomousDatabaseClonesInput>;
+const ListAutonomousDatabaseClonesInput = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListAutonomousDatabaseClonesInput>;
 export interface AutonomousDatabaseSummary {
   autonomousDatabaseId?: string;
   autonomousDatabaseArn?: string;
@@ -3481,256 +2387,102 @@ export interface AutonomousDatabaseSummary {
   timeUndeleted?: Date;
   adminPasswordSourceSummary?: AdminPasswordSourceSummary;
 }
-const AutonomousDatabaseSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseId: S.optional(S.String),
-    autonomousDatabaseArn: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    percentProgress: S.optional(S.Number),
-    ocid: S.optional(S.String),
-    ociUrl: S.optional(S.String),
-    displayName: S.optional(S.String),
-    dbName: S.optional(S.String),
-    sourceId: S.optional(S.String),
-    status: S.optional(AutonomousDatabaseResourceStatus),
-    statusReason: S.optional(S.String),
-    databaseType: S.optional(DatabaseType),
-    dbVersion: S.optional(S.String),
-    dbWorkload: S.optional(DbWorkload),
-    characterSet: S.optional(S.String),
-    ncharacterSet: S.optional(S.String),
-    databaseEdition: S.optional(DatabaseEdition),
-    licenseModel: S.optional(LicenseModel),
-    openMode: S.optional(OpenMode),
-    permissionLevel: S.optional(PermissionLevel),
-    isMtlsConnectionRequired: S.optional(S.Boolean),
-    autonomousMaintenanceScheduleType: S.optional(AutonomousMaintenanceScheduleType),
-    netServicesArchitecture: S.optional(NetServicesArchitecture),
-    availableUpgradeVersions: S.optional(StringList),
-    byolComputeCountLimit: S.optional(S.Number),
-    connectionStringDetails: S.optional(AutonomousDatabaseConnectionStrings),
-    serviceConsoleUrl: S.optional(S.String),
-    sqlWebDeveloperUrl: S.optional(S.String),
-    customerContacts: S.optional(CustomerContacts),
-    apexDetails: S.optional(AutonomousDatabaseApex),
-    standbyDb: S.optional(DatabaseStandbySummary),
-    localStandbyDb: S.optional(DatabaseStandbySummary),
-    dataSafeStatus: S.optional(DataSafeStatus),
-    databaseManagementStatus: S.optional(DatabaseManagementStatus),
-    operationsInsightsStatus: S.optional(OperationsInsightsStatus),
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-    maintenanceTargetComponent: S.optional(S.String),
-    connectionUrls: S.optional(AutonomousDatabaseConnectionUrls),
-    dbToolsDetails: S.optional(DatabaseToolList),
-    scheduledOperations: S.optional(ScheduledOperationDetailsList),
-    resourcePoolLeaderId: S.optional(S.String),
-    computeCount: S.optional(S.Number),
-    computeModel: S.optional(ComputeModel),
-    cpuCoreCount: S.optional(S.Number),
-    memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
-    provisionableCpus: S.optional(IntegerList),
-    isAutoScalingEnabled: S.optional(S.Boolean),
-    dataStorageSizeInTBs: S.optional(S.Number),
-    dataStorageSizeInGBs: S.optional(S.Number),
-    usedDataStorageSizeInTBs: S.optional(S.Number),
-    usedDataStorageSizeInGBs: S.optional(S.Number),
-    actualUsedDataStorageSizeInTBs: S.optional(S.Number),
-    allocatedStorageSizeInTBs: S.optional(S.Number),
-    inMemoryAreaInGBs: S.optional(S.Number),
-    isAutoScalingForStorageEnabled: S.optional(S.Boolean),
-    odbNetworkId: S.optional(S.String),
-    odbNetworkArn: S.optional(S.String),
-    privateEndpoint: S.optional(S.String),
-    privateEndpointIp: S.optional(S.String),
-    privateEndpointLabel: S.optional(S.String),
-    allowlistedIps: S.optional(StringList),
-    standbyAllowlistedIps: S.optional(StringList),
-    standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
-    isLocalDataGuardEnabled: S.optional(S.Boolean),
-    isRemoteDataGuardEnabled: S.optional(S.Boolean),
-    localDisasterRecoveryType: S.optional(DisasterRecoveryType),
-    role: S.optional(DataGuardRole),
-    peerDbIds: S.optional(StringList),
-    failedDataRecoveryInSeconds: S.optional(S.Number),
-    localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
-    remoteDisasterRecoveryConfiguration: S.optional(DisasterRecoveryConfiguration),
-    isRefreshableClone: S.optional(S.Boolean),
-    refreshableMode: S.optional(RefreshableMode),
-    refreshableStatus: S.optional(RefreshableStatus),
-    autoRefreshFrequencyInSeconds: S.optional(S.Number),
-    autoRefreshPointLagInSeconds: S.optional(S.Number),
-    isReconnectCloneEnabled: S.optional(S.Boolean),
-    cloneTableSpaceList: S.optional(IntegerList),
-    backupRetentionPeriodInDays: S.optional(S.Number),
-    longTermBackupSchedule: S.optional(LongTermBackupSchedule),
-    isBackupRetentionLocked: S.optional(S.Boolean),
-    totalBackupStorageSizeInGBs: S.optional(S.Number),
-    resourcePoolSummary: S.optional(ResourcePoolSummary),
-    encryptionSummary: S.optional(EncryptionSummary),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastBackup: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeMaintenanceBegin: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeMaintenanceEnd: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeLocalDataGuardEnabled: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeDataGuardRoleChanged: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastSwitchover: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastFailover: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastRefresh: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfLastRefreshPoint: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfNextRefresh: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeOfAutoRefreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeDeletionOfFreeAutonomousDatabase: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    timeReclamationOfFreeAutonomousDatabase: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    timeDisasterRecoveryRoleChanged: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    timeUntilReconnectCloneEnabled: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    nextLongTermBackupTimeStamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeUndeleted: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    adminPasswordSourceSummary: S.optional(AdminPasswordSourceSummary),
-  }),
-).annotate({
-  identifier: "AutonomousDatabaseSummary",
-}) as any as S.Schema<AutonomousDatabaseSummary>;
+const AutonomousDatabaseSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<AutonomousDatabaseSummary>;
 export type AutonomousDatabaseList = AutonomousDatabaseSummary[];
-const AutonomousDatabaseList = /*@__PURE__*/ S.Array(AutonomousDatabaseSummary);
+const AutonomousDatabaseList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListAutonomousDatabaseClonesOutput {
   nextToken?: string;
   autonomousDatabaseClones: AutonomousDatabaseSummary[];
 }
-const ListAutonomousDatabaseClonesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), autonomousDatabaseClones: AutonomousDatabaseList }),
-).annotate({
-  identifier: "ListAutonomousDatabaseClonesOutput",
-}) as any as S.Schema<ListAutonomousDatabaseClonesOutput>;
+const ListAutonomousDatabaseClonesOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListAutonomousDatabaseClonesOutput>;
 export interface ListAutonomousDatabasePeersInput {
   maxResults?: number;
   nextToken?: string;
   autonomousDatabaseId: string;
 }
-const ListAutonomousDatabasePeersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAutonomousDatabasePeersInput",
-}) as any as S.Schema<ListAutonomousDatabasePeersInput>;
+const ListAutonomousDatabasePeersInput = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListAutonomousDatabasePeersInput>;
 export interface AutonomousDatabasePeerSummary {
   autonomousDatabaseId?: string;
   autonomousDatabaseArn?: string;
   ocid?: string;
   region?: string;
 }
-const AutonomousDatabasePeerSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseId: S.optional(S.String),
-    autonomousDatabaseArn: S.optional(S.String),
-    ocid: S.optional(S.String),
-    region: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutonomousDatabasePeerSummary",
-}) as any as S.Schema<AutonomousDatabasePeerSummary>;
+const AutonomousDatabasePeerSummary = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<AutonomousDatabasePeerSummary>;
 export type AutonomousDatabasePeerList = AutonomousDatabasePeerSummary[];
-const AutonomousDatabasePeerList = /*@__PURE__*/ S.Array(AutonomousDatabasePeerSummary);
+const AutonomousDatabasePeerList = /*@__PURE__*/ __L.at(__c20, 3);
 export interface ListAutonomousDatabasePeersOutput {
   nextToken?: string;
   autonomousDatabasePeers: AutonomousDatabasePeerSummary[];
 }
-const ListAutonomousDatabasePeersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    autonomousDatabasePeers: AutonomousDatabasePeerList,
-  }),
-).annotate({
-  identifier: "ListAutonomousDatabasePeersOutput",
-}) as any as S.Schema<ListAutonomousDatabasePeersOutput>;
+const ListAutonomousDatabasePeersOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListAutonomousDatabasePeersOutput>;
 export interface ListAutonomousDatabasesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAutonomousDatabasesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAutonomousDatabasesInput",
-}) as any as S.Schema<ListAutonomousDatabasesInput>;
+const ListAutonomousDatabasesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListAutonomousDatabasesInput>;
 export interface ListAutonomousDatabasesOutput {
   nextToken?: string;
   autonomousDatabases: AutonomousDatabaseSummary[];
 }
-const ListAutonomousDatabasesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), autonomousDatabases: AutonomousDatabaseList }),
-).annotate({
-  identifier: "ListAutonomousDatabasesOutput",
-}) as any as S.Schema<ListAutonomousDatabasesOutput>;
+const ListAutonomousDatabasesOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListAutonomousDatabasesOutput>;
 export interface ListAutonomousDatabaseVersionsInput {
   maxResults?: number;
   nextToken?: string;
   dbWorkload?: DbWorkload;
 }
-const ListAutonomousDatabaseVersionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    dbWorkload: S.optional(DbWorkload),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAutonomousDatabaseVersionsInput",
-}) as any as S.Schema<ListAutonomousDatabaseVersionsInput>;
+const ListAutonomousDatabaseVersionsInput = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListAutonomousDatabaseVersionsInput>;
 export interface AutonomousDatabaseVersionSummary {
   dbWorkload?: DbWorkload;
   details?: string;
   version?: string;
 }
-const AutonomousDatabaseVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbWorkload: S.optional(DbWorkload),
-    details: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutonomousDatabaseVersionSummary",
-}) as any as S.Schema<AutonomousDatabaseVersionSummary>;
+const AutonomousDatabaseVersionSummary = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<AutonomousDatabaseVersionSummary>;
 export type AutonomousDatabaseVersionList = AutonomousDatabaseVersionSummary[];
-const AutonomousDatabaseVersionList = /*@__PURE__*/ S.Array(AutonomousDatabaseVersionSummary);
+const AutonomousDatabaseVersionList = /*@__PURE__*/ __L.at(__c21, 1);
 export interface ListAutonomousDatabaseVersionsOutput {
   nextToken?: string;
   autonomousDatabaseVersions: AutonomousDatabaseVersionSummary[];
 }
-const ListAutonomousDatabaseVersionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    autonomousDatabaseVersions: AutonomousDatabaseVersionList,
-  }),
-).annotate({
-  identifier: "ListAutonomousDatabaseVersionsOutput",
-}) as any as S.Schema<ListAutonomousDatabaseVersionsOutput>;
+const ListAutonomousDatabaseVersionsOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListAutonomousDatabaseVersionsOutput>;
 export interface ListAutonomousVirtualMachinesInput {
   maxResults?: number;
   nextToken?: string;
   cloudAutonomousVmClusterId: string;
 }
-const ListAutonomousVirtualMachinesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    cloudAutonomousVmClusterId: S.String.pipe(T.HttpLabel("cloudAutonomousVmClusterId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAutonomousVirtualMachinesInput",
-}) as any as S.Schema<ListAutonomousVirtualMachinesInput>;
+const ListAutonomousVirtualMachinesInput = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListAutonomousVirtualMachinesInput>;
 export interface AutonomousVirtualMachineSummary {
   autonomousVirtualMachineId?: string;
   status?: ResourceStatus;
@@ -3746,53 +2498,29 @@ export interface AutonomousVirtualMachineSummary {
   ocid?: string;
   ociResourceAnchorName?: string;
 }
-const AutonomousVirtualMachineSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousVirtualMachineId: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    vmName: S.optional(S.String),
-    dbServerId: S.optional(S.String),
-    dbServerDisplayName: S.optional(S.String),
-    cpuCoreCount: S.optional(S.Number),
-    memorySizeInGBs: S.optional(S.Number),
-    dbNodeStorageSizeInGBs: S.optional(S.Number),
-    clientIpAddress: S.optional(S.String),
-    cloudAutonomousVmClusterId: S.optional(S.String),
-    ocid: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutonomousVirtualMachineSummary",
-}) as any as S.Schema<AutonomousVirtualMachineSummary>;
+const AutonomousVirtualMachineSummary = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<AutonomousVirtualMachineSummary>;
 export type AutonomousVirtualMachineList = AutonomousVirtualMachineSummary[];
-const AutonomousVirtualMachineList = /*@__PURE__*/ S.Array(AutonomousVirtualMachineSummary);
+const AutonomousVirtualMachineList = /*@__PURE__*/ __L.at(__c21, 5);
 export interface ListAutonomousVirtualMachinesOutput {
   nextToken?: string;
   autonomousVirtualMachines: AutonomousVirtualMachineSummary[];
 }
-const ListAutonomousVirtualMachinesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    autonomousVirtualMachines: AutonomousVirtualMachineList,
-  }),
-).annotate({
-  identifier: "ListAutonomousVirtualMachinesOutput",
-}) as any as S.Schema<ListAutonomousVirtualMachinesOutput>;
+const ListAutonomousVirtualMachinesOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListAutonomousVirtualMachinesOutput>;
 export interface ListCloudAutonomousVmClustersInput {
   maxResults?: number;
   nextToken?: string;
   cloudExadataInfrastructureId?: string;
 }
-const ListCloudAutonomousVmClustersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    cloudExadataInfrastructureId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListCloudAutonomousVmClustersInput",
-}) as any as S.Schema<ListCloudAutonomousVmClustersInput>;
+const ListCloudAutonomousVmClustersInput = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListCloudAutonomousVmClustersInput>;
 export interface CloudAutonomousVmClusterSummary {
   cloudAutonomousVmClusterId: string;
   cloudAutonomousVmClusterArn?: string;
@@ -3847,92 +2575,28 @@ export interface CloudAutonomousVmClusterSummary {
   totalContainerDatabases?: number;
   iamRoles?: IamRole[];
 }
-const CloudAutonomousVmClusterSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudAutonomousVmClusterId: S.String,
-    cloudAutonomousVmClusterArn: S.optional(S.String),
-    odbNetworkId: S.optional(S.String),
-    odbNetworkArn: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    percentProgress: S.optional(S.Number),
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    cloudExadataInfrastructureId: S.optional(S.String),
-    cloudExadataInfrastructureArn: S.optional(S.String),
-    autonomousDataStoragePercentage: S.optional(S.Number),
-    autonomousDataStorageSizeInTBs: S.optional(S.Number),
-    availableAutonomousDataStorageSizeInTBs: S.optional(S.Number),
-    availableContainerDatabases: S.optional(S.Number),
-    availableCpus: S.optional(S.Number),
-    computeModel: S.optional(ComputeModel),
-    cpuCoreCount: S.optional(S.Number),
-    cpuCoreCountPerNode: S.optional(S.Number),
-    cpuPercentage: S.optional(S.Number),
-    dataStorageSizeInGBs: S.optional(S.Number),
-    dataStorageSizeInTBs: S.optional(S.Number),
-    dbNodeStorageSizeInGBs: S.optional(S.Number),
-    dbServers: S.optional(StringList),
-    description: S.optional(S.String),
-    domain: S.optional(S.String),
-    exadataStorageInTBsLowestScaledValue: S.optional(S.Number),
-    hostname: S.optional(S.String),
-    ocid: S.optional(S.String),
-    ociUrl: S.optional(S.String),
-    isMtlsEnabledVmCluster: S.optional(S.Boolean),
-    licenseModel: S.optional(LicenseModel),
-    maintenanceWindow: S.optional(MaintenanceWindow),
-    maxAcdsLowestScaledValue: S.optional(S.Number),
-    memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
-    memorySizeInGBs: S.optional(S.Number),
-    nodeCount: S.optional(S.Number),
-    nonProvisionableAutonomousContainerDatabases: S.optional(S.Number),
-    provisionableAutonomousContainerDatabases: S.optional(S.Number),
-    provisionedAutonomousContainerDatabases: S.optional(S.Number),
-    provisionedCpus: S.optional(S.Number),
-    reclaimableCpus: S.optional(S.Number),
-    reservedCpus: S.optional(S.Number),
-    scanListenerPortNonTls: S.optional(S.Number),
-    scanListenerPortTls: S.optional(S.Number),
-    shape: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeDatabaseSslCertificateExpires: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    timeOrdsCertificateExpires: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeZone: S.optional(S.String),
-    totalContainerDatabases: S.optional(S.Number),
-    iamRoles: S.optional(IamRoleList),
-  }),
-).annotate({
-  identifier: "CloudAutonomousVmClusterSummary",
-}) as any as S.Schema<CloudAutonomousVmClusterSummary>;
+const CloudAutonomousVmClusterSummary = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<CloudAutonomousVmClusterSummary>;
 export type CloudAutonomousVmClusterList = CloudAutonomousVmClusterSummary[];
-const CloudAutonomousVmClusterList = /*@__PURE__*/ S.Array(CloudAutonomousVmClusterSummary);
+const CloudAutonomousVmClusterList = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListCloudAutonomousVmClustersOutput {
   nextToken?: string;
   cloudAutonomousVmClusters: CloudAutonomousVmClusterSummary[];
 }
-const ListCloudAutonomousVmClustersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    cloudAutonomousVmClusters: CloudAutonomousVmClusterList,
-  }),
-).annotate({
-  identifier: "ListCloudAutonomousVmClustersOutput",
-}) as any as S.Schema<ListCloudAutonomousVmClustersOutput>;
+const ListCloudAutonomousVmClustersOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListCloudAutonomousVmClustersOutput>;
 export interface ListCloudExadataInfrastructuresInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListCloudExadataInfrastructuresInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListCloudExadataInfrastructuresInput",
-}) as any as S.Schema<ListCloudExadataInfrastructuresInput>;
+const ListCloudExadataInfrastructuresInput = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListCloudExadataInfrastructuresInput>;
 export interface CloudExadataInfrastructureSummary {
   cloudExadataInfrastructureId: string;
   displayName?: string;
@@ -3976,31 +2640,24 @@ export interface CloudExadataInfrastructureSummary {
 const CloudExadataInfrastructureSummary =
   CloudExadataInfrastructure as any as S.Schema<CloudExadataInfrastructureSummary>;
 export type CloudExadataInfrastructureList = CloudExadataInfrastructureSummary[];
-const CloudExadataInfrastructureList = /*@__PURE__*/ S.Array(CloudExadataInfrastructureSummary);
+const CloudExadataInfrastructureList = /*@__PURE__*/ __L.at(__c22, 4);
 export interface ListCloudExadataInfrastructuresOutput {
   nextToken?: string;
   cloudExadataInfrastructures: CloudExadataInfrastructureSummary[];
 }
-const ListCloudExadataInfrastructuresOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    cloudExadataInfrastructures: CloudExadataInfrastructureList,
-  }),
-).annotate({
-  identifier: "ListCloudExadataInfrastructuresOutput",
-}) as any as S.Schema<ListCloudExadataInfrastructuresOutput>;
+const ListCloudExadataInfrastructuresOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ListCloudExadataInfrastructuresOutput>;
 export interface ListCloudVmClustersInput {
   maxResults?: number;
   nextToken?: string;
   cloudExadataInfrastructureId?: string;
 }
-const ListCloudVmClustersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    cloudExadataInfrastructureId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListCloudVmClustersInput" }) as any as S.Schema<ListCloudVmClustersInput>;
+const ListCloudVmClustersInput = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListCloudVmClustersInput>;
 export interface CloudVmClusterSummary {
   cloudVmClusterId: string;
   displayName?: string;
@@ -4048,30 +2705,22 @@ export interface CloudVmClusterSummary {
 }
 const CloudVmClusterSummary = CloudVmCluster as any as S.Schema<CloudVmClusterSummary>;
 export type CloudVmClusterList = CloudVmClusterSummary[];
-const CloudVmClusterList = /*@__PURE__*/ S.Array(CloudVmClusterSummary);
+const CloudVmClusterList = /*@__PURE__*/ __L.at(__c22, 7);
 export interface ListCloudVmClustersOutput {
   nextToken?: string;
   cloudVmClusters: CloudVmClusterSummary[];
 }
-const ListCloudVmClustersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), cloudVmClusters: CloudVmClusterList }),
-).annotate({
-  identifier: "ListCloudVmClustersOutput",
-}) as any as S.Schema<ListCloudVmClustersOutput>;
+const ListCloudVmClustersOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ListCloudVmClustersOutput>;
 export interface ListDbNodesInput {
   maxResults?: number;
   nextToken?: string;
   cloudVmClusterId?: string;
   exadbVmClusterId?: string;
 }
-const ListDbNodesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    cloudVmClusterId: S.optional(S.String),
-    exadbVmClusterId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListDbNodesInput" }) as any as S.Schema<ListDbNodesInput>;
+const ListDbNodesInput = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<ListDbNodesInput>;
 export interface DbNodeSummary {
   dbNodeId?: string;
   dbNodeArn?: string;
@@ -4100,57 +2749,20 @@ export interface DbNodeSummary {
   vnic2Id?: string;
   vnicId?: string;
 }
-const DbNodeSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbNodeId: S.optional(S.String),
-    dbNodeArn: S.optional(S.String),
-    status: S.optional(DbNodeResourceStatus),
-    statusReason: S.optional(S.String),
-    additionalDetails: S.optional(S.String),
-    backupIpId: S.optional(S.String),
-    backupVnic2Id: S.optional(S.String),
-    backupVnicId: S.optional(S.String),
-    cpuCoreCount: S.optional(S.Number),
-    dbNodeStorageSizeInGBs: S.optional(S.Number),
-    dbServerId: S.optional(S.String),
-    dbSystemId: S.optional(S.String),
-    faultDomain: S.optional(S.String),
-    hostIpId: S.optional(S.String),
-    hostname: S.optional(S.String),
-    ocid: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    maintenanceType: S.optional(DbNodeMaintenanceType),
-    memorySizeInGBs: S.optional(S.Number),
-    softwareStorageSizeInGB: S.optional(S.Number),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    timeMaintenanceWindowEnd: S.optional(S.String),
-    timeMaintenanceWindowStart: S.optional(S.String),
-    totalCpuCoreCount: S.optional(S.Number),
-    vnic2Id: S.optional(S.String),
-    vnicId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DbNodeSummary" }) as any as S.Schema<DbNodeSummary>;
+const DbNodeSummary = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<DbNodeSummary>;
 export type DbNodeList = DbNodeSummary[];
-const DbNodeList = /*@__PURE__*/ S.Array(DbNodeSummary);
+const DbNodeList = /*@__PURE__*/ __L.at(__c23, 3);
 export interface ListDbNodesOutput {
   nextToken?: string;
   dbNodes: DbNodeSummary[];
 }
-const ListDbNodesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), dbNodes: DbNodeList }),
-).annotate({ identifier: "ListDbNodesOutput" }) as any as S.Schema<ListDbNodesOutput>;
+const ListDbNodesOutput = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<ListDbNodesOutput>;
 export interface ListDbServersInput {
   cloudExadataInfrastructureId: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListDbServersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListDbServersInput" }) as any as S.Schema<ListDbServersInput>;
+const ListDbServersInput = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<ListDbServersInput>;
 export interface DbServerSummary {
   dbServerId?: string;
   status?: ResourceStatus;
@@ -4175,14 +2787,12 @@ export interface DbServerSummary {
 }
 const DbServerSummary = DbServer as any as S.Schema<DbServerSummary>;
 export type DbServerList = DbServerSummary[];
-const DbServerList = /*@__PURE__*/ S.Array(DbServerSummary);
+const DbServerList = /*@__PURE__*/ __L.at(__c23, 6);
 export interface ListDbServersOutput {
   nextToken?: string;
   dbServers: DbServerSummary[];
 }
-const ListDbServersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), dbServers: DbServerList }),
-).annotate({ identifier: "ListDbServersOutput" }) as any as S.Schema<ListDbServersOutput>;
+const ListDbServersOutput = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<ListDbServersOutput>;
 export interface ListDbSystemShapesInput {
   maxResults?: number;
   nextToken?: string;
@@ -4190,15 +2800,10 @@ export interface ListDbSystemShapesInput {
   availabilityZoneId?: string;
   shapeFamily?: string;
 }
-const ListDbSystemShapesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-    shapeFamily: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListDbSystemShapesInput" }) as any as S.Schema<ListDbSystemShapesInput>;
+const ListDbSystemShapesInput = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListDbSystemShapesInput>;
 export type ShapeType = "AMD" | "INTEL" | "INTEL_FLEX_X9" | "AMPERE_FLEX_A1" | (string & {});
 const ShapeType = S.String;
 
@@ -4229,56 +2834,29 @@ export interface DbSystemShapeSummary {
   computeModel?: ComputeModel;
   areServerTypesSupported?: boolean;
 }
-const DbSystemShapeSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availableCoreCount: S.optional(S.Number),
-    availableCoreCountPerNode: S.optional(S.Number),
-    availableDataStorageInTBs: S.optional(S.Number),
-    availableDataStoragePerServerInTBs: S.optional(S.Number),
-    availableDbNodePerNodeInGBs: S.optional(S.Number),
-    availableDbNodeStorageInGBs: S.optional(S.Number),
-    availableMemoryInGBs: S.optional(S.Number),
-    availableMemoryPerNodeInGBs: S.optional(S.Number),
-    coreCountIncrement: S.optional(S.Number),
-    maxStorageCount: S.optional(S.Number),
-    maximumNodeCount: S.optional(S.Number),
-    minCoreCountPerNode: S.optional(S.Number),
-    minDataStorageInTBs: S.optional(S.Number),
-    minDbNodeStoragePerNodeInGBs: S.optional(S.Number),
-    minMemoryPerNodeInGBs: S.optional(S.Number),
-    minStorageCount: S.optional(S.Number),
-    minimumCoreCount: S.optional(S.Number),
-    minimumNodeCount: S.optional(S.Number),
-    runtimeMinimumCoreCount: S.optional(S.Number),
-    shapeFamily: S.optional(S.String),
-    shapeType: S.optional(ShapeType),
-    shapeAttributes: S.optional(ShapeAttributeList),
-    name: S.optional(S.String),
-    computeModel: S.optional(ComputeModel),
-    areServerTypesSupported: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DbSystemShapeSummary" }) as any as S.Schema<DbSystemShapeSummary>;
+const DbSystemShapeSummary = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<DbSystemShapeSummary>;
 export type DbSystemShapeList = DbSystemShapeSummary[];
-const DbSystemShapeList = /*@__PURE__*/ S.Array(DbSystemShapeSummary);
+const DbSystemShapeList = /*@__PURE__*/ __L.at(__c24, 2);
 export interface ListDbSystemShapesOutput {
   nextToken?: string;
   dbSystemShapes: DbSystemShapeSummary[];
 }
-const ListDbSystemShapesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), dbSystemShapes: DbSystemShapeList }),
-).annotate({ identifier: "ListDbSystemShapesOutput" }) as any as S.Schema<ListDbSystemShapesOutput>;
+const ListDbSystemShapesOutput = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ListDbSystemShapesOutput>;
 export interface ListExadbVmClustersInput {
   exascaleDbStorageVaultId?: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListExadbVmClustersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exascaleDbStorageVaultId: S.optional(S.String).pipe(T.HttpQuery("exascaleDbStorageVaultId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListExadbVmClustersInput" }) as any as S.Schema<ListExadbVmClustersInput>;
+const ListExadbVmClustersInput = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ListExadbVmClustersInput>;
 export interface ExadbVmClusterSummary {
   exadbVmClusterId: string;
   clusterName?: string;
@@ -4327,28 +2905,23 @@ export interface ExadbVmClusterSummary {
 }
 const ExadbVmClusterSummary = ExadbVmCluster as any as S.Schema<ExadbVmClusterSummary>;
 export type ExadbVmClusterList = ExadbVmClusterSummary[];
-const ExadbVmClusterList = /*@__PURE__*/ S.Array(ExadbVmClusterSummary);
+const ExadbVmClusterList = /*@__PURE__*/ __L.at(__c24, 5);
 export interface ListExadbVmClustersOutput {
   nextToken?: string;
   exadbVmClusters: ExadbVmClusterSummary[];
 }
-const ListExadbVmClustersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), exadbVmClusters: ExadbVmClusterList }),
-).annotate({
-  identifier: "ListExadbVmClustersOutput",
-}) as any as S.Schema<ListExadbVmClustersOutput>;
+const ListExadbVmClustersOutput = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListExadbVmClustersOutput>;
 export interface ListExascaleDbStorageVaultsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListExascaleDbStorageVaultsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListExascaleDbStorageVaultsInput",
-}) as any as S.Schema<ListExascaleDbStorageVaultsInput>;
+const ListExascaleDbStorageVaultsInput = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ListExascaleDbStorageVaultsInput>;
 export interface ExascaleDbStorageVaultSummary {
   exascaleDbStorageVaultId: string;
   additionalFlashCacheInPercent?: number;
@@ -4373,60 +2946,29 @@ export interface ExascaleDbStorageVaultSummary {
   statusReason?: string;
   timeZone?: string;
 }
-const ExascaleDbStorageVaultSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exascaleDbStorageVaultId: S.String,
-    additionalFlashCacheInPercent: S.optional(S.Number),
-    attachedShapeAttributes: S.optional(ShapeAttributeList),
-    autoscaleLimitInGBs: S.optional(S.Number),
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    description: S.optional(S.String),
-    displayName: S.optional(S.String),
-    vmClusterArns: S.optional(ResourceArnList),
-    vmClusterCount: S.optional(S.Number),
-    vmClusterIds: S.optional(ResourceIdList),
-    exascaleDbStorageVaultArn: S.optional(S.String),
-    highCapacityDatabaseStorage: S.optional(ExascaleDbStorageDetails),
-    isAutoscaleEnabled: S.optional(S.Boolean),
-    ocid: S.optional(S.String),
-    ociResourceAnchorName: S.optional(S.String),
-    ociUrl: S.optional(S.String),
-    percentProgress: S.optional(S.Number),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    timeZone: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExascaleDbStorageVaultSummary",
-}) as any as S.Schema<ExascaleDbStorageVaultSummary>;
+const ExascaleDbStorageVaultSummary = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ExascaleDbStorageVaultSummary>;
 export type ExascaleDbStorageVaultList = ExascaleDbStorageVaultSummary[];
-const ExascaleDbStorageVaultList = /*@__PURE__*/ S.Array(ExascaleDbStorageVaultSummary);
+const ExascaleDbStorageVaultList = /*@__PURE__*/ __L.at(__c25, 1);
 export interface ListExascaleDbStorageVaultsOutput {
   nextToken?: string;
   exascaleDbStorageVaults: ExascaleDbStorageVaultSummary[];
 }
-const ListExascaleDbStorageVaultsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    exascaleDbStorageVaults: ExascaleDbStorageVaultList,
-  }),
-).annotate({
-  identifier: "ListExascaleDbStorageVaultsOutput",
-}) as any as S.Schema<ListExascaleDbStorageVaultsOutput>;
+const ListExascaleDbStorageVaultsOutput = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<ListExascaleDbStorageVaultsOutput>;
 export interface ListFlexComponentsInput {
   maxResults?: number;
   nextToken?: string;
   shape?: string;
 }
-const ListFlexComponentsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    shape: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListFlexComponentsInput" }) as any as S.Schema<ListFlexComponentsInput>;
+const ListFlexComponentsInput = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListFlexComponentsInput>;
 export type HardwareType = "COMPUTE" | "CELL" | (string & {});
 const HardwareType = S.String;
 
@@ -4443,30 +2985,20 @@ export interface FlexComponentSummary {
   runtimeMinimumCoreCount?: number;
   shape?: string;
 }
-const FlexComponentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availableCoreCount: S.optional(S.Number),
-    availableDbStorageInGBs: S.optional(S.Number),
-    availableLocalStorageInGBs: S.optional(S.Number),
-    availableMemoryInGBs: S.optional(S.Number),
-    computeModel: S.optional(ComputeModel),
-    descriptionSummary: S.optional(S.String),
-    hardwareType: S.optional(HardwareType),
-    minimumCoreCount: S.optional(S.Number),
-    name: S.optional(S.String),
-    runtimeMinimumCoreCount: S.optional(S.Number),
-    shape: S.optional(S.String),
-  }),
-).annotate({ identifier: "FlexComponentSummary" }) as any as S.Schema<FlexComponentSummary>;
+const FlexComponentSummary = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<FlexComponentSummary>;
 export type FlexComponentList = FlexComponentSummary[];
-const FlexComponentList = /*@__PURE__*/ S.Array(FlexComponentSummary);
+const FlexComponentList = /*@__PURE__*/ __L.at(__c25, 5);
 export interface ListFlexComponentsOutput {
   nextToken?: string;
   flexComponents: FlexComponentSummary[];
 }
-const ListFlexComponentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), flexComponents: FlexComponentList }),
-).annotate({ identifier: "ListFlexComponentsOutput" }) as any as S.Schema<ListFlexComponentsOutput>;
+const ListFlexComponentsOutput = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListFlexComponentsOutput>;
 export interface ListGiMinorVersionsInput {
   giVersion: string;
   maxResults?: number;
@@ -4475,71 +3007,56 @@ export interface ListGiMinorVersionsInput {
   availabilityZone?: string;
   availabilityZoneId?: string;
 }
-const ListGiMinorVersionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    giVersion: S.String,
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    shapeFamily: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    availabilityZoneId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListGiMinorVersionsInput" }) as any as S.Schema<ListGiMinorVersionsInput>;
+const ListGiMinorVersionsInput = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<ListGiMinorVersionsInput>;
 export interface GiMinorVersionSummary {
   version: string;
   gridImageId?: string;
 }
-const GiMinorVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ version: S.String, gridImageId: S.optional(S.String) }),
-).annotate({ identifier: "GiMinorVersionSummary" }) as any as S.Schema<GiMinorVersionSummary>;
+const GiMinorVersionSummary = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GiMinorVersionSummary>;
 export type GiMinorVersionList = GiMinorVersionSummary[];
-const GiMinorVersionList = /*@__PURE__*/ S.Array(GiMinorVersionSummary);
+const GiMinorVersionList = /*@__PURE__*/ __L.at(__c26, 1);
 export interface ListGiMinorVersionsOutput {
   nextToken?: string;
   giMinorVersions: GiMinorVersionSummary[];
 }
-const ListGiMinorVersionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), giMinorVersions: GiMinorVersionList }),
-).annotate({
-  identifier: "ListGiMinorVersionsOutput",
-}) as any as S.Schema<ListGiMinorVersionsOutput>;
+const ListGiMinorVersionsOutput = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ListGiMinorVersionsOutput>;
 export interface ListGiVersionsInput {
   maxResults?: number;
   nextToken?: string;
   shape?: string;
 }
-const ListGiVersionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    shape: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListGiVersionsInput" }) as any as S.Schema<ListGiVersionsInput>;
+const ListGiVersionsInput = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<ListGiVersionsInput>;
 export interface GiVersionSummary {
   version?: string;
 }
-const GiVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ version: S.optional(S.String) }),
-).annotate({ identifier: "GiVersionSummary" }) as any as S.Schema<GiVersionSummary>;
+const GiVersionSummary = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<GiVersionSummary>;
 export type GiVersionList = GiVersionSummary[];
-const GiVersionList = /*@__PURE__*/ S.Array(GiVersionSummary);
+const GiVersionList = /*@__PURE__*/ __L.at(__c26, 5);
 export interface ListGiVersionsOutput {
   nextToken?: string;
   giVersions: GiVersionSummary[];
 }
-const ListGiVersionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), giVersions: GiVersionList }),
-).annotate({ identifier: "ListGiVersionsOutput" }) as any as S.Schema<ListGiVersionsOutput>;
+const ListGiVersionsOutput = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListGiVersionsOutput>;
 export interface ListOdbNetworksInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListOdbNetworksInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListOdbNetworksInput" }) as any as S.Schema<ListOdbNetworksInput>;
+const ListOdbNetworksInput = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ListOdbNetworksInput>;
 export interface OdbNetworkSummary {
   odbNetworkId: string;
   displayName?: string;
@@ -4566,28 +3083,24 @@ export interface OdbNetworkSummary {
 }
 const OdbNetworkSummary = OdbNetwork as any as S.Schema<OdbNetworkSummary>;
 export type OdbNetworkList = OdbNetworkSummary[];
-const OdbNetworkList = /*@__PURE__*/ S.Array(OdbNetworkSummary);
+const OdbNetworkList = /*@__PURE__*/ __L.at(__c27, 0);
 export interface ListOdbNetworksOutput {
   nextToken?: string;
   odbNetworks: OdbNetworkSummary[];
 }
-const ListOdbNetworksOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), odbNetworks: OdbNetworkList }),
-).annotate({ identifier: "ListOdbNetworksOutput" }) as any as S.Schema<ListOdbNetworksOutput>;
+const ListOdbNetworksOutput = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ListOdbNetworksOutput>;
 export interface ListOdbPeeringConnectionsInput {
   maxResults?: number;
   nextToken?: string;
   odbNetworkId?: string;
 }
-const ListOdbPeeringConnectionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    odbNetworkId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListOdbPeeringConnectionsInput",
-}) as any as S.Schema<ListOdbPeeringConnectionsInput>;
+const ListOdbPeeringConnectionsInput = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListOdbPeeringConnectionsInput>;
 export interface OdbPeeringConnectionSummary {
   odbPeeringConnectionId: string;
   displayName?: string;
@@ -4601,100 +3114,73 @@ export interface OdbPeeringConnectionSummary {
   createdAt?: Date;
   percentProgress?: number;
 }
-const OdbPeeringConnectionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    odbPeeringConnectionId: S.String,
-    displayName: S.optional(S.String),
-    status: S.optional(ResourceStatus),
-    statusReason: S.optional(S.String),
-    odbPeeringConnectionArn: S.optional(S.String),
-    odbNetworkArn: S.optional(S.String),
-    peerNetworkArn: S.optional(S.String),
-    odbPeeringConnectionType: S.optional(S.String),
-    peerNetworkCidrs: S.optional(PeeredCidrList),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    percentProgress: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OdbPeeringConnectionSummary",
-}) as any as S.Schema<OdbPeeringConnectionSummary>;
+const OdbPeeringConnectionSummary = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<OdbPeeringConnectionSummary>;
 export type OdbPeeringConnectionList = OdbPeeringConnectionSummary[];
-const OdbPeeringConnectionList = /*@__PURE__*/ S.Array(OdbPeeringConnectionSummary);
+const OdbPeeringConnectionList = /*@__PURE__*/ __L.at(__c27, 4);
 export interface ListOdbPeeringConnectionsOutput {
   nextToken?: string;
   odbPeeringConnections: OdbPeeringConnectionSummary[];
 }
-const ListOdbPeeringConnectionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), odbPeeringConnections: OdbPeeringConnectionList }),
-).annotate({
-  identifier: "ListOdbPeeringConnectionsOutput",
-}) as any as S.Schema<ListOdbPeeringConnectionsOutput>;
+const ListOdbPeeringConnectionsOutput = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<ListOdbPeeringConnectionsOutput>;
 export interface ListSystemVersionsInput {
   maxResults?: number;
   nextToken?: string;
   giVersion: string;
   shape: string;
 }
-const ListSystemVersionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    giVersion: S.String,
-    shape: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListSystemVersionsInput" }) as any as S.Schema<ListSystemVersionsInput>;
+const ListSystemVersionsInput = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ListSystemVersionsInput>;
 export interface SystemVersionSummary {
   giVersion?: string;
   shape?: string;
   systemVersions?: string[];
 }
-const SystemVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    giVersion: S.optional(S.String),
-    shape: S.optional(S.String),
-    systemVersions: S.optional(StringList),
-  }),
-).annotate({ identifier: "SystemVersionSummary" }) as any as S.Schema<SystemVersionSummary>;
+const SystemVersionSummary = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<SystemVersionSummary>;
 export type SystemVersionList = SystemVersionSummary[];
-const SystemVersionList = /*@__PURE__*/ S.Array(SystemVersionSummary);
+const SystemVersionList = /*@__PURE__*/ __L.at(__c28, 0);
 export interface ListSystemVersionsOutput {
   nextToken?: string;
   systemVersions: SystemVersionSummary[];
 }
-const ListSystemVersionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), systemVersions: SystemVersionList }),
-).annotate({ identifier: "ListSystemVersionsOutput" }) as any as S.Schema<ListSystemVersionsOutput>;
+const ListSystemVersionsOutput = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ListSystemVersionsOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResponseTagMap = { [key: string]: string | undefined };
 const ResponseTagMap = RequestTagMap as any as S.Schema<ResponseTagMap>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(ResponseTagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RebootAutonomousDatabaseInput {
   autonomousDatabaseId: string;
   isOnlineReboot?: boolean;
 }
-const RebootAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseId: S.String, isOnlineReboot: S.optional(S.Boolean) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RebootAutonomousDatabaseInput",
-}) as any as S.Schema<RebootAutonomousDatabaseInput>;
+const RebootAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<RebootAutonomousDatabaseInput>;
 export interface RebootAutonomousDatabaseOutput {
   autonomousDatabaseId: string;
   displayName?: string;
@@ -4708,37 +3194,21 @@ export interface RebootDbNodeInput {
   exadbVmClusterId?: string;
   dbNodeId: string;
 }
-const RebootDbNodeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudVmClusterId: S.optional(S.String),
-    exadbVmClusterId: S.optional(S.String),
-    dbNodeId: S.String.pipe(T.HttpLabel("dbNodeId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "RebootDbNodeInput" }) as any as S.Schema<RebootDbNodeInput>;
+const RebootDbNodeInput = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<RebootDbNodeInput>;
 export interface RebootDbNodeOutput {
   dbNodeId: string;
   status?: DbNodeResourceStatus;
   statusReason?: string;
 }
-const RebootDbNodeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbNodeId: S.String,
-    status: S.optional(DbNodeResourceStatus),
-    statusReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "RebootDbNodeOutput" }) as any as S.Schema<RebootDbNodeOutput>;
+const RebootDbNodeOutput = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<RebootDbNodeOutput>;
 export interface RestoreAutonomousDatabaseInput {
   autonomousDatabaseId: string;
   timestamp: Date;
 }
-const RestoreAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseId: S.String,
-    timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RestoreAutonomousDatabaseInput",
-}) as any as S.Schema<RestoreAutonomousDatabaseInput>;
+const RestoreAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<RestoreAutonomousDatabaseInput>;
 export interface RestoreAutonomousDatabaseOutput {
   autonomousDatabaseId: string;
   displayName?: string;
@@ -4750,13 +3220,10 @@ const RestoreAutonomousDatabaseOutput =
 export interface ShrinkAutonomousDatabaseInput {
   autonomousDatabaseId: string;
 }
-const ShrinkAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ShrinkAutonomousDatabaseInput",
-}) as any as S.Schema<ShrinkAutonomousDatabaseInput>;
+const ShrinkAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ShrinkAutonomousDatabaseInput>;
 export interface ShrinkAutonomousDatabaseOutput {
   autonomousDatabaseId: string;
   displayName?: string;
@@ -4768,13 +3235,10 @@ const ShrinkAutonomousDatabaseOutput =
 export interface StartAutonomousDatabaseInput {
   autonomousDatabaseId: string;
 }
-const StartAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartAutonomousDatabaseInput",
-}) as any as S.Schema<StartAutonomousDatabaseInput>;
+const StartAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<StartAutonomousDatabaseInput>;
 export interface StartAutonomousDatabaseOutput {
   autonomousDatabaseId: string;
   displayName?: string;
@@ -4788,13 +3252,7 @@ export interface StartDbNodeInput {
   exadbVmClusterId?: string;
   dbNodeId: string;
 }
-const StartDbNodeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudVmClusterId: S.optional(S.String),
-    exadbVmClusterId: S.optional(S.String),
-    dbNodeId: S.String.pipe(T.HttpLabel("dbNodeId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "StartDbNodeInput" }) as any as S.Schema<StartDbNodeInput>;
+const StartDbNodeInput = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<StartDbNodeInput>;
 export interface StartDbNodeOutput {
   dbNodeId: string;
   status?: DbNodeResourceStatus;
@@ -4804,13 +3262,10 @@ const StartDbNodeOutput = RebootDbNodeOutput as any as S.Schema<StartDbNodeOutpu
 export interface StopAutonomousDatabaseInput {
   autonomousDatabaseId: string;
 }
-const StopAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StopAutonomousDatabaseInput",
-}) as any as S.Schema<StopAutonomousDatabaseInput>;
+const StopAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<StopAutonomousDatabaseInput>;
 export interface StopAutonomousDatabaseOutput {
   autonomousDatabaseId: string;
   displayName?: string;
@@ -4824,13 +3279,7 @@ export interface StopDbNodeInput {
   exadbVmClusterId?: string;
   dbNodeId: string;
 }
-const StopDbNodeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudVmClusterId: S.optional(S.String),
-    exadbVmClusterId: S.optional(S.String),
-    dbNodeId: S.String.pipe(T.HttpLabel("dbNodeId")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "StopDbNodeInput" }) as any as S.Schema<StopDbNodeInput>;
+const StopDbNodeInput = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<StopDbNodeInput>;
 export interface StopDbNodeOutput {
   dbNodeId: string;
   status?: DbNodeResourceStatus;
@@ -4841,13 +3290,10 @@ export interface SwitchoverAutonomousDatabaseInput {
   autonomousDatabaseId: string;
   peerDbArn?: string;
 }
-const SwitchoverAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autonomousDatabaseId: S.String, peerDbArn: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SwitchoverAutonomousDatabaseInput",
-}) as any as S.Schema<SwitchoverAutonomousDatabaseInput>;
+const SwitchoverAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<SwitchoverAutonomousDatabaseInput>;
 export interface SwitchoverAutonomousDatabaseOutput {
   autonomousDatabaseId: string;
   displayName?: string;
@@ -4860,11 +3306,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tags: RequestTagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteAutonomousDatabaseOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
@@ -4873,11 +3315,10 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tagKeys: TagKeys }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse =
   DeleteAutonomousDatabaseOutput as any as S.Schema<UntagResourceResponse>;
@@ -4928,57 +3369,10 @@ export interface UpdateAutonomousDatabaseInput {
   adminPasswordSource?: AdminPasswordSource;
   adminPasswordSourceConfiguration?: AdminPasswordSourceConfigurationInput;
 }
-const UpdateAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseId: S.String,
-    adminPassword: S.optional(SensitiveString),
-    computeCount: S.optional(S.Number),
-    cpuCoreCount: S.optional(S.Number),
-    dataStorageSizeInTBs: S.optional(S.Number),
-    dataStorageSizeInGBs: S.optional(S.Number),
-    displayName: S.optional(S.String),
-    dbName: S.optional(S.String),
-    dbVersion: S.optional(S.String),
-    dbWorkload: S.optional(DbWorkload),
-    dbToolsDetails: S.optional(DatabaseToolList),
-    databaseEdition: S.optional(DatabaseEdition),
-    licenseModel: S.optional(LicenseModel),
-    isAutoScalingEnabled: S.optional(S.Boolean),
-    isAutoScalingForStorageEnabled: S.optional(S.Boolean),
-    isBackupRetentionLocked: S.optional(S.Boolean),
-    isLocalDataGuardEnabled: S.optional(S.Boolean),
-    isMtlsConnectionRequired: S.optional(S.Boolean),
-    isRefreshableClone: S.optional(S.Boolean),
-    isDisconnectPeer: S.optional(S.Boolean),
-    backupRetentionPeriodInDays: S.optional(S.Number),
-    byolComputeCountLimit: S.optional(S.Number),
-    localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
-    autonomousMaintenanceScheduleType: S.optional(AutonomousMaintenanceScheduleType),
-    customerContactsToSendToOCI: S.optional(CustomerContacts),
-    scheduledOperations: S.optional(ScheduledOperationDetailsList),
-    longTermBackupSchedule: S.optional(LongTermBackupSchedule),
-    openMode: S.optional(OpenMode),
-    permissionLevel: S.optional(PermissionLevel),
-    refreshableMode: S.optional(RefreshableMode),
-    privateEndpointIp: S.optional(S.String),
-    privateEndpointLabel: S.optional(S.String),
-    peerDbId: S.optional(S.String),
-    resourcePoolLeaderId: S.optional(S.String),
-    resourcePoolSummary: S.optional(ResourcePoolSummary),
-    standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
-    standbyAllowlistedIps: S.optional(StringList),
-    allowlistedIps: S.optional(StringList),
-    autoRefreshFrequencyInSeconds: S.optional(S.Number),
-    autoRefreshPointLagInSeconds: S.optional(S.Number),
-    timeOfAutoRefreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    encryptionKeyProvider: S.optional(EncryptionKeyProviderInput),
-    encryptionKeyConfiguration: S.optional(EncryptionKeyConfigurationInput),
-    adminPasswordSource: S.optional(AdminPasswordSource),
-    adminPasswordSourceConfiguration: S.optional(AdminPasswordSourceConfigurationInput),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateAutonomousDatabaseInput",
-}) as any as S.Schema<UpdateAutonomousDatabaseInput>;
+const UpdateAutonomousDatabaseInput = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<UpdateAutonomousDatabaseInput>;
 export interface UpdateAutonomousDatabaseOutput {
   autonomousDatabaseId: string;
   displayName?: string;
@@ -4991,14 +3385,10 @@ export interface UpdateAutonomousDatabaseBackupInput {
   autonomousDatabaseBackupId: string;
   retentionPeriodInDays?: number;
 }
-const UpdateAutonomousDatabaseBackupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autonomousDatabaseBackupId: S.String.pipe(T.HttpLabel("autonomousDatabaseBackupId")),
-    retentionPeriodInDays: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateAutonomousDatabaseBackupInput",
-}) as any as S.Schema<UpdateAutonomousDatabaseBackupInput>;
+const UpdateAutonomousDatabaseBackupInput = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<UpdateAutonomousDatabaseBackupInput>;
 export interface UpdateAutonomousDatabaseBackupOutput {
   displayName?: string;
   status?: ResourceStatus;
@@ -5011,14 +3401,10 @@ export interface UpdateCloudExadataInfrastructureInput {
   cloudExadataInfrastructureId: string;
   maintenanceWindow?: MaintenanceWindow;
 }
-const UpdateCloudExadataInfrastructureInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
-    maintenanceWindow: S.optional(MaintenanceWindow),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateCloudExadataInfrastructureInput",
-}) as any as S.Schema<UpdateCloudExadataInfrastructureInput>;
+const UpdateCloudExadataInfrastructureInput = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<UpdateCloudExadataInfrastructureInput>;
 export interface UpdateCloudExadataInfrastructureOutput {
   displayName?: string;
   status?: ResourceStatus;
@@ -5048,23 +3434,10 @@ export interface UpdateExadbVmClusterInput {
   updateAction?: UpdateAction;
   vmFileSystemStorageTotalSizeInGBs?: number;
 }
-const UpdateExadbVmClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exadbVmClusterId: S.String,
-    dataCollectionOptions: S.optional(DataCollectionOptions),
-    displayName: S.optional(S.String),
-    enabledEcpuCount: S.optional(S.Number),
-    gridImageId: S.optional(S.String),
-    licenseModel: S.optional(LicenseModel),
-    sshPublicKeys: S.optional(StringList),
-    systemVersion: S.optional(S.String),
-    totalEcpuCount: S.optional(S.Number),
-    updateAction: S.optional(UpdateAction),
-    vmFileSystemStorageTotalSizeInGBs: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateExadbVmClusterInput",
-}) as any as S.Schema<UpdateExadbVmClusterInput>;
+const UpdateExadbVmClusterInput = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<UpdateExadbVmClusterInput>;
 export interface UpdateExadbVmClusterOutput {
   displayName?: string;
   status?: ResourceStatus;
@@ -5082,19 +3455,10 @@ export interface UpdateExascaleDbStorageVaultInput {
   highCapacityDatabaseStorageTotalSizeInGBs?: number;
   isAutoscaleEnabled?: boolean;
 }
-const UpdateExascaleDbStorageVaultInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exascaleDbStorageVaultId: S.String,
-    additionalFlashCacheInPercent: S.optional(S.Number),
-    autoscaleLimitInGBs: S.optional(S.Number),
-    description: S.optional(S.String),
-    displayName: S.optional(S.String),
-    highCapacityDatabaseStorageTotalSizeInGBs: S.optional(S.Number),
-    isAutoscaleEnabled: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateExascaleDbStorageVaultInput",
-}) as any as S.Schema<UpdateExascaleDbStorageVaultInput>;
+const UpdateExascaleDbStorageVaultInput = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<UpdateExascaleDbStorageVaultInput>;
 export interface UpdateExascaleDbStorageVaultOutput {
   displayName?: string;
   status?: ResourceStatus;
@@ -5118,23 +3482,10 @@ export interface UpdateOdbNetworkInput {
   crossRegionS3RestoreSourcesToEnable?: string[];
   crossRegionS3RestoreSourcesToDisable?: string[];
 }
-const UpdateOdbNetworkInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    odbNetworkId: S.String.pipe(T.HttpLabel("odbNetworkId")),
-    displayName: S.optional(S.String),
-    peeredCidrsToBeAdded: S.optional(StringList),
-    peeredCidrsToBeRemoved: S.optional(StringList),
-    s3Access: S.optional(Access),
-    zeroEtlAccess: S.optional(Access),
-    stsAccess: S.optional(Access),
-    kmsAccess: S.optional(Access),
-    s3PolicyDocument: S.optional(S.String),
-    stsPolicyDocument: S.optional(S.String),
-    kmsPolicyDocument: S.optional(S.String),
-    crossRegionS3RestoreSourcesToEnable: S.optional(StringList),
-    crossRegionS3RestoreSourcesToDisable: S.optional(StringList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateOdbNetworkInput" }) as any as S.Schema<UpdateOdbNetworkInput>;
+const UpdateOdbNetworkInput = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<UpdateOdbNetworkInput>;
 export interface UpdateOdbNetworkOutput {
   displayName?: string;
   status?: ResourceStatus;
@@ -5148,16 +3499,10 @@ export interface UpdateOdbPeeringConnectionInput {
   peerNetworkCidrsToBeAdded?: string[];
   peerNetworkCidrsToBeRemoved?: string[];
 }
-const UpdateOdbPeeringConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    odbPeeringConnectionId: S.String.pipe(T.HttpLabel("odbPeeringConnectionId")),
-    displayName: S.optional(S.String),
-    peerNetworkCidrsToBeAdded: S.optional(PeeredCidrList),
-    peerNetworkCidrsToBeRemoved: S.optional(PeeredCidrList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateOdbPeeringConnectionInput",
-}) as any as S.Schema<UpdateOdbPeeringConnectionInput>;
+const UpdateOdbPeeringConnectionInput = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<UpdateOdbPeeringConnectionInput>;
 export interface UpdateOdbPeeringConnectionOutput {
   displayName?: string;
   status?: ResourceStatus;
@@ -5178,11 +3523,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c31, 0);
 export type AcceptMarketplaceRegistrationError =
   | AccessDeniedException
   | ConflictException
@@ -7752,3 +6098,2802 @@ export const updateOdbPeeringConnection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateOdbPeeringConnection",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ marketplaceRegistrationToken: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AcceptMarketplaceRegistrationInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptMarketplaceRegistrationOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          iamRoleArn: S.String,
+          awsIntegration: SupportedAwsIntegration,
+          resourceArn: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AssociateIamRoleToResourceInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ exadbVmClusterId: S.String, desiredNodeCount: S.Number }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AssociateVirtualMachinesToExadbVmClusterInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          exadbVmClusterId: S.String,
+        }),
+      ).annotate({
+        identifier: "AssociateVirtualMachinesToExadbVmClusterOutput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ email: S.optional(SensitiveString) })).annotate({
+        identifier: "CustomerContact",
+      });
+    case 6:
+      return S.Array(CustomerContact);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          isDisabled: S.optional(S.Boolean),
+          poolSize: S.optional(S.Number),
+          poolStorageSizeInTBs: S.optional(S.Number),
+          availableStorageCapacityInTBs: S.optional(S.Number),
+          totalComputeCapacity: S.optional(S.Number),
+          availableComputeCapacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ResourcePoolSummary" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.optional(DayOfWeekName) })).annotate({
+        identifier: "DayOfWeek",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dayOfWeek: DayOfWeek,
+          scheduledStartTime: S.optional(S.String),
+          scheduledStopTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ScheduledOperationDetails",
+      });
+    case 2:
+      return S.Array(ScheduledOperationDetails);
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() => S.Struct({ ttsBundleUrl: S.optional(S.String) })).annotate({
+        identifier: "TransportableTablespace",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          isEnabled: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          computeCount: S.optional(S.Number),
+          maxIdleTimeInMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DatabaseTool" });
+    case 6:
+      return S.Array(DatabaseTool);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ sourceAutonomousDatabaseId: S.String, cloneType: CloneType }),
+      ).annotate({
+        identifier: "DatabaseCloneConfiguration",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseBackupId: S.String,
+          cloneType: CloneType,
+          cloneTableSpaceList: S.optional(IntegerList),
+        }),
+      ).annotate({
+        identifier: "RestoreFromBackupConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sourceAutonomousDatabaseId: S.String,
+          cloneType: CloneType,
+          timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          useLatestAvailableBackupTimestamp: S.optional(S.Boolean),
+          cloneTableSpaceList: S.optional(IntegerList),
+        }),
+      ).annotate({
+        identifier: "PointInTimeRestoreConfiguration",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ sourceAutonomousDatabaseArn: S.String })).annotate({
+        identifier: "CrossRegionDataGuardConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sourceAutonomousDatabaseArn: S.String,
+          remoteDisasterRecoveryType: DisasterRecoveryType,
+          isReplicateAutomaticBackups: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CrossRegionDisasterRecoveryConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          sourceAutonomousDatabaseId: S.String,
+          refreshableMode: S.optional(RefreshableMode),
+          autoRefreshFrequencyInSeconds: S.optional(S.Number),
+          autoRefreshPointLagInSeconds: S.optional(S.Number),
+          timeOfAutoRefreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          openMode: S.optional(OpenMode),
+          cloneType: S.optional(CloneType),
+        }),
+      ).annotate({
+        identifier: "CloneToRefreshableConfiguration",
+      });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ databaseClone: DatabaseCloneConfiguration }),
+        /*@__PURE__*/ S.Struct({ restoreFromBackup: RestoreFromBackupConfiguration }),
+        /*@__PURE__*/ S.Struct({ pointInTimeRestore: PointInTimeRestoreConfiguration }),
+        /*@__PURE__*/ S.Struct({ crossRegionDataGuard: CrossRegionDataGuardConfiguration }),
+        /*@__PURE__*/ S.Struct({
+          crossRegionDisasterRecovery: CrossRegionDisasterRecoveryConfiguration,
+        }),
+        /*@__PURE__*/ S.Struct({ cloneToRefreshable: CloneToRefreshableConfiguration }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          iamRoleArn: S.optional(S.String),
+          externalIdType: S.optional(ExternalIdType),
+          kmsKeyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AwsEncryptionKeyConfigurationInput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfigurationInput }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          secretId: S.optional(S.String),
+          iamRoleArn: S.optional(S.String),
+          externalIdType: S.optional(ExternalIdType),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedAwsSecretConfigurationInput",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          customerManagedAwsSecret: CustomerManagedAwsSecretConfigurationInput,
+        }),
+      ]);
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          odbNetworkId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          dbName: S.optional(S.String),
+          adminPassword: S.optional(SensitiveString),
+          computeCount: S.optional(S.Number),
+          dataStorageSizeInTBs: S.optional(S.Number),
+          dataStorageSizeInGBs: S.optional(S.Number),
+          dbWorkload: S.optional(DbWorkload),
+          isAutoScalingEnabled: S.optional(S.Boolean),
+          isAutoScalingForStorageEnabled: S.optional(S.Boolean),
+          licenseModel: S.optional(LicenseModel),
+          characterSet: S.optional(S.String),
+          ncharacterSet: S.optional(S.String),
+          dbVersion: S.optional(S.String),
+          databaseEdition: S.optional(DatabaseEdition),
+          standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
+          autonomousMaintenanceScheduleType: S.optional(AutonomousMaintenanceScheduleType),
+          backupRetentionPeriodInDays: S.optional(S.Number),
+          byolComputeCountLimit: S.optional(S.Number),
+          cpuCoreCount: S.optional(S.Number),
+          customerContactsToSendToOCI: S.optional(CustomerContacts),
+          privateEndpointIp: S.optional(S.String),
+          privateEndpointLabel: S.optional(S.String),
+          resourcePoolLeaderId: S.optional(S.String),
+          resourcePoolSummary: S.optional(ResourcePoolSummary),
+          scheduledOperations: S.optional(ScheduledOperationDetailsList),
+          standbyAllowlistedIps: S.optional(StringList),
+          allowlistedIps: S.optional(StringList),
+          transportableTablespace: S.optional(TransportableTablespace),
+          isBackupRetentionLocked: S.optional(S.Boolean),
+          isLocalDataGuardEnabled: S.optional(S.Boolean),
+          isMtlsConnectionRequired: S.optional(S.Boolean),
+          dbToolsDetails: S.optional(DatabaseToolList),
+          source: S.optional(SourceType),
+          sourceConfiguration: S.optional(SourceConfiguration),
+          encryptionKeyProvider: S.optional(EncryptionKeyProviderInput),
+          encryptionKeyConfiguration: S.optional(EncryptionKeyConfigurationInput),
+          adminPasswordSource: S.optional(AdminPasswordSource),
+          adminPasswordSourceConfiguration: S.optional(AdminPasswordSourceConfigurationInput),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(RequestTagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateAutonomousDatabaseInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseId: S.String,
+          displayName: S.optional(S.String),
+          status: S.optional(AutonomousDatabaseResourceStatus),
+          statusReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAutonomousDatabaseOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseId: S.String,
+          displayName: S.optional(S.String),
+          retentionPeriodInDays: S.optional(S.Number),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(RequestTagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateAutonomousDatabaseBackupInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          autonomousDatabaseBackupId: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateAutonomousDatabaseBackupOutput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseId: S.String,
+          walletType: S.optional(WalletType),
+          password: S.optional(SensitiveString),
+          passwordSource: S.optional(WalletPasswordSource),
+          passwordSourceConfiguration: S.optional(WalletPasswordSourceConfigurationInput),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateAutonomousDatabaseWalletInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ autonomousDatabaseWalletFile: SensitiveBlob })).annotate({
+        identifier: "CreateAutonomousDatabaseWalletOutput",
+      });
+    case 2:
+      return S.Array(DayOfWeek);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          customActionTimeoutInMins: S.optional(S.Number),
+          daysOfWeek: S.optional(DaysOfWeek),
+          hoursOfDay: S.optional(HoursOfDay),
+          isCustomActionTimeoutEnabled: S.optional(S.Boolean),
+          leadTimeInWeeks: S.optional(S.Number),
+          months: S.optional(Months),
+          patchingMode: S.optional(PatchingModeType),
+          preference: S.optional(PreferenceType),
+          skipRu: S.optional(S.Boolean),
+          weeksOfMonth: S.optional(WeeksOfMonth),
+        }),
+      ).annotate({ identifier: "MaintenanceWindow" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.String,
+          odbNetworkId: S.String,
+          displayName: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          autonomousDataStorageSizeInTBs: S.Number,
+          cpuCoreCountPerNode: S.Number,
+          dbServers: S.optional(StringList),
+          description: S.optional(S.String),
+          isMtlsEnabledVmCluster: S.optional(S.Boolean),
+          licenseModel: S.optional(LicenseModel),
+          maintenanceWindow: S.optional(MaintenanceWindow),
+          memoryPerOracleComputeUnitInGBs: S.Number,
+          scanListenerPortNonTls: S.optional(S.Number),
+          scanListenerPortTls: S.optional(S.Number),
+          tags: S.optional(RequestTagMap),
+          timeZone: S.optional(S.String),
+          totalContainerDatabases: S.Number,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateCloudAutonomousVmClusterInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          cloudAutonomousVmClusterId: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateCloudAutonomousVmClusterOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          shape: S.String,
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+          tags: S.optional(RequestTagMap),
+          computeCount: S.Number,
+          customerContactsToSendToOCI: S.optional(CustomerContacts),
+          maintenanceWindow: S.optional(MaintenanceWindow),
+          storageCount: S.Number,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          databaseServerType: S.optional(S.String),
+          storageServerType: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateCloudExadataInfrastructureInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          cloudExadataInfrastructureId: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateCloudExadataInfrastructureOutput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isDiagnosticsEventsEnabled: S.optional(S.Boolean),
+          isHealthMonitoringEnabled: S.optional(S.Boolean),
+          isIncidentLogsEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DataCollectionOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.String,
+          cpuCoreCount: S.Number,
+          displayName: S.String,
+          giVersion: S.String,
+          hostname: S.String,
+          sshPublicKeys: StringList,
+          odbNetworkId: S.String,
+          clusterName: S.optional(S.String),
+          dataCollectionOptions: S.optional(DataCollectionOptions),
+          dataStorageSizeInTBs: S.optional(S.Number),
+          dbNodeStorageSizeInGBs: S.optional(S.Number),
+          dbServers: S.optional(StringList),
+          tags: S.optional(RequestTagMap),
+          isLocalBackupEnabled: S.optional(S.Boolean),
+          isSparseDiskgroupEnabled: S.optional(S.Boolean),
+          licenseModel: S.optional(LicenseModel),
+          memorySizeInGBs: S.optional(S.Number),
+          systemVersion: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          scanListenerPortTcp: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateCloudVmClusterInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          cloudVmClusterId: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateCloudVmClusterOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          enabledEcpuCount: S.Number,
+          exascaleDbStorageVaultId: S.String,
+          gridImageId: S.String,
+          hostname: S.String,
+          nodeCount: S.Number,
+          odbNetworkId: S.String,
+          shape: S.String,
+          sshPublicKeys: StringList,
+          totalEcpuCount: S.Number,
+          vmFileSystemStorageTotalSizeInGBs: S.Number,
+          clusterName: S.optional(S.String),
+          dataCollectionOptions: S.optional(DataCollectionOptions),
+          licenseModel: S.optional(LicenseModel),
+          scanListenerPortTcp: S.optional(S.Number),
+          scanListenerPortTcpSsl: S.optional(S.Number),
+          shapeAttribute: S.optional(ShapeAttribute),
+          systemVersion: S.optional(S.String),
+          tags: S.optional(RequestTagMap),
+          timeZone: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateExadbVmClusterInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          highCapacityDatabaseStorageTotalSizeInGBs: S.Number,
+          additionalFlashCacheInPercent: S.optional(S.Number),
+          autoscaleLimitInGBs: S.optional(S.Number),
+          availabilityZoneId: S.optional(S.String),
+          availabilityZone: S.optional(S.String),
+          description: S.optional(S.String),
+          isAutoscaleEnabled: S.optional(S.Boolean),
+          tags: S.optional(RequestTagMap),
+          timeZone: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateExascaleDbStorageVaultInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          exascaleDbStorageVaultId: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateExascaleDbStorageVaultOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+          clientSubnetCidr: S.String,
+          backupSubnetCidr: S.optional(S.String),
+          customDomainName: S.optional(S.String),
+          defaultDnsPrefix: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          s3Access: S.optional(Access),
+          zeroEtlAccess: S.optional(Access),
+          stsAccess: S.optional(Access),
+          kmsAccess: S.optional(Access),
+          s3PolicyDocument: S.optional(S.String),
+          stsPolicyDocument: S.optional(S.String),
+          kmsPolicyDocument: S.optional(S.String),
+          crossRegionS3RestoreSourcesToEnable: S.optional(StringList),
+          tags: S.optional(RequestTagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateOdbNetworkInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          odbNetworkId: S.String,
+        }),
+      ).annotate({ identifier: "CreateOdbNetworkOutput" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          odbNetworkId: S.String,
+          peerNetworkId: S.String,
+          displayName: S.optional(S.String),
+          peerNetworkCidrsToBeAdded: S.optional(PeeredCidrList),
+          peerNetworkRouteTableIds: S.optional(PeerNetworkRouteTableIdList),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(RequestTagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateOdbPeeringConnectionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          odbPeeringConnectionId: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOdbPeeringConnectionOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteAutonomousDatabaseInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAutonomousDatabaseOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseBackupId: S.String.pipe(T.HttpLabel("autonomousDatabaseBackupId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteAutonomousDatabaseBackupInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cloudAutonomousVmClusterId: S.String.pipe(T.HttpLabel("cloudAutonomousVmClusterId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteCloudAutonomousVmClusterInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteCloudExadataInfrastructureInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ cloudVmClusterId: S.String.pipe(T.HttpLabel("cloudVmClusterId")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteCloudVmClusterInput",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ exadbVmClusterId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteExadbVmClusterInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ exascaleDbStorageVaultId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteExascaleDbStorageVaultInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          odbNetworkId: S.String.pipe(T.HttpLabel("odbNetworkId")),
+          deleteAssociatedResources: S.Boolean,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteOdbNetworkInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          odbPeeringConnectionId: S.String.pipe(T.HttpLabel("odbPeeringConnectionId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteOdbPeeringConnectionInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          iamRoleArn: S.String,
+          awsIntegration: SupportedAwsIntegration,
+          resourceArn: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DisassociateIamRoleFromResourceInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ exadbVmClusterId: S.String, dbNodeIds: ResourceIdList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisassociateVirtualMachinesFromExadbVmClusterInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseId: S.String, peerDbArn: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "FailoverAutonomousDatabaseInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAutonomousDatabaseInput",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          consumerGroup: S.optional(S.String),
+          displayName: S.optional(S.String),
+          hostFormat: S.optional(S.String),
+          isRegional: S.optional(S.Boolean),
+          protocol: S.optional(S.String),
+          sessionMode: S.optional(S.String),
+          syntaxFormat: S.optional(S.String),
+          tlsAuthentication: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseConnectionStringProfile",
+      });
+    case 1:
+      return S.Array(DatabaseConnectionStringProfile);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allConnectionStrings: S.optional(DatabaseConnectionStringMap),
+          dedicated: S.optional(S.String),
+          high: S.optional(S.String),
+          medium: S.optional(S.String),
+          low: S.optional(S.String),
+          profiles: S.optional(DatabaseConnectionStringProfileList),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseConnectionStrings",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ apexVersion: S.optional(S.String), ordsVersion: S.optional(S.String) }),
+      ).annotate({ identifier: "AutonomousDatabaseApex" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityDomain: S.optional(S.String),
+          lagTimeInSeconds: S.optional(S.Number),
+          status: S.optional(AutonomousDatabaseResourceStatus),
+          statusReason: S.optional(S.String),
+          maintenanceTargetComponent: S.optional(S.String),
+          timeDataGuardRoleChanged: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeDisasterRecoveryRoleChanged: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeMaintenanceBegin: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeMaintenanceEnd: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "DatabaseStandbySummary" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apexUrl: S.optional(S.String),
+          databaseTransformsUrl: S.optional(S.String),
+          graphStudioUrl: S.optional(S.String),
+          machineLearningNotebookUrl: S.optional(S.String),
+          machineLearningUserManagementUrl: S.optional(S.String),
+          mongoDbUrl: S.optional(S.String),
+          ordsUrl: S.optional(S.String),
+          spatialStudioUrl: S.optional(S.String),
+          sqlDevWebUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseConnectionUrls",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          disasterRecoveryType: S.optional(DisasterRecoveryType),
+          isReplicateAutomaticBackups: S.optional(S.Boolean),
+          isSnapshotStandby: S.optional(S.Boolean),
+          timeSnapshotStandbyEnabledTill: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+        }),
+      ).annotate({
+        identifier: "DisasterRecoveryConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          isDisabled: S.optional(S.Boolean),
+          repeatCadence: S.optional(RepeatCadence),
+          retentionPeriodInDays: S.optional(S.Number),
+          timeOfBackup: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "LongTermBackupSchedule" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ kmsKeyId: S.String, vaultId: S.String })).annotate({
+        identifier: "OciEncryptionKeyConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          certificateDirectoryName: S.String,
+          certificateId: S.optional(S.String),
+          directoryName: S.String,
+          okvKmsKey: S.String,
+          okvUri: S.String,
+        }),
+      ).annotate({
+        identifier: "OkvEncryptionKeyConfiguration",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfiguration }),
+        /*@__PURE__*/ S.Struct({ ociEncryptionKey: OciEncryptionKeyConfiguration }),
+        /*@__PURE__*/ S.Struct({ okvEncryptionKey: OkvEncryptionKeyConfiguration }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionKeyProvider: S.optional(EncryptionKeyProvider),
+          encryptionKeyConfiguration: S.optional(EncryptionKeyConfiguration),
+        }),
+      ).annotate({ identifier: "EncryptionSummary" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          iamRoleArn: S.optional(S.String),
+          secretId: S.optional(S.String),
+          externalIdType: S.optional(ExternalIdType),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedAwsSecretConfiguration",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ customerManagedAwsSecret: CustomerManagedAwsSecretConfiguration }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          adminPasswordSource: S.optional(AdminPasswordSource),
+          adminPasswordSourceConfiguration: S.optional(AdminPasswordSourceConfiguration),
+        }),
+      ).annotate({
+        identifier: "AdminPasswordSourceSummary",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseId: S.optional(S.String),
+          autonomousDatabaseArn: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          percentProgress: S.optional(S.Number),
+          ocid: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          displayName: S.optional(S.String),
+          dbName: S.optional(S.String),
+          sourceId: S.optional(S.String),
+          status: S.optional(AutonomousDatabaseResourceStatus),
+          statusReason: S.optional(S.String),
+          databaseType: S.optional(DatabaseType),
+          dbVersion: S.optional(S.String),
+          dbWorkload: S.optional(DbWorkload),
+          characterSet: S.optional(S.String),
+          ncharacterSet: S.optional(S.String),
+          databaseEdition: S.optional(DatabaseEdition),
+          licenseModel: S.optional(LicenseModel),
+          openMode: S.optional(OpenMode),
+          permissionLevel: S.optional(PermissionLevel),
+          isMtlsConnectionRequired: S.optional(S.Boolean),
+          autonomousMaintenanceScheduleType: S.optional(AutonomousMaintenanceScheduleType),
+          netServicesArchitecture: S.optional(NetServicesArchitecture),
+          availableUpgradeVersions: S.optional(StringList),
+          byolComputeCountLimit: S.optional(S.Number),
+          connectionStringDetails: S.optional(AutonomousDatabaseConnectionStrings),
+          serviceConsoleUrl: S.optional(S.String),
+          sqlWebDeveloperUrl: S.optional(S.String),
+          customerContacts: S.optional(CustomerContacts),
+          apexDetails: S.optional(AutonomousDatabaseApex),
+          standbyDb: S.optional(DatabaseStandbySummary),
+          localStandbyDb: S.optional(DatabaseStandbySummary),
+          dataSafeStatus: S.optional(DataSafeStatus),
+          databaseManagementStatus: S.optional(DatabaseManagementStatus),
+          operationsInsightsStatus: S.optional(OperationsInsightsStatus),
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+          maintenanceTargetComponent: S.optional(S.String),
+          connectionUrls: S.optional(AutonomousDatabaseConnectionUrls),
+          dbToolsDetails: S.optional(DatabaseToolList),
+          scheduledOperations: S.optional(ScheduledOperationDetailsList),
+          resourcePoolLeaderId: S.optional(S.String),
+          computeCount: S.optional(S.Number),
+          computeModel: S.optional(ComputeModel),
+          cpuCoreCount: S.optional(S.Number),
+          memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
+          provisionableCpus: S.optional(IntegerList),
+          isAutoScalingEnabled: S.optional(S.Boolean),
+          dataStorageSizeInTBs: S.optional(S.Number),
+          dataStorageSizeInGBs: S.optional(S.Number),
+          usedDataStorageSizeInTBs: S.optional(S.Number),
+          usedDataStorageSizeInGBs: S.optional(S.Number),
+          actualUsedDataStorageSizeInTBs: S.optional(S.Number),
+          allocatedStorageSizeInTBs: S.optional(S.Number),
+          inMemoryAreaInGBs: S.optional(S.Number),
+          isAutoScalingForStorageEnabled: S.optional(S.Boolean),
+          odbNetworkId: S.optional(S.String),
+          odbNetworkArn: S.optional(S.String),
+          privateEndpoint: S.optional(S.String),
+          privateEndpointIp: S.optional(S.String),
+          privateEndpointLabel: S.optional(S.String),
+          allowlistedIps: S.optional(StringList),
+          standbyAllowlistedIps: S.optional(StringList),
+          standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
+          isLocalDataGuardEnabled: S.optional(S.Boolean),
+          isRemoteDataGuardEnabled: S.optional(S.Boolean),
+          localDisasterRecoveryType: S.optional(DisasterRecoveryType),
+          role: S.optional(DataGuardRole),
+          peerDbIds: S.optional(StringList),
+          failedDataRecoveryInSeconds: S.optional(S.Number),
+          localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
+          remoteDisasterRecoveryConfiguration: S.optional(DisasterRecoveryConfiguration),
+          isRefreshableClone: S.optional(S.Boolean),
+          refreshableMode: S.optional(RefreshableMode),
+          refreshableStatus: S.optional(RefreshableStatus),
+          autoRefreshFrequencyInSeconds: S.optional(S.Number),
+          autoRefreshPointLagInSeconds: S.optional(S.Number),
+          isReconnectCloneEnabled: S.optional(S.Boolean),
+          cloneTableSpaceList: S.optional(IntegerList),
+          backupRetentionPeriodInDays: S.optional(S.Number),
+          longTermBackupSchedule: S.optional(LongTermBackupSchedule),
+          isBackupRetentionLocked: S.optional(S.Boolean),
+          totalBackupStorageSizeInGBs: S.optional(S.Number),
+          resourcePoolSummary: S.optional(ResourcePoolSummary),
+          encryptionSummary: S.optional(EncryptionSummary),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfLastBackup: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeMaintenanceBegin: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeMaintenanceEnd: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeLocalDataGuardEnabled: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeDataGuardRoleChanged: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeOfLastSwitchover: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfLastFailover: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfLastRefresh: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfLastRefreshPoint: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfNextRefresh: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfAutoRefreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeDeletionOfFreeAutonomousDatabase: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeReclamationOfFreeAutonomousDatabase: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeDisasterRecoveryRoleChanged: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeUntilReconnectCloneEnabled: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          nextLongTermBackupTimeStamp: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeUndeleted: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          adminPasswordSourceSummary: S.optional(AdminPasswordSourceSummary),
+        }),
+      ).annotate({ identifier: "AutonomousDatabase" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ autonomousDatabase: AutonomousDatabase })).annotate({
+        identifier: "GetAutonomousDatabaseOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseBackupId: S.String.pipe(T.HttpLabel("autonomousDatabaseBackupId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetAutonomousDatabaseBackupInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseBackupId: S.optional(S.String),
+          autonomousDatabaseBackupArn: S.optional(S.String),
+          autonomousDatabaseId: S.optional(S.String),
+          ocid: S.optional(S.String),
+          displayName: S.optional(S.String),
+          dbVersion: S.optional(S.String),
+          status: S.optional(AutonomousDatabaseBackupStatus),
+          statusReason: S.optional(S.String),
+          isAutomatic: S.optional(S.Boolean),
+          retentionPeriodInDays: S.optional(S.Number),
+          sizeInTBs: S.optional(S.Number),
+          timeAvailableTill: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeStarted: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeEnded: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          type: S.optional(AutonomousDatabaseBackupType),
+        }),
+      ).annotate({ identifier: "AutonomousDatabaseBackup" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseBackup: S.optional(AutonomousDatabaseBackup) }),
+      ).annotate({
+        identifier: "GetAutonomousDatabaseBackupOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAutonomousDatabaseWalletDetailsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          passwordSource: S.optional(WalletPasswordSource),
+          passwordSourceConfiguration: S.optional(WalletPasswordSourceConfiguration),
+        }),
+      ).annotate({
+        identifier: "WalletPasswordSourceSummary",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(AutonomousDatabaseWalletStatus),
+          timeRotated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          passwordSourceSummary: S.optional(WalletPasswordSourceSummary),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseWalletDetails",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseWalletDetails: AutonomousDatabaseWalletDetails }),
+      ).annotate({
+        identifier: "GetAutonomousDatabaseWalletDetailsOutput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudAutonomousVmClusterId: S.String.pipe(T.HttpLabel("cloudAutonomousVmClusterId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetCloudAutonomousVmClusterInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          iamRoleArn: S.optional(S.String),
+          status: S.optional(IamRoleStatus),
+          statusReason: S.optional(S.String),
+          awsIntegration: S.optional(SupportedAwsIntegration),
+        }),
+      ).annotate({ identifier: "IamRole" });
+    case 2:
+      return S.Array(IamRole);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cloudAutonomousVmClusterId: S.String,
+          cloudAutonomousVmClusterArn: S.optional(S.String),
+          odbNetworkId: S.optional(S.String),
+          odbNetworkArn: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          percentProgress: S.optional(S.Number),
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          cloudExadataInfrastructureId: S.optional(S.String),
+          cloudExadataInfrastructureArn: S.optional(S.String),
+          autonomousDataStoragePercentage: S.optional(S.Number),
+          autonomousDataStorageSizeInTBs: S.optional(S.Number),
+          availableAutonomousDataStorageSizeInTBs: S.optional(S.Number),
+          availableContainerDatabases: S.optional(S.Number),
+          availableCpus: S.optional(S.Number),
+          computeModel: S.optional(ComputeModel),
+          cpuCoreCount: S.optional(S.Number),
+          cpuCoreCountPerNode: S.optional(S.Number),
+          cpuPercentage: S.optional(S.Number),
+          dataStorageSizeInGBs: S.optional(S.Number),
+          dataStorageSizeInTBs: S.optional(S.Number),
+          dbNodeStorageSizeInGBs: S.optional(S.Number),
+          dbServers: S.optional(StringList),
+          description: S.optional(S.String),
+          domain: S.optional(S.String),
+          exadataStorageInTBsLowestScaledValue: S.optional(S.Number),
+          hostname: S.optional(S.String),
+          ocid: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          isMtlsEnabledVmCluster: S.optional(S.Boolean),
+          licenseModel: S.optional(LicenseModel),
+          maintenanceWindow: S.optional(MaintenanceWindow),
+          maxAcdsLowestScaledValue: S.optional(S.Number),
+          memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
+          memorySizeInGBs: S.optional(S.Number),
+          nodeCount: S.optional(S.Number),
+          nonProvisionableAutonomousContainerDatabases: S.optional(S.Number),
+          provisionableAutonomousContainerDatabases: S.optional(S.Number),
+          provisionedAutonomousContainerDatabases: S.optional(S.Number),
+          provisionedCpus: S.optional(S.Number),
+          reclaimableCpus: S.optional(S.Number),
+          reservedCpus: S.optional(S.Number),
+          scanListenerPortNonTls: S.optional(S.Number),
+          scanListenerPortTls: S.optional(S.Number),
+          shape: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeDatabaseSslCertificateExpires: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeOrdsCertificateExpires: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeZone: S.optional(S.String),
+          totalContainerDatabases: S.optional(S.Number),
+          iamRoles: S.optional(IamRoleList),
+        }),
+      ).annotate({ identifier: "CloudAutonomousVmCluster" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ cloudAutonomousVmCluster: S.optional(CloudAutonomousVmCluster) }),
+      ).annotate({
+        identifier: "GetCloudAutonomousVmClusterOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetCloudExadataInfrastructureInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.String,
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          cloudExadataInfrastructureArn: S.optional(S.String),
+          activatedStorageCount: S.optional(S.Number),
+          additionalStorageCount: S.optional(S.Number),
+          availableStorageSizeInGBs: S.optional(S.Number),
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+          computeCount: S.optional(S.Number),
+          cpuCount: S.optional(S.Number),
+          customerContactsToSendToOCI: S.optional(CustomerContacts),
+          dataStorageSizeInTBs: S.optional(S.Number),
+          dbNodeStorageSizeInGBs: S.optional(S.Number),
+          dbServerVersion: S.optional(S.String),
+          lastMaintenanceRunId: S.optional(S.String),
+          maintenanceWindow: S.optional(MaintenanceWindow),
+          maxCpuCount: S.optional(S.Number),
+          maxDataStorageInTBs: S.optional(S.Number),
+          maxDbNodeStorageSizeInGBs: S.optional(S.Number),
+          maxMemoryInGBs: S.optional(S.Number),
+          memorySizeInGBs: S.optional(S.Number),
+          monthlyDbServerVersion: S.optional(S.String),
+          monthlyStorageServerVersion: S.optional(S.String),
+          nextMaintenanceRunId: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          ocid: S.optional(S.String),
+          shape: S.optional(S.String),
+          storageCount: S.optional(S.Number),
+          storageServerVersion: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          totalStorageSizeInGBs: S.optional(S.Number),
+          percentProgress: S.optional(S.Number),
+          databaseServerType: S.optional(S.String),
+          storageServerType: S.optional(S.String),
+          computeModel: S.optional(ComputeModel),
+        }),
+      ).annotate({
+        identifier: "CloudExadataInfrastructure",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ cloudExadataInfrastructure: S.optional(CloudExadataInfrastructure) }),
+      ).annotate({
+        identifier: "GetCloudExadataInfrastructureOutput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
+          dbServers: S.optional(StringList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetCloudExadataInfrastructureUnallocatedResourcesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cloudAutonomousVmClusterId: S.optional(S.String),
+          unallocatedAdbStorageInTBs: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CloudAutonomousVmClusterResourceDetails",
+      });
+    case 2:
+      return S.Array(CloudAutonomousVmClusterResourceDetails);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cloudAutonomousVmClusters: S.optional(CloudAutonomousVmClusterResourceDetailsList),
+          cloudExadataInfrastructureDisplayName: S.optional(S.String),
+          exadataStorageInTBs: S.optional(S.Number),
+          cloudExadataInfrastructureId: S.optional(S.String),
+          localStorageInGBs: S.optional(S.Number),
+          memoryInGBs: S.optional(S.Number),
+          ocpus: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CloudExadataInfrastructureUnallocatedResources",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureUnallocatedResources: S.optional(
+            CloudExadataInfrastructureUnallocatedResources,
+          ),
+        }),
+      ).annotate({
+        identifier: "GetCloudExadataInfrastructureUnallocatedResourcesOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ cloudVmClusterId: S.String.pipe(T.HttpLabel("cloudVmClusterId")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetCloudVmClusterInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dbName: S.optional(S.String),
+          flashCacheLimit: S.optional(S.String),
+          share: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DbIormConfig" });
+    case 7:
+      return S.Array(DbIormConfig);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dbPlans: S.optional(DbIormConfigList),
+          lifecycleDetails: S.optional(S.String),
+          lifecycleState: S.optional(IormLifecycleState),
+          objective: S.optional(Objective),
+        }),
+      ).annotate({ identifier: "ExadataIormConfig" });
+    case 1:
+      return S.Array(SensitiveString);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cloudVmClusterId: S.String,
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          cloudVmClusterArn: S.optional(S.String),
+          cloudExadataInfrastructureId: S.optional(S.String),
+          cloudExadataInfrastructureArn: S.optional(S.String),
+          clusterName: S.optional(S.String),
+          cpuCoreCount: S.optional(S.Number),
+          dataCollectionOptions: S.optional(DataCollectionOptions),
+          dataStorageSizeInTBs: S.optional(S.Number),
+          dbNodeStorageSizeInGBs: S.optional(S.Number),
+          dbServers: S.optional(StringList),
+          diskRedundancy: S.optional(DiskRedundancy),
+          giVersion: S.optional(S.String),
+          hostname: S.optional(S.String),
+          iormConfigCache: S.optional(ExadataIormConfig),
+          isLocalBackupEnabled: S.optional(S.Boolean),
+          isSparseDiskgroupEnabled: S.optional(S.Boolean),
+          lastUpdateHistoryEntryId: S.optional(S.String),
+          licenseModel: S.optional(LicenseModel),
+          listenerPort: S.optional(S.Number),
+          memorySizeInGBs: S.optional(S.Number),
+          nodeCount: S.optional(S.Number),
+          ocid: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          domain: S.optional(S.String),
+          scanDnsName: S.optional(S.String),
+          scanDnsRecordId: S.optional(S.String),
+          scanIpIds: S.optional(StringList),
+          shape: S.optional(S.String),
+          sshPublicKeys: S.optional(SensitiveStringList),
+          storageSizeInGBs: S.optional(S.Number),
+          systemVersion: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeZone: S.optional(S.String),
+          vipIds: S.optional(StringList),
+          odbNetworkId: S.optional(S.String),
+          odbNetworkArn: S.optional(S.String),
+          percentProgress: S.optional(S.Number),
+          computeModel: S.optional(ComputeModel),
+          iamRoles: S.optional(IamRoleList),
+        }),
+      ).annotate({ identifier: "CloudVmCluster" });
+    case 3:
+      return S.suspend(() => S.Struct({ cloudVmCluster: S.optional(CloudVmCluster) })).annotate({
+        identifier: "GetCloudVmClusterOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cloudVmClusterId: S.optional(S.String),
+          exadbVmClusterId: S.optional(S.String),
+          dbNodeId: S.String.pipe(T.HttpLabel("dbNodeId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetDbNodeInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dbNodeId: S.optional(S.String),
+          dbNodeArn: S.optional(S.String),
+          status: S.optional(DbNodeResourceStatus),
+          statusReason: S.optional(S.String),
+          additionalDetails: S.optional(S.String),
+          backupIpId: S.optional(S.String),
+          backupVnic2Id: S.optional(S.String),
+          backupVnicId: S.optional(S.String),
+          cpuCoreCount: S.optional(S.Number),
+          dbNodeStorageSizeInGBs: S.optional(S.Number),
+          dbServerId: S.optional(S.String),
+          dbSystemId: S.optional(S.String),
+          faultDomain: S.optional(S.String),
+          hostIpId: S.optional(S.String),
+          hostname: S.optional(S.String),
+          ocid: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          maintenanceType: S.optional(DbNodeMaintenanceType),
+          memorySizeInGBs: S.optional(S.Number),
+          softwareStorageSizeInGB: S.optional(S.Number),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeMaintenanceWindowEnd: S.optional(S.String),
+          timeMaintenanceWindowStart: S.optional(S.String),
+          totalCpuCoreCount: S.optional(S.Number),
+          vnic2Id: S.optional(S.String),
+          vnicId: S.optional(S.String),
+          privateIpAddress: S.optional(S.String),
+          floatingIpAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DbNode" });
+    case 6:
+      return S.suspend(() => S.Struct({ dbNode: S.optional(DbNode) })).annotate({
+        identifier: "GetDbNodeOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
+          dbServerId: S.String.pipe(T.HttpLabel("dbServerId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetDbServerInput" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          estimatedPatchDuration: S.optional(S.Number),
+          patchingStatus: S.optional(DbServerPatchingStatus),
+          timePatchingEnded: S.optional(S.String),
+          timePatchingStarted: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DbServerPatchingDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dbServerId: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          cpuCoreCount: S.optional(S.Number),
+          dbNodeStorageSizeInGBs: S.optional(S.Number),
+          dbServerPatchingDetails: S.optional(DbServerPatchingDetails),
+          displayName: S.optional(S.String),
+          exadataInfrastructureId: S.optional(S.String),
+          ocid: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          maxCpuCount: S.optional(S.Number),
+          maxDbNodeStorageInGBs: S.optional(S.Number),
+          maxMemoryInGBs: S.optional(S.Number),
+          memorySizeInGBs: S.optional(S.Number),
+          shape: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          vmClusterIds: S.optional(StringList),
+          computeModel: S.optional(ComputeModel),
+          autonomousVmClusterIds: S.optional(StringList),
+          autonomousVirtualMachineIds: S.optional(StringList),
+        }),
+      ).annotate({ identifier: "DbServer" });
+    case 2:
+      return S.suspend(() => S.Struct({ dbServer: S.optional(DbServer) })).annotate({
+        identifier: "GetDbServerOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ exadbVmClusterId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetExadbVmClusterInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ totalSizeInGBs: S.optional(S.Number) })).annotate({
+        identifier: "ExadbVmClusterStorageDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          exadbVmClusterId: S.String,
+          clusterName: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          dataCollectionOptions: S.optional(DataCollectionOptions),
+          displayName: S.optional(S.String),
+          domain: S.optional(S.String),
+          enabledEcpuCount: S.optional(S.Number),
+          exadbVmClusterArn: S.optional(S.String),
+          exascaleDbStorageVaultArn: S.optional(S.String),
+          exascaleDbStorageVaultId: S.optional(S.String),
+          giVersion: S.optional(S.String),
+          gridImageId: S.optional(S.String),
+          gridImageType: S.optional(GridImageType),
+          hostname: S.optional(S.String),
+          iamRoles: S.optional(IamRoleList),
+          iormConfigCache: S.optional(ExadataIormConfig),
+          lastUpdateHistoryEntryId: S.optional(S.String),
+          licenseModel: S.optional(LicenseModel),
+          listenerPort: S.optional(S.Number),
+          memorySizeInGBs: S.optional(S.Number),
+          nodeCount: S.optional(S.Number),
+          ocid: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          odbNetworkArn: S.optional(S.String),
+          odbNetworkId: S.optional(S.String),
+          percentProgress: S.optional(S.Number),
+          scanDnsName: S.optional(S.String),
+          scanDnsRecordId: S.optional(S.String),
+          scanIpIds: S.optional(StringList),
+          scanListenerPortTcp: S.optional(S.Number),
+          scanListenerPortTcpSsl: S.optional(S.Number),
+          shape: S.optional(S.String),
+          shapeAttribute: S.optional(ShapeAttribute),
+          snapshotFileSystemStorage: S.optional(ExadbVmClusterStorageDetails),
+          sshPublicKeys: S.optional(StringList),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          systemVersion: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          totalEcpuCount: S.optional(S.Number),
+          totalFileSystemStorage: S.optional(ExadbVmClusterStorageDetails),
+          vipIds: S.optional(StringList),
+          vmFileSystemStorage: S.optional(ExadbVmClusterStorageDetails),
+        }),
+      ).annotate({ identifier: "ExadbVmCluster" });
+    case 6:
+      return S.suspend(() => S.Struct({ exadbVmCluster: ExadbVmCluster })).annotate({
+        identifier: "GetExadbVmClusterOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ exascaleDbStorageVaultId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetExascaleDbStorageVaultInput",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ShapeAttribute);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          availableSizeInGBs: S.optional(S.Number),
+          totalSizeInGBs: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ExascaleDbStorageDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          exascaleDbStorageVaultId: S.String,
+          additionalFlashCacheInPercent: S.optional(S.Number),
+          attachedShapeAttributes: S.optional(ShapeAttributeList),
+          autoscaleLimitInGBs: S.optional(S.Number),
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          vmClusterArns: S.optional(ResourceArnList),
+          vmClusterCount: S.optional(S.Number),
+          vmClusterIds: S.optional(ResourceIdList),
+          exascaleDbStorageVaultArn: S.optional(S.String),
+          highCapacityDatabaseStorage: S.optional(ExascaleDbStorageDetails),
+          isAutoscaleEnabled: S.optional(S.Boolean),
+          ocid: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          percentProgress: S.optional(S.Number),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          timeZone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExascaleDbStorageVault" });
+    case 3:
+      return S.suspend(() => S.Struct({ exascaleDbStorageVault: ExascaleDbStorageVault })).annotate(
+        {
+          identifier: "GetExascaleDbStorageVaultOutput",
+        },
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetOciOnboardingStatusInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ociIdentityDomainId: S.optional(S.String),
+          ociIdentityDomainResourceUrl: S.optional(S.String),
+          ociIdentityDomainUrl: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          accountSetupCloudFormationUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OciIdentityDomain" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          iamRoleArn: S.optional(S.String),
+          awsIntegration: S.optional(OciAwsIntegration),
+          status: S.optional(OciIamRoleStatus),
+          statusReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OciIamRole" });
+    case 7:
+      return S.Array(OciIamRole);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ errorMessage: S.optional(S.String) })).annotate({
+        identifier: "SubscriptionError",
+      });
+    case 1:
+      return S.Array(SubscriptionError);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(OciOnboardingStatus),
+          existingTenancyActivationLink: S.optional(S.String),
+          newTenancyActivationLink: S.optional(S.String),
+          ociIdentityDomain: S.optional(OciIdentityDomain),
+          autonomousDatabaseOciIntegrationIamRoles: S.optional(OciIamRoleList),
+          linkedOciTenancyId: S.optional(S.String),
+          linkedOciCompartmentId: S.optional(S.String),
+          subscriptionErrors: S.optional(SubscriptionErrors),
+        }),
+      ).annotate({
+        identifier: "GetOciOnboardingStatusOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ odbNetworkId: S.String.pipe(T.HttpLabel("odbNetworkId")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetOdbNetworkInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ domainName: S.optional(S.String), ociDnsListenerIp: S.optional(S.String) }),
+      ).annotate({ identifier: "OciDnsForwardingConfig" });
+    case 5:
+      return S.Array(OciDnsForwardingConfig);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          vpcEndpointId: S.optional(S.String),
+          vpcEndpointType: S.optional(VpcEndpointType),
+        }),
+      ).annotate({ identifier: "ServiceNetworkEndpoint" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(ManagedResourceStatus),
+          ipv4Addresses: S.optional(StringList),
+        }),
+      ).annotate({ identifier: "ManagedS3BackupAccess" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ status: S.optional(ManagedResourceStatus), cidr: S.optional(S.String) }),
+      ).annotate({ identifier: "ZeroEtlAccess" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(ManagedResourceStatus),
+          ipv4Addresses: S.optional(StringList),
+          domainName: S.optional(S.String),
+          s3PolicyDocument: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3Access" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(ManagedResourceStatus),
+          ipv4Addresses: S.optional(StringList),
+          domainName: S.optional(S.String),
+          stsPolicyDocument: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StsAccess" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(ManagedResourceStatus),
+          ipv4Addresses: S.optional(StringList),
+          domainName: S.optional(S.String),
+          kmsPolicyDocument: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KmsAccess" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          ipv4Addresses: S.optional(StringList),
+          status: S.optional(ManagedResourceStatus),
+        }),
+      ).annotate({
+        identifier: "CrossRegionS3RestoreSourcesAccess",
+      });
+    case 5:
+      return S.Array(CrossRegionS3RestoreSourcesAccess);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          serviceNetworkArn: S.optional(S.String),
+          resourceGatewayArn: S.optional(S.String),
+          managedServicesIpv4Cidrs: S.optional(StringList),
+          serviceNetworkEndpoint: S.optional(ServiceNetworkEndpoint),
+          managedS3BackupAccess: S.optional(ManagedS3BackupAccess),
+          zeroEtlAccess: S.optional(ZeroEtlAccess),
+          s3Access: S.optional(S3Access),
+          stsAccess: S.optional(StsAccess),
+          kmsAccess: S.optional(KmsAccess),
+          crossRegionS3RestoreSourcesAccess: S.optional(CrossRegionS3RestoreSourcesAccessList),
+        }),
+      ).annotate({ identifier: "ManagedServices" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          odbNetworkId: S.String,
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          odbNetworkArn: S.optional(S.String),
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+          clientSubnetCidr: S.optional(S.String),
+          backupSubnetCidr: S.optional(S.String),
+          customDomainName: S.optional(S.String),
+          defaultDnsPrefix: S.optional(S.String),
+          peeredCidrs: S.optional(StringList),
+          ociNetworkAnchorId: S.optional(S.String),
+          ociNetworkAnchorUrl: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          ociVcnId: S.optional(S.String),
+          ociVcnUrl: S.optional(S.String),
+          ociDnsForwardingConfigs: S.optional(OciDnsForwardingConfigList),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          percentProgress: S.optional(S.Number),
+          managedServices: S.optional(ManagedServices),
+          ec2PlacementGroupIds: S.optional(ResourceIdList),
+        }),
+      ).annotate({ identifier: "OdbNetwork" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ odbNetwork: S.optional(OdbNetwork) })).annotate({
+        identifier: "GetOdbNetworkOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          odbPeeringConnectionId: S.String.pipe(T.HttpLabel("odbPeeringConnectionId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetOdbPeeringConnectionInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          odbPeeringConnectionId: S.String,
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          odbPeeringConnectionArn: S.optional(S.String),
+          odbNetworkArn: S.optional(S.String),
+          peerNetworkArn: S.optional(S.String),
+          odbPeeringConnectionType: S.optional(S.String),
+          peerNetworkCidrs: S.optional(PeeredCidrList),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          percentProgress: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OdbPeeringConnection" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ odbPeeringConnection: S.optional(OdbPeeringConnection) }),
+      ).annotate({
+        identifier: "GetOdbPeeringConnectionOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ociIdentityDomain: S.optional(S.Boolean),
+          autonomousDatabaseOciAwsSecretsManagerIntegration: S.optional(Access),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "InitializeServiceInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
+          status: S.optional(AutonomousDatabaseBackupStatus),
+          type: S.optional(AutonomousDatabaseBackupType),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAutonomousDatabaseBackupsInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseBackupId: S.optional(S.String),
+          autonomousDatabaseBackupArn: S.optional(S.String),
+          autonomousDatabaseId: S.optional(S.String),
+          ocid: S.optional(S.String),
+          displayName: S.optional(S.String),
+          dbVersion: S.optional(S.String),
+          status: S.optional(AutonomousDatabaseBackupStatus),
+          statusReason: S.optional(S.String),
+          isAutomatic: S.optional(S.Boolean),
+          retentionPeriodInDays: S.optional(S.Number),
+          sizeInTBs: S.optional(S.Number),
+          timeAvailableTill: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeStarted: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeEnded: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          type: S.optional(AutonomousDatabaseBackupType),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseBackupSummary",
+      });
+    case 7:
+      return S.Array(AutonomousDatabaseBackupSummary);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          autonomousDatabaseBackups: AutonomousDatabaseBackupList,
+        }),
+      ).annotate({
+        identifier: "ListAutonomousDatabaseBackupsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          characterSetType: S.optional(CharacterSetType),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAutonomousDatabaseCharacterSetsInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ characterSet: S.optional(S.String) })).annotate({
+        identifier: "AutonomousDatabaseCharacterSetSummary",
+      });
+    case 3:
+      return S.Array(AutonomousDatabaseCharacterSetSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          autonomousDatabaseCharacterSets: AutonomousDatabaseCharacterSetList,
+        }),
+      ).annotate({
+        identifier: "ListAutonomousDatabaseCharacterSetsOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAutonomousDatabaseClonesInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseId: S.optional(S.String),
+          autonomousDatabaseArn: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          percentProgress: S.optional(S.Number),
+          ocid: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          displayName: S.optional(S.String),
+          dbName: S.optional(S.String),
+          sourceId: S.optional(S.String),
+          status: S.optional(AutonomousDatabaseResourceStatus),
+          statusReason: S.optional(S.String),
+          databaseType: S.optional(DatabaseType),
+          dbVersion: S.optional(S.String),
+          dbWorkload: S.optional(DbWorkload),
+          characterSet: S.optional(S.String),
+          ncharacterSet: S.optional(S.String),
+          databaseEdition: S.optional(DatabaseEdition),
+          licenseModel: S.optional(LicenseModel),
+          openMode: S.optional(OpenMode),
+          permissionLevel: S.optional(PermissionLevel),
+          isMtlsConnectionRequired: S.optional(S.Boolean),
+          autonomousMaintenanceScheduleType: S.optional(AutonomousMaintenanceScheduleType),
+          netServicesArchitecture: S.optional(NetServicesArchitecture),
+          availableUpgradeVersions: S.optional(StringList),
+          byolComputeCountLimit: S.optional(S.Number),
+          connectionStringDetails: S.optional(AutonomousDatabaseConnectionStrings),
+          serviceConsoleUrl: S.optional(S.String),
+          sqlWebDeveloperUrl: S.optional(S.String),
+          customerContacts: S.optional(CustomerContacts),
+          apexDetails: S.optional(AutonomousDatabaseApex),
+          standbyDb: S.optional(DatabaseStandbySummary),
+          localStandbyDb: S.optional(DatabaseStandbySummary),
+          dataSafeStatus: S.optional(DataSafeStatus),
+          databaseManagementStatus: S.optional(DatabaseManagementStatus),
+          operationsInsightsStatus: S.optional(OperationsInsightsStatus),
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+          maintenanceTargetComponent: S.optional(S.String),
+          connectionUrls: S.optional(AutonomousDatabaseConnectionUrls),
+          dbToolsDetails: S.optional(DatabaseToolList),
+          scheduledOperations: S.optional(ScheduledOperationDetailsList),
+          resourcePoolLeaderId: S.optional(S.String),
+          computeCount: S.optional(S.Number),
+          computeModel: S.optional(ComputeModel),
+          cpuCoreCount: S.optional(S.Number),
+          memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
+          provisionableCpus: S.optional(IntegerList),
+          isAutoScalingEnabled: S.optional(S.Boolean),
+          dataStorageSizeInTBs: S.optional(S.Number),
+          dataStorageSizeInGBs: S.optional(S.Number),
+          usedDataStorageSizeInTBs: S.optional(S.Number),
+          usedDataStorageSizeInGBs: S.optional(S.Number),
+          actualUsedDataStorageSizeInTBs: S.optional(S.Number),
+          allocatedStorageSizeInTBs: S.optional(S.Number),
+          inMemoryAreaInGBs: S.optional(S.Number),
+          isAutoScalingForStorageEnabled: S.optional(S.Boolean),
+          odbNetworkId: S.optional(S.String),
+          odbNetworkArn: S.optional(S.String),
+          privateEndpoint: S.optional(S.String),
+          privateEndpointIp: S.optional(S.String),
+          privateEndpointLabel: S.optional(S.String),
+          allowlistedIps: S.optional(StringList),
+          standbyAllowlistedIps: S.optional(StringList),
+          standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
+          isLocalDataGuardEnabled: S.optional(S.Boolean),
+          isRemoteDataGuardEnabled: S.optional(S.Boolean),
+          localDisasterRecoveryType: S.optional(DisasterRecoveryType),
+          role: S.optional(DataGuardRole),
+          peerDbIds: S.optional(StringList),
+          failedDataRecoveryInSeconds: S.optional(S.Number),
+          localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
+          remoteDisasterRecoveryConfiguration: S.optional(DisasterRecoveryConfiguration),
+          isRefreshableClone: S.optional(S.Boolean),
+          refreshableMode: S.optional(RefreshableMode),
+          refreshableStatus: S.optional(RefreshableStatus),
+          autoRefreshFrequencyInSeconds: S.optional(S.Number),
+          autoRefreshPointLagInSeconds: S.optional(S.Number),
+          isReconnectCloneEnabled: S.optional(S.Boolean),
+          cloneTableSpaceList: S.optional(IntegerList),
+          backupRetentionPeriodInDays: S.optional(S.Number),
+          longTermBackupSchedule: S.optional(LongTermBackupSchedule),
+          isBackupRetentionLocked: S.optional(S.Boolean),
+          totalBackupStorageSizeInGBs: S.optional(S.Number),
+          resourcePoolSummary: S.optional(ResourcePoolSummary),
+          encryptionSummary: S.optional(EncryptionSummary),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfLastBackup: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeMaintenanceBegin: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeMaintenanceEnd: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeLocalDataGuardEnabled: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeDataGuardRoleChanged: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeOfLastSwitchover: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfLastFailover: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfLastRefresh: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfLastRefreshPoint: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfNextRefresh: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeOfAutoRefreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeDeletionOfFreeAutonomousDatabase: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeReclamationOfFreeAutonomousDatabase: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeDisasterRecoveryRoleChanged: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeUntilReconnectCloneEnabled: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          nextLongTermBackupTimeStamp: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeUndeleted: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          adminPasswordSourceSummary: S.optional(AdminPasswordSourceSummary),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseSummary",
+      });
+    case 7:
+      return S.Array(AutonomousDatabaseSummary);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          autonomousDatabaseClones: AutonomousDatabaseList,
+        }),
+      ).annotate({
+        identifier: "ListAutonomousDatabaseClonesOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAutonomousDatabasePeersInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseId: S.optional(S.String),
+          autonomousDatabaseArn: S.optional(S.String),
+          ocid: S.optional(S.String),
+          region: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabasePeerSummary",
+      });
+    case 3:
+      return S.Array(AutonomousDatabasePeerSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          autonomousDatabasePeers: AutonomousDatabasePeerList,
+        }),
+      ).annotate({
+        identifier: "ListAutonomousDatabasePeersOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAutonomousDatabasesInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), autonomousDatabases: AutonomousDatabaseList }),
+      ).annotate({
+        identifier: "ListAutonomousDatabasesOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          dbWorkload: S.optional(DbWorkload),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAutonomousDatabaseVersionsInput",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dbWorkload: S.optional(DbWorkload),
+          details: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseVersionSummary",
+      });
+    case 1:
+      return S.Array(AutonomousDatabaseVersionSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          autonomousDatabaseVersions: AutonomousDatabaseVersionList,
+        }),
+      ).annotate({
+        identifier: "ListAutonomousDatabaseVersionsOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          cloudAutonomousVmClusterId: S.String.pipe(T.HttpLabel("cloudAutonomousVmClusterId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAutonomousVirtualMachinesInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousVirtualMachineId: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          vmName: S.optional(S.String),
+          dbServerId: S.optional(S.String),
+          dbServerDisplayName: S.optional(S.String),
+          cpuCoreCount: S.optional(S.Number),
+          memorySizeInGBs: S.optional(S.Number),
+          dbNodeStorageSizeInGBs: S.optional(S.Number),
+          clientIpAddress: S.optional(S.String),
+          cloudAutonomousVmClusterId: S.optional(S.String),
+          ocid: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutonomousVirtualMachineSummary",
+      });
+    case 5:
+      return S.Array(AutonomousVirtualMachineSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          autonomousVirtualMachines: AutonomousVirtualMachineList,
+        }),
+      ).annotate({
+        identifier: "ListAutonomousVirtualMachinesOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          cloudExadataInfrastructureId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListCloudAutonomousVmClustersInput",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudAutonomousVmClusterId: S.String,
+          cloudAutonomousVmClusterArn: S.optional(S.String),
+          odbNetworkId: S.optional(S.String),
+          odbNetworkArn: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          percentProgress: S.optional(S.Number),
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          cloudExadataInfrastructureId: S.optional(S.String),
+          cloudExadataInfrastructureArn: S.optional(S.String),
+          autonomousDataStoragePercentage: S.optional(S.Number),
+          autonomousDataStorageSizeInTBs: S.optional(S.Number),
+          availableAutonomousDataStorageSizeInTBs: S.optional(S.Number),
+          availableContainerDatabases: S.optional(S.Number),
+          availableCpus: S.optional(S.Number),
+          computeModel: S.optional(ComputeModel),
+          cpuCoreCount: S.optional(S.Number),
+          cpuCoreCountPerNode: S.optional(S.Number),
+          cpuPercentage: S.optional(S.Number),
+          dataStorageSizeInGBs: S.optional(S.Number),
+          dataStorageSizeInTBs: S.optional(S.Number),
+          dbNodeStorageSizeInGBs: S.optional(S.Number),
+          dbServers: S.optional(StringList),
+          description: S.optional(S.String),
+          domain: S.optional(S.String),
+          exadataStorageInTBsLowestScaledValue: S.optional(S.Number),
+          hostname: S.optional(S.String),
+          ocid: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          isMtlsEnabledVmCluster: S.optional(S.Boolean),
+          licenseModel: S.optional(LicenseModel),
+          maintenanceWindow: S.optional(MaintenanceWindow),
+          maxAcdsLowestScaledValue: S.optional(S.Number),
+          memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
+          memorySizeInGBs: S.optional(S.Number),
+          nodeCount: S.optional(S.Number),
+          nonProvisionableAutonomousContainerDatabases: S.optional(S.Number),
+          provisionableAutonomousContainerDatabases: S.optional(S.Number),
+          provisionedAutonomousContainerDatabases: S.optional(S.Number),
+          provisionedCpus: S.optional(S.Number),
+          reclaimableCpus: S.optional(S.Number),
+          reservedCpus: S.optional(S.Number),
+          scanListenerPortNonTls: S.optional(S.Number),
+          scanListenerPortTls: S.optional(S.Number),
+          shape: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeDatabaseSslCertificateExpires: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeOrdsCertificateExpires: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          timeZone: S.optional(S.String),
+          totalContainerDatabases: S.optional(S.Number),
+          iamRoles: S.optional(IamRoleList),
+        }),
+      ).annotate({
+        identifier: "CloudAutonomousVmClusterSummary",
+      });
+    case 1:
+      return S.Array(CloudAutonomousVmClusterSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          cloudAutonomousVmClusters: CloudAutonomousVmClusterList,
+        }),
+      ).annotate({
+        identifier: "ListCloudAutonomousVmClustersOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListCloudExadataInfrastructuresInput",
+      });
+    case 4:
+      return S.Array(CloudExadataInfrastructureSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          cloudExadataInfrastructures: CloudExadataInfrastructureList,
+        }),
+      ).annotate({
+        identifier: "ListCloudExadataInfrastructuresOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          cloudExadataInfrastructureId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListCloudVmClustersInput" });
+    case 7:
+      return S.Array(CloudVmClusterSummary);
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), cloudVmClusters: CloudVmClusterList }),
+      ).annotate({
+        identifier: "ListCloudVmClustersOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          cloudVmClusterId: S.optional(S.String),
+          exadbVmClusterId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDbNodesInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dbNodeId: S.optional(S.String),
+          dbNodeArn: S.optional(S.String),
+          status: S.optional(DbNodeResourceStatus),
+          statusReason: S.optional(S.String),
+          additionalDetails: S.optional(S.String),
+          backupIpId: S.optional(S.String),
+          backupVnic2Id: S.optional(S.String),
+          backupVnicId: S.optional(S.String),
+          cpuCoreCount: S.optional(S.Number),
+          dbNodeStorageSizeInGBs: S.optional(S.Number),
+          dbServerId: S.optional(S.String),
+          dbSystemId: S.optional(S.String),
+          faultDomain: S.optional(S.String),
+          hostIpId: S.optional(S.String),
+          hostname: S.optional(S.String),
+          ocid: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          maintenanceType: S.optional(DbNodeMaintenanceType),
+          memorySizeInGBs: S.optional(S.Number),
+          softwareStorageSizeInGB: S.optional(S.Number),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          timeMaintenanceWindowEnd: S.optional(S.String),
+          timeMaintenanceWindowStart: S.optional(S.String),
+          totalCpuCoreCount: S.optional(S.Number),
+          vnic2Id: S.optional(S.String),
+          vnicId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DbNodeSummary" });
+    case 3:
+      return S.Array(DbNodeSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), dbNodes: DbNodeList }),
+      ).annotate({ identifier: "ListDbNodesOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDbServersInput" });
+    case 6:
+      return S.Array(DbServerSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), dbServers: DbServerList }),
+      ).annotate({ identifier: "ListDbServersOutput" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+          shapeFamily: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDbSystemShapesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          availableCoreCount: S.optional(S.Number),
+          availableCoreCountPerNode: S.optional(S.Number),
+          availableDataStorageInTBs: S.optional(S.Number),
+          availableDataStoragePerServerInTBs: S.optional(S.Number),
+          availableDbNodePerNodeInGBs: S.optional(S.Number),
+          availableDbNodeStorageInGBs: S.optional(S.Number),
+          availableMemoryInGBs: S.optional(S.Number),
+          availableMemoryPerNodeInGBs: S.optional(S.Number),
+          coreCountIncrement: S.optional(S.Number),
+          maxStorageCount: S.optional(S.Number),
+          maximumNodeCount: S.optional(S.Number),
+          minCoreCountPerNode: S.optional(S.Number),
+          minDataStorageInTBs: S.optional(S.Number),
+          minDbNodeStoragePerNodeInGBs: S.optional(S.Number),
+          minMemoryPerNodeInGBs: S.optional(S.Number),
+          minStorageCount: S.optional(S.Number),
+          minimumCoreCount: S.optional(S.Number),
+          minimumNodeCount: S.optional(S.Number),
+          runtimeMinimumCoreCount: S.optional(S.Number),
+          shapeFamily: S.optional(S.String),
+          shapeType: S.optional(ShapeType),
+          shapeAttributes: S.optional(ShapeAttributeList),
+          name: S.optional(S.String),
+          computeModel: S.optional(ComputeModel),
+          areServerTypesSupported: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DbSystemShapeSummary" });
+    case 2:
+      return S.Array(DbSystemShapeSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), dbSystemShapes: DbSystemShapeList }),
+      ).annotate({ identifier: "ListDbSystemShapesOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          exascaleDbStorageVaultId: S.optional(S.String).pipe(
+            T.HttpQuery("exascaleDbStorageVaultId"),
+          ),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListExadbVmClustersInput" });
+    case 5:
+      return S.Array(ExadbVmClusterSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), exadbVmClusters: ExadbVmClusterList }),
+      ).annotate({
+        identifier: "ListExadbVmClustersOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListExascaleDbStorageVaultsInput",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exascaleDbStorageVaultId: S.String,
+          additionalFlashCacheInPercent: S.optional(S.Number),
+          attachedShapeAttributes: S.optional(ShapeAttributeList),
+          autoscaleLimitInGBs: S.optional(S.Number),
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          vmClusterArns: S.optional(ResourceArnList),
+          vmClusterCount: S.optional(S.Number),
+          vmClusterIds: S.optional(ResourceIdList),
+          exascaleDbStorageVaultArn: S.optional(S.String),
+          highCapacityDatabaseStorage: S.optional(ExascaleDbStorageDetails),
+          isAutoscaleEnabled: S.optional(S.Boolean),
+          ocid: S.optional(S.String),
+          ociResourceAnchorName: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          percentProgress: S.optional(S.Number),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          timeZone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExascaleDbStorageVaultSummary",
+      });
+    case 1:
+      return S.Array(ExascaleDbStorageVaultSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          exascaleDbStorageVaults: ExascaleDbStorageVaultList,
+        }),
+      ).annotate({
+        identifier: "ListExascaleDbStorageVaultsOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          shape: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListFlexComponentsInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          availableCoreCount: S.optional(S.Number),
+          availableDbStorageInGBs: S.optional(S.Number),
+          availableLocalStorageInGBs: S.optional(S.Number),
+          availableMemoryInGBs: S.optional(S.Number),
+          computeModel: S.optional(ComputeModel),
+          descriptionSummary: S.optional(S.String),
+          hardwareType: S.optional(HardwareType),
+          minimumCoreCount: S.optional(S.Number),
+          name: S.optional(S.String),
+          runtimeMinimumCoreCount: S.optional(S.Number),
+          shape: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FlexComponentSummary" });
+    case 5:
+      return S.Array(FlexComponentSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), flexComponents: FlexComponentList }),
+      ).annotate({ identifier: "ListFlexComponentsOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          giVersion: S.String,
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          shapeFamily: S.optional(S.String),
+          availabilityZone: S.optional(S.String),
+          availabilityZoneId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListGiMinorVersionsInput" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ version: S.String, gridImageId: S.optional(S.String) }),
+      ).annotate({ identifier: "GiMinorVersionSummary" });
+    case 1:
+      return S.Array(GiMinorVersionSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), giMinorVersions: GiMinorVersionList }),
+      ).annotate({
+        identifier: "ListGiMinorVersionsOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          shape: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListGiVersionsInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ version: S.optional(S.String) })).annotate({
+        identifier: "GiVersionSummary",
+      });
+    case 5:
+      return S.Array(GiVersionSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), giVersions: GiVersionList }),
+      ).annotate({ identifier: "ListGiVersionsOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListOdbNetworksInput" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(OdbNetworkSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), odbNetworks: OdbNetworkList }),
+      ).annotate({ identifier: "ListOdbNetworksOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          odbNetworkId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListOdbPeeringConnectionsInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          odbPeeringConnectionId: S.String,
+          displayName: S.optional(S.String),
+          status: S.optional(ResourceStatus),
+          statusReason: S.optional(S.String),
+          odbPeeringConnectionArn: S.optional(S.String),
+          odbNetworkArn: S.optional(S.String),
+          peerNetworkArn: S.optional(S.String),
+          odbPeeringConnectionType: S.optional(S.String),
+          peerNetworkCidrs: S.optional(PeeredCidrList),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          percentProgress: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "OdbPeeringConnectionSummary",
+      });
+    case 4:
+      return S.Array(OdbPeeringConnectionSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          odbPeeringConnections: OdbPeeringConnectionList,
+        }),
+      ).annotate({
+        identifier: "ListOdbPeeringConnectionsOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          giVersion: S.String,
+          shape: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListSystemVersionsInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          giVersion: S.optional(S.String),
+          shape: S.optional(S.String),
+          systemVersions: S.optional(StringList),
+        }),
+      ).annotate({ identifier: "SystemVersionSummary" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SystemVersionSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), systemVersions: SystemVersionList }),
+      ).annotate({ identifier: "ListSystemVersionsOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ tags: S.optional(ResponseTagMap) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseId: S.String, isOnlineReboot: S.optional(S.Boolean) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RebootAutonomousDatabaseInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cloudVmClusterId: S.optional(S.String),
+          exadbVmClusterId: S.optional(S.String),
+          dbNodeId: S.String.pipe(T.HttpLabel("dbNodeId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "RebootDbNodeInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dbNodeId: S.String,
+          status: S.optional(DbNodeResourceStatus),
+          statusReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RebootDbNodeOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseId: S.String,
+          timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RestoreAutonomousDatabaseInput",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ShrinkAutonomousDatabaseInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StartAutonomousDatabaseInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cloudVmClusterId: S.optional(S.String),
+          exadbVmClusterId: S.optional(S.String),
+          dbNodeId: S.String.pipe(T.HttpLabel("dbNodeId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartDbNodeInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StopAutonomousDatabaseInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cloudVmClusterId: S.optional(S.String),
+          exadbVmClusterId: S.optional(S.String),
+          dbNodeId: S.String.pipe(T.HttpLabel("dbNodeId")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StopDbNodeInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ autonomousDatabaseId: S.String, peerDbArn: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "SwitchoverAutonomousDatabaseInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tags: RequestTagMap }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tagKeys: TagKeys }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseId: S.String,
+          adminPassword: S.optional(SensitiveString),
+          computeCount: S.optional(S.Number),
+          cpuCoreCount: S.optional(S.Number),
+          dataStorageSizeInTBs: S.optional(S.Number),
+          dataStorageSizeInGBs: S.optional(S.Number),
+          displayName: S.optional(S.String),
+          dbName: S.optional(S.String),
+          dbVersion: S.optional(S.String),
+          dbWorkload: S.optional(DbWorkload),
+          dbToolsDetails: S.optional(DatabaseToolList),
+          databaseEdition: S.optional(DatabaseEdition),
+          licenseModel: S.optional(LicenseModel),
+          isAutoScalingEnabled: S.optional(S.Boolean),
+          isAutoScalingForStorageEnabled: S.optional(S.Boolean),
+          isBackupRetentionLocked: S.optional(S.Boolean),
+          isLocalDataGuardEnabled: S.optional(S.Boolean),
+          isMtlsConnectionRequired: S.optional(S.Boolean),
+          isRefreshableClone: S.optional(S.Boolean),
+          isDisconnectPeer: S.optional(S.Boolean),
+          backupRetentionPeriodInDays: S.optional(S.Number),
+          byolComputeCountLimit: S.optional(S.Number),
+          localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
+          autonomousMaintenanceScheduleType: S.optional(AutonomousMaintenanceScheduleType),
+          customerContactsToSendToOCI: S.optional(CustomerContacts),
+          scheduledOperations: S.optional(ScheduledOperationDetailsList),
+          longTermBackupSchedule: S.optional(LongTermBackupSchedule),
+          openMode: S.optional(OpenMode),
+          permissionLevel: S.optional(PermissionLevel),
+          refreshableMode: S.optional(RefreshableMode),
+          privateEndpointIp: S.optional(S.String),
+          privateEndpointLabel: S.optional(S.String),
+          peerDbId: S.optional(S.String),
+          resourcePoolLeaderId: S.optional(S.String),
+          resourcePoolSummary: S.optional(ResourcePoolSummary),
+          standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
+          standbyAllowlistedIps: S.optional(StringList),
+          allowlistedIps: S.optional(StringList),
+          autoRefreshFrequencyInSeconds: S.optional(S.Number),
+          autoRefreshPointLagInSeconds: S.optional(S.Number),
+          timeOfAutoRefreshStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          encryptionKeyProvider: S.optional(EncryptionKeyProviderInput),
+          encryptionKeyConfiguration: S.optional(EncryptionKeyConfigurationInput),
+          adminPasswordSource: S.optional(AdminPasswordSource),
+          adminPasswordSourceConfiguration: S.optional(AdminPasswordSourceConfigurationInput),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateAutonomousDatabaseInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          autonomousDatabaseBackupId: S.String.pipe(T.HttpLabel("autonomousDatabaseBackupId")),
+          retentionPeriodInDays: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateAutonomousDatabaseBackupInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.String.pipe(T.HttpLabel("cloudExadataInfrastructureId")),
+          maintenanceWindow: S.optional(MaintenanceWindow),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateCloudExadataInfrastructureInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          exadbVmClusterId: S.String,
+          dataCollectionOptions: S.optional(DataCollectionOptions),
+          displayName: S.optional(S.String),
+          enabledEcpuCount: S.optional(S.Number),
+          gridImageId: S.optional(S.String),
+          licenseModel: S.optional(LicenseModel),
+          sshPublicKeys: S.optional(StringList),
+          systemVersion: S.optional(S.String),
+          totalEcpuCount: S.optional(S.Number),
+          updateAction: S.optional(UpdateAction),
+          vmFileSystemStorageTotalSizeInGBs: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateExadbVmClusterInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          exascaleDbStorageVaultId: S.String,
+          additionalFlashCacheInPercent: S.optional(S.Number),
+          autoscaleLimitInGBs: S.optional(S.Number),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          highCapacityDatabaseStorageTotalSizeInGBs: S.optional(S.Number),
+          isAutoscaleEnabled: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateExascaleDbStorageVaultInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          odbNetworkId: S.String.pipe(T.HttpLabel("odbNetworkId")),
+          displayName: S.optional(S.String),
+          peeredCidrsToBeAdded: S.optional(StringList),
+          peeredCidrsToBeRemoved: S.optional(StringList),
+          s3Access: S.optional(Access),
+          zeroEtlAccess: S.optional(Access),
+          stsAccess: S.optional(Access),
+          kmsAccess: S.optional(Access),
+          s3PolicyDocument: S.optional(S.String),
+          stsPolicyDocument: S.optional(S.String),
+          kmsPolicyDocument: S.optional(S.String),
+          crossRegionS3RestoreSourcesToEnable: S.optional(StringList),
+          crossRegionS3RestoreSourcesToDisable: S.optional(StringList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateOdbNetworkInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          odbPeeringConnectionId: S.String.pipe(T.HttpLabel("odbPeeringConnectionId")),
+          displayName: S.optional(S.String),
+          peerNetworkCidrsToBeAdded: S.optional(PeeredCidrList),
+          peerNetworkCidrsToBeRemoved: S.optional(PeeredCidrList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateOdbPeeringConnectionInput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ValidationExceptionField);
+  }
+}

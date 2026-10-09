@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -146,32 +147,29 @@ export type EnableCrossAccountVisibility = boolean;
 export interface DeploymentConfiguration {
   enableCrossAccountVisibility: boolean;
 }
-const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ enableCrossAccountVisibility: S.Boolean }),
-).annotate({ identifier: "DeploymentConfiguration" }) as any as S.Schema<DeploymentConfiguration>;
+const DeploymentConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeploymentConfiguration>;
 export type PolicyIdentifier = string;
 export interface PolicyReference {
   policyIdentifier: string;
 }
-const PolicyReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyIdentifier: S.String }),
-).annotate({ identifier: "PolicyReference" }) as any as S.Schema<PolicyReference>;
+const PolicyReference = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PolicyReference>;
 export type PolicyReferenceList = PolicyReference[];
-const PolicyReferenceList = /*@__PURE__*/ S.Array(PolicyReference);
+const PolicyReferenceList = /*@__PURE__*/ __L.at(__c0, 2);
 export type ScopeIdentifier = string;
 export interface ScopeReference {
   scopeIdentifier: string;
 }
-const ScopeReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scopeIdentifier: S.String }),
-).annotate({ identifier: "ScopeReference" }) as any as S.Schema<ScopeReference>;
+const ScopeReference = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ScopeReference>;
 export type ScopeReferenceList = ScopeReference[];
-const ScopeReferenceList = /*@__PURE__*/ S.Array(ScopeReference);
+const ScopeReferenceList = /*@__PURE__*/ __L.at(__c0, 4);
 export type IsPublished = boolean;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c0, 5);
 export interface CreateDeploymentInput {
   clientToken?: string;
   deploymentName: string;
@@ -182,18 +180,10 @@ export interface CreateDeploymentInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreateDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    deploymentName: S.String,
-    deploymentDescription: S.optional(S.String),
-    deploymentConfiguration: DeploymentConfiguration,
-    associatedPolicyList: PolicyReferenceList,
-    associatedScopeList: ScopeReferenceList,
-    isPublished: S.optional(S.Boolean),
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/deployments" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateDeploymentInput" }) as any as S.Schema<CreateDeploymentInput>;
+const CreateDeploymentInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateDeploymentInput>;
 export type DeploymentId = string;
 export type DeploymentArn = string;
 export type EntityStatus = "DRAFT" | "ACTIVE" | "DISABLED" | (string & {});
@@ -203,20 +193,16 @@ export type PolicyArn = string;
 export interface AssociatedPolicy {
   policyArn: string;
 }
-const AssociatedPolicy = /*@__PURE__*/ S.suspend(() => S.Struct({ policyArn: S.String })).annotate({
-  identifier: "AssociatedPolicy",
-}) as any as S.Schema<AssociatedPolicy>;
+const AssociatedPolicy = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AssociatedPolicy>;
 export type AssociatedPolicyList = AssociatedPolicy[];
-const AssociatedPolicyList = /*@__PURE__*/ S.Array(AssociatedPolicy);
+const AssociatedPolicyList = /*@__PURE__*/ __L.at(__c1, 0);
 export type ScopeArn = string;
 export interface AssociatedScope {
   scopeArn: string;
 }
-const AssociatedScope = /*@__PURE__*/ S.suspend(() => S.Struct({ scopeArn: S.String })).annotate({
-  identifier: "AssociatedScope",
-}) as any as S.Schema<AssociatedScope>;
+const AssociatedScope = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AssociatedScope>;
 export type AssociatedScopeList = AssociatedScope[];
-const AssociatedScopeList = /*@__PURE__*/ S.Array(AssociatedScope);
+const AssociatedScopeList = /*@__PURE__*/ __L.at(__c1, 2);
 export type EntityVersion = string;
 export type UpdateToken = string;
 export type IsSnapshot = boolean;
@@ -225,7 +211,7 @@ export type PolicyFirewallType = "WAF" | "SHIELD_ADVANCED" | (string & {});
 const PolicyFirewallType = S.String;
 
 export type DeploymentPolicyArnList = string[];
-const DeploymentPolicyArnList = /*@__PURE__*/ S.Array(S.String);
+const DeploymentPolicyArnList = /*@__PURE__*/ __L.at(__c1, 3);
 export type ScopeResourceType =
   | "AWS::ApiGateway::Stage"
   | "AWS::CloudFront::Distribution"
@@ -236,31 +222,29 @@ export type ScopeResourceType =
 const ScopeResourceType = S.String;
 
 export type DeploymentResourceTypeList = ScopeResourceType[];
-const DeploymentResourceTypeList = /*@__PURE__*/ S.Array(ScopeResourceType);
+const DeploymentResourceTypeList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface DeploymentCoverageEntry {
   firewallType: PolicyFirewallType;
   policyArns: string[];
   inScopeResourceTypes: ScopeResourceType[];
 }
-const DeploymentCoverageEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firewallType: PolicyFirewallType,
-    policyArns: DeploymentPolicyArnList,
-    inScopeResourceTypes: DeploymentResourceTypeList,
-  }),
-).annotate({ identifier: "DeploymentCoverageEntry" }) as any as S.Schema<DeploymentCoverageEntry>;
+const DeploymentCoverageEntry = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeploymentCoverageEntry>;
 export type DeploymentCoverageList = DeploymentCoverageEntry[];
-const DeploymentCoverageList = /*@__PURE__*/ S.Array(DeploymentCoverageEntry);
+const DeploymentCoverageList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface DeploymentWarningEntry {
   code: string;
   policyArn: string;
   message: string;
 }
-const DeploymentWarningEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.String, policyArn: S.String, message: S.String }),
-).annotate({ identifier: "DeploymentWarningEntry" }) as any as S.Schema<DeploymentWarningEntry>;
+const DeploymentWarningEntry = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeploymentWarningEntry>;
 export type DeploymentWarningList = DeploymentWarningEntry[];
-const DeploymentWarningList = /*@__PURE__*/ S.Array(DeploymentWarningEntry);
+const DeploymentWarningList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface CreateDeploymentOutput {
   deploymentId: string;
   deploymentArn: string;
@@ -278,49 +262,20 @@ export interface CreateDeploymentOutput {
   warnings?: DeploymentWarningEntry[];
   updatedAt?: Date;
 }
-const CreateDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.String,
-    deploymentArn: S.String,
-    deploymentName: S.String,
-    deploymentDescription: S.optional(S.String),
-    status: EntityStatus,
-    deploymentConfiguration: S.optional(DeploymentConfiguration),
-    associatedPolicyList: AssociatedPolicyList,
-    associatedScopeList: AssociatedScopeList,
-    version: S.String,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    deploymentCoverage: S.optional(DeploymentCoverageList),
-    warnings: S.optional(DeploymentWarningList),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "CreateDeploymentOutput" }) as any as S.Schema<CreateDeploymentOutput>;
+const CreateDeploymentOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateDeploymentOutput>;
 export type DeploymentIdentifier = string;
 export interface CreateDeploymentSnapshotInput {
   deploymentIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateDeploymentSnapshotInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/deployments/{deploymentIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateDeploymentSnapshotInput",
-}) as any as S.Schema<CreateDeploymentSnapshotInput>;
+const CreateDeploymentSnapshotInput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateDeploymentSnapshotInput>;
 export interface CreateDeploymentSnapshotOutput {
   deploymentId: string;
   deploymentArn: string;
@@ -336,25 +291,10 @@ export interface CreateDeploymentSnapshotOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const CreateDeploymentSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.String,
-    deploymentArn: S.String,
-    deploymentName: S.String,
-    deploymentDescription: S.optional(S.String),
-    status: EntityStatus,
-    deploymentConfiguration: S.optional(DeploymentConfiguration),
-    associatedPolicyList: AssociatedPolicyList,
-    associatedScopeList: AssociatedScopeList,
-    version: S.String,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "CreateDeploymentSnapshotOutput",
-}) as any as S.Schema<CreateDeploymentSnapshotOutput>;
+const CreateDeploymentSnapshotOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateDeploymentSnapshotOutput>;
 export type PolicyName = string;
 export type Priority = number;
 export type TemplateIdentifier = string;
@@ -362,12 +302,9 @@ export type RuleIdentifier = string;
 export type TemplateOrRuleReference =
   | { templateIdentifier: string; ruleIdentifier?: never }
   | { templateIdentifier?: never; ruleIdentifier: string };
-const TemplateOrRuleReference = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ templateIdentifier: S.String }),
-  /*@__PURE__*/ S.Struct({ ruleIdentifier: S.String }),
-]);
+const TemplateOrRuleReference = /*@__PURE__*/ __L.at(__c2, 4);
 export type TemplateAndRuleReferenceList = TemplateOrRuleReference[];
-const TemplateAndRuleReferenceList = /*@__PURE__*/ S.Array(TemplateOrRuleReference);
+const TemplateAndRuleReferenceList = /*@__PURE__*/ __L.at(__c2, 5);
 export type RemediationEnabled = boolean;
 export type ResourcesCleanUp = boolean;
 export type ExistingCustomerWebACLResolution =
@@ -384,24 +321,13 @@ export interface WafConfig {
   existingCustomerWebACLResolution: ExistingCustomerWebACLResolution;
   conflictResolution: WAFConflictResolutionOptions;
 }
-const WafConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    existingCustomerWebACLResolution: ExistingCustomerWebACLResolution,
-    conflictResolution: WAFConflictResolutionOptions,
-  }),
-).annotate({ identifier: "WafConfig" }) as any as S.Schema<WafConfig>;
+const WafConfig = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<WafConfig>;
 export interface PolicyConfiguration {
   remediationEnabled: boolean;
   resourcesCleanUp: boolean;
   wafConfig?: WafConfig;
 }
-const PolicyConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remediationEnabled: S.Boolean,
-    resourcesCleanUp: S.Boolean,
-    wafConfig: S.optional(WafConfig),
-  }),
-).annotate({ identifier: "PolicyConfiguration" }) as any as S.Schema<PolicyConfiguration>;
+const PolicyConfiguration = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PolicyConfiguration>;
 export interface CreatePolicyInput {
   clientToken?: string;
   policyName: string;
@@ -413,31 +339,16 @@ export interface CreatePolicyInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreatePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    policyName: S.String,
-    policyDescription: S.optional(S.String),
-    priority: S.Number,
-    associatedTemplateAndRuleList: S.optional(TemplateAndRuleReferenceList),
-    firewallType: PolicyFirewallType,
-    policyConfiguration: PolicyConfiguration,
-    isPublished: S.optional(S.Boolean),
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/policies" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreatePolicyInput" }) as any as S.Schema<CreatePolicyInput>;
+const CreatePolicyInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CreatePolicyInput>;
 export type PolicyId = string;
 export type TemplateArn = string;
 export type RuleArn = string;
 export type AssociatedTemplateOrRule =
   | { templateArn: string; ruleArn?: never }
   | { templateArn?: never; ruleArn: string };
-const AssociatedTemplateOrRule = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ templateArn: S.String }),
-  /*@__PURE__*/ S.Struct({ ruleArn: S.String }),
-]);
+const AssociatedTemplateOrRule = /*@__PURE__*/ __L.at(__c3, 1);
 export type AssociatedTemplateAndRuleList = AssociatedTemplateOrRule[];
-const AssociatedTemplateAndRuleList = /*@__PURE__*/ S.Array(AssociatedTemplateOrRule);
+const AssociatedTemplateAndRuleList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface CreatePolicyOutput {
   policyId: string;
   policyArn: string;
@@ -454,47 +365,16 @@ export interface CreatePolicyOutput {
   policyConfiguration?: PolicyConfiguration;
   updatedAt?: Date;
 }
-const CreatePolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyId: S.String,
-    policyArn: S.String,
-    policyName: S.String,
-    policyDescription: S.optional(S.String),
-    status: EntityStatus,
-    priority: S.Number,
-    associatedTemplateAndRuleList: AssociatedTemplateAndRuleList,
-    version: S.String,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    firewallType: PolicyFirewallType,
-    policyConfiguration: S.optional(PolicyConfiguration),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "CreatePolicyOutput" }) as any as S.Schema<CreatePolicyOutput>;
+const CreatePolicyOutput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreatePolicyOutput>;
 export interface CreatePolicySnapshotInput {
   policyIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreatePolicySnapshotInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/policies/{policyIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreatePolicySnapshotInput",
-}) as any as S.Schema<CreatePolicySnapshotInput>;
+const CreatePolicySnapshotInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreatePolicySnapshotInput>;
 export interface CreatePolicySnapshotOutput {
   policyId: string;
   policyArn: string;
@@ -511,26 +391,10 @@ export interface CreatePolicySnapshotOutput {
   policyConfiguration?: PolicyConfiguration;
   updatedAt?: Date;
 }
-const CreatePolicySnapshotOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyId: S.String,
-    policyArn: S.String,
-    policyName: S.String,
-    policyDescription: S.optional(S.String),
-    status: EntityStatus,
-    priority: S.Number,
-    associatedTemplateAndRuleList: AssociatedTemplateAndRuleList,
-    version: S.String,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    firewallType: PolicyFirewallType,
-    policyConfiguration: S.optional(PolicyConfiguration),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "CreatePolicySnapshotOutput",
-}) as any as S.Schema<CreatePolicySnapshotOutput>;
+const CreatePolicySnapshotOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreatePolicySnapshotOutput>;
 export type RuleName = string;
 export type RuleFirewallType = "WAF" | (string & {});
 const RuleFirewallType = S.String;
@@ -549,18 +413,7 @@ export interface CreateRuleInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreateRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    ruleName: S.String,
-    firewallType: RuleFirewallType,
-    ruleType: RuleType,
-    ruleDescription: S.optional(S.String),
-    configuration: S.Any,
-    isPublished: S.optional(S.Boolean),
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/rules" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateRuleInput" }) as any as S.Schema<CreateRuleInput>;
+const CreateRuleInput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CreateRuleInput>;
 export type RuleId = string;
 export interface CreateRuleOutput {
   ruleId: string;
@@ -577,44 +430,16 @@ export interface CreateRuleOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const CreateRuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleId: S.String,
-    ruleArn: S.String,
-    ruleName: S.String,
-    firewallType: RuleFirewallType,
-    ruleType: S.optional(RuleType),
-    ruleDescription: S.optional(S.String),
-    configuration: S.Any,
-    status: EntityStatus,
-    version: S.String,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "CreateRuleOutput" }) as any as S.Schema<CreateRuleOutput>;
+const CreateRuleOutput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreateRuleOutput>;
 export interface CreateRuleSnapshotInput {
   ruleIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateRuleSnapshotInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/rules/{ruleIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateRuleSnapshotInput" }) as any as S.Schema<CreateRuleSnapshotInput>;
+const CreateRuleSnapshotInput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateRuleSnapshotInput>;
 export interface CreateRuleSnapshotOutput {
   ruleId: string;
   ruleArn: string;
@@ -642,21 +467,12 @@ export interface AccountSet {
   accountIds?: string[];
   organizationalUnits?: string[];
 }
-const AccountSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountIds: S.optional(AccountList),
-    organizationalUnits: S.optional(OrganizationalUnitList),
-  }),
-).annotate({ identifier: "AccountSet" }) as any as S.Schema<AccountSet>;
+const AccountSet = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AccountSet>;
 export type AccountFilter =
   | { includeAll: Record<string, never>; include?: never; exclude?: never }
   | { includeAll?: never; include: AccountSet; exclude?: never }
   | { includeAll?: never; include?: never; exclude: AccountSet };
-const AccountFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
-  /*@__PURE__*/ S.Struct({ include: AccountSet }),
-  /*@__PURE__*/ S.Struct({ exclude: AccountSet }),
-]);
+const AccountFilter = /*@__PURE__*/ __L.at(__c4, 2);
 export type Arn = string;
 export type ResourceArnList = string[];
 const ResourceArnList = DeploymentPolicyArnList as any as S.Schema<ResourceArnList>;
@@ -672,79 +488,43 @@ export interface AlbConfiguration {
   scheme?: Scheme;
   ipAddressType?: IpAddressType;
 }
-const AlbConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scheme: S.optional(Scheme), ipAddressType: S.optional(IpAddressType) }),
-).annotate({ identifier: "AlbConfiguration" }) as any as S.Schema<AlbConfiguration>;
+const AlbConfiguration = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AlbConfiguration>;
 export type ResourceCriteria =
   | { tags: { [key: string]: string | undefined }; albConfig?: never }
   | { tags?: never; albConfig: AlbConfiguration };
-const ResourceCriteria = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ tags: StringMap }),
-  /*@__PURE__*/ S.Struct({ albConfig: AlbConfiguration }),
-]);
+const ResourceCriteria = /*@__PURE__*/ __L.at(__c4, 4);
 export type ResourceLogicalExpressionList = ResourceLogicalExpression[];
-const ResourceLogicalExpressionList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => ResourceLogicalExpression).annotate({
-    identifier: "ResourceLogicalExpression",
-  }),
+const ResourceLogicalExpressionList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
 ) as any as S.Schema<ResourceLogicalExpressionList>;
 export type ResourceLogicalExpression =
   | { criteria: ResourceCriteria; and?: never; or?: never; not?: never }
   | { criteria?: never; and: ResourceLogicalExpression[]; or?: never; not?: never }
   | { criteria?: never; and?: never; or: ResourceLogicalExpression[]; not?: never }
   | { criteria?: never; and?: never; or?: never; not: ResourceLogicalExpression };
-const ResourceLogicalExpression = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ criteria: ResourceCriteria }),
-  /*@__PURE__*/ S.Struct({
-    and: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpressionList).annotate({
-      identifier: "ResourceLogicalExpressionList",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    or: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpressionList).annotate({
-      identifier: "ResourceLogicalExpressionList",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    not: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpression).annotate({
-      identifier: "ResourceLogicalExpression",
-    }),
-  }),
-]) as any as S.Schema<ResourceLogicalExpression>;
+const ResourceLogicalExpression = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ResourceLogicalExpression>;
 export interface ResourceSet {
   explicitArns?: string[];
   expression?: ResourceLogicalExpression;
 }
-const ResourceSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    explicitArns: S.optional(ResourceArnList),
-    expression: S.optional(ResourceLogicalExpression),
-  }),
-).annotate({ identifier: "ResourceSet" }) as any as S.Schema<ResourceSet>;
+const ResourceSet = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ResourceSet>;
 export interface ResourceScope {
   includeAll?: boolean;
   include?: ResourceSet;
   exclude?: ResourceSet;
 }
-const ResourceScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeAll: S.optional(S.Boolean),
-    include: S.optional(ResourceSet),
-    exclude: S.optional(ResourceSet),
-  }),
-).annotate({ identifier: "ResourceScope" }) as any as S.Schema<ResourceScope>;
+const ResourceScope = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ResourceScope>;
 export type ResourceScopeMap = { [key in ScopeResourceType]?: ResourceScope };
-const ResourceScopeMap = /*@__PURE__*/ S.Record(
-  ScopeResourceType,
-  /*@__PURE__*/ ResourceScope.pipe(S.optional),
-);
+const ResourceScopeMap = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ScopeConfiguration {
   accountFilter?: AccountFilter;
   resourceScopes: { [key: string]: ResourceScope | undefined };
 }
-const ScopeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountFilter: S.optional(AccountFilter), resourceScopes: ResourceScopeMap }),
-).annotate({ identifier: "ScopeConfiguration" }) as any as S.Schema<ScopeConfiguration>;
+const ScopeConfiguration = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ScopeConfiguration>;
 export interface CreateScopeInput {
   clientToken?: string;
   scopeName: string;
@@ -753,16 +533,7 @@ export interface CreateScopeInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreateScopeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    scopeName: S.String,
-    scopeDescription: S.optional(S.String),
-    scopeConfiguration: ScopeConfiguration,
-    isPublished: S.optional(S.Boolean),
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/scopes" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateScopeInput" }) as any as S.Schema<CreateScopeInput>;
+const CreateScopeInput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CreateScopeInput>;
 export type ScopeId = string;
 export interface CreateScopeOutput {
   scopeId: string;
@@ -777,42 +548,16 @@ export interface CreateScopeOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const CreateScopeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopeId: S.String,
-    scopeArn: S.String,
-    scopeName: S.String,
-    scopeDescription: S.optional(S.String),
-    scopeConfiguration: S.optional(ScopeConfiguration),
-    status: EntityStatus,
-    version: S.String,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "CreateScopeOutput" }) as any as S.Schema<CreateScopeOutput>;
+const CreateScopeOutput = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CreateScopeOutput>;
 export interface CreateScopeSnapshotInput {
   scopeIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateScopeSnapshotInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/scopes/{scopeIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateScopeSnapshotInput" }) as any as S.Schema<CreateScopeSnapshotInput>;
+const CreateScopeSnapshotInput = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateScopeSnapshotInput>;
 export interface CreateScopeSnapshotOutput {
   scopeId: string;
   scopeArn: string;
@@ -826,32 +571,17 @@ export interface CreateScopeSnapshotOutput {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const CreateScopeSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopeId: S.String,
-    scopeArn: S.String,
-    scopeName: S.String,
-    scopeDescription: S.optional(S.String),
-    scopeConfiguration: S.optional(ScopeConfiguration),
-    status: EntityStatus,
-    version: S.String,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "CreateScopeSnapshotOutput",
-}) as any as S.Schema<CreateScopeSnapshotOutput>;
+const CreateScopeSnapshotOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateScopeSnapshotOutput>;
 export type TemplateName = string;
 export interface RuleReference {
   ruleIdentifier: string;
 }
-const RuleReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ruleIdentifier: S.String }),
-).annotate({ identifier: "RuleReference" }) as any as S.Schema<RuleReference>;
+const RuleReference = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<RuleReference>;
 export type RuleReferenceList = RuleReference[];
-const RuleReferenceList = /*@__PURE__*/ S.Array(RuleReference);
+const RuleReferenceList = /*@__PURE__*/ __L.at(__c6, 0);
 export type TemplateFirewallType = "WAF" | (string & {});
 const TemplateFirewallType = S.String;
 
@@ -864,26 +594,14 @@ export interface CreateTemplateInput {
   isPublished?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreateTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    templateName: S.String,
-    templateDescription: S.optional(S.String),
-    associatedRuleList: RuleReferenceList,
-    firewallType: TemplateFirewallType,
-    isPublished: S.optional(S.Boolean),
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/templates" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateTemplateInput" }) as any as S.Schema<CreateTemplateInput>;
+const CreateTemplateInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateTemplateInput>;
 export type TemplateId = string;
 export interface AssociatedRule {
   ruleArn: string;
 }
-const AssociatedRule = /*@__PURE__*/ S.suspend(() => S.Struct({ ruleArn: S.String })).annotate({
-  identifier: "AssociatedRule",
-}) as any as S.Schema<AssociatedRule>;
+const AssociatedRule = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AssociatedRule>;
 export type AssociatedRuleList = AssociatedRule[];
-const AssociatedRuleList = /*@__PURE__*/ S.Array(AssociatedRule);
+const AssociatedRuleList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface CreateTemplateOutput {
   templateId: string;
   templateArn: string;
@@ -898,45 +616,16 @@ export interface CreateTemplateOutput {
   firewallType: TemplateFirewallType;
   updatedAt?: Date;
 }
-const CreateTemplateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateId: S.String,
-    templateArn: S.String,
-    templateName: S.String,
-    templateDescription: S.optional(S.String),
-    status: EntityStatus,
-    version: S.String,
-    associatedRuleList: AssociatedRuleList,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    firewallType: TemplateFirewallType,
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "CreateTemplateOutput" }) as any as S.Schema<CreateTemplateOutput>;
+const CreateTemplateOutput = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CreateTemplateOutput>;
 export interface CreateTemplateSnapshotInput {
   templateIdentifier: string;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateTemplateSnapshotInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/templates/{templateIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateTemplateSnapshotInput",
-}) as any as S.Schema<CreateTemplateSnapshotInput>;
+const CreateTemplateSnapshotInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateTemplateSnapshotInput>;
 export interface CreateTemplateSnapshotOutput {
   templateId: string;
   templateArn: string;
@@ -951,129 +640,54 @@ export interface CreateTemplateSnapshotOutput {
   firewallType: TemplateFirewallType;
   updatedAt?: Date;
 }
-const CreateTemplateSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateId: S.String,
-    templateArn: S.String,
-    templateName: S.String,
-    templateDescription: S.optional(S.String),
-    status: EntityStatus,
-    version: S.String,
-    associatedRuleList: AssociatedRuleList,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    firewallType: TemplateFirewallType,
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "CreateTemplateSnapshotOutput",
-}) as any as S.Schema<CreateTemplateSnapshotOutput>;
+const CreateTemplateSnapshotOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateTemplateSnapshotOutput>;
 export interface DeleteAdminAccountRequest {
   accountId: string;
 }
-const DeleteAdminAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/admin-account/{accountId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAdminAccountRequest",
-}) as any as S.Schema<DeleteAdminAccountRequest>;
+const DeleteAdminAccountRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteAdminAccountRequest>;
 export interface DeleteAdminAccountResponse {}
-const DeleteAdminAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAdminAccountResponse",
-}) as any as S.Schema<DeleteAdminAccountResponse>;
+const DeleteAdminAccountResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteAdminAccountResponse>;
 export interface DeleteDeploymentInput {
   deploymentIdentifier: string;
 }
-const DeleteDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/deployments/{deploymentIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteDeploymentInput" }) as any as S.Schema<DeleteDeploymentInput>;
+const DeleteDeploymentInput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteDeploymentInput>;
 export interface DeleteDeploymentResponse {}
 const DeleteDeploymentResponse =
   DeleteAdminAccountResponse as any as S.Schema<DeleteDeploymentResponse>;
 export interface DeletePolicyInput {
   policyIdentifier: string;
 }
-const DeletePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/policies/{policyIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeletePolicyInput" }) as any as S.Schema<DeletePolicyInput>;
+const DeletePolicyInput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeletePolicyInput>;
 export interface DeletePolicyResponse {}
 const DeletePolicyResponse = DeleteAdminAccountResponse as any as S.Schema<DeletePolicyResponse>;
 export interface DeleteRuleInput {
   ruleIdentifier: string;
 }
-const DeleteRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/rules/{ruleIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteRuleInput" }) as any as S.Schema<DeleteRuleInput>;
+const DeleteRuleInput = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DeleteRuleInput>;
 export interface DeleteRuleResponse {}
 const DeleteRuleResponse = DeleteAdminAccountResponse as any as S.Schema<DeleteRuleResponse>;
 export interface DeleteScopeInput {
   scopeIdentifier: string;
 }
-const DeleteScopeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/scopes/{scopeIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteScopeInput" }) as any as S.Schema<DeleteScopeInput>;
+const DeleteScopeInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DeleteScopeInput>;
 export interface DeleteScopeResponse {}
 const DeleteScopeResponse = DeleteAdminAccountResponse as any as S.Schema<DeleteScopeResponse>;
 export interface DeleteTemplateInput {
   templateIdentifier: string;
 }
-const DeleteTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/templates/{templateIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteTemplateInput" }) as any as S.Schema<DeleteTemplateInput>;
+const DeleteTemplateInput = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DeleteTemplateInput>;
 export interface DeleteTemplateResponse {}
 const DeleteTemplateResponse =
   DeleteAdminAccountResponse as any as S.Schema<DeleteTemplateResponse>;
@@ -1100,51 +714,25 @@ export interface GenerateRuleConfigurationRequest {
   currentConfiguration?: string;
   clientToken?: string;
 }
-const GenerateRuleConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prompt: SensitiveString,
-    ruleFirewallType: RuleFirewallType,
-    ruleType: RuleType,
-    wafConfigDataType: S.optional(WAFConfigDataType),
-    currentConfiguration: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GenerateRuleConfiguration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GenerateRuleConfigurationRequest",
-}) as any as S.Schema<GenerateRuleConfigurationRequest>;
+const GenerateRuleConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GenerateRuleConfigurationRequest>;
 export interface GenerateRuleConfigurationResponse {
   configuration: string;
   description?: string;
 }
-const GenerateRuleConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ configuration: S.String, description: S.optional(S.String) }),
-).annotate({
-  identifier: "GenerateRuleConfigurationResponse",
-}) as any as S.Schema<GenerateRuleConfigurationResponse>;
+const GenerateRuleConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GenerateRuleConfigurationResponse>;
 export interface GetAdminAccountRequest {
   accountId: string;
 }
-const GetAdminAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/admin-account/{accountId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetAdminAccountRequest" }) as any as S.Schema<GetAdminAccountRequest>;
+const GetAdminAccountRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetAdminAccountRequest>;
 export type AdminPriority = number;
 export type SensitiveAccountName = string | redacted.Redacted<string>;
 export type SensitiveAccountEmail = string | redacted.Redacted<string>;
@@ -1153,68 +741,45 @@ export interface AccountReference {
   name?: string | redacted.Redacted<string>;
   email?: string | redacted.Redacted<string>;
 }
-const AccountReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String,
-    name: S.optional(SensitiveString),
-    email: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "AccountReference" }) as any as S.Schema<AccountReference>;
+const AccountReference = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<AccountReference>;
 export type AccountReferenceList = AccountReference[];
-const AccountReferenceList = /*@__PURE__*/ S.Array(AccountReference);
+const AccountReferenceList = /*@__PURE__*/ __L.at(__c8, 2);
 export type OrganizationalUnitId = string;
 export interface OrganizationalUnitReference {
   ouId: string;
   name?: string;
 }
-const OrganizationalUnitReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ouId: S.String, name: S.optional(S.String) }),
-).annotate({
-  identifier: "OrganizationalUnitReference",
-}) as any as S.Schema<OrganizationalUnitReference>;
+const OrganizationalUnitReference = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<OrganizationalUnitReference>;
 export type OrganizationalUnitReferenceList = OrganizationalUnitReference[];
-const OrganizationalUnitReferenceList = /*@__PURE__*/ S.Array(OrganizationalUnitReference);
+const OrganizationalUnitReferenceList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface AdminScopeSelection {
   accounts?: AccountReference[];
   organizationalUnits?: OrganizationalUnitReference[];
 }
-const AdminScopeSelection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accounts: S.optional(AccountReferenceList),
-    organizationalUnits: S.optional(OrganizationalUnitReferenceList),
-  }),
-).annotate({ identifier: "AdminScopeSelection" }) as any as S.Schema<AdminScopeSelection>;
+const AdminScopeSelection = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AdminScopeSelection>;
 export type AdminScopeFilter =
   | { includeAll: Record<string, never>; includeOnly?: never; excludeOnly?: never }
   | { includeAll?: never; includeOnly: AdminScopeSelection; excludeOnly?: never }
   | { includeAll?: never; includeOnly?: never; excludeOnly: AdminScopeSelection };
-const AdminScopeFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
-  /*@__PURE__*/ S.Struct({ includeOnly: AdminScopeSelection }),
-  /*@__PURE__*/ S.Struct({ excludeOnly: AdminScopeSelection }),
-]);
+const AdminScopeFilter = /*@__PURE__*/ __L.at(__c8, 6);
 export type FirewallTypeList = PolicyFirewallType[];
 const FirewallTypeList = DeploymentResourceTypeList as any as S.Schema<FirewallTypeList>;
 export interface AdminFirewallTypeScope {
   allFirewallTypesEnabled?: boolean;
   firewallTypes?: PolicyFirewallType[];
 }
-const AdminFirewallTypeScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allFirewallTypesEnabled: S.optional(S.Boolean),
-    firewallTypes: S.optional(FirewallTypeList),
-  }),
-).annotate({ identifier: "AdminFirewallTypeScope" }) as any as S.Schema<AdminFirewallTypeScope>;
+const AdminFirewallTypeScope = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<AdminFirewallTypeScope>;
 export interface AdminScope {
   scopeFilter?: AdminScopeFilter;
   firewallTypeScope?: AdminFirewallTypeScope;
 }
-const AdminScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopeFilter: S.optional(AdminScopeFilter),
-    firewallTypeScope: S.optional(AdminFirewallTypeScope),
-  }),
-).annotate({ identifier: "AdminScope" }) as any as S.Schema<AdminScope>;
+const AdminScope = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<AdminScope>;
 export type AdminAccountStatus = "ONBOARDED" | "OFFBOARDED" | (string & {});
 const AdminAccountStatus = S.String;
 
@@ -1224,35 +789,18 @@ export interface AdminAccountDetails {
   adminScope?: AdminScope;
   status?: AdminAccountStatus;
 }
-const AdminAccountDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminAccount: S.String,
-    priority: S.Number,
-    adminScope: S.optional(AdminScope),
-    status: S.optional(AdminAccountStatus),
-  }),
-).annotate({ identifier: "AdminAccountDetails" }) as any as S.Schema<AdminAccountDetails>;
+const AdminAccountDetails = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<AdminAccountDetails>;
 export interface GetAdminAccountResponse {
   adminAccountDetails?: AdminAccountDetails;
 }
-const GetAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ adminAccountDetails: S.optional(AdminAccountDetails) }),
-).annotate({ identifier: "GetAdminAccountResponse" }) as any as S.Schema<GetAdminAccountResponse>;
+const GetAdminAccountResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetAdminAccountResponse>;
 export interface GetDeploymentInput {
   deploymentIdentifier: string;
 }
-const GetDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/deployments/{deploymentIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetDeploymentInput" }) as any as S.Schema<GetDeploymentInput>;
+const GetDeploymentInput = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GetDeploymentInput>;
 export interface GetDeploymentOutput {
   deploymentId: string;
   deploymentArn: string;
@@ -1270,40 +818,11 @@ export interface GetDeploymentOutput {
   deploymentCoverage?: DeploymentCoverageEntry[];
   warnings?: DeploymentWarningEntry[];
 }
-const GetDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.String,
-    deploymentArn: S.String,
-    deploymentName: S.String,
-    deploymentDescription: S.optional(S.String),
-    status: EntityStatus,
-    deploymentConfiguration: S.optional(DeploymentConfiguration),
-    associatedPolicyList: AssociatedPolicyList,
-    associatedScopeList: AssociatedScopeList,
-    version: S.String,
-    updateToken: S.optional(S.String),
-    isSnapshot: S.optional(S.Boolean),
-    hasPublishedVersion: S.optional(S.Boolean),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    deploymentCoverage: S.optional(DeploymentCoverageList),
-    warnings: S.optional(DeploymentWarningList),
-  }),
-).annotate({ identifier: "GetDeploymentOutput" }) as any as S.Schema<GetDeploymentOutput>;
+const GetDeploymentOutput = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetDeploymentOutput>;
 export interface GetPolicyInput {
   policyIdentifier: string;
 }
-const GetPolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/policies/{policyIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetPolicyInput" }) as any as S.Schema<GetPolicyInput>;
+const GetPolicyInput = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GetPolicyInput>;
 export interface GetPolicyOutput {
   policyId: string;
   policyArn: string;
@@ -1324,11 +843,7 @@ const GetPolicyOutput = CreatePolicyOutput as any as S.Schema<GetPolicyOutput>;
 export interface GetRuleInput {
   ruleIdentifier: string;
 }
-const GetRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/rules/{ruleIdentifier}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetRuleInput" }) as any as S.Schema<GetRuleInput>;
+const GetRuleInput = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetRuleInput>;
 export interface GetRuleOutput {
   ruleId: string;
   ruleArn: string;
@@ -1348,18 +863,7 @@ const GetRuleOutput = CreateRuleOutput as any as S.Schema<GetRuleOutput>;
 export interface GetScopeInput {
   scopeIdentifier: string;
 }
-const GetScopeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/scopes/{scopeIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetScopeInput" }) as any as S.Schema<GetScopeInput>;
+const GetScopeInput = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetScopeInput>;
 export interface GetScopeOutput {
   scopeId: string;
   scopeArn: string;
@@ -1377,18 +881,7 @@ const GetScopeOutput = CreateScopeOutput as any as S.Schema<GetScopeOutput>;
 export interface GetTemplateInput {
   templateIdentifier: string;
 }
-const GetTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/templates/{templateIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetTemplateInput" }) as any as S.Schema<GetTemplateInput>;
+const GetTemplateInput = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetTemplateInput>;
 export interface GetTemplateOutput {
   templateId: string;
   templateArn: string;
@@ -1410,12 +903,10 @@ export interface ListAdminAccountsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAdminAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/admin-accounts" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListAdminAccountsRequest" }) as any as S.Schema<ListAdminAccountsRequest>;
+const ListAdminAccountsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListAdminAccountsRequest>;
 export type SensitiveName = string | redacted.Redacted<string>;
 export type SensitiveEmail = string | redacted.Redacted<string>;
 export interface AdminAccountSummary {
@@ -1424,25 +915,17 @@ export interface AdminAccountSummary {
   name?: string | redacted.Redacted<string>;
   email?: string | redacted.Redacted<string>;
 }
-const AdminAccountSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String,
-    priority: S.optional(S.Number),
-    name: S.optional(SensitiveString),
-    email: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "AdminAccountSummary" }) as any as S.Schema<AdminAccountSummary>;
+const AdminAccountSummary = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<AdminAccountSummary>;
 export type AdminAccountSummaryList = AdminAccountSummary[];
-const AdminAccountSummaryList = /*@__PURE__*/ S.Array(AdminAccountSummary);
+const AdminAccountSummaryList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface ListAdminAccountsResponse {
   nextToken?: string;
   adminAccounts: AdminAccountSummary[];
 }
-const ListAdminAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), adminAccounts: AdminAccountSummaryList }),
-).annotate({
-  identifier: "ListAdminAccountsResponse",
-}) as any as S.Schema<ListAdminAccountsResponse>;
+const ListAdminAccountsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListAdminAccountsResponse>;
 export type SynchronizationStatus = "IN_SYNC" | "OUT_OF_SYNC" | "NOT_APPLICABLE" | (string & {});
 const SynchronizationStatus = S.String;
 
@@ -1451,19 +934,10 @@ export interface ListAggregateResourceSynchronizationStatusesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAggregateResourceSynchronizationStatusesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    synchronizationStatus: S.optional(SynchronizationStatus).pipe(
-      T.HttpQuery("synchronizationStatus"),
-    ),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/aggregate-sync-statuses" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListAggregateResourceSynchronizationStatusesInput",
-}) as any as S.Schema<ListAggregateResourceSynchronizationStatusesInput>;
+const ListAggregateResourceSynchronizationStatusesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListAggregateResourceSynchronizationStatusesInput>;
 export type ResourceType =
   | "AWS::ApiGateway::Stage"
   | "AWS::CloudFront::Distribution"
@@ -1481,15 +955,9 @@ export interface ConfigurationIssue {
   expectedValue?: string;
   actualValue?: string;
 }
-const ConfigurationIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurationName: S.optional(S.String),
-    expectedValue: S.optional(S.String),
-    actualValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConfigurationIssue" }) as any as S.Schema<ConfigurationIssue>;
+const ConfigurationIssue = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ConfigurationIssue>;
 export type ConfigurationIssueList = ConfigurationIssue[];
-const ConfigurationIssueList = /*@__PURE__*/ S.Array(ConfigurationIssue);
+const ConfigurationIssueList = /*@__PURE__*/ __L.at(__c10, 7);
 export interface InvalidFirewallReasons {
   incorrectSingleValueConfigurations?: ConfigurationIssue[];
   missingAppendableConfigurationValues?: ConfigurationIssue[];
@@ -1498,65 +966,39 @@ export interface InvalidFirewallReasons {
   missingMergeableConfigurationValues?: ConfigurationIssue[];
   unexpectedMergeableConfigurationValues?: ConfigurationIssue[];
 }
-const InvalidFirewallReasons = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    incorrectSingleValueConfigurations: S.optional(ConfigurationIssueList),
-    missingAppendableConfigurationValues: S.optional(ConfigurationIssueList),
-    unexpectedAppendableConfigurationValues: S.optional(ConfigurationIssueList),
-    incorrectAppendableConfigurationOrder: S.optional(ConfigurationIssueList),
-    missingMergeableConfigurationValues: S.optional(ConfigurationIssueList),
-    unexpectedMergeableConfigurationValues: S.optional(ConfigurationIssueList),
-  }),
-).annotate({ identifier: "InvalidFirewallReasons" }) as any as S.Schema<InvalidFirewallReasons>;
+const InvalidFirewallReasons = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<InvalidFirewallReasons>;
 export type FirewallSyncReason =
   | { missingFirewall: string; invalidFirewall?: never }
   | { missingFirewall?: never; invalidFirewall: InvalidFirewallReasons };
-const FirewallSyncReason = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ missingFirewall: S.String }),
-  /*@__PURE__*/ S.Struct({ invalidFirewall: InvalidFirewallReasons }),
-]);
+const FirewallSyncReason = /*@__PURE__*/ __L.at(__c11, 1);
 export type OutOfSyncReasons = { [key in PolicyFirewallType]?: FirewallSyncReason };
-const OutOfSyncReasons = /*@__PURE__*/ S.Record(
-  PolicyFirewallType,
-  /*@__PURE__*/ FirewallSyncReason.pipe(S.optional),
-);
+const OutOfSyncReasons = /*@__PURE__*/ __L.at(__c11, 2);
 export interface NotVisibleMarker {
   reason: string;
 }
-const NotVisibleMarker = /*@__PURE__*/ S.suspend(() => S.Struct({ reason: S.String })).annotate({
-  identifier: "NotVisibleMarker",
-}) as any as S.Schema<NotVisibleMarker>;
+const NotVisibleMarker = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<NotVisibleMarker>;
 export type OutOfSyncReasonsView =
   | { reasons: { [key: string]: FirewallSyncReason | undefined }; notVisible?: never }
   | { reasons?: never; notVisible: NotVisibleMarker };
-const OutOfSyncReasonsView = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ reasons: OutOfSyncReasons }),
-  /*@__PURE__*/ S.Struct({ notVisible: NotVisibleMarker }),
-]);
+const OutOfSyncReasonsView = /*@__PURE__*/ __L.at(__c11, 4);
 export interface RemediationIssueDetails {
   issueType?: string;
   message?: string;
   correctiveAction?: string;
 }
-const RemediationIssueDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issueType: S.optional(S.String),
-    message: S.optional(S.String),
-    correctiveAction: S.optional(S.String),
-  }),
-).annotate({ identifier: "RemediationIssueDetails" }) as any as S.Schema<RemediationIssueDetails>;
+const RemediationIssueDetails = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<RemediationIssueDetails>;
 export type RemediationIssues = { [key in PolicyFirewallType]?: RemediationIssueDetails };
-const RemediationIssues = /*@__PURE__*/ S.Record(
-  PolicyFirewallType,
-  /*@__PURE__*/ RemediationIssueDetails.pipe(S.optional),
-);
+const RemediationIssues = /*@__PURE__*/ __L.at(__c11, 6);
 export type RemediationIssuesView =
   | { issues: { [key: string]: RemediationIssueDetails | undefined }; notVisible?: never }
   | { issues?: never; notVisible: NotVisibleMarker };
-const RemediationIssuesView = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ issues: RemediationIssues }),
-  /*@__PURE__*/ S.Struct({ notVisible: NotVisibleMarker }),
-]);
+const RemediationIssuesView = /*@__PURE__*/ __L.at(__c11, 7);
 export interface ResourceSynchronizationStatusSummary {
   synchronizationStatus: SynchronizationStatus;
   accountId: string;
@@ -1568,37 +1010,20 @@ export interface ResourceSynchronizationStatusSummary {
   remediationIssues?: RemediationIssuesView;
   evaluatedAt?: Date;
 }
-const ResourceSynchronizationStatusSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    synchronizationStatus: SynchronizationStatus,
-    accountId: S.String,
-    resourceArn: S.String,
-    deploymentArn: S.optional(S.String),
-    resourceType: S.optional(ResourceType),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    outOfSyncReasons: S.optional(OutOfSyncReasonsView),
-    remediationIssues: S.optional(RemediationIssuesView),
-    evaluatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "ResourceSynchronizationStatusSummary",
-}) as any as S.Schema<ResourceSynchronizationStatusSummary>;
+const ResourceSynchronizationStatusSummary = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ResourceSynchronizationStatusSummary>;
 export type ResourceSynchronizationStatusSummaryList = ResourceSynchronizationStatusSummary[];
-const ResourceSynchronizationStatusSummaryList = /*@__PURE__*/ S.Array(
-  ResourceSynchronizationStatusSummary,
-);
+const ResourceSynchronizationStatusSummaryList = /*@__PURE__*/ __L.at(__c12, 1);
 export interface ListAggregateResourceSynchronizationStatusesOutput {
   nextToken?: string;
   resourceSynchronizationStatuses: ResourceSynchronizationStatusSummary[];
 }
-const ListAggregateResourceSynchronizationStatusesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    resourceSynchronizationStatuses: ResourceSynchronizationStatusSummaryList,
-  }),
-).annotate({
-  identifier: "ListAggregateResourceSynchronizationStatusesOutput",
-}) as any as S.Schema<ListAggregateResourceSynchronizationStatusesOutput>;
+const ListAggregateResourceSynchronizationStatusesOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListAggregateResourceSynchronizationStatusesOutput>;
 export type EntityStatusFilter = "ACTIVE" | "DRAFT" | "DISABLED" | (string & {});
 const EntityStatusFilter = S.String;
 
@@ -1607,13 +1032,10 @@ export interface ListDeploymentsInput {
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListDeploymentsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/deployments" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListDeploymentsInput" }) as any as S.Schema<ListDeploymentsInput>;
+const ListDeploymentsInput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListDeploymentsInput>;
 export interface DeploymentSummary {
   deploymentId: string;
   deploymentArn: string;
@@ -1623,70 +1045,40 @@ export interface DeploymentSummary {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const DeploymentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.String,
-    deploymentArn: S.String,
-    deploymentName: S.optional(S.String),
-    status: S.optional(EntityStatus),
-    version: S.optional(S.String),
-    hasPublishedVersion: S.optional(S.Boolean),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "DeploymentSummary" }) as any as S.Schema<DeploymentSummary>;
+const DeploymentSummary = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<DeploymentSummary>;
 export type DeploymentSummaryList = DeploymentSummary[];
-const DeploymentSummaryList = /*@__PURE__*/ S.Array(DeploymentSummary);
+const DeploymentSummaryList = /*@__PURE__*/ __L.at(__c12, 5);
 export interface ListDeploymentsOutput {
   nextToken?: string;
   deployments: DeploymentSummary[];
 }
-const ListDeploymentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), deployments: DeploymentSummaryList }),
-).annotate({ identifier: "ListDeploymentsOutput" }) as any as S.Schema<ListDeploymentsOutput>;
+const ListDeploymentsOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListDeploymentsOutput>;
 export interface ListDeploymentSnapshotsInput {
   deploymentIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListDeploymentSnapshotsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/deployments/{deploymentIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDeploymentSnapshotsInput",
-}) as any as S.Schema<ListDeploymentSnapshotsInput>;
+const ListDeploymentSnapshotsInput = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListDeploymentSnapshotsInput>;
 export interface ListDeploymentSnapshotsOutput {
   nextToken?: string;
   snapshots: DeploymentSummary[];
 }
-const ListDeploymentSnapshotsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), snapshots: DeploymentSummaryList }),
-).annotate({
-  identifier: "ListDeploymentSnapshotsOutput",
-}) as any as S.Schema<ListDeploymentSnapshotsOutput>;
+const ListDeploymentSnapshotsOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListDeploymentSnapshotsOutput>;
 export interface ListPoliciesInput {
   maxResults?: number;
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListPoliciesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/policies" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListPoliciesInput" }) as any as S.Schema<ListPoliciesInput>;
+const ListPoliciesInput = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ListPoliciesInput>;
 export interface PolicySummary {
   policyId: string;
   policyArn: string;
@@ -1698,75 +1090,41 @@ export interface PolicySummary {
   priority?: number;
   updatedAt?: Date;
 }
-const PolicySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyId: S.String,
-    policyArn: S.String,
-    policyName: S.optional(S.String),
-    status: S.optional(EntityStatus),
-    version: S.optional(S.String),
-    hasPublishedVersion: S.optional(S.Boolean),
-    firewallType: S.optional(PolicyFirewallType),
-    priority: S.optional(S.Number),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "PolicySummary" }) as any as S.Schema<PolicySummary>;
+const PolicySummary = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<PolicySummary>;
 export type PolicySummaryList = PolicySummary[];
-const PolicySummaryList = /*@__PURE__*/ S.Array(PolicySummary);
+const PolicySummaryList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface ListPoliciesOutput {
   nextToken?: string;
   policies: PolicySummary[];
 }
-const ListPoliciesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), policies: PolicySummaryList }),
-).annotate({ identifier: "ListPoliciesOutput" }) as any as S.Schema<ListPoliciesOutput>;
+const ListPoliciesOutput = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ListPoliciesOutput>;
 export interface ListPolicySnapshotsInput {
   policyIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListPolicySnapshotsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/policies/{policyIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListPolicySnapshotsInput" }) as any as S.Schema<ListPolicySnapshotsInput>;
+const ListPolicySnapshotsInput = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListPolicySnapshotsInput>;
 export interface ListPolicySnapshotsOutput {
   nextToken?: string;
   snapshots: PolicySummary[];
 }
-const ListPolicySnapshotsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), snapshots: PolicySummaryList }),
-).annotate({
-  identifier: "ListPolicySnapshotsOutput",
-}) as any as S.Schema<ListPolicySnapshotsOutput>;
+const ListPolicySnapshotsOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListPolicySnapshotsOutput>;
 export type ResourceIdentifier = string;
 export interface ListResourceAssociationsInput {
   resourceIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListResourceAssociationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceIdentifier: S.String.pipe(T.HttpQuery("resourceIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/resource-associations" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListResourceAssociationsInput",
-}) as any as S.Schema<ListResourceAssociationsInput>;
+const ListResourceAssociationsInput = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListResourceAssociationsInput>;
 export type ServiceResourceType =
   | "Rule"
   | "Template"
@@ -1780,40 +1138,27 @@ export interface ResourceAssociation {
   arn: string;
   resourceType: ServiceResourceType;
 }
-const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, resourceType: ServiceResourceType }),
-).annotate({ identifier: "ResourceAssociation" }) as any as S.Schema<ResourceAssociation>;
+const ResourceAssociation = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ResourceAssociation>;
 export type ResourceAssociationList = ResourceAssociation[];
-const ResourceAssociationList = /*@__PURE__*/ S.Array(ResourceAssociation);
+const ResourceAssociationList = /*@__PURE__*/ __L.at(__c14, 1);
 export interface ListResourceAssociationsOutput {
   nextToken?: string;
   resourceAssociations: ResourceAssociation[];
 }
-const ListResourceAssociationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), resourceAssociations: ResourceAssociationList }),
-).annotate({
-  identifier: "ListResourceAssociationsOutput",
-}) as any as S.Schema<ListResourceAssociationsOutput>;
+const ListResourceAssociationsOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListResourceAssociationsOutput>;
 export interface ListResourceSynchronizationStatusesInput {
   deploymentIdentifier: string;
   synchronizationStatus?: SynchronizationStatus;
   maxResults?: number;
   nextToken?: string;
 }
-const ListResourceSynchronizationStatusesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentIdentifier: S.String.pipe(T.HttpQuery("deploymentIdentifier")),
-    synchronizationStatus: S.optional(SynchronizationStatus).pipe(
-      T.HttpQuery("synchronizationStatus"),
-    ),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/resource-sync-statuses" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListResourceSynchronizationStatusesInput",
-}) as any as S.Schema<ListResourceSynchronizationStatusesInput>;
+const ListResourceSynchronizationStatusesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListResourceSynchronizationStatusesInput>;
 export interface ListResourceSynchronizationStatusesOutput {
   nextToken?: string;
   resourceSynchronizationStatuses: ResourceSynchronizationStatusSummary[];
@@ -1825,13 +1170,7 @@ export interface ListRulesInput {
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListRulesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/rules" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListRulesInput" }) as any as S.Schema<ListRulesInput>;
+const ListRulesInput = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ListRulesInput>;
 export interface RuleSummary {
   ruleId: string;
   ruleArn: string;
@@ -1843,68 +1182,37 @@ export interface RuleSummary {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const RuleSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleId: S.String,
-    ruleArn: S.String,
-    ruleName: S.String,
-    firewallType: S.optional(RuleFirewallType),
-    ruleType: S.optional(RuleType),
-    status: S.optional(EntityStatus),
-    version: S.optional(S.String),
-    hasPublishedVersion: S.optional(S.Boolean),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "RuleSummary" }) as any as S.Schema<RuleSummary>;
+const RuleSummary = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<RuleSummary>;
 export type RuleSummaryList = RuleSummary[];
-const RuleSummaryList = /*@__PURE__*/ S.Array(RuleSummary);
+const RuleSummaryList = /*@__PURE__*/ __L.at(__c14, 6);
 export interface ListRulesOutput {
   nextToken?: string;
   rules: RuleSummary[];
 }
-const ListRulesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), rules: RuleSummaryList }),
-).annotate({ identifier: "ListRulesOutput" }) as any as S.Schema<ListRulesOutput>;
+const ListRulesOutput = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<ListRulesOutput>;
 export interface ListRuleSnapshotsInput {
   ruleIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListRuleSnapshotsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/rules/{ruleIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListRuleSnapshotsInput" }) as any as S.Schema<ListRuleSnapshotsInput>;
+const ListRuleSnapshotsInput = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListRuleSnapshotsInput>;
 export interface ListRuleSnapshotsOutput {
   nextToken?: string;
   snapshots: RuleSummary[];
 }
-const ListRuleSnapshotsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), snapshots: RuleSummaryList }),
-).annotate({ identifier: "ListRuleSnapshotsOutput" }) as any as S.Schema<ListRuleSnapshotsOutput>;
+const ListRuleSnapshotsOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListRuleSnapshotsOutput>;
 export interface ListScopesInput {
   maxResults?: number;
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListScopesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/scopes" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListScopesInput" }) as any as S.Schema<ListScopesInput>;
+const ListScopesInput = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ListScopesInput>;
 export interface ScopeSummary {
   scopeId: string;
   scopeArn: string;
@@ -1914,82 +1222,51 @@ export interface ScopeSummary {
   hasPublishedVersion?: boolean;
   updatedAt?: Date;
 }
-const ScopeSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopeId: S.String,
-    scopeArn: S.String,
-    scopeName: S.optional(S.String),
-    status: S.optional(EntityStatus),
-    version: S.optional(S.String),
-    hasPublishedVersion: S.optional(S.Boolean),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ScopeSummary" }) as any as S.Schema<ScopeSummary>;
+const ScopeSummary = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<ScopeSummary>;
 export type ScopeSummaryList = ScopeSummary[];
-const ScopeSummaryList = /*@__PURE__*/ S.Array(ScopeSummary);
+const ScopeSummaryList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListScopesOutput {
   nextToken?: string;
   scopes: ScopeSummary[];
 }
-const ListScopesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), scopes: ScopeSummaryList }),
-).annotate({ identifier: "ListScopesOutput" }) as any as S.Schema<ListScopesOutput>;
+const ListScopesOutput = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ListScopesOutput>;
 export interface ListScopeSnapshotsInput {
   scopeIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListScopeSnapshotsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/scopes/{scopeIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListScopeSnapshotsInput" }) as any as S.Schema<ListScopeSnapshotsInput>;
+const ListScopeSnapshotsInput = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListScopeSnapshotsInput>;
 export interface ListScopeSnapshotsOutput {
   nextToken?: string;
   snapshots: ScopeSummary[];
 }
-const ListScopeSnapshotsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), snapshots: ScopeSummaryList }),
-).annotate({ identifier: "ListScopeSnapshotsOutput" }) as any as S.Schema<ListScopeSnapshotsOutput>;
+const ListScopeSnapshotsOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListScopeSnapshotsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface ListTemplatesInput {
   maxResults?: number;
   nextToken?: string;
   status?: EntityStatusFilter;
 }
-const ListTemplatesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/templates" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListTemplatesInput" }) as any as S.Schema<ListTemplatesInput>;
+const ListTemplatesInput = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ListTemplatesInput>;
 export interface TemplateSummary {
   templateId: string;
   templateArn: string;
@@ -2000,59 +1277,31 @@ export interface TemplateSummary {
   firewallType?: TemplateFirewallType;
   updatedAt?: Date;
 }
-const TemplateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateId: S.String,
-    templateArn: S.String,
-    templateName: S.String,
-    status: S.optional(EntityStatus),
-    version: S.optional(S.String),
-    hasPublishedVersion: S.optional(S.Boolean),
-    firewallType: S.optional(TemplateFirewallType),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "TemplateSummary" }) as any as S.Schema<TemplateSummary>;
+const TemplateSummary = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<TemplateSummary>;
 export type TemplateSummaryList = TemplateSummary[];
-const TemplateSummaryList = /*@__PURE__*/ S.Array(TemplateSummary);
+const TemplateSummaryList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ListTemplatesOutput {
   nextToken?: string;
   templates: TemplateSummary[];
 }
-const ListTemplatesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), templates: TemplateSummaryList }),
-).annotate({ identifier: "ListTemplatesOutput" }) as any as S.Schema<ListTemplatesOutput>;
+const ListTemplatesOutput = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ListTemplatesOutput>;
 export interface ListTemplateSnapshotsInput {
   templateIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListTemplateSnapshotsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/templates/{templateIdentifier}/snapshots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTemplateSnapshotsInput",
-}) as any as S.Schema<ListTemplateSnapshotsInput>;
+const ListTemplateSnapshotsInput = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListTemplateSnapshotsInput>;
 export interface ListTemplateSnapshotsOutput {
   nextToken?: string;
   snapshots: TemplateSummary[];
 }
-const ListTemplateSnapshotsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), snapshots: TemplateSummaryList }),
-).annotate({
-  identifier: "ListTemplateSnapshotsOutput",
-}) as any as S.Schema<ListTemplateSnapshotsOutput>;
+const ListTemplateSnapshotsOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListTemplateSnapshotsOutput>;
 export type AccountIdList = string[];
 const AccountIdList = DeploymentPolicyArnList as any as S.Schema<AccountIdList>;
 export type OrganizationalUnitIdList = string[];
@@ -2062,43 +1311,29 @@ export interface AdminScopeSelectionInput {
   accounts?: string[];
   organizationalUnits?: string[];
 }
-const AdminScopeSelectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accounts: S.optional(AccountIdList),
-    organizationalUnits: S.optional(OrganizationalUnitIdList),
-  }),
-).annotate({ identifier: "AdminScopeSelectionInput" }) as any as S.Schema<AdminScopeSelectionInput>;
+const AdminScopeSelectionInput = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<AdminScopeSelectionInput>;
 export type AdminScopeFilterInput =
   | { includeAll: Record<string, never>; includeOnly?: never; excludeOnly?: never }
   | { includeAll?: never; includeOnly: AdminScopeSelectionInput; excludeOnly?: never }
   | { includeAll?: never; includeOnly?: never; excludeOnly: AdminScopeSelectionInput };
-const AdminScopeFilterInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
-  /*@__PURE__*/ S.Struct({ includeOnly: AdminScopeSelectionInput }),
-  /*@__PURE__*/ S.Struct({ excludeOnly: AdminScopeSelectionInput }),
-]);
+const AdminScopeFilterInput = /*@__PURE__*/ __L.at(__c17, 1);
 export interface AdminScopeInput {
   scopeFilter?: AdminScopeFilterInput;
   firewallTypeScope?: AdminFirewallTypeScope;
 }
-const AdminScopeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopeFilter: S.optional(AdminScopeFilterInput),
-    firewallTypeScope: S.optional(AdminFirewallTypeScope),
-  }),
-).annotate({ identifier: "AdminScopeInput" }) as any as S.Schema<AdminScopeInput>;
+const AdminScopeInput = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<AdminScopeInput>;
 export interface PutAdminAccountRequest {
   accountId: string;
   priority: number;
   adminScope?: AdminScopeInput;
 }
-const PutAdminAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String,
-    priority: S.Number,
-    adminScope: S.optional(AdminScopeInput),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/admin-account" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "PutAdminAccountRequest" }) as any as S.Schema<PutAdminAccountRequest>;
+const PutAdminAccountRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<PutAdminAccountRequest>;
 export interface PutAdminAccountResponse {
   adminAccountDetails?: AdminAccountDetails;
 }
@@ -2107,11 +1342,7 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
 const TagResourceOutput = DeleteAdminAccountResponse as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
@@ -2120,14 +1351,7 @@ export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
 const UntagResourceOutput = DeleteAdminAccountResponse as any as S.Schema<UntagResourceOutput>;
 export interface UpdateDeploymentInput {
@@ -2140,27 +1364,10 @@ export interface UpdateDeploymentInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdateDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
-    updateToken: S.String,
-    deploymentDescription: S.optional(S.String),
-    deploymentConfiguration: S.optional(DeploymentConfiguration),
-    associatedPolicyList: S.optional(PolicyReferenceList),
-    associatedScopeList: S.optional(ScopeReferenceList),
-    isPublished: S.Boolean,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/deployments/{deploymentIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateDeploymentInput" }) as any as S.Schema<UpdateDeploymentInput>;
+const UpdateDeploymentInput = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<UpdateDeploymentInput>;
 export interface UpdateDeploymentOutput {
   deploymentId: string;
   deploymentArn: string;
@@ -2189,27 +1396,7 @@ export interface UpdatePolicyInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdatePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")),
-    updateToken: S.String,
-    policyDescription: S.optional(S.String),
-    priority: S.optional(S.Number),
-    associatedTemplateAndRuleList: S.optional(TemplateAndRuleReferenceList),
-    policyConfiguration: S.optional(PolicyConfiguration),
-    isPublished: S.Boolean,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/policies/{policyIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdatePolicyInput" }) as any as S.Schema<UpdatePolicyInput>;
+const UpdatePolicyInput = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<UpdatePolicyInput>;
 export interface UpdatePolicyOutput {
   policyId: string;
   policyArn: string;
@@ -2236,26 +1423,7 @@ export interface UpdateRuleInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdateRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
-    updateToken: S.String,
-    ruleType: S.optional(RuleType),
-    ruleDescription: S.optional(S.String),
-    configuration: S.optional(S.Any),
-    isPublished: S.Boolean,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/rules/{ruleIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateRuleInput" }) as any as S.Schema<UpdateRuleInput>;
+const UpdateRuleInput = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<UpdateRuleInput>;
 export interface UpdateRuleOutput {
   ruleId: string;
   ruleArn: string;
@@ -2280,25 +1448,7 @@ export interface UpdateScopeInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdateScopeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
-    updateToken: S.String,
-    scopeDescription: S.optional(S.String),
-    scopeConfiguration: S.optional(ScopeConfiguration),
-    isPublished: S.Boolean,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/scopes/{scopeIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateScopeInput" }) as any as S.Schema<UpdateScopeInput>;
+const UpdateScopeInput = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<UpdateScopeInput>;
 export interface UpdateScopeOutput {
   scopeId: string;
   scopeArn: string;
@@ -2321,25 +1471,7 @@ export interface UpdateTemplateInput {
   isPublished: boolean;
   clientToken?: string;
 }
-const UpdateTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
-    updateToken: S.String,
-    templateDescription: S.optional(S.String),
-    associatedRuleList: S.optional(RuleReferenceList),
-    isPublished: S.Boolean,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/templates/{templateIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateTemplateInput" }) as any as S.Schema<UpdateTemplateInput>;
+const UpdateTemplateInput = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<UpdateTemplateInput>;
 export interface UpdateTemplateOutput {
   templateId: string;
   templateArn: string;
@@ -2366,11 +1498,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c18, 4);
 export type CreateDeploymentError =
   | AccessDeniedException
   | ConflictException
@@ -3908,3 +3041,1451 @@ export const updateTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTemplate",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ enableCrossAccountVisibility: S.Boolean })).annotate({
+        identifier: "DeploymentConfiguration",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ policyIdentifier: S.String })).annotate({
+        identifier: "PolicyReference",
+      });
+    case 2:
+      return S.Array(PolicyReference);
+    case 3:
+      return S.suspend(() => S.Struct({ scopeIdentifier: S.String })).annotate({
+        identifier: "ScopeReference",
+      });
+    case 4:
+      return S.Array(ScopeReference);
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          deploymentName: S.String,
+          deploymentDescription: S.optional(S.String),
+          deploymentConfiguration: DeploymentConfiguration,
+          associatedPolicyList: PolicyReferenceList,
+          associatedScopeList: ScopeReferenceList,
+          isPublished: S.optional(S.Boolean),
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/deployments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateDeploymentInput" });
+    case 7:
+      return S.suspend(() => S.Struct({ policyArn: S.String })).annotate({
+        identifier: "AssociatedPolicy",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AssociatedPolicy);
+    case 1:
+      return S.suspend(() => S.Struct({ scopeArn: S.String })).annotate({
+        identifier: "AssociatedScope",
+      });
+    case 2:
+      return S.Array(AssociatedScope);
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.Array(ScopeResourceType);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          firewallType: PolicyFirewallType,
+          policyArns: DeploymentPolicyArnList,
+          inScopeResourceTypes: DeploymentResourceTypeList,
+        }),
+      ).annotate({ identifier: "DeploymentCoverageEntry" });
+    case 6:
+      return S.Array(DeploymentCoverageEntry);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ code: S.String, policyArn: S.String, message: S.String }),
+      ).annotate({ identifier: "DeploymentWarningEntry" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DeploymentWarningEntry);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String,
+          deploymentArn: S.String,
+          deploymentName: S.String,
+          deploymentDescription: S.optional(S.String),
+          status: EntityStatus,
+          deploymentConfiguration: S.optional(DeploymentConfiguration),
+          associatedPolicyList: AssociatedPolicyList,
+          associatedScopeList: AssociatedScopeList,
+          version: S.String,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          deploymentCoverage: S.optional(DeploymentCoverageList),
+          warnings: S.optional(DeploymentWarningList),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CreateDeploymentOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/deployments/{deploymentIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDeploymentSnapshotInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String,
+          deploymentArn: S.String,
+          deploymentName: S.String,
+          deploymentDescription: S.optional(S.String),
+          status: EntityStatus,
+          deploymentConfiguration: S.optional(DeploymentConfiguration),
+          associatedPolicyList: AssociatedPolicyList,
+          associatedScopeList: AssociatedScopeList,
+          version: S.String,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "CreateDeploymentSnapshotOutput",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ templateIdentifier: S.String }),
+        /*@__PURE__*/ S.Struct({ ruleIdentifier: S.String }),
+      ]);
+    case 5:
+      return S.Array(TemplateOrRuleReference);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          existingCustomerWebACLResolution: ExistingCustomerWebACLResolution,
+          conflictResolution: WAFConflictResolutionOptions,
+        }),
+      ).annotate({ identifier: "WafConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          remediationEnabled: S.Boolean,
+          resourcesCleanUp: S.Boolean,
+          wafConfig: S.optional(WafConfig),
+        }),
+      ).annotate({ identifier: "PolicyConfiguration" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          policyName: S.String,
+          policyDescription: S.optional(S.String),
+          priority: S.Number,
+          associatedTemplateAndRuleList: S.optional(TemplateAndRuleReferenceList),
+          firewallType: PolicyFirewallType,
+          policyConfiguration: PolicyConfiguration,
+          isPublished: S.optional(S.Boolean),
+          tags: S.optional(TagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/policies" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreatePolicyInput" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ templateArn: S.String }),
+        /*@__PURE__*/ S.Struct({ ruleArn: S.String }),
+      ]);
+    case 2:
+      return S.Array(AssociatedTemplateOrRule);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyId: S.String,
+          policyArn: S.String,
+          policyName: S.String,
+          policyDescription: S.optional(S.String),
+          status: EntityStatus,
+          priority: S.Number,
+          associatedTemplateAndRuleList: AssociatedTemplateAndRuleList,
+          version: S.String,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          firewallType: PolicyFirewallType,
+          policyConfiguration: S.optional(PolicyConfiguration),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CreatePolicyOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/policies/{policyIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreatePolicySnapshotInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyId: S.String,
+          policyArn: S.String,
+          policyName: S.String,
+          policyDescription: S.optional(S.String),
+          status: EntityStatus,
+          priority: S.Number,
+          associatedTemplateAndRuleList: AssociatedTemplateAndRuleList,
+          version: S.String,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          firewallType: PolicyFirewallType,
+          policyConfiguration: S.optional(PolicyConfiguration),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "CreatePolicySnapshotOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          ruleName: S.String,
+          firewallType: RuleFirewallType,
+          ruleType: RuleType,
+          ruleDescription: S.optional(S.String),
+          configuration: S.Any,
+          isPublished: S.optional(S.Boolean),
+          tags: S.optional(TagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/rules" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateRuleInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ruleId: S.String,
+          ruleArn: S.String,
+          ruleName: S.String,
+          firewallType: RuleFirewallType,
+          ruleType: S.optional(RuleType),
+          ruleDescription: S.optional(S.String),
+          configuration: S.Any,
+          status: EntityStatus,
+          version: S.String,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CreateRuleOutput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/rules/{ruleIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateRuleSnapshotInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountIds: S.optional(AccountList),
+          organizationalUnits: S.optional(OrganizationalUnitList),
+        }),
+      ).annotate({ identifier: "AccountSet" });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
+        /*@__PURE__*/ S.Struct({ include: AccountSet }),
+        /*@__PURE__*/ S.Struct({ exclude: AccountSet }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ scheme: S.optional(Scheme), ipAddressType: S.optional(IpAddressType) }),
+      ).annotate({ identifier: "AlbConfiguration" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ tags: StringMap }),
+        /*@__PURE__*/ S.Struct({ albConfig: AlbConfiguration }),
+      ]);
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => ResourceLogicalExpression).annotate({
+          identifier: "ResourceLogicalExpression",
+        }),
+      );
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ criteria: ResourceCriteria }),
+        /*@__PURE__*/ S.Struct({
+          and: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpressionList).annotate({
+            identifier: "ResourceLogicalExpressionList",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          or: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpressionList).annotate({
+            identifier: "ResourceLogicalExpressionList",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          not: /*@__PURE__*/ S.suspend(() => ResourceLogicalExpression).annotate({
+            identifier: "ResourceLogicalExpression",
+          }),
+        }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          explicitArns: S.optional(ResourceArnList),
+          expression: S.optional(ResourceLogicalExpression),
+        }),
+      ).annotate({ identifier: "ResourceSet" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          includeAll: S.optional(S.Boolean),
+          include: S.optional(ResourceSet),
+          exclude: S.optional(ResourceSet),
+        }),
+      ).annotate({ identifier: "ResourceScope" });
+    case 1:
+      return S.Record(ScopeResourceType, /*@__PURE__*/ ResourceScope.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ accountFilter: S.optional(AccountFilter), resourceScopes: ResourceScopeMap }),
+      ).annotate({ identifier: "ScopeConfiguration" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          scopeName: S.String,
+          scopeDescription: S.optional(S.String),
+          scopeConfiguration: ScopeConfiguration,
+          isPublished: S.optional(S.Boolean),
+          tags: S.optional(TagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/scopes" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateScopeInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          scopeId: S.String,
+          scopeArn: S.String,
+          scopeName: S.String,
+          scopeDescription: S.optional(S.String),
+          scopeConfiguration: S.optional(ScopeConfiguration),
+          status: EntityStatus,
+          version: S.String,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CreateScopeOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/scopes/{scopeIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateScopeSnapshotInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          scopeId: S.String,
+          scopeArn: S.String,
+          scopeName: S.String,
+          scopeDescription: S.optional(S.String),
+          scopeConfiguration: S.optional(ScopeConfiguration),
+          status: EntityStatus,
+          version: S.String,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "CreateScopeSnapshotOutput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ ruleIdentifier: S.String })).annotate({
+        identifier: "RuleReference",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(RuleReference);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          templateName: S.String,
+          templateDescription: S.optional(S.String),
+          associatedRuleList: RuleReferenceList,
+          firewallType: TemplateFirewallType,
+          isPublished: S.optional(S.Boolean),
+          tags: S.optional(TagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/templates" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTemplateInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ ruleArn: S.String })).annotate({
+        identifier: "AssociatedRule",
+      });
+    case 3:
+      return S.Array(AssociatedRule);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          templateId: S.String,
+          templateArn: S.String,
+          templateName: S.String,
+          templateDescription: S.optional(S.String),
+          status: EntityStatus,
+          version: S.String,
+          associatedRuleList: AssociatedRuleList,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          firewallType: TemplateFirewallType,
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CreateTemplateOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/templates/{templateIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateTemplateSnapshotInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          templateId: S.String,
+          templateArn: S.String,
+          templateName: S.String,
+          templateDescription: S.optional(S.String),
+          status: EntityStatus,
+          version: S.String,
+          associatedRuleList: AssociatedRuleList,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          firewallType: TemplateFirewallType,
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "CreateTemplateSnapshotOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/admin-account/{accountId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAdminAccountRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAdminAccountResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/deployments/{deploymentIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDeploymentInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/policies/{policyIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeletePolicyInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/rules/{ruleIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteRuleInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/scopes/{scopeIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteScopeInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/templates/{templateIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteTemplateInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          prompt: SensitiveString,
+          ruleFirewallType: RuleFirewallType,
+          ruleType: RuleType,
+          wafConfigDataType: S.optional(WAFConfigDataType),
+          currentConfiguration: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/GenerateRuleConfiguration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GenerateRuleConfigurationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ configuration: S.String, description: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GenerateRuleConfigurationResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/admin-account/{accountId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAdminAccountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String,
+          name: S.optional(SensitiveString),
+          email: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "AccountReference" });
+    case 2:
+      return S.Array(AccountReference);
+    case 3:
+      return S.suspend(() => S.Struct({ ouId: S.String, name: S.optional(S.String) })).annotate({
+        identifier: "OrganizationalUnitReference",
+      });
+    case 4:
+      return S.Array(OrganizationalUnitReference);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accounts: S.optional(AccountReferenceList),
+          organizationalUnits: S.optional(OrganizationalUnitReferenceList),
+        }),
+      ).annotate({ identifier: "AdminScopeSelection" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
+        /*@__PURE__*/ S.Struct({ includeOnly: AdminScopeSelection }),
+        /*@__PURE__*/ S.Struct({ excludeOnly: AdminScopeSelection }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          allFirewallTypesEnabled: S.optional(S.Boolean),
+          firewallTypes: S.optional(FirewallTypeList),
+        }),
+      ).annotate({ identifier: "AdminFirewallTypeScope" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scopeFilter: S.optional(AdminScopeFilter),
+          firewallTypeScope: S.optional(AdminFirewallTypeScope),
+        }),
+      ).annotate({ identifier: "AdminScope" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          adminAccount: S.String,
+          priority: S.Number,
+          adminScope: S.optional(AdminScope),
+          status: S.optional(AdminAccountStatus),
+        }),
+      ).annotate({ identifier: "AdminAccountDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ adminAccountDetails: S.optional(AdminAccountDetails) }),
+      ).annotate({ identifier: "GetAdminAccountResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/deployments/{deploymentIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDeploymentInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String,
+          deploymentArn: S.String,
+          deploymentName: S.String,
+          deploymentDescription: S.optional(S.String),
+          status: EntityStatus,
+          deploymentConfiguration: S.optional(DeploymentConfiguration),
+          associatedPolicyList: AssociatedPolicyList,
+          associatedScopeList: AssociatedScopeList,
+          version: S.String,
+          updateToken: S.optional(S.String),
+          isSnapshot: S.optional(S.Boolean),
+          hasPublishedVersion: S.optional(S.Boolean),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          deploymentCoverage: S.optional(DeploymentCoverageList),
+          warnings: S.optional(DeploymentWarningList),
+        }),
+      ).annotate({ identifier: "GetDeploymentOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/policies/{policyIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetPolicyInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/rules/{ruleIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetRuleInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/scopes/{scopeIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetScopeInput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/templates/{templateIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetTemplateInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/admin-accounts" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListAdminAccountsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String,
+          priority: S.optional(S.Number),
+          name: S.optional(SensitiveString),
+          email: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "AdminAccountSummary" });
+    case 3:
+      return S.Array(AdminAccountSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), adminAccounts: AdminAccountSummaryList }),
+      ).annotate({
+        identifier: "ListAdminAccountsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          synchronizationStatus: S.optional(SynchronizationStatus).pipe(
+            T.HttpQuery("synchronizationStatus"),
+          ),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/aggregate-sync-statuses" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAggregateResourceSynchronizationStatusesInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          configurationName: S.optional(S.String),
+          expectedValue: S.optional(S.String),
+          actualValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigurationIssue" });
+    case 7:
+      return S.Array(ConfigurationIssue);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          incorrectSingleValueConfigurations: S.optional(ConfigurationIssueList),
+          missingAppendableConfigurationValues: S.optional(ConfigurationIssueList),
+          unexpectedAppendableConfigurationValues: S.optional(ConfigurationIssueList),
+          incorrectAppendableConfigurationOrder: S.optional(ConfigurationIssueList),
+          missingMergeableConfigurationValues: S.optional(ConfigurationIssueList),
+          unexpectedMergeableConfigurationValues: S.optional(ConfigurationIssueList),
+        }),
+      ).annotate({ identifier: "InvalidFirewallReasons" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ missingFirewall: S.String }),
+        /*@__PURE__*/ S.Struct({ invalidFirewall: InvalidFirewallReasons }),
+      ]);
+    case 2:
+      return S.Record(PolicyFirewallType, /*@__PURE__*/ FirewallSyncReason.pipe(S.optional));
+    case 3:
+      return S.suspend(() => S.Struct({ reason: S.String })).annotate({
+        identifier: "NotVisibleMarker",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ reasons: OutOfSyncReasons }),
+        /*@__PURE__*/ S.Struct({ notVisible: NotVisibleMarker }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          issueType: S.optional(S.String),
+          message: S.optional(S.String),
+          correctiveAction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RemediationIssueDetails" });
+    case 6:
+      return S.Record(PolicyFirewallType, /*@__PURE__*/ RemediationIssueDetails.pipe(S.optional));
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ issues: RemediationIssues }),
+        /*@__PURE__*/ S.Struct({ notVisible: NotVisibleMarker }),
+      ]);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          synchronizationStatus: SynchronizationStatus,
+          accountId: S.String,
+          resourceArn: S.String,
+          deploymentArn: S.optional(S.String),
+          resourceType: S.optional(ResourceType),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          outOfSyncReasons: S.optional(OutOfSyncReasonsView),
+          remediationIssues: S.optional(RemediationIssuesView),
+          evaluatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "ResourceSynchronizationStatusSummary",
+      });
+    case 1:
+      return S.Array(ResourceSynchronizationStatusSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          resourceSynchronizationStatuses: ResourceSynchronizationStatusSummaryList,
+        }),
+      ).annotate({
+        identifier: "ListAggregateResourceSynchronizationStatusesOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/deployments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListDeploymentsInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String,
+          deploymentArn: S.String,
+          deploymentName: S.optional(S.String),
+          status: S.optional(EntityStatus),
+          version: S.optional(S.String),
+          hasPublishedVersion: S.optional(S.Boolean),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "DeploymentSummary" });
+    case 5:
+      return S.Array(DeploymentSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), deployments: DeploymentSummaryList }),
+      ).annotate({ identifier: "ListDeploymentsOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/deployments/{deploymentIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListDeploymentSnapshotsInput",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), snapshots: DeploymentSummaryList }),
+      ).annotate({
+        identifier: "ListDeploymentSnapshotsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/policies" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListPoliciesInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          policyId: S.String,
+          policyArn: S.String,
+          policyName: S.optional(S.String),
+          status: S.optional(EntityStatus),
+          version: S.optional(S.String),
+          hasPublishedVersion: S.optional(S.Boolean),
+          firewallType: S.optional(PolicyFirewallType),
+          priority: S.optional(S.Number),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "PolicySummary" });
+    case 3:
+      return S.Array(PolicySummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), policies: PolicySummaryList }),
+      ).annotate({ identifier: "ListPoliciesOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/policies/{policyIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListPolicySnapshotsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), snapshots: PolicySummaryList }),
+      ).annotate({
+        identifier: "ListPolicySnapshotsOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          resourceIdentifier: S.String.pipe(T.HttpQuery("resourceIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/resource-associations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListResourceAssociationsInput",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String, resourceType: ServiceResourceType }),
+      ).annotate({ identifier: "ResourceAssociation" });
+    case 1:
+      return S.Array(ResourceAssociation);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          resourceAssociations: ResourceAssociationList,
+        }),
+      ).annotate({
+        identifier: "ListResourceAssociationsOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentIdentifier: S.String.pipe(T.HttpQuery("deploymentIdentifier")),
+          synchronizationStatus: S.optional(SynchronizationStatus).pipe(
+            T.HttpQuery("synchronizationStatus"),
+          ),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/resource-sync-statuses" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListResourceSynchronizationStatusesInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/rules" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListRulesInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ruleId: S.String,
+          ruleArn: S.String,
+          ruleName: S.String,
+          firewallType: S.optional(RuleFirewallType),
+          ruleType: S.optional(RuleType),
+          status: S.optional(EntityStatus),
+          version: S.optional(S.String),
+          hasPublishedVersion: S.optional(S.Boolean),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "RuleSummary" });
+    case 6:
+      return S.Array(RuleSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), rules: RuleSummaryList }),
+      ).annotate({ identifier: "ListRulesOutput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/rules/{ruleIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListRuleSnapshotsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), snapshots: RuleSummaryList }),
+      ).annotate({ identifier: "ListRuleSnapshotsOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/scopes" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListScopesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scopeId: S.String,
+          scopeArn: S.String,
+          scopeName: S.optional(S.String),
+          status: S.optional(EntityStatus),
+          version: S.optional(S.String),
+          hasPublishedVersion: S.optional(S.Boolean),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ScopeSummary" });
+    case 4:
+      return S.Array(ScopeSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), scopes: ScopeSummaryList }),
+      ).annotate({ identifier: "ListScopesOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/scopes/{scopeIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListScopeSnapshotsInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), snapshots: ScopeSummaryList }),
+      ).annotate({ identifier: "ListScopeSnapshotsOutput" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          status: S.optional(EntityStatusFilter).pipe(T.HttpQuery("status")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/templates" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListTemplatesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          templateId: S.String,
+          templateArn: S.String,
+          templateName: S.String,
+          status: S.optional(EntityStatus),
+          version: S.optional(S.String),
+          hasPublishedVersion: S.optional(S.Boolean),
+          firewallType: S.optional(TemplateFirewallType),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "TemplateSummary" });
+    case 4:
+      return S.Array(TemplateSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), templates: TemplateSummaryList }),
+      ).annotate({ identifier: "ListTemplatesOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/templates/{templateIdentifier}/snapshots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTemplateSnapshotsInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), snapshots: TemplateSummaryList }),
+      ).annotate({
+        identifier: "ListTemplateSnapshotsOutput",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accounts: S.optional(AccountIdList),
+          organizationalUnits: S.optional(OrganizationalUnitIdList),
+        }),
+      ).annotate({ identifier: "AdminScopeSelectionInput" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ includeAll: /*@__PURE__*/ S.Struct({}) }),
+        /*@__PURE__*/ S.Struct({ includeOnly: AdminScopeSelectionInput }),
+        /*@__PURE__*/ S.Struct({ excludeOnly: AdminScopeSelectionInput }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scopeFilter: S.optional(AdminScopeFilterInput),
+          firewallTypeScope: S.optional(AdminFirewallTypeScope),
+        }),
+      ).annotate({ identifier: "AdminScopeInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String,
+          priority: S.Number,
+          adminScope: S.optional(AdminScopeInput),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/admin-account" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutAdminAccountRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentIdentifier: S.String.pipe(T.HttpLabel("deploymentIdentifier")),
+          updateToken: S.String,
+          deploymentDescription: S.optional(S.String),
+          deploymentConfiguration: S.optional(DeploymentConfiguration),
+          associatedPolicyList: S.optional(PolicyReferenceList),
+          associatedScopeList: S.optional(ScopeReferenceList),
+          isPublished: S.Boolean,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/deployments/{deploymentIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateDeploymentInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyIdentifier: S.String.pipe(T.HttpLabel("policyIdentifier")),
+          updateToken: S.String,
+          policyDescription: S.optional(S.String),
+          priority: S.optional(S.Number),
+          associatedTemplateAndRuleList: S.optional(TemplateAndRuleReferenceList),
+          policyConfiguration: S.optional(PolicyConfiguration),
+          isPublished: S.Boolean,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/policies/{policyIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdatePolicyInput" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
+          updateToken: S.String,
+          ruleType: S.optional(RuleType),
+          ruleDescription: S.optional(S.String),
+          configuration: S.optional(S.Any),
+          isPublished: S.Boolean,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/rules/{ruleIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateRuleInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scopeIdentifier: S.String.pipe(T.HttpLabel("scopeIdentifier")),
+          updateToken: S.String,
+          scopeDescription: S.optional(S.String),
+          scopeConfiguration: S.optional(ScopeConfiguration),
+          isPublished: S.Boolean,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/scopes/{scopeIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateScopeInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          templateIdentifier: S.String.pipe(T.HttpLabel("templateIdentifier")),
+          updateToken: S.String,
+          templateDescription: S.optional(S.String),
+          associatedRuleList: S.optional(RuleReferenceList),
+          isPublished: S.Boolean,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/templates/{templateIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateTemplateInput" });
+    case 3:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 4:
+      return S.Array(ValidationExceptionField);
+  }
+}

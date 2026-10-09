@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -214,41 +215,33 @@ export interface Attachment {
   fileName?: string;
   data?: Uint8Array;
 }
-const Attachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fileName: S.optional(S.String), data: S.optional(T.Blob) }),
-).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
+const Attachment = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Attachment>;
 export type Attachments = Attachment[];
-const Attachments = /*@__PURE__*/ S.Array(Attachment);
+const Attachments = /*@__PURE__*/ __L.at(__c0, 1);
 export type NullableBooleanType = boolean;
 export interface AddAttachmentsToSetRequest {
   attachmentSetId?: string;
   attachments: Attachment[];
   dryRun?: boolean;
 }
-const AddAttachmentsToSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachmentSetId: S.optional(S.String),
-    attachments: Attachments,
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AddAttachmentsToSetRequest",
-}) as any as S.Schema<AddAttachmentsToSetRequest>;
+const AddAttachmentsToSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddAttachmentsToSetRequest>;
 export type ExpiryTime = string;
 export interface AddAttachmentsToSetResponse {
   attachmentSetId?: string;
   expiryTime?: string;
 }
-const AddAttachmentsToSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attachmentSetId: S.optional(S.String), expiryTime: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "AddAttachmentsToSetResponse",
-}) as any as S.Schema<AddAttachmentsToSetResponse>;
+const AddAttachmentsToSetResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddAttachmentsToSetResponse>;
 export type CaseId = string;
 export type CommunicationBody = string;
 export type CcEmailAddress = string;
 export type CcEmailAddressList = string[];
-const CcEmailAddressList = /*@__PURE__*/ S.Array(S.String);
+const CcEmailAddressList = /*@__PURE__*/ __L.at(__c0, 4);
 export type UploadId = string;
 export type UploadIds = string[];
 const UploadIds = CcEmailAddressList as any as S.Schema<UploadIds>;
@@ -260,63 +253,46 @@ export interface AddCommunicationToCaseRequest {
   uploadIds?: string[];
   dryRun?: boolean;
 }
-const AddCommunicationToCaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caseId: S.optional(S.String),
-    communicationBody: S.String,
-    ccEmailAddresses: S.optional(CcEmailAddressList),
-    attachmentSetId: S.optional(S.String),
-    uploadIds: S.optional(UploadIds),
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "AddCommunicationToCaseRequest",
-}) as any as S.Schema<AddCommunicationToCaseRequest>;
+const AddCommunicationToCaseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddCommunicationToCaseRequest>;
 export type Result = boolean;
 export interface AddCommunicationToCaseResponse {
   result?: boolean;
 }
-const AddCommunicationToCaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ result: S.optional(S.Boolean) }).pipe(ns),
-).annotate({
-  identifier: "AddCommunicationToCaseResponse",
-}) as any as S.Schema<AddCommunicationToCaseResponse>;
+const AddCommunicationToCaseResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AddCommunicationToCaseResponse>;
 export type FieldIntegerValue = number;
 export type ETag = string;
 export interface CompletedUpload {
   partIndex: number;
   eTag: string;
 }
-const CompletedUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ partIndex: S.Number, eTag: S.String }),
-).annotate({ identifier: "CompletedUpload" }) as any as S.Schema<CompletedUpload>;
+const CompletedUpload = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CompletedUpload>;
 export type CompletedUploadList = CompletedUpload[];
-const CompletedUploadList = /*@__PURE__*/ S.Array(CompletedUpload);
+const CompletedUploadList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CompleteAttachmentUploadRequest {
   uploadId: string;
   completedUploads: CompletedUpload[];
   dryRun?: boolean;
 }
-const CompleteAttachmentUploadRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uploadId: S.String,
-    completedUploads: CompletedUploadList,
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CompleteAttachmentUploadRequest",
-}) as any as S.Schema<CompleteAttachmentUploadRequest>;
+const CompleteAttachmentUploadRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CompleteAttachmentUploadRequest>;
 export type UploadStatus = "attachment-ready" | "attachment-not-ready" | "failed" | (string & {});
 const UploadStatus = S.String;
 
 export interface CompleteAttachmentUploadResponse {
   uploadStatus: UploadStatus;
 }
-const CompleteAttachmentUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ uploadStatus: UploadStatus }).pipe(ns),
-).annotate({
-  identifier: "CompleteAttachmentUploadResponse",
-}) as any as S.Schema<CompleteAttachmentUploadResponse>;
+const CompleteAttachmentUploadResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CompleteAttachmentUploadResponse>;
 export type Subject = string;
 export type ServiceCode2 = string;
 export type SeverityCode = string;
@@ -336,79 +312,49 @@ export interface CreateCaseRequest {
   uploadIds?: string[];
   dryRun?: boolean;
 }
-const CreateCaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subject: S.String,
-    serviceCode: S.optional(S.String),
-    severityCode: S.optional(S.String),
-    categoryCode: S.optional(S.String),
-    communicationBody: S.String,
-    ccEmailAddresses: S.optional(CcEmailAddressList),
-    language: S.optional(S.String),
-    issueType: S.optional(S.String),
-    attachmentSetId: S.optional(S.String),
-    uploadIds: S.optional(UploadIds),
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateCaseRequest" }) as any as S.Schema<CreateCaseRequest>;
+const CreateCaseRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateCaseRequest>;
 export interface CreateCaseResponse {
   caseId?: string;
 }
-const CreateCaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ caseId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateCaseResponse" }) as any as S.Schema<CreateCaseResponse>;
+const CreateCaseResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateCaseResponse>;
 export type AttachmentId = string;
 export interface DescribeAttachmentRequest {
   attachmentId: string;
   dryRun?: boolean;
 }
-const DescribeAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attachmentId: S.String, dryRun: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeAttachmentRequest",
-}) as any as S.Schema<DescribeAttachmentRequest>;
+const DescribeAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DescribeAttachmentRequest>;
 export interface DescribeAttachmentResponse {
   attachment?: Attachment;
 }
-const DescribeAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attachment: S.optional(Attachment) }).pipe(ns),
-).annotate({
-  identifier: "DescribeAttachmentResponse",
-}) as any as S.Schema<DescribeAttachmentResponse>;
+const DescribeAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DescribeAttachmentResponse>;
 export interface DescribeAttachmentUploadStatusRequest {
   uploadId: string;
   dryRun?: boolean;
 }
-const DescribeAttachmentUploadStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ uploadId: S.String, dryRun: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeAttachmentUploadStatusRequest",
-}) as any as S.Schema<DescribeAttachmentUploadStatusRequest>;
+const DescribeAttachmentUploadStatusRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DescribeAttachmentUploadStatusRequest>;
 export interface UploadProgress {
   totalParts?: number;
   completedPartsCount?: number;
 }
-const UploadProgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ totalParts: S.optional(S.Number), completedPartsCount: S.optional(S.Number) }),
-).annotate({ identifier: "UploadProgress" }) as any as S.Schema<UploadProgress>;
+const UploadProgress = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<UploadProgress>;
 export interface DescribeAttachmentUploadStatusResponse {
   uploadStatus: UploadStatus;
   fileName: string;
   uploadProgress?: UploadProgress;
 }
-const DescribeAttachmentUploadStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uploadStatus: UploadStatus,
-    fileName: S.String,
-    uploadProgress: S.optional(UploadProgress),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeAttachmentUploadStatusResponse",
-}) as any as S.Schema<DescribeAttachmentUploadStatusResponse>;
+const DescribeAttachmentUploadStatusResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DescribeAttachmentUploadStatusResponse>;
 export type CaseIdList = string[];
 const CaseIdList = CcEmailAddressList as any as S.Schema<CaseIdList>;
 export type DisplayId = string;
@@ -430,20 +376,7 @@ export interface DescribeCasesRequest {
   includeCommunications?: boolean;
   dryRun?: boolean;
 }
-const DescribeCasesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caseIdList: S.optional(CaseIdList),
-    displayId: S.optional(S.String),
-    afterTime: S.optional(S.String),
-    beforeTime: S.optional(S.String),
-    includeResolvedCases: S.optional(S.Boolean),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    language: S.optional(S.String),
-    includeCommunications: S.optional(S.Boolean),
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeCasesRequest" }) as any as S.Schema<DescribeCasesRequest>;
+const DescribeCasesRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DescribeCasesRequest>;
 export type Status = string;
 export type ServiceCode = string;
 export type SubmittedBy = string;
@@ -453,11 +386,9 @@ export interface AttachmentDetails {
   attachmentId?: string;
   fileName?: string;
 }
-const AttachmentDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attachmentId: S.optional(S.String), fileName: S.optional(S.String) }),
-).annotate({ identifier: "AttachmentDetails" }) as any as S.Schema<AttachmentDetails>;
+const AttachmentDetails = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AttachmentDetails>;
 export type AttachmentSet = AttachmentDetails[];
-const AttachmentSet = /*@__PURE__*/ S.Array(AttachmentDetails);
+const AttachmentSet = /*@__PURE__*/ __L.at(__c2, 4);
 export interface Communication {
   caseId?: string;
   body?: string;
@@ -466,25 +397,17 @@ export interface Communication {
   attachments?: AttachmentDetails[];
   attachmentSet?: AttachmentDetails[];
 }
-const Communication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caseId: S.optional(S.String),
-    body: S.optional(S.String),
-    submittedBy: S.optional(S.String),
-    timeCreated: S.optional(S.String),
-    attachments: S.optional(AttachmentSet),
-    attachmentSet: S.optional(AttachmentSet),
-  }),
-).annotate({ identifier: "Communication" }) as any as S.Schema<Communication>;
+const Communication = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Communication>;
 export type CommunicationList = Communication[];
-const CommunicationList = /*@__PURE__*/ S.Array(Communication);
+const CommunicationList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface RecentCaseCommunications {
   communications?: Communication[];
   nextToken?: string;
 }
-const RecentCaseCommunications = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ communications: S.optional(CommunicationList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "RecentCaseCommunications" }) as any as S.Schema<RecentCaseCommunications>;
+const RecentCaseCommunications = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RecentCaseCommunications>;
 export interface CaseDetails {
   caseId?: string;
   displayId?: string;
@@ -499,31 +422,17 @@ export interface CaseDetails {
   ccEmailAddresses?: string[];
   language?: string;
 }
-const CaseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caseId: S.optional(S.String),
-    displayId: S.optional(S.String),
-    subject: S.optional(S.String),
-    status: S.optional(S.String),
-    serviceCode: S.optional(S.String),
-    categoryCode: S.optional(S.String),
-    severityCode: S.optional(S.String),
-    submittedBy: S.optional(S.String),
-    timeCreated: S.optional(S.String),
-    recentCommunications: S.optional(RecentCaseCommunications),
-    ccEmailAddresses: S.optional(CcEmailAddressList),
-    language: S.optional(S.String),
-  }),
-).annotate({ identifier: "CaseDetails" }) as any as S.Schema<CaseDetails>;
+const CaseDetails = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CaseDetails>;
 export type CaseList = CaseDetails[];
-const CaseList = /*@__PURE__*/ S.Array(CaseDetails);
+const CaseList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface DescribeCasesResponse {
   cases?: CaseDetails[];
   nextToken?: string;
 }
-const DescribeCasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cases: S.optional(CaseList), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DescribeCasesResponse" }) as any as S.Schema<DescribeCasesResponse>;
+const DescribeCasesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DescribeCasesResponse>;
 export interface DescribeCommunicationsRequest {
   caseId: string;
   beforeTime?: string;
@@ -532,29 +441,18 @@ export interface DescribeCommunicationsRequest {
   maxResults?: number;
   dryRun?: boolean;
 }
-const DescribeCommunicationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caseId: S.String,
-    beforeTime: S.optional(S.String),
-    afterTime: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeCommunicationsRequest",
-}) as any as S.Schema<DescribeCommunicationsRequest>;
+const DescribeCommunicationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DescribeCommunicationsRequest>;
 export interface DescribeCommunicationsResponse {
   communications?: Communication[];
   nextToken?: string;
 }
-const DescribeCommunicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ communications: S.optional(CommunicationList), nextToken: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "DescribeCommunicationsResponse",
-}) as any as S.Schema<DescribeCommunicationsResponse>;
+const DescribeCommunicationsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DescribeCommunicationsResponse>;
 export interface DescribeCreateCaseOptionsRequest {
   issueType: string;
   serviceCode: string;
@@ -562,17 +460,10 @@ export interface DescribeCreateCaseOptionsRequest {
   categoryCode: string;
   dryRun?: boolean;
 }
-const DescribeCreateCaseOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issueType: S.String,
-    serviceCode: S.String,
-    language: S.String,
-    categoryCode: S.String,
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeCreateCaseOptionsRequest",
-}) as any as S.Schema<DescribeCreateCaseOptionsRequest>;
+const DescribeCreateCaseOptionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DescribeCreateCaseOptionsRequest>;
 export type ValidatedLanguageAvailability = string;
 export type Type = string;
 export type StartTime = string;
@@ -581,47 +472,36 @@ export interface SupportedHour {
   startTime?: string;
   endTime?: string;
 }
-const SupportedHour = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ startTime: S.optional(S.String), endTime: S.optional(S.String) }),
-).annotate({ identifier: "SupportedHour" }) as any as S.Schema<SupportedHour>;
+const SupportedHour = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SupportedHour>;
 export type SupportedHoursList = SupportedHour[];
-const SupportedHoursList = /*@__PURE__*/ S.Array(SupportedHour);
+const SupportedHoursList = /*@__PURE__*/ __L.at(__c3, 7);
 export type ValidatedDateTime = string;
 export interface DateInterval {
   startDateTime?: string;
   endDateTime?: string;
 }
-const DateInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ startDateTime: S.optional(S.String), endDateTime: S.optional(S.String) }),
-).annotate({ identifier: "DateInterval" }) as any as S.Schema<DateInterval>;
+const DateInterval = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DateInterval>;
 export type DatesWithoutSupportList = DateInterval[];
-const DatesWithoutSupportList = /*@__PURE__*/ S.Array(DateInterval);
+const DatesWithoutSupportList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface CommunicationTypeOptions {
   type?: string;
   supportedHours?: SupportedHour[];
   datesWithoutSupport?: DateInterval[];
 }
-const CommunicationTypeOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    supportedHours: S.optional(SupportedHoursList),
-    datesWithoutSupport: S.optional(DatesWithoutSupportList),
-  }),
-).annotate({ identifier: "CommunicationTypeOptions" }) as any as S.Schema<CommunicationTypeOptions>;
+const CommunicationTypeOptions = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CommunicationTypeOptions>;
 export type CommunicationTypeOptionsList = CommunicationTypeOptions[];
-const CommunicationTypeOptionsList = /*@__PURE__*/ S.Array(CommunicationTypeOptions);
+const CommunicationTypeOptionsList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface DescribeCreateCaseOptionsResponse {
   languageAvailability?: string;
   communicationTypes?: CommunicationTypeOptions[];
 }
-const DescribeCreateCaseOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageAvailability: S.optional(S.String),
-    communicationTypes: S.optional(CommunicationTypeOptionsList),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeCreateCaseOptionsResponse",
-}) as any as S.Schema<DescribeCreateCaseOptionsResponse>;
+const DescribeCreateCaseOptionsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DescribeCreateCaseOptionsResponse>;
 export type ServiceCodeList = string[];
 const ServiceCodeList = CcEmailAddressList as any as S.Schema<ServiceCodeList>;
 export interface DescribeServicesRequest {
@@ -629,55 +509,42 @@ export interface DescribeServicesRequest {
   language?: string;
   dryRun?: boolean;
 }
-const DescribeServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceCodeList: S.optional(ServiceCodeList),
-    language: S.optional(S.String),
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeServicesRequest" }) as any as S.Schema<DescribeServicesRequest>;
+const DescribeServicesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DescribeServicesRequest>;
 export type ServiceName = string;
 export type CategoryName = string;
 export interface Category {
   code?: string;
   name?: string;
 }
-const Category = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(S.String), name: S.optional(S.String) }),
-).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
+const Category = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Category>;
 export type CategoryList = Category[];
-const CategoryList = /*@__PURE__*/ S.Array(Category);
+const CategoryList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface Service {
   code?: string;
   name?: string;
   categories?: Category[];
 }
-const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    name: S.optional(S.String),
-    categories: S.optional(CategoryList),
-  }),
-).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
+const Service = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Service>;
 export type ServiceList = Service[];
-const ServiceList = /*@__PURE__*/ S.Array(Service);
+const ServiceList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface DescribeServicesResponse {
   services?: Service[];
 }
-const DescribeServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ services: S.optional(ServiceList) }).pipe(ns),
-).annotate({ identifier: "DescribeServicesResponse" }) as any as S.Schema<DescribeServicesResponse>;
+const DescribeServicesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DescribeServicesResponse>;
 export interface DescribeSeverityLevelsRequest {
   language?: string;
   dryRun?: boolean;
 }
-const DescribeSeverityLevelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ language: S.optional(S.String), dryRun: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeSeverityLevelsRequest",
-}) as any as S.Schema<DescribeSeverityLevelsRequest>;
+const DescribeSeverityLevelsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DescribeSeverityLevelsRequest>;
 export type SeverityLevelCode = string;
 export type SeverityLevelName = string;
 export interface SeverityLevel {
@@ -689,11 +556,10 @@ const SeverityLevelsList = CategoryList as any as S.Schema<SeverityLevelsList>;
 export interface DescribeSeverityLevelsResponse {
   severityLevels?: SeverityLevel[];
 }
-const DescribeSeverityLevelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ severityLevels: S.optional(SeverityLevelsList) }).pipe(ns),
-).annotate({
-  identifier: "DescribeSeverityLevelsResponse",
-}) as any as S.Schema<DescribeSeverityLevelsResponse>;
+const DescribeSeverityLevelsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DescribeSeverityLevelsResponse>;
 export type ValidatedIssueTypeString = string;
 export type ValidatedServiceCode = string;
 export type ValidatedCategoryCode = string;
@@ -703,16 +569,10 @@ export interface DescribeSupportedLanguagesRequest {
   categoryCode: string;
   dryRun?: boolean;
 }
-const DescribeSupportedLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issueType: S.String,
-    serviceCode: S.String,
-    categoryCode: S.String,
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeSupportedLanguagesRequest",
-}) as any as S.Schema<DescribeSupportedLanguagesRequest>;
+const DescribeSupportedLanguagesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DescribeSupportedLanguagesRequest>;
 export type Code = string;
 export type Display = string;
 export interface SupportedLanguage {
@@ -720,101 +580,76 @@ export interface SupportedLanguage {
   language?: string;
   display?: string;
 }
-const SupportedLanguage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    language: S.optional(S.String),
-    display: S.optional(S.String),
-  }),
-).annotate({ identifier: "SupportedLanguage" }) as any as S.Schema<SupportedLanguage>;
+const SupportedLanguage = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SupportedLanguage>;
 export type SupportedLanguagesList = SupportedLanguage[];
-const SupportedLanguagesList = /*@__PURE__*/ S.Array(SupportedLanguage);
+const SupportedLanguagesList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface DescribeSupportedLanguagesResponse {
   supportedLanguages?: SupportedLanguage[];
 }
-const DescribeSupportedLanguagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ supportedLanguages: S.optional(SupportedLanguagesList) }).pipe(ns),
-).annotate({
-  identifier: "DescribeSupportedLanguagesResponse",
-}) as any as S.Schema<DescribeSupportedLanguagesResponse>;
+const DescribeSupportedLanguagesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DescribeSupportedLanguagesResponse>;
 export type StringList = string[];
-const StringList = /*@__PURE__*/ S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
+const StringList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface DescribeTrustedAdvisorCheckRefreshStatusesRequest {
   checkIds: string[];
 }
-const DescribeTrustedAdvisorCheckRefreshStatusesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ checkIds: StringList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeTrustedAdvisorCheckRefreshStatusesRequest",
-}) as any as S.Schema<DescribeTrustedAdvisorCheckRefreshStatusesRequest>;
+const DescribeTrustedAdvisorCheckRefreshStatusesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DescribeTrustedAdvisorCheckRefreshStatusesRequest>;
 export interface TrustedAdvisorCheckRefreshStatus {
   checkId: string;
   status: string;
   millisUntilNextRefreshable: number;
 }
-const TrustedAdvisorCheckRefreshStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ checkId: S.String, status: S.String, millisUntilNextRefreshable: S.Number }),
-).annotate({
-  identifier: "TrustedAdvisorCheckRefreshStatus",
-}) as any as S.Schema<TrustedAdvisorCheckRefreshStatus>;
+const TrustedAdvisorCheckRefreshStatus = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<TrustedAdvisorCheckRefreshStatus>;
 export type TrustedAdvisorCheckRefreshStatusList = TrustedAdvisorCheckRefreshStatus[];
-const TrustedAdvisorCheckRefreshStatusList = /*@__PURE__*/ S.Array(
-  TrustedAdvisorCheckRefreshStatus,
-);
+const TrustedAdvisorCheckRefreshStatusList = /*@__PURE__*/ __L.at(__c6, 4);
 export interface DescribeTrustedAdvisorCheckRefreshStatusesResponse {
   statuses: TrustedAdvisorCheckRefreshStatus[];
 }
-const DescribeTrustedAdvisorCheckRefreshStatusesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statuses: TrustedAdvisorCheckRefreshStatusList }).pipe(ns),
-).annotate({
-  identifier: "DescribeTrustedAdvisorCheckRefreshStatusesResponse",
-}) as any as S.Schema<DescribeTrustedAdvisorCheckRefreshStatusesResponse>;
+const DescribeTrustedAdvisorCheckRefreshStatusesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DescribeTrustedAdvisorCheckRefreshStatusesResponse>;
 export interface DescribeTrustedAdvisorCheckResultRequest {
   checkId: string;
   language?: string;
 }
-const DescribeTrustedAdvisorCheckResultRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ checkId: S.String, language: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeTrustedAdvisorCheckResultRequest",
-}) as any as S.Schema<DescribeTrustedAdvisorCheckResultRequest>;
+const DescribeTrustedAdvisorCheckResultRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DescribeTrustedAdvisorCheckResultRequest>;
 export interface TrustedAdvisorResourcesSummary {
   resourcesProcessed: number;
   resourcesFlagged: number;
   resourcesIgnored: number;
   resourcesSuppressed: number;
 }
-const TrustedAdvisorResourcesSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourcesProcessed: S.Number,
-    resourcesFlagged: S.Number,
-    resourcesIgnored: S.Number,
-    resourcesSuppressed: S.Number,
-  }),
-).annotate({
-  identifier: "TrustedAdvisorResourcesSummary",
-}) as any as S.Schema<TrustedAdvisorResourcesSummary>;
+const TrustedAdvisorResourcesSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<TrustedAdvisorResourcesSummary>;
 export interface TrustedAdvisorCostOptimizingSummary {
   estimatedMonthlySavings: number;
   estimatedPercentMonthlySavings: number;
 }
-const TrustedAdvisorCostOptimizingSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ estimatedMonthlySavings: S.Number, estimatedPercentMonthlySavings: S.Number }),
-).annotate({
-  identifier: "TrustedAdvisorCostOptimizingSummary",
-}) as any as S.Schema<TrustedAdvisorCostOptimizingSummary>;
+const TrustedAdvisorCostOptimizingSummary = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<TrustedAdvisorCostOptimizingSummary>;
 export interface TrustedAdvisorCategorySpecificSummary {
   costOptimizing?: TrustedAdvisorCostOptimizingSummary;
 }
-const TrustedAdvisorCategorySpecificSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ costOptimizing: S.optional(TrustedAdvisorCostOptimizingSummary) }),
-).annotate({
-  identifier: "TrustedAdvisorCategorySpecificSummary",
-}) as any as S.Schema<TrustedAdvisorCategorySpecificSummary>;
+const TrustedAdvisorCategorySpecificSummary = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<TrustedAdvisorCategorySpecificSummary>;
 export interface TrustedAdvisorResourceDetail {
   status: string;
   region?: string;
@@ -822,19 +657,12 @@ export interface TrustedAdvisorResourceDetail {
   isSuppressed?: boolean;
   metadata: string[];
 }
-const TrustedAdvisorResourceDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-    region: S.optional(S.String),
-    resourceId: S.String,
-    isSuppressed: S.optional(S.Boolean),
-    metadata: StringList,
-  }),
-).annotate({
-  identifier: "TrustedAdvisorResourceDetail",
-}) as any as S.Schema<TrustedAdvisorResourceDetail>;
+const TrustedAdvisorResourceDetail = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<TrustedAdvisorResourceDetail>;
 export type TrustedAdvisorResourceDetailList = TrustedAdvisorResourceDetail[];
-const TrustedAdvisorResourceDetailList = /*@__PURE__*/ S.Array(TrustedAdvisorResourceDetail);
+const TrustedAdvisorResourceDetailList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface TrustedAdvisorCheckResult {
   checkId: string;
   timestamp: string;
@@ -843,36 +671,24 @@ export interface TrustedAdvisorCheckResult {
   categorySpecificSummary: TrustedAdvisorCategorySpecificSummary;
   flaggedResources: TrustedAdvisorResourceDetail[];
 }
-const TrustedAdvisorCheckResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkId: S.String,
-    timestamp: S.String,
-    status: S.String,
-    resourcesSummary: TrustedAdvisorResourcesSummary,
-    categorySpecificSummary: TrustedAdvisorCategorySpecificSummary,
-    flaggedResources: TrustedAdvisorResourceDetailList,
-  }),
-).annotate({
-  identifier: "TrustedAdvisorCheckResult",
-}) as any as S.Schema<TrustedAdvisorCheckResult>;
+const TrustedAdvisorCheckResult = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<TrustedAdvisorCheckResult>;
 export interface DescribeTrustedAdvisorCheckResultResponse {
   result?: TrustedAdvisorCheckResult;
 }
-const DescribeTrustedAdvisorCheckResultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ result: S.optional(TrustedAdvisorCheckResult) }).pipe(ns),
-).annotate({
-  identifier: "DescribeTrustedAdvisorCheckResultResponse",
-}) as any as S.Schema<DescribeTrustedAdvisorCheckResultResponse>;
+const DescribeTrustedAdvisorCheckResultResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DescribeTrustedAdvisorCheckResultResponse>;
 export interface DescribeTrustedAdvisorChecksRequest {
   language: string;
 }
-const DescribeTrustedAdvisorChecksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ language: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeTrustedAdvisorChecksRequest",
-}) as any as S.Schema<DescribeTrustedAdvisorChecksRequest>;
+const DescribeTrustedAdvisorChecksRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DescribeTrustedAdvisorChecksRequest>;
 export interface TrustedAdvisorCheckDescription {
   id: string;
   name: string;
@@ -880,37 +696,26 @@ export interface TrustedAdvisorCheckDescription {
   category: string;
   metadata: string[];
 }
-const TrustedAdvisorCheckDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.String,
-    category: S.String,
-    metadata: StringList,
-  }),
-).annotate({
-  identifier: "TrustedAdvisorCheckDescription",
-}) as any as S.Schema<TrustedAdvisorCheckDescription>;
+const TrustedAdvisorCheckDescription = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<TrustedAdvisorCheckDescription>;
 export type TrustedAdvisorCheckList = TrustedAdvisorCheckDescription[];
-const TrustedAdvisorCheckList = /*@__PURE__*/ S.Array(TrustedAdvisorCheckDescription);
+const TrustedAdvisorCheckList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface DescribeTrustedAdvisorChecksResponse {
   checks: TrustedAdvisorCheckDescription[];
 }
-const DescribeTrustedAdvisorChecksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ checks: TrustedAdvisorCheckList }).pipe(ns),
-).annotate({
-  identifier: "DescribeTrustedAdvisorChecksResponse",
-}) as any as S.Schema<DescribeTrustedAdvisorChecksResponse>;
+const DescribeTrustedAdvisorChecksResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DescribeTrustedAdvisorChecksResponse>;
 export interface DescribeTrustedAdvisorCheckSummariesRequest {
   checkIds: string[];
 }
-const DescribeTrustedAdvisorCheckSummariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ checkIds: StringList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeTrustedAdvisorCheckSummariesRequest",
-}) as any as S.Schema<DescribeTrustedAdvisorCheckSummariesRequest>;
+const DescribeTrustedAdvisorCheckSummariesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DescribeTrustedAdvisorCheckSummariesRequest>;
 export interface TrustedAdvisorCheckSummary {
   checkId: string;
   timestamp: string;
@@ -919,56 +724,41 @@ export interface TrustedAdvisorCheckSummary {
   resourcesSummary: TrustedAdvisorResourcesSummary;
   categorySpecificSummary: TrustedAdvisorCategorySpecificSummary;
 }
-const TrustedAdvisorCheckSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkId: S.String,
-    timestamp: S.String,
-    status: S.String,
-    hasFlaggedResources: S.optional(S.Boolean),
-    resourcesSummary: TrustedAdvisorResourcesSummary,
-    categorySpecificSummary: TrustedAdvisorCategorySpecificSummary,
-  }),
-).annotate({
-  identifier: "TrustedAdvisorCheckSummary",
-}) as any as S.Schema<TrustedAdvisorCheckSummary>;
+const TrustedAdvisorCheckSummary = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<TrustedAdvisorCheckSummary>;
 export type TrustedAdvisorCheckSummaryList = TrustedAdvisorCheckSummary[];
-const TrustedAdvisorCheckSummaryList = /*@__PURE__*/ S.Array(TrustedAdvisorCheckSummary);
+const TrustedAdvisorCheckSummaryList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface DescribeTrustedAdvisorCheckSummariesResponse {
   summaries: TrustedAdvisorCheckSummary[];
 }
-const DescribeTrustedAdvisorCheckSummariesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summaries: TrustedAdvisorCheckSummaryList }).pipe(ns),
-).annotate({
-  identifier: "DescribeTrustedAdvisorCheckSummariesResponse",
-}) as any as S.Schema<DescribeTrustedAdvisorCheckSummariesResponse>;
+const DescribeTrustedAdvisorCheckSummariesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DescribeTrustedAdvisorCheckSummariesResponse>;
 export interface GetAttachmentDownloadLinkRequest {
   attachmentId: string;
   dryRun?: boolean;
 }
-const GetAttachmentDownloadLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attachmentId: S.String, dryRun: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAttachmentDownloadLinkRequest",
-}) as any as S.Schema<GetAttachmentDownloadLinkRequest>;
+const GetAttachmentDownloadLinkRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetAttachmentDownloadLinkRequest>;
 export type HttpsUrl = string;
 export interface DownloadUrl {
   url: string;
   expiryDate: string;
 }
-const DownloadUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ url: S.String, expiryDate: S.String }),
-).annotate({ identifier: "DownloadUrl" }) as any as S.Schema<DownloadUrl>;
+const DownloadUrl = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DownloadUrl>;
 export interface GetAttachmentDownloadLinkResponse {
   fileName: string;
   downloadUrl: DownloadUrl;
 }
-const GetAttachmentDownloadLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fileName: S.String, downloadUrl: DownloadUrl }).pipe(ns),
-).annotate({
-  identifier: "GetAttachmentDownloadLinkResponse",
-}) as any as S.Schema<GetAttachmentDownloadLinkResponse>;
+const GetAttachmentDownloadLinkResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetAttachmentDownloadLinkResponse>;
 export type FileSize = number;
 export type StartIndex = number;
 export type EndIndex = number;
@@ -976,9 +766,7 @@ export interface UploadRange {
   startIndex: number;
   endIndex?: number;
 }
-const UploadRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ startIndex: S.Number, endIndex: S.optional(S.Number) }),
-).annotate({ identifier: "UploadRange" }) as any as S.Schema<UploadRange>;
+const UploadRange = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<UploadRange>;
 export interface GetAttachmentUploadLinksRequest {
   fileName: string;
   fileSizeBytes?: number;
@@ -986,28 +774,19 @@ export interface GetAttachmentUploadLinksRequest {
   uploadRange?: UploadRange;
   dryRun?: boolean;
 }
-const GetAttachmentUploadLinksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileName: S.String,
-    fileSizeBytes: S.optional(S.Number),
-    uploadId: S.optional(S.String),
-    uploadRange: S.optional(UploadRange),
-    dryRun: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetAttachmentUploadLinksRequest",
-}) as any as S.Schema<GetAttachmentUploadLinksRequest>;
+const GetAttachmentUploadLinksRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetAttachmentUploadLinksRequest>;
 export type PartSizeBytes = number;
 export interface UploadUrl {
   url: string;
   partIndex: number;
   expiryDate: string;
 }
-const UploadUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ url: S.String, partIndex: S.Number, expiryDate: S.String }),
-).annotate({ identifier: "UploadUrl" }) as any as S.Schema<UploadUrl>;
+const UploadUrl = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<UploadUrl>;
 export type UploadUrlList = UploadUrl[];
-const UploadUrlList = /*@__PURE__*/ S.Array(UploadUrl);
+const UploadUrlList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface GetAttachmentUploadLinksResponse {
   uploadId: string;
   partSizeBytes: number;
@@ -1015,54 +794,35 @@ export interface GetAttachmentUploadLinksResponse {
   nextIndex?: number;
   uploadUrls: UploadUrl[];
 }
-const GetAttachmentUploadLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uploadId: S.String,
-    partSizeBytes: S.Number,
-    totalParts: S.Number,
-    nextIndex: S.optional(S.Number),
-    uploadUrls: UploadUrlList,
-  }).pipe(ns),
-).annotate({
-  identifier: "GetAttachmentUploadLinksResponse",
-}) as any as S.Schema<GetAttachmentUploadLinksResponse>;
+const GetAttachmentUploadLinksResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetAttachmentUploadLinksResponse>;
 export interface RefreshTrustedAdvisorCheckRequest {
   checkId: string;
 }
-const RefreshTrustedAdvisorCheckRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ checkId: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RefreshTrustedAdvisorCheckRequest",
-}) as any as S.Schema<RefreshTrustedAdvisorCheckRequest>;
+const RefreshTrustedAdvisorCheckRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<RefreshTrustedAdvisorCheckRequest>;
 export interface RefreshTrustedAdvisorCheckResponse {
   status: TrustedAdvisorCheckRefreshStatus;
 }
-const RefreshTrustedAdvisorCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: TrustedAdvisorCheckRefreshStatus }).pipe(ns),
-).annotate({
-  identifier: "RefreshTrustedAdvisorCheckResponse",
-}) as any as S.Schema<RefreshTrustedAdvisorCheckResponse>;
+const RefreshTrustedAdvisorCheckResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<RefreshTrustedAdvisorCheckResponse>;
 export interface ResolveCaseRequest {
   caseId?: string;
   dryRun?: boolean;
 }
-const ResolveCaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ caseId: S.optional(S.String), dryRun: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ResolveCaseRequest" }) as any as S.Schema<ResolveCaseRequest>;
+const ResolveCaseRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ResolveCaseRequest>;
 export type CaseStatus = string;
 export interface ResolveCaseResponse {
   initialCaseStatus?: string;
   finalCaseStatus?: string;
 }
-const ResolveCaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ initialCaseStatus: S.optional(S.String), finalCaseStatus: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({ identifier: "ResolveCaseResponse" }) as any as S.Schema<ResolveCaseResponse>;
+const ResolveCaseResponse = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ResolveCaseResponse>;
 export type ErrorMessage = string;
 export type AvailabilityErrorMessage = string;
 export type CoralAvailabilityThrottlingReason = string;
@@ -1071,11 +831,9 @@ export interface ThrottlingReason {
   reason?: string;
   resource?: string;
 }
-const ThrottlingReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
-).annotate({ identifier: "ThrottlingReason" }) as any as S.Schema<ThrottlingReason>;
+const ThrottlingReason = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ThrottlingReason>;
 export type ThrottlingReasonList = ThrottlingReason[];
-const ThrottlingReasonList = /*@__PURE__*/ S.Array(ThrottlingReason);
+const ThrottlingReasonList = /*@__PURE__*/ __L.at(__c10, 3);
 export type AddAttachmentsToSetError =
   | AttachmentLimitExceeded
   | AttachmentSetExpired
@@ -1938,3 +1696,592 @@ export const resolveCase: API.OperationMethod<
   retry: Retry,
   operationName: "ResolveCase",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ fileName: S.optional(S.String), data: S.optional(T.Blob) }),
+      ).annotate({ identifier: "Attachment" });
+    case 1:
+      return S.Array(Attachment);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attachmentSetId: S.optional(S.String),
+          attachments: Attachments,
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AddAttachmentsToSetRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ attachmentSetId: S.optional(S.String), expiryTime: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({
+        identifier: "AddAttachmentsToSetResponse",
+      });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          caseId: S.optional(S.String),
+          communicationBody: S.String,
+          ccEmailAddresses: S.optional(CcEmailAddressList),
+          attachmentSetId: S.optional(S.String),
+          uploadIds: S.optional(UploadIds),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AddCommunicationToCaseRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ result: S.optional(S.Boolean) }).pipe(ns)).annotate({
+        identifier: "AddCommunicationToCaseResponse",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ partIndex: S.Number, eTag: S.String })).annotate({
+        identifier: "CompletedUpload",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CompletedUpload);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uploadId: S.String,
+          completedUploads: CompletedUploadList,
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CompleteAttachmentUploadRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ uploadStatus: UploadStatus }).pipe(ns)).annotate({
+        identifier: "CompleteAttachmentUploadResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subject: S.String,
+          serviceCode: S.optional(S.String),
+          severityCode: S.optional(S.String),
+          categoryCode: S.optional(S.String),
+          communicationBody: S.String,
+          ccEmailAddresses: S.optional(CcEmailAddressList),
+          language: S.optional(S.String),
+          issueType: S.optional(S.String),
+          attachmentSetId: S.optional(S.String),
+          uploadIds: S.optional(UploadIds),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateCaseRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ caseId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateCaseResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ attachmentId: S.String, dryRun: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeAttachmentRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ attachment: S.optional(Attachment) }).pipe(ns)).annotate({
+        identifier: "DescribeAttachmentResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ uploadId: S.String, dryRun: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeAttachmentUploadStatusRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ totalParts: S.optional(S.Number), completedPartsCount: S.optional(S.Number) }),
+      ).annotate({ identifier: "UploadProgress" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uploadStatus: UploadStatus,
+          fileName: S.String,
+          uploadProgress: S.optional(UploadProgress),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeAttachmentUploadStatusResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          caseIdList: S.optional(CaseIdList),
+          displayId: S.optional(S.String),
+          afterTime: S.optional(S.String),
+          beforeTime: S.optional(S.String),
+          includeResolvedCases: S.optional(S.Boolean),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          language: S.optional(S.String),
+          includeCommunications: S.optional(S.Boolean),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeCasesRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ attachmentId: S.optional(S.String), fileName: S.optional(S.String) }),
+      ).annotate({ identifier: "AttachmentDetails" });
+    case 4:
+      return S.Array(AttachmentDetails);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          caseId: S.optional(S.String),
+          body: S.optional(S.String),
+          submittedBy: S.optional(S.String),
+          timeCreated: S.optional(S.String),
+          attachments: S.optional(AttachmentSet),
+          attachmentSet: S.optional(AttachmentSet),
+        }),
+      ).annotate({ identifier: "Communication" });
+    case 6:
+      return S.Array(Communication);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          communications: S.optional(CommunicationList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecentCaseCommunications" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          caseId: S.optional(S.String),
+          displayId: S.optional(S.String),
+          subject: S.optional(S.String),
+          status: S.optional(S.String),
+          serviceCode: S.optional(S.String),
+          categoryCode: S.optional(S.String),
+          severityCode: S.optional(S.String),
+          submittedBy: S.optional(S.String),
+          timeCreated: S.optional(S.String),
+          recentCommunications: S.optional(RecentCaseCommunications),
+          ccEmailAddresses: S.optional(CcEmailAddressList),
+          language: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CaseDetails" });
+    case 1:
+      return S.Array(CaseDetails);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ cases: S.optional(CaseList), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "DescribeCasesResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          caseId: S.String,
+          beforeTime: S.optional(S.String),
+          afterTime: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeCommunicationsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          communications: S.optional(CommunicationList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeCommunicationsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          issueType: S.String,
+          serviceCode: S.String,
+          language: S.String,
+          categoryCode: S.String,
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeCreateCaseOptionsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ startTime: S.optional(S.String), endTime: S.optional(S.String) }),
+      ).annotate({ identifier: "SupportedHour" });
+    case 7:
+      return S.Array(SupportedHour);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ startDateTime: S.optional(S.String), endDateTime: S.optional(S.String) }),
+      ).annotate({ identifier: "DateInterval" });
+    case 1:
+      return S.Array(DateInterval);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          supportedHours: S.optional(SupportedHoursList),
+          datesWithoutSupport: S.optional(DatesWithoutSupportList),
+        }),
+      ).annotate({ identifier: "CommunicationTypeOptions" });
+    case 3:
+      return S.Array(CommunicationTypeOptions);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          languageAvailability: S.optional(S.String),
+          communicationTypes: S.optional(CommunicationTypeOptionsList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeCreateCaseOptionsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          serviceCodeList: S.optional(ServiceCodeList),
+          language: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeServicesRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ code: S.optional(S.String), name: S.optional(S.String) }),
+      ).annotate({ identifier: "Category" });
+    case 7:
+      return S.Array(Category);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          name: S.optional(S.String),
+          categories: S.optional(CategoryList),
+        }),
+      ).annotate({ identifier: "Service" });
+    case 1:
+      return S.Array(Service);
+    case 2:
+      return S.suspend(() => S.Struct({ services: S.optional(ServiceList) }).pipe(ns)).annotate({
+        identifier: "DescribeServicesResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ language: S.optional(S.String), dryRun: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeSeverityLevelsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ severityLevels: S.optional(SeverityLevelsList) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeSeverityLevelsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          issueType: S.String,
+          serviceCode: S.String,
+          categoryCode: S.String,
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeSupportedLanguagesRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          language: S.optional(S.String),
+          display: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SupportedLanguage" });
+    case 7:
+      return S.Array(SupportedLanguage);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ supportedLanguages: S.optional(SupportedLanguagesList) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeSupportedLanguagesResponse",
+      });
+    case 1:
+      return S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ checkIds: StringList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeTrustedAdvisorCheckRefreshStatusesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ checkId: S.String, status: S.String, millisUntilNextRefreshable: S.Number }),
+      ).annotate({
+        identifier: "TrustedAdvisorCheckRefreshStatus",
+      });
+    case 4:
+      return S.Array(TrustedAdvisorCheckRefreshStatus);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ statuses: TrustedAdvisorCheckRefreshStatusList }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeTrustedAdvisorCheckRefreshStatusesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ checkId: S.String, language: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeTrustedAdvisorCheckResultRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          resourcesProcessed: S.Number,
+          resourcesFlagged: S.Number,
+          resourcesIgnored: S.Number,
+          resourcesSuppressed: S.Number,
+        }),
+      ).annotate({
+        identifier: "TrustedAdvisorResourcesSummary",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ estimatedMonthlySavings: S.Number, estimatedPercentMonthlySavings: S.Number }),
+      ).annotate({
+        identifier: "TrustedAdvisorCostOptimizingSummary",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ costOptimizing: S.optional(TrustedAdvisorCostOptimizingSummary) }),
+      ).annotate({
+        identifier: "TrustedAdvisorCategorySpecificSummary",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          region: S.optional(S.String),
+          resourceId: S.String,
+          isSuppressed: S.optional(S.Boolean),
+          metadata: StringList,
+        }),
+      ).annotate({
+        identifier: "TrustedAdvisorResourceDetail",
+      });
+    case 3:
+      return S.Array(TrustedAdvisorResourceDetail);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          checkId: S.String,
+          timestamp: S.String,
+          status: S.String,
+          resourcesSummary: TrustedAdvisorResourcesSummary,
+          categorySpecificSummary: TrustedAdvisorCategorySpecificSummary,
+          flaggedResources: TrustedAdvisorResourceDetailList,
+        }),
+      ).annotate({
+        identifier: "TrustedAdvisorCheckResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ result: S.optional(TrustedAdvisorCheckResult) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeTrustedAdvisorCheckResultResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ language: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeTrustedAdvisorChecksRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          description: S.String,
+          category: S.String,
+          metadata: StringList,
+        }),
+      ).annotate({
+        identifier: "TrustedAdvisorCheckDescription",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(TrustedAdvisorCheckDescription);
+    case 1:
+      return S.suspend(() => S.Struct({ checks: TrustedAdvisorCheckList }).pipe(ns)).annotate({
+        identifier: "DescribeTrustedAdvisorChecksResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ checkIds: StringList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeTrustedAdvisorCheckSummariesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          checkId: S.String,
+          timestamp: S.String,
+          status: S.String,
+          hasFlaggedResources: S.optional(S.Boolean),
+          resourcesSummary: TrustedAdvisorResourcesSummary,
+          categorySpecificSummary: TrustedAdvisorCategorySpecificSummary,
+        }),
+      ).annotate({
+        identifier: "TrustedAdvisorCheckSummary",
+      });
+    case 4:
+      return S.Array(TrustedAdvisorCheckSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ summaries: TrustedAdvisorCheckSummaryList }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeTrustedAdvisorCheckSummariesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ attachmentId: S.String, dryRun: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAttachmentDownloadLinkRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ url: S.String, expiryDate: S.String })).annotate({
+        identifier: "DownloadUrl",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ fileName: S.String, downloadUrl: DownloadUrl }).pipe(ns),
+      ).annotate({
+        identifier: "GetAttachmentDownloadLinkResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ startIndex: S.Number, endIndex: S.optional(S.Number) }),
+      ).annotate({ identifier: "UploadRange" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fileName: S.String,
+          fileSizeBytes: S.optional(S.Number),
+          uploadId: S.optional(S.String),
+          uploadRange: S.optional(UploadRange),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetAttachmentUploadLinksRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ url: S.String, partIndex: S.Number, expiryDate: S.String }),
+      ).annotate({ identifier: "UploadUrl" });
+    case 4:
+      return S.Array(UploadUrl);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          uploadId: S.String,
+          partSizeBytes: S.Number,
+          totalParts: S.Number,
+          nextIndex: S.optional(S.Number),
+          uploadUrls: UploadUrlList,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetAttachmentUploadLinksResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ checkId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RefreshTrustedAdvisorCheckRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ status: TrustedAdvisorCheckRefreshStatus }).pipe(ns),
+      ).annotate({
+        identifier: "RefreshTrustedAdvisorCheckResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ caseId: S.optional(S.String), dryRun: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ResolveCaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          initialCaseStatus: S.optional(S.String),
+          finalCaseStatus: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ResolveCaseResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
+      ).annotate({ identifier: "ThrottlingReason" });
+    case 3:
+      return S.Array(ThrottlingReason);
+  }
+}

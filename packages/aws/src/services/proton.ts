@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -122,13 +123,10 @@ export type EnvironmentAccountConnectionId = string;
 export interface AcceptEnvironmentAccountConnectionInput {
   id: string;
 }
-const AcceptEnvironmentAccountConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AcceptEnvironmentAccountConnectionInput",
-}) as any as S.Schema<AcceptEnvironmentAccountConnectionInput>;
+const AcceptEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptEnvironmentAccountConnectionInput>;
 export type EnvironmentAccountConnectionArn = string;
 export type AwsAccountId = string;
 export type Arn = string;
@@ -148,41 +146,24 @@ export interface EnvironmentAccountConnection {
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const EnvironmentAccountConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    managementAccountId: S.String,
-    environmentAccountId: S.String,
-    roleArn: S.String,
-    environmentName: S.String,
-    requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: S.String,
-    componentRoleArn: S.optional(S.String),
-    codebuildRoleArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentAccountConnection",
-}) as any as S.Schema<EnvironmentAccountConnection>;
+const EnvironmentAccountConnection = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<EnvironmentAccountConnection>;
 export interface AcceptEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
-const AcceptEnvironmentAccountConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentAccountConnection: EnvironmentAccountConnection }),
-).annotate({
-  identifier: "AcceptEnvironmentAccountConnectionOutput",
-}) as any as S.Schema<AcceptEnvironmentAccountConnectionOutput>;
+const AcceptEnvironmentAccountConnectionOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AcceptEnvironmentAccountConnectionOutput>;
 export interface CancelComponentDeploymentInput {
   componentName: string;
 }
-const CancelComponentDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ componentName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CancelComponentDeploymentInput",
-}) as any as S.Schema<CancelComponentDeploymentInput>;
+const CancelComponentDeploymentInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CancelComponentDeploymentInput>;
 export type Description = string | redacted.Redacted<string>;
 export type ComponentArn = string;
 export type DeploymentStatus = string;
@@ -207,44 +188,21 @@ export interface Component {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const Component = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    arn: S.String,
-    environmentName: S.String,
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentAttemptedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastDeploymentSucceededAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deploymentStatus: S.String,
-    deploymentStatusMessage: S.optional(SensitiveString),
-    serviceSpec: S.optional(SensitiveString),
-    lastClientRequestToken: S.optional(S.String),
-    lastAttemptedDeploymentId: S.optional(S.String),
-    lastSucceededDeploymentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Component" }) as any as S.Schema<Component>;
+const Component = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Component>;
 export interface CancelComponentDeploymentOutput {
   component: Component;
 }
-const CancelComponentDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ component: Component }),
-).annotate({
-  identifier: "CancelComponentDeploymentOutput",
-}) as any as S.Schema<CancelComponentDeploymentOutput>;
+const CancelComponentDeploymentOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CancelComponentDeploymentOutput>;
 export interface CancelEnvironmentDeploymentInput {
   environmentName: string;
 }
-const CancelEnvironmentDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CancelEnvironmentDeploymentInput",
-}) as any as S.Schema<CancelEnvironmentDeploymentInput>;
+const CancelEnvironmentDeploymentInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CancelEnvironmentDeploymentInput>;
 export type EnvironmentArn = string;
 export type TemplateVersionPart = string;
 export type Provisioning = string;
@@ -258,9 +216,7 @@ export interface RepositoryBranch {
   name: string;
   branch: string;
 }
-const RepositoryBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, provider: S.String, name: S.String, branch: S.String }),
-).annotate({ identifier: "RepositoryBranch" }) as any as S.Schema<RepositoryBranch>;
+const RepositoryBranch = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RepositoryBranch>;
 export interface Environment {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -284,50 +240,22 @@ export interface Environment {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const Environment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    arn: S.String,
-    templateName: S.String,
-    templateMajorVersion: S.String,
-    templateMinorVersion: S.String,
-    deploymentStatus: S.String,
-    deploymentStatusMessage: S.optional(SensitiveString),
-    protonServiceRoleArn: S.optional(S.String),
-    environmentAccountConnectionId: S.optional(S.String),
-    environmentAccountId: S.optional(S.String),
-    spec: S.optional(SensitiveString),
-    provisioning: S.optional(S.String),
-    provisioningRepository: S.optional(RepositoryBranch),
-    componentRoleArn: S.optional(S.String),
-    codebuildRoleArn: S.optional(S.String),
-    lastAttemptedDeploymentId: S.optional(S.String),
-    lastSucceededDeploymentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
+const Environment = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Environment>;
 export interface CancelEnvironmentDeploymentOutput {
   environment: Environment;
 }
-const CancelEnvironmentDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environment: Environment }),
-).annotate({
-  identifier: "CancelEnvironmentDeploymentOutput",
-}) as any as S.Schema<CancelEnvironmentDeploymentOutput>;
+const CancelEnvironmentDeploymentOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CancelEnvironmentDeploymentOutput>;
 export interface CancelServiceInstanceDeploymentInput {
   serviceInstanceName: string;
   serviceName: string;
 }
-const CancelServiceInstanceDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceInstanceName: S.String, serviceName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CancelServiceInstanceDeploymentInput",
-}) as any as S.Schema<CancelServiceInstanceDeploymentInput>;
+const CancelServiceInstanceDeploymentInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CancelServiceInstanceDeploymentInput>;
 export type ServiceInstanceArn = string;
 export interface ServiceInstance {
   name: string;
@@ -347,44 +275,21 @@ export interface ServiceInstance {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const ServiceInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    serviceName: S.String,
-    environmentName: S.String,
-    templateName: S.String,
-    templateMajorVersion: S.String,
-    templateMinorVersion: S.String,
-    deploymentStatus: S.String,
-    deploymentStatusMessage: S.optional(SensitiveString),
-    spec: S.optional(SensitiveString),
-    lastClientRequestToken: S.optional(S.String),
-    lastAttemptedDeploymentId: S.optional(S.String),
-    lastSucceededDeploymentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceInstance" }) as any as S.Schema<ServiceInstance>;
+const ServiceInstance = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ServiceInstance>;
 export interface CancelServiceInstanceDeploymentOutput {
   serviceInstance: ServiceInstance;
 }
-const CancelServiceInstanceDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceInstance: ServiceInstance }),
-).annotate({
-  identifier: "CancelServiceInstanceDeploymentOutput",
-}) as any as S.Schema<CancelServiceInstanceDeploymentOutput>;
+const CancelServiceInstanceDeploymentOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CancelServiceInstanceDeploymentOutput>;
 export interface CancelServicePipelineDeploymentInput {
   serviceName: string;
 }
-const CancelServicePipelineDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CancelServicePipelineDeploymentInput",
-}) as any as S.Schema<CancelServicePipelineDeploymentInput>;
+const CancelServicePipelineDeploymentInput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CancelServicePipelineDeploymentInput>;
 export interface ServicePipeline {
   arn: string;
   createdAt: Date;
@@ -399,30 +304,14 @@ export interface ServicePipeline {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const ServicePipeline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    templateName: S.String,
-    templateMajorVersion: S.String,
-    templateMinorVersion: S.String,
-    deploymentStatus: S.String,
-    deploymentStatusMessage: S.optional(SensitiveString),
-    spec: S.optional(SensitiveString),
-    lastAttemptedDeploymentId: S.optional(S.String),
-    lastSucceededDeploymentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServicePipeline" }) as any as S.Schema<ServicePipeline>;
+const ServicePipeline = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ServicePipeline>;
 export interface CancelServicePipelineDeploymentOutput {
   pipeline: ServicePipeline;
 }
-const CancelServicePipelineDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ pipeline: ServicePipeline }),
-).annotate({
-  identifier: "CancelServicePipelineDeploymentOutput",
-}) as any as S.Schema<CancelServicePipelineDeploymentOutput>;
+const CancelServicePipelineDeploymentOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CancelServicePipelineDeploymentOutput>;
 export type TemplateFileContents = string | redacted.Redacted<string>;
 export type TemplateManifestContents = string | redacted.Redacted<string>;
 export type TagKey = string;
@@ -431,11 +320,9 @@ export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c2, 1);
 export type ClientToken = string;
 export interface CreateComponentInput {
   name: string;
@@ -449,34 +336,23 @@ export interface CreateComponentInput {
   tags?: Tag[];
   clientToken?: string;
 }
-const CreateComponentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    environmentName: S.optional(S.String),
-    templateFile: SensitiveString,
-    manifest: SensitiveString,
-    serviceSpec: S.optional(SensitiveString),
-    tags: S.optional(TagList),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateComponentInput" }) as any as S.Schema<CreateComponentInput>;
+const CreateComponentInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateComponentInput>;
 export interface CreateComponentOutput {
   component: Component;
 }
-const CreateComponentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ component: Component }),
-).annotate({ identifier: "CreateComponentOutput" }) as any as S.Schema<CreateComponentOutput>;
+const CreateComponentOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateComponentOutput>;
 export interface RepositoryBranchInput {
   provider: string;
   name: string;
   branch: string;
 }
-const RepositoryBranchInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ provider: S.String, name: S.String, branch: S.String }),
-).annotate({ identifier: "RepositoryBranchInput" }) as any as S.Schema<RepositoryBranchInput>;
+const RepositoryBranchInput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<RepositoryBranchInput>;
 export interface CreateEnvironmentInput {
   name: string;
   templateName: string;
@@ -491,28 +367,17 @@ export interface CreateEnvironmentInput {
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const CreateEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    templateName: S.String,
-    templateMajorVersion: S.String,
-    templateMinorVersion: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    spec: SensitiveString,
-    protonServiceRoleArn: S.optional(S.String),
-    environmentAccountConnectionId: S.optional(S.String),
-    tags: S.optional(TagList),
-    provisioningRepository: S.optional(RepositoryBranchInput),
-    componentRoleArn: S.optional(S.String),
-    codebuildRoleArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateEnvironmentInput" }) as any as S.Schema<CreateEnvironmentInput>;
+const CreateEnvironmentInput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateEnvironmentInput>;
 export interface CreateEnvironmentOutput {
   environment: Environment;
 }
-const CreateEnvironmentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environment: Environment }),
-).annotate({ identifier: "CreateEnvironmentOutput" }) as any as S.Schema<CreateEnvironmentOutput>;
+const CreateEnvironmentOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateEnvironmentOutput>;
 export interface CreateEnvironmentAccountConnectionInput {
   clientToken?: string;
   managementAccountId: string;
@@ -522,19 +387,10 @@ export interface CreateEnvironmentAccountConnectionInput {
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const CreateEnvironmentAccountConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    managementAccountId: S.String,
-    roleArn: S.optional(S.String),
-    environmentName: S.String,
-    tags: S.optional(TagList),
-    componentRoleArn: S.optional(S.String),
-    codebuildRoleArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateEnvironmentAccountConnectionInput",
-}) as any as S.Schema<CreateEnvironmentAccountConnectionInput>;
+const CreateEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateEnvironmentAccountConnectionInput>;
 export interface CreateEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
@@ -549,18 +405,10 @@ export interface CreateEnvironmentTemplateInput {
   provisioning?: string;
   tags?: Tag[];
 }
-const CreateEnvironmentTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    encryptionKey: S.optional(S.String),
-    provisioning: S.optional(S.String),
-    tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateEnvironmentTemplateInput",
-}) as any as S.Schema<CreateEnvironmentTemplateInput>;
+const CreateEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateEnvironmentTemplateInput>;
 export type EnvironmentTemplateArn = string;
 export type FullTemplateVersionNumber = string;
 export interface EnvironmentTemplate {
@@ -574,40 +422,23 @@ export interface EnvironmentTemplate {
   encryptionKey?: string;
   provisioning?: string;
 }
-const EnvironmentTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    recommendedVersion: S.optional(S.String),
-    encryptionKey: S.optional(S.String),
-    provisioning: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnvironmentTemplate" }) as any as S.Schema<EnvironmentTemplate>;
+const EnvironmentTemplate = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<EnvironmentTemplate>;
 export interface CreateEnvironmentTemplateOutput {
   environmentTemplate: EnvironmentTemplate;
 }
-const CreateEnvironmentTemplateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentTemplate: EnvironmentTemplate }),
-).annotate({
-  identifier: "CreateEnvironmentTemplateOutput",
-}) as any as S.Schema<CreateEnvironmentTemplateOutput>;
+const CreateEnvironmentTemplateOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateEnvironmentTemplateOutput>;
 export type S3Bucket = string;
 export type S3Key = string;
 export interface S3ObjectSource {
   bucket: string;
   key: string;
 }
-const S3ObjectSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bucket: S.String, key: S.String }),
-).annotate({ identifier: "S3ObjectSource" }) as any as S.Schema<S3ObjectSource>;
+const S3ObjectSource = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<S3ObjectSource>;
 export type TemplateVersionSourceInput = { s3: S3ObjectSource };
-const TemplateVersionSourceInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ s3: S3ObjectSource }),
-]);
+const TemplateVersionSourceInput = /*@__PURE__*/ __L.at(__c3, 4);
 export interface CreateEnvironmentTemplateVersionInput {
   clientToken?: string;
   templateName: string;
@@ -616,18 +447,10 @@ export interface CreateEnvironmentTemplateVersionInput {
   source: TemplateVersionSourceInput;
   tags?: Tag[];
 }
-const CreateEnvironmentTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    templateName: S.String,
-    description: S.optional(SensitiveString),
-    majorVersion: S.optional(S.String),
-    source: TemplateVersionSourceInput,
-    tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateEnvironmentTemplateVersionInput",
-}) as any as S.Schema<CreateEnvironmentTemplateVersionInput>;
+const CreateEnvironmentTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateEnvironmentTemplateVersionInput>;
 export type TemplateVersionStatus = string;
 export type EnvironmentTemplateVersionArn = string;
 export type TemplateSchema = string | redacted.Redacted<string>;
@@ -644,31 +467,17 @@ export interface EnvironmentTemplateVersion {
   lastModifiedAt: Date;
   schema?: string | redacted.Redacted<string>;
 }
-const EnvironmentTemplateVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateName: S.String,
-    majorVersion: S.String,
-    minorVersion: S.String,
-    recommendedMinorVersion: S.optional(S.String),
-    status: S.String,
-    statusMessage: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    schema: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "EnvironmentTemplateVersion",
-}) as any as S.Schema<EnvironmentTemplateVersion>;
+const EnvironmentTemplateVersion = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<EnvironmentTemplateVersion>;
 export interface CreateEnvironmentTemplateVersionOutput {
   environmentTemplateVersion: EnvironmentTemplateVersion;
 }
-const CreateEnvironmentTemplateVersionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentTemplateVersion: EnvironmentTemplateVersion }),
-).annotate({
-  identifier: "CreateEnvironmentTemplateVersionOutput",
-}) as any as S.Schema<CreateEnvironmentTemplateVersionOutput>;
+const CreateEnvironmentTemplateVersionOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateEnvironmentTemplateVersionOutput>;
 export interface CreateRepositoryInput {
   provider: string;
   name: string;
@@ -676,15 +485,10 @@ export interface CreateRepositoryInput {
   encryptionKey?: string;
   tags?: Tag[];
 }
-const CreateRepositoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.String,
-    name: S.String,
-    connectionArn: S.String,
-    encryptionKey: S.optional(S.String),
-    tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateRepositoryInput" }) as any as S.Schema<CreateRepositoryInput>;
+const CreateRepositoryInput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateRepositoryInput>;
 export interface Repository {
   arn: string;
   provider: string;
@@ -692,21 +496,14 @@ export interface Repository {
   connectionArn: string;
   encryptionKey?: string;
 }
-const Repository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    provider: S.String,
-    name: S.String,
-    connectionArn: S.String,
-    encryptionKey: S.optional(S.String),
-  }),
-).annotate({ identifier: "Repository" }) as any as S.Schema<Repository>;
+const Repository = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Repository>;
 export interface CreateRepositoryOutput {
   repository: Repository;
 }
-const CreateRepositoryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: Repository }),
-).annotate({ identifier: "CreateRepositoryOutput" }) as any as S.Schema<CreateRepositoryOutput>;
+const CreateRepositoryOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateRepositoryOutput>;
 export type RepositoryId = string;
 export interface CreateServiceInput {
   name: string;
@@ -720,20 +517,7 @@ export interface CreateServiceInput {
   branchName?: string;
   tags?: Tag[];
 }
-const CreateServiceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    templateName: S.String,
-    templateMajorVersion: S.String,
-    templateMinorVersion: S.optional(S.String),
-    spec: SensitiveString,
-    repositoryConnectionArn: S.optional(S.String),
-    repositoryId: S.optional(S.String),
-    branchName: S.optional(S.String),
-    tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateServiceInput" }) as any as S.Schema<CreateServiceInput>;
+const CreateServiceInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateServiceInput>;
 export type ServiceArn = string;
 export type ServiceStatus = string;
 export interface Service {
@@ -751,29 +535,11 @@ export interface Service {
   repositoryId?: string;
   branchName?: string;
 }
-const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    arn: S.String,
-    templateName: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: S.String,
-    statusMessage: S.optional(SensitiveString),
-    spec: SensitiveString,
-    pipeline: S.optional(ServicePipeline),
-    repositoryConnectionArn: S.optional(S.String),
-    repositoryId: S.optional(S.String),
-    branchName: S.optional(S.String),
-  }),
-).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
+const Service = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Service>;
 export interface CreateServiceOutput {
   service: Service;
 }
-const CreateServiceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ service: Service })).annotate({
-  identifier: "CreateServiceOutput",
-}) as any as S.Schema<CreateServiceOutput>;
+const CreateServiceOutput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CreateServiceOutput>;
 export interface CreateServiceInstanceInput {
   name: string;
   serviceName: string;
@@ -783,19 +549,10 @@ export interface CreateServiceInstanceInput {
   tags?: Tag[];
   clientToken?: string;
 }
-const CreateServiceInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    serviceName: S.String,
-    spec: SensitiveString,
-    templateMajorVersion: S.optional(S.String),
-    templateMinorVersion: S.optional(S.String),
-    tags: S.optional(TagList),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateServiceInstanceInput",
-}) as any as S.Schema<CreateServiceInstanceInput>;
+const CreateServiceInstanceInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateServiceInstanceInput>;
 export interface CreateServiceInstanceOutput {
   serviceInstance: ServiceInstance;
 }
@@ -809,17 +566,10 @@ export interface CreateServiceSyncConfigInput {
   branch: string;
   filePath: string;
 }
-const CreateServiceSyncConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String,
-    repositoryProvider: S.String,
-    repositoryName: S.String,
-    branch: S.String,
-    filePath: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateServiceSyncConfigInput",
-}) as any as S.Schema<CreateServiceSyncConfigInput>;
+const CreateServiceSyncConfigInput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateServiceSyncConfigInput>;
 export interface ServiceSyncConfig {
   serviceName: string;
   repositoryProvider: string;
@@ -827,23 +577,14 @@ export interface ServiceSyncConfig {
   branch: string;
   filePath: string;
 }
-const ServiceSyncConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String,
-    repositoryProvider: S.String,
-    repositoryName: S.String,
-    branch: S.String,
-    filePath: S.String,
-  }),
-).annotate({ identifier: "ServiceSyncConfig" }) as any as S.Schema<ServiceSyncConfig>;
+const ServiceSyncConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ServiceSyncConfig>;
 export interface CreateServiceSyncConfigOutput {
   serviceSyncConfig?: ServiceSyncConfig;
 }
-const CreateServiceSyncConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceSyncConfig: S.optional(ServiceSyncConfig) }),
-).annotate({
-  identifier: "CreateServiceSyncConfigOutput",
-}) as any as S.Schema<CreateServiceSyncConfigOutput>;
+const CreateServiceSyncConfigOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateServiceSyncConfigOutput>;
 export interface CreateServiceTemplateInput {
   name: string;
   displayName?: string | redacted.Redacted<string>;
@@ -852,18 +593,10 @@ export interface CreateServiceTemplateInput {
   pipelineProvisioning?: string;
   tags?: Tag[];
 }
-const CreateServiceTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    encryptionKey: S.optional(S.String),
-    pipelineProvisioning: S.optional(S.String),
-    tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateServiceTemplateInput",
-}) as any as S.Schema<CreateServiceTemplateInput>;
+const CreateServiceTemplateInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateServiceTemplateInput>;
 export type ServiceTemplateArn = string;
 export interface ServiceTemplate {
   name: string;
@@ -876,43 +609,27 @@ export interface ServiceTemplate {
   encryptionKey?: string;
   pipelineProvisioning?: string;
 }
-const ServiceTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    recommendedVersion: S.optional(S.String),
-    encryptionKey: S.optional(S.String),
-    pipelineProvisioning: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceTemplate" }) as any as S.Schema<ServiceTemplate>;
+const ServiceTemplate = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ServiceTemplate>;
 export interface CreateServiceTemplateOutput {
   serviceTemplate: ServiceTemplate;
 }
-const CreateServiceTemplateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceTemplate: ServiceTemplate }),
-).annotate({
-  identifier: "CreateServiceTemplateOutput",
-}) as any as S.Schema<CreateServiceTemplateOutput>;
+const CreateServiceTemplateOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateServiceTemplateOutput>;
 export interface CompatibleEnvironmentTemplateInput {
   templateName: string;
   majorVersion: string;
 }
-const CompatibleEnvironmentTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateName: S.String, majorVersion: S.String }),
-).annotate({
-  identifier: "CompatibleEnvironmentTemplateInput",
-}) as any as S.Schema<CompatibleEnvironmentTemplateInput>;
+const CompatibleEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CompatibleEnvironmentTemplateInput>;
 export type CompatibleEnvironmentTemplateInputList = CompatibleEnvironmentTemplateInput[];
-const CompatibleEnvironmentTemplateInputList = /*@__PURE__*/ S.Array(
-  CompatibleEnvironmentTemplateInput,
-);
+const CompatibleEnvironmentTemplateInputList = /*@__PURE__*/ __L.at(__c5, 6);
 export type ServiceTemplateSupportedComponentSourceType = string;
 export type ServiceTemplateSupportedComponentSourceInputList = string[];
-const ServiceTemplateSupportedComponentSourceInputList = /*@__PURE__*/ S.Array(S.String);
+const ServiceTemplateSupportedComponentSourceInputList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface CreateServiceTemplateVersionInput {
   clientToken?: string;
   templateName: string;
@@ -923,20 +640,10 @@ export interface CreateServiceTemplateVersionInput {
   tags?: Tag[];
   supportedComponentSources?: string[];
 }
-const CreateServiceTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    templateName: S.String,
-    description: S.optional(SensitiveString),
-    majorVersion: S.optional(S.String),
-    source: TemplateVersionSourceInput,
-    compatibleEnvironmentTemplates: CompatibleEnvironmentTemplateInputList,
-    tags: S.optional(TagList),
-    supportedComponentSources: S.optional(ServiceTemplateSupportedComponentSourceInputList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateServiceTemplateVersionInput",
-}) as any as S.Schema<CreateServiceTemplateVersionInput>;
+const CreateServiceTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateServiceTemplateVersionInput>;
 export type ServiceTemplateVersionArn = string;
 export interface CompatibleEnvironmentTemplate {
   templateName: string;
@@ -960,31 +667,17 @@ export interface ServiceTemplateVersion {
   schema?: string | redacted.Redacted<string>;
   supportedComponentSources?: string[];
 }
-const ServiceTemplateVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateName: S.String,
-    majorVersion: S.String,
-    minorVersion: S.String,
-    recommendedMinorVersion: S.optional(S.String),
-    status: S.String,
-    statusMessage: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    compatibleEnvironmentTemplates: CompatibleEnvironmentTemplateList,
-    schema: S.optional(SensitiveString),
-    supportedComponentSources: S.optional(ServiceTemplateSupportedComponentSourceInputList),
-  }),
-).annotate({ identifier: "ServiceTemplateVersion" }) as any as S.Schema<ServiceTemplateVersion>;
+const ServiceTemplateVersion = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ServiceTemplateVersion>;
 export interface CreateServiceTemplateVersionOutput {
   serviceTemplateVersion: ServiceTemplateVersion;
 }
-const CreateServiceTemplateVersionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceTemplateVersion: ServiceTemplateVersion }),
-).annotate({
-  identifier: "CreateServiceTemplateVersionOutput",
-}) as any as S.Schema<CreateServiceTemplateVersionOutput>;
+const CreateServiceTemplateVersionOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateServiceTemplateVersionOutput>;
 export type TemplateType = string;
 export type Subdirectory = string;
 export interface CreateTemplateSyncConfigInput {
@@ -995,18 +688,10 @@ export interface CreateTemplateSyncConfigInput {
   branch: string;
   subdirectory?: string;
 }
-const CreateTemplateSyncConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateName: S.String,
-    templateType: S.String,
-    repositoryProvider: S.String,
-    repositoryName: S.String,
-    branch: S.String,
-    subdirectory: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateTemplateSyncConfigInput",
-}) as any as S.Schema<CreateTemplateSyncConfigInput>;
+const CreateTemplateSyncConfigInput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CreateTemplateSyncConfigInput>;
 export interface TemplateSyncConfig {
   templateName: string;
   templateType: string;
@@ -1015,46 +700,32 @@ export interface TemplateSyncConfig {
   branch: string;
   subdirectory?: string;
 }
-const TemplateSyncConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateName: S.String,
-    templateType: S.String,
-    repositoryProvider: S.String,
-    repositoryName: S.String,
-    branch: S.String,
-    subdirectory: S.optional(S.String),
-  }),
-).annotate({ identifier: "TemplateSyncConfig" }) as any as S.Schema<TemplateSyncConfig>;
+const TemplateSyncConfig = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TemplateSyncConfig>;
 export interface CreateTemplateSyncConfigOutput {
   templateSyncConfig?: TemplateSyncConfig;
 }
-const CreateTemplateSyncConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateSyncConfig: S.optional(TemplateSyncConfig) }),
-).annotate({
-  identifier: "CreateTemplateSyncConfigOutput",
-}) as any as S.Schema<CreateTemplateSyncConfigOutput>;
+const CreateTemplateSyncConfigOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateTemplateSyncConfigOutput>;
 export interface DeleteComponentInput {
   name: string;
 }
-const DeleteComponentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteComponentInput" }) as any as S.Schema<DeleteComponentInput>;
+const DeleteComponentInput = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DeleteComponentInput>;
 export interface DeleteComponentOutput {
   component?: Component;
 }
-const DeleteComponentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ component: S.optional(Component) }),
-).annotate({ identifier: "DeleteComponentOutput" }) as any as S.Schema<DeleteComponentOutput>;
+const DeleteComponentOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteComponentOutput>;
 export interface DeleteDeploymentInput {
   id: string;
 }
-const DeleteDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteDeploymentInput" }) as any as S.Schema<DeleteDeploymentInput>;
+const DeleteDeploymentInput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteDeploymentInput>;
 export type DeploymentArn = string;
 export type DeploymentTargetResourceType = string;
 export type ComponentDeploymentIdList = string[];
@@ -1069,31 +740,14 @@ export interface ServiceInstanceState {
   lastSuccessfulEnvironmentDeploymentId?: string;
   lastSuccessfulServicePipelineDeploymentId?: string;
 }
-const ServiceInstanceState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spec: SensitiveString,
-    templateName: S.String,
-    templateMajorVersion: S.String,
-    templateMinorVersion: S.String,
-    lastSuccessfulComponentDeploymentIds: S.optional(ComponentDeploymentIdList),
-    lastSuccessfulEnvironmentDeploymentId: S.optional(S.String),
-    lastSuccessfulServicePipelineDeploymentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceInstanceState" }) as any as S.Schema<ServiceInstanceState>;
+const ServiceInstanceState = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ServiceInstanceState>;
 export interface EnvironmentState {
   spec?: string | redacted.Redacted<string>;
   templateName: string;
   templateMajorVersion: string;
   templateMinorVersion: string;
 }
-const EnvironmentState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spec: S.optional(SensitiveString),
-    templateName: S.String,
-    templateMajorVersion: S.String,
-    templateMinorVersion: S.String,
-  }),
-).annotate({ identifier: "EnvironmentState" }) as any as S.Schema<EnvironmentState>;
+const EnvironmentState = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<EnvironmentState>;
 export interface ServicePipelineState {
   spec?: string | redacted.Redacted<string>;
   templateName: string;
@@ -1108,14 +762,7 @@ export interface ComponentState {
   serviceSpec?: string | redacted.Redacted<string>;
   templateFile?: string | redacted.Redacted<string>;
 }
-const ComponentState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    serviceSpec: S.optional(SensitiveString),
-    templateFile: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "ComponentState" }) as any as S.Schema<ComponentState>;
+const ComponentState = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ComponentState>;
 export type DeploymentState =
   | {
       serviceInstance: ServiceInstanceState;
@@ -1141,12 +788,7 @@ export type DeploymentState =
       servicePipeline?: never;
       component: ComponentState;
     };
-const DeploymentState = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ serviceInstance: ServiceInstanceState }),
-  /*@__PURE__*/ S.Struct({ environment: EnvironmentState }),
-  /*@__PURE__*/ S.Struct({ servicePipeline: ServicePipelineState }),
-  /*@__PURE__*/ S.Struct({ component: ComponentState }),
-]);
+const DeploymentState = /*@__PURE__*/ __L.at(__c7, 4);
 export interface Deployment {
   id: string;
   arn: string;
@@ -1167,143 +809,102 @@ export interface Deployment {
   initialState?: DeploymentState;
   targetState?: DeploymentState;
 }
-const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    targetArn: S.String,
-    targetResourceCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    targetResourceType: S.String,
-    environmentName: S.String,
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    componentName: S.optional(S.String),
-    deploymentStatus: S.String,
-    deploymentStatusMessage: S.optional(SensitiveString),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastAttemptedDeploymentId: S.optional(S.String),
-    lastSucceededDeploymentId: S.optional(S.String),
-    initialState: S.optional(DeploymentState),
-    targetState: S.optional(DeploymentState),
-  }),
-).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
+const Deployment = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Deployment>;
 export interface DeleteDeploymentOutput {
   deployment?: Deployment;
 }
-const DeleteDeploymentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deployment: S.optional(Deployment) }),
-).annotate({ identifier: "DeleteDeploymentOutput" }) as any as S.Schema<DeleteDeploymentOutput>;
+const DeleteDeploymentOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteDeploymentOutput>;
 export interface DeleteEnvironmentInput {
   name: string;
 }
-const DeleteEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteEnvironmentInput" }) as any as S.Schema<DeleteEnvironmentInput>;
+const DeleteEnvironmentInput = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteEnvironmentInput>;
 export interface DeleteEnvironmentOutput {
   environment?: Environment;
 }
-const DeleteEnvironmentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environment: S.optional(Environment) }),
-).annotate({ identifier: "DeleteEnvironmentOutput" }) as any as S.Schema<DeleteEnvironmentOutput>;
+const DeleteEnvironmentOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteEnvironmentOutput>;
 export interface DeleteEnvironmentAccountConnectionInput {
   id: string;
 }
-const DeleteEnvironmentAccountConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteEnvironmentAccountConnectionInput",
-}) as any as S.Schema<DeleteEnvironmentAccountConnectionInput>;
+const DeleteEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteEnvironmentAccountConnectionInput>;
 export interface DeleteEnvironmentAccountConnectionOutput {
   environmentAccountConnection?: EnvironmentAccountConnection;
 }
-const DeleteEnvironmentAccountConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentAccountConnection: S.optional(EnvironmentAccountConnection) }),
-).annotate({
-  identifier: "DeleteEnvironmentAccountConnectionOutput",
-}) as any as S.Schema<DeleteEnvironmentAccountConnectionOutput>;
+const DeleteEnvironmentAccountConnectionOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeleteEnvironmentAccountConnectionOutput>;
 export interface DeleteEnvironmentTemplateInput {
   name: string;
 }
-const DeleteEnvironmentTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteEnvironmentTemplateInput",
-}) as any as S.Schema<DeleteEnvironmentTemplateInput>;
+const DeleteEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteEnvironmentTemplateInput>;
 export interface DeleteEnvironmentTemplateOutput {
   environmentTemplate?: EnvironmentTemplate;
 }
-const DeleteEnvironmentTemplateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentTemplate: S.optional(EnvironmentTemplate) }),
-).annotate({
-  identifier: "DeleteEnvironmentTemplateOutput",
-}) as any as S.Schema<DeleteEnvironmentTemplateOutput>;
+const DeleteEnvironmentTemplateOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteEnvironmentTemplateOutput>;
 export interface DeleteEnvironmentTemplateVersionInput {
   templateName: string;
   majorVersion: string;
   minorVersion: string;
 }
-const DeleteEnvironmentTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteEnvironmentTemplateVersionInput",
-}) as any as S.Schema<DeleteEnvironmentTemplateVersionInput>;
+const DeleteEnvironmentTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteEnvironmentTemplateVersionInput>;
 export interface DeleteEnvironmentTemplateVersionOutput {
   environmentTemplateVersion?: EnvironmentTemplateVersion;
 }
-const DeleteEnvironmentTemplateVersionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentTemplateVersion: S.optional(EnvironmentTemplateVersion) }),
-).annotate({
-  identifier: "DeleteEnvironmentTemplateVersionOutput",
-}) as any as S.Schema<DeleteEnvironmentTemplateVersionOutput>;
+const DeleteEnvironmentTemplateVersionOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteEnvironmentTemplateVersionOutput>;
 export interface DeleteRepositoryInput {
   provider: string;
   name: string;
 }
-const DeleteRepositoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ provider: S.String, name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteRepositoryInput" }) as any as S.Schema<DeleteRepositoryInput>;
+const DeleteRepositoryInput = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteRepositoryInput>;
 export interface DeleteRepositoryOutput {
   repository?: Repository;
 }
-const DeleteRepositoryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: S.optional(Repository) }),
-).annotate({ identifier: "DeleteRepositoryOutput" }) as any as S.Schema<DeleteRepositoryOutput>;
+const DeleteRepositoryOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteRepositoryOutput>;
 export interface DeleteServiceInput {
   name: string;
 }
-const DeleteServiceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteServiceInput" }) as any as S.Schema<DeleteServiceInput>;
+const DeleteServiceInput = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeleteServiceInput>;
 export interface DeleteServiceOutput {
   service?: Service;
 }
-const DeleteServiceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ service: S.optional(Service) }),
-).annotate({ identifier: "DeleteServiceOutput" }) as any as S.Schema<DeleteServiceOutput>;
+const DeleteServiceOutput = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<DeleteServiceOutput>;
 export interface DeleteServiceSyncConfigInput {
   serviceName: string;
 }
-const DeleteServiceSyncConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteServiceSyncConfigInput",
-}) as any as S.Schema<DeleteServiceSyncConfigInput>;
+const DeleteServiceSyncConfigInput = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteServiceSyncConfigInput>;
 export interface DeleteServiceSyncConfigOutput {
   serviceSyncConfig?: ServiceSyncConfig;
 }
@@ -1312,88 +913,69 @@ const DeleteServiceSyncConfigOutput =
 export interface DeleteServiceTemplateInput {
   name: string;
 }
-const DeleteServiceTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteServiceTemplateInput",
-}) as any as S.Schema<DeleteServiceTemplateInput>;
+const DeleteServiceTemplateInput = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteServiceTemplateInput>;
 export interface DeleteServiceTemplateOutput {
   serviceTemplate?: ServiceTemplate;
 }
-const DeleteServiceTemplateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceTemplate: S.optional(ServiceTemplate) }),
-).annotate({
-  identifier: "DeleteServiceTemplateOutput",
-}) as any as S.Schema<DeleteServiceTemplateOutput>;
+const DeleteServiceTemplateOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteServiceTemplateOutput>;
 export interface DeleteServiceTemplateVersionInput {
   templateName: string;
   majorVersion: string;
   minorVersion: string;
 }
-const DeleteServiceTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteServiceTemplateVersionInput",
-}) as any as S.Schema<DeleteServiceTemplateVersionInput>;
+const DeleteServiceTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteServiceTemplateVersionInput>;
 export interface DeleteServiceTemplateVersionOutput {
   serviceTemplateVersion?: ServiceTemplateVersion;
 }
-const DeleteServiceTemplateVersionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceTemplateVersion: S.optional(ServiceTemplateVersion) }),
-).annotate({
-  identifier: "DeleteServiceTemplateVersionOutput",
-}) as any as S.Schema<DeleteServiceTemplateVersionOutput>;
+const DeleteServiceTemplateVersionOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteServiceTemplateVersionOutput>;
 export interface DeleteTemplateSyncConfigInput {
   templateName: string;
   templateType: string;
 }
-const DeleteTemplateSyncConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateName: S.String, templateType: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteTemplateSyncConfigInput",
-}) as any as S.Schema<DeleteTemplateSyncConfigInput>;
+const DeleteTemplateSyncConfigInput = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteTemplateSyncConfigInput>;
 export interface DeleteTemplateSyncConfigOutput {
   templateSyncConfig?: TemplateSyncConfig;
 }
 const DeleteTemplateSyncConfigOutput =
   CreateTemplateSyncConfigOutput as any as S.Schema<DeleteTemplateSyncConfigOutput>;
 export interface GetAccountSettingsInput {}
-const GetAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetAccountSettingsInput" }) as any as S.Schema<GetAccountSettingsInput>;
+const GetAccountSettingsInput = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetAccountSettingsInput>;
 export type RoleArnOrEmptyString = string;
 export interface AccountSettings {
   pipelineServiceRoleArn?: string;
   pipelineProvisioningRepository?: RepositoryBranch;
   pipelineCodebuildRoleArn?: string;
 }
-const AccountSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pipelineServiceRoleArn: S.optional(S.String),
-    pipelineProvisioningRepository: S.optional(RepositoryBranch),
-    pipelineCodebuildRoleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "AccountSettings" }) as any as S.Schema<AccountSettings>;
+const AccountSettings = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<AccountSettings>;
 export interface GetAccountSettingsOutput {
   accountSettings?: AccountSettings;
 }
-const GetAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountSettings: S.optional(AccountSettings) }),
-).annotate({ identifier: "GetAccountSettingsOutput" }) as any as S.Schema<GetAccountSettingsOutput>;
+const GetAccountSettingsOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetAccountSettingsOutput>;
 export interface GetComponentInput {
   name: string;
 }
-const GetComponentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetComponentInput" }) as any as S.Schema<GetComponentInput>;
+const GetComponentInput = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<GetComponentInput>;
 export interface GetComponentOutput {
   component?: Component;
 }
@@ -1405,15 +987,7 @@ export interface GetDeploymentInput {
   serviceInstanceName?: string;
   componentName?: string;
 }
-const GetDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    environmentName: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    componentName: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetDeploymentInput" }) as any as S.Schema<GetDeploymentInput>;
+const GetDeploymentInput = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GetDeploymentInput>;
 export interface GetDeploymentOutput {
   deployment?: Deployment;
 }
@@ -1421,11 +995,7 @@ const GetDeploymentOutput = DeleteDeploymentOutput as any as S.Schema<GetDeploym
 export interface GetEnvironmentInput {
   name: string;
 }
-const GetEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetEnvironmentInput" }) as any as S.Schema<GetEnvironmentInput>;
+const GetEnvironmentInput = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetEnvironmentInput>;
 export interface GetEnvironmentOutput {
   environment: Environment;
 }
@@ -1433,13 +1003,10 @@ const GetEnvironmentOutput = CreateEnvironmentOutput as any as S.Schema<GetEnvir
 export interface GetEnvironmentAccountConnectionInput {
   id: string;
 }
-const GetEnvironmentAccountConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetEnvironmentAccountConnectionInput",
-}) as any as S.Schema<GetEnvironmentAccountConnectionInput>;
+const GetEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetEnvironmentAccountConnectionInput>;
 export interface GetEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
@@ -1448,13 +1015,10 @@ const GetEnvironmentAccountConnectionOutput =
 export interface GetEnvironmentTemplateInput {
   name: string;
 }
-const GetEnvironmentTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetEnvironmentTemplateInput",
-}) as any as S.Schema<GetEnvironmentTemplateInput>;
+const GetEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetEnvironmentTemplateInput>;
 export interface GetEnvironmentTemplateOutput {
   environmentTemplate: EnvironmentTemplate;
 }
@@ -1465,13 +1029,10 @@ export interface GetEnvironmentTemplateVersionInput {
   majorVersion: string;
   minorVersion: string;
 }
-const GetEnvironmentTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetEnvironmentTemplateVersionInput",
-}) as any as S.Schema<GetEnvironmentTemplateVersionInput>;
+const GetEnvironmentTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetEnvironmentTemplateVersionInput>;
 export interface GetEnvironmentTemplateVersionOutput {
   environmentTemplateVersion: EnvironmentTemplateVersion;
 }
@@ -1481,11 +1042,7 @@ export interface GetRepositoryInput {
   provider: string;
   name: string;
 }
-const GetRepositoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ provider: S.String, name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetRepositoryInput" }) as any as S.Schema<GetRepositoryInput>;
+const GetRepositoryInput = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<GetRepositoryInput>;
 export interface GetRepositoryOutput {
   repository: Repository;
 }
@@ -1497,16 +1054,10 @@ export interface GetRepositorySyncStatusInput {
   branch: string;
   syncType: string;
 }
-const GetRepositorySyncStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositoryName: S.String,
-    repositoryProvider: S.String,
-    branch: S.String,
-    syncType: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetRepositorySyncStatusInput",
-}) as any as S.Schema<GetRepositorySyncStatusInput>;
+const GetRepositorySyncStatusInput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetRepositorySyncStatusInput>;
 export type RepositorySyncStatus = string;
 export interface RepositorySyncEvent {
   type: string;
@@ -1514,40 +1065,30 @@ export interface RepositorySyncEvent {
   time: Date;
   event: string;
 }
-const RepositorySyncEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    externalId: S.optional(S.String),
-    time: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    event: S.String,
-  }),
-).annotate({ identifier: "RepositorySyncEvent" }) as any as S.Schema<RepositorySyncEvent>;
+const RepositorySyncEvent = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<RepositorySyncEvent>;
 export type RepositorySyncEvents = RepositorySyncEvent[];
-const RepositorySyncEvents = /*@__PURE__*/ S.Array(RepositorySyncEvent);
+const RepositorySyncEvents = /*@__PURE__*/ __L.at(__c11, 5);
 export interface RepositorySyncAttempt {
   startedAt: Date;
   status: string;
   events: RepositorySyncEvent[];
 }
-const RepositorySyncAttempt = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: S.String,
-    events: RepositorySyncEvents,
-  }),
-).annotate({ identifier: "RepositorySyncAttempt" }) as any as S.Schema<RepositorySyncAttempt>;
+const RepositorySyncAttempt = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<RepositorySyncAttempt>;
 export interface GetRepositorySyncStatusOutput {
   latestSync?: RepositorySyncAttempt;
 }
-const GetRepositorySyncStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ latestSync: S.optional(RepositorySyncAttempt) }),
-).annotate({
-  identifier: "GetRepositorySyncStatusOutput",
-}) as any as S.Schema<GetRepositorySyncStatusOutput>;
+const GetRepositorySyncStatusOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetRepositorySyncStatusOutput>;
 export interface GetResourcesSummaryInput {}
-const GetResourcesSummaryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetResourcesSummaryInput" }) as any as S.Schema<GetResourcesSummaryInput>;
+const GetResourcesSummaryInput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetResourcesSummaryInput>;
 export interface ResourceCountsSummary {
   total: number;
   failed?: number;
@@ -1555,15 +1096,10 @@ export interface ResourceCountsSummary {
   behindMajor?: number;
   behindMinor?: number;
 }
-const ResourceCountsSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total: S.Number,
-    failed: S.optional(S.Number),
-    upToDate: S.optional(S.Number),
-    behindMajor: S.optional(S.Number),
-    behindMinor: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ResourceCountsSummary" }) as any as S.Schema<ResourceCountsSummary>;
+const ResourceCountsSummary = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ResourceCountsSummary>;
 export interface CountsSummary {
   components?: ResourceCountsSummary;
   environments?: ResourceCountsSummary;
@@ -1573,33 +1109,18 @@ export interface CountsSummary {
   serviceTemplates?: ResourceCountsSummary;
   pipelines?: ResourceCountsSummary;
 }
-const CountsSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    components: S.optional(ResourceCountsSummary),
-    environments: S.optional(ResourceCountsSummary),
-    environmentTemplates: S.optional(ResourceCountsSummary),
-    serviceInstances: S.optional(ResourceCountsSummary),
-    services: S.optional(ResourceCountsSummary),
-    serviceTemplates: S.optional(ResourceCountsSummary),
-    pipelines: S.optional(ResourceCountsSummary),
-  }),
-).annotate({ identifier: "CountsSummary" }) as any as S.Schema<CountsSummary>;
+const CountsSummary = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<CountsSummary>;
 export interface GetResourcesSummaryOutput {
   counts: CountsSummary;
 }
-const GetResourcesSummaryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ counts: CountsSummary }),
-).annotate({
-  identifier: "GetResourcesSummaryOutput",
-}) as any as S.Schema<GetResourcesSummaryOutput>;
+const GetResourcesSummaryOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetResourcesSummaryOutput>;
 export interface GetServiceInput {
   name: string;
 }
-const GetServiceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetServiceInput" }) as any as S.Schema<GetServiceInput>;
+const GetServiceInput = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetServiceInput>;
 export interface GetServiceOutput {
   service?: Service;
 }
@@ -1608,28 +1129,25 @@ export interface GetServiceInstanceInput {
   name: string;
   serviceName: string;
 }
-const GetServiceInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, serviceName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetServiceInstanceInput" }) as any as S.Schema<GetServiceInstanceInput>;
+const GetServiceInstanceInput = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetServiceInstanceInput>;
 export interface GetServiceInstanceOutput {
   serviceInstance: ServiceInstance;
 }
-const GetServiceInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceInstance: ServiceInstance }),
-).annotate({ identifier: "GetServiceInstanceOutput" }) as any as S.Schema<GetServiceInstanceOutput>;
+const GetServiceInstanceOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetServiceInstanceOutput>;
 export interface GetServiceInstanceSyncStatusInput {
   serviceName: string;
   serviceInstanceName: string;
 }
-const GetServiceInstanceSyncStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceName: S.String, serviceInstanceName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetServiceInstanceSyncStatusInput",
-}) as any as S.Schema<GetServiceInstanceSyncStatusInput>;
+const GetServiceInstanceSyncStatusInput = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetServiceInstanceSyncStatusInput>;
 export type SHA = string;
 export interface Revision {
   repositoryName: string;
@@ -1638,15 +1156,7 @@ export interface Revision {
   directory: string;
   branch: string;
 }
-const Revision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositoryName: S.String,
-    repositoryProvider: S.String,
-    sha: S.String,
-    directory: S.String,
-    branch: S.String,
-  }),
-).annotate({ identifier: "Revision" }) as any as S.Schema<Revision>;
+const Revision = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<Revision>;
 export type ResourceSyncStatus = string;
 export interface ResourceSyncEvent {
   type: string;
@@ -1664,41 +1174,24 @@ export interface ResourceSyncAttempt {
   status: string;
   events: ResourceSyncEvent[];
 }
-const ResourceSyncAttempt = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    initialRevision: Revision,
-    targetRevision: Revision,
-    target: S.String,
-    startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: S.String,
-    events: ResourceSyncEvents,
-  }),
-).annotate({ identifier: "ResourceSyncAttempt" }) as any as S.Schema<ResourceSyncAttempt>;
+const ResourceSyncAttempt = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ResourceSyncAttempt>;
 export interface GetServiceInstanceSyncStatusOutput {
   latestSync?: ResourceSyncAttempt;
   latestSuccessfulSync?: ResourceSyncAttempt;
   desiredState?: Revision;
 }
-const GetServiceInstanceSyncStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latestSync: S.optional(ResourceSyncAttempt),
-    latestSuccessfulSync: S.optional(ResourceSyncAttempt),
-    desiredState: S.optional(Revision),
-  }),
-).annotate({
-  identifier: "GetServiceInstanceSyncStatusOutput",
-}) as any as S.Schema<GetServiceInstanceSyncStatusOutput>;
+const GetServiceInstanceSyncStatusOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetServiceInstanceSyncStatusOutput>;
 export interface GetServiceSyncBlockerSummaryInput {
   serviceName: string;
   serviceInstanceName?: string;
 }
-const GetServiceSyncBlockerSummaryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceName: S.String, serviceInstanceName: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetServiceSyncBlockerSummaryInput",
-}) as any as S.Schema<GetServiceSyncBlockerSummaryInput>;
+const GetServiceSyncBlockerSummaryInput = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetServiceSyncBlockerSummaryInput>;
 export type BlockerType = string;
 export type BlockerStatus = string;
 export interface SyncBlockerContext {
@@ -1717,52 +1210,32 @@ export interface SyncBlocker {
   resolvedReason?: string;
   resolvedAt?: Date;
 }
-const SyncBlocker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    status: S.String,
-    createdReason: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    contexts: S.optional(SyncBlockerContexts),
-    resolvedReason: S.optional(S.String),
-    resolvedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "SyncBlocker" }) as any as S.Schema<SyncBlocker>;
+const SyncBlocker = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<SyncBlocker>;
 export type LatestSyncBlockers = SyncBlocker[];
-const LatestSyncBlockers = /*@__PURE__*/ S.Array(SyncBlocker);
+const LatestSyncBlockers = /*@__PURE__*/ __L.at(__c13, 5);
 export interface ServiceSyncBlockerSummary {
   serviceName: string;
   serviceInstanceName?: string;
   latestBlockers?: SyncBlocker[];
 }
-const ServiceSyncBlockerSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String,
-    serviceInstanceName: S.optional(S.String),
-    latestBlockers: S.optional(LatestSyncBlockers),
-  }),
-).annotate({
-  identifier: "ServiceSyncBlockerSummary",
-}) as any as S.Schema<ServiceSyncBlockerSummary>;
+const ServiceSyncBlockerSummary = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ServiceSyncBlockerSummary>;
 export interface GetServiceSyncBlockerSummaryOutput {
   serviceSyncBlockerSummary?: ServiceSyncBlockerSummary;
 }
-const GetServiceSyncBlockerSummaryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceSyncBlockerSummary: S.optional(ServiceSyncBlockerSummary) }),
-).annotate({
-  identifier: "GetServiceSyncBlockerSummaryOutput",
-}) as any as S.Schema<GetServiceSyncBlockerSummaryOutput>;
+const GetServiceSyncBlockerSummaryOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetServiceSyncBlockerSummaryOutput>;
 export interface GetServiceSyncConfigInput {
   serviceName: string;
 }
-const GetServiceSyncConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetServiceSyncConfigInput",
-}) as any as S.Schema<GetServiceSyncConfigInput>;
+const GetServiceSyncConfigInput = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetServiceSyncConfigInput>;
 export interface GetServiceSyncConfigOutput {
   serviceSyncConfig?: ServiceSyncConfig;
 }
@@ -1771,29 +1244,26 @@ const GetServiceSyncConfigOutput =
 export interface GetServiceTemplateInput {
   name: string;
 }
-const GetServiceTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetServiceTemplateInput" }) as any as S.Schema<GetServiceTemplateInput>;
+const GetServiceTemplateInput = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetServiceTemplateInput>;
 export interface GetServiceTemplateOutput {
   serviceTemplate: ServiceTemplate;
 }
-const GetServiceTemplateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceTemplate: ServiceTemplate }),
-).annotate({ identifier: "GetServiceTemplateOutput" }) as any as S.Schema<GetServiceTemplateOutput>;
+const GetServiceTemplateOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetServiceTemplateOutput>;
 export interface GetServiceTemplateVersionInput {
   templateName: string;
   majorVersion: string;
   minorVersion: string;
 }
-const GetServiceTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetServiceTemplateVersionInput",
-}) as any as S.Schema<GetServiceTemplateVersionInput>;
+const GetServiceTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetServiceTemplateVersionInput>;
 export interface GetServiceTemplateVersionOutput {
   serviceTemplateVersion: ServiceTemplateVersion;
 }
@@ -1803,13 +1273,10 @@ export interface GetTemplateSyncConfigInput {
   templateName: string;
   templateType: string;
 }
-const GetTemplateSyncConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateName: S.String, templateType: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetTemplateSyncConfigInput",
-}) as any as S.Schema<GetTemplateSyncConfigInput>;
+const GetTemplateSyncConfigInput = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetTemplateSyncConfigInput>;
 export interface GetTemplateSyncConfigOutput {
   templateSyncConfig?: TemplateSyncConfig;
 }
@@ -1820,13 +1287,10 @@ export interface GetTemplateSyncStatusInput {
   templateType: string;
   templateVersion: string;
 }
-const GetTemplateSyncStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateName: S.String, templateType: S.String, templateVersion: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetTemplateSyncStatusInput",
-}) as any as S.Schema<GetTemplateSyncStatusInput>;
+const GetTemplateSyncStatusInput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetTemplateSyncStatusInput>;
 export interface GetTemplateSyncStatusOutput {
   latestSync?: ResourceSyncAttempt;
   latestSuccessfulSync?: ResourceSyncAttempt;
@@ -1840,46 +1304,35 @@ export interface ListComponentOutputsInput {
   nextToken?: string;
   deploymentId?: string;
 }
-const ListComponentOutputsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentName: S.String,
-    nextToken: S.optional(S.String),
-    deploymentId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListComponentOutputsInput",
-}) as any as S.Schema<ListComponentOutputsInput>;
+const ListComponentOutputsInput = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListComponentOutputsInput>;
 export type OutputKey = string;
 export type OutputValueString = string;
 export interface Output {
   key?: string;
   valueString?: string;
 }
-const Output = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.optional(S.String), valueString: S.optional(S.String) }),
-).annotate({ identifier: "Output" }) as any as S.Schema<Output>;
+const Output = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<Output>;
 export type OutputsList = Output[];
-const OutputsList = /*@__PURE__*/ S.Array(Output);
+const OutputsList = /*@__PURE__*/ __L.at(__c15, 0);
 export interface ListComponentOutputsOutput {
   nextToken?: string;
   outputs: Output[];
 }
-const ListComponentOutputsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), outputs: OutputsList }),
-).annotate({
-  identifier: "ListComponentOutputsOutput",
-}) as any as S.Schema<ListComponentOutputsOutput>;
+const ListComponentOutputsOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListComponentOutputsOutput>;
 export interface ListComponentProvisionedResourcesInput {
   componentName: string;
   nextToken?: string;
 }
-const ListComponentProvisionedResourcesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ componentName: S.String, nextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListComponentProvisionedResourcesInput",
-}) as any as S.Schema<ListComponentProvisionedResourcesInput>;
+const ListComponentProvisionedResourcesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListComponentProvisionedResourcesInput>;
 export type ProvisionedResourceName = string;
 export type ProvisionedResourceIdentifier = string;
 export type ProvisionedResourceEngine = string;
@@ -1888,24 +1341,17 @@ export interface ProvisionedResource {
   identifier?: string;
   provisioningEngine?: string;
 }
-const ProvisionedResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    identifier: S.optional(S.String),
-    provisioningEngine: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProvisionedResource" }) as any as S.Schema<ProvisionedResource>;
+const ProvisionedResource = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<ProvisionedResource>;
 export type ProvisionedResourceList = ProvisionedResource[];
-const ProvisionedResourceList = /*@__PURE__*/ S.Array(ProvisionedResource);
+const ProvisionedResourceList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListComponentProvisionedResourcesOutput {
   nextToken?: string;
   provisionedResources: ProvisionedResource[];
 }
-const ListComponentProvisionedResourcesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), provisionedResources: ProvisionedResourceList }),
-).annotate({
-  identifier: "ListComponentProvisionedResourcesOutput",
-}) as any as S.Schema<ListComponentProvisionedResourcesOutput>;
+const ListComponentProvisionedResourcesOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListComponentProvisionedResourcesOutput>;
 export type NextToken = string;
 export type MaxPageResults = number;
 export interface ListComponentsInput {
@@ -1915,15 +1361,7 @@ export interface ListComponentsInput {
   serviceInstanceName?: string;
   maxResults?: number;
 }
-const ListComponentsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    environmentName: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListComponentsInput" }) as any as S.Schema<ListComponentsInput>;
+const ListComponentsInput = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<ListComponentsInput>;
 export interface ComponentSummary {
   name: string;
   arn: string;
@@ -1939,32 +1377,17 @@ export interface ComponentSummary {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const ComponentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    environmentName: S.String,
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentAttemptedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastDeploymentSucceededAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deploymentStatus: S.String,
-    deploymentStatusMessage: S.optional(SensitiveString),
-    lastAttemptedDeploymentId: S.optional(S.String),
-    lastSucceededDeploymentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ComponentSummary" }) as any as S.Schema<ComponentSummary>;
+const ComponentSummary = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ComponentSummary>;
 export type ComponentSummaryList = ComponentSummary[];
-const ComponentSummaryList = /*@__PURE__*/ S.Array(ComponentSummary);
+const ComponentSummaryList = /*@__PURE__*/ __L.at(__c16, 0);
 export interface ListComponentsOutput {
   nextToken?: string;
   components: ComponentSummary[];
 }
-const ListComponentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), components: ComponentSummaryList }),
-).annotate({ identifier: "ListComponentsOutput" }) as any as S.Schema<ListComponentsOutput>;
+const ListComponentsOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListComponentsOutput>;
 export interface ListDeploymentsInput {
   nextToken?: string;
   environmentName?: string;
@@ -1973,16 +1396,10 @@ export interface ListDeploymentsInput {
   componentName?: string;
   maxResults?: number;
 }
-const ListDeploymentsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    environmentName: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    componentName: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListDeploymentsInput" }) as any as S.Schema<ListDeploymentsInput>;
+const ListDeploymentsInput = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListDeploymentsInput>;
 export interface DeploymentSummary {
   id: string;
   arn: string;
@@ -2000,34 +1417,17 @@ export interface DeploymentSummary {
   lastSucceededDeploymentId?: string;
   deploymentStatus: string;
 }
-const DeploymentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    targetArn: S.String,
-    targetResourceCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    targetResourceType: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    environmentName: S.String,
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    componentName: S.optional(S.String),
-    lastAttemptedDeploymentId: S.optional(S.String),
-    lastSucceededDeploymentId: S.optional(S.String),
-    deploymentStatus: S.String,
-  }),
-).annotate({ identifier: "DeploymentSummary" }) as any as S.Schema<DeploymentSummary>;
+const DeploymentSummary = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<DeploymentSummary>;
 export type DeploymentSummaryList = DeploymentSummary[];
-const DeploymentSummaryList = /*@__PURE__*/ S.Array(DeploymentSummary);
+const DeploymentSummaryList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ListDeploymentsOutput {
   nextToken?: string;
   deployments: DeploymentSummary[];
 }
-const ListDeploymentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), deployments: DeploymentSummaryList }),
-).annotate({ identifier: "ListDeploymentsOutput" }) as any as S.Schema<ListDeploymentsOutput>;
+const ListDeploymentsOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListDeploymentsOutput>;
 export type EnvironmentAccountConnectionRequesterAccountType = string;
 export type EnvironmentAccountConnectionStatusList = string[];
 const EnvironmentAccountConnectionStatusList =
@@ -2039,17 +1439,10 @@ export interface ListEnvironmentAccountConnectionsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListEnvironmentAccountConnectionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestedBy: S.String,
-    environmentName: S.optional(S.String),
-    statuses: S.optional(EnvironmentAccountConnectionStatusList),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListEnvironmentAccountConnectionsInput",
-}) as any as S.Schema<ListEnvironmentAccountConnectionsInput>;
+const ListEnvironmentAccountConnectionsInput = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListEnvironmentAccountConnectionsInput>;
 export interface EnvironmentAccountConnectionSummary {
   id: string;
   arn: string;
@@ -2062,52 +1455,29 @@ export interface EnvironmentAccountConnectionSummary {
   status: string;
   componentRoleArn?: string;
 }
-const EnvironmentAccountConnectionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    managementAccountId: S.String,
-    environmentAccountId: S.String,
-    roleArn: S.String,
-    environmentName: S.String,
-    requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: S.String,
-    componentRoleArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentAccountConnectionSummary",
-}) as any as S.Schema<EnvironmentAccountConnectionSummary>;
+const EnvironmentAccountConnectionSummary = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<EnvironmentAccountConnectionSummary>;
 export type EnvironmentAccountConnectionSummaryList = EnvironmentAccountConnectionSummary[];
-const EnvironmentAccountConnectionSummaryList = /*@__PURE__*/ S.Array(
-  EnvironmentAccountConnectionSummary,
-);
+const EnvironmentAccountConnectionSummaryList = /*@__PURE__*/ __L.at(__c17, 0);
 export interface ListEnvironmentAccountConnectionsOutput {
   environmentAccountConnections: EnvironmentAccountConnectionSummary[];
   nextToken?: string;
 }
-const ListEnvironmentAccountConnectionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentAccountConnections: EnvironmentAccountConnectionSummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEnvironmentAccountConnectionsOutput",
-}) as any as S.Schema<ListEnvironmentAccountConnectionsOutput>;
+const ListEnvironmentAccountConnectionsOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListEnvironmentAccountConnectionsOutput>;
 export interface ListEnvironmentOutputsInput {
   environmentName: string;
   nextToken?: string;
   deploymentId?: string;
 }
-const ListEnvironmentOutputsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentName: S.String,
-    nextToken: S.optional(S.String),
-    deploymentId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListEnvironmentOutputsInput",
-}) as any as S.Schema<ListEnvironmentOutputsInput>;
+const ListEnvironmentOutputsInput = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListEnvironmentOutputsInput>;
 export interface ListEnvironmentOutputsOutput {
   nextToken?: string;
   outputs: Output[];
@@ -2118,13 +1488,10 @@ export interface ListEnvironmentProvisionedResourcesInput {
   environmentName: string;
   nextToken?: string;
 }
-const ListEnvironmentProvisionedResourcesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentName: S.String, nextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListEnvironmentProvisionedResourcesInput",
-}) as any as S.Schema<ListEnvironmentProvisionedResourcesInput>;
+const ListEnvironmentProvisionedResourcesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListEnvironmentProvisionedResourcesInput>;
 export interface ListEnvironmentProvisionedResourcesOutput {
   nextToken?: string;
   provisionedResources: ProvisionedResource[];
@@ -2138,19 +1505,16 @@ export interface EnvironmentTemplateFilter {
 const EnvironmentTemplateFilter =
   CompatibleEnvironmentTemplateInput as any as S.Schema<EnvironmentTemplateFilter>;
 export type EnvironmentTemplateFilterList = EnvironmentTemplateFilter[];
-const EnvironmentTemplateFilterList = /*@__PURE__*/ S.Array(EnvironmentTemplateFilter);
+const EnvironmentTemplateFilterList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ListEnvironmentsInput {
   nextToken?: string;
   maxResults?: number;
   environmentTemplates?: EnvironmentTemplateFilter[];
 }
-const ListEnvironmentsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    environmentTemplates: S.optional(EnvironmentTemplateFilterList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListEnvironmentsInput" }) as any as S.Schema<ListEnvironmentsInput>;
+const ListEnvironmentsInput = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListEnvironmentsInput>;
 export interface EnvironmentSummary {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -2171,48 +1535,25 @@ export interface EnvironmentSummary {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    arn: S.String,
-    templateName: S.String,
-    templateMajorVersion: S.String,
-    templateMinorVersion: S.String,
-    deploymentStatus: S.String,
-    deploymentStatusMessage: S.optional(SensitiveString),
-    protonServiceRoleArn: S.optional(S.String),
-    environmentAccountConnectionId: S.optional(S.String),
-    environmentAccountId: S.optional(S.String),
-    provisioning: S.optional(S.String),
-    componentRoleArn: S.optional(S.String),
-    lastAttemptedDeploymentId: S.optional(S.String),
-    lastSucceededDeploymentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnvironmentSummary" }) as any as S.Schema<EnvironmentSummary>;
+const EnvironmentSummary = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<EnvironmentSummary>;
 export type EnvironmentSummaryList = EnvironmentSummary[];
-const EnvironmentSummaryList = /*@__PURE__*/ S.Array(EnvironmentSummary);
+const EnvironmentSummaryList = /*@__PURE__*/ __L.at(__c17, 7);
 export interface ListEnvironmentsOutput {
   nextToken?: string;
   environments: EnvironmentSummary[];
 }
-const ListEnvironmentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), environments: EnvironmentSummaryList }),
-).annotate({ identifier: "ListEnvironmentsOutput" }) as any as S.Schema<ListEnvironmentsOutput>;
+const ListEnvironmentsOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListEnvironmentsOutput>;
 export interface ListEnvironmentTemplatesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListEnvironmentTemplatesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListEnvironmentTemplatesInput",
-}) as any as S.Schema<ListEnvironmentTemplatesInput>;
+const ListEnvironmentTemplatesInput = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListEnvironmentTemplatesInput>;
 export interface EnvironmentTemplateSummary {
   name: string;
   arn: string;
@@ -2223,47 +1564,30 @@ export interface EnvironmentTemplateSummary {
   recommendedVersion?: string;
   provisioning?: string;
 }
-const EnvironmentTemplateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    recommendedVersion: S.optional(S.String),
-    provisioning: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentTemplateSummary",
-}) as any as S.Schema<EnvironmentTemplateSummary>;
+const EnvironmentTemplateSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<EnvironmentTemplateSummary>;
 export type EnvironmentTemplateSummaryList = EnvironmentTemplateSummary[];
-const EnvironmentTemplateSummaryList = /*@__PURE__*/ S.Array(EnvironmentTemplateSummary);
+const EnvironmentTemplateSummaryList = /*@__PURE__*/ __L.at(__c18, 3);
 export interface ListEnvironmentTemplatesOutput {
   nextToken?: string;
   templates: EnvironmentTemplateSummary[];
 }
-const ListEnvironmentTemplatesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), templates: EnvironmentTemplateSummaryList }),
-).annotate({
-  identifier: "ListEnvironmentTemplatesOutput",
-}) as any as S.Schema<ListEnvironmentTemplatesOutput>;
+const ListEnvironmentTemplatesOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListEnvironmentTemplatesOutput>;
 export interface ListEnvironmentTemplateVersionsInput {
   nextToken?: string;
   maxResults?: number;
   templateName: string;
   majorVersion?: string;
 }
-const ListEnvironmentTemplateVersionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    templateName: S.String,
-    majorVersion: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListEnvironmentTemplateVersionsInput",
-}) as any as S.Schema<ListEnvironmentTemplateVersionsInput>;
+const ListEnvironmentTemplateVersionsInput = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListEnvironmentTemplateVersionsInput>;
 export interface EnvironmentTemplateVersionSummary {
   templateName: string;
   majorVersion: string;
@@ -2276,117 +1600,85 @@ export interface EnvironmentTemplateVersionSummary {
   createdAt: Date;
   lastModifiedAt: Date;
 }
-const EnvironmentTemplateVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateName: S.String,
-    majorVersion: S.String,
-    minorVersion: S.String,
-    recommendedMinorVersion: S.optional(S.String),
-    status: S.String,
-    statusMessage: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "EnvironmentTemplateVersionSummary",
-}) as any as S.Schema<EnvironmentTemplateVersionSummary>;
+const EnvironmentTemplateVersionSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<EnvironmentTemplateVersionSummary>;
 export type EnvironmentTemplateVersionSummaryList = EnvironmentTemplateVersionSummary[];
-const EnvironmentTemplateVersionSummaryList = /*@__PURE__*/ S.Array(
-  EnvironmentTemplateVersionSummary,
-);
+const EnvironmentTemplateVersionSummaryList = /*@__PURE__*/ __L.at(__c18, 7);
 export interface ListEnvironmentTemplateVersionsOutput {
   nextToken?: string;
   templateVersions: EnvironmentTemplateVersionSummary[];
 }
-const ListEnvironmentTemplateVersionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    templateVersions: EnvironmentTemplateVersionSummaryList,
-  }),
-).annotate({
-  identifier: "ListEnvironmentTemplateVersionsOutput",
-}) as any as S.Schema<ListEnvironmentTemplateVersionsOutput>;
+const ListEnvironmentTemplateVersionsOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListEnvironmentTemplateVersionsOutput>;
 export interface ListRepositoriesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListRepositoriesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListRepositoriesInput" }) as any as S.Schema<ListRepositoriesInput>;
+const ListRepositoriesInput = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListRepositoriesInput>;
 export interface RepositorySummary {
   arn: string;
   provider: string;
   name: string;
   connectionArn: string;
 }
-const RepositorySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, provider: S.String, name: S.String, connectionArn: S.String }),
-).annotate({ identifier: "RepositorySummary" }) as any as S.Schema<RepositorySummary>;
+const RepositorySummary = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<RepositorySummary>;
 export type RepositorySummaryList = RepositorySummary[];
-const RepositorySummaryList = /*@__PURE__*/ S.Array(RepositorySummary);
+const RepositorySummaryList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface ListRepositoriesOutput {
   nextToken?: string;
   repositories: RepositorySummary[];
 }
-const ListRepositoriesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), repositories: RepositorySummaryList }),
-).annotate({ identifier: "ListRepositoriesOutput" }) as any as S.Schema<ListRepositoriesOutput>;
+const ListRepositoriesOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListRepositoriesOutput>;
 export interface ListRepositorySyncDefinitionsInput {
   repositoryName: string;
   repositoryProvider: string;
   syncType: string;
   nextToken?: string;
 }
-const ListRepositorySyncDefinitionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositoryName: S.String,
-    repositoryProvider: S.String,
-    syncType: S.String,
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListRepositorySyncDefinitionsInput",
-}) as any as S.Schema<ListRepositorySyncDefinitionsInput>;
+const ListRepositorySyncDefinitionsInput = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListRepositorySyncDefinitionsInput>;
 export interface RepositorySyncDefinition {
   target: string;
   parent: string;
   branch: string;
   directory: string;
 }
-const RepositorySyncDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ target: S.String, parent: S.String, branch: S.String, directory: S.String }),
-).annotate({ identifier: "RepositorySyncDefinition" }) as any as S.Schema<RepositorySyncDefinition>;
+const RepositorySyncDefinition = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<RepositorySyncDefinition>;
 export type RepositorySyncDefinitionList = RepositorySyncDefinition[];
-const RepositorySyncDefinitionList = /*@__PURE__*/ S.Array(RepositorySyncDefinition);
+const RepositorySyncDefinitionList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListRepositorySyncDefinitionsOutput {
   nextToken?: string;
   syncDefinitions: RepositorySyncDefinition[];
 }
-const ListRepositorySyncDefinitionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), syncDefinitions: RepositorySyncDefinitionList }),
-).annotate({
-  identifier: "ListRepositorySyncDefinitionsOutput",
-}) as any as S.Schema<ListRepositorySyncDefinitionsOutput>;
+const ListRepositorySyncDefinitionsOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListRepositorySyncDefinitionsOutput>;
 export interface ListServiceInstanceOutputsInput {
   serviceInstanceName: string;
   serviceName: string;
   nextToken?: string;
   deploymentId?: string;
 }
-const ListServiceInstanceOutputsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceInstanceName: S.String,
-    serviceName: S.String,
-    nextToken: S.optional(S.String),
-    deploymentId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListServiceInstanceOutputsInput",
-}) as any as S.Schema<ListServiceInstanceOutputsInput>;
+const ListServiceInstanceOutputsInput = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListServiceInstanceOutputsInput>;
 export interface ListServiceInstanceOutputsOutput {
   nextToken?: string;
   outputs: Output[];
@@ -2398,15 +1690,10 @@ export interface ListServiceInstanceProvisionedResourcesInput {
   serviceInstanceName: string;
   nextToken?: string;
 }
-const ListServiceInstanceProvisionedResourcesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String,
-    serviceInstanceName: S.String,
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListServiceInstanceProvisionedResourcesInput",
-}) as any as S.Schema<ListServiceInstanceProvisionedResourcesInput>;
+const ListServiceInstanceProvisionedResourcesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListServiceInstanceProvisionedResourcesInput>;
 export interface ListServiceInstanceProvisionedResourcesOutput {
   nextToken?: string;
   provisionedResources: ProvisionedResource[];
@@ -2419,13 +1706,12 @@ export interface ListServiceInstancesFilter {
   key?: string;
   value?: string;
 }
-const ListServiceInstancesFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({
-  identifier: "ListServiceInstancesFilter",
-}) as any as S.Schema<ListServiceInstancesFilter>;
+const ListServiceInstancesFilter = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListServiceInstancesFilter>;
 export type ListServiceInstancesFilterList = ListServiceInstancesFilter[];
-const ListServiceInstancesFilterList = /*@__PURE__*/ S.Array(ListServiceInstancesFilter);
+const ListServiceInstancesFilterList = /*@__PURE__*/ __L.at(__c20, 4);
 export type ListServiceInstancesSortBy = string;
 export type SortOrder = string;
 export interface ListServiceInstancesInput {
@@ -2436,18 +1722,10 @@ export interface ListServiceInstancesInput {
   sortBy?: string;
   sortOrder?: string;
 }
-const ListServiceInstancesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    filters: S.optional(ListServiceInstancesFilterList),
-    sortBy: S.optional(S.String),
-    sortOrder: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListServiceInstancesInput",
-}) as any as S.Schema<ListServiceInstancesInput>;
+const ListServiceInstancesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListServiceInstancesInput>;
 export interface ServiceInstanceSummary {
   name: string;
   arn: string;
@@ -2464,49 +1742,29 @@ export interface ServiceInstanceSummary {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const ServiceInstanceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    serviceName: S.String,
-    environmentName: S.String,
-    templateName: S.String,
-    templateMajorVersion: S.String,
-    templateMinorVersion: S.String,
-    deploymentStatus: S.String,
-    deploymentStatusMessage: S.optional(SensitiveString),
-    lastAttemptedDeploymentId: S.optional(S.String),
-    lastSucceededDeploymentId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceInstanceSummary" }) as any as S.Schema<ServiceInstanceSummary>;
+const ServiceInstanceSummary = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ServiceInstanceSummary>;
 export type ServiceInstanceSummaryList = ServiceInstanceSummary[];
-const ServiceInstanceSummaryList = /*@__PURE__*/ S.Array(ServiceInstanceSummary);
+const ServiceInstanceSummaryList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ListServiceInstancesOutput {
   nextToken?: string;
   serviceInstances: ServiceInstanceSummary[];
 }
-const ListServiceInstancesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), serviceInstances: ServiceInstanceSummaryList }),
-).annotate({
-  identifier: "ListServiceInstancesOutput",
-}) as any as S.Schema<ListServiceInstancesOutput>;
+const ListServiceInstancesOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListServiceInstancesOutput>;
 export interface ListServicePipelineOutputsInput {
   serviceName: string;
   nextToken?: string;
   deploymentId?: string;
 }
-const ListServicePipelineOutputsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String,
-    nextToken: S.optional(S.String),
-    deploymentId: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListServicePipelineOutputsInput",
-}) as any as S.Schema<ListServicePipelineOutputsInput>;
+const ListServicePipelineOutputsInput = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListServicePipelineOutputsInput>;
 export interface ListServicePipelineOutputsOutput {
   nextToken?: string;
   outputs: Output[];
@@ -2517,13 +1775,10 @@ export interface ListServicePipelineProvisionedResourcesInput {
   serviceName: string;
   nextToken?: string;
 }
-const ListServicePipelineProvisionedResourcesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceName: S.String, nextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListServicePipelineProvisionedResourcesInput",
-}) as any as S.Schema<ListServicePipelineProvisionedResourcesInput>;
+const ListServicePipelineProvisionedResourcesInput = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListServicePipelineProvisionedResourcesInput>;
 export interface ListServicePipelineProvisionedResourcesOutput {
   nextToken?: string;
   provisionedResources: ProvisionedResource[];
@@ -2534,11 +1789,7 @@ export interface ListServicesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListServicesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListServicesInput" }) as any as S.Schema<ListServicesInput>;
+const ListServicesInput = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<ListServicesInput>;
 export interface ServiceSummary {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -2549,38 +1800,22 @@ export interface ServiceSummary {
   status: string;
   statusMessage?: string | redacted.Redacted<string>;
 }
-const ServiceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    arn: S.String,
-    templateName: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: S.String,
-    statusMessage: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "ServiceSummary" }) as any as S.Schema<ServiceSummary>;
+const ServiceSummary = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<ServiceSummary>;
 export type ServiceSummaryList = ServiceSummary[];
-const ServiceSummaryList = /*@__PURE__*/ S.Array(ServiceSummary);
+const ServiceSummaryList = /*@__PURE__*/ __L.at(__c21, 5);
 export interface ListServicesOutput {
   nextToken?: string;
   services: ServiceSummary[];
 }
-const ListServicesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), services: ServiceSummaryList }),
-).annotate({ identifier: "ListServicesOutput" }) as any as S.Schema<ListServicesOutput>;
+const ListServicesOutput = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ListServicesOutput>;
 export interface ListServiceTemplatesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListServiceTemplatesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListServiceTemplatesInput",
-}) as any as S.Schema<ListServiceTemplatesInput>;
+const ListServiceTemplatesInput = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListServiceTemplatesInput>;
 export interface ServiceTemplateSummary {
   name: string;
   arn: string;
@@ -2591,45 +1826,30 @@ export interface ServiceTemplateSummary {
   recommendedVersion?: string;
   pipelineProvisioning?: string;
 }
-const ServiceTemplateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    recommendedVersion: S.optional(S.String),
-    pipelineProvisioning: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceTemplateSummary" }) as any as S.Schema<ServiceTemplateSummary>;
+const ServiceTemplateSummary = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ServiceTemplateSummary>;
 export type ServiceTemplateSummaryList = ServiceTemplateSummary[];
-const ServiceTemplateSummaryList = /*@__PURE__*/ S.Array(ServiceTemplateSummary);
+const ServiceTemplateSummaryList = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListServiceTemplatesOutput {
   nextToken?: string;
   templates: ServiceTemplateSummary[];
 }
-const ListServiceTemplatesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), templates: ServiceTemplateSummaryList }),
-).annotate({
-  identifier: "ListServiceTemplatesOutput",
-}) as any as S.Schema<ListServiceTemplatesOutput>;
+const ListServiceTemplatesOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListServiceTemplatesOutput>;
 export interface ListServiceTemplateVersionsInput {
   nextToken?: string;
   maxResults?: number;
   templateName: string;
   majorVersion?: string;
 }
-const ListServiceTemplateVersionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    templateName: S.String,
-    majorVersion: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListServiceTemplateVersionsInput",
-}) as any as S.Schema<ListServiceTemplateVersionsInput>;
+const ListServiceTemplateVersionsInput = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListServiceTemplateVersionsInput>;
 export interface ServiceTemplateVersionSummary {
   templateName: string;
   majorVersion: string;
@@ -2654,22 +1874,18 @@ export interface ListTagsForResourceInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags: Tag[];
   nextToken?: string;
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: TagList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export type ResourceDeploymentStatus = string;
 export interface NotifyResourceDeploymentStatusChangeInput {
   resourceArn: string;
@@ -2678,33 +1894,22 @@ export interface NotifyResourceDeploymentStatusChangeInput {
   deploymentId?: string;
   statusMessage?: string | redacted.Redacted<string>;
 }
-const NotifyResourceDeploymentStatusChangeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String,
-    status: S.optional(S.String),
-    outputs: S.optional(OutputsList),
-    deploymentId: S.optional(S.String),
-    statusMessage: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "NotifyResourceDeploymentStatusChangeInput",
-}) as any as S.Schema<NotifyResourceDeploymentStatusChangeInput>;
+const NotifyResourceDeploymentStatusChangeInput = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<NotifyResourceDeploymentStatusChangeInput>;
 export interface NotifyResourceDeploymentStatusChangeOutput {}
-const NotifyResourceDeploymentStatusChangeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NotifyResourceDeploymentStatusChangeOutput",
-}) as any as S.Schema<NotifyResourceDeploymentStatusChangeOutput>;
+const NotifyResourceDeploymentStatusChangeOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<NotifyResourceDeploymentStatusChangeOutput>;
 export interface RejectEnvironmentAccountConnectionInput {
   id: string;
 }
-const RejectEnvironmentAccountConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RejectEnvironmentAccountConnectionInput",
-}) as any as S.Schema<RejectEnvironmentAccountConnectionInput>;
+const RejectEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<RejectEnvironmentAccountConnectionInput>;
 export interface RejectEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
@@ -2714,26 +1919,16 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+const TagResourceOutput = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
 const TagKeyList = ServiceTemplateSupportedComponentSourceInputList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
 const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateAccountSettingsInput {
@@ -2742,24 +1937,17 @@ export interface UpdateAccountSettingsInput {
   deletePipelineProvisioningRepository?: boolean;
   pipelineCodebuildRoleArn?: string;
 }
-const UpdateAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pipelineServiceRoleArn: S.optional(S.String),
-    pipelineProvisioningRepository: S.optional(RepositoryBranchInput),
-    deletePipelineProvisioningRepository: S.optional(S.Boolean),
-    pipelineCodebuildRoleArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateAccountSettingsInput",
-}) as any as S.Schema<UpdateAccountSettingsInput>;
+const UpdateAccountSettingsInput = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<UpdateAccountSettingsInput>;
 export interface UpdateAccountSettingsOutput {
   accountSettings: AccountSettings;
 }
-const UpdateAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountSettings: AccountSettings }),
-).annotate({
-  identifier: "UpdateAccountSettingsOutput",
-}) as any as S.Schema<UpdateAccountSettingsOutput>;
+const UpdateAccountSettingsOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<UpdateAccountSettingsOutput>;
 export type ComponentDeploymentUpdateType = string;
 export interface UpdateComponentInput {
   name: string;
@@ -2771,18 +1959,10 @@ export interface UpdateComponentInput {
   templateFile?: string | redacted.Redacted<string>;
   clientToken?: string;
 }
-const UpdateComponentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    deploymentType: S.String,
-    description: S.optional(SensitiveString),
-    serviceName: S.optional(S.String),
-    serviceInstanceName: S.optional(S.String),
-    serviceSpec: S.optional(SensitiveString),
-    templateFile: S.optional(SensitiveString),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateComponentInput" }) as any as S.Schema<UpdateComponentInput>;
+const UpdateComponentInput = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<UpdateComponentInput>;
 export interface UpdateComponentOutput {
   component: Component;
 }
@@ -2801,21 +1981,10 @@ export interface UpdateEnvironmentInput {
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const UpdateEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    spec: S.optional(SensitiveString),
-    templateMajorVersion: S.optional(S.String),
-    templateMinorVersion: S.optional(S.String),
-    protonServiceRoleArn: S.optional(S.String),
-    deploymentType: S.String,
-    environmentAccountConnectionId: S.optional(S.String),
-    provisioningRepository: S.optional(RepositoryBranchInput),
-    componentRoleArn: S.optional(S.String),
-    codebuildRoleArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateEnvironmentInput" }) as any as S.Schema<UpdateEnvironmentInput>;
+const UpdateEnvironmentInput = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<UpdateEnvironmentInput>;
 export interface UpdateEnvironmentOutput {
   environment: Environment;
 }
@@ -2826,16 +1995,10 @@ export interface UpdateEnvironmentAccountConnectionInput {
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const UpdateEnvironmentAccountConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    roleArn: S.optional(S.String),
-    componentRoleArn: S.optional(S.String),
-    codebuildRoleArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateEnvironmentAccountConnectionInput",
-}) as any as S.Schema<UpdateEnvironmentAccountConnectionInput>;
+const UpdateEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<UpdateEnvironmentAccountConnectionInput>;
 export interface UpdateEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
@@ -2846,15 +2009,10 @@ export interface UpdateEnvironmentTemplateInput {
   displayName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
 }
-const UpdateEnvironmentTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateEnvironmentTemplateInput",
-}) as any as S.Schema<UpdateEnvironmentTemplateInput>;
+const UpdateEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<UpdateEnvironmentTemplateInput>;
 export interface UpdateEnvironmentTemplateOutput {
   environmentTemplate: EnvironmentTemplate;
 }
@@ -2867,17 +2025,10 @@ export interface UpdateEnvironmentTemplateVersionInput {
   description?: string | redacted.Redacted<string>;
   status?: string;
 }
-const UpdateEnvironmentTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateName: S.String,
-    majorVersion: S.String,
-    minorVersion: S.String,
-    description: S.optional(SensitiveString),
-    status: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateEnvironmentTemplateVersionInput",
-}) as any as S.Schema<UpdateEnvironmentTemplateVersionInput>;
+const UpdateEnvironmentTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<UpdateEnvironmentTemplateVersionInput>;
 export interface UpdateEnvironmentTemplateVersionOutput {
   environmentTemplateVersion: EnvironmentTemplateVersion;
 }
@@ -2888,13 +2039,7 @@ export interface UpdateServiceInput {
   description?: string | redacted.Redacted<string>;
   spec?: string | redacted.Redacted<string>;
 }
-const UpdateServiceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    spec: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateServiceInput" }) as any as S.Schema<UpdateServiceInput>;
+const UpdateServiceInput = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<UpdateServiceInput>;
 export interface UpdateServiceOutput {
   service: Service;
 }
@@ -2908,19 +2053,10 @@ export interface UpdateServiceInstanceInput {
   templateMinorVersion?: string;
   clientToken?: string;
 }
-const UpdateServiceInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    serviceName: S.String,
-    deploymentType: S.String,
-    spec: S.optional(SensitiveString),
-    templateMajorVersion: S.optional(S.String),
-    templateMinorVersion: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateServiceInstanceInput",
-}) as any as S.Schema<UpdateServiceInstanceInput>;
+const UpdateServiceInstanceInput = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateServiceInstanceInput>;
 export interface UpdateServiceInstanceOutput {
   serviceInstance: ServiceInstance;
 }
@@ -2933,17 +2069,10 @@ export interface UpdateServicePipelineInput {
   templateMajorVersion?: string;
   templateMinorVersion?: string;
 }
-const UpdateServicePipelineInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String,
-    spec: SensitiveString,
-    deploymentType: S.String,
-    templateMajorVersion: S.optional(S.String),
-    templateMinorVersion: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateServicePipelineInput",
-}) as any as S.Schema<UpdateServicePipelineInput>;
+const UpdateServicePipelineInput = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<UpdateServicePipelineInput>;
 export interface UpdateServicePipelineOutput {
   pipeline: ServicePipeline;
 }
@@ -2953,27 +2082,19 @@ export interface UpdateServiceSyncBlockerInput {
   id: string;
   resolvedReason: string;
 }
-const UpdateServiceSyncBlockerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, resolvedReason: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateServiceSyncBlockerInput",
-}) as any as S.Schema<UpdateServiceSyncBlockerInput>;
+const UpdateServiceSyncBlockerInput = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<UpdateServiceSyncBlockerInput>;
 export interface UpdateServiceSyncBlockerOutput {
   serviceName: string;
   serviceInstanceName?: string;
   serviceSyncBlocker: SyncBlocker;
 }
-const UpdateServiceSyncBlockerOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String,
-    serviceInstanceName: S.optional(S.String),
-    serviceSyncBlocker: SyncBlocker,
-  }),
-).annotate({
-  identifier: "UpdateServiceSyncBlockerOutput",
-}) as any as S.Schema<UpdateServiceSyncBlockerOutput>;
+const UpdateServiceSyncBlockerOutput = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<UpdateServiceSyncBlockerOutput>;
 export interface UpdateServiceSyncConfigInput {
   serviceName: string;
   repositoryProvider: string;
@@ -2981,17 +2102,10 @@ export interface UpdateServiceSyncConfigInput {
   branch: string;
   filePath: string;
 }
-const UpdateServiceSyncConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String,
-    repositoryProvider: S.String,
-    repositoryName: S.String,
-    branch: S.String,
-    filePath: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateServiceSyncConfigInput",
-}) as any as S.Schema<UpdateServiceSyncConfigInput>;
+const UpdateServiceSyncConfigInput = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<UpdateServiceSyncConfigInput>;
 export interface UpdateServiceSyncConfigOutput {
   serviceSyncConfig?: ServiceSyncConfig;
 }
@@ -3002,15 +2116,10 @@ export interface UpdateServiceTemplateInput {
   displayName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
 }
-const UpdateServiceTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateServiceTemplateInput",
-}) as any as S.Schema<UpdateServiceTemplateInput>;
+const UpdateServiceTemplateInput = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<UpdateServiceTemplateInput>;
 export interface UpdateServiceTemplateOutput {
   serviceTemplate: ServiceTemplate;
 }
@@ -3025,19 +2134,10 @@ export interface UpdateServiceTemplateVersionInput {
   compatibleEnvironmentTemplates?: CompatibleEnvironmentTemplateInput[];
   supportedComponentSources?: string[];
 }
-const UpdateServiceTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateName: S.String,
-    majorVersion: S.String,
-    minorVersion: S.String,
-    description: S.optional(SensitiveString),
-    status: S.optional(S.String),
-    compatibleEnvironmentTemplates: S.optional(CompatibleEnvironmentTemplateInputList),
-    supportedComponentSources: S.optional(ServiceTemplateSupportedComponentSourceInputList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateServiceTemplateVersionInput",
-}) as any as S.Schema<UpdateServiceTemplateVersionInput>;
+const UpdateServiceTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<UpdateServiceTemplateVersionInput>;
 export interface UpdateServiceTemplateVersionOutput {
   serviceTemplateVersion: ServiceTemplateVersion;
 }
@@ -3051,18 +2151,10 @@ export interface UpdateTemplateSyncConfigInput {
   branch: string;
   subdirectory?: string;
 }
-const UpdateTemplateSyncConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateName: S.String,
-    templateType: S.String,
-    repositoryProvider: S.String,
-    repositoryName: S.String,
-    branch: S.String,
-    subdirectory: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateTemplateSyncConfigInput",
-}) as any as S.Schema<UpdateTemplateSyncConfigInput>;
+const UpdateTemplateSyncConfigInput = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<UpdateTemplateSyncConfigInput>;
 export interface UpdateTemplateSyncConfigOutput {
   templateSyncConfig?: TemplateSyncConfig;
 }
@@ -6195,3 +5287,1811 @@ export const updateTemplateSyncConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTemplateSyncConfig",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AcceptEnvironmentAccountConnectionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          managementAccountId: S.String,
+          environmentAccountId: S.String,
+          roleArn: S.String,
+          environmentName: S.String,
+          requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: S.String,
+          componentRoleArn: S.optional(S.String),
+          codebuildRoleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnvironmentAccountConnection",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ environmentAccountConnection: EnvironmentAccountConnection }),
+      ).annotate({
+        identifier: "AcceptEnvironmentAccountConnectionOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ componentName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CancelComponentDeploymentInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          arn: S.String,
+          environmentName: S.String,
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentAttemptedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastDeploymentSucceededAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          serviceSpec: S.optional(SensitiveString),
+          lastClientRequestToken: S.optional(S.String),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Component" });
+    case 5:
+      return S.suspend(() => S.Struct({ component: Component })).annotate({
+        identifier: "CancelComponentDeploymentOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ environmentName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CancelEnvironmentDeploymentInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String, provider: S.String, name: S.String, branch: S.String }),
+      ).annotate({ identifier: "RepositoryBranch" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          arn: S.String,
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.String,
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          protonServiceRoleArn: S.optional(S.String),
+          environmentAccountConnectionId: S.optional(S.String),
+          environmentAccountId: S.optional(S.String),
+          spec: S.optional(SensitiveString),
+          provisioning: S.optional(S.String),
+          provisioningRepository: S.optional(RepositoryBranch),
+          componentRoleArn: S.optional(S.String),
+          codebuildRoleArn: S.optional(S.String),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Environment" });
+    case 1:
+      return S.suspend(() => S.Struct({ environment: Environment })).annotate({
+        identifier: "CancelEnvironmentDeploymentOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ serviceInstanceName: S.String, serviceName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CancelServiceInstanceDeploymentInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          serviceName: S.String,
+          environmentName: S.String,
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.String,
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          spec: S.optional(SensitiveString),
+          lastClientRequestToken: S.optional(S.String),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceInstance" });
+    case 4:
+      return S.suspend(() => S.Struct({ serviceInstance: ServiceInstance })).annotate({
+        identifier: "CancelServiceInstanceDeploymentOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ serviceName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CancelServicePipelineDeploymentInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.String,
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          spec: S.optional(SensitiveString),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServicePipeline" });
+    case 7:
+      return S.suspend(() => S.Struct({ pipeline: ServicePipeline })).annotate({
+        identifier: "CancelServicePipelineDeploymentOutput",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(Tag);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          environmentName: S.optional(S.String),
+          templateFile: SensitiveString,
+          manifest: SensitiveString,
+          serviceSpec: S.optional(SensitiveString),
+          tags: S.optional(TagList),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateComponentInput" });
+    case 3:
+      return S.suspend(() => S.Struct({ component: Component })).annotate({
+        identifier: "CreateComponentOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ provider: S.String, name: S.String, branch: S.String }),
+      ).annotate({ identifier: "RepositoryBranchInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          spec: SensitiveString,
+          protonServiceRoleArn: S.optional(S.String),
+          environmentAccountConnectionId: S.optional(S.String),
+          tags: S.optional(TagList),
+          provisioningRepository: S.optional(RepositoryBranchInput),
+          componentRoleArn: S.optional(S.String),
+          codebuildRoleArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateEnvironmentInput" });
+    case 6:
+      return S.suspend(() => S.Struct({ environment: Environment })).annotate({
+        identifier: "CreateEnvironmentOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          managementAccountId: S.String,
+          roleArn: S.optional(S.String),
+          environmentName: S.String,
+          tags: S.optional(TagList),
+          componentRoleArn: S.optional(S.String),
+          codebuildRoleArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEnvironmentAccountConnectionInput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          displayName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          encryptionKey: S.optional(S.String),
+          provisioning: S.optional(S.String),
+          tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEnvironmentTemplateInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          displayName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          recommendedVersion: S.optional(S.String),
+          encryptionKey: S.optional(S.String),
+          provisioning: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentTemplate" });
+    case 2:
+      return S.suspend(() => S.Struct({ environmentTemplate: EnvironmentTemplate })).annotate({
+        identifier: "CreateEnvironmentTemplateOutput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
+        identifier: "S3ObjectSource",
+      });
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3: S3ObjectSource })]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          templateName: S.String,
+          description: S.optional(SensitiveString),
+          majorVersion: S.optional(S.String),
+          source: TemplateVersionSourceInput,
+          tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateEnvironmentTemplateVersionInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          majorVersion: S.String,
+          minorVersion: S.String,
+          recommendedMinorVersion: S.optional(S.String),
+          status: S.String,
+          statusMessage: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          schema: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "EnvironmentTemplateVersion",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ environmentTemplateVersion: EnvironmentTemplateVersion }),
+      ).annotate({
+        identifier: "CreateEnvironmentTemplateVersionOutput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.String,
+          name: S.String,
+          connectionArn: S.String,
+          encryptionKey: S.optional(S.String),
+          tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateRepositoryInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          provider: S.String,
+          name: S.String,
+          connectionArn: S.String,
+          encryptionKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Repository" });
+    case 2:
+      return S.suspend(() => S.Struct({ repository: Repository })).annotate({
+        identifier: "CreateRepositoryOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.optional(S.String),
+          spec: SensitiveString,
+          repositoryConnectionArn: S.optional(S.String),
+          repositoryId: S.optional(S.String),
+          branchName: S.optional(S.String),
+          tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateServiceInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          arn: S.String,
+          templateName: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: S.String,
+          statusMessage: S.optional(SensitiveString),
+          spec: SensitiveString,
+          pipeline: S.optional(ServicePipeline),
+          repositoryConnectionArn: S.optional(S.String),
+          repositoryId: S.optional(S.String),
+          branchName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Service" });
+    case 5:
+      return S.suspend(() => S.Struct({ service: Service })).annotate({
+        identifier: "CreateServiceOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          serviceName: S.String,
+          spec: SensitiveString,
+          templateMajorVersion: S.optional(S.String),
+          templateMinorVersion: S.optional(S.String),
+          tags: S.optional(TagList),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateServiceInstanceInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String,
+          repositoryProvider: S.String,
+          repositoryName: S.String,
+          branch: S.String,
+          filePath: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateServiceSyncConfigInput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String,
+          repositoryProvider: S.String,
+          repositoryName: S.String,
+          branch: S.String,
+          filePath: S.String,
+        }),
+      ).annotate({ identifier: "ServiceSyncConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ serviceSyncConfig: S.optional(ServiceSyncConfig) }),
+      ).annotate({
+        identifier: "CreateServiceSyncConfigOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          displayName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          encryptionKey: S.optional(S.String),
+          pipelineProvisioning: S.optional(S.String),
+          tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateServiceTemplateInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          displayName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          recommendedVersion: S.optional(S.String),
+          encryptionKey: S.optional(S.String),
+          pipelineProvisioning: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceTemplate" });
+    case 4:
+      return S.suspend(() => S.Struct({ serviceTemplate: ServiceTemplate })).annotate({
+        identifier: "CreateServiceTemplateOutput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ templateName: S.String, majorVersion: S.String })).annotate(
+        {
+          identifier: "CompatibleEnvironmentTemplateInput",
+        },
+      );
+    case 6:
+      return S.Array(CompatibleEnvironmentTemplateInput);
+    case 7:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          templateName: S.String,
+          description: S.optional(SensitiveString),
+          majorVersion: S.optional(S.String),
+          source: TemplateVersionSourceInput,
+          compatibleEnvironmentTemplates: CompatibleEnvironmentTemplateInputList,
+          tags: S.optional(TagList),
+          supportedComponentSources: S.optional(ServiceTemplateSupportedComponentSourceInputList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateServiceTemplateVersionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          majorVersion: S.String,
+          minorVersion: S.String,
+          recommendedMinorVersion: S.optional(S.String),
+          status: S.String,
+          statusMessage: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          compatibleEnvironmentTemplates: CompatibleEnvironmentTemplateList,
+          schema: S.optional(SensitiveString),
+          supportedComponentSources: S.optional(ServiceTemplateSupportedComponentSourceInputList),
+        }),
+      ).annotate({ identifier: "ServiceTemplateVersion" });
+    case 2:
+      return S.suspend(() => S.Struct({ serviceTemplateVersion: ServiceTemplateVersion })).annotate(
+        {
+          identifier: "CreateServiceTemplateVersionOutput",
+        },
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          templateType: S.String,
+          repositoryProvider: S.String,
+          repositoryName: S.String,
+          branch: S.String,
+          subdirectory: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateTemplateSyncConfigInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          templateType: S.String,
+          repositoryProvider: S.String,
+          repositoryName: S.String,
+          branch: S.String,
+          subdirectory: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TemplateSyncConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ templateSyncConfig: S.optional(TemplateSyncConfig) }),
+      ).annotate({
+        identifier: "CreateTemplateSyncConfigOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteComponentInput" });
+    case 7:
+      return S.suspend(() => S.Struct({ component: S.optional(Component) })).annotate({
+        identifier: "DeleteComponentOutput",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteDeploymentInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          spec: SensitiveString,
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.String,
+          lastSuccessfulComponentDeploymentIds: S.optional(ComponentDeploymentIdList),
+          lastSuccessfulEnvironmentDeploymentId: S.optional(S.String),
+          lastSuccessfulServicePipelineDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceInstanceState" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          spec: S.optional(SensitiveString),
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.String,
+        }),
+      ).annotate({ identifier: "EnvironmentState" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          serviceSpec: S.optional(SensitiveString),
+          templateFile: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "ComponentState" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ serviceInstance: ServiceInstanceState }),
+        /*@__PURE__*/ S.Struct({ environment: EnvironmentState }),
+        /*@__PURE__*/ S.Struct({ servicePipeline: ServicePipelineState }),
+        /*@__PURE__*/ S.Struct({ component: ComponentState }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          targetArn: S.String,
+          targetResourceCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          targetResourceType: S.String,
+          environmentName: S.String,
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          componentName: S.optional(S.String),
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+          initialState: S.optional(DeploymentState),
+          targetState: S.optional(DeploymentState),
+        }),
+      ).annotate({ identifier: "Deployment" });
+    case 6:
+      return S.suspend(() => S.Struct({ deployment: S.optional(Deployment) })).annotate({
+        identifier: "DeleteDeploymentOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteEnvironmentInput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ environment: S.optional(Environment) })).annotate({
+        identifier: "DeleteEnvironmentOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvironmentAccountConnectionInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ environmentAccountConnection: S.optional(EnvironmentAccountConnection) }),
+      ).annotate({
+        identifier: "DeleteEnvironmentAccountConnectionOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvironmentTemplateInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ environmentTemplate: S.optional(EnvironmentTemplate) }),
+      ).annotate({
+        identifier: "DeleteEnvironmentTemplateOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvironmentTemplateVersionInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ environmentTemplateVersion: S.optional(EnvironmentTemplateVersion) }),
+      ).annotate({
+        identifier: "DeleteEnvironmentTemplateVersionOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ provider: S.String, name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteRepositoryInput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ repository: S.optional(Repository) })).annotate({
+        identifier: "DeleteRepositoryOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteServiceInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ service: S.optional(Service) })).annotate({
+        identifier: "DeleteServiceOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ serviceName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteServiceSyncConfigInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteServiceTemplateInput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ serviceTemplate: S.optional(ServiceTemplate) })).annotate({
+        identifier: "DeleteServiceTemplateOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteServiceTemplateVersionInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ serviceTemplateVersion: S.optional(ServiceTemplateVersion) }),
+      ).annotate({
+        identifier: "DeleteServiceTemplateVersionOutput",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ templateName: S.String, templateType: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteTemplateSyncConfigInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetAccountSettingsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pipelineServiceRoleArn: S.optional(S.String),
+          pipelineProvisioningRepository: S.optional(RepositoryBranch),
+          pipelineCodebuildRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountSettings" });
+    case 3:
+      return S.suspend(() => S.Struct({ accountSettings: S.optional(AccountSettings) })).annotate({
+        identifier: "GetAccountSettingsOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetComponentInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          environmentName: S.optional(S.String),
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          componentName: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetDeploymentInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetEnvironmentInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetEnvironmentAccountConnectionInput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetEnvironmentTemplateInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetEnvironmentTemplateVersionInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ provider: S.String, name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetRepositoryInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryName: S.String,
+          repositoryProvider: S.String,
+          branch: S.String,
+          syncType: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetRepositorySyncStatusInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          externalId: S.optional(S.String),
+          time: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          event: S.String,
+        }),
+      ).annotate({ identifier: "RepositorySyncEvent" });
+    case 5:
+      return S.Array(RepositorySyncEvent);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: S.String,
+          events: RepositorySyncEvents,
+        }),
+      ).annotate({ identifier: "RepositorySyncAttempt" });
+    case 7:
+      return S.suspend(() => S.Struct({ latestSync: S.optional(RepositorySyncAttempt) })).annotate({
+        identifier: "GetRepositorySyncStatusOutput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetResourcesSummaryInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          total: S.Number,
+          failed: S.optional(S.Number),
+          upToDate: S.optional(S.Number),
+          behindMajor: S.optional(S.Number),
+          behindMinor: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ResourceCountsSummary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          components: S.optional(ResourceCountsSummary),
+          environments: S.optional(ResourceCountsSummary),
+          environmentTemplates: S.optional(ResourceCountsSummary),
+          serviceInstances: S.optional(ResourceCountsSummary),
+          services: S.optional(ResourceCountsSummary),
+          serviceTemplates: S.optional(ResourceCountsSummary),
+          pipelines: S.optional(ResourceCountsSummary),
+        }),
+      ).annotate({ identifier: "CountsSummary" });
+    case 3:
+      return S.suspend(() => S.Struct({ counts: CountsSummary })).annotate({
+        identifier: "GetResourcesSummaryOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetServiceInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, serviceName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetServiceInstanceInput" });
+    case 6:
+      return S.suspend(() => S.Struct({ serviceInstance: ServiceInstance })).annotate({
+        identifier: "GetServiceInstanceOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ serviceName: S.String, serviceInstanceName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetServiceInstanceSyncStatusInput",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryName: S.String,
+          repositoryProvider: S.String,
+          sha: S.String,
+          directory: S.String,
+          branch: S.String,
+        }),
+      ).annotate({ identifier: "Revision" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          initialRevision: Revision,
+          targetRevision: Revision,
+          target: S.String,
+          startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: S.String,
+          events: ResourceSyncEvents,
+        }),
+      ).annotate({ identifier: "ResourceSyncAttempt" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          latestSync: S.optional(ResourceSyncAttempt),
+          latestSuccessfulSync: S.optional(ResourceSyncAttempt),
+          desiredState: S.optional(Revision),
+        }),
+      ).annotate({
+        identifier: "GetServiceInstanceSyncStatusOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ serviceName: S.String, serviceInstanceName: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetServiceSyncBlockerSummaryInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.String,
+          status: S.String,
+          createdReason: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          contexts: S.optional(SyncBlockerContexts),
+          resolvedReason: S.optional(S.String),
+          resolvedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "SyncBlocker" });
+    case 5:
+      return S.Array(SyncBlocker);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String,
+          serviceInstanceName: S.optional(S.String),
+          latestBlockers: S.optional(LatestSyncBlockers),
+        }),
+      ).annotate({
+        identifier: "ServiceSyncBlockerSummary",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ serviceSyncBlockerSummary: S.optional(ServiceSyncBlockerSummary) }),
+      ).annotate({
+        identifier: "GetServiceSyncBlockerSummaryOutput",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ serviceName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetServiceSyncConfigInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetServiceTemplateInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ serviceTemplate: ServiceTemplate })).annotate({
+        identifier: "GetServiceTemplateOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetServiceTemplateVersionInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ templateName: S.String, templateType: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetTemplateSyncConfigInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          templateType: S.String,
+          templateVersion: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetTemplateSyncStatusInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          componentName: S.String,
+          nextToken: S.optional(S.String),
+          deploymentId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListComponentOutputsInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), valueString: S.optional(S.String) }),
+      ).annotate({ identifier: "Output" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Output);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), outputs: OutputsList }),
+      ).annotate({
+        identifier: "ListComponentOutputsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ componentName: S.String, nextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListComponentProvisionedResourcesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          identifier: S.optional(S.String),
+          provisioningEngine: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProvisionedResource" });
+    case 4:
+      return S.Array(ProvisionedResource);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          provisionedResources: ProvisionedResourceList,
+        }),
+      ).annotate({
+        identifier: "ListComponentProvisionedResourcesOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          environmentName: S.optional(S.String),
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListComponentsInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          environmentName: S.String,
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentAttemptedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastDeploymentSucceededAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComponentSummary" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ComponentSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), components: ComponentSummaryList }),
+      ).annotate({ identifier: "ListComponentsOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          environmentName: S.optional(S.String),
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          componentName: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDeploymentsInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          targetArn: S.String,
+          targetResourceCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          targetResourceType: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          environmentName: S.String,
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          componentName: S.optional(S.String),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+          deploymentStatus: S.String,
+        }),
+      ).annotate({ identifier: "DeploymentSummary" });
+    case 4:
+      return S.Array(DeploymentSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), deployments: DeploymentSummaryList }),
+      ).annotate({ identifier: "ListDeploymentsOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          requestedBy: S.String,
+          environmentName: S.optional(S.String),
+          statuses: S.optional(EnvironmentAccountConnectionStatusList),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListEnvironmentAccountConnectionsInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          managementAccountId: S.String,
+          environmentAccountId: S.String,
+          roleArn: S.String,
+          environmentName: S.String,
+          requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: S.String,
+          componentRoleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnvironmentAccountConnectionSummary",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(EnvironmentAccountConnectionSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          environmentAccountConnections: EnvironmentAccountConnectionSummaryList,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEnvironmentAccountConnectionsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          environmentName: S.String,
+          nextToken: S.optional(S.String),
+          deploymentId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListEnvironmentOutputsInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ environmentName: S.String, nextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListEnvironmentProvisionedResourcesInput",
+      });
+    case 4:
+      return S.Array(EnvironmentTemplateFilter);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          environmentTemplates: S.optional(EnvironmentTemplateFilterList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListEnvironmentsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          arn: S.String,
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.String,
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          protonServiceRoleArn: S.optional(S.String),
+          environmentAccountConnectionId: S.optional(S.String),
+          environmentAccountId: S.optional(S.String),
+          provisioning: S.optional(S.String),
+          componentRoleArn: S.optional(S.String),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentSummary" });
+    case 7:
+      return S.Array(EnvironmentSummary);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), environments: EnvironmentSummaryList }),
+      ).annotate({ identifier: "ListEnvironmentsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListEnvironmentTemplatesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          displayName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          recommendedVersion: S.optional(S.String),
+          provisioning: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnvironmentTemplateSummary",
+      });
+    case 3:
+      return S.Array(EnvironmentTemplateSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), templates: EnvironmentTemplateSummaryList }),
+      ).annotate({
+        identifier: "ListEnvironmentTemplatesOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          templateName: S.String,
+          majorVersion: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListEnvironmentTemplateVersionsInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          majorVersion: S.String,
+          minorVersion: S.String,
+          recommendedMinorVersion: S.optional(S.String),
+          status: S.String,
+          statusMessage: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "EnvironmentTemplateVersionSummary",
+      });
+    case 7:
+      return S.Array(EnvironmentTemplateVersionSummary);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          templateVersions: EnvironmentTemplateVersionSummaryList,
+        }),
+      ).annotate({
+        identifier: "ListEnvironmentTemplateVersionsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListRepositoriesInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String, provider: S.String, name: S.String, connectionArn: S.String }),
+      ).annotate({ identifier: "RepositorySummary" });
+    case 3:
+      return S.Array(RepositorySummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), repositories: RepositorySummaryList }),
+      ).annotate({ identifier: "ListRepositoriesOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryName: S.String,
+          repositoryProvider: S.String,
+          syncType: S.String,
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListRepositorySyncDefinitionsInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ target: S.String, parent: S.String, branch: S.String, directory: S.String }),
+      ).annotate({ identifier: "RepositorySyncDefinition" });
+    case 7:
+      return S.Array(RepositorySyncDefinition);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          syncDefinitions: RepositorySyncDefinitionList,
+        }),
+      ).annotate({
+        identifier: "ListRepositorySyncDefinitionsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceInstanceName: S.String,
+          serviceName: S.String,
+          nextToken: S.optional(S.String),
+          deploymentId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListServiceInstanceOutputsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String,
+          serviceInstanceName: S.String,
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListServiceInstanceProvisionedResourcesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListServiceInstancesFilter",
+      });
+    case 4:
+      return S.Array(ListServiceInstancesFilter);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          filters: S.optional(ListServiceInstancesFilterList),
+          sortBy: S.optional(S.String),
+          sortOrder: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListServiceInstancesInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          serviceName: S.String,
+          environmentName: S.String,
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.String,
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceInstanceSummary" });
+    case 7:
+      return S.Array(ServiceInstanceSummary);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), serviceInstances: ServiceInstanceSummaryList }),
+      ).annotate({
+        identifier: "ListServiceInstancesOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String,
+          nextToken: S.optional(S.String),
+          deploymentId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListServicePipelineOutputsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ serviceName: S.String, nextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListServicePipelineProvisionedResourcesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListServicesInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          arn: S.String,
+          templateName: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: S.String,
+          statusMessage: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "ServiceSummary" });
+    case 5:
+      return S.Array(ServiceSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), services: ServiceSummaryList }),
+      ).annotate({ identifier: "ListServicesOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListServiceTemplatesInput",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          displayName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          recommendedVersion: S.optional(S.String),
+          pipelineProvisioning: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceTemplateSummary" });
+    case 1:
+      return S.Array(ServiceTemplateSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), templates: ServiceTemplateSummaryList }),
+      ).annotate({
+        identifier: "ListServiceTemplatesOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          templateName: S.String,
+          majorVersion: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListServiceTemplateVersionsInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 5:
+      return S.suspend(() => S.Struct({ tags: TagList, nextToken: S.optional(S.String) })).annotate(
+        {
+          identifier: "ListTagsForResourceOutput",
+        },
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String,
+          status: S.optional(S.String),
+          outputs: S.optional(OutputsList),
+          deploymentId: S.optional(S.String),
+          statusMessage: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "NotifyResourceDeploymentStatusChangeInput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "NotifyResourceDeploymentStatusChangeOutput",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RejectEnvironmentAccountConnectionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
+          tagKeys: TagKeyList,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UntagResourceInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pipelineServiceRoleArn: S.optional(S.String),
+          pipelineProvisioningRepository: S.optional(RepositoryBranchInput),
+          deletePipelineProvisioningRepository: S.optional(S.Boolean),
+          pipelineCodebuildRoleArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateAccountSettingsInput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ accountSettings: AccountSettings })).annotate({
+        identifier: "UpdateAccountSettingsOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          deploymentType: S.String,
+          description: S.optional(SensitiveString),
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          serviceSpec: S.optional(SensitiveString),
+          templateFile: S.optional(SensitiveString),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateComponentInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          spec: S.optional(SensitiveString),
+          templateMajorVersion: S.optional(S.String),
+          templateMinorVersion: S.optional(S.String),
+          protonServiceRoleArn: S.optional(S.String),
+          deploymentType: S.String,
+          environmentAccountConnectionId: S.optional(S.String),
+          provisioningRepository: S.optional(RepositoryBranchInput),
+          componentRoleArn: S.optional(S.String),
+          codebuildRoleArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateEnvironmentInput" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          roleArn: S.optional(S.String),
+          componentRoleArn: S.optional(S.String),
+          codebuildRoleArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateEnvironmentAccountConnectionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          displayName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateEnvironmentTemplateInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          majorVersion: S.String,
+          minorVersion: S.String,
+          description: S.optional(SensitiveString),
+          status: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateEnvironmentTemplateVersionInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          spec: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateServiceInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          serviceName: S.String,
+          deploymentType: S.String,
+          spec: S.optional(SensitiveString),
+          templateMajorVersion: S.optional(S.String),
+          templateMinorVersion: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateServiceInstanceInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String,
+          spec: SensitiveString,
+          deploymentType: S.String,
+          templateMajorVersion: S.optional(S.String),
+          templateMinorVersion: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateServicePipelineInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ id: S.String, resolvedReason: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateServiceSyncBlockerInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String,
+          serviceInstanceName: S.optional(S.String),
+          serviceSyncBlocker: SyncBlocker,
+        }),
+      ).annotate({
+        identifier: "UpdateServiceSyncBlockerOutput",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String,
+          repositoryProvider: S.String,
+          repositoryName: S.String,
+          branch: S.String,
+          filePath: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateServiceSyncConfigInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          displayName: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateServiceTemplateInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          majorVersion: S.String,
+          minorVersion: S.String,
+          description: S.optional(SensitiveString),
+          status: S.optional(S.String),
+          compatibleEnvironmentTemplates: S.optional(CompatibleEnvironmentTemplateInputList),
+          supportedComponentSources: S.optional(ServiceTemplateSupportedComponentSourceInputList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateServiceTemplateVersionInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          templateName: S.String,
+          templateType: S.String,
+          repositoryProvider: S.String,
+          repositoryName: S.String,
+          branch: S.String,
+          subdirectory: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateTemplateSyncConfigInput",
+      });
+  }
+}

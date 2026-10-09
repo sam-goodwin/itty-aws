@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -214,23 +215,17 @@ export interface ContinueServiceDeploymentRequest {
   hookId: string;
   action?: DeploymentLifecycleHookAction;
 }
-const ContinueServiceDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceDeploymentArn: S.String,
-    hookId: S.String,
-    action: S.optional(DeploymentLifecycleHookAction),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ContinueServiceDeploymentRequest",
-}) as any as S.Schema<ContinueServiceDeploymentRequest>;
+const ContinueServiceDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ContinueServiceDeploymentRequest>;
 export interface ContinueServiceDeploymentResponse {
   serviceDeploymentArn?: string;
 }
-const ContinueServiceDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceDeploymentArn: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ContinueServiceDeploymentResponse",
-}) as any as S.Schema<ContinueServiceDeploymentResponse>;
+const ContinueServiceDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ContinueServiceDeploymentResponse>;
 export type ManagedScalingStatus = "ENABLED" | "DISABLED" | (string & {});
 const ManagedScalingStatus = S.String;
 
@@ -244,15 +239,7 @@ export interface ManagedScaling {
   maximumScalingStepSize?: number;
   instanceWarmupPeriod?: number;
 }
-const ManagedScaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ManagedScalingStatus),
-    targetCapacity: S.optional(S.Number),
-    minimumScalingStepSize: S.optional(S.Number),
-    maximumScalingStepSize: S.optional(S.Number),
-    instanceWarmupPeriod: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ManagedScaling" }) as any as S.Schema<ManagedScaling>;
+const ManagedScaling = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ManagedScaling>;
 export type ManagedTerminationProtection = "ENABLED" | "DISABLED" | (string & {});
 const ManagedTerminationProtection = S.String;
 
@@ -265,42 +252,35 @@ export interface AutoScalingGroupProvider {
   managedTerminationProtection?: ManagedTerminationProtection;
   managedDraining?: ManagedDraining;
 }
-const AutoScalingGroupProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoScalingGroupArn: S.String,
-    managedScaling: S.optional(ManagedScaling),
-    managedTerminationProtection: S.optional(ManagedTerminationProtection),
-    managedDraining: S.optional(ManagedDraining),
-  }),
-).annotate({ identifier: "AutoScalingGroupProvider" }) as any as S.Schema<AutoScalingGroupProvider>;
+const AutoScalingGroupProvider = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AutoScalingGroupProvider>;
 export type StringList = string[];
-const StringList = /*@__PURE__*/ S.Array(S.String);
+const StringList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface ManagedInstancesNetworkConfiguration {
   subnets?: string[];
   securityGroups?: string[];
 }
-const ManagedInstancesNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ subnets: S.optional(StringList), securityGroups: S.optional(StringList) }),
-).annotate({
-  identifier: "ManagedInstancesNetworkConfiguration",
-}) as any as S.Schema<ManagedInstancesNetworkConfiguration>;
+const ManagedInstancesNetworkConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ManagedInstancesNetworkConfiguration>;
 export type TaskVolumeStorageGiB = number;
 export interface ManagedInstancesStorageConfiguration {
   storageSizeGiB?: number;
 }
-const ManagedInstancesStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ storageSizeGiB: S.optional(S.Number) }),
-).annotate({
-  identifier: "ManagedInstancesStorageConfiguration",
-}) as any as S.Schema<ManagedInstancesStorageConfiguration>;
+const ManagedInstancesStorageConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ManagedInstancesStorageConfiguration>;
 export interface ManagedInstancesLocalStorageConfiguration {
   useLocalStorage?: boolean;
 }
-const ManagedInstancesLocalStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ useLocalStorage: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "ManagedInstancesLocalStorageConfiguration",
-}) as any as S.Schema<ManagedInstancesLocalStorageConfiguration>;
+const ManagedInstancesLocalStorageConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ManagedInstancesLocalStorageConfiguration>;
 export type ManagedInstancesMonitoringOptions = "BASIC" | "DETAILED" | (string & {});
 const ManagedInstancesMonitoringOptions = S.String;
 
@@ -313,9 +293,10 @@ export interface VCpuCountRangeRequest {
   min: number;
   max?: number;
 }
-const VCpuCountRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ min: S.Number, max: S.optional(S.Number) }),
-).annotate({ identifier: "VCpuCountRangeRequest" }) as any as S.Schema<VCpuCountRangeRequest>;
+const VCpuCountRangeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<VCpuCountRangeRequest>;
 export interface MemoryMiBRequest {
   min: number;
   max?: number;
@@ -325,22 +306,19 @@ export type CpuManufacturer = "intel" | "amd" | "amazon-web-services" | (string 
 const CpuManufacturer = S.String;
 
 export type CpuManufacturerSet = CpuManufacturer[];
-const CpuManufacturerSet = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ CpuManufacturer.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+const CpuManufacturerSet = /*@__PURE__*/ __L.at(__c1, 1);
 export type BoxedDouble = number;
 export interface MemoryGiBPerVCpuRequest {
   min?: number;
   max?: number;
 }
-const MemoryGiBPerVCpuRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ min: S.optional(S.Number), max: S.optional(S.Number) }),
-).annotate({ identifier: "MemoryGiBPerVCpuRequest" }) as any as S.Schema<MemoryGiBPerVCpuRequest>;
+const MemoryGiBPerVCpuRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<MemoryGiBPerVCpuRequest>;
 export type ExcludedInstanceType = string;
 export type ExcludedInstanceTypeSet = string[];
-const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+const ExcludedInstanceTypeSet = /*@__PURE__*/ __L.at(__c1, 3);
 export type InstanceGeneration = "current" | "previous" | (string & {});
 export type InstanceGenerationSet = InstanceGeneration[];
 const InstanceGenerationSet = CpuManufacturerSet as any as S.Schema<InstanceGenerationSet>;
@@ -354,11 +332,10 @@ export interface NetworkInterfaceCountRequest {
   min?: number;
   max?: number;
 }
-const NetworkInterfaceCountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ min: S.optional(S.Number), max: S.optional(S.Number) }),
-).annotate({
-  identifier: "NetworkInterfaceCountRequest",
-}) as any as S.Schema<NetworkInterfaceCountRequest>;
+const NetworkInterfaceCountRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<NetworkInterfaceCountRequest>;
 export type LocalStorage = "included" | "required" | "excluded" | (string & {});
 const LocalStorage = S.String;
 
@@ -452,40 +429,10 @@ export interface InstanceRequirementsRequest {
   allowedInstanceTypes?: string[];
   maxSpotPriceAsPercentageOfOptimalOnDemandPrice?: number;
 }
-const InstanceRequirementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vCpuCount: VCpuCountRangeRequest,
-    memoryMiB: MemoryMiBRequest,
-    cpuManufacturers: S.optional(CpuManufacturerSet).pipe(T.XmlName("CpuManufacturer")),
-    memoryGiBPerVCpu: S.optional(MemoryGiBPerVCpuRequest),
-    excludedInstanceTypes: S.optional(ExcludedInstanceTypeSet).pipe(
-      T.XmlName("ExcludedInstanceType"),
-    ),
-    instanceGenerations: S.optional(InstanceGenerationSet).pipe(T.XmlName("InstanceGeneration")),
-    spotMaxPricePercentageOverLowestPrice: S.optional(S.Number),
-    onDemandMaxPricePercentageOverLowestPrice: S.optional(S.Number),
-    bareMetal: S.optional(BareMetal),
-    burstablePerformance: S.optional(BurstablePerformance),
-    requireHibernateSupport: S.optional(S.Boolean),
-    networkInterfaceCount: S.optional(NetworkInterfaceCountRequest),
-    localStorage: S.optional(LocalStorage),
-    localStorageTypes: S.optional(LocalStorageTypeSet).pipe(T.XmlName("LocalStorageType")),
-    totalLocalStorageGB: S.optional(TotalLocalStorageGBRequest),
-    baselineEbsBandwidthMbps: S.optional(BaselineEbsBandwidthMbpsRequest),
-    acceleratorTypes: S.optional(AcceleratorTypeSet).pipe(T.XmlName("AcceleratorType")),
-    acceleratorCount: S.optional(AcceleratorCountRequest),
-    acceleratorManufacturers: S.optional(AcceleratorManufacturerSet).pipe(
-      T.XmlName("AcceleratorManufacturer"),
-    ),
-    acceleratorNames: S.optional(AcceleratorNameSet).pipe(T.XmlName("AcceleratorName")),
-    acceleratorTotalMemoryMiB: S.optional(AcceleratorTotalMemoryMiBRequest),
-    networkBandwidthGbps: S.optional(NetworkBandwidthGbpsRequest),
-    allowedInstanceTypes: S.optional(AllowedInstanceTypeSet).pipe(T.XmlName("AllowedInstanceType")),
-    maxSpotPriceAsPercentageOfOptimalOnDemandPrice: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InstanceRequirementsRequest",
-}) as any as S.Schema<InstanceRequirementsRequest>;
+const InstanceRequirementsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<InstanceRequirementsRequest>;
 export type CapacityReservationPreference =
   | "RESERVATIONS_ONLY"
   | "RESERVATIONS_FIRST"
@@ -497,14 +444,10 @@ export interface CapacityReservationRequest {
   reservationGroupArn?: string;
   reservationPreference?: CapacityReservationPreference;
 }
-const CapacityReservationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reservationGroupArn: S.optional(S.String),
-    reservationPreference: S.optional(CapacityReservationPreference),
-  }),
-).annotate({
-  identifier: "CapacityReservationRequest",
-}) as any as S.Schema<CapacityReservationRequest>;
+const CapacityReservationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CapacityReservationRequest>;
 export interface InstanceLaunchTemplate {
   ec2InstanceProfileArn: string;
   networkConfiguration: ManagedInstancesNetworkConfiguration;
@@ -517,40 +460,30 @@ export interface InstanceLaunchTemplate {
   fipsEnabled?: boolean;
   capacityReservations?: CapacityReservationRequest;
 }
-const InstanceLaunchTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ec2InstanceProfileArn: S.String,
-    networkConfiguration: ManagedInstancesNetworkConfiguration,
-    storageConfiguration: S.optional(ManagedInstancesStorageConfiguration),
-    localStorageConfiguration: S.optional(ManagedInstancesLocalStorageConfiguration),
-    monitoring: S.optional(ManagedInstancesMonitoringOptions),
-    capacityOptionType: S.optional(CapacityOptionType),
-    instanceMetadataTagsPropagation: S.optional(S.Boolean),
-    instanceRequirements: S.optional(InstanceRequirementsRequest),
-    fipsEnabled: S.optional(S.Boolean),
-    capacityReservations: S.optional(CapacityReservationRequest),
-  }),
-).annotate({ identifier: "InstanceLaunchTemplate" }) as any as S.Schema<InstanceLaunchTemplate>;
+const InstanceLaunchTemplate = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<InstanceLaunchTemplate>;
 export type PropagateMITags = "CAPACITY_PROVIDER" | "NONE" | (string & {});
 const PropagateMITags = S.String;
 
 export interface InfrastructureOptimization {
   scaleInAfter?: number;
 }
-const InfrastructureOptimization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scaleInAfter: S.optional(S.Number) }),
-).annotate({
-  identifier: "InfrastructureOptimization",
-}) as any as S.Schema<InfrastructureOptimization>;
+const InfrastructureOptimization = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<InfrastructureOptimization>;
 export type AutoRepairActionsStatus = "ENABLED" | "DISABLED" | (string & {});
 const AutoRepairActionsStatus = S.String;
 
 export interface AutoRepairConfiguration {
   actionsStatus?: AutoRepairActionsStatus;
 }
-const AutoRepairConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actionsStatus: S.optional(AutoRepairActionsStatus) }),
-).annotate({ identifier: "AutoRepairConfiguration" }) as any as S.Schema<AutoRepairConfiguration>;
+const AutoRepairConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AutoRepairConfiguration>;
 export interface CreateManagedInstancesProviderConfiguration {
   infrastructureRoleArn: string;
   instanceLaunchTemplate: InstanceLaunchTemplate;
@@ -558,28 +491,19 @@ export interface CreateManagedInstancesProviderConfiguration {
   infrastructureOptimization?: InfrastructureOptimization;
   autoRepairConfiguration?: AutoRepairConfiguration;
 }
-const CreateManagedInstancesProviderConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infrastructureRoleArn: S.String,
-    instanceLaunchTemplate: InstanceLaunchTemplate,
-    propagateTags: S.optional(PropagateMITags),
-    infrastructureOptimization: S.optional(InfrastructureOptimization),
-    autoRepairConfiguration: S.optional(AutoRepairConfiguration),
-  }),
-).annotate({
-  identifier: "CreateManagedInstancesProviderConfiguration",
-}) as any as S.Schema<CreateManagedInstancesProviderConfiguration>;
+const CreateManagedInstancesProviderConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateManagedInstancesProviderConfiguration>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key?: string;
   value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-const Tags = /*@__PURE__*/ S.Array(Tag);
+const Tags = /*@__PURE__*/ __L.at(__c2, 4);
 export interface CreateCapacityProviderRequest {
   name: string;
   cluster?: string;
@@ -587,17 +511,10 @@ export interface CreateCapacityProviderRequest {
   managedInstancesProvider?: CreateManagedInstancesProviderConfiguration;
   tags?: Tag[];
 }
-const CreateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    cluster: S.optional(S.String),
-    autoScalingGroupProvider: S.optional(AutoScalingGroupProvider),
-    managedInstancesProvider: S.optional(CreateManagedInstancesProviderConfiguration),
-    tags: S.optional(Tags),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateCapacityProviderRequest",
-}) as any as S.Schema<CreateCapacityProviderRequest>;
+const CreateCapacityProviderRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateCapacityProviderRequest>;
 export type CapacityProviderStatus =
   | "PROVISIONING"
   | "ACTIVE"
@@ -613,15 +530,10 @@ export interface ManagedInstancesProvider {
   infrastructureOptimization?: InfrastructureOptimization;
   autoRepairConfiguration?: AutoRepairConfiguration;
 }
-const ManagedInstancesProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infrastructureRoleArn: S.optional(S.String),
-    instanceLaunchTemplate: S.optional(InstanceLaunchTemplate),
-    propagateTags: S.optional(PropagateMITags),
-    infrastructureOptimization: S.optional(InfrastructureOptimization),
-    autoRepairConfiguration: S.optional(AutoRepairConfiguration),
-  }),
-).annotate({ identifier: "ManagedInstancesProvider" }) as any as S.Schema<ManagedInstancesProvider>;
+const ManagedInstancesProvider = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ManagedInstancesProvider>;
 export type CapacityProviderUpdateStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_COMPLETE"
@@ -655,28 +567,14 @@ export interface CapacityProvider {
   tags?: Tag[];
   type?: CapacityProviderType;
 }
-const CapacityProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityProviderArn: S.optional(S.String),
-    name: S.optional(S.String),
-    cluster: S.optional(S.String),
-    status: S.optional(CapacityProviderStatus),
-    autoScalingGroupProvider: S.optional(AutoScalingGroupProvider),
-    managedInstancesProvider: S.optional(ManagedInstancesProvider),
-    updateStatus: S.optional(CapacityProviderUpdateStatus),
-    updateStatusReason: S.optional(S.String),
-    tags: S.optional(Tags),
-    type: S.optional(CapacityProviderType),
-  }),
-).annotate({ identifier: "CapacityProvider" }) as any as S.Schema<CapacityProvider>;
+const CapacityProvider = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CapacityProvider>;
 export interface CreateCapacityProviderResponse {
   capacityProvider?: CapacityProvider;
 }
-const CreateCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ capacityProvider: S.optional(CapacityProvider) }).pipe(ns),
-).annotate({
-  identifier: "CreateCapacityProviderResponse",
-}) as any as S.Schema<CreateCapacityProviderResponse>;
+const CreateCapacityProviderResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateCapacityProviderResponse>;
 export type ClusterSettingName = "containerInsights" | (string & {});
 const ClusterSettingName = S.String;
 
@@ -684,11 +582,9 @@ export interface ClusterSetting {
   name?: ClusterSettingName;
   value?: string;
 }
-const ClusterSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(ClusterSettingName), value: S.optional(S.String) }),
-).annotate({ identifier: "ClusterSetting" }) as any as S.Schema<ClusterSetting>;
+const ClusterSetting = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ClusterSetting>;
 export type ClusterSettings = ClusterSetting[];
-const ClusterSettings = /*@__PURE__*/ S.Array(ClusterSetting);
+const ClusterSettings = /*@__PURE__*/ __L.at(__c3, 2);
 export type ExecuteCommandLogging = "NONE" | "DEFAULT" | "OVERRIDE" | (string & {});
 const ExecuteCommandLogging = S.String;
 
@@ -699,53 +595,32 @@ export interface ExecuteCommandLogConfiguration {
   s3EncryptionEnabled?: boolean;
   s3KeyPrefix?: string;
 }
-const ExecuteCommandLogConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudWatchLogGroupName: S.optional(S.String),
-    cloudWatchEncryptionEnabled: S.optional(S.Boolean),
-    s3BucketName: S.optional(S.String),
-    s3EncryptionEnabled: S.optional(S.Boolean),
-    s3KeyPrefix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecuteCommandLogConfiguration",
-}) as any as S.Schema<ExecuteCommandLogConfiguration>;
+const ExecuteCommandLogConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ExecuteCommandLogConfiguration>;
 export interface ExecuteCommandConfiguration {
   kmsKeyId?: string;
   logging?: ExecuteCommandLogging;
   logConfiguration?: ExecuteCommandLogConfiguration;
 }
-const ExecuteCommandConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyId: S.optional(S.String),
-    logging: S.optional(ExecuteCommandLogging),
-    logConfiguration: S.optional(ExecuteCommandLogConfiguration),
-  }),
-).annotate({
-  identifier: "ExecuteCommandConfiguration",
-}) as any as S.Schema<ExecuteCommandConfiguration>;
+const ExecuteCommandConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ExecuteCommandConfiguration>;
 export interface ManagedStorageConfiguration {
   kmsKeyId?: string;
   fargateEphemeralStorageKmsKeyId?: string;
 }
-const ManagedStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyId: S.optional(S.String),
-    fargateEphemeralStorageKmsKeyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedStorageConfiguration",
-}) as any as S.Schema<ManagedStorageConfiguration>;
+const ManagedStorageConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ManagedStorageConfiguration>;
 export interface ClusterConfiguration {
   executeCommandConfiguration?: ExecuteCommandConfiguration;
   managedStorageConfiguration?: ManagedStorageConfiguration;
 }
-const ClusterConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executeCommandConfiguration: S.optional(ExecuteCommandConfiguration),
-    managedStorageConfiguration: S.optional(ManagedStorageConfiguration),
-  }),
-).annotate({ identifier: "ClusterConfiguration" }) as any as S.Schema<ClusterConfiguration>;
+const ClusterConfiguration = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ClusterConfiguration>;
 export type CapacityProviderStrategyItemWeight = number;
 export type CapacityProviderStrategyItemBase = number;
 export interface CapacityProviderStrategyItem {
@@ -753,25 +628,19 @@ export interface CapacityProviderStrategyItem {
   weight?: number;
   base?: number;
 }
-const CapacityProviderStrategyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityProvider: S.String,
-    weight: S.optional(S.Number),
-    base: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CapacityProviderStrategyItem",
-}) as any as S.Schema<CapacityProviderStrategyItem>;
+const CapacityProviderStrategyItem = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CapacityProviderStrategyItem>;
 export type CapacityProviderStrategy = CapacityProviderStrategyItem[];
-const CapacityProviderStrategy = /*@__PURE__*/ S.Array(CapacityProviderStrategyItem);
+const CapacityProviderStrategy = /*@__PURE__*/ __L.at(__c4, 0);
 export interface ClusterServiceConnectDefaultsRequest {
   namespace: string;
 }
-const ClusterServiceConnectDefaultsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ namespace: S.String }),
-).annotate({
-  identifier: "ClusterServiceConnectDefaultsRequest",
-}) as any as S.Schema<ClusterServiceConnectDefaultsRequest>;
+const ClusterServiceConnectDefaultsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ClusterServiceConnectDefaultsRequest>;
 export interface CreateClusterRequest {
   clusterName?: string;
   tags?: Tag[];
@@ -781,26 +650,14 @@ export interface CreateClusterRequest {
   defaultCapacityProviderStrategy?: CapacityProviderStrategyItem[];
   serviceConnectDefaults?: ClusterServiceConnectDefaultsRequest;
 }
-const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterName: S.optional(S.String),
-    tags: S.optional(Tags),
-    settings: S.optional(ClusterSettings),
-    configuration: S.optional(ClusterConfiguration),
-    capacityProviders: S.optional(StringList),
-    defaultCapacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    serviceConnectDefaults: S.optional(ClusterServiceConnectDefaultsRequest),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateClusterRequest" }) as any as S.Schema<CreateClusterRequest>;
+const CreateClusterRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CreateClusterRequest>;
 export interface KeyValuePair {
   name?: string;
   value?: string;
 }
-const KeyValuePair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({ identifier: "KeyValuePair" }) as any as S.Schema<KeyValuePair>;
+const KeyValuePair = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<KeyValuePair>;
 export type Statistics = KeyValuePair[];
-const Statistics = /*@__PURE__*/ S.Array(KeyValuePair);
+const Statistics = /*@__PURE__*/ __L.at(__c4, 4);
 export type AttachmentDetails = KeyValuePair[];
 const AttachmentDetails = Statistics as any as S.Schema<AttachmentDetails>;
 export interface Attachment {
@@ -809,24 +666,16 @@ export interface Attachment {
   status?: string;
   details?: KeyValuePair[];
 }
-const Attachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(S.String),
-    status: S.optional(S.String),
-    details: S.optional(AttachmentDetails),
-  }),
-).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
+const Attachment = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Attachment>;
 export type Attachments = Attachment[];
-const Attachments = /*@__PURE__*/ S.Array(Attachment);
+const Attachments = /*@__PURE__*/ __L.at(__c4, 6);
 export interface ClusterServiceConnectDefaults {
   namespace?: string;
 }
-const ClusterServiceConnectDefaults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ namespace: S.optional(S.String) }),
-).annotate({
-  identifier: "ClusterServiceConnectDefaults",
-}) as any as S.Schema<ClusterServiceConnectDefaults>;
+const ClusterServiceConnectDefaults = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ClusterServiceConnectDefaults>;
 export interface Cluster {
   clusterArn?: string;
   clusterName?: string;
@@ -845,54 +694,32 @@ export interface Cluster {
   attachmentsStatus?: string;
   serviceConnectDefaults?: ClusterServiceConnectDefaults;
 }
-const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterArn: S.optional(S.String),
-    clusterName: S.optional(S.String),
-    configuration: S.optional(ClusterConfiguration),
-    status: S.optional(S.String),
-    registeredContainerInstancesCount: S.optional(S.Number),
-    runningTasksCount: S.optional(S.Number),
-    pendingTasksCount: S.optional(S.Number),
-    activeServicesCount: S.optional(S.Number),
-    statistics: S.optional(Statistics),
-    tags: S.optional(Tags),
-    settings: S.optional(ClusterSettings),
-    capacityProviders: S.optional(StringList),
-    defaultCapacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    attachments: S.optional(Attachments),
-    attachmentsStatus: S.optional(S.String),
-    serviceConnectDefaults: S.optional(ClusterServiceConnectDefaults),
-  }),
-).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
+const Cluster = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Cluster>;
 export interface CreateClusterResponse {
   cluster?: Cluster;
 }
-const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({ identifier: "CreateClusterResponse" }) as any as S.Schema<CreateClusterResponse>;
+const CreateClusterResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateClusterResponse>;
 export type DaemonDrainPercent = number;
 export interface DaemonAlarmConfiguration {
   alarmNames?: string[];
   enable?: boolean;
 }
-const DaemonAlarmConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ alarmNames: S.optional(StringList), enable: S.optional(S.Boolean) }),
-).annotate({ identifier: "DaemonAlarmConfiguration" }) as any as S.Schema<DaemonAlarmConfiguration>;
+const DaemonAlarmConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DaemonAlarmConfiguration>;
 export interface DaemonDeploymentConfiguration {
   drainPercent?: number;
   alarms?: DaemonAlarmConfiguration;
   bakeTimeInMinutes?: number;
 }
-const DaemonDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drainPercent: S.optional(S.Number),
-    alarms: S.optional(DaemonAlarmConfiguration),
-    bakeTimeInMinutes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DaemonDeploymentConfiguration",
-}) as any as S.Schema<DaemonDeploymentConfiguration>;
+const DaemonDeploymentConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DaemonDeploymentConfiguration>;
 export type DaemonPropagateTags = "DAEMON" | "NONE" | (string & {});
 const DaemonPropagateTags = S.String;
 
@@ -909,21 +736,7 @@ export interface CreateDaemonRequest {
   clientToken?: string;
   critical?: boolean;
 }
-const CreateDaemonRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonName: S.String,
-    clusterArn: S.optional(S.String),
-    daemonTaskDefinitionArn: S.String,
-    capacityProviderArns: StringList,
-    deploymentConfiguration: S.optional(DaemonDeploymentConfiguration),
-    tags: S.optional(Tags),
-    propagateTags: S.optional(DaemonPropagateTags),
-    enableECSManagedTags: S.optional(S.Boolean),
-    enableExecuteCommand: S.optional(S.Boolean),
-    clientToken: S.optional(S.String),
-    critical: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateDaemonRequest" }) as any as S.Schema<CreateDaemonRequest>;
+const CreateDaemonRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CreateDaemonRequest>;
 export type DaemonStatus = "ACTIVE" | "DELETE_IN_PROGRESS" | (string & {});
 const DaemonStatus = S.String;
 
@@ -933,42 +746,31 @@ export interface CreateDaemonResponse {
   createdAt?: Date;
   deploymentArn?: string;
 }
-const CreateDaemonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonArn: S.optional(S.String),
-    status: S.optional(DaemonStatus),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deploymentArn: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "CreateDaemonResponse" }) as any as S.Schema<CreateDaemonResponse>;
+const CreateDaemonResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CreateDaemonResponse>;
 export interface ExpressGatewayServiceAwsLogsConfiguration {
   logGroup: string;
   logStreamPrefix: string;
 }
-const ExpressGatewayServiceAwsLogsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ logGroup: S.String, logStreamPrefix: S.String }),
-).annotate({
-  identifier: "ExpressGatewayServiceAwsLogsConfiguration",
-}) as any as S.Schema<ExpressGatewayServiceAwsLogsConfiguration>;
+const ExpressGatewayServiceAwsLogsConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ExpressGatewayServiceAwsLogsConfiguration>;
 export interface ExpressGatewayRepositoryCredentials {
   credentialsParameter?: string;
 }
-const ExpressGatewayRepositoryCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ credentialsParameter: S.optional(S.String) }),
-).annotate({
-  identifier: "ExpressGatewayRepositoryCredentials",
-}) as any as S.Schema<ExpressGatewayRepositoryCredentials>;
+const ExpressGatewayRepositoryCredentials = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ExpressGatewayRepositoryCredentials>;
 export type EnvironmentVariables = KeyValuePair[];
 const EnvironmentVariables = Statistics as any as S.Schema<EnvironmentVariables>;
 export interface Secret {
   name: string;
   valueFrom: string;
 }
-const Secret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, valueFrom: S.String }),
-).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
+const Secret = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Secret>;
 export type SecretList = Secret[];
-const SecretList = /*@__PURE__*/ S.Array(Secret);
+const SecretList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface ExpressGatewayContainer {
   image: string;
   containerPort?: number;
@@ -978,26 +780,18 @@ export interface ExpressGatewayContainer {
   environment?: KeyValuePair[];
   secrets?: Secret[];
 }
-const ExpressGatewayContainer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.String,
-    containerPort: S.optional(S.Number),
-    awsLogsConfiguration: S.optional(ExpressGatewayServiceAwsLogsConfiguration),
-    repositoryCredentials: S.optional(ExpressGatewayRepositoryCredentials),
-    command: S.optional(StringList),
-    environment: S.optional(EnvironmentVariables),
-    secrets: S.optional(SecretList),
-  }),
-).annotate({ identifier: "ExpressGatewayContainer" }) as any as S.Schema<ExpressGatewayContainer>;
+const ExpressGatewayContainer = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ExpressGatewayContainer>;
 export interface ExpressGatewayServiceNetworkConfiguration {
   securityGroups?: string[];
   subnets?: string[];
 }
-const ExpressGatewayServiceNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ securityGroups: S.optional(StringList), subnets: S.optional(StringList) }),
-).annotate({
-  identifier: "ExpressGatewayServiceNetworkConfiguration",
-}) as any as S.Schema<ExpressGatewayServiceNetworkConfiguration>;
+const ExpressGatewayServiceNetworkConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ExpressGatewayServiceNetworkConfiguration>;
 export type ExpressCpuArchitecture = "X86_64" | "ARM64" | (string & {});
 const ExpressCpuArchitecture = S.String;
 
@@ -1014,16 +808,10 @@ export interface ExpressGatewayScalingTarget {
   autoScalingMetric?: ExpressGatewayServiceScalingMetric;
   autoScalingTargetValue?: number;
 }
-const ExpressGatewayScalingTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minTaskCount: S.optional(S.Number),
-    maxTaskCount: S.optional(S.Number),
-    autoScalingMetric: S.optional(ExpressGatewayServiceScalingMetric),
-    autoScalingTargetValue: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ExpressGatewayScalingTarget",
-}) as any as S.Schema<ExpressGatewayScalingTarget>;
+const ExpressGatewayScalingTarget = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ExpressGatewayScalingTarget>;
 export interface CreateExpressGatewayServiceRequest {
   executionRoleArn?: string;
   infrastructureRoleArn: string;
@@ -1040,26 +828,10 @@ export interface CreateExpressGatewayServiceRequest {
   tags?: Tag[];
   taskDefinitionArn?: string;
 }
-const CreateExpressGatewayServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionRoleArn: S.optional(S.String),
-    infrastructureRoleArn: S.String,
-    serviceName: S.optional(S.String),
-    cluster: S.optional(S.String),
-    healthCheckPath: S.optional(S.String),
-    primaryContainer: S.optional(ExpressGatewayContainer),
-    taskRoleArn: S.optional(S.String),
-    networkConfiguration: S.optional(ExpressGatewayServiceNetworkConfiguration),
-    cpu: S.optional(S.String),
-    memory: S.optional(S.String),
-    cpuArchitecture: S.optional(ExpressCpuArchitecture),
-    scalingTarget: S.optional(ExpressGatewayScalingTarget),
-    tags: S.optional(Tags),
-    taskDefinitionArn: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateExpressGatewayServiceRequest",
-}) as any as S.Schema<CreateExpressGatewayServiceRequest>;
+const CreateExpressGatewayServiceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateExpressGatewayServiceRequest>;
 export type ExpressGatewayServiceStatusCode = "ACTIVE" | "DRAINING" | "INACTIVE" | (string & {});
 const ExpressGatewayServiceStatusCode = S.String;
 
@@ -1067,14 +839,10 @@ export interface ExpressGatewayServiceStatus {
   statusCode?: ExpressGatewayServiceStatusCode;
   statusReason?: string;
 }
-const ExpressGatewayServiceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statusCode: S.optional(ExpressGatewayServiceStatusCode),
-    statusReason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExpressGatewayServiceStatus",
-}) as any as S.Schema<ExpressGatewayServiceStatus>;
+const ExpressGatewayServiceStatus = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ExpressGatewayServiceStatus>;
 export type AccessType = "PUBLIC" | "PRIVATE" | (string & {});
 const AccessType = S.String;
 
@@ -1082,11 +850,9 @@ export interface IngressPathSummary {
   accessType: AccessType;
   endpoint: string;
 }
-const IngressPathSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessType: AccessType, endpoint: S.String }),
-).annotate({ identifier: "IngressPathSummary" }) as any as S.Schema<IngressPathSummary>;
+const IngressPathSummary = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<IngressPathSummary>;
 export type IngressPathSummaries = IngressPathSummary[];
-const IngressPathSummaries = /*@__PURE__*/ S.Array(IngressPathSummary);
+const IngressPathSummaries = /*@__PURE__*/ __L.at(__c7, 0);
 export interface ExpressGatewayServiceConfiguration {
   serviceRevisionArn?: string;
   executionRoleArn?: string;
@@ -1102,29 +868,12 @@ export interface ExpressGatewayServiceConfiguration {
   ingressPaths?: IngressPathSummary[];
   createdAt?: Date;
 }
-const ExpressGatewayServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceRevisionArn: S.optional(S.String),
-    executionRoleArn: S.optional(S.String),
-    taskRoleArn: S.optional(S.String),
-    taskDefinitionArn: S.optional(S.String),
-    cpu: S.optional(S.String),
-    memory: S.optional(S.String),
-    cpuArchitecture: S.optional(ExpressCpuArchitecture),
-    networkConfiguration: S.optional(ExpressGatewayServiceNetworkConfiguration),
-    healthCheckPath: S.optional(S.String),
-    primaryContainer: S.optional(ExpressGatewayContainer),
-    scalingTarget: S.optional(ExpressGatewayScalingTarget),
-    ingressPaths: S.optional(IngressPathSummaries),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "ExpressGatewayServiceConfiguration",
-}) as any as S.Schema<ExpressGatewayServiceConfiguration>;
+const ExpressGatewayServiceConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ExpressGatewayServiceConfiguration>;
 export type ExpressGatewayServiceConfigurations = ExpressGatewayServiceConfiguration[];
-const ExpressGatewayServiceConfigurations = /*@__PURE__*/ S.Array(
-  ExpressGatewayServiceConfiguration,
-);
+const ExpressGatewayServiceConfigurations = /*@__PURE__*/ __L.at(__c7, 2);
 export interface ECSExpressGatewayService {
   cluster?: string;
   serviceName?: string;
@@ -1137,28 +886,17 @@ export interface ECSExpressGatewayService {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const ECSExpressGatewayService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    serviceArn: S.optional(S.String),
-    infrastructureRoleArn: S.optional(S.String),
-    status: S.optional(ExpressGatewayServiceStatus),
-    currentDeployment: S.optional(S.String),
-    activeConfigurations: S.optional(ExpressGatewayServiceConfigurations),
-    tags: S.optional(Tags),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ECSExpressGatewayService" }) as any as S.Schema<ECSExpressGatewayService>;
+const ECSExpressGatewayService = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ECSExpressGatewayService>;
 export interface CreateExpressGatewayServiceResponse {
   service?: ECSExpressGatewayService;
 }
-const CreateExpressGatewayServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ service: S.optional(ECSExpressGatewayService) }).pipe(ns),
-).annotate({
-  identifier: "CreateExpressGatewayServiceResponse",
-}) as any as S.Schema<CreateExpressGatewayServiceResponse>;
+const CreateExpressGatewayServiceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateExpressGatewayServiceResponse>;
 export type AvailabilityZoneRebalancing = "ENABLED" | "DISABLED" | (string & {});
 const AvailabilityZoneRebalancing = S.String;
 
@@ -1168,14 +906,10 @@ export interface AdvancedConfiguration {
   testListenerRule?: string;
   roleArn?: string;
 }
-const AdvancedConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alternateTargetGroupArn: S.optional(S.String),
-    productionListenerRule: S.optional(S.String),
-    testListenerRule: S.optional(S.String),
-    roleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "AdvancedConfiguration" }) as any as S.Schema<AdvancedConfiguration>;
+const AdvancedConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<AdvancedConfiguration>;
 export interface LoadBalancer {
   targetGroupArn?: string;
   loadBalancerName?: string;
@@ -1183,33 +917,18 @@ export interface LoadBalancer {
   containerPort?: number;
   advancedConfiguration?: AdvancedConfiguration;
 }
-const LoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetGroupArn: S.optional(S.String),
-    loadBalancerName: S.optional(S.String),
-    containerName: S.optional(S.String),
-    containerPort: S.optional(S.Number),
-    advancedConfiguration: S.optional(AdvancedConfiguration),
-  }),
-).annotate({ identifier: "LoadBalancer" }) as any as S.Schema<LoadBalancer>;
+const LoadBalancer = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<LoadBalancer>;
 export type LoadBalancers = LoadBalancer[];
-const LoadBalancers = /*@__PURE__*/ S.Array(LoadBalancer);
+const LoadBalancers = /*@__PURE__*/ __L.at(__c7, 7);
 export interface ServiceRegistry {
   registryArn?: string;
   port?: number;
   containerName?: string;
   containerPort?: number;
 }
-const ServiceRegistry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryArn: S.optional(S.String),
-    port: S.optional(S.Number),
-    containerName: S.optional(S.String),
-    containerPort: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ServiceRegistry" }) as any as S.Schema<ServiceRegistry>;
+const ServiceRegistry = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ServiceRegistry>;
 export type ServiceRegistries = ServiceRegistry[];
-const ServiceRegistries = /*@__PURE__*/ S.Array(ServiceRegistry);
+const ServiceRegistries = /*@__PURE__*/ __L.at(__c8, 1);
 export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL" | "MANAGED_INSTANCES" | (string & {});
 const LaunchType = S.String;
 
@@ -1220,31 +939,26 @@ export interface ThresholdConfiguration {
   type: ThresholdType;
   value: number;
 }
-const ThresholdConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: ThresholdType, value: S.Number }),
-).annotate({ identifier: "ThresholdConfiguration" }) as any as S.Schema<ThresholdConfiguration>;
+const ThresholdConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ThresholdConfiguration>;
 export interface DeploymentCircuitBreaker {
   enable: boolean;
   rollback: boolean;
   resetOnHealthyTask?: boolean;
   thresholdConfiguration?: ThresholdConfiguration;
 }
-const DeploymentCircuitBreaker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enable: S.Boolean,
-    rollback: S.Boolean,
-    resetOnHealthyTask: S.optional(S.Boolean),
-    thresholdConfiguration: S.optional(ThresholdConfiguration),
-  }),
-).annotate({ identifier: "DeploymentCircuitBreaker" }) as any as S.Schema<DeploymentCircuitBreaker>;
+const DeploymentCircuitBreaker = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeploymentCircuitBreaker>;
 export interface DeploymentAlarms {
   alarmNames: string[];
   rollback: boolean;
   enable: boolean;
 }
-const DeploymentAlarms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ alarmNames: StringList, rollback: S.Boolean, enable: S.Boolean }),
-).annotate({ identifier: "DeploymentAlarms" }) as any as S.Schema<DeploymentAlarms>;
+const DeploymentAlarms = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<DeploymentAlarms>;
 export type DeploymentStrategy = "ROLLING" | "BLUE_GREEN" | "LINEAR" | "CANARY" | (string & {});
 const DeploymentStrategy = S.String;
 
@@ -1265,21 +979,17 @@ export type DeploymentLifecycleHookStage =
 const DeploymentLifecycleHookStage = S.String;
 
 export type DeploymentLifecycleHookStageList = DeploymentLifecycleHookStage[];
-const DeploymentLifecycleHookStageList = /*@__PURE__*/ S.Array(DeploymentLifecycleHookStage);
+const DeploymentLifecycleHookStageList = /*@__PURE__*/ __L.at(__c8, 5);
 export type HookDetails = unknown;
 export type DeploymentLifecycleHookDuration = number;
 export interface DeploymentLifecycleHookTimeoutConfiguration {
   timeoutInMinutes?: number;
   action?: DeploymentLifecycleHookAction;
 }
-const DeploymentLifecycleHookTimeoutConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeoutInMinutes: S.optional(S.Number),
-    action: S.optional(DeploymentLifecycleHookAction),
-  }),
-).annotate({
-  identifier: "DeploymentLifecycleHookTimeoutConfiguration",
-}) as any as S.Schema<DeploymentLifecycleHookTimeoutConfiguration>;
+const DeploymentLifecycleHookTimeoutConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeploymentLifecycleHookTimeoutConfiguration>;
 export interface DeploymentLifecycleHook {
   targetType?: DeploymentLifecycleHookTargetType;
   hookTargetArn?: string;
@@ -1288,32 +998,22 @@ export interface DeploymentLifecycleHook {
   hookDetails?: any;
   timeoutConfiguration?: DeploymentLifecycleHookTimeoutConfiguration;
 }
-const DeploymentLifecycleHook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetType: S.optional(DeploymentLifecycleHookTargetType),
-    hookTargetArn: S.optional(S.String),
-    roleArn: S.optional(S.String),
-    lifecycleStages: S.optional(DeploymentLifecycleHookStageList),
-    hookDetails: S.optional(S.Any),
-    timeoutConfiguration: S.optional(DeploymentLifecycleHookTimeoutConfiguration),
-  }),
-).annotate({ identifier: "DeploymentLifecycleHook" }) as any as S.Schema<DeploymentLifecycleHook>;
+const DeploymentLifecycleHook = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeploymentLifecycleHook>;
 export type DeploymentLifecycleHookList = DeploymentLifecycleHook[];
-const DeploymentLifecycleHookList = /*@__PURE__*/ S.Array(DeploymentLifecycleHook);
+const DeploymentLifecycleHookList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface LinearConfiguration {
   stepPercent?: number;
   stepBakeTimeInMinutes?: number;
 }
-const LinearConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stepPercent: S.optional(S.Number), stepBakeTimeInMinutes: S.optional(S.Number) }),
-).annotate({ identifier: "LinearConfiguration" }) as any as S.Schema<LinearConfiguration>;
+const LinearConfiguration = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<LinearConfiguration>;
 export interface CanaryConfiguration {
   canaryPercent?: number;
   canaryBakeTimeInMinutes?: number;
 }
-const CanaryConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ canaryPercent: S.optional(S.Number), canaryBakeTimeInMinutes: S.optional(S.Number) }),
-).annotate({ identifier: "CanaryConfiguration" }) as any as S.Schema<CanaryConfiguration>;
+const CanaryConfiguration = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<CanaryConfiguration>;
 export type HealthyPercentInteger = number;
 export type ServiceRevisionCleanup = "BLOCKING" | "DEFERRED" | (string & {});
 const ServiceRevisionCleanup = S.String;
@@ -1323,15 +1023,10 @@ export interface DeploymentEarlySuccessCriteria {
   healthyPercent?: number;
   sourceServiceRevisionCleanup?: ServiceRevisionCleanup;
 }
-const DeploymentEarlySuccessCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enable: S.Boolean,
-    healthyPercent: S.optional(S.Number),
-    sourceServiceRevisionCleanup: S.optional(ServiceRevisionCleanup),
-  }),
-).annotate({
-  identifier: "DeploymentEarlySuccessCriteria",
-}) as any as S.Schema<DeploymentEarlySuccessCriteria>;
+const DeploymentEarlySuccessCriteria = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeploymentEarlySuccessCriteria>;
 export interface DeploymentConfiguration {
   deploymentCircuitBreaker?: DeploymentCircuitBreaker;
   maximumPercent?: number;
@@ -1344,20 +1039,10 @@ export interface DeploymentConfiguration {
   canaryConfiguration?: CanaryConfiguration;
   earlySuccessCriteria?: DeploymentEarlySuccessCriteria;
 }
-const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentCircuitBreaker: S.optional(DeploymentCircuitBreaker),
-    maximumPercent: S.optional(S.Number),
-    minimumHealthyPercent: S.optional(S.Number),
-    alarms: S.optional(DeploymentAlarms),
-    strategy: S.optional(DeploymentStrategy),
-    bakeTimeInMinutes: S.optional(S.Number),
-    lifecycleHooks: S.optional(DeploymentLifecycleHookList),
-    linearConfiguration: S.optional(LinearConfiguration),
-    canaryConfiguration: S.optional(CanaryConfiguration),
-    earlySuccessCriteria: S.optional(DeploymentEarlySuccessCriteria),
-  }),
-).annotate({ identifier: "DeploymentConfiguration" }) as any as S.Schema<DeploymentConfiguration>;
+const DeploymentConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeploymentConfiguration>;
 export type PlacementConstraintType = "distinctInstance" | "memberOf" | (string & {});
 const PlacementConstraintType = S.String;
 
@@ -1365,11 +1050,9 @@ export interface PlacementConstraint {
   type?: PlacementConstraintType;
   expression?: string;
 }
-const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: S.optional(PlacementConstraintType), expression: S.optional(S.String) }),
-).annotate({ identifier: "PlacementConstraint" }) as any as S.Schema<PlacementConstraint>;
+const PlacementConstraint = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<PlacementConstraint>;
 export type PlacementConstraints = PlacementConstraint[];
-const PlacementConstraints = /*@__PURE__*/ S.Array(PlacementConstraint);
+const PlacementConstraints = /*@__PURE__*/ __L.at(__c9, 6);
 export type PlacementStrategyType = "random" | "spread" | "binpack" | (string & {});
 const PlacementStrategyType = S.String;
 
@@ -1377,11 +1060,9 @@ export interface PlacementStrategy {
   type?: PlacementStrategyType;
   field?: string;
 }
-const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: S.optional(PlacementStrategyType), field: S.optional(S.String) }),
-).annotate({ identifier: "PlacementStrategy" }) as any as S.Schema<PlacementStrategy>;
+const PlacementStrategy = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<PlacementStrategy>;
 export type PlacementStrategies = PlacementStrategy[];
-const PlacementStrategies = /*@__PURE__*/ S.Array(PlacementStrategy);
+const PlacementStrategies = /*@__PURE__*/ __L.at(__c10, 0);
 export type AssignPublicIp = "ENABLED" | "DISABLED" | (string & {});
 const AssignPublicIp = S.String;
 
@@ -1390,19 +1071,14 @@ export interface AwsVpcConfiguration {
   securityGroups?: string[];
   assignPublicIp?: AssignPublicIp;
 }
-const AwsVpcConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subnets: StringList,
-    securityGroups: S.optional(StringList),
-    assignPublicIp: S.optional(AssignPublicIp),
-  }),
-).annotate({ identifier: "AwsVpcConfiguration" }) as any as S.Schema<AwsVpcConfiguration>;
+const AwsVpcConfiguration = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<AwsVpcConfiguration>;
 export interface NetworkConfiguration {
   awsvpcConfiguration?: AwsVpcConfiguration;
 }
-const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ awsvpcConfiguration: S.optional(AwsVpcConfiguration) }),
-).annotate({ identifier: "NetworkConfiguration" }) as any as S.Schema<NetworkConfiguration>;
+const NetworkConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<NetworkConfiguration>;
 export type SchedulingStrategy = "REPLICA" | "DAEMON" | (string & {});
 const SchedulingStrategy = S.String;
 
@@ -1412,9 +1088,10 @@ const DeploymentControllerType = S.String;
 export interface DeploymentController {
   type: DeploymentControllerType;
 }
-const DeploymentController = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: DeploymentControllerType }),
-).annotate({ identifier: "DeploymentController" }) as any as S.Schema<DeploymentController>;
+const DeploymentController = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeploymentController>;
 export type PropagateTags = "TASK_DEFINITION" | "SERVICE" | "NONE" | (string & {});
 const PropagateTags = S.String;
 
@@ -1422,77 +1099,61 @@ export type PortNumber = number;
 export interface ServiceConnectTestTrafficHeaderMatchRules {
   exact: string;
 }
-const ServiceConnectTestTrafficHeaderMatchRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ exact: S.String }),
-).annotate({
-  identifier: "ServiceConnectTestTrafficHeaderMatchRules",
-}) as any as S.Schema<ServiceConnectTestTrafficHeaderMatchRules>;
+const ServiceConnectTestTrafficHeaderMatchRules = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ServiceConnectTestTrafficHeaderMatchRules>;
 export interface ServiceConnectTestTrafficHeaderRules {
   name: string;
   value?: ServiceConnectTestTrafficHeaderMatchRules;
 }
-const ServiceConnectTestTrafficHeaderRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, value: S.optional(ServiceConnectTestTrafficHeaderMatchRules) }),
-).annotate({
-  identifier: "ServiceConnectTestTrafficHeaderRules",
-}) as any as S.Schema<ServiceConnectTestTrafficHeaderRules>;
+const ServiceConnectTestTrafficHeaderRules = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ServiceConnectTestTrafficHeaderRules>;
 export interface ServiceConnectTestTrafficRules {
   header: ServiceConnectTestTrafficHeaderRules;
 }
-const ServiceConnectTestTrafficRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ header: ServiceConnectTestTrafficHeaderRules }),
-).annotate({
-  identifier: "ServiceConnectTestTrafficRules",
-}) as any as S.Schema<ServiceConnectTestTrafficRules>;
+const ServiceConnectTestTrafficRules = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ServiceConnectTestTrafficRules>;
 export interface ServiceConnectClientAlias {
   port: number;
   dnsName?: string;
   testTrafficRules?: ServiceConnectTestTrafficRules;
 }
-const ServiceConnectClientAlias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.Number,
-    dnsName: S.optional(S.String),
-    testTrafficRules: S.optional(ServiceConnectTestTrafficRules),
-  }),
-).annotate({
-  identifier: "ServiceConnectClientAlias",
-}) as any as S.Schema<ServiceConnectClientAlias>;
+const ServiceConnectClientAlias = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ServiceConnectClientAlias>;
 export type ServiceConnectClientAliasList = ServiceConnectClientAlias[];
-const ServiceConnectClientAliasList = /*@__PURE__*/ S.Array(ServiceConnectClientAlias);
+const ServiceConnectClientAliasList = /*@__PURE__*/ __L.at(__c11, 0);
 export type Duration = number;
 export interface TimeoutConfiguration {
   idleTimeoutSeconds?: number;
   perRequestTimeoutSeconds?: number;
 }
-const TimeoutConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idleTimeoutSeconds: S.optional(S.Number),
-    perRequestTimeoutSeconds: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TimeoutConfiguration" }) as any as S.Schema<TimeoutConfiguration>;
+const TimeoutConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<TimeoutConfiguration>;
 export interface ServiceConnectTlsCertificateAuthority {
   awsPcaAuthorityArn?: string;
 }
-const ServiceConnectTlsCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ awsPcaAuthorityArn: S.optional(S.String) }),
-).annotate({
-  identifier: "ServiceConnectTlsCertificateAuthority",
-}) as any as S.Schema<ServiceConnectTlsCertificateAuthority>;
+const ServiceConnectTlsCertificateAuthority = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ServiceConnectTlsCertificateAuthority>;
 export interface ServiceConnectTlsConfiguration {
   issuerCertificateAuthority: ServiceConnectTlsCertificateAuthority;
   kmsKey?: string;
   roleArn?: string;
 }
-const ServiceConnectTlsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuerCertificateAuthority: ServiceConnectTlsCertificateAuthority,
-    kmsKey: S.optional(S.String),
-    roleArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceConnectTlsConfiguration",
-}) as any as S.Schema<ServiceConnectTlsConfiguration>;
+const ServiceConnectTlsConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ServiceConnectTlsConfiguration>;
 export interface ServiceConnectService {
   portName: string;
   discoveryName?: string;
@@ -1501,18 +1162,12 @@ export interface ServiceConnectService {
   timeout?: TimeoutConfiguration;
   tls?: ServiceConnectTlsConfiguration;
 }
-const ServiceConnectService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    portName: S.String,
-    discoveryName: S.optional(S.String),
-    clientAliases: S.optional(ServiceConnectClientAliasList),
-    ingressPortOverride: S.optional(S.Number),
-    timeout: S.optional(TimeoutConfiguration),
-    tls: S.optional(ServiceConnectTlsConfiguration),
-  }),
-).annotate({ identifier: "ServiceConnectService" }) as any as S.Schema<ServiceConnectService>;
+const ServiceConnectService = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ServiceConnectService>;
 export type ServiceConnectServiceList = ServiceConnectService[];
-const ServiceConnectServiceList = /*@__PURE__*/ S.Array(ServiceConnectService);
+const ServiceConnectServiceList = /*@__PURE__*/ __L.at(__c11, 5);
 export type LogDriver =
   | "json-file"
   | "syslog"
@@ -1526,22 +1181,13 @@ export type LogDriver =
 const LogDriver = S.String;
 
 export type LogConfigurationOptionsMap = { [key: string]: string | undefined };
-const LogConfigurationOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const LogConfigurationOptionsMap = /*@__PURE__*/ __L.at(__c11, 6);
 export interface LogConfiguration {
   logDriver: LogDriver;
   options?: { [key: string]: string | undefined };
   secretOptions?: Secret[];
 }
-const LogConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logDriver: LogDriver,
-    options: S.optional(LogConfigurationOptionsMap),
-    secretOptions: S.optional(SecretList),
-  }),
-).annotate({ identifier: "LogConfiguration" }) as any as S.Schema<LogConfiguration>;
+const LogConfiguration = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<LogConfiguration>;
 export type ServiceConnectAccessLoggingFormat = "TEXT" | "JSON" | (string & {});
 const ServiceConnectAccessLoggingFormat = S.String;
 
@@ -1552,14 +1198,10 @@ export interface ServiceConnectAccessLogConfiguration {
   format: ServiceConnectAccessLoggingFormat;
   includeQueryParameters?: ServiceConnectIncludeQueryParameters;
 }
-const ServiceConnectAccessLogConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: ServiceConnectAccessLoggingFormat,
-    includeQueryParameters: S.optional(ServiceConnectIncludeQueryParameters),
-  }),
-).annotate({
-  identifier: "ServiceConnectAccessLogConfiguration",
-}) as any as S.Schema<ServiceConnectAccessLogConfiguration>;
+const ServiceConnectAccessLogConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ServiceConnectAccessLogConfiguration>;
 export interface ServiceConnectConfiguration {
   enabled: boolean;
   namespace?: string;
@@ -1567,17 +1209,10 @@ export interface ServiceConnectConfiguration {
   logConfiguration?: LogConfiguration;
   accessLogConfiguration?: ServiceConnectAccessLogConfiguration;
 }
-const ServiceConnectConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    namespace: S.optional(S.String),
-    services: S.optional(ServiceConnectServiceList),
-    logConfiguration: S.optional(LogConfiguration),
-    accessLogConfiguration: S.optional(ServiceConnectAccessLogConfiguration),
-  }),
-).annotate({
-  identifier: "ServiceConnectConfiguration",
-}) as any as S.Schema<ServiceConnectConfiguration>;
+const ServiceConnectConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ServiceConnectConfiguration>;
 export type ECSVolumeName = string;
 export type EBSKMSKeyId = string;
 export type EBSVolumeType = string;
@@ -1590,15 +1225,9 @@ export interface EBSTagSpecification {
   tags?: Tag[];
   propagateTags?: PropagateTags;
 }
-const EBSTagSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: EBSResourceType,
-    tags: S.optional(Tags),
-    propagateTags: S.optional(PropagateTags),
-  }),
-).annotate({ identifier: "EBSTagSpecification" }) as any as S.Schema<EBSTagSpecification>;
+const EBSTagSpecification = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<EBSTagSpecification>;
 export type EBSTagSpecifications = EBSTagSpecification[];
-const EBSTagSpecifications = /*@__PURE__*/ S.Array(EBSTagSpecification);
+const EBSTagSpecifications = /*@__PURE__*/ __L.at(__c12, 3);
 export type TaskFilesystemType = "ext3" | "ext4" | "xfs" | "ntfs" | (string & {});
 const TaskFilesystemType = S.String;
 
@@ -1615,64 +1244,41 @@ export interface ServiceManagedEBSVolumeConfiguration {
   roleArn: string;
   filesystemType?: TaskFilesystemType;
 }
-const ServiceManagedEBSVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encrypted: S.optional(S.Boolean),
-    kmsKeyId: S.optional(S.String),
-    volumeType: S.optional(S.String),
-    sizeInGiB: S.optional(S.Number),
-    snapshotId: S.optional(S.String),
-    volumeInitializationRate: S.optional(S.Number),
-    iops: S.optional(S.Number),
-    throughput: S.optional(S.Number),
-    tagSpecifications: S.optional(EBSTagSpecifications),
-    roleArn: S.String,
-    filesystemType: S.optional(TaskFilesystemType),
-  }),
-).annotate({
-  identifier: "ServiceManagedEBSVolumeConfiguration",
-}) as any as S.Schema<ServiceManagedEBSVolumeConfiguration>;
+const ServiceManagedEBSVolumeConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ServiceManagedEBSVolumeConfiguration>;
 export interface ServiceVolumeConfiguration {
   name: string;
   managedEBSVolume?: ServiceManagedEBSVolumeConfiguration;
 }
-const ServiceVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, managedEBSVolume: S.optional(ServiceManagedEBSVolumeConfiguration) }),
-).annotate({
-  identifier: "ServiceVolumeConfiguration",
-}) as any as S.Schema<ServiceVolumeConfiguration>;
+const ServiceVolumeConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ServiceVolumeConfiguration>;
 export type ServiceVolumeConfigurations = ServiceVolumeConfiguration[];
-const ServiceVolumeConfigurations = /*@__PURE__*/ S.Array(ServiceVolumeConfiguration);
+const ServiceVolumeConfigurations = /*@__PURE__*/ __L.at(__c12, 6);
 export interface VpcLatticeAdvancedConfiguration {
   alternateTargetGroupArn?: string;
   productionListenerRule?: string;
   testListenerRule?: string;
 }
-const VpcLatticeAdvancedConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alternateTargetGroupArn: S.optional(S.String),
-    productionListenerRule: S.optional(S.String),
-    testListenerRule: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VpcLatticeAdvancedConfiguration",
-}) as any as S.Schema<VpcLatticeAdvancedConfiguration>;
+const VpcLatticeAdvancedConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<VpcLatticeAdvancedConfiguration>;
 export interface VpcLatticeConfiguration {
   roleArn: string;
   targetGroupArn: string;
   portName: string;
   advancedConfiguration?: VpcLatticeAdvancedConfiguration;
 }
-const VpcLatticeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    roleArn: S.String,
-    targetGroupArn: S.String,
-    portName: S.String,
-    advancedConfiguration: S.optional(VpcLatticeAdvancedConfiguration),
-  }),
-).annotate({ identifier: "VpcLatticeConfiguration" }) as any as S.Schema<VpcLatticeConfiguration>;
+const VpcLatticeConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<VpcLatticeConfiguration>;
 export type VpcLatticeConfigurations = VpcLatticeConfiguration[];
-const VpcLatticeConfigurations = /*@__PURE__*/ S.Array(VpcLatticeConfiguration);
+const VpcLatticeConfigurations = /*@__PURE__*/ __L.at(__c13, 1);
 export type MetricName = string;
 export type MetricNamesList = string[];
 const MetricNamesList = StringList as any as S.Schema<MetricNamesList>;
@@ -1681,17 +1287,16 @@ export interface MetricConfiguration {
   metricNames: string[];
   resolutionSeconds: number;
 }
-const MetricConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metricNames: MetricNamesList, resolutionSeconds: S.Number }),
-).annotate({ identifier: "MetricConfiguration" }) as any as S.Schema<MetricConfiguration>;
+const MetricConfiguration = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<MetricConfiguration>;
 export type MetricConfigurationList = MetricConfiguration[];
-const MetricConfigurationList = /*@__PURE__*/ S.Array(MetricConfiguration);
+const MetricConfigurationList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface MonitoringConfiguration {
   metricConfigurations?: MetricConfiguration[];
 }
-const MonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ metricConfigurations: S.optional(MetricConfigurationList) }),
-).annotate({ identifier: "MonitoringConfiguration" }) as any as S.Schema<MonitoringConfiguration>;
+const MonitoringConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<MonitoringConfiguration>;
 export interface CreateServiceRequest {
   cluster?: string;
   serviceName: string;
@@ -1721,37 +1326,10 @@ export interface CreateServiceRequest {
   vpcLatticeConfigurations?: VpcLatticeConfiguration[];
   monitoring?: MonitoringConfiguration;
 }
-const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    serviceName: S.String,
-    taskDefinition: S.optional(S.String),
-    availabilityZoneRebalancing: S.optional(AvailabilityZoneRebalancing),
-    loadBalancers: S.optional(LoadBalancers),
-    serviceRegistries: S.optional(ServiceRegistries),
-    desiredCount: S.optional(S.Number),
-    clientToken: S.optional(S.String),
-    launchType: S.optional(LaunchType),
-    capacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    platformVersion: S.optional(S.String),
-    role: S.optional(S.String),
-    deploymentConfiguration: S.optional(DeploymentConfiguration),
-    placementConstraints: S.optional(PlacementConstraints),
-    placementStrategy: S.optional(PlacementStrategies),
-    networkConfiguration: S.optional(NetworkConfiguration),
-    healthCheckGracePeriodSeconds: S.optional(S.Number),
-    schedulingStrategy: S.optional(SchedulingStrategy),
-    deploymentController: S.optional(DeploymentController),
-    tags: S.optional(Tags),
-    enableECSManagedTags: S.optional(S.Boolean),
-    propagateTags: S.optional(PropagateTags),
-    enableExecuteCommand: S.optional(S.Boolean),
-    serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
-    volumeConfigurations: S.optional(ServiceVolumeConfigurations),
-    vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
-    monitoring: S.optional(MonitoringConfiguration),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateServiceRequest" }) as any as S.Schema<CreateServiceRequest>;
+const CreateServiceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<CreateServiceRequest>;
 export type ScaleUnit = "PERCENT" | (string & {});
 const ScaleUnit = S.String;
 
@@ -1759,20 +1337,17 @@ export interface Scale {
   value?: number;
   unit?: ScaleUnit;
 }
-const Scale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.optional(S.Number), unit: S.optional(ScaleUnit) }),
-).annotate({ identifier: "Scale" }) as any as S.Schema<Scale>;
+const Scale = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<Scale>;
 export type StabilityStatus = "STEADY_STATE" | "STABILIZING" | (string & {});
 const StabilityStatus = S.String;
 
 export interface DeploymentEphemeralStorage {
   kmsKeyId?: string;
 }
-const DeploymentEphemeralStorage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ kmsKeyId: S.optional(S.String) }),
-).annotate({
-  identifier: "DeploymentEphemeralStorage",
-}) as any as S.Schema<DeploymentEphemeralStorage>;
+const DeploymentEphemeralStorage = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DeploymentEphemeralStorage>;
 export interface TaskSet {
   id?: string;
   taskSetArn?: string;
@@ -1800,37 +1375,9 @@ export interface TaskSet {
   tags?: Tag[];
   fargateEphemeralStorage?: DeploymentEphemeralStorage;
 }
-const TaskSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    taskSetArn: S.optional(S.String),
-    serviceArn: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    startedBy: S.optional(S.String),
-    externalId: S.optional(S.String),
-    status: S.optional(S.String),
-    taskDefinition: S.optional(S.String),
-    computedDesiredCount: S.optional(S.Number),
-    pendingCount: S.optional(S.Number),
-    runningCount: S.optional(S.Number),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    launchType: S.optional(LaunchType),
-    capacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    platformVersion: S.optional(S.String),
-    platformFamily: S.optional(S.String),
-    networkConfiguration: S.optional(NetworkConfiguration),
-    loadBalancers: S.optional(LoadBalancers),
-    serviceRegistries: S.optional(ServiceRegistries),
-    scale: S.optional(Scale),
-    stabilityStatus: S.optional(StabilityStatus),
-    stabilityStatusAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    tags: S.optional(Tags),
-    fargateEphemeralStorage: S.optional(DeploymentEphemeralStorage),
-  }),
-).annotate({ identifier: "TaskSet" }) as any as S.Schema<TaskSet>;
+const TaskSet = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<TaskSet>;
 export type TaskSets = TaskSet[];
-const TaskSets = /*@__PURE__*/ S.Array(TaskSet);
+const TaskSets = /*@__PURE__*/ __L.at(__c14, 1);
 export type DeploymentRolloutState = "COMPLETED" | "FAILED" | "IN_PROGRESS" | (string & {});
 const DeploymentRolloutState = S.String;
 
@@ -1838,13 +1385,12 @@ export interface ServiceConnectServiceResource {
   discoveryName?: string;
   discoveryArn?: string;
 }
-const ServiceConnectServiceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ discoveryName: S.optional(S.String), discoveryArn: S.optional(S.String) }),
-).annotate({
-  identifier: "ServiceConnectServiceResource",
-}) as any as S.Schema<ServiceConnectServiceResource>;
+const ServiceConnectServiceResource = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ServiceConnectServiceResource>;
 export type ServiceConnectServiceResourceList = ServiceConnectServiceResource[];
-const ServiceConnectServiceResourceList = /*@__PURE__*/ S.Array(ServiceConnectServiceResource);
+const ServiceConnectServiceResourceList = /*@__PURE__*/ __L.at(__c14, 3);
 export interface Deployment {
   id?: string;
   status?: string;
@@ -1868,65 +1414,29 @@ export interface Deployment {
   fargateEphemeralStorage?: DeploymentEphemeralStorage;
   vpcLatticeConfigurations?: VpcLatticeConfiguration[];
 }
-const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    status: S.optional(S.String),
-    taskDefinition: S.optional(S.String),
-    desiredCount: S.optional(S.Number),
-    pendingCount: S.optional(S.Number),
-    runningCount: S.optional(S.Number),
-    failedTasks: S.optional(S.Number),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    capacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    launchType: S.optional(LaunchType),
-    platformVersion: S.optional(S.String),
-    platformFamily: S.optional(S.String),
-    networkConfiguration: S.optional(NetworkConfiguration),
-    rolloutState: S.optional(DeploymentRolloutState),
-    rolloutStateReason: S.optional(S.String),
-    serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
-    serviceConnectResources: S.optional(ServiceConnectServiceResourceList),
-    volumeConfigurations: S.optional(ServiceVolumeConfigurations),
-    fargateEphemeralStorage: S.optional(DeploymentEphemeralStorage),
-    vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
-  }),
-).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
+const Deployment = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<Deployment>;
 export type Deployments = Deployment[];
-const Deployments = /*@__PURE__*/ S.Array(Deployment);
+const Deployments = /*@__PURE__*/ __L.at(__c14, 5);
 export interface ServiceEvent {
   id?: string;
   createdAt?: Date;
   message?: string;
 }
-const ServiceEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceEvent" }) as any as S.Schema<ServiceEvent>;
+const ServiceEvent = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ServiceEvent>;
 export type ServiceEvents = ServiceEvent[];
-const ServiceEvents = /*@__PURE__*/ S.Array(ServiceEvent);
+const ServiceEvents = /*@__PURE__*/ __L.at(__c14, 7);
 export interface ServiceCurrentRevisionSummary {
   arn?: string;
   requestedTaskCount?: number;
   runningTaskCount?: number;
   pendingTaskCount?: number;
 }
-const ServiceCurrentRevisionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    requestedTaskCount: S.optional(S.Number),
-    runningTaskCount: S.optional(S.Number),
-    pendingTaskCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ServiceCurrentRevisionSummary",
-}) as any as S.Schema<ServiceCurrentRevisionSummary>;
+const ServiceCurrentRevisionSummary = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ServiceCurrentRevisionSummary>;
 export type ServiceCurrentRevisionSummaryList = ServiceCurrentRevisionSummary[];
-const ServiceCurrentRevisionSummaryList = /*@__PURE__*/ S.Array(ServiceCurrentRevisionSummary);
+const ServiceCurrentRevisionSummaryList = /*@__PURE__*/ __L.at(__c15, 1);
 export type ResourceManagementType = "CUSTOMER" | "ECS" | (string & {});
 const ResourceManagementType = S.String;
 
@@ -1967,51 +1477,14 @@ export interface Service {
   availabilityZoneRebalancing?: AvailabilityZoneRebalancing;
   resourceManagementType?: ResourceManagementType;
 }
-const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceArn: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    loadBalancers: S.optional(LoadBalancers),
-    serviceRegistries: S.optional(ServiceRegistries),
-    status: S.optional(S.String),
-    desiredCount: S.optional(S.Number),
-    runningCount: S.optional(S.Number),
-    pendingCount: S.optional(S.Number),
-    launchType: S.optional(LaunchType),
-    capacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    platformVersion: S.optional(S.String),
-    platformFamily: S.optional(S.String),
-    taskDefinition: S.optional(S.String),
-    deploymentConfiguration: S.optional(DeploymentConfiguration),
-    taskSets: S.optional(TaskSets),
-    deployments: S.optional(Deployments),
-    roleArn: S.optional(S.String),
-    events: S.optional(ServiceEvents),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    currentServiceDeployment: S.optional(S.String),
-    currentServiceRevisions: S.optional(ServiceCurrentRevisionSummaryList),
-    placementConstraints: S.optional(PlacementConstraints),
-    placementStrategy: S.optional(PlacementStrategies),
-    networkConfiguration: S.optional(NetworkConfiguration),
-    healthCheckGracePeriodSeconds: S.optional(S.Number),
-    schedulingStrategy: S.optional(SchedulingStrategy),
-    deploymentController: S.optional(DeploymentController),
-    tags: S.optional(Tags),
-    createdBy: S.optional(S.String),
-    enableECSManagedTags: S.optional(S.Boolean),
-    propagateTags: S.optional(PropagateTags),
-    enableExecuteCommand: S.optional(S.Boolean),
-    availabilityZoneRebalancing: S.optional(AvailabilityZoneRebalancing),
-    resourceManagementType: S.optional(ResourceManagementType),
-  }),
-).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
+const Service = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<Service>;
 export interface CreateServiceResponse {
   service?: Service;
 }
-const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ service: S.optional(Service) }).pipe(ns),
-).annotate({ identifier: "CreateServiceResponse" }) as any as S.Schema<CreateServiceResponse>;
+const CreateServiceResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<CreateServiceResponse>;
 export interface CreateTaskSetRequest {
   service: string;
   cluster: string;
@@ -2027,29 +1500,17 @@ export interface CreateTaskSetRequest {
   clientToken?: string;
   tags?: Tag[];
 }
-const CreateTaskSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.String,
-    cluster: S.String,
-    externalId: S.optional(S.String),
-    taskDefinition: S.String,
-    networkConfiguration: S.optional(NetworkConfiguration),
-    loadBalancers: S.optional(LoadBalancers),
-    serviceRegistries: S.optional(ServiceRegistries),
-    launchType: S.optional(LaunchType),
-    capacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    platformVersion: S.optional(S.String),
-    scale: S.optional(Scale),
-    clientToken: S.optional(S.String),
-    tags: S.optional(Tags),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateTaskSetRequest" }) as any as S.Schema<CreateTaskSetRequest>;
+const CreateTaskSetRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<CreateTaskSetRequest>;
 export interface CreateTaskSetResponse {
   taskSet?: TaskSet;
 }
-const CreateTaskSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskSet: S.optional(TaskSet) }).pipe(ns),
-).annotate({ identifier: "CreateTaskSetResponse" }) as any as S.Schema<CreateTaskSetResponse>;
+const CreateTaskSetResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<CreateTaskSetResponse>;
 export type SettingName =
   | "serviceLongArnFormat"
   | "taskLongArnFormat"
@@ -2069,13 +1530,10 @@ export interface DeleteAccountSettingRequest {
   name: SettingName;
   principalArn?: string;
 }
-const DeleteAccountSettingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SettingName, principalArn: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteAccountSettingRequest",
-}) as any as S.Schema<DeleteAccountSettingRequest>;
+const DeleteAccountSettingRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DeleteAccountSettingRequest>;
 export type SettingType = "user" | "aws_managed" | (string & {});
 const SettingType = S.String;
 
@@ -2085,22 +1543,14 @@ export interface Setting {
   principalArn?: string;
   type?: SettingType;
 }
-const Setting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(SettingName),
-    value: S.optional(S.String),
-    principalArn: S.optional(S.String),
-    type: S.optional(SettingType),
-  }),
-).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
+const Setting = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<Setting>;
 export interface DeleteAccountSettingResponse {
   setting?: Setting;
 }
-const DeleteAccountSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ setting: S.optional(Setting) }).pipe(ns),
-).annotate({
-  identifier: "DeleteAccountSettingResponse",
-}) as any as S.Schema<DeleteAccountSettingResponse>;
+const DeleteAccountSettingResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DeleteAccountSettingResponse>;
 export type TargetType = "container-instance" | (string & {});
 const TargetType = S.String;
 
@@ -2110,42 +1560,32 @@ export interface Attribute {
   targetType?: TargetType;
   targetId?: string;
 }
-const Attribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.optional(S.String),
-    targetType: S.optional(TargetType),
-    targetId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
+const Attribute = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<Attribute>;
 export type Attributes = Attribute[];
-const Attributes = /*@__PURE__*/ S.Array(Attribute);
+const Attributes = /*@__PURE__*/ __L.at(__c16, 2);
 export interface DeleteAttributesRequest {
   cluster?: string;
   attributes: Attribute[];
 }
-const DeleteAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(S.String), attributes: Attributes }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteAttributesRequest" }) as any as S.Schema<DeleteAttributesRequest>;
+const DeleteAttributesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DeleteAttributesRequest>;
 export interface DeleteAttributesResponse {
   attributes?: Attribute[];
 }
-const DeleteAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributes: S.optional(Attributes) }).pipe(ns),
-).annotate({ identifier: "DeleteAttributesResponse" }) as any as S.Schema<DeleteAttributesResponse>;
+const DeleteAttributesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DeleteAttributesResponse>;
 export interface DeleteCapacityProviderRequest {
   capacityProvider: string;
   cluster?: string;
 }
-const DeleteCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ capacityProvider: S.String, cluster: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteCapacityProviderRequest",
-}) as any as S.Schema<DeleteCapacityProviderRequest>;
+const DeleteCapacityProviderRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DeleteCapacityProviderRequest>;
 export interface DeleteCapacityProviderResponse {
   capacityProvider?: CapacityProvider;
 }
@@ -2154,11 +1594,10 @@ const DeleteCapacityProviderResponse =
 export interface DeleteClusterRequest {
   cluster: string;
 }
-const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
+const DeleteClusterRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DeleteClusterRequest>;
 export interface DeleteClusterResponse {
   cluster?: Cluster;
 }
@@ -2166,11 +1605,7 @@ const DeleteClusterResponse = CreateClusterResponse as any as S.Schema<DeleteClu
 export interface DeleteDaemonRequest {
   daemonArn: string;
 }
-const DeleteDaemonRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteDaemonRequest" }) as any as S.Schema<DeleteDaemonRequest>;
+const DeleteDaemonRequest = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<DeleteDaemonRequest>;
 export interface DeleteDaemonResponse {
   daemonArn?: string;
   status?: DaemonStatus;
@@ -2178,43 +1613,31 @@ export interface DeleteDaemonResponse {
   updatedAt?: Date;
   deploymentArn?: string;
 }
-const DeleteDaemonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonArn: S.optional(S.String),
-    status: S.optional(DaemonStatus),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deploymentArn: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "DeleteDaemonResponse" }) as any as S.Schema<DeleteDaemonResponse>;
+const DeleteDaemonResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DeleteDaemonResponse>;
 export interface DeleteDaemonTaskDefinitionRequest {
   daemonTaskDefinition: string;
 }
-const DeleteDaemonTaskDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonTaskDefinition: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteDaemonTaskDefinitionRequest",
-}) as any as S.Schema<DeleteDaemonTaskDefinitionRequest>;
+const DeleteDaemonTaskDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DeleteDaemonTaskDefinitionRequest>;
 export interface DeleteDaemonTaskDefinitionResponse {
   daemonTaskDefinitionArn?: string;
 }
-const DeleteDaemonTaskDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonTaskDefinitionArn: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DeleteDaemonTaskDefinitionResponse",
-}) as any as S.Schema<DeleteDaemonTaskDefinitionResponse>;
+const DeleteDaemonTaskDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<DeleteDaemonTaskDefinitionResponse>;
 export interface DeleteExpressGatewayServiceRequest {
   serviceArn: string;
 }
-const DeleteExpressGatewayServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteExpressGatewayServiceRequest",
-}) as any as S.Schema<DeleteExpressGatewayServiceRequest>;
+const DeleteExpressGatewayServiceRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DeleteExpressGatewayServiceRequest>;
 export interface DeleteExpressGatewayServiceResponse {
   service?: ECSExpressGatewayService;
 }
@@ -2225,11 +1648,10 @@ export interface DeleteServiceRequest {
   service: string;
   force?: boolean;
 }
-const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(S.String), service: S.String, force: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
+const DeleteServiceRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DeleteServiceRequest>;
 export interface DeleteServiceResponse {
   service?: Service;
 }
@@ -2237,19 +1659,17 @@ const DeleteServiceResponse = CreateServiceResponse as any as S.Schema<DeleteSer
 export interface DeleteTaskDefinitionsRequest {
   taskDefinitions: string[];
 }
-const DeleteTaskDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskDefinitions: StringList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteTaskDefinitionsRequest",
-}) as any as S.Schema<DeleteTaskDefinitionsRequest>;
+const DeleteTaskDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DeleteTaskDefinitionsRequest>;
 export interface RepositoryCredentials {
   credentialsParameter: string;
 }
-const RepositoryCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ credentialsParameter: S.String }),
-).annotate({ identifier: "RepositoryCredentials" }) as any as S.Schema<RepositoryCredentials>;
+const RepositoryCredentials = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<RepositoryCredentials>;
 export type TransportProtocol = "tcp" | "udp" | (string & {});
 const TransportProtocol = S.String;
 
@@ -2264,32 +1684,20 @@ export interface PortMapping {
   appProtocol?: ApplicationProtocol;
   containerPortRange?: string;
 }
-const PortMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerPort: S.optional(S.Number),
-    hostPort: S.optional(S.Number),
-    protocol: S.optional(TransportProtocol),
-    name: S.optional(S.String),
-    appProtocol: S.optional(ApplicationProtocol),
-    containerPortRange: S.optional(S.String),
-  }),
-).annotate({ identifier: "PortMapping" }) as any as S.Schema<PortMapping>;
+const PortMapping = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<PortMapping>;
 export type PortMappingList = PortMapping[];
-const PortMappingList = /*@__PURE__*/ S.Array(PortMapping);
+const PortMappingList = /*@__PURE__*/ __L.at(__c18, 0);
 export type IntegerList = number[];
-const IntegerList = /*@__PURE__*/ S.Array(S.Number);
+const IntegerList = /*@__PURE__*/ __L.at(__c18, 1);
 export interface ContainerRestartPolicy {
   enabled: boolean;
   ignoredExitCodes?: number[];
   restartAttemptPeriod?: number;
 }
-const ContainerRestartPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    ignoredExitCodes: S.optional(IntegerList),
-    restartAttemptPeriod: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ContainerRestartPolicy" }) as any as S.Schema<ContainerRestartPolicy>;
+const ContainerRestartPolicy = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ContainerRestartPolicy>;
 export type EnvironmentFileType = "s3" | (string & {});
 const EnvironmentFileType = S.String;
 
@@ -2297,41 +1705,29 @@ export interface EnvironmentFile {
   value: string;
   type: EnvironmentFileType;
 }
-const EnvironmentFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.String, type: EnvironmentFileType }),
-).annotate({ identifier: "EnvironmentFile" }) as any as S.Schema<EnvironmentFile>;
+const EnvironmentFile = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<EnvironmentFile>;
 export type EnvironmentFiles = EnvironmentFile[];
-const EnvironmentFiles = /*@__PURE__*/ S.Array(EnvironmentFile);
+const EnvironmentFiles = /*@__PURE__*/ __L.at(__c18, 4);
 export interface MountPoint {
   sourceVolume?: string;
   containerPath?: string;
   readOnly?: boolean;
 }
-const MountPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceVolume: S.optional(S.String),
-    containerPath: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MountPoint" }) as any as S.Schema<MountPoint>;
+const MountPoint = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<MountPoint>;
 export type MountPointList = MountPoint[];
-const MountPointList = /*@__PURE__*/ S.Array(MountPoint);
+const MountPointList = /*@__PURE__*/ __L.at(__c18, 6);
 export interface VolumeFrom {
   sourceContainer?: string;
   readOnly?: boolean;
 }
-const VolumeFrom = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sourceContainer: S.optional(S.String), readOnly: S.optional(S.Boolean) }),
-).annotate({ identifier: "VolumeFrom" }) as any as S.Schema<VolumeFrom>;
+const VolumeFrom = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<VolumeFrom>;
 export type VolumeFromList = VolumeFrom[];
-const VolumeFromList = /*@__PURE__*/ S.Array(VolumeFrom);
+const VolumeFromList = /*@__PURE__*/ __L.at(__c19, 0);
 export interface KernelCapabilities {
   add?: string[];
   drop?: string[];
 }
-const KernelCapabilities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ add: S.optional(StringList), drop: S.optional(StringList) }),
-).annotate({ identifier: "KernelCapabilities" }) as any as S.Schema<KernelCapabilities>;
+const KernelCapabilities = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<KernelCapabilities>;
 export type DeviceCgroupPermission = "read" | "write" | "mknod" | (string & {});
 export type DeviceCgroupPermissions = DeviceCgroupPermission[];
 const DeviceCgroupPermissions =
@@ -2341,25 +1737,17 @@ export interface Device {
   containerPath?: string;
   permissions?: DeviceCgroupPermission[];
 }
-const Device = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostPath: S.String,
-    containerPath: S.optional(S.String),
-    permissions: S.optional(DeviceCgroupPermissions),
-  }),
-).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
+const Device = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<Device>;
 export type DevicesList = Device[];
-const DevicesList = /*@__PURE__*/ S.Array(Device);
+const DevicesList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface Tmpfs {
   containerPath: string;
   size: number;
   mountOptions?: string[];
 }
-const Tmpfs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ containerPath: S.String, size: S.Number, mountOptions: S.optional(StringList) }),
-).annotate({ identifier: "Tmpfs" }) as any as S.Schema<Tmpfs>;
+const Tmpfs = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<Tmpfs>;
 export type TmpfsList = Tmpfs[];
-const TmpfsList = /*@__PURE__*/ S.Array(Tmpfs);
+const TmpfsList = /*@__PURE__*/ __L.at(__c19, 5);
 export interface LinuxParameters {
   capabilities?: KernelCapabilities;
   devices?: Device[];
@@ -2369,17 +1757,7 @@ export interface LinuxParameters {
   maxSwap?: number;
   swappiness?: number;
 }
-const LinuxParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capabilities: S.optional(KernelCapabilities),
-    devices: S.optional(DevicesList),
-    initProcessEnabled: S.optional(S.Boolean),
-    sharedMemorySize: S.optional(S.Number),
-    tmpfs: S.optional(TmpfsList),
-    maxSwap: S.optional(S.Number),
-    swappiness: S.optional(S.Number),
-  }),
-).annotate({ identifier: "LinuxParameters" }) as any as S.Schema<LinuxParameters>;
+const LinuxParameters = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<LinuxParameters>;
 export type ContainerCondition = "START" | "COMPLETE" | "SUCCESS" | "HEALTHY" | (string & {});
 const ContainerCondition = S.String;
 
@@ -2387,11 +1765,9 @@ export interface ContainerDependency {
   containerName: string;
   condition: ContainerCondition;
 }
-const ContainerDependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ containerName: S.String, condition: ContainerCondition }),
-).annotate({ identifier: "ContainerDependency" }) as any as S.Schema<ContainerDependency>;
+const ContainerDependency = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ContainerDependency>;
 export type ContainerDependencies = ContainerDependency[];
-const ContainerDependencies = /*@__PURE__*/ S.Array(ContainerDependency);
+const ContainerDependencies = /*@__PURE__*/ __L.at(__c20, 0);
 export type VersionConsistency = "enabled" | "disabled" | (string & {});
 const VersionConsistency = S.String;
 
@@ -2399,11 +1775,9 @@ export interface HostEntry {
   hostname: string;
   ipAddress: string;
 }
-const HostEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ hostname: S.String, ipAddress: S.String }),
-).annotate({ identifier: "HostEntry" }) as any as S.Schema<HostEntry>;
+const HostEntry = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<HostEntry>;
 export type HostEntryList = HostEntry[];
-const HostEntryList = /*@__PURE__*/ S.Array(HostEntry);
+const HostEntryList = /*@__PURE__*/ __L.at(__c20, 2);
 export type DockerLabelsMap = { [key: string]: string | undefined };
 const DockerLabelsMap = LogConfigurationOptionsMap as any as S.Schema<DockerLabelsMap>;
 export type UlimitName =
@@ -2430,11 +1804,9 @@ export interface Ulimit {
   softLimit: number;
   hardLimit: number;
 }
-const Ulimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: UlimitName, softLimit: S.Number, hardLimit: S.Number }),
-).annotate({ identifier: "Ulimit" }) as any as S.Schema<Ulimit>;
+const Ulimit = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<Ulimit>;
 export type UlimitList = Ulimit[];
-const UlimitList = /*@__PURE__*/ S.Array(Ulimit);
+const UlimitList = /*@__PURE__*/ __L.at(__c20, 4);
 export interface HealthCheck {
   command: string[];
   interval?: number;
@@ -2442,24 +1814,14 @@ export interface HealthCheck {
   retries?: number;
   startPeriod?: number;
 }
-const HealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    command: StringList,
-    interval: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    retries: S.optional(S.Number),
-    startPeriod: S.optional(S.Number),
-  }),
-).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
+const HealthCheck = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<HealthCheck>;
 export interface SystemControl {
   namespace?: string;
   value?: string;
 }
-const SystemControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ namespace: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({ identifier: "SystemControl" }) as any as S.Schema<SystemControl>;
+const SystemControl = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<SystemControl>;
 export type SystemControls = SystemControl[];
-const SystemControls = /*@__PURE__*/ S.Array(SystemControl);
+const SystemControls = /*@__PURE__*/ __L.at(__c20, 7);
 export type ResourceType = "GPU" | "InferenceAccelerator" | "NeuronDevice" | (string & {});
 export interface ResourceRequirement {
   value: string;
@@ -2477,12 +1839,10 @@ export interface FirelensConfiguration {
   type: FirelensConfigurationType;
   options?: { [key: string]: string | undefined };
 }
-const FirelensConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FirelensConfigurationType,
-    options: S.optional(FirelensConfigurationOptionsMap),
-  }),
-).annotate({ identifier: "FirelensConfiguration" }) as any as S.Schema<FirelensConfiguration>;
+const FirelensConfiguration = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<FirelensConfiguration>;
 export interface ContainerDefinition {
   name?: string;
   image?: string;
@@ -2527,68 +1887,24 @@ export interface ContainerDefinition {
   firelensConfiguration?: FirelensConfiguration;
   credentialSpecs?: string[];
 }
-const ContainerDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    image: S.optional(S.String),
-    repositoryCredentials: S.optional(RepositoryCredentials),
-    cpu: S.optional(S.Number),
-    memory: S.optional(S.Number),
-    memoryReservation: S.optional(S.Number),
-    links: S.optional(StringList),
-    portMappings: S.optional(PortMappingList),
-    essential: S.optional(S.Boolean),
-    restartPolicy: S.optional(ContainerRestartPolicy),
-    entryPoint: S.optional(StringList),
-    command: S.optional(StringList),
-    environment: S.optional(EnvironmentVariables),
-    environmentFiles: S.optional(EnvironmentFiles),
-    mountPoints: S.optional(MountPointList),
-    volumesFrom: S.optional(VolumeFromList),
-    linuxParameters: S.optional(LinuxParameters),
-    secrets: S.optional(SecretList),
-    dependsOn: S.optional(ContainerDependencies),
-    startTimeout: S.optional(S.Number),
-    stopTimeout: S.optional(S.Number),
-    versionConsistency: S.optional(VersionConsistency),
-    hostname: S.optional(S.String),
-    user: S.optional(S.String),
-    workingDirectory: S.optional(S.String),
-    disableNetworking: S.optional(S.Boolean),
-    privileged: S.optional(S.Boolean),
-    readonlyRootFilesystem: S.optional(S.Boolean),
-    dnsServers: S.optional(StringList),
-    dnsSearchDomains: S.optional(StringList),
-    extraHosts: S.optional(HostEntryList),
-    dockerSecurityOptions: S.optional(StringList),
-    interactive: S.optional(S.Boolean),
-    pseudoTerminal: S.optional(S.Boolean),
-    dockerLabels: S.optional(DockerLabelsMap),
-    ulimits: S.optional(UlimitList),
-    logConfiguration: S.optional(LogConfiguration),
-    healthCheck: S.optional(HealthCheck),
-    systemControls: S.optional(SystemControls),
-    resourceRequirements: S.optional(ResourceRequirements),
-    firelensConfiguration: S.optional(FirelensConfiguration),
-    credentialSpecs: S.optional(StringList),
-  }),
-).annotate({ identifier: "ContainerDefinition" }) as any as S.Schema<ContainerDefinition>;
+const ContainerDefinition = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<ContainerDefinition>;
 export type ContainerDefinitions = ContainerDefinition[];
-const ContainerDefinitions = /*@__PURE__*/ S.Array(ContainerDefinition);
+const ContainerDefinitions = /*@__PURE__*/ __L.at(__c21, 2);
 export type NetworkMode = "bridge" | "host" | "awsvpc" | "none" | (string & {});
 const NetworkMode = S.String;
 
 export interface HostVolumeProperties {
   sourcePath?: string;
 }
-const HostVolumeProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sourcePath: S.optional(S.String) }),
-).annotate({ identifier: "HostVolumeProperties" }) as any as S.Schema<HostVolumeProperties>;
+const HostVolumeProperties = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<HostVolumeProperties>;
 export type Scope = "task" | "shared" | (string & {});
 const Scope = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const StringMap = /*@__PURE__*/ __L.at(__c21, 4);
 export interface DockerVolumeConfiguration {
   scope?: Scope;
   autoprovision?: boolean;
@@ -2596,17 +1912,10 @@ export interface DockerVolumeConfiguration {
   driverOpts?: { [key: string]: string | undefined };
   labels?: { [key: string]: string | undefined };
 }
-const DockerVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.optional(Scope),
-    autoprovision: S.optional(S.Boolean),
-    driver: S.optional(S.String),
-    driverOpts: S.optional(StringMap),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "DockerVolumeConfiguration",
-}) as any as S.Schema<DockerVolumeConfiguration>;
+const DockerVolumeConfiguration = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<DockerVolumeConfiguration>;
 export type EFSTransitEncryption = "ENABLED" | "DISABLED" | (string & {});
 const EFSTransitEncryption = S.String;
 
@@ -2617,9 +1926,10 @@ export interface EFSAuthorizationConfig {
   accessPointId?: string;
   iam?: EFSAuthorizationConfigIAM;
 }
-const EFSAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessPointId: S.optional(S.String), iam: S.optional(EFSAuthorizationConfigIAM) }),
-).annotate({ identifier: "EFSAuthorizationConfig" }) as any as S.Schema<EFSAuthorizationConfig>;
+const EFSAuthorizationConfig = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<EFSAuthorizationConfig>;
 export interface EFSVolumeConfiguration {
   fileSystemId: string;
   rootDirectory?: string;
@@ -2627,54 +1937,37 @@ export interface EFSVolumeConfiguration {
   transitEncryptionPort?: number;
   authorizationConfig?: EFSAuthorizationConfig;
 }
-const EFSVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileSystemId: S.String,
-    rootDirectory: S.optional(S.String),
-    transitEncryption: S.optional(EFSTransitEncryption),
-    transitEncryptionPort: S.optional(S.Number),
-    authorizationConfig: S.optional(EFSAuthorizationConfig),
-  }),
-).annotate({ identifier: "EFSVolumeConfiguration" }) as any as S.Schema<EFSVolumeConfiguration>;
+const EFSVolumeConfiguration = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<EFSVolumeConfiguration>;
 export interface S3FilesVolumeConfiguration {
   fileSystemArn: string;
   rootDirectory?: string;
   transitEncryptionPort?: number;
   accessPointArn?: string;
 }
-const S3FilesVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileSystemArn: S.String,
-    rootDirectory: S.optional(S.String),
-    transitEncryptionPort: S.optional(S.Number),
-    accessPointArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "S3FilesVolumeConfiguration",
-}) as any as S.Schema<S3FilesVolumeConfiguration>;
+const S3FilesVolumeConfiguration = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<S3FilesVolumeConfiguration>;
 export interface FSxWindowsFileServerAuthorizationConfig {
   credentialsParameter: string;
   domain: string;
 }
-const FSxWindowsFileServerAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ credentialsParameter: S.String, domain: S.String }),
-).annotate({
-  identifier: "FSxWindowsFileServerAuthorizationConfig",
-}) as any as S.Schema<FSxWindowsFileServerAuthorizationConfig>;
+const FSxWindowsFileServerAuthorizationConfig = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<FSxWindowsFileServerAuthorizationConfig>;
 export interface FSxWindowsFileServerVolumeConfiguration {
   fileSystemId: string;
   rootDirectory: string;
   authorizationConfig: FSxWindowsFileServerAuthorizationConfig;
 }
-const FSxWindowsFileServerVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileSystemId: S.String,
-    rootDirectory: S.String,
-    authorizationConfig: FSxWindowsFileServerAuthorizationConfig,
-  }),
-).annotate({
-  identifier: "FSxWindowsFileServerVolumeConfiguration",
-}) as any as S.Schema<FSxWindowsFileServerVolumeConfiguration>;
+const FSxWindowsFileServerVolumeConfiguration = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<FSxWindowsFileServerVolumeConfiguration>;
 export interface Volume {
   name?: string;
   host?: HostVolumeProperties;
@@ -2684,19 +1977,9 @@ export interface Volume {
   fsxWindowsFileServerVolumeConfiguration?: FSxWindowsFileServerVolumeConfiguration;
   configuredAtLaunch?: boolean;
 }
-const Volume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    host: S.optional(HostVolumeProperties),
-    dockerVolumeConfiguration: S.optional(DockerVolumeConfiguration),
-    efsVolumeConfiguration: S.optional(EFSVolumeConfiguration),
-    s3filesVolumeConfiguration: S.optional(S3FilesVolumeConfiguration),
-    fsxWindowsFileServerVolumeConfiguration: S.optional(FSxWindowsFileServerVolumeConfiguration),
-    configuredAtLaunch: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
+const Volume = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<Volume>;
 export type VolumeList = Volume[];
-const VolumeList = /*@__PURE__*/ S.Array(Volume);
+const VolumeList = /*@__PURE__*/ __L.at(__c22, 4);
 export type TaskDefinitionStatus = "ACTIVE" | "INACTIVE" | "DELETE_IN_PROGRESS" | (string & {});
 const TaskDefinitionStatus = S.String;
 
@@ -2709,16 +1992,12 @@ export interface TaskDefinitionPlacementConstraint {
   type?: TaskDefinitionPlacementConstraintType;
   expression?: string;
 }
-const TaskDefinitionPlacementConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(TaskDefinitionPlacementConstraintType),
-    expression: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TaskDefinitionPlacementConstraint",
-}) as any as S.Schema<TaskDefinitionPlacementConstraint>;
+const TaskDefinitionPlacementConstraint = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<TaskDefinitionPlacementConstraint>;
 export type TaskDefinitionPlacementConstraints = TaskDefinitionPlacementConstraint[];
-const TaskDefinitionPlacementConstraints = /*@__PURE__*/ S.Array(TaskDefinitionPlacementConstraint);
+const TaskDefinitionPlacementConstraints = /*@__PURE__*/ __L.at(__c22, 6);
 export type Compatibility = "EC2" | "FARGATE" | "EXTERNAL" | "MANAGED_INSTANCES" | (string & {});
 export type CompatibilityList = Compatibility[];
 const CompatibilityList = DeploymentLifecycleHookStageList as any as S.Schema<CompatibilityList>;
@@ -2743,21 +2022,17 @@ export interface RuntimePlatform {
   cpuArchitecture?: CPUArchitecture;
   operatingSystemFamily?: OSFamily;
 }
-const RuntimePlatform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpuArchitecture: S.optional(CPUArchitecture),
-    operatingSystemFamily: S.optional(OSFamily),
-  }),
-).annotate({ identifier: "RuntimePlatform" }) as any as S.Schema<RuntimePlatform>;
+const RuntimePlatform = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<RuntimePlatform>;
 export interface InferenceAccelerator {
   deviceName: string;
   deviceType: string;
 }
-const InferenceAccelerator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deviceName: S.String, deviceType: S.String }),
-).annotate({ identifier: "InferenceAccelerator" }) as any as S.Schema<InferenceAccelerator>;
+const InferenceAccelerator = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<InferenceAccelerator>;
 export type InferenceAccelerators = InferenceAccelerator[];
-const InferenceAccelerators = /*@__PURE__*/ S.Array(InferenceAccelerator);
+const InferenceAccelerators = /*@__PURE__*/ __L.at(__c23, 1);
 export type PidMode = "host" | "task" | (string & {});
 const PidMode = S.String;
 
@@ -2774,19 +2049,11 @@ export interface ProxyConfiguration {
   containerName: string;
   properties?: KeyValuePair[];
 }
-const ProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ProxyConfigurationType),
-    containerName: S.String,
-    properties: S.optional(ProxyConfigurationProperties),
-  }),
-).annotate({ identifier: "ProxyConfiguration" }) as any as S.Schema<ProxyConfiguration>;
+const ProxyConfiguration = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<ProxyConfiguration>;
 export interface EphemeralStorage {
   sizeInGiB: number;
 }
-const EphemeralStorage = /*@__PURE__*/ S.suspend(() => S.Struct({ sizeInGiB: S.Number })).annotate({
-  identifier: "EphemeralStorage",
-}) as any as S.Schema<EphemeralStorage>;
+const EphemeralStorage = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<EphemeralStorage>;
 export interface TaskDefinition {
   taskDefinitionArn?: string;
   containerDefinitions?: ContainerDefinition[];
@@ -2815,78 +2082,35 @@ export interface TaskDefinition {
   ephemeralStorage?: EphemeralStorage;
   enableFaultInjection?: boolean;
 }
-const TaskDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskDefinitionArn: S.optional(S.String),
-    containerDefinitions: S.optional(ContainerDefinitions),
-    family: S.optional(S.String),
-    taskRoleArn: S.optional(S.String),
-    executionRoleArn: S.optional(S.String),
-    networkMode: S.optional(NetworkMode),
-    revision: S.optional(S.Number),
-    volumes: S.optional(VolumeList),
-    status: S.optional(TaskDefinitionStatus),
-    requiresAttributes: S.optional(RequiresAttributes),
-    placementConstraints: S.optional(TaskDefinitionPlacementConstraints),
-    compatibilities: S.optional(CompatibilityList),
-    runtimePlatform: S.optional(RuntimePlatform),
-    requiresCompatibilities: S.optional(CompatibilityList),
-    cpu: S.optional(S.String),
-    memory: S.optional(S.String),
-    inferenceAccelerators: S.optional(InferenceAccelerators),
-    pidMode: S.optional(PidMode),
-    ipcMode: S.optional(IpcMode),
-    proxyConfiguration: S.optional(ProxyConfiguration),
-    registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deregisteredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deleteRequestedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    registeredBy: S.optional(S.String),
-    ephemeralStorage: S.optional(EphemeralStorage),
-    enableFaultInjection: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TaskDefinition" }) as any as S.Schema<TaskDefinition>;
+const TaskDefinition = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<TaskDefinition>;
 export type TaskDefinitionList = TaskDefinition[];
-const TaskDefinitionList = /*@__PURE__*/ S.Array(TaskDefinition);
+const TaskDefinitionList = /*@__PURE__*/ __L.at(__c23, 5);
 export interface Failure {
   arn?: string;
   reason?: string;
   detail?: string;
 }
-const Failure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    reason: S.optional(S.String),
-    detail: S.optional(S.String),
-  }),
-).annotate({ identifier: "Failure" }) as any as S.Schema<Failure>;
+const Failure = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<Failure>;
 export type Failures = Failure[];
-const Failures = /*@__PURE__*/ S.Array(Failure);
+const Failures = /*@__PURE__*/ __L.at(__c23, 7);
 export interface DeleteTaskDefinitionsResponse {
   taskDefinitions?: TaskDefinition[];
   failures?: Failure[];
 }
-const DeleteTaskDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskDefinitions: S.optional(TaskDefinitionList),
-    failures: S.optional(Failures),
-  }).pipe(ns),
-).annotate({
-  identifier: "DeleteTaskDefinitionsResponse",
-}) as any as S.Schema<DeleteTaskDefinitionsResponse>;
+const DeleteTaskDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<DeleteTaskDefinitionsResponse>;
 export interface DeleteTaskSetRequest {
   cluster: string;
   service: string;
   taskSet: string;
   force?: boolean;
 }
-const DeleteTaskSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.String,
-    service: S.String,
-    taskSet: S.String,
-    force: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DeleteTaskSetRequest" }) as any as S.Schema<DeleteTaskSetRequest>;
+const DeleteTaskSetRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<DeleteTaskSetRequest>;
 export interface DeleteTaskSetResponse {
   taskSet?: TaskSet;
 }
@@ -2896,27 +2120,16 @@ export interface DeregisterContainerInstanceRequest {
   containerInstance: string;
   force?: boolean;
 }
-const DeregisterContainerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    containerInstance: S.String,
-    force: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DeregisterContainerInstanceRequest",
-}) as any as S.Schema<DeregisterContainerInstanceRequest>;
+const DeregisterContainerInstanceRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<DeregisterContainerInstanceRequest>;
 export interface VersionInfo {
   agentVersion?: string;
   agentHash?: string;
   dockerVersion?: string;
 }
-const VersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentVersion: S.optional(S.String),
-    agentHash: S.optional(S.String),
-    dockerVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "VersionInfo" }) as any as S.Schema<VersionInfo>;
+const VersionInfo = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<VersionInfo>;
 export interface Resource {
   name?: string;
   type?: string;
@@ -2925,18 +2138,9 @@ export interface Resource {
   integerValue?: number;
   stringSetValue?: string[];
 }
-const Resource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    doubleValue: S.optional(S.Number),
-    longValue: S.optional(S.Number),
-    integerValue: S.optional(S.Number),
-    stringSetValue: S.optional(StringList),
-  }),
-).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
+const Resource = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<Resource>;
 export type Resources = Resource[];
-const Resources = /*@__PURE__*/ S.Array(Resource);
+const Resources = /*@__PURE__*/ __L.at(__c24, 5);
 export type AgentUpdateStatus =
   | "PENDING"
   | "STAGING"
@@ -2970,31 +2174,20 @@ export interface InstanceHealthCheckResult {
   lastUpdated?: Date;
   lastStatusChange?: Date;
 }
-const InstanceHealthCheckResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(InstanceHealthCheckType),
-    status: S.optional(InstanceHealthCheckState),
-    statusReason: S.optional(S.String),
-    lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastStatusChange: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "InstanceHealthCheckResult",
-}) as any as S.Schema<InstanceHealthCheckResult>;
+const InstanceHealthCheckResult = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<InstanceHealthCheckResult>;
 export type InstanceHealthCheckResultList = InstanceHealthCheckResult[];
-const InstanceHealthCheckResultList = /*@__PURE__*/ S.Array(InstanceHealthCheckResult);
+const InstanceHealthCheckResultList = /*@__PURE__*/ __L.at(__c24, 7);
 export interface ContainerInstanceHealthStatus {
   overallStatus?: InstanceHealthCheckState;
   details?: InstanceHealthCheckResult[];
 }
-const ContainerInstanceHealthStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    overallStatus: S.optional(InstanceHealthCheckState),
-    details: S.optional(InstanceHealthCheckResultList),
-  }),
-).annotate({
-  identifier: "ContainerInstanceHealthStatus",
-}) as any as S.Schema<ContainerInstanceHealthStatus>;
+const ContainerInstanceHealthStatus = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ContainerInstanceHealthStatus>;
 export interface ContainerInstance {
   containerInstanceArn?: string;
   ec2InstanceId?: string;
@@ -3015,54 +2208,28 @@ export interface ContainerInstance {
   tags?: Tag[];
   healthStatus?: ContainerInstanceHealthStatus;
 }
-const ContainerInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerInstanceArn: S.optional(S.String),
-    ec2InstanceId: S.optional(S.String),
-    capacityProviderName: S.optional(S.String),
-    version: S.optional(S.Number),
-    versionInfo: S.optional(VersionInfo),
-    remainingResources: S.optional(Resources),
-    registeredResources: S.optional(Resources),
-    status: S.optional(S.String),
-    statusReason: S.optional(S.String),
-    agentConnected: S.optional(S.Boolean),
-    runningTasksCount: S.optional(S.Number),
-    pendingTasksCount: S.optional(S.Number),
-    agentUpdateStatus: S.optional(AgentUpdateStatus),
-    attributes: S.optional(Attributes),
-    registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    attachments: S.optional(Attachments),
-    tags: S.optional(Tags),
-    healthStatus: S.optional(ContainerInstanceHealthStatus),
-  }),
-).annotate({ identifier: "ContainerInstance" }) as any as S.Schema<ContainerInstance>;
+const ContainerInstance = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<ContainerInstance>;
 export interface DeregisterContainerInstanceResponse {
   containerInstance?: ContainerInstance;
 }
-const DeregisterContainerInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ containerInstance: S.optional(ContainerInstance) }).pipe(ns),
-).annotate({
-  identifier: "DeregisterContainerInstanceResponse",
-}) as any as S.Schema<DeregisterContainerInstanceResponse>;
+const DeregisterContainerInstanceResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<DeregisterContainerInstanceResponse>;
 export interface DeregisterTaskDefinitionRequest {
   taskDefinition: string;
 }
-const DeregisterTaskDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskDefinition: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeregisterTaskDefinitionRequest",
-}) as any as S.Schema<DeregisterTaskDefinitionRequest>;
+const DeregisterTaskDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<DeregisterTaskDefinitionRequest>;
 export interface DeregisterTaskDefinitionResponse {
   taskDefinition?: TaskDefinition;
 }
-const DeregisterTaskDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskDefinition: S.optional(TaskDefinition) }).pipe(ns),
-).annotate({
-  identifier: "DeregisterTaskDefinitionResponse",
-}) as any as S.Schema<DeregisterTaskDefinitionResponse>;
+const DeregisterTaskDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<DeregisterTaskDefinitionResponse>;
 export type CapacityProviderField = "TAGS" | (string & {});
 export type CapacityProviderFieldList = CapacityProviderField[];
 const CapacityProviderFieldList =
@@ -3074,33 +2241,21 @@ export interface DescribeCapacityProvidersRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const DescribeCapacityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityProviders: S.optional(StringList),
-    cluster: S.optional(S.String),
-    include: S.optional(CapacityProviderFieldList),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeCapacityProvidersRequest",
-}) as any as S.Schema<DescribeCapacityProvidersRequest>;
+const DescribeCapacityProvidersRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<DescribeCapacityProvidersRequest>;
 export type CapacityProviders = CapacityProvider[];
-const CapacityProviders = /*@__PURE__*/ S.Array(CapacityProvider);
+const CapacityProviders = /*@__PURE__*/ __L.at(__c25, 6);
 export interface DescribeCapacityProvidersResponse {
   capacityProviders?: CapacityProvider[];
   failures?: Failure[];
   nextToken?: string;
 }
-const DescribeCapacityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityProviders: S.optional(CapacityProviders),
-    failures: S.optional(Failures),
-    nextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeCapacityProvidersResponse",
-}) as any as S.Schema<DescribeCapacityProvidersResponse>;
+const DescribeCapacityProvidersResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<DescribeCapacityProvidersResponse>;
 export type ClusterField =
   | "ATTACHMENTS"
   | "CONFIGURATIONS"
@@ -3114,20 +2269,20 @@ export interface DescribeClustersRequest {
   clusters?: string[];
   include?: ClusterField[];
 }
-const DescribeClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ clusters: S.optional(StringList), include: S.optional(ClusterFieldList) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeClustersRequest" }) as any as S.Schema<DescribeClustersRequest>;
+const DescribeClustersRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<DescribeClustersRequest>;
 export type Clusters = Cluster[];
-const Clusters = /*@__PURE__*/ S.Array(Cluster);
+const Clusters = /*@__PURE__*/ __L.at(__c26, 1);
 export interface DescribeClustersResponse {
   clusters?: Cluster[];
   failures?: Failure[];
 }
-const DescribeClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ clusters: S.optional(Clusters), failures: S.optional(Failures) }).pipe(ns),
-).annotate({ identifier: "DescribeClustersResponse" }) as any as S.Schema<DescribeClustersResponse>;
+const DescribeClustersResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<DescribeClustersResponse>;
 export type ContainerInstanceField = "TAGS" | "CONTAINER_INSTANCE_HEALTH" | (string & {});
 export type ContainerInstanceFieldList = ContainerInstanceField[];
 const ContainerInstanceFieldList =
@@ -3137,67 +2292,50 @@ export interface DescribeContainerInstancesRequest {
   containerInstances: string[];
   include?: ContainerInstanceField[];
 }
-const DescribeContainerInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    containerInstances: StringList,
-    include: S.optional(ContainerInstanceFieldList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeContainerInstancesRequest",
-}) as any as S.Schema<DescribeContainerInstancesRequest>;
+const DescribeContainerInstancesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<DescribeContainerInstancesRequest>;
 export type ContainerInstances = ContainerInstance[];
-const ContainerInstances = /*@__PURE__*/ S.Array(ContainerInstance);
+const ContainerInstances = /*@__PURE__*/ __L.at(__c26, 4);
 export interface DescribeContainerInstancesResponse {
   containerInstances?: ContainerInstance[];
   failures?: Failure[];
 }
-const DescribeContainerInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerInstances: S.optional(ContainerInstances),
-    failures: S.optional(Failures),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeContainerInstancesResponse",
-}) as any as S.Schema<DescribeContainerInstancesResponse>;
+const DescribeContainerInstancesResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<DescribeContainerInstancesResponse>;
 export interface DescribeDaemonRequest {
   daemonArn: string;
 }
-const DescribeDaemonRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeDaemonRequest" }) as any as S.Schema<DescribeDaemonRequest>;
+const DescribeDaemonRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<DescribeDaemonRequest>;
 export interface DaemonCapacityProvider {
   arn?: string;
   runningCount?: number;
   withoutDaemonCount?: number;
 }
-const DaemonCapacityProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    runningCount: S.optional(S.Number),
-    withoutDaemonCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DaemonCapacityProvider" }) as any as S.Schema<DaemonCapacityProvider>;
+const DaemonCapacityProvider = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<DaemonCapacityProvider>;
 export type DaemonCapacityProviderList = DaemonCapacityProvider[];
-const DaemonCapacityProviderList = /*@__PURE__*/ S.Array(DaemonCapacityProvider);
+const DaemonCapacityProviderList = /*@__PURE__*/ __L.at(__c27, 0);
 export interface DaemonRevisionDetail {
   arn?: string;
   capacityProviders?: DaemonCapacityProvider[];
   totalRunningCount?: number;
   totalWithoutDaemonCount?: number;
 }
-const DaemonRevisionDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    capacityProviders: S.optional(DaemonCapacityProviderList),
-    totalRunningCount: S.optional(S.Number),
-    totalWithoutDaemonCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DaemonRevisionDetail" }) as any as S.Schema<DaemonRevisionDetail>;
+const DaemonRevisionDetail = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<DaemonRevisionDetail>;
 export type DaemonRevisionDetailList = DaemonRevisionDetail[];
-const DaemonRevisionDetailList = /*@__PURE__*/ S.Array(DaemonRevisionDetail);
+const DaemonRevisionDetailList = /*@__PURE__*/ __L.at(__c27, 2);
 export interface DaemonDetail {
   daemonArn?: string;
   clusterArn?: string;
@@ -3207,33 +2345,21 @@ export interface DaemonDetail {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const DaemonDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonArn: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    status: S.optional(DaemonStatus),
-    currentRevisions: S.optional(DaemonRevisionDetailList),
-    deploymentArn: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "DaemonDetail" }) as any as S.Schema<DaemonDetail>;
+const DaemonDetail = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<DaemonDetail>;
 export interface DescribeDaemonResponse {
   daemon?: DaemonDetail;
 }
-const DescribeDaemonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemon: S.optional(DaemonDetail) }).pipe(ns),
-).annotate({ identifier: "DescribeDaemonResponse" }) as any as S.Schema<DescribeDaemonResponse>;
+const DescribeDaemonResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<DescribeDaemonResponse>;
 export interface DescribeDaemonDeploymentsRequest {
   daemonDeploymentArns: string[];
 }
-const DescribeDaemonDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonDeploymentArns: StringList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeDaemonDeploymentsRequest",
-}) as any as S.Schema<DescribeDaemonDeploymentsRequest>;
+const DescribeDaemonDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<DescribeDaemonDeploymentsRequest>;
 export type DaemonDeploymentStatus =
   | "PENDING"
   | "SUCCESSFUL"
@@ -3252,20 +2378,12 @@ export interface DaemonDeploymentCapacityProvider {
   withoutDaemonInstanceCount?: number;
   drainingInstanceCount?: number;
 }
-const DaemonDeploymentCapacityProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    runningInstanceCount: S.optional(S.Number),
-    withoutDaemonInstanceCount: S.optional(S.Number),
-    drainingInstanceCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DaemonDeploymentCapacityProvider",
-}) as any as S.Schema<DaemonDeploymentCapacityProvider>;
+const DaemonDeploymentCapacityProvider = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<DaemonDeploymentCapacityProvider>;
 export type DaemonDeploymentCapacityProviderList = DaemonDeploymentCapacityProvider[];
-const DaemonDeploymentCapacityProviderList = /*@__PURE__*/ S.Array(
-  DaemonDeploymentCapacityProvider,
-);
+const DaemonDeploymentCapacityProviderList = /*@__PURE__*/ __L.at(__c27, 7);
 export interface DaemonDeploymentRevisionDetail {
   arn?: string;
   capacityProviders?: DaemonDeploymentCapacityProvider[];
@@ -3273,19 +2391,12 @@ export interface DaemonDeploymentRevisionDetail {
   totalWithoutDaemonInstanceCount?: number;
   totalDrainingInstanceCount?: number;
 }
-const DaemonDeploymentRevisionDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    capacityProviders: S.optional(DaemonDeploymentCapacityProviderList),
-    totalRunningInstanceCount: S.optional(S.Number),
-    totalWithoutDaemonInstanceCount: S.optional(S.Number),
-    totalDrainingInstanceCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DaemonDeploymentRevisionDetail",
-}) as any as S.Schema<DaemonDeploymentRevisionDetail>;
+const DaemonDeploymentRevisionDetail = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<DaemonDeploymentRevisionDetail>;
 export type DaemonDeploymentRevisionDetailList = DaemonDeploymentRevisionDetail[];
-const DaemonDeploymentRevisionDetailList = /*@__PURE__*/ S.Array(DaemonDeploymentRevisionDetail);
+const DaemonDeploymentRevisionDetailList = /*@__PURE__*/ __L.at(__c28, 1);
 export type DaemonDeploymentRollbackMonitorsStatus =
   | "TRIGGERED"
   | "MONITORING"
@@ -3299,39 +2410,26 @@ export interface DaemonCircuitBreaker {
   status?: DaemonDeploymentRollbackMonitorsStatus;
   threshold?: number;
 }
-const DaemonCircuitBreaker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failureCount: S.optional(S.Number),
-    status: S.optional(DaemonDeploymentRollbackMonitorsStatus),
-    threshold: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DaemonCircuitBreaker" }) as any as S.Schema<DaemonCircuitBreaker>;
+const DaemonCircuitBreaker = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<DaemonCircuitBreaker>;
 export interface DaemonDeploymentAlarms {
   status?: DaemonDeploymentRollbackMonitorsStatus;
   alarmNames?: string[];
   triggeredAlarmNames?: string[];
 }
-const DaemonDeploymentAlarms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(DaemonDeploymentRollbackMonitorsStatus),
-    alarmNames: S.optional(StringList),
-    triggeredAlarmNames: S.optional(StringList),
-  }),
-).annotate({ identifier: "DaemonDeploymentAlarms" }) as any as S.Schema<DaemonDeploymentAlarms>;
+const DaemonDeploymentAlarms = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<DaemonDeploymentAlarms>;
 export interface DaemonRollback {
   reason?: string;
   startedAt?: Date;
   rollbackTargetDaemonRevisionArn?: string;
   rollbackCapacityProviders?: string[];
 }
-const DaemonRollback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(S.String),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    rollbackTargetDaemonRevisionArn: S.optional(S.String),
-    rollbackCapacityProviders: S.optional(StringList),
-  }),
-).annotate({ identifier: "DaemonRollback" }) as any as S.Schema<DaemonRollback>;
+const DaemonRollback = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<DaemonRollback>;
 export interface DaemonDeployment {
   daemonDeploymentArn?: string;
   clusterArn?: string;
@@ -3348,62 +2446,35 @@ export interface DaemonDeployment {
   stoppedAt?: Date;
   finishedAt?: Date;
 }
-const DaemonDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonDeploymentArn: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    status: S.optional(DaemonDeploymentStatus),
-    statusReason: S.optional(S.String),
-    targetDaemonRevision: S.optional(DaemonDeploymentRevisionDetail),
-    sourceDaemonRevisions: S.optional(DaemonDeploymentRevisionDetailList),
-    circuitBreaker: S.optional(DaemonCircuitBreaker),
-    alarms: S.optional(DaemonDeploymentAlarms),
-    rollback: S.optional(DaemonRollback),
-    deploymentConfiguration: S.optional(DaemonDeploymentConfiguration),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "DaemonDeployment" }) as any as S.Schema<DaemonDeployment>;
+const DaemonDeployment = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<DaemonDeployment>;
 export type DaemonDeploymentList = DaemonDeployment[];
-const DaemonDeploymentList = /*@__PURE__*/ S.Array(DaemonDeployment);
+const DaemonDeploymentList = /*@__PURE__*/ __L.at(__c28, 6);
 export interface DescribeDaemonDeploymentsResponse {
   failures?: Failure[];
   daemonDeployments?: DaemonDeployment[];
 }
-const DescribeDaemonDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failures: S.optional(Failures),
-    daemonDeployments: S.optional(DaemonDeploymentList),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeDaemonDeploymentsResponse",
-}) as any as S.Schema<DescribeDaemonDeploymentsResponse>;
+const DescribeDaemonDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<DescribeDaemonDeploymentsResponse>;
 export interface DescribeDaemonRevisionsRequest {
   daemonRevisionArns: string[];
 }
-const DescribeDaemonRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonRevisionArns: StringList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeDaemonRevisionsRequest",
-}) as any as S.Schema<DescribeDaemonRevisionsRequest>;
+const DescribeDaemonRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<DescribeDaemonRevisionsRequest>;
 export interface DaemonContainerImage {
   containerName?: string;
   imageDigest?: string;
   image?: string;
 }
-const DaemonContainerImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerName: S.optional(S.String),
-    imageDigest: S.optional(S.String),
-    image: S.optional(S.String),
-  }),
-).annotate({ identifier: "DaemonContainerImage" }) as any as S.Schema<DaemonContainerImage>;
+const DaemonContainerImage = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<DaemonContainerImage>;
 export type DaemonContainerImages = DaemonContainerImage[];
-const DaemonContainerImages = /*@__PURE__*/ S.Array(DaemonContainerImage);
+const DaemonContainerImages = /*@__PURE__*/ __L.at(__c29, 2);
 export interface DaemonRevision {
   daemonRevisionArn?: string;
   clusterArn?: string;
@@ -3416,57 +2487,34 @@ export interface DaemonRevision {
   enableExecuteCommand?: boolean;
   critical?: boolean;
 }
-const DaemonRevision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonRevisionArn: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    daemonArn: S.optional(S.String),
-    daemonTaskDefinitionArn: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    containerImages: S.optional(DaemonContainerImages),
-    propagateTags: S.optional(DaemonPropagateTags),
-    enableECSManagedTags: S.optional(S.Boolean),
-    enableExecuteCommand: S.optional(S.Boolean),
-    critical: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DaemonRevision" }) as any as S.Schema<DaemonRevision>;
+const DaemonRevision = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<DaemonRevision>;
 export type DaemonRevisions = DaemonRevision[];
-const DaemonRevisions = /*@__PURE__*/ S.Array(DaemonRevision);
+const DaemonRevisions = /*@__PURE__*/ __L.at(__c29, 4);
 export interface DescribeDaemonRevisionsResponse {
   daemonRevisions?: DaemonRevision[];
   failures?: Failure[];
 }
-const DescribeDaemonRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonRevisions: S.optional(DaemonRevisions), failures: S.optional(Failures) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "DescribeDaemonRevisionsResponse",
-}) as any as S.Schema<DescribeDaemonRevisionsResponse>;
+const DescribeDaemonRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<DescribeDaemonRevisionsResponse>;
 export interface DescribeDaemonTaskDefinitionRequest {
   daemonTaskDefinition: string;
 }
-const DescribeDaemonTaskDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonTaskDefinition: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeDaemonTaskDefinitionRequest",
-}) as any as S.Schema<DescribeDaemonTaskDefinitionRequest>;
+const DescribeDaemonTaskDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<DescribeDaemonTaskDefinitionRequest>;
 export interface DaemonLinuxParameters {
   capabilities?: KernelCapabilities;
   devices?: Device[];
   initProcessEnabled?: boolean;
   tmpfs?: Tmpfs[];
 }
-const DaemonLinuxParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capabilities: S.optional(KernelCapabilities),
-    devices: S.optional(DevicesList),
-    initProcessEnabled: S.optional(S.Boolean),
-    tmpfs: S.optional(TmpfsList),
-  }),
-).annotate({ identifier: "DaemonLinuxParameters" }) as any as S.Schema<DaemonLinuxParameters>;
+const DaemonLinuxParameters = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<DaemonLinuxParameters>;
 export interface DaemonContainerDefinition {
   name?: string;
   image: string;
@@ -3498,52 +2546,19 @@ export interface DaemonContainerDefinition {
   pseudoTerminal?: boolean;
   restartPolicy?: ContainerRestartPolicy;
 }
-const DaemonContainerDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    image: S.String,
-    memory: S.optional(S.Number),
-    memoryReservation: S.optional(S.Number),
-    repositoryCredentials: S.optional(RepositoryCredentials),
-    healthCheck: S.optional(HealthCheck),
-    cpu: S.optional(S.Number),
-    essential: S.optional(S.Boolean),
-    entryPoint: S.optional(StringList),
-    command: S.optional(StringList),
-    workingDirectory: S.optional(S.String),
-    environmentFiles: S.optional(EnvironmentFiles),
-    environment: S.optional(EnvironmentVariables),
-    secrets: S.optional(SecretList),
-    readonlyRootFilesystem: S.optional(S.Boolean),
-    mountPoints: S.optional(MountPointList),
-    logConfiguration: S.optional(LogConfiguration),
-    firelensConfiguration: S.optional(FirelensConfiguration),
-    privileged: S.optional(S.Boolean),
-    user: S.optional(S.String),
-    ulimits: S.optional(UlimitList),
-    linuxParameters: S.optional(DaemonLinuxParameters),
-    dependsOn: S.optional(ContainerDependencies),
-    startTimeout: S.optional(S.Number),
-    stopTimeout: S.optional(S.Number),
-    systemControls: S.optional(SystemControls),
-    interactive: S.optional(S.Boolean),
-    pseudoTerminal: S.optional(S.Boolean),
-    restartPolicy: S.optional(ContainerRestartPolicy),
-  }),
-).annotate({
-  identifier: "DaemonContainerDefinition",
-}) as any as S.Schema<DaemonContainerDefinition>;
+const DaemonContainerDefinition = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<DaemonContainerDefinition>;
 export type DaemonContainerDefinitionList = DaemonContainerDefinition[];
-const DaemonContainerDefinitionList = /*@__PURE__*/ S.Array(DaemonContainerDefinition);
+const DaemonContainerDefinitionList = /*@__PURE__*/ __L.at(__c30, 1);
 export interface DaemonVolume {
   name?: string;
   host?: HostVolumeProperties;
 }
-const DaemonVolume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), host: S.optional(HostVolumeProperties) }),
-).annotate({ identifier: "DaemonVolume" }) as any as S.Schema<DaemonVolume>;
+const DaemonVolume = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<DaemonVolume>;
 export type DaemonVolumeList = DaemonVolume[];
-const DaemonVolumeList = /*@__PURE__*/ S.Array(DaemonVolume);
+const DaemonVolumeList = /*@__PURE__*/ __L.at(__c30, 3);
 export type DaemonTaskDefinitionStatus =
   | "ACTIVE"
   | "DELETE_IN_PROGRESS"
@@ -3574,33 +2589,17 @@ export interface DaemonTaskDefinition {
   pidMode?: DaemonPidMode;
   ipcMode?: DaemonIpcMode;
 }
-const DaemonTaskDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonTaskDefinitionArn: S.optional(S.String),
-    family: S.optional(S.String),
-    revision: S.optional(S.Number),
-    taskRoleArn: S.optional(S.String),
-    executionRoleArn: S.optional(S.String),
-    containerDefinitions: S.optional(DaemonContainerDefinitionList),
-    volumes: S.optional(DaemonVolumeList),
-    cpu: S.optional(S.String),
-    memory: S.optional(S.String),
-    status: S.optional(DaemonTaskDefinitionStatus),
-    registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deleteRequestedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    registeredBy: S.optional(S.String),
-    pidMode: S.optional(DaemonPidMode),
-    ipcMode: S.optional(DaemonIpcMode),
-  }),
-).annotate({ identifier: "DaemonTaskDefinition" }) as any as S.Schema<DaemonTaskDefinition>;
+const DaemonTaskDefinition = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<DaemonTaskDefinition>;
 export interface DescribeDaemonTaskDefinitionResponse {
   daemonTaskDefinition?: DaemonTaskDefinition;
 }
-const DescribeDaemonTaskDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ daemonTaskDefinition: S.optional(DaemonTaskDefinition) }).pipe(ns),
-).annotate({
-  identifier: "DescribeDaemonTaskDefinitionResponse",
-}) as any as S.Schema<DescribeDaemonTaskDefinitionResponse>;
+const DescribeDaemonTaskDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<DescribeDaemonTaskDefinitionResponse>;
 export type ExpressGatewayServiceInclude = "TAGS" | (string & {});
 export type ExpressGatewayServiceIncludeList = ExpressGatewayServiceInclude[];
 const ExpressGatewayServiceIncludeList =
@@ -3609,13 +2608,10 @@ export interface DescribeExpressGatewayServiceRequest {
   serviceArn: string;
   include?: ExpressGatewayServiceInclude[];
 }
-const DescribeExpressGatewayServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceArn: S.String, include: S.optional(ExpressGatewayServiceIncludeList) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeExpressGatewayServiceRequest",
-}) as any as S.Schema<DescribeExpressGatewayServiceRequest>;
+const DescribeExpressGatewayServiceRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<DescribeExpressGatewayServiceRequest>;
 export interface DescribeExpressGatewayServiceResponse {
   service?: ECSExpressGatewayService;
 }
@@ -3624,13 +2620,10 @@ const DescribeExpressGatewayServiceResponse =
 export interface DescribeServiceDeploymentsRequest {
   serviceDeploymentArns: string[];
 }
-const DescribeServiceDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceDeploymentArns: StringList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeServiceDeploymentsRequest",
-}) as any as S.Schema<DescribeServiceDeploymentsRequest>;
+const DescribeServiceDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<DescribeServiceDeploymentsRequest>;
 export interface ServiceRevisionSummary {
   arn?: string;
   requestedTaskCount?: number;
@@ -3639,18 +2632,12 @@ export interface ServiceRevisionSummary {
   requestedTestTrafficWeight?: number;
   requestedProductionTrafficWeight?: number;
 }
-const ServiceRevisionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    requestedTaskCount: S.optional(S.Number),
-    runningTaskCount: S.optional(S.Number),
-    pendingTaskCount: S.optional(S.Number),
-    requestedTestTrafficWeight: S.optional(S.Number),
-    requestedProductionTrafficWeight: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ServiceRevisionSummary" }) as any as S.Schema<ServiceRevisionSummary>;
+const ServiceRevisionSummary = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<ServiceRevisionSummary>;
 export type ServiceRevisionsSummaryList = ServiceRevisionSummary[];
-const ServiceRevisionsSummaryList = /*@__PURE__*/ S.Array(ServiceRevisionSummary);
+const ServiceRevisionsSummaryList = /*@__PURE__*/ __L.at(__c31, 1);
 export type ServiceDeploymentStatus =
   | "PENDING"
   | "SUCCESSFUL"
@@ -3695,32 +2682,18 @@ export interface DeploymentLifecycleHookDetail {
   expiresAt?: Date;
   timeoutAction?: DeploymentLifecycleHookAction;
 }
-const DeploymentLifecycleHookDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hookId: S.optional(S.String),
-    targetType: S.optional(DeploymentLifecycleHookTargetType),
-    targetArn: S.optional(S.String),
-    status: S.optional(DeploymentLifecycleHookStatus),
-    expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    timeoutAction: S.optional(DeploymentLifecycleHookAction),
-  }),
-).annotate({
-  identifier: "DeploymentLifecycleHookDetail",
-}) as any as S.Schema<DeploymentLifecycleHookDetail>;
+const DeploymentLifecycleHookDetail = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<DeploymentLifecycleHookDetail>;
 export type DeploymentLifecycleHookDetailList = DeploymentLifecycleHookDetail[];
-const DeploymentLifecycleHookDetailList = /*@__PURE__*/ S.Array(DeploymentLifecycleHookDetail);
+const DeploymentLifecycleHookDetailList = /*@__PURE__*/ __L.at(__c31, 3);
 export interface Rollback {
   reason?: string;
   startedAt?: Date;
   serviceRevisionArn?: string;
 }
-const Rollback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(S.String),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    serviceRevisionArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Rollback" }) as any as S.Schema<Rollback>;
+const Rollback = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<Rollback>;
 export type ServiceDeploymentRollbackMonitorsStatus =
   | "TRIGGERED"
   | "MONITORING"
@@ -3734,15 +2707,10 @@ export interface ServiceDeploymentCircuitBreaker {
   failureCount?: number;
   threshold?: number;
 }
-const ServiceDeploymentCircuitBreaker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ServiceDeploymentRollbackMonitorsStatus),
-    failureCount: S.optional(S.Number),
-    threshold: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ServiceDeploymentCircuitBreaker",
-}) as any as S.Schema<ServiceDeploymentCircuitBreaker>;
+const ServiceDeploymentCircuitBreaker = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<ServiceDeploymentCircuitBreaker>;
 export interface ServiceDeploymentAlarms {
   status?: ServiceDeploymentRollbackMonitorsStatus;
   alarmNames?: string[];
@@ -3769,52 +2737,24 @@ export interface ServiceDeployment {
   deploymentCircuitBreaker?: ServiceDeploymentCircuitBreaker;
   alarms?: ServiceDeploymentAlarms;
 }
-const ServiceDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceDeploymentArn: S.optional(S.String),
-    serviceArn: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    sourceServiceRevisions: S.optional(ServiceRevisionsSummaryList),
-    targetServiceRevision: S.optional(ServiceRevisionSummary),
-    status: S.optional(ServiceDeploymentStatus),
-    statusReason: S.optional(S.String),
-    lifecycleStage: S.optional(ServiceDeploymentLifecycleStage),
-    lifecycleHookDetails: S.optional(DeploymentLifecycleHookDetailList),
-    deploymentConfiguration: S.optional(DeploymentConfiguration),
-    rollback: S.optional(Rollback),
-    deploymentCircuitBreaker: S.optional(ServiceDeploymentCircuitBreaker),
-    alarms: S.optional(ServiceDeploymentAlarms),
-  }),
-).annotate({ identifier: "ServiceDeployment" }) as any as S.Schema<ServiceDeployment>;
+const ServiceDeployment = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<ServiceDeployment>;
 export type ServiceDeployments = ServiceDeployment[];
-const ServiceDeployments = /*@__PURE__*/ S.Array(ServiceDeployment);
+const ServiceDeployments = /*@__PURE__*/ __L.at(__c31, 7);
 export interface DescribeServiceDeploymentsResponse {
   serviceDeployments?: ServiceDeployment[];
   failures?: Failure[];
 }
-const DescribeServiceDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceDeployments: S.optional(ServiceDeployments),
-    failures: S.optional(Failures),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeServiceDeploymentsResponse",
-}) as any as S.Schema<DescribeServiceDeploymentsResponse>;
+const DescribeServiceDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<DescribeServiceDeploymentsResponse>;
 export interface DescribeServiceRevisionsRequest {
   serviceRevisionArns: string[];
 }
-const DescribeServiceRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceRevisionArns: StringList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeServiceRevisionsRequest",
-}) as any as S.Schema<DescribeServiceRevisionsRequest>;
+const DescribeServiceRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<DescribeServiceRevisionsRequest>;
 export interface ContainerImage {
   containerName?: string;
   imageDigest?: string;
@@ -3826,13 +2766,12 @@ export interface ServiceRevisionLoadBalancer {
   targetGroupArn?: string;
   productionListenerRule?: string;
 }
-const ServiceRevisionLoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetGroupArn: S.optional(S.String), productionListenerRule: S.optional(S.String) }),
-).annotate({
-  identifier: "ServiceRevisionLoadBalancer",
-}) as any as S.Schema<ServiceRevisionLoadBalancer>;
+const ServiceRevisionLoadBalancer = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ServiceRevisionLoadBalancer>;
 export type ServiceRevisionLoadBalancers = ServiceRevisionLoadBalancer[];
-const ServiceRevisionLoadBalancers = /*@__PURE__*/ S.Array(ServiceRevisionLoadBalancer);
+const ServiceRevisionLoadBalancers = /*@__PURE__*/ __L.at(__c32, 3);
 export interface ServiceRevisionVpcLatticeConfiguration {
   targetGroupArn?: string;
   productionListenerRule?: string;
@@ -3840,19 +2779,15 @@ export interface ServiceRevisionVpcLatticeConfiguration {
 const ServiceRevisionVpcLatticeConfiguration =
   ServiceRevisionLoadBalancer as any as S.Schema<ServiceRevisionVpcLatticeConfiguration>;
 export type ServiceRevisionVpcLatticeConfigurations = ServiceRevisionVpcLatticeConfiguration[];
-const ServiceRevisionVpcLatticeConfigurations = /*@__PURE__*/ S.Array(
-  ServiceRevisionVpcLatticeConfiguration,
-);
+const ServiceRevisionVpcLatticeConfigurations = /*@__PURE__*/ __L.at(__c32, 4);
 export interface ResolvedConfiguration {
   loadBalancers?: ServiceRevisionLoadBalancer[];
   vpcLatticeConfigurations?: ServiceRevisionVpcLatticeConfiguration[];
 }
-const ResolvedConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loadBalancers: S.optional(ServiceRevisionLoadBalancers),
-    vpcLatticeConfigurations: S.optional(ServiceRevisionVpcLatticeConfigurations),
-  }),
-).annotate({ identifier: "ResolvedConfiguration" }) as any as S.Schema<ResolvedConfiguration>;
+const ResolvedConfiguration = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<ResolvedConfiguration>;
 export type ManagedResourceStatus =
   | "PROVISIONING"
   | "ACTIVE"
@@ -3871,33 +2806,19 @@ export interface ManagedLoadBalancer {
   subnetIds?: string[];
   securityGroupIds?: string[];
 }
-const ManagedLoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    scheme: S.String,
-    subnetIds: S.optional(StringList),
-    securityGroupIds: S.optional(StringList),
-  }),
-).annotate({ identifier: "ManagedLoadBalancer" }) as any as S.Schema<ManagedLoadBalancer>;
+const ManagedLoadBalancer = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<ManagedLoadBalancer>;
 export interface ManagedSecurityGroup {
   arn?: string;
   status: ManagedResourceStatus;
   statusReason?: string;
   updatedAt: Date;
 }
-const ManagedSecurityGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "ManagedSecurityGroup" }) as any as S.Schema<ManagedSecurityGroup>;
+const ManagedSecurityGroup = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ManagedSecurityGroup>;
 export type ManagedSecurityGroups = ManagedSecurityGroup[];
-const ManagedSecurityGroups = /*@__PURE__*/ S.Array(ManagedSecurityGroup);
+const ManagedSecurityGroups = /*@__PURE__*/ __L.at(__c33, 0);
 export interface ManagedCertificate {
   arn?: string;
   status: ManagedResourceStatus;
@@ -3905,15 +2826,7 @@ export interface ManagedCertificate {
   updatedAt: Date;
   domainName: string;
 }
-const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    domainName: S.String,
-  }),
-).annotate({ identifier: "ManagedCertificate" }) as any as S.Schema<ManagedCertificate>;
+const ManagedCertificate = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<ManagedCertificate>;
 export interface ManagedListener {
   arn?: string;
   status: ManagedResourceStatus;
@@ -3937,19 +2850,9 @@ export interface ManagedTargetGroup {
   healthCheckPort: number;
   port: number;
 }
-const ManagedTargetGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    healthCheckPath: S.String,
-    healthCheckPort: S.Number,
-    port: S.Number,
-  }),
-).annotate({ identifier: "ManagedTargetGroup" }) as any as S.Schema<ManagedTargetGroup>;
+const ManagedTargetGroup = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<ManagedTargetGroup>;
 export type ManagedTargetGroups = ManagedTargetGroup[];
-const ManagedTargetGroups = /*@__PURE__*/ S.Array(ManagedTargetGroup);
+const ManagedTargetGroups = /*@__PURE__*/ __L.at(__c33, 3);
 export interface ManagedIngressPath {
   accessType: AccessType;
   endpoint: string;
@@ -3960,20 +2863,9 @@ export interface ManagedIngressPath {
   rule?: ManagedListenerRule;
   targetGroups?: ManagedTargetGroup[];
 }
-const ManagedIngressPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessType: AccessType,
-    endpoint: S.String,
-    loadBalancer: S.optional(ManagedLoadBalancer),
-    loadBalancerSecurityGroups: S.optional(ManagedSecurityGroups),
-    certificate: S.optional(ManagedCertificate),
-    listener: S.optional(ManagedListener),
-    rule: S.optional(ManagedListenerRule),
-    targetGroups: S.optional(ManagedTargetGroups),
-  }),
-).annotate({ identifier: "ManagedIngressPath" }) as any as S.Schema<ManagedIngressPath>;
+const ManagedIngressPath = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<ManagedIngressPath>;
 export type ManagedIngressPaths = ManagedIngressPath[];
-const ManagedIngressPaths = /*@__PURE__*/ S.Array(ManagedIngressPath);
+const ManagedIngressPaths = /*@__PURE__*/ __L.at(__c33, 5);
 export interface ManagedScalableTarget {
   arn?: string;
   status: ManagedResourceStatus;
@@ -3982,16 +2874,10 @@ export interface ManagedScalableTarget {
   minCapacity: number;
   maxCapacity: number;
 }
-const ManagedScalableTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    minCapacity: S.Number,
-    maxCapacity: S.Number,
-  }),
-).annotate({ identifier: "ManagedScalableTarget" }) as any as S.Schema<ManagedScalableTarget>;
+const ManagedScalableTarget = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<ManagedScalableTarget>;
 export interface ManagedApplicationAutoScalingPolicy {
   arn?: string;
   status: ManagedResourceStatus;
@@ -4001,33 +2887,17 @@ export interface ManagedApplicationAutoScalingPolicy {
   targetValue: number;
   metric: string;
 }
-const ManagedApplicationAutoScalingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    policyType: S.String,
-    targetValue: S.Number,
-    metric: S.String,
-  }),
-).annotate({
-  identifier: "ManagedApplicationAutoScalingPolicy",
-}) as any as S.Schema<ManagedApplicationAutoScalingPolicy>;
+const ManagedApplicationAutoScalingPolicy = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ManagedApplicationAutoScalingPolicy>;
 export type ManagedApplicationAutoScalingPolicies = ManagedApplicationAutoScalingPolicy[];
-const ManagedApplicationAutoScalingPolicies = /*@__PURE__*/ S.Array(
-  ManagedApplicationAutoScalingPolicy,
-);
+const ManagedApplicationAutoScalingPolicies = /*@__PURE__*/ __L.at(__c34, 0);
 export interface ManagedAutoScaling {
   scalableTarget?: ManagedScalableTarget;
   applicationAutoScalingPolicies?: ManagedApplicationAutoScalingPolicy[];
 }
-const ManagedAutoScaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scalableTarget: S.optional(ManagedScalableTarget),
-    applicationAutoScalingPolicies: S.optional(ManagedApplicationAutoScalingPolicies),
-  }),
-).annotate({ identifier: "ManagedAutoScaling" }) as any as S.Schema<ManagedAutoScaling>;
+const ManagedAutoScaling = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<ManagedAutoScaling>;
 export interface ManagedMetricAlarm {
   arn?: string;
   status: ManagedResourceStatus;
@@ -4043,17 +2913,9 @@ export interface ManagedLogGroup {
   updatedAt: Date;
   logGroupName: string;
 }
-const ManagedLogGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    status: ManagedResourceStatus,
-    statusReason: S.optional(S.String),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    logGroupName: S.String,
-  }),
-).annotate({ identifier: "ManagedLogGroup" }) as any as S.Schema<ManagedLogGroup>;
+const ManagedLogGroup = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<ManagedLogGroup>;
 export type ManagedLogGroups = ManagedLogGroup[];
-const ManagedLogGroups = /*@__PURE__*/ S.Array(ManagedLogGroup);
+const ManagedLogGroups = /*@__PURE__*/ __L.at(__c34, 3);
 export interface ECSManagedResources {
   ingressPaths?: ManagedIngressPath[];
   autoScaling?: ManagedAutoScaling;
@@ -4061,27 +2923,21 @@ export interface ECSManagedResources {
   serviceSecurityGroups?: ManagedSecurityGroup[];
   logGroups?: ManagedLogGroup[];
 }
-const ECSManagedResources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ingressPaths: S.optional(ManagedIngressPaths),
-    autoScaling: S.optional(ManagedAutoScaling),
-    metricAlarms: S.optional(ManagedMetricAlarms),
-    serviceSecurityGroups: S.optional(ManagedSecurityGroups),
-    logGroups: S.optional(ManagedLogGroups),
-  }),
-).annotate({ identifier: "ECSManagedResources" }) as any as S.Schema<ECSManagedResources>;
+const ECSManagedResources = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<ECSManagedResources>;
 export interface RuntimePlatformOverride {
   cpuArchitecture?: string;
 }
-const RuntimePlatformOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cpuArchitecture: S.optional(S.String) }),
-).annotate({ identifier: "RuntimePlatformOverride" }) as any as S.Schema<RuntimePlatformOverride>;
+const RuntimePlatformOverride = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<RuntimePlatformOverride>;
 export interface ServiceRevisionOverrides {
   runtimePlatform?: RuntimePlatformOverride;
 }
-const ServiceRevisionOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ runtimePlatform: S.optional(RuntimePlatformOverride) }),
-).annotate({ identifier: "ServiceRevisionOverrides" }) as any as S.Schema<ServiceRevisionOverrides>;
+const ServiceRevisionOverrides = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ServiceRevisionOverrides>;
 export interface ServiceRevision {
   serviceRevisionArn?: string;
   serviceArn?: string;
@@ -4106,45 +2962,17 @@ export interface ServiceRevision {
   overrides?: ServiceRevisionOverrides;
   monitoring?: MonitoringConfiguration;
 }
-const ServiceRevision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceRevisionArn: S.optional(S.String),
-    serviceArn: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    taskDefinition: S.optional(S.String),
-    capacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    launchType: S.optional(LaunchType),
-    platformVersion: S.optional(S.String),
-    platformFamily: S.optional(S.String),
-    loadBalancers: S.optional(LoadBalancers),
-    serviceRegistries: S.optional(ServiceRegistries),
-    networkConfiguration: S.optional(NetworkConfiguration),
-    containerImages: S.optional(ContainerImages),
-    guardDutyEnabled: S.optional(S.Boolean),
-    serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
-    volumeConfigurations: S.optional(ServiceVolumeConfigurations),
-    fargateEphemeralStorage: S.optional(DeploymentEphemeralStorage),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
-    resolvedConfiguration: S.optional(ResolvedConfiguration),
-    ecsManagedResources: S.optional(ECSManagedResources),
-    overrides: S.optional(ServiceRevisionOverrides),
-    monitoring: S.optional(MonitoringConfiguration),
-  }),
-).annotate({ identifier: "ServiceRevision" }) as any as S.Schema<ServiceRevision>;
+const ServiceRevision = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<ServiceRevision>;
 export type ServiceRevisions = ServiceRevision[];
-const ServiceRevisions = /*@__PURE__*/ S.Array(ServiceRevision);
+const ServiceRevisions = /*@__PURE__*/ __L.at(__c35, 0);
 export interface DescribeServiceRevisionsResponse {
   serviceRevisions?: ServiceRevision[];
   failures?: Failure[];
 }
-const DescribeServiceRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceRevisions: S.optional(ServiceRevisions), failures: S.optional(Failures) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "DescribeServiceRevisionsResponse",
-}) as any as S.Schema<DescribeServiceRevisionsResponse>;
+const DescribeServiceRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<DescribeServiceRevisionsResponse>;
 export type ServiceField = "TAGS" | (string & {});
 export type ServiceFieldList = ServiceField[];
 const ServiceFieldList = DeploymentLifecycleHookStageList as any as S.Schema<ServiceFieldList>;
@@ -4153,22 +2981,20 @@ export interface DescribeServicesRequest {
   services: string[];
   include?: ServiceField[];
 }
-const DescribeServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    services: StringList,
-    include: S.optional(ServiceFieldList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeServicesRequest" }) as any as S.Schema<DescribeServicesRequest>;
+const DescribeServicesRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<DescribeServicesRequest>;
 export type Services = Service[];
-const Services = /*@__PURE__*/ S.Array(Service);
+const Services = /*@__PURE__*/ __L.at(__c35, 3);
 export interface DescribeServicesResponse {
   services?: Service[];
   failures?: Failure[];
 }
-const DescribeServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ services: S.optional(Services), failures: S.optional(Failures) }).pipe(ns),
-).annotate({ identifier: "DescribeServicesResponse" }) as any as S.Schema<DescribeServicesResponse>;
+const DescribeServicesResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<DescribeServicesResponse>;
 export type TaskDefinitionField = "TAGS" | (string & {});
 export type TaskDefinitionFieldList = TaskDefinitionField[];
 const TaskDefinitionFieldList =
@@ -4177,22 +3003,18 @@ export interface DescribeTaskDefinitionRequest {
   taskDefinition: string;
   include?: TaskDefinitionField[];
 }
-const DescribeTaskDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskDefinition: S.String, include: S.optional(TaskDefinitionFieldList) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeTaskDefinitionRequest",
-}) as any as S.Schema<DescribeTaskDefinitionRequest>;
+const DescribeTaskDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<DescribeTaskDefinitionRequest>;
 export interface DescribeTaskDefinitionResponse {
   taskDefinition?: TaskDefinition;
   tags?: Tag[];
 }
-const DescribeTaskDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskDefinition: S.optional(TaskDefinition), tags: S.optional(Tags) }).pipe(ns),
-).annotate({
-  identifier: "DescribeTaskDefinitionResponse",
-}) as any as S.Schema<DescribeTaskDefinitionResponse>;
+const DescribeTaskDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<DescribeTaskDefinitionResponse>;
 export type TaskField = "TAGS" | (string & {});
 export type TaskFieldList = TaskField[];
 const TaskFieldList = DeploymentLifecycleHookStageList as any as S.Schema<TaskFieldList>;
@@ -4201,13 +3023,10 @@ export interface DescribeTasksRequest {
   tasks: string[];
   include?: TaskField[];
 }
-const DescribeTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    tasks: StringList,
-    include: S.optional(TaskFieldList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeTasksRequest" }) as any as S.Schema<DescribeTasksRequest>;
+const DescribeTasksRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<DescribeTasksRequest>;
 export type Connectivity = "CONNECTED" | "DISCONNECTED" | (string & {});
 const Connectivity = S.String;
 
@@ -4219,32 +3038,17 @@ export interface NetworkBinding {
   containerPortRange?: string;
   hostPortRange?: string;
 }
-const NetworkBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindIP: S.optional(S.String),
-    containerPort: S.optional(S.Number),
-    hostPort: S.optional(S.Number),
-    protocol: S.optional(TransportProtocol),
-    containerPortRange: S.optional(S.String),
-    hostPortRange: S.optional(S.String),
-  }),
-).annotate({ identifier: "NetworkBinding" }) as any as S.Schema<NetworkBinding>;
+const NetworkBinding = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<NetworkBinding>;
 export type NetworkBindings = NetworkBinding[];
-const NetworkBindings = /*@__PURE__*/ S.Array(NetworkBinding);
+const NetworkBindings = /*@__PURE__*/ __L.at(__c36, 1);
 export interface NetworkInterface {
   attachmentId?: string;
   privateIpv4Address?: string;
   ipv6Address?: string;
 }
-const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachmentId: S.optional(S.String),
-    privateIpv4Address: S.optional(S.String),
-    ipv6Address: S.optional(S.String),
-  }),
-).annotate({ identifier: "NetworkInterface" }) as any as S.Schema<NetworkInterface>;
+const NetworkInterface = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaces = NetworkInterface[];
-const NetworkInterfaces = /*@__PURE__*/ S.Array(NetworkInterface);
+const NetworkInterfaces = /*@__PURE__*/ __L.at(__c36, 3);
 export type HealthStatus = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
 const HealthStatus = S.String;
 
@@ -4257,16 +3061,9 @@ export interface ManagedAgent {
   reason?: string;
   lastStatus?: string;
 }
-const ManagedAgent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    name: S.optional(ManagedAgentName),
-    reason: S.optional(S.String),
-    lastStatus: S.optional(S.String),
-  }),
-).annotate({ identifier: "ManagedAgent" }) as any as S.Schema<ManagedAgent>;
+const ManagedAgent = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<ManagedAgent>;
 export type ManagedAgents = ManagedAgent[];
-const ManagedAgents = /*@__PURE__*/ S.Array(ManagedAgent);
+const ManagedAgents = /*@__PURE__*/ __L.at(__c36, 5);
 export type GpuIds = string[];
 const GpuIds = StringList as any as S.Schema<GpuIds>;
 export type NeuronDeviceIds = string[];
@@ -4291,30 +3088,9 @@ export interface Container {
   gpuIds?: string[];
   neuronDeviceIds?: string[];
 }
-const Container = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerArn: S.optional(S.String),
-    taskArn: S.optional(S.String),
-    name: S.optional(S.String),
-    image: S.optional(S.String),
-    imageDigest: S.optional(S.String),
-    runtimeId: S.optional(S.String),
-    lastStatus: S.optional(S.String),
-    exitCode: S.optional(S.Number),
-    reason: S.optional(S.String),
-    networkBindings: S.optional(NetworkBindings),
-    networkInterfaces: S.optional(NetworkInterfaces),
-    healthStatus: S.optional(HealthStatus),
-    managedAgents: S.optional(ManagedAgents),
-    cpu: S.optional(S.String),
-    memory: S.optional(S.String),
-    memoryReservation: S.optional(S.String),
-    gpuIds: S.optional(GpuIds),
-    neuronDeviceIds: S.optional(NeuronDeviceIds),
-  }),
-).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
+const Container = /*@__PURE__*/ __L.at(__c36, 6) as any as S.Schema<Container>;
 export type Containers = Container[];
-const Containers = /*@__PURE__*/ S.Array(Container);
+const Containers = /*@__PURE__*/ __L.at(__c36, 7);
 export interface ContainerOverride {
   name?: string;
   command?: string[];
@@ -4325,31 +3101,19 @@ export interface ContainerOverride {
   memoryReservation?: number;
   resourceRequirements?: ResourceRequirement[];
 }
-const ContainerOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    command: S.optional(StringList),
-    environment: S.optional(EnvironmentVariables),
-    environmentFiles: S.optional(EnvironmentFiles),
-    cpu: S.optional(S.Number),
-    memory: S.optional(S.Number),
-    memoryReservation: S.optional(S.Number),
-    resourceRequirements: S.optional(ResourceRequirements),
-  }),
-).annotate({ identifier: "ContainerOverride" }) as any as S.Schema<ContainerOverride>;
+const ContainerOverride = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<ContainerOverride>;
 export type ContainerOverrides = ContainerOverride[];
-const ContainerOverrides = /*@__PURE__*/ S.Array(ContainerOverride);
+const ContainerOverrides = /*@__PURE__*/ __L.at(__c37, 1);
 export interface InferenceAcceleratorOverride {
   deviceName?: string;
   deviceType?: string;
 }
-const InferenceAcceleratorOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deviceName: S.optional(S.String), deviceType: S.optional(S.String) }),
-).annotate({
-  identifier: "InferenceAcceleratorOverride",
-}) as any as S.Schema<InferenceAcceleratorOverride>;
+const InferenceAcceleratorOverride = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<InferenceAcceleratorOverride>;
 export type InferenceAcceleratorOverrides = InferenceAcceleratorOverride[];
-const InferenceAcceleratorOverrides = /*@__PURE__*/ S.Array(InferenceAcceleratorOverride);
+const InferenceAcceleratorOverrides = /*@__PURE__*/ __L.at(__c37, 3);
 export interface TaskOverride {
   containerOverrides?: ContainerOverride[];
   cpu?: string;
@@ -4359,17 +3123,7 @@ export interface TaskOverride {
   taskRoleArn?: string;
   ephemeralStorage?: EphemeralStorage;
 }
-const TaskOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerOverrides: S.optional(ContainerOverrides),
-    cpu: S.optional(S.String),
-    inferenceAcceleratorOverrides: S.optional(InferenceAcceleratorOverrides),
-    executionRoleArn: S.optional(S.String),
-    memory: S.optional(S.String),
-    taskRoleArn: S.optional(S.String),
-    ephemeralStorage: S.optional(EphemeralStorage),
-  }),
-).annotate({ identifier: "TaskOverride" }) as any as S.Schema<TaskOverride>;
+const TaskOverride = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<TaskOverride>;
 export type TaskStopCode =
   | "TaskFailedToStart"
   | "EssentialContainerExited"
@@ -4385,9 +3139,10 @@ export interface TaskEphemeralStorage {
   sizeInGiB?: number;
   kmsKeyId?: string;
 }
-const TaskEphemeralStorage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sizeInGiB: S.optional(S.Number), kmsKeyId: S.optional(S.String) }),
-).annotate({ identifier: "TaskEphemeralStorage" }) as any as S.Schema<TaskEphemeralStorage>;
+const TaskEphemeralStorage = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<TaskEphemeralStorage>;
 export interface Task {
   attachments?: Attachment[];
   attributes?: Attribute[];
@@ -4427,56 +3182,17 @@ export interface Task {
   ephemeralStorage?: EphemeralStorage;
   fargateEphemeralStorage?: TaskEphemeralStorage;
 }
-const Task = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachments: S.optional(Attachments),
-    attributes: S.optional(Attributes),
-    availabilityZone: S.optional(S.String),
-    capacityProviderName: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    connectivity: S.optional(Connectivity),
-    connectivityAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    containerInstanceArn: S.optional(S.String),
-    containers: S.optional(Containers),
-    cpu: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    desiredStatus: S.optional(S.String),
-    enableExecuteCommand: S.optional(S.Boolean),
-    executionStoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    group: S.optional(S.String),
-    healthStatus: S.optional(HealthStatus),
-    inferenceAccelerators: S.optional(InferenceAccelerators),
-    lastStatus: S.optional(S.String),
-    launchType: S.optional(LaunchType),
-    memory: S.optional(S.String),
-    overrides: S.optional(TaskOverride),
-    platformVersion: S.optional(S.String),
-    platformFamily: S.optional(S.String),
-    pullStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    pullStoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    startedBy: S.optional(S.String),
-    stopCode: S.optional(TaskStopCode),
-    stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stoppedReason: S.optional(S.String),
-    stoppingAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    tags: S.optional(Tags),
-    taskArn: S.optional(S.String),
-    taskDefinitionArn: S.optional(S.String),
-    version: S.optional(S.Number),
-    ephemeralStorage: S.optional(EphemeralStorage),
-    fargateEphemeralStorage: S.optional(TaskEphemeralStorage),
-  }),
-).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
+const Task = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<Task>;
 export type Tasks = Task[];
-const Tasks = /*@__PURE__*/ S.Array(Task);
+const Tasks = /*@__PURE__*/ __L.at(__c37, 7);
 export interface DescribeTasksResponse {
   tasks?: Task[];
   failures?: Failure[];
 }
-const DescribeTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tasks: S.optional(Tasks), failures: S.optional(Failures) }).pipe(ns),
-).annotate({ identifier: "DescribeTasksResponse" }) as any as S.Schema<DescribeTasksResponse>;
+const DescribeTasksResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<DescribeTasksResponse>;
 export type TaskSetField = "TAGS" | (string & {});
 export type TaskSetFieldList = TaskSetField[];
 const TaskSetFieldList = DeploymentLifecycleHookStageList as any as S.Schema<TaskSetFieldList>;
@@ -4486,46 +3202,35 @@ export interface DescribeTaskSetsRequest {
   taskSets?: string[];
   include?: TaskSetField[];
 }
-const DescribeTaskSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.String,
-    service: S.String,
-    taskSets: S.optional(StringList),
-    include: S.optional(TaskSetFieldList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeTaskSetsRequest" }) as any as S.Schema<DescribeTaskSetsRequest>;
+const DescribeTaskSetsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<DescribeTaskSetsRequest>;
 export interface DescribeTaskSetsResponse {
   taskSets?: TaskSet[];
   failures?: Failure[];
 }
-const DescribeTaskSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskSets: S.optional(TaskSets), failures: S.optional(Failures) }).pipe(ns),
-).annotate({ identifier: "DescribeTaskSetsResponse" }) as any as S.Schema<DescribeTaskSetsResponse>;
+const DescribeTaskSetsResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<DescribeTaskSetsResponse>;
 export interface DiscoverPollEndpointRequest {
   containerInstance?: string;
   cluster?: string;
 }
-const DiscoverPollEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ containerInstance: S.optional(S.String), cluster: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DiscoverPollEndpointRequest",
-}) as any as S.Schema<DiscoverPollEndpointRequest>;
+const DiscoverPollEndpointRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<DiscoverPollEndpointRequest>;
 export interface DiscoverPollEndpointResponse {
   endpoint?: string;
   telemetryEndpoint?: string;
   serviceConnectEndpoint?: string;
 }
-const DiscoverPollEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.optional(S.String),
-    telemetryEndpoint: S.optional(S.String),
-    serviceConnectEndpoint: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DiscoverPollEndpointResponse",
-}) as any as S.Schema<DiscoverPollEndpointResponse>;
+const DiscoverPollEndpointResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<DiscoverPollEndpointResponse>;
 export interface ExecuteCommandRequest {
   cluster?: string;
   container?: string;
@@ -4533,28 +3238,17 @@ export interface ExecuteCommandRequest {
   interactive: boolean;
   task: string;
 }
-const ExecuteCommandRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    container: S.optional(S.String),
-    command: S.String,
-    interactive: S.Boolean,
-    task: S.String,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ExecuteCommandRequest" }) as any as S.Schema<ExecuteCommandRequest>;
+const ExecuteCommandRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ExecuteCommandRequest>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface Session {
   sessionId?: string;
   streamUrl?: string;
   tokenValue?: string | redacted.Redacted<string>;
 }
-const Session = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.optional(S.String),
-    streamUrl: S.optional(S.String),
-    tokenValue: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
+const Session = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<Session>;
 export interface ExecuteCommandResponse {
   clusterArn?: string;
   containerArn?: string;
@@ -4563,48 +3257,34 @@ export interface ExecuteCommandResponse {
   session?: Session;
   taskArn?: string;
 }
-const ExecuteCommandResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterArn: S.optional(S.String),
-    containerArn: S.optional(S.String),
-    containerName: S.optional(S.String),
-    interactive: S.optional(S.Boolean),
-    session: S.optional(Session),
-    taskArn: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "ExecuteCommandResponse" }) as any as S.Schema<ExecuteCommandResponse>;
+const ExecuteCommandResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<ExecuteCommandResponse>;
 export interface GetTaskProtectionRequest {
   cluster: string;
   tasks?: string[];
 }
-const GetTaskProtectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.String, tasks: S.optional(StringList) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetTaskProtectionRequest" }) as any as S.Schema<GetTaskProtectionRequest>;
+const GetTaskProtectionRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<GetTaskProtectionRequest>;
 export interface ProtectedTask {
   taskArn?: string;
   protectionEnabled?: boolean;
   expirationDate?: Date;
 }
-const ProtectedTask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskArn: S.optional(S.String),
-    protectionEnabled: S.optional(S.Boolean),
-    expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ProtectedTask" }) as any as S.Schema<ProtectedTask>;
+const ProtectedTask = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<ProtectedTask>;
 export type ProtectedTasks = ProtectedTask[];
-const ProtectedTasks = /*@__PURE__*/ S.Array(ProtectedTask);
+const ProtectedTasks = /*@__PURE__*/ __L.at(__c39, 2);
 export interface GetTaskProtectionResponse {
   protectedTasks?: ProtectedTask[];
   failures?: Failure[];
 }
-const GetTaskProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ protectedTasks: S.optional(ProtectedTasks), failures: S.optional(Failures) }).pipe(ns),
-).annotate({
-  identifier: "GetTaskProtectionResponse",
-}) as any as S.Schema<GetTaskProtectionResponse>;
+const GetTaskProtectionResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<GetTaskProtectionResponse>;
 export interface ListAccountSettingsRequest {
   name?: SettingName;
   value?: string;
@@ -4613,29 +3293,20 @@ export interface ListAccountSettingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(SettingName),
-    value: S.optional(S.String),
-    principalArn: S.optional(S.String),
-    effectiveSettings: S.optional(S.Boolean),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAccountSettingsRequest",
-}) as any as S.Schema<ListAccountSettingsRequest>;
+const ListAccountSettingsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<ListAccountSettingsRequest>;
 export type Settings = Setting[];
-const Settings = /*@__PURE__*/ S.Array(Setting);
+const Settings = /*@__PURE__*/ __L.at(__c39, 5);
 export interface ListAccountSettingsResponse {
   settings?: Setting[];
   nextToken?: string;
 }
-const ListAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ settings: S.optional(Settings), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListAccountSettingsResponse",
-}) as any as S.Schema<ListAccountSettingsResponse>;
+const ListAccountSettingsResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<ListAccountSettingsResponse>;
 export interface ListAttributesRequest {
   cluster?: string;
   targetType: TargetType;
@@ -4644,39 +3315,31 @@ export interface ListAttributesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    targetType: TargetType,
-    attributeName: S.optional(S.String),
-    attributeValue: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListAttributesRequest" }) as any as S.Schema<ListAttributesRequest>;
+const ListAttributesRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<ListAttributesRequest>;
 export interface ListAttributesResponse {
   attributes?: Attribute[];
   nextToken?: string;
 }
-const ListAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributes: S.optional(Attributes), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListAttributesResponse" }) as any as S.Schema<ListAttributesResponse>;
+const ListAttributesResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<ListAttributesResponse>;
 export interface ListClustersRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListClustersRequest" }) as any as S.Schema<ListClustersRequest>;
+const ListClustersRequest = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<ListClustersRequest>;
 export interface ListClustersResponse {
   clusterArns?: string[];
   nextToken?: string;
 }
-const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ clusterArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListClustersResponse" }) as any as S.Schema<ListClustersResponse>;
+const ListClustersResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<ListClustersResponse>;
 export type ContainerInstanceStatus =
   | "ACTIVE"
   | "DRAINING"
@@ -4693,28 +3356,18 @@ export interface ListContainerInstancesRequest {
   maxResults?: number;
   status?: ContainerInstanceStatus;
 }
-const ListContainerInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    filter: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    status: S.optional(ContainerInstanceStatus),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListContainerInstancesRequest",
-}) as any as S.Schema<ListContainerInstancesRequest>;
+const ListContainerInstancesRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<ListContainerInstancesRequest>;
 export interface ListContainerInstancesResponse {
   containerInstanceArns?: string[];
   nextToken?: string;
 }
-const ListContainerInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ containerInstanceArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "ListContainerInstancesResponse",
-}) as any as S.Schema<ListContainerInstancesResponse>;
+const ListContainerInstancesResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<ListContainerInstancesResponse>;
 export type DaemonDeploymentStatusList = DaemonDeploymentStatus[];
 const DaemonDeploymentStatusList =
   DeploymentLifecycleHookStageList as any as S.Schema<DaemonDeploymentStatusList>;
@@ -4722,12 +3375,7 @@ export interface CreatedAt {
   before?: Date;
   after?: Date;
 }
-const CreatedAt = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    after: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "CreatedAt" }) as any as S.Schema<CreatedAt>;
+const CreatedAt = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<CreatedAt>;
 export interface ListDaemonDeploymentsRequest {
   daemonArn: string;
   status?: DaemonDeploymentStatus[];
@@ -4735,17 +3383,10 @@ export interface ListDaemonDeploymentsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListDaemonDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonArn: S.String,
-    status: S.optional(DaemonDeploymentStatusList),
-    createdAt: S.optional(CreatedAt),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListDaemonDeploymentsRequest",
-}) as any as S.Schema<ListDaemonDeploymentsRequest>;
+const ListDaemonDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<ListDaemonDeploymentsRequest>;
 export interface DaemonDeploymentSummary {
   daemonDeploymentArn?: string;
   daemonArn?: string;
@@ -4758,74 +3399,41 @@ export interface DaemonDeploymentSummary {
   stoppedAt?: Date;
   finishedAt?: Date;
 }
-const DaemonDeploymentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonDeploymentArn: S.optional(S.String),
-    daemonArn: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    status: S.optional(DaemonDeploymentStatus),
-    statusReason: S.optional(S.String),
-    targetDaemonRevisionArn: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "DaemonDeploymentSummary" }) as any as S.Schema<DaemonDeploymentSummary>;
+const DaemonDeploymentSummary = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<DaemonDeploymentSummary>;
 export type DaemonDeploymentSummaryList = DaemonDeploymentSummary[];
-const DaemonDeploymentSummaryList = /*@__PURE__*/ S.Array(DaemonDeploymentSummary);
+const DaemonDeploymentSummaryList = /*@__PURE__*/ __L.at(__c41, 0);
 export interface ListDaemonDeploymentsResponse {
   nextToken?: string;
   daemonDeployments?: DaemonDeploymentSummary[];
 }
-const ListDaemonDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    daemonDeployments: S.optional(DaemonDeploymentSummaryList),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListDaemonDeploymentsResponse",
-}) as any as S.Schema<ListDaemonDeploymentsResponse>;
+const ListDaemonDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<ListDaemonDeploymentsResponse>;
 export interface ListDaemonsRequest {
   clusterArn?: string;
   capacityProviderArns?: string[];
   maxResults?: number;
   nextToken?: string;
 }
-const ListDaemonsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterArn: S.optional(S.String),
-    capacityProviderArns: S.optional(StringList),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListDaemonsRequest" }) as any as S.Schema<ListDaemonsRequest>;
+const ListDaemonsRequest = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<ListDaemonsRequest>;
 export interface DaemonSummary {
   daemonArn?: string;
   status?: DaemonStatus;
   createdAt?: Date;
   updatedAt?: Date;
 }
-const DaemonSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonArn: S.optional(S.String),
-    status: S.optional(DaemonStatus),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "DaemonSummary" }) as any as S.Schema<DaemonSummary>;
+const DaemonSummary = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<DaemonSummary>;
 export type DaemonSummariesList = DaemonSummary[];
-const DaemonSummariesList = /*@__PURE__*/ S.Array(DaemonSummary);
+const DaemonSummariesList = /*@__PURE__*/ __L.at(__c41, 4);
 export interface ListDaemonsResponse {
   daemonSummariesList?: DaemonSummary[];
   nextToken?: string;
 }
-const ListDaemonsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonSummariesList: S.optional(DaemonSummariesList),
-    nextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "ListDaemonsResponse" }) as any as S.Schema<ListDaemonsResponse>;
+const ListDaemonsResponse = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<ListDaemonsResponse>;
 export type DaemonTaskDefinitionRevisionFilter = "LAST_REGISTERED" | (string & {});
 const DaemonTaskDefinitionRevisionFilter = S.String;
 
@@ -4848,19 +3456,10 @@ export interface ListDaemonTaskDefinitionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDaemonTaskDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    familyPrefix: S.optional(S.String),
-    family: S.optional(S.String),
-    revision: S.optional(DaemonTaskDefinitionRevisionFilter),
-    status: S.optional(DaemonTaskDefinitionStatusFilter),
-    sort: S.optional(SortOrder),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListDaemonTaskDefinitionsRequest",
-}) as any as S.Schema<ListDaemonTaskDefinitionsRequest>;
+const ListDaemonTaskDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<ListDaemonTaskDefinitionsRequest>;
 export interface DaemonTaskDefinitionSummary {
   arn?: string;
   registeredAt?: Date;
@@ -4868,31 +3467,20 @@ export interface DaemonTaskDefinitionSummary {
   deleteRequestedAt?: Date;
   status?: DaemonTaskDefinitionStatus;
 }
-const DaemonTaskDefinitionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    registeredBy: S.optional(S.String),
-    deleteRequestedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    status: S.optional(DaemonTaskDefinitionStatus),
-  }),
-).annotate({
-  identifier: "DaemonTaskDefinitionSummary",
-}) as any as S.Schema<DaemonTaskDefinitionSummary>;
+const DaemonTaskDefinitionSummary = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<DaemonTaskDefinitionSummary>;
 export type DaemonTaskDefinitionSummaries = DaemonTaskDefinitionSummary[];
-const DaemonTaskDefinitionSummaries = /*@__PURE__*/ S.Array(DaemonTaskDefinitionSummary);
+const DaemonTaskDefinitionSummaries = /*@__PURE__*/ __L.at(__c42, 0);
 export interface ListDaemonTaskDefinitionsResponse {
   daemonTaskDefinitions?: DaemonTaskDefinitionSummary[];
   nextToken?: string;
 }
-const ListDaemonTaskDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonTaskDefinitions: S.optional(DaemonTaskDefinitionSummaries),
-    nextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListDaemonTaskDefinitionsResponse",
-}) as any as S.Schema<ListDaemonTaskDefinitionsResponse>;
+const ListDaemonTaskDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<ListDaemonTaskDefinitionsResponse>;
 export type ServiceDeploymentStatusList = ServiceDeploymentStatus[];
 const ServiceDeploymentStatusList =
   DeploymentLifecycleHookStageList as any as S.Schema<ServiceDeploymentStatusList>;
@@ -4904,18 +3492,10 @@ export interface ListServiceDeploymentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListServiceDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.String,
-    cluster: S.optional(S.String),
-    status: S.optional(ServiceDeploymentStatusList),
-    createdAt: S.optional(CreatedAt),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListServiceDeploymentsRequest",
-}) as any as S.Schema<ListServiceDeploymentsRequest>;
+const ListServiceDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<ListServiceDeploymentsRequest>;
 export interface ServiceDeploymentBrief {
   serviceDeploymentArn?: string;
   serviceArn?: string;
@@ -4927,33 +3507,20 @@ export interface ServiceDeploymentBrief {
   status?: ServiceDeploymentStatus;
   statusReason?: string;
 }
-const ServiceDeploymentBrief = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceDeploymentArn: S.optional(S.String),
-    serviceArn: S.optional(S.String),
-    clusterArn: S.optional(S.String),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    targetServiceRevisionArn: S.optional(S.String),
-    status: S.optional(ServiceDeploymentStatus),
-    statusReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceDeploymentBrief" }) as any as S.Schema<ServiceDeploymentBrief>;
+const ServiceDeploymentBrief = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<ServiceDeploymentBrief>;
 export type ServiceDeploymentsBrief = ServiceDeploymentBrief[];
-const ServiceDeploymentsBrief = /*@__PURE__*/ S.Array(ServiceDeploymentBrief);
+const ServiceDeploymentsBrief = /*@__PURE__*/ __L.at(__c42, 4);
 export interface ListServiceDeploymentsResponse {
   serviceDeployments?: ServiceDeploymentBrief[];
   nextToken?: string;
 }
-const ListServiceDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceDeployments: S.optional(ServiceDeploymentsBrief),
-    nextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListServiceDeploymentsResponse",
-}) as any as S.Schema<ListServiceDeploymentsResponse>;
+const ListServiceDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<ListServiceDeploymentsResponse>;
 export interface ListServicesRequest {
   cluster?: string;
   nextToken?: string;
@@ -4962,64 +3529,46 @@ export interface ListServicesRequest {
   schedulingStrategy?: SchedulingStrategy;
   resourceManagementType?: ResourceManagementType;
 }
-const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    launchType: S.optional(LaunchType),
-    schedulingStrategy: S.optional(SchedulingStrategy),
-    resourceManagementType: S.optional(ResourceManagementType),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListServicesRequest" }) as any as S.Schema<ListServicesRequest>;
+const ListServicesRequest = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<ListServicesRequest>;
 export interface ListServicesResponse {
   serviceArns?: string[];
   nextToken?: string;
 }
-const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListServicesResponse" }) as any as S.Schema<ListServicesResponse>;
+const ListServicesResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<ListServicesResponse>;
 export interface ListServicesByNamespaceRequest {
   namespace: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListServicesByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListServicesByNamespaceRequest",
-}) as any as S.Schema<ListServicesByNamespaceRequest>;
+const ListServicesByNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<ListServicesByNamespaceRequest>;
 export interface ListServicesByNamespaceResponse {
   serviceArns?: string[];
   nextToken?: string;
 }
-const ListServicesByNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListServicesByNamespaceResponse",
-}) as any as S.Schema<ListServicesByNamespaceResponse>;
+const ListServicesByNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<ListServicesByNamespaceResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(Tags) }).pipe(ns),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type TaskDefinitionFamilyStatus = "ACTIVE" | "INACTIVE" | "ALL" | (string & {});
 const TaskDefinitionFamilyStatus = S.String;
 
@@ -5029,25 +3578,18 @@ export interface ListTaskDefinitionFamiliesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListTaskDefinitionFamiliesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    familyPrefix: S.optional(S.String),
-    status: S.optional(TaskDefinitionFamilyStatus),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListTaskDefinitionFamiliesRequest",
-}) as any as S.Schema<ListTaskDefinitionFamiliesRequest>;
+const ListTaskDefinitionFamiliesRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<ListTaskDefinitionFamiliesRequest>;
 export interface ListTaskDefinitionFamiliesResponse {
   families?: string[];
   nextToken?: string;
 }
-const ListTaskDefinitionFamiliesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ families: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListTaskDefinitionFamiliesResponse",
-}) as any as S.Schema<ListTaskDefinitionFamiliesResponse>;
+const ListTaskDefinitionFamiliesResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<ListTaskDefinitionFamiliesResponse>;
 export interface ListTaskDefinitionsRequest {
   familyPrefix?: string;
   status?: TaskDefinitionStatus;
@@ -5055,28 +3597,18 @@ export interface ListTaskDefinitionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListTaskDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    familyPrefix: S.optional(S.String),
-    status: S.optional(TaskDefinitionStatus),
-    sort: S.optional(SortOrder),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListTaskDefinitionsRequest",
-}) as any as S.Schema<ListTaskDefinitionsRequest>;
+const ListTaskDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<ListTaskDefinitionsRequest>;
 export interface ListTaskDefinitionsResponse {
   taskDefinitionArns?: string[];
   nextToken?: string;
 }
-const ListTaskDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskDefinitionArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "ListTaskDefinitionsResponse",
-}) as any as S.Schema<ListTaskDefinitionsResponse>;
+const ListTaskDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<ListTaskDefinitionsResponse>;
 export type DesiredStatus = "RUNNING" | "PENDING" | "STOPPED" | (string & {});
 const DesiredStatus = S.String;
 
@@ -5092,37 +3624,21 @@ export interface ListTasksRequest {
   launchType?: LaunchType;
   daemonName?: string;
 }
-const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    containerInstance: S.optional(S.String),
-    family: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    startedBy: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    desiredStatus: S.optional(DesiredStatus),
-    launchType: S.optional(LaunchType),
-    daemonName: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListTasksRequest" }) as any as S.Schema<ListTasksRequest>;
+const ListTasksRequest = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<ListTasksRequest>;
 export interface ListTasksResponse {
   taskArns?: string[];
   nextToken?: string;
 }
-const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListTasksResponse" }) as any as S.Schema<ListTasksResponse>;
+const ListTasksResponse = /*@__PURE__*/ __L.at(__c44, 1) as any as S.Schema<ListTasksResponse>;
 export interface PutAccountSettingRequest {
   name: SettingName;
   value: string;
   principalArn?: string;
 }
-const PutAccountSettingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SettingName, value: S.String, principalArn: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutAccountSettingRequest" }) as any as S.Schema<PutAccountSettingRequest>;
+const PutAccountSettingRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<PutAccountSettingRequest>;
 export interface PutAccountSettingResponse {
   setting?: Setting;
 }
@@ -5132,13 +3648,10 @@ export interface PutAccountSettingDefaultRequest {
   name: SettingName;
   value: string;
 }
-const PutAccountSettingDefaultRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SettingName, value: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutAccountSettingDefaultRequest",
-}) as any as S.Schema<PutAccountSettingDefaultRequest>;
+const PutAccountSettingDefaultRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<PutAccountSettingDefaultRequest>;
 export interface PutAccountSettingDefaultResponse {
   setting?: Setting;
 }
@@ -5148,11 +3661,10 @@ export interface PutAttributesRequest {
   cluster?: string;
   attributes: Attribute[];
 }
-const PutAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(S.String), attributes: Attributes }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutAttributesRequest" }) as any as S.Schema<PutAttributesRequest>;
+const PutAttributesRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<PutAttributesRequest>;
 export interface PutAttributesResponse {
   attributes?: Attribute[];
 }
@@ -5162,23 +3674,17 @@ export interface PutClusterCapacityProvidersRequest {
   capacityProviders: string[];
   defaultCapacityProviderStrategy: CapacityProviderStrategyItem[];
 }
-const PutClusterCapacityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.String,
-    capacityProviders: StringList,
-    defaultCapacityProviderStrategy: CapacityProviderStrategy,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "PutClusterCapacityProvidersRequest",
-}) as any as S.Schema<PutClusterCapacityProvidersRequest>;
+const PutClusterCapacityProvidersRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<PutClusterCapacityProvidersRequest>;
 export interface PutClusterCapacityProvidersResponse {
   cluster?: Cluster;
 }
-const PutClusterCapacityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({
-  identifier: "PutClusterCapacityProvidersResponse",
-}) as any as S.Schema<PutClusterCapacityProvidersResponse>;
+const PutClusterCapacityProvidersResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<PutClusterCapacityProvidersResponse>;
 export type PlatformDeviceType = "GPU" | "NEURON_DEVICE" | (string & {});
 const PlatformDeviceType = S.String;
 
@@ -5186,11 +3692,9 @@ export interface PlatformDevice {
   id: string;
   type: PlatformDeviceType;
 }
-const PlatformDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, type: PlatformDeviceType }),
-).annotate({ identifier: "PlatformDevice" }) as any as S.Schema<PlatformDevice>;
+const PlatformDevice = /*@__PURE__*/ __L.at(__c44, 7) as any as S.Schema<PlatformDevice>;
 export type PlatformDevices = PlatformDevice[];
-const PlatformDevices = /*@__PURE__*/ S.Array(PlatformDevice);
+const PlatformDevices = /*@__PURE__*/ __L.at(__c45, 0);
 export interface RegisterContainerInstanceRequest {
   cluster?: string;
   instanceIdentityDocument?: string;
@@ -5202,21 +3706,10 @@ export interface RegisterContainerInstanceRequest {
   platformDevices?: PlatformDevice[];
   tags?: Tag[];
 }
-const RegisterContainerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    instanceIdentityDocument: S.optional(S.String),
-    instanceIdentityDocumentSignature: S.optional(S.String),
-    totalResources: S.optional(Resources),
-    versionInfo: S.optional(VersionInfo),
-    containerInstanceArn: S.optional(S.String),
-    attributes: S.optional(Attributes),
-    platformDevices: S.optional(PlatformDevices),
-    tags: S.optional(Tags),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RegisterContainerInstanceRequest",
-}) as any as S.Schema<RegisterContainerInstanceRequest>;
+const RegisterContainerInstanceRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<RegisterContainerInstanceRequest>;
 export interface RegisterContainerInstanceResponse {
   containerInstance?: ContainerInstance;
 }
@@ -5234,22 +3727,10 @@ export interface RegisterDaemonTaskDefinitionRequest {
   pidMode?: DaemonPidMode;
   ipcMode?: DaemonIpcMode;
 }
-const RegisterDaemonTaskDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    family: S.String,
-    taskRoleArn: S.optional(S.String),
-    executionRoleArn: S.optional(S.String),
-    containerDefinitions: DaemonContainerDefinitionList,
-    cpu: S.optional(S.String),
-    memory: S.optional(S.String),
-    volumes: S.optional(DaemonVolumeList),
-    tags: S.optional(Tags),
-    pidMode: S.optional(DaemonPidMode),
-    ipcMode: S.optional(DaemonIpcMode),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RegisterDaemonTaskDefinitionRequest",
-}) as any as S.Schema<RegisterDaemonTaskDefinitionRequest>;
+const RegisterDaemonTaskDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<RegisterDaemonTaskDefinitionRequest>;
 export interface RegisterDaemonTaskDefinitionResponse {
   daemonTaskDefinitionArn?: string;
 }
@@ -5275,30 +3756,10 @@ export interface RegisterTaskDefinitionRequest {
   runtimePlatform?: RuntimePlatform;
   enableFaultInjection?: boolean;
 }
-const RegisterTaskDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    family: S.String,
-    taskRoleArn: S.optional(S.String),
-    executionRoleArn: S.optional(S.String),
-    networkMode: S.optional(NetworkMode),
-    containerDefinitions: ContainerDefinitions,
-    volumes: S.optional(VolumeList),
-    placementConstraints: S.optional(TaskDefinitionPlacementConstraints),
-    requiresCompatibilities: S.optional(CompatibilityList),
-    cpu: S.optional(S.String),
-    memory: S.optional(S.String),
-    tags: S.optional(Tags),
-    pidMode: S.optional(PidMode),
-    ipcMode: S.optional(IpcMode),
-    proxyConfiguration: S.optional(ProxyConfiguration),
-    inferenceAccelerators: S.optional(InferenceAccelerators),
-    ephemeralStorage: S.optional(EphemeralStorage),
-    runtimePlatform: S.optional(RuntimePlatform),
-    enableFaultInjection: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RegisterTaskDefinitionRequest",
-}) as any as S.Schema<RegisterTaskDefinitionRequest>;
+const RegisterTaskDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<RegisterTaskDefinitionRequest>;
 export interface RegisterTaskDefinitionResponse {
   taskDefinition?: TaskDefinition;
   tags?: Tag[];
@@ -5308,11 +3769,10 @@ const RegisterTaskDefinitionResponse =
 export interface TaskManagedEBSVolumeTerminationPolicy {
   deleteOnTermination: boolean;
 }
-const TaskManagedEBSVolumeTerminationPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deleteOnTermination: S.Boolean }),
-).annotate({
-  identifier: "TaskManagedEBSVolumeTerminationPolicy",
-}) as any as S.Schema<TaskManagedEBSVolumeTerminationPolicy>;
+const TaskManagedEBSVolumeTerminationPolicy = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<TaskManagedEBSVolumeTerminationPolicy>;
 export interface TaskManagedEBSVolumeConfiguration {
   encrypted?: boolean;
   kmsKeyId?: string;
@@ -5327,33 +3787,20 @@ export interface TaskManagedEBSVolumeConfiguration {
   terminationPolicy?: TaskManagedEBSVolumeTerminationPolicy;
   filesystemType?: TaskFilesystemType;
 }
-const TaskManagedEBSVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encrypted: S.optional(S.Boolean),
-    kmsKeyId: S.optional(S.String),
-    volumeType: S.optional(S.String),
-    sizeInGiB: S.optional(S.Number),
-    snapshotId: S.optional(S.String),
-    volumeInitializationRate: S.optional(S.Number),
-    iops: S.optional(S.Number),
-    throughput: S.optional(S.Number),
-    tagSpecifications: S.optional(EBSTagSpecifications),
-    roleArn: S.String,
-    terminationPolicy: S.optional(TaskManagedEBSVolumeTerminationPolicy),
-    filesystemType: S.optional(TaskFilesystemType),
-  }),
-).annotate({
-  identifier: "TaskManagedEBSVolumeConfiguration",
-}) as any as S.Schema<TaskManagedEBSVolumeConfiguration>;
+const TaskManagedEBSVolumeConfiguration = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<TaskManagedEBSVolumeConfiguration>;
 export interface TaskVolumeConfiguration {
   name: string;
   managedEBSVolume?: TaskManagedEBSVolumeConfiguration;
 }
-const TaskVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, managedEBSVolume: S.optional(TaskManagedEBSVolumeConfiguration) }),
-).annotate({ identifier: "TaskVolumeConfiguration" }) as any as S.Schema<TaskVolumeConfiguration>;
+const TaskVolumeConfiguration = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<TaskVolumeConfiguration>;
 export type TaskVolumeConfigurations = TaskVolumeConfiguration[];
-const TaskVolumeConfigurations = /*@__PURE__*/ S.Array(TaskVolumeConfiguration);
+const TaskVolumeConfigurations = /*@__PURE__*/ __L.at(__c45, 7);
 export interface RunTaskRequest {
   capacityProviderStrategy?: CapacityProviderStrategyItem[];
   cluster?: string;
@@ -5375,29 +3822,7 @@ export interface RunTaskRequest {
   clientToken?: string;
   volumeConfigurations?: TaskVolumeConfiguration[];
 }
-const RunTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    cluster: S.optional(S.String),
-    count: S.optional(S.Number),
-    enableECSManagedTags: S.optional(S.Boolean),
-    enableExecuteCommand: S.optional(S.Boolean),
-    group: S.optional(S.String),
-    launchType: S.optional(LaunchType),
-    networkConfiguration: S.optional(NetworkConfiguration),
-    overrides: S.optional(TaskOverride),
-    placementConstraints: S.optional(PlacementConstraints),
-    placementStrategy: S.optional(PlacementStrategies),
-    platformVersion: S.optional(S.String),
-    propagateTags: S.optional(PropagateTags),
-    referenceId: S.optional(S.String),
-    startedBy: S.optional(S.String),
-    tags: S.optional(Tags),
-    taskDefinition: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    volumeConfigurations: S.optional(TaskVolumeConfigurations),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "RunTaskRequest" }) as any as S.Schema<RunTaskRequest>;
+const RunTaskRequest = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<RunTaskRequest>;
 export interface RunTaskResponse {
   tasks?: Task[];
   failures?: Failure[];
@@ -5418,23 +3843,7 @@ export interface StartTaskRequest {
   taskDefinition: string;
   volumeConfigurations?: TaskVolumeConfiguration[];
 }
-const StartTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    containerInstances: StringList,
-    enableECSManagedTags: S.optional(S.Boolean),
-    enableExecuteCommand: S.optional(S.Boolean),
-    group: S.optional(S.String),
-    networkConfiguration: S.optional(NetworkConfiguration),
-    overrides: S.optional(TaskOverride),
-    propagateTags: S.optional(PropagateTags),
-    referenceId: S.optional(S.String),
-    startedBy: S.optional(S.String),
-    tags: S.optional(Tags),
-    taskDefinition: S.String,
-    volumeConfigurations: S.optional(TaskVolumeConfigurations),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "StartTaskRequest" }) as any as S.Schema<StartTaskRequest>;
+const StartTaskRequest = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<StartTaskRequest>;
 export interface StartTaskResponse {
   tasks?: Task[];
   failures?: Failure[];
@@ -5447,14 +3856,10 @@ export interface StopServiceDeploymentRequest {
   serviceDeploymentArn: string;
   stopType?: StopServiceDeploymentStopType;
 }
-const StopServiceDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceDeploymentArn: S.String,
-    stopType: S.optional(StopServiceDeploymentStopType),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "StopServiceDeploymentRequest",
-}) as any as S.Schema<StopServiceDeploymentRequest>;
+const StopServiceDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<StopServiceDeploymentRequest>;
 export interface StopServiceDeploymentResponse {
   serviceDeploymentArn?: string;
 }
@@ -5465,45 +3870,36 @@ export interface StopTaskRequest {
   task: string;
   reason?: string;
 }
-const StopTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(S.String), task: S.String, reason: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StopTaskRequest" }) as any as S.Schema<StopTaskRequest>;
+const StopTaskRequest = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<StopTaskRequest>;
 export interface StopTaskResponse {
   task?: Task;
 }
-const StopTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ task: S.optional(Task) }).pipe(ns),
-).annotate({ identifier: "StopTaskResponse" }) as any as S.Schema<StopTaskResponse>;
+const StopTaskResponse = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<StopTaskResponse>;
 export interface AttachmentStateChange {
   attachmentArn: string;
   status: string;
 }
-const AttachmentStateChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attachmentArn: S.String, status: S.String }),
-).annotate({ identifier: "AttachmentStateChange" }) as any as S.Schema<AttachmentStateChange>;
+const AttachmentStateChange = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<AttachmentStateChange>;
 export type AttachmentStateChanges = AttachmentStateChange[];
-const AttachmentStateChanges = /*@__PURE__*/ S.Array(AttachmentStateChange);
+const AttachmentStateChanges = /*@__PURE__*/ __L.at(__c46, 6);
 export interface SubmitAttachmentStateChangesRequest {
   cluster?: string;
   attachments: AttachmentStateChange[];
 }
-const SubmitAttachmentStateChangesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(S.String), attachments: AttachmentStateChanges }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SubmitAttachmentStateChangesRequest",
-}) as any as S.Schema<SubmitAttachmentStateChangesRequest>;
+const SubmitAttachmentStateChangesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<SubmitAttachmentStateChangesRequest>;
 export interface SubmitAttachmentStateChangesResponse {
   acknowledgment?: string;
 }
-const SubmitAttachmentStateChangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ acknowledgment: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "SubmitAttachmentStateChangesResponse",
-}) as any as S.Schema<SubmitAttachmentStateChangesResponse>;
+const SubmitAttachmentStateChangesResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<SubmitAttachmentStateChangesResponse>;
 export interface SubmitContainerStateChangeRequest {
   cluster?: string;
   task?: string;
@@ -5514,20 +3910,10 @@ export interface SubmitContainerStateChangeRequest {
   reason?: string;
   networkBindings?: NetworkBinding[];
 }
-const SubmitContainerStateChangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    task: S.optional(S.String),
-    containerName: S.optional(S.String),
-    runtimeId: S.optional(S.String),
-    status: S.optional(S.String),
-    exitCode: S.optional(S.Number),
-    reason: S.optional(S.String),
-    networkBindings: S.optional(NetworkBindings),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SubmitContainerStateChangeRequest",
-}) as any as S.Schema<SubmitContainerStateChangeRequest>;
+const SubmitContainerStateChangeRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<SubmitContainerStateChangeRequest>;
 export interface SubmitContainerStateChangeResponse {
   acknowledgment?: string;
 }
@@ -5542,35 +3928,24 @@ export interface ContainerStateChange {
   reason?: string;
   status?: string;
 }
-const ContainerStateChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerName: S.optional(S.String),
-    imageDigest: S.optional(S.String),
-    runtimeId: S.optional(S.String),
-    exitCode: S.optional(S.Number),
-    networkBindings: S.optional(NetworkBindings),
-    reason: S.optional(S.String),
-    status: S.optional(S.String),
-  }),
-).annotate({ identifier: "ContainerStateChange" }) as any as S.Schema<ContainerStateChange>;
+const ContainerStateChange = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<ContainerStateChange>;
 export type ContainerStateChanges = ContainerStateChange[];
-const ContainerStateChanges = /*@__PURE__*/ S.Array(ContainerStateChange);
+const ContainerStateChanges = /*@__PURE__*/ __L.at(__c47, 3);
 export interface ManagedAgentStateChange {
   containerName: string;
   managedAgentName: ManagedAgentName;
   status: string;
   reason?: string;
 }
-const ManagedAgentStateChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerName: S.String,
-    managedAgentName: ManagedAgentName,
-    status: S.String,
-    reason: S.optional(S.String),
-  }),
-).annotate({ identifier: "ManagedAgentStateChange" }) as any as S.Schema<ManagedAgentStateChange>;
+const ManagedAgentStateChange = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<ManagedAgentStateChange>;
 export type ManagedAgentStateChanges = ManagedAgentStateChange[];
-const ManagedAgentStateChanges = /*@__PURE__*/ S.Array(ManagedAgentStateChange);
+const ManagedAgentStateChanges = /*@__PURE__*/ __L.at(__c47, 5);
 export interface SubmitTaskStateChangeRequest {
   cluster?: string;
   task?: string;
@@ -5583,22 +3958,10 @@ export interface SubmitTaskStateChangeRequest {
   pullStoppedAt?: Date;
   executionStoppedAt?: Date;
 }
-const SubmitTaskStateChangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    task: S.optional(S.String),
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    containers: S.optional(ContainerStateChanges),
-    attachments: S.optional(AttachmentStateChanges),
-    managedAgents: S.optional(ManagedAgentStateChanges),
-    pullStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    pullStoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    executionStoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SubmitTaskStateChangeRequest",
-}) as any as S.Schema<SubmitTaskStateChangeRequest>;
+const SubmitTaskStateChangeRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<SubmitTaskStateChangeRequest>;
 export interface SubmitTaskStateChangeResponse {
   acknowledgment?: string;
 }
@@ -5608,26 +3971,19 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tags: Tags }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c47, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c48, 0) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
 const TagKeys = StringList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tagKeys: TagKeys }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface AutoScalingGroupProviderUpdate {
@@ -5635,15 +3991,10 @@ export interface AutoScalingGroupProviderUpdate {
   managedTerminationProtection?: ManagedTerminationProtection;
   managedDraining?: ManagedDraining;
 }
-const AutoScalingGroupProviderUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedScaling: S.optional(ManagedScaling),
-    managedTerminationProtection: S.optional(ManagedTerminationProtection),
-    managedDraining: S.optional(ManagedDraining),
-  }),
-).annotate({
-  identifier: "AutoScalingGroupProviderUpdate",
-}) as any as S.Schema<AutoScalingGroupProviderUpdate>;
+const AutoScalingGroupProviderUpdate = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<AutoScalingGroupProviderUpdate>;
 export interface InstanceLaunchTemplateUpdate {
   ec2InstanceProfileArn?: string;
   networkConfiguration?: ManagedInstancesNetworkConfiguration;
@@ -5654,20 +4005,10 @@ export interface InstanceLaunchTemplateUpdate {
   instanceRequirements?: InstanceRequirementsRequest;
   capacityReservations?: CapacityReservationRequest;
 }
-const InstanceLaunchTemplateUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ec2InstanceProfileArn: S.optional(S.String),
-    networkConfiguration: S.optional(ManagedInstancesNetworkConfiguration),
-    storageConfiguration: S.optional(ManagedInstancesStorageConfiguration),
-    instanceMetadataTagsPropagation: S.optional(S.Boolean),
-    localStorageConfiguration: S.optional(ManagedInstancesLocalStorageConfiguration),
-    monitoring: S.optional(ManagedInstancesMonitoringOptions),
-    instanceRequirements: S.optional(InstanceRequirementsRequest),
-    capacityReservations: S.optional(CapacityReservationRequest),
-  }),
-).annotate({
-  identifier: "InstanceLaunchTemplateUpdate",
-}) as any as S.Schema<InstanceLaunchTemplateUpdate>;
+const InstanceLaunchTemplateUpdate = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<InstanceLaunchTemplateUpdate>;
 export interface UpdateManagedInstancesProviderConfiguration {
   infrastructureRoleArn: string;
   instanceLaunchTemplate: InstanceLaunchTemplateUpdate;
@@ -5675,33 +4016,20 @@ export interface UpdateManagedInstancesProviderConfiguration {
   infrastructureOptimization?: InfrastructureOptimization;
   autoRepairConfiguration?: AutoRepairConfiguration;
 }
-const UpdateManagedInstancesProviderConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infrastructureRoleArn: S.String,
-    instanceLaunchTemplate: InstanceLaunchTemplateUpdate,
-    propagateTags: S.optional(PropagateMITags),
-    infrastructureOptimization: S.optional(InfrastructureOptimization),
-    autoRepairConfiguration: S.optional(AutoRepairConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateManagedInstancesProviderConfiguration",
-}) as any as S.Schema<UpdateManagedInstancesProviderConfiguration>;
+const UpdateManagedInstancesProviderConfiguration = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<UpdateManagedInstancesProviderConfiguration>;
 export interface UpdateCapacityProviderRequest {
   name: string;
   cluster?: string;
   autoScalingGroupProvider?: AutoScalingGroupProviderUpdate;
   managedInstancesProvider?: UpdateManagedInstancesProviderConfiguration;
 }
-const UpdateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    cluster: S.optional(S.String),
-    autoScalingGroupProvider: S.optional(AutoScalingGroupProviderUpdate),
-    managedInstancesProvider: S.optional(UpdateManagedInstancesProviderConfiguration),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateCapacityProviderRequest",
-}) as any as S.Schema<UpdateCapacityProviderRequest>;
+const UpdateCapacityProviderRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  5,
+) as any as S.Schema<UpdateCapacityProviderRequest>;
 export interface UpdateCapacityProviderResponse {
   capacityProvider?: CapacityProvider;
 }
@@ -5713,14 +4041,10 @@ export interface UpdateClusterRequest {
   configuration?: ClusterConfiguration;
   serviceConnectDefaults?: ClusterServiceConnectDefaultsRequest;
 }
-const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.String,
-    settings: S.optional(ClusterSettings),
-    configuration: S.optional(ClusterConfiguration),
-    serviceConnectDefaults: S.optional(ClusterServiceConnectDefaultsRequest),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateClusterRequest" }) as any as S.Schema<UpdateClusterRequest>;
+const UpdateClusterRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<UpdateClusterRequest>;
 export interface UpdateClusterResponse {
   cluster?: Cluster;
 }
@@ -5729,13 +4053,10 @@ export interface UpdateClusterSettingsRequest {
   cluster: string;
   settings: ClusterSetting[];
 }
-const UpdateClusterSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.String, settings: ClusterSettings }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateClusterSettingsRequest",
-}) as any as S.Schema<UpdateClusterSettingsRequest>;
+const UpdateClusterSettingsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<UpdateClusterSettingsRequest>;
 export interface UpdateClusterSettingsResponse {
   cluster?: Cluster;
 }
@@ -5745,13 +4066,10 @@ export interface UpdateContainerAgentRequest {
   cluster?: string;
   containerInstance: string;
 }
-const UpdateContainerAgentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.optional(S.String), containerInstance: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateContainerAgentRequest",
-}) as any as S.Schema<UpdateContainerAgentRequest>;
+const UpdateContainerAgentRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<UpdateContainerAgentRequest>;
 export interface UpdateContainerAgentResponse {
   containerInstance?: ContainerInstance;
 }
@@ -5762,15 +4080,10 @@ export interface UpdateContainerInstancesStateRequest {
   containerInstances: string[];
   status: ContainerInstanceStatus;
 }
-const UpdateContainerInstancesStateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    containerInstances: StringList,
-    status: ContainerInstanceStatus,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateContainerInstancesStateRequest",
-}) as any as S.Schema<UpdateContainerInstancesStateRequest>;
+const UpdateContainerInstancesStateRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<UpdateContainerInstancesStateRequest>;
 export interface UpdateContainerInstancesStateResponse {
   containerInstances?: ContainerInstance[];
   failures?: Failure[];
@@ -5787,18 +4100,7 @@ export interface UpdateDaemonRequest {
   enableExecuteCommand?: boolean;
   critical?: boolean;
 }
-const UpdateDaemonRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    daemonArn: S.String,
-    daemonTaskDefinitionArn: S.String,
-    capacityProviderArns: StringList,
-    deploymentConfiguration: S.optional(DaemonDeploymentConfiguration),
-    propagateTags: S.optional(DaemonPropagateTags),
-    enableECSManagedTags: S.optional(S.Boolean),
-    enableExecuteCommand: S.optional(S.Boolean),
-    critical: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateDaemonRequest" }) as any as S.Schema<UpdateDaemonRequest>;
+const UpdateDaemonRequest = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<UpdateDaemonRequest>;
 export interface UpdateDaemonResponse {
   daemonArn?: string;
   status?: DaemonStatus;
@@ -5820,23 +4122,10 @@ export interface UpdateExpressGatewayServiceRequest {
   scalingTarget?: ExpressGatewayScalingTarget;
   taskDefinitionArn?: string;
 }
-const UpdateExpressGatewayServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceArn: S.String,
-    executionRoleArn: S.optional(S.String),
-    healthCheckPath: S.optional(S.String),
-    primaryContainer: S.optional(ExpressGatewayContainer),
-    taskRoleArn: S.optional(S.String),
-    networkConfiguration: S.optional(ExpressGatewayServiceNetworkConfiguration),
-    cpu: S.optional(S.String),
-    memory: S.optional(S.String),
-    cpuArchitecture: S.optional(ExpressCpuArchitecture),
-    scalingTarget: S.optional(ExpressGatewayScalingTarget),
-    taskDefinitionArn: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateExpressGatewayServiceRequest",
-}) as any as S.Schema<UpdateExpressGatewayServiceRequest>;
+const UpdateExpressGatewayServiceRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<UpdateExpressGatewayServiceRequest>;
 export interface UpdatedExpressGatewayService {
   serviceArn?: string;
   cluster?: string;
@@ -5846,27 +4135,17 @@ export interface UpdatedExpressGatewayService {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const UpdatedExpressGatewayService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceArn: S.optional(S.String),
-    cluster: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    status: S.optional(ExpressGatewayServiceStatus),
-    targetConfiguration: S.optional(ExpressGatewayServiceConfiguration),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "UpdatedExpressGatewayService",
-}) as any as S.Schema<UpdatedExpressGatewayService>;
+const UpdatedExpressGatewayService = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<UpdatedExpressGatewayService>;
 export interface UpdateExpressGatewayServiceResponse {
   service?: UpdatedExpressGatewayService;
 }
-const UpdateExpressGatewayServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ service: S.optional(UpdatedExpressGatewayService) }).pipe(ns),
-).annotate({
-  identifier: "UpdateExpressGatewayServiceResponse",
-}) as any as S.Schema<UpdateExpressGatewayServiceResponse>;
+const UpdateExpressGatewayServiceResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<UpdateExpressGatewayServiceResponse>;
 export interface UpdateServiceRequest {
   cluster?: string;
   service: string;
@@ -5892,33 +4171,10 @@ export interface UpdateServiceRequest {
   vpcLatticeConfigurations?: VpcLatticeConfiguration[];
   monitoring?: MonitoringConfiguration;
 }
-const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    service: S.String,
-    desiredCount: S.optional(S.Number),
-    taskDefinition: S.optional(S.String),
-    capacityProviderStrategy: S.optional(CapacityProviderStrategy),
-    deploymentConfiguration: S.optional(DeploymentConfiguration),
-    availabilityZoneRebalancing: S.optional(AvailabilityZoneRebalancing),
-    networkConfiguration: S.optional(NetworkConfiguration),
-    placementConstraints: S.optional(PlacementConstraints),
-    placementStrategy: S.optional(PlacementStrategies),
-    platformVersion: S.optional(S.String),
-    forceNewDeployment: S.optional(S.Boolean),
-    healthCheckGracePeriodSeconds: S.optional(S.Number),
-    deploymentController: S.optional(DeploymentController),
-    enableExecuteCommand: S.optional(S.Boolean),
-    enableECSManagedTags: S.optional(S.Boolean),
-    loadBalancers: S.optional(LoadBalancers),
-    propagateTags: S.optional(PropagateTags),
-    serviceRegistries: S.optional(ServiceRegistries),
-    serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
-    volumeConfigurations: S.optional(ServiceVolumeConfigurations),
-    vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
-    monitoring: S.optional(MonitoringConfiguration),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateServiceRequest" }) as any as S.Schema<UpdateServiceRequest>;
+const UpdateServiceRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<UpdateServiceRequest>;
 export interface UpdateServiceResponse {
   service?: Service;
 }
@@ -5928,37 +4184,27 @@ export interface UpdateServicePrimaryTaskSetRequest {
   service: string;
   primaryTaskSet: string;
 }
-const UpdateServicePrimaryTaskSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.String, service: S.String, primaryTaskSet: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateServicePrimaryTaskSetRequest",
-}) as any as S.Schema<UpdateServicePrimaryTaskSetRequest>;
+const UpdateServicePrimaryTaskSetRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<UpdateServicePrimaryTaskSetRequest>;
 export interface UpdateServicePrimaryTaskSetResponse {
   taskSet?: TaskSet;
 }
-const UpdateServicePrimaryTaskSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskSet: S.optional(TaskSet) }).pipe(ns),
-).annotate({
-  identifier: "UpdateServicePrimaryTaskSetResponse",
-}) as any as S.Schema<UpdateServicePrimaryTaskSetResponse>;
+const UpdateServicePrimaryTaskSetResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<UpdateServicePrimaryTaskSetResponse>;
 export interface UpdateTaskProtectionRequest {
   cluster: string;
   tasks: string[];
   protectionEnabled: boolean;
   expiresInMinutes?: number;
 }
-const UpdateTaskProtectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.String,
-    tasks: StringList,
-    protectionEnabled: S.Boolean,
-    expiresInMinutes: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateTaskProtectionRequest",
-}) as any as S.Schema<UpdateTaskProtectionRequest>;
+const UpdateTaskProtectionRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<UpdateTaskProtectionRequest>;
 export interface UpdateTaskProtectionResponse {
   protectedTasks?: ProtectedTask[];
   failures?: Failure[];
@@ -5971,11 +4217,10 @@ export interface UpdateTaskSetRequest {
   taskSet: string;
   scale: Scale;
 }
-const UpdateTaskSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: S.String, service: S.String, taskSet: S.String, scale: Scale }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateTaskSetRequest" }) as any as S.Schema<UpdateTaskSetRequest>;
+const UpdateTaskSetRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<UpdateTaskSetRequest>;
 export interface UpdateTaskSetResponse {
   taskSet?: TaskSet;
 }
@@ -8817,3 +7062,3406 @@ export const updateTaskSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTaskSet",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceDeploymentArn: S.String,
+          hookId: S.String,
+          action: S.optional(DeploymentLifecycleHookAction),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ContinueServiceDeploymentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ serviceDeploymentArn: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ContinueServiceDeploymentResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(ManagedScalingStatus),
+          targetCapacity: S.optional(S.Number),
+          minimumScalingStepSize: S.optional(S.Number),
+          maximumScalingStepSize: S.optional(S.Number),
+          instanceWarmupPeriod: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ManagedScaling" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          autoScalingGroupArn: S.String,
+          managedScaling: S.optional(ManagedScaling),
+          managedTerminationProtection: S.optional(ManagedTerminationProtection),
+          managedDraining: S.optional(ManagedDraining),
+        }),
+      ).annotate({ identifier: "AutoScalingGroupProvider" });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ subnets: S.optional(StringList), securityGroups: S.optional(StringList) }),
+      ).annotate({
+        identifier: "ManagedInstancesNetworkConfiguration",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ storageSizeGiB: S.optional(S.Number) })).annotate({
+        identifier: "ManagedInstancesStorageConfiguration",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ useLocalStorage: S.optional(S.Boolean) })).annotate({
+        identifier: "ManagedInstancesLocalStorageConfiguration",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ min: S.Number, max: S.optional(S.Number) })).annotate({
+        identifier: "VCpuCountRangeRequest",
+      });
+    case 1:
+      return S.Array(/*@__PURE__*/ CpuManufacturer.pipe(/*@__PURE__*/ T.XmlName("item")));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ min: S.optional(S.Number), max: S.optional(S.Number) }),
+      ).annotate({ identifier: "MemoryGiBPerVCpuRequest" });
+    case 3:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ min: S.optional(S.Number), max: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "NetworkInterfaceCountRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          vCpuCount: VCpuCountRangeRequest,
+          memoryMiB: MemoryMiBRequest,
+          cpuManufacturers: S.optional(CpuManufacturerSet).pipe(T.XmlName("CpuManufacturer")),
+          memoryGiBPerVCpu: S.optional(MemoryGiBPerVCpuRequest),
+          excludedInstanceTypes: S.optional(ExcludedInstanceTypeSet).pipe(
+            T.XmlName("ExcludedInstanceType"),
+          ),
+          instanceGenerations: S.optional(InstanceGenerationSet).pipe(
+            T.XmlName("InstanceGeneration"),
+          ),
+          spotMaxPricePercentageOverLowestPrice: S.optional(S.Number),
+          onDemandMaxPricePercentageOverLowestPrice: S.optional(S.Number),
+          bareMetal: S.optional(BareMetal),
+          burstablePerformance: S.optional(BurstablePerformance),
+          requireHibernateSupport: S.optional(S.Boolean),
+          networkInterfaceCount: S.optional(NetworkInterfaceCountRequest),
+          localStorage: S.optional(LocalStorage),
+          localStorageTypes: S.optional(LocalStorageTypeSet).pipe(T.XmlName("LocalStorageType")),
+          totalLocalStorageGB: S.optional(TotalLocalStorageGBRequest),
+          baselineEbsBandwidthMbps: S.optional(BaselineEbsBandwidthMbpsRequest),
+          acceleratorTypes: S.optional(AcceleratorTypeSet).pipe(T.XmlName("AcceleratorType")),
+          acceleratorCount: S.optional(AcceleratorCountRequest),
+          acceleratorManufacturers: S.optional(AcceleratorManufacturerSet).pipe(
+            T.XmlName("AcceleratorManufacturer"),
+          ),
+          acceleratorNames: S.optional(AcceleratorNameSet).pipe(T.XmlName("AcceleratorName")),
+          acceleratorTotalMemoryMiB: S.optional(AcceleratorTotalMemoryMiBRequest),
+          networkBandwidthGbps: S.optional(NetworkBandwidthGbpsRequest),
+          allowedInstanceTypes: S.optional(AllowedInstanceTypeSet).pipe(
+            T.XmlName("AllowedInstanceType"),
+          ),
+          maxSpotPriceAsPercentageOfOptimalOnDemandPrice: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "InstanceRequirementsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          reservationGroupArn: S.optional(S.String),
+          reservationPreference: S.optional(CapacityReservationPreference),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ec2InstanceProfileArn: S.String,
+          networkConfiguration: ManagedInstancesNetworkConfiguration,
+          storageConfiguration: S.optional(ManagedInstancesStorageConfiguration),
+          localStorageConfiguration: S.optional(ManagedInstancesLocalStorageConfiguration),
+          monitoring: S.optional(ManagedInstancesMonitoringOptions),
+          capacityOptionType: S.optional(CapacityOptionType),
+          instanceMetadataTagsPropagation: S.optional(S.Boolean),
+          instanceRequirements: S.optional(InstanceRequirementsRequest),
+          fipsEnabled: S.optional(S.Boolean),
+          capacityReservations: S.optional(CapacityReservationRequest),
+        }),
+      ).annotate({ identifier: "InstanceLaunchTemplate" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ scaleInAfter: S.optional(S.Number) })).annotate({
+        identifier: "InfrastructureOptimization",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ actionsStatus: S.optional(AutoRepairActionsStatus) }),
+      ).annotate({ identifier: "AutoRepairConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          infrastructureRoleArn: S.String,
+          instanceLaunchTemplate: InstanceLaunchTemplate,
+          propagateTags: S.optional(PropagateMITags),
+          infrastructureOptimization: S.optional(InfrastructureOptimization),
+          autoRepairConfiguration: S.optional(AutoRepairConfiguration),
+        }),
+      ).annotate({
+        identifier: "CreateManagedInstancesProviderConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 4:
+      return S.Array(Tag);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          cluster: S.optional(S.String),
+          autoScalingGroupProvider: S.optional(AutoScalingGroupProvider),
+          managedInstancesProvider: S.optional(CreateManagedInstancesProviderConfiguration),
+          tags: S.optional(Tags),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateCapacityProviderRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          infrastructureRoleArn: S.optional(S.String),
+          instanceLaunchTemplate: S.optional(InstanceLaunchTemplate),
+          propagateTags: S.optional(PropagateMITags),
+          infrastructureOptimization: S.optional(InfrastructureOptimization),
+          autoRepairConfiguration: S.optional(AutoRepairConfiguration),
+        }),
+      ).annotate({ identifier: "ManagedInstancesProvider" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          capacityProviderArn: S.optional(S.String),
+          name: S.optional(S.String),
+          cluster: S.optional(S.String),
+          status: S.optional(CapacityProviderStatus),
+          autoScalingGroupProvider: S.optional(AutoScalingGroupProvider),
+          managedInstancesProvider: S.optional(ManagedInstancesProvider),
+          updateStatus: S.optional(CapacityProviderUpdateStatus),
+          updateStatusReason: S.optional(S.String),
+          tags: S.optional(Tags),
+          type: S.optional(CapacityProviderType),
+        }),
+      ).annotate({ identifier: "CapacityProvider" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ capacityProvider: S.optional(CapacityProvider) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateCapacityProviderResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(ClusterSettingName), value: S.optional(S.String) }),
+      ).annotate({ identifier: "ClusterSetting" });
+    case 2:
+      return S.Array(ClusterSetting);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cloudWatchLogGroupName: S.optional(S.String),
+          cloudWatchEncryptionEnabled: S.optional(S.Boolean),
+          s3BucketName: S.optional(S.String),
+          s3EncryptionEnabled: S.optional(S.Boolean),
+          s3KeyPrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExecuteCommandLogConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKeyId: S.optional(S.String),
+          logging: S.optional(ExecuteCommandLogging),
+          logConfiguration: S.optional(ExecuteCommandLogConfiguration),
+        }),
+      ).annotate({
+        identifier: "ExecuteCommandConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKeyId: S.optional(S.String),
+          fargateEphemeralStorageKmsKeyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedStorageConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          executeCommandConfiguration: S.optional(ExecuteCommandConfiguration),
+          managedStorageConfiguration: S.optional(ManagedStorageConfiguration),
+        }),
+      ).annotate({ identifier: "ClusterConfiguration" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          capacityProvider: S.String,
+          weight: S.optional(S.Number),
+          base: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CapacityProviderStrategyItem",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CapacityProviderStrategyItem);
+    case 1:
+      return S.suspend(() => S.Struct({ namespace: S.String })).annotate({
+        identifier: "ClusterServiceConnectDefaultsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clusterName: S.optional(S.String),
+          tags: S.optional(Tags),
+          settings: S.optional(ClusterSettings),
+          configuration: S.optional(ClusterConfiguration),
+          capacityProviders: S.optional(StringList),
+          defaultCapacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          serviceConnectDefaults: S.optional(ClusterServiceConnectDefaultsRequest),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateClusterRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "KeyValuePair" });
+    case 4:
+      return S.Array(KeyValuePair);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          status: S.optional(S.String),
+          details: S.optional(AttachmentDetails),
+        }),
+      ).annotate({ identifier: "Attachment" });
+    case 6:
+      return S.Array(Attachment);
+    case 7:
+      return S.suspend(() => S.Struct({ namespace: S.optional(S.String) })).annotate({
+        identifier: "ClusterServiceConnectDefaults",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterArn: S.optional(S.String),
+          clusterName: S.optional(S.String),
+          configuration: S.optional(ClusterConfiguration),
+          status: S.optional(S.String),
+          registeredContainerInstancesCount: S.optional(S.Number),
+          runningTasksCount: S.optional(S.Number),
+          pendingTasksCount: S.optional(S.Number),
+          activeServicesCount: S.optional(S.Number),
+          statistics: S.optional(Statistics),
+          tags: S.optional(Tags),
+          settings: S.optional(ClusterSettings),
+          capacityProviders: S.optional(StringList),
+          defaultCapacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          attachments: S.optional(Attachments),
+          attachmentsStatus: S.optional(S.String),
+          serviceConnectDefaults: S.optional(ClusterServiceConnectDefaults),
+        }),
+      ).annotate({ identifier: "Cluster" });
+    case 1:
+      return S.suspend(() => S.Struct({ cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+        identifier: "CreateClusterResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ alarmNames: S.optional(StringList), enable: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "DaemonAlarmConfiguration" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          drainPercent: S.optional(S.Number),
+          alarms: S.optional(DaemonAlarmConfiguration),
+          bakeTimeInMinutes: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DaemonDeploymentConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          daemonName: S.String,
+          clusterArn: S.optional(S.String),
+          daemonTaskDefinitionArn: S.String,
+          capacityProviderArns: StringList,
+          deploymentConfiguration: S.optional(DaemonDeploymentConfiguration),
+          tags: S.optional(Tags),
+          propagateTags: S.optional(DaemonPropagateTags),
+          enableECSManagedTags: S.optional(S.Boolean),
+          enableExecuteCommand: S.optional(S.Boolean),
+          clientToken: S.optional(S.String),
+          critical: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDaemonRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          daemonArn: S.optional(S.String),
+          status: S.optional(DaemonStatus),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deploymentArn: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateDaemonResponse" });
+    case 6:
+      return S.suspend(() => S.Struct({ logGroup: S.String, logStreamPrefix: S.String })).annotate({
+        identifier: "ExpressGatewayServiceAwsLogsConfiguration",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ credentialsParameter: S.optional(S.String) })).annotate({
+        identifier: "ExpressGatewayRepositoryCredentials",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, valueFrom: S.String })).annotate({
+        identifier: "Secret",
+      });
+    case 1:
+      return S.Array(Secret);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.String,
+          containerPort: S.optional(S.Number),
+          awsLogsConfiguration: S.optional(ExpressGatewayServiceAwsLogsConfiguration),
+          repositoryCredentials: S.optional(ExpressGatewayRepositoryCredentials),
+          command: S.optional(StringList),
+          environment: S.optional(EnvironmentVariables),
+          secrets: S.optional(SecretList),
+        }),
+      ).annotate({ identifier: "ExpressGatewayContainer" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ securityGroups: S.optional(StringList), subnets: S.optional(StringList) }),
+      ).annotate({
+        identifier: "ExpressGatewayServiceNetworkConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          minTaskCount: S.optional(S.Number),
+          maxTaskCount: S.optional(S.Number),
+          autoScalingMetric: S.optional(ExpressGatewayServiceScalingMetric),
+          autoScalingTargetValue: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ExpressGatewayScalingTarget",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          executionRoleArn: S.optional(S.String),
+          infrastructureRoleArn: S.String,
+          serviceName: S.optional(S.String),
+          cluster: S.optional(S.String),
+          healthCheckPath: S.optional(S.String),
+          primaryContainer: S.optional(ExpressGatewayContainer),
+          taskRoleArn: S.optional(S.String),
+          networkConfiguration: S.optional(ExpressGatewayServiceNetworkConfiguration),
+          cpu: S.optional(S.String),
+          memory: S.optional(S.String),
+          cpuArchitecture: S.optional(ExpressCpuArchitecture),
+          scalingTarget: S.optional(ExpressGatewayScalingTarget),
+          tags: S.optional(Tags),
+          taskDefinitionArn: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateExpressGatewayServiceRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          statusCode: S.optional(ExpressGatewayServiceStatusCode),
+          statusReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExpressGatewayServiceStatus",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ accessType: AccessType, endpoint: S.String })).annotate({
+        identifier: "IngressPathSummary",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(IngressPathSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceRevisionArn: S.optional(S.String),
+          executionRoleArn: S.optional(S.String),
+          taskRoleArn: S.optional(S.String),
+          taskDefinitionArn: S.optional(S.String),
+          cpu: S.optional(S.String),
+          memory: S.optional(S.String),
+          cpuArchitecture: S.optional(ExpressCpuArchitecture),
+          networkConfiguration: S.optional(ExpressGatewayServiceNetworkConfiguration),
+          healthCheckPath: S.optional(S.String),
+          primaryContainer: S.optional(ExpressGatewayContainer),
+          scalingTarget: S.optional(ExpressGatewayScalingTarget),
+          ingressPaths: S.optional(IngressPathSummaries),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "ExpressGatewayServiceConfiguration",
+      });
+    case 2:
+      return S.Array(ExpressGatewayServiceConfiguration);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          serviceName: S.optional(S.String),
+          serviceArn: S.optional(S.String),
+          infrastructureRoleArn: S.optional(S.String),
+          status: S.optional(ExpressGatewayServiceStatus),
+          currentDeployment: S.optional(S.String),
+          activeConfigurations: S.optional(ExpressGatewayServiceConfigurations),
+          tags: S.optional(Tags),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ECSExpressGatewayService" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ service: S.optional(ECSExpressGatewayService) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateExpressGatewayServiceResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          alternateTargetGroupArn: S.optional(S.String),
+          productionListenerRule: S.optional(S.String),
+          testListenerRule: S.optional(S.String),
+          roleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdvancedConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          targetGroupArn: S.optional(S.String),
+          loadBalancerName: S.optional(S.String),
+          containerName: S.optional(S.String),
+          containerPort: S.optional(S.Number),
+          advancedConfiguration: S.optional(AdvancedConfiguration),
+        }),
+      ).annotate({ identifier: "LoadBalancer" });
+    case 7:
+      return S.Array(LoadBalancer);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          registryArn: S.optional(S.String),
+          port: S.optional(S.Number),
+          containerName: S.optional(S.String),
+          containerPort: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ServiceRegistry" });
+    case 1:
+      return S.Array(ServiceRegistry);
+    case 2:
+      return S.suspend(() => S.Struct({ type: ThresholdType, value: S.Number })).annotate({
+        identifier: "ThresholdConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enable: S.Boolean,
+          rollback: S.Boolean,
+          resetOnHealthyTask: S.optional(S.Boolean),
+          thresholdConfiguration: S.optional(ThresholdConfiguration),
+        }),
+      ).annotate({ identifier: "DeploymentCircuitBreaker" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ alarmNames: StringList, rollback: S.Boolean, enable: S.Boolean }),
+      ).annotate({ identifier: "DeploymentAlarms" });
+    case 5:
+      return S.Array(DeploymentLifecycleHookStage);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutInMinutes: S.optional(S.Number),
+          action: S.optional(DeploymentLifecycleHookAction),
+        }),
+      ).annotate({
+        identifier: "DeploymentLifecycleHookTimeoutConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          targetType: S.optional(DeploymentLifecycleHookTargetType),
+          hookTargetArn: S.optional(S.String),
+          roleArn: S.optional(S.String),
+          lifecycleStages: S.optional(DeploymentLifecycleHookStageList),
+          hookDetails: S.optional(S.Any),
+          timeoutConfiguration: S.optional(DeploymentLifecycleHookTimeoutConfiguration),
+        }),
+      ).annotate({ identifier: "DeploymentLifecycleHook" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DeploymentLifecycleHook);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stepPercent: S.optional(S.Number),
+          stepBakeTimeInMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LinearConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          canaryPercent: S.optional(S.Number),
+          canaryBakeTimeInMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CanaryConfiguration" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enable: S.Boolean,
+          healthyPercent: S.optional(S.Number),
+          sourceServiceRevisionCleanup: S.optional(ServiceRevisionCleanup),
+        }),
+      ).annotate({
+        identifier: "DeploymentEarlySuccessCriteria",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentCircuitBreaker: S.optional(DeploymentCircuitBreaker),
+          maximumPercent: S.optional(S.Number),
+          minimumHealthyPercent: S.optional(S.Number),
+          alarms: S.optional(DeploymentAlarms),
+          strategy: S.optional(DeploymentStrategy),
+          bakeTimeInMinutes: S.optional(S.Number),
+          lifecycleHooks: S.optional(DeploymentLifecycleHookList),
+          linearConfiguration: S.optional(LinearConfiguration),
+          canaryConfiguration: S.optional(CanaryConfiguration),
+          earlySuccessCriteria: S.optional(DeploymentEarlySuccessCriteria),
+        }),
+      ).annotate({ identifier: "DeploymentConfiguration" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(PlacementConstraintType), expression: S.optional(S.String) }),
+      ).annotate({ identifier: "PlacementConstraint" });
+    case 6:
+      return S.Array(PlacementConstraint);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(PlacementStrategyType), field: S.optional(S.String) }),
+      ).annotate({ identifier: "PlacementStrategy" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PlacementStrategy);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subnets: StringList,
+          securityGroups: S.optional(StringList),
+          assignPublicIp: S.optional(AssignPublicIp),
+        }),
+      ).annotate({ identifier: "AwsVpcConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ awsvpcConfiguration: S.optional(AwsVpcConfiguration) }),
+      ).annotate({ identifier: "NetworkConfiguration" });
+    case 3:
+      return S.suspend(() => S.Struct({ type: DeploymentControllerType })).annotate({
+        identifier: "DeploymentController",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ exact: S.String })).annotate({
+        identifier: "ServiceConnectTestTrafficHeaderMatchRules",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, value: S.optional(ServiceConnectTestTrafficHeaderMatchRules) }),
+      ).annotate({
+        identifier: "ServiceConnectTestTrafficHeaderRules",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ header: ServiceConnectTestTrafficHeaderRules })).annotate({
+        identifier: "ServiceConnectTestTrafficRules",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.Number,
+          dnsName: S.optional(S.String),
+          testTrafficRules: S.optional(ServiceConnectTestTrafficRules),
+        }),
+      ).annotate({
+        identifier: "ServiceConnectClientAlias",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ServiceConnectClientAlias);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          idleTimeoutSeconds: S.optional(S.Number),
+          perRequestTimeoutSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeoutConfiguration" });
+    case 2:
+      return S.suspend(() => S.Struct({ awsPcaAuthorityArn: S.optional(S.String) })).annotate({
+        identifier: "ServiceConnectTlsCertificateAuthority",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          issuerCertificateAuthority: ServiceConnectTlsCertificateAuthority,
+          kmsKey: S.optional(S.String),
+          roleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServiceConnectTlsConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          portName: S.String,
+          discoveryName: S.optional(S.String),
+          clientAliases: S.optional(ServiceConnectClientAliasList),
+          ingressPortOverride: S.optional(S.Number),
+          timeout: S.optional(TimeoutConfiguration),
+          tls: S.optional(ServiceConnectTlsConfiguration),
+        }),
+      ).annotate({ identifier: "ServiceConnectService" });
+    case 5:
+      return S.Array(ServiceConnectService);
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          logDriver: LogDriver,
+          options: S.optional(LogConfigurationOptionsMap),
+          secretOptions: S.optional(SecretList),
+        }),
+      ).annotate({ identifier: "LogConfiguration" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          format: ServiceConnectAccessLoggingFormat,
+          includeQueryParameters: S.optional(ServiceConnectIncludeQueryParameters),
+        }),
+      ).annotate({
+        identifier: "ServiceConnectAccessLogConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          namespace: S.optional(S.String),
+          services: S.optional(ServiceConnectServiceList),
+          logConfiguration: S.optional(LogConfiguration),
+          accessLogConfiguration: S.optional(ServiceConnectAccessLogConfiguration),
+        }),
+      ).annotate({
+        identifier: "ServiceConnectConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: EBSResourceType,
+          tags: S.optional(Tags),
+          propagateTags: S.optional(PropagateTags),
+        }),
+      ).annotate({ identifier: "EBSTagSpecification" });
+    case 3:
+      return S.Array(EBSTagSpecification);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          encrypted: S.optional(S.Boolean),
+          kmsKeyId: S.optional(S.String),
+          volumeType: S.optional(S.String),
+          sizeInGiB: S.optional(S.Number),
+          snapshotId: S.optional(S.String),
+          volumeInitializationRate: S.optional(S.Number),
+          iops: S.optional(S.Number),
+          throughput: S.optional(S.Number),
+          tagSpecifications: S.optional(EBSTagSpecifications),
+          roleArn: S.String,
+          filesystemType: S.optional(TaskFilesystemType),
+        }),
+      ).annotate({
+        identifier: "ServiceManagedEBSVolumeConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          managedEBSVolume: S.optional(ServiceManagedEBSVolumeConfiguration),
+        }),
+      ).annotate({
+        identifier: "ServiceVolumeConfiguration",
+      });
+    case 6:
+      return S.Array(ServiceVolumeConfiguration);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          alternateTargetGroupArn: S.optional(S.String),
+          productionListenerRule: S.optional(S.String),
+          testListenerRule: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VpcLatticeAdvancedConfiguration",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleArn: S.String,
+          targetGroupArn: S.String,
+          portName: S.String,
+          advancedConfiguration: S.optional(VpcLatticeAdvancedConfiguration),
+        }),
+      ).annotate({ identifier: "VpcLatticeConfiguration" });
+    case 1:
+      return S.Array(VpcLatticeConfiguration);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ metricNames: MetricNamesList, resolutionSeconds: S.Number }),
+      ).annotate({ identifier: "MetricConfiguration" });
+    case 3:
+      return S.Array(MetricConfiguration);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ metricConfigurations: S.optional(MetricConfigurationList) }),
+      ).annotate({ identifier: "MonitoringConfiguration" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          serviceName: S.String,
+          taskDefinition: S.optional(S.String),
+          availabilityZoneRebalancing: S.optional(AvailabilityZoneRebalancing),
+          loadBalancers: S.optional(LoadBalancers),
+          serviceRegistries: S.optional(ServiceRegistries),
+          desiredCount: S.optional(S.Number),
+          clientToken: S.optional(S.String),
+          launchType: S.optional(LaunchType),
+          capacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          platformVersion: S.optional(S.String),
+          role: S.optional(S.String),
+          deploymentConfiguration: S.optional(DeploymentConfiguration),
+          placementConstraints: S.optional(PlacementConstraints),
+          placementStrategy: S.optional(PlacementStrategies),
+          networkConfiguration: S.optional(NetworkConfiguration),
+          healthCheckGracePeriodSeconds: S.optional(S.Number),
+          schedulingStrategy: S.optional(SchedulingStrategy),
+          deploymentController: S.optional(DeploymentController),
+          tags: S.optional(Tags),
+          enableECSManagedTags: S.optional(S.Boolean),
+          propagateTags: S.optional(PropagateTags),
+          enableExecuteCommand: S.optional(S.Boolean),
+          serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
+          volumeConfigurations: S.optional(ServiceVolumeConfigurations),
+          vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
+          monitoring: S.optional(MonitoringConfiguration),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateServiceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ value: S.optional(S.Number), unit: S.optional(ScaleUnit) }),
+      ).annotate({ identifier: "Scale" });
+    case 7:
+      return S.suspend(() => S.Struct({ kmsKeyId: S.optional(S.String) })).annotate({
+        identifier: "DeploymentEphemeralStorage",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          taskSetArn: S.optional(S.String),
+          serviceArn: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          startedBy: S.optional(S.String),
+          externalId: S.optional(S.String),
+          status: S.optional(S.String),
+          taskDefinition: S.optional(S.String),
+          computedDesiredCount: S.optional(S.Number),
+          pendingCount: S.optional(S.Number),
+          runningCount: S.optional(S.Number),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          launchType: S.optional(LaunchType),
+          capacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          platformVersion: S.optional(S.String),
+          platformFamily: S.optional(S.String),
+          networkConfiguration: S.optional(NetworkConfiguration),
+          loadBalancers: S.optional(LoadBalancers),
+          serviceRegistries: S.optional(ServiceRegistries),
+          scale: S.optional(Scale),
+          stabilityStatus: S.optional(StabilityStatus),
+          stabilityStatusAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(Tags),
+          fargateEphemeralStorage: S.optional(DeploymentEphemeralStorage),
+        }),
+      ).annotate({ identifier: "TaskSet" });
+    case 1:
+      return S.Array(TaskSet);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ discoveryName: S.optional(S.String), discoveryArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ServiceConnectServiceResource",
+      });
+    case 3:
+      return S.Array(ServiceConnectServiceResource);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          status: S.optional(S.String),
+          taskDefinition: S.optional(S.String),
+          desiredCount: S.optional(S.Number),
+          pendingCount: S.optional(S.Number),
+          runningCount: S.optional(S.Number),
+          failedTasks: S.optional(S.Number),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          capacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          launchType: S.optional(LaunchType),
+          platformVersion: S.optional(S.String),
+          platformFamily: S.optional(S.String),
+          networkConfiguration: S.optional(NetworkConfiguration),
+          rolloutState: S.optional(DeploymentRolloutState),
+          rolloutStateReason: S.optional(S.String),
+          serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
+          serviceConnectResources: S.optional(ServiceConnectServiceResourceList),
+          volumeConfigurations: S.optional(ServiceVolumeConfigurations),
+          fargateEphemeralStorage: S.optional(DeploymentEphemeralStorage),
+          vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
+        }),
+      ).annotate({ identifier: "Deployment" });
+    case 5:
+      return S.Array(Deployment);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceEvent" });
+    case 7:
+      return S.Array(ServiceEvent);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          requestedTaskCount: S.optional(S.Number),
+          runningTaskCount: S.optional(S.Number),
+          pendingTaskCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ServiceCurrentRevisionSummary",
+      });
+    case 1:
+      return S.Array(ServiceCurrentRevisionSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          serviceArn: S.optional(S.String),
+          serviceName: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          loadBalancers: S.optional(LoadBalancers),
+          serviceRegistries: S.optional(ServiceRegistries),
+          status: S.optional(S.String),
+          desiredCount: S.optional(S.Number),
+          runningCount: S.optional(S.Number),
+          pendingCount: S.optional(S.Number),
+          launchType: S.optional(LaunchType),
+          capacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          platformVersion: S.optional(S.String),
+          platformFamily: S.optional(S.String),
+          taskDefinition: S.optional(S.String),
+          deploymentConfiguration: S.optional(DeploymentConfiguration),
+          taskSets: S.optional(TaskSets),
+          deployments: S.optional(Deployments),
+          roleArn: S.optional(S.String),
+          events: S.optional(ServiceEvents),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          currentServiceDeployment: S.optional(S.String),
+          currentServiceRevisions: S.optional(ServiceCurrentRevisionSummaryList),
+          placementConstraints: S.optional(PlacementConstraints),
+          placementStrategy: S.optional(PlacementStrategies),
+          networkConfiguration: S.optional(NetworkConfiguration),
+          healthCheckGracePeriodSeconds: S.optional(S.Number),
+          schedulingStrategy: S.optional(SchedulingStrategy),
+          deploymentController: S.optional(DeploymentController),
+          tags: S.optional(Tags),
+          createdBy: S.optional(S.String),
+          enableECSManagedTags: S.optional(S.Boolean),
+          propagateTags: S.optional(PropagateTags),
+          enableExecuteCommand: S.optional(S.Boolean),
+          availabilityZoneRebalancing: S.optional(AvailabilityZoneRebalancing),
+          resourceManagementType: S.optional(ResourceManagementType),
+        }),
+      ).annotate({ identifier: "Service" });
+    case 3:
+      return S.suspend(() => S.Struct({ service: S.optional(Service) }).pipe(ns)).annotate({
+        identifier: "CreateServiceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String,
+          cluster: S.String,
+          externalId: S.optional(S.String),
+          taskDefinition: S.String,
+          networkConfiguration: S.optional(NetworkConfiguration),
+          loadBalancers: S.optional(LoadBalancers),
+          serviceRegistries: S.optional(ServiceRegistries),
+          launchType: S.optional(LaunchType),
+          capacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          platformVersion: S.optional(S.String),
+          scale: S.optional(Scale),
+          clientToken: S.optional(S.String),
+          tags: S.optional(Tags),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTaskSetRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ taskSet: S.optional(TaskSet) }).pipe(ns)).annotate({
+        identifier: "CreateTaskSetResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ name: SettingName, principalArn: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountSettingRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(SettingName),
+          value: S.optional(S.String),
+          principalArn: S.optional(S.String),
+          type: S.optional(SettingType),
+        }),
+      ).annotate({ identifier: "Setting" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ setting: S.optional(Setting) }).pipe(ns)).annotate({
+        identifier: "DeleteAccountSettingResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.optional(S.String),
+          targetType: S.optional(TargetType),
+          targetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Attribute" });
+    case 2:
+      return S.Array(Attribute);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ cluster: S.optional(S.String), attributes: Attributes }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteAttributesRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ attributes: S.optional(Attributes) }).pipe(ns)).annotate({
+        identifier: "DeleteAttributesResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ capacityProvider: S.String, cluster: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteCapacityProviderRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ cluster: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteClusterRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ daemonArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteDaemonRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          daemonArn: S.optional(S.String),
+          status: S.optional(DaemonStatus),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deploymentArn: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DeleteDaemonResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ daemonTaskDefinition: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteDaemonTaskDefinitionRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ daemonTaskDefinitionArn: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "DeleteDaemonTaskDefinitionResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ serviceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteExpressGatewayServiceRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          service: S.String,
+          force: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteServiceRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ taskDefinitions: StringList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteTaskDefinitionsRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ credentialsParameter: S.String })).annotate({
+        identifier: "RepositoryCredentials",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          containerPort: S.optional(S.Number),
+          hostPort: S.optional(S.Number),
+          protocol: S.optional(TransportProtocol),
+          name: S.optional(S.String),
+          appProtocol: S.optional(ApplicationProtocol),
+          containerPortRange: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PortMapping" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PortMapping);
+    case 1:
+      return S.Array(S.Number);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          ignoredExitCodes: S.optional(IntegerList),
+          restartAttemptPeriod: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ContainerRestartPolicy" });
+    case 3:
+      return S.suspend(() => S.Struct({ value: S.String, type: EnvironmentFileType })).annotate({
+        identifier: "EnvironmentFile",
+      });
+    case 4:
+      return S.Array(EnvironmentFile);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          sourceVolume: S.optional(S.String),
+          containerPath: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MountPoint" });
+    case 6:
+      return S.Array(MountPoint);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ sourceContainer: S.optional(S.String), readOnly: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "VolumeFrom" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(VolumeFrom);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ add: S.optional(StringList), drop: S.optional(StringList) }),
+      ).annotate({ identifier: "KernelCapabilities" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hostPath: S.String,
+          containerPath: S.optional(S.String),
+          permissions: S.optional(DeviceCgroupPermissions),
+        }),
+      ).annotate({ identifier: "Device" });
+    case 3:
+      return S.Array(Device);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ containerPath: S.String, size: S.Number, mountOptions: S.optional(StringList) }),
+      ).annotate({ identifier: "Tmpfs" });
+    case 5:
+      return S.Array(Tmpfs);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          capabilities: S.optional(KernelCapabilities),
+          devices: S.optional(DevicesList),
+          initProcessEnabled: S.optional(S.Boolean),
+          sharedMemorySize: S.optional(S.Number),
+          tmpfs: S.optional(TmpfsList),
+          maxSwap: S.optional(S.Number),
+          swappiness: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LinuxParameters" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ containerName: S.String, condition: ContainerCondition }),
+      ).annotate({ identifier: "ContainerDependency" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ContainerDependency);
+    case 1:
+      return S.suspend(() => S.Struct({ hostname: S.String, ipAddress: S.String })).annotate({
+        identifier: "HostEntry",
+      });
+    case 2:
+      return S.Array(HostEntry);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ name: UlimitName, softLimit: S.Number, hardLimit: S.Number }),
+      ).annotate({ identifier: "Ulimit" });
+    case 4:
+      return S.Array(Ulimit);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          command: StringList,
+          interval: S.optional(S.Number),
+          timeout: S.optional(S.Number),
+          retries: S.optional(S.Number),
+          startPeriod: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HealthCheck" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ namespace: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "SystemControl" });
+    case 7:
+      return S.Array(SystemControl);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: FirelensConfigurationType,
+          options: S.optional(FirelensConfigurationOptionsMap),
+        }),
+      ).annotate({ identifier: "FirelensConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          image: S.optional(S.String),
+          repositoryCredentials: S.optional(RepositoryCredentials),
+          cpu: S.optional(S.Number),
+          memory: S.optional(S.Number),
+          memoryReservation: S.optional(S.Number),
+          links: S.optional(StringList),
+          portMappings: S.optional(PortMappingList),
+          essential: S.optional(S.Boolean),
+          restartPolicy: S.optional(ContainerRestartPolicy),
+          entryPoint: S.optional(StringList),
+          command: S.optional(StringList),
+          environment: S.optional(EnvironmentVariables),
+          environmentFiles: S.optional(EnvironmentFiles),
+          mountPoints: S.optional(MountPointList),
+          volumesFrom: S.optional(VolumeFromList),
+          linuxParameters: S.optional(LinuxParameters),
+          secrets: S.optional(SecretList),
+          dependsOn: S.optional(ContainerDependencies),
+          startTimeout: S.optional(S.Number),
+          stopTimeout: S.optional(S.Number),
+          versionConsistency: S.optional(VersionConsistency),
+          hostname: S.optional(S.String),
+          user: S.optional(S.String),
+          workingDirectory: S.optional(S.String),
+          disableNetworking: S.optional(S.Boolean),
+          privileged: S.optional(S.Boolean),
+          readonlyRootFilesystem: S.optional(S.Boolean),
+          dnsServers: S.optional(StringList),
+          dnsSearchDomains: S.optional(StringList),
+          extraHosts: S.optional(HostEntryList),
+          dockerSecurityOptions: S.optional(StringList),
+          interactive: S.optional(S.Boolean),
+          pseudoTerminal: S.optional(S.Boolean),
+          dockerLabels: S.optional(DockerLabelsMap),
+          ulimits: S.optional(UlimitList),
+          logConfiguration: S.optional(LogConfiguration),
+          healthCheck: S.optional(HealthCheck),
+          systemControls: S.optional(SystemControls),
+          resourceRequirements: S.optional(ResourceRequirements),
+          firelensConfiguration: S.optional(FirelensConfiguration),
+          credentialSpecs: S.optional(StringList),
+        }),
+      ).annotate({ identifier: "ContainerDefinition" });
+    case 2:
+      return S.Array(ContainerDefinition);
+    case 3:
+      return S.suspend(() => S.Struct({ sourcePath: S.optional(S.String) })).annotate({
+        identifier: "HostVolumeProperties",
+      });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(Scope),
+          autoprovision: S.optional(S.Boolean),
+          driver: S.optional(S.String),
+          driverOpts: S.optional(StringMap),
+          labels: S.optional(StringMap),
+        }),
+      ).annotate({
+        identifier: "DockerVolumeConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          accessPointId: S.optional(S.String),
+          iam: S.optional(EFSAuthorizationConfigIAM),
+        }),
+      ).annotate({ identifier: "EFSAuthorizationConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          fileSystemId: S.String,
+          rootDirectory: S.optional(S.String),
+          transitEncryption: S.optional(EFSTransitEncryption),
+          transitEncryptionPort: S.optional(S.Number),
+          authorizationConfig: S.optional(EFSAuthorizationConfig),
+        }),
+      ).annotate({ identifier: "EFSVolumeConfiguration" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileSystemArn: S.String,
+          rootDirectory: S.optional(S.String),
+          transitEncryptionPort: S.optional(S.Number),
+          accessPointArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "S3FilesVolumeConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ credentialsParameter: S.String, domain: S.String }),
+      ).annotate({
+        identifier: "FSxWindowsFileServerAuthorizationConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fileSystemId: S.String,
+          rootDirectory: S.String,
+          authorizationConfig: FSxWindowsFileServerAuthorizationConfig,
+        }),
+      ).annotate({
+        identifier: "FSxWindowsFileServerVolumeConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          host: S.optional(HostVolumeProperties),
+          dockerVolumeConfiguration: S.optional(DockerVolumeConfiguration),
+          efsVolumeConfiguration: S.optional(EFSVolumeConfiguration),
+          s3filesVolumeConfiguration: S.optional(S3FilesVolumeConfiguration),
+          fsxWindowsFileServerVolumeConfiguration: S.optional(
+            FSxWindowsFileServerVolumeConfiguration,
+          ),
+          configuredAtLaunch: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Volume" });
+    case 4:
+      return S.Array(Volume);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(TaskDefinitionPlacementConstraintType),
+          expression: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TaskDefinitionPlacementConstraint",
+      });
+    case 6:
+      return S.Array(TaskDefinitionPlacementConstraint);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          cpuArchitecture: S.optional(CPUArchitecture),
+          operatingSystemFamily: S.optional(OSFamily),
+        }),
+      ).annotate({ identifier: "RuntimePlatform" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ deviceName: S.String, deviceType: S.String })).annotate({
+        identifier: "InferenceAccelerator",
+      });
+    case 1:
+      return S.Array(InferenceAccelerator);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(ProxyConfigurationType),
+          containerName: S.String,
+          properties: S.optional(ProxyConfigurationProperties),
+        }),
+      ).annotate({ identifier: "ProxyConfiguration" });
+    case 3:
+      return S.suspend(() => S.Struct({ sizeInGiB: S.Number })).annotate({
+        identifier: "EphemeralStorage",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          taskDefinitionArn: S.optional(S.String),
+          containerDefinitions: S.optional(ContainerDefinitions),
+          family: S.optional(S.String),
+          taskRoleArn: S.optional(S.String),
+          executionRoleArn: S.optional(S.String),
+          networkMode: S.optional(NetworkMode),
+          revision: S.optional(S.Number),
+          volumes: S.optional(VolumeList),
+          status: S.optional(TaskDefinitionStatus),
+          requiresAttributes: S.optional(RequiresAttributes),
+          placementConstraints: S.optional(TaskDefinitionPlacementConstraints),
+          compatibilities: S.optional(CompatibilityList),
+          runtimePlatform: S.optional(RuntimePlatform),
+          requiresCompatibilities: S.optional(CompatibilityList),
+          cpu: S.optional(S.String),
+          memory: S.optional(S.String),
+          inferenceAccelerators: S.optional(InferenceAccelerators),
+          pidMode: S.optional(PidMode),
+          ipcMode: S.optional(IpcMode),
+          proxyConfiguration: S.optional(ProxyConfiguration),
+          registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deregisteredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deleteRequestedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          registeredBy: S.optional(S.String),
+          ephemeralStorage: S.optional(EphemeralStorage),
+          enableFaultInjection: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TaskDefinition" });
+    case 5:
+      return S.Array(TaskDefinition);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          reason: S.optional(S.String),
+          detail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Failure" });
+    case 7:
+      return S.Array(Failure);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskDefinitions: S.optional(TaskDefinitionList),
+          failures: S.optional(Failures),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DeleteTaskDefinitionsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.String,
+          service: S.String,
+          taskSet: S.String,
+          force: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteTaskSetRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          containerInstance: S.String,
+          force: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeregisterContainerInstanceRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          agentVersion: S.optional(S.String),
+          agentHash: S.optional(S.String),
+          dockerVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VersionInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          doubleValue: S.optional(S.Number),
+          longValue: S.optional(S.Number),
+          integerValue: S.optional(S.Number),
+          stringSetValue: S.optional(StringList),
+        }),
+      ).annotate({ identifier: "Resource" });
+    case 5:
+      return S.Array(Resource);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(InstanceHealthCheckType),
+          status: S.optional(InstanceHealthCheckState),
+          statusReason: S.optional(S.String),
+          lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastStatusChange: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "InstanceHealthCheckResult",
+      });
+    case 7:
+      return S.Array(InstanceHealthCheckResult);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          overallStatus: S.optional(InstanceHealthCheckState),
+          details: S.optional(InstanceHealthCheckResultList),
+        }),
+      ).annotate({
+        identifier: "ContainerInstanceHealthStatus",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          containerInstanceArn: S.optional(S.String),
+          ec2InstanceId: S.optional(S.String),
+          capacityProviderName: S.optional(S.String),
+          version: S.optional(S.Number),
+          versionInfo: S.optional(VersionInfo),
+          remainingResources: S.optional(Resources),
+          registeredResources: S.optional(Resources),
+          status: S.optional(S.String),
+          statusReason: S.optional(S.String),
+          agentConnected: S.optional(S.Boolean),
+          runningTasksCount: S.optional(S.Number),
+          pendingTasksCount: S.optional(S.Number),
+          agentUpdateStatus: S.optional(AgentUpdateStatus),
+          attributes: S.optional(Attributes),
+          registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          attachments: S.optional(Attachments),
+          tags: S.optional(Tags),
+          healthStatus: S.optional(ContainerInstanceHealthStatus),
+        }),
+      ).annotate({ identifier: "ContainerInstance" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ containerInstance: S.optional(ContainerInstance) }).pipe(ns),
+      ).annotate({
+        identifier: "DeregisterContainerInstanceResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ taskDefinition: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeregisterTaskDefinitionRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ taskDefinition: S.optional(TaskDefinition) }).pipe(ns),
+      ).annotate({
+        identifier: "DeregisterTaskDefinitionResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          capacityProviders: S.optional(StringList),
+          cluster: S.optional(S.String),
+          include: S.optional(CapacityProviderFieldList),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeCapacityProvidersRequest",
+      });
+    case 6:
+      return S.Array(CapacityProvider);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          capacityProviders: S.optional(CapacityProviders),
+          failures: S.optional(Failures),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeCapacityProvidersResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ clusters: S.optional(StringList), include: S.optional(ClusterFieldList) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeClustersRequest" });
+    case 1:
+      return S.Array(Cluster);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ clusters: S.optional(Clusters), failures: S.optional(Failures) }).pipe(ns),
+      ).annotate({ identifier: "DescribeClustersResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          containerInstances: StringList,
+          include: S.optional(ContainerInstanceFieldList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeContainerInstancesRequest",
+      });
+    case 4:
+      return S.Array(ContainerInstance);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          containerInstances: S.optional(ContainerInstances),
+          failures: S.optional(Failures),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeContainerInstancesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ daemonArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeDaemonRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          runningCount: S.optional(S.Number),
+          withoutDaemonCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DaemonCapacityProvider" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DaemonCapacityProvider);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          capacityProviders: S.optional(DaemonCapacityProviderList),
+          totalRunningCount: S.optional(S.Number),
+          totalWithoutDaemonCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DaemonRevisionDetail" });
+    case 2:
+      return S.Array(DaemonRevisionDetail);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          daemonArn: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          status: S.optional(DaemonStatus),
+          currentRevisions: S.optional(DaemonRevisionDetailList),
+          deploymentArn: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DaemonDetail" });
+    case 4:
+      return S.suspend(() => S.Struct({ daemon: S.optional(DaemonDetail) }).pipe(ns)).annotate({
+        identifier: "DescribeDaemonResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ daemonDeploymentArns: StringList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeDaemonDeploymentsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          runningInstanceCount: S.optional(S.Number),
+          withoutDaemonInstanceCount: S.optional(S.Number),
+          drainingInstanceCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DaemonDeploymentCapacityProvider",
+      });
+    case 7:
+      return S.Array(DaemonDeploymentCapacityProvider);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          capacityProviders: S.optional(DaemonDeploymentCapacityProviderList),
+          totalRunningInstanceCount: S.optional(S.Number),
+          totalWithoutDaemonInstanceCount: S.optional(S.Number),
+          totalDrainingInstanceCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DaemonDeploymentRevisionDetail",
+      });
+    case 1:
+      return S.Array(DaemonDeploymentRevisionDetail);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          failureCount: S.optional(S.Number),
+          status: S.optional(DaemonDeploymentRollbackMonitorsStatus),
+          threshold: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DaemonCircuitBreaker" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(DaemonDeploymentRollbackMonitorsStatus),
+          alarmNames: S.optional(StringList),
+          triggeredAlarmNames: S.optional(StringList),
+        }),
+      ).annotate({ identifier: "DaemonDeploymentAlarms" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          rollbackTargetDaemonRevisionArn: S.optional(S.String),
+          rollbackCapacityProviders: S.optional(StringList),
+        }),
+      ).annotate({ identifier: "DaemonRollback" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          daemonDeploymentArn: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          status: S.optional(DaemonDeploymentStatus),
+          statusReason: S.optional(S.String),
+          targetDaemonRevision: S.optional(DaemonDeploymentRevisionDetail),
+          sourceDaemonRevisions: S.optional(DaemonDeploymentRevisionDetailList),
+          circuitBreaker: S.optional(DaemonCircuitBreaker),
+          alarms: S.optional(DaemonDeploymentAlarms),
+          rollback: S.optional(DaemonRollback),
+          deploymentConfiguration: S.optional(DaemonDeploymentConfiguration),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DaemonDeployment" });
+    case 6:
+      return S.Array(DaemonDeployment);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          failures: S.optional(Failures),
+          daemonDeployments: S.optional(DaemonDeploymentList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDaemonDeploymentsResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ daemonRevisionArns: StringList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeDaemonRevisionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          containerName: S.optional(S.String),
+          imageDigest: S.optional(S.String),
+          image: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DaemonContainerImage" });
+    case 2:
+      return S.Array(DaemonContainerImage);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          daemonRevisionArn: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          daemonArn: S.optional(S.String),
+          daemonTaskDefinitionArn: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          containerImages: S.optional(DaemonContainerImages),
+          propagateTags: S.optional(DaemonPropagateTags),
+          enableECSManagedTags: S.optional(S.Boolean),
+          enableExecuteCommand: S.optional(S.Boolean),
+          critical: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DaemonRevision" });
+    case 4:
+      return S.Array(DaemonRevision);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          daemonRevisions: S.optional(DaemonRevisions),
+          failures: S.optional(Failures),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDaemonRevisionsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ daemonTaskDefinition: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeDaemonTaskDefinitionRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          capabilities: S.optional(KernelCapabilities),
+          devices: S.optional(DevicesList),
+          initProcessEnabled: S.optional(S.Boolean),
+          tmpfs: S.optional(TmpfsList),
+        }),
+      ).annotate({ identifier: "DaemonLinuxParameters" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          image: S.String,
+          memory: S.optional(S.Number),
+          memoryReservation: S.optional(S.Number),
+          repositoryCredentials: S.optional(RepositoryCredentials),
+          healthCheck: S.optional(HealthCheck),
+          cpu: S.optional(S.Number),
+          essential: S.optional(S.Boolean),
+          entryPoint: S.optional(StringList),
+          command: S.optional(StringList),
+          workingDirectory: S.optional(S.String),
+          environmentFiles: S.optional(EnvironmentFiles),
+          environment: S.optional(EnvironmentVariables),
+          secrets: S.optional(SecretList),
+          readonlyRootFilesystem: S.optional(S.Boolean),
+          mountPoints: S.optional(MountPointList),
+          logConfiguration: S.optional(LogConfiguration),
+          firelensConfiguration: S.optional(FirelensConfiguration),
+          privileged: S.optional(S.Boolean),
+          user: S.optional(S.String),
+          ulimits: S.optional(UlimitList),
+          linuxParameters: S.optional(DaemonLinuxParameters),
+          dependsOn: S.optional(ContainerDependencies),
+          startTimeout: S.optional(S.Number),
+          stopTimeout: S.optional(S.Number),
+          systemControls: S.optional(SystemControls),
+          interactive: S.optional(S.Boolean),
+          pseudoTerminal: S.optional(S.Boolean),
+          restartPolicy: S.optional(ContainerRestartPolicy),
+        }),
+      ).annotate({
+        identifier: "DaemonContainerDefinition",
+      });
+    case 1:
+      return S.Array(DaemonContainerDefinition);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), host: S.optional(HostVolumeProperties) }),
+      ).annotate({ identifier: "DaemonVolume" });
+    case 3:
+      return S.Array(DaemonVolume);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          daemonTaskDefinitionArn: S.optional(S.String),
+          family: S.optional(S.String),
+          revision: S.optional(S.Number),
+          taskRoleArn: S.optional(S.String),
+          executionRoleArn: S.optional(S.String),
+          containerDefinitions: S.optional(DaemonContainerDefinitionList),
+          volumes: S.optional(DaemonVolumeList),
+          cpu: S.optional(S.String),
+          memory: S.optional(S.String),
+          status: S.optional(DaemonTaskDefinitionStatus),
+          registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deleteRequestedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          registeredBy: S.optional(S.String),
+          pidMode: S.optional(DaemonPidMode),
+          ipcMode: S.optional(DaemonIpcMode),
+        }),
+      ).annotate({ identifier: "DaemonTaskDefinition" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ daemonTaskDefinition: S.optional(DaemonTaskDefinition) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDaemonTaskDefinitionResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          serviceArn: S.String,
+          include: S.optional(ExpressGatewayServiceIncludeList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeExpressGatewayServiceRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ serviceDeploymentArns: StringList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeServiceDeploymentsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          requestedTaskCount: S.optional(S.Number),
+          runningTaskCount: S.optional(S.Number),
+          pendingTaskCount: S.optional(S.Number),
+          requestedTestTrafficWeight: S.optional(S.Number),
+          requestedProductionTrafficWeight: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ServiceRevisionSummary" });
+    case 1:
+      return S.Array(ServiceRevisionSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hookId: S.optional(S.String),
+          targetType: S.optional(DeploymentLifecycleHookTargetType),
+          targetArn: S.optional(S.String),
+          status: S.optional(DeploymentLifecycleHookStatus),
+          expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          timeoutAction: S.optional(DeploymentLifecycleHookAction),
+        }),
+      ).annotate({
+        identifier: "DeploymentLifecycleHookDetail",
+      });
+    case 3:
+      return S.Array(DeploymentLifecycleHookDetail);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          serviceRevisionArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Rollback" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(ServiceDeploymentRollbackMonitorsStatus),
+          failureCount: S.optional(S.Number),
+          threshold: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ServiceDeploymentCircuitBreaker",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          serviceDeploymentArn: S.optional(S.String),
+          serviceArn: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          sourceServiceRevisions: S.optional(ServiceRevisionsSummaryList),
+          targetServiceRevision: S.optional(ServiceRevisionSummary),
+          status: S.optional(ServiceDeploymentStatus),
+          statusReason: S.optional(S.String),
+          lifecycleStage: S.optional(ServiceDeploymentLifecycleStage),
+          lifecycleHookDetails: S.optional(DeploymentLifecycleHookDetailList),
+          deploymentConfiguration: S.optional(DeploymentConfiguration),
+          rollback: S.optional(Rollback),
+          deploymentCircuitBreaker: S.optional(ServiceDeploymentCircuitBreaker),
+          alarms: S.optional(ServiceDeploymentAlarms),
+        }),
+      ).annotate({ identifier: "ServiceDeployment" });
+    case 7:
+      return S.Array(ServiceDeployment);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceDeployments: S.optional(ServiceDeployments),
+          failures: S.optional(Failures),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeServiceDeploymentsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ serviceRevisionArns: StringList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeServiceRevisionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targetGroupArn: S.optional(S.String),
+          productionListenerRule: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServiceRevisionLoadBalancer",
+      });
+    case 3:
+      return S.Array(ServiceRevisionLoadBalancer);
+    case 4:
+      return S.Array(ServiceRevisionVpcLatticeConfiguration);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          loadBalancers: S.optional(ServiceRevisionLoadBalancers),
+          vpcLatticeConfigurations: S.optional(ServiceRevisionVpcLatticeConfigurations),
+        }),
+      ).annotate({ identifier: "ResolvedConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          status: ManagedResourceStatus,
+          statusReason: S.optional(S.String),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          scheme: S.String,
+          subnetIds: S.optional(StringList),
+          securityGroupIds: S.optional(StringList),
+        }),
+      ).annotate({ identifier: "ManagedLoadBalancer" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          status: ManagedResourceStatus,
+          statusReason: S.optional(S.String),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "ManagedSecurityGroup" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ManagedSecurityGroup);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          status: ManagedResourceStatus,
+          statusReason: S.optional(S.String),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          domainName: S.String,
+        }),
+      ).annotate({ identifier: "ManagedCertificate" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          status: ManagedResourceStatus,
+          statusReason: S.optional(S.String),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          healthCheckPath: S.String,
+          healthCheckPort: S.Number,
+          port: S.Number,
+        }),
+      ).annotate({ identifier: "ManagedTargetGroup" });
+    case 3:
+      return S.Array(ManagedTargetGroup);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accessType: AccessType,
+          endpoint: S.String,
+          loadBalancer: S.optional(ManagedLoadBalancer),
+          loadBalancerSecurityGroups: S.optional(ManagedSecurityGroups),
+          certificate: S.optional(ManagedCertificate),
+          listener: S.optional(ManagedListener),
+          rule: S.optional(ManagedListenerRule),
+          targetGroups: S.optional(ManagedTargetGroups),
+        }),
+      ).annotate({ identifier: "ManagedIngressPath" });
+    case 5:
+      return S.Array(ManagedIngressPath);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          status: ManagedResourceStatus,
+          statusReason: S.optional(S.String),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          minCapacity: S.Number,
+          maxCapacity: S.Number,
+        }),
+      ).annotate({ identifier: "ManagedScalableTarget" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          status: ManagedResourceStatus,
+          statusReason: S.optional(S.String),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          policyType: S.String,
+          targetValue: S.Number,
+          metric: S.String,
+        }),
+      ).annotate({
+        identifier: "ManagedApplicationAutoScalingPolicy",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ManagedApplicationAutoScalingPolicy);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scalableTarget: S.optional(ManagedScalableTarget),
+          applicationAutoScalingPolicies: S.optional(ManagedApplicationAutoScalingPolicies),
+        }),
+      ).annotate({ identifier: "ManagedAutoScaling" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          status: ManagedResourceStatus,
+          statusReason: S.optional(S.String),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          logGroupName: S.String,
+        }),
+      ).annotate({ identifier: "ManagedLogGroup" });
+    case 3:
+      return S.Array(ManagedLogGroup);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ingressPaths: S.optional(ManagedIngressPaths),
+          autoScaling: S.optional(ManagedAutoScaling),
+          metricAlarms: S.optional(ManagedMetricAlarms),
+          serviceSecurityGroups: S.optional(ManagedSecurityGroups),
+          logGroups: S.optional(ManagedLogGroups),
+        }),
+      ).annotate({ identifier: "ECSManagedResources" });
+    case 5:
+      return S.suspend(() => S.Struct({ cpuArchitecture: S.optional(S.String) })).annotate({
+        identifier: "RuntimePlatformOverride",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ runtimePlatform: S.optional(RuntimePlatformOverride) }),
+      ).annotate({ identifier: "ServiceRevisionOverrides" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          serviceRevisionArn: S.optional(S.String),
+          serviceArn: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          taskDefinition: S.optional(S.String),
+          capacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          launchType: S.optional(LaunchType),
+          platformVersion: S.optional(S.String),
+          platformFamily: S.optional(S.String),
+          loadBalancers: S.optional(LoadBalancers),
+          serviceRegistries: S.optional(ServiceRegistries),
+          networkConfiguration: S.optional(NetworkConfiguration),
+          containerImages: S.optional(ContainerImages),
+          guardDutyEnabled: S.optional(S.Boolean),
+          serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
+          volumeConfigurations: S.optional(ServiceVolumeConfigurations),
+          fargateEphemeralStorage: S.optional(DeploymentEphemeralStorage),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
+          resolvedConfiguration: S.optional(ResolvedConfiguration),
+          ecsManagedResources: S.optional(ECSManagedResources),
+          overrides: S.optional(ServiceRevisionOverrides),
+          monitoring: S.optional(MonitoringConfiguration),
+        }),
+      ).annotate({ identifier: "ServiceRevision" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ServiceRevision);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceRevisions: S.optional(ServiceRevisions),
+          failures: S.optional(Failures),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeServiceRevisionsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          services: StringList,
+          include: S.optional(ServiceFieldList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeServicesRequest" });
+    case 3:
+      return S.Array(Service);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ services: S.optional(Services), failures: S.optional(Failures) }).pipe(ns),
+      ).annotate({ identifier: "DescribeServicesResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ taskDefinition: S.String, include: S.optional(TaskDefinitionFieldList) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeTaskDefinitionRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ taskDefinition: S.optional(TaskDefinition), tags: S.optional(Tags) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeTaskDefinitionResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          tasks: StringList,
+          include: S.optional(TaskFieldList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeTasksRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bindIP: S.optional(S.String),
+          containerPort: S.optional(S.Number),
+          hostPort: S.optional(S.Number),
+          protocol: S.optional(TransportProtocol),
+          containerPortRange: S.optional(S.String),
+          hostPortRange: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkBinding" });
+    case 1:
+      return S.Array(NetworkBinding);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attachmentId: S.optional(S.String),
+          privateIpv4Address: S.optional(S.String),
+          ipv6Address: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkInterface" });
+    case 3:
+      return S.Array(NetworkInterface);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          lastStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          name: S.optional(ManagedAgentName),
+          reason: S.optional(S.String),
+          lastStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedAgent" });
+    case 5:
+      return S.Array(ManagedAgent);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          containerArn: S.optional(S.String),
+          taskArn: S.optional(S.String),
+          name: S.optional(S.String),
+          image: S.optional(S.String),
+          imageDigest: S.optional(S.String),
+          runtimeId: S.optional(S.String),
+          lastStatus: S.optional(S.String),
+          exitCode: S.optional(S.Number),
+          reason: S.optional(S.String),
+          networkBindings: S.optional(NetworkBindings),
+          networkInterfaces: S.optional(NetworkInterfaces),
+          healthStatus: S.optional(HealthStatus),
+          managedAgents: S.optional(ManagedAgents),
+          cpu: S.optional(S.String),
+          memory: S.optional(S.String),
+          memoryReservation: S.optional(S.String),
+          gpuIds: S.optional(GpuIds),
+          neuronDeviceIds: S.optional(NeuronDeviceIds),
+        }),
+      ).annotate({ identifier: "Container" });
+    case 7:
+      return S.Array(Container);
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          command: S.optional(StringList),
+          environment: S.optional(EnvironmentVariables),
+          environmentFiles: S.optional(EnvironmentFiles),
+          cpu: S.optional(S.Number),
+          memory: S.optional(S.Number),
+          memoryReservation: S.optional(S.Number),
+          resourceRequirements: S.optional(ResourceRequirements),
+        }),
+      ).annotate({ identifier: "ContainerOverride" });
+    case 1:
+      return S.Array(ContainerOverride);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ deviceName: S.optional(S.String), deviceType: S.optional(S.String) }),
+      ).annotate({
+        identifier: "InferenceAcceleratorOverride",
+      });
+    case 3:
+      return S.Array(InferenceAcceleratorOverride);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          containerOverrides: S.optional(ContainerOverrides),
+          cpu: S.optional(S.String),
+          inferenceAcceleratorOverrides: S.optional(InferenceAcceleratorOverrides),
+          executionRoleArn: S.optional(S.String),
+          memory: S.optional(S.String),
+          taskRoleArn: S.optional(S.String),
+          ephemeralStorage: S.optional(EphemeralStorage),
+        }),
+      ).annotate({ identifier: "TaskOverride" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ sizeInGiB: S.optional(S.Number), kmsKeyId: S.optional(S.String) }),
+      ).annotate({ identifier: "TaskEphemeralStorage" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          attachments: S.optional(Attachments),
+          attributes: S.optional(Attributes),
+          availabilityZone: S.optional(S.String),
+          capacityProviderName: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          connectivity: S.optional(Connectivity),
+          connectivityAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          containerInstanceArn: S.optional(S.String),
+          containers: S.optional(Containers),
+          cpu: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          desiredStatus: S.optional(S.String),
+          enableExecuteCommand: S.optional(S.Boolean),
+          executionStoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          group: S.optional(S.String),
+          healthStatus: S.optional(HealthStatus),
+          inferenceAccelerators: S.optional(InferenceAccelerators),
+          lastStatus: S.optional(S.String),
+          launchType: S.optional(LaunchType),
+          memory: S.optional(S.String),
+          overrides: S.optional(TaskOverride),
+          platformVersion: S.optional(S.String),
+          platformFamily: S.optional(S.String),
+          pullStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          pullStoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startedBy: S.optional(S.String),
+          stopCode: S.optional(TaskStopCode),
+          stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          stoppedReason: S.optional(S.String),
+          stoppingAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(Tags),
+          taskArn: S.optional(S.String),
+          taskDefinitionArn: S.optional(S.String),
+          version: S.optional(S.Number),
+          ephemeralStorage: S.optional(EphemeralStorage),
+          fargateEphemeralStorage: S.optional(TaskEphemeralStorage),
+        }),
+      ).annotate({ identifier: "Task" });
+    case 7:
+      return S.Array(Task);
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ tasks: S.optional(Tasks), failures: S.optional(Failures) }).pipe(ns),
+      ).annotate({ identifier: "DescribeTasksResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.String,
+          service: S.String,
+          taskSets: S.optional(StringList),
+          include: S.optional(TaskSetFieldList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeTaskSetsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ taskSets: S.optional(TaskSets), failures: S.optional(Failures) }).pipe(ns),
+      ).annotate({ identifier: "DescribeTaskSetsResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ containerInstance: S.optional(S.String), cluster: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DiscoverPollEndpointRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(S.String),
+          telemetryEndpoint: S.optional(S.String),
+          serviceConnectEndpoint: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DiscoverPollEndpointResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          container: S.optional(S.String),
+          command: S.String,
+          interactive: S.Boolean,
+          task: S.String,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ExecuteCommandRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.optional(S.String),
+          streamUrl: S.optional(S.String),
+          tokenValue: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Session" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          clusterArn: S.optional(S.String),
+          containerArn: S.optional(S.String),
+          containerName: S.optional(S.String),
+          interactive: S.optional(S.Boolean),
+          session: S.optional(Session),
+          taskArn: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ExecuteCommandResponse" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ cluster: S.String, tasks: S.optional(StringList) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetTaskProtectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taskArn: S.optional(S.String),
+          protectionEnabled: S.optional(S.Boolean),
+          expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ProtectedTask" });
+    case 2:
+      return S.Array(ProtectedTask);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          protectedTasks: S.optional(ProtectedTasks),
+          failures: S.optional(Failures),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetTaskProtectionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(SettingName),
+          value: S.optional(S.String),
+          principalArn: S.optional(S.String),
+          effectiveSettings: S.optional(S.Boolean),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAccountSettingsRequest",
+      });
+    case 5:
+      return S.Array(Setting);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ settings: S.optional(Settings), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ListAccountSettingsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          targetType: TargetType,
+          attributeName: S.optional(S.String),
+          attributeValue: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListAttributesRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ attributes: S.optional(Attributes), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListAttributesResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListClustersRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ clusterArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListClustersResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          filter: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          status: S.optional(ContainerInstanceStatus),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListContainerInstancesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          containerInstanceArns: S.optional(StringList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListContainerInstancesResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          before: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          after: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "CreatedAt" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          daemonArn: S.String,
+          status: S.optional(DaemonDeploymentStatusList),
+          createdAt: S.optional(CreatedAt),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListDaemonDeploymentsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          daemonDeploymentArn: S.optional(S.String),
+          daemonArn: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          status: S.optional(DaemonDeploymentStatus),
+          statusReason: S.optional(S.String),
+          targetDaemonRevisionArn: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DaemonDeploymentSummary" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DaemonDeploymentSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          daemonDeployments: S.optional(DaemonDeploymentSummaryList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListDaemonDeploymentsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clusterArn: S.optional(S.String),
+          capacityProviderArns: S.optional(StringList),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDaemonsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          daemonArn: S.optional(S.String),
+          status: S.optional(DaemonStatus),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DaemonSummary" });
+    case 4:
+      return S.Array(DaemonSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          daemonSummariesList: S.optional(DaemonSummariesList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListDaemonsResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          familyPrefix: S.optional(S.String),
+          family: S.optional(S.String),
+          revision: S.optional(DaemonTaskDefinitionRevisionFilter),
+          status: S.optional(DaemonTaskDefinitionStatusFilter),
+          sort: S.optional(SortOrder),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListDaemonTaskDefinitionsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          registeredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          registeredBy: S.optional(S.String),
+          deleteRequestedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(DaemonTaskDefinitionStatus),
+        }),
+      ).annotate({
+        identifier: "DaemonTaskDefinitionSummary",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DaemonTaskDefinitionSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          daemonTaskDefinitions: S.optional(DaemonTaskDefinitionSummaries),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListDaemonTaskDefinitionsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String,
+          cluster: S.optional(S.String),
+          status: S.optional(ServiceDeploymentStatusList),
+          createdAt: S.optional(CreatedAt),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListServiceDeploymentsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          serviceDeploymentArn: S.optional(S.String),
+          serviceArn: S.optional(S.String),
+          clusterArn: S.optional(S.String),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          finishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          targetServiceRevisionArn: S.optional(S.String),
+          status: S.optional(ServiceDeploymentStatus),
+          statusReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceDeploymentBrief" });
+    case 4:
+      return S.Array(ServiceDeploymentBrief);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          serviceDeployments: S.optional(ServiceDeploymentsBrief),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListServiceDeploymentsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          launchType: S.optional(LaunchType),
+          schedulingStrategy: S.optional(SchedulingStrategy),
+          resourceManagementType: S.optional(ResourceManagementType),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListServicesRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ serviceArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListServicesResponse" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListServicesByNamespaceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ serviceArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ListServicesByNamespaceResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) }).pipe(ns)).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          familyPrefix: S.optional(S.String),
+          status: S.optional(TaskDefinitionFamilyStatus),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListTaskDefinitionFamiliesRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ families: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ListTaskDefinitionFamiliesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          familyPrefix: S.optional(S.String),
+          status: S.optional(TaskDefinitionStatus),
+          sort: S.optional(SortOrder),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListTaskDefinitionsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          taskDefinitionArns: S.optional(StringList),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListTaskDefinitionsResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          containerInstance: S.optional(S.String),
+          family: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          startedBy: S.optional(S.String),
+          serviceName: S.optional(S.String),
+          desiredStatus: S.optional(DesiredStatus),
+          launchType: S.optional(LaunchType),
+          daemonName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListTasksRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ taskArns: S.optional(StringList), nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListTasksResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: SettingName, value: S.String, principalArn: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutAccountSettingRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ name: SettingName, value: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "PutAccountSettingDefaultRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ cluster: S.optional(S.String), attributes: Attributes }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutAttributesRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.String,
+          capacityProviders: StringList,
+          defaultCapacityProviderStrategy: CapacityProviderStrategy,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "PutClusterCapacityProvidersRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ cluster: S.optional(Cluster) }).pipe(ns)).annotate({
+        identifier: "PutClusterCapacityProvidersResponse",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ id: S.String, type: PlatformDeviceType })).annotate({
+        identifier: "PlatformDevice",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PlatformDevice);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          instanceIdentityDocument: S.optional(S.String),
+          instanceIdentityDocumentSignature: S.optional(S.String),
+          totalResources: S.optional(Resources),
+          versionInfo: S.optional(VersionInfo),
+          containerInstanceArn: S.optional(S.String),
+          attributes: S.optional(Attributes),
+          platformDevices: S.optional(PlatformDevices),
+          tags: S.optional(Tags),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RegisterContainerInstanceRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          family: S.String,
+          taskRoleArn: S.optional(S.String),
+          executionRoleArn: S.optional(S.String),
+          containerDefinitions: DaemonContainerDefinitionList,
+          cpu: S.optional(S.String),
+          memory: S.optional(S.String),
+          volumes: S.optional(DaemonVolumeList),
+          tags: S.optional(Tags),
+          pidMode: S.optional(DaemonPidMode),
+          ipcMode: S.optional(DaemonIpcMode),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RegisterDaemonTaskDefinitionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          family: S.String,
+          taskRoleArn: S.optional(S.String),
+          executionRoleArn: S.optional(S.String),
+          networkMode: S.optional(NetworkMode),
+          containerDefinitions: ContainerDefinitions,
+          volumes: S.optional(VolumeList),
+          placementConstraints: S.optional(TaskDefinitionPlacementConstraints),
+          requiresCompatibilities: S.optional(CompatibilityList),
+          cpu: S.optional(S.String),
+          memory: S.optional(S.String),
+          tags: S.optional(Tags),
+          pidMode: S.optional(PidMode),
+          ipcMode: S.optional(IpcMode),
+          proxyConfiguration: S.optional(ProxyConfiguration),
+          inferenceAccelerators: S.optional(InferenceAccelerators),
+          ephemeralStorage: S.optional(EphemeralStorage),
+          runtimePlatform: S.optional(RuntimePlatform),
+          enableFaultInjection: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RegisterTaskDefinitionRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ deleteOnTermination: S.Boolean })).annotate({
+        identifier: "TaskManagedEBSVolumeTerminationPolicy",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          encrypted: S.optional(S.Boolean),
+          kmsKeyId: S.optional(S.String),
+          volumeType: S.optional(S.String),
+          sizeInGiB: S.optional(S.Number),
+          snapshotId: S.optional(S.String),
+          volumeInitializationRate: S.optional(S.Number),
+          iops: S.optional(S.Number),
+          throughput: S.optional(S.Number),
+          tagSpecifications: S.optional(EBSTagSpecifications),
+          roleArn: S.String,
+          terminationPolicy: S.optional(TaskManagedEBSVolumeTerminationPolicy),
+          filesystemType: S.optional(TaskFilesystemType),
+        }),
+      ).annotate({
+        identifier: "TaskManagedEBSVolumeConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          managedEBSVolume: S.optional(TaskManagedEBSVolumeConfiguration),
+        }),
+      ).annotate({ identifier: "TaskVolumeConfiguration" });
+    case 7:
+      return S.Array(TaskVolumeConfiguration);
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          capacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          cluster: S.optional(S.String),
+          count: S.optional(S.Number),
+          enableECSManagedTags: S.optional(S.Boolean),
+          enableExecuteCommand: S.optional(S.Boolean),
+          group: S.optional(S.String),
+          launchType: S.optional(LaunchType),
+          networkConfiguration: S.optional(NetworkConfiguration),
+          overrides: S.optional(TaskOverride),
+          placementConstraints: S.optional(PlacementConstraints),
+          placementStrategy: S.optional(PlacementStrategies),
+          platformVersion: S.optional(S.String),
+          propagateTags: S.optional(PropagateTags),
+          referenceId: S.optional(S.String),
+          startedBy: S.optional(S.String),
+          tags: S.optional(Tags),
+          taskDefinition: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          volumeConfigurations: S.optional(TaskVolumeConfigurations),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "RunTaskRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          containerInstances: StringList,
+          enableECSManagedTags: S.optional(S.Boolean),
+          enableExecuteCommand: S.optional(S.Boolean),
+          group: S.optional(S.String),
+          networkConfiguration: S.optional(NetworkConfiguration),
+          overrides: S.optional(TaskOverride),
+          propagateTags: S.optional(PropagateTags),
+          referenceId: S.optional(S.String),
+          startedBy: S.optional(S.String),
+          tags: S.optional(Tags),
+          taskDefinition: S.String,
+          volumeConfigurations: S.optional(TaskVolumeConfigurations),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartTaskRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          serviceDeploymentArn: S.String,
+          stopType: S.optional(StopServiceDeploymentStopType),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "StopServiceDeploymentRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          task: S.String,
+          reason: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StopTaskRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ task: S.optional(Task) }).pipe(ns)).annotate({
+        identifier: "StopTaskResponse",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ attachmentArn: S.String, status: S.String })).annotate({
+        identifier: "AttachmentStateChange",
+      });
+    case 6:
+      return S.Array(AttachmentStateChange);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ cluster: S.optional(S.String), attachments: AttachmentStateChanges }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "SubmitAttachmentStateChangesRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ acknowledgment: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "SubmitAttachmentStateChangesResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          task: S.optional(S.String),
+          containerName: S.optional(S.String),
+          runtimeId: S.optional(S.String),
+          status: S.optional(S.String),
+          exitCode: S.optional(S.Number),
+          reason: S.optional(S.String),
+          networkBindings: S.optional(NetworkBindings),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SubmitContainerStateChangeRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          containerName: S.optional(S.String),
+          imageDigest: S.optional(S.String),
+          runtimeId: S.optional(S.String),
+          exitCode: S.optional(S.Number),
+          networkBindings: S.optional(NetworkBindings),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerStateChange" });
+    case 3:
+      return S.Array(ContainerStateChange);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          containerName: S.String,
+          managedAgentName: ManagedAgentName,
+          status: S.String,
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedAgentStateChange" });
+    case 5:
+      return S.Array(ManagedAgentStateChange);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          task: S.optional(S.String),
+          status: S.optional(S.String),
+          reason: S.optional(S.String),
+          containers: S.optional(ContainerStateChanges),
+          attachments: S.optional(AttachmentStateChanges),
+          managedAgents: S.optional(ManagedAgentStateChanges),
+          pullStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          pullStoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          executionStoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SubmitTaskStateChangeRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tags: Tags }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "TagResourceResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tagKeys: TagKeys }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          managedScaling: S.optional(ManagedScaling),
+          managedTerminationProtection: S.optional(ManagedTerminationProtection),
+          managedDraining: S.optional(ManagedDraining),
+        }),
+      ).annotate({
+        identifier: "AutoScalingGroupProviderUpdate",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ec2InstanceProfileArn: S.optional(S.String),
+          networkConfiguration: S.optional(ManagedInstancesNetworkConfiguration),
+          storageConfiguration: S.optional(ManagedInstancesStorageConfiguration),
+          instanceMetadataTagsPropagation: S.optional(S.Boolean),
+          localStorageConfiguration: S.optional(ManagedInstancesLocalStorageConfiguration),
+          monitoring: S.optional(ManagedInstancesMonitoringOptions),
+          instanceRequirements: S.optional(InstanceRequirementsRequest),
+          capacityReservations: S.optional(CapacityReservationRequest),
+        }),
+      ).annotate({
+        identifier: "InstanceLaunchTemplateUpdate",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          infrastructureRoleArn: S.String,
+          instanceLaunchTemplate: InstanceLaunchTemplateUpdate,
+          propagateTags: S.optional(PropagateMITags),
+          infrastructureOptimization: S.optional(InfrastructureOptimization),
+          autoRepairConfiguration: S.optional(AutoRepairConfiguration),
+        }),
+      ).annotate({
+        identifier: "UpdateManagedInstancesProviderConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          cluster: S.optional(S.String),
+          autoScalingGroupProvider: S.optional(AutoScalingGroupProviderUpdate),
+          managedInstancesProvider: S.optional(UpdateManagedInstancesProviderConfiguration),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateCapacityProviderRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.String,
+          settings: S.optional(ClusterSettings),
+          configuration: S.optional(ClusterConfiguration),
+          serviceConnectDefaults: S.optional(ClusterServiceConnectDefaultsRequest),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateClusterRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ cluster: S.String, settings: ClusterSettings }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateClusterSettingsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ cluster: S.optional(S.String), containerInstance: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateContainerAgentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          containerInstances: StringList,
+          status: ContainerInstanceStatus,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateContainerInstancesStateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          daemonArn: S.String,
+          daemonTaskDefinitionArn: S.String,
+          capacityProviderArns: StringList,
+          deploymentConfiguration: S.optional(DaemonDeploymentConfiguration),
+          propagateTags: S.optional(DaemonPropagateTags),
+          enableECSManagedTags: S.optional(S.Boolean),
+          enableExecuteCommand: S.optional(S.Boolean),
+          critical: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateDaemonRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          serviceArn: S.String,
+          executionRoleArn: S.optional(S.String),
+          healthCheckPath: S.optional(S.String),
+          primaryContainer: S.optional(ExpressGatewayContainer),
+          taskRoleArn: S.optional(S.String),
+          networkConfiguration: S.optional(ExpressGatewayServiceNetworkConfiguration),
+          cpu: S.optional(S.String),
+          memory: S.optional(S.String),
+          cpuArchitecture: S.optional(ExpressCpuArchitecture),
+          scalingTarget: S.optional(ExpressGatewayScalingTarget),
+          taskDefinitionArn: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateExpressGatewayServiceRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          serviceArn: S.optional(S.String),
+          cluster: S.optional(S.String),
+          serviceName: S.optional(S.String),
+          status: S.optional(ExpressGatewayServiceStatus),
+          targetConfiguration: S.optional(ExpressGatewayServiceConfiguration),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "UpdatedExpressGatewayService",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ service: S.optional(UpdatedExpressGatewayService) }).pipe(ns),
+      ).annotate({
+        identifier: "UpdateExpressGatewayServiceResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.optional(S.String),
+          service: S.String,
+          desiredCount: S.optional(S.Number),
+          taskDefinition: S.optional(S.String),
+          capacityProviderStrategy: S.optional(CapacityProviderStrategy),
+          deploymentConfiguration: S.optional(DeploymentConfiguration),
+          availabilityZoneRebalancing: S.optional(AvailabilityZoneRebalancing),
+          networkConfiguration: S.optional(NetworkConfiguration),
+          placementConstraints: S.optional(PlacementConstraints),
+          placementStrategy: S.optional(PlacementStrategies),
+          platformVersion: S.optional(S.String),
+          forceNewDeployment: S.optional(S.Boolean),
+          healthCheckGracePeriodSeconds: S.optional(S.Number),
+          deploymentController: S.optional(DeploymentController),
+          enableExecuteCommand: S.optional(S.Boolean),
+          enableECSManagedTags: S.optional(S.Boolean),
+          loadBalancers: S.optional(LoadBalancers),
+          propagateTags: S.optional(PropagateTags),
+          serviceRegistries: S.optional(ServiceRegistries),
+          serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
+          volumeConfigurations: S.optional(ServiceVolumeConfigurations),
+          vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
+          monitoring: S.optional(MonitoringConfiguration),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateServiceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ cluster: S.String, service: S.String, primaryTaskSet: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateServicePrimaryTaskSetRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ taskSet: S.optional(TaskSet) }).pipe(ns)).annotate({
+        identifier: "UpdateServicePrimaryTaskSetResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.String,
+          tasks: StringList,
+          protectionEnabled: S.Boolean,
+          expiresInMinutes: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateTaskProtectionRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ cluster: S.String, service: S.String, taskSet: S.String, scale: Scale }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateTaskSetRequest" });
+  }
+}

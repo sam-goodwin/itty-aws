@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -157,35 +158,21 @@ export interface AssociateExternalConnectionRequest {
   repository: string;
   externalConnection: string;
 }
-const AssociateExternalConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    externalConnection: S.String.pipe(T.HttpQuery("external-connection")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/repository/external-connection" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateExternalConnectionRequest",
-}) as any as S.Schema<AssociateExternalConnectionRequest>;
+const AssociateExternalConnectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateExternalConnectionRequest>;
 export type Arn = string;
 export type Description = string;
 export interface UpstreamRepositoryInfo {
   repositoryName?: string;
 }
-const UpstreamRepositoryInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repositoryName: S.optional(S.String) }),
-).annotate({ identifier: "UpstreamRepositoryInfo" }) as any as S.Schema<UpstreamRepositoryInfo>;
+const UpstreamRepositoryInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<UpstreamRepositoryInfo>;
 export type UpstreamRepositoryInfoList = UpstreamRepositoryInfo[];
-const UpstreamRepositoryInfoList = /*@__PURE__*/ S.Array(UpstreamRepositoryInfo);
+const UpstreamRepositoryInfoList = /*@__PURE__*/ __L.at(__c0, 2);
 export type PackageFormat =
   | "npm"
   | "pypi"
@@ -206,19 +193,12 @@ export interface RepositoryExternalConnectionInfo {
   packageFormat?: PackageFormat;
   status?: ExternalConnectionStatus;
 }
-const RepositoryExternalConnectionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalConnectionName: S.optional(S.String),
-    packageFormat: S.optional(PackageFormat),
-    status: S.optional(ExternalConnectionStatus),
-  }),
-).annotate({
-  identifier: "RepositoryExternalConnectionInfo",
-}) as any as S.Schema<RepositoryExternalConnectionInfo>;
+const RepositoryExternalConnectionInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<RepositoryExternalConnectionInfo>;
 export type RepositoryExternalConnectionInfoList = RepositoryExternalConnectionInfo[];
-const RepositoryExternalConnectionInfoList = /*@__PURE__*/ S.Array(
-  RepositoryExternalConnectionInfo,
-);
+const RepositoryExternalConnectionInfoList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface RepositoryDescription {
   name?: string;
   administratorAccount?: string;
@@ -230,38 +210,25 @@ export interface RepositoryDescription {
   externalConnections?: RepositoryExternalConnectionInfo[];
   createdTime?: Date;
 }
-const RepositoryDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    administratorAccount: S.optional(S.String),
-    domainName: S.optional(S.String),
-    domainOwner: S.optional(S.String),
-    arn: S.optional(S.String),
-    description: S.optional(S.String),
-    upstreams: S.optional(UpstreamRepositoryInfoList),
-    externalConnections: S.optional(RepositoryExternalConnectionInfoList),
-    createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "RepositoryDescription" }) as any as S.Schema<RepositoryDescription>;
+const RepositoryDescription = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RepositoryDescription>;
 export interface AssociateExternalConnectionResult {
   repository?: RepositoryDescription;
 }
-const AssociateExternalConnectionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: S.optional(RepositoryDescription) }),
-).annotate({
-  identifier: "AssociateExternalConnectionResult",
-}) as any as S.Schema<AssociateExternalConnectionResult>;
+const AssociateExternalConnectionResult = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AssociateExternalConnectionResult>;
 export type PackageNamespace = string;
 export type PackageName = string;
 export type PackageVersion = string;
 export type PackageVersionList = string[];
-const PackageVersionList = /*@__PURE__*/ S.Array(S.String);
+const PackageVersionList = /*@__PURE__*/ __L.at(__c0, 7);
 export type PackageVersionRevision = string;
 export type PackageVersionRevisionMap = { [key: string]: string | undefined };
-const PackageVersionRevisionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const PackageVersionRevisionMap = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CopyPackageVersionsRequest {
   domain: string;
   domainOwner?: string;
@@ -275,32 +242,10 @@ export interface CopyPackageVersionsRequest {
   allowOverwrite?: boolean;
   includeFromUpstream?: boolean;
 }
-const CopyPackageVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    sourceRepository: S.String.pipe(T.HttpQuery("source-repository")),
-    destinationRepository: S.String.pipe(T.HttpQuery("destination-repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    versions: S.optional(PackageVersionList),
-    versionRevisions: S.optional(PackageVersionRevisionMap),
-    allowOverwrite: S.optional(S.Boolean),
-    includeFromUpstream: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/package/versions/copy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CopyPackageVersionsRequest",
-}) as any as S.Schema<CopyPackageVersionsRequest>;
+const CopyPackageVersionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CopyPackageVersionsRequest>;
 export type PackageVersionStatus =
   | "Published"
   | "Unfinished"
@@ -315,18 +260,14 @@ export interface SuccessfulPackageVersionInfo {
   revision?: string;
   status?: PackageVersionStatus;
 }
-const SuccessfulPackageVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ revision: S.optional(S.String), status: S.optional(PackageVersionStatus) }),
-).annotate({
-  identifier: "SuccessfulPackageVersionInfo",
-}) as any as S.Schema<SuccessfulPackageVersionInfo>;
+const SuccessfulPackageVersionInfo = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SuccessfulPackageVersionInfo>;
 export type SuccessfulPackageVersionInfoMap = {
   [key: string]: SuccessfulPackageVersionInfo | undefined;
 };
-const SuccessfulPackageVersionInfoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SuccessfulPackageVersionInfo.pipe(S.optional),
-);
+const SuccessfulPackageVersionInfoMap = /*@__PURE__*/ __L.at(__c1, 3);
 export type PackageVersionErrorCode =
   | "ALREADY_EXISTS"
   | "MISMATCHED_REVISION"
@@ -342,49 +283,32 @@ export interface PackageVersionError {
   errorCode?: PackageVersionErrorCode;
   errorMessage?: string;
 }
-const PackageVersionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorCode: S.optional(PackageVersionErrorCode), errorMessage: S.optional(S.String) }),
-).annotate({ identifier: "PackageVersionError" }) as any as S.Schema<PackageVersionError>;
+const PackageVersionError = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PackageVersionError>;
 export type PackageVersionErrorMap = { [key: string]: PackageVersionError | undefined };
-const PackageVersionErrorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ PackageVersionError.pipe(S.optional),
-);
+const PackageVersionErrorMap = /*@__PURE__*/ __L.at(__c1, 5);
 export interface CopyPackageVersionsResult {
   successfulVersions?: { [key: string]: SuccessfulPackageVersionInfo | undefined };
   failedVersions?: { [key: string]: PackageVersionError | undefined };
 }
-const CopyPackageVersionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    successfulVersions: S.optional(SuccessfulPackageVersionInfoMap),
-    failedVersions: S.optional(PackageVersionErrorMap),
-  }),
-).annotate({
-  identifier: "CopyPackageVersionsResult",
-}) as any as S.Schema<CopyPackageVersionsResult>;
+const CopyPackageVersionsResult = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CopyPackageVersionsResult>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface CreateDomainRequest {
   domain: string;
   encryptionKey?: string;
   tags?: Tag[];
 }
-const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    encryptionKey: S.optional(S.String),
-    tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/domain" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateDomainRequest" }) as any as S.Schema<CreateDomainRequest>;
+const CreateDomainRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateDomainRequest>;
 export type DomainStatus = "Active" | "Deleted" | (string & {});
 const DomainStatus = S.String;
 
@@ -399,25 +323,11 @@ export interface DomainDescription {
   assetSizeBytes?: number;
   s3BucketArn?: string;
 }
-const DomainDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    owner: S.optional(S.String),
-    arn: S.optional(S.String),
-    status: S.optional(DomainStatus),
-    createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    encryptionKey: S.optional(S.String),
-    repositoryCount: S.optional(S.Number),
-    assetSizeBytes: S.optional(S.Number),
-    s3BucketArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "DomainDescription" }) as any as S.Schema<DomainDescription>;
+const DomainDescription = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DomainDescription>;
 export interface CreateDomainResult {
   domain?: DomainDescription;
 }
-const CreateDomainResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domain: S.optional(DomainDescription) }),
-).annotate({ identifier: "CreateDomainResult" }) as any as S.Schema<CreateDomainResult>;
+const CreateDomainResult = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CreateDomainResult>;
 export type PackageGroupPattern = string;
 export type PackageGroupContactInfo = string;
 export interface CreatePackageGroupRequest {
@@ -428,20 +338,10 @@ export interface CreatePackageGroupRequest {
   description?: string;
   tags?: Tag[];
 }
-const CreatePackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    packageGroup: S.String,
-    contactInfo: S.optional(S.String),
-    description: S.optional(S.String),
-    tags: S.optional(TagList),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/package-group" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreatePackageGroupRequest",
-}) as any as S.Schema<CreatePackageGroupRequest>;
+const CreatePackageGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreatePackageGroupRequest>;
 export type PackageGroupOriginRestrictionType =
   | "EXTERNAL_UPSTREAM"
   | "INTERNAL_UPSTREAM"
@@ -461,40 +361,31 @@ export interface PackageGroupReference {
   arn?: string;
   pattern?: string;
 }
-const PackageGroupReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.optional(S.String), pattern: S.optional(S.String) }),
-).annotate({ identifier: "PackageGroupReference" }) as any as S.Schema<PackageGroupReference>;
+const PackageGroupReference = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PackageGroupReference>;
 export interface PackageGroupOriginRestriction {
   mode?: PackageGroupOriginRestrictionMode;
   effectiveMode?: PackageGroupOriginRestrictionMode;
   inheritedFrom?: PackageGroupReference;
   repositoriesCount?: number;
 }
-const PackageGroupOriginRestriction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(PackageGroupOriginRestrictionMode),
-    effectiveMode: S.optional(PackageGroupOriginRestrictionMode),
-    inheritedFrom: S.optional(PackageGroupReference),
-    repositoriesCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PackageGroupOriginRestriction",
-}) as any as S.Schema<PackageGroupOriginRestriction>;
+const PackageGroupOriginRestriction = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<PackageGroupOriginRestriction>;
 export type PackageGroupOriginRestrictions = {
   [key in PackageGroupOriginRestrictionType]?: PackageGroupOriginRestriction;
 };
-const PackageGroupOriginRestrictions = /*@__PURE__*/ S.Record(
-  PackageGroupOriginRestrictionType,
-  /*@__PURE__*/ PackageGroupOriginRestriction.pipe(S.optional),
-);
+const PackageGroupOriginRestrictions = /*@__PURE__*/ __L.at(__c2, 7);
 export interface PackageGroupOriginConfiguration {
   restrictions?: { [key: string]: PackageGroupOriginRestriction | undefined };
 }
-const PackageGroupOriginConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ restrictions: S.optional(PackageGroupOriginRestrictions) }),
-).annotate({
-  identifier: "PackageGroupOriginConfiguration",
-}) as any as S.Schema<PackageGroupOriginConfiguration>;
+const PackageGroupOriginConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PackageGroupOriginConfiguration>;
 export interface PackageGroupDescription {
   arn?: string;
   pattern?: string;
@@ -506,33 +397,23 @@ export interface PackageGroupDescription {
   originConfiguration?: PackageGroupOriginConfiguration;
   parent?: PackageGroupReference;
 }
-const PackageGroupDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    pattern: S.optional(S.String),
-    domainName: S.optional(S.String),
-    domainOwner: S.optional(S.String),
-    createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    contactInfo: S.optional(S.String),
-    description: S.optional(S.String),
-    originConfiguration: S.optional(PackageGroupOriginConfiguration),
-    parent: S.optional(PackageGroupReference),
-  }),
-).annotate({ identifier: "PackageGroupDescription" }) as any as S.Schema<PackageGroupDescription>;
+const PackageGroupDescription = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PackageGroupDescription>;
 export interface CreatePackageGroupResult {
   packageGroup?: PackageGroupDescription;
 }
-const CreatePackageGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packageGroup: S.optional(PackageGroupDescription) }),
-).annotate({ identifier: "CreatePackageGroupResult" }) as any as S.Schema<CreatePackageGroupResult>;
+const CreatePackageGroupResult = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreatePackageGroupResult>;
 export interface UpstreamRepository {
   repositoryName: string;
 }
-const UpstreamRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repositoryName: S.String }),
-).annotate({ identifier: "UpstreamRepository" }) as any as S.Schema<UpstreamRepository>;
+const UpstreamRepository = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<UpstreamRepository>;
 export type UpstreamRepositoryList = UpstreamRepository[];
-const UpstreamRepositoryList = /*@__PURE__*/ S.Array(UpstreamRepository);
+const UpstreamRepositoryList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface CreateRepositoryRequest {
   domain: string;
   domainOwner?: string;
@@ -541,32 +422,22 @@ export interface CreateRepositoryRequest {
   upstreams?: UpstreamRepository[];
   tags?: Tag[];
 }
-const CreateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    description: S.optional(S.String),
-    upstreams: S.optional(UpstreamRepositoryList),
-    tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/repository" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateRepositoryRequest" }) as any as S.Schema<CreateRepositoryRequest>;
+const CreateRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateRepositoryRequest>;
 export interface CreateRepositoryResult {
   repository?: RepositoryDescription;
 }
-const CreateRepositoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: S.optional(RepositoryDescription) }),
-).annotate({ identifier: "CreateRepositoryResult" }) as any as S.Schema<CreateRepositoryResult>;
+const CreateRepositoryResult = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateRepositoryResult>;
 export interface DeleteDomainRequest {
   domain: string;
   domainOwner?: string;
 }
-const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-  }).pipe(T.all(T.Http({ method: "DELETE", uri: "/v1/domain" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
+const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DeleteDomainRequest>;
 export interface DeleteDomainResult {
   domain?: DomainDescription;
 }
@@ -577,45 +448,24 @@ export interface DeleteDomainPermissionsPolicyRequest {
   domainOwner?: string;
   policyRevision?: string;
 }
-const DeleteDomainPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    policyRevision: S.optional(S.String).pipe(T.HttpQuery("policy-revision")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/domain/permissions/policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteDomainPermissionsPolicyRequest",
-}) as any as S.Schema<DeleteDomainPermissionsPolicyRequest>;
+const DeleteDomainPermissionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteDomainPermissionsPolicyRequest>;
 export type PolicyDocument = string;
 export interface ResourcePolicy {
   resourceArn?: string;
   revision?: string;
   document?: string;
 }
-const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.optional(S.String),
-    revision: S.optional(S.String),
-    document: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourcePolicy" }) as any as S.Schema<ResourcePolicy>;
+const ResourcePolicy = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ResourcePolicy>;
 export interface DeleteDomainPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
-const DeleteDomainPermissionsPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.optional(ResourcePolicy) }),
-).annotate({
-  identifier: "DeleteDomainPermissionsPolicyResult",
-}) as any as S.Schema<DeleteDomainPermissionsPolicyResult>;
+const DeleteDomainPermissionsPolicyResult = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeleteDomainPermissionsPolicyResult>;
 export interface DeletePackageRequest {
   domain: string;
   domainOwner?: string;
@@ -624,16 +474,7 @@ export interface DeletePackageRequest {
   namespace?: string;
   package: string;
 }
-const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-  }).pipe(T.all(T.Http({ method: "DELETE", uri: "/v1/package" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DeletePackageRequest" }) as any as S.Schema<DeletePackageRequest>;
+const DeletePackageRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DeletePackageRequest>;
 export type AllowPublish = "ALLOW" | "BLOCK" | (string & {});
 const AllowPublish = S.String;
 
@@ -644,55 +485,37 @@ export interface PackageOriginRestrictions {
   publish: AllowPublish;
   upstream: AllowUpstream;
 }
-const PackageOriginRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ publish: AllowPublish, upstream: AllowUpstream }),
-).annotate({
-  identifier: "PackageOriginRestrictions",
-}) as any as S.Schema<PackageOriginRestrictions>;
+const PackageOriginRestrictions = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<PackageOriginRestrictions>;
 export interface PackageOriginConfiguration {
   restrictions?: PackageOriginRestrictions;
 }
-const PackageOriginConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ restrictions: S.optional(PackageOriginRestrictions) }),
-).annotate({
-  identifier: "PackageOriginConfiguration",
-}) as any as S.Schema<PackageOriginConfiguration>;
+const PackageOriginConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<PackageOriginConfiguration>;
 export interface PackageSummary {
   format?: PackageFormat;
   namespace?: string;
   package?: string;
   originConfiguration?: PackageOriginConfiguration;
 }
-const PackageSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(PackageFormat),
-    namespace: S.optional(S.String),
-    package: S.optional(S.String),
-    originConfiguration: S.optional(PackageOriginConfiguration),
-  }),
-).annotate({ identifier: "PackageSummary" }) as any as S.Schema<PackageSummary>;
+const PackageSummary = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PackageSummary>;
 export interface DeletePackageResult {
   deletedPackage?: PackageSummary;
 }
-const DeletePackageResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deletedPackage: S.optional(PackageSummary) }),
-).annotate({ identifier: "DeletePackageResult" }) as any as S.Schema<DeletePackageResult>;
+const DeletePackageResult = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DeletePackageResult>;
 export interface DeletePackageGroupRequest {
   domain: string;
   domainOwner?: string;
   packageGroup: string;
 }
-const DeletePackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    packageGroup: S.String.pipe(T.HttpQuery("package-group")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/v1/package-group" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeletePackageGroupRequest",
-}) as any as S.Schema<DeletePackageGroupRequest>;
+const DeletePackageGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeletePackageGroupRequest>;
 export interface DeletePackageGroupResult {
   packageGroup?: PackageGroupDescription;
 }
@@ -708,29 +531,10 @@ export interface DeletePackageVersionsRequest {
   versions: string[];
   expectedStatus?: PackageVersionStatus;
 }
-const DeletePackageVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    versions: PackageVersionList,
-    expectedStatus: S.optional(PackageVersionStatus),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/package/versions/delete" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePackageVersionsRequest",
-}) as any as S.Schema<DeletePackageVersionsRequest>;
+const DeletePackageVersionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeletePackageVersionsRequest>;
 export interface DeletePackageVersionsResult {
   successfulVersions?: { [key: string]: SuccessfulPackageVersionInfo | undefined };
   failedVersions?: { [key: string]: PackageVersionError | undefined };
@@ -742,13 +546,10 @@ export interface DeleteRepositoryRequest {
   domainOwner?: string;
   repository: string;
 }
-const DeleteRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-  }).pipe(T.all(T.Http({ method: "DELETE", uri: "/v1/repository" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DeleteRepositoryRequest" }) as any as S.Schema<DeleteRepositoryRequest>;
+const DeleteRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteRepositoryRequest>;
 export interface DeleteRepositoryResult {
   repository?: RepositoryDescription;
 }
@@ -759,25 +560,10 @@ export interface DeleteRepositoryPermissionsPolicyRequest {
   repository: string;
   policyRevision?: string;
 }
-const DeleteRepositoryPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    policyRevision: S.optional(S.String).pipe(T.HttpQuery("policy-revision")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/repository/permissions/policies" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteRepositoryPermissionsPolicyRequest",
-}) as any as S.Schema<DeleteRepositoryPermissionsPolicyRequest>;
+const DeleteRepositoryPermissionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteRepositoryPermissionsPolicyRequest>;
 export interface DeleteRepositoryPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
@@ -787,12 +573,10 @@ export interface DescribeDomainRequest {
   domain: string;
   domainOwner?: string;
 }
-const DescribeDomainRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/domain" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeDomainRequest" }) as any as S.Schema<DescribeDomainRequest>;
+const DescribeDomainRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DescribeDomainRequest>;
 export interface DescribeDomainResult {
   domain?: DomainDescription;
 }
@@ -805,58 +589,40 @@ export interface DescribePackageRequest {
   namespace?: string;
   package: string;
 }
-const DescribePackageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/package" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribePackageRequest" }) as any as S.Schema<DescribePackageRequest>;
+const DescribePackageRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DescribePackageRequest>;
 export interface PackageDescription {
   format?: PackageFormat;
   namespace?: string;
   name?: string;
   originConfiguration?: PackageOriginConfiguration;
 }
-const PackageDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(PackageFormat),
-    namespace: S.optional(S.String),
-    name: S.optional(S.String),
-    originConfiguration: S.optional(PackageOriginConfiguration),
-  }),
-).annotate({ identifier: "PackageDescription" }) as any as S.Schema<PackageDescription>;
+const PackageDescription = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<PackageDescription>;
 export interface DescribePackageResult {
   package: PackageDescription;
 }
-const DescribePackageResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ package: PackageDescription }),
-).annotate({ identifier: "DescribePackageResult" }) as any as S.Schema<DescribePackageResult>;
+const DescribePackageResult = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DescribePackageResult>;
 export interface DescribePackageGroupRequest {
   domain: string;
   domainOwner?: string;
   packageGroup: string;
 }
-const DescribePackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    packageGroup: S.String.pipe(T.HttpQuery("package-group")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/package-group" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribePackageGroupRequest",
-}) as any as S.Schema<DescribePackageGroupRequest>;
+const DescribePackageGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DescribePackageGroupRequest>;
 export interface DescribePackageGroupResult {
   packageGroup?: PackageGroupDescription;
 }
-const DescribePackageGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packageGroup: S.optional(PackageGroupDescription) }),
-).annotate({
-  identifier: "DescribePackageGroupResult",
-}) as any as S.Schema<DescribePackageGroupResult>;
+const DescribePackageGroupResult = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DescribePackageGroupResult>;
 export interface DescribePackageVersionRequest {
   domain: string;
   domainOwner?: string;
@@ -866,38 +632,23 @@ export interface DescribePackageVersionRequest {
   package: string;
   packageVersion: string;
 }
-const DescribePackageVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    packageVersion: S.String.pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/v1/package/version" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribePackageVersionRequest",
-}) as any as S.Schema<DescribePackageVersionRequest>;
+const DescribePackageVersionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DescribePackageVersionRequest>;
 export type String255 = string;
 export interface LicenseInfo {
   name?: string;
   url?: string;
 }
-const LicenseInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), url: S.optional(S.String) }),
-).annotate({ identifier: "LicenseInfo" }) as any as S.Schema<LicenseInfo>;
+const LicenseInfo = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<LicenseInfo>;
 export type LicenseInfoList = LicenseInfo[];
-const LicenseInfoList = /*@__PURE__*/ S.Array(LicenseInfo);
+const LicenseInfoList = /*@__PURE__*/ __L.at(__c6, 4);
 export interface DomainEntryPoint {
   repositoryName?: string;
   externalConnectionName?: string;
 }
-const DomainEntryPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repositoryName: S.optional(S.String), externalConnectionName: S.optional(S.String) }),
-).annotate({ identifier: "DomainEntryPoint" }) as any as S.Schema<DomainEntryPoint>;
+const DomainEntryPoint = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DomainEntryPoint>;
 export type PackageVersionOriginType = "INTERNAL" | "EXTERNAL" | "UNKNOWN" | (string & {});
 const PackageVersionOriginType = S.String;
 
@@ -905,12 +656,7 @@ export interface PackageVersionOrigin {
   domainEntryPoint?: DomainEntryPoint;
   originType?: PackageVersionOriginType;
 }
-const PackageVersionOrigin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainEntryPoint: S.optional(DomainEntryPoint),
-    originType: S.optional(PackageVersionOriginType),
-  }),
-).annotate({ identifier: "PackageVersionOrigin" }) as any as S.Schema<PackageVersionOrigin>;
+const PackageVersionOrigin = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<PackageVersionOrigin>;
 export interface PackageVersionDescription {
   format?: PackageFormat;
   namespace?: string;
@@ -926,47 +672,26 @@ export interface PackageVersionDescription {
   status?: PackageVersionStatus;
   origin?: PackageVersionOrigin;
 }
-const PackageVersionDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(PackageFormat),
-    namespace: S.optional(S.String),
-    packageName: S.optional(S.String),
-    displayName: S.optional(S.String),
-    version: S.optional(S.String),
-    summary: S.optional(S.String),
-    homePage: S.optional(S.String),
-    sourceCodeRepository: S.optional(S.String),
-    publishedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    licenses: S.optional(LicenseInfoList),
-    revision: S.optional(S.String),
-    status: S.optional(PackageVersionStatus),
-    origin: S.optional(PackageVersionOrigin),
-  }),
-).annotate({
-  identifier: "PackageVersionDescription",
-}) as any as S.Schema<PackageVersionDescription>;
+const PackageVersionDescription = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<PackageVersionDescription>;
 export interface DescribePackageVersionResult {
   packageVersion: PackageVersionDescription;
 }
-const DescribePackageVersionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packageVersion: PackageVersionDescription }),
-).annotate({
-  identifier: "DescribePackageVersionResult",
-}) as any as S.Schema<DescribePackageVersionResult>;
+const DescribePackageVersionResult = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DescribePackageVersionResult>;
 export interface DescribeRepositoryRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
 }
-const DescribeRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/repository" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeRepositoryRequest",
-}) as any as S.Schema<DescribeRepositoryRequest>;
+const DescribeRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DescribeRepositoryRequest>;
 export interface DescribeRepositoryResult {
   repository?: RepositoryDescription;
 }
@@ -978,25 +703,10 @@ export interface DisassociateExternalConnectionRequest {
   repository: string;
   externalConnection: string;
 }
-const DisassociateExternalConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    externalConnection: S.String.pipe(T.HttpQuery("external-connection")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/repository/external-connection" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateExternalConnectionRequest",
-}) as any as S.Schema<DisassociateExternalConnectionRequest>;
+const DisassociateExternalConnectionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DisassociateExternalConnectionRequest>;
 export interface DisassociateExternalConnectionResult {
   repository?: RepositoryDescription;
 }
@@ -1013,30 +723,10 @@ export interface DisposePackageVersionsRequest {
   versionRevisions?: { [key: string]: string | undefined };
   expectedStatus?: PackageVersionStatus;
 }
-const DisposePackageVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    versions: PackageVersionList,
-    versionRevisions: S.optional(PackageVersionRevisionMap),
-    expectedStatus: S.optional(PackageVersionStatus),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/package/versions/dispose" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisposePackageVersionsRequest",
-}) as any as S.Schema<DisposePackageVersionsRequest>;
+const DisposePackageVersionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DisposePackageVersionsRequest>;
 export interface DisposePackageVersionsResult {
   successfulVersions?: { [key: string]: SuccessfulPackageVersionInfo | undefined };
   failedVersions?: { [key: string]: PackageVersionError | undefined };
@@ -1050,26 +740,10 @@ export interface GetAssociatedPackageGroupRequest {
   namespace?: string;
   package: string;
 }
-const GetAssociatedPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/get-associated-package-group" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAssociatedPackageGroupRequest",
-}) as any as S.Schema<GetAssociatedPackageGroupRequest>;
+const GetAssociatedPackageGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetAssociatedPackageGroupRequest>;
 export type PackageGroupAssociationType = "STRONG" | "WEAK" | (string & {});
 const PackageGroupAssociationType = S.String;
 
@@ -1077,64 +751,36 @@ export interface GetAssociatedPackageGroupResult {
   packageGroup?: PackageGroupDescription;
   associationType?: PackageGroupAssociationType;
 }
-const GetAssociatedPackageGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageGroup: S.optional(PackageGroupDescription),
-    associationType: S.optional(PackageGroupAssociationType),
-  }),
-).annotate({
-  identifier: "GetAssociatedPackageGroupResult",
-}) as any as S.Schema<GetAssociatedPackageGroupResult>;
+const GetAssociatedPackageGroupResult = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetAssociatedPackageGroupResult>;
 export type AuthorizationTokenDurationSeconds = number;
 export interface GetAuthorizationTokenRequest {
   domain: string;
   domainOwner?: string;
   durationSeconds?: number;
 }
-const GetAuthorizationTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    durationSeconds: S.optional(S.Number).pipe(T.HttpQuery("duration")),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/authorization-token" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAuthorizationTokenRequest",
-}) as any as S.Schema<GetAuthorizationTokenRequest>;
+const GetAuthorizationTokenRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetAuthorizationTokenRequest>;
 export interface GetAuthorizationTokenResult {
   authorizationToken?: string | redacted.Redacted<string>;
   expiration?: Date;
 }
-const GetAuthorizationTokenResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorizationToken: S.optional(SensitiveString),
-    expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "GetAuthorizationTokenResult",
-}) as any as S.Schema<GetAuthorizationTokenResult>;
+const GetAuthorizationTokenResult = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetAuthorizationTokenResult>;
 export interface GetDomainPermissionsPolicyRequest {
   domain: string;
   domainOwner?: string;
 }
-const GetDomainPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/domain/permissions/policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetDomainPermissionsPolicyRequest",
-}) as any as S.Schema<GetDomainPermissionsPolicyRequest>;
+const GetDomainPermissionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetDomainPermissionsPolicyRequest>;
 export interface GetDomainPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
@@ -1152,46 +798,20 @@ export interface GetPackageVersionAssetRequest {
   asset: string;
   packageVersionRevision?: string;
 }
-const GetPackageVersionAssetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    packageVersion: S.String.pipe(T.HttpQuery("version")),
-    asset: S.String.pipe(T.HttpQuery("asset")),
-    packageVersionRevision: S.optional(S.String).pipe(T.HttpQuery("revision")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/package/version/asset" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPackageVersionAssetRequest",
-}) as any as S.Schema<GetPackageVersionAssetRequest>;
+const GetPackageVersionAssetRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetPackageVersionAssetRequest>;
 export interface GetPackageVersionAssetResult {
   asset?: T.StreamingOutputBody;
   assetName?: string;
   packageVersion?: string;
   packageVersionRevision?: string;
 }
-const GetPackageVersionAssetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asset: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-    assetName: S.optional(S.String).pipe(T.HttpHeader("X-AssetName")),
-    packageVersion: S.optional(S.String).pipe(T.HttpHeader("X-PackageVersion")),
-    packageVersionRevision: S.optional(S.String).pipe(T.HttpHeader("X-PackageVersionRevision")),
-  }),
-).annotate({
-  identifier: "GetPackageVersionAssetResult",
-}) as any as S.Schema<GetPackageVersionAssetResult>;
+const GetPackageVersionAssetResult = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetPackageVersionAssetResult>;
 export interface GetPackageVersionReadmeRequest {
   domain: string;
   domainOwner?: string;
@@ -1201,28 +821,10 @@ export interface GetPackageVersionReadmeRequest {
   package: string;
   packageVersion: string;
 }
-const GetPackageVersionReadmeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    packageVersion: S.String.pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/package/version/readme" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPackageVersionReadmeRequest",
-}) as any as S.Schema<GetPackageVersionReadmeRequest>;
+const GetPackageVersionReadmeRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetPackageVersionReadmeRequest>;
 export interface GetPackageVersionReadmeResult {
   format?: PackageFormat;
   namespace?: string;
@@ -1231,18 +833,10 @@ export interface GetPackageVersionReadmeResult {
   versionRevision?: string;
   readme?: string;
 }
-const GetPackageVersionReadmeResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(PackageFormat),
-    namespace: S.optional(S.String),
-    package: S.optional(S.String),
-    version: S.optional(S.String),
-    versionRevision: S.optional(S.String),
-    readme: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPackageVersionReadmeResult",
-}) as any as S.Schema<GetPackageVersionReadmeResult>;
+const GetPackageVersionReadmeResult = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetPackageVersionReadmeResult>;
 export type EndpointType = "dualstack" | "ipv4" | (string & {});
 const EndpointType = S.String;
 
@@ -1253,50 +847,26 @@ export interface GetRepositoryEndpointRequest {
   format: PackageFormat;
   endpointType?: EndpointType;
 }
-const GetRepositoryEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    endpointType: S.optional(EndpointType).pipe(T.HttpQuery("endpointType")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/v1/repository/endpoint" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetRepositoryEndpointRequest",
-}) as any as S.Schema<GetRepositoryEndpointRequest>;
+const GetRepositoryEndpointRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetRepositoryEndpointRequest>;
 export interface GetRepositoryEndpointResult {
   repositoryEndpoint?: string;
 }
-const GetRepositoryEndpointResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repositoryEndpoint: S.optional(S.String) }),
-).annotate({
-  identifier: "GetRepositoryEndpointResult",
-}) as any as S.Schema<GetRepositoryEndpointResult>;
+const GetRepositoryEndpointResult = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetRepositoryEndpointResult>;
 export interface GetRepositoryPermissionsPolicyRequest {
   domain: string;
   domainOwner?: string;
   repository: string;
 }
-const GetRepositoryPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/repository/permissions/policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetRepositoryPermissionsPolicyRequest",
-}) as any as S.Schema<GetRepositoryPermissionsPolicyRequest>;
+const GetRepositoryPermissionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetRepositoryPermissionsPolicyRequest>;
 export interface GetRepositoryPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
@@ -1312,43 +882,20 @@ export interface ListAllowedRepositoriesForGroupRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListAllowedRepositoriesForGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    packageGroup: S.String.pipe(T.HttpQuery("package-group")),
-    originRestrictionType: PackageGroupOriginRestrictionType.pipe(
-      T.HttpQuery("originRestrictionType"),
-    ),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/package-group-allowed-repositories" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAllowedRepositoriesForGroupRequest",
-}) as any as S.Schema<ListAllowedRepositoriesForGroupRequest>;
+const ListAllowedRepositoriesForGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListAllowedRepositoriesForGroupRequest>;
 export type RepositoryNameList = string[];
 const RepositoryNameList = PackageVersionList as any as S.Schema<RepositoryNameList>;
 export interface ListAllowedRepositoriesForGroupResult {
   allowedRepositories?: string[];
   nextToken?: string;
 }
-const ListAllowedRepositoriesForGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedRepositories: S.optional(RepositoryNameList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAllowedRepositoriesForGroupResult",
-}) as any as S.Schema<ListAllowedRepositoriesForGroupResult>;
+const ListAllowedRepositoriesForGroupResult = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListAllowedRepositoriesForGroupResult>;
 export type ListPackagesMaxResults = number;
 export interface ListAssociatedPackagesRequest {
   domain: string;
@@ -1358,62 +905,33 @@ export interface ListAssociatedPackagesRequest {
   nextToken?: string;
   preview?: boolean;
 }
-const ListAssociatedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    packageGroup: S.String.pipe(T.HttpQuery("package-group")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    preview: S.optional(S.Boolean).pipe(T.HttpQuery("preview")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/list-associated-packages" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAssociatedPackagesRequest",
-}) as any as S.Schema<ListAssociatedPackagesRequest>;
+const ListAssociatedPackagesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListAssociatedPackagesRequest>;
 export interface AssociatedPackage {
   format?: PackageFormat;
   namespace?: string;
   package?: string;
   associationType?: PackageGroupAssociationType;
 }
-const AssociatedPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(PackageFormat),
-    namespace: S.optional(S.String),
-    package: S.optional(S.String),
-    associationType: S.optional(PackageGroupAssociationType),
-  }),
-).annotate({ identifier: "AssociatedPackage" }) as any as S.Schema<AssociatedPackage>;
+const AssociatedPackage = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AssociatedPackage>;
 export type AssociatedPackageList = AssociatedPackage[];
-const AssociatedPackageList = /*@__PURE__*/ S.Array(AssociatedPackage);
+const AssociatedPackageList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface ListAssociatedPackagesResult {
   packages?: AssociatedPackage[];
   nextToken?: string;
 }
-const ListAssociatedPackagesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packages: S.optional(AssociatedPackageList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAssociatedPackagesResult",
-}) as any as S.Schema<ListAssociatedPackagesResult>;
+const ListAssociatedPackagesResult = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListAssociatedPackagesResult>;
 export type ListDomainsMaxResults = number;
 export interface ListDomainsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/domains" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListDomainsRequest" }) as any as S.Schema<ListDomainsRequest>;
+const ListDomainsRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ListDomainsRequest>;
 export interface DomainSummary {
   name?: string;
   owner?: string;
@@ -1422,25 +940,14 @@ export interface DomainSummary {
   createdTime?: Date;
   encryptionKey?: string;
 }
-const DomainSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    owner: S.optional(S.String),
-    arn: S.optional(S.String),
-    status: S.optional(DomainStatus),
-    createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    encryptionKey: S.optional(S.String),
-  }),
-).annotate({ identifier: "DomainSummary" }) as any as S.Schema<DomainSummary>;
+const DomainSummary = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<DomainSummary>;
 export type DomainSummaryList = DomainSummary[];
-const DomainSummaryList = /*@__PURE__*/ S.Array(DomainSummary);
+const DomainSummaryList = /*@__PURE__*/ __L.at(__c10, 0);
 export interface ListDomainsResult {
   domains?: DomainSummary[];
   nextToken?: string;
 }
-const ListDomainsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domains: S.optional(DomainSummaryList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListDomainsResult" }) as any as S.Schema<ListDomainsResult>;
+const ListDomainsResult = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ListDomainsResult>;
 export type ListPackageGroupsMaxResults = number;
 export type PackageGroupPatternPrefix = string;
 export interface ListPackageGroupsRequest {
@@ -1450,17 +957,10 @@ export interface ListPackageGroupsRequest {
   nextToken?: string;
   prefix?: string;
 }
-const ListPackageGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/package-groups" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListPackageGroupsRequest" }) as any as S.Schema<ListPackageGroupsRequest>;
+const ListPackageGroupsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListPackageGroupsRequest>;
 export interface PackageGroupSummary {
   arn?: string;
   pattern?: string;
@@ -1474,14 +974,15 @@ export interface PackageGroupSummary {
 }
 const PackageGroupSummary = PackageGroupDescription as any as S.Schema<PackageGroupSummary>;
 export type PackageGroupSummaryList = PackageGroupSummary[];
-const PackageGroupSummaryList = /*@__PURE__*/ S.Array(PackageGroupSummary);
+const PackageGroupSummaryList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface ListPackageGroupsResult {
   packageGroups?: PackageGroupSummary[];
   nextToken?: string;
 }
-const ListPackageGroupsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packageGroups: S.optional(PackageGroupSummaryList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListPackageGroupsResult" }) as any as S.Schema<ListPackageGroupsResult>;
+const ListPackageGroupsResult = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListPackageGroupsResult>;
 export interface ListPackagesRequest {
   domain: string;
   domainOwner?: string;
@@ -1494,29 +995,14 @@ export interface ListPackagesRequest {
   publish?: AllowPublish;
   upstream?: AllowUpstream;
 }
-const ListPackagesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: S.optional(PackageFormat).pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    packagePrefix: S.optional(S.String).pipe(T.HttpQuery("package-prefix")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    publish: S.optional(AllowPublish).pipe(T.HttpQuery("publish")),
-    upstream: S.optional(AllowUpstream).pipe(T.HttpQuery("upstream")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/packages" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListPackagesRequest" }) as any as S.Schema<ListPackagesRequest>;
+const ListPackagesRequest = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ListPackagesRequest>;
 export type PackageSummaryList = PackageSummary[];
-const PackageSummaryList = /*@__PURE__*/ S.Array(PackageSummary);
+const PackageSummaryList = /*@__PURE__*/ __L.at(__c10, 6);
 export interface ListPackagesResult {
   packages?: PackageSummary[];
   nextToken?: string;
 }
-const ListPackagesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packages: S.optional(PackageSummaryList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListPackagesResult" }) as any as S.Schema<ListPackagesResult>;
+const ListPackagesResult = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ListPackagesResult>;
 export type ListPackageVersionAssetsMaxResults = number;
 export interface ListPackageVersionAssetsRequest {
   domain: string;
@@ -1529,46 +1015,24 @@ export interface ListPackageVersionAssetsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListPackageVersionAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    packageVersion: S.String.pipe(T.HttpQuery("version")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/package/version/assets" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPackageVersionAssetsRequest",
-}) as any as S.Schema<ListPackageVersionAssetsRequest>;
+const ListPackageVersionAssetsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListPackageVersionAssetsRequest>;
 export type HashAlgorithm = "MD5" | "SHA-1" | "SHA-256" | "SHA-512" | (string & {});
 const HashAlgorithm = S.String;
 
 export type HashValue = string;
 export type AssetHashes = { [key in HashAlgorithm]?: string };
-const AssetHashes = /*@__PURE__*/ S.Record(HashAlgorithm, /*@__PURE__*/ S.String.pipe(S.optional));
+const AssetHashes = /*@__PURE__*/ __L.at(__c11, 1);
 export interface AssetSummary {
   name: string;
   size?: number;
   hashes?: { [key: string]: string | undefined };
 }
-const AssetSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, size: S.optional(S.Number), hashes: S.optional(AssetHashes) }),
-).annotate({ identifier: "AssetSummary" }) as any as S.Schema<AssetSummary>;
+const AssetSummary = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<AssetSummary>;
 export type AssetSummaryList = AssetSummary[];
-const AssetSummaryList = /*@__PURE__*/ S.Array(AssetSummary);
+const AssetSummaryList = /*@__PURE__*/ __L.at(__c11, 3);
 export interface ListPackageVersionAssetsResult {
   format?: PackageFormat;
   namespace?: string;
@@ -1578,19 +1042,10 @@ export interface ListPackageVersionAssetsResult {
   nextToken?: string;
   assets?: AssetSummary[];
 }
-const ListPackageVersionAssetsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(PackageFormat),
-    namespace: S.optional(S.String),
-    package: S.optional(S.String),
-    version: S.optional(S.String),
-    versionRevision: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    assets: S.optional(AssetSummaryList),
-  }),
-).annotate({
-  identifier: "ListPackageVersionAssetsResult",
-}) as any as S.Schema<ListPackageVersionAssetsResult>;
+const ListPackageVersionAssetsResult = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListPackageVersionAssetsResult>;
 export interface ListPackageVersionDependenciesRequest {
   domain: string;
   domainOwner?: string;
@@ -1601,45 +1056,19 @@ export interface ListPackageVersionDependenciesRequest {
   packageVersion: string;
   nextToken?: string;
 }
-const ListPackageVersionDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    packageVersion: S.String.pipe(T.HttpQuery("version")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/package/version/dependencies" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPackageVersionDependenciesRequest",
-}) as any as S.Schema<ListPackageVersionDependenciesRequest>;
+const ListPackageVersionDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListPackageVersionDependenciesRequest>;
 export interface PackageDependency {
   namespace?: string;
   package?: string;
   dependencyType?: string;
   versionRequirement?: string;
 }
-const PackageDependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: S.optional(S.String),
-    package: S.optional(S.String),
-    dependencyType: S.optional(S.String),
-    versionRequirement: S.optional(S.String),
-  }),
-).annotate({ identifier: "PackageDependency" }) as any as S.Schema<PackageDependency>;
+const PackageDependency = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<PackageDependency>;
 export type PackageDependencyList = PackageDependency[];
-const PackageDependencyList = /*@__PURE__*/ S.Array(PackageDependency);
+const PackageDependencyList = /*@__PURE__*/ __L.at(__c11, 7);
 export interface ListPackageVersionDependenciesResult {
   format?: PackageFormat;
   namespace?: string;
@@ -1649,19 +1078,10 @@ export interface ListPackageVersionDependenciesResult {
   nextToken?: string;
   dependencies?: PackageDependency[];
 }
-const ListPackageVersionDependenciesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(PackageFormat),
-    namespace: S.optional(S.String),
-    package: S.optional(S.String),
-    version: S.optional(S.String),
-    versionRevision: S.optional(S.String),
-    nextToken: S.optional(S.String),
-    dependencies: S.optional(PackageDependencyList),
-  }),
-).annotate({
-  identifier: "ListPackageVersionDependenciesResult",
-}) as any as S.Schema<ListPackageVersionDependenciesResult>;
+const ListPackageVersionDependenciesResult = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListPackageVersionDependenciesResult>;
 export type PackageVersionSortType = "PUBLISHED_TIME" | (string & {});
 const PackageVersionSortType = S.String;
 
@@ -1679,41 +1099,22 @@ export interface ListPackageVersionsRequest {
   nextToken?: string;
   originType?: PackageVersionOriginType;
 }
-const ListPackageVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    status: S.optional(PackageVersionStatus).pipe(T.HttpQuery("status")),
-    sortBy: S.optional(PackageVersionSortType).pipe(T.HttpQuery("sortBy")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    originType: S.optional(PackageVersionOriginType).pipe(T.HttpQuery("originType")),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/package/versions" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListPackageVersionsRequest",
-}) as any as S.Schema<ListPackageVersionsRequest>;
+const ListPackageVersionsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListPackageVersionsRequest>;
 export interface PackageVersionSummary {
   version: string;
   revision?: string;
   status: PackageVersionStatus;
   origin?: PackageVersionOrigin;
 }
-const PackageVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.String,
-    revision: S.optional(S.String),
-    status: PackageVersionStatus,
-    origin: S.optional(PackageVersionOrigin),
-  }),
-).annotate({ identifier: "PackageVersionSummary" }) as any as S.Schema<PackageVersionSummary>;
+const PackageVersionSummary = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<PackageVersionSummary>;
 export type PackageVersionSummaryList = PackageVersionSummary[];
-const PackageVersionSummaryList = /*@__PURE__*/ S.Array(PackageVersionSummary);
+const PackageVersionSummaryList = /*@__PURE__*/ __L.at(__c12, 3);
 export interface ListPackageVersionsResult {
   defaultDisplayVersion?: string;
   format?: PackageFormat;
@@ -1722,31 +1123,20 @@ export interface ListPackageVersionsResult {
   versions?: PackageVersionSummary[];
   nextToken?: string;
 }
-const ListPackageVersionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultDisplayVersion: S.optional(S.String),
-    format: S.optional(PackageFormat),
-    namespace: S.optional(S.String),
-    package: S.optional(S.String),
-    versions: S.optional(PackageVersionSummaryList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPackageVersionsResult",
-}) as any as S.Schema<ListPackageVersionsResult>;
+const ListPackageVersionsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListPackageVersionsResult>;
 export type ListRepositoriesMaxResults = number;
 export interface ListRepositoriesRequest {
   repositoryPrefix?: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositoryPrefix: S.optional(S.String).pipe(T.HttpQuery("repository-prefix")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/repositories" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListRepositoriesRequest" }) as any as S.Schema<ListRepositoriesRequest>;
+const ListRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListRepositoriesRequest>;
 export interface RepositorySummary {
   name?: string;
   administratorAccount?: string;
@@ -1756,26 +1146,17 @@ export interface RepositorySummary {
   description?: string;
   createdTime?: Date;
 }
-const RepositorySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    administratorAccount: S.optional(S.String),
-    domainName: S.optional(S.String),
-    domainOwner: S.optional(S.String),
-    arn: S.optional(S.String),
-    description: S.optional(S.String),
-    createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "RepositorySummary" }) as any as S.Schema<RepositorySummary>;
+const RepositorySummary = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<RepositorySummary>;
 export type RepositorySummaryList = RepositorySummary[];
-const RepositorySummaryList = /*@__PURE__*/ S.Array(RepositorySummary);
+const RepositorySummaryList = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ListRepositoriesResult {
   repositories?: RepositorySummary[];
   nextToken?: string;
 }
-const ListRepositoriesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repositories: S.optional(RepositorySummaryList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListRepositoriesResult" }) as any as S.Schema<ListRepositoriesResult>;
+const ListRepositoriesResult = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListRepositoriesResult>;
 export type ListRepositoriesInDomainMaxResults = number;
 export interface ListRepositoriesInDomainRequest {
   domain: string;
@@ -1785,29 +1166,18 @@ export interface ListRepositoriesInDomainRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListRepositoriesInDomainRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    administratorAccount: S.optional(S.String).pipe(T.HttpQuery("administrator-account")),
-    repositoryPrefix: S.optional(S.String).pipe(T.HttpQuery("repository-prefix")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/domain/repositories" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListRepositoriesInDomainRequest",
-}) as any as S.Schema<ListRepositoriesInDomainRequest>;
+const ListRepositoriesInDomainRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListRepositoriesInDomainRequest>;
 export interface ListRepositoriesInDomainResult {
   repositories?: RepositorySummary[];
   nextToken?: string;
 }
-const ListRepositoriesInDomainResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repositories: S.optional(RepositorySummaryList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListRepositoriesInDomainResult",
-}) as any as S.Schema<ListRepositoriesInDomainResult>;
+const ListRepositoriesInDomainResult = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListRepositoriesInDomainResult>;
 export interface ListSubPackageGroupsRequest {
   domain: string;
   domainOwner?: string;
@@ -1815,53 +1185,32 @@ export interface ListSubPackageGroupsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListSubPackageGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    packageGroup: S.String.pipe(T.HttpQuery("package-group")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/package-groups/sub-groups" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListSubPackageGroupsRequest",
-}) as any as S.Schema<ListSubPackageGroupsRequest>;
+const ListSubPackageGroupsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListSubPackageGroupsRequest>;
 export interface ListSubPackageGroupsResult {
   packageGroups?: PackageGroupSummary[];
   nextToken?: string;
 }
-const ListSubPackageGroupsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packageGroups: S.optional(PackageGroupSummaryList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSubPackageGroupsResult",
-}) as any as S.Schema<ListSubPackageGroupsResult>;
+const ListSubPackageGroupsResult = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListSubPackageGroupsResult>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/tags" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResult {
   tags?: Tag[];
 }
-const ListTagsForResourceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForResourceResult",
-}) as any as S.Schema<ListTagsForResourceResult>;
+const ListTagsForResourceResult = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListTagsForResourceResult>;
 export type SHA256 = string;
 export interface PublishPackageVersionRequest {
   domain: string;
@@ -1876,32 +1225,10 @@ export interface PublishPackageVersionRequest {
   assetSHA256: string;
   unfinished?: boolean;
 }
-const PublishPackageVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    packageVersion: S.String.pipe(T.HttpQuery("version")),
-    assetContent: T.StreamingInput.pipe(T.HttpPayload()),
-    assetName: S.String.pipe(T.HttpQuery("asset")),
-    assetSHA256: S.String.pipe(T.HttpHeader("x-amz-content-sha256")),
-    unfinished: S.optional(S.Boolean).pipe(T.HttpQuery("unfinished")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/package/version/publish" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PublishPackageVersionRequest",
-}) as any as S.Schema<PublishPackageVersionRequest>;
+const PublishPackageVersionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<PublishPackageVersionRequest>;
 export interface PublishPackageVersionResult {
   format?: PackageFormat;
   namespace?: string;
@@ -1911,44 +1238,20 @@ export interface PublishPackageVersionResult {
   status?: PackageVersionStatus;
   asset?: AssetSummary;
 }
-const PublishPackageVersionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(PackageFormat),
-    namespace: S.optional(S.String),
-    package: S.optional(S.String),
-    version: S.optional(S.String),
-    versionRevision: S.optional(S.String),
-    status: S.optional(PackageVersionStatus),
-    asset: S.optional(AssetSummary),
-  }),
-).annotate({
-  identifier: "PublishPackageVersionResult",
-}) as any as S.Schema<PublishPackageVersionResult>;
+const PublishPackageVersionResult = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<PublishPackageVersionResult>;
 export interface PutDomainPermissionsPolicyRequest {
   domain: string;
   domainOwner?: string;
   policyRevision?: string;
   policyDocument: string;
 }
-const PutDomainPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String,
-    domainOwner: S.optional(S.String),
-    policyRevision: S.optional(S.String),
-    policyDocument: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/domain/permissions/policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutDomainPermissionsPolicyRequest",
-}) as any as S.Schema<PutDomainPermissionsPolicyRequest>;
+const PutDomainPermissionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<PutDomainPermissionsPolicyRequest>;
 export interface PutDomainPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
@@ -1963,27 +1266,17 @@ export interface PutPackageOriginConfigurationRequest {
   package: string;
   restrictions: PackageOriginRestrictions;
 }
-const PutPackageOriginConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    restrictions: PackageOriginRestrictions,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/package" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "PutPackageOriginConfigurationRequest",
-}) as any as S.Schema<PutPackageOriginConfigurationRequest>;
+const PutPackageOriginConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<PutPackageOriginConfigurationRequest>;
 export interface PutPackageOriginConfigurationResult {
   originConfiguration?: PackageOriginConfiguration;
 }
-const PutPackageOriginConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ originConfiguration: S.optional(PackageOriginConfiguration) }),
-).annotate({
-  identifier: "PutPackageOriginConfigurationResult",
-}) as any as S.Schema<PutPackageOriginConfigurationResult>;
+const PutPackageOriginConfigurationResult = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<PutPackageOriginConfigurationResult>;
 export interface PutRepositoryPermissionsPolicyRequest {
   domain: string;
   domainOwner?: string;
@@ -1991,26 +1284,10 @@ export interface PutRepositoryPermissionsPolicyRequest {
   policyRevision?: string;
   policyDocument: string;
 }
-const PutRepositoryPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    policyRevision: S.optional(S.String),
-    policyDocument: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/repository/permissions/policy" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutRepositoryPermissionsPolicyRequest",
-}) as any as S.Schema<PutRepositoryPermissionsPolicyRequest>;
+const PutRepositoryPermissionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<PutRepositoryPermissionsPolicyRequest>;
 export interface PutRepositoryPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
@@ -2020,26 +1297,19 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/tag" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResult {}
-const TagResourceResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResult",
-}) as any as S.Schema<TagResourceResult>;
+const TagResourceResult = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<TagResourceResult>;
 export type TagKeyList = string[];
 const TagKeyList = PackageVersionList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/untag" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResult {}
 const UntagResourceResult = TagResourceResult as any as S.Schema<UntagResourceResult>;
 export interface UpdatePackageGroupRequest {
@@ -2049,17 +1319,10 @@ export interface UpdatePackageGroupRequest {
   contactInfo?: string;
   description?: string;
 }
-const UpdatePackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    packageGroup: S.String,
-    contactInfo: S.optional(S.String),
-    description: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/v1/package-group" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdatePackageGroupRequest",
-}) as any as S.Schema<UpdatePackageGroupRequest>;
+const UpdatePackageGroupRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<UpdatePackageGroupRequest>;
 export interface UpdatePackageGroupResult {
   packageGroup?: PackageGroupDescription;
 }
@@ -2068,24 +1331,17 @@ const UpdatePackageGroupResult =
 export type OriginRestrictions = {
   [key in PackageGroupOriginRestrictionType]?: PackageGroupOriginRestrictionMode;
 };
-const OriginRestrictions = /*@__PURE__*/ S.Record(
-  PackageGroupOriginRestrictionType,
-  /*@__PURE__*/ PackageGroupOriginRestrictionMode.pipe(S.optional),
-);
+const OriginRestrictions = /*@__PURE__*/ __L.at(__c15, 1);
 export interface PackageGroupAllowedRepository {
   repositoryName?: string;
   originRestrictionType?: PackageGroupOriginRestrictionType;
 }
-const PackageGroupAllowedRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositoryName: S.optional(S.String),
-    originRestrictionType: S.optional(PackageGroupOriginRestrictionType),
-  }),
-).annotate({
-  identifier: "PackageGroupAllowedRepository",
-}) as any as S.Schema<PackageGroupAllowedRepository>;
+const PackageGroupAllowedRepository = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<PackageGroupAllowedRepository>;
 export type PackageGroupAllowedRepositoryList = PackageGroupAllowedRepository[];
-const PackageGroupAllowedRepositoryList = /*@__PURE__*/ S.Array(PackageGroupAllowedRepository);
+const PackageGroupAllowedRepositoryList = /*@__PURE__*/ __L.at(__c15, 3);
 export interface UpdatePackageGroupOriginConfigurationRequest {
   domain: string;
   domainOwner?: string;
@@ -2094,56 +1350,29 @@ export interface UpdatePackageGroupOriginConfigurationRequest {
   addAllowedRepositories?: PackageGroupAllowedRepository[];
   removeAllowedRepositories?: PackageGroupAllowedRepository[];
 }
-const UpdatePackageGroupOriginConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    packageGroup: S.String.pipe(T.HttpQuery("package-group")),
-    restrictions: S.optional(OriginRestrictions),
-    addAllowedRepositories: S.optional(PackageGroupAllowedRepositoryList),
-    removeAllowedRepositories: S.optional(PackageGroupAllowedRepositoryList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/package-group-origin-configuration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdatePackageGroupOriginConfigurationRequest",
-}) as any as S.Schema<UpdatePackageGroupOriginConfigurationRequest>;
+const UpdatePackageGroupOriginConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<UpdatePackageGroupOriginConfigurationRequest>;
 export type PackageGroupAllowedRepositoryUpdateType = "ADDED" | "REMOVED" | (string & {});
 const PackageGroupAllowedRepositoryUpdateType = S.String;
 
 export type PackageGroupAllowedRepositoryUpdate = {
   [key in PackageGroupAllowedRepositoryUpdateType]?: string[];
 };
-const PackageGroupAllowedRepositoryUpdate = /*@__PURE__*/ S.Record(
-  PackageGroupAllowedRepositoryUpdateType,
-  /*@__PURE__*/ RepositoryNameList.pipe(S.optional),
-);
+const PackageGroupAllowedRepositoryUpdate = /*@__PURE__*/ __L.at(__c15, 5);
 export type PackageGroupAllowedRepositoryUpdates = {
   [key in PackageGroupOriginRestrictionType]?: { [key: string]: string[] | undefined };
 };
-const PackageGroupAllowedRepositoryUpdates = /*@__PURE__*/ S.Record(
-  PackageGroupOriginRestrictionType,
-  /*@__PURE__*/ PackageGroupAllowedRepositoryUpdate.pipe(S.optional),
-);
+const PackageGroupAllowedRepositoryUpdates = /*@__PURE__*/ __L.at(__c15, 6);
 export interface UpdatePackageGroupOriginConfigurationResult {
   packageGroup?: PackageGroupDescription;
   allowedRepositoryUpdates?: { [key: string]: { [key: string]: string[] | undefined } | undefined };
 }
-const UpdatePackageGroupOriginConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageGroup: S.optional(PackageGroupDescription),
-    allowedRepositoryUpdates: S.optional(PackageGroupAllowedRepositoryUpdates),
-  }),
-).annotate({
-  identifier: "UpdatePackageGroupOriginConfigurationResult",
-}) as any as S.Schema<UpdatePackageGroupOriginConfigurationResult>;
+const UpdatePackageGroupOriginConfigurationResult = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<UpdatePackageGroupOriginConfigurationResult>;
 export interface UpdatePackageVersionsStatusRequest {
   domain: string;
   domainOwner?: string;
@@ -2156,31 +1385,10 @@ export interface UpdatePackageVersionsStatusRequest {
   expectedStatus?: PackageVersionStatus;
   targetStatus: PackageVersionStatus;
 }
-const UpdatePackageVersionsStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    format: PackageFormat.pipe(T.HttpQuery("format")),
-    namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-    package: S.String.pipe(T.HttpQuery("package")),
-    versions: PackageVersionList,
-    versionRevisions: S.optional(PackageVersionRevisionMap),
-    expectedStatus: S.optional(PackageVersionStatus),
-    targetStatus: PackageVersionStatus,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/package/versions/update_status" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdatePackageVersionsStatusRequest",
-}) as any as S.Schema<UpdatePackageVersionsStatusRequest>;
+const UpdatePackageVersionsStatusRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<UpdatePackageVersionsStatusRequest>;
 export interface UpdatePackageVersionsStatusResult {
   successfulVersions?: { [key: string]: SuccessfulPackageVersionInfo | undefined };
   failedVersions?: { [key: string]: PackageVersionError | undefined };
@@ -2194,15 +1402,10 @@ export interface UpdateRepositoryRequest {
   description?: string;
   upstreams?: UpstreamRepository[];
 }
-const UpdateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String.pipe(T.HttpQuery("domain")),
-    domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-    repository: S.String.pipe(T.HttpQuery("repository")),
-    description: S.optional(S.String),
-    upstreams: S.optional(UpstreamRepositoryList),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/v1/repository" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateRepositoryRequest" }) as any as S.Schema<UpdateRepositoryRequest>;
+const UpdateRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<UpdateRepositoryRequest>;
 export interface UpdateRepositoryResult {
   repository?: RepositoryDescription;
 }
@@ -3943,3 +3146,1445 @@ export const updateRepository: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRepository",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          externalConnection: S.String.pipe(T.HttpQuery("external-connection")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/repository/external-connection" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateExternalConnectionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ repositoryName: S.optional(S.String) })).annotate({
+        identifier: "UpstreamRepositoryInfo",
+      });
+    case 2:
+      return S.Array(UpstreamRepositoryInfo);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          externalConnectionName: S.optional(S.String),
+          packageFormat: S.optional(PackageFormat),
+          status: S.optional(ExternalConnectionStatus),
+        }),
+      ).annotate({
+        identifier: "RepositoryExternalConnectionInfo",
+      });
+    case 4:
+      return S.Array(RepositoryExternalConnectionInfo);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          administratorAccount: S.optional(S.String),
+          domainName: S.optional(S.String),
+          domainOwner: S.optional(S.String),
+          arn: S.optional(S.String),
+          description: S.optional(S.String),
+          upstreams: S.optional(UpstreamRepositoryInfoList),
+          externalConnections: S.optional(RepositoryExternalConnectionInfoList),
+          createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "RepositoryDescription" });
+    case 6:
+      return S.suspend(() => S.Struct({ repository: S.optional(RepositoryDescription) })).annotate({
+        identifier: "AssociateExternalConnectionResult",
+      });
+    case 7:
+      return S.Array(S.String);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          sourceRepository: S.String.pipe(T.HttpQuery("source-repository")),
+          destinationRepository: S.String.pipe(T.HttpQuery("destination-repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          versions: S.optional(PackageVersionList),
+          versionRevisions: S.optional(PackageVersionRevisionMap),
+          allowOverwrite: S.optional(S.Boolean),
+          includeFromUpstream: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package/versions/copy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CopyPackageVersionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ revision: S.optional(S.String), status: S.optional(PackageVersionStatus) }),
+      ).annotate({
+        identifier: "SuccessfulPackageVersionInfo",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ SuccessfulPackageVersionInfo.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.optional(PackageVersionErrorCode),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PackageVersionError" });
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ PackageVersionError.pipe(S.optional));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          successfulVersions: S.optional(SuccessfulPackageVersionInfoMap),
+          failedVersions: S.optional(PackageVersionErrorMap),
+        }),
+      ).annotate({
+        identifier: "CopyPackageVersionsResult",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Tag);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          encryptionKey: S.optional(S.String),
+          tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/domain" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDomainRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          owner: S.optional(S.String),
+          arn: S.optional(S.String),
+          status: S.optional(DomainStatus),
+          createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          encryptionKey: S.optional(S.String),
+          repositoryCount: S.optional(S.Number),
+          assetSizeBytes: S.optional(S.Number),
+          s3BucketArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainDescription" });
+    case 3:
+      return S.suspend(() => S.Struct({ domain: S.optional(DomainDescription) })).annotate({
+        identifier: "CreateDomainResult",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          packageGroup: S.String,
+          contactInfo: S.optional(S.String),
+          description: S.optional(S.String),
+          tags: S.optional(TagList),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/package-group" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreatePackageGroupRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ arn: S.optional(S.String), pattern: S.optional(S.String) }),
+      ).annotate({ identifier: "PackageGroupReference" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(PackageGroupOriginRestrictionMode),
+          effectiveMode: S.optional(PackageGroupOriginRestrictionMode),
+          inheritedFrom: S.optional(PackageGroupReference),
+          repositoriesCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PackageGroupOriginRestriction",
+      });
+    case 7:
+      return S.Record(
+        PackageGroupOriginRestrictionType,
+        /*@__PURE__*/ PackageGroupOriginRestriction.pipe(S.optional),
+      );
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ restrictions: S.optional(PackageGroupOriginRestrictions) }),
+      ).annotate({
+        identifier: "PackageGroupOriginConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          pattern: S.optional(S.String),
+          domainName: S.optional(S.String),
+          domainOwner: S.optional(S.String),
+          createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          contactInfo: S.optional(S.String),
+          description: S.optional(S.String),
+          originConfiguration: S.optional(PackageGroupOriginConfiguration),
+          parent: S.optional(PackageGroupReference),
+        }),
+      ).annotate({ identifier: "PackageGroupDescription" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ packageGroup: S.optional(PackageGroupDescription) }),
+      ).annotate({ identifier: "CreatePackageGroupResult" });
+    case 3:
+      return S.suspend(() => S.Struct({ repositoryName: S.String })).annotate({
+        identifier: "UpstreamRepository",
+      });
+    case 4:
+      return S.Array(UpstreamRepository);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          description: S.optional(S.String),
+          upstreams: S.optional(UpstreamRepositoryList),
+          tags: S.optional(TagList),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/repository" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateRepositoryRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ repository: S.optional(RepositoryDescription) })).annotate({
+        identifier: "CreateRepositoryResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+        }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/v1/domain" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteDomainRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          policyRevision: S.optional(S.String).pipe(T.HttpQuery("policy-revision")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/domain/permissions/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteDomainPermissionsPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.optional(S.String),
+          revision: S.optional(S.String),
+          document: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourcePolicy" });
+    case 2:
+      return S.suspend(() => S.Struct({ policy: S.optional(ResourcePolicy) })).annotate({
+        identifier: "DeleteDomainPermissionsPolicyResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+        }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/v1/package" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeletePackageRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ publish: AllowPublish, upstream: AllowUpstream })).annotate(
+        {
+          identifier: "PackageOriginRestrictions",
+        },
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ restrictions: S.optional(PackageOriginRestrictions) }),
+      ).annotate({
+        identifier: "PackageOriginConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(PackageFormat),
+          namespace: S.optional(S.String),
+          package: S.optional(S.String),
+          originConfiguration: S.optional(PackageOriginConfiguration),
+        }),
+      ).annotate({ identifier: "PackageSummary" });
+    case 7:
+      return S.suspend(() => S.Struct({ deletedPackage: S.optional(PackageSummary) })).annotate({
+        identifier: "DeletePackageResult",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          packageGroup: S.String.pipe(T.HttpQuery("package-group")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/package-group" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePackageGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          versions: PackageVersionList,
+          expectedStatus: S.optional(PackageVersionStatus),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package/versions/delete" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePackageVersionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+        }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/v1/repository" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteRepositoryRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          policyRevision: S.optional(S.String).pipe(T.HttpQuery("policy-revision")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/repository/permissions/policies" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteRepositoryPermissionsPolicyRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/domain" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeDomainRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/package" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribePackageRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(PackageFormat),
+          namespace: S.optional(S.String),
+          name: S.optional(S.String),
+          originConfiguration: S.optional(PackageOriginConfiguration),
+        }),
+      ).annotate({ identifier: "PackageDescription" });
+    case 7:
+      return S.suspend(() => S.Struct({ package: PackageDescription })).annotate({
+        identifier: "DescribePackageResult",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          packageGroup: S.String.pipe(T.HttpQuery("package-group")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/v1/package-group" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribePackageGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ packageGroup: S.optional(PackageGroupDescription) }),
+      ).annotate({
+        identifier: "DescribePackageGroupResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          packageVersion: S.String.pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/package/version" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribePackageVersionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), url: S.optional(S.String) }),
+      ).annotate({ identifier: "LicenseInfo" });
+    case 4:
+      return S.Array(LicenseInfo);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryName: S.optional(S.String),
+          externalConnectionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainEntryPoint" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainEntryPoint: S.optional(DomainEntryPoint),
+          originType: S.optional(PackageVersionOriginType),
+        }),
+      ).annotate({ identifier: "PackageVersionOrigin" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(PackageFormat),
+          namespace: S.optional(S.String),
+          packageName: S.optional(S.String),
+          displayName: S.optional(S.String),
+          version: S.optional(S.String),
+          summary: S.optional(S.String),
+          homePage: S.optional(S.String),
+          sourceCodeRepository: S.optional(S.String),
+          publishedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          licenses: S.optional(LicenseInfoList),
+          revision: S.optional(S.String),
+          status: S.optional(PackageVersionStatus),
+          origin: S.optional(PackageVersionOrigin),
+        }),
+      ).annotate({
+        identifier: "PackageVersionDescription",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ packageVersion: PackageVersionDescription })).annotate({
+        identifier: "DescribePackageVersionResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/v1/repository" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeRepositoryRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          externalConnection: S.String.pipe(T.HttpQuery("external-connection")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/repository/external-connection" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateExternalConnectionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          versions: PackageVersionList,
+          versionRevisions: S.optional(PackageVersionRevisionMap),
+          expectedStatus: S.optional(PackageVersionStatus),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package/versions/dispose" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisposePackageVersionsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/get-associated-package-group" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAssociatedPackageGroupRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          packageGroup: S.optional(PackageGroupDescription),
+          associationType: S.optional(PackageGroupAssociationType),
+        }),
+      ).annotate({
+        identifier: "GetAssociatedPackageGroupResult",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          durationSeconds: S.optional(S.Number).pipe(T.HttpQuery("duration")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/authorization-token" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAuthorizationTokenRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationToken: S.optional(SensitiveString),
+          expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "GetAuthorizationTokenResult",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/domain/permissions/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetDomainPermissionsPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          packageVersion: S.String.pipe(T.HttpQuery("version")),
+          asset: S.String.pipe(T.HttpQuery("asset")),
+          packageVersionRevision: S.optional(S.String).pipe(T.HttpQuery("revision")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/package/version/asset" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPackageVersionAssetRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          asset: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+          assetName: S.optional(S.String).pipe(T.HttpHeader("X-AssetName")),
+          packageVersion: S.optional(S.String).pipe(T.HttpHeader("X-PackageVersion")),
+          packageVersionRevision: S.optional(S.String).pipe(
+            T.HttpHeader("X-PackageVersionRevision"),
+          ),
+        }),
+      ).annotate({
+        identifier: "GetPackageVersionAssetResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          packageVersion: S.String.pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/package/version/readme" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPackageVersionReadmeRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(PackageFormat),
+          namespace: S.optional(S.String),
+          package: S.optional(S.String),
+          version: S.optional(S.String),
+          versionRevision: S.optional(S.String),
+          readme: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPackageVersionReadmeResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          endpointType: S.optional(EndpointType).pipe(T.HttpQuery("endpointType")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/repository/endpoint" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRepositoryEndpointRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ repositoryEndpoint: S.optional(S.String) })).annotate({
+        identifier: "GetRepositoryEndpointResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/repository/permissions/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRepositoryPermissionsPolicyRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          packageGroup: S.String.pipe(T.HttpQuery("package-group")),
+          originRestrictionType: PackageGroupOriginRestrictionType.pipe(
+            T.HttpQuery("originRestrictionType"),
+          ),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/package-group-allowed-repositories" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAllowedRepositoriesForGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allowedRepositories: S.optional(RepositoryNameList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAllowedRepositoriesForGroupResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          packageGroup: S.String.pipe(T.HttpQuery("package-group")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          preview: S.optional(S.Boolean).pipe(T.HttpQuery("preview")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/list-associated-packages" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAssociatedPackagesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(PackageFormat),
+          namespace: S.optional(S.String),
+          package: S.optional(S.String),
+          associationType: S.optional(PackageGroupAssociationType),
+        }),
+      ).annotate({ identifier: "AssociatedPackage" });
+    case 4:
+      return S.Array(AssociatedPackage);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ packages: S.optional(AssociatedPackageList), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListAssociatedPackagesResult",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/domains" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListDomainsRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          owner: S.optional(S.String),
+          arn: S.optional(S.String),
+          status: S.optional(DomainStatus),
+          createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          encryptionKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainSummary" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(DomainSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ domains: S.optional(DomainSummaryList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDomainsResult" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package-groups" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListPackageGroupsRequest" });
+    case 3:
+      return S.Array(PackageGroupSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          packageGroups: S.optional(PackageGroupSummaryList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListPackageGroupsResult" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: S.optional(PackageFormat).pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          packagePrefix: S.optional(S.String).pipe(T.HttpQuery("package-prefix")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          publish: S.optional(AllowPublish).pipe(T.HttpQuery("publish")),
+          upstream: S.optional(AllowUpstream).pipe(T.HttpQuery("upstream")),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/packages" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListPackagesRequest" });
+    case 6:
+      return S.Array(PackageSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ packages: S.optional(PackageSummaryList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPackagesResult" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          packageVersion: S.String.pipe(T.HttpQuery("version")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package/version/assets" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPackageVersionAssetsRequest",
+      });
+    case 1:
+      return S.Record(HashAlgorithm, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, size: S.optional(S.Number), hashes: S.optional(AssetHashes) }),
+      ).annotate({ identifier: "AssetSummary" });
+    case 3:
+      return S.Array(AssetSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(PackageFormat),
+          namespace: S.optional(S.String),
+          package: S.optional(S.String),
+          version: S.optional(S.String),
+          versionRevision: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          assets: S.optional(AssetSummaryList),
+        }),
+      ).annotate({
+        identifier: "ListPackageVersionAssetsResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          packageVersion: S.String.pipe(T.HttpQuery("version")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package/version/dependencies" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPackageVersionDependenciesRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.optional(S.String),
+          package: S.optional(S.String),
+          dependencyType: S.optional(S.String),
+          versionRequirement: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PackageDependency" });
+    case 7:
+      return S.Array(PackageDependency);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(PackageFormat),
+          namespace: S.optional(S.String),
+          package: S.optional(S.String),
+          version: S.optional(S.String),
+          versionRevision: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          dependencies: S.optional(PackageDependencyList),
+        }),
+      ).annotate({
+        identifier: "ListPackageVersionDependenciesResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          status: S.optional(PackageVersionStatus).pipe(T.HttpQuery("status")),
+          sortBy: S.optional(PackageVersionSortType).pipe(T.HttpQuery("sortBy")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+          originType: S.optional(PackageVersionOriginType).pipe(T.HttpQuery("originType")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package/versions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPackageVersionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.String,
+          revision: S.optional(S.String),
+          status: PackageVersionStatus,
+          origin: S.optional(PackageVersionOrigin),
+        }),
+      ).annotate({ identifier: "PackageVersionSummary" });
+    case 3:
+      return S.Array(PackageVersionSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          defaultDisplayVersion: S.optional(S.String),
+          format: S.optional(PackageFormat),
+          namespace: S.optional(S.String),
+          package: S.optional(S.String),
+          versions: S.optional(PackageVersionSummaryList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListPackageVersionsResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryPrefix: S.optional(S.String).pipe(T.HttpQuery("repository-prefix")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/repositories" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListRepositoriesRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          administratorAccount: S.optional(S.String),
+          domainName: S.optional(S.String),
+          domainOwner: S.optional(S.String),
+          arn: S.optional(S.String),
+          description: S.optional(S.String),
+          createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "RepositorySummary" });
+    case 7:
+      return S.Array(RepositorySummary);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repositories: S.optional(RepositorySummaryList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListRepositoriesResult" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          administratorAccount: S.optional(S.String).pipe(T.HttpQuery("administrator-account")),
+          repositoryPrefix: S.optional(S.String).pipe(T.HttpQuery("repository-prefix")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/domain/repositories" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListRepositoriesInDomainRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          repositories: S.optional(RepositorySummaryList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRepositoriesInDomainResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          packageGroup: S.String.pipe(T.HttpQuery("package-group")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package-groups/sub-groups" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListSubPackageGroupsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          packageGroups: S.optional(PackageGroupSummaryList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListSubPackageGroupsResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/tags" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagList) })).annotate({
+        identifier: "ListTagsForResourceResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          packageVersion: S.String.pipe(T.HttpQuery("version")),
+          assetContent: T.StreamingInput.pipe(T.HttpPayload()),
+          assetName: S.String.pipe(T.HttpQuery("asset")),
+          assetSHA256: S.String.pipe(T.HttpHeader("x-amz-content-sha256")),
+          unfinished: S.optional(S.Boolean).pipe(T.HttpQuery("unfinished")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package/version/publish" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PublishPackageVersionRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(PackageFormat),
+          namespace: S.optional(S.String),
+          package: S.optional(S.String),
+          version: S.optional(S.String),
+          versionRevision: S.optional(S.String),
+          status: S.optional(PackageVersionStatus),
+          asset: S.optional(AssetSummary),
+        }),
+      ).annotate({
+        identifier: "PublishPackageVersionResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          domainOwner: S.optional(S.String),
+          policyRevision: S.optional(S.String),
+          policyDocument: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/domain/permissions/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutDomainPermissionsPolicyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          restrictions: PackageOriginRestrictions,
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/package" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "PutPackageOriginConfigurationRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ originConfiguration: S.optional(PackageOriginConfiguration) }),
+      ).annotate({
+        identifier: "PutPackageOriginConfigurationResult",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          policyRevision: S.optional(S.String),
+          policyDocument: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/repository/permissions/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutRepositoryPermissionsPolicyRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/tag" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
+          tagKeys: TagKeyList,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/untag" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          packageGroup: S.String,
+          contactInfo: S.optional(S.String),
+          description: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/v1/package-group" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdatePackageGroupRequest",
+      });
+    case 1:
+      return S.Record(
+        PackageGroupOriginRestrictionType,
+        /*@__PURE__*/ PackageGroupOriginRestrictionMode.pipe(S.optional),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryName: S.optional(S.String),
+          originRestrictionType: S.optional(PackageGroupOriginRestrictionType),
+        }),
+      ).annotate({
+        identifier: "PackageGroupAllowedRepository",
+      });
+    case 3:
+      return S.Array(PackageGroupAllowedRepository);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          packageGroup: S.String.pipe(T.HttpQuery("package-group")),
+          restrictions: S.optional(OriginRestrictions),
+          addAllowedRepositories: S.optional(PackageGroupAllowedRepositoryList),
+          removeAllowedRepositories: S.optional(PackageGroupAllowedRepositoryList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/package-group-origin-configuration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdatePackageGroupOriginConfigurationRequest",
+      });
+    case 5:
+      return S.Record(
+        PackageGroupAllowedRepositoryUpdateType,
+        /*@__PURE__*/ RepositoryNameList.pipe(S.optional),
+      );
+    case 6:
+      return S.Record(
+        PackageGroupOriginRestrictionType,
+        /*@__PURE__*/ PackageGroupAllowedRepositoryUpdate.pipe(S.optional),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          packageGroup: S.optional(PackageGroupDescription),
+          allowedRepositoryUpdates: S.optional(PackageGroupAllowedRepositoryUpdates),
+        }),
+      ).annotate({
+        identifier: "UpdatePackageGroupOriginConfigurationResult",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          format: PackageFormat.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          versions: PackageVersionList,
+          versionRevisions: S.optional(PackageVersionRevisionMap),
+          expectedStatus: S.optional(PackageVersionStatus),
+          targetStatus: PackageVersionStatus,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package/versions/update_status" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdatePackageVersionsStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          description: S.optional(S.String),
+          upstreams: S.optional(UpstreamRepositoryList),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/v1/repository" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateRepositoryRequest" });
+  }
+}

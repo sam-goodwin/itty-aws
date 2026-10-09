@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -119,85 +120,46 @@ export interface RecommendationResourceExclusion {
   arn: string;
   isExcluded: boolean;
 }
-const RecommendationResourceExclusion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, isExcluded: S.Boolean }),
-).annotate({
-  identifier: "RecommendationResourceExclusion",
-}) as any as S.Schema<RecommendationResourceExclusion>;
+const RecommendationResourceExclusion = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<RecommendationResourceExclusion>;
 export type RecommendationResourceExclusionList = RecommendationResourceExclusion[];
-const RecommendationResourceExclusionList = /*@__PURE__*/ S.Array(RecommendationResourceExclusion);
+const RecommendationResourceExclusionList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface BatchUpdateRecommendationResourceExclusionRequest {
   recommendationResourceExclusions: RecommendationResourceExclusion[];
 }
-const BatchUpdateRecommendationResourceExclusionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommendationResourceExclusions: RecommendationResourceExclusionList }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/batch-update-recommendation-resource-exclusion" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchUpdateRecommendationResourceExclusionRequest",
-}) as any as S.Schema<BatchUpdateRecommendationResourceExclusionRequest>;
+const BatchUpdateRecommendationResourceExclusionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchUpdateRecommendationResourceExclusionRequest>;
 export interface UpdateRecommendationResourceExclusionError {
   arn?: string;
   errorCode?: string;
   errorMessage?: string;
 }
-const UpdateRecommendationResourceExclusionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateRecommendationResourceExclusionError",
-}) as any as S.Schema<UpdateRecommendationResourceExclusionError>;
+const UpdateRecommendationResourceExclusionError = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<UpdateRecommendationResourceExclusionError>;
 export type UpdateRecommendationResourceExclusionErrorList =
   UpdateRecommendationResourceExclusionError[];
-const UpdateRecommendationResourceExclusionErrorList = /*@__PURE__*/ S.Array(
-  UpdateRecommendationResourceExclusionError,
-);
+const UpdateRecommendationResourceExclusionErrorList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface BatchUpdateRecommendationResourceExclusionResponse {
   batchUpdateRecommendationResourceExclusionErrors: UpdateRecommendationResourceExclusionError[];
 }
-const BatchUpdateRecommendationResourceExclusionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchUpdateRecommendationResourceExclusionErrors:
-      UpdateRecommendationResourceExclusionErrorList,
-  }),
-).annotate({
-  identifier: "BatchUpdateRecommendationResourceExclusionResponse",
-}) as any as S.Schema<BatchUpdateRecommendationResourceExclusionResponse>;
+const BatchUpdateRecommendationResourceExclusionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BatchUpdateRecommendationResourceExclusionResponse>;
 export type OrganizationRecommendationIdentifier = string;
 export interface GetOrganizationRecommendationRequest {
   organizationRecommendationIdentifier: string;
 }
-const GetOrganizationRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organizationRecommendationIdentifier: S.String.pipe(
-      T.HttpLabel("organizationRecommendationIdentifier"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/organization-recommendations/{organizationRecommendationIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetOrganizationRecommendationRequest",
-}) as any as S.Schema<GetOrganizationRecommendationRequest>;
+const GetOrganizationRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetOrganizationRecommendationRequest>;
 export type RecommendationType = "standard" | "priority" | (string & {});
 const RecommendationType = S.String;
 
@@ -223,7 +185,7 @@ export type RecommendationPillar =
 const RecommendationPillar = S.String;
 
 export type RecommendationPillarList = RecommendationPillar[];
-const RecommendationPillarList = /*@__PURE__*/ S.Array(RecommendationPillar);
+const RecommendationPillarList = /*@__PURE__*/ __L.at(__c0, 7);
 export type RecommendationSource =
   | "aws_config"
   | "compute_optimizer"
@@ -244,40 +206,32 @@ const RecommendationSource = S.String;
 
 export type RecommendationAwsService = string;
 export type RecommendationAwsServiceList = string[];
-const RecommendationAwsServiceList = /*@__PURE__*/ S.Array(S.String);
+const RecommendationAwsServiceList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface RecommendationResourcesAggregates {
   okCount: number;
   warningCount: number;
   errorCount: number;
   excludedCount?: number;
 }
-const RecommendationResourcesAggregates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    okCount: S.Number,
-    warningCount: S.Number,
-    errorCount: S.Number,
-    excludedCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RecommendationResourcesAggregates",
-}) as any as S.Schema<RecommendationResourcesAggregates>;
+const RecommendationResourcesAggregates = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<RecommendationResourcesAggregates>;
 export interface RecommendationCostOptimizingAggregates {
   estimatedMonthlySavings: number;
   estimatedPercentMonthlySavings: number;
 }
-const RecommendationCostOptimizingAggregates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ estimatedMonthlySavings: S.Number, estimatedPercentMonthlySavings: S.Number }),
-).annotate({
-  identifier: "RecommendationCostOptimizingAggregates",
-}) as any as S.Schema<RecommendationCostOptimizingAggregates>;
+const RecommendationCostOptimizingAggregates = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<RecommendationCostOptimizingAggregates>;
 export interface RecommendationPillarSpecificAggregates {
   costOptimizing?: RecommendationCostOptimizingAggregates;
 }
-const RecommendationPillarSpecificAggregates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ costOptimizing: S.optional(RecommendationCostOptimizingAggregates) }),
-).annotate({
-  identifier: "RecommendationPillarSpecificAggregates",
-}) as any as S.Schema<RecommendationPillarSpecificAggregates>;
+const RecommendationPillarSpecificAggregates = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<RecommendationPillarSpecificAggregates>;
 export type OrganizationRecommendationArn = string;
 export type RecommendationUpdateReason = string | redacted.Redacted<string>;
 export type UpdateRecommendationLifecycleStageReasonCode =
@@ -314,41 +268,17 @@ export interface OrganizationRecommendation {
   updateReasonCode?: UpdateRecommendationLifecycleStageReasonCode;
   resolvedAt?: Date;
 }
-const OrganizationRecommendation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: RecommendationType,
-    checkArn: S.optional(S.String),
-    status: RecommendationStatus,
-    lifecycleStage: S.optional(RecommendationLifecycleStage),
-    pillars: RecommendationPillarList,
-    source: RecommendationSource,
-    awsServices: S.optional(RecommendationAwsServiceList),
-    name: S.String,
-    resourcesAggregates: RecommendationResourcesAggregates,
-    pillarSpecificAggregates: S.optional(RecommendationPillarSpecificAggregates),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    arn: S.String,
-    description: S.String,
-    createdBy: S.optional(S.String),
-    updatedOnBehalfOf: S.optional(S.String),
-    updatedOnBehalfOfJobTitle: S.optional(S.String),
-    updateReason: S.optional(SensitiveString),
-    updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
-    resolvedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "OrganizationRecommendation",
-}) as any as S.Schema<OrganizationRecommendation>;
+const OrganizationRecommendation = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<OrganizationRecommendation>;
 export interface GetOrganizationRecommendationResponse {
   organizationRecommendation?: OrganizationRecommendation;
 }
-const GetOrganizationRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ organizationRecommendation: S.optional(OrganizationRecommendation) }),
-).annotate({
-  identifier: "GetOrganizationRecommendationResponse",
-}) as any as S.Schema<GetOrganizationRecommendationResponse>;
+const GetOrganizationRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetOrganizationRecommendationResponse>;
 export type AccountRecommendationIdentifier = string;
 export type RecommendationLanguage =
   | "en"
@@ -369,21 +299,10 @@ export interface GetRecommendationRequest {
   recommendationIdentifier: string;
   language?: RecommendationLanguage;
 }
-const GetRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommendationIdentifier: S.String.pipe(T.HttpLabel("recommendationIdentifier")),
-    language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/recommendations/{recommendationIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetRecommendationRequest" }) as any as S.Schema<GetRecommendationRequest>;
+const GetRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetRecommendationRequest>;
 export type AccountRecommendationArn = string;
 export type StatusReason = "no_data_ok" | (string & {});
 const StatusReason = S.String;
@@ -412,40 +331,14 @@ export interface Recommendation {
   updateReasonCode?: UpdateRecommendationLifecycleStageReasonCode;
   resolvedAt?: Date;
 }
-const Recommendation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: RecommendationType,
-    checkArn: S.optional(S.String),
-    status: RecommendationStatus,
-    lifecycleStage: S.optional(RecommendationLifecycleStage),
-    pillars: RecommendationPillarList,
-    source: RecommendationSource,
-    awsServices: S.optional(RecommendationAwsServiceList),
-    name: S.String,
-    resourcesAggregates: RecommendationResourcesAggregates,
-    pillarSpecificAggregates: S.optional(RecommendationPillarSpecificAggregates),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    arn: S.String,
-    statusReason: S.optional(StatusReason),
-    description: S.String,
-    createdBy: S.optional(S.String),
-    updatedOnBehalfOf: S.optional(S.String),
-    updatedOnBehalfOfJobTitle: S.optional(S.String),
-    updateReason: S.optional(SensitiveString),
-    updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
-    resolvedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
+const Recommendation = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Recommendation>;
 export interface GetRecommendationResponse {
   recommendation?: Recommendation;
 }
-const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommendation: S.optional(Recommendation) }),
-).annotate({
-  identifier: "GetRecommendationResponse",
-}) as any as S.Schema<GetRecommendationResponse>;
+const GetRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetRecommendationResponse>;
 export interface ListChecksRequest {
   nextToken?: string;
   maxResults?: number;
@@ -454,19 +347,10 @@ export interface ListChecksRequest {
   source?: RecommendationSource;
   language?: RecommendationLanguage;
 }
-const ListChecksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    pillar: S.optional(RecommendationPillar).pipe(T.HttpQuery("pillar")),
-    awsService: S.optional(S.String).pipe(T.HttpQuery("awsService")),
-    source: S.optional(RecommendationSource).pipe(T.HttpQuery("source")),
-    language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/checks" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListChecksRequest" }) as any as S.Schema<ListChecksRequest>;
+const ListChecksRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListChecksRequest>;
 export type CheckArn = string;
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const StringMap = /*@__PURE__*/ __L.at(__c2, 2);
 export type StringList = string[];
 const StringList = RecommendationAwsServiceList as any as S.Schema<StringList>;
 export interface CheckSummary {
@@ -483,31 +367,14 @@ export interface CheckSummary {
   checkGranularity?: string;
   recommendationId?: string;
 }
-const CheckSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    name: S.String,
-    description: S.String,
-    pillars: RecommendationPillarList,
-    awsServices: RecommendationAwsServiceList,
-    source: RecommendationSource,
-    metadata: StringMap,
-    resourceArnQueryable: S.optional(S.Boolean),
-    awsResourceTypes: S.optional(StringList),
-    checkGranularity: S.optional(S.String),
-    recommendationId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CheckSummary" }) as any as S.Schema<CheckSummary>;
+const CheckSummary = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CheckSummary>;
 export type CheckSummaryList = CheckSummary[];
-const CheckSummaryList = /*@__PURE__*/ S.Array(CheckSummary);
+const CheckSummaryList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface ListChecksResponse {
   nextToken?: string;
   checkSummaries: CheckSummary[];
 }
-const ListChecksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), checkSummaries: CheckSummaryList }),
-).annotate({ identifier: "ListChecksResponse" }) as any as S.Schema<ListChecksResponse>;
+const ListChecksResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListChecksResponse>;
 export type AccountId = string;
 export interface ListOrganizationRecommendationAccountsRequest {
   nextToken?: string;
@@ -515,30 +382,10 @@ export interface ListOrganizationRecommendationAccountsRequest {
   organizationRecommendationIdentifier: string;
   affectedAccountId?: string;
 }
-const ListOrganizationRecommendationAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    organizationRecommendationIdentifier: S.String.pipe(
-      T.HttpLabel("organizationRecommendationIdentifier"),
-    ),
-    affectedAccountId: S.optional(S.String).pipe(T.HttpQuery("affectedAccountId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/organization-recommendations/{organizationRecommendationIdentifier}/accounts",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListOrganizationRecommendationAccountsRequest",
-}) as any as S.Schema<ListOrganizationRecommendationAccountsRequest>;
+const ListOrganizationRecommendationAccountsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListOrganizationRecommendationAccountsRequest>;
 export interface AccountRecommendationLifecycleSummary {
   accountId?: string;
   accountRecommendationArn?: string;
@@ -549,36 +396,20 @@ export interface AccountRecommendationLifecycleSummary {
   updateReasonCode?: UpdateRecommendationLifecycleStageReasonCode;
   lastUpdatedAt?: Date;
 }
-const AccountRecommendationLifecycleSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    accountRecommendationArn: S.optional(S.String),
-    lifecycleStage: S.optional(RecommendationLifecycleStage),
-    updatedOnBehalfOf: S.optional(S.String),
-    updatedOnBehalfOfJobTitle: S.optional(S.String),
-    updateReason: S.optional(SensitiveString),
-    updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "AccountRecommendationLifecycleSummary",
-}) as any as S.Schema<AccountRecommendationLifecycleSummary>;
+const AccountRecommendationLifecycleSummary = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<AccountRecommendationLifecycleSummary>;
 export type AccountRecommendationLifecycleSummaryList = AccountRecommendationLifecycleSummary[];
-const AccountRecommendationLifecycleSummaryList = /*@__PURE__*/ S.Array(
-  AccountRecommendationLifecycleSummary,
-);
+const AccountRecommendationLifecycleSummaryList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface ListOrganizationRecommendationAccountsResponse {
   nextToken?: string;
   accountRecommendationLifecycleSummaries: AccountRecommendationLifecycleSummary[];
 }
-const ListOrganizationRecommendationAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    accountRecommendationLifecycleSummaries: AccountRecommendationLifecycleSummaryList,
-  }),
-).annotate({
-  identifier: "ListOrganizationRecommendationAccountsResponse",
-}) as any as S.Schema<ListOrganizationRecommendationAccountsResponse>;
+const ListOrganizationRecommendationAccountsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListOrganizationRecommendationAccountsResponse>;
 export type ResourceStatus = "ok" | "warning" | "error" | (string & {});
 const ResourceStatus = S.String;
 
@@ -594,33 +425,10 @@ export interface ListOrganizationRecommendationResourcesRequest {
   organizationRecommendationIdentifier: string;
   affectedAccountId?: string;
 }
-const ListOrganizationRecommendationResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    status: S.optional(ResourceStatus).pipe(T.HttpQuery("status")),
-    exclusionStatus: S.optional(ExclusionStatus).pipe(T.HttpQuery("exclusionStatus")),
-    regionCode: S.optional(S.String).pipe(T.HttpQuery("regionCode")),
-    organizationRecommendationIdentifier: S.String.pipe(
-      T.HttpLabel("organizationRecommendationIdentifier"),
-    ),
-    affectedAccountId: S.optional(S.String).pipe(T.HttpQuery("affectedAccountId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v1/organization-recommendations/{organizationRecommendationIdentifier}/resources",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListOrganizationRecommendationResourcesRequest",
-}) as any as S.Schema<ListOrganizationRecommendationResourcesRequest>;
+const ListOrganizationRecommendationResourcesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListOrganizationRecommendationResourcesRequest>;
 export type RecommendationRegionCode = string;
 export interface OrganizationRecommendationResourceSummary {
   id: string;
@@ -634,39 +442,21 @@ export interface OrganizationRecommendationResourceSummary {
   accountId?: string;
   recommendationArn: string;
 }
-const OrganizationRecommendationResourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    awsResourceId: S.String,
-    regionCode: S.String,
-    status: ResourceStatus,
-    metadata: StringMap,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    exclusionStatus: S.optional(ExclusionStatus),
-    accountId: S.optional(S.String),
-    recommendationArn: S.String,
-  }),
-).annotate({
-  identifier: "OrganizationRecommendationResourceSummary",
-}) as any as S.Schema<OrganizationRecommendationResourceSummary>;
+const OrganizationRecommendationResourceSummary = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<OrganizationRecommendationResourceSummary>;
 export type OrganizationRecommendationResourceSummaryList =
   OrganizationRecommendationResourceSummary[];
-const OrganizationRecommendationResourceSummaryList = /*@__PURE__*/ S.Array(
-  OrganizationRecommendationResourceSummary,
-);
+const OrganizationRecommendationResourceSummaryList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface ListOrganizationRecommendationResourcesResponse {
   nextToken?: string;
   organizationRecommendationResourceSummaries: OrganizationRecommendationResourceSummary[];
 }
-const ListOrganizationRecommendationResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    organizationRecommendationResourceSummaries: OrganizationRecommendationResourceSummaryList,
-  }),
-).annotate({
-  identifier: "ListOrganizationRecommendationResourcesResponse",
-}) as any as S.Schema<ListOrganizationRecommendationResourcesResponse>;
+const ListOrganizationRecommendationResourcesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListOrganizationRecommendationResourcesResponse>;
 export type CheckIdentifier = string;
 export interface ListOrganizationRecommendationsRequest {
   nextToken?: string;
@@ -680,35 +470,10 @@ export interface ListOrganizationRecommendationsRequest {
   afterLastUpdatedAt?: Date;
   beforeLastUpdatedAt?: Date;
 }
-const ListOrganizationRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    type: S.optional(RecommendationType).pipe(T.HttpQuery("type")),
-    status: S.optional(RecommendationStatus).pipe(T.HttpQuery("status")),
-    pillar: S.optional(RecommendationPillar).pipe(T.HttpQuery("pillar")),
-    awsService: S.optional(S.String).pipe(T.HttpQuery("awsService")),
-    source: S.optional(RecommendationSource).pipe(T.HttpQuery("source")),
-    checkIdentifier: S.optional(S.String).pipe(T.HttpQuery("checkIdentifier")),
-    afterLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("afterLastUpdatedAt"),
-    ),
-    beforeLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("beforeLastUpdatedAt"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/organization-recommendations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListOrganizationRecommendationsRequest",
-}) as any as S.Schema<ListOrganizationRecommendationsRequest>;
+const ListOrganizationRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListOrganizationRecommendationsRequest>;
 export interface OrganizationRecommendationSummary {
   id: string;
   type: RecommendationType;
@@ -725,42 +490,20 @@ export interface OrganizationRecommendationSummary {
   lastUpdatedAt?: Date;
   arn: string;
 }
-const OrganizationRecommendationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: RecommendationType,
-    checkArn: S.optional(S.String),
-    status: RecommendationStatus,
-    lifecycleStage: S.optional(RecommendationLifecycleStage),
-    pillars: RecommendationPillarList,
-    source: RecommendationSource,
-    awsServices: S.optional(RecommendationAwsServiceList),
-    name: S.String,
-    resourcesAggregates: RecommendationResourcesAggregates,
-    pillarSpecificAggregates: S.optional(RecommendationPillarSpecificAggregates),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    arn: S.String,
-  }),
-).annotate({
-  identifier: "OrganizationRecommendationSummary",
-}) as any as S.Schema<OrganizationRecommendationSummary>;
+const OrganizationRecommendationSummary = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<OrganizationRecommendationSummary>;
 export type OrganizationRecommendationSummaryList = OrganizationRecommendationSummary[];
-const OrganizationRecommendationSummaryList = /*@__PURE__*/ S.Array(
-  OrganizationRecommendationSummary,
-);
+const OrganizationRecommendationSummaryList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface ListOrganizationRecommendationsResponse {
   nextToken?: string;
   organizationRecommendationSummaries: OrganizationRecommendationSummary[];
 }
-const ListOrganizationRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    organizationRecommendationSummaries: OrganizationRecommendationSummaryList,
-  }),
-).annotate({
-  identifier: "ListOrganizationRecommendationsResponse",
-}) as any as S.Schema<ListOrganizationRecommendationsResponse>;
+const ListOrganizationRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListOrganizationRecommendationsResponse>;
 export interface ListRecommendationResourcesRequest {
   nextToken?: string;
   maxResults?: number;
@@ -770,28 +513,10 @@ export interface ListRecommendationResourcesRequest {
   recommendationIdentifier: string;
   language?: RecommendationLanguage;
 }
-const ListRecommendationResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    status: S.optional(ResourceStatus).pipe(T.HttpQuery("status")),
-    exclusionStatus: S.optional(ExclusionStatus).pipe(T.HttpQuery("exclusionStatus")),
-    regionCode: S.optional(S.String).pipe(T.HttpQuery("regionCode")),
-    recommendationIdentifier: S.String.pipe(T.HttpLabel("recommendationIdentifier")),
-    language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/recommendations/{recommendationIdentifier}/resources" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListRecommendationResourcesRequest",
-}) as any as S.Schema<ListRecommendationResourcesRequest>;
+const ListRecommendationResourcesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListRecommendationResourcesRequest>;
 export interface RecommendationResourceSummary {
   id: string;
   arn: string;
@@ -803,35 +528,20 @@ export interface RecommendationResourceSummary {
   exclusionStatus?: ExclusionStatus;
   recommendationArn: string;
 }
-const RecommendationResourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    awsResourceId: S.String,
-    regionCode: S.String,
-    status: ResourceStatus,
-    metadata: StringMap,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    exclusionStatus: S.optional(ExclusionStatus),
-    recommendationArn: S.String,
-  }),
-).annotate({
-  identifier: "RecommendationResourceSummary",
-}) as any as S.Schema<RecommendationResourceSummary>;
+const RecommendationResourceSummary = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<RecommendationResourceSummary>;
 export type RecommendationResourceSummaryList = RecommendationResourceSummary[];
-const RecommendationResourceSummaryList = /*@__PURE__*/ S.Array(RecommendationResourceSummary);
+const RecommendationResourceSummaryList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface ListRecommendationResourcesResponse {
   nextToken?: string;
   recommendationResourceSummaries: RecommendationResourceSummary[];
 }
-const ListRecommendationResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    recommendationResourceSummaries: RecommendationResourceSummaryList,
-  }),
-).annotate({
-  identifier: "ListRecommendationResourcesResponse",
-}) as any as S.Schema<ListRecommendationResourcesResponse>;
+const ListRecommendationResourcesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListRecommendationResourcesResponse>;
 export interface ListRecommendationsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -845,29 +555,10 @@ export interface ListRecommendationsRequest {
   beforeLastUpdatedAt?: Date;
   language?: RecommendationLanguage;
 }
-const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    type: S.optional(RecommendationType).pipe(T.HttpQuery("type")),
-    status: S.optional(RecommendationStatus).pipe(T.HttpQuery("status")),
-    pillar: S.optional(RecommendationPillar).pipe(T.HttpQuery("pillar")),
-    awsService: S.optional(S.String).pipe(T.HttpQuery("awsService")),
-    source: S.optional(RecommendationSource).pipe(T.HttpQuery("source")),
-    checkIdentifier: S.optional(S.String).pipe(T.HttpQuery("checkIdentifier")),
-    afterLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("afterLastUpdatedAt"),
-    ),
-    beforeLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("beforeLastUpdatedAt"),
-    ),
-    language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/v1/recommendations" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListRecommendationsRequest",
-}) as any as S.Schema<ListRecommendationsRequest>;
+const ListRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListRecommendationsRequest>;
 export interface RecommendationSummary {
   id: string;
   type: RecommendationType;
@@ -885,36 +576,20 @@ export interface RecommendationSummary {
   arn: string;
   statusReason?: StatusReason;
 }
-const RecommendationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: RecommendationType,
-    checkArn: S.optional(S.String),
-    status: RecommendationStatus,
-    lifecycleStage: S.optional(RecommendationLifecycleStage),
-    pillars: RecommendationPillarList,
-    source: RecommendationSource,
-    awsServices: S.optional(RecommendationAwsServiceList),
-    name: S.String,
-    resourcesAggregates: RecommendationResourcesAggregates,
-    pillarSpecificAggregates: S.optional(RecommendationPillarSpecificAggregates),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    arn: S.String,
-    statusReason: S.optional(StatusReason),
-  }),
-).annotate({ identifier: "RecommendationSummary" }) as any as S.Schema<RecommendationSummary>;
+const RecommendationSummary = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<RecommendationSummary>;
 export type RecommendationSummaryList = RecommendationSummary[];
-const RecommendationSummaryList = /*@__PURE__*/ S.Array(RecommendationSummary);
+const RecommendationSummaryList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface ListRecommendationsResponse {
   nextToken?: string;
   recommendationSummaries: RecommendationSummary[];
 }
-const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), recommendationSummaries: RecommendationSummaryList }),
-).annotate({
-  identifier: "ListRecommendationsResponse",
-}) as any as S.Schema<ListRecommendationsResponse>;
+const ListRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListRecommendationsResponse>;
 export type AwsResourceArn = string;
 export interface ListRecommendationsForResourceRequest {
   nextToken?: string;
@@ -925,28 +600,10 @@ export interface ListRecommendationsForResourceRequest {
   checkArn?: string;
   language?: RecommendationLanguage;
 }
-const ListRecommendationsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    awsResourceArn: S.String.pipe(T.HttpLabel("awsResourceArn")),
-    pillar: S.optional(RecommendationPillar).pipe(T.HttpQuery("pillar")),
-    status: S.optional(ResourceStatus).pipe(T.HttpQuery("status")),
-    checkArn: S.optional(S.String).pipe(T.HttpQuery("checkArn")),
-    language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/recommendations-for-resource/{awsResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListRecommendationsForResourceRequest",
-}) as any as S.Schema<ListRecommendationsForResourceRequest>;
+const ListRecommendationsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListRecommendationsForResourceRequest>;
 export interface RecommendationForResourceSummary {
   checkArn: string;
   recommendationArn: string;
@@ -957,36 +614,20 @@ export interface RecommendationForResourceSummary {
   metadata: { [key: string]: string | undefined };
   pillars: RecommendationPillar[];
 }
-const RecommendationForResourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkArn: S.String,
-    recommendationArn: S.String,
-    awsResourceArn: S.String,
-    status: ResourceStatus,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    exclusionStatus: ExclusionStatus,
-    metadata: StringMap,
-    pillars: RecommendationPillarList,
-  }),
-).annotate({
-  identifier: "RecommendationForResourceSummary",
-}) as any as S.Schema<RecommendationForResourceSummary>;
+const RecommendationForResourceSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<RecommendationForResourceSummary>;
 export type RecommendationForResourceSummaryList = RecommendationForResourceSummary[];
-const RecommendationForResourceSummaryList = /*@__PURE__*/ S.Array(
-  RecommendationForResourceSummary,
-);
+const RecommendationForResourceSummaryList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface ListRecommendationsForResourceResponse {
   nextToken?: string;
   recommendationForResourceSummaries: RecommendationForResourceSummary[];
 }
-const ListRecommendationsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    recommendationForResourceSummaries: RecommendationForResourceSummaryList,
-  }),
-).annotate({
-  identifier: "ListRecommendationsForResourceResponse",
-}) as any as S.Schema<ListRecommendationsForResourceResponse>;
+const ListRecommendationsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListRecommendationsForResourceResponse>;
 export type UpdateRecommendationLifecycleStage =
   | "pending_response"
   | "in_progress"
@@ -1001,61 +642,25 @@ export interface UpdateOrganizationRecommendationLifecycleRequest {
   updateReasonCode?: UpdateRecommendationLifecycleStageReasonCode;
   organizationRecommendationIdentifier: string;
 }
-const UpdateOrganizationRecommendationLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lifecycleStage: UpdateRecommendationLifecycleStage,
-    updateReason: S.optional(SensitiveString),
-    updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
-    organizationRecommendationIdentifier: S.String.pipe(
-      T.HttpLabel("organizationRecommendationIdentifier"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v1/organization-recommendations/{organizationRecommendationIdentifier}/lifecycle",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateOrganizationRecommendationLifecycleRequest",
-}) as any as S.Schema<UpdateOrganizationRecommendationLifecycleRequest>;
+const UpdateOrganizationRecommendationLifecycleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<UpdateOrganizationRecommendationLifecycleRequest>;
 export interface UpdateOrganizationRecommendationLifecycleResponse {}
-const UpdateOrganizationRecommendationLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationRecommendationLifecycleResponse",
-}) as any as S.Schema<UpdateOrganizationRecommendationLifecycleResponse>;
+const UpdateOrganizationRecommendationLifecycleResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<UpdateOrganizationRecommendationLifecycleResponse>;
 export interface UpdateRecommendationLifecycleRequest {
   lifecycleStage: UpdateRecommendationLifecycleStage;
   updateReason?: string | redacted.Redacted<string>;
   updateReasonCode?: UpdateRecommendationLifecycleStageReasonCode;
   recommendationIdentifier: string;
 }
-const UpdateRecommendationLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lifecycleStage: UpdateRecommendationLifecycleStage,
-    updateReason: S.optional(SensitiveString),
-    updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
-    recommendationIdentifier: S.String.pipe(T.HttpLabel("recommendationIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v1/recommendations/{recommendationIdentifier}/lifecycle" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateRecommendationLifecycleRequest",
-}) as any as S.Schema<UpdateRecommendationLifecycleRequest>;
+const UpdateRecommendationLifecycleRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<UpdateRecommendationLifecycleRequest>;
 export interface UpdateRecommendationLifecycleResponse {}
 const UpdateRecommendationLifecycleResponse =
   UpdateOrganizationRecommendationLifecycleResponse as any as S.Schema<UpdateRecommendationLifecycleResponse>;
@@ -1463,3 +1068,627 @@ export const updateRecommendationLifecycle: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRecommendationLifecycle",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ arn: S.String, isExcluded: S.Boolean })).annotate({
+        identifier: "RecommendationResourceExclusion",
+      });
+    case 1:
+      return S.Array(RecommendationResourceExclusion);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ recommendationResourceExclusions: RecommendationResourceExclusionList }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/batch-update-recommendation-resource-exclusion" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateRecommendationResourceExclusionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateRecommendationResourceExclusionError",
+      });
+    case 4:
+      return S.Array(UpdateRecommendationResourceExclusionError);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          batchUpdateRecommendationResourceExclusionErrors:
+            UpdateRecommendationResourceExclusionErrorList,
+        }),
+      ).annotate({
+        identifier: "BatchUpdateRecommendationResourceExclusionResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          organizationRecommendationIdentifier: S.String.pipe(
+            T.HttpLabel("organizationRecommendationIdentifier"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/organization-recommendations/{organizationRecommendationIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationRecommendationRequest",
+      });
+    case 7:
+      return S.Array(RecommendationPillar);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          okCount: S.Number,
+          warningCount: S.Number,
+          errorCount: S.Number,
+          excludedCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RecommendationResourcesAggregates",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ estimatedMonthlySavings: S.Number, estimatedPercentMonthlySavings: S.Number }),
+      ).annotate({
+        identifier: "RecommendationCostOptimizingAggregates",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ costOptimizing: S.optional(RecommendationCostOptimizingAggregates) }),
+      ).annotate({
+        identifier: "RecommendationPillarSpecificAggregates",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: RecommendationType,
+          checkArn: S.optional(S.String),
+          status: RecommendationStatus,
+          lifecycleStage: S.optional(RecommendationLifecycleStage),
+          pillars: RecommendationPillarList,
+          source: RecommendationSource,
+          awsServices: S.optional(RecommendationAwsServiceList),
+          name: S.String,
+          resourcesAggregates: RecommendationResourcesAggregates,
+          pillarSpecificAggregates: S.optional(RecommendationPillarSpecificAggregates),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          arn: S.String,
+          description: S.String,
+          createdBy: S.optional(S.String),
+          updatedOnBehalfOf: S.optional(S.String),
+          updatedOnBehalfOfJobTitle: S.optional(S.String),
+          updateReason: S.optional(SensitiveString),
+          updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
+          resolvedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "OrganizationRecommendation",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ organizationRecommendation: S.optional(OrganizationRecommendation) }),
+      ).annotate({
+        identifier: "GetOrganizationRecommendationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          recommendationIdentifier: S.String.pipe(T.HttpLabel("recommendationIdentifier")),
+          language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/recommendations/{recommendationIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetRecommendationRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: RecommendationType,
+          checkArn: S.optional(S.String),
+          status: RecommendationStatus,
+          lifecycleStage: S.optional(RecommendationLifecycleStage),
+          pillars: RecommendationPillarList,
+          source: RecommendationSource,
+          awsServices: S.optional(RecommendationAwsServiceList),
+          name: S.String,
+          resourcesAggregates: RecommendationResourcesAggregates,
+          pillarSpecificAggregates: S.optional(RecommendationPillarSpecificAggregates),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          arn: S.String,
+          statusReason: S.optional(StatusReason),
+          description: S.String,
+          createdBy: S.optional(S.String),
+          updatedOnBehalfOf: S.optional(S.String),
+          updatedOnBehalfOfJobTitle: S.optional(S.String),
+          updateReason: S.optional(SensitiveString),
+          updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
+          resolvedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "Recommendation" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ recommendation: S.optional(Recommendation) })).annotate({
+        identifier: "GetRecommendationResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          pillar: S.optional(RecommendationPillar).pipe(T.HttpQuery("pillar")),
+          awsService: S.optional(S.String).pipe(T.HttpQuery("awsService")),
+          source: S.optional(RecommendationSource).pipe(T.HttpQuery("source")),
+          language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/checks" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListChecksRequest" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          name: S.String,
+          description: S.String,
+          pillars: RecommendationPillarList,
+          awsServices: RecommendationAwsServiceList,
+          source: RecommendationSource,
+          metadata: StringMap,
+          resourceArnQueryable: S.optional(S.Boolean),
+          awsResourceTypes: S.optional(StringList),
+          checkGranularity: S.optional(S.String),
+          recommendationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CheckSummary" });
+    case 4:
+      return S.Array(CheckSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), checkSummaries: CheckSummaryList }),
+      ).annotate({ identifier: "ListChecksResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          organizationRecommendationIdentifier: S.String.pipe(
+            T.HttpLabel("organizationRecommendationIdentifier"),
+          ),
+          affectedAccountId: S.optional(S.String).pipe(T.HttpQuery("affectedAccountId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/organization-recommendations/{organizationRecommendationIdentifier}/accounts",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationRecommendationAccountsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          accountRecommendationArn: S.optional(S.String),
+          lifecycleStage: S.optional(RecommendationLifecycleStage),
+          updatedOnBehalfOf: S.optional(S.String),
+          updatedOnBehalfOfJobTitle: S.optional(S.String),
+          updateReason: S.optional(SensitiveString),
+          updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "AccountRecommendationLifecycleSummary",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AccountRecommendationLifecycleSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          accountRecommendationLifecycleSummaries: AccountRecommendationLifecycleSummaryList,
+        }),
+      ).annotate({
+        identifier: "ListOrganizationRecommendationAccountsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          status: S.optional(ResourceStatus).pipe(T.HttpQuery("status")),
+          exclusionStatus: S.optional(ExclusionStatus).pipe(T.HttpQuery("exclusionStatus")),
+          regionCode: S.optional(S.String).pipe(T.HttpQuery("regionCode")),
+          organizationRecommendationIdentifier: S.String.pipe(
+            T.HttpLabel("organizationRecommendationIdentifier"),
+          ),
+          affectedAccountId: S.optional(S.String).pipe(T.HttpQuery("affectedAccountId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/organization-recommendations/{organizationRecommendationIdentifier}/resources",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationRecommendationResourcesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          awsResourceId: S.String,
+          regionCode: S.String,
+          status: ResourceStatus,
+          metadata: StringMap,
+          lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          exclusionStatus: S.optional(ExclusionStatus),
+          accountId: S.optional(S.String),
+          recommendationArn: S.String,
+        }),
+      ).annotate({
+        identifier: "OrganizationRecommendationResourceSummary",
+      });
+    case 4:
+      return S.Array(OrganizationRecommendationResourceSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          organizationRecommendationResourceSummaries:
+            OrganizationRecommendationResourceSummaryList,
+        }),
+      ).annotate({
+        identifier: "ListOrganizationRecommendationResourcesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          type: S.optional(RecommendationType).pipe(T.HttpQuery("type")),
+          status: S.optional(RecommendationStatus).pipe(T.HttpQuery("status")),
+          pillar: S.optional(RecommendationPillar).pipe(T.HttpQuery("pillar")),
+          awsService: S.optional(S.String).pipe(T.HttpQuery("awsService")),
+          source: S.optional(RecommendationSource).pipe(T.HttpQuery("source")),
+          checkIdentifier: S.optional(S.String).pipe(T.HttpQuery("checkIdentifier")),
+          afterLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("afterLastUpdatedAt"),
+          ),
+          beforeLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("beforeLastUpdatedAt"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/organization-recommendations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationRecommendationsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: RecommendationType,
+          checkArn: S.optional(S.String),
+          status: RecommendationStatus,
+          lifecycleStage: S.optional(RecommendationLifecycleStage),
+          pillars: RecommendationPillarList,
+          source: RecommendationSource,
+          awsServices: S.optional(RecommendationAwsServiceList),
+          name: S.String,
+          resourcesAggregates: RecommendationResourcesAggregates,
+          pillarSpecificAggregates: S.optional(RecommendationPillarSpecificAggregates),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          arn: S.String,
+        }),
+      ).annotate({
+        identifier: "OrganizationRecommendationSummary",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(OrganizationRecommendationSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          organizationRecommendationSummaries: OrganizationRecommendationSummaryList,
+        }),
+      ).annotate({
+        identifier: "ListOrganizationRecommendationsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          status: S.optional(ResourceStatus).pipe(T.HttpQuery("status")),
+          exclusionStatus: S.optional(ExclusionStatus).pipe(T.HttpQuery("exclusionStatus")),
+          regionCode: S.optional(S.String).pipe(T.HttpQuery("regionCode")),
+          recommendationIdentifier: S.String.pipe(T.HttpLabel("recommendationIdentifier")),
+          language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/recommendations/{recommendationIdentifier}/resources",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListRecommendationResourcesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          awsResourceId: S.String,
+          regionCode: S.String,
+          status: ResourceStatus,
+          metadata: StringMap,
+          lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          exclusionStatus: S.optional(ExclusionStatus),
+          recommendationArn: S.String,
+        }),
+      ).annotate({
+        identifier: "RecommendationResourceSummary",
+      });
+    case 4:
+      return S.Array(RecommendationResourceSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          recommendationResourceSummaries: RecommendationResourceSummaryList,
+        }),
+      ).annotate({
+        identifier: "ListRecommendationResourcesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          type: S.optional(RecommendationType).pipe(T.HttpQuery("type")),
+          status: S.optional(RecommendationStatus).pipe(T.HttpQuery("status")),
+          pillar: S.optional(RecommendationPillar).pipe(T.HttpQuery("pillar")),
+          awsService: S.optional(S.String).pipe(T.HttpQuery("awsService")),
+          source: S.optional(RecommendationSource).pipe(T.HttpQuery("source")),
+          checkIdentifier: S.optional(S.String).pipe(T.HttpQuery("checkIdentifier")),
+          afterLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("afterLastUpdatedAt"),
+          ),
+          beforeLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("beforeLastUpdatedAt"),
+          ),
+          language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/recommendations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListRecommendationsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: RecommendationType,
+          checkArn: S.optional(S.String),
+          status: RecommendationStatus,
+          lifecycleStage: S.optional(RecommendationLifecycleStage),
+          pillars: RecommendationPillarList,
+          source: RecommendationSource,
+          awsServices: S.optional(RecommendationAwsServiceList),
+          name: S.String,
+          resourcesAggregates: RecommendationResourcesAggregates,
+          pillarSpecificAggregates: S.optional(RecommendationPillarSpecificAggregates),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          arn: S.String,
+          statusReason: S.optional(StatusReason),
+        }),
+      ).annotate({ identifier: "RecommendationSummary" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(RecommendationSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          recommendationSummaries: RecommendationSummaryList,
+        }),
+      ).annotate({
+        identifier: "ListRecommendationsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          awsResourceArn: S.String.pipe(T.HttpLabel("awsResourceArn")),
+          pillar: S.optional(RecommendationPillar).pipe(T.HttpQuery("pillar")),
+          status: S.optional(ResourceStatus).pipe(T.HttpQuery("status")),
+          checkArn: S.optional(S.String).pipe(T.HttpQuery("checkArn")),
+          language: S.optional(RecommendationLanguage).pipe(T.HttpQuery("language")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/recommendations-for-resource/{awsResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListRecommendationsForResourceRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          checkArn: S.String,
+          recommendationArn: S.String,
+          awsResourceArn: S.String,
+          status: ResourceStatus,
+          lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          exclusionStatus: ExclusionStatus,
+          metadata: StringMap,
+          pillars: RecommendationPillarList,
+        }),
+      ).annotate({
+        identifier: "RecommendationForResourceSummary",
+      });
+    case 4:
+      return S.Array(RecommendationForResourceSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          recommendationForResourceSummaries: RecommendationForResourceSummaryList,
+        }),
+      ).annotate({
+        identifier: "ListRecommendationsForResourceResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          lifecycleStage: UpdateRecommendationLifecycleStage,
+          updateReason: S.optional(SensitiveString),
+          updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
+          organizationRecommendationIdentifier: S.String.pipe(
+            T.HttpLabel("organizationRecommendationIdentifier"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v1/organization-recommendations/{organizationRecommendationIdentifier}/lifecycle",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationRecommendationLifecycleRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UpdateOrganizationRecommendationLifecycleResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lifecycleStage: UpdateRecommendationLifecycleStage,
+          updateReason: S.optional(SensitiveString),
+          updateReasonCode: S.optional(UpdateRecommendationLifecycleStageReasonCode),
+          recommendationIdentifier: S.String.pipe(T.HttpLabel("recommendationIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v1/recommendations/{recommendationIdentifier}/lifecycle",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateRecommendationLifecycleRequest",
+      });
+  }
+}

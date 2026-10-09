@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -129,37 +130,19 @@ export interface StartSelector {
   StartTimestamp?: Date;
   ContinuationToken?: string;
 }
-const StartSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartSelectorType: StartSelectorType,
-    AfterFragmentNumber: S.optional(S.String),
-    StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ContinuationToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "StartSelector" }) as any as S.Schema<StartSelector>;
+const StartSelector = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StartSelector>;
 export interface GetMediaInput {
   StreamName?: string;
   StreamARN?: string;
   StartSelector: StartSelector;
 }
-const GetMediaInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    StreamARN: S.optional(S.String),
-    StartSelector: StartSelector,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/getMedia" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetMediaInput" }) as any as S.Schema<GetMediaInput>;
+const GetMediaInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GetMediaInput>;
 export type ContentType = string;
 export interface GetMediaOutput {
   ContentType?: string;
   Payload?: T.StreamingOutputBody;
 }
-const GetMediaOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-  }),
-).annotate({ identifier: "GetMediaOutput" }) as any as S.Schema<GetMediaOutput>;
+const GetMediaOutput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetMediaOutput>;
 export type ErrorMessage = string;
 export type GetMediaError =
   | ClientLimitExceededException
@@ -226,3 +209,33 @@ export const getMedia: API.OperationMethod<
   retry: Retry,
   operationName: "GetMedia",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StartSelectorType: StartSelectorType,
+          AfterFragmentNumber: S.optional(S.String),
+          StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ContinuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StartSelector" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          StreamARN: S.optional(S.String),
+          StartSelector: StartSelector,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/getMedia" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetMediaInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+        }),
+      ).annotate({ identifier: "GetMediaOutput" });
+  }
+}

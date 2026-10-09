@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -74,20 +75,10 @@ export class ValidationException
     ),
   }) {}
 export interface GetAccountCustomizationsInput {}
-const GetAccountCustomizationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/account-customizations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAccountCustomizationsInput",
-}) as any as S.Schema<GetAccountCustomizationsInput>;
+const GetAccountCustomizationsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetAccountCustomizationsInput>;
 export type AccountColor =
   | "none"
   | "pink"
@@ -104,7 +95,7 @@ const AccountColor = S.String;
 
 export type Service = string;
 export type ServiceList = string[];
-const ServiceList = /*@__PURE__*/ S.Array(S.String);
+const ServiceList = /*@__PURE__*/ __L.at(__c0, 1);
 export type Region = string;
 export type RegionsList = string[];
 const RegionsList = ServiceList as any as S.Schema<RegionsList>;
@@ -113,57 +104,31 @@ export interface GetAccountCustomizationsOutput {
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-const GetAccountCustomizationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountColor: S.optional(AccountColor),
-    visibleServices: S.optional(ServiceList),
-    visibleRegions: S.optional(RegionsList),
-  }),
-).annotate({
-  identifier: "GetAccountCustomizationsOutput",
-}) as any as S.Schema<GetAccountCustomizationsOutput>;
+const GetAccountCustomizationsOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetAccountCustomizationsOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListServicesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListServicesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/services" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListServicesInput" }) as any as S.Schema<ListServicesInput>;
+const ListServicesInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListServicesInput>;
 export interface ListServicesOutput {
   nextToken?: string;
   services?: string[];
 }
-const ListServicesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), services: S.optional(ServiceList) }),
-).annotate({ identifier: "ListServicesOutput" }) as any as S.Schema<ListServicesOutput>;
+const ListServicesOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListServicesOutput>;
 export interface UpdateAccountCustomizationsInput {
   accountColor?: AccountColor;
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-const UpdateAccountCustomizationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountColor: S.optional(AccountColor),
-    visibleServices: S.optional(ServiceList),
-    visibleRegions: S.optional(RegionsList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v1/account-customizations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAccountCustomizationsInput",
-}) as any as S.Schema<UpdateAccountCustomizationsInput>;
+const UpdateAccountCustomizationsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<UpdateAccountCustomizationsInput>;
 export interface UpdateAccountCustomizationsOutput {
   accountColor?: AccountColor;
   visibleServices?: string[];
@@ -175,11 +140,12 @@ export interface ValidationExceptionField {
   path: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ path: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c0, 7);
 export type GetAccountCustomizationsError =
   | AccessDeniedException
   | InternalServerException
@@ -271,3 +237,74 @@ export const updateAccountCustomizations: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccountCustomizations",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/account-customizations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAccountCustomizationsInput",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountColor: S.optional(AccountColor),
+          visibleServices: S.optional(ServiceList),
+          visibleRegions: S.optional(RegionsList),
+        }),
+      ).annotate({
+        identifier: "GetAccountCustomizationsOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/v1/services" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListServicesInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), services: S.optional(ServiceList) }),
+      ).annotate({ identifier: "ListServicesOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accountColor: S.optional(AccountColor),
+          visibleServices: S.optional(ServiceList),
+          visibleRegions: S.optional(RegionsList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/v1/account-customizations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateAccountCustomizationsInput",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ path: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 7:
+      return S.Array(ValidationExceptionField);
+  }
+}

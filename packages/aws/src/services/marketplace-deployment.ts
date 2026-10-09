@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -125,23 +126,19 @@ export class ValidationException
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ __L.at(__c0, 1);
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type Catalog = string;
 export type ResourceId = string;
 export type DeploymentParameterName = string;
@@ -150,9 +147,10 @@ export interface DeploymentParameterInput {
   name: string;
   secretString: string | redacted.Redacted<string>;
 }
-const DeploymentParameterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, secretString: SensitiveString }),
-).annotate({ identifier: "DeploymentParameterInput" }) as any as S.Schema<DeploymentParameterInput>;
+const DeploymentParameterInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeploymentParameterInput>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
@@ -167,31 +165,10 @@ export interface PutDeploymentParameterRequest {
   expirationDate?: Date;
   clientToken?: string;
 }
-const PutDeploymentParameterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    catalog: S.String.pipe(T.HttpLabel("catalog")),
-    productId: S.String.pipe(T.HttpLabel("productId")),
-    agreementId: S.String,
-    deploymentParameter: DeploymentParameterInput,
-    tags: S.optional(TagsMap),
-    expirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/catalogs/{catalog}/products/{productId}/deployment-parameters",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutDeploymentParameterRequest",
-}) as any as S.Schema<PutDeploymentParameterRequest>;
+const PutDeploymentParameterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PutDeploymentParameterRequest>;
 export type ResourceArn = string;
 export type DeploymentParameterResourceIdentifier = string;
 export interface PutDeploymentParameterResponse {
@@ -200,43 +177,24 @@ export interface PutDeploymentParameterResponse {
   deploymentParameterId: string;
   tags?: { [key: string]: string | undefined };
 }
-const PutDeploymentParameterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String,
-    agreementId: S.String,
-    deploymentParameterId: S.String,
-    tags: S.optional(TagsMap),
-  }),
-).annotate({
-  identifier: "PutDeploymentParameterResponse",
-}) as any as S.Schema<PutDeploymentParameterResponse>;
+const PutDeploymentParameterResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PutDeploymentParameterResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags?: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: S.optional(Tags) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TagResourceResponse>;
 export type StringList = string[];
-const StringList = /*@__PURE__*/ S.Array(S.String);
+const StringList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: StringList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ListTagsForResourceError =
@@ -366,3 +324,113 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ name: S.String, secretString: SensitiveString })).annotate({
+        identifier: "DeploymentParameterInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          catalog: S.String.pipe(T.HttpLabel("catalog")),
+          productId: S.String.pipe(T.HttpLabel("productId")),
+          agreementId: S.String,
+          deploymentParameter: DeploymentParameterInput,
+          tags: S.optional(TagsMap),
+          expirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/catalogs/{catalog}/products/{productId}/deployment-parameters",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutDeploymentParameterRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String,
+          agreementId: S.String,
+          deploymentParameterId: S.String,
+          tags: S.optional(TagsMap),
+        }),
+      ).annotate({
+        identifier: "PutDeploymentParameterResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: S.optional(Tags),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: StringList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}

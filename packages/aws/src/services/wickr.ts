@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -123,7 +124,7 @@ export type NetworkId = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
-const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+const SecurityGroupIdList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface BatchCreateUserRequestItem {
   firstName?: string | redacted.Redacted<string>;
   lastName?: string | redacted.Redacted<string>;
@@ -133,43 +134,22 @@ export interface BatchCreateUserRequestItem {
   inviteCodeTtl?: number;
   codeValidation?: boolean;
 }
-const BatchCreateUserRequestItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstName: S.optional(SensitiveString),
-    lastName: S.optional(SensitiveString),
-    securityGroupIds: SecurityGroupIdList,
-    username: S.String,
-    inviteCode: S.optional(S.String),
-    inviteCodeTtl: S.optional(S.Number),
-    codeValidation: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BatchCreateUserRequestItem",
-}) as any as S.Schema<BatchCreateUserRequestItem>;
+const BatchCreateUserRequestItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchCreateUserRequestItem>;
 export type BatchCreateUserRequestItems = BatchCreateUserRequestItem[];
-const BatchCreateUserRequestItems = /*@__PURE__*/ S.Array(BatchCreateUserRequestItem);
+const BatchCreateUserRequestItems = /*@__PURE__*/ __L.at(__c0, 2);
 export type ClientToken = string;
 export interface BatchCreateUserRequest {
   networkId: string;
   users: BatchCreateUserRequestItem[];
   clientToken?: string;
 }
-const BatchCreateUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    users: BatchCreateUserRequestItems,
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("X-Client-Token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/users" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "BatchCreateUserRequest" }) as any as S.Schema<BatchCreateUserRequest>;
+const BatchCreateUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BatchCreateUserRequest>;
 export type UserId = string;
 export interface User {
   userId?: string;
@@ -192,55 +172,29 @@ export interface User {
   codeValidation?: boolean;
   uname?: string;
 }
-const User = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String),
-    firstName: S.optional(SensitiveString),
-    lastName: S.optional(SensitiveString),
-    username: S.optional(S.String),
-    securityGroups: S.optional(SecurityGroupIdList),
-    isAdmin: S.optional(S.Boolean),
-    suspended: S.optional(S.Boolean),
-    status: S.optional(S.Number),
-    otpEnabled: S.optional(S.Boolean),
-    scimId: S.optional(S.String),
-    type: S.optional(S.String),
-    cell: S.optional(S.String),
-    countryCode: S.optional(S.String),
-    challengeFailures: S.optional(S.Number),
-    isInviteExpired: S.optional(S.Boolean),
-    isUser: S.optional(S.Boolean),
-    inviteCode: S.optional(S.String),
-    codeValidation: S.optional(S.Boolean),
-    uname: S.optional(S.String),
-  }),
-).annotate({ identifier: "User" }) as any as S.Schema<User>;
+const User = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<User>;
 export type Users = User[];
-const Users = /*@__PURE__*/ S.Array(User);
+const Users = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchUserErrorResponseItem {
   field?: string;
   reason?: string;
   userId: string;
 }
-const BatchUserErrorResponseItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), userId: S.String }),
-).annotate({
-  identifier: "BatchUserErrorResponseItem",
-}) as any as S.Schema<BatchUserErrorResponseItem>;
+const BatchUserErrorResponseItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchUserErrorResponseItem>;
 export type BatchUserErrorResponseItems = BatchUserErrorResponseItem[];
-const BatchUserErrorResponseItems = /*@__PURE__*/ S.Array(BatchUserErrorResponseItem);
+const BatchUserErrorResponseItems = /*@__PURE__*/ __L.at(__c0, 7);
 export interface BatchCreateUserResponse {
   message?: string;
   successful?: User[];
   failed?: BatchUserErrorResponseItem[];
 }
-const BatchCreateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    successful: S.optional(Users),
-    failed: S.optional(BatchUserErrorResponseItems),
-  }),
-).annotate({ identifier: "BatchCreateUserResponse" }) as any as S.Schema<BatchCreateUserResponse>;
+const BatchCreateUserResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchCreateUserResponse>;
 export type UserIds = string[];
 const UserIds = SecurityGroupIdList as any as S.Schema<UserIds>;
 export interface BatchDeleteUserRequest {
@@ -248,44 +202,28 @@ export interface BatchDeleteUserRequest {
   userIds: string[];
   clientToken?: string;
 }
-const BatchDeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    userIds: UserIds,
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("X-Client-Token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/users/batch-delete" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "BatchDeleteUserRequest" }) as any as S.Schema<BatchDeleteUserRequest>;
+const BatchDeleteUserRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchDeleteUserRequest>;
 export interface BatchUserSuccessResponseItem {
   userId: string;
 }
-const BatchUserSuccessResponseItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ userId: S.String }),
-).annotate({
-  identifier: "BatchUserSuccessResponseItem",
-}) as any as S.Schema<BatchUserSuccessResponseItem>;
+const BatchUserSuccessResponseItem = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BatchUserSuccessResponseItem>;
 export type BatchUserSuccessResponseItems = BatchUserSuccessResponseItem[];
-const BatchUserSuccessResponseItems = /*@__PURE__*/ S.Array(BatchUserSuccessResponseItem);
+const BatchUserSuccessResponseItems = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BatchDeleteUserResponse {
   message?: string;
   successful?: BatchUserSuccessResponseItem[];
   failed?: BatchUserErrorResponseItem[];
 }
-const BatchDeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    successful: S.optional(BatchUserSuccessResponseItems),
-    failed: S.optional(BatchUserErrorResponseItems),
-  }),
-).annotate({ identifier: "BatchDeleteUserResponse" }) as any as S.Schema<BatchDeleteUserResponse>;
+const BatchDeleteUserResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BatchDeleteUserResponse>;
 export type Unames = string[];
 const Unames = SecurityGroupIdList as any as S.Schema<Unames>;
 export interface BatchLookupUserUnameRequest {
@@ -293,97 +231,59 @@ export interface BatchLookupUserUnameRequest {
   unames: string[];
   clientToken?: string;
 }
-const BatchLookupUserUnameRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    unames: Unames,
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("X-Client-Token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/users/uname-lookup" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchLookupUserUnameRequest",
-}) as any as S.Schema<BatchLookupUserUnameRequest>;
+const BatchLookupUserUnameRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BatchLookupUserUnameRequest>;
 export type Uname = string;
 export interface BatchUnameSuccessResponseItem {
   uname: string;
   username: string;
 }
-const BatchUnameSuccessResponseItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ uname: S.String, username: S.String }),
-).annotate({
-  identifier: "BatchUnameSuccessResponseItem",
-}) as any as S.Schema<BatchUnameSuccessResponseItem>;
+const BatchUnameSuccessResponseItem = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BatchUnameSuccessResponseItem>;
 export type BatchUnameSuccessResponseItems = BatchUnameSuccessResponseItem[];
-const BatchUnameSuccessResponseItems = /*@__PURE__*/ S.Array(BatchUnameSuccessResponseItem);
+const BatchUnameSuccessResponseItems = /*@__PURE__*/ __L.at(__c1, 7);
 export interface BatchUnameErrorResponseItem {
   field?: string;
   reason?: string;
   uname: string;
 }
-const BatchUnameErrorResponseItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), uname: S.String }),
-).annotate({
-  identifier: "BatchUnameErrorResponseItem",
-}) as any as S.Schema<BatchUnameErrorResponseItem>;
+const BatchUnameErrorResponseItem = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<BatchUnameErrorResponseItem>;
 export type BatchUnameErrorResponseItems = BatchUnameErrorResponseItem[];
-const BatchUnameErrorResponseItems = /*@__PURE__*/ S.Array(BatchUnameErrorResponseItem);
+const BatchUnameErrorResponseItems = /*@__PURE__*/ __L.at(__c2, 1);
 export interface BatchLookupUserUnameResponse {
   message?: string;
   successful?: BatchUnameSuccessResponseItem[];
   failed?: BatchUnameErrorResponseItem[];
 }
-const BatchLookupUserUnameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    successful: S.optional(BatchUnameSuccessResponseItems),
-    failed: S.optional(BatchUnameErrorResponseItems),
-  }),
-).annotate({
-  identifier: "BatchLookupUserUnameResponse",
-}) as any as S.Schema<BatchLookupUserUnameResponse>;
+const BatchLookupUserUnameResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BatchLookupUserUnameResponse>;
 export interface BatchReinviteUserRequest {
   networkId: string;
   userIds: string[];
   clientToken?: string;
 }
-const BatchReinviteUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    userIds: UserIds,
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("X-Client-Token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/networks/{networkId}/users/re-invite" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "BatchReinviteUserRequest" }) as any as S.Schema<BatchReinviteUserRequest>;
+const BatchReinviteUserRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<BatchReinviteUserRequest>;
 export interface BatchReinviteUserResponse {
   message?: string;
   successful?: BatchUserSuccessResponseItem[];
   failed?: BatchUserErrorResponseItem[];
 }
-const BatchReinviteUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    successful: S.optional(BatchUserSuccessResponseItems),
-    failed: S.optional(BatchUserErrorResponseItems),
-  }),
-).annotate({
-  identifier: "BatchReinviteUserResponse",
-}) as any as S.Schema<BatchReinviteUserResponse>;
+const BatchReinviteUserResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BatchReinviteUserResponse>;
 export type AppIds = string[];
 const AppIds = SecurityGroupIdList as any as S.Schema<AppIds>;
 export interface BatchResetDevicesForUserRequest {
@@ -392,86 +292,49 @@ export interface BatchResetDevicesForUserRequest {
   appIds: string[];
   clientToken?: string;
 }
-const BatchResetDevicesForUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    userId: S.String.pipe(T.HttpLabel("userId")),
-    appIds: AppIds,
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("X-Client-Token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/networks/{networkId}/users/{userId}/devices" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchResetDevicesForUserRequest",
-}) as any as S.Schema<BatchResetDevicesForUserRequest>;
+const BatchResetDevicesForUserRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<BatchResetDevicesForUserRequest>;
 export interface BatchDeviceSuccessResponseItem {
   appId: string;
 }
-const BatchDeviceSuccessResponseItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ appId: S.String }),
-).annotate({
-  identifier: "BatchDeviceSuccessResponseItem",
-}) as any as S.Schema<BatchDeviceSuccessResponseItem>;
+const BatchDeviceSuccessResponseItem = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<BatchDeviceSuccessResponseItem>;
 export type BatchDeviceSuccessResponseItems = BatchDeviceSuccessResponseItem[];
-const BatchDeviceSuccessResponseItems = /*@__PURE__*/ S.Array(BatchDeviceSuccessResponseItem);
+const BatchDeviceSuccessResponseItems = /*@__PURE__*/ __L.at(__c2, 7);
 export interface BatchDeviceErrorResponseItem {
   field?: string;
   reason?: string;
   appId: string;
 }
-const BatchDeviceErrorResponseItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), appId: S.String }),
-).annotate({
-  identifier: "BatchDeviceErrorResponseItem",
-}) as any as S.Schema<BatchDeviceErrorResponseItem>;
+const BatchDeviceErrorResponseItem = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<BatchDeviceErrorResponseItem>;
 export type BatchDeviceErrorResponseItems = BatchDeviceErrorResponseItem[];
-const BatchDeviceErrorResponseItems = /*@__PURE__*/ S.Array(BatchDeviceErrorResponseItem);
+const BatchDeviceErrorResponseItems = /*@__PURE__*/ __L.at(__c3, 1);
 export interface BatchResetDevicesForUserResponse {
   message?: string;
   successful?: BatchDeviceSuccessResponseItem[];
   failed?: BatchDeviceErrorResponseItem[];
 }
-const BatchResetDevicesForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    successful: S.optional(BatchDeviceSuccessResponseItems),
-    failed: S.optional(BatchDeviceErrorResponseItems),
-  }),
-).annotate({
-  identifier: "BatchResetDevicesForUserResponse",
-}) as any as S.Schema<BatchResetDevicesForUserResponse>;
+const BatchResetDevicesForUserResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<BatchResetDevicesForUserResponse>;
 export interface BatchToggleUserSuspendStatusRequest {
   networkId: string;
   suspend: boolean;
   userIds: string[];
   clientToken?: string;
 }
-const BatchToggleUserSuspendStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    suspend: S.Boolean.pipe(T.HttpQuery("suspend")),
-    userIds: UserIds,
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("X-Client-Token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/networks/{networkId}/users/toggleSuspend" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchToggleUserSuspendStatusRequest",
-}) as any as S.Schema<BatchToggleUserSuspendStatusRequest>;
+const BatchToggleUserSuspendStatusRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<BatchToggleUserSuspendStatusRequest>;
 export interface BatchToggleUserSuspendStatusResponse {
   message?: string;
   successful?: BatchUserSuccessResponseItem[];
@@ -486,24 +349,7 @@ export interface CreateBotRequest {
   groupId: string;
   challenge: string | redacted.Redacted<string>;
 }
-const CreateBotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    username: S.String,
-    displayName: S.optional(S.String),
-    groupId: S.String,
-    challenge: SensitiveString,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/bots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateBotRequest" }) as any as S.Schema<CreateBotRequest>;
+const CreateBotRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CreateBotRequest>;
 export type BotId = string;
 export interface CreateBotResponse {
   message?: string;
@@ -513,66 +359,35 @@ export interface CreateBotResponse {
   displayName?: string;
   groupId?: string;
 }
-const CreateBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    botId: S.String,
-    networkId: S.optional(S.String),
-    username: S.optional(S.String),
-    displayName: S.optional(S.String),
-    groupId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateBotResponse" }) as any as S.Schema<CreateBotResponse>;
+const CreateBotResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateBotResponse>;
 export interface CreateDataRetentionBotRequest {
   networkId: string;
 }
-const CreateDataRetentionBotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/data-retention-bots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateDataRetentionBotRequest",
-}) as any as S.Schema<CreateDataRetentionBotRequest>;
+const CreateDataRetentionBotRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateDataRetentionBotRequest>;
 export interface CreateDataRetentionBotResponse {
   message?: string;
 }
-const CreateDataRetentionBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateDataRetentionBotResponse",
-}) as any as S.Schema<CreateDataRetentionBotResponse>;
+const CreateDataRetentionBotResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateDataRetentionBotResponse>;
 export interface CreateDataRetentionBotChallengeRequest {
   networkId: string;
 }
-const CreateDataRetentionBotChallengeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/data-retention-bots/challenge" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateDataRetentionBotChallengeRequest",
-}) as any as S.Schema<CreateDataRetentionBotChallengeRequest>;
+const CreateDataRetentionBotChallengeRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateDataRetentionBotChallengeRequest>;
 export interface CreateDataRetentionBotChallengeResponse {
   challenge: string | redacted.Redacted<string>;
 }
-const CreateDataRetentionBotChallengeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ challenge: SensitiveString }),
-).annotate({
-  identifier: "CreateDataRetentionBotChallengeResponse",
-}) as any as S.Schema<CreateDataRetentionBotChallengeResponse>;
+const CreateDataRetentionBotChallengeResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateDataRetentionBotChallengeResponse>;
 export type AccessLevel = "STANDARD" | "PREMIUM" | (string & {});
 const AccessLevel = S.String;
 
@@ -582,48 +397,35 @@ export interface CreateNetworkRequest {
   enablePremiumFreeTrial?: boolean;
   encryptionKeyArn?: string;
 }
-const CreateNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkName: S.String,
-    accessLevel: AccessLevel,
-    enablePremiumFreeTrial: S.optional(S.Boolean),
-    encryptionKeyArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/networks" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateNetworkRequest" }) as any as S.Schema<CreateNetworkRequest>;
+const CreateNetworkRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CreateNetworkRequest>;
 export interface CreateNetworkResponse {
   networkId?: string;
   networkName?: string;
   encryptionKeyArn?: string;
 }
-const CreateNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.optional(S.String),
-    networkName: S.optional(S.String),
-    encryptionKeyArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateNetworkResponse" }) as any as S.Schema<CreateNetworkResponse>;
+const CreateNetworkResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateNetworkResponse>;
 export type PermittedNetworksList = string[];
 const PermittedNetworksList = SecurityGroupIdList as any as S.Schema<PermittedNetworksList>;
 export interface WickrAwsNetworks {
   region: string;
   networkId: string;
 }
-const WickrAwsNetworks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ region: S.String, networkId: S.String }),
-).annotate({ identifier: "WickrAwsNetworks" }) as any as S.Schema<WickrAwsNetworks>;
+const WickrAwsNetworks = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<WickrAwsNetworks>;
 export type WickrAwsNetworksList = WickrAwsNetworks[];
-const WickrAwsNetworksList = /*@__PURE__*/ S.Array(WickrAwsNetworks);
+const WickrAwsNetworksList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface PermittedWickrEnterpriseNetwork {
   domain: string;
   networkId: string;
 }
-const PermittedWickrEnterpriseNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domain: S.String, networkId: S.String }),
-).annotate({
-  identifier: "PermittedWickrEnterpriseNetwork",
-}) as any as S.Schema<PermittedWickrEnterpriseNetwork>;
+const PermittedWickrEnterpriseNetwork = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<PermittedWickrEnterpriseNetwork>;
 export type PermittedWickrEnterpriseNetworksList = PermittedWickrEnterpriseNetwork[];
-const PermittedWickrEnterpriseNetworksList = /*@__PURE__*/ S.Array(PermittedWickrEnterpriseNetwork);
+const PermittedWickrEnterpriseNetworksList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface SecurityGroupSettingsRequest {
   lockoutThreshold?: number;
   permittedNetworks?: string[];
@@ -634,45 +436,20 @@ export interface SecurityGroupSettingsRequest {
   permittedWickrAwsNetworks?: WickrAwsNetworks[];
   permittedWickrEnterpriseNetworks?: PermittedWickrEnterpriseNetwork[];
 }
-const SecurityGroupSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lockoutThreshold: S.optional(S.Number),
-    permittedNetworks: S.optional(PermittedNetworksList),
-    enableGuestFederation: S.optional(S.Boolean),
-    globalFederation: S.optional(S.Boolean),
-    federationMode: S.optional(S.Number),
-    enableRestrictedGlobalFederation: S.optional(S.Boolean),
-    permittedWickrAwsNetworks: S.optional(WickrAwsNetworksList),
-    permittedWickrEnterpriseNetworks: S.optional(PermittedWickrEnterpriseNetworksList),
-  }),
-).annotate({
-  identifier: "SecurityGroupSettingsRequest",
-}) as any as S.Schema<SecurityGroupSettingsRequest>;
+const SecurityGroupSettingsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<SecurityGroupSettingsRequest>;
 export interface CreateSecurityGroupRequest {
   networkId: string;
   name: string;
   securityGroupSettings: SecurityGroupSettingsRequest;
   clientToken?: string;
 }
-const CreateSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    name: S.String,
-    securityGroupSettings: SecurityGroupSettingsRequest,
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("X-Client-Token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/security-groups" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateSecurityGroupRequest",
-}) as any as S.Schema<CreateSecurityGroupRequest>;
+const CreateSecurityGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateSecurityGroupRequest>;
 export type SecurityGroupStringList = string[];
 const SecurityGroupStringList = SecurityGroupIdList as any as S.Schema<SecurityGroupStringList>;
 export interface CallingSettings {
@@ -680,13 +457,7 @@ export interface CallingSettings {
   canVideoCall?: boolean;
   forceTcpCall?: boolean;
 }
-const CallingSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    canStart11Call: S.optional(S.Boolean),
-    canVideoCall: S.optional(S.Boolean),
-    forceTcpCall: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "CallingSettings" }) as any as S.Schema<CallingSettings>;
+const CallingSettings = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CallingSettings>;
 export interface PasswordRequirements {
   lowercase?: number;
   minLength?: number;
@@ -694,22 +465,12 @@ export interface PasswordRequirements {
   symbols?: number;
   uppercase?: number;
 }
-const PasswordRequirements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lowercase: S.optional(S.Number),
-    minLength: S.optional(S.Number),
-    numbers: S.optional(S.Number),
-    symbols: S.optional(S.Number),
-    uppercase: S.optional(S.Number),
-  }),
-).annotate({ identifier: "PasswordRequirements" }) as any as S.Schema<PasswordRequirements>;
+const PasswordRequirements = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<PasswordRequirements>;
 export interface ShredderSettings {
   canProcessManually?: boolean;
   intensity?: number;
 }
-const ShredderSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ canProcessManually: S.optional(S.Boolean), intensity: S.optional(S.Number) }),
-).annotate({ identifier: "ShredderSettings" }) as any as S.Schema<ShredderSettings>;
+const ShredderSettings = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ShredderSettings>;
 export interface SecurityGroupSettings {
   alwaysReauthenticate?: boolean;
   atakPackageValues?: string[];
@@ -748,46 +509,10 @@ export interface SecurityGroupSettings {
   permittedWickrAwsNetworks?: WickrAwsNetworks[];
   permittedWickrEnterpriseNetworks?: PermittedWickrEnterpriseNetwork[];
 }
-const SecurityGroupSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alwaysReauthenticate: S.optional(S.Boolean),
-    atakPackageValues: S.optional(SecurityGroupStringList),
-    calling: S.optional(CallingSettings),
-    checkForUpdates: S.optional(S.Boolean),
-    enableAtak: S.optional(S.Boolean),
-    enableCrashReports: S.optional(S.Boolean),
-    enableFileDownload: S.optional(S.Boolean),
-    enableGuestFederation: S.optional(S.Boolean),
-    enableNotificationPreview: S.optional(S.Boolean),
-    enableOpenAccessOption: S.optional(S.Boolean),
-    enableRestrictedGlobalFederation: S.optional(S.Boolean),
-    filesEnabled: S.optional(S.Boolean),
-    forceDeviceLockout: S.optional(S.Number),
-    forceOpenAccess: S.optional(S.Boolean),
-    forceReadReceipts: S.optional(S.Boolean),
-    globalFederation: S.optional(S.Boolean),
-    isAtoEnabled: S.optional(S.Boolean),
-    isLinkPreviewEnabled: S.optional(S.Boolean),
-    locationAllowMaps: S.optional(S.Boolean),
-    locationEnabled: S.optional(S.Boolean),
-    maxAutoDownloadSize: S.optional(S.Number),
-    maxBor: S.optional(S.Number),
-    maxTtl: S.optional(S.Number),
-    messageForwardingEnabled: S.optional(S.Boolean),
-    passwordRequirements: S.optional(PasswordRequirements),
-    presenceEnabled: S.optional(S.Boolean),
-    quickResponses: S.optional(SecurityGroupStringList),
-    showMasterRecoveryKey: S.optional(S.Boolean),
-    shredder: S.optional(ShredderSettings),
-    ssoMaxIdleMinutes: S.optional(S.Number),
-    maxNonSsoSessionMinutes: S.optional(S.Number),
-    federationMode: S.optional(S.Number),
-    lockoutThreshold: S.optional(S.Number),
-    permittedNetworks: S.optional(PermittedNetworksList),
-    permittedWickrAwsNetworks: S.optional(WickrAwsNetworksList),
-    permittedWickrEnterpriseNetworks: S.optional(PermittedWickrEnterpriseNetworksList),
-  }),
-).annotate({ identifier: "SecurityGroupSettings" }) as any as S.Schema<SecurityGroupSettings>;
+const SecurityGroupSettings = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<SecurityGroupSettings>;
 export interface SecurityGroup {
   activeMembers: number;
   botMembers: number;
@@ -798,68 +523,30 @@ export interface SecurityGroup {
   modified: number;
   securityGroupSettings: SecurityGroupSettings;
 }
-const SecurityGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activeMembers: S.Number,
-    botMembers: S.Number,
-    activeDirectoryGuid: S.optional(S.String),
-    id: S.String,
-    isDefault: S.Boolean,
-    name: S.String,
-    modified: S.Number,
-    securityGroupSettings: SecurityGroupSettings,
-  }),
-).annotate({ identifier: "SecurityGroup" }) as any as S.Schema<SecurityGroup>;
+const SecurityGroup = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SecurityGroup>;
 export interface CreateSecurityGroupResponse {
   securityGroup: SecurityGroup;
 }
-const CreateSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ securityGroup: SecurityGroup }),
-).annotate({
-  identifier: "CreateSecurityGroupResponse",
-}) as any as S.Schema<CreateSecurityGroupResponse>;
+const CreateSecurityGroupResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateSecurityGroupResponse>;
 export interface DeleteBotRequest {
   networkId: string;
   botId: string;
 }
-const DeleteBotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    botId: S.String.pipe(T.HttpLabel("botId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/networks/{networkId}/bots/{botId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteBotRequest" }) as any as S.Schema<DeleteBotRequest>;
+const DeleteBotRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DeleteBotRequest>;
 export interface DeleteBotResponse {
   message?: string;
 }
-const DeleteBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({ identifier: "DeleteBotResponse" }) as any as S.Schema<DeleteBotResponse>;
+const DeleteBotResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DeleteBotResponse>;
 export interface DeleteDataRetentionBotRequest {
   networkId: string;
 }
-const DeleteDataRetentionBotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/networks/{networkId}/data-retention-bots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteDataRetentionBotRequest",
-}) as any as S.Schema<DeleteDataRetentionBotRequest>;
+const DeleteDataRetentionBotRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteDataRetentionBotRequest>;
 export interface DeleteDataRetentionBotResponse {
   message?: string;
 }
@@ -869,14 +556,7 @@ export interface DeleteNetworkRequest {
   networkId: string;
   clientToken?: string;
 }
-const DeleteNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("X-Client-Token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/networks/{networkId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteNetworkRequest" }) as any as S.Schema<DeleteNetworkRequest>;
+const DeleteNetworkRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DeleteNetworkRequest>;
 export interface DeleteNetworkResponse {
   message?: string;
 }
@@ -885,56 +565,24 @@ export interface DeleteSecurityGroupRequest {
   networkId: string;
   groupId: string;
 }
-const DeleteSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    groupId: S.String.pipe(T.HttpLabel("groupId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/networks/{networkId}/security-groups/{groupId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteSecurityGroupRequest",
-}) as any as S.Schema<DeleteSecurityGroupRequest>;
+const DeleteSecurityGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteSecurityGroupRequest>;
 export interface DeleteSecurityGroupResponse {
   message?: string;
   networkId?: string;
   groupId?: string;
 }
-const DeleteSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    networkId: S.optional(S.String),
-    groupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteSecurityGroupResponse",
-}) as any as S.Schema<DeleteSecurityGroupResponse>;
+const DeleteSecurityGroupResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteSecurityGroupResponse>;
 export interface GetBotRequest {
   networkId: string;
   botId: string;
 }
-const GetBotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    botId: S.String.pipe(T.HttpLabel("botId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/bots/{botId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetBotRequest" }) as any as S.Schema<GetBotRequest>;
+const GetBotRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetBotRequest>;
 export type BotStatus = 1 | 2 | (number & {});
 const BotStatus = S.Number;
 export interface GetBotResponse {
@@ -949,60 +597,24 @@ export interface GetBotResponse {
   suspended?: boolean;
   lastLogin?: string;
 }
-const GetBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    username: S.optional(S.String),
-    uname: S.optional(S.String),
-    pubkey: S.optional(S.String),
-    status: S.optional(BotStatus),
-    groupId: S.optional(S.String),
-    hasChallenge: S.optional(S.Boolean),
-    suspended: S.optional(S.Boolean),
-    lastLogin: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetBotResponse" }) as any as S.Schema<GetBotResponse>;
+const GetBotResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetBotResponse>;
 export interface GetBotsCountRequest {
   networkId: string;
 }
-const GetBotsCountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/bots/count" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetBotsCountRequest" }) as any as S.Schema<GetBotsCountRequest>;
+const GetBotsCountRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetBotsCountRequest>;
 export interface GetBotsCountResponse {
   pending: number;
   active: number;
   total: number;
 }
-const GetBotsCountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ pending: S.Number, active: S.Number, total: S.Number }),
-).annotate({ identifier: "GetBotsCountResponse" }) as any as S.Schema<GetBotsCountResponse>;
+const GetBotsCountResponse = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GetBotsCountResponse>;
 export interface GetDataRetentionBotRequest {
   networkId: string;
 }
-const GetDataRetentionBotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/data-retention-bots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetDataRetentionBotRequest",
-}) as any as S.Schema<GetDataRetentionBotRequest>;
+const GetDataRetentionBotRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetDataRetentionBotRequest>;
 export interface GetDataRetentionBotResponse {
   botName?: string;
   botExists?: boolean;
@@ -1011,60 +623,38 @@ export interface GetDataRetentionBotResponse {
   isDataRetentionServiceEnabled?: boolean;
   isPubkeyMsgAcked?: boolean;
 }
-const GetDataRetentionBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botName: S.optional(S.String),
-    botExists: S.optional(S.Boolean),
-    isBotActive: S.optional(S.Boolean),
-    isDataRetentionBotRegistered: S.optional(S.Boolean),
-    isDataRetentionServiceEnabled: S.optional(S.Boolean),
-    isPubkeyMsgAcked: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetDataRetentionBotResponse",
-}) as any as S.Schema<GetDataRetentionBotResponse>;
+const GetDataRetentionBotResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetDataRetentionBotResponse>;
 export interface GetGuestUserHistoryCountRequest {
   networkId: string;
 }
-const GetGuestUserHistoryCountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/guest-users/count" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetGuestUserHistoryCountRequest",
-}) as any as S.Schema<GetGuestUserHistoryCountRequest>;
+const GetGuestUserHistoryCountRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetGuestUserHistoryCountRequest>;
 export interface GuestUserHistoryCount {
   month: string;
   count: string;
 }
-const GuestUserHistoryCount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ month: S.String, count: S.String }),
-).annotate({ identifier: "GuestUserHistoryCount" }) as any as S.Schema<GuestUserHistoryCount>;
+const GuestUserHistoryCount = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GuestUserHistoryCount>;
 export type GuestUserHistoryCountList = GuestUserHistoryCount[];
-const GuestUserHistoryCountList = /*@__PURE__*/ S.Array(GuestUserHistoryCount);
+const GuestUserHistoryCountList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface GetGuestUserHistoryCountResponse {
   history: GuestUserHistoryCount[];
 }
-const GetGuestUserHistoryCountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ history: GuestUserHistoryCountList }),
-).annotate({
-  identifier: "GetGuestUserHistoryCountResponse",
-}) as any as S.Schema<GetGuestUserHistoryCountResponse>;
+const GetGuestUserHistoryCountResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetGuestUserHistoryCountResponse>;
 export interface GetNetworkRequest {
   networkId: string;
 }
-const GetNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/networks/{networkId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetNetworkRequest" }) as any as S.Schema<GetNetworkRequest>;
+const GetNetworkRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetNetworkRequest>;
 export interface GetNetworkResponse {
   networkId: string;
   networkName: string;
@@ -1076,54 +666,29 @@ export interface GetNetworkResponse {
   migrationState?: number;
   encryptionKeyArn?: string;
 }
-const GetNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String,
-    networkName: S.String,
-    accessLevel: AccessLevel,
-    awsAccountId: S.String,
-    networkArn: S.String,
-    standing: S.optional(S.Number),
-    freeTrialExpiration: S.optional(S.String),
-    migrationState: S.optional(S.Number),
-    encryptionKeyArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetNetworkResponse" }) as any as S.Schema<GetNetworkResponse>;
+const GetNetworkResponse = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GetNetworkResponse>;
 export interface GetNetworkSettingsRequest {
   networkId: string;
 }
-const GetNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/settings" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetNetworkSettingsRequest",
-}) as any as S.Schema<GetNetworkSettingsRequest>;
+const GetNetworkSettingsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetNetworkSettingsRequest>;
 export interface Setting {
   optionName: string;
   value: string;
   type: string;
 }
-const Setting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionName: S.String, value: S.String, type: S.String }),
-).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
+const Setting = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Setting>;
 export type SettingsList = Setting[];
-const SettingsList = /*@__PURE__*/ S.Array(Setting);
+const SettingsList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface GetNetworkSettingsResponse {
   settings: Setting[];
 }
-const GetNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ settings: SettingsList }),
-).annotate({
-  identifier: "GetNetworkSettingsResponse",
-}) as any as S.Schema<GetNetworkSettingsResponse>;
+const GetNetworkSettingsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetNetworkSettingsResponse>;
 export interface GetOidcInfoRequest {
   networkId: string;
   clientId?: string;
@@ -1135,28 +700,7 @@ export interface GetOidcInfoRequest {
   codeVerifier?: string;
   certificate?: string;
 }
-const GetOidcInfoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    clientId: S.optional(S.String).pipe(T.HttpQuery("clientId")),
-    code: S.optional(S.String).pipe(T.HttpQuery("code")),
-    grantType: S.optional(S.String).pipe(T.HttpQuery("grantType")),
-    redirectUri: S.optional(S.String).pipe(T.HttpQuery("redirectUri")),
-    url: S.optional(S.String).pipe(T.HttpQuery("url")),
-    clientSecret: S.optional(SensitiveString).pipe(T.HttpQuery("clientSecret")),
-    codeVerifier: S.optional(S.String).pipe(T.HttpQuery("codeVerifier")),
-    certificate: S.optional(S.String).pipe(T.HttpQuery("certificate")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/oidc" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetOidcInfoRequest" }) as any as S.Schema<GetOidcInfoRequest>;
+const GetOidcInfoRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetOidcInfoRequest>;
 export interface OidcConfigInfo {
   applicationName?: string;
   clientId?: string;
@@ -1173,24 +717,7 @@ export interface OidcConfigInfo {
   ssoTokenBufferMinutes?: number;
   extraAuthParams?: string;
 }
-const OidcConfigInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.optional(S.String),
-    clientId: S.optional(S.String),
-    companyId: S.String,
-    scopes: S.String,
-    issuer: S.String,
-    clientSecret: S.optional(SensitiveString),
-    secret: S.optional(SensitiveString),
-    redirectUrl: S.optional(S.String),
-    userId: S.optional(S.String),
-    customUsername: S.optional(S.String),
-    caCertificate: S.optional(S.String),
-    applicationId: S.optional(S.Number),
-    ssoTokenBufferMinutes: S.optional(S.Number),
-    extraAuthParams: S.optional(S.String),
-  }),
-).annotate({ identifier: "OidcConfigInfo" }) as any as S.Schema<OidcConfigInfo>;
+const OidcConfigInfo = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<OidcConfigInfo>;
 export interface OidcTokenInfo {
   codeVerifier?: string;
   codeChallenge?: string;
@@ -1200,105 +727,51 @@ export interface OidcTokenInfo {
   tokenType?: string;
   expiresIn?: number;
 }
-const OidcTokenInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeVerifier: S.optional(S.String),
-    codeChallenge: S.optional(S.String),
-    accessToken: S.optional(S.String),
-    idToken: S.optional(S.String),
-    refreshToken: S.optional(S.String),
-    tokenType: S.optional(S.String),
-    expiresIn: S.optional(S.Number),
-  }),
-).annotate({ identifier: "OidcTokenInfo" }) as any as S.Schema<OidcTokenInfo>;
+const OidcTokenInfo = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<OidcTokenInfo>;
 export interface GetOidcInfoResponse {
   openidConnectInfo?: OidcConfigInfo;
   tokenInfo?: OidcTokenInfo;
 }
-const GetOidcInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ openidConnectInfo: S.optional(OidcConfigInfo), tokenInfo: S.optional(OidcTokenInfo) }),
-).annotate({ identifier: "GetOidcInfoResponse" }) as any as S.Schema<GetOidcInfoResponse>;
+const GetOidcInfoResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<GetOidcInfoResponse>;
 export interface GetOpentdfConfigRequest {
   networkId: string;
 }
-const GetOpentdfConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/tdf" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetOpentdfConfigRequest" }) as any as S.Schema<GetOpentdfConfigRequest>;
+const GetOpentdfConfigRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetOpentdfConfigRequest>;
 export interface GetOpentdfConfigResponse {
   clientId: string;
   domain: string;
   clientSecret: string | redacted.Redacted<string>;
   provider: string;
 }
-const GetOpentdfConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    domain: S.String,
-    clientSecret: SensitiveString,
-    provider: S.String,
-  }),
-).annotate({ identifier: "GetOpentdfConfigResponse" }) as any as S.Schema<GetOpentdfConfigResponse>;
+const GetOpentdfConfigResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetOpentdfConfigResponse>;
 export interface GetSecurityGroupRequest {
   networkId: string;
   groupId: string;
 }
-const GetSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    groupId: S.String.pipe(T.HttpLabel("groupId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/security-groups/{groupId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSecurityGroupRequest" }) as any as S.Schema<GetSecurityGroupRequest>;
+const GetSecurityGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetSecurityGroupRequest>;
 export interface GetSecurityGroupResponse {
   securityGroup: SecurityGroup;
 }
-const GetSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ securityGroup: SecurityGroup }),
-).annotate({ identifier: "GetSecurityGroupResponse" }) as any as S.Schema<GetSecurityGroupResponse>;
+const GetSecurityGroupResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetSecurityGroupResponse>;
 export interface GetUserRequest {
   networkId: string;
   userId: string;
   startTime?: Date;
   endTime?: Date;
 }
-const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    userId: S.String.pipe(T.HttpLabel("userId")),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("startTime"),
-    ),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("endTime"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/users/{userId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
+const GetUserRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetUserRequest>;
 export interface GetUserResponse {
   userId: string;
   firstName?: string | redacted.Redacted<string>;
@@ -1311,35 +784,14 @@ export interface GetUserResponse {
   lastLogin?: number;
   securityGroupIds?: string[];
 }
-const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.String,
-    firstName: S.optional(SensitiveString),
-    lastName: S.optional(SensitiveString),
-    username: S.optional(S.String),
-    isAdmin: S.optional(S.Boolean),
-    suspended: S.optional(S.Boolean),
-    status: S.optional(S.Number),
-    lastActivity: S.optional(S.Number),
-    lastLogin: S.optional(S.Number),
-    securityGroupIds: S.optional(SecurityGroupIdList),
-  }),
-).annotate({ identifier: "GetUserResponse" }) as any as S.Schema<GetUserResponse>;
+const GetUserResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetUserResponse>;
 export interface GetUsersCountRequest {
   networkId: string;
 }
-const GetUsersCountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/users/count" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetUsersCountRequest" }) as any as S.Schema<GetUsersCountRequest>;
+const GetUsersCountRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetUsersCountRequest>;
 export interface GetUsersCountResponse {
   pending: number;
   active: number;
@@ -1347,15 +799,10 @@ export interface GetUsersCountResponse {
   remaining: number;
   total: number;
 }
-const GetUsersCountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pending: S.Number,
-    active: S.Number,
-    rejected: S.Number,
-    remaining: S.Number,
-    total: S.Number,
-  }),
-).annotate({ identifier: "GetUsersCountResponse" }) as any as S.Schema<GetUsersCountResponse>;
+const GetUsersCountResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetUsersCountResponse>;
 export type SortDirection = "ASC" | "DESC" | (string & {});
 const SortDirection = S.String;
 
@@ -1368,48 +815,27 @@ export interface ListBlockedGuestUsersRequest {
   admin?: string;
   nextToken?: string;
 }
-const ListBlockedGuestUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
-    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-    username: S.optional(S.String).pipe(T.HttpQuery("username")),
-    admin: S.optional(S.String).pipe(T.HttpQuery("admin")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/guest-users/blocklist" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListBlockedGuestUsersRequest",
-}) as any as S.Schema<ListBlockedGuestUsersRequest>;
+const ListBlockedGuestUsersRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListBlockedGuestUsersRequest>;
 export interface BlockedGuestUser {
   username: string;
   admin: string;
   modified: string;
   usernameHash: string;
 }
-const BlockedGuestUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ username: S.String, admin: S.String, modified: S.String, usernameHash: S.String }),
-).annotate({ identifier: "BlockedGuestUser" }) as any as S.Schema<BlockedGuestUser>;
+const BlockedGuestUser = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<BlockedGuestUser>;
 export type BlockedGuestUserList = BlockedGuestUser[];
-const BlockedGuestUserList = /*@__PURE__*/ S.Array(BlockedGuestUser);
+const BlockedGuestUserList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface ListBlockedGuestUsersResponse {
   nextToken?: string;
   blocklist: BlockedGuestUser[];
 }
-const ListBlockedGuestUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), blocklist: BlockedGuestUserList }),
-).annotate({
-  identifier: "ListBlockedGuestUsersResponse",
-}) as any as S.Schema<ListBlockedGuestUsersResponse>;
+const ListBlockedGuestUsersResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListBlockedGuestUsersResponse>;
 export interface ListBotsRequest {
   networkId: string;
   nextToken?: string;
@@ -1421,28 +847,7 @@ export interface ListBotsRequest {
   status?: BotStatus;
   groupId?: string;
 }
-const ListBotsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
-    displayName: S.optional(S.String).pipe(T.HttpQuery("displayName")),
-    username: S.optional(S.String).pipe(T.HttpQuery("username")),
-    status: S.optional(BotStatus).pipe(T.HttpQuery("status")),
-    groupId: S.optional(S.String).pipe(T.HttpQuery("groupId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/bots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListBotsRequest" }) as any as S.Schema<ListBotsRequest>;
+const ListBotsRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ListBotsRequest>;
 export interface Bot {
   botId?: string;
   displayName?: string;
@@ -1457,14 +862,12 @@ export interface Bot {
 }
 const Bot = GetBotResponse as any as S.Schema<Bot>;
 export type Bots = Bot[];
-const Bots = /*@__PURE__*/ S.Array(Bot);
+const Bots = /*@__PURE__*/ __L.at(__c10, 7);
 export interface ListBotsResponse {
   bots: Bot[];
   nextToken?: string;
 }
-const ListBotsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bots: Bots, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListBotsResponse" }) as any as S.Schema<ListBotsResponse>;
+const ListBotsResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ListBotsResponse>;
 export interface ListDevicesForUserRequest {
   networkId: string;
   userId: string;
@@ -1473,27 +876,10 @@ export interface ListDevicesForUserRequest {
   sortFields?: string;
   sortDirection?: SortDirection;
 }
-const ListDevicesForUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    userId: S.String.pipe(T.HttpLabel("userId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/users/{userId}/devices" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDevicesForUserRequest",
-}) as any as S.Schema<ListDevicesForUserRequest>;
+const ListDevicesForUserRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListDevicesForUserRequest>;
 export interface BasicDeviceObject {
   appId?: string;
   created?: string;
@@ -1502,27 +888,17 @@ export interface BasicDeviceObject {
   suspend?: boolean;
   type?: string;
 }
-const BasicDeviceObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.optional(S.String),
-    created: S.optional(S.String),
-    lastLogin: S.optional(S.String),
-    statusText: S.optional(S.String),
-    suspend: S.optional(S.Boolean),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "BasicDeviceObject" }) as any as S.Schema<BasicDeviceObject>;
+const BasicDeviceObject = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<BasicDeviceObject>;
 export type Devices = BasicDeviceObject[];
-const Devices = /*@__PURE__*/ S.Array(BasicDeviceObject);
+const Devices = /*@__PURE__*/ __L.at(__c11, 3);
 export interface ListDevicesForUserResponse {
   nextToken?: string;
   devices: BasicDeviceObject[];
 }
-const ListDevicesForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), devices: Devices }),
-).annotate({
-  identifier: "ListDevicesForUserResponse",
-}) as any as S.Schema<ListDevicesForUserResponse>;
+const ListDevicesForUserResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListDevicesForUserResponse>;
 export interface ListGuestUsersRequest {
   networkId: string;
   maxResults?: number;
@@ -1532,57 +908,33 @@ export interface ListGuestUsersRequest {
   billingPeriod?: string;
   nextToken?: string;
 }
-const ListGuestUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
-    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-    username: S.optional(S.String).pipe(T.HttpQuery("username")),
-    billingPeriod: S.optional(S.String).pipe(T.HttpQuery("billingPeriod")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/guest-users" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListGuestUsersRequest" }) as any as S.Schema<ListGuestUsersRequest>;
+const ListGuestUsersRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListGuestUsersRequest>;
 export interface GuestUser {
   billingPeriod: string;
   username: string;
   usernameHash: string;
 }
-const GuestUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ billingPeriod: S.String, username: S.String, usernameHash: S.String }),
-).annotate({ identifier: "GuestUser" }) as any as S.Schema<GuestUser>;
+const GuestUser = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GuestUser>;
 export type GuestUserList = GuestUser[];
-const GuestUserList = /*@__PURE__*/ S.Array(GuestUser);
+const GuestUserList = /*@__PURE__*/ __L.at(__c11, 7);
 export interface ListGuestUsersResponse {
   nextToken?: string;
   guestlist: GuestUser[];
 }
-const ListGuestUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), guestlist: GuestUserList }),
-).annotate({ identifier: "ListGuestUsersResponse" }) as any as S.Schema<ListGuestUsersResponse>;
+const ListGuestUsersResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListGuestUsersResponse>;
 export interface ListNetworksRequest {
   maxResults?: number;
   sortFields?: string;
   sortDirection?: SortDirection;
   nextToken?: string;
 }
-const ListNetworksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/networks" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListNetworksRequest" }) as any as S.Schema<ListNetworksRequest>;
+const ListNetworksRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ListNetworksRequest>;
 export interface Network {
   networkId: string;
   networkName: string;
@@ -1596,14 +948,15 @@ export interface Network {
 }
 const Network = GetNetworkResponse as any as S.Schema<Network>;
 export type NetworkList = Network[];
-const NetworkList = /*@__PURE__*/ S.Array(Network);
+const NetworkList = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ListNetworksResponse {
   networks: Network[];
   nextToken?: string;
 }
-const ListNetworksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networks: NetworkList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListNetworksResponse" }) as any as S.Schema<ListNetworksResponse>;
+const ListNetworksResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListNetworksResponse>;
 export interface ListSecurityGroupsRequest {
   networkId: string;
   nextToken?: string;
@@ -1611,37 +964,20 @@ export interface ListSecurityGroupsRequest {
   sortFields?: string;
   sortDirection?: SortDirection;
 }
-const ListSecurityGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/security-groups" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListSecurityGroupsRequest",
-}) as any as S.Schema<ListSecurityGroupsRequest>;
+const ListSecurityGroupsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListSecurityGroupsRequest>;
 export type SecurityGroupList = SecurityGroup[];
-const SecurityGroupList = /*@__PURE__*/ S.Array(SecurityGroup);
+const SecurityGroupList = /*@__PURE__*/ __L.at(__c12, 5);
 export interface ListSecurityGroupsResponse {
   securityGroups?: SecurityGroup[];
   nextToken?: string;
 }
-const ListSecurityGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ securityGroups: S.optional(SecurityGroupList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSecurityGroupsResponse",
-}) as any as S.Schema<ListSecurityGroupsResponse>;
+const ListSecurityGroupsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListSecurityGroupsResponse>;
 export interface ListSecurityGroupUsersRequest {
   networkId: string;
   groupId: string;
@@ -1650,36 +986,18 @@ export interface ListSecurityGroupUsersRequest {
   sortFields?: string;
   sortDirection?: SortDirection;
 }
-const ListSecurityGroupUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    groupId: S.String.pipe(T.HttpLabel("groupId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/security-groups/{groupId}/users" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListSecurityGroupUsersRequest",
-}) as any as S.Schema<ListSecurityGroupUsersRequest>;
+const ListSecurityGroupUsersRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListSecurityGroupUsersRequest>;
 export interface ListSecurityGroupUsersResponse {
   users: User[];
   nextToken?: string;
 }
-const ListSecurityGroupUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ users: Users, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSecurityGroupUsersResponse",
-}) as any as S.Schema<ListSecurityGroupUsersResponse>;
+const ListSecurityGroupUsersResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListSecurityGroupUsersResponse>;
 export type UserStatus = 1 | 2 | (number & {});
 const UserStatus = S.Number;
 export interface ListUsersRequest {
@@ -1694,36 +1012,12 @@ export interface ListUsersRequest {
   status?: UserStatus;
   groupId?: string;
 }
-const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-    sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
-    firstName: S.optional(SensitiveString).pipe(T.HttpQuery("firstName")),
-    lastName: S.optional(SensitiveString).pipe(T.HttpQuery("lastName")),
-    username: S.optional(S.String).pipe(T.HttpQuery("username")),
-    status: S.optional(UserStatus).pipe(T.HttpQuery("status")),
-    groupId: S.optional(S.String).pipe(T.HttpQuery("groupId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/networks/{networkId}/users" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
+const ListUsersRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ListUsersRequest>;
 export interface ListUsersResponse {
   nextToken?: string;
   users?: User[];
 }
-const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), users: S.optional(Users) }),
-).annotate({ identifier: "ListUsersResponse" }) as any as S.Schema<ListUsersResponse>;
+const ListUsersResponse = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ListUsersResponse>;
 export interface RegisterOidcConfigRequest {
   networkId: string;
   companyId: string;
@@ -1735,30 +1029,10 @@ export interface RegisterOidcConfigRequest {
   ssoTokenBufferMinutes?: number;
   userId?: string;
 }
-const RegisterOidcConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    companyId: S.String,
-    customUsername: S.optional(S.String),
-    extraAuthParams: S.optional(S.String),
-    issuer: S.String,
-    scopes: S.String,
-    secret: S.optional(SensitiveString),
-    ssoTokenBufferMinutes: S.optional(S.Number),
-    userId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/oidc/save" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RegisterOidcConfigRequest",
-}) as any as S.Schema<RegisterOidcConfigRequest>;
+const RegisterOidcConfigRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<RegisterOidcConfigRequest>;
 export interface RegisterOidcConfigResponse {
   applicationName?: string;
   clientId?: string;
@@ -1775,26 +1049,10 @@ export interface RegisterOidcConfigResponse {
   ssoTokenBufferMinutes?: number;
   extraAuthParams?: string;
 }
-const RegisterOidcConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationName: S.optional(S.String),
-    clientId: S.optional(S.String),
-    companyId: S.String,
-    scopes: S.String,
-    issuer: S.String,
-    clientSecret: S.optional(SensitiveString),
-    secret: S.optional(SensitiveString),
-    redirectUrl: S.optional(S.String),
-    userId: S.optional(S.String),
-    customUsername: S.optional(S.String),
-    caCertificate: S.optional(S.String),
-    applicationId: S.optional(S.Number),
-    ssoTokenBufferMinutes: S.optional(S.Number),
-    extraAuthParams: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegisterOidcConfigResponse",
-}) as any as S.Schema<RegisterOidcConfigResponse>;
+const RegisterOidcConfigResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<RegisterOidcConfigResponse>;
 export interface RegisterOidcConfigTestRequest {
   networkId: string;
   extraAuthParams?: string;
@@ -1802,26 +1060,10 @@ export interface RegisterOidcConfigTestRequest {
   scopes: string;
   certificate?: string;
 }
-const RegisterOidcConfigTestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    extraAuthParams: S.optional(S.String),
-    issuer: S.String,
-    scopes: S.String,
-    certificate: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/oidc/test" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RegisterOidcConfigTestRequest",
-}) as any as S.Schema<RegisterOidcConfigTestRequest>;
+const RegisterOidcConfigTestRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<RegisterOidcConfigTestRequest>;
 export type StringList = string[];
 const StringList = SecurityGroupIdList as any as S.Schema<StringList>;
 export interface RegisterOidcConfigTestResponse {
@@ -1838,24 +1080,10 @@ export interface RegisterOidcConfigTestResponse {
   tokenEndpointAuthMethodsSupported?: string[];
   microsoftMultiRefreshToken?: boolean;
 }
-const RegisterOidcConfigTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenEndpoint: S.optional(S.String),
-    userinfoEndpoint: S.optional(S.String),
-    responseTypesSupported: S.optional(StringList),
-    scopesSupported: S.optional(StringList),
-    issuer: S.optional(S.String),
-    authorizationEndpoint: S.optional(S.String),
-    endSessionEndpoint: S.optional(S.String),
-    logoutEndpoint: S.optional(S.String),
-    grantTypesSupported: S.optional(StringList),
-    revocationEndpoint: S.optional(S.String),
-    tokenEndpointAuthMethodsSupported: S.optional(StringList),
-    microsoftMultiRefreshToken: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RegisterOidcConfigTestResponse",
-}) as any as S.Schema<RegisterOidcConfigTestResponse>;
+const RegisterOidcConfigTestResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<RegisterOidcConfigTestResponse>;
 export interface RegisterOpentdfConfigRequest {
   networkId: string;
   clientId: string;
@@ -1864,43 +1092,20 @@ export interface RegisterOpentdfConfigRequest {
   provider: string;
   dryRun?: boolean;
 }
-const RegisterOpentdfConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    clientId: S.String,
-    clientSecret: SensitiveString,
-    domain: S.String,
-    provider: S.String,
-    dryRun: S.optional(S.Boolean).pipe(T.HttpQuery("dryRun")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/networks/{networkId}/tdf" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RegisterOpentdfConfigRequest",
-}) as any as S.Schema<RegisterOpentdfConfigRequest>;
+const RegisterOpentdfConfigRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<RegisterOpentdfConfigRequest>;
 export interface RegisterOpentdfConfigResponse {
   clientId: string;
   domain: string;
   clientSecret: string | redacted.Redacted<string>;
   provider: string;
 }
-const RegisterOpentdfConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    domain: S.String,
-    clientSecret: SensitiveString,
-    provider: S.String,
-  }),
-).annotate({
-  identifier: "RegisterOpentdfConfigResponse",
-}) as any as S.Schema<RegisterOpentdfConfigResponse>;
+const RegisterOpentdfConfigResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<RegisterOpentdfConfigResponse>;
 export interface UpdateBotRequest {
   networkId: string;
   botId: string;
@@ -1909,25 +1114,7 @@ export interface UpdateBotRequest {
   challenge?: string | redacted.Redacted<string>;
   suspend?: boolean;
 }
-const UpdateBotRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    botId: S.String.pipe(T.HttpLabel("botId")),
-    displayName: S.optional(S.String),
-    groupId: S.optional(S.String),
-    challenge: S.optional(SensitiveString),
-    suspend: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/networks/{networkId}/bots/{botId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateBotRequest" }) as any as S.Schema<UpdateBotRequest>;
+const UpdateBotRequest = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<UpdateBotRequest>;
 export interface UpdateBotResponse {
   message?: string;
 }
@@ -1939,23 +1126,10 @@ export interface UpdateDataRetentionRequest {
   networkId: string;
   actionType: DataRetentionActionType;
 }
-const UpdateDataRetentionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    actionType: DataRetentionActionType,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/networks/{networkId}/data-retention-bots" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateDataRetentionRequest",
-}) as any as S.Schema<UpdateDataRetentionRequest>;
+const UpdateDataRetentionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<UpdateDataRetentionRequest>;
 export interface UpdateDataRetentionResponse {
   message?: string;
 }
@@ -1966,22 +1140,10 @@ export interface UpdateGuestUserRequest {
   usernameHash: string;
   block: boolean;
 }
-const UpdateGuestUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    usernameHash: S.String.pipe(T.HttpLabel("usernameHash")),
-    block: S.Boolean,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/networks/{networkId}/guest-users/{usernameHash}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateGuestUserRequest" }) as any as S.Schema<UpdateGuestUserRequest>;
+const UpdateGuestUserRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<UpdateGuestUserRequest>;
 export interface UpdateGuestUserResponse {
   message?: string;
 }
@@ -1992,16 +1154,10 @@ export interface UpdateNetworkRequest {
   clientToken?: string;
   encryptionKeyArn?: string;
 }
-const UpdateNetworkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    networkName: S.String,
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("X-Client-Token"), T.IdempotencyToken()),
-    encryptionKeyArn: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "PATCH", uri: "/networks/{networkId}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateNetworkRequest" }) as any as S.Schema<UpdateNetworkRequest>;
+const UpdateNetworkRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<UpdateNetworkRequest>;
 export interface UpdateNetworkResponse {
   message?: string;
 }
@@ -2012,23 +1168,14 @@ const Status = S.String;
 export interface ReadReceiptConfig {
   status?: Status;
 }
-const ReadReceiptConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(Status) }),
-).annotate({ identifier: "ReadReceiptConfig" }) as any as S.Schema<ReadReceiptConfig>;
+const ReadReceiptConfig = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ReadReceiptConfig>;
 export interface ConsentPopupConfig {
   enabled: boolean;
   header?: string;
   content?: string;
   closeButtonLabel?: string;
 }
-const ConsentPopupConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    header: S.optional(S.String),
-    content: S.optional(S.String),
-    closeButtonLabel: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConsentPopupConfig" }) as any as S.Schema<ConsentPopupConfig>;
+const ConsentPopupConfig = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ConsentPopupConfig>;
 export interface NetworkSettings {
   enableClientMetrics?: boolean;
   readReceiptConfig?: ReadReceiptConfig;
@@ -2036,33 +1183,15 @@ export interface NetworkSettings {
   enableTrustedDataFormat?: boolean;
   consentPopup?: ConsentPopupConfig;
 }
-const NetworkSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableClientMetrics: S.optional(S.Boolean),
-    readReceiptConfig: S.optional(ReadReceiptConfig),
-    dataRetention: S.optional(S.Boolean),
-    enableTrustedDataFormat: S.optional(S.Boolean),
-    consentPopup: S.optional(ConsentPopupConfig),
-  }),
-).annotate({ identifier: "NetworkSettings" }) as any as S.Schema<NetworkSettings>;
+const NetworkSettings = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<NetworkSettings>;
 export interface UpdateNetworkSettingsRequest {
   networkId: string;
   settings: NetworkSettings;
 }
-const UpdateNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")), settings: NetworkSettings }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/networks/{networkId}/settings" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateNetworkSettingsRequest",
-}) as any as S.Schema<UpdateNetworkSettingsRequest>;
+const UpdateNetworkSettingsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<UpdateNetworkSettingsRequest>;
 export interface UpdateNetworkSettingsResponse {
   settings: Setting[];
 }
@@ -2074,25 +1203,10 @@ export interface UpdateSecurityGroupRequest {
   name?: string;
   securityGroupSettings?: SecurityGroupSettings;
 }
-const UpdateSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    groupId: S.String.pipe(T.HttpLabel("groupId")),
-    name: S.optional(S.String),
-    securityGroupSettings: S.optional(SecurityGroupSettings),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/networks/{networkId}/security-groups/{groupId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateSecurityGroupRequest",
-}) as any as S.Schema<UpdateSecurityGroupRequest>;
+const UpdateSecurityGroupRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UpdateSecurityGroupRequest>;
 export interface UpdateSecurityGroupResponse {
   securityGroup: SecurityGroup;
 }
@@ -2107,38 +1221,13 @@ export interface UpdateUserDetails {
   inviteCodeTtl?: number;
   codeValidation?: boolean;
 }
-const UpdateUserDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstName: S.optional(SensitiveString),
-    lastName: S.optional(SensitiveString),
-    username: S.optional(S.String),
-    securityGroupIds: S.optional(SecurityGroupIdList),
-    inviteCode: S.optional(S.String),
-    inviteCodeTtl: S.optional(S.Number),
-    codeValidation: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UpdateUserDetails" }) as any as S.Schema<UpdateUserDetails>;
+const UpdateUserDetails = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<UpdateUserDetails>;
 export interface UpdateUserRequest {
   networkId: string;
   userId: string;
   userDetails?: UpdateUserDetails;
 }
-const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String.pipe(T.HttpLabel("networkId")),
-    userId: S.String,
-    userDetails: S.optional(UpdateUserDetails),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/networks/{networkId}/users" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
+const UpdateUserRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResponse {
   userId: string;
   networkId: string;
@@ -2153,31 +1242,14 @@ export interface UpdateUserResponse {
   inviteExpiration?: number;
   codeValidation?: boolean;
 }
-const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.String,
-    networkId: S.String,
-    securityGroupIds: S.optional(SecurityGroupIdList),
-    firstName: S.optional(SensitiveString),
-    lastName: S.optional(SensitiveString),
-    middleName: S.optional(S.String),
-    suspended: S.Boolean,
-    modified: S.optional(S.Number),
-    status: S.optional(S.Number),
-    inviteCode: S.optional(S.String),
-    inviteExpiration: S.optional(S.Number),
-    codeValidation: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+const UpdateUserResponse = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<UpdateUserResponse>;
 export interface ErrorDetail {
   field?: string;
   reason?: string;
 }
-const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ field: S.optional(S.String), reason: S.optional(S.String) }),
-).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
+const ErrorDetail = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ErrorDetail>;
 export type ErrorDetailList = ErrorDetail[];
-const ErrorDetailList = /*@__PURE__*/ S.Array(ErrorDetail);
+const ErrorDetailList = /*@__PURE__*/ __L.at(__c15, 6);
 export type BatchCreateUserError =
   | BadRequestError
   | ForbiddenError
@@ -3731,3 +2803,1492 @@ export const updateUser: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUser",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          firstName: S.optional(SensitiveString),
+          lastName: S.optional(SensitiveString),
+          securityGroupIds: SecurityGroupIdList,
+          username: S.String,
+          inviteCode: S.optional(S.String),
+          inviteCodeTtl: S.optional(S.Number),
+          codeValidation: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "BatchCreateUserRequestItem",
+      });
+    case 2:
+      return S.Array(BatchCreateUserRequestItem);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          users: BatchCreateUserRequestItems,
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/users" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchCreateUserRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String),
+          firstName: S.optional(SensitiveString),
+          lastName: S.optional(SensitiveString),
+          username: S.optional(S.String),
+          securityGroups: S.optional(SecurityGroupIdList),
+          isAdmin: S.optional(S.Boolean),
+          suspended: S.optional(S.Boolean),
+          status: S.optional(S.Number),
+          otpEnabled: S.optional(S.Boolean),
+          scimId: S.optional(S.String),
+          type: S.optional(S.String),
+          cell: S.optional(S.String),
+          countryCode: S.optional(S.String),
+          challengeFailures: S.optional(S.Number),
+          isInviteExpired: S.optional(S.Boolean),
+          isUser: S.optional(S.Boolean),
+          inviteCode: S.optional(S.String),
+          codeValidation: S.optional(S.Boolean),
+          uname: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+    case 5:
+      return S.Array(User);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), userId: S.String }),
+      ).annotate({
+        identifier: "BatchUserErrorResponseItem",
+      });
+    case 7:
+      return S.Array(BatchUserErrorResponseItem);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          successful: S.optional(Users),
+          failed: S.optional(BatchUserErrorResponseItems),
+        }),
+      ).annotate({ identifier: "BatchCreateUserResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          userIds: UserIds,
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/users/batch-delete" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchDeleteUserRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ userId: S.String })).annotate({
+        identifier: "BatchUserSuccessResponseItem",
+      });
+    case 3:
+      return S.Array(BatchUserSuccessResponseItem);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          successful: S.optional(BatchUserSuccessResponseItems),
+          failed: S.optional(BatchUserErrorResponseItems),
+        }),
+      ).annotate({ identifier: "BatchDeleteUserResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          unames: Unames,
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/users/uname-lookup" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchLookupUserUnameRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ uname: S.String, username: S.String })).annotate({
+        identifier: "BatchUnameSuccessResponseItem",
+      });
+    case 7:
+      return S.Array(BatchUnameSuccessResponseItem);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), uname: S.String }),
+      ).annotate({
+        identifier: "BatchUnameErrorResponseItem",
+      });
+    case 1:
+      return S.Array(BatchUnameErrorResponseItem);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          successful: S.optional(BatchUnameSuccessResponseItems),
+          failed: S.optional(BatchUnameErrorResponseItems),
+        }),
+      ).annotate({
+        identifier: "BatchLookupUserUnameResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          userIds: UserIds,
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}/users/re-invite" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchReinviteUserRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          successful: S.optional(BatchUserSuccessResponseItems),
+          failed: S.optional(BatchUserErrorResponseItems),
+        }),
+      ).annotate({
+        identifier: "BatchReinviteUserResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          userId: S.String.pipe(T.HttpLabel("userId")),
+          appIds: AppIds,
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}/users/{userId}/devices" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchResetDevicesForUserRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ appId: S.String })).annotate({
+        identifier: "BatchDeviceSuccessResponseItem",
+      });
+    case 7:
+      return S.Array(BatchDeviceSuccessResponseItem);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), appId: S.String }),
+      ).annotate({
+        identifier: "BatchDeviceErrorResponseItem",
+      });
+    case 1:
+      return S.Array(BatchDeviceErrorResponseItem);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          successful: S.optional(BatchDeviceSuccessResponseItems),
+          failed: S.optional(BatchDeviceErrorResponseItems),
+        }),
+      ).annotate({
+        identifier: "BatchResetDevicesForUserResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          suspend: S.Boolean.pipe(T.HttpQuery("suspend")),
+          userIds: UserIds,
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}/users/toggleSuspend" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchToggleUserSuspendStatusRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          username: S.String,
+          displayName: S.optional(S.String),
+          groupId: S.String,
+          challenge: SensitiveString,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/bots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateBotRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          botId: S.String,
+          networkId: S.optional(S.String),
+          username: S.optional(S.String),
+          displayName: S.optional(S.String),
+          groupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateBotResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/data-retention-bots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDataRetentionBotRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
+        identifier: "CreateDataRetentionBotResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/data-retention-bots/challenge" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDataRetentionBotChallengeRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ challenge: SensitiveString })).annotate({
+        identifier: "CreateDataRetentionBotChallengeResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          networkName: S.String,
+          accessLevel: AccessLevel,
+          enablePremiumFreeTrial: S.optional(S.Boolean),
+          encryptionKeyArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/networks" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateNetworkRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.optional(S.String),
+          networkName: S.optional(S.String),
+          encryptionKeyArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateNetworkResponse" });
+    case 4:
+      return S.suspend(() => S.Struct({ region: S.String, networkId: S.String })).annotate({
+        identifier: "WickrAwsNetworks",
+      });
+    case 5:
+      return S.Array(WickrAwsNetworks);
+    case 6:
+      return S.suspend(() => S.Struct({ domain: S.String, networkId: S.String })).annotate({
+        identifier: "PermittedWickrEnterpriseNetwork",
+      });
+    case 7:
+      return S.Array(PermittedWickrEnterpriseNetwork);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lockoutThreshold: S.optional(S.Number),
+          permittedNetworks: S.optional(PermittedNetworksList),
+          enableGuestFederation: S.optional(S.Boolean),
+          globalFederation: S.optional(S.Boolean),
+          federationMode: S.optional(S.Number),
+          enableRestrictedGlobalFederation: S.optional(S.Boolean),
+          permittedWickrAwsNetworks: S.optional(WickrAwsNetworksList),
+          permittedWickrEnterpriseNetworks: S.optional(PermittedWickrEnterpriseNetworksList),
+        }),
+      ).annotate({
+        identifier: "SecurityGroupSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          name: S.String,
+          securityGroupSettings: SecurityGroupSettingsRequest,
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/security-groups" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateSecurityGroupRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          canStart11Call: S.optional(S.Boolean),
+          canVideoCall: S.optional(S.Boolean),
+          forceTcpCall: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CallingSettings" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          lowercase: S.optional(S.Number),
+          minLength: S.optional(S.Number),
+          numbers: S.optional(S.Number),
+          symbols: S.optional(S.Number),
+          uppercase: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PasswordRequirements" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ canProcessManually: S.optional(S.Boolean), intensity: S.optional(S.Number) }),
+      ).annotate({ identifier: "ShredderSettings" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          alwaysReauthenticate: S.optional(S.Boolean),
+          atakPackageValues: S.optional(SecurityGroupStringList),
+          calling: S.optional(CallingSettings),
+          checkForUpdates: S.optional(S.Boolean),
+          enableAtak: S.optional(S.Boolean),
+          enableCrashReports: S.optional(S.Boolean),
+          enableFileDownload: S.optional(S.Boolean),
+          enableGuestFederation: S.optional(S.Boolean),
+          enableNotificationPreview: S.optional(S.Boolean),
+          enableOpenAccessOption: S.optional(S.Boolean),
+          enableRestrictedGlobalFederation: S.optional(S.Boolean),
+          filesEnabled: S.optional(S.Boolean),
+          forceDeviceLockout: S.optional(S.Number),
+          forceOpenAccess: S.optional(S.Boolean),
+          forceReadReceipts: S.optional(S.Boolean),
+          globalFederation: S.optional(S.Boolean),
+          isAtoEnabled: S.optional(S.Boolean),
+          isLinkPreviewEnabled: S.optional(S.Boolean),
+          locationAllowMaps: S.optional(S.Boolean),
+          locationEnabled: S.optional(S.Boolean),
+          maxAutoDownloadSize: S.optional(S.Number),
+          maxBor: S.optional(S.Number),
+          maxTtl: S.optional(S.Number),
+          messageForwardingEnabled: S.optional(S.Boolean),
+          passwordRequirements: S.optional(PasswordRequirements),
+          presenceEnabled: S.optional(S.Boolean),
+          quickResponses: S.optional(SecurityGroupStringList),
+          showMasterRecoveryKey: S.optional(S.Boolean),
+          shredder: S.optional(ShredderSettings),
+          ssoMaxIdleMinutes: S.optional(S.Number),
+          maxNonSsoSessionMinutes: S.optional(S.Number),
+          federationMode: S.optional(S.Number),
+          lockoutThreshold: S.optional(S.Number),
+          permittedNetworks: S.optional(PermittedNetworksList),
+          permittedWickrAwsNetworks: S.optional(WickrAwsNetworksList),
+          permittedWickrEnterpriseNetworks: S.optional(PermittedWickrEnterpriseNetworksList),
+        }),
+      ).annotate({ identifier: "SecurityGroupSettings" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          activeMembers: S.Number,
+          botMembers: S.Number,
+          activeDirectoryGuid: S.optional(S.String),
+          id: S.String,
+          isDefault: S.Boolean,
+          name: S.String,
+          modified: S.Number,
+          securityGroupSettings: SecurityGroupSettings,
+        }),
+      ).annotate({ identifier: "SecurityGroup" });
+    case 7:
+      return S.suspend(() => S.Struct({ securityGroup: SecurityGroup })).annotate({
+        identifier: "CreateSecurityGroupResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          botId: S.String.pipe(T.HttpLabel("botId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/networks/{networkId}/bots/{botId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteBotRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
+        identifier: "DeleteBotResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/networks/{networkId}/data-retention-bots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteDataRetentionBotRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/networks/{networkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteNetworkRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          groupId: S.String.pipe(T.HttpLabel("groupId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/networks/{networkId}/security-groups/{groupId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteSecurityGroupRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          networkId: S.optional(S.String),
+          groupId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeleteSecurityGroupResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          botId: S.String.pipe(T.HttpLabel("botId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/bots/{botId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetBotRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          botId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          username: S.optional(S.String),
+          uname: S.optional(S.String),
+          pubkey: S.optional(S.String),
+          status: S.optional(BotStatus),
+          groupId: S.optional(S.String),
+          hasChallenge: S.optional(S.Boolean),
+          suspended: S.optional(S.Boolean),
+          lastLogin: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetBotResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/bots/count" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetBotsCountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ pending: S.Number, active: S.Number, total: S.Number }),
+      ).annotate({ identifier: "GetBotsCountResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/data-retention-bots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetDataRetentionBotRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          botName: S.optional(S.String),
+          botExists: S.optional(S.Boolean),
+          isBotActive: S.optional(S.Boolean),
+          isDataRetentionBotRegistered: S.optional(S.Boolean),
+          isDataRetentionServiceEnabled: S.optional(S.Boolean),
+          isPubkeyMsgAcked: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetDataRetentionBotResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/guest-users/count" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetGuestUserHistoryCountRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ month: S.String, count: S.String })).annotate({
+        identifier: "GuestUserHistoryCount",
+      });
+    case 6:
+      return S.Array(GuestUserHistoryCount);
+    case 7:
+      return S.suspend(() => S.Struct({ history: GuestUserHistoryCountList })).annotate({
+        identifier: "GetGuestUserHistoryCountResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetNetworkRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String,
+          networkName: S.String,
+          accessLevel: AccessLevel,
+          awsAccountId: S.String,
+          networkArn: S.String,
+          standing: S.optional(S.Number),
+          freeTrialExpiration: S.optional(S.String),
+          migrationState: S.optional(S.Number),
+          encryptionKeyArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetNetworkResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/settings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetNetworkSettingsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ optionName: S.String, value: S.String, type: S.String }),
+      ).annotate({ identifier: "Setting" });
+    case 4:
+      return S.Array(Setting);
+    case 5:
+      return S.suspend(() => S.Struct({ settings: SettingsList })).annotate({
+        identifier: "GetNetworkSettingsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          clientId: S.optional(S.String).pipe(T.HttpQuery("clientId")),
+          code: S.optional(S.String).pipe(T.HttpQuery("code")),
+          grantType: S.optional(S.String).pipe(T.HttpQuery("grantType")),
+          redirectUri: S.optional(S.String).pipe(T.HttpQuery("redirectUri")),
+          url: S.optional(S.String).pipe(T.HttpQuery("url")),
+          clientSecret: S.optional(SensitiveString).pipe(T.HttpQuery("clientSecret")),
+          codeVerifier: S.optional(S.String).pipe(T.HttpQuery("codeVerifier")),
+          certificate: S.optional(S.String).pipe(T.HttpQuery("certificate")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/oidc" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetOidcInfoRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          clientId: S.optional(S.String),
+          companyId: S.String,
+          scopes: S.String,
+          issuer: S.String,
+          clientSecret: S.optional(SensitiveString),
+          secret: S.optional(SensitiveString),
+          redirectUrl: S.optional(S.String),
+          userId: S.optional(S.String),
+          customUsername: S.optional(S.String),
+          caCertificate: S.optional(S.String),
+          applicationId: S.optional(S.Number),
+          ssoTokenBufferMinutes: S.optional(S.Number),
+          extraAuthParams: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OidcConfigInfo" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          codeVerifier: S.optional(S.String),
+          codeChallenge: S.optional(S.String),
+          accessToken: S.optional(S.String),
+          idToken: S.optional(S.String),
+          refreshToken: S.optional(S.String),
+          tokenType: S.optional(S.String),
+          expiresIn: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OidcTokenInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          openidConnectInfo: S.optional(OidcConfigInfo),
+          tokenInfo: S.optional(OidcTokenInfo),
+        }),
+      ).annotate({ identifier: "GetOidcInfoResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/tdf" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetOpentdfConfigRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String,
+          domain: S.String,
+          clientSecret: SensitiveString,
+          provider: S.String,
+        }),
+      ).annotate({ identifier: "GetOpentdfConfigResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          groupId: S.String.pipe(T.HttpLabel("groupId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/security-groups/{groupId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSecurityGroupRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ securityGroup: SecurityGroup })).annotate({
+        identifier: "GetSecurityGroupResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          userId: S.String.pipe(T.HttpLabel("userId")),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("startTime"),
+          ),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("endTime"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/users/{userId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetUserRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String,
+          firstName: S.optional(SensitiveString),
+          lastName: S.optional(SensitiveString),
+          username: S.optional(S.String),
+          isAdmin: S.optional(S.Boolean),
+          suspended: S.optional(S.Boolean),
+          status: S.optional(S.Number),
+          lastActivity: S.optional(S.Number),
+          lastLogin: S.optional(S.Number),
+          securityGroupIds: S.optional(SecurityGroupIdList),
+        }),
+      ).annotate({ identifier: "GetUserResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ networkId: S.String.pipe(T.HttpLabel("networkId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/users/count" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetUsersCountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pending: S.Number,
+          active: S.Number,
+          rejected: S.Number,
+          remaining: S.Number,
+          total: S.Number,
+        }),
+      ).annotate({ identifier: "GetUsersCountResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+          username: S.optional(S.String).pipe(T.HttpQuery("username")),
+          admin: S.optional(S.String).pipe(T.HttpQuery("admin")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/guest-users/blocklist" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBlockedGuestUsersRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String,
+          admin: S.String,
+          modified: S.String,
+          usernameHash: S.String,
+        }),
+      ).annotate({ identifier: "BlockedGuestUser" });
+    case 4:
+      return S.Array(BlockedGuestUser);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), blocklist: BlockedGuestUserList }),
+      ).annotate({
+        identifier: "ListBlockedGuestUsersResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          displayName: S.optional(S.String).pipe(T.HttpQuery("displayName")),
+          username: S.optional(S.String).pipe(T.HttpQuery("username")),
+          status: S.optional(BotStatus).pipe(T.HttpQuery("status")),
+          groupId: S.optional(S.String).pipe(T.HttpQuery("groupId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/bots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListBotsRequest" });
+    case 7:
+      return S.Array(Bot);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ bots: Bots, nextToken: S.optional(S.String) })).annotate({
+        identifier: "ListBotsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          userId: S.String.pipe(T.HttpLabel("userId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/users/{userId}/devices" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListDevicesForUserRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          created: S.optional(S.String),
+          lastLogin: S.optional(S.String),
+          statusText: S.optional(S.String),
+          suspend: S.optional(S.Boolean),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BasicDeviceObject" });
+    case 3:
+      return S.Array(BasicDeviceObject);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), devices: Devices }),
+      ).annotate({
+        identifier: "ListDevicesForUserResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+          username: S.optional(S.String).pipe(T.HttpQuery("username")),
+          billingPeriod: S.optional(S.String).pipe(T.HttpQuery("billingPeriod")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/guest-users" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListGuestUsersRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ billingPeriod: S.String, username: S.String, usernameHash: S.String }),
+      ).annotate({ identifier: "GuestUser" });
+    case 7:
+      return S.Array(GuestUser);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), guestlist: GuestUserList }),
+      ).annotate({ identifier: "ListGuestUsersResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/networks" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListNetworksRequest" });
+    case 2:
+      return S.Array(Network);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ networks: NetworkList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNetworksResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/security-groups" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListSecurityGroupsRequest",
+      });
+    case 5:
+      return S.Array(SecurityGroup);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          securityGroups: S.optional(SecurityGroupList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListSecurityGroupsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          groupId: S.String.pipe(T.HttpLabel("groupId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/security-groups/{groupId}/users" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListSecurityGroupUsersRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ users: Users, nextToken: S.optional(S.String) })).annotate({
+        identifier: "ListSecurityGroupUsersResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
+          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          firstName: S.optional(SensitiveString).pipe(T.HttpQuery("firstName")),
+          lastName: S.optional(SensitiveString).pipe(T.HttpQuery("lastName")),
+          username: S.optional(S.String).pipe(T.HttpQuery("username")),
+          status: S.optional(UserStatus).pipe(T.HttpQuery("status")),
+          groupId: S.optional(S.String).pipe(T.HttpQuery("groupId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/networks/{networkId}/users" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListUsersRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), users: S.optional(Users) }),
+      ).annotate({ identifier: "ListUsersResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          companyId: S.String,
+          customUsername: S.optional(S.String),
+          extraAuthParams: S.optional(S.String),
+          issuer: S.String,
+          scopes: S.String,
+          secret: S.optional(SensitiveString),
+          ssoTokenBufferMinutes: S.optional(S.Number),
+          userId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/oidc/save" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RegisterOidcConfigRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          clientId: S.optional(S.String),
+          companyId: S.String,
+          scopes: S.String,
+          issuer: S.String,
+          clientSecret: S.optional(SensitiveString),
+          secret: S.optional(SensitiveString),
+          redirectUrl: S.optional(S.String),
+          userId: S.optional(S.String),
+          customUsername: S.optional(S.String),
+          caCertificate: S.optional(S.String),
+          applicationId: S.optional(S.Number),
+          ssoTokenBufferMinutes: S.optional(S.Number),
+          extraAuthParams: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegisterOidcConfigResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          extraAuthParams: S.optional(S.String),
+          issuer: S.String,
+          scopes: S.String,
+          certificate: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/oidc/test" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RegisterOidcConfigTestRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          tokenEndpoint: S.optional(S.String),
+          userinfoEndpoint: S.optional(S.String),
+          responseTypesSupported: S.optional(StringList),
+          scopesSupported: S.optional(StringList),
+          issuer: S.optional(S.String),
+          authorizationEndpoint: S.optional(S.String),
+          endSessionEndpoint: S.optional(S.String),
+          logoutEndpoint: S.optional(S.String),
+          grantTypesSupported: S.optional(StringList),
+          revocationEndpoint: S.optional(S.String),
+          tokenEndpointAuthMethodsSupported: S.optional(StringList),
+          microsoftMultiRefreshToken: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "RegisterOidcConfigTestResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          clientId: S.String,
+          clientSecret: SensitiveString,
+          domain: S.String,
+          provider: S.String,
+          dryRun: S.optional(S.Boolean).pipe(T.HttpQuery("dryRun")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/networks/{networkId}/tdf" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RegisterOpentdfConfigRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String,
+          domain: S.String,
+          clientSecret: SensitiveString,
+          provider: S.String,
+        }),
+      ).annotate({
+        identifier: "RegisterOpentdfConfigResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          botId: S.String.pipe(T.HttpLabel("botId")),
+          displayName: S.optional(S.String),
+          groupId: S.optional(S.String),
+          challenge: S.optional(SensitiveString),
+          suspend: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}/bots/{botId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateBotRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          actionType: DataRetentionActionType,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}/data-retention-bots" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateDataRetentionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          usernameHash: S.String.pipe(T.HttpLabel("usernameHash")),
+          block: S.Boolean,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}/guest-users/{usernameHash}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateGuestUserRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          networkName: S.String,
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+          encryptionKeyArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateNetworkRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ status: S.optional(Status) })).annotate({
+        identifier: "ReadReceiptConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          header: S.optional(S.String),
+          content: S.optional(S.String),
+          closeButtonLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConsentPopupConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          enableClientMetrics: S.optional(S.Boolean),
+          readReceiptConfig: S.optional(ReadReceiptConfig),
+          dataRetention: S.optional(S.Boolean),
+          enableTrustedDataFormat: S.optional(S.Boolean),
+          consentPopup: S.optional(ConsentPopupConfig),
+        }),
+      ).annotate({ identifier: "NetworkSettings" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          settings: NetworkSettings,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}/settings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          groupId: S.String.pipe(T.HttpLabel("groupId")),
+          name: S.optional(S.String),
+          securityGroupSettings: S.optional(SecurityGroupSettings),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}/security-groups/{groupId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateSecurityGroupRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          firstName: S.optional(SensitiveString),
+          lastName: S.optional(SensitiveString),
+          username: S.optional(S.String),
+          securityGroupIds: S.optional(SecurityGroupIdList),
+          inviteCode: S.optional(S.String),
+          inviteCodeTtl: S.optional(S.Number),
+          codeValidation: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UpdateUserDetails" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.HttpLabel("networkId")),
+          userId: S.String,
+          userDetails: S.optional(UpdateUserDetails),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/networks/{networkId}/users" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateUserRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String,
+          networkId: S.String,
+          securityGroupIds: S.optional(SecurityGroupIdList),
+          firstName: S.optional(SensitiveString),
+          lastName: S.optional(SensitiveString),
+          middleName: S.optional(S.String),
+          suspended: S.Boolean,
+          modified: S.optional(S.Number),
+          status: S.optional(S.Number),
+          inviteCode: S.optional(S.String),
+          inviteExpiration: S.optional(S.Number),
+          codeValidation: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UpdateUserResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ field: S.optional(S.String), reason: S.optional(S.String) }),
+      ).annotate({ identifier: "ErrorDetail" });
+    case 6:
+      return S.Array(ErrorDetail);
+  }
+}

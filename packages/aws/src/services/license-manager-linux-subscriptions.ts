@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import type { Credentials } from "../credentials.ts";
@@ -94,43 +95,22 @@ export type SubscriptionProviderArn = string;
 export interface DeregisterSubscriptionProviderRequest {
   SubscriptionProviderArn: string;
 }
-const DeregisterSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SubscriptionProviderArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/subscription/DeregisterSubscriptionProvider" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeregisterSubscriptionProviderRequest",
-}) as any as S.Schema<DeregisterSubscriptionProviderRequest>;
+const DeregisterSubscriptionProviderRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeregisterSubscriptionProviderRequest>;
 export interface DeregisterSubscriptionProviderResponse {}
-const DeregisterSubscriptionProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  {
-    identifier: "DeregisterSubscriptionProviderResponse",
-  },
+const DeregisterSubscriptionProviderResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
 ) as any as S.Schema<DeregisterSubscriptionProviderResponse>;
 export interface GetRegisteredSubscriptionProviderRequest {
   SubscriptionProviderArn: string;
 }
-const GetRegisteredSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SubscriptionProviderArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/subscription/GetRegisteredSubscriptionProvider" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetRegisteredSubscriptionProviderRequest",
-}) as any as S.Schema<GetRegisteredSubscriptionProviderRequest>;
+const GetRegisteredSubscriptionProviderRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetRegisteredSubscriptionProviderRequest>;
 export type SubscriptionProviderSource = string;
 export type SecretArn = string;
 export type SubscriptionProviderStatus = string;
@@ -142,49 +122,30 @@ export interface GetRegisteredSubscriptionProviderResponse {
   SubscriptionProviderStatusMessage?: string;
   LastSuccessfulDataRetrievalTime?: string;
 }
-const GetRegisteredSubscriptionProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubscriptionProviderArn: S.optional(S.String),
-    SubscriptionProviderSource: S.optional(S.String),
-    SecretArn: S.optional(S.String),
-    SubscriptionProviderStatus: S.optional(S.String),
-    SubscriptionProviderStatusMessage: S.optional(S.String),
-    LastSuccessfulDataRetrievalTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetRegisteredSubscriptionProviderResponse",
-}) as any as S.Schema<GetRegisteredSubscriptionProviderResponse>;
+const GetRegisteredSubscriptionProviderResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetRegisteredSubscriptionProviderResponse>;
 export interface GetServiceSettingsRequest {}
-const GetServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/subscription/GetServiceSettings" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetServiceSettingsRequest",
-}) as any as S.Schema<GetServiceSettingsRequest>;
+const GetServiceSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetServiceSettingsRequest>;
 export type LinuxSubscriptionsDiscovery = string;
 export type StringList = string[];
-const StringList = /*@__PURE__*/ S.Array(S.String);
+const StringList = /*@__PURE__*/ __L.at(__c0, 5);
 export type OrganizationIntegration = string;
 export interface LinuxSubscriptionsDiscoverySettings {
   SourceRegions: string[];
   OrganizationIntegration: string;
 }
-const LinuxSubscriptionsDiscoverySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SourceRegions: StringList, OrganizationIntegration: S.String }),
-).annotate({
-  identifier: "LinuxSubscriptionsDiscoverySettings",
-}) as any as S.Schema<LinuxSubscriptionsDiscoverySettings>;
+const LinuxSubscriptionsDiscoverySettings = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<LinuxSubscriptionsDiscoverySettings>;
 export type Status = string;
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const StringMap = /*@__PURE__*/ __L.at(__c0, 7);
 export interface GetServiceSettingsResponse {
   LinuxSubscriptionsDiscovery?: string;
   LinuxSubscriptionsDiscoverySettings?: LinuxSubscriptionsDiscoverySettings;
@@ -192,56 +153,29 @@ export interface GetServiceSettingsResponse {
   StatusMessage?: { [key: string]: string | undefined };
   HomeRegions?: string[];
 }
-const GetServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LinuxSubscriptionsDiscovery: S.optional(S.String),
-    LinuxSubscriptionsDiscoverySettings: S.optional(LinuxSubscriptionsDiscoverySettings),
-    Status: S.optional(S.String),
-    StatusMessage: S.optional(StringMap),
-    HomeRegions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GetServiceSettingsResponse",
-}) as any as S.Schema<GetServiceSettingsResponse>;
+const GetServiceSettingsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetServiceSettingsResponse>;
 export type Operator = string;
 export interface Filter {
   Name?: string;
   Values?: string[];
   Operator?: string;
 }
-const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Values: S.optional(StringList),
-    Operator: S.optional(S.String),
-  }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+const Filter = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-const FilterList = /*@__PURE__*/ S.Array(Filter);
+const FilterList = /*@__PURE__*/ __L.at(__c1, 2);
 export type BoxInteger = number;
 export interface ListLinuxSubscriptionInstancesRequest {
   Filters?: Filter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const ListLinuxSubscriptionInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Filters: S.optional(FilterList),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/subscription/ListLinuxSubscriptionInstances" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListLinuxSubscriptionInstancesRequest",
-}) as any as S.Schema<ListLinuxSubscriptionInstancesRequest>;
+const ListLinuxSubscriptionInstancesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListLinuxSubscriptionInstancesRequest>;
 export type ProductCodeList = string[];
 const ProductCodeList = StringList as any as S.Schema<ProductCodeList>;
 export interface Instance {
@@ -261,83 +195,43 @@ export interface Instance {
   DualSubscription?: string;
   RegisteredWithSubscriptionProvider?: string;
 }
-const Instance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AmiId: S.optional(S.String),
-    InstanceID: S.optional(S.String),
-    InstanceType: S.optional(S.String),
-    AccountID: S.optional(S.String),
-    Status: S.optional(S.String),
-    Region: S.optional(S.String),
-    UsageOperation: S.optional(S.String),
-    ProductCode: S.optional(ProductCodeList),
-    LastUpdatedTime: S.optional(S.String),
-    SubscriptionName: S.optional(S.String),
-    OsVersion: S.optional(S.String),
-    SubscriptionProviderCreateTime: S.optional(S.String),
-    SubscriptionProviderUpdateTime: S.optional(S.String),
-    DualSubscription: S.optional(S.String),
-    RegisteredWithSubscriptionProvider: S.optional(S.String),
-  }),
-).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
+const Instance = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Instance>;
 export type InstanceList = Instance[];
-const InstanceList = /*@__PURE__*/ S.Array(Instance);
+const InstanceList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface ListLinuxSubscriptionInstancesResponse {
   Instances?: Instance[];
   NextToken?: string;
 }
-const ListLinuxSubscriptionInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Instances: S.optional(InstanceList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListLinuxSubscriptionInstancesResponse",
-}) as any as S.Schema<ListLinuxSubscriptionInstancesResponse>;
+const ListLinuxSubscriptionInstancesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListLinuxSubscriptionInstancesResponse>;
 export interface ListLinuxSubscriptionsRequest {
   Filters?: Filter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const ListLinuxSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Filters: S.optional(FilterList),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/subscription/ListLinuxSubscriptions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListLinuxSubscriptionsRequest",
-}) as any as S.Schema<ListLinuxSubscriptionsRequest>;
+const ListLinuxSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListLinuxSubscriptionsRequest>;
 export type BoxLong = number;
 export interface Subscription {
   Name?: string;
   Type?: string;
   InstanceCount?: number;
 }
-const Subscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Type: S.optional(S.String),
-    InstanceCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
+const Subscription = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Subscription>;
 export type SubscriptionList = Subscription[];
-const SubscriptionList = /*@__PURE__*/ S.Array(Subscription);
+const SubscriptionList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface ListLinuxSubscriptionsResponse {
   Subscriptions?: Subscription[];
   NextToken?: string;
 }
-const ListLinuxSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Subscriptions: S.optional(SubscriptionList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListLinuxSubscriptionsResponse",
-}) as any as S.Schema<ListLinuxSubscriptionsResponse>;
+const ListLinuxSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListLinuxSubscriptionsResponse>;
 export type SubscriptionProviderSourceList = string[];
 const SubscriptionProviderSourceList =
   StringList as any as S.Schema<SubscriptionProviderSourceList>;
@@ -346,24 +240,10 @@ export interface ListRegisteredSubscriptionProvidersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListRegisteredSubscriptionProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubscriptionProviderSources: S.optional(SubscriptionProviderSourceList),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/subscription/ListRegisteredSubscriptionProviders" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListRegisteredSubscriptionProvidersRequest",
-}) as any as S.Schema<ListRegisteredSubscriptionProvidersRequest>;
+const ListRegisteredSubscriptionProvidersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListRegisteredSubscriptionProvidersRequest>;
 export interface RegisteredSubscriptionProvider {
   SubscriptionProviderArn?: string;
   SubscriptionProviderSource?: string;
@@ -375,103 +255,63 @@ export interface RegisteredSubscriptionProvider {
 const RegisteredSubscriptionProvider =
   GetRegisteredSubscriptionProviderResponse as any as S.Schema<RegisteredSubscriptionProvider>;
 export type RegisteredSubscriptionProviderList = RegisteredSubscriptionProvider[];
-const RegisteredSubscriptionProviderList = /*@__PURE__*/ S.Array(RegisteredSubscriptionProvider);
+const RegisteredSubscriptionProviderList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface ListRegisteredSubscriptionProvidersResponse {
   RegisteredSubscriptionProviders?: RegisteredSubscriptionProvider[];
   NextToken?: string;
 }
-const ListRegisteredSubscriptionProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RegisteredSubscriptionProviders: S.optional(RegisteredSubscriptionProviderList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRegisteredSubscriptionProvidersResponse",
-}) as any as S.Schema<ListRegisteredSubscriptionProvidersResponse>;
+const ListRegisteredSubscriptionProvidersResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListRegisteredSubscriptionProvidersResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = { [key: string]: string | undefined };
 const Tags = StringMap as any as S.Schema<Tags>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RegisterSubscriptionProviderRequest {
   SubscriptionProviderSource: string;
   SecretArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-const RegisterSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubscriptionProviderSource: S.String,
-    SecretArn: S.String,
-    Tags: S.optional(Tags),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/subscription/RegisterSubscriptionProvider" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RegisterSubscriptionProviderRequest",
-}) as any as S.Schema<RegisterSubscriptionProviderRequest>;
+const RegisterSubscriptionProviderRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<RegisterSubscriptionProviderRequest>;
 export interface RegisterSubscriptionProviderResponse {
   SubscriptionProviderSource?: string;
   SubscriptionProviderArn?: string;
   SubscriptionProviderStatus?: string;
 }
-const RegisterSubscriptionProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubscriptionProviderSource: S.optional(S.String),
-    SubscriptionProviderArn: S.optional(S.String),
-    SubscriptionProviderStatus: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegisterSubscriptionProviderResponse",
-}) as any as S.Schema<RegisterSubscriptionProviderResponse>;
+const RegisterSubscriptionProviderResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RegisterSubscriptionProviderResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
 const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateServiceSettingsRequest {
@@ -479,24 +319,10 @@ export interface UpdateServiceSettingsRequest {
   LinuxSubscriptionsDiscoverySettings: LinuxSubscriptionsDiscoverySettings;
   AllowUpdate?: boolean;
 }
-const UpdateServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LinuxSubscriptionsDiscovery: S.String,
-    LinuxSubscriptionsDiscoverySettings: LinuxSubscriptionsDiscoverySettings,
-    AllowUpdate: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/subscription/UpdateServiceSettings" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateServiceSettingsRequest",
-}) as any as S.Schema<UpdateServiceSettingsRequest>;
+const UpdateServiceSettingsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<UpdateServiceSettingsRequest>;
 export interface UpdateServiceSettingsResponse {
   LinuxSubscriptionsDiscovery?: string;
   LinuxSubscriptionsDiscoverySettings?: LinuxSubscriptionsDiscoverySettings;
@@ -781,3 +607,327 @@ export const updateServiceSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateServiceSettings",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SubscriptionProviderArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/DeregisterSubscriptionProvider" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeregisterSubscriptionProviderRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeregisterSubscriptionProviderResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ SubscriptionProviderArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/GetRegisteredSubscriptionProvider" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRegisteredSubscriptionProviderRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          SubscriptionProviderArn: S.optional(S.String),
+          SubscriptionProviderSource: S.optional(S.String),
+          SecretArn: S.optional(S.String),
+          SubscriptionProviderStatus: S.optional(S.String),
+          SubscriptionProviderStatusMessage: S.optional(S.String),
+          LastSuccessfulDataRetrievalTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetRegisteredSubscriptionProviderResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/GetServiceSettings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetServiceSettingsRequest",
+      });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ SourceRegions: StringList, OrganizationIntegration: S.String }),
+      ).annotate({
+        identifier: "LinuxSubscriptionsDiscoverySettings",
+      });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LinuxSubscriptionsDiscovery: S.optional(S.String),
+          LinuxSubscriptionsDiscoverySettings: S.optional(LinuxSubscriptionsDiscoverySettings),
+          Status: S.optional(S.String),
+          StatusMessage: S.optional(StringMap),
+          HomeRegions: S.optional(StringList),
+        }),
+      ).annotate({
+        identifier: "GetServiceSettingsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Values: S.optional(StringList),
+          Operator: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 2:
+      return S.Array(Filter);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(FilterList),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/ListLinuxSubscriptionInstances" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListLinuxSubscriptionInstancesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AmiId: S.optional(S.String),
+          InstanceID: S.optional(S.String),
+          InstanceType: S.optional(S.String),
+          AccountID: S.optional(S.String),
+          Status: S.optional(S.String),
+          Region: S.optional(S.String),
+          UsageOperation: S.optional(S.String),
+          ProductCode: S.optional(ProductCodeList),
+          LastUpdatedTime: S.optional(S.String),
+          SubscriptionName: S.optional(S.String),
+          OsVersion: S.optional(S.String),
+          SubscriptionProviderCreateTime: S.optional(S.String),
+          SubscriptionProviderUpdateTime: S.optional(S.String),
+          DualSubscription: S.optional(S.String),
+          RegisteredWithSubscriptionProvider: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Instance" });
+    case 5:
+      return S.Array(Instance);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Instances: S.optional(InstanceList), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListLinuxSubscriptionInstancesResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(FilterList),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/ListLinuxSubscriptions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListLinuxSubscriptionsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Type: S.optional(S.String),
+          InstanceCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Subscription" });
+    case 1:
+      return S.Array(Subscription);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Subscriptions: S.optional(SubscriptionList), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListLinuxSubscriptionsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          SubscriptionProviderSources: S.optional(SubscriptionProviderSourceList),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/ListRegisteredSubscriptionProviders" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListRegisteredSubscriptionProvidersRequest",
+      });
+    case 4:
+      return S.Array(RegisteredSubscriptionProvider);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          RegisteredSubscriptionProviders: S.optional(RegisteredSubscriptionProviderList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRegisteredSubscriptionProvidersResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SubscriptionProviderSource: S.String,
+          SecretArn: S.String,
+          Tags: S.optional(Tags),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/RegisterSubscriptionProvider" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RegisterSubscriptionProviderRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SubscriptionProviderSource: S.optional(S.String),
+          SubscriptionProviderArn: S.optional(S.String),
+          SubscriptionProviderStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegisterSubscriptionProviderResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          LinuxSubscriptionsDiscovery: S.String,
+          LinuxSubscriptionsDiscoverySettings: LinuxSubscriptionsDiscoverySettings,
+          AllowUpdate: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/subscription/UpdateServiceSettings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateServiceSettingsRequest",
+      });
+  }
+}

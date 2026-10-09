@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -95,10 +96,7 @@ export type NumResults = number;
 export type FilterAttributeName = string;
 export type FilterAttributeValue = string | redacted.Redacted<string>;
 export type FilterValues = { [key: string]: string | redacted.Redacted<string> | undefined };
-const FilterValues = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+const FilterValues = /*@__PURE__*/ __L.at(__c0, 0);
 export interface GetActionRecommendationsRequest {
   campaignArn?: string;
   userId?: string;
@@ -106,43 +104,31 @@ export interface GetActionRecommendationsRequest {
   filterArn?: string;
   filterValues?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const GetActionRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    campaignArn: S.optional(S.String),
-    userId: S.optional(S.String),
-    numResults: S.optional(S.Number),
-    filterArn: S.optional(S.String),
-    filterValues: S.optional(FilterValues),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/action-recommendations" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetActionRecommendationsRequest",
-}) as any as S.Schema<GetActionRecommendationsRequest>;
+const GetActionRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetActionRecommendationsRequest>;
 export type ActionID = string;
 export type Score = number;
 export interface PredictedAction {
   actionId?: string;
   score?: number;
 }
-const PredictedAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actionId: S.optional(S.String), score: S.optional(S.Number) }),
-).annotate({ identifier: "PredictedAction" }) as any as S.Schema<PredictedAction>;
+const PredictedAction = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PredictedAction>;
 export type ActionList = PredictedAction[];
-const ActionList = /*@__PURE__*/ S.Array(PredictedAction);
+const ActionList = /*@__PURE__*/ __L.at(__c0, 3);
 export type RecommendationID = string;
 export interface GetActionRecommendationsResponse {
   actionList?: PredictedAction[];
   recommendationId?: string;
 }
-const GetActionRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actionList: S.optional(ActionList), recommendationId: S.optional(S.String) }),
-).annotate({
-  identifier: "GetActionRecommendationsResponse",
-}) as any as S.Schema<GetActionRecommendationsResponse>;
+const GetActionRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetActionRecommendationsResponse>;
 export type ItemID = string;
 export type InputList = string[];
-const InputList = /*@__PURE__*/ S.Array(S.String);
+const InputList = /*@__PURE__*/ __L.at(__c0, 5);
 export type AttributeName = string;
 export type AttributeValue = string | redacted.Redacted<string>;
 export type Context = { [key: string]: string | redacted.Redacted<string> | undefined };
@@ -152,10 +138,7 @@ export type ColumnName = string;
 export type ColumnNamesList = string[];
 const ColumnNamesList = InputList as any as S.Schema<ColumnNamesList>;
 export type MetadataColumns = { [key: string]: string[] | undefined };
-const MetadataColumns = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ColumnNamesList.pipe(S.optional),
-);
+const MetadataColumns = /*@__PURE__*/ __L.at(__c0, 6);
 export interface GetPersonalizedRankingRequest {
   campaignArn: string;
   inputList: string[];
@@ -165,25 +148,14 @@ export interface GetPersonalizedRankingRequest {
   filterValues?: { [key: string]: string | redacted.Redacted<string> | undefined };
   metadataColumns?: { [key: string]: string[] | undefined };
 }
-const GetPersonalizedRankingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    campaignArn: S.String,
-    inputList: InputList,
-    userId: S.String,
-    context: S.optional(Context),
-    filterArn: S.optional(S.String),
-    filterValues: S.optional(FilterValues),
-    metadataColumns: S.optional(MetadataColumns),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/personalize-ranking" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetPersonalizedRankingRequest",
-}) as any as S.Schema<GetPersonalizedRankingRequest>;
+const GetPersonalizedRankingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetPersonalizedRankingRequest>;
 export type Name = string;
 export type ColumnValue = string;
 export type Metadata = { [key: string]: string | undefined };
-const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Metadata = /*@__PURE__*/ __L.at(__c1, 0);
 export type Reason = string;
 export type ReasonList = string[];
 const ReasonList = InputList as any as S.Schema<ReasonList>;
@@ -194,26 +166,17 @@ export interface PredictedItem {
   metadata?: { [key: string]: string | undefined };
   reason?: string[];
 }
-const PredictedItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemId: S.optional(S.String),
-    score: S.optional(S.Number),
-    promotionName: S.optional(S.String),
-    metadata: S.optional(Metadata),
-    reason: S.optional(ReasonList),
-  }),
-).annotate({ identifier: "PredictedItem" }) as any as S.Schema<PredictedItem>;
+const PredictedItem = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PredictedItem>;
 export type ItemList = PredictedItem[];
-const ItemList = /*@__PURE__*/ S.Array(PredictedItem);
+const ItemList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface GetPersonalizedRankingResponse {
   personalizedRanking?: PredictedItem[];
   recommendationId?: string;
 }
-const GetPersonalizedRankingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ personalizedRanking: S.optional(ItemList), recommendationId: S.optional(S.String) }),
-).annotate({
-  identifier: "GetPersonalizedRankingResponse",
-}) as any as S.Schema<GetPersonalizedRankingResponse>;
+const GetPersonalizedRankingResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetPersonalizedRankingResponse>;
 export type PercentPromotedItems = number;
 export interface Promotion {
   name?: string;
@@ -221,16 +184,9 @@ export interface Promotion {
   filterArn?: string;
   filterValues?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const Promotion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    percentPromotedItems: S.optional(S.Number),
-    filterArn: S.optional(S.String),
-    filterValues: S.optional(FilterValues),
-  }),
-).annotate({ identifier: "Promotion" }) as any as S.Schema<Promotion>;
+const Promotion = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Promotion>;
 export type PromotionList = Promotion[];
-const PromotionList = /*@__PURE__*/ S.Array(Promotion);
+const PromotionList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface GetRecommendationsRequest {
   campaignArn?: string;
   itemId?: string;
@@ -243,31 +199,18 @@ export interface GetRecommendationsRequest {
   promotions?: Promotion[];
   metadataColumns?: { [key: string]: string[] | undefined };
 }
-const GetRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    campaignArn: S.optional(S.String),
-    itemId: S.optional(S.String),
-    userId: S.optional(S.String),
-    numResults: S.optional(S.Number),
-    context: S.optional(Context),
-    filterArn: S.optional(S.String),
-    filterValues: S.optional(FilterValues),
-    recommenderArn: S.optional(S.String),
-    promotions: S.optional(PromotionList),
-    metadataColumns: S.optional(MetadataColumns),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/recommendations" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetRecommendationsRequest",
-}) as any as S.Schema<GetRecommendationsRequest>;
+const GetRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetRecommendationsRequest>;
 export interface GetRecommendationsResponse {
   itemList?: PredictedItem[];
   recommendationId?: string;
 }
-const GetRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ itemList: S.optional(ItemList), recommendationId: S.optional(S.String) }),
-).annotate({
-  identifier: "GetRecommendationsResponse",
-}) as any as S.Schema<GetRecommendationsResponse>;
+const GetRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetRecommendationsResponse>;
 export type ErrorMessage = string;
 export type GetActionRecommendationsError =
   | InvalidInputException
@@ -351,3 +294,134 @@ export const getRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecommendations",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          campaignArn: S.optional(S.String),
+          userId: S.optional(S.String),
+          numResults: S.optional(S.Number),
+          filterArn: S.optional(S.String),
+          filterValues: S.optional(FilterValues),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/action-recommendations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetActionRecommendationsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ actionId: S.optional(S.String), score: S.optional(S.Number) }),
+      ).annotate({ identifier: "PredictedAction" });
+    case 3:
+      return S.Array(PredictedAction);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ actionList: S.optional(ActionList), recommendationId: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetActionRecommendationsResponse",
+      });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ ColumnNamesList.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          campaignArn: S.String,
+          inputList: InputList,
+          userId: S.String,
+          context: S.optional(Context),
+          filterArn: S.optional(S.String),
+          filterValues: S.optional(FilterValues),
+          metadataColumns: S.optional(MetadataColumns),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/personalize-ranking" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPersonalizedRankingRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          itemId: S.optional(S.String),
+          score: S.optional(S.Number),
+          promotionName: S.optional(S.String),
+          metadata: S.optional(Metadata),
+          reason: S.optional(ReasonList),
+        }),
+      ).annotate({ identifier: "PredictedItem" });
+    case 2:
+      return S.Array(PredictedItem);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          personalizedRanking: S.optional(ItemList),
+          recommendationId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPersonalizedRankingResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          percentPromotedItems: S.optional(S.Number),
+          filterArn: S.optional(S.String),
+          filterValues: S.optional(FilterValues),
+        }),
+      ).annotate({ identifier: "Promotion" });
+    case 5:
+      return S.Array(Promotion);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          campaignArn: S.optional(S.String),
+          itemId: S.optional(S.String),
+          userId: S.optional(S.String),
+          numResults: S.optional(S.Number),
+          context: S.optional(Context),
+          filterArn: S.optional(S.String),
+          filterValues: S.optional(FilterValues),
+          recommenderArn: S.optional(S.String),
+          promotions: S.optional(PromotionList),
+          metadataColumns: S.optional(MetadataColumns),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/recommendations" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetRecommendationsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ itemList: S.optional(ItemList), recommendationId: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetRecommendationsResponse",
+      });
+  }
+}

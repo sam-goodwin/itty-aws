@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -131,22 +132,18 @@ export type LogGroup = string;
 export interface CloudWatchLogDestination {
   LogGroup: string;
 }
-const CloudWatchLogDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LogGroup: S.String }),
-).annotate({ identifier: "CloudWatchLogDestination" }) as any as S.Schema<CloudWatchLogDestination>;
+const CloudWatchLogDestination = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CloudWatchLogDestination>;
 export interface LogPublishingOptions {
   IsLoggingEnabled?: boolean;
   CloudWatchLogDestination?: CloudWatchLogDestination;
 }
-const LogPublishingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IsLoggingEnabled: S.optional(S.Boolean),
-    CloudWatchLogDestination: S.optional(CloudWatchLogDestination),
-  }),
-).annotate({ identifier: "LogPublishingOptions" }) as any as S.Schema<LogPublishingOptions>;
+const LogPublishingOptions = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<LogPublishingOptions>;
 export type SubnetId = string;
 export type SubnetIds = string[];
-const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+const SubnetIds = /*@__PURE__*/ __L.at(__c0, 2);
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
 const SecurityGroupIds = SubnetIds as any as S.Schema<SecurityGroupIds>;
@@ -155,9 +152,7 @@ export interface VpcAttachmentOptions {
   AttachToVpc: boolean;
   CidrBlock?: string;
 }
-const VpcAttachmentOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachToVpc: S.Boolean, CidrBlock: S.optional(S.String) }),
-).annotate({ identifier: "VpcAttachmentOptions" }) as any as S.Schema<VpcAttachmentOptions>;
+const VpcAttachmentOptions = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<VpcAttachmentOptions>;
 export type VpcEndpointManagement = "CUSTOMER" | "SERVICE" | (string & {});
 const VpcEndpointManagement = S.String;
 
@@ -167,38 +162,28 @@ export interface VpcOptions {
   VpcAttachmentOptions?: VpcAttachmentOptions;
   VpcEndpointManagement?: VpcEndpointManagement;
 }
-const VpcOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubnetIds: SubnetIds,
-    SecurityGroupIds: S.optional(SecurityGroupIds),
-    VpcAttachmentOptions: S.optional(VpcAttachmentOptions),
-    VpcEndpointManagement: S.optional(VpcEndpointManagement),
-  }),
-).annotate({ identifier: "VpcOptions" }) as any as S.Schema<VpcOptions>;
+const VpcOptions = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<VpcOptions>;
 export interface BufferOptions {
   PersistentBufferEnabled: boolean;
 }
-const BufferOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PersistentBufferEnabled: S.Boolean }),
-).annotate({ identifier: "BufferOptions" }) as any as S.Schema<BufferOptions>;
+const BufferOptions = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BufferOptions>;
 export type KmsKeyArn = string;
 export interface EncryptionAtRestOptions {
   KmsKeyArn: string;
 }
-const EncryptionAtRestOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KmsKeyArn: S.String }),
-).annotate({ identifier: "EncryptionAtRestOptions" }) as any as S.Schema<EncryptionAtRestOptions>;
+const EncryptionAtRestOptions = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<EncryptionAtRestOptions>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c1, 0);
 export type PipelineRoleArn = string;
 export interface CreatePipelineRequest {
   PipelineName: string;
@@ -212,30 +197,10 @@ export interface CreatePipelineRequest {
   Tags?: Tag[];
   PipelineRoleArn?: string;
 }
-const CreatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PipelineName: S.String,
-    MinUnits: S.Number,
-    MaxUnits: S.Number,
-    PipelineConfigurationBody: S.String,
-    LogPublishingOptions: S.optional(LogPublishingOptions),
-    VpcOptions: S.optional(VpcOptions),
-    BufferOptions: S.optional(BufferOptions),
-    EncryptionAtRestOptions: S.optional(EncryptionAtRestOptions),
-    Tags: S.optional(TagList),
-    PipelineRoleArn: S.optional(S.String),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2022-01-01/osis/createPipeline" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreatePipelineRequest" }) as any as S.Schema<CreatePipelineRequest>;
+const CreatePipelineRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreatePipelineRequest>;
 export type PipelineStatus =
   | "CREATING"
   | "ACTIVE"
@@ -253,9 +218,7 @@ const PipelineStatus = S.String;
 export interface PipelineStatusReason {
   Description?: string;
 }
-const PipelineStatusReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Description: S.optional(S.String) }),
-).annotate({ identifier: "PipelineStatusReason" }) as any as S.Schema<PipelineStatusReason>;
+const PipelineStatusReason = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PipelineStatusReason>;
 export type IngestEndpointUrlsList = string[];
 const IngestEndpointUrlsList = SubnetIds as any as S.Schema<IngestEndpointUrlsList>;
 export interface VpcEndpoint {
@@ -263,15 +226,9 @@ export interface VpcEndpoint {
   VpcId?: string;
   VpcOptions?: VpcOptions;
 }
-const VpcEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VpcEndpointId: S.optional(S.String),
-    VpcId: S.optional(S.String),
-    VpcOptions: S.optional(VpcOptions),
-  }),
-).annotate({ identifier: "VpcEndpoint" }) as any as S.Schema<VpcEndpoint>;
+const VpcEndpoint = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<VpcEndpoint>;
 export type VpcEndpointsList = VpcEndpoint[];
-const VpcEndpointsList = /*@__PURE__*/ S.Array(VpcEndpoint);
+const VpcEndpointsList = /*@__PURE__*/ __L.at(__c1, 4);
 export type VpcEndpointServiceName = "OPENSEARCH_SERVERLESS" | (string & {});
 const VpcEndpointServiceName = S.String;
 
@@ -279,23 +236,16 @@ export interface ServiceVpcEndpoint {
   ServiceName?: VpcEndpointServiceName;
   VpcEndpointId?: string;
 }
-const ServiceVpcEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceName: S.optional(VpcEndpointServiceName),
-    VpcEndpointId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceVpcEndpoint" }) as any as S.Schema<ServiceVpcEndpoint>;
+const ServiceVpcEndpoint = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ServiceVpcEndpoint>;
 export type ServiceVpcEndpointsList = ServiceVpcEndpoint[];
-const ServiceVpcEndpointsList = /*@__PURE__*/ S.Array(ServiceVpcEndpoint);
+const ServiceVpcEndpointsList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface PipelineDestination {
   ServiceName?: string;
   Endpoint?: string;
 }
-const PipelineDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServiceName: S.optional(S.String), Endpoint: S.optional(S.String) }),
-).annotate({ identifier: "PipelineDestination" }) as any as S.Schema<PipelineDestination>;
+const PipelineDestination = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PipelineDestination>;
 export type PipelineDestinationList = PipelineDestination[];
-const PipelineDestinationList = /*@__PURE__*/ S.Array(PipelineDestination);
+const PipelineDestinationList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface Pipeline {
   PipelineName?: string;
   PipelineArn?: string;
@@ -317,64 +267,31 @@ export interface Pipeline {
   Tags?: Tag[];
   PipelineRoleArn?: string;
 }
-const Pipeline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PipelineName: S.optional(S.String),
-    PipelineArn: S.optional(S.String),
-    MinUnits: S.optional(S.Number),
-    MaxUnits: S.optional(S.Number),
-    Status: S.optional(PipelineStatus),
-    StatusReason: S.optional(PipelineStatusReason),
-    PipelineConfigurationBody: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    IngestEndpointUrls: S.optional(IngestEndpointUrlsList),
-    LogPublishingOptions: S.optional(LogPublishingOptions),
-    VpcEndpoints: S.optional(VpcEndpointsList),
-    BufferOptions: S.optional(BufferOptions),
-    EncryptionAtRestOptions: S.optional(EncryptionAtRestOptions),
-    VpcEndpointService: S.optional(S.String),
-    ServiceVpcEndpoints: S.optional(ServiceVpcEndpointsList),
-    Destinations: S.optional(PipelineDestinationList),
-    Tags: S.optional(TagList),
-    PipelineRoleArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Pipeline" }) as any as S.Schema<Pipeline>;
+const Pipeline = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Pipeline>;
 export interface CreatePipelineResponse {
   Pipeline?: Pipeline;
 }
-const CreatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Pipeline: S.optional(Pipeline) }).pipe(ns),
-).annotate({ identifier: "CreatePipelineResponse" }) as any as S.Schema<CreatePipelineResponse>;
+const CreatePipelineResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreatePipelineResponse>;
 export type PipelineArn = string;
 export interface PipelineEndpointVpcOptions {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
 }
-const PipelineEndpointVpcOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SubnetIds: S.optional(SubnetIds), SecurityGroupIds: S.optional(SecurityGroupIds) }),
-).annotate({
-  identifier: "PipelineEndpointVpcOptions",
-}) as any as S.Schema<PipelineEndpointVpcOptions>;
+const PipelineEndpointVpcOptions = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<PipelineEndpointVpcOptions>;
 export interface CreatePipelineEndpointRequest {
   PipelineArn: string;
   VpcOptions: PipelineEndpointVpcOptions;
 }
-const CreatePipelineEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineArn: S.String, VpcOptions: PipelineEndpointVpcOptions }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2022-01-01/osis/createPipelineEndpoint" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreatePipelineEndpointRequest",
-}) as any as S.Schema<CreatePipelineEndpointRequest>;
+const CreatePipelineEndpointRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreatePipelineEndpointRequest>;
 export type PipelineEndpointId = string;
 export type PipelineEndpointStatus =
   | "CREATING"
@@ -392,97 +309,48 @@ export interface CreatePipelineEndpointResponse {
   Status?: PipelineEndpointStatus;
   VpcId?: string;
 }
-const CreatePipelineEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PipelineArn: S.optional(S.String),
-    EndpointId: S.optional(S.String),
-    Status: S.optional(PipelineEndpointStatus),
-    VpcId: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "CreatePipelineEndpointResponse",
-}) as any as S.Schema<CreatePipelineEndpointResponse>;
+const CreatePipelineEndpointResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreatePipelineEndpointResponse>;
 export interface DeletePipelineRequest {
   PipelineName: string;
 }
-const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2022-01-01/osis/deletePipeline/{PipelineName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeletePipelineRequest" }) as any as S.Schema<DeletePipelineRequest>;
+const DeletePipelineRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeletePipelineRequest>;
 export interface DeletePipelineResponse {}
-const DeletePipelineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeletePipelineResponse",
-}) as any as S.Schema<DeletePipelineResponse>;
+const DeletePipelineResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeletePipelineResponse>;
 export interface DeletePipelineEndpointRequest {
   EndpointId: string;
 }
-const DeletePipelineEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EndpointId: S.String.pipe(T.HttpLabel("EndpointId")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2022-01-01/osis/deletePipelineEndpoint/{EndpointId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePipelineEndpointRequest",
-}) as any as S.Schema<DeletePipelineEndpointRequest>;
+const DeletePipelineEndpointRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeletePipelineEndpointRequest>;
 export interface DeletePipelineEndpointResponse {}
-const DeletePipelineEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeletePipelineEndpointResponse",
-}) as any as S.Schema<DeletePipelineEndpointResponse>;
+const DeletePipelineEndpointResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeletePipelineEndpointResponse>;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
 }
-const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/2022-01-01/osis/resourcePolicy/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteResourcePolicyRequest",
-}) as any as S.Schema<DeleteResourcePolicyRequest>;
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
 const DeleteResourcePolicyResponse =
   DeletePipelineEndpointResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface GetPipelineRequest {
   PipelineName: string;
 }
-const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2022-01-01/osis/getPipeline/{PipelineName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetPipelineRequest" }) as any as S.Schema<GetPipelineRequest>;
+const GetPipelineRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetPipelineRequest>;
 export interface GetPipelineResponse {
   Pipeline?: Pipeline;
 }
@@ -492,24 +360,10 @@ export interface GetPipelineBlueprintRequest {
   BlueprintName: string;
   Format?: string;
 }
-const GetPipelineBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BlueprintName: S.String.pipe(T.HttpLabel("BlueprintName")),
-    Format: S.optional(S.String).pipe(T.HttpQuery("format")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2022-01-01/osis/getPipelineBlueprint/{BlueprintName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPipelineBlueprintRequest",
-}) as any as S.Schema<GetPipelineBlueprintRequest>;
+const GetPipelineBlueprintRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetPipelineBlueprintRequest>;
 export interface PipelineBlueprint {
   BlueprintName?: string;
   PipelineConfigurationBody?: string;
@@ -518,43 +372,22 @@ export interface PipelineBlueprint {
   Service?: string;
   UseCase?: string;
 }
-const PipelineBlueprint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BlueprintName: S.optional(S.String),
-    PipelineConfigurationBody: S.optional(S.String),
-    DisplayName: S.optional(S.String),
-    DisplayDescription: S.optional(S.String),
-    Service: S.optional(S.String),
-    UseCase: S.optional(S.String),
-  }),
-).annotate({ identifier: "PipelineBlueprint" }) as any as S.Schema<PipelineBlueprint>;
+const PipelineBlueprint = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PipelineBlueprint>;
 export interface GetPipelineBlueprintResponse {
   Blueprint?: PipelineBlueprint;
   Format?: string;
 }
-const GetPipelineBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Blueprint: S.optional(PipelineBlueprint), Format: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "GetPipelineBlueprintResponse",
-}) as any as S.Schema<GetPipelineBlueprintResponse>;
+const GetPipelineBlueprintResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetPipelineBlueprintResponse>;
 export interface GetPipelineChangeProgressRequest {
   PipelineName: string;
 }
-const GetPipelineChangeProgressRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2022-01-01/osis/getPipelineChangeProgress/{PipelineName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPipelineChangeProgressRequest",
-}) as any as S.Schema<GetPipelineChangeProgressRequest>;
+const GetPipelineChangeProgressRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetPipelineChangeProgressRequest>;
 export type ChangeProgressStatuses =
   | "PENDING"
   | "IN_PROGRESS"
@@ -577,82 +410,46 @@ export interface ChangeProgressStage {
   Description?: string;
   LastUpdatedAt?: Date;
 }
-const ChangeProgressStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Status: S.optional(ChangeProgressStageStatuses),
-    Description: S.optional(S.String),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ChangeProgressStage" }) as any as S.Schema<ChangeProgressStage>;
+const ChangeProgressStage = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ChangeProgressStage>;
 export type ChangeProgressStageList = ChangeProgressStage[];
-const ChangeProgressStageList = /*@__PURE__*/ S.Array(ChangeProgressStage);
+const ChangeProgressStageList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ChangeProgressStatus {
   StartTime?: Date;
   Status?: ChangeProgressStatuses;
   TotalNumberOfStages?: number;
   ChangeProgressStages?: ChangeProgressStage[];
 }
-const ChangeProgressStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(ChangeProgressStatuses),
-    TotalNumberOfStages: S.optional(S.Number),
-    ChangeProgressStages: S.optional(ChangeProgressStageList),
-  }),
-).annotate({ identifier: "ChangeProgressStatus" }) as any as S.Schema<ChangeProgressStatus>;
+const ChangeProgressStatus = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ChangeProgressStatus>;
 export type ChangeProgressStatusList = ChangeProgressStatus[];
-const ChangeProgressStatusList = /*@__PURE__*/ S.Array(ChangeProgressStatus);
+const ChangeProgressStatusList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface GetPipelineChangeProgressResponse {
   ChangeProgressStatuses?: ChangeProgressStatus[];
 }
-const GetPipelineChangeProgressResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChangeProgressStatuses: S.optional(ChangeProgressStatusList) }).pipe(ns),
-).annotate({
-  identifier: "GetPipelineChangeProgressResponse",
-}) as any as S.Schema<GetPipelineChangeProgressResponse>;
+const GetPipelineChangeProgressResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetPipelineChangeProgressResponse>;
 export interface GetResourcePolicyRequest {
   ResourceArn: string;
 }
-const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2022-01-01/osis/resourcePolicy/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetResourcePolicyRequest" }) as any as S.Schema<GetResourcePolicyRequest>;
+const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetResourcePolicyRequest>;
 export type ResourcePolicy = string;
 export interface GetResourcePolicyResponse {
   ResourceArn?: string;
   Policy?: string;
 }
-const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "GetResourcePolicyResponse",
-}) as any as S.Schema<GetResourcePolicyResponse>;
+const GetResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetResourcePolicyResponse>;
 export interface ListPipelineBlueprintsRequest {}
-const ListPipelineBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2022-01-01/osis/listPipelineBlueprints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPipelineBlueprintsRequest",
-}) as any as S.Schema<ListPipelineBlueprintsRequest>;
+const ListPipelineBlueprintsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListPipelineBlueprintsRequest>;
 export interface PipelineBlueprintSummary {
   BlueprintName?: string;
   DisplayName?: string;
@@ -660,49 +457,29 @@ export interface PipelineBlueprintSummary {
   Service?: string;
   UseCase?: string;
 }
-const PipelineBlueprintSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BlueprintName: S.optional(S.String),
-    DisplayName: S.optional(S.String),
-    DisplayDescription: S.optional(S.String),
-    Service: S.optional(S.String),
-    UseCase: S.optional(S.String),
-  }),
-).annotate({ identifier: "PipelineBlueprintSummary" }) as any as S.Schema<PipelineBlueprintSummary>;
+const PipelineBlueprintSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<PipelineBlueprintSummary>;
 export type PipelineBlueprintsSummaryList = PipelineBlueprintSummary[];
-const PipelineBlueprintsSummaryList = /*@__PURE__*/ S.Array(PipelineBlueprintSummary);
+const PipelineBlueprintsSummaryList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ListPipelineBlueprintsResponse {
   Blueprints?: PipelineBlueprintSummary[];
 }
-const ListPipelineBlueprintsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Blueprints: S.optional(PipelineBlueprintsSummaryList) }).pipe(ns),
-).annotate({
-  identifier: "ListPipelineBlueprintsResponse",
-}) as any as S.Schema<ListPipelineBlueprintsResponse>;
+const ListPipelineBlueprintsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListPipelineBlueprintsResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListPipelineEndpointConnectionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListPipelineEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2022-01-01/osis/listPipelineEndpointConnections" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPipelineEndpointConnectionsRequest",
-}) as any as S.Schema<ListPipelineEndpointConnectionsRequest>;
+const ListPipelineEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListPipelineEndpointConnectionsRequest>;
 export type AwsAccountId = string;
 export interface PipelineEndpointConnection {
   PipelineArn?: string;
@@ -710,52 +487,28 @@ export interface PipelineEndpointConnection {
   Status?: PipelineEndpointStatus;
   VpcEndpointOwner?: string;
 }
-const PipelineEndpointConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PipelineArn: S.optional(S.String),
-    EndpointId: S.optional(S.String),
-    Status: S.optional(PipelineEndpointStatus),
-    VpcEndpointOwner: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PipelineEndpointConnection",
-}) as any as S.Schema<PipelineEndpointConnection>;
+const PipelineEndpointConnection = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<PipelineEndpointConnection>;
 export type PipelineEndpointConnectionsSummaryList = PipelineEndpointConnection[];
-const PipelineEndpointConnectionsSummaryList = /*@__PURE__*/ S.Array(PipelineEndpointConnection);
+const PipelineEndpointConnectionsSummaryList = /*@__PURE__*/ __L.at(__c5, 5);
 export interface ListPipelineEndpointConnectionsResponse {
   NextToken?: string;
   PipelineEndpointConnections?: PipelineEndpointConnection[];
 }
-const ListPipelineEndpointConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    PipelineEndpointConnections: S.optional(PipelineEndpointConnectionsSummaryList),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListPipelineEndpointConnectionsResponse",
-}) as any as S.Schema<ListPipelineEndpointConnectionsResponse>;
+const ListPipelineEndpointConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListPipelineEndpointConnectionsResponse>;
 export interface ListPipelineEndpointsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListPipelineEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2022-01-01/osis/listPipelineEndpoints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPipelineEndpointsRequest",
-}) as any as S.Schema<ListPipelineEndpointsRequest>;
+const ListPipelineEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListPipelineEndpointsRequest>;
 export interface PipelineEndpoint {
   PipelineArn?: string;
   EndpointId?: string;
@@ -764,50 +517,22 @@ export interface PipelineEndpoint {
   VpcOptions?: PipelineEndpointVpcOptions;
   IngestEndpointUrl?: string;
 }
-const PipelineEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PipelineArn: S.optional(S.String),
-    EndpointId: S.optional(S.String),
-    Status: S.optional(PipelineEndpointStatus),
-    VpcId: S.optional(S.String),
-    VpcOptions: S.optional(PipelineEndpointVpcOptions),
-    IngestEndpointUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "PipelineEndpoint" }) as any as S.Schema<PipelineEndpoint>;
+const PipelineEndpoint = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<PipelineEndpoint>;
 export type PipelineEndpointsSummaryList = PipelineEndpoint[];
-const PipelineEndpointsSummaryList = /*@__PURE__*/ S.Array(PipelineEndpoint);
+const PipelineEndpointsSummaryList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface ListPipelineEndpointsResponse {
   NextToken?: string;
   PipelineEndpoints?: PipelineEndpoint[];
 }
-const ListPipelineEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    PipelineEndpoints: S.optional(PipelineEndpointsSummaryList),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListPipelineEndpointsResponse",
-}) as any as S.Schema<ListPipelineEndpointsResponse>;
+const ListPipelineEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListPipelineEndpointsResponse>;
 export interface ListPipelinesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2022-01-01/osis/listPipelines" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListPipelinesRequest" }) as any as S.Schema<ListPipelinesRequest>;
+const ListPipelinesRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ListPipelinesRequest>;
 export interface PipelineSummary {
   Status?: PipelineStatus;
   StatusReason?: PipelineStatusReason;
@@ -820,74 +545,39 @@ export interface PipelineSummary {
   Destinations?: PipelineDestination[];
   Tags?: Tag[];
 }
-const PipelineSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(PipelineStatus),
-    StatusReason: S.optional(PipelineStatusReason),
-    PipelineName: S.optional(S.String),
-    PipelineArn: S.optional(S.String),
-    MinUnits: S.optional(S.Number),
-    MaxUnits: S.optional(S.Number),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Destinations: S.optional(PipelineDestinationList),
-    Tags: S.optional(TagList),
-  }),
-).annotate({ identifier: "PipelineSummary" }) as any as S.Schema<PipelineSummary>;
+const PipelineSummary = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<PipelineSummary>;
 export type PipelineSummaryList = PipelineSummary[];
-const PipelineSummaryList = /*@__PURE__*/ S.Array(PipelineSummary);
+const PipelineSummaryList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ListPipelinesResponse {
   NextToken?: string;
   Pipelines?: PipelineSummary[];
 }
-const ListPipelinesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Pipelines: S.optional(PipelineSummaryList) }).pipe(
-    ns,
-  ),
-).annotate({ identifier: "ListPipelinesResponse" }) as any as S.Schema<ListPipelinesResponse>;
+const ListPipelinesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListPipelinesResponse>;
 export interface ListTagsForResourceRequest {
   Arn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/2022-01-01/osis/listTagsForResource" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList) }).pipe(ns),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutResourcePolicyRequest {
   ResourceArn: string;
   Policy: string;
 }
-const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Policy: S.String }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "PUT", uri: "/2022-01-01/osis/resourcePolicy/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PutResourcePolicyRequest" }) as any as S.Schema<PutResourcePolicyRequest>;
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {
   ResourceArn?: string;
   Policy?: string;
@@ -900,45 +590,21 @@ export interface RevokePipelineEndpointConnectionsRequest {
   PipelineArn: string;
   EndpointIds: string[];
 }
-const RevokePipelineEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineArn: S.String, EndpointIds: PipelineEndpointIdsList }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2022-01-01/osis/revokePipelineEndpointConnections" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RevokePipelineEndpointConnectionsRequest",
-}) as any as S.Schema<RevokePipelineEndpointConnectionsRequest>;
+const RevokePipelineEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<RevokePipelineEndpointConnectionsRequest>;
 export interface RevokePipelineEndpointConnectionsResponse {
   PipelineArn?: string;
 }
-const RevokePipelineEndpointConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineArn: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RevokePipelineEndpointConnectionsResponse",
-}) as any as S.Schema<RevokePipelineEndpointConnectionsResponse>;
+const RevokePipelineEndpointConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<RevokePipelineEndpointConnectionsResponse>;
 export interface StartPipelineRequest {
   PipelineName: string;
 }
-const StartPipelineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "PUT", uri: "/2022-01-01/osis/startPipeline/{PipelineName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartPipelineRequest" }) as any as S.Schema<StartPipelineRequest>;
+const StartPipelineRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<StartPipelineRequest>;
 export interface StartPipelineResponse {
   Pipeline?: Pipeline;
 }
@@ -946,19 +612,7 @@ const StartPipelineResponse = CreatePipelineResponse as any as S.Schema<StartPip
 export interface StopPipelineRequest {
   PipelineName: string;
 }
-const StopPipelineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "PUT", uri: "/2022-01-01/osis/stopPipeline/{PipelineName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StopPipelineRequest" }) as any as S.Schema<StopPipelineRequest>;
+const StopPipelineRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<StopPipelineRequest>;
 export interface StopPipelineResponse {
   Pipeline?: Pipeline;
 }
@@ -967,42 +621,16 @@ export interface TagResourceRequest {
   Arn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), Tags: TagList }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2022-01-01/osis/tagResource" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<TagResourceResponse>;
 export type StringList = string[];
 const StringList = SubnetIds as any as S.Schema<StringList>;
 export interface UntagResourceRequest {
   Arn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), TagKeys: StringList }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2022-01-01/osis/untagResource" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdatePipelineRequest {
@@ -1015,28 +643,10 @@ export interface UpdatePipelineRequest {
   EncryptionAtRestOptions?: EncryptionAtRestOptions;
   PipelineRoleArn?: string;
 }
-const UpdatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PipelineName: S.String.pipe(T.HttpLabel("PipelineName")),
-    MinUnits: S.optional(S.Number),
-    MaxUnits: S.optional(S.Number),
-    PipelineConfigurationBody: S.optional(S.String),
-    LogPublishingOptions: S.optional(LogPublishingOptions),
-    BufferOptions: S.optional(BufferOptions),
-    EncryptionAtRestOptions: S.optional(EncryptionAtRestOptions),
-    PipelineRoleArn: S.optional(S.String),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "PUT", uri: "/2022-01-01/osis/updatePipeline/{PipelineName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdatePipelineRequest" }) as any as S.Schema<UpdatePipelineRequest>;
+const UpdatePipelineRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<UpdatePipelineRequest>;
 export interface UpdatePipelineResponse {
   Pipeline?: Pipeline;
 }
@@ -1044,34 +654,24 @@ const UpdatePipelineResponse = CreatePipelineResponse as any as S.Schema<UpdateP
 export interface ValidatePipelineRequest {
   PipelineConfigurationBody: string;
 }
-const ValidatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineConfigurationBody: S.String }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/2022-01-01/osis/validatePipeline" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ValidatePipelineRequest" }) as any as S.Schema<ValidatePipelineRequest>;
+const ValidatePipelineRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ValidatePipelineRequest>;
 export interface ValidationMessage {
   Message?: string;
 }
-const ValidationMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Message: S.optional(S.String) }),
-).annotate({ identifier: "ValidationMessage" }) as any as S.Schema<ValidationMessage>;
+const ValidationMessage = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ValidationMessage>;
 export type ValidationMessageList = ValidationMessage[];
-const ValidationMessageList = /*@__PURE__*/ S.Array(ValidationMessage);
+const ValidationMessageList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface ValidatePipelineResponse {
   isValid?: boolean;
   Errors?: ValidationMessage[];
 }
-const ValidatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ isValid: S.optional(S.Boolean), Errors: S.optional(ValidationMessageList) }).pipe(ns),
-).annotate({ identifier: "ValidatePipelineResponse" }) as any as S.Schema<ValidatePipelineResponse>;
+const ValidatePipelineResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ValidatePipelineResponse>;
 export type ErrorMessage = string;
 export type CreatePipelineError =
   | AccessDeniedException
@@ -1792,3 +1392,696 @@ export const validatePipeline: API.OperationMethod<
   retry: Retry,
   operationName: "ValidatePipeline",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ LogGroup: S.String })).annotate({
+        identifier: "CloudWatchLogDestination",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IsLoggingEnabled: S.optional(S.Boolean),
+          CloudWatchLogDestination: S.optional(CloudWatchLogDestination),
+        }),
+      ).annotate({ identifier: "LogPublishingOptions" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AttachToVpc: S.Boolean, CidrBlock: S.optional(S.String) }),
+      ).annotate({ identifier: "VpcAttachmentOptions" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SubnetIds: SubnetIds,
+          SecurityGroupIds: S.optional(SecurityGroupIds),
+          VpcAttachmentOptions: S.optional(VpcAttachmentOptions),
+          VpcEndpointManagement: S.optional(VpcEndpointManagement),
+        }),
+      ).annotate({ identifier: "VpcOptions" });
+    case 5:
+      return S.suspend(() => S.Struct({ PersistentBufferEnabled: S.Boolean })).annotate({
+        identifier: "BufferOptions",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ KmsKeyArn: S.String })).annotate({
+        identifier: "EncryptionAtRestOptions",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Tag);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PipelineName: S.String,
+          MinUnits: S.Number,
+          MaxUnits: S.Number,
+          PipelineConfigurationBody: S.String,
+          LogPublishingOptions: S.optional(LogPublishingOptions),
+          VpcOptions: S.optional(VpcOptions),
+          BufferOptions: S.optional(BufferOptions),
+          EncryptionAtRestOptions: S.optional(EncryptionAtRestOptions),
+          Tags: S.optional(TagList),
+          PipelineRoleArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2022-01-01/osis/createPipeline" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreatePipelineRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ Description: S.optional(S.String) })).annotate({
+        identifier: "PipelineStatusReason",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          VpcEndpointId: S.optional(S.String),
+          VpcId: S.optional(S.String),
+          VpcOptions: S.optional(VpcOptions),
+        }),
+      ).annotate({ identifier: "VpcEndpoint" });
+    case 4:
+      return S.Array(VpcEndpoint);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceName: S.optional(VpcEndpointServiceName),
+          VpcEndpointId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceVpcEndpoint" });
+    case 6:
+      return S.Array(ServiceVpcEndpoint);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ServiceName: S.optional(S.String), Endpoint: S.optional(S.String) }),
+      ).annotate({ identifier: "PipelineDestination" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PipelineDestination);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PipelineName: S.optional(S.String),
+          PipelineArn: S.optional(S.String),
+          MinUnits: S.optional(S.Number),
+          MaxUnits: S.optional(S.Number),
+          Status: S.optional(PipelineStatus),
+          StatusReason: S.optional(PipelineStatusReason),
+          PipelineConfigurationBody: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IngestEndpointUrls: S.optional(IngestEndpointUrlsList),
+          LogPublishingOptions: S.optional(LogPublishingOptions),
+          VpcEndpoints: S.optional(VpcEndpointsList),
+          BufferOptions: S.optional(BufferOptions),
+          EncryptionAtRestOptions: S.optional(EncryptionAtRestOptions),
+          VpcEndpointService: S.optional(S.String),
+          ServiceVpcEndpoints: S.optional(ServiceVpcEndpointsList),
+          Destinations: S.optional(PipelineDestinationList),
+          Tags: S.optional(TagList),
+          PipelineRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Pipeline" });
+    case 2:
+      return S.suspend(() => S.Struct({ Pipeline: S.optional(Pipeline) }).pipe(ns)).annotate({
+        identifier: "CreatePipelineResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          SubnetIds: S.optional(SubnetIds),
+          SecurityGroupIds: S.optional(SecurityGroupIds),
+        }),
+      ).annotate({
+        identifier: "PipelineEndpointVpcOptions",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ PipelineArn: S.String, VpcOptions: PipelineEndpointVpcOptions }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2022-01-01/osis/createPipelineEndpoint" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreatePipelineEndpointRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          PipelineArn: S.optional(S.String),
+          EndpointId: S.optional(S.String),
+          Status: S.optional(PipelineEndpointStatus),
+          VpcId: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreatePipelineEndpointResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2022-01-01/osis/deletePipeline/{PipelineName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeletePipelineRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeletePipelineResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ EndpointId: S.String.pipe(T.HttpLabel("EndpointId")) }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "DELETE",
+              uri: "/2022-01-01/osis/deletePipelineEndpoint/{EndpointId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePipelineEndpointRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeletePipelineEndpointResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/2022-01-01/osis/resourcePolicy/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePolicyRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2022-01-01/osis/getPipeline/{PipelineName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetPipelineRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          BlueprintName: S.String.pipe(T.HttpLabel("BlueprintName")),
+          Format: S.optional(S.String).pipe(T.HttpQuery("format")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2022-01-01/osis/getPipelineBlueprint/{BlueprintName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPipelineBlueprintRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          BlueprintName: S.optional(S.String),
+          PipelineConfigurationBody: S.optional(S.String),
+          DisplayName: S.optional(S.String),
+          DisplayDescription: S.optional(S.String),
+          Service: S.optional(S.String),
+          UseCase: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PipelineBlueprint" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Blueprint: S.optional(PipelineBlueprint), Format: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({
+        identifier: "GetPipelineBlueprintResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "GET",
+              uri: "/2022-01-01/osis/getPipelineChangeProgress/{PipelineName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPipelineChangeProgressRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Status: S.optional(ChangeProgressStageStatuses),
+          Description: S.optional(S.String),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ChangeProgressStage" });
+    case 1:
+      return S.Array(ChangeProgressStage);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(ChangeProgressStatuses),
+          TotalNumberOfStages: S.optional(S.Number),
+          ChangeProgressStages: S.optional(ChangeProgressStageList),
+        }),
+      ).annotate({ identifier: "ChangeProgressStatus" });
+    case 3:
+      return S.Array(ChangeProgressStatus);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ChangeProgressStatuses: S.optional(ChangeProgressStatusList) }).pipe(ns),
+      ).annotate({
+        identifier: "GetPipelineChangeProgressResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2022-01-01/osis/resourcePolicy/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetResourcePolicyRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "GetResourcePolicyResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2022-01-01/osis/listPipelineBlueprints" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPipelineBlueprintsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BlueprintName: S.optional(S.String),
+          DisplayName: S.optional(S.String),
+          DisplayDescription: S.optional(S.String),
+          Service: S.optional(S.String),
+          UseCase: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PipelineBlueprintSummary" });
+    case 1:
+      return S.Array(PipelineBlueprintSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Blueprints: S.optional(PipelineBlueprintsSummaryList) }).pipe(ns),
+      ).annotate({
+        identifier: "ListPipelineBlueprintsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2022-01-01/osis/listPipelineEndpointConnections" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPipelineEndpointConnectionsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          PipelineArn: S.optional(S.String),
+          EndpointId: S.optional(S.String),
+          Status: S.optional(PipelineEndpointStatus),
+          VpcEndpointOwner: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PipelineEndpointConnection",
+      });
+    case 5:
+      return S.Array(PipelineEndpointConnection);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          PipelineEndpointConnections: S.optional(PipelineEndpointConnectionsSummaryList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListPipelineEndpointConnectionsResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2022-01-01/osis/listPipelineEndpoints" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPipelineEndpointsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PipelineArn: S.optional(S.String),
+          EndpointId: S.optional(S.String),
+          Status: S.optional(PipelineEndpointStatus),
+          VpcId: S.optional(S.String),
+          VpcOptions: S.optional(PipelineEndpointVpcOptions),
+          IngestEndpointUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PipelineEndpoint" });
+    case 1:
+      return S.Array(PipelineEndpoint);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          PipelineEndpoints: S.optional(PipelineEndpointsSummaryList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListPipelineEndpointsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2022-01-01/osis/listPipelines" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListPipelinesRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(PipelineStatus),
+          StatusReason: S.optional(PipelineStatusReason),
+          PipelineName: S.optional(S.String),
+          PipelineArn: S.optional(S.String),
+          MinUnits: S.optional(S.Number),
+          MaxUnits: S.optional(S.Number),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Destinations: S.optional(PipelineDestinationList),
+          Tags: S.optional(TagList),
+        }),
+      ).annotate({ identifier: "PipelineSummary" });
+    case 5:
+      return S.Array(PipelineSummary);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          Pipelines: S.optional(PipelineSummaryList),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListPipelinesResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/2022-01-01/osis/listTagsForResource" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) }).pipe(ns)).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Policy: S.String }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/2022-01-01/osis/resourcePolicy/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutResourcePolicyRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ PipelineArn: S.String, EndpointIds: PipelineEndpointIdsList }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2022-01-01/osis/revokePipelineEndpointConnections" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RevokePipelineEndpointConnectionsRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ PipelineArn: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "RevokePipelineEndpointConnectionsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/2022-01-01/osis/startPipeline/{PipelineName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartPipelineRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/2022-01-01/osis/stopPipeline/{PipelineName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopPipelineRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), Tags: TagList }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2022-01-01/osis/tagResource" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), TagKeys: StringList }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2022-01-01/osis/untagResource" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PipelineName: S.String.pipe(T.HttpLabel("PipelineName")),
+          MinUnits: S.optional(S.Number),
+          MaxUnits: S.optional(S.Number),
+          PipelineConfigurationBody: S.optional(S.String),
+          LogPublishingOptions: S.optional(LogPublishingOptions),
+          BufferOptions: S.optional(BufferOptions),
+          EncryptionAtRestOptions: S.optional(EncryptionAtRestOptions),
+          PipelineRoleArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/2022-01-01/osis/updatePipeline/{PipelineName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdatePipelineRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ PipelineConfigurationBody: S.String }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2022-01-01/osis/validatePipeline" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ValidatePipelineRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ Message: S.optional(S.String) })).annotate({
+        identifier: "ValidationMessage",
+      });
+    case 4:
+      return S.Array(ValidationMessage);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          isValid: S.optional(S.Boolean),
+          Errors: S.optional(ValidationMessageList),
+        }).pipe(ns),
+      ).annotate({ identifier: "ValidatePipelineResponse" });
+  }
+}

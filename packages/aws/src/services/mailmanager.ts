@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -119,79 +120,61 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface CreateAddonInstanceRequest {
   ClientToken?: string;
   AddonSubscriptionId: string;
   Tags?: Tag[];
 }
-const CreateAddonInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    AddonSubscriptionId: S.String,
-    Tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateAddonInstanceRequest",
-}) as any as S.Schema<CreateAddonInstanceRequest>;
+const CreateAddonInstanceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateAddonInstanceRequest>;
 export type AddonInstanceId = string;
 export interface CreateAddonInstanceResponse {
   AddonInstanceId: string;
 }
-const CreateAddonInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddonInstanceId: S.String }),
-).annotate({
-  identifier: "CreateAddonInstanceResponse",
-}) as any as S.Schema<CreateAddonInstanceResponse>;
+const CreateAddonInstanceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateAddonInstanceResponse>;
 export type AddonName = string;
 export interface CreateAddonSubscriptionRequest {
   ClientToken?: string;
   AddonName: string;
   Tags?: Tag[];
 }
-const CreateAddonSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    AddonName: S.String,
-    Tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateAddonSubscriptionRequest",
-}) as any as S.Schema<CreateAddonSubscriptionRequest>;
+const CreateAddonSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateAddonSubscriptionRequest>;
 export interface CreateAddonSubscriptionResponse {
   AddonSubscriptionId: string;
 }
-const CreateAddonSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddonSubscriptionId: S.String }),
-).annotate({
-  identifier: "CreateAddonSubscriptionResponse",
-}) as any as S.Schema<CreateAddonSubscriptionResponse>;
+const CreateAddonSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateAddonSubscriptionResponse>;
 export type AddressListName = string;
 export interface CreateAddressListRequest {
   ClientToken?: string;
   AddressListName: string;
   Tags?: Tag[];
 }
-const CreateAddressListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    AddressListName: S.String,
-    Tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateAddressListRequest" }) as any as S.Schema<CreateAddressListRequest>;
+const CreateAddressListRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateAddressListRequest>;
 export type AddressListId = string;
 export interface CreateAddressListResponse {
   AddressListId: string;
 }
-const CreateAddressListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddressListId: S.String }),
-).annotate({
-  identifier: "CreateAddressListResponse",
-}) as any as S.Schema<CreateAddressListResponse>;
+const CreateAddressListResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateAddressListResponse>;
 export type JobName = string;
 export type ImportDataType = "CSV" | "JSON" | (string & {});
 const ImportDataType = S.String;
@@ -199,36 +182,27 @@ const ImportDataType = S.String;
 export interface ImportDataFormat {
   ImportDataType: ImportDataType;
 }
-const ImportDataFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ImportDataType: ImportDataType }),
-).annotate({ identifier: "ImportDataFormat" }) as any as S.Schema<ImportDataFormat>;
+const ImportDataFormat = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ImportDataFormat>;
 export interface CreateAddressListImportJobRequest {
   ClientToken?: string;
   AddressListId: string;
   Name: string;
   ImportDataFormat: ImportDataFormat;
 }
-const CreateAddressListImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    AddressListId: S.String,
-    Name: S.String,
-    ImportDataFormat: ImportDataFormat,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateAddressListImportJobRequest",
-}) as any as S.Schema<CreateAddressListImportJobRequest>;
+const CreateAddressListImportJobRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateAddressListImportJobRequest>;
 export type JobId = string;
 export type PreSignedUrl = string | redacted.Redacted<string>;
 export interface CreateAddressListImportJobResponse {
   JobId: string;
   PreSignedUrl: string | redacted.Redacted<string>;
 }
-const CreateAddressListImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.String, PreSignedUrl: SensitiveString }),
-).annotate({
-  identifier: "CreateAddressListImportJobResponse",
-}) as any as S.Schema<CreateAddressListImportJobResponse>;
+const CreateAddressListImportJobResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateAddressListImportJobResponse>;
 export type ArchiveNameString = string;
 export type RetentionPeriod =
   | "THREE_MONTHS"
@@ -251,9 +225,7 @@ export type RetentionPeriod =
 const RetentionPeriod = S.String;
 
 export type ArchiveRetention = { RetentionPeriod: RetentionPeriod };
-const ArchiveRetention = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ RetentionPeriod: RetentionPeriod }),
-]);
+const ArchiveRetention = /*@__PURE__*/ __L.at(__c1, 3);
 export type KmsKeyArn = string;
 export interface CreateArchiveRequest {
   ClientToken?: string;
@@ -262,22 +234,15 @@ export interface CreateArchiveRequest {
   KmsKeyArn?: string;
   Tags?: Tag[];
 }
-const CreateArchiveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    ArchiveName: S.String,
-    Retention: S.optional(ArchiveRetention),
-    KmsKeyArn: S.optional(S.String),
-    Tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateArchiveRequest" }) as any as S.Schema<CreateArchiveRequest>;
+const CreateArchiveRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateArchiveRequest>;
 export type ArchiveIdString = string;
 export interface CreateArchiveResponse {
   ArchiveId: string;
 }
-const CreateArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ArchiveId: S.String }),
-).annotate({ identifier: "CreateArchiveResponse" }) as any as S.Schema<CreateArchiveResponse>;
+const CreateArchiveResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateArchiveResponse>;
 export type IngressPointName = string;
 export type IngressPointType = "OPEN" | "AUTH" | "MTLS" | (string & {});
 const IngressPointType = S.String;
@@ -293,19 +258,11 @@ export interface TrustStore {
   CrlContent?: string | redacted.Redacted<string>;
   KmsKeyArn?: string;
 }
-const TrustStore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CAContent: SensitiveString,
-    CrlContent: S.optional(SensitiveString),
-    KmsKeyArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "TrustStore" }) as any as S.Schema<TrustStore>;
+const TrustStore = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TrustStore>;
 export interface TlsAuthConfiguration {
   TrustStore?: TrustStore;
 }
-const TlsAuthConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrustStore: S.optional(TrustStore) }),
-).annotate({ identifier: "TlsAuthConfiguration" }) as any as S.Schema<TlsAuthConfiguration>;
+const TlsAuthConfiguration = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TlsAuthConfiguration>;
 export type IngressPointConfiguration =
   | {
       SmtpPassword: string | redacted.Redacted<string>;
@@ -314,41 +271,32 @@ export type IngressPointConfiguration =
     }
   | { SmtpPassword?: never; SecretArn: string; TlsAuthConfiguration?: never }
   | { SmtpPassword?: never; SecretArn?: never; TlsAuthConfiguration: TlsAuthConfiguration };
-const IngressPointConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ SmtpPassword: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ SecretArn: S.String }),
-  /*@__PURE__*/ S.Struct({ TlsAuthConfiguration: TlsAuthConfiguration }),
-]);
+const IngressPointConfiguration = /*@__PURE__*/ __L.at(__c2, 0);
 export type IpType = "IPV4" | "DUAL_STACK" | (string & {});
 const IpType = S.String;
 
 export interface PublicNetworkConfiguration {
   IpType: IpType;
 }
-const PublicNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IpType: IpType }),
-).annotate({
-  identifier: "PublicNetworkConfiguration",
-}) as any as S.Schema<PublicNetworkConfiguration>;
+const PublicNetworkConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<PublicNetworkConfiguration>;
 export type VpcEndpointId = string;
 export interface PrivateNetworkConfiguration {
   VpcEndpointId: string;
 }
-const PrivateNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcEndpointId: S.String }),
-).annotate({
-  identifier: "PrivateNetworkConfiguration",
-}) as any as S.Schema<PrivateNetworkConfiguration>;
+const PrivateNetworkConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<PrivateNetworkConfiguration>;
 export type NetworkConfiguration =
   | { PublicNetworkConfiguration: PublicNetworkConfiguration; PrivateNetworkConfiguration?: never }
   | {
       PublicNetworkConfiguration?: never;
       PrivateNetworkConfiguration: PrivateNetworkConfiguration;
     };
-const NetworkConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ PublicNetworkConfiguration: PublicNetworkConfiguration }),
-  /*@__PURE__*/ S.Struct({ PrivateNetworkConfiguration: PrivateNetworkConfiguration }),
-]);
+const NetworkConfiguration = /*@__PURE__*/ __L.at(__c2, 3);
 export type TlsPolicy = "REQUIRED" | "OPTIONAL" | "FIPS" | (string & {});
 const TlsPolicy = S.String;
 
@@ -363,44 +311,27 @@ export interface CreateIngressPointRequest {
   TlsPolicy?: TlsPolicy;
   Tags?: Tag[];
 }
-const CreateIngressPointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    IngressPointName: S.String,
-    Type: IngressPointType,
-    RuleSetId: S.String,
-    TrafficPolicyId: S.String,
-    IngressPointConfiguration: S.optional(IngressPointConfiguration),
-    NetworkConfiguration: S.optional(NetworkConfiguration),
-    TlsPolicy: S.optional(TlsPolicy),
-    Tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateIngressPointRequest",
-}) as any as S.Schema<CreateIngressPointRequest>;
+const CreateIngressPointRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateIngressPointRequest>;
 export type IngressPointId = string;
 export interface CreateIngressPointResponse {
   IngressPointId: string;
 }
-const CreateIngressPointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IngressPointId: S.String }),
-).annotate({
-  identifier: "CreateIngressPointResponse",
-}) as any as S.Schema<CreateIngressPointResponse>;
+const CreateIngressPointResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateIngressPointResponse>;
 export type RelayName = string;
 export type RelayServerName = string;
 export type RelayServerPort = number;
 export interface NoAuthentication {}
-const NoAuthentication = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "NoAuthentication",
-}) as any as S.Schema<NoAuthentication>;
+const NoAuthentication = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<NoAuthentication>;
 export type RelayAuthentication =
   | { SecretArn: string; NoAuthentication?: never }
   | { SecretArn?: never; NoAuthentication: NoAuthentication };
-const RelayAuthentication = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ SecretArn: S.String }),
-  /*@__PURE__*/ S.Struct({ NoAuthentication: NoAuthentication }),
-]);
+const RelayAuthentication = /*@__PURE__*/ __L.at(__c2, 7);
 export interface CreateRelayRequest {
   ClientToken?: string;
   RelayName: string;
@@ -409,23 +340,12 @@ export interface CreateRelayRequest {
   Authentication: RelayAuthentication;
   Tags?: Tag[];
 }
-const CreateRelayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    RelayName: S.String,
-    ServerName: S.String,
-    ServerPort: S.Number,
-    Authentication: RelayAuthentication,
-    Tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateRelayRequest" }) as any as S.Schema<CreateRelayRequest>;
+const CreateRelayRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CreateRelayRequest>;
 export type RelayId = string;
 export interface CreateRelayResponse {
   RelayId: string;
 }
-const CreateRelayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({ RelayId: S.String })).annotate(
-  { identifier: "CreateRelayResponse" },
-) as any as S.Schema<CreateRelayResponse>;
+const CreateRelayResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CreateRelayResponse>;
 export type RuleSetName = string;
 export type RuleName = string;
 export type RuleBooleanEmailAttribute =
@@ -441,9 +361,7 @@ export interface Analysis {
   Analyzer: string;
   ResultField: string;
 }
-const Analysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Analyzer: S.String, ResultField: S.String }),
-).annotate({ identifier: "Analysis" }) as any as S.Schema<Analysis>;
+const Analysis = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Analysis>;
 export type RuleAddressListEmailAttribute =
   | "RECIPIENT"
   | "MAIL_FROM"
@@ -456,23 +374,17 @@ const RuleAddressListEmailAttribute = S.String;
 
 export type AddressListArn = string;
 export type RuleAddressListArnList = string[];
-const RuleAddressListArnList = /*@__PURE__*/ S.Array(S.String);
+const RuleAddressListArnList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface RuleIsInAddressList {
   Attribute: RuleAddressListEmailAttribute;
   AddressLists: string[];
 }
-const RuleIsInAddressList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attribute: RuleAddressListEmailAttribute, AddressLists: RuleAddressListArnList }),
-).annotate({ identifier: "RuleIsInAddressList" }) as any as S.Schema<RuleIsInAddressList>;
+const RuleIsInAddressList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<RuleIsInAddressList>;
 export type RuleBooleanToEvaluate =
   | { Attribute: RuleBooleanEmailAttribute; Analysis?: never; IsInAddressList?: never }
   | { Attribute?: never; Analysis: Analysis; IsInAddressList?: never }
   | { Attribute?: never; Analysis?: never; IsInAddressList: RuleIsInAddressList };
-const RuleBooleanToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: RuleBooleanEmailAttribute }),
-  /*@__PURE__*/ S.Struct({ Analysis: Analysis }),
-  /*@__PURE__*/ S.Struct({ IsInAddressList: RuleIsInAddressList }),
-]);
+const RuleBooleanToEvaluate = /*@__PURE__*/ __L.at(__c3, 5);
 export type RuleBooleanOperator = "IS_TRUE" | "IS_FALSE" | (string & {});
 const RuleBooleanOperator = S.String;
 
@@ -480,9 +392,10 @@ export interface RuleBooleanExpression {
   Evaluate: RuleBooleanToEvaluate;
   Operator: RuleBooleanOperator;
 }
-const RuleBooleanExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Evaluate: RuleBooleanToEvaluate, Operator: RuleBooleanOperator }),
-).annotate({ identifier: "RuleBooleanExpression" }) as any as S.Schema<RuleBooleanExpression>;
+const RuleBooleanExpression = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<RuleBooleanExpression>;
 export type RuleStringEmailAttribute =
   | "MAIL_FROM"
   | "HELO"
@@ -533,12 +446,7 @@ export type RuleStringToEvaluate =
       Analysis?: never;
       ClientCertificateAttribute: RuleClientCertificateAttribute;
     };
-const RuleStringToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: RuleStringEmailAttribute }),
-  /*@__PURE__*/ S.Struct({ MimeHeaderAttribute: S.String }),
-  /*@__PURE__*/ S.Struct({ Analysis: Analysis }),
-  /*@__PURE__*/ S.Struct({ ClientCertificateAttribute: RuleClientCertificateAttribute }),
-]);
+const RuleStringToEvaluate = /*@__PURE__*/ __L.at(__c3, 7);
 export type RuleStringOperator =
   | "EQUALS"
   | "NOT_EQUALS"
@@ -550,26 +458,18 @@ const RuleStringOperator = S.String;
 
 export type RuleStringValue = string | redacted.Redacted<string>;
 export type RuleStringList = (string | redacted.Redacted<string>)[];
-const RuleStringList = /*@__PURE__*/ S.Array(SensitiveString);
+const RuleStringList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface RuleStringExpression {
   Evaluate: RuleStringToEvaluate;
   Operator: RuleStringOperator;
   Values: (string | redacted.Redacted<string>)[];
 }
-const RuleStringExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Evaluate: RuleStringToEvaluate,
-    Operator: RuleStringOperator,
-    Values: RuleStringList,
-  }),
-).annotate({ identifier: "RuleStringExpression" }) as any as S.Schema<RuleStringExpression>;
+const RuleStringExpression = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<RuleStringExpression>;
 export type RuleNumberEmailAttribute = "MESSAGE_SIZE" | (string & {});
 const RuleNumberEmailAttribute = S.String;
 
 export type RuleNumberToEvaluate = { Attribute: RuleNumberEmailAttribute };
-const RuleNumberToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: RuleNumberEmailAttribute }),
-]);
+const RuleNumberToEvaluate = /*@__PURE__*/ __L.at(__c4, 2);
 export type RuleNumberOperator =
   | "EQUALS"
   | "NOT_EQUALS"
@@ -585,9 +485,7 @@ export interface RuleNumberExpression {
   Operator: RuleNumberOperator;
   Value: number;
 }
-const RuleNumberExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Evaluate: RuleNumberToEvaluate, Operator: RuleNumberOperator, Value: S.Number }),
-).annotate({ identifier: "RuleNumberExpression" }) as any as S.Schema<RuleNumberExpression>;
+const RuleNumberExpression = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<RuleNumberExpression>;
 export type RuleIpEmailAttribute = "SOURCE_IP" | (string & {});
 export type RuleIpToEvaluate = { Attribute: RuleIpEmailAttribute };
 const RuleIpToEvaluate = RuleNumberToEvaluate as any as S.Schema<RuleIpToEvaluate>;
@@ -602,19 +500,14 @@ export interface RuleIpExpression {
   Operator: RuleIpOperator;
   Values: string[];
 }
-const RuleIpExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Evaluate: RuleIpToEvaluate, Operator: RuleIpOperator, Values: RuleIpValueList }),
-).annotate({ identifier: "RuleIpExpression" }) as any as S.Schema<RuleIpExpression>;
+const RuleIpExpression = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<RuleIpExpression>;
 export type RuleVerdictAttribute = "SPF" | "DKIM" | (string & {});
 const RuleVerdictAttribute = S.String;
 
 export type RuleVerdictToEvaluate =
   | { Attribute: RuleVerdictAttribute; Analysis?: never }
   | { Attribute?: never; Analysis: Analysis };
-const RuleVerdictToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: RuleVerdictAttribute }),
-  /*@__PURE__*/ S.Struct({ Analysis: Analysis }),
-]);
+const RuleVerdictToEvaluate = /*@__PURE__*/ __L.at(__c4, 5);
 export type RuleVerdictOperator = "EQUALS" | "NOT_EQUALS" | (string & {});
 const RuleVerdictOperator = S.String;
 
@@ -622,19 +515,16 @@ export type RuleVerdict = "PASS" | "FAIL" | "GRAY" | "PROCESSING_FAILED" | (stri
 const RuleVerdict = S.String;
 
 export type RuleVerdictValueList = RuleVerdict[];
-const RuleVerdictValueList = /*@__PURE__*/ S.Array(RuleVerdict);
+const RuleVerdictValueList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface RuleVerdictExpression {
   Evaluate: RuleVerdictToEvaluate;
   Operator: RuleVerdictOperator;
   Values: RuleVerdict[];
 }
-const RuleVerdictExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Evaluate: RuleVerdictToEvaluate,
-    Operator: RuleVerdictOperator,
-    Values: RuleVerdictValueList,
-  }),
-).annotate({ identifier: "RuleVerdictExpression" }) as any as S.Schema<RuleVerdictExpression>;
+const RuleVerdictExpression = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<RuleVerdictExpression>;
 export type RuleDmarcOperator = "EQUALS" | "NOT_EQUALS" | (string & {});
 const RuleDmarcOperator = S.String;
 
@@ -645,9 +535,7 @@ export interface RuleDmarcExpression {
   Operator: RuleDmarcOperator;
   Values: RuleDmarcPolicy[];
 }
-const RuleDmarcExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Operator: RuleDmarcOperator, Values: RuleDmarcValueList }),
-).annotate({ identifier: "RuleDmarcExpression" }) as any as S.Schema<RuleDmarcExpression>;
+const RuleDmarcExpression = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RuleDmarcExpression>;
 export type RuleCondition =
   | {
       BooleanExpression: RuleBooleanExpression;
@@ -697,16 +585,9 @@ export type RuleCondition =
       VerdictExpression?: never;
       DmarcExpression: RuleDmarcExpression;
     };
-const RuleCondition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ BooleanExpression: RuleBooleanExpression }),
-  /*@__PURE__*/ S.Struct({ StringExpression: RuleStringExpression }),
-  /*@__PURE__*/ S.Struct({ NumberExpression: RuleNumberExpression }),
-  /*@__PURE__*/ S.Struct({ IpExpression: RuleIpExpression }),
-  /*@__PURE__*/ S.Struct({ VerdictExpression: RuleVerdictExpression }),
-  /*@__PURE__*/ S.Struct({ DmarcExpression: RuleDmarcExpression }),
-]);
+const RuleCondition = /*@__PURE__*/ __L.at(__c5, 1);
 export type RuleConditions = RuleCondition[];
-const RuleConditions = /*@__PURE__*/ S.Array(RuleCondition);
+const RuleConditions = /*@__PURE__*/ __L.at(__c5, 2);
 export interface DropAction {}
 const DropAction = NoAuthentication as any as S.Schema<DropAction>;
 export type ActionFailurePolicy = "CONTINUE" | "DROP" | (string & {});
@@ -721,21 +602,13 @@ export interface RelayAction {
   Relay: string;
   MailFrom?: MailFrom;
 }
-const RelayAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionFailurePolicy: S.optional(ActionFailurePolicy),
-    Relay: S.String,
-    MailFrom: S.optional(MailFrom),
-  }),
-).annotate({ identifier: "RelayAction" }) as any as S.Schema<RelayAction>;
+const RelayAction = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<RelayAction>;
 export type NameOrArn = string;
 export interface ArchiveAction {
   ActionFailurePolicy?: ActionFailurePolicy;
   TargetArchive: string;
 }
-const ArchiveAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ActionFailurePolicy: S.optional(ActionFailurePolicy), TargetArchive: S.String }),
-).annotate({ identifier: "ArchiveAction" }) as any as S.Schema<ArchiveAction>;
+const ArchiveAction = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ArchiveAction>;
 export type IamRoleArn = string;
 export type S3Bucket = string;
 export type S3Prefix = string;
@@ -747,52 +620,38 @@ export interface S3Action {
   S3Prefix?: string;
   S3SseKmsKeyId?: string;
 }
-const S3Action = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionFailurePolicy: S.optional(ActionFailurePolicy),
-    RoleArn: S.String,
-    S3Bucket: S.String,
-    S3Prefix: S.optional(S.String),
-    S3SseKmsKeyId: S.optional(S.String),
-  }),
-).annotate({ identifier: "S3Action" }) as any as S.Schema<S3Action>;
+const S3Action = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<S3Action>;
 export interface SendAction {
   ActionFailurePolicy?: ActionFailurePolicy;
   RoleArn: string;
 }
-const SendAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ActionFailurePolicy: S.optional(ActionFailurePolicy), RoleArn: S.String }),
-).annotate({ identifier: "SendAction" }) as any as S.Schema<SendAction>;
+const SendAction = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SendAction>;
 export type HeaderName = string;
 export type HeaderValue = string;
 export interface AddHeaderAction {
   HeaderName: string;
   HeaderValue: string;
 }
-const AddHeaderAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HeaderName: S.String, HeaderValue: S.String }),
-).annotate({ identifier: "AddHeaderAction" }) as any as S.Schema<AddHeaderAction>;
+const AddHeaderAction = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<AddHeaderAction>;
 export type EmailAddress = string | redacted.Redacted<string>;
 export type Recipients = (string | redacted.Redacted<string>)[];
 const Recipients = RuleStringList as any as S.Schema<Recipients>;
 export interface ReplaceRecipientAction {
   ReplaceWith?: (string | redacted.Redacted<string>)[];
 }
-const ReplaceRecipientAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReplaceWith: S.optional(Recipients) }),
-).annotate({ identifier: "ReplaceRecipientAction" }) as any as S.Schema<ReplaceRecipientAction>;
+const ReplaceRecipientAction = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ReplaceRecipientAction>;
 export interface DeliverToMailboxAction {
   ActionFailurePolicy?: ActionFailurePolicy;
   MailboxArn: string;
   RoleArn: string;
 }
-const DeliverToMailboxAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionFailurePolicy: S.optional(ActionFailurePolicy),
-    MailboxArn: S.String,
-    RoleArn: S.String,
-  }),
-).annotate({ identifier: "DeliverToMailboxAction" }) as any as S.Schema<DeliverToMailboxAction>;
+const DeliverToMailboxAction = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeliverToMailboxAction>;
 export type QBusinessApplicationId = string;
 export type QBusinessIndexId = string;
 export interface DeliverToQBusinessAction {
@@ -801,14 +660,10 @@ export interface DeliverToQBusinessAction {
   IndexId: string;
   RoleArn: string;
 }
-const DeliverToQBusinessAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionFailurePolicy: S.optional(ActionFailurePolicy),
-    ApplicationId: S.String,
-    IndexId: S.String,
-    RoleArn: S.String,
-  }),
-).annotate({ identifier: "DeliverToQBusinessAction" }) as any as S.Schema<DeliverToQBusinessAction>;
+const DeliverToQBusinessAction = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeliverToQBusinessAction>;
 export type SnsTopicArn = string;
 export type SnsNotificationEncoding = "UTF-8" | "BASE64" | (string & {});
 const SnsNotificationEncoding = S.String;
@@ -823,15 +678,7 @@ export interface SnsAction {
   Encoding?: SnsNotificationEncoding;
   PayloadType?: SnsNotificationPayloadType;
 }
-const SnsAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionFailurePolicy: S.optional(ActionFailurePolicy),
-    TopicArn: S.String,
-    RoleArn: S.String,
-    Encoding: S.optional(SnsNotificationEncoding),
-    PayloadType: S.optional(SnsNotificationPayloadType),
-  }),
-).annotate({ identifier: "SnsAction" }) as any as S.Schema<SnsAction>;
+const SnsAction = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<SnsAction>;
 export type StatusCode = string;
 export type SmtpReplyCode = string;
 export type DiagnosticMessage = string | redacted.Redacted<string>;
@@ -845,17 +692,7 @@ export interface BounceAction {
   DiagnosticMessage: string | redacted.Redacted<string>;
   Message?: string | redacted.Redacted<string>;
 }
-const BounceAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionFailurePolicy: S.optional(ActionFailurePolicy),
-    RoleArn: S.String,
-    Sender: SensitiveString,
-    StatusCode: S.String,
-    SmtpReplyCode: S.String,
-    DiagnosticMessage: SensitiveString,
-    Message: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "BounceAction" }) as any as S.Schema<BounceAction>;
+const BounceAction = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<BounceAction>;
 export type LambdaFunctionArn = string;
 export type LambdaInvocationType = "EVENT" | "REQUEST_RESPONSE" | (string & {});
 const LambdaInvocationType = S.String;
@@ -868,15 +705,7 @@ export interface InvokeLambdaAction {
   RoleArn: string;
   RetryTimeMinutes?: number;
 }
-const InvokeLambdaAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionFailurePolicy: S.optional(ActionFailurePolicy),
-    FunctionArn: S.String,
-    InvocationType: LambdaInvocationType,
-    RoleArn: S.String,
-    RetryTimeMinutes: S.optional(S.Number),
-  }),
-).annotate({ identifier: "InvokeLambdaAction" }) as any as S.Schema<InvokeLambdaAction>;
+const InvokeLambdaAction = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<InvokeLambdaAction>;
 export type RuleAction =
   | {
       Drop: DropAction;
@@ -1046,58 +875,32 @@ export type RuleAction =
       Bounce?: never;
       InvokeLambda: InvokeLambdaAction;
     };
-const RuleAction = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Drop: DropAction }),
-  /*@__PURE__*/ S.Struct({ Relay: RelayAction }),
-  /*@__PURE__*/ S.Struct({ Archive: ArchiveAction }),
-  /*@__PURE__*/ S.Struct({ WriteToS3: S3Action }),
-  /*@__PURE__*/ S.Struct({ Send: SendAction }),
-  /*@__PURE__*/ S.Struct({ AddHeader: AddHeaderAction }),
-  /*@__PURE__*/ S.Struct({ ReplaceRecipient: ReplaceRecipientAction }),
-  /*@__PURE__*/ S.Struct({ DeliverToMailbox: DeliverToMailboxAction }),
-  /*@__PURE__*/ S.Struct({ DeliverToQBusiness: DeliverToQBusinessAction }),
-  /*@__PURE__*/ S.Struct({ PublishToSns: SnsAction }),
-  /*@__PURE__*/ S.Struct({ Bounce: BounceAction }),
-  /*@__PURE__*/ S.Struct({ InvokeLambda: InvokeLambdaAction }),
-]);
+const RuleAction = /*@__PURE__*/ __L.at(__c6, 6);
 export type RuleActions = RuleAction[];
-const RuleActions = /*@__PURE__*/ S.Array(RuleAction);
+const RuleActions = /*@__PURE__*/ __L.at(__c6, 7);
 export interface Rule {
   Name?: string;
   Conditions?: RuleCondition[];
   Unless?: RuleCondition[];
   Actions: RuleAction[];
 }
-const Rule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Conditions: S.optional(RuleConditions),
-    Unless: S.optional(RuleConditions),
-    Actions: RuleActions,
-  }),
-).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
+const Rule = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Rule>;
 export type Rules = Rule[];
-const Rules = /*@__PURE__*/ S.Array(Rule);
+const Rules = /*@__PURE__*/ __L.at(__c7, 1);
 export interface CreateRuleSetRequest {
   ClientToken?: string;
   RuleSetName: string;
   Rules: Rule[];
   Tags?: Tag[];
 }
-const CreateRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    RuleSetName: S.String,
-    Rules: Rules,
-    Tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateRuleSetRequest" }) as any as S.Schema<CreateRuleSetRequest>;
+const CreateRuleSetRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<CreateRuleSetRequest>;
 export interface CreateRuleSetResponse {
   RuleSetId: string;
 }
-const CreateRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetId: S.String }),
-).annotate({ identifier: "CreateRuleSetResponse" }) as any as S.Schema<CreateRuleSetResponse>;
+const CreateRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateRuleSetResponse>;
 export type TrafficPolicyName = string;
 export type IngressStringEmailAttribute = "RECIPIENT" | (string & {});
 const IngressStringEmailAttribute = S.String;
@@ -1110,10 +913,7 @@ const IngressAnalysis = Analysis as any as S.Schema<IngressAnalysis>;
 export type IngressStringToEvaluate =
   | { Attribute: IngressStringEmailAttribute; Analysis?: never }
   | { Attribute?: never; Analysis: IngressAnalysis };
-const IngressStringToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Attribute: IngressStringEmailAttribute }),
-  /*@__PURE__*/ S.Struct({ Analysis: IngressAnalysis }),
-]);
+const IngressStringToEvaluate = /*@__PURE__*/ __L.at(__c7, 4);
 export type IngressStringOperator =
   | "EQUALS"
   | "NOT_EQUALS"
@@ -1130,13 +930,10 @@ export interface IngressStringExpression {
   Operator: IngressStringOperator;
   Values: string[];
 }
-const IngressStringExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Evaluate: IngressStringToEvaluate,
-    Operator: IngressStringOperator,
-    Values: StringList,
-  }),
-).annotate({ identifier: "IngressStringExpression" }) as any as S.Schema<IngressStringExpression>;
+const IngressStringExpression = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<IngressStringExpression>;
 export type IngressIpv4Attribute = "SENDER_IP" | (string & {});
 export type IngressIpToEvaluate = { Attribute: IngressIpv4Attribute };
 const IngressIpToEvaluate = RuleNumberToEvaluate as any as S.Schema<IngressIpToEvaluate>;
@@ -1151,9 +948,10 @@ export interface IngressIpv4Expression {
   Operator: IngressIpOperator;
   Values: string[];
 }
-const IngressIpv4Expression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Evaluate: IngressIpToEvaluate, Operator: IngressIpOperator, Values: Ipv4Cidrs }),
-).annotate({ identifier: "IngressIpv4Expression" }) as any as S.Schema<IngressIpv4Expression>;
+const IngressIpv4Expression = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<IngressIpv4Expression>;
 export type IngressIpv6Attribute = "SENDER_IPV6" | (string & {});
 export type IngressIpv6ToEvaluate = { Attribute: IngressIpv6Attribute };
 const IngressIpv6ToEvaluate = RuleNumberToEvaluate as any as S.Schema<IngressIpv6ToEvaluate>;
@@ -1165,9 +963,10 @@ export interface IngressIpv6Expression {
   Operator: IngressIpOperator;
   Values: string[];
 }
-const IngressIpv6Expression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Evaluate: IngressIpv6ToEvaluate, Operator: IngressIpOperator, Values: Ipv6Cidrs }),
-).annotate({ identifier: "IngressIpv6Expression" }) as any as S.Schema<IngressIpv6Expression>;
+const IngressIpv6Expression = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<IngressIpv6Expression>;
 export type IngressTlsAttribute = "TLS_PROTOCOL" | (string & {});
 export type IngressTlsProtocolToEvaluate = { Attribute: IngressTlsAttribute };
 const IngressTlsProtocolToEvaluate =
@@ -1183,15 +982,10 @@ export interface IngressTlsProtocolExpression {
   Operator: IngressTlsProtocolOperator;
   Value: IngressTlsProtocolAttribute;
 }
-const IngressTlsProtocolExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Evaluate: IngressTlsProtocolToEvaluate,
-    Operator: IngressTlsProtocolOperator,
-    Value: IngressTlsProtocolAttribute,
-  }),
-).annotate({
-  identifier: "IngressTlsProtocolExpression",
-}) as any as S.Schema<IngressTlsProtocolExpression>;
+const IngressTlsProtocolExpression = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<IngressTlsProtocolExpression>;
 export type IngressAddressListEmailAttribute = "RECIPIENT" | (string & {});
 const IngressAddressListEmailAttribute = S.String;
 
@@ -1202,19 +996,14 @@ export interface IngressIsInAddressList {
   Attribute: IngressAddressListEmailAttribute;
   AddressLists: string[];
 }
-const IngressIsInAddressList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attribute: IngressAddressListEmailAttribute,
-    AddressLists: IngressAddressListArnList,
-  }),
-).annotate({ identifier: "IngressIsInAddressList" }) as any as S.Schema<IngressIsInAddressList>;
+const IngressIsInAddressList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<IngressIsInAddressList>;
 export type IngressBooleanToEvaluate =
   | { Analysis: IngressAnalysis; IsInAddressList?: never }
   | { Analysis?: never; IsInAddressList: IngressIsInAddressList };
-const IngressBooleanToEvaluate = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Analysis: IngressAnalysis }),
-  /*@__PURE__*/ S.Struct({ IsInAddressList: IngressIsInAddressList }),
-]);
+const IngressBooleanToEvaluate = /*@__PURE__*/ __L.at(__c8, 2);
 export type IngressBooleanOperator = "IS_TRUE" | "IS_FALSE" | (string & {});
 const IngressBooleanOperator = S.String;
 
@@ -1222,9 +1011,10 @@ export interface IngressBooleanExpression {
   Evaluate: IngressBooleanToEvaluate;
   Operator: IngressBooleanOperator;
 }
-const IngressBooleanExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Evaluate: IngressBooleanToEvaluate, Operator: IngressBooleanOperator }),
-).annotate({ identifier: "IngressBooleanExpression" }) as any as S.Schema<IngressBooleanExpression>;
+const IngressBooleanExpression = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<IngressBooleanExpression>;
 export type PolicyCondition =
   | {
       StringExpression: IngressStringExpression;
@@ -1261,15 +1051,9 @@ export type PolicyCondition =
       TlsExpression?: never;
       BooleanExpression: IngressBooleanExpression;
     };
-const PolicyCondition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ StringExpression: IngressStringExpression }),
-  /*@__PURE__*/ S.Struct({ IpExpression: IngressIpv4Expression }),
-  /*@__PURE__*/ S.Struct({ Ipv6Expression: IngressIpv6Expression }),
-  /*@__PURE__*/ S.Struct({ TlsExpression: IngressTlsProtocolExpression }),
-  /*@__PURE__*/ S.Struct({ BooleanExpression: IngressBooleanExpression }),
-]);
+const PolicyCondition = /*@__PURE__*/ __L.at(__c8, 4);
 export type PolicyConditions = PolicyCondition[];
-const PolicyConditions = /*@__PURE__*/ S.Array(PolicyCondition);
+const PolicyConditions = /*@__PURE__*/ __L.at(__c8, 5);
 export type AcceptAction = "ALLOW" | "DENY" | (string & {});
 const AcceptAction = S.String;
 
@@ -1277,11 +1061,9 @@ export interface PolicyStatement {
   Conditions: PolicyCondition[];
   Action: AcceptAction;
 }
-const PolicyStatement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Conditions: PolicyConditions, Action: AcceptAction }),
-).annotate({ identifier: "PolicyStatement" }) as any as S.Schema<PolicyStatement>;
+const PolicyStatement = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<PolicyStatement>;
 export type PolicyStatementList = PolicyStatement[];
-const PolicyStatementList = /*@__PURE__*/ S.Array(PolicyStatement);
+const PolicyStatementList = /*@__PURE__*/ __L.at(__c8, 7);
 export type MaxMessageSizeBytes = number;
 export interface CreateTrafficPolicyRequest {
   ClientToken?: string;
@@ -1291,115 +1073,85 @@ export interface CreateTrafficPolicyRequest {
   MaxMessageSizeBytes?: number;
   Tags?: Tag[];
 }
-const CreateTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    TrafficPolicyName: S.String,
-    PolicyStatements: PolicyStatementList,
-    DefaultAction: AcceptAction,
-    MaxMessageSizeBytes: S.optional(S.Number),
-    Tags: S.optional(TagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateTrafficPolicyRequest",
-}) as any as S.Schema<CreateTrafficPolicyRequest>;
+const CreateTrafficPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<CreateTrafficPolicyRequest>;
 export interface CreateTrafficPolicyResponse {
   TrafficPolicyId: string;
 }
-const CreateTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicyId: S.String }),
-).annotate({
-  identifier: "CreateTrafficPolicyResponse",
-}) as any as S.Schema<CreateTrafficPolicyResponse>;
+const CreateTrafficPolicyResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreateTrafficPolicyResponse>;
 export interface DeleteAddonInstanceRequest {
   AddonInstanceId: string;
 }
-const DeleteAddonInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddonInstanceId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteAddonInstanceRequest",
-}) as any as S.Schema<DeleteAddonInstanceRequest>;
+const DeleteAddonInstanceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteAddonInstanceRequest>;
 export interface DeleteAddonInstanceResponse {}
 const DeleteAddonInstanceResponse =
   NoAuthentication as any as S.Schema<DeleteAddonInstanceResponse>;
 export interface DeleteAddonSubscriptionRequest {
   AddonSubscriptionId: string;
 }
-const DeleteAddonSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddonSubscriptionId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteAddonSubscriptionRequest",
-}) as any as S.Schema<DeleteAddonSubscriptionRequest>;
+const DeleteAddonSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteAddonSubscriptionRequest>;
 export interface DeleteAddonSubscriptionResponse {}
-const DeleteAddonSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAddonSubscriptionResponse",
-}) as any as S.Schema<DeleteAddonSubscriptionResponse>;
+const DeleteAddonSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteAddonSubscriptionResponse>;
 export interface DeleteAddressListRequest {
   AddressListId: string;
 }
-const DeleteAddressListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddressListId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteAddressListRequest" }) as any as S.Schema<DeleteAddressListRequest>;
+const DeleteAddressListRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteAddressListRequest>;
 export interface DeleteAddressListResponse {}
 const DeleteAddressListResponse = NoAuthentication as any as S.Schema<DeleteAddressListResponse>;
 export interface DeleteArchiveRequest {
   ArchiveId: string;
 }
-const DeleteArchiveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ArchiveId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteArchiveRequest" }) as any as S.Schema<DeleteArchiveRequest>;
+const DeleteArchiveRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<DeleteArchiveRequest>;
 export interface DeleteArchiveResponse {}
 const DeleteArchiveResponse = NoAuthentication as any as S.Schema<DeleteArchiveResponse>;
 export interface DeleteIngressPointRequest {
   IngressPointId: string;
 }
-const DeleteIngressPointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IngressPointId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteIngressPointRequest",
-}) as any as S.Schema<DeleteIngressPointRequest>;
+const DeleteIngressPointRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteIngressPointRequest>;
 export interface DeleteIngressPointResponse {}
 const DeleteIngressPointResponse = NoAuthentication as any as S.Schema<DeleteIngressPointResponse>;
 export interface DeleteRelayRequest {
   RelayId: string;
 }
-const DeleteRelayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RelayId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteRelayRequest" }) as any as S.Schema<DeleteRelayRequest>;
+const DeleteRelayRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<DeleteRelayRequest>;
 export interface DeleteRelayResponse {}
 const DeleteRelayResponse = NoAuthentication as any as S.Schema<DeleteRelayResponse>;
 export interface DeleteRuleSetRequest {
   RuleSetId: string;
 }
-const DeleteRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteRuleSetRequest" }) as any as S.Schema<DeleteRuleSetRequest>;
+const DeleteRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeleteRuleSetRequest>;
 export interface DeleteRuleSetResponse {}
 const DeleteRuleSetResponse = NoAuthentication as any as S.Schema<DeleteRuleSetResponse>;
 export interface DeleteTrafficPolicyRequest {
   TrafficPolicyId: string;
 }
-const DeleteTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicyId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteTrafficPolicyRequest",
-}) as any as S.Schema<DeleteTrafficPolicyRequest>;
+const DeleteTrafficPolicyRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteTrafficPolicyRequest>;
 export interface DeleteTrafficPolicyResponse {}
 const DeleteTrafficPolicyResponse =
   NoAuthentication as any as S.Schema<DeleteTrafficPolicyResponse>;
@@ -1408,27 +1160,22 @@ export interface DeregisterMemberFromAddressListRequest {
   AddressListId: string;
   Address: string | redacted.Redacted<string>;
 }
-const DeregisterMemberFromAddressListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeregisterMemberFromAddressListRequest",
-}) as any as S.Schema<DeregisterMemberFromAddressListRequest>;
+const DeregisterMemberFromAddressListRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeregisterMemberFromAddressListRequest>;
 export interface DeregisterMemberFromAddressListResponse {}
-const DeregisterMemberFromAddressListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeregisterMemberFromAddressListResponse",
-}) as any as S.Schema<DeregisterMemberFromAddressListResponse>;
+const DeregisterMemberFromAddressListResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DeregisterMemberFromAddressListResponse>;
 export interface GetAddonInstanceRequest {
   AddonInstanceId: string;
 }
-const GetAddonInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddonInstanceId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetAddonInstanceRequest" }) as any as S.Schema<GetAddonInstanceRequest>;
+const GetAddonInstanceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetAddonInstanceRequest>;
 export type AddonInstanceArn = string;
 export interface GetAddonInstanceResponse {
   AddonSubscriptionId?: string;
@@ -1436,47 +1183,34 @@ export interface GetAddonInstanceResponse {
   AddonInstanceArn?: string;
   CreatedTimestamp?: Date;
 }
-const GetAddonInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AddonSubscriptionId: S.optional(S.String),
-    AddonName: S.optional(S.String),
-    AddonInstanceArn: S.optional(S.String),
-    CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "GetAddonInstanceResponse" }) as any as S.Schema<GetAddonInstanceResponse>;
+const GetAddonInstanceResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetAddonInstanceResponse>;
 export interface GetAddonSubscriptionRequest {
   AddonSubscriptionId: string;
 }
-const GetAddonSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddonSubscriptionId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAddonSubscriptionRequest",
-}) as any as S.Schema<GetAddonSubscriptionRequest>;
+const GetAddonSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetAddonSubscriptionRequest>;
 export type AddonSubscriptionArn = string;
 export interface GetAddonSubscriptionResponse {
   AddonName?: string;
   AddonSubscriptionArn?: string;
   CreatedTimestamp?: Date;
 }
-const GetAddonSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AddonName: S.optional(S.String),
-    AddonSubscriptionArn: S.optional(S.String),
-    CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "GetAddonSubscriptionResponse",
-}) as any as S.Schema<GetAddonSubscriptionResponse>;
+const GetAddonSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetAddonSubscriptionResponse>;
 export interface GetAddressListRequest {
   AddressListId: string;
 }
-const GetAddressListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddressListId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetAddressListRequest" }) as any as S.Schema<GetAddressListRequest>;
+const GetAddressListRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetAddressListRequest>;
 export interface GetAddressListResponse {
   AddressListId: string;
   AddressListArn: string;
@@ -1484,25 +1218,17 @@ export interface GetAddressListResponse {
   CreatedTimestamp: Date;
   LastUpdatedTimestamp: Date;
 }
-const GetAddressListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AddressListId: S.String,
-    AddressListArn: S.String,
-    AddressListName: S.String,
-    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    LastUpdatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "GetAddressListResponse" }) as any as S.Schema<GetAddressListResponse>;
+const GetAddressListResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetAddressListResponse>;
 export interface GetAddressListImportJobRequest {
   JobId: string;
 }
-const GetAddressListImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetAddressListImportJobRequest",
-}) as any as S.Schema<GetAddressListImportJobRequest>;
+const GetAddressListImportJobRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetAddressListImportJobRequest>;
 export type ImportJobStatus =
   | "CREATED"
   | "PROCESSING"
@@ -1528,32 +1254,14 @@ export interface GetAddressListImportJobResponse {
   CompletedTimestamp?: Date;
   Error?: string;
 }
-const GetAddressListImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JobId: S.String,
-    Name: S.String,
-    Status: ImportJobStatus,
-    PreSignedUrl: SensitiveString,
-    ImportedItemsCount: S.optional(S.Number),
-    FailedItemsCount: S.optional(S.Number),
-    ImportDataFormat: ImportDataFormat,
-    AddressListId: S.String,
-    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CompletedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Error: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAddressListImportJobResponse",
-}) as any as S.Schema<GetAddressListImportJobResponse>;
+const GetAddressListImportJobResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetAddressListImportJobResponse>;
 export interface GetArchiveRequest {
   ArchiveId: string;
 }
-const GetArchiveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ArchiveId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetArchiveRequest" }) as any as S.Schema<GetArchiveRequest>;
+const GetArchiveRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<GetArchiveRequest>;
 export type ArchiveArn = string;
 export type ArchiveState = "ACTIVE" | "PENDING_DELETION" | (string & {});
 const ArchiveState = S.String;
@@ -1568,27 +1276,15 @@ export interface GetArchiveResponse {
   LastUpdatedTimestamp?: Date;
   KmsKeyArn?: string;
 }
-const GetArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveId: S.String,
-    ArchiveName: S.String,
-    ArchiveArn: S.String,
-    ArchiveState: ArchiveState,
-    Retention: ArchiveRetention,
-    CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    KmsKeyArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetArchiveResponse" }) as any as S.Schema<GetArchiveResponse>;
+const GetArchiveResponse = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetArchiveResponse>;
 export type ExportId = string;
 export interface GetArchiveExportRequest {
   ExportId: string;
 }
-const GetArchiveExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetArchiveExportRequest" }) as any as S.Schema<GetArchiveExportRequest>;
+const GetArchiveExportRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetArchiveExportRequest>;
 export type ArchiveId = string;
 export type ArchiveStringEmailAttribute =
   | "TO"
@@ -1611,13 +1307,10 @@ export interface ArchiveStringExpression {
   Operator: ArchiveStringOperator;
   Values: string[];
 }
-const ArchiveStringExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Evaluate: ArchiveStringToEvaluate,
-    Operator: ArchiveStringOperator,
-    Values: StringValueList,
-  }),
-).annotate({ identifier: "ArchiveStringExpression" }) as any as S.Schema<ArchiveStringExpression>;
+const ArchiveStringExpression = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ArchiveStringExpression>;
 export type ArchiveBooleanEmailAttribute = "HAS_ATTACHMENTS" | (string & {});
 export type ArchiveBooleanToEvaluate = { Attribute: ArchiveBooleanEmailAttribute };
 const ArchiveBooleanToEvaluate = RuleNumberToEvaluate as any as S.Schema<ArchiveBooleanToEvaluate>;
@@ -1628,42 +1321,32 @@ export interface ArchiveBooleanExpression {
   Evaluate: ArchiveBooleanToEvaluate;
   Operator: ArchiveBooleanOperator;
 }
-const ArchiveBooleanExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Evaluate: ArchiveBooleanToEvaluate, Operator: ArchiveBooleanOperator }),
-).annotate({ identifier: "ArchiveBooleanExpression" }) as any as S.Schema<ArchiveBooleanExpression>;
+const ArchiveBooleanExpression = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ArchiveBooleanExpression>;
 export type ArchiveFilterCondition =
   | { StringExpression: ArchiveStringExpression; BooleanExpression?: never }
   | { StringExpression?: never; BooleanExpression: ArchiveBooleanExpression };
-const ArchiveFilterCondition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ StringExpression: ArchiveStringExpression }),
-  /*@__PURE__*/ S.Struct({ BooleanExpression: ArchiveBooleanExpression }),
-]);
+const ArchiveFilterCondition = /*@__PURE__*/ __L.at(__c12, 2);
 export type ArchiveFilterConditions = ArchiveFilterCondition[];
-const ArchiveFilterConditions = /*@__PURE__*/ S.Array(ArchiveFilterCondition);
+const ArchiveFilterConditions = /*@__PURE__*/ __L.at(__c12, 3);
 export interface ArchiveFilters {
   Include?: ArchiveFilterCondition[];
   Unless?: ArchiveFilterCondition[];
 }
-const ArchiveFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Include: S.optional(ArchiveFilterConditions),
-    Unless: S.optional(ArchiveFilterConditions),
-  }),
-).annotate({ identifier: "ArchiveFilters" }) as any as S.Schema<ArchiveFilters>;
+const ArchiveFilters = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ArchiveFilters>;
 export type ExportMaxResults = number;
 export type S3Location = string;
 export interface S3ExportDestinationConfiguration {
   S3Location?: string;
 }
-const S3ExportDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Location: S.optional(S.String) }),
-).annotate({
-  identifier: "S3ExportDestinationConfiguration",
-}) as any as S.Schema<S3ExportDestinationConfiguration>;
+const S3ExportDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<S3ExportDestinationConfiguration>;
 export type ExportDestinationConfiguration = { S3: S3ExportDestinationConfiguration };
-const ExportDestinationConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ S3: S3ExportDestinationConfiguration }),
-]);
+const ExportDestinationConfiguration = /*@__PURE__*/ __L.at(__c12, 6);
 export type ExportState =
   | "QUEUED"
   | "PREPROCESSING"
@@ -1680,14 +1363,7 @@ export interface ExportStatus {
   State?: ExportState;
   ErrorMessage?: string;
 }
-const ExportStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubmissionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CompletionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    State: S.optional(ExportState),
-    ErrorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExportStatus" }) as any as S.Schema<ExportStatus>;
+const ExportStatus = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ExportStatus>;
 export interface GetArchiveExportResponse {
   ArchiveId?: string;
   Filters?: ArchiveFilters;
@@ -1697,26 +1373,18 @@ export interface GetArchiveExportResponse {
   ExportDestinationConfiguration?: ExportDestinationConfiguration;
   Status?: ExportStatus;
 }
-const GetArchiveExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveId: S.optional(S.String),
-    Filters: S.optional(ArchiveFilters),
-    FromTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ToTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    MaxResults: S.optional(S.Number),
-    ExportDestinationConfiguration: S.optional(ExportDestinationConfiguration),
-    Status: S.optional(ExportStatus),
-  }),
-).annotate({ identifier: "GetArchiveExportResponse" }) as any as S.Schema<GetArchiveExportResponse>;
+const GetArchiveExportResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetArchiveExportResponse>;
 export type ArchivedMessageId = string;
 export interface GetArchiveMessageRequest {
   ArchivedMessageId: string;
 }
-const GetArchiveMessageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ArchivedMessageId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetArchiveMessageRequest" }) as any as S.Schema<GetArchiveMessageRequest>;
+const GetArchiveMessageRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetArchiveMessageRequest>;
 export type S3PresignedURL = string;
 export type SenderIpAddress = string | redacted.Redacted<string>;
 export interface Metadata {
@@ -1734,84 +1402,50 @@ export interface Metadata {
   ConfigurationSet?: string;
   SourceArn?: string;
 }
-const Metadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    IngressPointId: S.optional(S.String),
-    TrafficPolicyId: S.optional(S.String),
-    RuleSetId: S.optional(S.String),
-    SenderHostname: S.optional(S.String),
-    SenderIpAddress: S.optional(SensitiveString),
-    TlsCipherSuite: S.optional(S.String),
-    TlsProtocol: S.optional(S.String),
-    SendingMethod: S.optional(S.String),
-    SourceIdentity: S.optional(S.String),
-    SendingPool: S.optional(S.String),
-    ConfigurationSet: S.optional(S.String),
-    SourceArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
+const Metadata = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<Metadata>;
 export interface Envelope {
   Helo?: string;
   From?: string;
   To?: string[];
 }
-const Envelope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Helo: S.optional(S.String), From: S.optional(S.String), To: S.optional(StringList) }),
-).annotate({ identifier: "Envelope" }) as any as S.Schema<Envelope>;
+const Envelope = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<Envelope>;
 export interface GetArchiveMessageResponse {
   MessageDownloadLink?: string;
   Metadata?: Metadata;
   Envelope?: Envelope;
 }
-const GetArchiveMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MessageDownloadLink: S.optional(S.String),
-    Metadata: S.optional(Metadata),
-    Envelope: S.optional(Envelope),
-  }),
-).annotate({
-  identifier: "GetArchiveMessageResponse",
-}) as any as S.Schema<GetArchiveMessageResponse>;
+const GetArchiveMessageResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetArchiveMessageResponse>;
 export interface GetArchiveMessageContentRequest {
   ArchivedMessageId: string;
 }
-const GetArchiveMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ArchivedMessageId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetArchiveMessageContentRequest",
-}) as any as S.Schema<GetArchiveMessageContentRequest>;
+const GetArchiveMessageContentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetArchiveMessageContentRequest>;
 export interface MessageBody {
   Text?: string;
   Html?: string;
   MessageMalformed?: boolean;
 }
-const MessageBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Text: S.optional(S.String),
-    Html: S.optional(S.String),
-    MessageMalformed: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MessageBody" }) as any as S.Schema<MessageBody>;
+const MessageBody = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<MessageBody>;
 export interface GetArchiveMessageContentResponse {
   Body?: MessageBody;
 }
-const GetArchiveMessageContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Body: S.optional(MessageBody) }),
-).annotate({
-  identifier: "GetArchiveMessageContentResponse",
-}) as any as S.Schema<GetArchiveMessageContentResponse>;
+const GetArchiveMessageContentResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetArchiveMessageContentResponse>;
 export type SearchId = string;
 export interface GetArchiveSearchRequest {
   SearchId: string;
 }
-const GetArchiveSearchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SearchId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetArchiveSearchRequest" }) as any as S.Schema<GetArchiveSearchRequest>;
+const GetArchiveSearchRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetArchiveSearchRequest>;
 export type SearchMaxResults = number;
 export type SearchState =
   | "QUEUED"
@@ -1835,26 +1469,17 @@ export interface GetArchiveSearchResponse {
   MaxResults?: number;
   Status?: SearchStatus;
 }
-const GetArchiveSearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveId: S.optional(S.String),
-    Filters: S.optional(ArchiveFilters),
-    FromTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ToTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    MaxResults: S.optional(S.Number),
-    Status: S.optional(SearchStatus),
-  }),
-).annotate({ identifier: "GetArchiveSearchResponse" }) as any as S.Schema<GetArchiveSearchResponse>;
+const GetArchiveSearchResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetArchiveSearchResponse>;
 export interface GetArchiveSearchResultsRequest {
   SearchId: string;
 }
-const GetArchiveSearchResultsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SearchId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetArchiveSearchResultsRequest",
-}) as any as S.Schema<GetArchiveSearchResultsRequest>;
+const GetArchiveSearchResultsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetArchiveSearchResultsRequest>;
 export type EmailReceivedHeadersList = string[];
 const EmailReceivedHeadersList =
   RuleAddressListArnList as any as S.Schema<EmailReceivedHeadersList>;
@@ -1879,39 +1504,16 @@ export interface Row {
   Envelope?: Envelope;
   SourceArn?: string;
 }
-const Row = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchivedMessageId: S.optional(S.String),
-    ReceivedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Date: S.optional(S.String),
-    To: S.optional(S.String),
-    From: S.optional(S.String),
-    Cc: S.optional(S.String),
-    Subject: S.optional(S.String),
-    MessageId: S.optional(S.String),
-    HasAttachments: S.optional(S.Boolean),
-    ReceivedHeaders: S.optional(EmailReceivedHeadersList),
-    InReplyTo: S.optional(S.String),
-    XMailer: S.optional(S.String),
-    XOriginalMailer: S.optional(S.String),
-    XPriority: S.optional(S.String),
-    IngressPointId: S.optional(S.String),
-    SenderHostname: S.optional(S.String),
-    SenderIpAddress: S.optional(SensitiveString),
-    Envelope: S.optional(Envelope),
-    SourceArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
+const Row = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<Row>;
 export type RowsList = Row[];
-const RowsList = /*@__PURE__*/ S.Array(Row);
+const RowsList = /*@__PURE__*/ __L.at(__c14, 4);
 export interface GetArchiveSearchResultsResponse {
   Rows?: Row[];
 }
-const GetArchiveSearchResultsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Rows: S.optional(RowsList) }),
-).annotate({
-  identifier: "GetArchiveSearchResultsResponse",
-}) as any as S.Schema<GetArchiveSearchResultsResponse>;
+const GetArchiveSearchResultsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetArchiveSearchResultsResponse>;
 export type TrustStoreResponseOption = "EXCLUDE" | "INCLUDE" | (string & {});
 const TrustStoreResponseOption = S.String;
 
@@ -1919,12 +1521,10 @@ export interface GetIngressPointRequest {
   IngressPointId: string;
   IncludeTrustStoreContents?: TrustStoreResponseOption;
 }
-const GetIngressPointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IngressPointId: S.String,
-    IncludeTrustStoreContents: S.optional(TrustStoreResponseOption),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetIngressPointRequest" }) as any as S.Schema<GetIngressPointRequest>;
+const GetIngressPointRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetIngressPointRequest>;
 export type IngressPointArn = string;
 export type IngressPointStatus =
   | "PROVISIONING"
@@ -1943,31 +1543,19 @@ export interface IngressPointPasswordConfiguration {
   PreviousSmtpPasswordVersion?: string;
   PreviousSmtpPasswordExpiryTimestamp?: Date;
 }
-const IngressPointPasswordConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SmtpPasswordVersion: S.optional(S.String),
-    PreviousSmtpPasswordVersion: S.optional(S.String),
-    PreviousSmtpPasswordExpiryTimestamp: S.optional(
-      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ),
-  }),
-).annotate({
-  identifier: "IngressPointPasswordConfiguration",
-}) as any as S.Schema<IngressPointPasswordConfiguration>;
+const IngressPointPasswordConfiguration = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<IngressPointPasswordConfiguration>;
 export interface IngressPointAuthConfiguration {
   IngressPointPasswordConfiguration?: IngressPointPasswordConfiguration;
   SecretArn?: string;
   TlsAuthConfiguration?: TlsAuthConfiguration;
 }
-const IngressPointAuthConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IngressPointPasswordConfiguration: S.optional(IngressPointPasswordConfiguration),
-    SecretArn: S.optional(S.String),
-    TlsAuthConfiguration: S.optional(TlsAuthConfiguration),
-  }),
-).annotate({
-  identifier: "IngressPointAuthConfiguration",
-}) as any as S.Schema<IngressPointAuthConfiguration>;
+const IngressPointAuthConfiguration = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<IngressPointAuthConfiguration>;
 export interface GetIngressPointResponse {
   IngressPointId: string;
   IngressPointName: string;
@@ -1983,54 +1571,30 @@ export interface GetIngressPointResponse {
   CreatedTimestamp?: Date;
   LastUpdatedTimestamp?: Date;
 }
-const GetIngressPointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IngressPointId: S.String,
-    IngressPointName: S.String,
-    IngressPointArn: S.optional(S.String),
-    Status: S.optional(IngressPointStatus),
-    Type: S.optional(IngressPointType),
-    ARecord: S.optional(S.String),
-    RuleSetId: S.optional(S.String),
-    TrafficPolicyId: S.optional(S.String),
-    IngressPointAuthConfiguration: S.optional(IngressPointAuthConfiguration),
-    NetworkConfiguration: S.optional(NetworkConfiguration),
-    TlsPolicy: S.optional(TlsPolicy),
-    CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "GetIngressPointResponse" }) as any as S.Schema<GetIngressPointResponse>;
+const GetIngressPointResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetIngressPointResponse>;
 export interface GetMemberOfAddressListRequest {
   AddressListId: string;
   Address: string | redacted.Redacted<string>;
 }
-const GetMemberOfAddressListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetMemberOfAddressListRequest",
-}) as any as S.Schema<GetMemberOfAddressListRequest>;
+const GetMemberOfAddressListRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GetMemberOfAddressListRequest>;
 export interface GetMemberOfAddressListResponse {
   Address: string | redacted.Redacted<string>;
   CreatedTimestamp: Date;
 }
-const GetMemberOfAddressListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: SensitiveString,
-    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "GetMemberOfAddressListResponse",
-}) as any as S.Schema<GetMemberOfAddressListResponse>;
+const GetMemberOfAddressListResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GetMemberOfAddressListResponse>;
 export interface GetRelayRequest {
   RelayId: string;
 }
-const GetRelayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RelayId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetRelayRequest" }) as any as S.Schema<GetRelayRequest>;
+const GetRelayRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<GetRelayRequest>;
 export type RelayArn = string;
 export interface GetRelayResponse {
   RelayId: string;
@@ -2042,26 +1606,11 @@ export interface GetRelayResponse {
   CreatedTimestamp?: Date;
   LastModifiedTimestamp?: Date;
 }
-const GetRelayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RelayId: S.String,
-    RelayArn: S.optional(S.String),
-    RelayName: S.optional(S.String),
-    ServerName: S.optional(S.String),
-    ServerPort: S.optional(S.Number),
-    Authentication: S.optional(RelayAuthentication),
-    CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "GetRelayResponse" }) as any as S.Schema<GetRelayResponse>;
+const GetRelayResponse = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GetRelayResponse>;
 export interface GetRuleSetRequest {
   RuleSetId: string;
 }
-const GetRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSetId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetRuleSetRequest" }) as any as S.Schema<GetRuleSetRequest>;
+const GetRuleSetRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<GetRuleSetRequest>;
 export type RuleSetArn = string;
 export interface GetRuleSetResponse {
   RuleSetId: string;
@@ -2071,24 +1620,14 @@ export interface GetRuleSetResponse {
   LastModificationDate: Date;
   Rules: Rule[];
 }
-const GetRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleSetId: S.String,
-    RuleSetArn: S.String,
-    RuleSetName: S.String,
-    CreatedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    LastModificationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    Rules: Rules,
-  }),
-).annotate({ identifier: "GetRuleSetResponse" }) as any as S.Schema<GetRuleSetResponse>;
+const GetRuleSetResponse = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<GetRuleSetResponse>;
 export interface GetTrafficPolicyRequest {
   TrafficPolicyId: string;
 }
-const GetTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicyId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetTrafficPolicyRequest" }) as any as S.Schema<GetTrafficPolicyRequest>;
+const GetTrafficPolicyRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetTrafficPolicyRequest>;
 export type TrafficPolicyArn = string;
 export interface GetTrafficPolicyResponse {
   TrafficPolicyName: string;
@@ -2100,31 +1639,20 @@ export interface GetTrafficPolicyResponse {
   CreatedTimestamp?: Date;
   LastUpdatedTimestamp?: Date;
 }
-const GetTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicyName: S.String,
-    TrafficPolicyId: S.String,
-    TrafficPolicyArn: S.optional(S.String),
-    PolicyStatements: S.optional(PolicyStatementList),
-    MaxMessageSizeBytes: S.optional(S.Number),
-    DefaultAction: S.optional(AcceptAction),
-    CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "GetTrafficPolicyResponse" }) as any as S.Schema<GetTrafficPolicyResponse>;
+const GetTrafficPolicyResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetTrafficPolicyResponse>;
 export type PaginationToken = string;
 export type PageSize = number;
 export interface ListAddonInstancesRequest {
   NextToken?: string;
   PageSize?: number;
 }
-const ListAddonInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListAddonInstancesRequest",
-}) as any as S.Schema<ListAddonInstancesRequest>;
+const ListAddonInstancesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListAddonInstancesRequest>;
 export interface AddonInstance {
   AddonInstanceId?: string;
   AddonSubscriptionId?: string;
@@ -2132,76 +1660,51 @@ export interface AddonInstance {
   AddonInstanceArn?: string;
   CreatedTimestamp?: Date;
 }
-const AddonInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AddonInstanceId: S.optional(S.String),
-    AddonSubscriptionId: S.optional(S.String),
-    AddonName: S.optional(S.String),
-    AddonInstanceArn: S.optional(S.String),
-    CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "AddonInstance" }) as any as S.Schema<AddonInstance>;
+const AddonInstance = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<AddonInstance>;
 export type AddonInstances = AddonInstance[];
-const AddonInstances = /*@__PURE__*/ S.Array(AddonInstance);
+const AddonInstances = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ListAddonInstancesResponse {
   AddonInstances?: AddonInstance[];
   NextToken?: string;
 }
-const ListAddonInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddonInstances: S.optional(AddonInstances), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAddonInstancesResponse",
-}) as any as S.Schema<ListAddonInstancesResponse>;
+const ListAddonInstancesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListAddonInstancesResponse>;
 export interface ListAddonSubscriptionsRequest {
   NextToken?: string;
   PageSize?: number;
 }
-const ListAddonSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListAddonSubscriptionsRequest",
-}) as any as S.Schema<ListAddonSubscriptionsRequest>;
+const ListAddonSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListAddonSubscriptionsRequest>;
 export interface AddonSubscription {
   AddonSubscriptionId?: string;
   AddonName?: string;
   AddonSubscriptionArn?: string;
   CreatedTimestamp?: Date;
 }
-const AddonSubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AddonSubscriptionId: S.optional(S.String),
-    AddonName: S.optional(S.String),
-    AddonSubscriptionArn: S.optional(S.String),
-    CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "AddonSubscription" }) as any as S.Schema<AddonSubscription>;
+const AddonSubscription = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<AddonSubscription>;
 export type AddonSubscriptions = AddonSubscription[];
-const AddonSubscriptions = /*@__PURE__*/ S.Array(AddonSubscription);
+const AddonSubscriptions = /*@__PURE__*/ __L.at(__c17, 0);
 export interface ListAddonSubscriptionsResponse {
   AddonSubscriptions?: AddonSubscription[];
   NextToken?: string;
 }
-const ListAddonSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddonSubscriptions: S.optional(AddonSubscriptions), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAddonSubscriptionsResponse",
-}) as any as S.Schema<ListAddonSubscriptionsResponse>;
+const ListAddonSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListAddonSubscriptionsResponse>;
 export interface ListAddressListImportJobsRequest {
   AddressListId: string;
   NextToken?: string;
   PageSize?: number;
 }
-const ListAddressListImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AddressListId: S.String,
-    NextToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAddressListImportJobsRequest",
-}) as any as S.Schema<ListAddressListImportJobsRequest>;
+const ListAddressListImportJobsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListAddressListImportJobsRequest>;
 export interface ImportJob {
   JobId: string;
   Name: string;
@@ -2216,42 +1719,25 @@ export interface ImportJob {
   CompletedTimestamp?: Date;
   Error?: string;
 }
-const ImportJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JobId: S.String,
-    Name: S.String,
-    Status: ImportJobStatus,
-    PreSignedUrl: SensitiveString,
-    ImportedItemsCount: S.optional(S.Number),
-    FailedItemsCount: S.optional(S.Number),
-    ImportDataFormat: ImportDataFormat,
-    AddressListId: S.String,
-    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CompletedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Error: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImportJob" }) as any as S.Schema<ImportJob>;
+const ImportJob = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ImportJob>;
 export type ImportJobs = ImportJob[];
-const ImportJobs = /*@__PURE__*/ S.Array(ImportJob);
+const ImportJobs = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ListAddressListImportJobsResponse {
   ImportJobs: ImportJob[];
   NextToken?: string;
 }
-const ListAddressListImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ImportJobs: ImportJobs, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAddressListImportJobsResponse",
-}) as any as S.Schema<ListAddressListImportJobsResponse>;
+const ListAddressListImportJobsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListAddressListImportJobsResponse>;
 export interface ListAddressListsRequest {
   NextToken?: string;
   PageSize?: number;
 }
-const ListAddressListsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListAddressListsRequest" }) as any as S.Schema<ListAddressListsRequest>;
+const ListAddressListsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListAddressListsRequest>;
 export interface AddressList {
   AddressListId: string;
   AddressListArn: string;
@@ -2261,119 +1747,93 @@ export interface AddressList {
 }
 const AddressList = GetAddressListResponse as any as S.Schema<AddressList>;
 export type AddressLists = AddressList[];
-const AddressLists = /*@__PURE__*/ S.Array(AddressList);
+const AddressLists = /*@__PURE__*/ __L.at(__c17, 7);
 export interface ListAddressListsResponse {
   AddressLists: AddressList[];
   NextToken?: string;
 }
-const ListAddressListsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddressLists: AddressLists, NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListAddressListsResponse" }) as any as S.Schema<ListAddressListsResponse>;
+const ListAddressListsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListAddressListsResponse>;
 export interface ListArchiveExportsRequest {
   ArchiveId: string;
   NextToken?: string;
   PageSize?: number;
 }
-const ListArchiveExportsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveId: S.String,
-    NextToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListArchiveExportsRequest",
-}) as any as S.Schema<ListArchiveExportsRequest>;
+const ListArchiveExportsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListArchiveExportsRequest>;
 export interface ExportSummary {
   ExportId?: string;
   Status?: ExportStatus;
 }
-const ExportSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportId: S.optional(S.String), Status: S.optional(ExportStatus) }),
-).annotate({ identifier: "ExportSummary" }) as any as S.Schema<ExportSummary>;
+const ExportSummary = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<ExportSummary>;
 export type ExportSummaryList = ExportSummary[];
-const ExportSummaryList = /*@__PURE__*/ S.Array(ExportSummary);
+const ExportSummaryList = /*@__PURE__*/ __L.at(__c18, 3);
 export interface ListArchiveExportsResponse {
   Exports?: ExportSummary[];
   NextToken?: string;
 }
-const ListArchiveExportsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Exports: S.optional(ExportSummaryList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListArchiveExportsResponse",
-}) as any as S.Schema<ListArchiveExportsResponse>;
+const ListArchiveExportsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListArchiveExportsResponse>;
 export interface ListArchivesRequest {
   NextToken?: string;
   PageSize?: number;
 }
-const ListArchivesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListArchivesRequest" }) as any as S.Schema<ListArchivesRequest>;
+const ListArchivesRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<ListArchivesRequest>;
 export interface Archive {
   ArchiveId: string;
   ArchiveName?: string;
   ArchiveState?: ArchiveState;
   LastUpdatedTimestamp?: Date;
 }
-const Archive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveId: S.String,
-    ArchiveName: S.optional(S.String),
-    ArchiveState: S.optional(ArchiveState),
-    LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "Archive" }) as any as S.Schema<Archive>;
+const Archive = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<Archive>;
 export type ArchivesList = Archive[];
-const ArchivesList = /*@__PURE__*/ S.Array(Archive);
+const ArchivesList = /*@__PURE__*/ __L.at(__c18, 7);
 export interface ListArchivesResponse {
   Archives: Archive[];
   NextToken?: string;
 }
-const ListArchivesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Archives: ArchivesList, NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListArchivesResponse" }) as any as S.Schema<ListArchivesResponse>;
+const ListArchivesResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListArchivesResponse>;
 export interface ListArchiveSearchesRequest {
   ArchiveId: string;
   NextToken?: string;
   PageSize?: number;
 }
-const ListArchiveSearchesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveId: S.String,
-    NextToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListArchiveSearchesRequest",
-}) as any as S.Schema<ListArchiveSearchesRequest>;
+const ListArchiveSearchesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListArchiveSearchesRequest>;
 export interface SearchSummary {
   SearchId?: string;
   Status?: SearchStatus;
 }
-const SearchSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SearchId: S.optional(S.String), Status: S.optional(SearchStatus) }),
-).annotate({ identifier: "SearchSummary" }) as any as S.Schema<SearchSummary>;
+const SearchSummary = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<SearchSummary>;
 export type SearchSummaryList = SearchSummary[];
-const SearchSummaryList = /*@__PURE__*/ S.Array(SearchSummary);
+const SearchSummaryList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface ListArchiveSearchesResponse {
   Searches?: SearchSummary[];
   NextToken?: string;
 }
-const ListArchiveSearchesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Searches: S.optional(SearchSummaryList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListArchiveSearchesResponse",
-}) as any as S.Schema<ListArchiveSearchesResponse>;
+const ListArchiveSearchesResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListArchiveSearchesResponse>;
 export interface ListIngressPointsRequest {
   PageSize?: number;
   NextToken?: string;
 }
-const ListIngressPointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PageSize: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListIngressPointsRequest" }) as any as S.Schema<ListIngressPointsRequest>;
+const ListIngressPointsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListIngressPointsRequest>;
 export interface IngressPoint {
   IngressPointName: string;
   IngressPointId: string;
@@ -2381,33 +1841,22 @@ export interface IngressPoint {
   Type: IngressPointType;
   ARecord?: string;
 }
-const IngressPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IngressPointName: S.String,
-    IngressPointId: S.String,
-    Status: IngressPointStatus,
-    Type: IngressPointType,
-    ARecord: S.optional(S.String),
-  }),
-).annotate({ identifier: "IngressPoint" }) as any as S.Schema<IngressPoint>;
+const IngressPoint = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<IngressPoint>;
 export type IngressPointsList = IngressPoint[];
-const IngressPointsList = /*@__PURE__*/ S.Array(IngressPoint);
+const IngressPointsList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListIngressPointsResponse {
   IngressPoints?: IngressPoint[];
   NextToken?: string;
 }
-const ListIngressPointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IngressPoints: S.optional(IngressPointsList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListIngressPointsResponse",
-}) as any as S.Schema<ListIngressPointsResponse>;
+const ListIngressPointsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListIngressPointsResponse>;
 export type AddressPrefix = string | redacted.Redacted<string>;
 export interface AddressFilter {
   AddressPrefix?: string | redacted.Redacted<string>;
 }
-const AddressFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddressPrefix: S.optional(SensitiveString) }),
-).annotate({ identifier: "AddressFilter" }) as any as S.Schema<AddressFilter>;
+const AddressFilter = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<AddressFilter>;
 export type AddressPageSize = number;
 export interface ListMembersOfAddressListRequest {
   AddressListId: string;
@@ -2415,170 +1864,121 @@ export interface ListMembersOfAddressListRequest {
   NextToken?: string;
   PageSize?: number;
 }
-const ListMembersOfAddressListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AddressListId: S.String,
-    Filter: S.optional(AddressFilter),
-    NextToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListMembersOfAddressListRequest",
-}) as any as S.Schema<ListMembersOfAddressListRequest>;
+const ListMembersOfAddressListRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListMembersOfAddressListRequest>;
 export interface SavedAddress {
   Address: string | redacted.Redacted<string>;
   CreatedTimestamp: Date;
 }
-const SavedAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: SensitiveString,
-    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "SavedAddress" }) as any as S.Schema<SavedAddress>;
+const SavedAddress = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<SavedAddress>;
 export type SavedAddresses = SavedAddress[];
-const SavedAddresses = /*@__PURE__*/ S.Array(SavedAddress);
+const SavedAddresses = /*@__PURE__*/ __L.at(__c20, 4);
 export interface ListMembersOfAddressListResponse {
   Addresses: SavedAddress[];
   NextToken?: string;
 }
-const ListMembersOfAddressListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Addresses: SavedAddresses, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListMembersOfAddressListResponse",
-}) as any as S.Schema<ListMembersOfAddressListResponse>;
+const ListMembersOfAddressListResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListMembersOfAddressListResponse>;
 export interface ListRelaysRequest {
   PageSize?: number;
   NextToken?: string;
 }
-const ListRelaysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PageSize: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListRelaysRequest" }) as any as S.Schema<ListRelaysRequest>;
+const ListRelaysRequest = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<ListRelaysRequest>;
 export interface Relay {
   RelayId?: string;
   RelayName?: string;
   LastModifiedTimestamp?: Date;
 }
-const Relay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RelayId: S.optional(S.String),
-    RelayName: S.optional(S.String),
-    LastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "Relay" }) as any as S.Schema<Relay>;
+const Relay = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<Relay>;
 export type Relays = Relay[];
-const Relays = /*@__PURE__*/ S.Array(Relay);
+const Relays = /*@__PURE__*/ __L.at(__c21, 0);
 export interface ListRelaysResponse {
   Relays: Relay[];
   NextToken?: string;
 }
-const ListRelaysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Relays: Relays, NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListRelaysResponse" }) as any as S.Schema<ListRelaysResponse>;
+const ListRelaysResponse = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<ListRelaysResponse>;
 export interface ListRuleSetsRequest {
   NextToken?: string;
   PageSize?: number;
 }
-const ListRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListRuleSetsRequest" }) as any as S.Schema<ListRuleSetsRequest>;
+const ListRuleSetsRequest = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<ListRuleSetsRequest>;
 export interface RuleSet {
   RuleSetId?: string;
   RuleSetName?: string;
   LastModificationDate?: Date;
 }
-const RuleSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleSetId: S.optional(S.String),
-    RuleSetName: S.optional(S.String),
-    LastModificationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "RuleSet" }) as any as S.Schema<RuleSet>;
+const RuleSet = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<RuleSet>;
 export type RuleSets = RuleSet[];
-const RuleSets = /*@__PURE__*/ S.Array(RuleSet);
+const RuleSets = /*@__PURE__*/ __L.at(__c21, 4);
 export interface ListRuleSetsResponse {
   RuleSets: RuleSet[];
   NextToken?: string;
 }
-const ListRuleSetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleSets: RuleSets, NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListRuleSetsResponse" }) as any as S.Schema<ListRuleSetsResponse>;
+const ListRuleSetsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ListRuleSetsResponse>;
 export type TaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: TagList }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTrafficPoliciesRequest {
   PageSize?: number;
   NextToken?: string;
 }
-const ListTrafficPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PageSize: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTrafficPoliciesRequest",
-}) as any as S.Schema<ListTrafficPoliciesRequest>;
+const ListTrafficPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListTrafficPoliciesRequest>;
 export interface TrafficPolicy {
   TrafficPolicyName: string;
   TrafficPolicyId: string;
   DefaultAction: AcceptAction;
 }
-const TrafficPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicyName: S.String, TrafficPolicyId: S.String, DefaultAction: AcceptAction }),
-).annotate({ identifier: "TrafficPolicy" }) as any as S.Schema<TrafficPolicy>;
+const TrafficPolicy = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<TrafficPolicy>;
 export type TrafficPolicyList = TrafficPolicy[];
-const TrafficPolicyList = /*@__PURE__*/ S.Array(TrafficPolicy);
+const TrafficPolicyList = /*@__PURE__*/ __L.at(__c22, 2);
 export interface ListTrafficPoliciesResponse {
   TrafficPolicies?: TrafficPolicy[];
   NextToken?: string;
 }
-const ListTrafficPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrafficPolicies: S.optional(TrafficPolicyList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListTrafficPoliciesResponse",
-}) as any as S.Schema<ListTrafficPoliciesResponse>;
+const ListTrafficPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListTrafficPoliciesResponse>;
 export interface RegisterMemberToAddressListRequest {
   AddressListId: string;
   Address: string | redacted.Redacted<string>;
 }
-const RegisterMemberToAddressListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RegisterMemberToAddressListRequest",
-}) as any as S.Schema<RegisterMemberToAddressListRequest>;
+const RegisterMemberToAddressListRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<RegisterMemberToAddressListRequest>;
 export interface RegisterMemberToAddressListResponse {}
 const RegisterMemberToAddressListResponse =
   DeregisterMemberFromAddressListResponse as any as S.Schema<RegisterMemberToAddressListResponse>;
 export interface StartAddressListImportJobRequest {
   JobId: string;
 }
-const StartAddressListImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartAddressListImportJobRequest",
-}) as any as S.Schema<StartAddressListImportJobRequest>;
+const StartAddressListImportJobRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<StartAddressListImportJobRequest>;
 export interface StartAddressListImportJobResponse {}
 const StartAddressListImportJobResponse =
   DeregisterMemberFromAddressListResponse as any as S.Schema<StartAddressListImportJobResponse>;
@@ -2591,27 +1991,17 @@ export interface StartArchiveExportRequest {
   ExportDestinationConfiguration: ExportDestinationConfiguration;
   IncludeMetadata?: boolean;
 }
-const StartArchiveExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveId: S.String,
-    Filters: S.optional(ArchiveFilters),
-    FromTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ToTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    MaxResults: S.optional(S.Number),
-    ExportDestinationConfiguration: ExportDestinationConfiguration,
-    IncludeMetadata: S.optional(S.Boolean),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "StartArchiveExportRequest",
-}) as any as S.Schema<StartArchiveExportRequest>;
+const StartArchiveExportRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<StartArchiveExportRequest>;
 export interface StartArchiveExportResponse {
   ExportId?: string;
 }
-const StartArchiveExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartArchiveExportResponse",
-}) as any as S.Schema<StartArchiveExportResponse>;
+const StartArchiveExportResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<StartArchiveExportResponse>;
 export interface StartArchiveSearchRequest {
   ArchiveId: string;
   Filters?: ArchiveFilters;
@@ -2619,67 +2009,50 @@ export interface StartArchiveSearchRequest {
   ToTimestamp: Date;
   MaxResults: number;
 }
-const StartArchiveSearchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveId: S.String,
-    Filters: S.optional(ArchiveFilters),
-    FromTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ToTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    MaxResults: S.Number,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "StartArchiveSearchRequest",
-}) as any as S.Schema<StartArchiveSearchRequest>;
+const StartArchiveSearchRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<StartArchiveSearchRequest>;
 export interface StartArchiveSearchResponse {
   SearchId?: string;
 }
-const StartArchiveSearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SearchId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartArchiveSearchResponse",
-}) as any as S.Schema<StartArchiveSearchResponse>;
+const StartArchiveSearchResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<StartArchiveSearchResponse>;
 export interface StopAddressListImportJobRequest {
   JobId: string;
 }
-const StopAddressListImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StopAddressListImportJobRequest",
-}) as any as S.Schema<StopAddressListImportJobRequest>;
+const StopAddressListImportJobRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<StopAddressListImportJobRequest>;
 export interface StopAddressListImportJobResponse {}
 const StopAddressListImportJobResponse =
   DeregisterMemberFromAddressListResponse as any as S.Schema<StopAddressListImportJobResponse>;
 export interface StopArchiveExportRequest {
   ExportId: string;
 }
-const StopArchiveExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StopArchiveExportRequest" }) as any as S.Schema<StopArchiveExportRequest>;
+const StopArchiveExportRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<StopArchiveExportRequest>;
 export interface StopArchiveExportResponse {}
 const StopArchiveExportResponse = NoAuthentication as any as S.Schema<StopArchiveExportResponse>;
 export interface StopArchiveSearchRequest {
   SearchId: string;
 }
-const StopArchiveSearchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SearchId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StopArchiveSearchRequest" }) as any as S.Schema<StopArchiveSearchRequest>;
+const StopArchiveSearchRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<StopArchiveSearchRequest>;
 export interface StopArchiveSearchResponse {}
 const StopArchiveSearchResponse = NoAuthentication as any as S.Schema<StopArchiveSearchResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = NoAuthentication as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -2688,11 +2061,10 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = NoAuthentication as any as S.Schema<UntagResourceResponse>;
 export interface UpdateArchiveRequest {
@@ -2700,13 +2072,10 @@ export interface UpdateArchiveRequest {
   ArchiveName?: string;
   Retention?: ArchiveRetention;
 }
-const UpdateArchiveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveId: S.String,
-    ArchiveName: S.optional(S.String),
-    Retention: S.optional(ArchiveRetention),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateArchiveRequest" }) as any as S.Schema<UpdateArchiveRequest>;
+const UpdateArchiveRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<UpdateArchiveRequest>;
 export interface UpdateArchiveResponse {}
 const UpdateArchiveResponse = NoAuthentication as any as S.Schema<UpdateArchiveResponse>;
 export type IngressPointStatusToUpdate = "ACTIVE" | "CLOSED" | (string & {});
@@ -2721,19 +2090,10 @@ export interface UpdateIngressPointRequest {
   IngressPointConfiguration?: IngressPointConfiguration;
   TlsPolicy?: TlsPolicy;
 }
-const UpdateIngressPointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IngressPointId: S.String,
-    IngressPointName: S.optional(S.String),
-    StatusToUpdate: S.optional(IngressPointStatusToUpdate),
-    RuleSetId: S.optional(S.String),
-    TrafficPolicyId: S.optional(S.String),
-    IngressPointConfiguration: S.optional(IngressPointConfiguration),
-    TlsPolicy: S.optional(TlsPolicy),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateIngressPointRequest",
-}) as any as S.Schema<UpdateIngressPointRequest>;
+const UpdateIngressPointRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<UpdateIngressPointRequest>;
 export interface UpdateIngressPointResponse {}
 const UpdateIngressPointResponse = NoAuthentication as any as S.Schema<UpdateIngressPointResponse>;
 export interface UpdateRelayRequest {
@@ -2743,15 +2103,7 @@ export interface UpdateRelayRequest {
   ServerPort?: number;
   Authentication?: RelayAuthentication;
 }
-const UpdateRelayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RelayId: S.String,
-    RelayName: S.optional(S.String),
-    ServerName: S.optional(S.String),
-    ServerPort: S.optional(S.Number),
-    Authentication: S.optional(RelayAuthentication),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateRelayRequest" }) as any as S.Schema<UpdateRelayRequest>;
+const UpdateRelayRequest = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<UpdateRelayRequest>;
 export interface UpdateRelayResponse {}
 const UpdateRelayResponse = NoAuthentication as any as S.Schema<UpdateRelayResponse>;
 export interface UpdateRuleSetRequest {
@@ -2759,13 +2111,10 @@ export interface UpdateRuleSetRequest {
   RuleSetName?: string;
   Rules?: Rule[];
 }
-const UpdateRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleSetId: S.String,
-    RuleSetName: S.optional(S.String),
-    Rules: S.optional(Rules),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateRuleSetRequest" }) as any as S.Schema<UpdateRuleSetRequest>;
+const UpdateRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<UpdateRuleSetRequest>;
 export interface UpdateRuleSetResponse {}
 const UpdateRuleSetResponse = NoAuthentication as any as S.Schema<UpdateRuleSetResponse>;
 export interface UpdateTrafficPolicyRequest {
@@ -2775,17 +2124,10 @@ export interface UpdateTrafficPolicyRequest {
   DefaultAction?: AcceptAction;
   MaxMessageSizeBytes?: number;
 }
-const UpdateTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrafficPolicyId: S.String,
-    TrafficPolicyName: S.optional(S.String),
-    PolicyStatements: S.optional(PolicyStatementList),
-    DefaultAction: S.optional(AcceptAction),
-    MaxMessageSizeBytes: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateTrafficPolicyRequest",
-}) as any as S.Schema<UpdateTrafficPolicyRequest>;
+const UpdateTrafficPolicyRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<UpdateTrafficPolicyRequest>;
 export interface UpdateTrafficPolicyResponse {}
 const UpdateTrafficPolicyResponse =
   NoAuthentication as any as S.Schema<UpdateTrafficPolicyResponse>;
@@ -4289,3 +3631,1446 @@ export const updateTrafficPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTrafficPolicy",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(Tag);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          AddonSubscriptionId: S.String,
+          Tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateAddonInstanceRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ AddonInstanceId: S.String })).annotate({
+        identifier: "CreateAddonInstanceResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          AddonName: S.String,
+          Tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateAddonSubscriptionRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ AddonSubscriptionId: S.String })).annotate({
+        identifier: "CreateAddonSubscriptionResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          AddressListName: S.String,
+          Tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateAddressListRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ AddressListId: S.String })).annotate({
+        identifier: "CreateAddressListResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ImportDataType: ImportDataType })).annotate({
+        identifier: "ImportDataFormat",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          AddressListId: S.String,
+          Name: S.String,
+          ImportDataFormat: ImportDataFormat,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateAddressListImportJobRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ JobId: S.String, PreSignedUrl: SensitiveString })).annotate(
+        {
+          identifier: "CreateAddressListImportJobResponse",
+        },
+      );
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ RetentionPeriod: RetentionPeriod })]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          ArchiveName: S.String,
+          Retention: S.optional(ArchiveRetention),
+          KmsKeyArn: S.optional(S.String),
+          Tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateArchiveRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ ArchiveId: S.String })).annotate({
+        identifier: "CreateArchiveResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CAContent: SensitiveString,
+          CrlContent: S.optional(SensitiveString),
+          KmsKeyArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TrustStore" });
+    case 7:
+      return S.suspend(() => S.Struct({ TrustStore: S.optional(TrustStore) })).annotate({
+        identifier: "TlsAuthConfiguration",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ SmtpPassword: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ SecretArn: S.String }),
+        /*@__PURE__*/ S.Struct({ TlsAuthConfiguration: TlsAuthConfiguration }),
+      ]);
+    case 1:
+      return S.suspend(() => S.Struct({ IpType: IpType })).annotate({
+        identifier: "PublicNetworkConfiguration",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ VpcEndpointId: S.String })).annotate({
+        identifier: "PrivateNetworkConfiguration",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ PublicNetworkConfiguration: PublicNetworkConfiguration }),
+        /*@__PURE__*/ S.Struct({ PrivateNetworkConfiguration: PrivateNetworkConfiguration }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          IngressPointName: S.String,
+          Type: IngressPointType,
+          RuleSetId: S.String,
+          TrafficPolicyId: S.String,
+          IngressPointConfiguration: S.optional(IngressPointConfiguration),
+          NetworkConfiguration: S.optional(NetworkConfiguration),
+          TlsPolicy: S.optional(TlsPolicy),
+          Tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateIngressPointRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ IngressPointId: S.String })).annotate({
+        identifier: "CreateIngressPointResponse",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "NoAuthentication",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ SecretArn: S.String }),
+        /*@__PURE__*/ S.Struct({ NoAuthentication: NoAuthentication }),
+      ]);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          RelayName: S.String,
+          ServerName: S.String,
+          ServerPort: S.Number,
+          Authentication: RelayAuthentication,
+          Tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateRelayRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ RelayId: S.String })).annotate({
+        identifier: "CreateRelayResponse",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Analyzer: S.String, ResultField: S.String })).annotate({
+        identifier: "Analysis",
+      });
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Attribute: RuleAddressListEmailAttribute,
+          AddressLists: RuleAddressListArnList,
+        }),
+      ).annotate({ identifier: "RuleIsInAddressList" });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Attribute: RuleBooleanEmailAttribute }),
+        /*@__PURE__*/ S.Struct({ Analysis: Analysis }),
+        /*@__PURE__*/ S.Struct({ IsInAddressList: RuleIsInAddressList }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Evaluate: RuleBooleanToEvaluate, Operator: RuleBooleanOperator }),
+      ).annotate({ identifier: "RuleBooleanExpression" });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Attribute: RuleStringEmailAttribute }),
+        /*@__PURE__*/ S.Struct({ MimeHeaderAttribute: S.String }),
+        /*@__PURE__*/ S.Struct({ Analysis: Analysis }),
+        /*@__PURE__*/ S.Struct({ ClientCertificateAttribute: RuleClientCertificateAttribute }),
+      ]);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Evaluate: RuleStringToEvaluate,
+          Operator: RuleStringOperator,
+          Values: RuleStringList,
+        }),
+      ).annotate({ identifier: "RuleStringExpression" });
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ Attribute: RuleNumberEmailAttribute })]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Evaluate: RuleNumberToEvaluate, Operator: RuleNumberOperator, Value: S.Number }),
+      ).annotate({ identifier: "RuleNumberExpression" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Evaluate: RuleIpToEvaluate, Operator: RuleIpOperator, Values: RuleIpValueList }),
+      ).annotate({ identifier: "RuleIpExpression" });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Attribute: RuleVerdictAttribute }),
+        /*@__PURE__*/ S.Struct({ Analysis: Analysis }),
+      ]);
+    case 6:
+      return S.Array(RuleVerdict);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Evaluate: RuleVerdictToEvaluate,
+          Operator: RuleVerdictOperator,
+          Values: RuleVerdictValueList,
+        }),
+      ).annotate({ identifier: "RuleVerdictExpression" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Operator: RuleDmarcOperator, Values: RuleDmarcValueList }),
+      ).annotate({ identifier: "RuleDmarcExpression" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ BooleanExpression: RuleBooleanExpression }),
+        /*@__PURE__*/ S.Struct({ StringExpression: RuleStringExpression }),
+        /*@__PURE__*/ S.Struct({ NumberExpression: RuleNumberExpression }),
+        /*@__PURE__*/ S.Struct({ IpExpression: RuleIpExpression }),
+        /*@__PURE__*/ S.Struct({ VerdictExpression: RuleVerdictExpression }),
+        /*@__PURE__*/ S.Struct({ DmarcExpression: RuleDmarcExpression }),
+      ]);
+    case 2:
+      return S.Array(RuleCondition);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ActionFailurePolicy: S.optional(ActionFailurePolicy),
+          Relay: S.String,
+          MailFrom: S.optional(MailFrom),
+        }),
+      ).annotate({ identifier: "RelayAction" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ActionFailurePolicy: S.optional(ActionFailurePolicy), TargetArchive: S.String }),
+      ).annotate({ identifier: "ArchiveAction" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ActionFailurePolicy: S.optional(ActionFailurePolicy),
+          RoleArn: S.String,
+          S3Bucket: S.String,
+          S3Prefix: S.optional(S.String),
+          S3SseKmsKeyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3Action" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ActionFailurePolicy: S.optional(ActionFailurePolicy), RoleArn: S.String }),
+      ).annotate({ identifier: "SendAction" });
+    case 7:
+      return S.suspend(() => S.Struct({ HeaderName: S.String, HeaderValue: S.String })).annotate({
+        identifier: "AddHeaderAction",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ReplaceWith: S.optional(Recipients) })).annotate({
+        identifier: "ReplaceRecipientAction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ActionFailurePolicy: S.optional(ActionFailurePolicy),
+          MailboxArn: S.String,
+          RoleArn: S.String,
+        }),
+      ).annotate({ identifier: "DeliverToMailboxAction" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ActionFailurePolicy: S.optional(ActionFailurePolicy),
+          ApplicationId: S.String,
+          IndexId: S.String,
+          RoleArn: S.String,
+        }),
+      ).annotate({ identifier: "DeliverToQBusinessAction" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ActionFailurePolicy: S.optional(ActionFailurePolicy),
+          TopicArn: S.String,
+          RoleArn: S.String,
+          Encoding: S.optional(SnsNotificationEncoding),
+          PayloadType: S.optional(SnsNotificationPayloadType),
+        }),
+      ).annotate({ identifier: "SnsAction" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ActionFailurePolicy: S.optional(ActionFailurePolicy),
+          RoleArn: S.String,
+          Sender: SensitiveString,
+          StatusCode: S.String,
+          SmtpReplyCode: S.String,
+          DiagnosticMessage: SensitiveString,
+          Message: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "BounceAction" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ActionFailurePolicy: S.optional(ActionFailurePolicy),
+          FunctionArn: S.String,
+          InvocationType: LambdaInvocationType,
+          RoleArn: S.String,
+          RetryTimeMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "InvokeLambdaAction" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Drop: DropAction }),
+        /*@__PURE__*/ S.Struct({ Relay: RelayAction }),
+        /*@__PURE__*/ S.Struct({ Archive: ArchiveAction }),
+        /*@__PURE__*/ S.Struct({ WriteToS3: S3Action }),
+        /*@__PURE__*/ S.Struct({ Send: SendAction }),
+        /*@__PURE__*/ S.Struct({ AddHeader: AddHeaderAction }),
+        /*@__PURE__*/ S.Struct({ ReplaceRecipient: ReplaceRecipientAction }),
+        /*@__PURE__*/ S.Struct({ DeliverToMailbox: DeliverToMailboxAction }),
+        /*@__PURE__*/ S.Struct({ DeliverToQBusiness: DeliverToQBusinessAction }),
+        /*@__PURE__*/ S.Struct({ PublishToSns: SnsAction }),
+        /*@__PURE__*/ S.Struct({ Bounce: BounceAction }),
+        /*@__PURE__*/ S.Struct({ InvokeLambda: InvokeLambdaAction }),
+      ]);
+    case 7:
+      return S.Array(RuleAction);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Conditions: S.optional(RuleConditions),
+          Unless: S.optional(RuleConditions),
+          Actions: RuleActions,
+        }),
+      ).annotate({ identifier: "Rule" });
+    case 1:
+      return S.Array(Rule);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          RuleSetName: S.String,
+          Rules: Rules,
+          Tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateRuleSetRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ RuleSetId: S.String })).annotate({
+        identifier: "CreateRuleSetResponse",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Attribute: IngressStringEmailAttribute }),
+        /*@__PURE__*/ S.Struct({ Analysis: IngressAnalysis }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Evaluate: IngressStringToEvaluate,
+          Operator: IngressStringOperator,
+          Values: StringList,
+        }),
+      ).annotate({ identifier: "IngressStringExpression" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Evaluate: IngressIpToEvaluate, Operator: IngressIpOperator, Values: Ipv4Cidrs }),
+      ).annotate({ identifier: "IngressIpv4Expression" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Evaluate: IngressIpv6ToEvaluate,
+          Operator: IngressIpOperator,
+          Values: Ipv6Cidrs,
+        }),
+      ).annotate({ identifier: "IngressIpv6Expression" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Evaluate: IngressTlsProtocolToEvaluate,
+          Operator: IngressTlsProtocolOperator,
+          Value: IngressTlsProtocolAttribute,
+        }),
+      ).annotate({
+        identifier: "IngressTlsProtocolExpression",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Attribute: IngressAddressListEmailAttribute,
+          AddressLists: IngressAddressListArnList,
+        }),
+      ).annotate({ identifier: "IngressIsInAddressList" });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Analysis: IngressAnalysis }),
+        /*@__PURE__*/ S.Struct({ IsInAddressList: IngressIsInAddressList }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Evaluate: IngressBooleanToEvaluate, Operator: IngressBooleanOperator }),
+      ).annotate({ identifier: "IngressBooleanExpression" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ StringExpression: IngressStringExpression }),
+        /*@__PURE__*/ S.Struct({ IpExpression: IngressIpv4Expression }),
+        /*@__PURE__*/ S.Struct({ Ipv6Expression: IngressIpv6Expression }),
+        /*@__PURE__*/ S.Struct({ TlsExpression: IngressTlsProtocolExpression }),
+        /*@__PURE__*/ S.Struct({ BooleanExpression: IngressBooleanExpression }),
+      ]);
+    case 5:
+      return S.Array(PolicyCondition);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Conditions: PolicyConditions, Action: AcceptAction }),
+      ).annotate({ identifier: "PolicyStatement" });
+    case 7:
+      return S.Array(PolicyStatement);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          TrafficPolicyName: S.String,
+          PolicyStatements: PolicyStatementList,
+          DefaultAction: AcceptAction,
+          MaxMessageSizeBytes: S.optional(S.Number),
+          Tags: S.optional(TagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateTrafficPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ TrafficPolicyId: S.String })).annotate({
+        identifier: "CreateTrafficPolicyResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AddonInstanceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteAddonInstanceRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AddonSubscriptionId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteAddonSubscriptionRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAddonSubscriptionResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ AddressListId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteAddressListRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ArchiveId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteArchiveRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ IngressPointId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteIngressPointRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RelayId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteRelayRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ RuleSetId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteRuleSetRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ TrafficPolicyId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteTrafficPolicyRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeregisterMemberFromAddressListRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeregisterMemberFromAddressListResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ AddonInstanceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetAddonInstanceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AddonSubscriptionId: S.optional(S.String),
+          AddonName: S.optional(S.String),
+          AddonInstanceArn: S.optional(S.String),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "GetAddonInstanceResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ AddonSubscriptionId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAddonSubscriptionRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AddonName: S.optional(S.String),
+          AddonSubscriptionArn: S.optional(S.String),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "GetAddonSubscriptionResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AddressListId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetAddressListRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AddressListId: S.String,
+          AddressListArn: S.String,
+          AddressListName: S.String,
+          CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          LastUpdatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "GetAddressListResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ JobId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAddressListImportJobRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          JobId: S.String,
+          Name: S.String,
+          Status: ImportJobStatus,
+          PreSignedUrl: SensitiveString,
+          ImportedItemsCount: S.optional(S.Number),
+          FailedItemsCount: S.optional(S.Number),
+          ImportDataFormat: ImportDataFormat,
+          AddressListId: S.String,
+          CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Error: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetAddressListImportJobResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ArchiveId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetArchiveRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ArchiveId: S.String,
+          ArchiveName: S.String,
+          ArchiveArn: S.String,
+          ArchiveState: ArchiveState,
+          Retention: ArchiveRetention,
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          KmsKeyArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetArchiveResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ExportId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetArchiveExportRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Evaluate: ArchiveStringToEvaluate,
+          Operator: ArchiveStringOperator,
+          Values: StringValueList,
+        }),
+      ).annotate({ identifier: "ArchiveStringExpression" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Evaluate: ArchiveBooleanToEvaluate, Operator: ArchiveBooleanOperator }),
+      ).annotate({ identifier: "ArchiveBooleanExpression" });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ StringExpression: ArchiveStringExpression }),
+        /*@__PURE__*/ S.Struct({ BooleanExpression: ArchiveBooleanExpression }),
+      ]);
+    case 3:
+      return S.Array(ArchiveFilterCondition);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Include: S.optional(ArchiveFilterConditions),
+          Unless: S.optional(ArchiveFilterConditions),
+        }),
+      ).annotate({ identifier: "ArchiveFilters" });
+    case 5:
+      return S.suspend(() => S.Struct({ S3Location: S.optional(S.String) })).annotate({
+        identifier: "S3ExportDestinationConfiguration",
+      });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ S3: S3ExportDestinationConfiguration })]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SubmissionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          State: S.optional(ExportState),
+          ErrorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportStatus" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ArchiveId: S.optional(S.String),
+          Filters: S.optional(ArchiveFilters),
+          FromTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ToTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          MaxResults: S.optional(S.Number),
+          ExportDestinationConfiguration: S.optional(ExportDestinationConfiguration),
+          Status: S.optional(ExportStatus),
+        }),
+      ).annotate({ identifier: "GetArchiveExportResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ArchivedMessageId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetArchiveMessageRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IngressPointId: S.optional(S.String),
+          TrafficPolicyId: S.optional(S.String),
+          RuleSetId: S.optional(S.String),
+          SenderHostname: S.optional(S.String),
+          SenderIpAddress: S.optional(SensitiveString),
+          TlsCipherSuite: S.optional(S.String),
+          TlsProtocol: S.optional(S.String),
+          SendingMethod: S.optional(S.String),
+          SourceIdentity: S.optional(S.String),
+          SendingPool: S.optional(S.String),
+          ConfigurationSet: S.optional(S.String),
+          SourceArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Metadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Helo: S.optional(S.String),
+          From: S.optional(S.String),
+          To: S.optional(StringList),
+        }),
+      ).annotate({ identifier: "Envelope" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          MessageDownloadLink: S.optional(S.String),
+          Metadata: S.optional(Metadata),
+          Envelope: S.optional(Envelope),
+        }),
+      ).annotate({
+        identifier: "GetArchiveMessageResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ArchivedMessageId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetArchiveMessageContentRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Text: S.optional(S.String),
+          Html: S.optional(S.String),
+          MessageMalformed: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MessageBody" });
+    case 7:
+      return S.suspend(() => S.Struct({ Body: S.optional(MessageBody) })).annotate({
+        identifier: "GetArchiveMessageContentResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SearchId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetArchiveSearchRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ArchiveId: S.optional(S.String),
+          Filters: S.optional(ArchiveFilters),
+          FromTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ToTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          MaxResults: S.optional(S.Number),
+          Status: S.optional(SearchStatus),
+        }),
+      ).annotate({ identifier: "GetArchiveSearchResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ SearchId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetArchiveSearchResultsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ArchivedMessageId: S.optional(S.String),
+          ReceivedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Date: S.optional(S.String),
+          To: S.optional(S.String),
+          From: S.optional(S.String),
+          Cc: S.optional(S.String),
+          Subject: S.optional(S.String),
+          MessageId: S.optional(S.String),
+          HasAttachments: S.optional(S.Boolean),
+          ReceivedHeaders: S.optional(EmailReceivedHeadersList),
+          InReplyTo: S.optional(S.String),
+          XMailer: S.optional(S.String),
+          XOriginalMailer: S.optional(S.String),
+          XPriority: S.optional(S.String),
+          IngressPointId: S.optional(S.String),
+          SenderHostname: S.optional(S.String),
+          SenderIpAddress: S.optional(SensitiveString),
+          Envelope: S.optional(Envelope),
+          SourceArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Row" });
+    case 4:
+      return S.Array(Row);
+    case 5:
+      return S.suspend(() => S.Struct({ Rows: S.optional(RowsList) })).annotate({
+        identifier: "GetArchiveSearchResultsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          IngressPointId: S.String,
+          IncludeTrustStoreContents: S.optional(TrustStoreResponseOption),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetIngressPointRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SmtpPasswordVersion: S.optional(S.String),
+          PreviousSmtpPasswordVersion: S.optional(S.String),
+          PreviousSmtpPasswordExpiryTimestamp: S.optional(
+            S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ),
+        }),
+      ).annotate({
+        identifier: "IngressPointPasswordConfiguration",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          IngressPointPasswordConfiguration: S.optional(IngressPointPasswordConfiguration),
+          SecretArn: S.optional(S.String),
+          TlsAuthConfiguration: S.optional(TlsAuthConfiguration),
+        }),
+      ).annotate({
+        identifier: "IngressPointAuthConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IngressPointId: S.String,
+          IngressPointName: S.String,
+          IngressPointArn: S.optional(S.String),
+          Status: S.optional(IngressPointStatus),
+          Type: S.optional(IngressPointType),
+          ARecord: S.optional(S.String),
+          RuleSetId: S.optional(S.String),
+          TrafficPolicyId: S.optional(S.String),
+          IngressPointAuthConfiguration: S.optional(IngressPointAuthConfiguration),
+          NetworkConfiguration: S.optional(NetworkConfiguration),
+          TlsPolicy: S.optional(TlsPolicy),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "GetIngressPointResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetMemberOfAddressListRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Address: SensitiveString,
+          CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "GetMemberOfAddressListResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ RelayId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetRelayRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          RelayId: S.String,
+          RelayArn: S.optional(S.String),
+          RelayName: S.optional(S.String),
+          ServerName: S.optional(S.String),
+          ServerPort: S.optional(S.Number),
+          Authentication: S.optional(RelayAuthentication),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "GetRelayResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ RuleSetId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetRuleSetRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          RuleSetId: S.String,
+          RuleSetArn: S.String,
+          RuleSetName: S.String,
+          CreatedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          LastModificationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          Rules: Rules,
+        }),
+      ).annotate({ identifier: "GetRuleSetResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TrafficPolicyId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetTrafficPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicyName: S.String,
+          TrafficPolicyId: S.String,
+          TrafficPolicyArn: S.optional(S.String),
+          PolicyStatements: S.optional(PolicyStatementList),
+          MaxMessageSizeBytes: S.optional(S.Number),
+          DefaultAction: S.optional(AcceptAction),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "GetTrafficPolicyResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListAddonInstancesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AddonInstanceId: S.optional(S.String),
+          AddonSubscriptionId: S.optional(S.String),
+          AddonName: S.optional(S.String),
+          AddonInstanceArn: S.optional(S.String),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "AddonInstance" });
+    case 4:
+      return S.Array(AddonInstance);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ AddonInstances: S.optional(AddonInstances), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListAddonInstancesResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListAddonSubscriptionsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AddonSubscriptionId: S.optional(S.String),
+          AddonName: S.optional(S.String),
+          AddonSubscriptionArn: S.optional(S.String),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "AddonSubscription" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AddonSubscription);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AddonSubscriptions: S.optional(AddonSubscriptions),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAddonSubscriptionsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AddressListId: S.String,
+          NextToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAddressListImportJobsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          JobId: S.String,
+          Name: S.String,
+          Status: ImportJobStatus,
+          PreSignedUrl: SensitiveString,
+          ImportedItemsCount: S.optional(S.Number),
+          FailedItemsCount: S.optional(S.Number),
+          ImportDataFormat: ImportDataFormat,
+          AddressListId: S.String,
+          CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Error: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportJob" });
+    case 4:
+      return S.Array(ImportJob);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ImportJobs: ImportJobs, NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListAddressListImportJobsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListAddressListsRequest" });
+    case 7:
+      return S.Array(AddressList);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AddressLists: AddressLists, NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAddressListsResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ArchiveId: S.String,
+          NextToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListArchiveExportsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ExportId: S.optional(S.String), Status: S.optional(ExportStatus) }),
+      ).annotate({ identifier: "ExportSummary" });
+    case 3:
+      return S.Array(ExportSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Exports: S.optional(ExportSummaryList), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListArchiveExportsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListArchivesRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ArchiveId: S.String,
+          ArchiveName: S.optional(S.String),
+          ArchiveState: S.optional(ArchiveState),
+          LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "Archive" });
+    case 7:
+      return S.Array(Archive);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Archives: ArchivesList, NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListArchivesResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ArchiveId: S.String,
+          NextToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListArchiveSearchesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ SearchId: S.optional(S.String), Status: S.optional(SearchStatus) }),
+      ).annotate({ identifier: "SearchSummary" });
+    case 3:
+      return S.Array(SearchSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Searches: S.optional(SearchSummaryList), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListArchiveSearchesResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ PageSize: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListIngressPointsRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          IngressPointName: S.String,
+          IngressPointId: S.String,
+          Status: IngressPointStatus,
+          Type: IngressPointType,
+          ARecord: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IngressPoint" });
+    case 7:
+      return S.Array(IngressPoint);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ IngressPoints: S.optional(IngressPointsList), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListIngressPointsResponse",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ AddressPrefix: S.optional(SensitiveString) })).annotate({
+        identifier: "AddressFilter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AddressListId: S.String,
+          Filter: S.optional(AddressFilter),
+          NextToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListMembersOfAddressListRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Address: SensitiveString,
+          CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "SavedAddress" });
+    case 4:
+      return S.Array(SavedAddress);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Addresses: SavedAddresses, NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListMembersOfAddressListResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ PageSize: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListRelaysRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          RelayId: S.optional(S.String),
+          RelayName: S.optional(S.String),
+          LastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "Relay" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Relay);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Relays: Relays, NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRelaysResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), PageSize: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListRuleSetsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RuleSetId: S.optional(S.String),
+          RuleSetName: S.optional(S.String),
+          LastModificationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "RuleSet" });
+    case 4:
+      return S.Array(RuleSet);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ RuleSets: RuleSets, NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRuleSetsResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Tags: TagList })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PageSize: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTrafficPoliciesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicyName: S.String,
+          TrafficPolicyId: S.String,
+          DefaultAction: AcceptAction,
+        }),
+      ).annotate({ identifier: "TrafficPolicy" });
+    case 2:
+      return S.Array(TrafficPolicy);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicies: S.optional(TrafficPolicyList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListTrafficPoliciesResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AddressListId: S.String, Address: SensitiveString }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "RegisterMemberToAddressListRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ JobId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StartAddressListImportJobRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ArchiveId: S.String,
+          Filters: S.optional(ArchiveFilters),
+          FromTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ToTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          MaxResults: S.optional(S.Number),
+          ExportDestinationConfiguration: ExportDestinationConfiguration,
+          IncludeMetadata: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "StartArchiveExportRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ ExportId: S.optional(S.String) })).annotate({
+        identifier: "StartArchiveExportResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ArchiveId: S.String,
+          Filters: S.optional(ArchiveFilters),
+          FromTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ToTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          MaxResults: S.Number,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "StartArchiveSearchRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ SearchId: S.optional(S.String) })).annotate({
+        identifier: "StartArchiveSearchResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ JobId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StopAddressListImportJobRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ExportId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopArchiveExportRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ SearchId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StopArchiveSearchRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ArchiveId: S.String,
+          ArchiveName: S.optional(S.String),
+          Retention: S.optional(ArchiveRetention),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateArchiveRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          IngressPointId: S.String,
+          IngressPointName: S.optional(S.String),
+          StatusToUpdate: S.optional(IngressPointStatusToUpdate),
+          RuleSetId: S.optional(S.String),
+          TrafficPolicyId: S.optional(S.String),
+          IngressPointConfiguration: S.optional(IngressPointConfiguration),
+          TlsPolicy: S.optional(TlsPolicy),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateIngressPointRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RelayId: S.String,
+          RelayName: S.optional(S.String),
+          ServerName: S.optional(S.String),
+          ServerPort: S.optional(S.Number),
+          Authentication: S.optional(RelayAuthentication),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateRelayRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RuleSetId: S.String,
+          RuleSetName: S.optional(S.String),
+          Rules: S.optional(Rules),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateRuleSetRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TrafficPolicyId: S.String,
+          TrafficPolicyName: S.optional(S.String),
+          PolicyStatements: S.optional(PolicyStatementList),
+          DefaultAction: S.optional(AcceptAction),
+          MaxMessageSizeBytes: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateTrafficPolicyRequest",
+      });
+  }
+}

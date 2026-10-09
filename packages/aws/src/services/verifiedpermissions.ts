@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -164,19 +165,16 @@ export interface BatchGetPolicyInputItem {
   policyStoreId: string;
   policyId: string;
 }
-const BatchGetPolicyInputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String, policyId: S.String }),
-).annotate({ identifier: "BatchGetPolicyInputItem" }) as any as S.Schema<BatchGetPolicyInputItem>;
+const BatchGetPolicyInputItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BatchGetPolicyInputItem>;
 export type BatchGetPolicyInputList = BatchGetPolicyInputItem[];
-const BatchGetPolicyInputList = /*@__PURE__*/ S.Array(BatchGetPolicyInputItem);
+const BatchGetPolicyInputList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface BatchGetPolicyInput {
   requests: BatchGetPolicyInputItem[];
 }
-const BatchGetPolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requests: BatchGetPolicyInputList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "BatchGetPolicyInput" }) as any as S.Schema<BatchGetPolicyInput>;
+const BatchGetPolicyInput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BatchGetPolicyInput>;
 export type PolicyType = "STATIC" | "TEMPLATE_LINKED" | (string & {});
 const PolicyType = S.String;
 
@@ -186,11 +184,10 @@ export interface StaticPolicyDefinitionDetail {
   description?: string | redacted.Redacted<string>;
   statement: string | redacted.Redacted<string>;
 }
-const StaticPolicyDefinitionDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ description: S.optional(SensitiveString), statement: SensitiveString }),
-).annotate({
-  identifier: "StaticPolicyDefinitionDetail",
-}) as any as S.Schema<StaticPolicyDefinitionDetail>;
+const StaticPolicyDefinitionDetail = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<StaticPolicyDefinitionDetail>;
 export type PolicyTemplateId = string;
 export type EntityType = string | redacted.Redacted<string>;
 export type EntityId = string | redacted.Redacted<string>;
@@ -198,30 +195,20 @@ export interface EntityIdentifier {
   entityType: string | redacted.Redacted<string>;
   entityId: string | redacted.Redacted<string>;
 }
-const EntityIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entityType: SensitiveString, entityId: SensitiveString }),
-).annotate({ identifier: "EntityIdentifier" }) as any as S.Schema<EntityIdentifier>;
+const EntityIdentifier = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<EntityIdentifier>;
 export interface TemplateLinkedPolicyDefinitionDetail {
   policyTemplateId: string;
   principal?: EntityIdentifier;
   resource?: EntityIdentifier;
 }
-const TemplateLinkedPolicyDefinitionDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyTemplateId: S.String,
-    principal: S.optional(EntityIdentifier),
-    resource: S.optional(EntityIdentifier),
-  }),
-).annotate({
-  identifier: "TemplateLinkedPolicyDefinitionDetail",
-}) as any as S.Schema<TemplateLinkedPolicyDefinitionDetail>;
+const TemplateLinkedPolicyDefinitionDetail = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<TemplateLinkedPolicyDefinitionDetail>;
 export type PolicyDefinitionDetail =
   | { static: StaticPolicyDefinitionDetail; templateLinked?: never }
   | { static?: never; templateLinked: TemplateLinkedPolicyDefinitionDetail };
-const PolicyDefinitionDetail = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ static: StaticPolicyDefinitionDetail }),
-  /*@__PURE__*/ S.Struct({ templateLinked: TemplateLinkedPolicyDefinitionDetail }),
-]);
+const PolicyDefinitionDetail = /*@__PURE__*/ __L.at(__c0, 6);
 export type TimestampFormat = Date;
 export type PolicyName = string;
 export interface BatchGetPolicyOutputItem {
@@ -233,19 +220,12 @@ export interface BatchGetPolicyOutputItem {
   lastUpdatedDate: Date;
   name?: string;
 }
-const BatchGetPolicyOutputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyId: S.String,
-    policyType: PolicyType,
-    definition: PolicyDefinitionDetail,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "BatchGetPolicyOutputItem" }) as any as S.Schema<BatchGetPolicyOutputItem>;
+const BatchGetPolicyOutputItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BatchGetPolicyOutputItem>;
 export type BatchGetPolicyOutputList = BatchGetPolicyOutputItem[];
-const BatchGetPolicyOutputList = /*@__PURE__*/ S.Array(BatchGetPolicyOutputItem);
+const BatchGetPolicyOutputList = /*@__PURE__*/ __L.at(__c1, 0);
 export type BatchGetPolicyErrorCode =
   | "POLICY_STORE_NOT_FOUND"
   | "POLICY_NOT_FOUND"
@@ -259,37 +239,24 @@ export interface BatchGetPolicyErrorItem {
   policyId: string;
   message: string;
 }
-const BatchGetPolicyErrorItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: BatchGetPolicyErrorCode,
-    policyStoreId: S.String,
-    policyId: S.String,
-    message: S.String,
-  }),
-).annotate({ identifier: "BatchGetPolicyErrorItem" }) as any as S.Schema<BatchGetPolicyErrorItem>;
+const BatchGetPolicyErrorItem = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchGetPolicyErrorItem>;
 export type BatchGetPolicyErrorList = BatchGetPolicyErrorItem[];
-const BatchGetPolicyErrorList = /*@__PURE__*/ S.Array(BatchGetPolicyErrorItem);
+const BatchGetPolicyErrorList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface BatchGetPolicyOutput {
   results: BatchGetPolicyOutputItem[];
   errors: BatchGetPolicyErrorItem[];
 }
-const BatchGetPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ results: BatchGetPolicyOutputList, errors: BatchGetPolicyErrorList }),
-).annotate({ identifier: "BatchGetPolicyOutput" }) as any as S.Schema<BatchGetPolicyOutput>;
+const BatchGetPolicyOutput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<BatchGetPolicyOutput>;
 export type BooleanAttribute = boolean;
 export type LongAttribute = number;
 export type StringAttribute = string | redacted.Redacted<string>;
 export type SetAttribute = AttributeValue[];
-const SetAttribute = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
-) as any as S.Schema<SetAttribute>;
+const SetAttribute = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SetAttribute>;
 export type RecordAttribute = { [key: string]: AttributeValue | undefined };
-const RecordAttribute = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => AttributeValue)
-    .annotate({ identifier: "AttributeValue" })
-    .pipe(S.optional),
-) as any as S.Schema<RecordAttribute>;
+const RecordAttribute = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RecordAttribute>;
 export type IpAddr = string | redacted.Redacted<string>;
 export type Decimal = string | redacted.Redacted<string>;
 export type DatetimeAttribute = string | redacted.Redacted<string>;
@@ -415,43 +382,17 @@ export type AttributeValue =
       datetime?: never;
       duration: string | redacted.Redacted<string>;
     };
-const AttributeValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ boolean: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ entityIdentifier: EntityIdentifier }),
-  /*@__PURE__*/ S.Struct({ long: S.Number }),
-  /*@__PURE__*/ S.Struct({ string: SensitiveString }),
-  /*@__PURE__*/ S.Struct({
-    set: /*@__PURE__*/ S.suspend(() => SetAttribute).annotate({ identifier: "SetAttribute" }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    record: /*@__PURE__*/ S.suspend(() => RecordAttribute).annotate({
-      identifier: "RecordAttribute",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({ ipaddr: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ decimal: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ datetime: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ duration: SensitiveString }),
-]) as any as S.Schema<AttributeValue>;
+const AttributeValue = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AttributeValue>;
 export type EntityAttributes = { [key: string]: AttributeValue | undefined };
-const EntityAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => AttributeValue)
-    .annotate({ identifier: "AttributeValue" })
-    .pipe(S.optional),
-);
+const EntityAttributes = /*@__PURE__*/ __L.at(__c1, 7);
 export type ParentList = EntityIdentifier[];
-const ParentList = /*@__PURE__*/ S.Array(EntityIdentifier);
+const ParentList = /*@__PURE__*/ __L.at(__c2, 0);
 export type CedarTagSetAttribute = CedarTagValue[];
-const CedarTagSetAttribute = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => CedarTagValue).annotate({ identifier: "CedarTagValue" }),
-) as any as S.Schema<CedarTagSetAttribute>;
+const CedarTagSetAttribute = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CedarTagSetAttribute>;
 export type CedarTagRecordAttribute = { [key: string]: CedarTagValue | undefined };
-const CedarTagRecordAttribute = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => CedarTagValue)
-    .annotate({ identifier: "CedarTagValue" })
-    .pipe(S.optional),
+const CedarTagRecordAttribute = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
 ) as any as S.Schema<CedarTagRecordAttribute>;
 export type CedarTagValue =
   | {
@@ -574,167 +515,106 @@ export type CedarTagValue =
       datetime?: never;
       duration: string | redacted.Redacted<string>;
     };
-const CedarTagValue = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ boolean: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ entityIdentifier: EntityIdentifier }),
-  /*@__PURE__*/ S.Struct({ long: S.Number }),
-  /*@__PURE__*/ S.Struct({ string: SensitiveString }),
-  /*@__PURE__*/ S.Struct({
-    set: /*@__PURE__*/ S.suspend(() => CedarTagSetAttribute).annotate({
-      identifier: "CedarTagSetAttribute",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    record: /*@__PURE__*/ S.suspend(() => CedarTagRecordAttribute).annotate({
-      identifier: "CedarTagRecordAttribute",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({ ipaddr: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ decimal: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ datetime: SensitiveString }),
-  /*@__PURE__*/ S.Struct({ duration: SensitiveString }),
-]) as any as S.Schema<CedarTagValue>;
+const CedarTagValue = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CedarTagValue>;
 export type EntityCedarTags = { [key: string]: CedarTagValue | undefined };
-const EntityCedarTags = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => CedarTagValue)
-    .annotate({ identifier: "CedarTagValue" })
-    .pipe(S.optional),
-);
+const EntityCedarTags = /*@__PURE__*/ __L.at(__c2, 4);
 export interface EntityItem {
   identifier: EntityIdentifier;
   attributes?: { [key: string]: AttributeValue | undefined };
   parents?: EntityIdentifier[];
   tags?: { [key: string]: CedarTagValue | undefined };
 }
-const EntityItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: EntityIdentifier,
-    attributes: S.optional(EntityAttributes),
-    parents: S.optional(ParentList),
-    tags: S.optional(EntityCedarTags),
-  }),
-).annotate({ identifier: "EntityItem" }) as any as S.Schema<EntityItem>;
+const EntityItem = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<EntityItem>;
 export type EntityList = EntityItem[];
-const EntityList = /*@__PURE__*/ S.Array(EntityItem);
+const EntityList = /*@__PURE__*/ __L.at(__c2, 6);
 export type CedarJson = string | redacted.Redacted<string>;
 export type EntitiesDefinition =
   | { entityList: EntityItem[]; cedarJson?: never }
   | { entityList?: never; cedarJson: string | redacted.Redacted<string> };
-const EntitiesDefinition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ entityList: EntityList }),
-  /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
-]);
+const EntitiesDefinition = /*@__PURE__*/ __L.at(__c2, 7);
 export type ActionType = string | redacted.Redacted<string>;
 export type ActionId = string | redacted.Redacted<string>;
 export interface ActionIdentifier {
   actionType: string | redacted.Redacted<string>;
   actionId: string | redacted.Redacted<string>;
 }
-const ActionIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actionType: SensitiveString, actionId: SensitiveString }),
-).annotate({ identifier: "ActionIdentifier" }) as any as S.Schema<ActionIdentifier>;
+const ActionIdentifier = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ActionIdentifier>;
 export type ContextMap = { [key: string]: AttributeValue | undefined };
 const ContextMap = EntityAttributes as any as S.Schema<ContextMap>;
 export type ContextDefinition =
   | { contextMap: { [key: string]: AttributeValue | undefined }; cedarJson?: never }
   | { contextMap?: never; cedarJson: string | redacted.Redacted<string> };
-const ContextDefinition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ contextMap: ContextMap }),
-  /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
-]);
+const ContextDefinition = /*@__PURE__*/ __L.at(__c3, 1);
 export interface BatchIsAuthorizedInputItem {
   principal?: EntityIdentifier;
   action?: ActionIdentifier;
   resource?: EntityIdentifier;
   context?: ContextDefinition;
 }
-const BatchIsAuthorizedInputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principal: S.optional(EntityIdentifier),
-    action: S.optional(ActionIdentifier),
-    resource: S.optional(EntityIdentifier),
-    context: S.optional(ContextDefinition),
-  }),
-).annotate({
-  identifier: "BatchIsAuthorizedInputItem",
-}) as any as S.Schema<BatchIsAuthorizedInputItem>;
+const BatchIsAuthorizedInputItem = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<BatchIsAuthorizedInputItem>;
 export type BatchIsAuthorizedInputList = BatchIsAuthorizedInputItem[];
-const BatchIsAuthorizedInputList = /*@__PURE__*/ S.Array(BatchIsAuthorizedInputItem);
+const BatchIsAuthorizedInputList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface BatchIsAuthorizedInput {
   policyStoreId: string;
   entities?: EntitiesDefinition;
   requests: BatchIsAuthorizedInputItem[];
 }
-const BatchIsAuthorizedInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    entities: S.optional(EntitiesDefinition),
-    requests: BatchIsAuthorizedInputList,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "BatchIsAuthorizedInput" }) as any as S.Schema<BatchIsAuthorizedInput>;
+const BatchIsAuthorizedInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<BatchIsAuthorizedInput>;
 export type Decision = "ALLOW" | "DENY" | (string & {});
 const Decision = S.String;
 
 export interface DeterminingPolicyItem {
   policyId: string;
 }
-const DeterminingPolicyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyId: S.String }),
-).annotate({ identifier: "DeterminingPolicyItem" }) as any as S.Schema<DeterminingPolicyItem>;
+const DeterminingPolicyItem = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeterminingPolicyItem>;
 export type DeterminingPolicyList = DeterminingPolicyItem[];
-const DeterminingPolicyList = /*@__PURE__*/ S.Array(DeterminingPolicyItem);
+const DeterminingPolicyList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface EvaluationErrorItem {
   errorDescription: string;
 }
-const EvaluationErrorItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorDescription: S.String }),
-).annotate({ identifier: "EvaluationErrorItem" }) as any as S.Schema<EvaluationErrorItem>;
+const EvaluationErrorItem = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<EvaluationErrorItem>;
 export type EvaluationErrorList = EvaluationErrorItem[];
-const EvaluationErrorList = /*@__PURE__*/ S.Array(EvaluationErrorItem);
+const EvaluationErrorList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface BatchIsAuthorizedOutputItem {
   request: BatchIsAuthorizedInputItem;
   decision: Decision;
   determiningPolicies: DeterminingPolicyItem[];
   errors: EvaluationErrorItem[];
 }
-const BatchIsAuthorizedOutputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request: BatchIsAuthorizedInputItem,
-    decision: Decision,
-    determiningPolicies: DeterminingPolicyList,
-    errors: EvaluationErrorList,
-  }),
-).annotate({
-  identifier: "BatchIsAuthorizedOutputItem",
-}) as any as S.Schema<BatchIsAuthorizedOutputItem>;
+const BatchIsAuthorizedOutputItem = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<BatchIsAuthorizedOutputItem>;
 export type BatchIsAuthorizedOutputList = BatchIsAuthorizedOutputItem[];
-const BatchIsAuthorizedOutputList = /*@__PURE__*/ S.Array(BatchIsAuthorizedOutputItem);
+const BatchIsAuthorizedOutputList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface BatchIsAuthorizedOutput {
   results: BatchIsAuthorizedOutputItem[];
 }
-const BatchIsAuthorizedOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ results: BatchIsAuthorizedOutputList }),
-).annotate({ identifier: "BatchIsAuthorizedOutput" }) as any as S.Schema<BatchIsAuthorizedOutput>;
+const BatchIsAuthorizedOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<BatchIsAuthorizedOutput>;
 export type Token = string | redacted.Redacted<string>;
 export interface BatchIsAuthorizedWithTokenInputItem {
   action?: ActionIdentifier;
   resource?: EntityIdentifier;
   context?: ContextDefinition;
 }
-const BatchIsAuthorizedWithTokenInputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(ActionIdentifier),
-    resource: S.optional(EntityIdentifier),
-    context: S.optional(ContextDefinition),
-  }),
-).annotate({
-  identifier: "BatchIsAuthorizedWithTokenInputItem",
-}) as any as S.Schema<BatchIsAuthorizedWithTokenInputItem>;
+const BatchIsAuthorizedWithTokenInputItem = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<BatchIsAuthorizedWithTokenInputItem>;
 export type BatchIsAuthorizedWithTokenInputList = BatchIsAuthorizedWithTokenInputItem[];
-const BatchIsAuthorizedWithTokenInputList = /*@__PURE__*/ S.Array(
-  BatchIsAuthorizedWithTokenInputItem,
-);
+const BatchIsAuthorizedWithTokenInputList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface BatchIsAuthorizedWithTokenInput {
   policyStoreId: string;
   identityToken?: string | redacted.Redacted<string>;
@@ -742,77 +622,52 @@ export interface BatchIsAuthorizedWithTokenInput {
   entities?: EntitiesDefinition;
   requests: BatchIsAuthorizedWithTokenInputItem[];
 }
-const BatchIsAuthorizedWithTokenInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    identityToken: S.optional(SensitiveString),
-    accessToken: S.optional(SensitiveString),
-    entities: S.optional(EntitiesDefinition),
-    requests: BatchIsAuthorizedWithTokenInputList,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "BatchIsAuthorizedWithTokenInput",
-}) as any as S.Schema<BatchIsAuthorizedWithTokenInput>;
+const BatchIsAuthorizedWithTokenInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<BatchIsAuthorizedWithTokenInput>;
 export interface BatchIsAuthorizedWithTokenOutputItem {
   request: BatchIsAuthorizedWithTokenInputItem;
   decision: Decision;
   determiningPolicies: DeterminingPolicyItem[];
   errors: EvaluationErrorItem[];
 }
-const BatchIsAuthorizedWithTokenOutputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    request: BatchIsAuthorizedWithTokenInputItem,
-    decision: Decision,
-    determiningPolicies: DeterminingPolicyList,
-    errors: EvaluationErrorList,
-  }),
-).annotate({
-  identifier: "BatchIsAuthorizedWithTokenOutputItem",
-}) as any as S.Schema<BatchIsAuthorizedWithTokenOutputItem>;
+const BatchIsAuthorizedWithTokenOutputItem = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<BatchIsAuthorizedWithTokenOutputItem>;
 export type BatchIsAuthorizedWithTokenOutputList = BatchIsAuthorizedWithTokenOutputItem[];
-const BatchIsAuthorizedWithTokenOutputList = /*@__PURE__*/ S.Array(
-  BatchIsAuthorizedWithTokenOutputItem,
-);
+const BatchIsAuthorizedWithTokenOutputList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface BatchIsAuthorizedWithTokenOutput {
   principal?: EntityIdentifier;
   results: BatchIsAuthorizedWithTokenOutputItem[];
 }
-const BatchIsAuthorizedWithTokenOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principal: S.optional(EntityIdentifier),
-    results: BatchIsAuthorizedWithTokenOutputList,
-  }),
-).annotate({
-  identifier: "BatchIsAuthorizedWithTokenOutput",
-}) as any as S.Schema<BatchIsAuthorizedWithTokenOutput>;
+const BatchIsAuthorizedWithTokenOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<BatchIsAuthorizedWithTokenOutput>;
 export type IdempotencyToken = string;
 export type UserPoolArn = string;
 export type ClientId = string | redacted.Redacted<string>;
 export type ClientIds = (string | redacted.Redacted<string>)[];
-const ClientIds = /*@__PURE__*/ S.Array(SensitiveString);
+const ClientIds = /*@__PURE__*/ __L.at(__c5, 2);
 export type GroupEntityType = string | redacted.Redacted<string>;
 export interface CognitoGroupConfiguration {
   groupEntityType: string | redacted.Redacted<string>;
 }
-const CognitoGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupEntityType: SensitiveString }),
-).annotate({
-  identifier: "CognitoGroupConfiguration",
-}) as any as S.Schema<CognitoGroupConfiguration>;
+const CognitoGroupConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CognitoGroupConfiguration>;
 export interface CognitoUserPoolConfiguration {
   userPoolArn: string;
   clientIds?: (string | redacted.Redacted<string>)[];
   groupConfiguration?: CognitoGroupConfiguration;
 }
-const CognitoUserPoolConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userPoolArn: S.String,
-    clientIds: S.optional(ClientIds),
-    groupConfiguration: S.optional(CognitoGroupConfiguration),
-  }),
-).annotate({
-  identifier: "CognitoUserPoolConfiguration",
-}) as any as S.Schema<CognitoUserPoolConfiguration>;
+const CognitoUserPoolConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CognitoUserPoolConfiguration>;
 export type Issuer = string;
 export type EntityIdPrefix = string | redacted.Redacted<string>;
 export type Claim = string | redacted.Redacted<string>;
@@ -820,55 +675,43 @@ export interface OpenIdConnectGroupConfiguration {
   groupClaim: string | redacted.Redacted<string>;
   groupEntityType: string | redacted.Redacted<string>;
 }
-const OpenIdConnectGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupClaim: SensitiveString, groupEntityType: SensitiveString }),
-).annotate({
-  identifier: "OpenIdConnectGroupConfiguration",
-}) as any as S.Schema<OpenIdConnectGroupConfiguration>;
+const OpenIdConnectGroupConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<OpenIdConnectGroupConfiguration>;
 export type Audience = string;
 export type Audiences = string[];
-const Audiences = /*@__PURE__*/ S.Array(S.String);
+const Audiences = /*@__PURE__*/ __L.at(__c5, 6);
 export interface OpenIdConnectAccessTokenConfiguration {
   principalIdClaim?: string | redacted.Redacted<string>;
   audiences?: string[];
 }
-const OpenIdConnectAccessTokenConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalIdClaim: S.optional(SensitiveString), audiences: S.optional(Audiences) }),
-).annotate({
-  identifier: "OpenIdConnectAccessTokenConfiguration",
-}) as any as S.Schema<OpenIdConnectAccessTokenConfiguration>;
+const OpenIdConnectAccessTokenConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<OpenIdConnectAccessTokenConfiguration>;
 export interface OpenIdConnectIdentityTokenConfiguration {
   principalIdClaim?: string | redacted.Redacted<string>;
   clientIds?: (string | redacted.Redacted<string>)[];
 }
-const OpenIdConnectIdentityTokenConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalIdClaim: S.optional(SensitiveString), clientIds: S.optional(ClientIds) }),
-).annotate({
-  identifier: "OpenIdConnectIdentityTokenConfiguration",
-}) as any as S.Schema<OpenIdConnectIdentityTokenConfiguration>;
+const OpenIdConnectIdentityTokenConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<OpenIdConnectIdentityTokenConfiguration>;
 export type OpenIdConnectTokenSelection =
   | { accessTokenOnly: OpenIdConnectAccessTokenConfiguration; identityTokenOnly?: never }
   | { accessTokenOnly?: never; identityTokenOnly: OpenIdConnectIdentityTokenConfiguration };
-const OpenIdConnectTokenSelection = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfiguration }),
-  /*@__PURE__*/ S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfiguration }),
-]);
+const OpenIdConnectTokenSelection = /*@__PURE__*/ __L.at(__c6, 1);
 export interface OpenIdConnectConfiguration {
   issuer: string;
   entityIdPrefix?: string | redacted.Redacted<string>;
   groupConfiguration?: OpenIdConnectGroupConfiguration;
   tokenSelection: OpenIdConnectTokenSelection;
 }
-const OpenIdConnectConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuer: S.String,
-    entityIdPrefix: S.optional(SensitiveString),
-    groupConfiguration: S.optional(OpenIdConnectGroupConfiguration),
-    tokenSelection: OpenIdConnectTokenSelection,
-  }),
-).annotate({
-  identifier: "OpenIdConnectConfiguration",
-}) as any as S.Schema<OpenIdConnectConfiguration>;
+const OpenIdConnectConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<OpenIdConnectConfiguration>;
 export type Configuration =
   | {
       cognitoUserPoolConfiguration: CognitoUserPoolConfiguration;
@@ -878,10 +721,7 @@ export type Configuration =
       cognitoUserPoolConfiguration?: never;
       openIdConnectConfiguration: OpenIdConnectConfiguration;
     };
-const Configuration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfiguration }),
-  /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: OpenIdConnectConfiguration }),
-]);
+const Configuration = /*@__PURE__*/ __L.at(__c6, 3);
 export type PrincipalEntityType = string | redacted.Redacted<string>;
 export interface CreateIdentitySourceInput {
   clientToken?: string;
@@ -889,16 +729,10 @@ export interface CreateIdentitySourceInput {
   configuration: Configuration;
   principalEntityType?: string | redacted.Redacted<string>;
 }
-const CreateIdentitySourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    policyStoreId: S.String,
-    configuration: Configuration,
-    principalEntityType: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateIdentitySourceInput",
-}) as any as S.Schema<CreateIdentitySourceInput>;
+const CreateIdentitySourceInput = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateIdentitySourceInput>;
 export type IdentitySourceId = string;
 export interface CreateIdentitySourceOutput {
   createdDate: Date;
@@ -906,23 +740,18 @@ export interface CreateIdentitySourceOutput {
   lastUpdatedDate: Date;
   policyStoreId: string;
 }
-const CreateIdentitySourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    identitySourceId: S.String,
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyStoreId: S.String,
-  }),
-).annotate({
-  identifier: "CreateIdentitySourceOutput",
-}) as any as S.Schema<CreateIdentitySourceOutput>;
+const CreateIdentitySourceOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateIdentitySourceOutput>;
 export interface StaticPolicyDefinition {
   description?: string | redacted.Redacted<string>;
   statement: string | redacted.Redacted<string>;
 }
-const StaticPolicyDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ description: S.optional(SensitiveString), statement: SensitiveString }),
-).annotate({ identifier: "StaticPolicyDefinition" }) as any as S.Schema<StaticPolicyDefinition>;
+const StaticPolicyDefinition = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<StaticPolicyDefinition>;
 export interface TemplateLinkedPolicyDefinition {
   policyTemplateId: string;
   principal?: EntityIdentifier;
@@ -933,26 +762,16 @@ const TemplateLinkedPolicyDefinition =
 export type PolicyDefinition =
   | { static: StaticPolicyDefinition; templateLinked?: never }
   | { static?: never; templateLinked: TemplateLinkedPolicyDefinition };
-const PolicyDefinition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ static: StaticPolicyDefinition }),
-  /*@__PURE__*/ S.Struct({ templateLinked: TemplateLinkedPolicyDefinition }),
-]);
+const PolicyDefinition = /*@__PURE__*/ __L.at(__c6, 7);
 export interface CreatePolicyInput {
   clientToken?: string;
   policyStoreId: string;
   definition: PolicyDefinition;
   name?: string;
 }
-const CreatePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    policyStoreId: S.String,
-    definition: PolicyDefinition,
-    name: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreatePolicyInput" }) as any as S.Schema<CreatePolicyInput>;
+const CreatePolicyInput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CreatePolicyInput>;
 export type ActionIdentifierList = ActionIdentifier[];
-const ActionIdentifierList = /*@__PURE__*/ S.Array(ActionIdentifier);
+const ActionIdentifierList = /*@__PURE__*/ __L.at(__c7, 1);
 export type PolicyEffect = "Permit" | "Forbid" | (string & {});
 const PolicyEffect = S.String;
 
@@ -967,28 +786,14 @@ export interface CreatePolicyOutput {
   lastUpdatedDate: Date;
   effect?: PolicyEffect;
 }
-const CreatePolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyId: S.String,
-    policyType: PolicyType,
-    principal: S.optional(EntityIdentifier),
-    resource: S.optional(EntityIdentifier),
-    actions: S.optional(ActionIdentifierList),
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    effect: S.optional(PolicyEffect),
-  }),
-).annotate({ identifier: "CreatePolicyOutput" }) as any as S.Schema<CreatePolicyOutput>;
+const CreatePolicyOutput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<CreatePolicyOutput>;
 export type ValidationMode = "OFF" | "STRICT" | (string & {});
 const ValidationMode = S.String;
 
 export interface ValidationSettings {
   mode: ValidationMode;
 }
-const ValidationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ mode: ValidationMode }),
-).annotate({ identifier: "ValidationSettings" }) as any as S.Schema<ValidationSettings>;
+const ValidationSettings = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ValidationSettings>;
 export type PolicyStoreDescription = string | redacted.Redacted<string>;
 export type DeletionProtection = "ENABLED" | "DISABLED" | (string & {});
 const DeletionProtection = S.String;
@@ -997,25 +802,23 @@ export type KmsKey = string;
 export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;
 export type EncryptionContext = { [key: string]: string | undefined };
-const EncryptionContext = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const EncryptionContext = /*@__PURE__*/ __L.at(__c7, 4);
 export interface KmsEncryptionSettings {
   key: string;
   encryptionContext?: { [key: string]: string | undefined };
 }
-const KmsEncryptionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, encryptionContext: S.optional(EncryptionContext) }),
-).annotate({ identifier: "KmsEncryptionSettings" }) as any as S.Schema<KmsEncryptionSettings>;
+const KmsEncryptionSettings = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<KmsEncryptionSettings>;
 export type EncryptionSettings =
   | { kmsEncryptionSettings: KmsEncryptionSettings; default?: never }
   | { kmsEncryptionSettings?: never; default: Record<string, never> };
-const EncryptionSettings = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ kmsEncryptionSettings: KmsEncryptionSettings }),
-  /*@__PURE__*/ S.Struct({ default: /*@__PURE__*/ S.Struct({}) }),
-]);
+const EncryptionSettings = /*@__PURE__*/ __L.at(__c7, 6);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c7, 7);
 export interface CreatePolicyStoreInput {
   clientToken?: string;
   validationSettings: ValidationSettings;
@@ -1024,16 +827,10 @@ export interface CreatePolicyStoreInput {
   encryptionSettings?: EncryptionSettings;
   tags?: { [key: string]: string | undefined };
 }
-const CreatePolicyStoreInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    validationSettings: ValidationSettings,
-    description: S.optional(SensitiveString),
-    deletionProtection: S.optional(DeletionProtection),
-    encryptionSettings: S.optional(EncryptionSettings),
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreatePolicyStoreInput" }) as any as S.Schema<CreatePolicyStoreInput>;
+const CreatePolicyStoreInput = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreatePolicyStoreInput>;
 export type ResourceArn = string;
 export interface CreatePolicyStoreOutput {
   policyStoreId: string;
@@ -1041,42 +838,29 @@ export interface CreatePolicyStoreOutput {
   createdDate: Date;
   lastUpdatedDate: Date;
 }
-const CreatePolicyStoreOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    arn: S.String,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "CreatePolicyStoreOutput" }) as any as S.Schema<CreatePolicyStoreOutput>;
+const CreatePolicyStoreOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreatePolicyStoreOutput>;
 export type Alias = string;
 export interface CreatePolicyStoreAliasInput {
   aliasName: string;
   policyStoreId: string;
 }
-const CreatePolicyStoreAliasInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ aliasName: S.String, policyStoreId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreatePolicyStoreAliasInput",
-}) as any as S.Schema<CreatePolicyStoreAliasInput>;
+const CreatePolicyStoreAliasInput = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreatePolicyStoreAliasInput>;
 export interface CreatePolicyStoreAliasOutput {
   aliasName: string;
   policyStoreId: string;
   aliasArn: string;
   createdAt: Date;
 }
-const CreatePolicyStoreAliasOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aliasName: S.String,
-    policyStoreId: S.String,
-    aliasArn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "CreatePolicyStoreAliasOutput",
-}) as any as S.Schema<CreatePolicyStoreAliasOutput>;
+const CreatePolicyStoreAliasOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreatePolicyStoreAliasOutput>;
 export type PolicyTemplateDescription = string | redacted.Redacted<string>;
 export type PolicyTemplateName = string;
 export interface CreatePolicyTemplateInput {
@@ -1086,67 +870,47 @@ export interface CreatePolicyTemplateInput {
   statement: string | redacted.Redacted<string>;
   name?: string;
 }
-const CreatePolicyTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    policyStoreId: S.String,
-    description: S.optional(SensitiveString),
-    statement: SensitiveString,
-    name: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreatePolicyTemplateInput",
-}) as any as S.Schema<CreatePolicyTemplateInput>;
+const CreatePolicyTemplateInput = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreatePolicyTemplateInput>;
 export interface CreatePolicyTemplateOutput {
   policyStoreId: string;
   policyTemplateId: string;
   createdDate: Date;
   lastUpdatedDate: Date;
 }
-const CreatePolicyTemplateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyTemplateId: S.String,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "CreatePolicyTemplateOutput",
-}) as any as S.Schema<CreatePolicyTemplateOutput>;
+const CreatePolicyTemplateOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<CreatePolicyTemplateOutput>;
 export interface DeleteIdentitySourceInput {
   policyStoreId: string;
   identitySourceId: string;
 }
-const DeleteIdentitySourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String, identitySourceId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteIdentitySourceInput",
-}) as any as S.Schema<DeleteIdentitySourceInput>;
+const DeleteIdentitySourceInput = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteIdentitySourceInput>;
 export interface DeleteIdentitySourceOutput {}
-const DeleteIdentitySourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIdentitySourceOutput",
-}) as any as S.Schema<DeleteIdentitySourceOutput>;
+const DeleteIdentitySourceOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteIdentitySourceOutput>;
 export interface DeletePolicyInput {
   policyStoreId: string;
   policyId: string;
 }
-const DeletePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String, policyId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeletePolicyInput" }) as any as S.Schema<DeletePolicyInput>;
+const DeletePolicyInput = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DeletePolicyInput>;
 export interface DeletePolicyOutput {}
 const DeletePolicyOutput = DeleteIdentitySourceOutput as any as S.Schema<DeletePolicyOutput>;
 export interface DeletePolicyStoreInput {
   policyStoreId: string;
 }
-const DeletePolicyStoreInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeletePolicyStoreInput" }) as any as S.Schema<DeletePolicyStoreInput>;
+const DeletePolicyStoreInput = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeletePolicyStoreInput>;
 export interface DeletePolicyStoreOutput {}
 const DeletePolicyStoreOutput =
   DeleteIdentitySourceOutput as any as S.Schema<DeletePolicyStoreOutput>;
@@ -1157,13 +921,10 @@ export interface DeletePolicyStoreAliasInput {
   aliasName: string;
   deletionMode?: DeletionMode;
 }
-const DeletePolicyStoreAliasInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ aliasName: S.String, deletionMode: S.optional(DeletionMode) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeletePolicyStoreAliasInput",
-}) as any as S.Schema<DeletePolicyStoreAliasInput>;
+const DeletePolicyStoreAliasInput = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeletePolicyStoreAliasInput>;
 export interface DeletePolicyStoreAliasOutput {}
 const DeletePolicyStoreAliasOutput =
   DeleteIdentitySourceOutput as any as S.Schema<DeletePolicyStoreAliasOutput>;
@@ -1171,13 +932,10 @@ export interface DeletePolicyTemplateInput {
   policyStoreId: string;
   policyTemplateId: string;
 }
-const DeletePolicyTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String, policyTemplateId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeletePolicyTemplateInput",
-}) as any as S.Schema<DeletePolicyTemplateInput>;
+const DeletePolicyTemplateInput = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeletePolicyTemplateInput>;
 export interface DeletePolicyTemplateOutput {}
 const DeletePolicyTemplateOutput =
   DeleteIdentitySourceOutput as any as S.Schema<DeletePolicyTemplateOutput>;
@@ -1185,11 +943,10 @@ export interface GetIdentitySourceInput {
   policyStoreId: string;
   identitySourceId: string;
 }
-const GetIdentitySourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String, identitySourceId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetIdentitySourceInput" }) as any as S.Schema<GetIdentitySourceInput>;
+const GetIdentitySourceInput = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetIdentitySourceInput>;
 export type DiscoveryUrl = string;
 export type OpenIdIssuer = "COGNITO" | (string & {});
 const OpenIdIssuer = S.String;
@@ -1200,38 +957,27 @@ export interface IdentitySourceDetails {
   discoveryUrl?: string;
   openIdIssuer?: OpenIdIssuer;
 }
-const IdentitySourceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientIds: S.optional(ClientIds),
-    userPoolArn: S.optional(S.String),
-    discoveryUrl: S.optional(S.String),
-    openIdIssuer: S.optional(OpenIdIssuer),
-  }),
-).annotate({ identifier: "IdentitySourceDetails" }) as any as S.Schema<IdentitySourceDetails>;
+const IdentitySourceDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<IdentitySourceDetails>;
 export interface CognitoGroupConfigurationDetail {
   groupEntityType?: string | redacted.Redacted<string>;
 }
-const CognitoGroupConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupEntityType: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "CognitoGroupConfigurationDetail",
-}) as any as S.Schema<CognitoGroupConfigurationDetail>;
+const CognitoGroupConfigurationDetail = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<CognitoGroupConfigurationDetail>;
 export interface CognitoUserPoolConfigurationDetail {
   userPoolArn: string;
   clientIds: (string | redacted.Redacted<string>)[];
   issuer: string;
   groupConfiguration?: CognitoGroupConfigurationDetail;
 }
-const CognitoUserPoolConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userPoolArn: S.String,
-    clientIds: ClientIds,
-    issuer: S.String,
-    groupConfiguration: S.optional(CognitoGroupConfigurationDetail),
-  }),
-).annotate({
-  identifier: "CognitoUserPoolConfigurationDetail",
-}) as any as S.Schema<CognitoUserPoolConfigurationDetail>;
+const CognitoUserPoolConfigurationDetail = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CognitoUserPoolConfigurationDetail>;
 export interface OpenIdConnectGroupConfigurationDetail {
   groupClaim: string | redacted.Redacted<string>;
   groupEntityType: string | redacted.Redacted<string>;
@@ -1264,10 +1010,7 @@ export type ConfigurationDetail =
       cognitoUserPoolConfiguration?: never;
       openIdConnectConfiguration: OpenIdConnectConfigurationDetail;
     };
-const ConfigurationDetail = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail }),
-  /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: OpenIdConnectConfigurationDetail }),
-]);
+const ConfigurationDetail = /*@__PURE__*/ __L.at(__c10, 0);
 export interface GetIdentitySourceOutput {
   createdDate: Date;
   details?: IdentitySourceDetails;
@@ -1277,26 +1020,15 @@ export interface GetIdentitySourceOutput {
   principalEntityType: string | redacted.Redacted<string>;
   configuration?: ConfigurationDetail;
 }
-const GetIdentitySourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    details: S.optional(IdentitySourceDetails),
-    identitySourceId: S.String,
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyStoreId: S.String,
-    principalEntityType: SensitiveString,
-    configuration: S.optional(ConfigurationDetail),
-  }),
-).annotate({ identifier: "GetIdentitySourceOutput" }) as any as S.Schema<GetIdentitySourceOutput>;
+const GetIdentitySourceOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetIdentitySourceOutput>;
 export interface GetPolicyInput {
   policyStoreId: string;
   policyId: string;
 }
-const GetPolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String, policyId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetPolicyInput" }) as any as S.Schema<GetPolicyInput>;
+const GetPolicyInput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GetPolicyInput>;
 export interface GetPolicyOutput {
   policyStoreId: string;
   policyId: string;
@@ -1310,44 +1042,21 @@ export interface GetPolicyOutput {
   effect?: PolicyEffect;
   name?: string;
 }
-const GetPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyId: S.String,
-    policyType: PolicyType,
-    principal: S.optional(EntityIdentifier),
-    resource: S.optional(EntityIdentifier),
-    actions: S.optional(ActionIdentifierList),
-    definition: PolicyDefinitionDetail,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    effect: S.optional(PolicyEffect),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetPolicyOutput" }) as any as S.Schema<GetPolicyOutput>;
+const GetPolicyOutput = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<GetPolicyOutput>;
 export interface GetPolicyStoreInput {
   policyStoreId: string;
   tags?: boolean;
 }
-const GetPolicyStoreInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String, tags: S.optional(S.Boolean) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetPolicyStoreInput" }) as any as S.Schema<GetPolicyStoreInput>;
+const GetPolicyStoreInput = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<GetPolicyStoreInput>;
 export interface KmsEncryptionState {
   key: string;
   encryptionContext: { [key: string]: string | undefined };
 }
-const KmsEncryptionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, encryptionContext: EncryptionContext }),
-).annotate({ identifier: "KmsEncryptionState" }) as any as S.Schema<KmsEncryptionState>;
+const KmsEncryptionState = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<KmsEncryptionState>;
 export type EncryptionState =
   | { kmsEncryptionState: KmsEncryptionState; default?: never }
   | { kmsEncryptionState?: never; default: Record<string, never> };
-const EncryptionState = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ kmsEncryptionState: KmsEncryptionState }),
-  /*@__PURE__*/ S.Struct({ default: /*@__PURE__*/ S.Struct({}) }),
-]);
+const EncryptionState = /*@__PURE__*/ __L.at(__c10, 6);
 export type CedarVersion = "CEDAR_2" | "CEDAR_4" | (string & {});
 const CedarVersion = S.String;
 
@@ -1363,28 +1072,17 @@ export interface GetPolicyStoreOutput {
   cedarVersion?: CedarVersion;
   tags?: { [key: string]: string | undefined };
 }
-const GetPolicyStoreOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    arn: S.String,
-    validationSettings: ValidationSettings,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    description: S.optional(SensitiveString),
-    deletionProtection: S.optional(DeletionProtection),
-    encryptionState: S.optional(EncryptionState),
-    cedarVersion: S.optional(CedarVersion),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "GetPolicyStoreOutput" }) as any as S.Schema<GetPolicyStoreOutput>;
+const GetPolicyStoreOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetPolicyStoreOutput>;
 export interface GetPolicyStoreAliasInput {
   aliasName: string;
 }
-const GetPolicyStoreAliasInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ aliasName: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetPolicyStoreAliasInput" }) as any as S.Schema<GetPolicyStoreAliasInput>;
+const GetPolicyStoreAliasInput = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetPolicyStoreAliasInput>;
 export type AliasState = "Active" | "PendingDeletion" | (string & {});
 const AliasState = S.String;
 
@@ -1395,26 +1093,18 @@ export interface GetPolicyStoreAliasOutput {
   createdAt: Date;
   state: AliasState;
 }
-const GetPolicyStoreAliasOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aliasName: S.String,
-    policyStoreId: S.String,
-    aliasArn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    state: AliasState,
-  }),
-).annotate({
-  identifier: "GetPolicyStoreAliasOutput",
-}) as any as S.Schema<GetPolicyStoreAliasOutput>;
+const GetPolicyStoreAliasOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetPolicyStoreAliasOutput>;
 export interface GetPolicyTemplateInput {
   policyStoreId: string;
   policyTemplateId: string;
 }
-const GetPolicyTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String, policyTemplateId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetPolicyTemplateInput" }) as any as S.Schema<GetPolicyTemplateInput>;
+const GetPolicyTemplateInput = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetPolicyTemplateInput>;
 export interface GetPolicyTemplateOutput {
   policyStoreId: string;
   policyTemplateId: string;
@@ -1424,25 +1114,14 @@ export interface GetPolicyTemplateOutput {
   lastUpdatedDate: Date;
   name?: string;
 }
-const GetPolicyTemplateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyTemplateId: S.String,
-    description: S.optional(SensitiveString),
-    statement: SensitiveString,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetPolicyTemplateOutput" }) as any as S.Schema<GetPolicyTemplateOutput>;
+const GetPolicyTemplateOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetPolicyTemplateOutput>;
 export interface GetSchemaInput {
   policyStoreId: string;
 }
-const GetSchemaInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetSchemaInput" }) as any as S.Schema<GetSchemaInput>;
+const GetSchemaInput = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetSchemaInput>;
 export type SchemaJson = string | redacted.Redacted<string>;
 export type Namespace = string | redacted.Redacted<string>;
 export type NamespaceList = (string | redacted.Redacted<string>)[];
@@ -1454,15 +1133,7 @@ export interface GetSchemaOutput {
   lastUpdatedDate: Date;
   namespaces?: (string | redacted.Redacted<string>)[];
 }
-const GetSchemaOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    schema: SensitiveString,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    namespaces: S.optional(NamespaceList),
-  }),
-).annotate({ identifier: "GetSchemaOutput" }) as any as S.Schema<GetSchemaOutput>;
+const GetSchemaOutput = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<GetSchemaOutput>;
 export interface IsAuthorizedInput {
   policyStoreId: string;
   principal?: EntityIdentifier;
@@ -1471,28 +1142,13 @@ export interface IsAuthorizedInput {
   context?: ContextDefinition;
   entities?: EntitiesDefinition;
 }
-const IsAuthorizedInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    principal: S.optional(EntityIdentifier),
-    action: S.optional(ActionIdentifier),
-    resource: S.optional(EntityIdentifier),
-    context: S.optional(ContextDefinition),
-    entities: S.optional(EntitiesDefinition),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "IsAuthorizedInput" }) as any as S.Schema<IsAuthorizedInput>;
+const IsAuthorizedInput = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<IsAuthorizedInput>;
 export interface IsAuthorizedOutput {
   decision: Decision;
   determiningPolicies: DeterminingPolicyItem[];
   errors: EvaluationErrorItem[];
 }
-const IsAuthorizedOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    decision: Decision,
-    determiningPolicies: DeterminingPolicyList,
-    errors: EvaluationErrorList,
-  }),
-).annotate({ identifier: "IsAuthorizedOutput" }) as any as S.Schema<IsAuthorizedOutput>;
+const IsAuthorizedOutput = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<IsAuthorizedOutput>;
 export interface IsAuthorizedWithTokenInput {
   policyStoreId: string;
   identityToken?: string | redacted.Redacted<string>;
@@ -1502,75 +1158,51 @@ export interface IsAuthorizedWithTokenInput {
   context?: ContextDefinition;
   entities?: EntitiesDefinition;
 }
-const IsAuthorizedWithTokenInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    identityToken: S.optional(SensitiveString),
-    accessToken: S.optional(SensitiveString),
-    action: S.optional(ActionIdentifier),
-    resource: S.optional(EntityIdentifier),
-    context: S.optional(ContextDefinition),
-    entities: S.optional(EntitiesDefinition),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "IsAuthorizedWithTokenInput",
-}) as any as S.Schema<IsAuthorizedWithTokenInput>;
+const IsAuthorizedWithTokenInput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<IsAuthorizedWithTokenInput>;
 export interface IsAuthorizedWithTokenOutput {
   decision: Decision;
   determiningPolicies: DeterminingPolicyItem[];
   errors: EvaluationErrorItem[];
   principal?: EntityIdentifier;
 }
-const IsAuthorizedWithTokenOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    decision: Decision,
-    determiningPolicies: DeterminingPolicyList,
-    errors: EvaluationErrorList,
-    principal: S.optional(EntityIdentifier),
-  }),
-).annotate({
-  identifier: "IsAuthorizedWithTokenOutput",
-}) as any as S.Schema<IsAuthorizedWithTokenOutput>;
+const IsAuthorizedWithTokenOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<IsAuthorizedWithTokenOutput>;
 export type NextToken = string;
 export type ListIdentitySourcesMaxResults = number;
 export interface IdentitySourceFilter {
   principalEntityType?: string | redacted.Redacted<string>;
 }
-const IdentitySourceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalEntityType: S.optional(SensitiveString) }),
-).annotate({ identifier: "IdentitySourceFilter" }) as any as S.Schema<IdentitySourceFilter>;
+const IdentitySourceFilter = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<IdentitySourceFilter>;
 export type IdentitySourceFilters = IdentitySourceFilter[];
-const IdentitySourceFilters = /*@__PURE__*/ S.Array(IdentitySourceFilter);
+const IdentitySourceFilters = /*@__PURE__*/ __L.at(__c12, 3);
 export interface ListIdentitySourcesInput {
   policyStoreId: string;
   nextToken?: string;
   maxResults?: number;
   filters?: IdentitySourceFilter[];
 }
-const ListIdentitySourcesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    filters: S.optional(IdentitySourceFilters),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListIdentitySourcesInput" }) as any as S.Schema<ListIdentitySourcesInput>;
+const ListIdentitySourcesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListIdentitySourcesInput>;
 export interface IdentitySourceItemDetails {
   clientIds?: (string | redacted.Redacted<string>)[];
   userPoolArn?: string;
   discoveryUrl?: string;
   openIdIssuer?: OpenIdIssuer;
 }
-const IdentitySourceItemDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientIds: S.optional(ClientIds),
-    userPoolArn: S.optional(S.String),
-    discoveryUrl: S.optional(S.String),
-    openIdIssuer: S.optional(OpenIdIssuer),
-  }),
-).annotate({
-  identifier: "IdentitySourceItemDetails",
-}) as any as S.Schema<IdentitySourceItemDetails>;
+const IdentitySourceItemDetails = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<IdentitySourceItemDetails>;
 export interface CognitoGroupConfigurationItem {
   groupEntityType?: string | redacted.Redacted<string>;
 }
@@ -1620,72 +1252,43 @@ export interface IdentitySourceItem {
   principalEntityType: string | redacted.Redacted<string>;
   configuration?: ConfigurationItem;
 }
-const IdentitySourceItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    details: S.optional(IdentitySourceItemDetails),
-    identitySourceId: S.String,
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyStoreId: S.String,
-    principalEntityType: SensitiveString,
-    configuration: S.optional(ConfigurationItem),
-  }),
-).annotate({ identifier: "IdentitySourceItem" }) as any as S.Schema<IdentitySourceItem>;
+const IdentitySourceItem = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<IdentitySourceItem>;
 export type IdentitySources = IdentitySourceItem[];
-const IdentitySources = /*@__PURE__*/ S.Array(IdentitySourceItem);
+const IdentitySources = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ListIdentitySourcesOutput {
   nextToken?: string;
   identitySources: IdentitySourceItem[];
 }
-const ListIdentitySourcesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), identitySources: IdentitySources }),
-).annotate({
-  identifier: "ListIdentitySourcesOutput",
-}) as any as S.Schema<ListIdentitySourcesOutput>;
+const ListIdentitySourcesOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListIdentitySourcesOutput>;
 export type MaxResults = number;
 export type EntityReference =
   | { unspecified: boolean; identifier?: never }
   | { unspecified?: never; identifier: EntityIdentifier };
-const EntityReference = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ unspecified: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ identifier: EntityIdentifier }),
-]);
+const EntityReference = /*@__PURE__*/ __L.at(__c13, 1);
 export interface PolicyFilter {
   principal?: EntityReference;
   resource?: EntityReference;
   policyType?: PolicyType;
   policyTemplateId?: string;
 }
-const PolicyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principal: S.optional(EntityReference),
-    resource: S.optional(EntityReference),
-    policyType: S.optional(PolicyType),
-    policyTemplateId: S.optional(S.String),
-  }),
-).annotate({ identifier: "PolicyFilter" }) as any as S.Schema<PolicyFilter>;
+const PolicyFilter = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<PolicyFilter>;
 export interface ListPoliciesInput {
   policyStoreId: string;
   nextToken?: string;
   maxResults?: number;
   filter?: PolicyFilter;
 }
-const ListPoliciesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    filter: S.optional(PolicyFilter),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListPoliciesInput" }) as any as S.Schema<ListPoliciesInput>;
+const ListPoliciesInput = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ListPoliciesInput>;
 export interface StaticPolicyDefinitionItem {
   description?: string | redacted.Redacted<string>;
 }
-const StaticPolicyDefinitionItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ description: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "StaticPolicyDefinitionItem",
-}) as any as S.Schema<StaticPolicyDefinitionItem>;
+const StaticPolicyDefinitionItem = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<StaticPolicyDefinitionItem>;
 export interface TemplateLinkedPolicyDefinitionItem {
   policyTemplateId: string;
   principal?: EntityIdentifier;
@@ -1696,10 +1299,7 @@ const TemplateLinkedPolicyDefinitionItem =
 export type PolicyDefinitionItem =
   | { static: StaticPolicyDefinitionItem; templateLinked?: never }
   | { static?: never; templateLinked: TemplateLinkedPolicyDefinitionItem };
-const PolicyDefinitionItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ static: StaticPolicyDefinitionItem }),
-  /*@__PURE__*/ S.Struct({ templateLinked: TemplateLinkedPolicyDefinitionItem }),
-]);
+const PolicyDefinitionItem = /*@__PURE__*/ __L.at(__c13, 5);
 export interface PolicyItem {
   policyStoreId: string;
   policyId: string;
@@ -1713,50 +1313,30 @@ export interface PolicyItem {
   effect?: PolicyEffect;
   name?: string;
 }
-const PolicyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyId: S.String,
-    policyType: PolicyType,
-    principal: S.optional(EntityIdentifier),
-    resource: S.optional(EntityIdentifier),
-    actions: S.optional(ActionIdentifierList),
-    definition: PolicyDefinitionItem,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    effect: S.optional(PolicyEffect),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "PolicyItem" }) as any as S.Schema<PolicyItem>;
+const PolicyItem = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<PolicyItem>;
 export type PolicyList = PolicyItem[];
-const PolicyList = /*@__PURE__*/ S.Array(PolicyItem);
+const PolicyList = /*@__PURE__*/ __L.at(__c13, 7);
 export interface ListPoliciesOutput {
   nextToken?: string;
   policies: PolicyItem[];
 }
-const ListPoliciesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), policies: PolicyList }),
-).annotate({ identifier: "ListPoliciesOutput" }) as any as S.Schema<ListPoliciesOutput>;
+const ListPoliciesOutput = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ListPoliciesOutput>;
 export interface PolicyStoreAliasFilter {
   policyStoreId?: string;
 }
-const PolicyStoreAliasFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.optional(S.String) }),
-).annotate({ identifier: "PolicyStoreAliasFilter" }) as any as S.Schema<PolicyStoreAliasFilter>;
+const PolicyStoreAliasFilter = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<PolicyStoreAliasFilter>;
 export interface ListPolicyStoreAliasesInput {
   nextToken?: string;
   maxResults?: number;
   filter?: PolicyStoreAliasFilter;
 }
-const ListPolicyStoreAliasesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    filter: S.optional(PolicyStoreAliasFilter),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListPolicyStoreAliasesInput",
-}) as any as S.Schema<ListPolicyStoreAliasesInput>;
+const ListPolicyStoreAliasesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListPolicyStoreAliasesInput>;
 export interface PolicyStoreAliasItem {
   aliasName: string;
   policyStoreId: string;
@@ -1764,35 +1344,28 @@ export interface PolicyStoreAliasItem {
   createdAt: Date;
   state: AliasState;
 }
-const PolicyStoreAliasItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aliasName: S.String,
-    policyStoreId: S.String,
-    aliasArn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    state: AliasState,
-  }),
-).annotate({ identifier: "PolicyStoreAliasItem" }) as any as S.Schema<PolicyStoreAliasItem>;
+const PolicyStoreAliasItem = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<PolicyStoreAliasItem>;
 export type PolicyStoreAliasList = PolicyStoreAliasItem[];
-const PolicyStoreAliasList = /*@__PURE__*/ S.Array(PolicyStoreAliasItem);
+const PolicyStoreAliasList = /*@__PURE__*/ __L.at(__c14, 4);
 export interface ListPolicyStoreAliasesOutput {
   nextToken?: string;
   policyStoreAliases: PolicyStoreAliasItem[];
 }
-const ListPolicyStoreAliasesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), policyStoreAliases: PolicyStoreAliasList }),
-).annotate({
-  identifier: "ListPolicyStoreAliasesOutput",
-}) as any as S.Schema<ListPolicyStoreAliasesOutput>;
+const ListPolicyStoreAliasesOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListPolicyStoreAliasesOutput>;
 export interface ListPolicyStoresInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListPolicyStoresInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListPolicyStoresInput" }) as any as S.Schema<ListPolicyStoresInput>;
+const ListPolicyStoresInput = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListPolicyStoresInput>;
 export interface PolicyStoreItem {
   policyStoreId: string;
   arn: string;
@@ -1800,36 +1373,26 @@ export interface PolicyStoreItem {
   lastUpdatedDate?: Date;
   description?: string | redacted.Redacted<string>;
 }
-const PolicyStoreItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    arn: S.String,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    description: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "PolicyStoreItem" }) as any as S.Schema<PolicyStoreItem>;
+const PolicyStoreItem = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<PolicyStoreItem>;
 export type PolicyStoreList = PolicyStoreItem[];
-const PolicyStoreList = /*@__PURE__*/ S.Array(PolicyStoreItem);
+const PolicyStoreList = /*@__PURE__*/ __L.at(__c15, 0);
 export interface ListPolicyStoresOutput {
   nextToken?: string;
   policyStores: PolicyStoreItem[];
 }
-const ListPolicyStoresOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), policyStores: PolicyStoreList }),
-).annotate({ identifier: "ListPolicyStoresOutput" }) as any as S.Schema<ListPolicyStoresOutput>;
+const ListPolicyStoresOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListPolicyStoresOutput>;
 export interface ListPolicyTemplatesInput {
   policyStoreId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListPolicyTemplatesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListPolicyTemplatesInput" }) as any as S.Schema<ListPolicyTemplatesInput>;
+const ListPolicyTemplatesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListPolicyTemplatesInput>;
 export interface PolicyTemplateItem {
   policyStoreId: string;
   policyTemplateId: string;
@@ -1838,80 +1401,51 @@ export interface PolicyTemplateItem {
   lastUpdatedDate: Date;
   name?: string;
 }
-const PolicyTemplateItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyTemplateId: S.String,
-    description: S.optional(SensitiveString),
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "PolicyTemplateItem" }) as any as S.Schema<PolicyTemplateItem>;
+const PolicyTemplateItem = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<PolicyTemplateItem>;
 export type PolicyTemplatesList = PolicyTemplateItem[];
-const PolicyTemplatesList = /*@__PURE__*/ S.Array(PolicyTemplateItem);
+const PolicyTemplatesList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListPolicyTemplatesOutput {
   nextToken?: string;
   policyTemplates: PolicyTemplateItem[];
 }
-const ListPolicyTemplatesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), policyTemplates: PolicyTemplatesList }),
-).annotate({
-  identifier: "ListPolicyTemplatesOutput",
-}) as any as S.Schema<ListPolicyTemplatesOutput>;
+const ListPolicyTemplatesOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListPolicyTemplatesOutput>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export type SchemaDefinition = { cedarJson: string | redacted.Redacted<string> };
-const SchemaDefinition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
-]);
+const SchemaDefinition = /*@__PURE__*/ __L.at(__c16, 0);
 export interface PutSchemaInput {
   policyStoreId: string;
   definition: SchemaDefinition;
 }
-const PutSchemaInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyStoreId: S.String, definition: SchemaDefinition }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PutSchemaInput" }) as any as S.Schema<PutSchemaInput>;
+const PutSchemaInput = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<PutSchemaInput>;
 export interface PutSchemaOutput {
   policyStoreId: string;
   namespaces: (string | redacted.Redacted<string>)[];
   createdDate: Date;
   lastUpdatedDate: Date;
 }
-const PutSchemaOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    namespaces: NamespaceList,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "PutSchemaOutput" }) as any as S.Schema<PutSchemaOutput>;
+const PutSchemaOutput = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<PutSchemaOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tags: TagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
 const TagResourceOutput = DeleteIdentitySourceOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
@@ -1920,11 +1454,7 @@ export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
 const UntagResourceOutput = DeleteIdentitySourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateCognitoGroupConfiguration {
@@ -1972,16 +1502,10 @@ export interface UpdateIdentitySourceInput {
   updateConfiguration: UpdateConfiguration;
   principalEntityType?: string | redacted.Redacted<string>;
 }
-const UpdateIdentitySourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    identitySourceId: S.String,
-    updateConfiguration: UpdateConfiguration,
-    principalEntityType: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateIdentitySourceInput",
-}) as any as S.Schema<UpdateIdentitySourceInput>;
+const UpdateIdentitySourceInput = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<UpdateIdentitySourceInput>;
 export interface UpdateIdentitySourceOutput {
   createdDate: Date;
   identitySourceId: string;
@@ -1997,23 +1521,14 @@ export interface UpdateStaticPolicyDefinition {
 const UpdateStaticPolicyDefinition =
   StaticPolicyDefinitionDetail as any as S.Schema<UpdateStaticPolicyDefinition>;
 export type UpdatePolicyDefinition = { static: UpdateStaticPolicyDefinition };
-const UpdatePolicyDefinition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ static: UpdateStaticPolicyDefinition }),
-]);
+const UpdatePolicyDefinition = /*@__PURE__*/ __L.at(__c16, 6);
 export interface UpdatePolicyInput {
   policyStoreId: string;
   policyId: string;
   definition?: UpdatePolicyDefinition;
   name?: string;
 }
-const UpdatePolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyId: S.String,
-    definition: S.optional(UpdatePolicyDefinition),
-    name: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdatePolicyInput" }) as any as S.Schema<UpdatePolicyInput>;
+const UpdatePolicyInput = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<UpdatePolicyInput>;
 export interface UpdatePolicyOutput {
   policyStoreId: string;
   policyId: string;
@@ -2032,14 +1547,10 @@ export interface UpdatePolicyStoreInput {
   deletionProtection?: DeletionProtection;
   description?: string | redacted.Redacted<string>;
 }
-const UpdatePolicyStoreInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    validationSettings: ValidationSettings,
-    deletionProtection: S.optional(DeletionProtection),
-    description: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdatePolicyStoreInput" }) as any as S.Schema<UpdatePolicyStoreInput>;
+const UpdatePolicyStoreInput = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<UpdatePolicyStoreInput>;
 export interface UpdatePolicyStoreOutput {
   policyStoreId: string;
   arn: string;
@@ -2054,17 +1565,10 @@ export interface UpdatePolicyTemplateInput {
   statement: string | redacted.Redacted<string>;
   name?: string;
 }
-const UpdatePolicyTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyTemplateId: S.String,
-    description: S.optional(SensitiveString),
-    statement: SensitiveString,
-    name: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdatePolicyTemplateInput",
-}) as any as S.Schema<UpdatePolicyTemplateInput>;
+const UpdatePolicyTemplateInput = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<UpdatePolicyTemplateInput>;
 export interface UpdatePolicyTemplateOutput {
   policyStoreId: string;
   policyTemplateId: string;
@@ -2087,11 +1591,9 @@ export interface ResourceConflict {
   resourceId: string;
   resourceType: ResourceType;
 }
-const ResourceConflict = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceId: S.String, resourceType: ResourceType }),
-).annotate({ identifier: "ResourceConflict" }) as any as S.Schema<ResourceConflict>;
+const ResourceConflict = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<ResourceConflict>;
 export type ResourceConflictList = ResourceConflict[];
-const ResourceConflictList = /*@__PURE__*/ S.Array(ResourceConflict);
+const ResourceConflictList = /*@__PURE__*/ __L.at(__c17, 3);
 export type BatchGetPolicyError = ValidationException | CommonErrors;
 /**
  * Retrieves information about a group (batch) of policies.
@@ -2962,3 +2464,1046 @@ export const updatePolicyTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePolicyTemplate",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ policyStoreId: S.String, policyId: S.String })).annotate({
+        identifier: "BatchGetPolicyInputItem",
+      });
+    case 1:
+      return S.Array(BatchGetPolicyInputItem);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ requests: BatchGetPolicyInputList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetPolicyInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ description: S.optional(SensitiveString), statement: SensitiveString }),
+      ).annotate({
+        identifier: "StaticPolicyDefinitionDetail",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ entityType: SensitiveString, entityId: SensitiveString }),
+      ).annotate({ identifier: "EntityIdentifier" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyTemplateId: S.String,
+          principal: S.optional(EntityIdentifier),
+          resource: S.optional(EntityIdentifier),
+        }),
+      ).annotate({
+        identifier: "TemplateLinkedPolicyDefinitionDetail",
+      });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ static: StaticPolicyDefinitionDetail }),
+        /*@__PURE__*/ S.Struct({ templateLinked: TemplateLinkedPolicyDefinitionDetail }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyId: S.String,
+          policyType: PolicyType,
+          definition: PolicyDefinitionDetail,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchGetPolicyOutputItem" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(BatchGetPolicyOutputItem);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: BatchGetPolicyErrorCode,
+          policyStoreId: S.String,
+          policyId: S.String,
+          message: S.String,
+        }),
+      ).annotate({ identifier: "BatchGetPolicyErrorItem" });
+    case 2:
+      return S.Array(BatchGetPolicyErrorItem);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ results: BatchGetPolicyOutputList, errors: BatchGetPolicyErrorList }),
+      ).annotate({ identifier: "BatchGetPolicyOutput" });
+    case 4:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+      );
+    case 5:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => AttributeValue)
+          .annotate({ identifier: "AttributeValue" })
+          .pipe(S.optional),
+      );
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ boolean: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ entityIdentifier: EntityIdentifier }),
+        /*@__PURE__*/ S.Struct({ long: S.Number }),
+        /*@__PURE__*/ S.Struct({ string: SensitiveString }),
+        /*@__PURE__*/ S.Struct({
+          set: /*@__PURE__*/ S.suspend(() => SetAttribute).annotate({ identifier: "SetAttribute" }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          record: /*@__PURE__*/ S.suspend(() => RecordAttribute).annotate({
+            identifier: "RecordAttribute",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({ ipaddr: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ decimal: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ datetime: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ duration: SensitiveString }),
+      ]);
+    case 7:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => AttributeValue)
+          .annotate({ identifier: "AttributeValue" })
+          .pipe(S.optional),
+      );
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(EntityIdentifier);
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => CedarTagValue).annotate({ identifier: "CedarTagValue" }),
+      );
+    case 2:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => CedarTagValue)
+          .annotate({ identifier: "CedarTagValue" })
+          .pipe(S.optional),
+      );
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ boolean: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ entityIdentifier: EntityIdentifier }),
+        /*@__PURE__*/ S.Struct({ long: S.Number }),
+        /*@__PURE__*/ S.Struct({ string: SensitiveString }),
+        /*@__PURE__*/ S.Struct({
+          set: /*@__PURE__*/ S.suspend(() => CedarTagSetAttribute).annotate({
+            identifier: "CedarTagSetAttribute",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          record: /*@__PURE__*/ S.suspend(() => CedarTagRecordAttribute).annotate({
+            identifier: "CedarTagRecordAttribute",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({ ipaddr: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ decimal: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ datetime: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ duration: SensitiveString }),
+      ]);
+    case 4:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => CedarTagValue)
+          .annotate({ identifier: "CedarTagValue" })
+          .pipe(S.optional),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: EntityIdentifier,
+          attributes: S.optional(EntityAttributes),
+          parents: S.optional(ParentList),
+          tags: S.optional(EntityCedarTags),
+        }),
+      ).annotate({ identifier: "EntityItem" });
+    case 6:
+      return S.Array(EntityItem);
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ entityList: EntityList }),
+        /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
+      ]);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ actionType: SensitiveString, actionId: SensitiveString }),
+      ).annotate({ identifier: "ActionIdentifier" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ contextMap: ContextMap }),
+        /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          principal: S.optional(EntityIdentifier),
+          action: S.optional(ActionIdentifier),
+          resource: S.optional(EntityIdentifier),
+          context: S.optional(ContextDefinition),
+        }),
+      ).annotate({
+        identifier: "BatchIsAuthorizedInputItem",
+      });
+    case 3:
+      return S.Array(BatchIsAuthorizedInputItem);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          entities: S.optional(EntitiesDefinition),
+          requests: BatchIsAuthorizedInputList,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "BatchIsAuthorizedInput" });
+    case 5:
+      return S.suspend(() => S.Struct({ policyId: S.String })).annotate({
+        identifier: "DeterminingPolicyItem",
+      });
+    case 6:
+      return S.Array(DeterminingPolicyItem);
+    case 7:
+      return S.suspend(() => S.Struct({ errorDescription: S.String })).annotate({
+        identifier: "EvaluationErrorItem",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(EvaluationErrorItem);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          request: BatchIsAuthorizedInputItem,
+          decision: Decision,
+          determiningPolicies: DeterminingPolicyList,
+          errors: EvaluationErrorList,
+        }),
+      ).annotate({
+        identifier: "BatchIsAuthorizedOutputItem",
+      });
+    case 2:
+      return S.Array(BatchIsAuthorizedOutputItem);
+    case 3:
+      return S.suspend(() => S.Struct({ results: BatchIsAuthorizedOutputList })).annotate({
+        identifier: "BatchIsAuthorizedOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(ActionIdentifier),
+          resource: S.optional(EntityIdentifier),
+          context: S.optional(ContextDefinition),
+        }),
+      ).annotate({
+        identifier: "BatchIsAuthorizedWithTokenInputItem",
+      });
+    case 5:
+      return S.Array(BatchIsAuthorizedWithTokenInputItem);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          identityToken: S.optional(SensitiveString),
+          accessToken: S.optional(SensitiveString),
+          entities: S.optional(EntitiesDefinition),
+          requests: BatchIsAuthorizedWithTokenInputList,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "BatchIsAuthorizedWithTokenInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          request: BatchIsAuthorizedWithTokenInputItem,
+          decision: Decision,
+          determiningPolicies: DeterminingPolicyList,
+          errors: EvaluationErrorList,
+        }),
+      ).annotate({
+        identifier: "BatchIsAuthorizedWithTokenOutputItem",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(BatchIsAuthorizedWithTokenOutputItem);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          principal: S.optional(EntityIdentifier),
+          results: BatchIsAuthorizedWithTokenOutputList,
+        }),
+      ).annotate({
+        identifier: "BatchIsAuthorizedWithTokenOutput",
+      });
+    case 2:
+      return S.Array(SensitiveString);
+    case 3:
+      return S.suspend(() => S.Struct({ groupEntityType: SensitiveString })).annotate({
+        identifier: "CognitoGroupConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          userPoolArn: S.String,
+          clientIds: S.optional(ClientIds),
+          groupConfiguration: S.optional(CognitoGroupConfiguration),
+        }),
+      ).annotate({
+        identifier: "CognitoUserPoolConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ groupClaim: SensitiveString, groupEntityType: SensitiveString }),
+      ).annotate({
+        identifier: "OpenIdConnectGroupConfiguration",
+      });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          principalIdClaim: S.optional(SensitiveString),
+          audiences: S.optional(Audiences),
+        }),
+      ).annotate({
+        identifier: "OpenIdConnectAccessTokenConfiguration",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalIdClaim: S.optional(SensitiveString),
+          clientIds: S.optional(ClientIds),
+        }),
+      ).annotate({
+        identifier: "OpenIdConnectIdentityTokenConfiguration",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfiguration }),
+        /*@__PURE__*/ S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfiguration }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          issuer: S.String,
+          entityIdPrefix: S.optional(SensitiveString),
+          groupConfiguration: S.optional(OpenIdConnectGroupConfiguration),
+          tokenSelection: OpenIdConnectTokenSelection,
+        }),
+      ).annotate({
+        identifier: "OpenIdConnectConfiguration",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfiguration }),
+        /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: OpenIdConnectConfiguration }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          policyStoreId: S.String,
+          configuration: Configuration,
+          principalEntityType: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateIdentitySourceInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          identitySourceId: S.String,
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          policyStoreId: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateIdentitySourceOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ description: S.optional(SensitiveString), statement: SensitiveString }),
+      ).annotate({ identifier: "StaticPolicyDefinition" });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ static: StaticPolicyDefinition }),
+        /*@__PURE__*/ S.Struct({ templateLinked: TemplateLinkedPolicyDefinition }),
+      ]);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          policyStoreId: S.String,
+          definition: PolicyDefinition,
+          name: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreatePolicyInput" });
+    case 1:
+      return S.Array(ActionIdentifier);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyId: S.String,
+          policyType: PolicyType,
+          principal: S.optional(EntityIdentifier),
+          resource: S.optional(EntityIdentifier),
+          actions: S.optional(ActionIdentifierList),
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          effect: S.optional(PolicyEffect),
+        }),
+      ).annotate({ identifier: "CreatePolicyOutput" });
+    case 3:
+      return S.suspend(() => S.Struct({ mode: ValidationMode })).annotate({
+        identifier: "ValidationSettings",
+      });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ key: S.String, encryptionContext: S.optional(EncryptionContext) }),
+      ).annotate({ identifier: "KmsEncryptionSettings" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ kmsEncryptionSettings: KmsEncryptionSettings }),
+        /*@__PURE__*/ S.Struct({ default: /*@__PURE__*/ S.Struct({}) }),
+      ]);
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          validationSettings: ValidationSettings,
+          description: S.optional(SensitiveString),
+          deletionProtection: S.optional(DeletionProtection),
+          encryptionSettings: S.optional(EncryptionSettings),
+          tags: S.optional(TagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreatePolicyStoreInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          arn: S.String,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "CreatePolicyStoreOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ aliasName: S.String, policyStoreId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreatePolicyStoreAliasInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          aliasName: S.String,
+          policyStoreId: S.String,
+          aliasArn: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "CreatePolicyStoreAliasOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          policyStoreId: S.String,
+          description: S.optional(SensitiveString),
+          statement: SensitiveString,
+          name: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreatePolicyTemplateInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyTemplateId: S.String,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "CreatePolicyTemplateOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String, identitySourceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteIdentitySourceInput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteIdentitySourceOutput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String, policyId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeletePolicyInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeletePolicyStoreInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ aliasName: S.String, deletionMode: S.optional(DeletionMode) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeletePolicyStoreAliasInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String, policyTemplateId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeletePolicyTemplateInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String, identitySourceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetIdentitySourceInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          clientIds: S.optional(ClientIds),
+          userPoolArn: S.optional(S.String),
+          discoveryUrl: S.optional(S.String),
+          openIdIssuer: S.optional(OpenIdIssuer),
+        }),
+      ).annotate({ identifier: "IdentitySourceDetails" });
+    case 6:
+      return S.suspend(() => S.Struct({ groupEntityType: S.optional(SensitiveString) })).annotate({
+        identifier: "CognitoGroupConfigurationDetail",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          userPoolArn: S.String,
+          clientIds: ClientIds,
+          issuer: S.String,
+          groupConfiguration: S.optional(CognitoGroupConfigurationDetail),
+        }),
+      ).annotate({
+        identifier: "CognitoUserPoolConfigurationDetail",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail,
+        }),
+        /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: OpenIdConnectConfigurationDetail }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          details: S.optional(IdentitySourceDetails),
+          identitySourceId: S.String,
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          policyStoreId: S.String,
+          principalEntityType: SensitiveString,
+          configuration: S.optional(ConfigurationDetail),
+        }),
+      ).annotate({ identifier: "GetIdentitySourceOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String, policyId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetPolicyInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyId: S.String,
+          policyType: PolicyType,
+          principal: S.optional(EntityIdentifier),
+          resource: S.optional(EntityIdentifier),
+          actions: S.optional(ActionIdentifierList),
+          definition: PolicyDefinitionDetail,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          effect: S.optional(PolicyEffect),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetPolicyOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String, tags: S.optional(S.Boolean) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetPolicyStoreInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ key: S.String, encryptionContext: EncryptionContext }),
+      ).annotate({ identifier: "KmsEncryptionState" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ kmsEncryptionState: KmsEncryptionState }),
+        /*@__PURE__*/ S.Struct({ default: /*@__PURE__*/ S.Struct({}) }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          arn: S.String,
+          validationSettings: ValidationSettings,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          description: S.optional(SensitiveString),
+          deletionProtection: S.optional(DeletionProtection),
+          encryptionState: S.optional(EncryptionState),
+          cedarVersion: S.optional(CedarVersion),
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({ identifier: "GetPolicyStoreOutput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ aliasName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetPolicyStoreAliasInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          aliasName: S.String,
+          policyStoreId: S.String,
+          aliasArn: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          state: AliasState,
+        }),
+      ).annotate({
+        identifier: "GetPolicyStoreAliasOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String, policyTemplateId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetPolicyTemplateInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyTemplateId: S.String,
+          description: S.optional(SensitiveString),
+          statement: SensitiveString,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetPolicyTemplateOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetSchemaInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          schema: SensitiveString,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          namespaces: S.optional(NamespaceList),
+        }),
+      ).annotate({ identifier: "GetSchemaOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          principal: S.optional(EntityIdentifier),
+          action: S.optional(ActionIdentifier),
+          resource: S.optional(EntityIdentifier),
+          context: S.optional(ContextDefinition),
+          entities: S.optional(EntitiesDefinition),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "IsAuthorizedInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          decision: Decision,
+          determiningPolicies: DeterminingPolicyList,
+          errors: EvaluationErrorList,
+        }),
+      ).annotate({ identifier: "IsAuthorizedOutput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          identityToken: S.optional(SensitiveString),
+          accessToken: S.optional(SensitiveString),
+          action: S.optional(ActionIdentifier),
+          resource: S.optional(EntityIdentifier),
+          context: S.optional(ContextDefinition),
+          entities: S.optional(EntitiesDefinition),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "IsAuthorizedWithTokenInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          decision: Decision,
+          determiningPolicies: DeterminingPolicyList,
+          errors: EvaluationErrorList,
+          principal: S.optional(EntityIdentifier),
+        }),
+      ).annotate({
+        identifier: "IsAuthorizedWithTokenOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ principalEntityType: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "IdentitySourceFilter" });
+    case 3:
+      return S.Array(IdentitySourceFilter);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          filters: S.optional(IdentitySourceFilters),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListIdentitySourcesInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          clientIds: S.optional(ClientIds),
+          userPoolArn: S.optional(S.String),
+          discoveryUrl: S.optional(S.String),
+          openIdIssuer: S.optional(OpenIdIssuer),
+        }),
+      ).annotate({
+        identifier: "IdentitySourceItemDetails",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          details: S.optional(IdentitySourceItemDetails),
+          identitySourceId: S.String,
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          policyStoreId: S.String,
+          principalEntityType: SensitiveString,
+          configuration: S.optional(ConfigurationItem),
+        }),
+      ).annotate({ identifier: "IdentitySourceItem" });
+    case 7:
+      return S.Array(IdentitySourceItem);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), identitySources: IdentitySources }),
+      ).annotate({
+        identifier: "ListIdentitySourcesOutput",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ unspecified: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ identifier: EntityIdentifier }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          principal: S.optional(EntityReference),
+          resource: S.optional(EntityReference),
+          policyType: S.optional(PolicyType),
+          policyTemplateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PolicyFilter" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          filter: S.optional(PolicyFilter),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListPoliciesInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ description: S.optional(SensitiveString) })).annotate({
+        identifier: "StaticPolicyDefinitionItem",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ static: StaticPolicyDefinitionItem }),
+        /*@__PURE__*/ S.Struct({ templateLinked: TemplateLinkedPolicyDefinitionItem }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyId: S.String,
+          policyType: PolicyType,
+          principal: S.optional(EntityIdentifier),
+          resource: S.optional(EntityIdentifier),
+          actions: S.optional(ActionIdentifierList),
+          definition: PolicyDefinitionItem,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          effect: S.optional(PolicyEffect),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PolicyItem" });
+    case 7:
+      return S.Array(PolicyItem);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), policies: PolicyList }),
+      ).annotate({ identifier: "ListPoliciesOutput" });
+    case 1:
+      return S.suspend(() => S.Struct({ policyStoreId: S.optional(S.String) })).annotate({
+        identifier: "PolicyStoreAliasFilter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          filter: S.optional(PolicyStoreAliasFilter),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListPolicyStoreAliasesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          aliasName: S.String,
+          policyStoreId: S.String,
+          aliasArn: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          state: AliasState,
+        }),
+      ).annotate({ identifier: "PolicyStoreAliasItem" });
+    case 4:
+      return S.Array(PolicyStoreAliasItem);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), policyStoreAliases: PolicyStoreAliasList }),
+      ).annotate({
+        identifier: "ListPolicyStoreAliasesOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListPolicyStoresInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          arn: S.String,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          description: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "PolicyStoreItem" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(PolicyStoreItem);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), policyStores: PolicyStoreList }),
+      ).annotate({ identifier: "ListPolicyStoresOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListPolicyTemplatesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyTemplateId: S.String,
+          description: S.optional(SensitiveString),
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PolicyTemplateItem" });
+    case 4:
+      return S.Array(PolicyTemplateItem);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), policyTemplates: PolicyTemplatesList }),
+      ).annotate({
+        identifier: "ListPolicyTemplatesOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 7:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ cedarJson: SensitiveString })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ policyStoreId: S.String, definition: SchemaDefinition }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutSchemaInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          namespaces: NamespaceList,
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "PutSchemaOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tags: TagMap }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          identitySourceId: S.String,
+          updateConfiguration: UpdateConfiguration,
+          principalEntityType: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateIdentitySourceInput",
+      });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ static: UpdateStaticPolicyDefinition })]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyId: S.String,
+          definition: S.optional(UpdatePolicyDefinition),
+          name: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdatePolicyInput" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          validationSettings: ValidationSettings,
+          deletionProtection: S.optional(DeletionProtection),
+          description: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdatePolicyStoreInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyTemplateId: S.String,
+          description: S.optional(SensitiveString),
+          statement: SensitiveString,
+          name: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdatePolicyTemplateInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ resourceId: S.String, resourceType: ResourceType }),
+      ).annotate({ identifier: "ResourceConflict" });
+    case 3:
+      return S.Array(ResourceConflict);
+  }
+}

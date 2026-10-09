@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -129,7 +130,7 @@ const StatementEffect = S.String;
 
 export type StatementAction = string;
 export type StatementActionList = string[];
-const StatementActionList = /*@__PURE__*/ S.Array(S.String);
+const StatementActionList = /*@__PURE__*/ __L.at(__c0, 0);
 export type StatementPrincipal = string;
 export type StatementPrincipalList = string[];
 const StatementPrincipalList = StatementActionList as any as S.Schema<StatementPrincipalList>;
@@ -142,25 +143,10 @@ export interface AddPolicyStatementInput {
   principal: string[];
   condition?: string;
 }
-const AddPolicyStatementInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String.pipe(T.HttpLabel("arn")),
-    statementId: S.String.pipe(T.HttpLabel("statementId")),
-    effect: StatementEffect,
-    action: StatementActionList,
-    principal: StatementPrincipalList,
-    condition: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/policies/{arn}/{statementId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "AddPolicyStatementInput" }) as any as S.Schema<AddPolicyStatementInput>;
+const AddPolicyStatementInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddPolicyStatementInput>;
 export type PolicyToken = string;
 export type PolicyDocument = string;
 export interface AddPolicyStatementOutput {
@@ -168,9 +154,10 @@ export interface AddPolicyStatementOutput {
   token: string;
   policy?: string;
 }
-const AddPolicyStatementOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, token: S.String, policy: S.optional(S.String) }),
-).annotate({ identifier: "AddPolicyStatementOutput" }) as any as S.Schema<AddPolicyStatementOutput>;
+const AddPolicyStatementOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddPolicyStatementOutput>;
 export type EntityName = string;
 export type HeaderSafeUniqueId = string;
 export type UniqueIdList = string[];
@@ -180,22 +167,10 @@ export interface BatchDeleteUniqueIdInput {
   inputSource?: string;
   uniqueIds: string[];
 }
-const BatchDeleteUniqueIdInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    inputSource: S.optional(S.String).pipe(T.HttpHeader("inputSource")),
-    uniqueIds: UniqueIdList.pipe(T.HttpHeader("uniqueIds")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/matchingworkflows/{workflowName}/uniqueids" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "BatchDeleteUniqueIdInput" }) as any as S.Schema<BatchDeleteUniqueIdInput>;
+const BatchDeleteUniqueIdInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BatchDeleteUniqueIdInput>;
 export type DeleteUniqueIdStatus = "COMPLETED" | "ACCEPTED" | (string & {});
 const DeleteUniqueIdStatus = S.String;
 
@@ -206,19 +181,15 @@ export interface DeleteUniqueIdError {
   uniqueId: string;
   errorType: DeleteUniqueIdErrorType;
 }
-const DeleteUniqueIdError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ uniqueId: S.String, errorType: DeleteUniqueIdErrorType }),
-).annotate({ identifier: "DeleteUniqueIdError" }) as any as S.Schema<DeleteUniqueIdError>;
+const DeleteUniqueIdError = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteUniqueIdError>;
 export type DeleteUniqueIdErrorsList = DeleteUniqueIdError[];
-const DeleteUniqueIdErrorsList = /*@__PURE__*/ S.Array(DeleteUniqueIdError);
+const DeleteUniqueIdErrorsList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface DeletedUniqueId {
   uniqueId: string;
 }
-const DeletedUniqueId = /*@__PURE__*/ S.suspend(() => S.Struct({ uniqueId: S.String })).annotate({
-  identifier: "DeletedUniqueId",
-}) as any as S.Schema<DeletedUniqueId>;
+const DeletedUniqueId = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeletedUniqueId>;
 export type DeletedUniqueIdList = DeletedUniqueId[];
-const DeletedUniqueIdList = /*@__PURE__*/ S.Array(DeletedUniqueId);
+const DeletedUniqueIdList = /*@__PURE__*/ __L.at(__c0, 7);
 export type DisconnectedUniqueIdsList = string[];
 const DisconnectedUniqueIdsList = StatementActionList as any as S.Schema<DisconnectedUniqueIdsList>;
 export interface BatchDeleteUniqueIdOutput {
@@ -227,16 +198,10 @@ export interface BatchDeleteUniqueIdOutput {
   deleted?: DeletedUniqueId[];
   disconnectedUniqueIds?: string[];
 }
-const BatchDeleteUniqueIdOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: DeleteUniqueIdStatus,
-    errors: S.optional(DeleteUniqueIdErrorsList),
-    deleted: S.optional(DeletedUniqueIdList),
-    disconnectedUniqueIds: S.optional(DisconnectedUniqueIdsList),
-  }),
-).annotate({
-  identifier: "BatchDeleteUniqueIdOutput",
-}) as any as S.Schema<BatchDeleteUniqueIdOutput>;
+const BatchDeleteUniqueIdOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchDeleteUniqueIdOutput>;
 export type Description = string;
 export type InputSourceARN = string;
 export type IdNamespaceType = "SOURCE" | "TARGET" | (string & {});
@@ -247,30 +212,24 @@ export interface IdMappingWorkflowInputSource {
   schemaName?: string;
   type?: IdNamespaceType;
 }
-const IdMappingWorkflowInputSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputSourceARN: S.String,
-    schemaName: S.optional(S.String),
-    type: S.optional(IdNamespaceType),
-  }),
-).annotate({
-  identifier: "IdMappingWorkflowInputSource",
-}) as any as S.Schema<IdMappingWorkflowInputSource>;
+const IdMappingWorkflowInputSource = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<IdMappingWorkflowInputSource>;
 export type IdMappingWorkflowInputSourceConfig = IdMappingWorkflowInputSource[];
-const IdMappingWorkflowInputSourceConfig = /*@__PURE__*/ S.Array(IdMappingWorkflowInputSource);
+const IdMappingWorkflowInputSourceConfig = /*@__PURE__*/ __L.at(__c1, 2);
 export type KMSArn = string;
 export type S3Path = string;
 export interface IdMappingWorkflowOutputSource {
   KMSArn?: string;
   outputS3Path: string;
 }
-const IdMappingWorkflowOutputSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KMSArn: S.optional(S.String), outputS3Path: S.String }),
-).annotate({
-  identifier: "IdMappingWorkflowOutputSource",
-}) as any as S.Schema<IdMappingWorkflowOutputSource>;
+const IdMappingWorkflowOutputSource = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<IdMappingWorkflowOutputSource>;
 export type IdMappingWorkflowOutputSourceConfig = IdMappingWorkflowOutputSource[];
-const IdMappingWorkflowOutputSourceConfig = /*@__PURE__*/ S.Array(IdMappingWorkflowOutputSource);
+const IdMappingWorkflowOutputSourceConfig = /*@__PURE__*/ __L.at(__c1, 4);
 export type IdMappingType = "PROVIDER" | "RULE_BASED" | (string & {});
 const IdMappingType = S.String;
 
@@ -281,11 +240,9 @@ export interface Rule {
   ruleName: string;
   matchingKeys: string[];
 }
-const Rule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ruleName: S.String, matchingKeys: MatchingKeys }),
-).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
+const Rule = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Rule>;
 export type RuleList = Rule[];
-const RuleList = /*@__PURE__*/ S.Array(Rule);
+const RuleList = /*@__PURE__*/ __L.at(__c1, 6);
 export type IdMappingWorkflowRuleDefinitionType = "SOURCE" | "TARGET" | (string & {});
 const IdMappingWorkflowRuleDefinitionType = S.String;
 
@@ -304,65 +261,45 @@ export interface IdMappingRuleBasedProperties {
   attributeMatchingModel: AttributeMatchingModel;
   recordMatchingModel: RecordMatchingModel;
 }
-const IdMappingRuleBasedProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(RuleList),
-    ruleDefinitionType: IdMappingWorkflowRuleDefinitionType,
-    attributeMatchingModel: AttributeMatchingModel,
-    recordMatchingModel: RecordMatchingModel,
-  }),
-).annotate({
-  identifier: "IdMappingRuleBasedProperties",
-}) as any as S.Schema<IdMappingRuleBasedProperties>;
+const IdMappingRuleBasedProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<IdMappingRuleBasedProperties>;
 export type ProviderServiceArn = string;
 export interface IntermediateSourceConfiguration {
   intermediateS3Path: string;
 }
-const IntermediateSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ intermediateS3Path: S.String }),
-).annotate({
-  identifier: "IntermediateSourceConfiguration",
-}) as any as S.Schema<IntermediateSourceConfiguration>;
+const IntermediateSourceConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<IntermediateSourceConfiguration>;
 export interface ProviderProperties {
   providerServiceArn: string;
   providerConfiguration?: any;
   intermediateSourceConfiguration?: IntermediateSourceConfiguration;
 }
-const ProviderProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerServiceArn: S.String,
-    providerConfiguration: S.optional(S.Any),
-    intermediateSourceConfiguration: S.optional(IntermediateSourceConfiguration),
-  }),
-).annotate({ identifier: "ProviderProperties" }) as any as S.Schema<ProviderProperties>;
+const ProviderProperties = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ProviderProperties>;
 export interface IdMappingTechniques {
   idMappingType: IdMappingType;
   ruleBasedProperties?: IdMappingRuleBasedProperties;
   providerProperties?: ProviderProperties;
 }
-const IdMappingTechniques = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idMappingType: IdMappingType,
-    ruleBasedProperties: S.optional(IdMappingRuleBasedProperties),
-    providerProperties: S.optional(ProviderProperties),
-  }),
-).annotate({ identifier: "IdMappingTechniques" }) as any as S.Schema<IdMappingTechniques>;
+const IdMappingTechniques = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<IdMappingTechniques>;
 export type IdMappingIncrementalRunType = "ON_DEMAND" | (string & {});
 const IdMappingIncrementalRunType = S.String;
 
 export interface IdMappingIncrementalRunConfig {
   incrementalRunType?: IdMappingIncrementalRunType;
 }
-const IdMappingIncrementalRunConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ incrementalRunType: S.optional(IdMappingIncrementalRunType) }),
-).annotate({
-  identifier: "IdMappingIncrementalRunConfig",
-}) as any as S.Schema<IdMappingIncrementalRunConfig>;
+const IdMappingIncrementalRunConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<IdMappingIncrementalRunConfig>;
 export type IdMappingRoleArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c2, 4);
 export interface CreateIdMappingWorkflowInput {
   workflowName: string;
   description?: string;
@@ -373,22 +310,10 @@ export interface CreateIdMappingWorkflowInput {
   roleArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateIdMappingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: IdMappingWorkflowInputSourceConfig,
-    outputSourceConfig: S.optional(IdMappingWorkflowOutputSourceConfig),
-    idMappingTechniques: IdMappingTechniques,
-    incrementalRunConfig: S.optional(IdMappingIncrementalRunConfig),
-    roleArn: S.optional(S.String),
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/idmappingworkflows" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateIdMappingWorkflowInput",
-}) as any as S.Schema<CreateIdMappingWorkflowInput>;
+const CreateIdMappingWorkflowInput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateIdMappingWorkflowInput>;
 export type IdMappingWorkflowArn = string;
 export interface CreateIdMappingWorkflowOutput {
   workflowName: string;
@@ -400,78 +325,53 @@ export interface CreateIdMappingWorkflowOutput {
   incrementalRunConfig?: IdMappingIncrementalRunConfig;
   roleArn?: string;
 }
-const CreateIdMappingWorkflowOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String,
-    workflowArn: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: IdMappingWorkflowInputSourceConfig,
-    outputSourceConfig: S.optional(IdMappingWorkflowOutputSourceConfig),
-    idMappingTechniques: IdMappingTechniques,
-    incrementalRunConfig: S.optional(IdMappingIncrementalRunConfig),
-    roleArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateIdMappingWorkflowOutput",
-}) as any as S.Schema<CreateIdMappingWorkflowOutput>;
+const CreateIdMappingWorkflowOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateIdMappingWorkflowOutput>;
 export interface IdNamespaceInputSource {
   inputSourceARN: string;
   schemaName?: string;
 }
-const IdNamespaceInputSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inputSourceARN: S.String, schemaName: S.optional(S.String) }),
-).annotate({ identifier: "IdNamespaceInputSource" }) as any as S.Schema<IdNamespaceInputSource>;
+const IdNamespaceInputSource = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<IdNamespaceInputSource>;
 export type IdNamespaceInputSourceConfig = IdNamespaceInputSource[];
-const IdNamespaceInputSourceConfig = /*@__PURE__*/ S.Array(IdNamespaceInputSource);
+const IdNamespaceInputSourceConfig = /*@__PURE__*/ __L.at(__c3, 0);
 export type IdMappingWorkflowRuleDefinitionTypeList = IdMappingWorkflowRuleDefinitionType[];
-const IdMappingWorkflowRuleDefinitionTypeList = /*@__PURE__*/ S.Array(
-  IdMappingWorkflowRuleDefinitionType,
-);
+const IdMappingWorkflowRuleDefinitionTypeList = /*@__PURE__*/ __L.at(__c3, 1);
 export type RecordMatchingModelList = RecordMatchingModel[];
-const RecordMatchingModelList = /*@__PURE__*/ S.Array(RecordMatchingModel);
+const RecordMatchingModelList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface NamespaceRuleBasedProperties {
   rules?: Rule[];
   ruleDefinitionTypes?: IdMappingWorkflowRuleDefinitionType[];
   attributeMatchingModel?: AttributeMatchingModel;
   recordMatchingModels?: RecordMatchingModel[];
 }
-const NamespaceRuleBasedProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(RuleList),
-    ruleDefinitionTypes: S.optional(IdMappingWorkflowRuleDefinitionTypeList),
-    attributeMatchingModel: S.optional(AttributeMatchingModel),
-    recordMatchingModels: S.optional(RecordMatchingModelList),
-  }),
-).annotate({
-  identifier: "NamespaceRuleBasedProperties",
-}) as any as S.Schema<NamespaceRuleBasedProperties>;
+const NamespaceRuleBasedProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<NamespaceRuleBasedProperties>;
 export interface NamespaceProviderProperties {
   providerServiceArn: string;
   providerConfiguration?: any;
 }
-const NamespaceProviderProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ providerServiceArn: S.String, providerConfiguration: S.optional(S.Any) }),
-).annotate({
-  identifier: "NamespaceProviderProperties",
-}) as any as S.Schema<NamespaceProviderProperties>;
+const NamespaceProviderProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<NamespaceProviderProperties>;
 export interface IdNamespaceIdMappingWorkflowProperties {
   idMappingType: IdMappingType;
   ruleBasedProperties?: NamespaceRuleBasedProperties;
   providerProperties?: NamespaceProviderProperties;
 }
-const IdNamespaceIdMappingWorkflowProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idMappingType: IdMappingType,
-    ruleBasedProperties: S.optional(NamespaceRuleBasedProperties),
-    providerProperties: S.optional(NamespaceProviderProperties),
-  }),
-).annotate({
-  identifier: "IdNamespaceIdMappingWorkflowProperties",
-}) as any as S.Schema<IdNamespaceIdMappingWorkflowProperties>;
+const IdNamespaceIdMappingWorkflowProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<IdNamespaceIdMappingWorkflowProperties>;
 export type IdNamespaceIdMappingWorkflowPropertiesList = IdNamespaceIdMappingWorkflowProperties[];
-const IdNamespaceIdMappingWorkflowPropertiesList = /*@__PURE__*/ S.Array(
-  IdNamespaceIdMappingWorkflowProperties,
-);
+const IdNamespaceIdMappingWorkflowPropertiesList = /*@__PURE__*/ __L.at(__c3, 6);
 export type RoleArn = string;
 export interface CreateIdNamespaceInput {
   idNamespaceName: string;
@@ -482,17 +382,10 @@ export interface CreateIdNamespaceInput {
   roleArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateIdNamespaceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idNamespaceName: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: S.optional(IdNamespaceInputSourceConfig),
-    idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowPropertiesList),
-    type: IdNamespaceType,
-    roleArn: S.optional(S.String),
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/idnamespaces" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateIdNamespaceInput" }) as any as S.Schema<CreateIdNamespaceInput>;
+const CreateIdNamespaceInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateIdNamespaceInput>;
 export type IdNamespaceArn = string;
 export interface CreateIdNamespaceOutput {
   idNamespaceName: string;
@@ -506,55 +399,36 @@ export interface CreateIdNamespaceOutput {
   updatedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-const CreateIdNamespaceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idNamespaceName: S.String,
-    idNamespaceArn: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: S.optional(IdNamespaceInputSourceConfig),
-    idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowPropertiesList),
-    type: IdNamespaceType,
-    roleArn: S.optional(S.String),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "CreateIdNamespaceOutput" }) as any as S.Schema<CreateIdNamespaceOutput>;
+const CreateIdNamespaceOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateIdNamespaceOutput>;
 export interface InputSource {
   inputSourceARN: string;
   schemaName: string;
   applyNormalization?: boolean;
 }
-const InputSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputSourceARN: S.String,
-    schemaName: S.String,
-    applyNormalization: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "InputSource" }) as any as S.Schema<InputSource>;
+const InputSource = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<InputSource>;
 export type InputSourceConfig = InputSource[];
-const InputSourceConfig = /*@__PURE__*/ S.Array(InputSource);
+const InputSourceConfig = /*@__PURE__*/ __L.at(__c4, 2);
 export type OptionalS3Path = string;
 export interface OutputAttribute {
   name: string;
   hashed?: boolean;
 }
-const OutputAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, hashed: S.optional(S.Boolean) }),
-).annotate({ identifier: "OutputAttribute" }) as any as S.Schema<OutputAttribute>;
+const OutputAttribute = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<OutputAttribute>;
 export type OutputAttributes = OutputAttribute[];
-const OutputAttributes = /*@__PURE__*/ S.Array(OutputAttribute);
+const OutputAttributes = /*@__PURE__*/ __L.at(__c4, 4);
 export type CustomerProfilesDomainArn = string;
 export type CustomerProfilesObjectTypeArn = string;
 export interface CustomerProfilesIntegrationConfig {
   domainArn: string;
   objectTypeArn: string;
 }
-const CustomerProfilesIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainArn: S.String, objectTypeArn: S.String }),
-).annotate({
-  identifier: "CustomerProfilesIntegrationConfig",
-}) as any as S.Schema<CustomerProfilesIntegrationConfig>;
+const CustomerProfilesIntegrationConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CustomerProfilesIntegrationConfig>;
 export interface OutputSource {
   KMSArn?: string;
   outputS3Path?: string;
@@ -562,17 +436,9 @@ export interface OutputSource {
   applyNormalization?: boolean;
   customerProfilesIntegrationConfig?: CustomerProfilesIntegrationConfig;
 }
-const OutputSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    KMSArn: S.optional(S.String),
-    outputS3Path: S.optional(S.String),
-    output: OutputAttributes,
-    applyNormalization: S.optional(S.Boolean),
-    customerProfilesIntegrationConfig: S.optional(CustomerProfilesIntegrationConfig),
-  }),
-).annotate({ identifier: "OutputSource" }) as any as S.Schema<OutputSource>;
+const OutputSource = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<OutputSource>;
 export type OutputSourceConfig = OutputSource[];
-const OutputSourceConfig = /*@__PURE__*/ S.Array(OutputSource);
+const OutputSourceConfig = /*@__PURE__*/ __L.at(__c4, 7);
 export type ResolutionType = "RULE_MATCHING" | "ML_MATCHING" | "PROVIDER" | (string & {});
 const ResolutionType = S.String;
 
@@ -584,35 +450,26 @@ export interface RuleBasedProperties {
   attributeMatchingModel: AttributeMatchingModel;
   matchPurpose?: MatchPurpose;
 }
-const RuleBasedProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: RuleList,
-    attributeMatchingModel: AttributeMatchingModel,
-    matchPurpose: S.optional(MatchPurpose),
-  }),
-).annotate({ identifier: "RuleBasedProperties" }) as any as S.Schema<RuleBasedProperties>;
+const RuleBasedProperties = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RuleBasedProperties>;
 export interface RuleCondition {
   ruleName: string;
   condition: string;
 }
-const RuleCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ruleName: S.String, condition: S.String }),
-).annotate({ identifier: "RuleCondition" }) as any as S.Schema<RuleCondition>;
+const RuleCondition = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<RuleCondition>;
 export type RuleConditionList = RuleCondition[];
-const RuleConditionList = /*@__PURE__*/ S.Array(RuleCondition);
+const RuleConditionList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface MatchingConfig {
   enableTransitiveMatching?: boolean;
 }
-const MatchingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ enableTransitiveMatching: S.optional(S.Boolean) }),
-).annotate({ identifier: "MatchingConfig" }) as any as S.Schema<MatchingConfig>;
+const MatchingConfig = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<MatchingConfig>;
 export interface RuleConditionProperties {
   rules: RuleCondition[];
   matchingConfig?: MatchingConfig;
 }
-const RuleConditionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ rules: RuleConditionList, matchingConfig: S.optional(MatchingConfig) }),
-).annotate({ identifier: "RuleConditionProperties" }) as any as S.Schema<RuleConditionProperties>;
+const RuleConditionProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<RuleConditionProperties>;
 export interface ResolutionTechniques {
   resolutionType: ResolutionType;
   ruleBasedProperties?: RuleBasedProperties;
@@ -620,24 +477,14 @@ export interface ResolutionTechniques {
   enableRealTimeMatching?: boolean;
   providerProperties?: ProviderProperties;
 }
-const ResolutionTechniques = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resolutionType: ResolutionType,
-    ruleBasedProperties: S.optional(RuleBasedProperties),
-    ruleConditionProperties: S.optional(RuleConditionProperties),
-    enableRealTimeMatching: S.optional(S.Boolean),
-    providerProperties: S.optional(ProviderProperties),
-  }),
-).annotate({ identifier: "ResolutionTechniques" }) as any as S.Schema<ResolutionTechniques>;
+const ResolutionTechniques = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ResolutionTechniques>;
 export type IncrementalRunType = "IMMEDIATE" | (string & {});
 const IncrementalRunType = S.String;
 
 export interface IncrementalRunConfig {
   incrementalRunType?: IncrementalRunType;
 }
-const IncrementalRunConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ incrementalRunType: S.optional(IncrementalRunType) }),
-).annotate({ identifier: "IncrementalRunConfig" }) as any as S.Schema<IncrementalRunConfig>;
+const IncrementalRunConfig = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<IncrementalRunConfig>;
 export interface CreateMatchingWorkflowInput {
   workflowName: string;
   description?: string;
@@ -648,22 +495,10 @@ export interface CreateMatchingWorkflowInput {
   roleArn: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateMatchingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: InputSourceConfig,
-    outputSourceConfig: OutputSourceConfig,
-    resolutionTechniques: ResolutionTechniques,
-    incrementalRunConfig: S.optional(IncrementalRunConfig),
-    roleArn: S.String,
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/matchingworkflows" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateMatchingWorkflowInput",
-}) as any as S.Schema<CreateMatchingWorkflowInput>;
+const CreateMatchingWorkflowInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateMatchingWorkflowInput>;
 export type MatchingWorkflowArn = string;
 export interface CreateMatchingWorkflowOutput {
   workflowName: string;
@@ -675,20 +510,10 @@ export interface CreateMatchingWorkflowOutput {
   incrementalRunConfig?: IncrementalRunConfig;
   roleArn: string;
 }
-const CreateMatchingWorkflowOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String,
-    workflowArn: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: InputSourceConfig,
-    outputSourceConfig: OutputSourceConfig,
-    resolutionTechniques: ResolutionTechniques,
-    incrementalRunConfig: S.optional(IncrementalRunConfig),
-    roleArn: S.String,
-  }),
-).annotate({
-  identifier: "CreateMatchingWorkflowOutput",
-}) as any as S.Schema<CreateMatchingWorkflowOutput>;
+const CreateMatchingWorkflowOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateMatchingWorkflowOutput>;
 export type SchemaAttributeType =
   | "NAME"
   | "NAME_FIRST"
@@ -724,32 +549,19 @@ export interface SchemaInputAttribute {
   subType?: string;
   hashed?: boolean;
 }
-const SchemaInputAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldName: S.String,
-    type: SchemaAttributeType,
-    groupName: S.optional(S.String),
-    matchKey: S.optional(S.String),
-    subType: S.optional(S.String),
-    hashed: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SchemaInputAttribute" }) as any as S.Schema<SchemaInputAttribute>;
+const SchemaInputAttribute = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<SchemaInputAttribute>;
 export type SchemaInputAttributes = SchemaInputAttribute[];
-const SchemaInputAttributes = /*@__PURE__*/ S.Array(SchemaInputAttribute);
+const SchemaInputAttributes = /*@__PURE__*/ __L.at(__c6, 2);
 export interface CreateSchemaMappingInput {
   schemaName: string;
   description?: string;
   mappedInputFields: SchemaInputAttribute[];
   tags?: { [key: string]: string | undefined };
 }
-const CreateSchemaMappingInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaName: S.String,
-    description: S.optional(S.String),
-    mappedInputFields: SchemaInputAttributes,
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/schemas" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateSchemaMappingInput" }) as any as S.Schema<CreateSchemaMappingInput>;
+const CreateSchemaMappingInput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CreateSchemaMappingInput>;
 export type SchemaMappingArn = string;
 export interface CreateSchemaMappingOutput {
   schemaName: string;
@@ -757,79 +569,45 @@ export interface CreateSchemaMappingOutput {
   description?: string;
   mappedInputFields: SchemaInputAttribute[];
 }
-const CreateSchemaMappingOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaName: S.String,
-    schemaArn: S.String,
-    description: S.optional(S.String),
-    mappedInputFields: SchemaInputAttributes,
-  }),
-).annotate({
-  identifier: "CreateSchemaMappingOutput",
-}) as any as S.Schema<CreateSchemaMappingOutput>;
+const CreateSchemaMappingOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateSchemaMappingOutput>;
 export interface DeleteIdMappingWorkflowInput {
   workflowName: string;
 }
-const DeleteIdMappingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/idmappingworkflows/{workflowName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteIdMappingWorkflowInput",
-}) as any as S.Schema<DeleteIdMappingWorkflowInput>;
+const DeleteIdMappingWorkflowInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteIdMappingWorkflowInput>;
 export interface DeleteIdMappingWorkflowOutput {
   message: string;
 }
-const DeleteIdMappingWorkflowOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.String }),
-).annotate({
-  identifier: "DeleteIdMappingWorkflowOutput",
-}) as any as S.Schema<DeleteIdMappingWorkflowOutput>;
+const DeleteIdMappingWorkflowOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteIdMappingWorkflowOutput>;
 export interface DeleteIdNamespaceInput {
   idNamespaceName: string;
 }
-const DeleteIdNamespaceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ idNamespaceName: S.String.pipe(T.HttpLabel("idNamespaceName")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/idnamespaces/{idNamespaceName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteIdNamespaceInput" }) as any as S.Schema<DeleteIdNamespaceInput>;
+const DeleteIdNamespaceInput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteIdNamespaceInput>;
 export interface DeleteIdNamespaceOutput {
   message: string;
 }
-const DeleteIdNamespaceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.String }),
-).annotate({ identifier: "DeleteIdNamespaceOutput" }) as any as S.Schema<DeleteIdNamespaceOutput>;
+const DeleteIdNamespaceOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteIdNamespaceOutput>;
 export interface DeleteMatchingWorkflowInput {
   workflowName: string;
 }
-const DeleteMatchingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/matchingworkflows/{workflowName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteMatchingWorkflowInput",
-}) as any as S.Schema<DeleteMatchingWorkflowInput>;
+const DeleteMatchingWorkflowInput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteMatchingWorkflowInput>;
 export interface DeleteMatchingWorkflowOutput {
   message: string;
 }
@@ -839,41 +617,26 @@ export interface DeletePolicyStatementInput {
   arn: string;
   statementId: string;
 }
-const DeletePolicyStatementInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String.pipe(T.HttpLabel("arn")),
-    statementId: S.String.pipe(T.HttpLabel("statementId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/policies/{arn}/{statementId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePolicyStatementInput",
-}) as any as S.Schema<DeletePolicyStatementInput>;
+const DeletePolicyStatementInput = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeletePolicyStatementInput>;
 export interface DeletePolicyStatementOutput {
   arn: string;
   token: string;
   policy?: string;
 }
-const DeletePolicyStatementOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, token: S.String, policy: S.optional(S.String) }),
-).annotate({
-  identifier: "DeletePolicyStatementOutput",
-}) as any as S.Schema<DeletePolicyStatementOutput>;
+const DeletePolicyStatementOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeletePolicyStatementOutput>;
 export interface DeleteSchemaMappingInput {
   schemaName: string;
 }
-const DeleteSchemaMappingInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schemaName: S.String.pipe(T.HttpLabel("schemaName")) }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/schemas/{schemaName}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteSchemaMappingInput" }) as any as S.Schema<DeleteSchemaMappingInput>;
+const DeleteSchemaMappingInput = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteSchemaMappingInput>;
 export interface DeleteSchemaMappingOutput {
   message: string;
 }
@@ -881,24 +644,15 @@ const DeleteSchemaMappingOutput =
   DeleteIdMappingWorkflowOutput as any as S.Schema<DeleteSchemaMappingOutput>;
 export type UniqueId = string;
 export type RecordAttributeMapString255 = { [key: string]: string | undefined };
-const RecordAttributeMapString255 = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const RecordAttributeMapString255 = /*@__PURE__*/ __L.at(__c7, 5);
 export interface Record {
   inputSourceARN: string;
   uniqueId: string;
   recordAttributeMap: { [key: string]: string | undefined };
 }
-const Record = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputSourceARN: S.String,
-    uniqueId: S.String,
-    recordAttributeMap: RecordAttributeMapString255,
-  }),
-).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
+const Record = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Record>;
 export type RecordList = Record[];
-const RecordList = /*@__PURE__*/ S.Array(Record);
+const RecordList = /*@__PURE__*/ __L.at(__c7, 7);
 export type ProcessingType = "CONSISTENT" | "EVENTUAL" | "EVENTUAL_NO_LOOKUP" | (string & {});
 const ProcessingType = S.String;
 
@@ -907,80 +661,46 @@ export interface GenerateMatchIdInput {
   records: Record[];
   processingType?: ProcessingType;
 }
-const GenerateMatchIdInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    records: RecordList,
-    processingType: S.optional(ProcessingType),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/matchingworkflows/{workflowName}/generateMatches" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GenerateMatchIdInput" }) as any as S.Schema<GenerateMatchIdInput>;
+const GenerateMatchIdInput = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GenerateMatchIdInput>;
 export interface MatchedRecord {
   inputSourceARN: string;
   recordId: string;
 }
-const MatchedRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inputSourceARN: S.String, recordId: S.String }),
-).annotate({ identifier: "MatchedRecord" }) as any as S.Schema<MatchedRecord>;
+const MatchedRecord = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<MatchedRecord>;
 export type MatchedRecordsList = MatchedRecord[];
-const MatchedRecordsList = /*@__PURE__*/ S.Array(MatchedRecord);
+const MatchedRecordsList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface MatchGroup {
   records: MatchedRecord[];
   matchId: string;
   matchRule: string;
 }
-const MatchGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ records: MatchedRecordsList, matchId: S.String, matchRule: S.String }),
-).annotate({ identifier: "MatchGroup" }) as any as S.Schema<MatchGroup>;
+const MatchGroup = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<MatchGroup>;
 export type MatchGroupsList = MatchGroup[];
-const MatchGroupsList = /*@__PURE__*/ S.Array(MatchGroup);
+const MatchGroupsList = /*@__PURE__*/ __L.at(__c8, 4);
 export type ErrorMessage = string;
 export interface FailedRecord {
   inputSourceARN: string;
   uniqueId: string;
   errorMessage: string;
 }
-const FailedRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inputSourceARN: S.String, uniqueId: S.String, errorMessage: S.String }),
-).annotate({ identifier: "FailedRecord" }) as any as S.Schema<FailedRecord>;
+const FailedRecord = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<FailedRecord>;
 export type FailedRecordsList = FailedRecord[];
-const FailedRecordsList = /*@__PURE__*/ S.Array(FailedRecord);
+const FailedRecordsList = /*@__PURE__*/ __L.at(__c8, 6);
 export interface GenerateMatchIdOutput {
   matchGroups: MatchGroup[];
   failedRecords: FailedRecord[];
 }
-const GenerateMatchIdOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ matchGroups: MatchGroupsList, failedRecords: FailedRecordsList }),
-).annotate({ identifier: "GenerateMatchIdOutput" }) as any as S.Schema<GenerateMatchIdOutput>;
+const GenerateMatchIdOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GenerateMatchIdOutput>;
 export type EntityNameOrIdMappingWorkflowArn = string;
 export type JobId = string;
 export interface GetIdMappingJobInput {
   workflowName: string;
   jobId: string;
 }
-const GetIdMappingJobInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    jobId: S.String.pipe(T.HttpLabel("jobId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/idmappingworkflows/{workflowName}/jobs/{jobId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetIdMappingJobInput" }) as any as S.Schema<GetIdMappingJobInput>;
+const GetIdMappingJobInput = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<GetIdMappingJobInput>;
 export type JobStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | "QUEUED" | (string & {});
 const JobStatus = S.String;
 
@@ -1001,41 +721,22 @@ export interface IdMappingJobMetrics {
   mappedSourceRecordsRemoved?: number;
   mappedTargetRecordsRemoved?: number;
 }
-const IdMappingJobMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputRecords: S.optional(S.Number),
-    totalRecordsProcessed: S.optional(S.Number),
-    recordsNotProcessed: S.optional(S.Number),
-    deleteRecordsProcessed: S.optional(S.Number),
-    totalMappedRecords: S.optional(S.Number),
-    totalMappedSourceRecords: S.optional(S.Number),
-    totalMappedTargetRecords: S.optional(S.Number),
-    uniqueRecordsLoaded: S.optional(S.Number),
-    newMappedRecords: S.optional(S.Number),
-    newMappedSourceRecords: S.optional(S.Number),
-    newMappedTargetRecords: S.optional(S.Number),
-    newUniqueRecordsLoaded: S.optional(S.Number),
-    mappedRecordsRemoved: S.optional(S.Number),
-    mappedSourceRecordsRemoved: S.optional(S.Number),
-    mappedTargetRecordsRemoved: S.optional(S.Number),
-  }),
-).annotate({ identifier: "IdMappingJobMetrics" }) as any as S.Schema<IdMappingJobMetrics>;
+const IdMappingJobMetrics = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<IdMappingJobMetrics>;
 export interface ErrorDetails {
   errorMessage?: string;
 }
-const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorMessage: S.optional(S.String) }),
-).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
+const ErrorDetails = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ErrorDetails>;
 export interface IdMappingJobOutputSource {
   roleArn: string;
   outputS3Path: string;
   KMSArn?: string;
 }
-const IdMappingJobOutputSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ roleArn: S.String, outputS3Path: S.String, KMSArn: S.optional(S.String) }),
-).annotate({ identifier: "IdMappingJobOutputSource" }) as any as S.Schema<IdMappingJobOutputSource>;
+const IdMappingJobOutputSource = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<IdMappingJobOutputSource>;
 export type IdMappingJobOutputSourceConfig = IdMappingJobOutputSource[];
-const IdMappingJobOutputSourceConfig = /*@__PURE__*/ S.Array(IdMappingJobOutputSource);
+const IdMappingJobOutputSourceConfig = /*@__PURE__*/ __L.at(__c9, 4);
 export type JobType = "BATCH" | "INCREMENTAL" | "DELETE_ONLY" | (string & {});
 const JobType = S.String;
 
@@ -1049,35 +750,17 @@ export interface GetIdMappingJobOutput {
   outputSourceConfig?: IdMappingJobOutputSource[];
   jobType?: JobType;
 }
-const GetIdMappingJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String,
-    status: JobStatus,
-    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    metrics: S.optional(IdMappingJobMetrics),
-    errorDetails: S.optional(ErrorDetails),
-    outputSourceConfig: S.optional(IdMappingJobOutputSourceConfig),
-    jobType: S.optional(JobType),
-  }),
-).annotate({ identifier: "GetIdMappingJobOutput" }) as any as S.Schema<GetIdMappingJobOutput>;
+const GetIdMappingJobOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetIdMappingJobOutput>;
 export interface GetIdMappingWorkflowInput {
   workflowName: string;
 }
-const GetIdMappingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/idmappingworkflows/{workflowName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetIdMappingWorkflowInput",
-}) as any as S.Schema<GetIdMappingWorkflowInput>;
+const GetIdMappingWorkflowInput = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetIdMappingWorkflowInput>;
 export interface GetIdMappingWorkflowOutput {
   workflowName: string;
   workflowArn: string;
@@ -1091,39 +774,15 @@ export interface GetIdMappingWorkflowOutput {
   roleArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetIdMappingWorkflowOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String,
-    workflowArn: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: IdMappingWorkflowInputSourceConfig,
-    outputSourceConfig: S.optional(IdMappingWorkflowOutputSourceConfig),
-    idMappingTechniques: IdMappingTechniques,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    incrementalRunConfig: S.optional(IdMappingIncrementalRunConfig),
-    roleArn: S.optional(S.String),
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "GetIdMappingWorkflowOutput",
-}) as any as S.Schema<GetIdMappingWorkflowOutput>;
+const GetIdMappingWorkflowOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetIdMappingWorkflowOutput>;
 export type EntityNameOrIdNamespaceArn = string;
 export interface GetIdNamespaceInput {
   idNamespaceName: string;
 }
-const GetIdNamespaceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ idNamespaceName: S.String.pipe(T.HttpLabel("idNamespaceName")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/idnamespaces/{idNamespaceName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetIdNamespaceInput" }) as any as S.Schema<GetIdNamespaceInput>;
+const GetIdNamespaceInput = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetIdNamespaceInput>;
 export interface GetIdNamespaceOutput {
   idNamespaceName: string;
   idNamespaceArn: string;
@@ -1144,48 +803,17 @@ export interface GetMatchIdInput {
   record: { [key: string]: string | undefined };
   applyNormalization?: boolean;
 }
-const GetMatchIdInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    record: RecordAttributeMap,
-    applyNormalization: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/matchingworkflows/{workflowName}/matches" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetMatchIdInput" }) as any as S.Schema<GetMatchIdInput>;
+const GetMatchIdInput = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<GetMatchIdInput>;
 export interface GetMatchIdOutput {
   matchId?: string;
   matchRule?: string;
 }
-const GetMatchIdOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ matchId: S.optional(S.String), matchRule: S.optional(S.String) }),
-).annotate({ identifier: "GetMatchIdOutput" }) as any as S.Schema<GetMatchIdOutput>;
+const GetMatchIdOutput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GetMatchIdOutput>;
 export interface GetMatchingJobInput {
   workflowName: string;
   jobId: string;
 }
-const GetMatchingJobInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    jobId: S.String.pipe(T.HttpLabel("jobId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/matchingworkflows/{workflowName}/jobs/{jobId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetMatchingJobInput" }) as any as S.Schema<GetMatchingJobInput>;
+const GetMatchingJobInput = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<GetMatchingJobInput>;
 export interface JobMetrics {
   inputRecords?: number;
   totalRecordsProcessed?: number;
@@ -1193,15 +821,7 @@ export interface JobMetrics {
   deleteRecordsProcessed?: number;
   matchIDs?: number;
 }
-const JobMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputRecords: S.optional(S.Number),
-    totalRecordsProcessed: S.optional(S.Number),
-    recordsNotProcessed: S.optional(S.Number),
-    deleteRecordsProcessed: S.optional(S.Number),
-    matchIDs: S.optional(S.Number),
-  }),
-).annotate({ identifier: "JobMetrics" }) as any as S.Schema<JobMetrics>;
+const JobMetrics = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<JobMetrics>;
 export interface JobOutputSource {
   roleArn: string;
   outputS3Path: string;
@@ -1219,32 +839,17 @@ export interface GetMatchingJobOutput {
   errorDetails?: ErrorDetails;
   outputSourceConfig?: JobOutputSource[];
 }
-const GetMatchingJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String,
-    status: JobStatus,
-    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    metrics: S.optional(JobMetrics),
-    errorDetails: S.optional(ErrorDetails),
-    outputSourceConfig: S.optional(JobOutputSourceConfig),
-  }),
-).annotate({ identifier: "GetMatchingJobOutput" }) as any as S.Schema<GetMatchingJobOutput>;
+const GetMatchingJobOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetMatchingJobOutput>;
 export interface GetMatchingWorkflowInput {
   workflowName: string;
 }
-const GetMatchingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/matchingworkflows/{workflowName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetMatchingWorkflowInput" }) as any as S.Schema<GetMatchingWorkflowInput>;
+const GetMatchingWorkflowInput = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetMatchingWorkflowInput>;
 export interface GetMatchingWorkflowOutput {
   workflowName: string;
   workflowArn: string;
@@ -1258,31 +863,14 @@ export interface GetMatchingWorkflowOutput {
   roleArn: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetMatchingWorkflowOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String,
-    workflowArn: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: InputSourceConfig,
-    outputSourceConfig: OutputSourceConfig,
-    resolutionTechniques: ResolutionTechniques,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    incrementalRunConfig: S.optional(IncrementalRunConfig),
-    roleArn: S.String,
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "GetMatchingWorkflowOutput",
-}) as any as S.Schema<GetMatchingWorkflowOutput>;
+const GetMatchingWorkflowOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetMatchingWorkflowOutput>;
 export interface GetPolicyInput {
   arn: string;
 }
-const GetPolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/policies/{arn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetPolicyInput" }) as any as S.Schema<GetPolicyInput>;
+const GetPolicyInput = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<GetPolicyInput>;
 export interface GetPolicyOutput {
   arn: string;
   token: string;
@@ -1293,21 +881,10 @@ export interface GetProviderServiceInput {
   providerName: string;
   providerServiceName: string;
 }
-const GetProviderServiceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerName: S.String.pipe(T.HttpLabel("providerName")),
-    providerServiceName: S.String.pipe(T.HttpLabel("providerServiceName")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/providerservices/{providerName}/{providerServiceName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetProviderServiceInput" }) as any as S.Schema<GetProviderServiceInput>;
+const GetProviderServiceInput = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetProviderServiceInput>;
 export type ProviderServiceDisplayName = string;
 export type ServiceType = "ASSIGNMENT" | "ID_MAPPING" | (string & {});
 const ServiceType = S.String;
@@ -1317,32 +894,24 @@ export interface ProviderIdNameSpaceConfiguration {
   providerTargetConfigurationDefinition?: any;
   providerSourceConfigurationDefinition?: any;
 }
-const ProviderIdNameSpaceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    providerTargetConfigurationDefinition: S.optional(S.Any),
-    providerSourceConfigurationDefinition: S.optional(S.Any),
-  }),
-).annotate({
-  identifier: "ProviderIdNameSpaceConfiguration",
-}) as any as S.Schema<ProviderIdNameSpaceConfiguration>;
+const ProviderIdNameSpaceConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ProviderIdNameSpaceConfiguration>;
 export interface ProviderMarketplaceConfiguration {
   dataSetId: string;
   revisionId: string;
   assetId: string;
   listingId: string;
 }
-const ProviderMarketplaceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataSetId: S.String, revisionId: S.String, assetId: S.String, listingId: S.String }),
-).annotate({
-  identifier: "ProviderMarketplaceConfiguration",
-}) as any as S.Schema<ProviderMarketplaceConfiguration>;
+const ProviderMarketplaceConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ProviderMarketplaceConfiguration>;
 export type ProviderEndpointConfiguration = {
   marketplaceConfiguration: ProviderMarketplaceConfiguration;
 };
-const ProviderEndpointConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ marketplaceConfiguration: ProviderMarketplaceConfiguration }),
-]);
+const ProviderEndpointConfiguration = /*@__PURE__*/ __L.at(__c11, 4);
 export type AwsAccountId = string;
 export type AwsAccountIdList = string[];
 const AwsAccountIdList = StatementActionList as any as S.Schema<AwsAccountIdList>;
@@ -1352,44 +921,34 @@ export interface ProviderIntermediateDataAccessConfiguration {
   awsAccountIds?: string[];
   requiredBucketActions?: string[];
 }
-const ProviderIntermediateDataAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    awsAccountIds: S.optional(AwsAccountIdList),
-    requiredBucketActions: S.optional(RequiredBucketActionsList),
-  }),
-).annotate({
-  identifier: "ProviderIntermediateDataAccessConfiguration",
-}) as any as S.Schema<ProviderIntermediateDataAccessConfiguration>;
+const ProviderIntermediateDataAccessConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ProviderIntermediateDataAccessConfiguration>;
 export type SchemaList = string[];
 const SchemaList = StatementActionList as any as S.Schema<SchemaList>;
 export type Schemas = string[][];
-const Schemas = /*@__PURE__*/ S.Array(SchemaList);
+const Schemas = /*@__PURE__*/ __L.at(__c11, 6);
 export interface ProviderSchemaAttribute {
   fieldName: string;
   type: SchemaAttributeType;
   subType?: string;
   hashing?: boolean;
 }
-const ProviderSchemaAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldName: S.String,
-    type: SchemaAttributeType,
-    subType: S.optional(S.String),
-    hashing: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ProviderSchemaAttribute" }) as any as S.Schema<ProviderSchemaAttribute>;
+const ProviderSchemaAttribute = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ProviderSchemaAttribute>;
 export type ProviderSchemaAttributes = ProviderSchemaAttribute[];
-const ProviderSchemaAttributes = /*@__PURE__*/ S.Array(ProviderSchemaAttribute);
+const ProviderSchemaAttributes = /*@__PURE__*/ __L.at(__c12, 0);
 export interface ProviderComponentSchema {
   schemas?: string[][];
   providerSchemaAttributes?: ProviderSchemaAttribute[];
 }
-const ProviderComponentSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: S.optional(Schemas),
-    providerSchemaAttributes: S.optional(ProviderSchemaAttributes),
-  }),
-).annotate({ identifier: "ProviderComponentSchema" }) as any as S.Schema<ProviderComponentSchema>;
+const ProviderComponentSchema = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ProviderComponentSchema>;
 export interface GetProviderServiceOutput {
   providerName: string;
   providerServiceName: string;
@@ -1405,33 +964,17 @@ export interface GetProviderServiceOutput {
   providerIntermediateDataAccessConfiguration?: ProviderIntermediateDataAccessConfiguration;
   providerComponentSchema?: ProviderComponentSchema;
 }
-const GetProviderServiceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerName: S.String,
-    providerServiceName: S.String,
-    providerServiceDisplayName: S.String,
-    providerServiceType: ServiceType,
-    providerServiceArn: S.String,
-    providerConfigurationDefinition: S.optional(S.Any),
-    providerIdNameSpaceConfiguration: S.optional(ProviderIdNameSpaceConfiguration),
-    providerJobConfiguration: S.optional(S.Any),
-    providerEndpointConfiguration: ProviderEndpointConfiguration,
-    anonymizedOutput: S.Boolean,
-    providerEntityOutputDefinition: S.Any,
-    providerIntermediateDataAccessConfiguration: S.optional(
-      ProviderIntermediateDataAccessConfiguration,
-    ),
-    providerComponentSchema: S.optional(ProviderComponentSchema),
-  }),
-).annotate({ identifier: "GetProviderServiceOutput" }) as any as S.Schema<GetProviderServiceOutput>;
+const GetProviderServiceOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetProviderServiceOutput>;
 export interface GetSchemaMappingInput {
   schemaName: string;
 }
-const GetSchemaMappingInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schemaName: S.String.pipe(T.HttpLabel("schemaName")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/schemas/{schemaName}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetSchemaMappingInput" }) as any as S.Schema<GetSchemaMappingInput>;
+const GetSchemaMappingInput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetSchemaMappingInput>;
 export interface GetSchemaMappingOutput {
   schemaName: string;
   schemaArn: string;
@@ -1442,127 +985,82 @@ export interface GetSchemaMappingOutput {
   tags?: { [key: string]: string | undefined };
   hasWorkflows: boolean;
 }
-const GetSchemaMappingOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaName: S.String,
-    schemaArn: S.String,
-    description: S.optional(S.String),
-    mappedInputFields: SchemaInputAttributes,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    tags: S.optional(TagMap),
-    hasWorkflows: S.Boolean,
-  }),
-).annotate({ identifier: "GetSchemaMappingOutput" }) as any as S.Schema<GetSchemaMappingOutput>;
+const GetSchemaMappingOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetSchemaMappingOutput>;
 export type NextToken = string;
 export interface ListIdMappingJobsInput {
   workflowName: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListIdMappingJobsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/idmappingworkflows/{workflowName}/jobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListIdMappingJobsInput" }) as any as S.Schema<ListIdMappingJobsInput>;
+const ListIdMappingJobsInput = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListIdMappingJobsInput>;
 export interface JobSummary {
   jobId: string;
   status: JobStatus;
   startTime: Date;
   endTime?: Date;
 }
-const JobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String,
-    status: JobStatus,
-    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "JobSummary" }) as any as S.Schema<JobSummary>;
+const JobSummary = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<JobSummary>;
 export type JobList = JobSummary[];
-const JobList = /*@__PURE__*/ S.Array(JobSummary);
+const JobList = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ListIdMappingJobsOutput {
   jobs?: JobSummary[];
   nextToken?: string;
 }
-const ListIdMappingJobsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobs: S.optional(JobList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListIdMappingJobsOutput" }) as any as S.Schema<ListIdMappingJobsOutput>;
+const ListIdMappingJobsOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListIdMappingJobsOutput>;
 export interface ListIdMappingWorkflowsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListIdMappingWorkflowsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/idmappingworkflows" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListIdMappingWorkflowsInput",
-}) as any as S.Schema<ListIdMappingWorkflowsInput>;
+const ListIdMappingWorkflowsInput = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListIdMappingWorkflowsInput>;
 export interface IdMappingWorkflowSummary {
   workflowName: string;
   workflowArn: string;
   createdAt: Date;
   updatedAt: Date;
 }
-const IdMappingWorkflowSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String,
-    workflowArn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "IdMappingWorkflowSummary" }) as any as S.Schema<IdMappingWorkflowSummary>;
+const IdMappingWorkflowSummary = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<IdMappingWorkflowSummary>;
 export type IdMappingWorkflowList = IdMappingWorkflowSummary[];
-const IdMappingWorkflowList = /*@__PURE__*/ S.Array(IdMappingWorkflowSummary);
+const IdMappingWorkflowList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface ListIdMappingWorkflowsOutput {
   workflowSummaries?: IdMappingWorkflowSummary[];
   nextToken?: string;
 }
-const ListIdMappingWorkflowsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowSummaries: S.optional(IdMappingWorkflowList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListIdMappingWorkflowsOutput",
-}) as any as S.Schema<ListIdMappingWorkflowsOutput>;
+const ListIdMappingWorkflowsOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListIdMappingWorkflowsOutput>;
 export interface ListIdNamespacesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListIdNamespacesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/idnamespaces" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListIdNamespacesInput" }) as any as S.Schema<ListIdNamespacesInput>;
+const ListIdNamespacesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListIdNamespacesInput>;
 export interface IdNamespaceIdMappingWorkflowMetadata {
   idMappingType: IdMappingType;
 }
-const IdNamespaceIdMappingWorkflowMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ idMappingType: IdMappingType }),
-).annotate({
-  identifier: "IdNamespaceIdMappingWorkflowMetadata",
-}) as any as S.Schema<IdNamespaceIdMappingWorkflowMetadata>;
+const IdNamespaceIdMappingWorkflowMetadata = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<IdNamespaceIdMappingWorkflowMetadata>;
 export type IdNamespaceIdMappingWorkflowMetadataList = IdNamespaceIdMappingWorkflowMetadata[];
-const IdNamespaceIdMappingWorkflowMetadataList = /*@__PURE__*/ S.Array(
-  IdNamespaceIdMappingWorkflowMetadata,
-);
+const IdNamespaceIdMappingWorkflowMetadataList = /*@__PURE__*/ __L.at(__c13, 7);
 export interface IdNamespaceSummary {
   idNamespaceName: string;
   idNamespaceArn: string;
@@ -1572,47 +1070,26 @@ export interface IdNamespaceSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-const IdNamespaceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idNamespaceName: S.String,
-    idNamespaceArn: S.String,
-    description: S.optional(S.String),
-    idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowMetadataList),
-    type: IdNamespaceType,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "IdNamespaceSummary" }) as any as S.Schema<IdNamespaceSummary>;
+const IdNamespaceSummary = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<IdNamespaceSummary>;
 export type IdNamespaceList = IdNamespaceSummary[];
-const IdNamespaceList = /*@__PURE__*/ S.Array(IdNamespaceSummary);
+const IdNamespaceList = /*@__PURE__*/ __L.at(__c14, 1);
 export interface ListIdNamespacesOutput {
   idNamespaceSummaries?: IdNamespaceSummary[];
   nextToken?: string;
 }
-const ListIdNamespacesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ idNamespaceSummaries: S.optional(IdNamespaceList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListIdNamespacesOutput" }) as any as S.Schema<ListIdNamespacesOutput>;
+const ListIdNamespacesOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListIdNamespacesOutput>;
 export interface ListMatchingJobsInput {
   workflowName: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListMatchingJobsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/matchingworkflows/{workflowName}/jobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListMatchingJobsInput" }) as any as S.Schema<ListMatchingJobsInput>;
+const ListMatchingJobsInput = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListMatchingJobsInput>;
 export interface ListMatchingJobsOutput {
   jobs?: JobSummary[];
   nextToken?: string;
@@ -1622,16 +1099,10 @@ export interface ListMatchingWorkflowsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListMatchingWorkflowsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/matchingworkflows" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListMatchingWorkflowsInput",
-}) as any as S.Schema<ListMatchingWorkflowsInput>;
+const ListMatchingWorkflowsInput = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ListMatchingWorkflowsInput>;
 export interface MatchingWorkflowSummary {
   workflowName: string;
   workflowArn: string;
@@ -1639,43 +1110,29 @@ export interface MatchingWorkflowSummary {
   updatedAt: Date;
   resolutionType: ResolutionType;
 }
-const MatchingWorkflowSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String,
-    workflowArn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    resolutionType: ResolutionType,
-  }),
-).annotate({ identifier: "MatchingWorkflowSummary" }) as any as S.Schema<MatchingWorkflowSummary>;
+const MatchingWorkflowSummary = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<MatchingWorkflowSummary>;
 export type MatchingWorkflowList = MatchingWorkflowSummary[];
-const MatchingWorkflowList = /*@__PURE__*/ S.Array(MatchingWorkflowSummary);
+const MatchingWorkflowList = /*@__PURE__*/ __L.at(__c14, 6);
 export interface ListMatchingWorkflowsOutput {
   workflowSummaries?: MatchingWorkflowSummary[];
   nextToken?: string;
 }
-const ListMatchingWorkflowsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowSummaries: S.optional(MatchingWorkflowList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListMatchingWorkflowsOutput",
-}) as any as S.Schema<ListMatchingWorkflowsOutput>;
+const ListMatchingWorkflowsOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListMatchingWorkflowsOutput>;
 export interface ListProviderServicesInput {
   nextToken?: string;
   maxResults?: number;
   providerName?: string;
 }
-const ListProviderServicesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    providerName: S.optional(S.String).pipe(T.HttpQuery("providerName")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/providerservices" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListProviderServicesInput",
-}) as any as S.Schema<ListProviderServicesInput>;
+const ListProviderServicesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListProviderServicesInput>;
 export interface ProviderServiceSummary {
   providerServiceArn: string;
   providerName: string;
@@ -1683,39 +1140,28 @@ export interface ProviderServiceSummary {
   providerServiceName: string;
   providerServiceType: ServiceType;
 }
-const ProviderServiceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerServiceArn: S.String,
-    providerName: S.String,
-    providerServiceDisplayName: S.String,
-    providerServiceName: S.String,
-    providerServiceType: ServiceType,
-  }),
-).annotate({ identifier: "ProviderServiceSummary" }) as any as S.Schema<ProviderServiceSummary>;
+const ProviderServiceSummary = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ProviderServiceSummary>;
 export type ProviderServiceList = ProviderServiceSummary[];
-const ProviderServiceList = /*@__PURE__*/ S.Array(ProviderServiceSummary);
+const ProviderServiceList = /*@__PURE__*/ __L.at(__c15, 2);
 export interface ListProviderServicesOutput {
   providerServiceSummaries?: ProviderServiceSummary[];
   nextToken?: string;
 }
-const ListProviderServicesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerServiceSummaries: S.optional(ProviderServiceList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProviderServicesOutput",
-}) as any as S.Schema<ListProviderServicesOutput>;
+const ListProviderServicesOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListProviderServicesOutput>;
 export interface ListSchemaMappingsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListSchemaMappingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/schemas" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListSchemaMappingsInput" }) as any as S.Schema<ListSchemaMappingsInput>;
+const ListSchemaMappingsInput = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListSchemaMappingsInput>;
 export interface SchemaMappingSummary {
   schemaName: string;
   schemaArn: string;
@@ -1723,52 +1169,40 @@ export interface SchemaMappingSummary {
   updatedAt: Date;
   hasWorkflows: boolean;
 }
-const SchemaMappingSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaName: S.String,
-    schemaArn: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    hasWorkflows: S.Boolean,
-  }),
-).annotate({ identifier: "SchemaMappingSummary" }) as any as S.Schema<SchemaMappingSummary>;
+const SchemaMappingSummary = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<SchemaMappingSummary>;
 export type SchemaMappingList = SchemaMappingSummary[];
-const SchemaMappingList = /*@__PURE__*/ S.Array(SchemaMappingSummary);
+const SchemaMappingList = /*@__PURE__*/ __L.at(__c15, 6);
 export interface ListSchemaMappingsOutput {
   schemaList?: SchemaMappingSummary[];
   nextToken?: string;
 }
-const ListSchemaMappingsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schemaList: S.optional(SchemaMappingList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSchemaMappingsOutput" }) as any as S.Schema<ListSchemaMappingsOutput>;
+const ListSchemaMappingsOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListSchemaMappingsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: TagMap }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface PutPolicyInput {
   arn: string;
   token?: string;
   policy: string;
 }
-const PutPolicyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String.pipe(T.HttpLabel("arn")),
-    token: S.optional(S.String),
-    policy: S.String,
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/policies/{arn}" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "PutPolicyInput" }) as any as S.Schema<PutPolicyInput>;
+const PutPolicyInput = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<PutPolicyInput>;
 export interface PutPolicyOutput {
   arn: string;
   token: string;
@@ -1780,82 +1214,47 @@ export interface StartIdMappingJobInput {
   outputSourceConfig?: IdMappingJobOutputSource[];
   jobType?: JobType;
 }
-const StartIdMappingJobInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    outputSourceConfig: S.optional(IdMappingJobOutputSourceConfig),
-    jobType: S.optional(JobType),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/idmappingworkflows/{workflowName}/jobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartIdMappingJobInput" }) as any as S.Schema<StartIdMappingJobInput>;
+const StartIdMappingJobInput = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<StartIdMappingJobInput>;
 export interface StartIdMappingJobOutput {
   jobId: string;
   outputSourceConfig?: IdMappingJobOutputSource[];
   jobType?: JobType;
 }
-const StartIdMappingJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String,
-    outputSourceConfig: S.optional(IdMappingJobOutputSourceConfig),
-    jobType: S.optional(JobType),
-  }),
-).annotate({ identifier: "StartIdMappingJobOutput" }) as any as S.Schema<StartIdMappingJobOutput>;
+const StartIdMappingJobOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<StartIdMappingJobOutput>;
 export interface StartMatchingJobInput {
   workflowName: string;
 }
-const StartMatchingJobInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/matchingworkflows/{workflowName}/jobs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartMatchingJobInput" }) as any as S.Schema<StartMatchingJobInput>;
+const StartMatchingJobInput = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<StartMatchingJobInput>;
 export interface StartMatchingJobOutput {
   jobId: string;
 }
-const StartMatchingJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.String }),
-).annotate({ identifier: "StartMatchingJobOutput" }) as any as S.Schema<StartMatchingJobOutput>;
+const StartMatchingJobOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<StartMatchingJobOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+const TagResourceOutput = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
 const TagKeyList = StatementActionList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
 const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateIdMappingWorkflowInput {
@@ -1867,28 +1266,10 @@ export interface UpdateIdMappingWorkflowInput {
   incrementalRunConfig?: IdMappingIncrementalRunConfig;
   roleArn?: string;
 }
-const UpdateIdMappingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    description: S.optional(S.String),
-    inputSourceConfig: IdMappingWorkflowInputSourceConfig,
-    outputSourceConfig: S.optional(IdMappingWorkflowOutputSourceConfig),
-    idMappingTechniques: IdMappingTechniques,
-    incrementalRunConfig: S.optional(IdMappingIncrementalRunConfig),
-    roleArn: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/idmappingworkflows/{workflowName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateIdMappingWorkflowInput",
-}) as any as S.Schema<UpdateIdMappingWorkflowInput>;
+const UpdateIdMappingWorkflowInput = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<UpdateIdMappingWorkflowInput>;
 export interface UpdateIdMappingWorkflowOutput {
   workflowName: string;
   workflowArn: string;
@@ -1908,24 +1289,10 @@ export interface UpdateIdNamespaceInput {
   idMappingWorkflowProperties?: IdNamespaceIdMappingWorkflowProperties[];
   roleArn?: string;
 }
-const UpdateIdNamespaceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idNamespaceName: S.String.pipe(T.HttpLabel("idNamespaceName")),
-    description: S.optional(S.String),
-    inputSourceConfig: S.optional(IdNamespaceInputSourceConfig),
-    idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowPropertiesList),
-    roleArn: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/idnamespaces/{idNamespaceName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateIdNamespaceInput" }) as any as S.Schema<UpdateIdNamespaceInput>;
+const UpdateIdNamespaceInput = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<UpdateIdNamespaceInput>;
 export interface UpdateIdNamespaceOutput {
   idNamespaceName: string;
   idNamespaceArn: string;
@@ -1937,19 +1304,10 @@ export interface UpdateIdNamespaceOutput {
   createdAt: Date;
   updatedAt: Date;
 }
-const UpdateIdNamespaceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idNamespaceName: S.String,
-    idNamespaceArn: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: S.optional(IdNamespaceInputSourceConfig),
-    idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowPropertiesList),
-    type: IdNamespaceType,
-    roleArn: S.optional(S.String),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "UpdateIdNamespaceOutput" }) as any as S.Schema<UpdateIdNamespaceOutput>;
+const UpdateIdNamespaceOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<UpdateIdNamespaceOutput>;
 export interface UpdateMatchingWorkflowInput {
   workflowName: string;
   description?: string;
@@ -1959,28 +1317,10 @@ export interface UpdateMatchingWorkflowInput {
   incrementalRunConfig?: IncrementalRunConfig;
   roleArn: string;
 }
-const UpdateMatchingWorkflowInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String.pipe(T.HttpLabel("workflowName")),
-    description: S.optional(S.String),
-    inputSourceConfig: InputSourceConfig,
-    outputSourceConfig: OutputSourceConfig,
-    resolutionTechniques: ResolutionTechniques,
-    incrementalRunConfig: S.optional(IncrementalRunConfig),
-    roleArn: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/matchingworkflows/{workflowName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateMatchingWorkflowInput",
-}) as any as S.Schema<UpdateMatchingWorkflowInput>;
+const UpdateMatchingWorkflowInput = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<UpdateMatchingWorkflowInput>;
 export interface UpdateMatchingWorkflowOutput {
   workflowName: string;
   description?: string;
@@ -1990,33 +1330,19 @@ export interface UpdateMatchingWorkflowOutput {
   incrementalRunConfig?: IncrementalRunConfig;
   roleArn: string;
 }
-const UpdateMatchingWorkflowOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowName: S.String,
-    description: S.optional(S.String),
-    inputSourceConfig: InputSourceConfig,
-    outputSourceConfig: OutputSourceConfig,
-    resolutionTechniques: ResolutionTechniques,
-    incrementalRunConfig: S.optional(IncrementalRunConfig),
-    roleArn: S.String,
-  }),
-).annotate({
-  identifier: "UpdateMatchingWorkflowOutput",
-}) as any as S.Schema<UpdateMatchingWorkflowOutput>;
+const UpdateMatchingWorkflowOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<UpdateMatchingWorkflowOutput>;
 export interface UpdateSchemaMappingInput {
   schemaName: string;
   description?: string;
   mappedInputFields: SchemaInputAttribute[];
 }
-const UpdateSchemaMappingInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaName: S.String.pipe(T.HttpLabel("schemaName")),
-    description: S.optional(S.String),
-    mappedInputFields: SchemaInputAttributes,
-  }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/schemas/{schemaName}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateSchemaMappingInput" }) as any as S.Schema<UpdateSchemaMappingInput>;
+const UpdateSchemaMappingInput = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<UpdateSchemaMappingInput>;
 export interface UpdateSchemaMappingOutput {
   schemaName: string;
   schemaArn: string;
@@ -3213,3 +2539,1337 @@ export const updateSchemaMapping: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSchemaMapping",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String.pipe(T.HttpLabel("arn")),
+          statementId: S.String.pipe(T.HttpLabel("statementId")),
+          effect: StatementEffect,
+          action: StatementActionList,
+          principal: StatementPrincipalList,
+          condition: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/policies/{arn}/{statementId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AddPolicyStatementInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String, token: S.String, policy: S.optional(S.String) }),
+      ).annotate({ identifier: "AddPolicyStatementOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          inputSource: S.optional(S.String).pipe(T.HttpHeader("inputSource")),
+          uniqueIds: UniqueIdList.pipe(T.HttpHeader("uniqueIds")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/matchingworkflows/{workflowName}/uniqueids" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "BatchDeleteUniqueIdInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ uniqueId: S.String, errorType: DeleteUniqueIdErrorType }),
+      ).annotate({ identifier: "DeleteUniqueIdError" });
+    case 5:
+      return S.Array(DeleteUniqueIdError);
+    case 6:
+      return S.suspend(() => S.Struct({ uniqueId: S.String })).annotate({
+        identifier: "DeletedUniqueId",
+      });
+    case 7:
+      return S.Array(DeletedUniqueId);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: DeleteUniqueIdStatus,
+          errors: S.optional(DeleteUniqueIdErrorsList),
+          deleted: S.optional(DeletedUniqueIdList),
+          disconnectedUniqueIds: S.optional(DisconnectedUniqueIdsList),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteUniqueIdOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inputSourceARN: S.String,
+          schemaName: S.optional(S.String),
+          type: S.optional(IdNamespaceType),
+        }),
+      ).annotate({
+        identifier: "IdMappingWorkflowInputSource",
+      });
+    case 2:
+      return S.Array(IdMappingWorkflowInputSource);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ KMSArn: S.optional(S.String), outputS3Path: S.String }),
+      ).annotate({
+        identifier: "IdMappingWorkflowOutputSource",
+      });
+    case 4:
+      return S.Array(IdMappingWorkflowOutputSource);
+    case 5:
+      return S.suspend(() => S.Struct({ ruleName: S.String, matchingKeys: MatchingKeys })).annotate(
+        { identifier: "Rule" },
+      );
+    case 6:
+      return S.Array(Rule);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(RuleList),
+          ruleDefinitionType: IdMappingWorkflowRuleDefinitionType,
+          attributeMatchingModel: AttributeMatchingModel,
+          recordMatchingModel: RecordMatchingModel,
+        }),
+      ).annotate({
+        identifier: "IdMappingRuleBasedProperties",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ intermediateS3Path: S.String })).annotate({
+        identifier: "IntermediateSourceConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          providerServiceArn: S.String,
+          providerConfiguration: S.optional(S.Any),
+          intermediateSourceConfiguration: S.optional(IntermediateSourceConfiguration),
+        }),
+      ).annotate({ identifier: "ProviderProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          idMappingType: IdMappingType,
+          ruleBasedProperties: S.optional(IdMappingRuleBasedProperties),
+          providerProperties: S.optional(ProviderProperties),
+        }),
+      ).annotate({ identifier: "IdMappingTechniques" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ incrementalRunType: S.optional(IdMappingIncrementalRunType) }),
+      ).annotate({
+        identifier: "IdMappingIncrementalRunConfig",
+      });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: IdMappingWorkflowInputSourceConfig,
+          outputSourceConfig: S.optional(IdMappingWorkflowOutputSourceConfig),
+          idMappingTechniques: IdMappingTechniques,
+          incrementalRunConfig: S.optional(IdMappingIncrementalRunConfig),
+          roleArn: S.optional(S.String),
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/idmappingworkflows" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateIdMappingWorkflowInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String,
+          workflowArn: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: IdMappingWorkflowInputSourceConfig,
+          outputSourceConfig: S.optional(IdMappingWorkflowOutputSourceConfig),
+          idMappingTechniques: IdMappingTechniques,
+          incrementalRunConfig: S.optional(IdMappingIncrementalRunConfig),
+          roleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateIdMappingWorkflowOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ inputSourceARN: S.String, schemaName: S.optional(S.String) }),
+      ).annotate({ identifier: "IdNamespaceInputSource" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(IdNamespaceInputSource);
+    case 1:
+      return S.Array(IdMappingWorkflowRuleDefinitionType);
+    case 2:
+      return S.Array(RecordMatchingModel);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(RuleList),
+          ruleDefinitionTypes: S.optional(IdMappingWorkflowRuleDefinitionTypeList),
+          attributeMatchingModel: S.optional(AttributeMatchingModel),
+          recordMatchingModels: S.optional(RecordMatchingModelList),
+        }),
+      ).annotate({
+        identifier: "NamespaceRuleBasedProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ providerServiceArn: S.String, providerConfiguration: S.optional(S.Any) }),
+      ).annotate({
+        identifier: "NamespaceProviderProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          idMappingType: IdMappingType,
+          ruleBasedProperties: S.optional(NamespaceRuleBasedProperties),
+          providerProperties: S.optional(NamespaceProviderProperties),
+        }),
+      ).annotate({
+        identifier: "IdNamespaceIdMappingWorkflowProperties",
+      });
+    case 6:
+      return S.Array(IdNamespaceIdMappingWorkflowProperties);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          idNamespaceName: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: S.optional(IdNamespaceInputSourceConfig),
+          idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowPropertiesList),
+          type: IdNamespaceType,
+          roleArn: S.optional(S.String),
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/idnamespaces" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateIdNamespaceInput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idNamespaceName: S.String,
+          idNamespaceArn: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: S.optional(IdNamespaceInputSourceConfig),
+          idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowPropertiesList),
+          type: IdNamespaceType,
+          roleArn: S.optional(S.String),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({ identifier: "CreateIdNamespaceOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inputSourceARN: S.String,
+          schemaName: S.String,
+          applyNormalization: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "InputSource" });
+    case 2:
+      return S.Array(InputSource);
+    case 3:
+      return S.suspend(() => S.Struct({ name: S.String, hashed: S.optional(S.Boolean) })).annotate({
+        identifier: "OutputAttribute",
+      });
+    case 4:
+      return S.Array(OutputAttribute);
+    case 5:
+      return S.suspend(() => S.Struct({ domainArn: S.String, objectTypeArn: S.String })).annotate({
+        identifier: "CustomerProfilesIntegrationConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          KMSArn: S.optional(S.String),
+          outputS3Path: S.optional(S.String),
+          output: OutputAttributes,
+          applyNormalization: S.optional(S.Boolean),
+          customerProfilesIntegrationConfig: S.optional(CustomerProfilesIntegrationConfig),
+        }),
+      ).annotate({ identifier: "OutputSource" });
+    case 7:
+      return S.Array(OutputSource);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rules: RuleList,
+          attributeMatchingModel: AttributeMatchingModel,
+          matchPurpose: S.optional(MatchPurpose),
+        }),
+      ).annotate({ identifier: "RuleBasedProperties" });
+    case 1:
+      return S.suspend(() => S.Struct({ ruleName: S.String, condition: S.String })).annotate({
+        identifier: "RuleCondition",
+      });
+    case 2:
+      return S.Array(RuleCondition);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ enableTransitiveMatching: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "MatchingConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ rules: RuleConditionList, matchingConfig: S.optional(MatchingConfig) }),
+      ).annotate({ identifier: "RuleConditionProperties" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resolutionType: ResolutionType,
+          ruleBasedProperties: S.optional(RuleBasedProperties),
+          ruleConditionProperties: S.optional(RuleConditionProperties),
+          enableRealTimeMatching: S.optional(S.Boolean),
+          providerProperties: S.optional(ProviderProperties),
+        }),
+      ).annotate({ identifier: "ResolutionTechniques" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ incrementalRunType: S.optional(IncrementalRunType) }),
+      ).annotate({ identifier: "IncrementalRunConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: InputSourceConfig,
+          outputSourceConfig: OutputSourceConfig,
+          resolutionTechniques: ResolutionTechniques,
+          incrementalRunConfig: S.optional(IncrementalRunConfig),
+          roleArn: S.String,
+          tags: S.optional(TagMap),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/matchingworkflows" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateMatchingWorkflowInput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String,
+          workflowArn: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: InputSourceConfig,
+          outputSourceConfig: OutputSourceConfig,
+          resolutionTechniques: ResolutionTechniques,
+          incrementalRunConfig: S.optional(IncrementalRunConfig),
+          roleArn: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateMatchingWorkflowOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fieldName: S.String,
+          type: SchemaAttributeType,
+          groupName: S.optional(S.String),
+          matchKey: S.optional(S.String),
+          subType: S.optional(S.String),
+          hashed: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SchemaInputAttribute" });
+    case 2:
+      return S.Array(SchemaInputAttribute);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          schemaName: S.String,
+          description: S.optional(S.String),
+          mappedInputFields: SchemaInputAttributes,
+          tags: S.optional(TagMap),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/schemas" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateSchemaMappingInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          schemaName: S.String,
+          schemaArn: S.String,
+          description: S.optional(S.String),
+          mappedInputFields: SchemaInputAttributes,
+        }),
+      ).annotate({
+        identifier: "CreateSchemaMappingOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/idmappingworkflows/{workflowName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteIdMappingWorkflowInput",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ message: S.String })).annotate({
+        identifier: "DeleteIdMappingWorkflowOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ idNamespaceName: S.String.pipe(T.HttpLabel("idNamespaceName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/idnamespaces/{idNamespaceName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteIdNamespaceInput" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ message: S.String })).annotate({
+        identifier: "DeleteIdNamespaceOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/matchingworkflows/{workflowName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteMatchingWorkflowInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String.pipe(T.HttpLabel("arn")),
+          statementId: S.String.pipe(T.HttpLabel("statementId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/policies/{arn}/{statementId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePolicyStatementInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String, token: S.String, policy: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DeletePolicyStatementOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ schemaName: S.String.pipe(T.HttpLabel("schemaName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/schemas/{schemaName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSchemaMappingInput" });
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          inputSourceARN: S.String,
+          uniqueId: S.String,
+          recordAttributeMap: RecordAttributeMapString255,
+        }),
+      ).annotate({ identifier: "Record" });
+    case 7:
+      return S.Array(Record);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          records: RecordList,
+          processingType: S.optional(ProcessingType),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/matchingworkflows/{workflowName}/generateMatches" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GenerateMatchIdInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ inputSourceARN: S.String, recordId: S.String })).annotate({
+        identifier: "MatchedRecord",
+      });
+    case 2:
+      return S.Array(MatchedRecord);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ records: MatchedRecordsList, matchId: S.String, matchRule: S.String }),
+      ).annotate({ identifier: "MatchGroup" });
+    case 4:
+      return S.Array(MatchGroup);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ inputSourceARN: S.String, uniqueId: S.String, errorMessage: S.String }),
+      ).annotate({ identifier: "FailedRecord" });
+    case 6:
+      return S.Array(FailedRecord);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ matchGroups: MatchGroupsList, failedRecords: FailedRecordsList }),
+      ).annotate({ identifier: "GenerateMatchIdOutput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/idmappingworkflows/{workflowName}/jobs/{jobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetIdMappingJobInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inputRecords: S.optional(S.Number),
+          totalRecordsProcessed: S.optional(S.Number),
+          recordsNotProcessed: S.optional(S.Number),
+          deleteRecordsProcessed: S.optional(S.Number),
+          totalMappedRecords: S.optional(S.Number),
+          totalMappedSourceRecords: S.optional(S.Number),
+          totalMappedTargetRecords: S.optional(S.Number),
+          uniqueRecordsLoaded: S.optional(S.Number),
+          newMappedRecords: S.optional(S.Number),
+          newMappedSourceRecords: S.optional(S.Number),
+          newMappedTargetRecords: S.optional(S.Number),
+          newUniqueRecordsLoaded: S.optional(S.Number),
+          mappedRecordsRemoved: S.optional(S.Number),
+          mappedSourceRecordsRemoved: S.optional(S.Number),
+          mappedTargetRecordsRemoved: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "IdMappingJobMetrics" });
+    case 2:
+      return S.suspend(() => S.Struct({ errorMessage: S.optional(S.String) })).annotate({
+        identifier: "ErrorDetails",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ roleArn: S.String, outputS3Path: S.String, KMSArn: S.optional(S.String) }),
+      ).annotate({ identifier: "IdMappingJobOutputSource" });
+    case 4:
+      return S.Array(IdMappingJobOutputSource);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          status: JobStatus,
+          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          metrics: S.optional(IdMappingJobMetrics),
+          errorDetails: S.optional(ErrorDetails),
+          outputSourceConfig: S.optional(IdMappingJobOutputSourceConfig),
+          jobType: S.optional(JobType),
+        }),
+      ).annotate({ identifier: "GetIdMappingJobOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/idmappingworkflows/{workflowName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetIdMappingWorkflowInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String,
+          workflowArn: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: IdMappingWorkflowInputSourceConfig,
+          outputSourceConfig: S.optional(IdMappingWorkflowOutputSourceConfig),
+          idMappingTechniques: IdMappingTechniques,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          incrementalRunConfig: S.optional(IdMappingIncrementalRunConfig),
+          roleArn: S.optional(S.String),
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({
+        identifier: "GetIdMappingWorkflowOutput",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ idNamespaceName: S.String.pipe(T.HttpLabel("idNamespaceName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/idnamespaces/{idNamespaceName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetIdNamespaceInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          record: RecordAttributeMap,
+          applyNormalization: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/matchingworkflows/{workflowName}/matches" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetMatchIdInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ matchId: S.optional(S.String), matchRule: S.optional(S.String) }),
+      ).annotate({ identifier: "GetMatchIdOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/matchingworkflows/{workflowName}/jobs/{jobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetMatchingJobInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          inputRecords: S.optional(S.Number),
+          totalRecordsProcessed: S.optional(S.Number),
+          recordsNotProcessed: S.optional(S.Number),
+          deleteRecordsProcessed: S.optional(S.Number),
+          matchIDs: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JobMetrics" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          status: JobStatus,
+          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          metrics: S.optional(JobMetrics),
+          errorDetails: S.optional(ErrorDetails),
+          outputSourceConfig: S.optional(JobOutputSourceConfig),
+        }),
+      ).annotate({ identifier: "GetMatchingJobOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/matchingworkflows/{workflowName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetMatchingWorkflowInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String,
+          workflowArn: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: InputSourceConfig,
+          outputSourceConfig: OutputSourceConfig,
+          resolutionTechniques: ResolutionTechniques,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          incrementalRunConfig: S.optional(IncrementalRunConfig),
+          roleArn: S.String,
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({
+        identifier: "GetMatchingWorkflowOutput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/policies/{arn}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetPolicyInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          providerName: S.String.pipe(T.HttpLabel("providerName")),
+          providerServiceName: S.String.pipe(T.HttpLabel("providerServiceName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/providerservices/{providerName}/{providerServiceName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetProviderServiceInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          providerTargetConfigurationDefinition: S.optional(S.Any),
+          providerSourceConfigurationDefinition: S.optional(S.Any),
+        }),
+      ).annotate({
+        identifier: "ProviderIdNameSpaceConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dataSetId: S.String,
+          revisionId: S.String,
+          assetId: S.String,
+          listingId: S.String,
+        }),
+      ).annotate({
+        identifier: "ProviderMarketplaceConfiguration",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ marketplaceConfiguration: ProviderMarketplaceConfiguration }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          awsAccountIds: S.optional(AwsAccountIdList),
+          requiredBucketActions: S.optional(RequiredBucketActionsList),
+        }),
+      ).annotate({
+        identifier: "ProviderIntermediateDataAccessConfiguration",
+      });
+    case 6:
+      return S.Array(SchemaList);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          fieldName: S.String,
+          type: SchemaAttributeType,
+          subType: S.optional(S.String),
+          hashing: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ProviderSchemaAttribute" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ProviderSchemaAttribute);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          schemas: S.optional(Schemas),
+          providerSchemaAttributes: S.optional(ProviderSchemaAttributes),
+        }),
+      ).annotate({ identifier: "ProviderComponentSchema" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          providerName: S.String,
+          providerServiceName: S.String,
+          providerServiceDisplayName: S.String,
+          providerServiceType: ServiceType,
+          providerServiceArn: S.String,
+          providerConfigurationDefinition: S.optional(S.Any),
+          providerIdNameSpaceConfiguration: S.optional(ProviderIdNameSpaceConfiguration),
+          providerJobConfiguration: S.optional(S.Any),
+          providerEndpointConfiguration: ProviderEndpointConfiguration,
+          anonymizedOutput: S.Boolean,
+          providerEntityOutputDefinition: S.Any,
+          providerIntermediateDataAccessConfiguration: S.optional(
+            ProviderIntermediateDataAccessConfiguration,
+          ),
+          providerComponentSchema: S.optional(ProviderComponentSchema),
+        }),
+      ).annotate({ identifier: "GetProviderServiceOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ schemaName: S.String.pipe(T.HttpLabel("schemaName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/schemas/{schemaName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSchemaMappingInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          schemaName: S.String,
+          schemaArn: S.String,
+          description: S.optional(S.String),
+          mappedInputFields: SchemaInputAttributes,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          tags: S.optional(TagMap),
+          hasWorkflows: S.Boolean,
+        }),
+      ).annotate({ identifier: "GetSchemaMappingOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/idmappingworkflows/{workflowName}/jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListIdMappingJobsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          status: JobStatus,
+          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "JobSummary" });
+    case 7:
+      return S.Array(JobSummary);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ jobs: S.optional(JobList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListIdMappingJobsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/idmappingworkflows" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListIdMappingWorkflowsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String,
+          workflowArn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "IdMappingWorkflowSummary" });
+    case 3:
+      return S.Array(IdMappingWorkflowSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          workflowSummaries: S.optional(IdMappingWorkflowList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListIdMappingWorkflowsOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/idnamespaces" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListIdNamespacesInput" });
+    case 6:
+      return S.suspend(() => S.Struct({ idMappingType: IdMappingType })).annotate({
+        identifier: "IdNamespaceIdMappingWorkflowMetadata",
+      });
+    case 7:
+      return S.Array(IdNamespaceIdMappingWorkflowMetadata);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idNamespaceName: S.String,
+          idNamespaceArn: S.String,
+          description: S.optional(S.String),
+          idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowMetadataList),
+          type: IdNamespaceType,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "IdNamespaceSummary" });
+    case 1:
+      return S.Array(IdNamespaceSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          idNamespaceSummaries: S.optional(IdNamespaceList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListIdNamespacesOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/matchingworkflows/{workflowName}/jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListMatchingJobsInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/matchingworkflows" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListMatchingWorkflowsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String,
+          workflowArn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          resolutionType: ResolutionType,
+        }),
+      ).annotate({ identifier: "MatchingWorkflowSummary" });
+    case 6:
+      return S.Array(MatchingWorkflowSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workflowSummaries: S.optional(MatchingWorkflowList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListMatchingWorkflowsOutput",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          providerName: S.optional(S.String).pipe(T.HttpQuery("providerName")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/providerservices" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListProviderServicesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          providerServiceArn: S.String,
+          providerName: S.String,
+          providerServiceDisplayName: S.String,
+          providerServiceName: S.String,
+          providerServiceType: ServiceType,
+        }),
+      ).annotate({ identifier: "ProviderServiceSummary" });
+    case 2:
+      return S.Array(ProviderServiceSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          providerServiceSummaries: S.optional(ProviderServiceList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListProviderServicesOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/schemas" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListSchemaMappingsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          schemaName: S.String,
+          schemaArn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          hasWorkflows: S.Boolean,
+        }),
+      ).annotate({ identifier: "SchemaMappingSummary" });
+    case 6:
+      return S.Array(SchemaMappingSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ schemaList: S.optional(SchemaMappingList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSchemaMappingsOutput" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: TagMap })).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String.pipe(T.HttpLabel("arn")),
+          token: S.optional(S.String),
+          policy: S.String,
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/policies/{arn}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutPolicyInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          outputSourceConfig: S.optional(IdMappingJobOutputSourceConfig),
+          jobType: S.optional(JobType),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/idmappingworkflows/{workflowName}/jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartIdMappingJobInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          outputSourceConfig: S.optional(IdMappingJobOutputSourceConfig),
+          jobType: S.optional(JobType),
+        }),
+      ).annotate({ identifier: "StartIdMappingJobOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ workflowName: S.String.pipe(T.HttpLabel("workflowName")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/matchingworkflows/{workflowName}/jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartMatchingJobInput" });
+    case 6:
+      return S.suspend(() => S.Struct({ jobId: S.String })).annotate({
+        identifier: "StartMatchingJobOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          description: S.optional(S.String),
+          inputSourceConfig: IdMappingWorkflowInputSourceConfig,
+          outputSourceConfig: S.optional(IdMappingWorkflowOutputSourceConfig),
+          idMappingTechniques: IdMappingTechniques,
+          incrementalRunConfig: S.optional(IdMappingIncrementalRunConfig),
+          roleArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/idmappingworkflows/{workflowName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateIdMappingWorkflowInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          idNamespaceName: S.String.pipe(T.HttpLabel("idNamespaceName")),
+          description: S.optional(S.String),
+          inputSourceConfig: S.optional(IdNamespaceInputSourceConfig),
+          idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowPropertiesList),
+          roleArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/idnamespaces/{idNamespaceName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateIdNamespaceInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          idNamespaceName: S.String,
+          idNamespaceArn: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: S.optional(IdNamespaceInputSourceConfig),
+          idMappingWorkflowProperties: S.optional(IdNamespaceIdMappingWorkflowPropertiesList),
+          type: IdNamespaceType,
+          roleArn: S.optional(S.String),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "UpdateIdNamespaceOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String.pipe(T.HttpLabel("workflowName")),
+          description: S.optional(S.String),
+          inputSourceConfig: InputSourceConfig,
+          outputSourceConfig: OutputSourceConfig,
+          resolutionTechniques: ResolutionTechniques,
+          incrementalRunConfig: S.optional(IncrementalRunConfig),
+          roleArn: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/matchingworkflows/{workflowName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateMatchingWorkflowInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          workflowName: S.String,
+          description: S.optional(S.String),
+          inputSourceConfig: InputSourceConfig,
+          outputSourceConfig: OutputSourceConfig,
+          resolutionTechniques: ResolutionTechniques,
+          incrementalRunConfig: S.optional(IncrementalRunConfig),
+          roleArn: S.String,
+        }),
+      ).annotate({
+        identifier: "UpdateMatchingWorkflowOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          schemaName: S.String.pipe(T.HttpLabel("schemaName")),
+          description: S.optional(S.String),
+          mappedInputFields: SchemaInputAttributes,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/schemas/{schemaName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSchemaMappingInput" });
+  }
+}

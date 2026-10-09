@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -136,42 +137,24 @@ export interface ClipTimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;
 }
-const ClipTimestampRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "ClipTimestampRange" }) as any as S.Schema<ClipTimestampRange>;
+const ClipTimestampRange = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ClipTimestampRange>;
 export interface ClipFragmentSelector {
   FragmentSelectorType: ClipFragmentSelectorType;
   TimestampRange: ClipTimestampRange;
 }
-const ClipFragmentSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FragmentSelectorType: ClipFragmentSelectorType, TimestampRange: ClipTimestampRange }),
-).annotate({ identifier: "ClipFragmentSelector" }) as any as S.Schema<ClipFragmentSelector>;
+const ClipFragmentSelector = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ClipFragmentSelector>;
 export interface GetClipInput {
   StreamName?: string;
   StreamARN?: string;
   ClipFragmentSelector: ClipFragmentSelector;
 }
-const GetClipInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    StreamARN: S.optional(S.String),
-    ClipFragmentSelector: ClipFragmentSelector,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/getClip" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetClipInput" }) as any as S.Schema<GetClipInput>;
+const GetClipInput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetClipInput>;
 export type ContentType = string;
 export interface GetClipOutput {
   ContentType?: string;
   Payload?: T.StreamingOutputBody;
 }
-const GetClipOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-  }),
-).annotate({ identifier: "GetClipOutput" }) as any as S.Schema<GetClipOutput>;
+const GetClipOutput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetClipOutput>;
 export type DASHPlaybackMode = "LIVE" | "LIVE_REPLAY" | "ON_DEMAND" | (string & {});
 const DASHPlaybackMode = S.String;
 
@@ -188,22 +171,12 @@ export interface DASHTimestampRange {
   StartTimestamp?: Date;
   EndTimestamp?: Date;
 }
-const DASHTimestampRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "DASHTimestampRange" }) as any as S.Schema<DASHTimestampRange>;
+const DASHTimestampRange = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DASHTimestampRange>;
 export interface DASHFragmentSelector {
   FragmentSelectorType?: DASHFragmentSelectorType;
   TimestampRange?: DASHTimestampRange;
 }
-const DASHFragmentSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FragmentSelectorType: S.optional(DASHFragmentSelectorType),
-    TimestampRange: S.optional(DASHTimestampRange),
-  }),
-).annotate({ identifier: "DASHFragmentSelector" }) as any as S.Schema<DASHFragmentSelector>;
+const DASHFragmentSelector = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DASHFragmentSelector>;
 export type Expires = number;
 export type DASHMaxResults = number;
 export interface GetDASHStreamingSessionURLInput {
@@ -216,38 +189,18 @@ export interface GetDASHStreamingSessionURLInput {
   Expires?: number;
   MaxManifestFragmentResults?: number;
 }
-const GetDASHStreamingSessionURLInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    StreamARN: S.optional(S.String),
-    PlaybackMode: S.optional(DASHPlaybackMode),
-    DisplayFragmentTimestamp: S.optional(DASHDisplayFragmentTimestamp),
-    DisplayFragmentNumber: S.optional(DASHDisplayFragmentNumber),
-    DASHFragmentSelector: S.optional(DASHFragmentSelector),
-    Expires: S.optional(S.Number),
-    MaxManifestFragmentResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/getDASHStreamingSessionURL" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetDASHStreamingSessionURLInput",
-}) as any as S.Schema<GetDASHStreamingSessionURLInput>;
+const GetDASHStreamingSessionURLInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetDASHStreamingSessionURLInput>;
 export type DASHStreamingSessionURL = string;
 export interface GetDASHStreamingSessionURLOutput {
   DASHStreamingSessionURL?: string;
 }
-const GetDASHStreamingSessionURLOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DASHStreamingSessionURL: S.optional(S.String) }),
-).annotate({
-  identifier: "GetDASHStreamingSessionURLOutput",
-}) as any as S.Schema<GetDASHStreamingSessionURLOutput>;
+const GetDASHStreamingSessionURLOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetDASHStreamingSessionURLOutput>;
 export type HLSPlaybackMode = "LIVE" | "LIVE_REPLAY" | "ON_DEMAND" | (string & {});
 const HLSPlaybackMode = S.String;
 
@@ -263,12 +216,7 @@ export interface HLSFragmentSelector {
   FragmentSelectorType?: HLSFragmentSelectorType;
   TimestampRange?: HLSTimestampRange;
 }
-const HLSFragmentSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FragmentSelectorType: S.optional(HLSFragmentSelectorType),
-    TimestampRange: S.optional(HLSTimestampRange),
-  }),
-).annotate({ identifier: "HLSFragmentSelector" }) as any as S.Schema<HLSFragmentSelector>;
+const HLSFragmentSelector = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<HLSFragmentSelector>;
 export type ContainerFormat = "FRAGMENTED_MP4" | "MPEG_TS" | (string & {});
 const ContainerFormat = S.String;
 
@@ -290,39 +238,18 @@ export interface GetHLSStreamingSessionURLInput {
   Expires?: number;
   MaxMediaPlaylistFragmentResults?: number;
 }
-const GetHLSStreamingSessionURLInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    StreamARN: S.optional(S.String),
-    PlaybackMode: S.optional(HLSPlaybackMode),
-    HLSFragmentSelector: S.optional(HLSFragmentSelector),
-    ContainerFormat: S.optional(ContainerFormat),
-    DiscontinuityMode: S.optional(HLSDiscontinuityMode),
-    DisplayFragmentTimestamp: S.optional(HLSDisplayFragmentTimestamp),
-    Expires: S.optional(S.Number),
-    MaxMediaPlaylistFragmentResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/getHLSStreamingSessionURL" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetHLSStreamingSessionURLInput",
-}) as any as S.Schema<GetHLSStreamingSessionURLInput>;
+const GetHLSStreamingSessionURLInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetHLSStreamingSessionURLInput>;
 export type HLSStreamingSessionURL = string;
 export interface GetHLSStreamingSessionURLOutput {
   HLSStreamingSessionURL?: string;
 }
-const GetHLSStreamingSessionURLOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HLSStreamingSessionURL: S.optional(S.String) }),
-).annotate({
-  identifier: "GetHLSStreamingSessionURLOutput",
-}) as any as S.Schema<GetHLSStreamingSessionURLOutput>;
+const GetHLSStreamingSessionURLOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetHLSStreamingSessionURLOutput>;
 export type ImageSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP" | (string & {});
 const ImageSelectorType = S.String;
 
@@ -335,10 +262,7 @@ const FormatConfigKey = S.String;
 
 export type FormatConfigValue = string;
 export type FormatConfig = { [key in FormatConfigKey]?: string };
-const FormatConfig = /*@__PURE__*/ S.Record(
-  FormatConfigKey,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const FormatConfig = /*@__PURE__*/ __L.at(__c1, 3);
 export type WidthPixels = number;
 export type HeightPixels = number;
 export type GetImagesMaxResults = number;
@@ -357,22 +281,7 @@ export interface GetImagesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetImagesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    StreamARN: S.optional(S.String),
-    ImageSelectorType: ImageSelectorType,
-    StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    SamplingInterval: S.optional(S.Number),
-    Format: Format,
-    FormatConfig: S.optional(FormatConfig),
-    WidthPixels: S.optional(S.Number),
-    HeightPixels: S.optional(S.Number),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/getImages" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetImagesInput" }) as any as S.Schema<GetImagesInput>;
+const GetImagesInput = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetImagesInput>;
 export type ImageError = "NO_MEDIA" | "MEDIA_ERROR" | (string & {});
 const ImageError = S.String;
 
@@ -382,60 +291,34 @@ export interface Image {
   Error?: ImageError;
   ImageContent?: string;
 }
-const Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Error: S.optional(ImageError),
-    ImageContent: S.optional(S.String),
-  }),
-).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
+const Image = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Image>;
 export type Images = Image[];
-const Images = /*@__PURE__*/ S.Array(Image);
+const Images = /*@__PURE__*/ __L.at(__c1, 6);
 export interface GetImagesOutput {
   Images?: Image[];
   NextToken?: string;
 }
-const GetImagesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Images: S.optional(Images), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "GetImagesOutput" }) as any as S.Schema<GetImagesOutput>;
+const GetImagesOutput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetImagesOutput>;
 export type FragmentNumberString = string;
 export type FragmentNumberList = string[];
-const FragmentNumberList = /*@__PURE__*/ S.Array(S.String);
+const FragmentNumberList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface GetMediaForFragmentListInput {
   StreamName?: string;
   StreamARN?: string;
   Fragments: string[];
 }
-const GetMediaForFragmentListInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    StreamARN: S.optional(S.String),
-    Fragments: FragmentNumberList,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/getMediaForFragmentList" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetMediaForFragmentListInput",
-}) as any as S.Schema<GetMediaForFragmentListInput>;
+const GetMediaForFragmentListInput = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetMediaForFragmentListInput>;
 export interface GetMediaForFragmentListOutput {
   ContentType?: string;
   Payload?: T.StreamingOutputBody;
 }
-const GetMediaForFragmentListOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-  }),
-).annotate({
-  identifier: "GetMediaForFragmentListOutput",
-}) as any as S.Schema<GetMediaForFragmentListOutput>;
+const GetMediaForFragmentListOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetMediaForFragmentListOutput>;
 export type ListFragmentsMaxResults = number;
 export type FragmentSelectorType = "PRODUCER_TIMESTAMP" | "SERVER_TIMESTAMP" | (string & {});
 const FragmentSelectorType = S.String;
@@ -449,9 +332,7 @@ export interface FragmentSelector {
   FragmentSelectorType: FragmentSelectorType;
   TimestampRange: TimestampRange;
 }
-const FragmentSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FragmentSelectorType: FragmentSelectorType, TimestampRange: TimestampRange }),
-).annotate({ identifier: "FragmentSelector" }) as any as S.Schema<FragmentSelector>;
+const FragmentSelector = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<FragmentSelector>;
 export interface ListFragmentsInput {
   StreamName?: string;
   StreamARN?: string;
@@ -459,15 +340,7 @@ export interface ListFragmentsInput {
   NextToken?: string;
   FragmentSelector?: FragmentSelector;
 }
-const ListFragmentsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StreamName: S.optional(S.String),
-    StreamARN: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    FragmentSelector: S.optional(FragmentSelector),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/listFragments" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListFragmentsInput" }) as any as S.Schema<ListFragmentsInput>;
+const ListFragmentsInput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListFragmentsInput>;
 export interface Fragment {
   FragmentNumber?: string;
   FragmentSizeInBytes?: number;
@@ -475,24 +348,14 @@ export interface Fragment {
   ServerTimestamp?: Date;
   FragmentLengthInMilliseconds?: number;
 }
-const Fragment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FragmentNumber: S.optional(S.String),
-    FragmentSizeInBytes: S.optional(S.Number),
-    ProducerTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ServerTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    FragmentLengthInMilliseconds: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Fragment" }) as any as S.Schema<Fragment>;
+const Fragment = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Fragment>;
 export type FragmentList = Fragment[];
-const FragmentList = /*@__PURE__*/ S.Array(Fragment);
+const FragmentList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface ListFragmentsOutput {
   Fragments?: Fragment[];
   NextToken?: string;
 }
-const ListFragmentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Fragments: S.optional(FragmentList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListFragmentsOutput" }) as any as S.Schema<ListFragmentsOutput>;
+const ListFragmentsOutput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListFragmentsOutput>;
 export type ErrorMessage = string;
 export type GetClipError =
   | ClientLimitExceededException
@@ -1080,3 +943,219 @@ export const listFragments: API.PaginatedOperationMethod<
     pageSize: "MaxResults",
   } as const,
 })) as any;
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "ClipTimestampRange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FragmentSelectorType: ClipFragmentSelectorType,
+          TimestampRange: ClipTimestampRange,
+        }),
+      ).annotate({ identifier: "ClipFragmentSelector" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          StreamARN: S.optional(S.String),
+          ClipFragmentSelector: ClipFragmentSelector,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/getClip" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetClipInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+        }),
+      ).annotate({ identifier: "GetClipOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DASHTimestampRange" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          FragmentSelectorType: S.optional(DASHFragmentSelectorType),
+          TimestampRange: S.optional(DASHTimestampRange),
+        }),
+      ).annotate({ identifier: "DASHFragmentSelector" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          StreamARN: S.optional(S.String),
+          PlaybackMode: S.optional(DASHPlaybackMode),
+          DisplayFragmentTimestamp: S.optional(DASHDisplayFragmentTimestamp),
+          DisplayFragmentNumber: S.optional(DASHDisplayFragmentNumber),
+          DASHFragmentSelector: S.optional(DASHFragmentSelector),
+          Expires: S.optional(S.Number),
+          MaxManifestFragmentResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getDASHStreamingSessionURL" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetDASHStreamingSessionURLInput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ DASHStreamingSessionURL: S.optional(S.String) })).annotate({
+        identifier: "GetDASHStreamingSessionURLOutput",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FragmentSelectorType: S.optional(HLSFragmentSelectorType),
+          TimestampRange: S.optional(HLSTimestampRange),
+        }),
+      ).annotate({ identifier: "HLSFragmentSelector" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          StreamARN: S.optional(S.String),
+          PlaybackMode: S.optional(HLSPlaybackMode),
+          HLSFragmentSelector: S.optional(HLSFragmentSelector),
+          ContainerFormat: S.optional(ContainerFormat),
+          DiscontinuityMode: S.optional(HLSDiscontinuityMode),
+          DisplayFragmentTimestamp: S.optional(HLSDisplayFragmentTimestamp),
+          Expires: S.optional(S.Number),
+          MaxMediaPlaylistFragmentResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getHLSStreamingSessionURL" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetHLSStreamingSessionURLInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ HLSStreamingSessionURL: S.optional(S.String) })).annotate({
+        identifier: "GetHLSStreamingSessionURLOutput",
+      });
+    case 3:
+      return S.Record(FormatConfigKey, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          StreamARN: S.optional(S.String),
+          ImageSelectorType: ImageSelectorType,
+          StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          SamplingInterval: S.optional(S.Number),
+          Format: Format,
+          FormatConfig: S.optional(FormatConfig),
+          WidthPixels: S.optional(S.Number),
+          HeightPixels: S.optional(S.Number),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/getImages" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetImagesInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Error: S.optional(ImageError),
+          ImageContent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 6:
+      return S.Array(Image);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Images: S.optional(Images), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetImagesOutput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          StreamARN: S.optional(S.String),
+          Fragments: FragmentNumberList,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getMediaForFragmentList" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetMediaForFragmentListInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+        }),
+      ).annotate({
+        identifier: "GetMediaForFragmentListOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ FragmentSelectorType: FragmentSelectorType, TimestampRange: TimestampRange }),
+      ).annotate({ identifier: "FragmentSelector" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          StreamARN: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          FragmentSelector: S.optional(FragmentSelector),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/listFragments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListFragmentsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          FragmentNumber: S.optional(S.String),
+          FragmentSizeInBytes: S.optional(S.Number),
+          ProducerTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ServerTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FragmentLengthInMilliseconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Fragment" });
+    case 6:
+      return S.Array(Fragment);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Fragments: S.optional(FragmentList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListFragmentsOutput" });
+  }
+}

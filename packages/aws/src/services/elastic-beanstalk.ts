@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -276,33 +277,24 @@ export interface AbortEnvironmentUpdateMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
-const AbortEnvironmentUpdateMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnvironmentId: S.optional(S.String), EnvironmentName: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AbortEnvironmentUpdateMessage",
-}) as any as S.Schema<AbortEnvironmentUpdateMessage>;
+const AbortEnvironmentUpdateMessage = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AbortEnvironmentUpdateMessage>;
 export interface AbortEnvironmentUpdateResponse {}
-const AbortEnvironmentUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AbortEnvironmentUpdateResponse",
-}) as any as S.Schema<AbortEnvironmentUpdateResponse>;
+const AbortEnvironmentUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AbortEnvironmentUpdateResponse>;
 export interface ApplyEnvironmentManagedActionRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
   ActionId: string;
 }
-const ApplyEnvironmentManagedActionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentName: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    ActionId: S.String,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ApplyEnvironmentManagedActionRequest",
-}) as any as S.Schema<ApplyEnvironmentManagedActionRequest>;
+const ApplyEnvironmentManagedActionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ApplyEnvironmentManagedActionRequest>;
 export type ActionType = "InstanceRefresh" | "PlatformUpdate" | "Unknown" | (string & {});
 const ActionType = S.String;
 
@@ -312,77 +304,56 @@ export interface ApplyEnvironmentManagedActionResult {
   ActionType?: ActionType;
   Status?: string;
 }
-const ApplyEnvironmentManagedActionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionId: S.optional(S.String),
-    ActionDescription: S.optional(S.String),
-    ActionType: S.optional(ActionType),
-    Status: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ApplyEnvironmentManagedActionResult",
-}) as any as S.Schema<ApplyEnvironmentManagedActionResult>;
+const ApplyEnvironmentManagedActionResult = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ApplyEnvironmentManagedActionResult>;
 export type OperationsRole = string;
 export interface AssociateEnvironmentOperationsRoleMessage {
   EnvironmentName: string;
   OperationsRole: string;
 }
-const AssociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnvironmentName: S.String, OperationsRole: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AssociateEnvironmentOperationsRoleMessage",
-}) as any as S.Schema<AssociateEnvironmentOperationsRoleMessage>;
+const AssociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociateEnvironmentOperationsRoleMessage>;
 export interface AssociateEnvironmentOperationsRoleResponse {}
-const AssociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AssociateEnvironmentOperationsRoleResponse",
-}) as any as S.Schema<AssociateEnvironmentOperationsRoleResponse>;
+const AssociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateEnvironmentOperationsRoleResponse>;
 export type DNSCnamePrefix = string;
 export interface CheckDNSAvailabilityMessage {
   CNAMEPrefix: string;
 }
-const CheckDNSAvailabilityMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CNAMEPrefix: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CheckDNSAvailabilityMessage",
-}) as any as S.Schema<CheckDNSAvailabilityMessage>;
+const CheckDNSAvailabilityMessage = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CheckDNSAvailabilityMessage>;
 export type CnameAvailability = boolean;
 export type DNSCname = string;
 export interface CheckDNSAvailabilityResultMessage {
   Available?: boolean;
   FullyQualifiedCNAME?: string;
 }
-const CheckDNSAvailabilityResultMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Available: S.optional(S.Boolean), FullyQualifiedCNAME: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "CheckDNSAvailabilityResultMessage",
-}) as any as S.Schema<CheckDNSAvailabilityResultMessage>;
+const CheckDNSAvailabilityResultMessage = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CheckDNSAvailabilityResultMessage>;
 export type ApplicationName = string;
 export type GroupName = string;
 export type VersionLabel = string;
 export type VersionLabels = string[];
-const VersionLabels = /*@__PURE__*/ S.Array(S.String);
+const VersionLabels = /*@__PURE__*/ __L.at(__c1, 0);
 export interface ComposeEnvironmentsMessage {
   ApplicationName?: string;
   GroupName?: string;
   VersionLabels?: string[];
 }
-const ComposeEnvironmentsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.optional(S.String),
-    GroupName: S.optional(S.String),
-    VersionLabels: S.optional(VersionLabels),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ComposeEnvironmentsMessage",
-}) as any as S.Schema<ComposeEnvironmentsMessage>;
+const ComposeEnvironmentsMessage = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ComposeEnvironmentsMessage>;
 export type SolutionStackName = string;
 export type PlatformArn = string;
 export type ConfigurationTemplateName = string;
@@ -423,52 +394,38 @@ export interface Listener {
   Protocol?: string;
   Port?: number;
 }
-const Listener = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Protocol: S.optional(S.String), Port: S.optional(S.Number) }),
-).annotate({ identifier: "Listener" }) as any as S.Schema<Listener>;
+const Listener = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Listener>;
 export type LoadBalancerListenersDescription = Listener[];
-const LoadBalancerListenersDescription = /*@__PURE__*/ S.Array(Listener);
+const LoadBalancerListenersDescription = /*@__PURE__*/ __L.at(__c1, 3);
 export interface LoadBalancerDescription {
   LoadBalancerName?: string;
   Domain?: string;
   Listeners?: Listener[];
 }
-const LoadBalancerDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LoadBalancerName: S.optional(S.String),
-    Domain: S.optional(S.String),
-    Listeners: S.optional(LoadBalancerListenersDescription),
-  }),
-).annotate({ identifier: "LoadBalancerDescription" }) as any as S.Schema<LoadBalancerDescription>;
+const LoadBalancerDescription = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<LoadBalancerDescription>;
 export interface EnvironmentResourcesDescription {
   LoadBalancer?: LoadBalancerDescription;
 }
-const EnvironmentResourcesDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LoadBalancer: S.optional(LoadBalancerDescription) }),
-).annotate({
-  identifier: "EnvironmentResourcesDescription",
-}) as any as S.Schema<EnvironmentResourcesDescription>;
+const EnvironmentResourcesDescription = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<EnvironmentResourcesDescription>;
 export interface EnvironmentTier {
   Name?: string;
   Type?: string;
   Version?: string;
 }
-const EnvironmentTier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Type: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnvironmentTier" }) as any as S.Schema<EnvironmentTier>;
+const EnvironmentTier = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<EnvironmentTier>;
 export interface EnvironmentLink {
   LinkName?: string;
   EnvironmentName?: string;
 }
-const EnvironmentLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LinkName: S.optional(S.String), EnvironmentName: S.optional(S.String) }),
-).annotate({ identifier: "EnvironmentLink" }) as any as S.Schema<EnvironmentLink>;
+const EnvironmentLink = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EnvironmentLink>;
 export type EnvironmentLinks = EnvironmentLink[];
-const EnvironmentLinks = /*@__PURE__*/ S.Array(EnvironmentLink);
+const EnvironmentLinks = /*@__PURE__*/ __L.at(__c2, 0);
 export type EnvironmentArn = string;
 export interface EnvironmentDescription {
   EnvironmentName?: string;
@@ -493,46 +450,21 @@ export interface EnvironmentDescription {
   EnvironmentArn?: string;
   OperationsRole?: string;
 }
-const EnvironmentDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentName: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    ApplicationName: S.optional(S.String),
-    VersionLabel: S.optional(S.String),
-    SolutionStackName: S.optional(S.String),
-    PlatformArn: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    Description: S.optional(S.String),
-    EndpointURL: S.optional(S.String),
-    CNAME: S.optional(S.String),
-    DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Status: S.optional(EnvironmentStatus),
-    AbortableOperationInProgress: S.optional(S.Boolean),
-    Health: S.optional(EnvironmentHealth),
-    HealthStatus: S.optional(EnvironmentHealthStatus),
-    Resources: S.optional(EnvironmentResourcesDescription),
-    Tier: S.optional(EnvironmentTier),
-    EnvironmentLinks: S.optional(EnvironmentLinks),
-    EnvironmentArn: S.optional(S.String),
-    OperationsRole: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "EnvironmentDescription" }) as any as S.Schema<EnvironmentDescription>;
+const EnvironmentDescription = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<EnvironmentDescription>;
 export type EnvironmentDescriptionsList = EnvironmentDescription[];
-const EnvironmentDescriptionsList = /*@__PURE__*/ S.Array(EnvironmentDescription);
+const EnvironmentDescriptionsList = /*@__PURE__*/ __L.at(__c2, 2);
 export type Token = string;
 export interface EnvironmentDescriptionsMessage {
   Environments?: EnvironmentDescription[];
   NextToken?: string;
 }
-const EnvironmentDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Environments: S.optional(EnvironmentDescriptionsList),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "EnvironmentDescriptionsMessage",
-}) as any as S.Schema<EnvironmentDescriptionsMessage>;
+const EnvironmentDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<EnvironmentDescriptionsMessage>;
 export type BoxedBoolean = boolean;
 export type BoxedInt = number;
 export interface MaxCountRule {
@@ -540,76 +472,53 @@ export interface MaxCountRule {
   MaxCount?: number;
   DeleteSourceFromS3?: boolean;
 }
-const MaxCountRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Enabled: S.Boolean,
-    MaxCount: S.optional(S.Number),
-    DeleteSourceFromS3: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MaxCountRule" }) as any as S.Schema<MaxCountRule>;
+const MaxCountRule = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<MaxCountRule>;
 export interface MaxAgeRule {
   Enabled: boolean;
   MaxAgeInDays?: number;
   DeleteSourceFromS3?: boolean;
 }
-const MaxAgeRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Enabled: S.Boolean,
-    MaxAgeInDays: S.optional(S.Number),
-    DeleteSourceFromS3: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MaxAgeRule" }) as any as S.Schema<MaxAgeRule>;
+const MaxAgeRule = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<MaxAgeRule>;
 export interface ApplicationVersionLifecycleConfig {
   MaxCountRule?: MaxCountRule;
   MaxAgeRule?: MaxAgeRule;
 }
-const ApplicationVersionLifecycleConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaxCountRule: S.optional(MaxCountRule), MaxAgeRule: S.optional(MaxAgeRule) }),
-).annotate({
-  identifier: "ApplicationVersionLifecycleConfig",
-}) as any as S.Schema<ApplicationVersionLifecycleConfig>;
+const ApplicationVersionLifecycleConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ApplicationVersionLifecycleConfig>;
 export interface ApplicationResourceLifecycleConfig {
   ServiceRole?: string;
   VersionLifecycleConfig?: ApplicationVersionLifecycleConfig;
 }
-const ApplicationResourceLifecycleConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceRole: S.optional(S.String),
-    VersionLifecycleConfig: S.optional(ApplicationVersionLifecycleConfig),
-  }),
-).annotate({
-  identifier: "ApplicationResourceLifecycleConfig",
-}) as any as S.Schema<ApplicationResourceLifecycleConfig>;
+const ApplicationResourceLifecycleConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ApplicationResourceLifecycleConfig>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-const Tags = /*@__PURE__*/ S.Array(Tag);
+const Tags = /*@__PURE__*/ __L.at(__c3, 1);
 export interface CreateApplicationMessage {
   ApplicationName: string;
   Description?: string;
   ResourceLifecycleConfig?: ApplicationResourceLifecycleConfig;
   Tags?: Tag[];
 }
-const CreateApplicationMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    Description: S.optional(S.String),
-    ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
-    Tags: S.optional(Tags),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateApplicationMessage" }) as any as S.Schema<CreateApplicationMessage>;
+const CreateApplicationMessage = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateApplicationMessage>;
 export type ApplicationArn = string;
 export type VersionLabelsList = string[];
-const VersionLabelsList = /*@__PURE__*/ S.Array(S.String);
+const VersionLabelsList = /*@__PURE__*/ __L.at(__c3, 3);
 export type ConfigurationTemplateNamesList = string[];
-const ConfigurationTemplateNamesList = /*@__PURE__*/ S.Array(S.String);
+const ConfigurationTemplateNamesList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface ApplicationDescription {
   ApplicationArn?: string;
   ApplicationName?: string;
@@ -620,26 +529,17 @@ export interface ApplicationDescription {
   ConfigurationTemplates?: string[];
   ResourceLifecycleConfig?: ApplicationResourceLifecycleConfig;
 }
-const ApplicationDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationArn: S.optional(S.String),
-    ApplicationName: S.optional(S.String),
-    Description: S.optional(S.String),
-    DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Versions: S.optional(VersionLabelsList),
-    ConfigurationTemplates: S.optional(ConfigurationTemplateNamesList),
-    ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
-  }),
-).annotate({ identifier: "ApplicationDescription" }) as any as S.Schema<ApplicationDescription>;
+const ApplicationDescription = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ApplicationDescription>;
 export interface ApplicationDescriptionMessage {
   Application?: ApplicationDescription;
 }
-const ApplicationDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Application: S.optional(ApplicationDescription) }).pipe(ns),
-).annotate({
-  identifier: "ApplicationDescriptionMessage",
-}) as any as S.Schema<ApplicationDescriptionMessage>;
+const ApplicationDescriptionMessage = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ApplicationDescriptionMessage>;
 export type SourceType = "Git" | "Zip" | (string & {});
 const SourceType = S.String;
 
@@ -652,22 +552,17 @@ export interface SourceBuildInformation {
   SourceRepository: SourceRepository;
   SourceLocation: string;
 }
-const SourceBuildInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SourceType: SourceType,
-    SourceRepository: SourceRepository,
-    SourceLocation: S.String,
-  }),
-).annotate({ identifier: "SourceBuildInformation" }) as any as S.Schema<SourceBuildInformation>;
+const SourceBuildInformation = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<SourceBuildInformation>;
 export type S3Bucket = string;
 export type S3Key = string;
 export interface S3Location {
   S3Bucket?: string;
   S3Key?: string;
 }
-const S3Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Bucket: S.optional(S.String), S3Key: S.optional(S.String) }),
-).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
+const S3Location = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<S3Location>;
 export type NonEmptyString = string;
 export type ComputeType =
   | "BUILD_GENERAL1_SMALL"
@@ -683,23 +578,13 @@ export interface BuildConfiguration {
   Image: string;
   TimeoutInMinutes?: number;
 }
-const BuildConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArtifactName: S.optional(S.String),
-    CodeBuildServiceRole: S.String,
-    ComputeType: S.optional(ComputeType),
-    Image: S.String,
-    TimeoutInMinutes: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BuildConfiguration" }) as any as S.Schema<BuildConfiguration>;
+const BuildConfiguration = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<BuildConfiguration>;
 export type AutoCreateApplication = boolean;
 export type ApplicationVersionProccess = boolean;
 export interface ImageSource {
   Uri?: string;
 }
-const ImageSource = /*@__PURE__*/ S.suspend(() => S.Struct({ Uri: S.optional(S.String) })).annotate(
-  { identifier: "ImageSource" },
-) as any as S.Schema<ImageSource>;
+const ImageSource = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ImageSource>;
 export type ImageBuildType = "docker" | "buildpack" | (string & {});
 const ImageBuildType = S.String;
 
@@ -715,24 +600,15 @@ export interface ImageBuildConfiguration {
   ComputeType?: ComputeType;
   TimeoutInMinutes?: number;
 }
-const ImageBuildConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(ImageBuildType),
-    DockerfileLocation: S.optional(S.String),
-    Buildpack: S.optional(S.String),
-    Architecture: S.optional(ArchitectureType),
-    CodeBuildServiceRole: S.optional(S.String),
-    ComputeType: S.optional(ComputeType),
-    TimeoutInMinutes: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ImageBuildConfiguration" }) as any as S.Schema<ImageBuildConfiguration>;
+const ImageBuildConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ImageBuildConfiguration>;
 export interface ImageConfiguration {
   Source?: ImageSource;
   Build?: ImageBuildConfiguration;
 }
-const ImageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Source: S.optional(ImageSource), Build: S.optional(ImageBuildConfiguration) }),
-).annotate({ identifier: "ImageConfiguration" }) as any as S.Schema<ImageConfiguration>;
+const ImageConfiguration = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ImageConfiguration>;
 export interface CreateApplicationVersionMessage {
   ApplicationName: string;
   VersionLabel: string;
@@ -745,22 +621,10 @@ export interface CreateApplicationVersionMessage {
   Tags?: Tag[];
   ImageConfiguration?: ImageConfiguration;
 }
-const CreateApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    VersionLabel: S.String,
-    Description: S.optional(S.String),
-    SourceBuildInformation: S.optional(SourceBuildInformation),
-    SourceBundle: S.optional(S3Location),
-    BuildConfiguration: S.optional(BuildConfiguration),
-    AutoCreateApplication: S.optional(S.Boolean),
-    Process: S.optional(S.Boolean),
-    Tags: S.optional(Tags),
-    ImageConfiguration: S.optional(ImageConfiguration),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateApplicationVersionMessage",
-}) as any as S.Schema<CreateApplicationVersionMessage>;
+const CreateApplicationVersionMessage = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateApplicationVersionMessage>;
 export type ApplicationVersionArn = string;
 export type ApplicationVersionStatus =
   | "Processed"
@@ -786,40 +650,22 @@ export interface ApplicationVersionDescription {
   DateUpdated?: Date;
   Status?: ApplicationVersionStatus;
 }
-const ApplicationVersionDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationVersionArn: S.optional(S.String),
-    ApplicationName: S.optional(S.String),
-    Description: S.optional(S.String),
-    VersionLabel: S.optional(S.String),
-    SourceBuildInformation: S.optional(SourceBuildInformation),
-    BuildArn: S.optional(S.String),
-    SourceBundle: S.optional(S3Location),
-    ImageSource: S.optional(ImageSource),
-    ImageBuildConfiguration: S.optional(ImageBuildConfiguration),
-    Process: S.optional(S.Boolean),
-    DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Status: S.optional(ApplicationVersionStatus),
-  }),
-).annotate({
-  identifier: "ApplicationVersionDescription",
-}) as any as S.Schema<ApplicationVersionDescription>;
+const ApplicationVersionDescription = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ApplicationVersionDescription>;
 export interface ApplicationVersionDescriptionMessage {
   ApplicationVersion?: ApplicationVersionDescription;
 }
-const ApplicationVersionDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationVersion: S.optional(ApplicationVersionDescription) }).pipe(ns),
-).annotate({
-  identifier: "ApplicationVersionDescriptionMessage",
-}) as any as S.Schema<ApplicationVersionDescriptionMessage>;
+const ApplicationVersionDescriptionMessage = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ApplicationVersionDescriptionMessage>;
 export interface SourceConfiguration {
   ApplicationName?: string;
   TemplateName?: string;
 }
-const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationName: S.optional(S.String), TemplateName: S.optional(S.String) }),
-).annotate({ identifier: "SourceConfiguration" }) as any as S.Schema<SourceConfiguration>;
+const SourceConfiguration = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SourceConfiguration>;
 export type ResourceName = string;
 export type OptionNamespace = string;
 export type ConfigurationOptionName = string;
@@ -830,18 +676,12 @@ export interface ConfigurationOptionSetting {
   OptionName?: string;
   Value?: string;
 }
-const ConfigurationOptionSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceName: S.optional(S.String),
-    Namespace: S.optional(S.String),
-    OptionName: S.optional(S.String),
-    Value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationOptionSetting",
-}) as any as S.Schema<ConfigurationOptionSetting>;
+const ConfigurationOptionSetting = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ConfigurationOptionSetting>;
 export type ConfigurationOptionSettingsList = ConfigurationOptionSetting[];
-const ConfigurationOptionSettingsList = /*@__PURE__*/ S.Array(ConfigurationOptionSetting);
+const ConfigurationOptionSettingsList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface CreateConfigurationTemplateMessage {
   ApplicationName: string;
   TemplateName: string;
@@ -853,21 +693,10 @@ export interface CreateConfigurationTemplateMessage {
   OptionSettings?: ConfigurationOptionSetting[];
   Tags?: Tag[];
 }
-const CreateConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    TemplateName: S.String,
-    SolutionStackName: S.optional(S.String),
-    PlatformArn: S.optional(S.String),
-    SourceConfiguration: S.optional(SourceConfiguration),
-    EnvironmentId: S.optional(S.String),
-    Description: S.optional(S.String),
-    OptionSettings: S.optional(ConfigurationOptionSettingsList),
-    Tags: S.optional(Tags),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateConfigurationTemplateMessage",
-}) as any as S.Schema<CreateConfigurationTemplateMessage>;
+const CreateConfigurationTemplateMessage = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateConfigurationTemplateMessage>;
 export type ConfigurationDeploymentStatus = "deployed" | "pending" | "failed" | (string & {});
 const ConfigurationDeploymentStatus = S.String;
 
@@ -883,36 +712,18 @@ export interface ConfigurationSettingsDescription {
   DateUpdated?: Date;
   OptionSettings?: ConfigurationOptionSetting[];
 }
-const ConfigurationSettingsDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SolutionStackName: S.optional(S.String),
-    PlatformArn: S.optional(S.String),
-    ApplicationName: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    Description: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    DeploymentStatus: S.optional(ConfigurationDeploymentStatus),
-    DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    OptionSettings: S.optional(ConfigurationOptionSettingsList),
-  }).pipe(ns),
-).annotate({
-  identifier: "ConfigurationSettingsDescription",
-}) as any as S.Schema<ConfigurationSettingsDescription>;
+const ConfigurationSettingsDescription = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ConfigurationSettingsDescription>;
 export interface OptionSpecification {
   ResourceName?: string;
   Namespace?: string;
   OptionName?: string;
 }
-const OptionSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceName: S.optional(S.String),
-    Namespace: S.optional(S.String),
-    OptionName: S.optional(S.String),
-  }),
-).annotate({ identifier: "OptionSpecification" }) as any as S.Schema<OptionSpecification>;
+const OptionSpecification = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<OptionSpecification>;
 export type OptionsSpecifierList = OptionSpecification[];
-const OptionsSpecifierList = /*@__PURE__*/ S.Array(OptionSpecification);
+const OptionsSpecifierList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface CreateEnvironmentMessage {
   ApplicationName: string;
   EnvironmentName?: string;
@@ -929,24 +740,10 @@ export interface CreateEnvironmentMessage {
   OptionsToRemove?: OptionSpecification[];
   OperationsRole?: string;
 }
-const CreateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    EnvironmentName: S.optional(S.String),
-    GroupName: S.optional(S.String),
-    Description: S.optional(S.String),
-    CNAMEPrefix: S.optional(S.String),
-    Tier: S.optional(EnvironmentTier),
-    Tags: S.optional(Tags),
-    VersionLabel: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    SolutionStackName: S.optional(S.String),
-    PlatformArn: S.optional(S.String),
-    OptionSettings: S.optional(ConfigurationOptionSettingsList),
-    OptionsToRemove: S.optional(OptionsSpecifierList),
-    OperationsRole: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateEnvironmentMessage" }) as any as S.Schema<CreateEnvironmentMessage>;
+const CreateEnvironmentMessage = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateEnvironmentMessage>;
 export type PlatformName = string;
 export type PlatformVersion = string;
 export interface CreatePlatformVersionRequest {
@@ -957,18 +754,10 @@ export interface CreatePlatformVersionRequest {
   OptionSettings?: ConfigurationOptionSetting[];
   Tags?: Tag[];
 }
-const CreatePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PlatformName: S.String,
-    PlatformVersion: S.String,
-    PlatformDefinitionBundle: S3Location,
-    EnvironmentName: S.optional(S.String),
-    OptionSettings: S.optional(ConfigurationOptionSettingsList),
-    Tags: S.optional(Tags),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreatePlatformVersionRequest",
-}) as any as S.Schema<CreatePlatformVersionRequest>;
+const CreatePlatformVersionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreatePlatformVersionRequest>;
 export type PlatformOwner = string;
 export type PlatformStatus =
   | "Creating"
@@ -984,10 +773,10 @@ export type OperatingSystemName = string;
 export type OperatingSystemVersion = string;
 export type SupportedTier = string;
 export type SupportedTierList = string[];
-const SupportedTierList = /*@__PURE__*/ S.Array(S.String);
+const SupportedTierList = /*@__PURE__*/ __L.at(__c6, 1);
 export type SupportedAddon = string;
 export type SupportedAddonList = string[];
-const SupportedAddonList = /*@__PURE__*/ S.Array(S.String);
+const SupportedAddonList = /*@__PURE__*/ __L.at(__c6, 2);
 export type PlatformLifecycleState = string;
 export type BranchName = string;
 export type PlatformBranchLifecycleState = string;
@@ -1005,151 +794,110 @@ export interface PlatformSummary {
   PlatformBranchName?: string;
   PlatformBranchLifecycleState?: string;
 }
-const PlatformSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PlatformArn: S.optional(S.String),
-    PlatformOwner: S.optional(S.String),
-    PlatformStatus: S.optional(PlatformStatus),
-    PlatformCategory: S.optional(S.String),
-    OperatingSystemName: S.optional(S.String),
-    OperatingSystemVersion: S.optional(S.String),
-    SupportedTierList: S.optional(SupportedTierList),
-    SupportedAddonList: S.optional(SupportedAddonList),
-    PlatformLifecycleState: S.optional(S.String),
-    PlatformVersion: S.optional(S.String),
-    PlatformBranchName: S.optional(S.String),
-    PlatformBranchLifecycleState: S.optional(S.String),
-  }),
-).annotate({ identifier: "PlatformSummary" }) as any as S.Schema<PlatformSummary>;
+const PlatformSummary = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<PlatformSummary>;
 export type ARN = string;
 export interface Builder {
   ARN?: string;
 }
-const Builder = /*@__PURE__*/ S.suspend(() => S.Struct({ ARN: S.optional(S.String) })).annotate({
-  identifier: "Builder",
-}) as any as S.Schema<Builder>;
+const Builder = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Builder>;
 export interface CreatePlatformVersionResult {
   PlatformSummary?: PlatformSummary;
   Builder?: Builder;
 }
-const CreatePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PlatformSummary: S.optional(PlatformSummary), Builder: S.optional(Builder) }).pipe(ns),
-).annotate({
-  identifier: "CreatePlatformVersionResult",
-}) as any as S.Schema<CreatePlatformVersionResult>;
+const CreatePlatformVersionResult = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreatePlatformVersionResult>;
 export interface CreateStorageLocationRequest {}
-const CreateStorageLocationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateStorageLocationRequest",
-}) as any as S.Schema<CreateStorageLocationRequest>;
+const CreateStorageLocationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateStorageLocationRequest>;
 export interface CreateStorageLocationResultMessage {
   S3Bucket?: string;
 }
-const CreateStorageLocationResultMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Bucket: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "CreateStorageLocationResultMessage",
-}) as any as S.Schema<CreateStorageLocationResultMessage>;
+const CreateStorageLocationResultMessage = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateStorageLocationResultMessage>;
 export type TerminateEnvForce = boolean;
 export interface DeleteApplicationMessage {
   ApplicationName: string;
   TerminateEnvByForce?: boolean;
 }
-const DeleteApplicationMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationName: S.String, TerminateEnvByForce: S.optional(S.Boolean) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteApplicationMessage" }) as any as S.Schema<DeleteApplicationMessage>;
+const DeleteApplicationMessage = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteApplicationMessage>;
 export interface DeleteApplicationResponse {}
-const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteApplicationResponse>;
 export type DeleteSourceBundle = boolean;
 export interface DeleteApplicationVersionMessage {
   ApplicationName: string;
   VersionLabel: string;
   DeleteSourceBundle?: boolean;
 }
-const DeleteApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    VersionLabel: S.String,
-    DeleteSourceBundle: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DeleteApplicationVersionMessage",
-}) as any as S.Schema<DeleteApplicationVersionMessage>;
+const DeleteApplicationVersionMessage = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteApplicationVersionMessage>;
 export interface DeleteApplicationVersionResponse {}
-const DeleteApplicationVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteApplicationVersionResponse",
-}) as any as S.Schema<DeleteApplicationVersionResponse>;
+const DeleteApplicationVersionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteApplicationVersionResponse>;
 export interface DeleteConfigurationTemplateMessage {
   ApplicationName: string;
   TemplateName: string;
 }
-const DeleteConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationName: S.String, TemplateName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteConfigurationTemplateMessage",
-}) as any as S.Schema<DeleteConfigurationTemplateMessage>;
+const DeleteConfigurationTemplateMessage = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteConfigurationTemplateMessage>;
 export interface DeleteConfigurationTemplateResponse {}
-const DeleteConfigurationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConfigurationTemplateResponse",
-}) as any as S.Schema<DeleteConfigurationTemplateResponse>;
+const DeleteConfigurationTemplateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteConfigurationTemplateResponse>;
 export interface DeleteEnvironmentConfigurationMessage {
   ApplicationName: string;
   EnvironmentName: string;
 }
-const DeleteEnvironmentConfigurationMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationName: S.String, EnvironmentName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteEnvironmentConfigurationMessage",
-}) as any as S.Schema<DeleteEnvironmentConfigurationMessage>;
+const DeleteEnvironmentConfigurationMessage = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteEnvironmentConfigurationMessage>;
 export interface DeleteEnvironmentConfigurationResponse {}
-const DeleteEnvironmentConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteEnvironmentConfigurationResponse",
-}) as any as S.Schema<DeleteEnvironmentConfigurationResponse>;
+const DeleteEnvironmentConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteEnvironmentConfigurationResponse>;
 export interface DeletePlatformVersionRequest {
   PlatformArn?: string;
 }
-const DeletePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PlatformArn: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeletePlatformVersionRequest",
-}) as any as S.Schema<DeletePlatformVersionRequest>;
+const DeletePlatformVersionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeletePlatformVersionRequest>;
 export interface DeletePlatformVersionResult {
   PlatformSummary?: PlatformSummary;
 }
-const DeletePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PlatformSummary: S.optional(PlatformSummary) }).pipe(ns),
-).annotate({
-  identifier: "DeletePlatformVersionResult",
-}) as any as S.Schema<DeletePlatformVersionResult>;
+const DeletePlatformVersionResult = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeletePlatformVersionResult>;
 export interface DescribeAccountAttributesRequest {}
-const DescribeAccountAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeAccountAttributesRequest",
-}) as any as S.Schema<DescribeAccountAttributesRequest>;
+const DescribeAccountAttributesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DescribeAccountAttributesRequest>;
 export interface ResourceQuota {
   Maximum?: number;
 }
-const ResourceQuota = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Maximum: S.optional(S.Number) }),
-).annotate({ identifier: "ResourceQuota" }) as any as S.Schema<ResourceQuota>;
+const ResourceQuota = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ResourceQuota>;
 export interface ResourceQuotas {
   ApplicationQuota?: ResourceQuota;
   ApplicationVersionQuota?: ResourceQuota;
@@ -1157,45 +905,32 @@ export interface ResourceQuotas {
   ConfigurationTemplateQuota?: ResourceQuota;
   CustomPlatformQuota?: ResourceQuota;
 }
-const ResourceQuotas = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationQuota: S.optional(ResourceQuota),
-    ApplicationVersionQuota: S.optional(ResourceQuota),
-    EnvironmentQuota: S.optional(ResourceQuota),
-    ConfigurationTemplateQuota: S.optional(ResourceQuota),
-    CustomPlatformQuota: S.optional(ResourceQuota),
-  }),
-).annotate({ identifier: "ResourceQuotas" }) as any as S.Schema<ResourceQuotas>;
+const ResourceQuotas = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ResourceQuotas>;
 export interface DescribeAccountAttributesResult {
   ResourceQuotas?: ResourceQuotas;
 }
-const DescribeAccountAttributesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceQuotas: S.optional(ResourceQuotas) }).pipe(ns),
-).annotate({
-  identifier: "DescribeAccountAttributesResult",
-}) as any as S.Schema<DescribeAccountAttributesResult>;
+const DescribeAccountAttributesResult = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DescribeAccountAttributesResult>;
 export type ApplicationNamesList = string[];
-const ApplicationNamesList = /*@__PURE__*/ S.Array(S.String);
+const ApplicationNamesList = /*@__PURE__*/ __L.at(__c8, 6);
 export interface DescribeApplicationsMessage {
   ApplicationNames?: string[];
 }
-const DescribeApplicationsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationNames: S.optional(ApplicationNamesList) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeApplicationsMessage",
-}) as any as S.Schema<DescribeApplicationsMessage>;
+const DescribeApplicationsMessage = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DescribeApplicationsMessage>;
 export type ApplicationDescriptionList = ApplicationDescription[];
-const ApplicationDescriptionList = /*@__PURE__*/ S.Array(ApplicationDescription);
+const ApplicationDescriptionList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface ApplicationDescriptionsMessage {
   Applications?: ApplicationDescription[];
 }
-const ApplicationDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Applications: S.optional(ApplicationDescriptionList) }).pipe(ns),
-).annotate({
-  identifier: "ApplicationDescriptionsMessage",
-}) as any as S.Schema<ApplicationDescriptionsMessage>;
+const ApplicationDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ApplicationDescriptionsMessage>;
 export type MaxRecords = number;
 export interface DescribeApplicationVersionsMessage {
   ApplicationName?: string;
@@ -1203,30 +938,20 @@ export interface DescribeApplicationVersionsMessage {
   MaxRecords?: number;
   NextToken?: string;
 }
-const DescribeApplicationVersionsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.optional(S.String),
-    VersionLabels: S.optional(VersionLabelsList),
-    MaxRecords: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeApplicationVersionsMessage",
-}) as any as S.Schema<DescribeApplicationVersionsMessage>;
+const DescribeApplicationVersionsMessage = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DescribeApplicationVersionsMessage>;
 export type ApplicationVersionDescriptionList = ApplicationVersionDescription[];
-const ApplicationVersionDescriptionList = /*@__PURE__*/ S.Array(ApplicationVersionDescription);
+const ApplicationVersionDescriptionList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface ApplicationVersionDescriptionsMessage {
   ApplicationVersions?: ApplicationVersionDescription[];
   NextToken?: string;
 }
-const ApplicationVersionDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationVersions: S.optional(ApplicationVersionDescriptionList),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ApplicationVersionDescriptionsMessage",
-}) as any as S.Schema<ApplicationVersionDescriptionsMessage>;
+const ApplicationVersionDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ApplicationVersionDescriptionsMessage>;
 export interface DescribeConfigurationOptionsMessage {
   ApplicationName?: string;
   TemplateName?: string;
@@ -1235,18 +960,10 @@ export interface DescribeConfigurationOptionsMessage {
   PlatformArn?: string;
   Options?: OptionSpecification[];
 }
-const DescribeConfigurationOptionsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    SolutionStackName: S.optional(S.String),
-    PlatformArn: S.optional(S.String),
-    Options: S.optional(OptionsSpecifierList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeConfigurationOptionsMessage",
-}) as any as S.Schema<DescribeConfigurationOptionsMessage>;
+const DescribeConfigurationOptionsMessage = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DescribeConfigurationOptionsMessage>;
 export type ConfigurationOptionDefaultValue = string;
 export type ConfigurationOptionSeverity = string;
 export type UserDefinedOption = boolean;
@@ -1255,7 +972,7 @@ const ConfigurationOptionValueType = S.String;
 
 export type ConfigurationOptionPossibleValue = string;
 export type ConfigurationOptionPossibleValues = string[];
-const ConfigurationOptionPossibleValues = /*@__PURE__*/ S.Array(S.String);
+const ConfigurationOptionPossibleValues = /*@__PURE__*/ __L.at(__c9, 6);
 export type OptionRestrictionMinValue = number;
 export type OptionRestrictionMaxValue = number;
 export type OptionRestrictionMaxLength = number;
@@ -1265,9 +982,10 @@ export interface OptionRestrictionRegex {
   Pattern?: string;
   Label?: string;
 }
-const OptionRestrictionRegex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Pattern: S.optional(S.String), Label: S.optional(S.String) }),
-).annotate({ identifier: "OptionRestrictionRegex" }) as any as S.Schema<OptionRestrictionRegex>;
+const OptionRestrictionRegex = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<OptionRestrictionRegex>;
 export interface ConfigurationOptionDescription {
   Namespace?: string;
   Name?: string;
@@ -1281,65 +999,39 @@ export interface ConfigurationOptionDescription {
   MaxLength?: number;
   Regex?: OptionRestrictionRegex;
 }
-const ConfigurationOptionDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Namespace: S.optional(S.String),
-    Name: S.optional(S.String),
-    DefaultValue: S.optional(S.String),
-    ChangeSeverity: S.optional(S.String),
-    UserDefined: S.optional(S.Boolean),
-    ValueType: S.optional(ConfigurationOptionValueType),
-    ValueOptions: S.optional(ConfigurationOptionPossibleValues),
-    MinValue: S.optional(S.Number),
-    MaxValue: S.optional(S.Number),
-    MaxLength: S.optional(S.Number),
-    Regex: S.optional(OptionRestrictionRegex),
-  }),
-).annotate({
-  identifier: "ConfigurationOptionDescription",
-}) as any as S.Schema<ConfigurationOptionDescription>;
+const ConfigurationOptionDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ConfigurationOptionDescription>;
 export type ConfigurationOptionDescriptionsList = ConfigurationOptionDescription[];
-const ConfigurationOptionDescriptionsList = /*@__PURE__*/ S.Array(ConfigurationOptionDescription);
+const ConfigurationOptionDescriptionsList = /*@__PURE__*/ __L.at(__c10, 1);
 export interface ConfigurationOptionsDescription {
   SolutionStackName?: string;
   PlatformArn?: string;
   Options?: ConfigurationOptionDescription[];
 }
-const ConfigurationOptionsDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SolutionStackName: S.optional(S.String),
-    PlatformArn: S.optional(S.String),
-    Options: S.optional(ConfigurationOptionDescriptionsList),
-  }).pipe(ns),
-).annotate({
-  identifier: "ConfigurationOptionsDescription",
-}) as any as S.Schema<ConfigurationOptionsDescription>;
+const ConfigurationOptionsDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ConfigurationOptionsDescription>;
 export interface DescribeConfigurationSettingsMessage {
   ApplicationName: string;
   TemplateName?: string;
   EnvironmentName?: string;
 }
-const DescribeConfigurationSettingsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    TemplateName: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeConfigurationSettingsMessage",
-}) as any as S.Schema<DescribeConfigurationSettingsMessage>;
+const DescribeConfigurationSettingsMessage = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DescribeConfigurationSettingsMessage>;
 export type ConfigurationSettingsDescriptionList = ConfigurationSettingsDescription[];
-const ConfigurationSettingsDescriptionList = /*@__PURE__*/ S.Array(
-  ConfigurationSettingsDescription,
-);
+const ConfigurationSettingsDescriptionList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface ConfigurationSettingsDescriptions {
   ConfigurationSettings?: ConfigurationSettingsDescription[];
 }
-const ConfigurationSettingsDescriptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationSettings: S.optional(ConfigurationSettingsDescriptionList) }).pipe(ns),
-).annotate({
-  identifier: "ConfigurationSettingsDescriptions",
-}) as any as S.Schema<ConfigurationSettingsDescriptions>;
+const ConfigurationSettingsDescriptions = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ConfigurationSettingsDescriptions>;
 export type EnvironmentHealthAttribute =
   | "Status"
   | "Color"
@@ -1353,24 +1045,19 @@ export type EnvironmentHealthAttribute =
 const EnvironmentHealthAttribute = S.String;
 
 export type EnvironmentHealthAttributes = EnvironmentHealthAttribute[];
-const EnvironmentHealthAttributes = /*@__PURE__*/ S.Array(EnvironmentHealthAttribute);
+const EnvironmentHealthAttributes = /*@__PURE__*/ __L.at(__c10, 6);
 export interface DescribeEnvironmentHealthRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
   AttributeNames?: EnvironmentHealthAttribute[];
 }
-const DescribeEnvironmentHealthRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentName: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    AttributeNames: S.optional(EnvironmentHealthAttributes),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeEnvironmentHealthRequest",
-}) as any as S.Schema<DescribeEnvironmentHealthRequest>;
+const DescribeEnvironmentHealthRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DescribeEnvironmentHealthRequest>;
 export type Cause = string;
 export type Causes = string[];
-const Causes = /*@__PURE__*/ S.Array(S.String);
+const Causes = /*@__PURE__*/ __L.at(__c11, 0);
 export type RequestCount = number;
 export interface StatusCodes {
   Status2xx?: number;
@@ -1378,14 +1065,7 @@ export interface StatusCodes {
   Status4xx?: number;
   Status5xx?: number;
 }
-const StatusCodes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status2xx: S.optional(S.Number),
-    Status3xx: S.optional(S.Number),
-    Status4xx: S.optional(S.Number),
-    Status5xx: S.optional(S.Number),
-  }),
-).annotate({ identifier: "StatusCodes" }) as any as S.Schema<StatusCodes>;
+const StatusCodes = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<StatusCodes>;
 export interface Latency {
   P999?: number;
   P99?: number;
@@ -1396,32 +1076,14 @@ export interface Latency {
   P50?: number;
   P10?: number;
 }
-const Latency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    P999: S.optional(S.Number),
-    P99: S.optional(S.Number),
-    P95: S.optional(S.Number),
-    P90: S.optional(S.Number),
-    P85: S.optional(S.Number),
-    P75: S.optional(S.Number),
-    P50: S.optional(S.Number),
-    P10: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Latency" }) as any as S.Schema<Latency>;
+const Latency = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Latency>;
 export interface ApplicationMetrics {
   Duration?: number;
   RequestCount?: number;
   StatusCodes?: StatusCodes;
   Latency?: Latency;
 }
-const ApplicationMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Duration: S.optional(S.Number),
-    RequestCount: S.optional(S.Number),
-    StatusCodes: S.optional(StatusCodes),
-    Latency: S.optional(Latency),
-  }),
-).annotate({ identifier: "ApplicationMetrics" }) as any as S.Schema<ApplicationMetrics>;
+const ApplicationMetrics = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ApplicationMetrics>;
 export interface InstanceHealthSummary {
   NoData?: number;
   Unknown?: number;
@@ -1432,18 +1094,10 @@ export interface InstanceHealthSummary {
   Degraded?: number;
   Severe?: number;
 }
-const InstanceHealthSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NoData: S.optional(S.Number),
-    Unknown: S.optional(S.Number),
-    Pending: S.optional(S.Number),
-    Ok: S.optional(S.Number),
-    Info: S.optional(S.Number),
-    Warning: S.optional(S.Number),
-    Degraded: S.optional(S.Number),
-    Severe: S.optional(S.Number),
-  }),
-).annotate({ identifier: "InstanceHealthSummary" }) as any as S.Schema<InstanceHealthSummary>;
+const InstanceHealthSummary = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<InstanceHealthSummary>;
 export type RefreshedAt = Date;
 export interface DescribeEnvironmentHealthResult {
   EnvironmentName?: string;
@@ -1455,20 +1109,10 @@ export interface DescribeEnvironmentHealthResult {
   InstancesHealth?: InstanceHealthSummary;
   RefreshedAt?: Date;
 }
-const DescribeEnvironmentHealthResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentName: S.optional(S.String),
-    HealthStatus: S.optional(S.String),
-    Status: S.optional(EnvironmentHealth),
-    Color: S.optional(S.String),
-    Causes: S.optional(Causes),
-    ApplicationMetrics: S.optional(ApplicationMetrics),
-    InstancesHealth: S.optional(InstanceHealthSummary),
-    RefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeEnvironmentHealthResult",
-}) as any as S.Schema<DescribeEnvironmentHealthResult>;
+const DescribeEnvironmentHealthResult = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DescribeEnvironmentHealthResult>;
 export type ManagedActionHistoryMaxItems = number;
 export interface DescribeEnvironmentManagedActionHistoryRequest {
   EnvironmentId?: string;
@@ -1476,16 +1120,10 @@ export interface DescribeEnvironmentManagedActionHistoryRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-const DescribeEnvironmentManagedActionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentId: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    NextToken: S.optional(S.String),
-    MaxItems: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeEnvironmentManagedActionHistoryRequest",
-}) as any as S.Schema<DescribeEnvironmentManagedActionHistoryRequest>;
+const DescribeEnvironmentManagedActionHistoryRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DescribeEnvironmentManagedActionHistoryRequest>;
 export type FailureType =
   | "UpdateCancelled"
   | "CancellationFailed"
@@ -1510,32 +1148,20 @@ export interface ManagedActionHistoryItem {
   ExecutedTime?: Date;
   FinishedTime?: Date;
 }
-const ManagedActionHistoryItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionId: S.optional(S.String),
-    ActionType: S.optional(ActionType),
-    ActionDescription: S.optional(S.String),
-    FailureType: S.optional(FailureType),
-    Status: S.optional(ActionHistoryStatus),
-    FailureDescription: S.optional(S.String),
-    ExecutedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    FinishedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ManagedActionHistoryItem" }) as any as S.Schema<ManagedActionHistoryItem>;
+const ManagedActionHistoryItem = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ManagedActionHistoryItem>;
 export type ManagedActionHistoryItems = ManagedActionHistoryItem[];
-const ManagedActionHistoryItems = /*@__PURE__*/ S.Array(ManagedActionHistoryItem);
+const ManagedActionHistoryItems = /*@__PURE__*/ __L.at(__c12, 0);
 export interface DescribeEnvironmentManagedActionHistoryResult {
   ManagedActionHistoryItems?: ManagedActionHistoryItem[];
   NextToken?: string;
 }
-const DescribeEnvironmentManagedActionHistoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedActionHistoryItems: S.optional(ManagedActionHistoryItems),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeEnvironmentManagedActionHistoryResult",
-}) as any as S.Schema<DescribeEnvironmentManagedActionHistoryResult>;
+const DescribeEnvironmentManagedActionHistoryResult = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DescribeEnvironmentManagedActionHistoryResult>;
 export type ActionStatus = "Scheduled" | "Pending" | "Running" | "Unknown" | (string & {});
 const ActionStatus = S.String;
 
@@ -1544,15 +1170,10 @@ export interface DescribeEnvironmentManagedActionsRequest {
   EnvironmentId?: string;
   Status?: ActionStatus;
 }
-const DescribeEnvironmentManagedActionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentName: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    Status: S.optional(ActionStatus),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeEnvironmentManagedActionsRequest",
-}) as any as S.Schema<DescribeEnvironmentManagedActionsRequest>;
+const DescribeEnvironmentManagedActionsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DescribeEnvironmentManagedActionsRequest>;
 export interface ManagedAction {
   ActionId?: string;
   ActionDescription?: string;
@@ -1560,100 +1181,72 @@ export interface ManagedAction {
   Status?: ActionStatus;
   WindowStartTime?: Date;
 }
-const ManagedAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionId: S.optional(S.String),
-    ActionDescription: S.optional(S.String),
-    ActionType: S.optional(ActionType),
-    Status: S.optional(ActionStatus),
-    WindowStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ManagedAction" }) as any as S.Schema<ManagedAction>;
+const ManagedAction = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ManagedAction>;
 export type ManagedActions = ManagedAction[];
-const ManagedActions = /*@__PURE__*/ S.Array(ManagedAction);
+const ManagedActions = /*@__PURE__*/ __L.at(__c12, 4);
 export interface DescribeEnvironmentManagedActionsResult {
   ManagedActions?: ManagedAction[];
 }
-const DescribeEnvironmentManagedActionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ManagedActions: S.optional(ManagedActions) }).pipe(ns),
-).annotate({
-  identifier: "DescribeEnvironmentManagedActionsResult",
-}) as any as S.Schema<DescribeEnvironmentManagedActionsResult>;
+const DescribeEnvironmentManagedActionsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DescribeEnvironmentManagedActionsResult>;
 export interface DescribeEnvironmentResourcesMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
-const DescribeEnvironmentResourcesMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnvironmentId: S.optional(S.String), EnvironmentName: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeEnvironmentResourcesMessage",
-}) as any as S.Schema<DescribeEnvironmentResourcesMessage>;
+const DescribeEnvironmentResourcesMessage = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DescribeEnvironmentResourcesMessage>;
 export type ResourceId = string;
 export interface AutoScalingGroup {
   Name?: string;
 }
-const AutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "AutoScalingGroup" }) as any as S.Schema<AutoScalingGroup>;
+const AutoScalingGroup = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<AutoScalingGroup>;
 export type AutoScalingGroupList = AutoScalingGroup[];
-const AutoScalingGroupList = /*@__PURE__*/ S.Array(AutoScalingGroup);
+const AutoScalingGroupList = /*@__PURE__*/ __L.at(__c13, 0);
 export interface Cluster {
   ClusterArn?: string;
 }
-const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ClusterArn: S.optional(S.String) }),
-).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
+const Cluster = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<Cluster>;
 export interface Instance {
   Id?: string;
 }
-const Instance = /*@__PURE__*/ S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
-  identifier: "Instance",
-}) as any as S.Schema<Instance>;
+const Instance = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<Instance>;
 export type InstanceList = Instance[];
-const InstanceList = /*@__PURE__*/ S.Array(Instance);
+const InstanceList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface LaunchConfiguration {
   Name?: string;
 }
-const LaunchConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "LaunchConfiguration" }) as any as S.Schema<LaunchConfiguration>;
+const LaunchConfiguration = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<LaunchConfiguration>;
 export type LaunchConfigurationList = LaunchConfiguration[];
-const LaunchConfigurationList = /*@__PURE__*/ S.Array(LaunchConfiguration);
+const LaunchConfigurationList = /*@__PURE__*/ __L.at(__c13, 5);
 export interface LaunchTemplate {
   Id?: string;
 }
-const LaunchTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }),
-).annotate({ identifier: "LaunchTemplate" }) as any as S.Schema<LaunchTemplate>;
+const LaunchTemplate = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<LaunchTemplate>;
 export type LaunchTemplateList = LaunchTemplate[];
-const LaunchTemplateList = /*@__PURE__*/ S.Array(LaunchTemplate);
+const LaunchTemplateList = /*@__PURE__*/ __L.at(__c13, 7);
 export interface LoadBalancer {
   Name?: string;
 }
-const LoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "LoadBalancer" }) as any as S.Schema<LoadBalancer>;
+const LoadBalancer = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<LoadBalancer>;
 export type LoadBalancerList = LoadBalancer[];
-const LoadBalancerList = /*@__PURE__*/ S.Array(LoadBalancer);
+const LoadBalancerList = /*@__PURE__*/ __L.at(__c14, 1);
 export interface Trigger {
   Name?: string;
 }
-const Trigger = /*@__PURE__*/ S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
-  identifier: "Trigger",
-}) as any as S.Schema<Trigger>;
+const Trigger = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<Trigger>;
 export type TriggerList = Trigger[];
-const TriggerList = /*@__PURE__*/ S.Array(Trigger);
+const TriggerList = /*@__PURE__*/ __L.at(__c14, 3);
 export interface Queue {
   Name?: string;
   URL?: string;
 }
-const Queue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), URL: S.optional(S.String) }),
-).annotate({ identifier: "Queue" }) as any as S.Schema<Queue>;
+const Queue = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<Queue>;
 export type QueueList = Queue[];
-const QueueList = /*@__PURE__*/ S.Array(Queue);
+const QueueList = /*@__PURE__*/ __L.at(__c14, 5);
 export interface EnvironmentResourceDescription {
   EnvironmentName?: string;
   AutoScalingGroups?: AutoScalingGroup[];
@@ -1665,33 +1258,21 @@ export interface EnvironmentResourceDescription {
   Triggers?: Trigger[];
   Queues?: Queue[];
 }
-const EnvironmentResourceDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentName: S.optional(S.String),
-    AutoScalingGroups: S.optional(AutoScalingGroupList),
-    Cluster: S.optional(Cluster),
-    Instances: S.optional(InstanceList),
-    LaunchConfigurations: S.optional(LaunchConfigurationList),
-    LaunchTemplates: S.optional(LaunchTemplateList),
-    LoadBalancers: S.optional(LoadBalancerList),
-    Triggers: S.optional(TriggerList),
-    Queues: S.optional(QueueList),
-  }),
-).annotate({
-  identifier: "EnvironmentResourceDescription",
-}) as any as S.Schema<EnvironmentResourceDescription>;
+const EnvironmentResourceDescription = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<EnvironmentResourceDescription>;
 export interface EnvironmentResourceDescriptionsMessage {
   EnvironmentResources?: EnvironmentResourceDescription;
 }
-const EnvironmentResourceDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnvironmentResources: S.optional(EnvironmentResourceDescription) }).pipe(ns),
-).annotate({
-  identifier: "EnvironmentResourceDescriptionsMessage",
-}) as any as S.Schema<EnvironmentResourceDescriptionsMessage>;
+const EnvironmentResourceDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<EnvironmentResourceDescriptionsMessage>;
 export type EnvironmentIdList = string[];
-const EnvironmentIdList = /*@__PURE__*/ S.Array(S.String);
+const EnvironmentIdList = /*@__PURE__*/ __L.at(__c15, 0);
 export type EnvironmentNamesList = string[];
-const EnvironmentNamesList = /*@__PURE__*/ S.Array(S.String);
+const EnvironmentNamesList = /*@__PURE__*/ __L.at(__c15, 1);
 export type IncludeDeleted = boolean;
 export type IncludeDeletedBackTo = Date;
 export interface DescribeEnvironmentsMessage {
@@ -1704,20 +1285,10 @@ export interface DescribeEnvironmentsMessage {
   MaxRecords?: number;
   NextToken?: string;
 }
-const DescribeEnvironmentsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.optional(S.String),
-    VersionLabel: S.optional(S.String),
-    EnvironmentIds: S.optional(EnvironmentIdList),
-    EnvironmentNames: S.optional(EnvironmentNamesList),
-    IncludeDeleted: S.optional(S.Boolean),
-    IncludedDeletedBackTo: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    MaxRecords: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeEnvironmentsMessage",
-}) as any as S.Schema<DescribeEnvironmentsMessage>;
+const DescribeEnvironmentsMessage = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<DescribeEnvironmentsMessage>;
 export type RequestId = string;
 export type EventSeverity = "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL" | (string & {});
 const EventSeverity = S.String;
@@ -1738,22 +1309,10 @@ export interface DescribeEventsMessage {
   MaxRecords?: number;
   NextToken?: string;
 }
-const DescribeEventsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.optional(S.String),
-    VersionLabel: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    PlatformArn: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    Severity: S.optional(EventSeverity),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    MaxRecords: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DescribeEventsMessage" }) as any as S.Schema<DescribeEventsMessage>;
+const DescribeEventsMessage = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DescribeEventsMessage>;
 export type EventDate = Date;
 export type EventMessage = string;
 export interface EventDescription {
@@ -1767,28 +1326,17 @@ export interface EventDescription {
   RequestId?: string;
   Severity?: EventSeverity;
 }
-const EventDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Message: S.optional(S.String),
-    ApplicationName: S.optional(S.String),
-    VersionLabel: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    PlatformArn: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    Severity: S.optional(EventSeverity),
-  }),
-).annotate({ identifier: "EventDescription" }) as any as S.Schema<EventDescription>;
+const EventDescription = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<EventDescription>;
 export type EventDescriptionList = EventDescription[];
-const EventDescriptionList = /*@__PURE__*/ S.Array(EventDescription);
+const EventDescriptionList = /*@__PURE__*/ __L.at(__c15, 5);
 export interface EventDescriptionsMessage {
   Events?: EventDescription[];
   NextToken?: string;
 }
-const EventDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Events: S.optional(EventDescriptionList), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "EventDescriptionsMessage" }) as any as S.Schema<EventDescriptionsMessage>;
+const EventDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<EventDescriptionsMessage>;
 export type InstancesHealthAttribute =
   | "HealthStatus"
   | "Color"
@@ -1805,7 +1353,7 @@ export type InstancesHealthAttribute =
 const InstancesHealthAttribute = S.String;
 
 export type InstancesHealthAttributes = InstancesHealthAttribute[];
-const InstancesHealthAttributes = /*@__PURE__*/ S.Array(InstancesHealthAttribute);
+const InstancesHealthAttributes = /*@__PURE__*/ __L.at(__c15, 7);
 export type NextToken = string;
 export interface DescribeInstancesHealthRequest {
   EnvironmentName?: string;
@@ -1813,16 +1361,10 @@ export interface DescribeInstancesHealthRequest {
   AttributeNames?: InstancesHealthAttribute[];
   NextToken?: string;
 }
-const DescribeInstancesHealthRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentName: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    AttributeNames: S.optional(InstancesHealthAttributes),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "DescribeInstancesHealthRequest",
-}) as any as S.Schema<DescribeInstancesHealthRequest>;
+const DescribeInstancesHealthRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DescribeInstancesHealthRequest>;
 export type InstanceId = string;
 export type LaunchedAt = Date;
 export interface CPUUtilization {
@@ -1835,28 +1377,15 @@ export interface CPUUtilization {
   SoftIRQ?: number;
   Privileged?: number;
 }
-const CPUUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    User: S.optional(S.Number),
-    Nice: S.optional(S.Number),
-    System: S.optional(S.Number),
-    Idle: S.optional(S.Number),
-    IOWait: S.optional(S.Number),
-    IRQ: S.optional(S.Number),
-    SoftIRQ: S.optional(S.Number),
-    Privileged: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CPUUtilization" }) as any as S.Schema<CPUUtilization>;
+const CPUUtilization = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<CPUUtilization>;
 export type LoadAverageValue = number;
 export type LoadAverage = number[];
-const LoadAverage = /*@__PURE__*/ S.Array(S.Number);
+const LoadAverage = /*@__PURE__*/ __L.at(__c16, 2);
 export interface SystemStatus {
   CPUUtilization?: CPUUtilization;
   LoadAverage?: number[];
 }
-const SystemStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CPUUtilization: S.optional(CPUUtilization), LoadAverage: S.optional(LoadAverage) }),
-).annotate({ identifier: "SystemStatus" }) as any as S.Schema<SystemStatus>;
+const SystemStatus = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<SystemStatus>;
 export type DeploymentTimestamp = Date;
 export interface Deployment {
   VersionLabel?: string;
@@ -1864,14 +1393,7 @@ export interface Deployment {
   Status?: string;
   DeploymentTime?: Date;
 }
-const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VersionLabel: S.optional(S.String),
-    DeploymentId: S.optional(S.Number),
-    Status: S.optional(S.String),
-    DeploymentTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
+const Deployment = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Deployment>;
 export interface SingleInstanceHealth {
   InstanceId?: string;
   HealthStatus?: string;
@@ -1884,78 +1406,55 @@ export interface SingleInstanceHealth {
   AvailabilityZone?: string;
   InstanceType?: string;
 }
-const SingleInstanceHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstanceId: S.optional(S.String),
-    HealthStatus: S.optional(S.String),
-    Color: S.optional(S.String),
-    Causes: S.optional(Causes),
-    LaunchedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ApplicationMetrics: S.optional(ApplicationMetrics),
-    System: S.optional(SystemStatus),
-    Deployment: S.optional(Deployment),
-    AvailabilityZone: S.optional(S.String),
-    InstanceType: S.optional(S.String),
-  }),
-).annotate({ identifier: "SingleInstanceHealth" }) as any as S.Schema<SingleInstanceHealth>;
+const SingleInstanceHealth = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<SingleInstanceHealth>;
 export type InstanceHealthList = SingleInstanceHealth[];
-const InstanceHealthList = /*@__PURE__*/ S.Array(SingleInstanceHealth);
+const InstanceHealthList = /*@__PURE__*/ __L.at(__c16, 6);
 export interface DescribeInstancesHealthResult {
   InstanceHealthList?: SingleInstanceHealth[];
   RefreshedAt?: Date;
   NextToken?: string;
 }
-const DescribeInstancesHealthResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstanceHealthList: S.optional(InstanceHealthList),
-    RefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeInstancesHealthResult",
-}) as any as S.Schema<DescribeInstancesHealthResult>;
+const DescribeInstancesHealthResult = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DescribeInstancesHealthResult>;
 export interface DescribePlatformVersionRequest {
   PlatformArn?: string;
 }
-const DescribePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PlatformArn: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribePlatformVersionRequest",
-}) as any as S.Schema<DescribePlatformVersionRequest>;
+const DescribePlatformVersionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DescribePlatformVersionRequest>;
 export type Maintainer = string;
 export interface PlatformProgrammingLanguage {
   Name?: string;
   Version?: string;
 }
-const PlatformProgrammingLanguage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
-).annotate({
-  identifier: "PlatformProgrammingLanguage",
-}) as any as S.Schema<PlatformProgrammingLanguage>;
+const PlatformProgrammingLanguage = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<PlatformProgrammingLanguage>;
 export type PlatformProgrammingLanguages = PlatformProgrammingLanguage[];
-const PlatformProgrammingLanguages = /*@__PURE__*/ S.Array(PlatformProgrammingLanguage);
+const PlatformProgrammingLanguages = /*@__PURE__*/ __L.at(__c17, 2);
 export interface PlatformFramework {
   Name?: string;
   Version?: string;
 }
-const PlatformFramework = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
-).annotate({ identifier: "PlatformFramework" }) as any as S.Schema<PlatformFramework>;
+const PlatformFramework = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<PlatformFramework>;
 export type PlatformFrameworks = PlatformFramework[];
-const PlatformFrameworks = /*@__PURE__*/ S.Array(PlatformFramework);
+const PlatformFrameworks = /*@__PURE__*/ __L.at(__c17, 4);
 export type VirtualizationType = string;
 export type ImageId = string;
 export interface CustomAmi {
   VirtualizationType?: string;
   ImageId?: string;
 }
-const CustomAmi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VirtualizationType: S.optional(S.String), ImageId: S.optional(S.String) }),
-).annotate({ identifier: "CustomAmi" }) as any as S.Schema<CustomAmi>;
+const CustomAmi = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<CustomAmi>;
 export type CustomAmiList = CustomAmi[];
-const CustomAmiList = /*@__PURE__*/ S.Array(CustomAmi);
+const CustomAmiList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface PlatformDescription {
   PlatformArn?: string;
   PlatformOwner?: string;
@@ -1979,124 +1478,77 @@ export interface PlatformDescription {
   PlatformBranchName?: string;
   PlatformBranchLifecycleState?: string;
 }
-const PlatformDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PlatformArn: S.optional(S.String),
-    PlatformOwner: S.optional(S.String),
-    PlatformName: S.optional(S.String),
-    PlatformVersion: S.optional(S.String),
-    SolutionStackName: S.optional(S.String),
-    PlatformStatus: S.optional(PlatformStatus),
-    DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    PlatformCategory: S.optional(S.String),
-    Description: S.optional(S.String),
-    Maintainer: S.optional(S.String),
-    OperatingSystemName: S.optional(S.String),
-    OperatingSystemVersion: S.optional(S.String),
-    ProgrammingLanguages: S.optional(PlatformProgrammingLanguages),
-    Frameworks: S.optional(PlatformFrameworks),
-    CustomAmiList: S.optional(CustomAmiList),
-    SupportedTierList: S.optional(SupportedTierList),
-    SupportedAddonList: S.optional(SupportedAddonList),
-    PlatformLifecycleState: S.optional(S.String),
-    PlatformBranchName: S.optional(S.String),
-    PlatformBranchLifecycleState: S.optional(S.String),
-  }),
-).annotate({ identifier: "PlatformDescription" }) as any as S.Schema<PlatformDescription>;
+const PlatformDescription = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<PlatformDescription>;
 export interface DescribePlatformVersionResult {
   PlatformDescription?: PlatformDescription;
 }
-const DescribePlatformVersionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PlatformDescription: S.optional(PlatformDescription) }).pipe(ns),
-).annotate({
-  identifier: "DescribePlatformVersionResult",
-}) as any as S.Schema<DescribePlatformVersionResult>;
+const DescribePlatformVersionResult = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<DescribePlatformVersionResult>;
 export interface DisassociateEnvironmentOperationsRoleMessage {
   EnvironmentName: string;
 }
-const DisassociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnvironmentName: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DisassociateEnvironmentOperationsRoleMessage",
-}) as any as S.Schema<DisassociateEnvironmentOperationsRoleMessage>;
+const DisassociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<DisassociateEnvironmentOperationsRoleMessage>;
 export interface DisassociateEnvironmentOperationsRoleResponse {}
-const DisassociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisassociateEnvironmentOperationsRoleResponse",
-}) as any as S.Schema<DisassociateEnvironmentOperationsRoleResponse>;
+const DisassociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DisassociateEnvironmentOperationsRoleResponse>;
 export interface ListAvailableSolutionStacksRequest {}
-const ListAvailableSolutionStacksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListAvailableSolutionStacksRequest",
-}) as any as S.Schema<ListAvailableSolutionStacksRequest>;
+const ListAvailableSolutionStacksRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListAvailableSolutionStacksRequest>;
 export type AvailableSolutionStackNamesList = string[];
-const AvailableSolutionStackNamesList = /*@__PURE__*/ S.Array(S.String);
+const AvailableSolutionStackNamesList = /*@__PURE__*/ __L.at(__c18, 4);
 export type FileTypeExtension = string;
 export type SolutionStackFileTypeList = string[];
-const SolutionStackFileTypeList = /*@__PURE__*/ S.Array(S.String);
+const SolutionStackFileTypeList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface SolutionStackDescription {
   SolutionStackName?: string;
   PermittedFileTypes?: string[];
 }
-const SolutionStackDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SolutionStackName: S.optional(S.String),
-    PermittedFileTypes: S.optional(SolutionStackFileTypeList),
-  }),
-).annotate({ identifier: "SolutionStackDescription" }) as any as S.Schema<SolutionStackDescription>;
+const SolutionStackDescription = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<SolutionStackDescription>;
 export type AvailableSolutionStackDetailsList = SolutionStackDescription[];
-const AvailableSolutionStackDetailsList = /*@__PURE__*/ S.Array(SolutionStackDescription);
+const AvailableSolutionStackDetailsList = /*@__PURE__*/ __L.at(__c18, 7);
 export interface ListAvailableSolutionStacksResultMessage {
   SolutionStacks?: string[];
   SolutionStackDetails?: SolutionStackDescription[];
 }
-const ListAvailableSolutionStacksResultMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SolutionStacks: S.optional(AvailableSolutionStackNamesList),
-    SolutionStackDetails: S.optional(AvailableSolutionStackDetailsList),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListAvailableSolutionStacksResultMessage",
-}) as any as S.Schema<ListAvailableSolutionStacksResultMessage>;
+const ListAvailableSolutionStacksResultMessage = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListAvailableSolutionStacksResultMessage>;
 export type SearchFilterAttribute = string;
 export type SearchFilterOperator = string;
 export type SearchFilterValue = string;
 export type SearchFilterValues = string[];
-const SearchFilterValues = /*@__PURE__*/ S.Array(S.String);
+const SearchFilterValues = /*@__PURE__*/ __L.at(__c19, 1);
 export interface SearchFilter {
   Attribute?: string;
   Operator?: string;
   Values?: string[];
 }
-const SearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attribute: S.optional(S.String),
-    Operator: S.optional(S.String),
-    Values: S.optional(SearchFilterValues),
-  }),
-).annotate({ identifier: "SearchFilter" }) as any as S.Schema<SearchFilter>;
+const SearchFilter = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<SearchFilter>;
 export type SearchFilters = SearchFilter[];
-const SearchFilters = /*@__PURE__*/ S.Array(SearchFilter);
+const SearchFilters = /*@__PURE__*/ __L.at(__c19, 3);
 export type PlatformBranchMaxRecords = number;
 export interface ListPlatformBranchesRequest {
   Filters?: SearchFilter[];
   MaxRecords?: number;
   NextToken?: string;
 }
-const ListPlatformBranchesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Filters: S.optional(SearchFilters),
-    MaxRecords: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListPlatformBranchesRequest",
-}) as any as S.Schema<ListPlatformBranchesRequest>;
+const ListPlatformBranchesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListPlatformBranchesRequest>;
 export type BranchOrder = number;
 export interface PlatformBranchSummary {
   PlatformName?: string;
@@ -2105,114 +1557,84 @@ export interface PlatformBranchSummary {
   BranchOrder?: number;
   SupportedTierList?: string[];
 }
-const PlatformBranchSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PlatformName: S.optional(S.String),
-    BranchName: S.optional(S.String),
-    LifecycleState: S.optional(S.String),
-    BranchOrder: S.optional(S.Number),
-    SupportedTierList: S.optional(SupportedTierList),
-  }),
-).annotate({ identifier: "PlatformBranchSummary" }) as any as S.Schema<PlatformBranchSummary>;
+const PlatformBranchSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<PlatformBranchSummary>;
 export type PlatformBranchSummaryList = PlatformBranchSummary[];
-const PlatformBranchSummaryList = /*@__PURE__*/ S.Array(PlatformBranchSummary);
+const PlatformBranchSummaryList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface ListPlatformBranchesResult {
   PlatformBranchSummaryList?: PlatformBranchSummary[];
   NextToken?: string;
 }
-const ListPlatformBranchesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PlatformBranchSummaryList: S.optional(PlatformBranchSummaryList),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListPlatformBranchesResult",
-}) as any as S.Schema<ListPlatformBranchesResult>;
+const ListPlatformBranchesResult = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListPlatformBranchesResult>;
 export type PlatformFilterType = string;
 export type PlatformFilterOperator = string;
 export type PlatformFilterValue = string;
 export type PlatformFilterValueList = string[];
-const PlatformFilterValueList = /*@__PURE__*/ S.Array(S.String);
+const PlatformFilterValueList = /*@__PURE__*/ __L.at(__c20, 0);
 export interface PlatformFilter {
   Type?: string;
   Operator?: string;
   Values?: string[];
 }
-const PlatformFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(S.String),
-    Operator: S.optional(S.String),
-    Values: S.optional(PlatformFilterValueList),
-  }),
-).annotate({ identifier: "PlatformFilter" }) as any as S.Schema<PlatformFilter>;
+const PlatformFilter = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<PlatformFilter>;
 export type PlatformFilters = PlatformFilter[];
-const PlatformFilters = /*@__PURE__*/ S.Array(PlatformFilter);
+const PlatformFilters = /*@__PURE__*/ __L.at(__c20, 2);
 export type PlatformMaxRecords = number;
 export interface ListPlatformVersionsRequest {
   Filters?: PlatformFilter[];
   MaxRecords?: number;
   NextToken?: string;
 }
-const ListPlatformVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Filters: S.optional(PlatformFilters),
-    MaxRecords: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListPlatformVersionsRequest",
-}) as any as S.Schema<ListPlatformVersionsRequest>;
+const ListPlatformVersionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListPlatformVersionsRequest>;
 export type PlatformSummaryList = PlatformSummary[];
-const PlatformSummaryList = /*@__PURE__*/ S.Array(PlatformSummary);
+const PlatformSummaryList = /*@__PURE__*/ __L.at(__c20, 4);
 export interface ListPlatformVersionsResult {
   PlatformSummaryList?: PlatformSummary[];
   NextToken?: string;
 }
-const ListPlatformVersionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PlatformSummaryList: S.optional(PlatformSummaryList),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListPlatformVersionsResult",
-}) as any as S.Schema<ListPlatformVersionsResult>;
+const ListPlatformVersionsResult = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListPlatformVersionsResult>;
 export type ResourceArn = string;
 export interface ListTagsForResourceMessage {
   ResourceArn: string;
 }
-const ListTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceMessage",
-}) as any as S.Schema<ListTagsForResourceMessage>;
+const ListTagsForResourceMessage = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListTagsForResourceMessage>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ResourceTagsDescriptionMessage {
   ResourceArn?: string;
   ResourceTags?: Tag[];
 }
-const ResourceTagsDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.optional(S.String), ResourceTags: S.optional(TagList) }).pipe(ns),
-).annotate({
-  identifier: "ResourceTagsDescriptionMessage",
-}) as any as S.Schema<ResourceTagsDescriptionMessage>;
+const ResourceTagsDescriptionMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ResourceTagsDescriptionMessage>;
 export interface RebuildEnvironmentMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
-const RebuildEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnvironmentId: S.optional(S.String), EnvironmentName: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RebuildEnvironmentMessage",
-}) as any as S.Schema<RebuildEnvironmentMessage>;
+const RebuildEnvironmentMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<RebuildEnvironmentMessage>;
 export interface RebuildEnvironmentResponse {}
-const RebuildEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RebuildEnvironmentResponse",
-}) as any as S.Schema<RebuildEnvironmentResponse>;
+const RebuildEnvironmentResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<RebuildEnvironmentResponse>;
 export type EnvironmentInfoType = "tail" | "bundle" | "analyze" | (string & {});
 const EnvironmentInfoType = S.String;
 
@@ -2221,48 +1643,37 @@ export interface RequestEnvironmentInfoMessage {
   EnvironmentName?: string;
   InfoType: EnvironmentInfoType;
 }
-const RequestEnvironmentInfoMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentId: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    InfoType: EnvironmentInfoType,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RequestEnvironmentInfoMessage",
-}) as any as S.Schema<RequestEnvironmentInfoMessage>;
+const RequestEnvironmentInfoMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<RequestEnvironmentInfoMessage>;
 export interface RequestEnvironmentInfoResponse {}
-const RequestEnvironmentInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RequestEnvironmentInfoResponse",
-}) as any as S.Schema<RequestEnvironmentInfoResponse>;
+const RequestEnvironmentInfoResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<RequestEnvironmentInfoResponse>;
 export interface RestartAppServerMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
-const RestartAppServerMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnvironmentId: S.optional(S.String), EnvironmentName: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "RestartAppServerMessage" }) as any as S.Schema<RestartAppServerMessage>;
+const RestartAppServerMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<RestartAppServerMessage>;
 export interface RestartAppServerResponse {}
-const RestartAppServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RestartAppServerResponse",
-}) as any as S.Schema<RestartAppServerResponse>;
+const RestartAppServerResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<RestartAppServerResponse>;
 export interface RetrieveEnvironmentInfoMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
   InfoType: EnvironmentInfoType;
 }
-const RetrieveEnvironmentInfoMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentId: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    InfoType: EnvironmentInfoType,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "RetrieveEnvironmentInfoMessage",
-}) as any as S.Schema<RetrieveEnvironmentInfoMessage>;
+const RetrieveEnvironmentInfoMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<RetrieveEnvironmentInfoMessage>;
 export type Ec2InstanceId = string;
 export type SampleTimestamp = Date;
 export type Message = string;
@@ -2272,47 +1683,33 @@ export interface EnvironmentInfoDescription {
   SampleTimestamp?: Date;
   Message?: string;
 }
-const EnvironmentInfoDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InfoType: S.optional(EnvironmentInfoType),
-    Ec2InstanceId: S.optional(S.String),
-    SampleTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentInfoDescription",
-}) as any as S.Schema<EnvironmentInfoDescription>;
+const EnvironmentInfoDescription = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<EnvironmentInfoDescription>;
 export type EnvironmentInfoDescriptionList = EnvironmentInfoDescription[];
-const EnvironmentInfoDescriptionList = /*@__PURE__*/ S.Array(EnvironmentInfoDescription);
+const EnvironmentInfoDescriptionList = /*@__PURE__*/ __L.at(__c22, 1);
 export interface RetrieveEnvironmentInfoResultMessage {
   EnvironmentInfo?: EnvironmentInfoDescription[];
 }
-const RetrieveEnvironmentInfoResultMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnvironmentInfo: S.optional(EnvironmentInfoDescriptionList) }).pipe(ns),
-).annotate({
-  identifier: "RetrieveEnvironmentInfoResultMessage",
-}) as any as S.Schema<RetrieveEnvironmentInfoResultMessage>;
+const RetrieveEnvironmentInfoResultMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<RetrieveEnvironmentInfoResultMessage>;
 export interface SwapEnvironmentCNAMEsMessage {
   SourceEnvironmentId?: string;
   SourceEnvironmentName?: string;
   DestinationEnvironmentId?: string;
   DestinationEnvironmentName?: string;
 }
-const SwapEnvironmentCNAMEsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SourceEnvironmentId: S.optional(S.String),
-    SourceEnvironmentName: S.optional(S.String),
-    DestinationEnvironmentId: S.optional(S.String),
-    DestinationEnvironmentName: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "SwapEnvironmentCNAMEsMessage",
-}) as any as S.Schema<SwapEnvironmentCNAMEsMessage>;
+const SwapEnvironmentCNAMEsMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<SwapEnvironmentCNAMEsMessage>;
 export interface SwapEnvironmentCNAMEsResponse {}
-const SwapEnvironmentCNAMEsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  {
-    identifier: "SwapEnvironmentCNAMEsResponse",
-  },
+const SwapEnvironmentCNAMEsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
 ) as any as S.Schema<SwapEnvironmentCNAMEsResponse>;
 export type TerminateEnvironmentResources = boolean;
 export type ForceTerminate = boolean;
@@ -2322,63 +1719,43 @@ export interface TerminateEnvironmentMessage {
   TerminateResources?: boolean;
   ForceTerminate?: boolean;
 }
-const TerminateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnvironmentId: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    TerminateResources: S.optional(S.Boolean),
-    ForceTerminate: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "TerminateEnvironmentMessage",
-}) as any as S.Schema<TerminateEnvironmentMessage>;
+const TerminateEnvironmentMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<TerminateEnvironmentMessage>;
 export interface UpdateApplicationMessage {
   ApplicationName: string;
   Description?: string;
 }
-const UpdateApplicationMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationName: S.String, Description: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateApplicationMessage" }) as any as S.Schema<UpdateApplicationMessage>;
+const UpdateApplicationMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<UpdateApplicationMessage>;
 export interface UpdateApplicationResourceLifecycleMessage {
   ApplicationName: string;
   ResourceLifecycleConfig: ApplicationResourceLifecycleConfig;
 }
-const UpdateApplicationResourceLifecycleMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    ResourceLifecycleConfig: ApplicationResourceLifecycleConfig,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateApplicationResourceLifecycleMessage",
-}) as any as S.Schema<UpdateApplicationResourceLifecycleMessage>;
+const UpdateApplicationResourceLifecycleMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<UpdateApplicationResourceLifecycleMessage>;
 export interface ApplicationResourceLifecycleDescriptionMessage {
   ApplicationName?: string;
   ResourceLifecycleConfig?: ApplicationResourceLifecycleConfig;
 }
-const ApplicationResourceLifecycleDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.optional(S.String),
-    ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
-  }).pipe(ns),
-).annotate({
-  identifier: "ApplicationResourceLifecycleDescriptionMessage",
-}) as any as S.Schema<ApplicationResourceLifecycleDescriptionMessage>;
+const ApplicationResourceLifecycleDescriptionMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ApplicationResourceLifecycleDescriptionMessage>;
 export interface UpdateApplicationVersionMessage {
   ApplicationName: string;
   VersionLabel: string;
   Description?: string;
 }
-const UpdateApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    VersionLabel: S.String,
-    Description: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateApplicationVersionMessage",
-}) as any as S.Schema<UpdateApplicationVersionMessage>;
+const UpdateApplicationVersionMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<UpdateApplicationVersionMessage>;
 export interface UpdateConfigurationTemplateMessage {
   ApplicationName: string;
   TemplateName: string;
@@ -2386,17 +1763,10 @@ export interface UpdateConfigurationTemplateMessage {
   OptionSettings?: ConfigurationOptionSetting[];
   OptionsToRemove?: OptionSpecification[];
 }
-const UpdateConfigurationTemplateMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    TemplateName: S.String,
-    Description: S.optional(S.String),
-    OptionSettings: S.optional(ConfigurationOptionSettingsList),
-    OptionsToRemove: S.optional(OptionsSpecifierList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateConfigurationTemplateMessage",
-}) as any as S.Schema<UpdateConfigurationTemplateMessage>;
+const UpdateConfigurationTemplateMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateConfigurationTemplateMessage>;
 export interface UpdateEnvironmentMessage {
   ApplicationName?: string;
   EnvironmentId?: string;
@@ -2411,43 +1781,25 @@ export interface UpdateEnvironmentMessage {
   OptionSettings?: ConfigurationOptionSetting[];
   OptionsToRemove?: OptionSpecification[];
 }
-const UpdateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    GroupName: S.optional(S.String),
-    Description: S.optional(S.String),
-    Tier: S.optional(EnvironmentTier),
-    VersionLabel: S.optional(S.String),
-    TemplateName: S.optional(S.String),
-    SolutionStackName: S.optional(S.String),
-    PlatformArn: S.optional(S.String),
-    OptionSettings: S.optional(ConfigurationOptionSettingsList),
-    OptionsToRemove: S.optional(OptionsSpecifierList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateEnvironmentMessage" }) as any as S.Schema<UpdateEnvironmentMessage>;
+const UpdateEnvironmentMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<UpdateEnvironmentMessage>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ __L.at(__c23, 4);
 export interface UpdateTagsForResourceMessage {
   ResourceArn: string;
   TagsToAdd?: Tag[];
   TagsToRemove?: string[];
 }
-const UpdateTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String,
-    TagsToAdd: S.optional(TagList),
-    TagsToRemove: S.optional(TagKeyList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateTagsForResourceMessage",
-}) as any as S.Schema<UpdateTagsForResourceMessage>;
+const UpdateTagsForResourceMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<UpdateTagsForResourceMessage>;
 export interface UpdateTagsForResourceResponse {}
-const UpdateTagsForResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  {
-    identifier: "UpdateTagsForResourceResponse",
-  },
+const UpdateTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
 ) as any as S.Schema<UpdateTagsForResourceResponse>;
 export interface ValidateConfigurationSettingsMessage {
   ApplicationName: string;
@@ -2455,16 +1807,10 @@ export interface ValidateConfigurationSettingsMessage {
   EnvironmentName?: string;
   OptionSettings: ConfigurationOptionSetting[];
 }
-const ValidateConfigurationSettingsMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationName: S.String,
-    TemplateName: S.optional(S.String),
-    EnvironmentName: S.optional(S.String),
-    OptionSettings: ConfigurationOptionSettingsList,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ValidateConfigurationSettingsMessage",
-}) as any as S.Schema<ValidateConfigurationSettingsMessage>;
+const ValidateConfigurationSettingsMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ValidateConfigurationSettingsMessage>;
 export type ValidationMessageString = string;
 export type ValidationSeverity = "error" | "warning" | (string & {});
 const ValidationSeverity = S.String;
@@ -2475,24 +1821,16 @@ export interface ValidationMessage {
   Namespace?: string;
   OptionName?: string;
 }
-const ValidationMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Message: S.optional(S.String),
-    Severity: S.optional(ValidationSeverity),
-    Namespace: S.optional(S.String),
-    OptionName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ValidationMessage" }) as any as S.Schema<ValidationMessage>;
+const ValidationMessage = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ValidationMessage>;
 export type ValidationMessagesList = ValidationMessage[];
-const ValidationMessagesList = /*@__PURE__*/ S.Array(ValidationMessage);
+const ValidationMessagesList = /*@__PURE__*/ __L.at(__c24, 1);
 export interface ConfigurationSettingsValidationMessages {
   Messages?: ValidationMessage[];
 }
-const ConfigurationSettingsValidationMessages = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Messages: S.optional(ValidationMessagesList) }).pipe(ns),
-).annotate({
-  identifier: "ConfigurationSettingsValidationMessages",
-}) as any as S.Schema<ConfigurationSettingsValidationMessages>;
+const ConfigurationSettingsValidationMessages = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ConfigurationSettingsValidationMessages>;
 export type ExceptionMessage = string;
 export type AbortEnvironmentUpdateError = InsufficientPrivilegesException | CommonErrors;
 /**
@@ -3774,3 +3112,1479 @@ export const validateConfigurationSettings: API.OperationMethod<
   retry: Retry,
   operationName: "ValidateConfigurationSettings",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AbortEnvironmentUpdateMessage",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AbortEnvironmentUpdateResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentName: S.optional(S.String),
+          EnvironmentId: S.optional(S.String),
+          ActionId: S.String,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ApplyEnvironmentManagedActionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ActionId: S.optional(S.String),
+          ActionDescription: S.optional(S.String),
+          ActionType: S.optional(ActionType),
+          Status: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ApplyEnvironmentManagedActionResult",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ EnvironmentName: S.String, OperationsRole: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AssociateEnvironmentOperationsRoleMessage",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AssociateEnvironmentOperationsRoleResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ CNAMEPrefix: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CheckDNSAvailabilityMessage",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Available: S.optional(S.Boolean),
+          FullyQualifiedCNAME: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CheckDNSAvailabilityResultMessage",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.optional(S.String),
+          GroupName: S.optional(S.String),
+          VersionLabels: S.optional(VersionLabels),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ComposeEnvironmentsMessage",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Protocol: S.optional(S.String), Port: S.optional(S.Number) }),
+      ).annotate({ identifier: "Listener" });
+    case 3:
+      return S.Array(Listener);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          LoadBalancerName: S.optional(S.String),
+          Domain: S.optional(S.String),
+          Listeners: S.optional(LoadBalancerListenersDescription),
+        }),
+      ).annotate({ identifier: "LoadBalancerDescription" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ LoadBalancer: S.optional(LoadBalancerDescription) }),
+      ).annotate({
+        identifier: "EnvironmentResourcesDescription",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Type: S.optional(S.String),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentTier" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ LinkName: S.optional(S.String), EnvironmentName: S.optional(S.String) }),
+      ).annotate({ identifier: "EnvironmentLink" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(EnvironmentLink);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentName: S.optional(S.String),
+          EnvironmentId: S.optional(S.String),
+          ApplicationName: S.optional(S.String),
+          VersionLabel: S.optional(S.String),
+          SolutionStackName: S.optional(S.String),
+          PlatformArn: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          Description: S.optional(S.String),
+          EndpointURL: S.optional(S.String),
+          CNAME: S.optional(S.String),
+          DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Status: S.optional(EnvironmentStatus),
+          AbortableOperationInProgress: S.optional(S.Boolean),
+          Health: S.optional(EnvironmentHealth),
+          HealthStatus: S.optional(EnvironmentHealthStatus),
+          Resources: S.optional(EnvironmentResourcesDescription),
+          Tier: S.optional(EnvironmentTier),
+          EnvironmentLinks: S.optional(EnvironmentLinks),
+          EnvironmentArn: S.optional(S.String),
+          OperationsRole: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "EnvironmentDescription" });
+    case 2:
+      return S.Array(EnvironmentDescription);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Environments: S.optional(EnvironmentDescriptionsList),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "EnvironmentDescriptionsMessage",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Enabled: S.Boolean,
+          MaxCount: S.optional(S.Number),
+          DeleteSourceFromS3: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MaxCountRule" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Enabled: S.Boolean,
+          MaxAgeInDays: S.optional(S.Number),
+          DeleteSourceFromS3: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MaxAgeRule" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ MaxCountRule: S.optional(MaxCountRule), MaxAgeRule: S.optional(MaxAgeRule) }),
+      ).annotate({
+        identifier: "ApplicationVersionLifecycleConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceRole: S.optional(S.String),
+          VersionLifecycleConfig: S.optional(ApplicationVersionLifecycleConfig),
+        }),
+      ).annotate({
+        identifier: "ApplicationResourceLifecycleConfig",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(Tag);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          Description: S.optional(S.String),
+          ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
+          Tags: S.optional(Tags),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateApplicationMessage" });
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationArn: S.optional(S.String),
+          ApplicationName: S.optional(S.String),
+          Description: S.optional(S.String),
+          DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Versions: S.optional(VersionLabelsList),
+          ConfigurationTemplates: S.optional(ConfigurationTemplateNamesList),
+          ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
+        }),
+      ).annotate({ identifier: "ApplicationDescription" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Application: S.optional(ApplicationDescription) }).pipe(ns),
+      ).annotate({
+        identifier: "ApplicationDescriptionMessage",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SourceType: SourceType,
+          SourceRepository: SourceRepository,
+          SourceLocation: S.String,
+        }),
+      ).annotate({ identifier: "SourceBuildInformation" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ S3Bucket: S.optional(S.String), S3Key: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Location" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ArtifactName: S.optional(S.String),
+          CodeBuildServiceRole: S.String,
+          ComputeType: S.optional(ComputeType),
+          Image: S.String,
+          TimeoutInMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BuildConfiguration" });
+    case 2:
+      return S.suspend(() => S.Struct({ Uri: S.optional(S.String) })).annotate({
+        identifier: "ImageSource",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(ImageBuildType),
+          DockerfileLocation: S.optional(S.String),
+          Buildpack: S.optional(S.String),
+          Architecture: S.optional(ArchitectureType),
+          CodeBuildServiceRole: S.optional(S.String),
+          ComputeType: S.optional(ComputeType),
+          TimeoutInMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ImageBuildConfiguration" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Source: S.optional(ImageSource), Build: S.optional(ImageBuildConfiguration) }),
+      ).annotate({ identifier: "ImageConfiguration" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          VersionLabel: S.String,
+          Description: S.optional(S.String),
+          SourceBuildInformation: S.optional(SourceBuildInformation),
+          SourceBundle: S.optional(S3Location),
+          BuildConfiguration: S.optional(BuildConfiguration),
+          AutoCreateApplication: S.optional(S.Boolean),
+          Process: S.optional(S.Boolean),
+          Tags: S.optional(Tags),
+          ImageConfiguration: S.optional(ImageConfiguration),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateApplicationVersionMessage",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationVersionArn: S.optional(S.String),
+          ApplicationName: S.optional(S.String),
+          Description: S.optional(S.String),
+          VersionLabel: S.optional(S.String),
+          SourceBuildInformation: S.optional(SourceBuildInformation),
+          BuildArn: S.optional(S.String),
+          SourceBundle: S.optional(S3Location),
+          ImageSource: S.optional(ImageSource),
+          ImageBuildConfiguration: S.optional(ImageBuildConfiguration),
+          Process: S.optional(S.Boolean),
+          DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Status: S.optional(ApplicationVersionStatus),
+        }),
+      ).annotate({
+        identifier: "ApplicationVersionDescription",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ApplicationVersion: S.optional(ApplicationVersionDescription) }).pipe(ns),
+      ).annotate({
+        identifier: "ApplicationVersionDescriptionMessage",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationName: S.optional(S.String), TemplateName: S.optional(S.String) }),
+      ).annotate({ identifier: "SourceConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceName: S.optional(S.String),
+          Namespace: S.optional(S.String),
+          OptionName: S.optional(S.String),
+          Value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationOptionSetting",
+      });
+    case 2:
+      return S.Array(ConfigurationOptionSetting);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          TemplateName: S.String,
+          SolutionStackName: S.optional(S.String),
+          PlatformArn: S.optional(S.String),
+          SourceConfiguration: S.optional(SourceConfiguration),
+          EnvironmentId: S.optional(S.String),
+          Description: S.optional(S.String),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          Tags: S.optional(Tags),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateConfigurationTemplateMessage",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SolutionStackName: S.optional(S.String),
+          PlatformArn: S.optional(S.String),
+          ApplicationName: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          Description: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          DeploymentStatus: S.optional(ConfigurationDeploymentStatus),
+          DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ConfigurationSettingsDescription",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceName: S.optional(S.String),
+          Namespace: S.optional(S.String),
+          OptionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OptionSpecification" });
+    case 6:
+      return S.Array(OptionSpecification);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          EnvironmentName: S.optional(S.String),
+          GroupName: S.optional(S.String),
+          Description: S.optional(S.String),
+          CNAMEPrefix: S.optional(S.String),
+          Tier: S.optional(EnvironmentTier),
+          Tags: S.optional(Tags),
+          VersionLabel: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          SolutionStackName: S.optional(S.String),
+          PlatformArn: S.optional(S.String),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          OptionsToRemove: S.optional(OptionsSpecifierList),
+          OperationsRole: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateEnvironmentMessage" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PlatformName: S.String,
+          PlatformVersion: S.String,
+          PlatformDefinitionBundle: S3Location,
+          EnvironmentName: S.optional(S.String),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          Tags: S.optional(Tags),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreatePlatformVersionRequest",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          PlatformArn: S.optional(S.String),
+          PlatformOwner: S.optional(S.String),
+          PlatformStatus: S.optional(PlatformStatus),
+          PlatformCategory: S.optional(S.String),
+          OperatingSystemName: S.optional(S.String),
+          OperatingSystemVersion: S.optional(S.String),
+          SupportedTierList: S.optional(SupportedTierList),
+          SupportedAddonList: S.optional(SupportedAddonList),
+          PlatformLifecycleState: S.optional(S.String),
+          PlatformVersion: S.optional(S.String),
+          PlatformBranchName: S.optional(S.String),
+          PlatformBranchLifecycleState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlatformSummary" });
+    case 4:
+      return S.suspend(() => S.Struct({ ARN: S.optional(S.String) })).annotate({
+        identifier: "Builder",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          PlatformSummary: S.optional(PlatformSummary),
+          Builder: S.optional(Builder),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreatePlatformVersionResult",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateStorageLocationRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ S3Bucket: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateStorageLocationResultMessage",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ApplicationName: S.String, TerminateEnvByForce: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteApplicationMessage" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteApplicationResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          VersionLabel: S.String,
+          DeleteSourceBundle: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteApplicationVersionMessage",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteApplicationVersionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ApplicationName: S.String, TemplateName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationTemplateMessage",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteConfigurationTemplateResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ApplicationName: S.String, EnvironmentName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvironmentConfigurationMessage",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteEnvironmentConfigurationResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PlatformArn: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeletePlatformVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ PlatformSummary: S.optional(PlatformSummary) }).pipe(ns),
+      ).annotate({
+        identifier: "DeletePlatformVersionResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeAccountAttributesRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Maximum: S.optional(S.Number) })).annotate({
+        identifier: "ResourceQuota",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationQuota: S.optional(ResourceQuota),
+          ApplicationVersionQuota: S.optional(ResourceQuota),
+          EnvironmentQuota: S.optional(ResourceQuota),
+          ConfigurationTemplateQuota: S.optional(ResourceQuota),
+          CustomPlatformQuota: S.optional(ResourceQuota),
+        }),
+      ).annotate({ identifier: "ResourceQuotas" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ResourceQuotas: S.optional(ResourceQuotas) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeAccountAttributesResult",
+      });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ApplicationNames: S.optional(ApplicationNamesList) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeApplicationsMessage",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ApplicationDescription);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Applications: S.optional(ApplicationDescriptionList) }).pipe(ns),
+      ).annotate({
+        identifier: "ApplicationDescriptionsMessage",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.optional(S.String),
+          VersionLabels: S.optional(VersionLabelsList),
+          MaxRecords: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeApplicationVersionsMessage",
+      });
+    case 3:
+      return S.Array(ApplicationVersionDescription);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationVersions: S.optional(ApplicationVersionDescriptionList),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ApplicationVersionDescriptionsMessage",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          SolutionStackName: S.optional(S.String),
+          PlatformArn: S.optional(S.String),
+          Options: S.optional(OptionsSpecifierList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeConfigurationOptionsMessage",
+      });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Pattern: S.optional(S.String), Label: S.optional(S.String) }),
+      ).annotate({ identifier: "OptionRestrictionRegex" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Namespace: S.optional(S.String),
+          Name: S.optional(S.String),
+          DefaultValue: S.optional(S.String),
+          ChangeSeverity: S.optional(S.String),
+          UserDefined: S.optional(S.Boolean),
+          ValueType: S.optional(ConfigurationOptionValueType),
+          ValueOptions: S.optional(ConfigurationOptionPossibleValues),
+          MinValue: S.optional(S.Number),
+          MaxValue: S.optional(S.Number),
+          MaxLength: S.optional(S.Number),
+          Regex: S.optional(OptionRestrictionRegex),
+        }),
+      ).annotate({
+        identifier: "ConfigurationOptionDescription",
+      });
+    case 1:
+      return S.Array(ConfigurationOptionDescription);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SolutionStackName: S.optional(S.String),
+          PlatformArn: S.optional(S.String),
+          Options: S.optional(ConfigurationOptionDescriptionsList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ConfigurationOptionsDescription",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          TemplateName: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeConfigurationSettingsMessage",
+      });
+    case 4:
+      return S.Array(ConfigurationSettingsDescription);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ConfigurationSettings: S.optional(ConfigurationSettingsDescriptionList) }).pipe(
+          ns,
+        ),
+      ).annotate({
+        identifier: "ConfigurationSettingsDescriptions",
+      });
+    case 6:
+      return S.Array(EnvironmentHealthAttribute);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentName: S.optional(S.String),
+          EnvironmentId: S.optional(S.String),
+          AttributeNames: S.optional(EnvironmentHealthAttributes),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeEnvironmentHealthRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Status2xx: S.optional(S.Number),
+          Status3xx: S.optional(S.Number),
+          Status4xx: S.optional(S.Number),
+          Status5xx: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "StatusCodes" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          P999: S.optional(S.Number),
+          P99: S.optional(S.Number),
+          P95: S.optional(S.Number),
+          P90: S.optional(S.Number),
+          P85: S.optional(S.Number),
+          P75: S.optional(S.Number),
+          P50: S.optional(S.Number),
+          P10: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Latency" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Duration: S.optional(S.Number),
+          RequestCount: S.optional(S.Number),
+          StatusCodes: S.optional(StatusCodes),
+          Latency: S.optional(Latency),
+        }),
+      ).annotate({ identifier: "ApplicationMetrics" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          NoData: S.optional(S.Number),
+          Unknown: S.optional(S.Number),
+          Pending: S.optional(S.Number),
+          Ok: S.optional(S.Number),
+          Info: S.optional(S.Number),
+          Warning: S.optional(S.Number),
+          Degraded: S.optional(S.Number),
+          Severe: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "InstanceHealthSummary" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentName: S.optional(S.String),
+          HealthStatus: S.optional(S.String),
+          Status: S.optional(EnvironmentHealth),
+          Color: S.optional(S.String),
+          Causes: S.optional(Causes),
+          ApplicationMetrics: S.optional(ApplicationMetrics),
+          InstancesHealth: S.optional(InstanceHealthSummary),
+          RefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeEnvironmentHealthResult",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxItems: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeEnvironmentManagedActionHistoryRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ActionId: S.optional(S.String),
+          ActionType: S.optional(ActionType),
+          ActionDescription: S.optional(S.String),
+          FailureType: S.optional(FailureType),
+          Status: S.optional(ActionHistoryStatus),
+          FailureDescription: S.optional(S.String),
+          ExecutedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          FinishedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ManagedActionHistoryItem" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ManagedActionHistoryItem);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ManagedActionHistoryItems: S.optional(ManagedActionHistoryItems),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeEnvironmentManagedActionHistoryResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentName: S.optional(S.String),
+          EnvironmentId: S.optional(S.String),
+          Status: S.optional(ActionStatus),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeEnvironmentManagedActionsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ActionId: S.optional(S.String),
+          ActionDescription: S.optional(S.String),
+          ActionType: S.optional(ActionType),
+          Status: S.optional(ActionStatus),
+          WindowStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ManagedAction" });
+    case 4:
+      return S.Array(ManagedAction);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ManagedActions: S.optional(ManagedActions) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeEnvironmentManagedActionsResult",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeEnvironmentResourcesMessage",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+        identifier: "AutoScalingGroup",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AutoScalingGroup);
+    case 1:
+      return S.suspend(() => S.Struct({ ClusterArn: S.optional(S.String) })).annotate({
+        identifier: "Cluster",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
+        identifier: "Instance",
+      });
+    case 3:
+      return S.Array(Instance);
+    case 4:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+        identifier: "LaunchConfiguration",
+      });
+    case 5:
+      return S.Array(LaunchConfiguration);
+    case 6:
+      return S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
+        identifier: "LaunchTemplate",
+      });
+    case 7:
+      return S.Array(LaunchTemplate);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+        identifier: "LoadBalancer",
+      });
+    case 1:
+      return S.Array(LoadBalancer);
+    case 2:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+        identifier: "Trigger",
+      });
+    case 3:
+      return S.Array(Trigger);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), URL: S.optional(S.String) }),
+      ).annotate({ identifier: "Queue" });
+    case 5:
+      return S.Array(Queue);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentName: S.optional(S.String),
+          AutoScalingGroups: S.optional(AutoScalingGroupList),
+          Cluster: S.optional(Cluster),
+          Instances: S.optional(InstanceList),
+          LaunchConfigurations: S.optional(LaunchConfigurationList),
+          LaunchTemplates: S.optional(LaunchTemplateList),
+          LoadBalancers: S.optional(LoadBalancerList),
+          Triggers: S.optional(TriggerList),
+          Queues: S.optional(QueueList),
+        }),
+      ).annotate({
+        identifier: "EnvironmentResourceDescription",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ EnvironmentResources: S.optional(EnvironmentResourceDescription) }).pipe(ns),
+      ).annotate({
+        identifier: "EnvironmentResourceDescriptionsMessage",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.optional(S.String),
+          VersionLabel: S.optional(S.String),
+          EnvironmentIds: S.optional(EnvironmentIdList),
+          EnvironmentNames: S.optional(EnvironmentNamesList),
+          IncludeDeleted: S.optional(S.Boolean),
+          IncludedDeletedBackTo: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          MaxRecords: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeEnvironmentsMessage",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.optional(S.String),
+          VersionLabel: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          PlatformArn: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          Severity: S.optional(EventSeverity),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          MaxRecords: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DescribeEventsMessage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          EventDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Message: S.optional(S.String),
+          ApplicationName: S.optional(S.String),
+          VersionLabel: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          PlatformArn: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          Severity: S.optional(EventSeverity),
+        }),
+      ).annotate({ identifier: "EventDescription" });
+    case 5:
+      return S.Array(EventDescription);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Events: S.optional(EventDescriptionList),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "EventDescriptionsMessage" });
+    case 7:
+      return S.Array(InstancesHealthAttribute);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentName: S.optional(S.String),
+          EnvironmentId: S.optional(S.String),
+          AttributeNames: S.optional(InstancesHealthAttributes),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeInstancesHealthRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          User: S.optional(S.Number),
+          Nice: S.optional(S.Number),
+          System: S.optional(S.Number),
+          Idle: S.optional(S.Number),
+          IOWait: S.optional(S.Number),
+          IRQ: S.optional(S.Number),
+          SoftIRQ: S.optional(S.Number),
+          Privileged: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CPUUtilization" });
+    case 2:
+      return S.Array(S.Number);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CPUUtilization: S.optional(CPUUtilization),
+          LoadAverage: S.optional(LoadAverage),
+        }),
+      ).annotate({ identifier: "SystemStatus" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          VersionLabel: S.optional(S.String),
+          DeploymentId: S.optional(S.Number),
+          Status: S.optional(S.String),
+          DeploymentTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "Deployment" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceId: S.optional(S.String),
+          HealthStatus: S.optional(S.String),
+          Color: S.optional(S.String),
+          Causes: S.optional(Causes),
+          LaunchedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          ApplicationMetrics: S.optional(ApplicationMetrics),
+          System: S.optional(SystemStatus),
+          Deployment: S.optional(Deployment),
+          AvailabilityZone: S.optional(S.String),
+          InstanceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SingleInstanceHealth" });
+    case 6:
+      return S.Array(SingleInstanceHealth);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceHealthList: S.optional(InstanceHealthList),
+          RefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeInstancesHealthResult",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PlatformArn: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribePlatformVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
+      ).annotate({
+        identifier: "PlatformProgrammingLanguage",
+      });
+    case 2:
+      return S.Array(PlatformProgrammingLanguage);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
+      ).annotate({ identifier: "PlatformFramework" });
+    case 4:
+      return S.Array(PlatformFramework);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ VirtualizationType: S.optional(S.String), ImageId: S.optional(S.String) }),
+      ).annotate({ identifier: "CustomAmi" });
+    case 6:
+      return S.Array(CustomAmi);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          PlatformArn: S.optional(S.String),
+          PlatformOwner: S.optional(S.String),
+          PlatformName: S.optional(S.String),
+          PlatformVersion: S.optional(S.String),
+          SolutionStackName: S.optional(S.String),
+          PlatformStatus: S.optional(PlatformStatus),
+          DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          PlatformCategory: S.optional(S.String),
+          Description: S.optional(S.String),
+          Maintainer: S.optional(S.String),
+          OperatingSystemName: S.optional(S.String),
+          OperatingSystemVersion: S.optional(S.String),
+          ProgrammingLanguages: S.optional(PlatformProgrammingLanguages),
+          Frameworks: S.optional(PlatformFrameworks),
+          CustomAmiList: S.optional(CustomAmiList),
+          SupportedTierList: S.optional(SupportedTierList),
+          SupportedAddonList: S.optional(SupportedAddonList),
+          PlatformLifecycleState: S.optional(S.String),
+          PlatformBranchName: S.optional(S.String),
+          PlatformBranchLifecycleState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlatformDescription" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PlatformDescription: S.optional(PlatformDescription) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribePlatformVersionResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EnvironmentName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisassociateEnvironmentOperationsRoleMessage",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DisassociateEnvironmentOperationsRoleResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListAvailableSolutionStacksRequest",
+      });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          SolutionStackName: S.optional(S.String),
+          PermittedFileTypes: S.optional(SolutionStackFileTypeList),
+        }),
+      ).annotate({ identifier: "SolutionStackDescription" });
+    case 7:
+      return S.Array(SolutionStackDescription);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SolutionStacks: S.optional(AvailableSolutionStackNamesList),
+          SolutionStackDetails: S.optional(AvailableSolutionStackDetailsList),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListAvailableSolutionStacksResultMessage",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Attribute: S.optional(S.String),
+          Operator: S.optional(S.String),
+          Values: S.optional(SearchFilterValues),
+        }),
+      ).annotate({ identifier: "SearchFilter" });
+    case 3:
+      return S.Array(SearchFilter);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(SearchFilters),
+          MaxRecords: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListPlatformBranchesRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          PlatformName: S.optional(S.String),
+          BranchName: S.optional(S.String),
+          LifecycleState: S.optional(S.String),
+          BranchOrder: S.optional(S.Number),
+          SupportedTierList: S.optional(SupportedTierList),
+        }),
+      ).annotate({ identifier: "PlatformBranchSummary" });
+    case 6:
+      return S.Array(PlatformBranchSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          PlatformBranchSummaryList: S.optional(PlatformBranchSummaryList),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListPlatformBranchesResult",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(S.String),
+          Operator: S.optional(S.String),
+          Values: S.optional(PlatformFilterValueList),
+        }),
+      ).annotate({ identifier: "PlatformFilter" });
+    case 2:
+      return S.Array(PlatformFilter);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Filters: S.optional(PlatformFilters),
+          MaxRecords: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListPlatformVersionsRequest",
+      });
+    case 4:
+      return S.Array(PlatformSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          PlatformSummaryList: S.optional(PlatformSummaryList),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListPlatformVersionsResult",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceMessage",
+      });
+    case 7:
+      return S.Array(Tag);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.optional(S.String), ResourceTags: S.optional(TagList) }).pipe(ns),
+      ).annotate({
+        identifier: "ResourceTagsDescriptionMessage",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RebuildEnvironmentMessage",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "RebuildEnvironmentResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          InfoType: EnvironmentInfoType,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RequestEnvironmentInfoMessage",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "RequestEnvironmentInfoResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "RestartAppServerMessage" });
+    case 6:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "RestartAppServerResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          InfoType: EnvironmentInfoType,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "RetrieveEnvironmentInfoMessage",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InfoType: S.optional(EnvironmentInfoType),
+          Ec2InstanceId: S.optional(S.String),
+          SampleTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnvironmentInfoDescription",
+      });
+    case 1:
+      return S.Array(EnvironmentInfoDescription);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ EnvironmentInfo: S.optional(EnvironmentInfoDescriptionList) }).pipe(ns),
+      ).annotate({
+        identifier: "RetrieveEnvironmentInfoResultMessage",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          SourceEnvironmentId: S.optional(S.String),
+          SourceEnvironmentName: S.optional(S.String),
+          DestinationEnvironmentId: S.optional(S.String),
+          DestinationEnvironmentName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "SwapEnvironmentCNAMEsMessage",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "SwapEnvironmentCNAMEsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          TerminateResources: S.optional(S.Boolean),
+          ForceTerminate: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "TerminateEnvironmentMessage",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ ApplicationName: S.String, Description: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UpdateApplicationMessage" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          ResourceLifecycleConfig: ApplicationResourceLifecycleConfig,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateApplicationResourceLifecycleMessage",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.optional(S.String),
+          ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ApplicationResourceLifecycleDescriptionMessage",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          VersionLabel: S.String,
+          Description: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateApplicationVersionMessage",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          TemplateName: S.String,
+          Description: S.optional(S.String),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          OptionsToRemove: S.optional(OptionsSpecifierList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateConfigurationTemplateMessage",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.optional(S.String),
+          EnvironmentId: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          GroupName: S.optional(S.String),
+          Description: S.optional(S.String),
+          Tier: S.optional(EnvironmentTier),
+          VersionLabel: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          SolutionStackName: S.optional(S.String),
+          PlatformArn: S.optional(S.String),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          OptionsToRemove: S.optional(OptionsSpecifierList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateEnvironmentMessage" });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String,
+          TagsToAdd: S.optional(TagList),
+          TagsToRemove: S.optional(TagKeyList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateTagsForResourceMessage",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateTagsForResourceResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          TemplateName: S.optional(S.String),
+          EnvironmentName: S.optional(S.String),
+          OptionSettings: ConfigurationOptionSettingsList,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ValidateConfigurationSettingsMessage",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Message: S.optional(S.String),
+          Severity: S.optional(ValidationSeverity),
+          Namespace: S.optional(S.String),
+          OptionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ValidationMessage" });
+    case 1:
+      return S.Array(ValidationMessage);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Messages: S.optional(ValidationMessagesList) }).pipe(ns),
+      ).annotate({
+        identifier: "ConfigurationSettingsValidationMessages",
+      });
+  }
+}

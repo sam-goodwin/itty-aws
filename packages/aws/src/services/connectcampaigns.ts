@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -183,9 +184,10 @@ export interface ProgressiveDialerConfig {
   bandwidthAllocation: number;
   dialingCapacity?: number;
 }
-const ProgressiveDialerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bandwidthAllocation: S.Number, dialingCapacity: S.optional(S.Number) }),
-).annotate({ identifier: "ProgressiveDialerConfig" }) as any as S.Schema<ProgressiveDialerConfig>;
+const ProgressiveDialerConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ProgressiveDialerConfig>;
 export interface PredictiveDialerConfig {
   bandwidthAllocation: number;
   dialingCapacity?: number;
@@ -194,9 +196,10 @@ const PredictiveDialerConfig = ProgressiveDialerConfig as any as S.Schema<Predic
 export interface AgentlessDialerConfig {
   dialingCapacity?: number;
 }
-const AgentlessDialerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dialingCapacity: S.optional(S.Number) }),
-).annotate({ identifier: "AgentlessDialerConfig" }) as any as S.Schema<AgentlessDialerConfig>;
+const AgentlessDialerConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AgentlessDialerConfig>;
 export type DialerConfig =
   | {
       progressiveDialerConfig: ProgressiveDialerConfig;
@@ -213,11 +216,7 @@ export type DialerConfig =
       predictiveDialerConfig?: never;
       agentlessDialerConfig: AgentlessDialerConfig;
     };
-const DialerConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ progressiveDialerConfig: ProgressiveDialerConfig }),
-  /*@__PURE__*/ S.Struct({ predictiveDialerConfig: PredictiveDialerConfig }),
-  /*@__PURE__*/ S.Struct({ agentlessDialerConfig: AgentlessDialerConfig }),
-]);
+const DialerConfig = /*@__PURE__*/ __L.at(__c0, 2);
 export type ContactFlowId = string;
 export type SourcePhoneNumber = string;
 export type QueueId = string;
@@ -225,32 +224,21 @@ export interface AnswerMachineDetectionConfig {
   enableAnswerMachineDetection: boolean;
   awaitAnswerMachinePrompt?: boolean;
 }
-const AnswerMachineDetectionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableAnswerMachineDetection: S.Boolean,
-    awaitAnswerMachinePrompt: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AnswerMachineDetectionConfig",
-}) as any as S.Schema<AnswerMachineDetectionConfig>;
+const AnswerMachineDetectionConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AnswerMachineDetectionConfig>;
 export interface OutboundCallConfig {
   connectContactFlowId: string;
   connectSourcePhoneNumber?: string;
   connectQueueId?: string;
   answerMachineDetectionConfig?: AnswerMachineDetectionConfig;
 }
-const OutboundCallConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectContactFlowId: S.String,
-    connectSourcePhoneNumber: S.optional(S.String),
-    connectQueueId: S.optional(S.String),
-    answerMachineDetectionConfig: S.optional(AnswerMachineDetectionConfig),
-  }),
-).annotate({ identifier: "OutboundCallConfig" }) as any as S.Schema<OutboundCallConfig>;
+const OutboundCallConfig = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<OutboundCallConfig>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c0, 5);
 export interface CreateCampaignRequest {
   name: string;
   connectInstanceId: string;
@@ -258,15 +246,10 @@ export interface CreateCampaignRequest {
   outboundCallConfig: OutboundCallConfig;
   tags?: { [key: string]: string | undefined };
 }
-const CreateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    connectInstanceId: S.String,
-    dialerConfig: DialerConfig,
-    outboundCallConfig: OutboundCallConfig,
-    tags: S.optional(TagMap),
-  }).pipe(T.all(T.Http({ method: "PUT", uri: "/campaigns" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateCampaignRequest" }) as any as S.Schema<CreateCampaignRequest>;
+const CreateCampaignRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateCampaignRequest>;
 export type CampaignId = string;
 export type CampaignArn = string;
 export interface CreateCampaignResponse {
@@ -274,70 +257,51 @@ export interface CreateCampaignResponse {
   arn?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateCampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), arn: S.optional(S.String), tags: S.optional(TagMap) }),
-).annotate({ identifier: "CreateCampaignResponse" }) as any as S.Schema<CreateCampaignResponse>;
+const CreateCampaignResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateCampaignResponse>;
 export interface DeleteCampaignRequest {
   id: string;
 }
-const DeleteCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/campaigns/{id}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteCampaignRequest" }) as any as S.Schema<DeleteCampaignRequest>;
+const DeleteCampaignRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteCampaignRequest>;
 export interface DeleteCampaignResponse {}
-const DeleteCampaignResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCampaignResponse",
-}) as any as S.Schema<DeleteCampaignResponse>;
+const DeleteCampaignResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteCampaignResponse>;
 export interface DeleteConnectInstanceConfigRequest {
   connectInstanceId: string;
 }
-const DeleteConnectInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/connect-instance/{connectInstanceId}/config" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteConnectInstanceConfigRequest",
-}) as any as S.Schema<DeleteConnectInstanceConfigRequest>;
+const DeleteConnectInstanceConfigRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteConnectInstanceConfigRequest>;
 export interface DeleteConnectInstanceConfigResponse {}
-const DeleteConnectInstanceConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectInstanceConfigResponse",
-}) as any as S.Schema<DeleteConnectInstanceConfigResponse>;
+const DeleteConnectInstanceConfigResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteConnectInstanceConfigResponse>;
 export interface DeleteInstanceOnboardingJobRequest {
   connectInstanceId: string;
 }
-const DeleteInstanceOnboardingJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/connect-instance/{connectInstanceId}/onboarding" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteInstanceOnboardingJobRequest",
-}) as any as S.Schema<DeleteInstanceOnboardingJobRequest>;
+const DeleteInstanceOnboardingJobRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteInstanceOnboardingJobRequest>;
 export interface DeleteInstanceOnboardingJobResponse {}
 const DeleteInstanceOnboardingJobResponse =
   DeleteConnectInstanceConfigResponse as any as S.Schema<DeleteInstanceOnboardingJobResponse>;
 export interface DescribeCampaignRequest {
   id: string;
 }
-const DescribeCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/campaigns/{id}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeCampaignRequest" }) as any as S.Schema<DescribeCampaignRequest>;
+const DescribeCampaignRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DescribeCampaignRequest>;
 export interface Campaign {
   id: string;
   arn: string;
@@ -347,102 +311,74 @@ export interface Campaign {
   outboundCallConfig: OutboundCallConfig;
   tags?: { [key: string]: string | undefined };
 }
-const Campaign = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    name: S.String,
-    connectInstanceId: S.String,
-    dialerConfig: DialerConfig,
-    outboundCallConfig: OutboundCallConfig,
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "Campaign" }) as any as S.Schema<Campaign>;
+const Campaign = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Campaign>;
 export interface DescribeCampaignResponse {
   campaign?: Campaign;
 }
-const DescribeCampaignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaign: S.optional(Campaign) }),
-).annotate({ identifier: "DescribeCampaignResponse" }) as any as S.Schema<DescribeCampaignResponse>;
+const DescribeCampaignResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DescribeCampaignResponse>;
 export interface GetCampaignStateRequest {
   id: string;
 }
-const GetCampaignStateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/campaigns/{id}/state" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetCampaignStateRequest" }) as any as S.Schema<GetCampaignStateRequest>;
+const GetCampaignStateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetCampaignStateRequest>;
 export type CampaignState = string;
 export interface GetCampaignStateResponse {
   state?: string;
 }
-const GetCampaignStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: S.optional(S.String) }),
-).annotate({ identifier: "GetCampaignStateResponse" }) as any as S.Schema<GetCampaignStateResponse>;
+const GetCampaignStateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetCampaignStateResponse>;
 export type CampaignIdList = string[];
-const CampaignIdList = /*@__PURE__*/ S.Array(S.String);
+const CampaignIdList = /*@__PURE__*/ __L.at(__c2, 2);
 export interface GetCampaignStateBatchRequest {
   campaignIds: string[];
 }
-const GetCampaignStateBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaignIds: CampaignIdList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/campaigns-state" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetCampaignStateBatchRequest",
-}) as any as S.Schema<GetCampaignStateBatchRequest>;
+const GetCampaignStateBatchRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetCampaignStateBatchRequest>;
 export interface SuccessfulCampaignStateResponse {
   campaignId?: string;
   state?: string;
 }
-const SuccessfulCampaignStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaignId: S.optional(S.String), state: S.optional(S.String) }),
-).annotate({
-  identifier: "SuccessfulCampaignStateResponse",
-}) as any as S.Schema<SuccessfulCampaignStateResponse>;
+const SuccessfulCampaignStateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<SuccessfulCampaignStateResponse>;
 export type SuccessfulCampaignStateResponseList = SuccessfulCampaignStateResponse[];
-const SuccessfulCampaignStateResponseList = /*@__PURE__*/ S.Array(SuccessfulCampaignStateResponse);
+const SuccessfulCampaignStateResponseList = /*@__PURE__*/ __L.at(__c2, 5);
 export type GetCampaignStateBatchFailureCode = string;
 export interface FailedCampaignStateResponse {
   campaignId?: string;
   failureCode?: string;
 }
-const FailedCampaignStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ campaignId: S.optional(S.String), failureCode: S.optional(S.String) }),
-).annotate({
-  identifier: "FailedCampaignStateResponse",
-}) as any as S.Schema<FailedCampaignStateResponse>;
+const FailedCampaignStateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<FailedCampaignStateResponse>;
 export type FailedCampaignStateResponseList = FailedCampaignStateResponse[];
-const FailedCampaignStateResponseList = /*@__PURE__*/ S.Array(FailedCampaignStateResponse);
+const FailedCampaignStateResponseList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface GetCampaignStateBatchResponse {
   successfulRequests?: SuccessfulCampaignStateResponse[];
   failedRequests?: FailedCampaignStateResponse[];
 }
-const GetCampaignStateBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    successfulRequests: S.optional(SuccessfulCampaignStateResponseList),
-    failedRequests: S.optional(FailedCampaignStateResponseList),
-  }),
-).annotate({
-  identifier: "GetCampaignStateBatchResponse",
-}) as any as S.Schema<GetCampaignStateBatchResponse>;
+const GetCampaignStateBatchResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetCampaignStateBatchResponse>;
 export interface GetConnectInstanceConfigRequest {
   connectInstanceId: string;
 }
-const GetConnectInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/connect-instance/{connectInstanceId}/config" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetConnectInstanceConfigRequest",
-}) as any as S.Schema<GetConnectInstanceConfigRequest>;
+const GetConnectInstanceConfigRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetConnectInstanceConfigRequest>;
 export type ServiceLinkedRoleArn = string;
 export type Enabled = boolean;
 export type EncryptionType = string;
@@ -452,50 +388,27 @@ export interface EncryptionConfig {
   encryptionType?: string;
   keyArn?: string;
 }
-const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    encryptionType: S.optional(S.String),
-    keyArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
+const EncryptionConfig = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<EncryptionConfig>;
 export interface InstanceConfig {
   connectInstanceId: string;
   serviceLinkedRoleArn: string;
   encryptionConfig: EncryptionConfig;
 }
-const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectInstanceId: S.String,
-    serviceLinkedRoleArn: S.String,
-    encryptionConfig: EncryptionConfig,
-  }),
-).annotate({ identifier: "InstanceConfig" }) as any as S.Schema<InstanceConfig>;
+const InstanceConfig = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<InstanceConfig>;
 export interface GetConnectInstanceConfigResponse {
   connectInstanceConfig?: InstanceConfig;
 }
-const GetConnectInstanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectInstanceConfig: S.optional(InstanceConfig) }),
-).annotate({
-  identifier: "GetConnectInstanceConfigResponse",
-}) as any as S.Schema<GetConnectInstanceConfigResponse>;
+const GetConnectInstanceConfigResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetConnectInstanceConfigResponse>;
 export interface GetInstanceOnboardingJobStatusRequest {
   connectInstanceId: string;
 }
-const GetInstanceOnboardingJobStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/connect-instance/{connectInstanceId}/onboarding" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetInstanceOnboardingJobStatusRequest",
-}) as any as S.Schema<GetInstanceOnboardingJobStatusRequest>;
+const GetInstanceOnboardingJobStatusRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetInstanceOnboardingJobStatusRequest>;
 export type InstanceOnboardingJobStatusCode = string;
 export type InstanceOnboardingJobFailureCode = string;
 export interface InstanceOnboardingJobStatus {
@@ -503,19 +416,17 @@ export interface InstanceOnboardingJobStatus {
   status: string;
   failureCode?: string;
 }
-const InstanceOnboardingJobStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectInstanceId: S.String, status: S.String, failureCode: S.optional(S.String) }),
-).annotate({
-  identifier: "InstanceOnboardingJobStatus",
-}) as any as S.Schema<InstanceOnboardingJobStatus>;
+const InstanceOnboardingJobStatus = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<InstanceOnboardingJobStatus>;
 export interface GetInstanceOnboardingJobStatusResponse {
   connectInstanceOnboardingJobStatus?: InstanceOnboardingJobStatus;
 }
-const GetInstanceOnboardingJobStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectInstanceOnboardingJobStatus: S.optional(InstanceOnboardingJobStatus) }),
-).annotate({
-  identifier: "GetInstanceOnboardingJobStatusResponse",
-}) as any as S.Schema<GetInstanceOnboardingJobStatusResponse>;
+const GetInstanceOnboardingJobStatusResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetInstanceOnboardingJobStatusResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export type InstanceIdFilterOperator = string;
@@ -523,77 +434,53 @@ export interface InstanceIdFilter {
   value: string;
   operator: string;
 }
-const InstanceIdFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ value: S.String, operator: S.String }),
-).annotate({ identifier: "InstanceIdFilter" }) as any as S.Schema<InstanceIdFilter>;
+const InstanceIdFilter = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<InstanceIdFilter>;
 export interface CampaignFilters {
   instanceIdFilter?: InstanceIdFilter;
 }
-const CampaignFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceIdFilter: S.optional(InstanceIdFilter) }),
-).annotate({ identifier: "CampaignFilters" }) as any as S.Schema<CampaignFilters>;
+const CampaignFilters = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CampaignFilters>;
 export interface ListCampaignsRequest {
   maxResults?: number;
   nextToken?: string;
   filters?: CampaignFilters;
 }
-const ListCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    filters: S.optional(CampaignFilters),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/campaigns-summary" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListCampaignsRequest" }) as any as S.Schema<ListCampaignsRequest>;
+const ListCampaignsRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListCampaignsRequest>;
 export interface CampaignSummary {
   id: string;
   arn: string;
   name: string;
   connectInstanceId: string;
 }
-const CampaignSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, arn: S.String, name: S.String, connectInstanceId: S.String }),
-).annotate({ identifier: "CampaignSummary" }) as any as S.Schema<CampaignSummary>;
+const CampaignSummary = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CampaignSummary>;
 export type CampaignSummaryList = CampaignSummary[];
-const CampaignSummaryList = /*@__PURE__*/ S.Array(CampaignSummary);
+const CampaignSummaryList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface ListCampaignsResponse {
   nextToken?: string;
   campaignSummaryList?: CampaignSummary[];
 }
-const ListCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    campaignSummaryList: S.optional(CampaignSummaryList),
-  }),
-).annotate({ identifier: "ListCampaignsResponse" }) as any as S.Schema<ListCampaignsResponse>;
+const ListCampaignsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListCampaignsResponse>;
 export type Arn = string;
 export interface ListTagsForResourceRequest {
   arn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PauseCampaignRequest {
   id: string;
 }
-const PauseCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/campaigns/{id}/pause" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "PauseCampaignRequest" }) as any as S.Schema<PauseCampaignRequest>;
+const PauseCampaignRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<PauseCampaignRequest>;
 export interface PauseCampaignResponse {}
 const PauseCampaignResponse = DeleteCampaignResponse as any as S.Schema<PauseCampaignResponse>;
 export type ClientToken = string;
@@ -608,112 +495,65 @@ export interface DialRequest {
   expirationTime: Date;
   attributes: { [key: string]: string | undefined };
 }
-const DialRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.String,
-    phoneNumber: SensitiveString,
-    expirationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    attributes: Attributes,
-  }),
-).annotate({ identifier: "DialRequest" }) as any as S.Schema<DialRequest>;
+const DialRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DialRequest>;
 export type DialRequestList = DialRequest[];
-const DialRequestList = /*@__PURE__*/ S.Array(DialRequest);
+const DialRequestList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface PutDialRequestBatchRequest {
   id: string;
   dialRequests: DialRequest[];
 }
-const PutDialRequestBatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")), dialRequests: DialRequestList }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/campaigns/{id}/dial-requests" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutDialRequestBatchRequest",
-}) as any as S.Schema<PutDialRequestBatchRequest>;
+const PutDialRequestBatchRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<PutDialRequestBatchRequest>;
 export type DialRequestId = string;
 export interface SuccessfulRequest {
   clientToken?: string;
   id?: string;
 }
-const SuccessfulRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ clientToken: S.optional(S.String), id: S.optional(S.String) }),
-).annotate({ identifier: "SuccessfulRequest" }) as any as S.Schema<SuccessfulRequest>;
+const SuccessfulRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SuccessfulRequest>;
 export type SuccessfulRequestList = SuccessfulRequest[];
-const SuccessfulRequestList = /*@__PURE__*/ S.Array(SuccessfulRequest);
+const SuccessfulRequestList = /*@__PURE__*/ __L.at(__c5, 5);
 export type FailureCode = string;
 export interface FailedRequest {
   clientToken?: string;
   id?: string;
   failureCode?: string;
 }
-const FailedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String),
-    id: S.optional(S.String),
-    failureCode: S.optional(S.String),
-  }),
-).annotate({ identifier: "FailedRequest" }) as any as S.Schema<FailedRequest>;
+const FailedRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<FailedRequest>;
 export type FailedRequestList = FailedRequest[];
-const FailedRequestList = /*@__PURE__*/ S.Array(FailedRequest);
+const FailedRequestList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface PutDialRequestBatchResponse {
   successfulRequests?: SuccessfulRequest[];
   failedRequests?: FailedRequest[];
 }
-const PutDialRequestBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    successfulRequests: S.optional(SuccessfulRequestList),
-    failedRequests: S.optional(FailedRequestList),
-  }),
-).annotate({
-  identifier: "PutDialRequestBatchResponse",
-}) as any as S.Schema<PutDialRequestBatchResponse>;
+const PutDialRequestBatchResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PutDialRequestBatchResponse>;
 export interface ResumeCampaignRequest {
   id: string;
 }
-const ResumeCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/campaigns/{id}/resume" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ResumeCampaignRequest" }) as any as S.Schema<ResumeCampaignRequest>;
+const ResumeCampaignRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ResumeCampaignRequest>;
 export interface ResumeCampaignResponse {}
 const ResumeCampaignResponse = DeleteCampaignResponse as any as S.Schema<ResumeCampaignResponse>;
 export interface StartCampaignRequest {
   id: string;
 }
-const StartCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/campaigns/{id}/start" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StartCampaignRequest" }) as any as S.Schema<StartCampaignRequest>;
+const StartCampaignRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<StartCampaignRequest>;
 export interface StartCampaignResponse {}
 const StartCampaignResponse = DeleteCampaignResponse as any as S.Schema<StartCampaignResponse>;
 export interface StartInstanceOnboardingJobRequest {
   connectInstanceId: string;
   encryptionConfig: EncryptionConfig;
 }
-const StartInstanceOnboardingJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
-    encryptionConfig: EncryptionConfig,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/connect-instance/{connectInstanceId}/onboarding" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartInstanceOnboardingJobRequest",
-}) as any as S.Schema<StartInstanceOnboardingJobRequest>;
+const StartInstanceOnboardingJobRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<StartInstanceOnboardingJobRequest>;
 export interface StartInstanceOnboardingJobResponse {
   connectInstanceOnboardingJobStatus?: InstanceOnboardingJobStatus;
 }
@@ -722,22 +562,14 @@ const StartInstanceOnboardingJobResponse =
 export interface StopCampaignRequest {
   id: string;
 }
-const StopCampaignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/campaigns/{id}/stop" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "StopCampaignRequest" }) as any as S.Schema<StopCampaignRequest>;
+const StopCampaignRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<StopCampaignRequest>;
 export interface StopCampaignResponse {}
 const StopCampaignResponse = DeleteCampaignResponse as any as S.Schema<StopCampaignResponse>;
 export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: TagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteCampaignResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -746,32 +578,17 @@ export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String.pipe(T.HttpLabel("arn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = DeleteCampaignResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCampaignDialerConfigRequest {
   id: string;
   dialerConfig: DialerConfig;
 }
-const UpdateCampaignDialerConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")), dialerConfig: DialerConfig }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/campaigns/{id}/dialer-config" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateCampaignDialerConfigRequest",
-}) as any as S.Schema<UpdateCampaignDialerConfigRequest>;
+const UpdateCampaignDialerConfigRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<UpdateCampaignDialerConfigRequest>;
 export interface UpdateCampaignDialerConfigResponse {}
 const UpdateCampaignDialerConfigResponse =
   DeleteConnectInstanceConfigResponse as any as S.Schema<UpdateCampaignDialerConfigResponse>;
@@ -779,13 +596,10 @@ export interface UpdateCampaignNameRequest {
   id: string;
   name: string;
 }
-const UpdateCampaignNameRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")), name: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/campaigns/{id}/name" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateCampaignNameRequest",
-}) as any as S.Schema<UpdateCampaignNameRequest>;
+const UpdateCampaignNameRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<UpdateCampaignNameRequest>;
 export interface UpdateCampaignNameResponse {}
 const UpdateCampaignNameResponse =
   DeleteCampaignResponse as any as S.Schema<UpdateCampaignNameResponse>;
@@ -795,25 +609,10 @@ export interface UpdateCampaignOutboundCallConfigRequest {
   connectSourcePhoneNumber?: string;
   answerMachineDetectionConfig?: AnswerMachineDetectionConfig;
 }
-const UpdateCampaignOutboundCallConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String.pipe(T.HttpLabel("id")),
-    connectContactFlowId: S.optional(S.String),
-    connectSourcePhoneNumber: S.optional(S.String),
-    answerMachineDetectionConfig: S.optional(AnswerMachineDetectionConfig),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/campaigns/{id}/outbound-call-config" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateCampaignOutboundCallConfigRequest",
-}) as any as S.Schema<UpdateCampaignOutboundCallConfigRequest>;
+const UpdateCampaignOutboundCallConfigRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<UpdateCampaignOutboundCallConfigRequest>;
 export interface UpdateCampaignOutboundCallConfigResponse {}
 const UpdateCampaignOutboundCallConfigResponse =
   DeleteConnectInstanceConfigResponse as any as S.Schema<UpdateCampaignOutboundCallConfigResponse>;
@@ -1496,3 +1295,507 @@ export const updateCampaignOutboundCallConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCampaignOutboundCallConfig",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ bandwidthAllocation: S.Number, dialingCapacity: S.optional(S.Number) }),
+      ).annotate({ identifier: "ProgressiveDialerConfig" });
+    case 1:
+      return S.suspend(() => S.Struct({ dialingCapacity: S.optional(S.Number) })).annotate({
+        identifier: "AgentlessDialerConfig",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ progressiveDialerConfig: ProgressiveDialerConfig }),
+        /*@__PURE__*/ S.Struct({ predictiveDialerConfig: PredictiveDialerConfig }),
+        /*@__PURE__*/ S.Struct({ agentlessDialerConfig: AgentlessDialerConfig }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enableAnswerMachineDetection: S.Boolean,
+          awaitAnswerMachinePrompt: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AnswerMachineDetectionConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          connectContactFlowId: S.String,
+          connectSourcePhoneNumber: S.optional(S.String),
+          connectQueueId: S.optional(S.String),
+          answerMachineDetectionConfig: S.optional(AnswerMachineDetectionConfig),
+        }),
+      ).annotate({ identifier: "OutboundCallConfig" });
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          connectInstanceId: S.String,
+          dialerConfig: DialerConfig,
+          outboundCallConfig: OutboundCallConfig,
+          tags: S.optional(TagMap),
+        }).pipe(T.all(T.Http({ method: "PUT", uri: "/campaigns" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateCampaignRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), arn: S.optional(S.String), tags: S.optional(TagMap) }),
+      ).annotate({ identifier: "CreateCampaignResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/campaigns/{id}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteCampaignRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCampaignResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/connect-instance/{connectInstanceId}/config" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteConnectInstanceConfigRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteConnectInstanceConfigResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/connect-instance/{connectInstanceId}/onboarding" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteInstanceOnboardingJobRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/campaigns/{id}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeCampaignRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          name: S.String,
+          connectInstanceId: S.String,
+          dialerConfig: DialerConfig,
+          outboundCallConfig: OutboundCallConfig,
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({ identifier: "Campaign" });
+    case 7:
+      return S.suspend(() => S.Struct({ campaign: S.optional(Campaign) })).annotate({
+        identifier: "DescribeCampaignResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/campaigns/{id}/state" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetCampaignStateRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ state: S.optional(S.String) })).annotate({
+        identifier: "GetCampaignStateResponse",
+      });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ campaignIds: CampaignIdList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/campaigns-state" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetCampaignStateBatchRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ campaignId: S.optional(S.String), state: S.optional(S.String) }),
+      ).annotate({
+        identifier: "SuccessfulCampaignStateResponse",
+      });
+    case 5:
+      return S.Array(SuccessfulCampaignStateResponse);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ campaignId: S.optional(S.String), failureCode: S.optional(S.String) }),
+      ).annotate({
+        identifier: "FailedCampaignStateResponse",
+      });
+    case 7:
+      return S.Array(FailedCampaignStateResponse);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          successfulRequests: S.optional(SuccessfulCampaignStateResponseList),
+          failedRequests: S.optional(FailedCampaignStateResponseList),
+        }),
+      ).annotate({
+        identifier: "GetCampaignStateBatchResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/connect-instance/{connectInstanceId}/config" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetConnectInstanceConfigRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          encryptionType: S.optional(S.String),
+          keyArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          connectInstanceId: S.String,
+          serviceLinkedRoleArn: S.String,
+          encryptionConfig: EncryptionConfig,
+        }),
+      ).annotate({ identifier: "InstanceConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ connectInstanceConfig: S.optional(InstanceConfig) }),
+      ).annotate({
+        identifier: "GetConnectInstanceConfigResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/connect-instance/{connectInstanceId}/onboarding" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetInstanceOnboardingJobStatusRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          connectInstanceId: S.String,
+          status: S.String,
+          failureCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstanceOnboardingJobStatus",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ connectInstanceOnboardingJobStatus: S.optional(InstanceOnboardingJobStatus) }),
+      ).annotate({
+        identifier: "GetInstanceOnboardingJobStatusResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ value: S.String, operator: S.String })).annotate({
+        identifier: "InstanceIdFilter",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ instanceIdFilter: S.optional(InstanceIdFilter) })).annotate(
+        { identifier: "CampaignFilters" },
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          filters: S.optional(CampaignFilters),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/campaigns-summary" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListCampaignsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ id: S.String, arn: S.String, name: S.String, connectInstanceId: S.String }),
+      ).annotate({ identifier: "CampaignSummary" });
+    case 4:
+      return S.Array(CampaignSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          campaignSummaryList: S.optional(CampaignSummaryList),
+        }),
+      ).annotate({ identifier: "ListCampaignsResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/campaigns/{id}/pause" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PauseCampaignRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.String,
+          phoneNumber: SensitiveString,
+          expirationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          attributes: Attributes,
+        }),
+      ).annotate({ identifier: "DialRequest" });
+    case 2:
+      return S.Array(DialRequest);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), dialRequests: DialRequestList }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/campaigns/{id}/dial-requests" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutDialRequestBatchRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ clientToken: S.optional(S.String), id: S.optional(S.String) }),
+      ).annotate({ identifier: "SuccessfulRequest" });
+    case 5:
+      return S.Array(SuccessfulRequest);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String),
+          id: S.optional(S.String),
+          failureCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FailedRequest" });
+    case 7:
+      return S.Array(FailedRequest);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          successfulRequests: S.optional(SuccessfulRequestList),
+          failedRequests: S.optional(FailedRequestList),
+        }),
+      ).annotate({
+        identifier: "PutDialRequestBatchResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/campaigns/{id}/resume" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ResumeCampaignRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/campaigns/{id}/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartCampaignRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
+          encryptionConfig: EncryptionConfig,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/connect-instance/{connectInstanceId}/onboarding" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartInstanceOnboardingJobRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/campaigns/{id}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopCampaignRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: TagMap }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String.pipe(T.HttpLabel("arn")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), dialerConfig: DialerConfig }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/campaigns/{id}/dialer-config" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateCampaignDialerConfigRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String.pipe(T.HttpLabel("id")), name: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/campaigns/{id}/name" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateCampaignNameRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.HttpLabel("id")),
+          connectContactFlowId: S.optional(S.String),
+          connectSourcePhoneNumber: S.optional(S.String),
+          answerMachineDetectionConfig: S.optional(AnswerMachineDetectionConfig),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/campaigns/{id}/outbound-call-config" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateCampaignOutboundCallConfigRequest",
+      });
+  }
+}

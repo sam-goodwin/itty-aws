@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -166,17 +167,15 @@ export type ToolName = string;
 export type ToolDescription = string | redacted.Redacted<string>;
 export type ToolInputSchemaDocument = unknown;
 export type ToolInputSchema = { json: any };
-const ToolInputSchema = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ json: S.Any })]);
+const ToolInputSchema = /*@__PURE__*/ __L.at(__c0, 0);
 export interface ToolSpec {
   name: string;
   description: string | redacted.Redacted<string>;
   inputSchema: ToolInputSchema;
 }
-const ToolSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, description: SensitiveString, inputSchema: ToolInputSchema }),
-).annotate({ identifier: "ToolSpec" }) as any as S.Schema<ToolSpec>;
+const ToolSpec = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ToolSpec>;
 export type ToolSpecs = ToolSpec[];
-const ToolSpecs = /*@__PURE__*/ S.Array(ToolSpec);
+const ToolSpecs = /*@__PURE__*/ __L.at(__c0, 2);
 export type ClientToken = string;
 export interface CreateActRequest {
   workflowDefinitionName: string;
@@ -186,28 +185,7 @@ export interface CreateActRequest {
   toolSpecs?: ToolSpec[];
   clientToken?: string;
 }
-const CreateActRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-    task: SensitiveString,
-    toolSpecs: S.optional(ToolSpecs),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions/{sessionId}/acts",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateActRequest" }) as any as S.Schema<CreateActRequest>;
+const CreateActRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateActRequest>;
 export type ActStatus =
   | "RUNNING"
   | "PENDING_CLIENT_ACTION"
@@ -222,39 +200,20 @@ export interface CreateActResponse {
   actId: string;
   status: ActStatus;
 }
-const CreateActResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actId: S.String, status: ActStatus }),
-).annotate({ identifier: "CreateActResponse" }) as any as S.Schema<CreateActResponse>;
+const CreateActResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateActResponse>;
 export interface CreateSessionRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
   clientToken?: string;
 }
-const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateSessionRequest" }) as any as S.Schema<CreateSessionRequest>;
+const CreateSessionRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateSessionRequest>;
 export interface CreateSessionResponse {
   sessionId: string;
 }
-const CreateSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionId: S.String }),
-).annotate({ identifier: "CreateSessionResponse" }) as any as S.Schema<CreateSessionResponse>;
+const CreateSessionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateSessionResponse>;
 export type WorkflowDescription = string | redacted.Redacted<string>;
 export type S3BucketName = string;
 export type S3KeyPrefix = string;
@@ -262,38 +221,27 @@ export interface WorkflowExportConfig {
   s3BucketName: string;
   s3KeyPrefix?: string;
 }
-const WorkflowExportConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3BucketName: S.String, s3KeyPrefix: S.optional(S.String) }),
-).annotate({ identifier: "WorkflowExportConfig" }) as any as S.Schema<WorkflowExportConfig>;
+const WorkflowExportConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<WorkflowExportConfig>;
 export interface CreateWorkflowDefinitionRequest {
   name: string;
   description?: string | redacted.Redacted<string>;
   exportConfig?: WorkflowExportConfig;
   clientToken?: string;
 }
-const CreateWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    exportConfig: S.optional(WorkflowExportConfig),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/workflow-definitions" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateWorkflowDefinitionRequest",
-}) as any as S.Schema<CreateWorkflowDefinitionRequest>;
+const CreateWorkflowDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateWorkflowDefinitionRequest>;
 export type WorkflowDefinitionStatus = "ACTIVE" | "DELETING" | (string & {});
 const WorkflowDefinitionStatus = S.String;
 
 export interface CreateWorkflowDefinitionResponse {
   status: WorkflowDefinitionStatus;
 }
-const CreateWorkflowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: WorkflowDefinitionStatus }),
-).annotate({
-  identifier: "CreateWorkflowDefinitionResponse",
-}) as any as S.Schema<CreateWorkflowDefinitionResponse>;
+const CreateWorkflowDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateWorkflowDefinitionResponse>;
 export type ModelId = string;
 export type CloudWatchLogGroupName = string;
 export type NonBlankString = string;
@@ -301,9 +249,7 @@ export interface ClientInfo {
   compatibilityVersion: number;
   sdkVersion?: string;
 }
-const ClientInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ compatibilityVersion: S.Number, sdkVersion: S.optional(S.String) }),
-).annotate({ identifier: "ClientInfo" }) as any as S.Schema<ClientInfo>;
+const ClientInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ClientInfo>;
 export interface CreateWorkflowRunRequest {
   workflowDefinitionName: string;
   modelId: string;
@@ -311,27 +257,10 @@ export interface CreateWorkflowRunRequest {
   logGroupName?: string;
   clientInfo: ClientInfo;
 }
-const CreateWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    modelId: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    logGroupName: S.optional(S.String),
-    clientInfo: ClientInfo,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateWorkflowRunRequest" }) as any as S.Schema<CreateWorkflowRunRequest>;
+const CreateWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateWorkflowRunRequest>;
 export type WorkflowRunStatus =
   | "RUNNING"
   | "SUCCEEDED"
@@ -345,28 +274,17 @@ export interface CreateWorkflowRunResponse {
   workflowRunId: string;
   status: WorkflowRunStatus;
 }
-const CreateWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowRunId: S.String, status: WorkflowRunStatus }),
-).annotate({
-  identifier: "CreateWorkflowRunResponse",
-}) as any as S.Schema<CreateWorkflowRunResponse>;
+const CreateWorkflowRunResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateWorkflowRunResponse>;
 export interface DeleteWorkflowDefinitionRequest {
   workflowDefinitionName: string;
 }
-const DeleteWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/workflow-definitions/{workflowDefinitionName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteWorkflowDefinitionRequest",
-}) as any as S.Schema<DeleteWorkflowDefinitionRequest>;
+const DeleteWorkflowDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteWorkflowDefinitionRequest>;
 export interface DeleteWorkflowDefinitionResponse {
   status: WorkflowDefinitionStatus;
 }
@@ -376,24 +294,10 @@ export interface DeleteWorkflowRunRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
 }
-const DeleteWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteWorkflowRunRequest" }) as any as S.Schema<DeleteWorkflowRunRequest>;
+const DeleteWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteWorkflowRunRequest>;
 export interface DeleteWorkflowRunResponse {
   status: WorkflowRunStatus;
 }
@@ -402,20 +306,10 @@ const DeleteWorkflowRunResponse =
 export interface GetWorkflowDefinitionRequest {
   workflowDefinitionName: string;
 }
-const GetWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/workflow-definitions/{workflowDefinitionName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetWorkflowDefinitionRequest",
-}) as any as S.Schema<GetWorkflowDefinitionRequest>;
+const GetWorkflowDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetWorkflowDefinitionRequest>;
 export type WorkflowDefinitionArn = string;
 export interface GetWorkflowDefinitionResponse {
   name: string;
@@ -425,40 +319,18 @@ export interface GetWorkflowDefinitionResponse {
   exportConfig?: WorkflowExportConfig;
   status: WorkflowDefinitionStatus;
 }
-const GetWorkflowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    description: S.optional(SensitiveString),
-    exportConfig: S.optional(WorkflowExportConfig),
-    status: WorkflowDefinitionStatus,
-  }),
-).annotate({
-  identifier: "GetWorkflowDefinitionResponse",
-}) as any as S.Schema<GetWorkflowDefinitionResponse>;
+const GetWorkflowDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetWorkflowDefinitionResponse>;
 export interface GetWorkflowRunRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
 }
-const GetWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetWorkflowRunRequest" }) as any as S.Schema<GetWorkflowRunRequest>;
+const GetWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetWorkflowRunRequest>;
 export type WorkflowRunArn = string;
 export interface GetWorkflowRunResponse {
   workflowRunArn: string;
@@ -469,31 +341,22 @@ export interface GetWorkflowRunResponse {
   modelId: string;
   logGroupName?: string;
 }
-const GetWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowRunArn: S.String,
-    workflowRunId: S.String,
-    status: WorkflowRunStatus,
-    startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    modelId: S.String,
-    logGroupName: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetWorkflowRunResponse" }) as any as S.Schema<GetWorkflowRunResponse>;
+const GetWorkflowRunResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetWorkflowRunResponse>;
 export type CallId = string;
 export type CallResultContent = { text: string };
-const CallResultContent = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ text: S.String })]);
+const CallResultContent = /*@__PURE__*/ __L.at(__c2, 3);
 export type CallResultContents = CallResultContent[];
-const CallResultContents = /*@__PURE__*/ S.Array(CallResultContent);
+const CallResultContents = /*@__PURE__*/ __L.at(__c2, 4);
 export interface CallResult {
   callId?: string;
   content: CallResultContent[];
 }
-const CallResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ callId: S.optional(S.String), content: CallResultContents }),
-).annotate({ identifier: "CallResult" }) as any as S.Schema<CallResult>;
+const CallResult = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CallResult>;
 export type CallResults = CallResult[];
-const CallResults = /*@__PURE__*/ S.Array(CallResult);
+const CallResults = /*@__PURE__*/ __L.at(__c2, 6);
 export interface InvokeActStepRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
@@ -502,46 +365,24 @@ export interface InvokeActStepRequest {
   callResults: CallResult[];
   previousStepId?: string;
 }
-const InvokeActStepRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-    actId: S.String.pipe(T.HttpLabel("actId")),
-    callResults: CallResults,
-    previousStepId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions/{sessionId}/acts/{actId}/invoke-step/",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "InvokeActStepRequest" }) as any as S.Schema<InvokeActStepRequest>;
+const InvokeActStepRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<InvokeActStepRequest>;
 export type SensitiveDocument = unknown;
 export interface Call {
   callId: string;
   input: any;
   name: string;
 }
-const Call = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ callId: S.String, input: S.Any, name: S.String }),
-).annotate({ identifier: "Call" }) as any as S.Schema<Call>;
+const Call = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Call>;
 export type Calls = Call[];
-const Calls = /*@__PURE__*/ S.Array(Call);
+const Calls = /*@__PURE__*/ __L.at(__c3, 1);
 export interface InvokeActStepResponse {
   calls: Call[];
   stepId: string;
 }
-const InvokeActStepResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ calls: Calls, stepId: S.String }),
-).annotate({ identifier: "InvokeActStepResponse" }) as any as S.Schema<InvokeActStepResponse>;
+const InvokeActStepResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<InvokeActStepResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export type SortOrder = "Ascending" | "Descending" | (string & {});
@@ -555,25 +396,7 @@ export interface ListActsRequest {
   nextToken?: string;
   sortOrder?: SortOrder;
 }
-const ListActsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    workflowRunId: S.optional(S.String).pipe(T.HttpQuery("workflowRunId")),
-    sessionId: S.optional(S.String).pipe(T.HttpQuery("sessionId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortOrder: S.optional(SortOrder),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/workflow-definitions/{workflowDefinitionName}/acts" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListActsRequest" }) as any as S.Schema<ListActsRequest>;
+const ListActsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListActsRequest>;
 export type TraceLocationType = "S3" | (string & {});
 const TraceLocationType = S.String;
 
@@ -581,9 +404,7 @@ export interface TraceLocation {
   locationType: TraceLocationType;
   location: string;
 }
-const TraceLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ locationType: TraceLocationType, location: S.String }),
-).annotate({ identifier: "TraceLocation" }) as any as S.Schema<TraceLocation>;
+const TraceLocation = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<TraceLocation>;
 export interface ActSummary {
   workflowRunId: string;
   sessionId: string;
@@ -593,93 +414,58 @@ export interface ActSummary {
   endedAt?: Date;
   traceLocation?: TraceLocation;
 }
-const ActSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowRunId: S.String,
-    sessionId: S.String,
-    actId: S.String,
-    status: ActStatus,
-    startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    traceLocation: S.optional(TraceLocation),
-  }),
-).annotate({ identifier: "ActSummary" }) as any as S.Schema<ActSummary>;
+const ActSummary = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ActSummary>;
 export type ActSummaries = ActSummary[];
-const ActSummaries = /*@__PURE__*/ S.Array(ActSummary);
+const ActSummaries = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ListActsResponse {
   actSummaries: ActSummary[];
   nextToken?: string;
 }
-const ListActsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actSummaries: ActSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListActsResponse" }) as any as S.Schema<ListActsResponse>;
+const ListActsResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListActsResponse>;
 export interface ListModelsRequest {
   clientCompatibilityVersion: number;
 }
-const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientCompatibilityVersion: S.Number.pipe(T.HttpQuery("clientCompatibilityVersion")),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/models" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListModelsRequest" }) as any as S.Schema<ListModelsRequest>;
+const ListModelsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListModelsRequest>;
 export type ModelStatus = "ACTIVE" | "LEGACY" | "DEPRECATED" | "PREVIEW" | (string & {});
 const ModelStatus = S.String;
 
 export interface ModelLifecycle {
   status: ModelStatus;
 }
-const ModelLifecycle = /*@__PURE__*/ S.suspend(() => S.Struct({ status: ModelStatus })).annotate({
-  identifier: "ModelLifecycle",
-}) as any as S.Schema<ModelLifecycle>;
+const ModelLifecycle = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ModelLifecycle>;
 export interface ModelSummary {
   modelId: string;
   modelLifecycle: ModelLifecycle;
   minimumCompatibilityVersion: number;
 }
-const ModelSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelId: S.String,
-    modelLifecycle: ModelLifecycle,
-    minimumCompatibilityVersion: S.Number,
-  }),
-).annotate({ identifier: "ModelSummary" }) as any as S.Schema<ModelSummary>;
+const ModelSummary = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ModelSummary>;
 export type ModelSummaries = ModelSummary[];
-const ModelSummaries = /*@__PURE__*/ S.Array(ModelSummary);
+const ModelSummaries = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ModelAlias {
   aliasName: string;
   latestModelId: string;
   resolvedModelId?: string;
 }
-const ModelAlias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ aliasName: S.String, latestModelId: S.String, resolvedModelId: S.optional(S.String) }),
-).annotate({ identifier: "ModelAlias" }) as any as S.Schema<ModelAlias>;
+const ModelAlias = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ModelAlias>;
 export type ModelAliases = ModelAlias[];
-const ModelAliases = /*@__PURE__*/ S.Array(ModelAlias);
+const ModelAliases = /*@__PURE__*/ __L.at(__c4, 5);
 export type ModelIdList = string[];
-const ModelIdList = /*@__PURE__*/ S.Array(S.String);
+const ModelIdList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface CompatibilityInformation {
   clientCompatibilityVersion: number;
   supportedModelIds: string[];
   message?: string;
 }
-const CompatibilityInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientCompatibilityVersion: S.Number,
-    supportedModelIds: ModelIdList,
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "CompatibilityInformation" }) as any as S.Schema<CompatibilityInformation>;
+const CompatibilityInformation = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CompatibilityInformation>;
 export interface ListModelsResponse {
   modelSummaries: ModelSummary[];
   modelAliases: ModelAlias[];
   compatibilityInformation: CompatibilityInformation;
 }
-const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelSummaries: ModelSummaries,
-    modelAliases: ModelAliases,
-    compatibilityInformation: CompatibilityInformation,
-  }),
-).annotate({ identifier: "ListModelsResponse" }) as any as S.Schema<ListModelsResponse>;
+const ListModelsResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ListModelsResponse>;
 export interface ListSessionsRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
@@ -687,112 +473,57 @@ export interface ListSessionsRequest {
   nextToken?: string;
   sortOrder?: SortOrder;
 }
-const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortOrder: S.optional(SortOrder),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListSessionsRequest" }) as any as S.Schema<ListSessionsRequest>;
+const ListSessionsRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListSessionsRequest>;
 export interface SessionSummary {
   sessionId: string;
 }
 const SessionSummary = CreateSessionResponse as any as S.Schema<SessionSummary>;
 export type SessionSummaries = SessionSummary[];
-const SessionSummaries = /*@__PURE__*/ S.Array(SessionSummary);
+const SessionSummaries = /*@__PURE__*/ __L.at(__c5, 2);
 export interface ListSessionsResponse {
   sessionSummaries: SessionSummary[];
   nextToken?: string;
 }
-const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionSummaries: SessionSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSessionsResponse" }) as any as S.Schema<ListSessionsResponse>;
+const ListSessionsResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListSessionsResponse>;
 export interface ListWorkflowDefinitionsRequest {
   maxResults?: number;
   nextToken?: string;
   sortOrder?: SortOrder;
 }
-const ListWorkflowDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortOrder: S.optional(SortOrder),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/workflow-definitions" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListWorkflowDefinitionsRequest",
-}) as any as S.Schema<ListWorkflowDefinitionsRequest>;
+const ListWorkflowDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListWorkflowDefinitionsRequest>;
 export interface WorkflowDefinitionSummary {
   workflowDefinitionArn: string;
   workflowDefinitionName: string;
   createdAt: Date;
   status: WorkflowDefinitionStatus;
 }
-const WorkflowDefinitionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionArn: S.String,
-    workflowDefinitionName: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: WorkflowDefinitionStatus,
-  }),
-).annotate({
-  identifier: "WorkflowDefinitionSummary",
-}) as any as S.Schema<WorkflowDefinitionSummary>;
+const WorkflowDefinitionSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<WorkflowDefinitionSummary>;
 export type WorkflowDefinitionSummaries = WorkflowDefinitionSummary[];
-const WorkflowDefinitionSummaries = /*@__PURE__*/ S.Array(WorkflowDefinitionSummary);
+const WorkflowDefinitionSummaries = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListWorkflowDefinitionsResponse {
   workflowDefinitionSummaries: WorkflowDefinitionSummary[];
   nextToken?: string;
 }
-const ListWorkflowDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionSummaries: WorkflowDefinitionSummaries,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkflowDefinitionsResponse",
-}) as any as S.Schema<ListWorkflowDefinitionsResponse>;
+const ListWorkflowDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListWorkflowDefinitionsResponse>;
 export interface ListWorkflowRunsRequest {
   workflowDefinitionName: string;
   maxResults?: number;
   nextToken?: string;
   sortOrder?: SortOrder;
 }
-const ListWorkflowRunsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortOrder: S.optional(SortOrder),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListWorkflowRunsRequest" }) as any as S.Schema<ListWorkflowRunsRequest>;
+const ListWorkflowRunsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListWorkflowRunsRequest>;
 export interface WorkflowRunSummary {
   workflowRunArn: string;
   workflowRunId: string;
@@ -801,33 +532,23 @@ export interface WorkflowRunSummary {
   endedAt?: Date;
   traceLocation?: TraceLocation;
 }
-const WorkflowRunSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowRunArn: S.String,
-    workflowRunId: S.String,
-    status: WorkflowRunStatus,
-    startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    traceLocation: S.optional(TraceLocation),
-  }),
-).annotate({ identifier: "WorkflowRunSummary" }) as any as S.Schema<WorkflowRunSummary>;
+const WorkflowRunSummary = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<WorkflowRunSummary>;
 export type WorkflowRunSummaries = WorkflowRunSummary[];
-const WorkflowRunSummaries = /*@__PURE__*/ S.Array(WorkflowRunSummary);
+const WorkflowRunSummaries = /*@__PURE__*/ __L.at(__c6, 2);
 export interface ListWorkflowRunsResponse {
   workflowRunSummaries: WorkflowRunSummary[];
   nextToken?: string;
 }
-const ListWorkflowRunsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowRunSummaries: WorkflowRunSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListWorkflowRunsResponse" }) as any as S.Schema<ListWorkflowRunsResponse>;
+const ListWorkflowRunsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListWorkflowRunsResponse>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface ActError {
   message: string | redacted.Redacted<string>;
   type?: string;
 }
-const ActError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: SensitiveString, type: S.optional(S.String) }),
-).annotate({ identifier: "ActError" }) as any as S.Schema<ActError>;
+const ActError = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ActError>;
 export interface UpdateActRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
@@ -836,56 +557,18 @@ export interface UpdateActRequest {
   status: ActStatus;
   error?: ActError;
 }
-const UpdateActRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-    actId: S.String.pipe(T.HttpLabel("actId")),
-    status: ActStatus,
-    error: S.optional(ActError),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions/{sessionId}/acts/{actId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateActRequest" }) as any as S.Schema<UpdateActRequest>;
+const UpdateActRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<UpdateActRequest>;
 export interface UpdateActResponse {}
-const UpdateActResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateActResponse",
-}) as any as S.Schema<UpdateActResponse>;
+const UpdateActResponse = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<UpdateActResponse>;
 export interface UpdateWorkflowRunRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
   status: WorkflowRunStatus;
 }
-const UpdateWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-    status: WorkflowRunStatus,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateWorkflowRunRequest" }) as any as S.Schema<UpdateWorkflowRunRequest>;
+const UpdateWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<UpdateWorkflowRunRequest>;
 export interface UpdateWorkflowRunResponse {}
 const UpdateWorkflowRunResponse = UpdateActResponse as any as S.Schema<UpdateWorkflowRunResponse>;
 export type InternalServerExceptionReason =
@@ -905,11 +588,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c7, 1);
 export type CreateActError =
   | AccessDeniedException
   | ConflictException
@@ -1439,3 +1123,550 @@ export const updateWorkflowRun: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateWorkflowRun",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ json: S.Any })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, description: SensitiveString, inputSchema: ToolInputSchema }),
+      ).annotate({ identifier: "ToolSpec" });
+    case 2:
+      return S.Array(ToolSpec);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+          task: SensitiveString,
+          toolSpecs: S.optional(ToolSpecs),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions/{sessionId}/acts",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateActRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ actId: S.String, status: ActStatus })).annotate({
+        identifier: "CreateActResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateSessionRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ sessionId: S.String })).annotate({
+        identifier: "CreateSessionResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ s3BucketName: S.String, s3KeyPrefix: S.optional(S.String) }),
+      ).annotate({ identifier: "WorkflowExportConfig" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          exportConfig: S.optional(WorkflowExportConfig),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/workflow-definitions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateWorkflowDefinitionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ status: WorkflowDefinitionStatus })).annotate({
+        identifier: "CreateWorkflowDefinitionResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ compatibilityVersion: S.Number, sdkVersion: S.optional(S.String) }),
+      ).annotate({ identifier: "ClientInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          modelId: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          logGroupName: S.optional(S.String),
+          clientInfo: ClientInfo,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateWorkflowRunRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ workflowRunId: S.String, status: WorkflowRunStatus }),
+      ).annotate({
+        identifier: "CreateWorkflowRunResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/workflow-definitions/{workflowDefinitionName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteWorkflowDefinitionRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteWorkflowRunRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/workflow-definitions/{workflowDefinitionName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetWorkflowDefinitionRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          description: S.optional(SensitiveString),
+          exportConfig: S.optional(WorkflowExportConfig),
+          status: WorkflowDefinitionStatus,
+        }),
+      ).annotate({
+        identifier: "GetWorkflowDefinitionResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetWorkflowRunRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workflowRunArn: S.String,
+          workflowRunId: S.String,
+          status: WorkflowRunStatus,
+          startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          modelId: S.String,
+          logGroupName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetWorkflowRunResponse" });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ text: S.String })]);
+    case 4:
+      return S.Array(CallResultContent);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ callId: S.optional(S.String), content: CallResultContents }),
+      ).annotate({ identifier: "CallResult" });
+    case 6:
+      return S.Array(CallResult);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+          actId: S.String.pipe(T.HttpLabel("actId")),
+          callResults: CallResults,
+          previousStepId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions/{sessionId}/acts/{actId}/invoke-step/",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "InvokeActStepRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ callId: S.String, input: S.Any, name: S.String })).annotate(
+        { identifier: "Call" },
+      );
+    case 1:
+      return S.Array(Call);
+    case 2:
+      return S.suspend(() => S.Struct({ calls: Calls, stepId: S.String })).annotate({
+        identifier: "InvokeActStepResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          workflowRunId: S.optional(S.String).pipe(T.HttpQuery("workflowRunId")),
+          sessionId: S.optional(S.String).pipe(T.HttpQuery("sessionId")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortOrder: S.optional(SortOrder),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workflow-definitions/{workflowDefinitionName}/acts" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListActsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ locationType: TraceLocationType, location: S.String }),
+      ).annotate({ identifier: "TraceLocation" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workflowRunId: S.String,
+          sessionId: S.String,
+          actId: S.String,
+          status: ActStatus,
+          startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          traceLocation: S.optional(TraceLocation),
+        }),
+      ).annotate({ identifier: "ActSummary" });
+    case 6:
+      return S.Array(ActSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ actSummaries: ActSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListActsResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientCompatibilityVersion: S.Number.pipe(T.HttpQuery("clientCompatibilityVersion")),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/models" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListModelsRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ status: ModelStatus })).annotate({
+        identifier: "ModelLifecycle",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String,
+          modelLifecycle: ModelLifecycle,
+          minimumCompatibilityVersion: S.Number,
+        }),
+      ).annotate({ identifier: "ModelSummary" });
+    case 3:
+      return S.Array(ModelSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          aliasName: S.String,
+          latestModelId: S.String,
+          resolvedModelId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ModelAlias" });
+    case 5:
+      return S.Array(ModelAlias);
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          clientCompatibilityVersion: S.Number,
+          supportedModelIds: ModelIdList,
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CompatibilityInformation" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modelSummaries: ModelSummaries,
+          modelAliases: ModelAliases,
+          compatibilityInformation: CompatibilityInformation,
+        }),
+      ).annotate({ identifier: "ListModelsResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortOrder: S.optional(SortOrder),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListSessionsRequest" });
+    case 2:
+      return S.Array(SessionSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ sessionSummaries: SessionSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSessionsResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortOrder: S.optional(SortOrder),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workflow-definitions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListWorkflowDefinitionsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionArn: S.String,
+          workflowDefinitionName: S.String,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          status: WorkflowDefinitionStatus,
+        }),
+      ).annotate({
+        identifier: "WorkflowDefinitionSummary",
+      });
+    case 6:
+      return S.Array(WorkflowDefinitionSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionSummaries: WorkflowDefinitionSummaries,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListWorkflowDefinitionsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortOrder: S.optional(SortOrder),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListWorkflowRunsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workflowRunArn: S.String,
+          workflowRunId: S.String,
+          status: WorkflowRunStatus,
+          startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          traceLocation: S.optional(TraceLocation),
+        }),
+      ).annotate({ identifier: "WorkflowRunSummary" });
+    case 2:
+      return S.Array(WorkflowRunSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ workflowRunSummaries: WorkflowRunSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListWorkflowRunsResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ message: SensitiveString, type: S.optional(S.String) }),
+      ).annotate({ identifier: "ActError" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+          actId: S.String.pipe(T.HttpLabel("actId")),
+          status: ActStatus,
+          error: S.optional(ActError),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions/{sessionId}/acts/{actId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateActRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UpdateActResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
+          workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+          status: WorkflowRunStatus,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateWorkflowRunRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(ValidationExceptionField);
+  }
+}

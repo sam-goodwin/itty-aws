@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -253,11 +254,9 @@ export interface Tag {
   key?: string;
   value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export type KmsKeyId = string;
 export type KmsDataKeyReusePeriodSeconds = number;
 export type EncryptionType = "AWS_OWNED_KEY" | "CUSTOMER_MANAGED_KMS_KEY" | (string & {});
@@ -268,36 +267,22 @@ export interface EncryptionConfiguration {
   kmsDataKeyReusePeriodSeconds?: number;
   type: EncryptionType;
 }
-const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyId: S.optional(S.String),
-    kmsDataKeyReusePeriodSeconds: S.optional(S.Number),
-    type: EncryptionType,
-  }),
-).annotate({ identifier: "EncryptionConfiguration" }) as any as S.Schema<EncryptionConfiguration>;
+const EncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<EncryptionConfiguration>;
 export interface CreateActivityInput {
   name: string;
   tags?: Tag[];
   encryptionConfiguration?: EncryptionConfiguration;
 }
-const CreateActivityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tags: S.optional(TagList),
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateActivityInput" }) as any as S.Schema<CreateActivityInput>;
+const CreateActivityInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateActivityInput>;
 export type Arn = string;
 export interface CreateActivityOutput {
   activityArn: string;
   creationDate: Date;
 }
-const CreateActivityOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activityArn: S.String,
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }).pipe(ns),
-).annotate({ identifier: "CreateActivityOutput" }) as any as S.Schema<CreateActivityOutput>;
+const CreateActivityOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateActivityOutput>;
 export type Definition = string | redacted.Redacted<string>;
 export type StateMachineType = "STANDARD" | "EXPRESS" | (string & {});
 const StateMachineType = S.String;
@@ -309,36 +294,27 @@ export type IncludeExecutionData = boolean;
 export interface CloudWatchLogsLogGroup {
   logGroupArn?: string;
 }
-const CloudWatchLogsLogGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ logGroupArn: S.optional(S.String) }),
-).annotate({ identifier: "CloudWatchLogsLogGroup" }) as any as S.Schema<CloudWatchLogsLogGroup>;
+const CloudWatchLogsLogGroup = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CloudWatchLogsLogGroup>;
 export interface LogDestination {
   cloudWatchLogsLogGroup?: CloudWatchLogsLogGroup;
 }
-const LogDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cloudWatchLogsLogGroup: S.optional(CloudWatchLogsLogGroup) }),
-).annotate({ identifier: "LogDestination" }) as any as S.Schema<LogDestination>;
+const LogDestination = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LogDestination>;
 export type LogDestinationList = LogDestination[];
-const LogDestinationList = /*@__PURE__*/ S.Array(LogDestination);
+const LogDestinationList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface LoggingConfiguration {
   level?: LogLevel;
   includeExecutionData?: boolean;
   destinations?: LogDestination[];
 }
-const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    level: S.optional(LogLevel),
-    includeExecutionData: S.optional(S.Boolean),
-    destinations: S.optional(LogDestinationList),
-  }),
-).annotate({ identifier: "LoggingConfiguration" }) as any as S.Schema<LoggingConfiguration>;
+const LoggingConfiguration = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LoggingConfiguration>;
 export type Enabled = boolean;
 export interface TracingConfiguration {
   enabled?: boolean;
 }
-const TracingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ enabled: S.optional(S.Boolean) }),
-).annotate({ identifier: "TracingConfiguration" }) as any as S.Schema<TracingConfiguration>;
+const TracingConfiguration = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TracingConfiguration>;
 export type Publish = boolean;
 export type VersionDescription = string | redacted.Redacted<string>;
 export interface CreateStateMachineInput {
@@ -353,32 +329,19 @@ export interface CreateStateMachineInput {
   versionDescription?: string | redacted.Redacted<string>;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-const CreateStateMachineInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    definition: SensitiveString,
-    roleArn: S.String,
-    type: S.optional(StateMachineType),
-    loggingConfiguration: S.optional(LoggingConfiguration),
-    tags: S.optional(TagList),
-    tracingConfiguration: S.optional(TracingConfiguration),
-    publish: S.optional(S.Boolean),
-    versionDescription: S.optional(SensitiveString),
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateStateMachineInput" }) as any as S.Schema<CreateStateMachineInput>;
+const CreateStateMachineInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateStateMachineInput>;
 export interface CreateStateMachineOutput {
   stateMachineArn: string;
   creationDate: Date;
   stateMachineVersionArn?: string;
 }
-const CreateStateMachineOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    stateMachineVersionArn: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "CreateStateMachineOutput" }) as any as S.Schema<CreateStateMachineOutput>;
+const CreateStateMachineOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateStateMachineOutput>;
 export type AliasDescription = string | redacted.Redacted<string>;
 export type CharacterRestrictedName = string;
 export type VersionWeight = number;
@@ -386,115 +349,87 @@ export interface RoutingConfigurationListItem {
   stateMachineVersionArn: string;
   weight: number;
 }
-const RoutingConfigurationListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stateMachineVersionArn: S.String, weight: S.Number }),
-).annotate({
-  identifier: "RoutingConfigurationListItem",
-}) as any as S.Schema<RoutingConfigurationListItem>;
+const RoutingConfigurationListItem = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<RoutingConfigurationListItem>;
 export type RoutingConfigurationList = RoutingConfigurationListItem[];
-const RoutingConfigurationList = /*@__PURE__*/ S.Array(RoutingConfigurationListItem);
+const RoutingConfigurationList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface CreateStateMachineAliasInput {
   description?: string | redacted.Redacted<string>;
   name: string;
   routingConfiguration: RoutingConfigurationListItem[];
 }
-const CreateStateMachineAliasInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(SensitiveString),
-    name: S.String,
-    routingConfiguration: RoutingConfigurationList,
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateStateMachineAliasInput",
-}) as any as S.Schema<CreateStateMachineAliasInput>;
+const CreateStateMachineAliasInput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateStateMachineAliasInput>;
 export interface CreateStateMachineAliasOutput {
   stateMachineAliasArn: string;
   creationDate: Date;
 }
-const CreateStateMachineAliasOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineAliasArn: S.String,
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }).pipe(ns),
-).annotate({
-  identifier: "CreateStateMachineAliasOutput",
-}) as any as S.Schema<CreateStateMachineAliasOutput>;
+const CreateStateMachineAliasOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateStateMachineAliasOutput>;
 export interface DeleteActivityInput {
   activityArn: string;
 }
-const DeleteActivityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ activityArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteActivityInput" }) as any as S.Schema<DeleteActivityInput>;
+const DeleteActivityInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteActivityInput>;
 export interface DeleteActivityOutput {}
-const DeleteActivityOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteActivityOutput",
-}) as any as S.Schema<DeleteActivityOutput>;
+const DeleteActivityOutput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeleteActivityOutput>;
 export interface DeleteStateMachineInput {
   stateMachineArn: string;
 }
-const DeleteStateMachineInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stateMachineArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteStateMachineInput" }) as any as S.Schema<DeleteStateMachineInput>;
+const DeleteStateMachineInput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteStateMachineInput>;
 export interface DeleteStateMachineOutput {}
-const DeleteStateMachineOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteStateMachineOutput",
-}) as any as S.Schema<DeleteStateMachineOutput>;
+const DeleteStateMachineOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteStateMachineOutput>;
 export interface DeleteStateMachineAliasInput {
   stateMachineAliasArn: string;
 }
-const DeleteStateMachineAliasInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stateMachineAliasArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteStateMachineAliasInput",
-}) as any as S.Schema<DeleteStateMachineAliasInput>;
+const DeleteStateMachineAliasInput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteStateMachineAliasInput>;
 export interface DeleteStateMachineAliasOutput {}
-const DeleteStateMachineAliasOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  {
-    identifier: "DeleteStateMachineAliasOutput",
-  },
+const DeleteStateMachineAliasOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
 ) as any as S.Schema<DeleteStateMachineAliasOutput>;
 export type LongArn = string;
 export interface DeleteStateMachineVersionInput {
   stateMachineVersionArn: string;
 }
-const DeleteStateMachineVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stateMachineVersionArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteStateMachineVersionInput",
-}) as any as S.Schema<DeleteStateMachineVersionInput>;
+const DeleteStateMachineVersionInput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteStateMachineVersionInput>;
 export interface DeleteStateMachineVersionOutput {}
 const DeleteStateMachineVersionOutput =
   DeleteStateMachineAliasOutput as any as S.Schema<DeleteStateMachineVersionOutput>;
 export interface DescribeActivityInput {
   activityArn: string;
 }
-const DescribeActivityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ activityArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeActivityInput" }) as any as S.Schema<DescribeActivityInput>;
+const DescribeActivityInput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DescribeActivityInput>;
 export interface DescribeActivityOutput {
   activityArn: string;
   name: string;
   creationDate: Date;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-const DescribeActivityOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activityArn: S.String,
-    name: S.String,
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-  }).pipe(ns),
-).annotate({ identifier: "DescribeActivityOutput" }) as any as S.Schema<DescribeActivityOutput>;
+const DescribeActivityOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DescribeActivityOutput>;
 export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
 const IncludedData = S.String;
 
@@ -502,11 +437,10 @@ export interface DescribeExecutionInput {
   executionArn: string;
   includedData?: IncludedData;
 }
-const DescribeExecutionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ executionArn: S.String, includedData: S.optional(IncludedData) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeExecutionInput" }) as any as S.Schema<DescribeExecutionInput>;
+const DescribeExecutionInput = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DescribeExecutionInput>;
 export type ExecutionStatus =
   | "RUNNING"
   | "SUCCEEDED"
@@ -522,11 +456,10 @@ export type IncludedDetails = boolean;
 export interface CloudWatchEventsExecutionDataDetails {
   included?: boolean;
 }
-const CloudWatchEventsExecutionDataDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ included: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "CloudWatchEventsExecutionDataDetails",
-}) as any as S.Schema<CloudWatchEventsExecutionDataDetails>;
+const CloudWatchEventsExecutionDataDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CloudWatchEventsExecutionDataDetails>;
 export type TraceHeader = string;
 export type SensitiveError = string | redacted.Redacted<string>;
 export type SensitiveCause = string | redacted.Redacted<string>;
@@ -560,38 +493,14 @@ export interface DescribeExecutionOutput {
   redriveStatus?: ExecutionRedriveStatus;
   redriveStatusReason?: string | redacted.Redacted<string>;
 }
-const DescribeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionArn: S.String,
-    stateMachineArn: S.String,
-    name: S.optional(S.String),
-    status: ExecutionStatus,
-    startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    input: S.optional(SensitiveString),
-    inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
-    output: S.optional(SensitiveString),
-    outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
-    traceHeader: S.optional(S.String),
-    mapRunArn: S.optional(S.String),
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-    stateMachineVersionArn: S.optional(S.String),
-    stateMachineAliasArn: S.optional(S.String),
-    redriveCount: S.optional(S.Number),
-    redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    redriveStatus: S.optional(ExecutionRedriveStatus),
-    redriveStatusReason: S.optional(SensitiveString),
-  }).pipe(ns),
-).annotate({ identifier: "DescribeExecutionOutput" }) as any as S.Schema<DescribeExecutionOutput>;
+const DescribeExecutionOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DescribeExecutionOutput>;
 export interface DescribeMapRunInput {
   mapRunArn: string;
 }
-const DescribeMapRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ mapRunArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DescribeMapRunInput" }) as any as S.Schema<DescribeMapRunInput>;
+const DescribeMapRunInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DescribeMapRunInput>;
 export type MapRunStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | "ABORTED" | (string & {});
 const MapRunStatus = S.String;
 
@@ -612,20 +521,7 @@ export interface MapRunItemCounts {
   failuresNotRedrivable?: number;
   pendingRedrive?: number;
 }
-const MapRunItemCounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pending: S.Number,
-    running: S.Number,
-    succeeded: S.Number,
-    failed: S.Number,
-    timedOut: S.Number,
-    aborted: S.Number,
-    total: S.Number,
-    resultsWritten: S.Number,
-    failuresNotRedrivable: S.optional(S.Number),
-    pendingRedrive: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MapRunItemCounts" }) as any as S.Schema<MapRunItemCounts>;
+const MapRunItemCounts = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<MapRunItemCounts>;
 export interface MapRunExecutionCounts {
   pending: number;
   running: number;
@@ -653,33 +549,15 @@ export interface DescribeMapRunOutput {
   redriveCount?: number;
   redriveDate?: Date;
 }
-const DescribeMapRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mapRunArn: S.String,
-    executionArn: S.String,
-    status: MapRunStatus,
-    startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    maxConcurrency: S.Number,
-    toleratedFailurePercentage: S.Number,
-    toleratedFailureCount: S.Number,
-    itemCounts: MapRunItemCounts,
-    executionCounts: MapRunExecutionCounts,
-    redriveCount: S.optional(S.Number),
-    redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }).pipe(ns),
-).annotate({ identifier: "DescribeMapRunOutput" }) as any as S.Schema<DescribeMapRunOutput>;
+const DescribeMapRunOutput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DescribeMapRunOutput>;
 export interface DescribeStateMachineInput {
   stateMachineArn: string;
   includedData?: IncludedData;
 }
-const DescribeStateMachineInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stateMachineArn: S.String, includedData: S.optional(IncludedData) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeStateMachineInput",
-}) as any as S.Schema<DescribeStateMachineInput>;
+const DescribeStateMachineInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DescribeStateMachineInput>;
 export type StateMachineStatus = "ACTIVE" | "DELETING" | (string & {});
 const StateMachineStatus = S.String;
 
@@ -688,14 +566,11 @@ export type RevisionId = string;
 export type StateName = string;
 export type VariableName = string | redacted.Redacted<string>;
 export type VariableNameList = (string | redacted.Redacted<string>)[];
-const VariableNameList = /*@__PURE__*/ S.Array(SensitiveString);
+const VariableNameList = /*@__PURE__*/ __L.at(__c4, 0);
 export type VariableReferences = {
   [key: string]: (string | redacted.Redacted<string>)[] | undefined;
 };
-const VariableReferences = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ VariableNameList.pipe(S.optional),
-);
+const VariableReferences = /*@__PURE__*/ __L.at(__c4, 1);
 export interface DescribeStateMachineOutput {
   stateMachineArn: string;
   name: string;
@@ -712,36 +587,17 @@ export interface DescribeStateMachineOutput {
   encryptionConfiguration?: EncryptionConfiguration;
   variableReferences?: { [key: string]: (string | redacted.Redacted<string>)[] | undefined };
 }
-const DescribeStateMachineOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    name: S.String,
-    status: S.optional(StateMachineStatus),
-    definition: SensitiveString,
-    roleArn: S.String,
-    type: StateMachineType,
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    loggingConfiguration: S.optional(LoggingConfiguration),
-    tracingConfiguration: S.optional(TracingConfiguration),
-    label: S.optional(S.String),
-    revisionId: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-    variableReferences: S.optional(VariableReferences),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeStateMachineOutput",
-}) as any as S.Schema<DescribeStateMachineOutput>;
+const DescribeStateMachineOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DescribeStateMachineOutput>;
 export interface DescribeStateMachineAliasInput {
   stateMachineAliasArn: string;
 }
-const DescribeStateMachineAliasInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stateMachineAliasArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeStateMachineAliasInput",
-}) as any as S.Schema<DescribeStateMachineAliasInput>;
+const DescribeStateMachineAliasInput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DescribeStateMachineAliasInput>;
 export interface DescribeStateMachineAliasOutput {
   stateMachineAliasArn?: string;
   name?: string;
@@ -750,29 +606,18 @@ export interface DescribeStateMachineAliasOutput {
   creationDate?: Date;
   updateDate?: Date;
 }
-const DescribeStateMachineAliasOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineAliasArn: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    routingConfiguration: S.optional(RoutingConfigurationList),
-    creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeStateMachineAliasOutput",
-}) as any as S.Schema<DescribeStateMachineAliasOutput>;
+const DescribeStateMachineAliasOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DescribeStateMachineAliasOutput>;
 export interface DescribeStateMachineForExecutionInput {
   executionArn: string;
   includedData?: IncludedData;
 }
-const DescribeStateMachineForExecutionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ executionArn: S.String, includedData: S.optional(IncludedData) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeStateMachineForExecutionInput",
-}) as any as S.Schema<DescribeStateMachineForExecutionInput>;
+const DescribeStateMachineForExecutionInput = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DescribeStateMachineForExecutionInput>;
 export interface DescribeStateMachineForExecutionOutput {
   stateMachineArn: string;
   name: string;
@@ -787,42 +632,25 @@ export interface DescribeStateMachineForExecutionOutput {
   encryptionConfiguration?: EncryptionConfiguration;
   variableReferences?: { [key: string]: (string | redacted.Redacted<string>)[] | undefined };
 }
-const DescribeStateMachineForExecutionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    name: S.String,
-    definition: SensitiveString,
-    roleArn: S.String,
-    updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    loggingConfiguration: S.optional(LoggingConfiguration),
-    tracingConfiguration: S.optional(TracingConfiguration),
-    mapRunArn: S.optional(S.String),
-    label: S.optional(S.String),
-    revisionId: S.optional(S.String),
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-    variableReferences: S.optional(VariableReferences),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeStateMachineForExecutionOutput",
-}) as any as S.Schema<DescribeStateMachineForExecutionOutput>;
+const DescribeStateMachineForExecutionOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DescribeStateMachineForExecutionOutput>;
 export interface GetActivityTaskInput {
   activityArn: string;
   workerName?: string;
 }
-const GetActivityTaskInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ activityArn: S.String, workerName: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetActivityTaskInput" }) as any as S.Schema<GetActivityTaskInput>;
+const GetActivityTaskInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetActivityTaskInput>;
 export type TaskToken = string;
 export type SensitiveDataJobInput = string | redacted.Redacted<string>;
 export interface GetActivityTaskOutput {
   taskToken?: string;
   input?: string | redacted.Redacted<string>;
 }
-const GetActivityTaskOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskToken: S.optional(S.String), input: S.optional(SensitiveString) }).pipe(ns),
-).annotate({ identifier: "GetActivityTaskOutput" }) as any as S.Schema<GetActivityTaskOutput>;
+const GetActivityTaskOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetActivityTaskOutput>;
 export type PageSize = number;
 export type ReverseOrder = boolean;
 export type PageToken = string;
@@ -834,15 +662,10 @@ export interface GetExecutionHistoryInput {
   nextToken?: string;
   includeExecutionData?: boolean;
 }
-const GetExecutionHistoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionArn: S.String,
-    maxResults: S.optional(S.Number),
-    reverseOrder: S.optional(S.Boolean),
-    nextToken: S.optional(S.String),
-    includeExecutionData: S.optional(S.Boolean),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetExecutionHistoryInput" }) as any as S.Schema<GetExecutionHistoryInput>;
+const GetExecutionHistoryInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetExecutionHistoryInput>;
 export type HistoryEventType =
   | "ActivityFailed"
   | "ActivityScheduled"
@@ -914,11 +737,10 @@ export interface ActivityFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const ActivityFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "ActivityFailedEventDetails",
-}) as any as S.Schema<ActivityFailedEventDetails>;
+const ActivityFailedEventDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ActivityFailedEventDetails>;
 export interface ActivityScheduleFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
@@ -929,11 +751,10 @@ export type Truncated = boolean;
 export interface HistoryEventExecutionDataDetails {
   truncated?: boolean;
 }
-const HistoryEventExecutionDataDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ truncated: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "HistoryEventExecutionDataDetails",
-}) as any as S.Schema<HistoryEventExecutionDataDetails>;
+const HistoryEventExecutionDataDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<HistoryEventExecutionDataDetails>;
 export type TimeoutInSeconds = number;
 export interface ActivityScheduledEventDetails {
   resource: string;
@@ -942,38 +763,26 @@ export interface ActivityScheduledEventDetails {
   timeoutInSeconds?: number;
   heartbeatInSeconds?: number;
 }
-const ActivityScheduledEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.String,
-    input: S.optional(SensitiveString),
-    inputDetails: S.optional(HistoryEventExecutionDataDetails),
-    timeoutInSeconds: S.optional(S.Number),
-    heartbeatInSeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ActivityScheduledEventDetails",
-}) as any as S.Schema<ActivityScheduledEventDetails>;
+const ActivityScheduledEventDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ActivityScheduledEventDetails>;
 export type Identity = string;
 export interface ActivityStartedEventDetails {
   workerName?: string;
 }
-const ActivityStartedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workerName: S.optional(S.String) }),
-).annotate({
-  identifier: "ActivityStartedEventDetails",
-}) as any as S.Schema<ActivityStartedEventDetails>;
+const ActivityStartedEventDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ActivityStartedEventDetails>;
 export interface ActivitySucceededEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-const ActivitySucceededEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    output: S.optional(SensitiveString),
-    outputDetails: S.optional(HistoryEventExecutionDataDetails),
-  }),
-).annotate({
-  identifier: "ActivitySucceededEventDetails",
-}) as any as S.Schema<ActivitySucceededEventDetails>;
+const ActivitySucceededEventDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ActivitySucceededEventDetails>;
 export interface ActivityTimedOutEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
@@ -986,21 +795,15 @@ export interface TaskFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const TaskFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.String,
-    resource: S.String,
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "TaskFailedEventDetails" }) as any as S.Schema<TaskFailedEventDetails>;
+const TaskFailedEventDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<TaskFailedEventDetails>;
 export type ConnectorParameters = string | redacted.Redacted<string>;
 export interface TaskCredentials {
   roleArn?: string;
 }
-const TaskCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ roleArn: S.optional(S.String) }),
-).annotate({ identifier: "TaskCredentials" }) as any as S.Schema<TaskCredentials>;
+const TaskCredentials = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<TaskCredentials>;
 export interface TaskScheduledEventDetails {
   resourceType: string;
   resource: string;
@@ -1010,42 +813,28 @@ export interface TaskScheduledEventDetails {
   heartbeatInSeconds?: number;
   taskCredentials?: TaskCredentials;
 }
-const TaskScheduledEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.String,
-    resource: S.String,
-    region: S.String,
-    parameters: SensitiveString,
-    timeoutInSeconds: S.optional(S.Number),
-    heartbeatInSeconds: S.optional(S.Number),
-    taskCredentials: S.optional(TaskCredentials),
-  }),
-).annotate({
-  identifier: "TaskScheduledEventDetails",
-}) as any as S.Schema<TaskScheduledEventDetails>;
+const TaskScheduledEventDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<TaskScheduledEventDetails>;
 export interface TaskStartFailedEventDetails {
   resourceType: string;
   resource: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const TaskStartFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.String,
-    resource: S.String,
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "TaskStartFailedEventDetails",
-}) as any as S.Schema<TaskStartFailedEventDetails>;
+const TaskStartFailedEventDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<TaskStartFailedEventDetails>;
 export interface TaskStartedEventDetails {
   resourceType: string;
   resource: string;
 }
-const TaskStartedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceType: S.String, resource: S.String }),
-).annotate({ identifier: "TaskStartedEventDetails" }) as any as S.Schema<TaskStartedEventDetails>;
+const TaskStartedEventDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<TaskStartedEventDetails>;
 export interface TaskSubmitFailedEventDetails {
   resourceType: string;
   resource: string;
@@ -1060,16 +849,10 @@ export interface TaskSubmittedEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-const TaskSubmittedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.String,
-    resource: S.String,
-    output: S.optional(SensitiveString),
-    outputDetails: S.optional(HistoryEventExecutionDataDetails),
-  }),
-).annotate({
-  identifier: "TaskSubmittedEventDetails",
-}) as any as S.Schema<TaskSubmittedEventDetails>;
+const TaskSubmittedEventDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<TaskSubmittedEventDetails>;
 export interface TaskSucceededEventDetails {
   resourceType: string;
   resource: string;
@@ -1099,17 +882,10 @@ export interface ExecutionStartedEventDetails {
   stateMachineAliasArn?: string;
   stateMachineVersionArn?: string;
 }
-const ExecutionStartedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: S.optional(SensitiveString),
-    inputDetails: S.optional(HistoryEventExecutionDataDetails),
-    roleArn: S.optional(S.String),
-    stateMachineAliasArn: S.optional(S.String),
-    stateMachineVersionArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecutionStartedEventDetails",
-}) as any as S.Schema<ExecutionStartedEventDetails>;
+const ExecutionStartedEventDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ExecutionStartedEventDetails>;
 export interface ExecutionSucceededEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
@@ -1131,27 +907,26 @@ const ExecutionTimedOutEventDetails =
 export interface ExecutionRedrivenEventDetails {
   redriveCount?: number;
 }
-const ExecutionRedrivenEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ redriveCount: S.optional(S.Number) }),
-).annotate({
-  identifier: "ExecutionRedrivenEventDetails",
-}) as any as S.Schema<ExecutionRedrivenEventDetails>;
+const ExecutionRedrivenEventDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ExecutionRedrivenEventDetails>;
 export type UnsignedInteger = number;
 export interface MapStateStartedEventDetails {
   length?: number;
 }
-const MapStateStartedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ length: S.optional(S.Number) }),
-).annotate({
-  identifier: "MapStateStartedEventDetails",
-}) as any as S.Schema<MapStateStartedEventDetails>;
+const MapStateStartedEventDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<MapStateStartedEventDetails>;
 export interface MapIterationEventDetails {
   name?: string;
   index?: number;
 }
-const MapIterationEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), index: S.optional(S.Number) }),
-).annotate({ identifier: "MapIterationEventDetails" }) as any as S.Schema<MapIterationEventDetails>;
+const MapIterationEventDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<MapIterationEventDetails>;
 export interface LambdaFunctionFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
@@ -1171,17 +946,10 @@ export interface LambdaFunctionScheduledEventDetails {
   timeoutInSeconds?: number;
   taskCredentials?: TaskCredentials;
 }
-const LambdaFunctionScheduledEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.String,
-    input: S.optional(SensitiveString),
-    inputDetails: S.optional(HistoryEventExecutionDataDetails),
-    timeoutInSeconds: S.optional(S.Number),
-    taskCredentials: S.optional(TaskCredentials),
-  }),
-).annotate({
-  identifier: "LambdaFunctionScheduledEventDetails",
-}) as any as S.Schema<LambdaFunctionScheduledEventDetails>;
+const LambdaFunctionScheduledEventDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<LambdaFunctionScheduledEventDetails>;
 export interface LambdaFunctionStartFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
@@ -1205,25 +973,20 @@ export interface StateEnteredEventDetails {
   input?: string | redacted.Redacted<string>;
   inputDetails?: HistoryEventExecutionDataDetails;
 }
-const StateEnteredEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    input: S.optional(SensitiveString),
-    inputDetails: S.optional(HistoryEventExecutionDataDetails),
-  }),
-).annotate({ identifier: "StateEnteredEventDetails" }) as any as S.Schema<StateEnteredEventDetails>;
+const StateEnteredEventDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<StateEnteredEventDetails>;
 export type VariableValue = string | redacted.Redacted<string>;
 export type AssignedVariables = { [key: string]: string | redacted.Redacted<string> | undefined };
-const AssignedVariables = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+const AssignedVariables = /*@__PURE__*/ __L.at(__c7, 3);
 export interface AssignedVariablesDetails {
   truncated?: boolean;
 }
-const AssignedVariablesDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ truncated: S.optional(S.Boolean) }),
-).annotate({ identifier: "AssignedVariablesDetails" }) as any as S.Schema<AssignedVariablesDetails>;
+const AssignedVariablesDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<AssignedVariablesDetails>;
 export interface StateExitedEventDetails {
   name: string;
   output?: string | redacted.Redacted<string>;
@@ -1231,39 +994,33 @@ export interface StateExitedEventDetails {
   assignedVariables?: { [key: string]: string | redacted.Redacted<string> | undefined };
   assignedVariablesDetails?: AssignedVariablesDetails;
 }
-const StateExitedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    output: S.optional(SensitiveString),
-    outputDetails: S.optional(HistoryEventExecutionDataDetails),
-    assignedVariables: S.optional(AssignedVariables),
-    assignedVariablesDetails: S.optional(AssignedVariablesDetails),
-  }),
-).annotate({ identifier: "StateExitedEventDetails" }) as any as S.Schema<StateExitedEventDetails>;
+const StateExitedEventDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<StateExitedEventDetails>;
 export interface MapRunStartedEventDetails {
   mapRunArn?: string;
 }
-const MapRunStartedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ mapRunArn: S.optional(S.String) }),
-).annotate({
-  identifier: "MapRunStartedEventDetails",
-}) as any as S.Schema<MapRunStartedEventDetails>;
+const MapRunStartedEventDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<MapRunStartedEventDetails>;
 export interface MapRunFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const MapRunFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({ identifier: "MapRunFailedEventDetails" }) as any as S.Schema<MapRunFailedEventDetails>;
+const MapRunFailedEventDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<MapRunFailedEventDetails>;
 export interface MapRunRedrivenEventDetails {
   mapRunArn?: string;
   redriveCount?: number;
 }
-const MapRunRedrivenEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ mapRunArn: S.optional(S.String), redriveCount: S.optional(S.Number) }),
-).annotate({
-  identifier: "MapRunRedrivenEventDetails",
-}) as any as S.Schema<MapRunRedrivenEventDetails>;
+const MapRunRedrivenEventDetails = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<MapRunRedrivenEventDetails>;
 export type EvaluationFailureLocation = string | redacted.Redacted<string>;
 export interface EvaluationFailedEventDetails {
   error?: string | redacted.Redacted<string>;
@@ -1271,16 +1028,10 @@ export interface EvaluationFailedEventDetails {
   location?: string | redacted.Redacted<string>;
   state: string;
 }
-const EvaluationFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-    location: S.optional(SensitiveString),
-    state: S.String,
-  }),
-).annotate({
-  identifier: "EvaluationFailedEventDetails",
-}) as any as S.Schema<EvaluationFailedEventDetails>;
+const EvaluationFailedEventDetails = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<EvaluationFailedEventDetails>;
 export interface HistoryEvent {
   timestamp: Date;
   type: HistoryEventType;
@@ -1324,92 +1075,35 @@ export interface HistoryEvent {
   mapRunRedrivenEventDetails?: MapRunRedrivenEventDetails;
   evaluationFailedEventDetails?: EvaluationFailedEventDetails;
 }
-const HistoryEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    type: HistoryEventType,
-    id: S.Number,
-    previousEventId: S.optional(S.Number),
-    activityFailedEventDetails: S.optional(ActivityFailedEventDetails),
-    activityScheduleFailedEventDetails: S.optional(ActivityScheduleFailedEventDetails),
-    activityScheduledEventDetails: S.optional(ActivityScheduledEventDetails),
-    activityStartedEventDetails: S.optional(ActivityStartedEventDetails),
-    activitySucceededEventDetails: S.optional(ActivitySucceededEventDetails),
-    activityTimedOutEventDetails: S.optional(ActivityTimedOutEventDetails),
-    taskFailedEventDetails: S.optional(TaskFailedEventDetails),
-    taskScheduledEventDetails: S.optional(TaskScheduledEventDetails),
-    taskStartFailedEventDetails: S.optional(TaskStartFailedEventDetails),
-    taskStartedEventDetails: S.optional(TaskStartedEventDetails),
-    taskSubmitFailedEventDetails: S.optional(TaskSubmitFailedEventDetails),
-    taskSubmittedEventDetails: S.optional(TaskSubmittedEventDetails),
-    taskSucceededEventDetails: S.optional(TaskSucceededEventDetails),
-    taskTimedOutEventDetails: S.optional(TaskTimedOutEventDetails),
-    executionFailedEventDetails: S.optional(ExecutionFailedEventDetails),
-    executionStartedEventDetails: S.optional(ExecutionStartedEventDetails),
-    executionSucceededEventDetails: S.optional(ExecutionSucceededEventDetails),
-    executionAbortedEventDetails: S.optional(ExecutionAbortedEventDetails),
-    executionTimedOutEventDetails: S.optional(ExecutionTimedOutEventDetails),
-    executionRedrivenEventDetails: S.optional(ExecutionRedrivenEventDetails),
-    mapStateStartedEventDetails: S.optional(MapStateStartedEventDetails),
-    mapIterationStartedEventDetails: S.optional(MapIterationEventDetails),
-    mapIterationSucceededEventDetails: S.optional(MapIterationEventDetails),
-    mapIterationFailedEventDetails: S.optional(MapIterationEventDetails),
-    mapIterationAbortedEventDetails: S.optional(MapIterationEventDetails),
-    lambdaFunctionFailedEventDetails: S.optional(LambdaFunctionFailedEventDetails),
-    lambdaFunctionScheduleFailedEventDetails: S.optional(LambdaFunctionScheduleFailedEventDetails),
-    lambdaFunctionScheduledEventDetails: S.optional(LambdaFunctionScheduledEventDetails),
-    lambdaFunctionStartFailedEventDetails: S.optional(LambdaFunctionStartFailedEventDetails),
-    lambdaFunctionSucceededEventDetails: S.optional(LambdaFunctionSucceededEventDetails),
-    lambdaFunctionTimedOutEventDetails: S.optional(LambdaFunctionTimedOutEventDetails),
-    stateEnteredEventDetails: S.optional(StateEnteredEventDetails),
-    stateExitedEventDetails: S.optional(StateExitedEventDetails),
-    mapRunStartedEventDetails: S.optional(MapRunStartedEventDetails),
-    mapRunFailedEventDetails: S.optional(MapRunFailedEventDetails),
-    mapRunRedrivenEventDetails: S.optional(MapRunRedrivenEventDetails),
-    evaluationFailedEventDetails: S.optional(EvaluationFailedEventDetails),
-  }),
-).annotate({ identifier: "HistoryEvent" }) as any as S.Schema<HistoryEvent>;
+const HistoryEvent = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<HistoryEvent>;
 export type HistoryEventList = HistoryEvent[];
-const HistoryEventList = /*@__PURE__*/ S.Array(HistoryEvent);
+const HistoryEventList = /*@__PURE__*/ __L.at(__c8, 3);
 export interface GetExecutionHistoryOutput {
   events: HistoryEvent[];
   nextToken?: string;
 }
-const GetExecutionHistoryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ events: HistoryEventList, nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "GetExecutionHistoryOutput",
-}) as any as S.Schema<GetExecutionHistoryOutput>;
+const GetExecutionHistoryOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetExecutionHistoryOutput>;
 export interface ListActivitiesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListActivitiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListActivitiesInput" }) as any as S.Schema<ListActivitiesInput>;
+const ListActivitiesInput = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListActivitiesInput>;
 export interface ActivityListItem {
   activityArn: string;
   name: string;
   creationDate: Date;
 }
-const ActivityListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activityArn: S.String,
-    name: S.String,
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "ActivityListItem" }) as any as S.Schema<ActivityListItem>;
+const ActivityListItem = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ActivityListItem>;
 export type ActivityList = ActivityListItem[];
-const ActivityList = /*@__PURE__*/ S.Array(ActivityListItem);
+const ActivityList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface ListActivitiesOutput {
   activities: ActivityListItem[];
   nextToken?: string;
 }
-const ListActivitiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ activities: ActivityList, nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListActivitiesOutput" }) as any as S.Schema<ListActivitiesOutput>;
+const ListActivitiesOutput = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListActivitiesOutput>;
 export type ListExecutionsPageToken = string;
 export type ExecutionRedriveFilter = "REDRIVEN" | "NOT_REDRIVEN" | (string & {});
 const ExecutionRedriveFilter = S.String;
@@ -1422,16 +1116,7 @@ export interface ListExecutionsInput {
   mapRunArn?: string;
   redriveFilter?: ExecutionRedriveFilter;
 }
-const ListExecutionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.optional(S.String),
-    statusFilter: S.optional(ExecutionStatus),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    mapRunArn: S.optional(S.String),
-    redriveFilter: S.optional(ExecutionRedriveFilter),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListExecutionsInput" }) as any as S.Schema<ListExecutionsInput>;
+const ListExecutionsInput = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ListExecutionsInput>;
 export interface ExecutionListItem {
   executionArn: string;
   stateMachineArn: string;
@@ -1446,43 +1131,20 @@ export interface ExecutionListItem {
   redriveCount?: number;
   redriveDate?: Date;
 }
-const ExecutionListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionArn: S.String,
-    stateMachineArn: S.String,
-    name: S.String,
-    status: ExecutionStatus,
-    startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    mapRunArn: S.optional(S.String),
-    itemCount: S.optional(S.Number),
-    stateMachineVersionArn: S.optional(S.String),
-    stateMachineAliasArn: S.optional(S.String),
-    redriveCount: S.optional(S.Number),
-    redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ExecutionListItem" }) as any as S.Schema<ExecutionListItem>;
+const ExecutionListItem = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ExecutionListItem>;
 export type ExecutionList = ExecutionListItem[];
-const ExecutionList = /*@__PURE__*/ S.Array(ExecutionListItem);
+const ExecutionList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface ListExecutionsOutput {
   executions: ExecutionListItem[];
   nextToken?: string;
 }
-const ListExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ executions: ExecutionList, nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListExecutionsOutput" }) as any as S.Schema<ListExecutionsOutput>;
+const ListExecutionsOutput = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ListExecutionsOutput>;
 export interface ListMapRunsInput {
   executionArn: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListMapRunsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionArn: S.String,
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListMapRunsInput" }) as any as S.Schema<ListMapRunsInput>;
+const ListMapRunsInput = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ListMapRunsInput>;
 export interface MapRunListItem {
   executionArn: string;
   mapRunArn: string;
@@ -1490,215 +1152,161 @@ export interface MapRunListItem {
   startDate: Date;
   stopDate?: Date;
 }
-const MapRunListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionArn: S.String,
-    mapRunArn: S.String,
-    stateMachineArn: S.String,
-    startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "MapRunListItem" }) as any as S.Schema<MapRunListItem>;
+const MapRunListItem = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<MapRunListItem>;
 export type MapRunList = MapRunListItem[];
-const MapRunList = /*@__PURE__*/ S.Array(MapRunListItem);
+const MapRunList = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ListMapRunsOutput {
   mapRuns: MapRunListItem[];
   nextToken?: string;
 }
-const ListMapRunsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ mapRuns: MapRunList, nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListMapRunsOutput" }) as any as S.Schema<ListMapRunsOutput>;
+const ListMapRunsOutput = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ListMapRunsOutput>;
 export interface ListStateMachineAliasesInput {
   stateMachineArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListStateMachineAliasesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListStateMachineAliasesInput",
-}) as any as S.Schema<ListStateMachineAliasesInput>;
+const ListStateMachineAliasesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListStateMachineAliasesInput>;
 export interface StateMachineAliasListItem {
   stateMachineAliasArn: string;
   creationDate: Date;
 }
-const StateMachineAliasListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineAliasArn: S.String,
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "StateMachineAliasListItem",
-}) as any as S.Schema<StateMachineAliasListItem>;
+const StateMachineAliasListItem = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<StateMachineAliasListItem>;
 export type StateMachineAliasList = StateMachineAliasListItem[];
-const StateMachineAliasList = /*@__PURE__*/ S.Array(StateMachineAliasListItem);
+const StateMachineAliasList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface ListStateMachineAliasesOutput {
   stateMachineAliases: StateMachineAliasListItem[];
   nextToken?: string;
 }
-const ListStateMachineAliasesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stateMachineAliases: StateMachineAliasList, nextToken: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "ListStateMachineAliasesOutput",
-}) as any as S.Schema<ListStateMachineAliasesOutput>;
+const ListStateMachineAliasesOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListStateMachineAliasesOutput>;
 export interface ListStateMachinesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListStateMachinesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListStateMachinesInput" }) as any as S.Schema<ListStateMachinesInput>;
+const ListStateMachinesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListStateMachinesInput>;
 export interface StateMachineListItem {
   stateMachineArn: string;
   name: string;
   type: StateMachineType;
   creationDate: Date;
 }
-const StateMachineListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    name: S.String,
-    type: StateMachineType,
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "StateMachineListItem" }) as any as S.Schema<StateMachineListItem>;
+const StateMachineListItem = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<StateMachineListItem>;
 export type StateMachineList = StateMachineListItem[];
-const StateMachineList = /*@__PURE__*/ S.Array(StateMachineListItem);
+const StateMachineList = /*@__PURE__*/ __L.at(__c10, 7);
 export interface ListStateMachinesOutput {
   stateMachines: StateMachineListItem[];
   nextToken?: string;
 }
-const ListStateMachinesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stateMachines: StateMachineList, nextToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListStateMachinesOutput" }) as any as S.Schema<ListStateMachinesOutput>;
+const ListStateMachinesOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListStateMachinesOutput>;
 export interface ListStateMachineVersionsInput {
   stateMachineArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListStateMachineVersionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListStateMachineVersionsInput",
-}) as any as S.Schema<ListStateMachineVersionsInput>;
+const ListStateMachineVersionsInput = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListStateMachineVersionsInput>;
 export interface StateMachineVersionListItem {
   stateMachineVersionArn: string;
   creationDate: Date;
 }
-const StateMachineVersionListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineVersionArn: S.String,
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "StateMachineVersionListItem",
-}) as any as S.Schema<StateMachineVersionListItem>;
+const StateMachineVersionListItem = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<StateMachineVersionListItem>;
 export type StateMachineVersionList = StateMachineVersionListItem[];
-const StateMachineVersionList = /*@__PURE__*/ S.Array(StateMachineVersionListItem);
+const StateMachineVersionList = /*@__PURE__*/ __L.at(__c11, 3);
 export interface ListStateMachineVersionsOutput {
   stateMachineVersions: StateMachineVersionListItem[];
   nextToken?: string;
 }
-const ListStateMachineVersionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stateMachineVersions: StateMachineVersionList, nextToken: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "ListStateMachineVersionsOutput",
-}) as any as S.Schema<ListStateMachineVersionsOutput>;
+const ListStateMachineVersionsOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListStateMachineVersionsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: Tag[];
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagList) }).pipe(ns),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface PublishStateMachineVersionInput {
   stateMachineArn: string;
   revisionId?: string;
   description?: string | redacted.Redacted<string>;
 }
-const PublishStateMachineVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    revisionId: S.optional(S.String),
-    description: S.optional(SensitiveString),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "PublishStateMachineVersionInput",
-}) as any as S.Schema<PublishStateMachineVersionInput>;
+const PublishStateMachineVersionInput = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<PublishStateMachineVersionInput>;
 export interface PublishStateMachineVersionOutput {
   creationDate: Date;
   stateMachineVersionArn: string;
 }
-const PublishStateMachineVersionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    stateMachineVersionArn: S.String,
-  }).pipe(ns),
-).annotate({
-  identifier: "PublishStateMachineVersionOutput",
-}) as any as S.Schema<PublishStateMachineVersionOutput>;
+const PublishStateMachineVersionOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<PublishStateMachineVersionOutput>;
 export type ClientToken = string;
 export interface RedriveExecutionInput {
   executionArn: string;
   clientToken?: string;
 }
-const RedriveExecutionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionArn: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "RedriveExecutionInput" }) as any as S.Schema<RedriveExecutionInput>;
+const RedriveExecutionInput = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<RedriveExecutionInput>;
 export interface RedriveExecutionOutput {
   redriveDate: Date;
 }
-const RedriveExecutionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ redriveDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(ns),
-).annotate({ identifier: "RedriveExecutionOutput" }) as any as S.Schema<RedriveExecutionOutput>;
+const RedriveExecutionOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<RedriveExecutionOutput>;
 export interface SendTaskFailureInput {
   taskToken: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const SendTaskFailureInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskToken: S.String,
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "SendTaskFailureInput" }) as any as S.Schema<SendTaskFailureInput>;
+const SendTaskFailureInput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<SendTaskFailureInput>;
 export interface SendTaskFailureOutput {}
 const SendTaskFailureOutput = DeleteActivityOutput as any as S.Schema<SendTaskFailureOutput>;
 export interface SendTaskHeartbeatInput {
   taskToken: string;
 }
-const SendTaskHeartbeatInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskToken: S.String }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "SendTaskHeartbeatInput" }) as any as S.Schema<SendTaskHeartbeatInput>;
+const SendTaskHeartbeatInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<SendTaskHeartbeatInput>;
 export interface SendTaskHeartbeatOutput {}
 const SendTaskHeartbeatOutput =
   DeleteStateMachineOutput as any as S.Schema<SendTaskHeartbeatOutput>;
@@ -1706,11 +1314,10 @@ export interface SendTaskSuccessInput {
   taskToken: string;
   output: string | redacted.Redacted<string>;
 }
-const SendTaskSuccessInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskToken: S.String, output: SensitiveString }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "SendTaskSuccessInput" }) as any as S.Schema<SendTaskSuccessInput>;
+const SendTaskSuccessInput = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<SendTaskSuccessInput>;
 export interface SendTaskSuccessOutput {}
 const SendTaskSuccessOutput = DeleteActivityOutput as any as S.Schema<SendTaskSuccessOutput>;
 export interface StartExecutionInput {
@@ -1719,24 +1326,15 @@ export interface StartExecutionInput {
   input?: string | redacted.Redacted<string>;
   traceHeader?: string;
 }
-const StartExecutionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    name: S.optional(S.String),
-    input: S.optional(SensitiveString),
-    traceHeader: S.optional(S.String),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "StartExecutionInput" }) as any as S.Schema<StartExecutionInput>;
+const StartExecutionInput = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<StartExecutionInput>;
 export interface StartExecutionOutput {
   executionArn: string;
   startDate: Date;
 }
-const StartExecutionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionArn: S.String,
-    startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }).pipe(ns),
-).annotate({ identifier: "StartExecutionOutput" }) as any as S.Schema<StartExecutionOutput>;
+const StartExecutionOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<StartExecutionOutput>;
 export interface StartSyncExecutionInput {
   stateMachineArn: string;
   name?: string;
@@ -1744,15 +1342,10 @@ export interface StartSyncExecutionInput {
   traceHeader?: string;
   includedData?: IncludedData;
 }
-const StartSyncExecutionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    name: S.optional(S.String),
-    input: S.optional(SensitiveString),
-    traceHeader: S.optional(S.String),
-    includedData: S.optional(IncludedData),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "StartSyncExecutionInput" }) as any as S.Schema<StartSyncExecutionInput>;
+const StartSyncExecutionInput = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<StartSyncExecutionInput>;
 export type SyncExecutionStatus = "SUCCEEDED" | "FAILED" | "TIMED_OUT" | (string & {});
 const SyncExecutionStatus = S.String;
 
@@ -1762,12 +1355,7 @@ export interface BillingDetails {
   billedMemoryUsedInMB?: number;
   billedDurationInMilliseconds?: number;
 }
-const BillingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billedMemoryUsedInMB: S.optional(S.Number),
-    billedDurationInMilliseconds: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BillingDetails" }) as any as S.Schema<BillingDetails>;
+const BillingDetails = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<BillingDetails>;
 export interface StartSyncExecutionOutput {
   executionArn: string;
   stateMachineArn?: string;
@@ -1784,51 +1372,25 @@ export interface StartSyncExecutionOutput {
   traceHeader?: string;
   billingDetails?: BillingDetails;
 }
-const StartSyncExecutionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionArn: S.String,
-    stateMachineArn: S.optional(S.String),
-    name: S.optional(S.String),
-    startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    stopDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: SyncExecutionStatus,
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-    input: S.optional(SensitiveString),
-    inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
-    output: S.optional(SensitiveString),
-    outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
-    traceHeader: S.optional(S.String),
-    billingDetails: S.optional(BillingDetails),
-  }).pipe(ns),
-).annotate({ identifier: "StartSyncExecutionOutput" }) as any as S.Schema<StartSyncExecutionOutput>;
+const StartSyncExecutionOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<StartSyncExecutionOutput>;
 export interface StopExecutionInput {
   executionArn: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-const StopExecutionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionArn: S.String,
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "StopExecutionInput" }) as any as S.Schema<StopExecutionInput>;
+const StopExecutionInput = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<StopExecutionInput>;
 export interface StopExecutionOutput {
   stopDate: Date;
 }
-const StopExecutionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stopDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(ns),
-).annotate({ identifier: "StopExecutionOutput" }) as any as S.Schema<StopExecutionOutput>;
+const StopExecutionOutput = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<StopExecutionOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
 const TagResourceOutput = DeleteActivityOutput as any as S.Schema<TagResourceOutput>;
 export type InspectionLevel = "INFO" | "DEBUG" | "TRACE" | (string & {});
@@ -1849,13 +1411,7 @@ export interface MockInput {
   errorOutput?: MockErrorOutput;
   fieldValidationMode?: MockResponseValidationMode;
 }
-const MockInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SensitiveString),
-    errorOutput: S.optional(MockErrorOutput),
-    fieldValidationMode: S.optional(MockResponseValidationMode),
-  }),
-).annotate({ identifier: "MockInput" }) as any as S.Schema<MockInput>;
+const MockInput = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<MockInput>;
 export type RetrierRetryCount = number;
 export type MapIterationFailureCount = number;
 export interface TestStateConfiguration {
@@ -1864,14 +1420,10 @@ export interface TestStateConfiguration {
   mapIterationFailureCount?: number;
   mapItemReaderData?: string | redacted.Redacted<string>;
 }
-const TestStateConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retrierRetryCount: S.optional(S.Number),
-    errorCausedByState: S.optional(SensitiveString),
-    mapIterationFailureCount: S.optional(S.Number),
-    mapItemReaderData: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "TestStateConfiguration" }) as any as S.Schema<TestStateConfiguration>;
+const TestStateConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<TestStateConfiguration>;
 export interface TestStateInput {
   definition: string | redacted.Redacted<string>;
   roleArn?: string;
@@ -1884,20 +1436,7 @@ export interface TestStateInput {
   context?: string | redacted.Redacted<string>;
   stateConfiguration?: TestStateConfiguration;
 }
-const TestStateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: SensitiveString,
-    roleArn: S.optional(S.String),
-    input: S.optional(SensitiveString),
-    inspectionLevel: S.optional(InspectionLevel),
-    revealSecrets: S.optional(S.Boolean),
-    variables: S.optional(SensitiveString),
-    stateName: S.optional(SensitiveString),
-    mock: S.optional(MockInput),
-    context: S.optional(SensitiveString),
-    stateConfiguration: S.optional(TestStateConfiguration),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "TestStateInput" }) as any as S.Schema<TestStateInput>;
+const TestStateInput = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<TestStateInput>;
 export type HTTPProtocol = string;
 export type HTTPMethod = string;
 export type URL = string;
@@ -1910,15 +1449,10 @@ export interface InspectionDataRequest {
   headers?: string;
   body?: string;
 }
-const InspectionDataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: S.optional(S.String),
-    method: S.optional(S.String),
-    url: S.optional(S.String),
-    headers: S.optional(S.String),
-    body: S.optional(S.String),
-  }),
-).annotate({ identifier: "InspectionDataRequest" }) as any as S.Schema<InspectionDataRequest>;
+const InspectionDataRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<InspectionDataRequest>;
 export type HTTPStatusCode = string;
 export type HTTPStatusMessage = string;
 export interface InspectionDataResponse {
@@ -1928,15 +1462,10 @@ export interface InspectionDataResponse {
   headers?: string;
   body?: string;
 }
-const InspectionDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: S.optional(S.String),
-    statusCode: S.optional(S.String),
-    statusMessage: S.optional(S.String),
-    headers: S.optional(S.String),
-    body: S.optional(S.String),
-  }),
-).annotate({ identifier: "InspectionDataResponse" }) as any as S.Schema<InspectionDataResponse>;
+const InspectionDataResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<InspectionDataResponse>;
 export type ExceptionHandlerIndex = number;
 export type RetryBackoffIntervalSeconds = number;
 export interface InspectionErrorDetails {
@@ -1944,13 +1473,10 @@ export interface InspectionErrorDetails {
   retryIndex?: number;
   retryBackoffIntervalSeconds?: number;
 }
-const InspectionErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    catchIndex: S.optional(S.Number),
-    retryIndex: S.optional(S.Number),
-    retryBackoffIntervalSeconds: S.optional(S.Number),
-  }),
-).annotate({ identifier: "InspectionErrorDetails" }) as any as S.Schema<InspectionErrorDetails>;
+const InspectionErrorDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<InspectionErrorDetails>;
 export type InspectionToleratedFailureCount = number;
 export type InspectionToleratedFailurePercentage = number;
 export type InspectionMaxConcurrency = number;
@@ -1974,28 +1500,7 @@ export interface InspectionData {
   toleratedFailurePercentage?: number;
   maxConcurrency?: number;
 }
-const InspectionData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: S.optional(SensitiveString),
-    afterArguments: S.optional(SensitiveString),
-    afterInputPath: S.optional(SensitiveString),
-    afterParameters: S.optional(SensitiveString),
-    result: S.optional(SensitiveString),
-    afterResultSelector: S.optional(SensitiveString),
-    afterResultPath: S.optional(SensitiveString),
-    request: S.optional(InspectionDataRequest),
-    response: S.optional(InspectionDataResponse),
-    variables: S.optional(SensitiveString),
-    errorDetails: S.optional(InspectionErrorDetails),
-    afterItemsPath: S.optional(SensitiveString),
-    afterItemSelector: S.optional(SensitiveString),
-    afterItemBatcher: S.optional(SensitiveString),
-    afterItemsPointer: S.optional(SensitiveString),
-    toleratedFailureCount: S.optional(S.Number),
-    toleratedFailurePercentage: S.optional(S.Number),
-    maxConcurrency: S.optional(S.Number),
-  }),
-).annotate({ identifier: "InspectionData" }) as any as S.Schema<InspectionData>;
+const InspectionData = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<InspectionData>;
 export type TestExecutionStatus =
   | "SUCCEEDED"
   | "FAILED"
@@ -2012,27 +1517,14 @@ export interface TestStateOutput {
   nextState?: string;
   status?: TestExecutionStatus;
 }
-const TestStateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    output: S.optional(SensitiveString),
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-    inspectionData: S.optional(InspectionData),
-    nextState: S.optional(S.String),
-    status: S.optional(TestExecutionStatus),
-  }).pipe(ns),
-).annotate({ identifier: "TestStateOutput" }) as any as S.Schema<TestStateOutput>;
+const TestStateOutput = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<TestStateOutput>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ __L.at(__c14, 6);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
-    T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
 const UntagResourceOutput = DeleteActivityOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateMapRunInput {
@@ -2041,14 +1533,7 @@ export interface UpdateMapRunInput {
   toleratedFailurePercentage?: number;
   toleratedFailureCount?: number;
 }
-const UpdateMapRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mapRunArn: S.String,
-    maxConcurrency: S.optional(S.Number),
-    toleratedFailurePercentage: S.optional(S.Number),
-    toleratedFailureCount: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateMapRunInput" }) as any as S.Schema<UpdateMapRunInput>;
+const UpdateMapRunInput = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<UpdateMapRunInput>;
 export interface UpdateMapRunOutput {}
 const UpdateMapRunOutput = DeleteActivityOutput as any as S.Schema<UpdateMapRunOutput>;
 export interface UpdateStateMachineInput {
@@ -2061,52 +1546,35 @@ export interface UpdateStateMachineInput {
   versionDescription?: string | redacted.Redacted<string>;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-const UpdateStateMachineInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineArn: S.String,
-    definition: S.optional(SensitiveString),
-    roleArn: S.optional(S.String),
-    loggingConfiguration: S.optional(LoggingConfiguration),
-    tracingConfiguration: S.optional(TracingConfiguration),
-    publish: S.optional(S.Boolean),
-    versionDescription: S.optional(SensitiveString),
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateStateMachineInput" }) as any as S.Schema<UpdateStateMachineInput>;
+const UpdateStateMachineInput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UpdateStateMachineInput>;
 export interface UpdateStateMachineOutput {
   updateDate: Date;
   revisionId?: string;
   stateMachineVersionArn?: string;
 }
-const UpdateStateMachineOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    revisionId: S.optional(S.String),
-    stateMachineVersionArn: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "UpdateStateMachineOutput" }) as any as S.Schema<UpdateStateMachineOutput>;
+const UpdateStateMachineOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<UpdateStateMachineOutput>;
 export interface UpdateStateMachineAliasInput {
   stateMachineAliasArn: string;
   description?: string | redacted.Redacted<string>;
   routingConfiguration?: RoutingConfigurationListItem[];
 }
-const UpdateStateMachineAliasInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stateMachineAliasArn: S.String,
-    description: S.optional(SensitiveString),
-    routingConfiguration: S.optional(RoutingConfigurationList),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateStateMachineAliasInput",
-}) as any as S.Schema<UpdateStateMachineAliasInput>;
+const UpdateStateMachineAliasInput = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<UpdateStateMachineAliasInput>;
 export interface UpdateStateMachineAliasOutput {
   updateDate: Date;
 }
-const UpdateStateMachineAliasOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(ns),
-).annotate({
-  identifier: "UpdateStateMachineAliasOutput",
-}) as any as S.Schema<UpdateStateMachineAliasOutput>;
+const UpdateStateMachineAliasOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<UpdateStateMachineAliasOutput>;
 export type ValidateStateMachineDefinitionSeverity = "ERROR" | "WARNING" | (string & {});
 const ValidateStateMachineDefinitionSeverity = S.String;
 
@@ -2117,16 +1585,10 @@ export interface ValidateStateMachineDefinitionInput {
   severity?: ValidateStateMachineDefinitionSeverity;
   maxResults?: number;
 }
-const ValidateStateMachineDefinitionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definition: SensitiveString,
-    type: S.optional(StateMachineType),
-    severity: S.optional(ValidateStateMachineDefinitionSeverity),
-    maxResults: S.optional(S.Number),
-  }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ValidateStateMachineDefinitionInput",
-}) as any as S.Schema<ValidateStateMachineDefinitionInput>;
+const ValidateStateMachineDefinitionInput = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ValidateStateMachineDefinitionInput>;
 export type ValidateStateMachineDefinitionResultCode = "OK" | "FAIL" | (string & {});
 const ValidateStateMachineDefinitionResultCode = S.String;
 
@@ -2139,36 +1601,23 @@ export interface ValidateStateMachineDefinitionDiagnostic {
   message: string | redacted.Redacted<string>;
   location?: string | redacted.Redacted<string>;
 }
-const ValidateStateMachineDefinitionDiagnostic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: ValidateStateMachineDefinitionSeverity,
-    code: SensitiveString,
-    message: SensitiveString,
-    location: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "ValidateStateMachineDefinitionDiagnostic",
-}) as any as S.Schema<ValidateStateMachineDefinitionDiagnostic>;
+const ValidateStateMachineDefinitionDiagnostic = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ValidateStateMachineDefinitionDiagnostic>;
 export type ValidateStateMachineDefinitionDiagnosticList =
   ValidateStateMachineDefinitionDiagnostic[];
-const ValidateStateMachineDefinitionDiagnosticList = /*@__PURE__*/ S.Array(
-  ValidateStateMachineDefinitionDiagnostic,
-);
+const ValidateStateMachineDefinitionDiagnosticList = /*@__PURE__*/ __L.at(__c15, 7);
 export type ValidateStateMachineDefinitionTruncated = boolean;
 export interface ValidateStateMachineDefinitionOutput {
   result: ValidateStateMachineDefinitionResultCode;
   diagnostics: ValidateStateMachineDefinitionDiagnostic[];
   truncated?: boolean;
 }
-const ValidateStateMachineDefinitionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: ValidateStateMachineDefinitionResultCode,
-    diagnostics: ValidateStateMachineDefinitionDiagnosticList,
-    truncated: S.optional(S.Boolean),
-  }).pipe(ns),
-).annotate({
-  identifier: "ValidateStateMachineDefinitionOutput",
-}) as any as S.Schema<ValidateStateMachineDefinitionOutput>;
+const ValidateStateMachineDefinitionOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ValidateStateMachineDefinitionOutput>;
 export type ErrorMessage = string;
 export type ValidationExceptionReason =
   | "API_DOES_NOT_SUPPORT_LABELED_ARNS"
@@ -3673,3 +3122,1103 @@ export const validateStateMachineDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "ValidateStateMachineDefinition",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(Tag);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKeyId: S.optional(S.String),
+          kmsDataKeyReusePeriodSeconds: S.optional(S.Number),
+          type: EncryptionType,
+        }),
+      ).annotate({ identifier: "EncryptionConfiguration" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tags: S.optional(TagList),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateActivityInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          activityArn: S.String,
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateActivityOutput" });
+    case 5:
+      return S.suspend(() => S.Struct({ logGroupArn: S.optional(S.String) })).annotate({
+        identifier: "CloudWatchLogsLogGroup",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ cloudWatchLogsLogGroup: S.optional(CloudWatchLogsLogGroup) }),
+      ).annotate({ identifier: "LogDestination" });
+    case 7:
+      return S.Array(LogDestination);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          level: S.optional(LogLevel),
+          includeExecutionData: S.optional(S.Boolean),
+          destinations: S.optional(LogDestinationList),
+        }),
+      ).annotate({ identifier: "LoggingConfiguration" });
+    case 1:
+      return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "TracingConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          definition: SensitiveString,
+          roleArn: S.String,
+          type: S.optional(StateMachineType),
+          loggingConfiguration: S.optional(LoggingConfiguration),
+          tags: S.optional(TagList),
+          tracingConfiguration: S.optional(TracingConfiguration),
+          publish: S.optional(S.Boolean),
+          versionDescription: S.optional(SensitiveString),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateStateMachineInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          stateMachineVersionArn: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateStateMachineOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ stateMachineVersionArn: S.String, weight: S.Number }),
+      ).annotate({
+        identifier: "RoutingConfigurationListItem",
+      });
+    case 5:
+      return S.Array(RoutingConfigurationListItem);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(SensitiveString),
+          name: S.String,
+          routingConfiguration: RoutingConfigurationList,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateStateMachineAliasInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineAliasArn: S.String,
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "CreateStateMachineAliasOutput",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ activityArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteActivityInput" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteActivityOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ stateMachineArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteStateMachineInput" });
+    case 3:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteStateMachineOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ stateMachineAliasArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteStateMachineAliasInput",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteStateMachineAliasOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ stateMachineVersionArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteStateMachineVersionInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ activityArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeActivityInput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          activityArn: S.String,
+          name: S.String,
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeActivityOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ executionArn: S.String, includedData: S.optional(IncludedData) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeExecutionInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ included: S.optional(S.Boolean) })).annotate({
+        identifier: "CloudWatchEventsExecutionDataDetails",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          executionArn: S.String,
+          stateMachineArn: S.String,
+          name: S.optional(S.String),
+          status: ExecutionStatus,
+          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          input: S.optional(SensitiveString),
+          inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+          output: S.optional(SensitiveString),
+          outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+          traceHeader: S.optional(S.String),
+          mapRunArn: S.optional(S.String),
+          error: S.optional(SensitiveString),
+          cause: S.optional(SensitiveString),
+          stateMachineVersionArn: S.optional(S.String),
+          stateMachineAliasArn: S.optional(S.String),
+          redriveCount: S.optional(S.Number),
+          redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          redriveStatus: S.optional(ExecutionRedriveStatus),
+          redriveStatusReason: S.optional(SensitiveString),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeExecutionOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ mapRunArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeMapRunInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pending: S.Number,
+          running: S.Number,
+          succeeded: S.Number,
+          failed: S.Number,
+          timedOut: S.Number,
+          aborted: S.Number,
+          total: S.Number,
+          resultsWritten: S.Number,
+          failuresNotRedrivable: S.optional(S.Number),
+          pendingRedrive: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MapRunItemCounts" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          mapRunArn: S.String,
+          executionArn: S.String,
+          status: MapRunStatus,
+          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          maxConcurrency: S.Number,
+          toleratedFailurePercentage: S.Number,
+          toleratedFailureCount: S.Number,
+          itemCounts: MapRunItemCounts,
+          executionCounts: MapRunExecutionCounts,
+          redriveCount: S.optional(S.Number),
+          redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeMapRunOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ stateMachineArn: S.String, includedData: S.optional(IncludedData) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeStateMachineInput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ VariableNameList.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          name: S.String,
+          status: S.optional(StateMachineStatus),
+          definition: SensitiveString,
+          roleArn: S.String,
+          type: StateMachineType,
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          loggingConfiguration: S.optional(LoggingConfiguration),
+          tracingConfiguration: S.optional(TracingConfiguration),
+          label: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          variableReferences: S.optional(VariableReferences),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeStateMachineOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ stateMachineAliasArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeStateMachineAliasInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineAliasArn: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          routingConfiguration: S.optional(RoutingConfigurationList),
+          creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeStateMachineAliasOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ executionArn: S.String, includedData: S.optional(IncludedData) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeStateMachineForExecutionInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          name: S.String,
+          definition: SensitiveString,
+          roleArn: S.String,
+          updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          loggingConfiguration: S.optional(LoggingConfiguration),
+          tracingConfiguration: S.optional(TracingConfiguration),
+          mapRunArn: S.optional(S.String),
+          label: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          variableReferences: S.optional(VariableReferences),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeStateMachineForExecutionOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ activityArn: S.String, workerName: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetActivityTaskInput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ taskToken: S.optional(S.String), input: S.optional(SensitiveString) }).pipe(ns),
+      ).annotate({ identifier: "GetActivityTaskOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          executionArn: S.String,
+          maxResults: S.optional(S.Number),
+          reverseOrder: S.optional(S.Boolean),
+          nextToken: S.optional(S.String),
+          includeExecutionData: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetExecutionHistoryInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "ActivityFailedEventDetails",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ truncated: S.optional(S.Boolean) })).annotate({
+        identifier: "HistoryEventExecutionDataDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String,
+          input: S.optional(SensitiveString),
+          inputDetails: S.optional(HistoryEventExecutionDataDetails),
+          timeoutInSeconds: S.optional(S.Number),
+          heartbeatInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ActivityScheduledEventDetails",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ workerName: S.optional(S.String) })).annotate({
+        identifier: "ActivityStartedEventDetails",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          output: S.optional(SensitiveString),
+          outputDetails: S.optional(HistoryEventExecutionDataDetails),
+        }),
+      ).annotate({
+        identifier: "ActivitySucceededEventDetails",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.String,
+          resource: S.String,
+          error: S.optional(SensitiveString),
+          cause: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "TaskFailedEventDetails" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ roleArn: S.optional(S.String) })).annotate({
+        identifier: "TaskCredentials",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.String,
+          resource: S.String,
+          region: S.String,
+          parameters: SensitiveString,
+          timeoutInSeconds: S.optional(S.Number),
+          heartbeatInSeconds: S.optional(S.Number),
+          taskCredentials: S.optional(TaskCredentials),
+        }),
+      ).annotate({
+        identifier: "TaskScheduledEventDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.String,
+          resource: S.String,
+          error: S.optional(SensitiveString),
+          cause: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "TaskStartFailedEventDetails",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ resourceType: S.String, resource: S.String })).annotate({
+        identifier: "TaskStartedEventDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.String,
+          resource: S.String,
+          output: S.optional(SensitiveString),
+          outputDetails: S.optional(HistoryEventExecutionDataDetails),
+        }),
+      ).annotate({
+        identifier: "TaskSubmittedEventDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          input: S.optional(SensitiveString),
+          inputDetails: S.optional(HistoryEventExecutionDataDetails),
+          roleArn: S.optional(S.String),
+          stateMachineAliasArn: S.optional(S.String),
+          stateMachineVersionArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExecutionStartedEventDetails",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ redriveCount: S.optional(S.Number) })).annotate({
+        identifier: "ExecutionRedrivenEventDetails",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ length: S.optional(S.Number) })).annotate({
+        identifier: "MapStateStartedEventDetails",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), index: S.optional(S.Number) }),
+      ).annotate({ identifier: "MapIterationEventDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String,
+          input: S.optional(SensitiveString),
+          inputDetails: S.optional(HistoryEventExecutionDataDetails),
+          timeoutInSeconds: S.optional(S.Number),
+          taskCredentials: S.optional(TaskCredentials),
+        }),
+      ).annotate({
+        identifier: "LambdaFunctionScheduledEventDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          input: S.optional(SensitiveString),
+          inputDetails: S.optional(HistoryEventExecutionDataDetails),
+        }),
+      ).annotate({ identifier: "StateEnteredEventDetails" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 4:
+      return S.suspend(() => S.Struct({ truncated: S.optional(S.Boolean) })).annotate({
+        identifier: "AssignedVariablesDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          output: S.optional(SensitiveString),
+          outputDetails: S.optional(HistoryEventExecutionDataDetails),
+          assignedVariables: S.optional(AssignedVariables),
+          assignedVariablesDetails: S.optional(AssignedVariablesDetails),
+        }),
+      ).annotate({ identifier: "StateExitedEventDetails" });
+    case 6:
+      return S.suspend(() => S.Struct({ mapRunArn: S.optional(S.String) })).annotate({
+        identifier: "MapRunStartedEventDetails",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "MapRunFailedEventDetails" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ mapRunArn: S.optional(S.String), redriveCount: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "MapRunRedrivenEventDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(SensitiveString),
+          cause: S.optional(SensitiveString),
+          location: S.optional(SensitiveString),
+          state: S.String,
+        }),
+      ).annotate({
+        identifier: "EvaluationFailedEventDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          type: HistoryEventType,
+          id: S.Number,
+          previousEventId: S.optional(S.Number),
+          activityFailedEventDetails: S.optional(ActivityFailedEventDetails),
+          activityScheduleFailedEventDetails: S.optional(ActivityScheduleFailedEventDetails),
+          activityScheduledEventDetails: S.optional(ActivityScheduledEventDetails),
+          activityStartedEventDetails: S.optional(ActivityStartedEventDetails),
+          activitySucceededEventDetails: S.optional(ActivitySucceededEventDetails),
+          activityTimedOutEventDetails: S.optional(ActivityTimedOutEventDetails),
+          taskFailedEventDetails: S.optional(TaskFailedEventDetails),
+          taskScheduledEventDetails: S.optional(TaskScheduledEventDetails),
+          taskStartFailedEventDetails: S.optional(TaskStartFailedEventDetails),
+          taskStartedEventDetails: S.optional(TaskStartedEventDetails),
+          taskSubmitFailedEventDetails: S.optional(TaskSubmitFailedEventDetails),
+          taskSubmittedEventDetails: S.optional(TaskSubmittedEventDetails),
+          taskSucceededEventDetails: S.optional(TaskSucceededEventDetails),
+          taskTimedOutEventDetails: S.optional(TaskTimedOutEventDetails),
+          executionFailedEventDetails: S.optional(ExecutionFailedEventDetails),
+          executionStartedEventDetails: S.optional(ExecutionStartedEventDetails),
+          executionSucceededEventDetails: S.optional(ExecutionSucceededEventDetails),
+          executionAbortedEventDetails: S.optional(ExecutionAbortedEventDetails),
+          executionTimedOutEventDetails: S.optional(ExecutionTimedOutEventDetails),
+          executionRedrivenEventDetails: S.optional(ExecutionRedrivenEventDetails),
+          mapStateStartedEventDetails: S.optional(MapStateStartedEventDetails),
+          mapIterationStartedEventDetails: S.optional(MapIterationEventDetails),
+          mapIterationSucceededEventDetails: S.optional(MapIterationEventDetails),
+          mapIterationFailedEventDetails: S.optional(MapIterationEventDetails),
+          mapIterationAbortedEventDetails: S.optional(MapIterationEventDetails),
+          lambdaFunctionFailedEventDetails: S.optional(LambdaFunctionFailedEventDetails),
+          lambdaFunctionScheduleFailedEventDetails: S.optional(
+            LambdaFunctionScheduleFailedEventDetails,
+          ),
+          lambdaFunctionScheduledEventDetails: S.optional(LambdaFunctionScheduledEventDetails),
+          lambdaFunctionStartFailedEventDetails: S.optional(LambdaFunctionStartFailedEventDetails),
+          lambdaFunctionSucceededEventDetails: S.optional(LambdaFunctionSucceededEventDetails),
+          lambdaFunctionTimedOutEventDetails: S.optional(LambdaFunctionTimedOutEventDetails),
+          stateEnteredEventDetails: S.optional(StateEnteredEventDetails),
+          stateExitedEventDetails: S.optional(StateExitedEventDetails),
+          mapRunStartedEventDetails: S.optional(MapRunStartedEventDetails),
+          mapRunFailedEventDetails: S.optional(MapRunFailedEventDetails),
+          mapRunRedrivenEventDetails: S.optional(MapRunRedrivenEventDetails),
+          evaluationFailedEventDetails: S.optional(EvaluationFailedEventDetails),
+        }),
+      ).annotate({ identifier: "HistoryEvent" });
+    case 3:
+      return S.Array(HistoryEvent);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ events: HistoryEventList, nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "GetExecutionHistoryOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListActivitiesInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          activityArn: S.String,
+          name: S.String,
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "ActivityListItem" });
+    case 7:
+      return S.Array(ActivityListItem);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ activities: ActivityList, nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListActivitiesOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.optional(S.String),
+          statusFilter: S.optional(ExecutionStatus),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          mapRunArn: S.optional(S.String),
+          redriveFilter: S.optional(ExecutionRedriveFilter),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListExecutionsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          executionArn: S.String,
+          stateMachineArn: S.String,
+          name: S.String,
+          status: ExecutionStatus,
+          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          mapRunArn: S.optional(S.String),
+          itemCount: S.optional(S.Number),
+          stateMachineVersionArn: S.optional(S.String),
+          stateMachineAliasArn: S.optional(S.String),
+          redriveCount: S.optional(S.Number),
+          redriveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ExecutionListItem" });
+    case 3:
+      return S.Array(ExecutionListItem);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ executions: ExecutionList, nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListExecutionsOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          executionArn: S.String,
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListMapRunsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          executionArn: S.String,
+          mapRunArn: S.String,
+          stateMachineArn: S.String,
+          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          stopDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "MapRunListItem" });
+    case 7:
+      return S.Array(MapRunListItem);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ mapRuns: MapRunList, nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListMapRunsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListStateMachineAliasesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineAliasArn: S.String,
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "StateMachineAliasListItem",
+      });
+    case 3:
+      return S.Array(StateMachineAliasListItem);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineAliases: StateMachineAliasList,
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListStateMachineAliasesOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListStateMachinesInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          name: S.String,
+          type: StateMachineType,
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "StateMachineListItem" });
+    case 7:
+      return S.Array(StateMachineListItem);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ stateMachines: StateMachineList, nextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListStateMachinesOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListStateMachineVersionsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineVersionArn: S.String,
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "StateMachineVersionListItem",
+      });
+    case 3:
+      return S.Array(StateMachineVersionListItem);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineVersions: StateMachineVersionList,
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListStateMachineVersionsOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 6:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagList) }).pipe(ns)).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          revisionId: S.optional(S.String),
+          description: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "PublishStateMachineVersionInput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          stateMachineVersionArn: S.String,
+        }).pipe(ns),
+      ).annotate({
+        identifier: "PublishStateMachineVersionOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          executionArn: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "RedriveExecutionInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ redriveDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(ns),
+      ).annotate({ identifier: "RedriveExecutionOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          taskToken: S.String,
+          error: S.optional(SensitiveString),
+          cause: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "SendTaskFailureInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ taskToken: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "SendTaskHeartbeatInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ taskToken: S.String, output: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "SendTaskSuccessInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          name: S.optional(S.String),
+          input: S.optional(SensitiveString),
+          traceHeader: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartExecutionInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          executionArn: S.String,
+          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }).pipe(ns),
+      ).annotate({ identifier: "StartExecutionOutput" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          name: S.optional(S.String),
+          input: S.optional(SensitiveString),
+          traceHeader: S.optional(S.String),
+          includedData: S.optional(IncludedData),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartSyncExecutionInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billedMemoryUsedInMB: S.optional(S.Number),
+          billedDurationInMilliseconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BillingDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          executionArn: S.String,
+          stateMachineArn: S.optional(S.String),
+          name: S.optional(S.String),
+          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          stopDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: SyncExecutionStatus,
+          error: S.optional(SensitiveString),
+          cause: S.optional(SensitiveString),
+          input: S.optional(SensitiveString),
+          inputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+          output: S.optional(SensitiveString),
+          outputDetails: S.optional(CloudWatchEventsExecutionDataDetails),
+          traceHeader: S.optional(S.String),
+          billingDetails: S.optional(BillingDetails),
+        }).pipe(ns),
+      ).annotate({ identifier: "StartSyncExecutionOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          executionArn: S.String,
+          error: S.optional(SensitiveString),
+          cause: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StopExecutionInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ stopDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(ns),
+      ).annotate({ identifier: "StopExecutionOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.optional(SensitiveString),
+          errorOutput: S.optional(MockErrorOutput),
+          fieldValidationMode: S.optional(MockResponseValidationMode),
+        }),
+      ).annotate({ identifier: "MockInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          retrierRetryCount: S.optional(S.Number),
+          errorCausedByState: S.optional(SensitiveString),
+          mapIterationFailureCount: S.optional(S.Number),
+          mapItemReaderData: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "TestStateConfiguration" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          definition: SensitiveString,
+          roleArn: S.optional(S.String),
+          input: S.optional(SensitiveString),
+          inspectionLevel: S.optional(InspectionLevel),
+          revealSecrets: S.optional(S.Boolean),
+          variables: S.optional(SensitiveString),
+          stateName: S.optional(SensitiveString),
+          mock: S.optional(MockInput),
+          context: S.optional(SensitiveString),
+          stateConfiguration: S.optional(TestStateConfiguration),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "TestStateInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          protocol: S.optional(S.String),
+          method: S.optional(S.String),
+          url: S.optional(S.String),
+          headers: S.optional(S.String),
+          body: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InspectionDataRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          protocol: S.optional(S.String),
+          statusCode: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+          headers: S.optional(S.String),
+          body: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InspectionDataResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          catchIndex: S.optional(S.Number),
+          retryIndex: S.optional(S.Number),
+          retryBackoffIntervalSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "InspectionErrorDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          input: S.optional(SensitiveString),
+          afterArguments: S.optional(SensitiveString),
+          afterInputPath: S.optional(SensitiveString),
+          afterParameters: S.optional(SensitiveString),
+          result: S.optional(SensitiveString),
+          afterResultSelector: S.optional(SensitiveString),
+          afterResultPath: S.optional(SensitiveString),
+          request: S.optional(InspectionDataRequest),
+          response: S.optional(InspectionDataResponse),
+          variables: S.optional(SensitiveString),
+          errorDetails: S.optional(InspectionErrorDetails),
+          afterItemsPath: S.optional(SensitiveString),
+          afterItemSelector: S.optional(SensitiveString),
+          afterItemBatcher: S.optional(SensitiveString),
+          afterItemsPointer: S.optional(SensitiveString),
+          toleratedFailureCount: S.optional(S.Number),
+          toleratedFailurePercentage: S.optional(S.Number),
+          maxConcurrency: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "InspectionData" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          output: S.optional(SensitiveString),
+          error: S.optional(SensitiveString),
+          cause: S.optional(SensitiveString),
+          inspectionData: S.optional(InspectionData),
+          nextState: S.optional(S.String),
+          status: S.optional(TestExecutionStatus),
+        }).pipe(ns),
+      ).annotate({ identifier: "TestStateOutput" });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mapRunArn: S.String,
+          maxConcurrency: S.optional(S.Number),
+          toleratedFailurePercentage: S.optional(S.Number),
+          toleratedFailureCount: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateMapRunInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineArn: S.String,
+          definition: S.optional(SensitiveString),
+          roleArn: S.optional(S.String),
+          loggingConfiguration: S.optional(LoggingConfiguration),
+          tracingConfiguration: S.optional(TracingConfiguration),
+          publish: S.optional(S.Boolean),
+          versionDescription: S.optional(SensitiveString),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateStateMachineInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          revisionId: S.optional(S.String),
+          stateMachineVersionArn: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "UpdateStateMachineOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          stateMachineAliasArn: S.String,
+          description: S.optional(SensitiveString),
+          routingConfiguration: S.optional(RoutingConfigurationList),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateStateMachineAliasInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ updateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }).pipe(ns),
+      ).annotate({
+        identifier: "UpdateStateMachineAliasOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          definition: SensitiveString,
+          type: S.optional(StateMachineType),
+          severity: S.optional(ValidateStateMachineDefinitionSeverity),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ValidateStateMachineDefinitionInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          severity: ValidateStateMachineDefinitionSeverity,
+          code: SensitiveString,
+          message: SensitiveString,
+          location: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "ValidateStateMachineDefinitionDiagnostic",
+      });
+    case 7:
+      return S.Array(ValidateStateMachineDefinitionDiagnostic);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          result: ValidateStateMachineDefinitionResultCode,
+          diagnostics: ValidateStateMachineDefinitionDiagnosticList,
+          truncated: S.optional(S.Boolean),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ValidateStateMachineDefinitionOutput",
+      });
+  }
+}

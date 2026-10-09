@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -190,98 +191,56 @@ export class ValidationException
 export interface AssociateServiceRoleToAccountRequest {
   roleArn: string;
 }
-const AssociateServiceRoleToAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ roleArn: S.String })
-    .pipe(S.encodeKeys({ roleArn: "RoleArn" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/greengrass/servicerole" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "AssociateServiceRoleToAccountRequest",
-}) as any as S.Schema<AssociateServiceRoleToAccountRequest>;
+const AssociateServiceRoleToAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateServiceRoleToAccountRequest>;
 export interface AssociateServiceRoleToAccountResponse {
   associatedAt?: string;
 }
-const AssociateServiceRoleToAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ associatedAt: S.optional(S.String) }).pipe(
-    S.encodeKeys({ associatedAt: "AssociatedAt" }),
-  ),
-).annotate({
-  identifier: "AssociateServiceRoleToAccountResponse",
-}) as any as S.Schema<AssociateServiceRoleToAccountResponse>;
+const AssociateServiceRoleToAccountResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateServiceRoleToAccountResponse>;
 export type IoTThingName = string;
 export interface AssociateClientDeviceWithCoreDeviceEntry {
   thingName: string;
 }
-const AssociateClientDeviceWithCoreDeviceEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ thingName: S.String }),
-).annotate({
-  identifier: "AssociateClientDeviceWithCoreDeviceEntry",
-}) as any as S.Schema<AssociateClientDeviceWithCoreDeviceEntry>;
+const AssociateClientDeviceWithCoreDeviceEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AssociateClientDeviceWithCoreDeviceEntry>;
 export type AssociateClientDeviceWithCoreDeviceEntryList =
   AssociateClientDeviceWithCoreDeviceEntry[];
-const AssociateClientDeviceWithCoreDeviceEntryList = /*@__PURE__*/ S.Array(
-  AssociateClientDeviceWithCoreDeviceEntry,
-);
+const AssociateClientDeviceWithCoreDeviceEntryList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface BatchAssociateClientDeviceWithCoreDeviceRequest {
   entries?: AssociateClientDeviceWithCoreDeviceEntry[];
   coreDeviceThingName: string;
 }
-const BatchAssociateClientDeviceWithCoreDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(AssociateClientDeviceWithCoreDeviceEntryList),
-    coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/associateClientDevices",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchAssociateClientDeviceWithCoreDeviceRequest",
-}) as any as S.Schema<BatchAssociateClientDeviceWithCoreDeviceRequest>;
+const BatchAssociateClientDeviceWithCoreDeviceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BatchAssociateClientDeviceWithCoreDeviceRequest>;
 export type NonEmptyString = string;
 export interface AssociateClientDeviceWithCoreDeviceErrorEntry {
   thingName?: string;
   code?: string;
   message?: string;
 }
-const AssociateClientDeviceWithCoreDeviceErrorEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AssociateClientDeviceWithCoreDeviceErrorEntry",
-}) as any as S.Schema<AssociateClientDeviceWithCoreDeviceErrorEntry>;
+const AssociateClientDeviceWithCoreDeviceErrorEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateClientDeviceWithCoreDeviceErrorEntry>;
 export type AssociateClientDeviceWithCoreDeviceErrorList =
   AssociateClientDeviceWithCoreDeviceErrorEntry[];
-const AssociateClientDeviceWithCoreDeviceErrorList = /*@__PURE__*/ S.Array(
-  AssociateClientDeviceWithCoreDeviceErrorEntry,
-);
+const AssociateClientDeviceWithCoreDeviceErrorList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface BatchAssociateClientDeviceWithCoreDeviceResponse {
   errorEntries?: AssociateClientDeviceWithCoreDeviceErrorEntry[];
 }
-const BatchAssociateClientDeviceWithCoreDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorEntries: S.optional(AssociateClientDeviceWithCoreDeviceErrorList) }),
-).annotate({
-  identifier: "BatchAssociateClientDeviceWithCoreDeviceResponse",
-}) as any as S.Schema<BatchAssociateClientDeviceWithCoreDeviceResponse>;
+const BatchAssociateClientDeviceWithCoreDeviceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BatchAssociateClientDeviceWithCoreDeviceResponse>;
 export interface DisassociateClientDeviceFromCoreDeviceEntry {
   thingName: string;
 }
@@ -293,26 +252,10 @@ export interface BatchDisassociateClientDeviceFromCoreDeviceRequest {
   entries?: DisassociateClientDeviceFromCoreDeviceEntry[];
   coreDeviceThingName: string;
 }
-const BatchDisassociateClientDeviceFromCoreDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(DisassociateClientDeviceFromCoreDeviceEntryList),
-    coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/disassociateClientDevices",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchDisassociateClientDeviceFromCoreDeviceRequest",
-}) as any as S.Schema<BatchDisassociateClientDeviceFromCoreDeviceRequest>;
+const BatchDisassociateClientDeviceFromCoreDeviceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchDisassociateClientDeviceFromCoreDeviceRequest>;
 export interface DisassociateClientDeviceFromCoreDeviceErrorEntry {
   thingName?: string;
   code?: string;
@@ -328,41 +271,29 @@ const BatchDisassociateClientDeviceFromCoreDeviceResponse =
 export interface CancelDeploymentRequest {
   deploymentId: string;
 }
-const CancelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.String.pipe(T.HttpLabel("deploymentId")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/greengrass/v2/deployments/{deploymentId}/cancel" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CancelDeploymentRequest" }) as any as S.Schema<CancelDeploymentRequest>;
+const CancelDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CancelDeploymentRequest>;
 export interface CancelDeploymentResponse {
   message?: string;
 }
-const CancelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({ identifier: "CancelDeploymentResponse" }) as any as S.Schema<CancelDeploymentResponse>;
+const CancelDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CancelDeploymentResponse>;
 export type RecipeBlob = Uint8Array;
 export type ComponentNameString = string;
 export type ComponentVersionString = string;
 export type PlatformAttributesMap = { [key: string]: string | undefined };
-const PlatformAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const PlatformAttributesMap = /*@__PURE__*/ __L.at(__c1, 3);
 export interface ComponentPlatform {
   name?: string;
   attributes?: { [key: string]: string | undefined };
 }
-const ComponentPlatform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), attributes: S.optional(PlatformAttributesMap) }),
-).annotate({ identifier: "ComponentPlatform" }) as any as S.Schema<ComponentPlatform>;
+const ComponentPlatform = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ComponentPlatform>;
 export type ComponentPlatformList = ComponentPlatform[];
-const ComponentPlatformList = /*@__PURE__*/ S.Array(ComponentPlatform);
+const ComponentPlatformList = /*@__PURE__*/ __L.at(__c1, 5);
 export type ComponentDependencyType = "HARD" | "SOFT" | (string & {});
 const ComponentDependencyType = S.String;
 
@@ -370,19 +301,12 @@ export interface ComponentDependencyRequirement {
   versionRequirement?: string;
   dependencyType?: ComponentDependencyType;
 }
-const ComponentDependencyRequirement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versionRequirement: S.optional(S.String),
-    dependencyType: S.optional(ComponentDependencyType),
-  }),
-).annotate({
-  identifier: "ComponentDependencyRequirement",
-}) as any as S.Schema<ComponentDependencyRequirement>;
+const ComponentDependencyRequirement = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ComponentDependencyRequirement>;
 export type ComponentDependencyMap = { [key: string]: ComponentDependencyRequirement | undefined };
-const ComponentDependencyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ComponentDependencyRequirement.pipe(S.optional),
-);
+const ComponentDependencyMap = /*@__PURE__*/ __L.at(__c1, 7);
 export type TopicString = string;
 export type LambdaEventSourceType = "PUB_SUB" | "IOT_CORE" | (string & {});
 const LambdaEventSourceType = S.String;
@@ -391,11 +315,9 @@ export interface LambdaEventSource {
   topic: string;
   type: LambdaEventSourceType;
 }
-const LambdaEventSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ topic: S.String, type: LambdaEventSourceType }),
-).annotate({ identifier: "LambdaEventSource" }) as any as S.Schema<LambdaEventSource>;
+const LambdaEventSource = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<LambdaEventSource>;
 export type LambdaEventSourceList = LambdaEventSource[];
-const LambdaEventSourceList = /*@__PURE__*/ S.Array(LambdaEventSource);
+const LambdaEventSourceList = /*@__PURE__*/ __L.at(__c2, 1);
 export type OptionalInteger = number;
 export type OptionalBoolean = boolean;
 export type LambdaInputPayloadEncodingType = "json" | "binary" | (string & {});
@@ -403,7 +325,7 @@ const LambdaInputPayloadEncodingType = S.String;
 
 export type LambdaExecArg = string;
 export type LambdaExecArgsList = string[];
-const LambdaExecArgsList = /*@__PURE__*/ S.Array(S.String);
+const LambdaExecArgsList = /*@__PURE__*/ __L.at(__c2, 2);
 export type LambdaEnvironmentVariables = { [key: string]: string | undefined };
 const LambdaEnvironmentVariables =
   PlatformAttributesMap as any as S.Schema<LambdaEnvironmentVariables>;
@@ -420,54 +342,35 @@ export interface LambdaVolumeMount {
   permission?: LambdaFilesystemPermission;
   addGroupOwner?: boolean;
 }
-const LambdaVolumeMount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourcePath: S.String,
-    destinationPath: S.String,
-    permission: S.optional(LambdaFilesystemPermission),
-    addGroupOwner: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "LambdaVolumeMount" }) as any as S.Schema<LambdaVolumeMount>;
+const LambdaVolumeMount = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<LambdaVolumeMount>;
 export type LambdaVolumeList = LambdaVolumeMount[];
-const LambdaVolumeList = /*@__PURE__*/ S.Array(LambdaVolumeMount);
+const LambdaVolumeList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface LambdaDeviceMount {
   path: string;
   permission?: LambdaFilesystemPermission;
   addGroupOwner?: boolean;
 }
-const LambdaDeviceMount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.String,
-    permission: S.optional(LambdaFilesystemPermission),
-    addGroupOwner: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "LambdaDeviceMount" }) as any as S.Schema<LambdaDeviceMount>;
+const LambdaDeviceMount = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<LambdaDeviceMount>;
 export type LambdaDeviceList = LambdaDeviceMount[];
-const LambdaDeviceList = /*@__PURE__*/ S.Array(LambdaDeviceMount);
+const LambdaDeviceList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface LambdaContainerParams {
   memorySizeInKB?: number;
   mountROSysfs?: boolean;
   volumes?: LambdaVolumeMount[];
   devices?: LambdaDeviceMount[];
 }
-const LambdaContainerParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memorySizeInKB: S.optional(S.Number),
-    mountROSysfs: S.optional(S.Boolean),
-    volumes: S.optional(LambdaVolumeList),
-    devices: S.optional(LambdaDeviceList),
-  }),
-).annotate({ identifier: "LambdaContainerParams" }) as any as S.Schema<LambdaContainerParams>;
+const LambdaContainerParams = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<LambdaContainerParams>;
 export interface LambdaLinuxProcessParams {
   isolationMode?: LambdaIsolationMode;
   containerParams?: LambdaContainerParams;
 }
-const LambdaLinuxProcessParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isolationMode: S.optional(LambdaIsolationMode),
-    containerParams: S.optional(LambdaContainerParams),
-  }),
-).annotate({ identifier: "LambdaLinuxProcessParams" }) as any as S.Schema<LambdaLinuxProcessParams>;
+const LambdaLinuxProcessParams = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<LambdaLinuxProcessParams>;
 export interface LambdaExecutionParameters {
   eventSources?: LambdaEventSource[];
   maxQueueSize?: number;
@@ -481,23 +384,10 @@ export interface LambdaExecutionParameters {
   environmentVariables?: { [key: string]: string | undefined };
   linuxProcessParams?: LambdaLinuxProcessParams;
 }
-const LambdaExecutionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventSources: S.optional(LambdaEventSourceList),
-    maxQueueSize: S.optional(S.Number),
-    maxInstancesCount: S.optional(S.Number),
-    maxIdleTimeInSeconds: S.optional(S.Number),
-    timeoutInSeconds: S.optional(S.Number),
-    statusTimeoutInSeconds: S.optional(S.Number),
-    pinned: S.optional(S.Boolean),
-    inputPayloadEncodingType: S.optional(LambdaInputPayloadEncodingType),
-    execArgs: S.optional(LambdaExecArgsList),
-    environmentVariables: S.optional(LambdaEnvironmentVariables),
-    linuxProcessParams: S.optional(LambdaLinuxProcessParams),
-  }),
-).annotate({
-  identifier: "LambdaExecutionParameters",
-}) as any as S.Schema<LambdaExecutionParameters>;
+const LambdaExecutionParameters = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<LambdaExecutionParameters>;
 export interface LambdaFunctionRecipeSource {
   lambdaArn: string;
   componentName?: string;
@@ -506,22 +396,14 @@ export interface LambdaFunctionRecipeSource {
   componentDependencies?: { [key: string]: ComponentDependencyRequirement | undefined };
   componentLambdaParameters?: LambdaExecutionParameters;
 }
-const LambdaFunctionRecipeSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lambdaArn: S.String,
-    componentName: S.optional(S.String),
-    componentVersion: S.optional(S.String),
-    componentPlatforms: S.optional(ComponentPlatformList),
-    componentDependencies: S.optional(ComponentDependencyMap),
-    componentLambdaParameters: S.optional(LambdaExecutionParameters),
-  }),
-).annotate({
-  identifier: "LambdaFunctionRecipeSource",
-}) as any as S.Schema<LambdaFunctionRecipeSource>;
+const LambdaFunctionRecipeSource = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<LambdaFunctionRecipeSource>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ __L.at(__c3, 3);
 export type ClientTokenString = string;
 export interface CreateComponentVersionRequest {
   inlineRecipe?: Uint8Array;
@@ -529,25 +411,10 @@ export interface CreateComponentVersionRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-const CreateComponentVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inlineRecipe: S.optional(T.Blob),
-    lambdaFunction: S.optional(LambdaFunctionRecipeSource),
-    tags: S.optional(TagMap),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/greengrass/v2/createComponentVersion" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateComponentVersionRequest",
-}) as any as S.Schema<CreateComponentVersionRequest>;
+const CreateComponentVersionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateComponentVersionRequest>;
 export type ComponentVersionARN = string;
 export type CloudComponentState =
   | "REQUESTED"
@@ -570,15 +437,7 @@ export interface CloudComponentStatus {
   vendorGuidance?: VendorGuidance;
   vendorGuidanceMessage?: string;
 }
-const CloudComponentStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentState: S.optional(CloudComponentState),
-    message: S.optional(S.String),
-    errors: S.optional(StringMap),
-    vendorGuidance: S.optional(VendorGuidance),
-    vendorGuidanceMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudComponentStatus" }) as any as S.Schema<CloudComponentStatus>;
+const CloudComponentStatus = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CloudComponentStatus>;
 export interface CreateComponentVersionResponse {
   arn?: string;
   componentName: string;
@@ -586,17 +445,10 @@ export interface CreateComponentVersionResponse {
   creationTimestamp: Date;
   status: CloudComponentStatus;
 }
-const CreateComponentVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    componentName: S.String,
-    componentVersion: S.String,
-    creationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: CloudComponentStatus,
-  }),
-).annotate({
-  identifier: "CreateComponentVersionResponse",
-}) as any as S.Schema<CreateComponentVersionResponse>;
+const CreateComponentVersionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateComponentVersionResponse>;
 export type TargetARN = string;
 export type DeploymentNameString = string;
 export type ComponentConfigurationString = string;
@@ -608,53 +460,36 @@ export interface ComponentConfigurationUpdate {
   merge?: string;
   reset?: string[];
 }
-const ComponentConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ merge: S.optional(S.String), reset: S.optional(ComponentConfigurationPathList) }),
-).annotate({
-  identifier: "ComponentConfigurationUpdate",
-}) as any as S.Schema<ComponentConfigurationUpdate>;
+const ComponentConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ComponentConfigurationUpdate>;
 export type Memory = number;
 export type CPU = number;
 export interface SystemResourceLimits {
   memory?: number;
   cpus?: number;
 }
-const SystemResourceLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memory: S.optional(S.Number), cpus: S.optional(S.Number) }),
-).annotate({ identifier: "SystemResourceLimits" }) as any as S.Schema<SystemResourceLimits>;
+const SystemResourceLimits = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<SystemResourceLimits>;
 export interface ComponentRunWith {
   posixUser?: string;
   systemResourceLimits?: SystemResourceLimits;
   windowsUser?: string;
 }
-const ComponentRunWith = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    posixUser: S.optional(S.String),
-    systemResourceLimits: S.optional(SystemResourceLimits),
-    windowsUser: S.optional(S.String),
-  }),
-).annotate({ identifier: "ComponentRunWith" }) as any as S.Schema<ComponentRunWith>;
+const ComponentRunWith = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ComponentRunWith>;
 export interface ComponentDeploymentSpecification {
   componentVersion: string;
   configurationUpdate?: ComponentConfigurationUpdate;
   runWith?: ComponentRunWith;
 }
-const ComponentDeploymentSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentVersion: S.String,
-    configurationUpdate: S.optional(ComponentConfigurationUpdate),
-    runWith: S.optional(ComponentRunWith),
-  }),
-).annotate({
-  identifier: "ComponentDeploymentSpecification",
-}) as any as S.Schema<ComponentDeploymentSpecification>;
+const ComponentDeploymentSpecification = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ComponentDeploymentSpecification>;
 export type ComponentDeploymentSpecifications = {
   [key: string]: ComponentDeploymentSpecification | undefined;
 };
-const ComponentDeploymentSpecifications = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ComponentDeploymentSpecification.pipe(S.optional),
-);
+const ComponentDeploymentSpecifications = /*@__PURE__*/ __L.at(__c4, 3);
 export type IoTJobRolloutBaseRatePerMinute = number;
 export type IoTJobRolloutIncrementFactor = number;
 export type IoTJobNumberOfThings = number;
@@ -662,41 +497,28 @@ export interface IoTJobRateIncreaseCriteria {
   numberOfNotifiedThings?: number;
   numberOfSucceededThings?: number;
 }
-const IoTJobRateIncreaseCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numberOfNotifiedThings: S.optional(S.Number),
-    numberOfSucceededThings: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "IoTJobRateIncreaseCriteria",
-}) as any as S.Schema<IoTJobRateIncreaseCriteria>;
+const IoTJobRateIncreaseCriteria = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<IoTJobRateIncreaseCriteria>;
 export interface IoTJobExponentialRolloutRate {
   baseRatePerMinute: number;
   incrementFactor: number;
   rateIncreaseCriteria: IoTJobRateIncreaseCriteria;
 }
-const IoTJobExponentialRolloutRate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseRatePerMinute: S.Number,
-    incrementFactor: S.Number,
-    rateIncreaseCriteria: IoTJobRateIncreaseCriteria,
-  }),
-).annotate({
-  identifier: "IoTJobExponentialRolloutRate",
-}) as any as S.Schema<IoTJobExponentialRolloutRate>;
+const IoTJobExponentialRolloutRate = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<IoTJobExponentialRolloutRate>;
 export type IoTJobMaxExecutionsPerMin = number;
 export interface IoTJobExecutionsRolloutConfig {
   exponentialRate?: IoTJobExponentialRolloutRate;
   maximumPerMinute?: number;
 }
-const IoTJobExecutionsRolloutConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exponentialRate: S.optional(IoTJobExponentialRolloutRate),
-    maximumPerMinute: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "IoTJobExecutionsRolloutConfig",
-}) as any as S.Schema<IoTJobExecutionsRolloutConfig>;
+const IoTJobExecutionsRolloutConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<IoTJobExecutionsRolloutConfig>;
 export type IoTJobExecutionFailureType =
   | "FAILED"
   | "REJECTED"
@@ -716,43 +538,27 @@ export interface IoTJobAbortCriteria {
   thresholdPercentage: number;
   minNumberOfExecutedThings: number;
 }
-const IoTJobAbortCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failureType: IoTJobExecutionFailureType,
-    action: IoTJobAbortAction,
-    thresholdPercentage: S.Number,
-    minNumberOfExecutedThings: S.Number,
-  }),
-).annotate({ identifier: "IoTJobAbortCriteria" }) as any as S.Schema<IoTJobAbortCriteria>;
+const IoTJobAbortCriteria = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<IoTJobAbortCriteria>;
 export type IoTJobAbortCriteriaList = IoTJobAbortCriteria[];
-const IoTJobAbortCriteriaList = /*@__PURE__*/ S.Array(IoTJobAbortCriteria);
+const IoTJobAbortCriteriaList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface IoTJobAbortConfig {
   criteriaList: IoTJobAbortCriteria[];
 }
-const IoTJobAbortConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ criteriaList: IoTJobAbortCriteriaList }),
-).annotate({ identifier: "IoTJobAbortConfig" }) as any as S.Schema<IoTJobAbortConfig>;
+const IoTJobAbortConfig = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<IoTJobAbortConfig>;
 export type IoTJobInProgressTimeoutInMinutes = number;
 export interface IoTJobTimeoutConfig {
   inProgressTimeoutInMinutes?: number;
 }
-const IoTJobTimeoutConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inProgressTimeoutInMinutes: S.optional(S.Number) }),
-).annotate({ identifier: "IoTJobTimeoutConfig" }) as any as S.Schema<IoTJobTimeoutConfig>;
+const IoTJobTimeoutConfig = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<IoTJobTimeoutConfig>;
 export interface DeploymentIoTJobConfiguration {
   jobExecutionsRolloutConfig?: IoTJobExecutionsRolloutConfig;
   abortConfig?: IoTJobAbortConfig;
   timeoutConfig?: IoTJobTimeoutConfig;
 }
-const DeploymentIoTJobConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobExecutionsRolloutConfig: S.optional(IoTJobExecutionsRolloutConfig),
-    abortConfig: S.optional(IoTJobAbortConfig),
-    timeoutConfig: S.optional(IoTJobTimeoutConfig),
-  }),
-).annotate({
-  identifier: "DeploymentIoTJobConfiguration",
-}) as any as S.Schema<DeploymentIoTJobConfiguration>;
+const DeploymentIoTJobConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeploymentIoTJobConfiguration>;
 export type DeploymentFailureHandlingPolicy = "ROLLBACK" | "DO_NOTHING" | (string & {});
 const DeploymentFailureHandlingPolicy = S.String;
 
@@ -766,34 +572,23 @@ export interface DeploymentComponentUpdatePolicy {
   timeoutInSeconds?: number;
   action?: DeploymentComponentUpdatePolicyAction;
 }
-const DeploymentComponentUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeoutInSeconds: S.optional(S.Number),
-    action: S.optional(DeploymentComponentUpdatePolicyAction),
-  }),
-).annotate({
-  identifier: "DeploymentComponentUpdatePolicy",
-}) as any as S.Schema<DeploymentComponentUpdatePolicy>;
+const DeploymentComponentUpdatePolicy = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeploymentComponentUpdatePolicy>;
 export interface DeploymentConfigurationValidationPolicy {
   timeoutInSeconds?: number;
 }
-const DeploymentConfigurationValidationPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ timeoutInSeconds: S.optional(S.Number) }),
-).annotate({
-  identifier: "DeploymentConfigurationValidationPolicy",
-}) as any as S.Schema<DeploymentConfigurationValidationPolicy>;
+const DeploymentConfigurationValidationPolicy = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeploymentConfigurationValidationPolicy>;
 export interface DeploymentPolicies {
   failureHandlingPolicy?: DeploymentFailureHandlingPolicy;
   componentUpdatePolicy?: DeploymentComponentUpdatePolicy;
   configurationValidationPolicy?: DeploymentConfigurationValidationPolicy;
 }
-const DeploymentPolicies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failureHandlingPolicy: S.optional(DeploymentFailureHandlingPolicy),
-    componentUpdatePolicy: S.optional(DeploymentComponentUpdatePolicy),
-    configurationValidationPolicy: S.optional(DeploymentConfigurationValidationPolicy),
-  }),
-).annotate({ identifier: "DeploymentPolicies" }) as any as S.Schema<DeploymentPolicies>;
+const DeploymentPolicies = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeploymentPolicies>;
 export type ThingGroupARN = string;
 export interface CreateDeploymentRequest {
   targetArn: string;
@@ -805,111 +600,60 @@ export interface CreateDeploymentRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetArn: S.String,
-    deploymentName: S.optional(S.String),
-    components: S.optional(ComponentDeploymentSpecifications),
-    iotJobConfiguration: S.optional(DeploymentIoTJobConfiguration),
-    deploymentPolicies: S.optional(DeploymentPolicies),
-    parentTargetArn: S.optional(S.String),
-    tags: S.optional(TagMap),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/greengrass/v2/deployments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateDeploymentRequest" }) as any as S.Schema<CreateDeploymentRequest>;
+const CreateDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateDeploymentRequest>;
 export type IoTJobARN = string;
 export interface CreateDeploymentResponse {
   deploymentId?: string;
   iotJobId?: string;
   iotJobArn?: string;
 }
-const CreateDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    iotJobId: S.optional(S.String),
-    iotJobArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateDeploymentResponse" }) as any as S.Schema<CreateDeploymentResponse>;
+const CreateDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateDeploymentResponse>;
 export interface DeleteComponentRequest {
   arn: string;
 }
-const DeleteComponentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/greengrass/v2/components/{arn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteComponentRequest" }) as any as S.Schema<DeleteComponentRequest>;
+const DeleteComponentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteComponentRequest>;
 export interface DeleteComponentResponse {}
-const DeleteComponentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteComponentResponse",
-}) as any as S.Schema<DeleteComponentResponse>;
+const DeleteComponentResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteComponentResponse>;
 export type CoreDeviceThingName = string;
 export interface DeleteCoreDeviceRequest {
   coreDeviceThingName: string;
 }
-const DeleteCoreDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteCoreDeviceRequest" }) as any as S.Schema<DeleteCoreDeviceRequest>;
+const DeleteCoreDeviceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteCoreDeviceRequest>;
 export interface DeleteCoreDeviceResponse {}
 const DeleteCoreDeviceResponse =
   DeleteComponentResponse as any as S.Schema<DeleteCoreDeviceResponse>;
 export interface DeleteDeploymentRequest {
   deploymentId: string;
 }
-const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.String.pipe(T.HttpLabel("deploymentId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/greengrass/v2/deployments/{deploymentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
+const DeleteDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteDeploymentRequest>;
 export interface DeleteDeploymentResponse {}
 const DeleteDeploymentResponse =
   DeleteComponentResponse as any as S.Schema<DeleteDeploymentResponse>;
 export interface DescribeComponentRequest {
   arn: string;
 }
-const DescribeComponentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/v2/components/{arn}/metadata" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DescribeComponentRequest" }) as any as S.Schema<DescribeComponentRequest>;
+const DescribeComponentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DescribeComponentRequest>;
 export type PublisherString = string;
 export type DescriptionString = string;
 export interface DescribeComponentResponse {
@@ -923,46 +667,22 @@ export interface DescribeComponentResponse {
   platforms?: ComponentPlatform[];
   tags?: { [key: string]: string | undefined };
 }
-const DescribeComponentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    componentName: S.optional(S.String),
-    componentVersion: S.optional(S.String),
-    creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    publisher: S.optional(S.String),
-    description: S.optional(S.String),
-    status: S.optional(CloudComponentStatus),
-    platforms: S.optional(ComponentPlatformList),
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "DescribeComponentResponse",
-}) as any as S.Schema<DescribeComponentResponse>;
+const DescribeComponentResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DescribeComponentResponse>;
 export interface DisassociateServiceRoleFromAccountRequest {}
-const DisassociateServiceRoleFromAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/greengrass/servicerole" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateServiceRoleFromAccountRequest",
-}) as any as S.Schema<DisassociateServiceRoleFromAccountRequest>;
+const DisassociateServiceRoleFromAccountRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DisassociateServiceRoleFromAccountRequest>;
 export interface DisassociateServiceRoleFromAccountResponse {
   disassociatedAt?: string;
 }
-const DisassociateServiceRoleFromAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ disassociatedAt: S.optional(S.String) }).pipe(
-    S.encodeKeys({ disassociatedAt: "DisassociatedAt" }),
-  ),
-).annotate({
-  identifier: "DisassociateServiceRoleFromAccountResponse",
-}) as any as S.Schema<DisassociateServiceRoleFromAccountResponse>;
+const DisassociateServiceRoleFromAccountResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DisassociateServiceRoleFromAccountResponse>;
 export type RecipeOutputFormat = "JSON" | "YAML" | (string & {});
 const RecipeOutputFormat = S.String;
 
@@ -970,29 +690,13 @@ export interface GetComponentRequest {
   recipeOutputFormat?: RecipeOutputFormat;
   arn: string;
 }
-const GetComponentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recipeOutputFormat: S.optional(RecipeOutputFormat).pipe(T.HttpQuery("recipeOutputFormat")),
-    arn: S.String.pipe(T.HttpLabel("arn")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/v2/components/{arn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetComponentRequest" }) as any as S.Schema<GetComponentRequest>;
+const GetComponentRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GetComponentRequest>;
 export interface GetComponentResponse {
   recipeOutputFormat: RecipeOutputFormat;
   recipe: Uint8Array;
   tags?: { [key: string]: string | undefined };
 }
-const GetComponentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recipeOutputFormat: RecipeOutputFormat, recipe: T.Blob, tags: S.optional(TagMap) }),
-).annotate({ identifier: "GetComponentResponse" }) as any as S.Schema<GetComponentResponse>;
+const GetComponentResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetComponentResponse>;
 export type S3EndpointType = "REGIONAL" | "GLOBAL" | (string & {});
 const S3EndpointType = S.String;
 
@@ -1005,50 +709,24 @@ export interface GetComponentVersionArtifactRequest {
   s3EndpointType?: S3EndpointType;
   iotEndpointType?: IotEndpointType;
 }
-const GetComponentVersionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String.pipe(T.HttpLabel("arn")),
-    artifactName: S.String.pipe(T.HttpLabel("artifactName")),
-    s3EndpointType: S.optional(S3EndpointType).pipe(T.HttpQuery("s3EndpointType")),
-    iotEndpointType: S.optional(IotEndpointType).pipe(T.HttpHeader("x-amz-iot-endpoint-type")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/v2/components/{arn}/artifacts/{artifactName+}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetComponentVersionArtifactRequest",
-}) as any as S.Schema<GetComponentVersionArtifactRequest>;
+const GetComponentVersionArtifactRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetComponentVersionArtifactRequest>;
 export interface GetComponentVersionArtifactResponse {
   preSignedUrl: string;
 }
-const GetComponentVersionArtifactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ preSignedUrl: S.String }),
-).annotate({
-  identifier: "GetComponentVersionArtifactResponse",
-}) as any as S.Schema<GetComponentVersionArtifactResponse>;
+const GetComponentVersionArtifactResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetComponentVersionArtifactResponse>;
 export interface GetConnectivityInfoRequest {
   thingName: string;
 }
-const GetConnectivityInfoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ thingName: S.String.pipe(T.HttpLabel("thingName")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/things/{thingName}/connectivityInfo" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetConnectivityInfoRequest",
-}) as any as S.Schema<GetConnectivityInfoRequest>;
+const GetConnectivityInfoRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetConnectivityInfoRequest>;
 export type PortNumberInt = number;
 export interface ConnectivityInfo {
   id?: string;
@@ -1056,50 +734,21 @@ export interface ConnectivityInfo {
   portNumber?: number;
   metadata?: string;
 }
-const ConnectivityInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    hostAddress: S.optional(S.String),
-    portNumber: S.optional(S.Number),
-    metadata: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      id: "Id",
-      hostAddress: "HostAddress",
-      portNumber: "PortNumber",
-      metadata: "Metadata",
-    }),
-  ),
-).annotate({ identifier: "ConnectivityInfo" }) as any as S.Schema<ConnectivityInfo>;
+const ConnectivityInfo = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ConnectivityInfo>;
 export type ConnectivityInfoList = ConnectivityInfo[];
-const ConnectivityInfoList = /*@__PURE__*/ S.Array(ConnectivityInfo);
+const ConnectivityInfoList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface GetConnectivityInfoResponse {
   connectivityInfo?: ConnectivityInfo[];
   message?: string;
 }
-const GetConnectivityInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectivityInfo: S.optional(ConnectivityInfoList),
-    message: S.optional(S.String),
-  }).pipe(S.encodeKeys({ connectivityInfo: "ConnectivityInfo", message: "Message" })),
-).annotate({
-  identifier: "GetConnectivityInfoResponse",
-}) as any as S.Schema<GetConnectivityInfoResponse>;
+const GetConnectivityInfoResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetConnectivityInfoResponse>;
 export interface GetCoreDeviceRequest {
   coreDeviceThingName: string;
 }
-const GetCoreDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetCoreDeviceRequest" }) as any as S.Schema<GetCoreDeviceRequest>;
+const GetCoreDeviceRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GetCoreDeviceRequest>;
 export type GGCVersion = string;
 export type CoreDevicePlatformString = string;
 export type CoreDeviceArchitectureString = string;
@@ -1117,33 +766,14 @@ export interface GetCoreDeviceResponse {
   lastStatusUpdateTimestamp?: Date;
   tags?: { [key: string]: string | undefined };
 }
-const GetCoreDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coreDeviceThingName: S.optional(S.String),
-    coreVersion: S.optional(S.String),
-    platform: S.optional(S.String),
-    architecture: S.optional(S.String),
-    runtime: S.optional(S.String),
-    status: S.optional(CoreDeviceStatus),
-    lastStatusUpdateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "GetCoreDeviceResponse" }) as any as S.Schema<GetCoreDeviceResponse>;
+const GetCoreDeviceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetCoreDeviceResponse>;
 export interface GetDeploymentRequest {
   deploymentId: string;
 }
-const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deploymentId: S.String.pipe(T.HttpLabel("deploymentId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/v2/deployments/{deploymentId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetDeploymentRequest" }) as any as S.Schema<GetDeploymentRequest>;
+const GetDeploymentRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GetDeploymentRequest>;
 export type NullableString = string;
 export type DeploymentStatus =
   | "ACTIVE"
@@ -1171,43 +801,23 @@ export interface GetDeploymentResponse {
   parentTargetArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetArn: S.optional(S.String),
-    revisionId: S.optional(S.String),
-    deploymentId: S.optional(S.String),
-    deploymentName: S.optional(S.String),
-    deploymentStatus: S.optional(DeploymentStatus),
-    iotJobId: S.optional(S.String),
-    iotJobArn: S.optional(S.String),
-    components: S.optional(ComponentDeploymentSpecifications),
-    deploymentPolicies: S.optional(DeploymentPolicies),
-    iotJobConfiguration: S.optional(DeploymentIoTJobConfiguration),
-    creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    isLatestForTarget: S.optional(S.Boolean),
-    parentTargetArn: S.optional(S.String),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "GetDeploymentResponse" }) as any as S.Schema<GetDeploymentResponse>;
+const GetDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetDeploymentResponse>;
 export interface GetServiceRoleForAccountRequest {}
-const GetServiceRoleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(T.Http({ method: "GET", uri: "/greengrass/servicerole" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetServiceRoleForAccountRequest",
-}) as any as S.Schema<GetServiceRoleForAccountRequest>;
+const GetServiceRoleForAccountRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetServiceRoleForAccountRequest>;
 export interface GetServiceRoleForAccountResponse {
   associatedAt?: string;
   roleArn?: string;
 }
-const GetServiceRoleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ associatedAt: S.optional(S.String), roleArn: S.optional(S.String) }).pipe(
-    S.encodeKeys({ associatedAt: "AssociatedAt", roleArn: "RoleArn" }),
-  ),
-).annotate({
-  identifier: "GetServiceRoleForAccountResponse",
-}) as any as S.Schema<GetServiceRoleForAccountResponse>;
+const GetServiceRoleForAccountResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetServiceRoleForAccountResponse>;
 export type DefaultMaxResults = number;
 export type NextTokenString = string;
 export interface ListClientDevicesAssociatedWithCoreDeviceRequest {
@@ -1215,51 +825,28 @@ export interface ListClientDevicesAssociatedWithCoreDeviceRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListClientDevicesAssociatedWithCoreDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/associatedClientDevices",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListClientDevicesAssociatedWithCoreDeviceRequest",
-}) as any as S.Schema<ListClientDevicesAssociatedWithCoreDeviceRequest>;
+const ListClientDevicesAssociatedWithCoreDeviceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListClientDevicesAssociatedWithCoreDeviceRequest>;
 export interface AssociatedClientDevice {
   thingName?: string;
   associationTimestamp?: Date;
 }
-const AssociatedClientDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.optional(S.String),
-    associationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "AssociatedClientDevice" }) as any as S.Schema<AssociatedClientDevice>;
+const AssociatedClientDevice = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<AssociatedClientDevice>;
 export type AssociatedClientDeviceList = AssociatedClientDevice[];
-const AssociatedClientDeviceList = /*@__PURE__*/ S.Array(AssociatedClientDevice);
+const AssociatedClientDeviceList = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ListClientDevicesAssociatedWithCoreDeviceResponse {
   associatedClientDevices?: AssociatedClientDevice[];
   nextToken?: string;
 }
-const ListClientDevicesAssociatedWithCoreDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    associatedClientDevices: S.optional(AssociatedClientDeviceList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListClientDevicesAssociatedWithCoreDeviceResponse",
-}) as any as S.Schema<ListClientDevicesAssociatedWithCoreDeviceResponse>;
+const ListClientDevicesAssociatedWithCoreDeviceResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListClientDevicesAssociatedWithCoreDeviceResponse>;
 export type ComponentVisibilityScope = "PRIVATE" | "PUBLIC" | (string & {});
 const ComponentVisibilityScope = S.String;
 
@@ -1268,22 +855,10 @@ export interface ListComponentsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListComponentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.optional(ComponentVisibilityScope).pipe(T.HttpQuery("scope")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/v2/components" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListComponentsRequest" }) as any as S.Schema<ListComponentsRequest>;
+const ListComponentsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListComponentsRequest>;
 export type ComponentARN = string;
 export interface ComponentLatestVersion {
   arn?: string;
@@ -1293,86 +868,54 @@ export interface ComponentLatestVersion {
   publisher?: string;
   platforms?: ComponentPlatform[];
 }
-const ComponentLatestVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    componentVersion: S.optional(S.String),
-    creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    description: S.optional(S.String),
-    publisher: S.optional(S.String),
-    platforms: S.optional(ComponentPlatformList),
-  }),
-).annotate({ identifier: "ComponentLatestVersion" }) as any as S.Schema<ComponentLatestVersion>;
+const ComponentLatestVersion = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ComponentLatestVersion>;
 export interface Component {
   arn?: string;
   componentName?: string;
   latestVersion?: ComponentLatestVersion;
 }
-const Component = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    componentName: S.optional(S.String),
-    latestVersion: S.optional(ComponentLatestVersion),
-  }),
-).annotate({ identifier: "Component" }) as any as S.Schema<Component>;
+const Component = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Component>;
 export type ComponentList = Component[];
-const ComponentList = /*@__PURE__*/ S.Array(Component);
+const ComponentList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface ListComponentsResponse {
   components?: Component[];
   nextToken?: string;
 }
-const ListComponentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ components: S.optional(ComponentList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListComponentsResponse" }) as any as S.Schema<ListComponentsResponse>;
+const ListComponentsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListComponentsResponse>;
 export interface ListComponentVersionsRequest {
   arn: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListComponentVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String.pipe(T.HttpLabel("arn")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/v2/components/{arn}/versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListComponentVersionsRequest",
-}) as any as S.Schema<ListComponentVersionsRequest>;
+const ListComponentVersionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListComponentVersionsRequest>;
 export interface ComponentVersionListItem {
   componentName?: string;
   componentVersion?: string;
   arn?: string;
 }
-const ComponentVersionListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentName: S.optional(S.String),
-    componentVersion: S.optional(S.String),
-    arn: S.optional(S.String),
-  }),
-).annotate({ identifier: "ComponentVersionListItem" }) as any as S.Schema<ComponentVersionListItem>;
+const ComponentVersionListItem = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ComponentVersionListItem>;
 export type ComponentVersionList = ComponentVersionListItem[];
-const ComponentVersionList = /*@__PURE__*/ S.Array(ComponentVersionListItem);
+const ComponentVersionList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface ListComponentVersionsResponse {
   componentVersions?: ComponentVersionListItem[];
   nextToken?: string;
 }
-const ListComponentVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentVersions: S.optional(ComponentVersionList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListComponentVersionsResponse",
-}) as any as S.Schema<ListComponentVersionsResponse>;
+const ListComponentVersionsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListComponentVersionsResponse>;
 export interface ListCoreDevicesRequest {
   thingGroupArn?: string;
   status?: CoreDeviceStatus;
@@ -1380,24 +923,10 @@ export interface ListCoreDevicesRequest {
   nextToken?: string;
   runtime?: string;
 }
-const ListCoreDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingGroupArn: S.optional(S.String).pipe(T.HttpQuery("thingGroupArn")),
-    status: S.optional(CoreDeviceStatus).pipe(T.HttpQuery("status")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    runtime: S.optional(S.String).pipe(T.HttpQuery("runtime")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/v2/coreDevices" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListCoreDevicesRequest" }) as any as S.Schema<ListCoreDevicesRequest>;
+const ListCoreDevicesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListCoreDevicesRequest>;
 export interface CoreDevice {
   coreDeviceThingName?: string;
   status?: CoreDeviceStatus;
@@ -1406,25 +935,17 @@ export interface CoreDevice {
   architecture?: string;
   runtime?: string;
 }
-const CoreDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coreDeviceThingName: S.optional(S.String),
-    status: S.optional(CoreDeviceStatus),
-    lastStatusUpdateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    platform: S.optional(S.String),
-    architecture: S.optional(S.String),
-    runtime: S.optional(S.String),
-  }),
-).annotate({ identifier: "CoreDevice" }) as any as S.Schema<CoreDevice>;
+const CoreDevice = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<CoreDevice>;
 export type CoreDevicesList = CoreDevice[];
-const CoreDevicesList = /*@__PURE__*/ S.Array(CoreDevice);
+const CoreDevicesList = /*@__PURE__*/ __L.at(__c10, 6);
 export interface ListCoreDevicesResponse {
   coreDevices?: CoreDevice[];
   nextToken?: string;
 }
-const ListCoreDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ coreDevices: S.optional(CoreDevicesList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListCoreDevicesResponse" }) as any as S.Schema<ListCoreDevicesResponse>;
+const ListCoreDevicesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListCoreDevicesResponse>;
 export type DeploymentHistoryFilter = "ALL" | "LATEST_ONLY" | (string & {});
 const DeploymentHistoryFilter = S.String;
 
@@ -1435,24 +956,10 @@ export interface ListDeploymentsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetArn: S.optional(S.String).pipe(T.HttpQuery("targetArn")),
-    historyFilter: S.optional(DeploymentHistoryFilter).pipe(T.HttpQuery("historyFilter")),
-    parentTargetArn: S.optional(S.String).pipe(T.HttpQuery("parentTargetArn")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/greengrass/v2/deployments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListDeploymentsRequest" }) as any as S.Schema<ListDeploymentsRequest>;
+const ListDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListDeploymentsRequest>;
 export interface Deployment {
   targetArn?: string;
   revisionId?: string;
@@ -1463,53 +970,26 @@ export interface Deployment {
   isLatestForTarget?: boolean;
   parentTargetArn?: string;
 }
-const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetArn: S.optional(S.String),
-    revisionId: S.optional(S.String),
-    deploymentId: S.optional(S.String),
-    deploymentName: S.optional(S.String),
-    creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    deploymentStatus: S.optional(DeploymentStatus),
-    isLatestForTarget: S.optional(S.Boolean),
-    parentTargetArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
+const Deployment = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<Deployment>;
 export type DeploymentList = Deployment[];
-const DeploymentList = /*@__PURE__*/ S.Array(Deployment);
+const DeploymentList = /*@__PURE__*/ __L.at(__c11, 2);
 export interface ListDeploymentsResponse {
   deployments?: Deployment[];
   nextToken?: string;
 }
-const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ deployments: S.optional(DeploymentList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListDeploymentsResponse" }) as any as S.Schema<ListDeploymentsResponse>;
+const ListDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListDeploymentsResponse>;
 export interface ListEffectiveDeploymentsRequest {
   coreDeviceThingName: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListEffectiveDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/effectiveDeployments",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEffectiveDeploymentsRequest",
-}) as any as S.Schema<ListEffectiveDeploymentsRequest>;
+const ListEffectiveDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListEffectiveDeploymentsRequest>;
 export type DeploymentID = string;
 export type DeploymentName = string;
 export type IoTJobId = string;
@@ -1539,14 +1019,10 @@ export interface EffectiveDeploymentStatusDetails {
   errorStack?: string[];
   errorTypes?: string[];
 }
-const EffectiveDeploymentStatusDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorStack: S.optional(EffectiveDeploymentErrorStack),
-    errorTypes: S.optional(EffectiveDeploymentErrorTypeList),
-  }),
-).annotate({
-  identifier: "EffectiveDeploymentStatusDetails",
-}) as any as S.Schema<EffectiveDeploymentStatusDetails>;
+const EffectiveDeploymentStatusDetails = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<EffectiveDeploymentStatusDetails>;
 export interface EffectiveDeployment {
   deploymentId: string;
   deploymentName: string;
@@ -1560,35 +1036,17 @@ export interface EffectiveDeployment {
   modifiedTimestamp: Date;
   statusDetails?: EffectiveDeploymentStatusDetails;
 }
-const EffectiveDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.String,
-    deploymentName: S.String,
-    iotJobId: S.optional(S.String),
-    iotJobArn: S.optional(S.String),
-    description: S.optional(S.String),
-    targetArn: S.String,
-    coreDeviceExecutionStatus: EffectiveDeploymentExecutionStatus,
-    reason: S.optional(S.String),
-    creationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    modifiedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    statusDetails: S.optional(EffectiveDeploymentStatusDetails),
-  }),
-).annotate({ identifier: "EffectiveDeployment" }) as any as S.Schema<EffectiveDeployment>;
+const EffectiveDeployment = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<EffectiveDeployment>;
 export type EffectiveDeploymentsList = EffectiveDeployment[];
-const EffectiveDeploymentsList = /*@__PURE__*/ S.Array(EffectiveDeployment);
+const EffectiveDeploymentsList = /*@__PURE__*/ __L.at(__c11, 7);
 export interface ListEffectiveDeploymentsResponse {
   effectiveDeployments?: EffectiveDeployment[];
   nextToken?: string;
 }
-const ListEffectiveDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effectiveDeployments: S.optional(EffectiveDeploymentsList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEffectiveDeploymentsResponse",
-}) as any as S.Schema<ListEffectiveDeploymentsResponse>;
+const ListEffectiveDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListEffectiveDeploymentsResponse>;
 export type InstalledComponentTopologyFilter = "ALL" | "ROOT" | (string & {});
 const InstalledComponentTopologyFilter = S.String;
 
@@ -1598,30 +1056,10 @@ export interface ListInstalledComponentsRequest {
   nextToken?: string;
   topologyFilter?: InstalledComponentTopologyFilter;
 }
-const ListInstalledComponentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    topologyFilter: S.optional(InstalledComponentTopologyFilter).pipe(
-      T.HttpQuery("topologyFilter"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/installedComponents",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListInstalledComponentsRequest",
-}) as any as S.Schema<ListInstalledComponentsRequest>;
+const ListInstalledComponentsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListInstalledComponentsRequest>;
 export type InstalledComponentLifecycleState =
   | "NEW"
   | "INSTALLED"
@@ -1651,52 +1089,32 @@ export interface InstalledComponent {
   lastInstallationSource?: string;
   lifecycleStatusCodes?: string[];
 }
-const InstalledComponent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentName: S.optional(S.String),
-    componentVersion: S.optional(S.String),
-    lifecycleState: S.optional(InstalledComponentLifecycleState),
-    lifecycleStateDetails: S.optional(S.String),
-    isRoot: S.optional(S.Boolean),
-    lastStatusChangeTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastReportedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastInstallationSource: S.optional(S.String),
-    lifecycleStatusCodes: S.optional(InstalledComponentLifecycleStatusCodeList),
-  }),
-).annotate({ identifier: "InstalledComponent" }) as any as S.Schema<InstalledComponent>;
+const InstalledComponent = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<InstalledComponent>;
 export type InstalledComponentList = InstalledComponent[];
-const InstalledComponentList = /*@__PURE__*/ S.Array(InstalledComponent);
+const InstalledComponentList = /*@__PURE__*/ __L.at(__c12, 3);
 export interface ListInstalledComponentsResponse {
   installedComponents?: InstalledComponent[];
   nextToken?: string;
 }
-const ListInstalledComponentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    installedComponents: S.optional(InstalledComponentList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListInstalledComponentsResponse",
-}) as any as S.Schema<ListInstalledComponentsResponse>;
+const ListInstalledComponentsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListInstalledComponentsResponse>;
 export type GenericV2ARN = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type ComponentVersionRequirementMap = { [key: string]: string | undefined };
 const ComponentVersionRequirementMap =
   PlatformAttributesMap as any as S.Schema<ComponentVersionRequirementMap>;
@@ -1705,36 +1123,17 @@ export interface ComponentCandidate {
   componentVersion?: string;
   versionRequirements?: { [key: string]: string | undefined };
 }
-const ComponentCandidate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    componentName: S.optional(S.String),
-    componentVersion: S.optional(S.String),
-    versionRequirements: S.optional(ComponentVersionRequirementMap),
-  }),
-).annotate({ identifier: "ComponentCandidate" }) as any as S.Schema<ComponentCandidate>;
+const ComponentCandidate = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ComponentCandidate>;
 export type ComponentCandidateList = ComponentCandidate[];
-const ComponentCandidateList = /*@__PURE__*/ S.Array(ComponentCandidate);
+const ComponentCandidateList = /*@__PURE__*/ __L.at(__c13, 0);
 export interface ResolveComponentCandidatesRequest {
   platform?: ComponentPlatform;
   componentCandidates?: ComponentCandidate[];
 }
-const ResolveComponentCandidatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    platform: S.optional(ComponentPlatform),
-    componentCandidates: S.optional(ComponentCandidateList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/greengrass/v2/resolveComponentCandidates" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ResolveComponentCandidatesRequest",
-}) as any as S.Schema<ResolveComponentCandidatesRequest>;
+const ResolveComponentCandidatesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ResolveComponentCandidatesRequest>;
 export interface ResolvedComponentVersion {
   arn?: string;
   componentName?: string;
@@ -1743,35 +1142,24 @@ export interface ResolvedComponentVersion {
   vendorGuidance?: VendorGuidance;
   message?: string;
 }
-const ResolvedComponentVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    componentName: S.optional(S.String),
-    componentVersion: S.optional(S.String),
-    recipe: S.optional(T.Blob),
-    vendorGuidance: S.optional(VendorGuidance),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResolvedComponentVersion" }) as any as S.Schema<ResolvedComponentVersion>;
+const ResolvedComponentVersion = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ResolvedComponentVersion>;
 export type ResolvedComponentVersionsList = ResolvedComponentVersion[];
-const ResolvedComponentVersionsList = /*@__PURE__*/ S.Array(ResolvedComponentVersion);
+const ResolvedComponentVersionsList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface ResolveComponentCandidatesResponse {
   resolvedComponentVersions?: ResolvedComponentVersion[];
 }
-const ResolveComponentCandidatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resolvedComponentVersions: S.optional(ResolvedComponentVersionsList) }),
-).annotate({
-  identifier: "ResolveComponentCandidatesResponse",
-}) as any as S.Schema<ResolveComponentCandidatesResponse>;
+const ResolveComponentCandidatesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ResolveComponentCandidatesResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteComponentResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -1780,50 +1168,28 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = DeleteComponentResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectivityInfoRequest {
   thingName: string;
   connectivityInfo: ConnectivityInfo[];
 }
-const UpdateConnectivityInfoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.String.pipe(T.HttpLabel("thingName")),
-    connectivityInfo: ConnectivityInfoList,
-  })
-    .pipe(S.encodeKeys({ thingName: "ThingName", connectivityInfo: "ConnectivityInfo" }))
-    .pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/greengrass/things/{thingName}/connectivityInfo" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "UpdateConnectivityInfoRequest",
-}) as any as S.Schema<UpdateConnectivityInfoRequest>;
+const UpdateConnectivityInfoRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<UpdateConnectivityInfoRequest>;
 export interface UpdateConnectivityInfoResponse {
   version?: string;
   message?: string;
 }
-const UpdateConnectivityInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ version: S.optional(S.String), message: S.optional(S.String) }).pipe(
-    S.encodeKeys({ version: "Version", message: "Message" }),
-  ),
-).annotate({
-  identifier: "UpdateConnectivityInfoResponse",
-}) as any as S.Schema<UpdateConnectivityInfoResponse>;
+const UpdateConnectivityInfoResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<UpdateConnectivityInfoResponse>;
 export type RetryAfterSeconds = number;
 export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
@@ -1837,11 +1203,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c14, 2);
 export type AssociateServiceRoleToAccountError =
   | InternalServerException
   | ValidationException
@@ -2875,3 +2242,1157 @@ export const updateConnectivityInfo: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnectivityInfo",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ roleArn: S.String })
+          .pipe(S.encodeKeys({ roleArn: "RoleArn" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/greengrass/servicerole" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "AssociateServiceRoleToAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ associatedAt: S.optional(S.String) }).pipe(
+          S.encodeKeys({ associatedAt: "AssociatedAt" }),
+        ),
+      ).annotate({
+        identifier: "AssociateServiceRoleToAccountResponse",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ thingName: S.String })).annotate({
+        identifier: "AssociateClientDeviceWithCoreDeviceEntry",
+      });
+    case 3:
+      return S.Array(AssociateClientDeviceWithCoreDeviceEntry);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(AssociateClientDeviceWithCoreDeviceEntryList),
+          coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/associateClientDevices",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchAssociateClientDeviceWithCoreDeviceRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          thingName: S.optional(S.String),
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AssociateClientDeviceWithCoreDeviceErrorEntry",
+      });
+    case 6:
+      return S.Array(AssociateClientDeviceWithCoreDeviceErrorEntry);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ errorEntries: S.optional(AssociateClientDeviceWithCoreDeviceErrorList) }),
+      ).annotate({
+        identifier: "BatchAssociateClientDeviceWithCoreDeviceResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(DisassociateClientDeviceFromCoreDeviceEntryList),
+          coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/disassociateClientDevices",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchDisassociateClientDeviceFromCoreDeviceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String.pipe(T.HttpLabel("deploymentId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/greengrass/v2/deployments/{deploymentId}/cancel" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CancelDeploymentRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
+        identifier: "CancelDeploymentResponse",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), attributes: S.optional(PlatformAttributesMap) }),
+      ).annotate({ identifier: "ComponentPlatform" });
+    case 5:
+      return S.Array(ComponentPlatform);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          versionRequirement: S.optional(S.String),
+          dependencyType: S.optional(ComponentDependencyType),
+        }),
+      ).annotate({
+        identifier: "ComponentDependencyRequirement",
+      });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ ComponentDependencyRequirement.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ topic: S.String, type: LambdaEventSourceType })).annotate({
+        identifier: "LambdaEventSource",
+      });
+    case 1:
+      return S.Array(LambdaEventSource);
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sourcePath: S.String,
+          destinationPath: S.String,
+          permission: S.optional(LambdaFilesystemPermission),
+          addGroupOwner: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LambdaVolumeMount" });
+    case 4:
+      return S.Array(LambdaVolumeMount);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          permission: S.optional(LambdaFilesystemPermission),
+          addGroupOwner: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LambdaDeviceMount" });
+    case 6:
+      return S.Array(LambdaDeviceMount);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          memorySizeInKB: S.optional(S.Number),
+          mountROSysfs: S.optional(S.Boolean),
+          volumes: S.optional(LambdaVolumeList),
+          devices: S.optional(LambdaDeviceList),
+        }),
+      ).annotate({ identifier: "LambdaContainerParams" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isolationMode: S.optional(LambdaIsolationMode),
+          containerParams: S.optional(LambdaContainerParams),
+        }),
+      ).annotate({ identifier: "LambdaLinuxProcessParams" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          eventSources: S.optional(LambdaEventSourceList),
+          maxQueueSize: S.optional(S.Number),
+          maxInstancesCount: S.optional(S.Number),
+          maxIdleTimeInSeconds: S.optional(S.Number),
+          timeoutInSeconds: S.optional(S.Number),
+          statusTimeoutInSeconds: S.optional(S.Number),
+          pinned: S.optional(S.Boolean),
+          inputPayloadEncodingType: S.optional(LambdaInputPayloadEncodingType),
+          execArgs: S.optional(LambdaExecArgsList),
+          environmentVariables: S.optional(LambdaEnvironmentVariables),
+          linuxProcessParams: S.optional(LambdaLinuxProcessParams),
+        }),
+      ).annotate({
+        identifier: "LambdaExecutionParameters",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lambdaArn: S.String,
+          componentName: S.optional(S.String),
+          componentVersion: S.optional(S.String),
+          componentPlatforms: S.optional(ComponentPlatformList),
+          componentDependencies: S.optional(ComponentDependencyMap),
+          componentLambdaParameters: S.optional(LambdaExecutionParameters),
+        }),
+      ).annotate({
+        identifier: "LambdaFunctionRecipeSource",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          inlineRecipe: S.optional(T.Blob),
+          lambdaFunction: S.optional(LambdaFunctionRecipeSource),
+          tags: S.optional(TagMap),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/greengrass/v2/createComponentVersion" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateComponentVersionRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          componentState: S.optional(CloudComponentState),
+          message: S.optional(S.String),
+          errors: S.optional(StringMap),
+          vendorGuidance: S.optional(VendorGuidance),
+          vendorGuidanceMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudComponentStatus" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          componentName: S.String,
+          componentVersion: S.String,
+          creationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: CloudComponentStatus,
+        }),
+      ).annotate({
+        identifier: "CreateComponentVersionResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          merge: S.optional(S.String),
+          reset: S.optional(ComponentConfigurationPathList),
+        }),
+      ).annotate({
+        identifier: "ComponentConfigurationUpdate",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ memory: S.optional(S.Number), cpus: S.optional(S.Number) }),
+      ).annotate({ identifier: "SystemResourceLimits" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          posixUser: S.optional(S.String),
+          systemResourceLimits: S.optional(SystemResourceLimits),
+          windowsUser: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComponentRunWith" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          componentVersion: S.String,
+          configurationUpdate: S.optional(ComponentConfigurationUpdate),
+          runWith: S.optional(ComponentRunWith),
+        }),
+      ).annotate({
+        identifier: "ComponentDeploymentSpecification",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ ComponentDeploymentSpecification.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          numberOfNotifiedThings: S.optional(S.Number),
+          numberOfSucceededThings: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoTJobRateIncreaseCriteria",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          baseRatePerMinute: S.Number,
+          incrementFactor: S.Number,
+          rateIncreaseCriteria: IoTJobRateIncreaseCriteria,
+        }),
+      ).annotate({
+        identifier: "IoTJobExponentialRolloutRate",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          exponentialRate: S.optional(IoTJobExponentialRolloutRate),
+          maximumPerMinute: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoTJobExecutionsRolloutConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          failureType: IoTJobExecutionFailureType,
+          action: IoTJobAbortAction,
+          thresholdPercentage: S.Number,
+          minNumberOfExecutedThings: S.Number,
+        }),
+      ).annotate({ identifier: "IoTJobAbortCriteria" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(IoTJobAbortCriteria);
+    case 1:
+      return S.suspend(() => S.Struct({ criteriaList: IoTJobAbortCriteriaList })).annotate({
+        identifier: "IoTJobAbortConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ inProgressTimeoutInMinutes: S.optional(S.Number) }),
+      ).annotate({ identifier: "IoTJobTimeoutConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          jobExecutionsRolloutConfig: S.optional(IoTJobExecutionsRolloutConfig),
+          abortConfig: S.optional(IoTJobAbortConfig),
+          timeoutConfig: S.optional(IoTJobTimeoutConfig),
+        }),
+      ).annotate({
+        identifier: "DeploymentIoTJobConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutInSeconds: S.optional(S.Number),
+          action: S.optional(DeploymentComponentUpdatePolicyAction),
+        }),
+      ).annotate({
+        identifier: "DeploymentComponentUpdatePolicy",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ timeoutInSeconds: S.optional(S.Number) })).annotate({
+        identifier: "DeploymentConfigurationValidationPolicy",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          failureHandlingPolicy: S.optional(DeploymentFailureHandlingPolicy),
+          componentUpdatePolicy: S.optional(DeploymentComponentUpdatePolicy),
+          configurationValidationPolicy: S.optional(DeploymentConfigurationValidationPolicy),
+        }),
+      ).annotate({ identifier: "DeploymentPolicies" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          targetArn: S.String,
+          deploymentName: S.optional(S.String),
+          components: S.optional(ComponentDeploymentSpecifications),
+          iotJobConfiguration: S.optional(DeploymentIoTJobConfiguration),
+          deploymentPolicies: S.optional(DeploymentPolicies),
+          parentTargetArn: S.optional(S.String),
+          tags: S.optional(TagMap),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/greengrass/v2/deployments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateDeploymentRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          iotJobId: S.optional(S.String),
+          iotJobArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateDeploymentResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/greengrass/v2/components/{arn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteComponentRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteComponentResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteCoreDeviceRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String.pipe(T.HttpLabel("deploymentId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/greengrass/v2/deployments/{deploymentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDeploymentRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/v2/components/{arn}/metadata" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeComponentRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          componentName: S.optional(S.String),
+          componentVersion: S.optional(S.String),
+          creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          publisher: S.optional(S.String),
+          description: S.optional(S.String),
+          status: S.optional(CloudComponentStatus),
+          platforms: S.optional(ComponentPlatformList),
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({
+        identifier: "DescribeComponentResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/greengrass/servicerole" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateServiceRoleFromAccountRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ disassociatedAt: S.optional(S.String) }).pipe(
+          S.encodeKeys({ disassociatedAt: "DisassociatedAt" }),
+        ),
+      ).annotate({
+        identifier: "DisassociateServiceRoleFromAccountResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          recipeOutputFormat: S.optional(RecipeOutputFormat).pipe(
+            T.HttpQuery("recipeOutputFormat"),
+          ),
+          arn: S.String.pipe(T.HttpLabel("arn")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/v2/components/{arn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetComponentRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          recipeOutputFormat: RecipeOutputFormat,
+          recipe: T.Blob,
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({ identifier: "GetComponentResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String.pipe(T.HttpLabel("arn")),
+          artifactName: S.String.pipe(T.HttpLabel("artifactName")),
+          s3EndpointType: S.optional(S3EndpointType).pipe(T.HttpQuery("s3EndpointType")),
+          iotEndpointType: S.optional(IotEndpointType).pipe(
+            T.HttpHeader("x-amz-iot-endpoint-type"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/greengrass/v2/components/{arn}/artifacts/{artifactName+}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetComponentVersionArtifactRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ preSignedUrl: S.String })).annotate({
+        identifier: "GetComponentVersionArtifactResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ thingName: S.String.pipe(T.HttpLabel("thingName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/things/{thingName}/connectivityInfo" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetConnectivityInfoRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          hostAddress: S.optional(S.String),
+          portNumber: S.optional(S.Number),
+          metadata: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            id: "Id",
+            hostAddress: "HostAddress",
+            portNumber: "PortNumber",
+            metadata: "Metadata",
+          }),
+        ),
+      ).annotate({ identifier: "ConnectivityInfo" });
+    case 7:
+      return S.Array(ConnectivityInfo);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectivityInfo: S.optional(ConnectivityInfoList),
+          message: S.optional(S.String),
+        }).pipe(S.encodeKeys({ connectivityInfo: "ConnectivityInfo", message: "Message" })),
+      ).annotate({
+        identifier: "GetConnectivityInfoResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetCoreDeviceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          coreDeviceThingName: S.optional(S.String),
+          coreVersion: S.optional(S.String),
+          platform: S.optional(S.String),
+          architecture: S.optional(S.String),
+          runtime: S.optional(S.String),
+          status: S.optional(CoreDeviceStatus),
+          lastStatusUpdateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({ identifier: "GetCoreDeviceResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ deploymentId: S.String.pipe(T.HttpLabel("deploymentId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/v2/deployments/{deploymentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDeploymentRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          targetArn: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          deploymentId: S.optional(S.String),
+          deploymentName: S.optional(S.String),
+          deploymentStatus: S.optional(DeploymentStatus),
+          iotJobId: S.optional(S.String),
+          iotJobArn: S.optional(S.String),
+          components: S.optional(ComponentDeploymentSpecifications),
+          deploymentPolicies: S.optional(DeploymentPolicies),
+          iotJobConfiguration: S.optional(DeploymentIoTJobConfiguration),
+          creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          isLatestForTarget: S.optional(S.Boolean),
+          parentTargetArn: S.optional(S.String),
+          tags: S.optional(TagMap),
+        }),
+      ).annotate({ identifier: "GetDeploymentResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/servicerole" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetServiceRoleForAccountRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ associatedAt: S.optional(S.String), roleArn: S.optional(S.String) }).pipe(
+          S.encodeKeys({ associatedAt: "AssociatedAt", roleArn: "RoleArn" }),
+        ),
+      ).annotate({
+        identifier: "GetServiceRoleForAccountResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/associatedClientDevices",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListClientDevicesAssociatedWithCoreDeviceRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          thingName: S.optional(S.String),
+          associationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "AssociatedClientDevice" });
+    case 1:
+      return S.Array(AssociatedClientDevice);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          associatedClientDevices: S.optional(AssociatedClientDeviceList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListClientDevicesAssociatedWithCoreDeviceResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(ComponentVisibilityScope).pipe(T.HttpQuery("scope")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/v2/components" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListComponentsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          componentVersion: S.optional(S.String),
+          creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          description: S.optional(S.String),
+          publisher: S.optional(S.String),
+          platforms: S.optional(ComponentPlatformList),
+        }),
+      ).annotate({ identifier: "ComponentLatestVersion" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          componentName: S.optional(S.String),
+          latestVersion: S.optional(ComponentLatestVersion),
+        }),
+      ).annotate({ identifier: "Component" });
+    case 6:
+      return S.Array(Component);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ components: S.optional(ComponentList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListComponentsResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String.pipe(T.HttpLabel("arn")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/v2/components/{arn}/versions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListComponentVersionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          componentName: S.optional(S.String),
+          componentVersion: S.optional(S.String),
+          arn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComponentVersionListItem" });
+    case 2:
+      return S.Array(ComponentVersionListItem);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          componentVersions: S.optional(ComponentVersionList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListComponentVersionsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          thingGroupArn: S.optional(S.String).pipe(T.HttpQuery("thingGroupArn")),
+          status: S.optional(CoreDeviceStatus).pipe(T.HttpQuery("status")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          runtime: S.optional(S.String).pipe(T.HttpQuery("runtime")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/v2/coreDevices" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListCoreDevicesRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          coreDeviceThingName: S.optional(S.String),
+          status: S.optional(CoreDeviceStatus),
+          lastStatusUpdateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          platform: S.optional(S.String),
+          architecture: S.optional(S.String),
+          runtime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CoreDevice" });
+    case 6:
+      return S.Array(CoreDevice);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ coreDevices: S.optional(CoreDevicesList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListCoreDevicesResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetArn: S.optional(S.String).pipe(T.HttpQuery("targetArn")),
+          historyFilter: S.optional(DeploymentHistoryFilter).pipe(T.HttpQuery("historyFilter")),
+          parentTargetArn: S.optional(S.String).pipe(T.HttpQuery("parentTargetArn")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/greengrass/v2/deployments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListDeploymentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targetArn: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          deploymentId: S.optional(S.String),
+          deploymentName: S.optional(S.String),
+          creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deploymentStatus: S.optional(DeploymentStatus),
+          isLatestForTarget: S.optional(S.Boolean),
+          parentTargetArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Deployment" });
+    case 2:
+      return S.Array(Deployment);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ deployments: S.optional(DeploymentList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDeploymentsResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/effectiveDeployments",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEffectiveDeploymentsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          errorStack: S.optional(EffectiveDeploymentErrorStack),
+          errorTypes: S.optional(EffectiveDeploymentErrorTypeList),
+        }),
+      ).annotate({
+        identifier: "EffectiveDeploymentStatusDetails",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String,
+          deploymentName: S.String,
+          iotJobId: S.optional(S.String),
+          iotJobArn: S.optional(S.String),
+          description: S.optional(S.String),
+          targetArn: S.String,
+          coreDeviceExecutionStatus: EffectiveDeploymentExecutionStatus,
+          reason: S.optional(S.String),
+          creationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          modifiedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          statusDetails: S.optional(EffectiveDeploymentStatusDetails),
+        }),
+      ).annotate({ identifier: "EffectiveDeployment" });
+    case 7:
+      return S.Array(EffectiveDeployment);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          effectiveDeployments: S.optional(EffectiveDeploymentsList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEffectiveDeploymentsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          topologyFilter: S.optional(InstalledComponentTopologyFilter).pipe(
+            T.HttpQuery("topologyFilter"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/installedComponents",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListInstalledComponentsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          componentName: S.optional(S.String),
+          componentVersion: S.optional(S.String),
+          lifecycleState: S.optional(InstalledComponentLifecycleState),
+          lifecycleStateDetails: S.optional(S.String),
+          isRoot: S.optional(S.Boolean),
+          lastStatusChangeTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastReportedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastInstallationSource: S.optional(S.String),
+          lifecycleStatusCodes: S.optional(InstalledComponentLifecycleStatusCodeList),
+        }),
+      ).annotate({ identifier: "InstalledComponent" });
+    case 3:
+      return S.Array(InstalledComponent);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          installedComponents: S.optional(InstalledComponentList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListInstalledComponentsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          componentName: S.optional(S.String),
+          componentVersion: S.optional(S.String),
+          versionRequirements: S.optional(ComponentVersionRequirementMap),
+        }),
+      ).annotate({ identifier: "ComponentCandidate" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ComponentCandidate);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          platform: S.optional(ComponentPlatform),
+          componentCandidates: S.optional(ComponentCandidateList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/greengrass/v2/resolveComponentCandidates" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ResolveComponentCandidatesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          componentName: S.optional(S.String),
+          componentVersion: S.optional(S.String),
+          recipe: S.optional(T.Blob),
+          vendorGuidance: S.optional(VendorGuidance),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResolvedComponentVersion" });
+    case 3:
+      return S.Array(ResolvedComponentVersion);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resolvedComponentVersions: S.optional(ResolvedComponentVersionsList) }),
+      ).annotate({
+        identifier: "ResolveComponentCandidatesResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          thingName: S.String.pipe(T.HttpLabel("thingName")),
+          connectivityInfo: ConnectivityInfoList,
+        })
+          .pipe(S.encodeKeys({ thingName: "ThingName", connectivityInfo: "ConnectivityInfo" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/greengrass/things/{thingName}/connectivityInfo" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateConnectivityInfoRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ version: S.optional(S.String), message: S.optional(S.String) }).pipe(
+          S.encodeKeys({ version: "Version", message: "Message" }),
+        ),
+      ).annotate({
+        identifier: "UpdateConnectivityInfoResponse",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 2:
+      return S.Array(ValidationExceptionField);
+  }
+}

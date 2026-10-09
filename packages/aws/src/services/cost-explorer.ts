@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -291,11 +292,7 @@ export type MonitorDimension =
 const MonitorDimension = S.String;
 
 export type Expressions = Expression[];
-const Expressions = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
-    identifier: "Expression",
-  }),
-) as any as S.Schema<Expressions>;
+const Expressions = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Expressions>;
 export type Dimension =
   | "AZ"
   | "INSTANCE_TYPE"
@@ -337,7 +334,7 @@ const Dimension = S.String;
 
 export type Value = string;
 export type Values = string[];
-const Values = /*@__PURE__*/ S.Array(S.String);
+const Values = /*@__PURE__*/ __L.at(__c0, 1);
 export type MatchOption =
   | "EQUALS"
   | "ABSENT"
@@ -351,32 +348,20 @@ export type MatchOption =
 const MatchOption = S.String;
 
 export type MatchOptions = MatchOption[];
-const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
+const MatchOptions = /*@__PURE__*/ __L.at(__c0, 2);
 export interface DimensionValues {
   Key?: Dimension;
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
-const DimensionValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(Dimension),
-    Values: S.optional(Values),
-    MatchOptions: S.optional(MatchOptions),
-  }),
-).annotate({ identifier: "DimensionValues" }) as any as S.Schema<DimensionValues>;
+const DimensionValues = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DimensionValues>;
 export type TagKey = string;
 export interface TagValues {
   Key?: string;
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
-const TagValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Values: S.optional(Values),
-    MatchOptions: S.optional(MatchOptions),
-  }),
-).annotate({ identifier: "TagValues" }) as any as S.Schema<TagValues>;
+const TagValues = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TagValues>;
 export type CostCategoryName = string;
 export interface CostCategoryValues {
   Key?: string;
@@ -392,18 +377,7 @@ export interface Expression {
   Tags?: TagValues;
   CostCategories?: CostCategoryValues;
 }
-const Expression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Or: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
-    And: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
-    Not: S.optional(
-      S.suspend((): S.Schema<Expression> => Expression).annotate({ identifier: "Expression" }),
-    ),
-    Dimensions: S.optional(DimensionValues),
-    Tags: S.optional(TagValues),
-    CostCategories: S.optional(CostCategoryValues),
-  }),
-).annotate({ identifier: "Expression" }) as any as S.Schema<Expression>;
+const Expression = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Expression>;
 export type NonNegativeInteger = number;
 export interface AnomalyMonitor {
   MonitorArn?: string;
@@ -416,49 +390,31 @@ export interface AnomalyMonitor {
   MonitorSpecification?: Expression;
   DimensionalValueCount?: number;
 }
-const AnomalyMonitor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorArn: S.optional(S.String),
-    MonitorName: S.String,
-    CreationDate: S.optional(S.String),
-    LastUpdatedDate: S.optional(S.String),
-    LastEvaluatedDate: S.optional(S.String),
-    MonitorType: MonitorType,
-    MonitorDimension: S.optional(MonitorDimension),
-    MonitorSpecification: S.optional(Expression),
-    DimensionalValueCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "AnomalyMonitor" }) as any as S.Schema<AnomalyMonitor>;
+const AnomalyMonitor = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AnomalyMonitor>;
 export type ResourceTagKey = string;
 export type ResourceTagValue = string;
 export interface ResourceTag {
   Key: string;
   Value: string;
 }
-const ResourceTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
+const ResourceTag = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
-const ResourceTagList = /*@__PURE__*/ S.Array(ResourceTag);
+const ResourceTagList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CreateAnomalyMonitorRequest {
   AnomalyMonitor: AnomalyMonitor;
   ResourceTags?: ResourceTag[];
 }
-const CreateAnomalyMonitorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AnomalyMonitor: AnomalyMonitor, ResourceTags: S.optional(ResourceTagList) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateAnomalyMonitorRequest",
-}) as any as S.Schema<CreateAnomalyMonitorRequest>;
+const CreateAnomalyMonitorRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateAnomalyMonitorRequest>;
 export interface CreateAnomalyMonitorResponse {
   MonitorArn: string;
 }
-const CreateAnomalyMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MonitorArn: S.String }),
-).annotate({
-  identifier: "CreateAnomalyMonitorResponse",
-}) as any as S.Schema<CreateAnomalyMonitorResponse>;
+const CreateAnomalyMonitorResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateAnomalyMonitorResponse>;
 export type Arn = string;
 export type MonitorArnList = string[];
 const MonitorArnList = Values as any as S.Schema<MonitorArnList>;
@@ -474,15 +430,9 @@ export interface Subscriber {
   Type?: SubscriberType;
   Status?: SubscriberStatus;
 }
-const Subscriber = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Address: S.optional(S.String),
-    Type: S.optional(SubscriberType),
-    Status: S.optional(SubscriberStatus),
-  }),
-).annotate({ identifier: "Subscriber" }) as any as S.Schema<Subscriber>;
+const Subscriber = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Subscriber>;
 export type Subscribers = Subscriber[];
-const Subscribers = /*@__PURE__*/ S.Array(Subscriber);
+const Subscribers = /*@__PURE__*/ __L.at(__c1, 4);
 export type NullableNonNegativeDouble = number;
 export type AnomalySubscriptionFrequency = "DAILY" | "IMMEDIATE" | "WEEKLY" | (string & {});
 const AnomalySubscriptionFrequency = S.String;
@@ -497,38 +447,22 @@ export interface AnomalySubscription {
   SubscriptionName: string;
   ThresholdExpression?: Expression;
 }
-const AnomalySubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubscriptionArn: S.optional(S.String),
-    AccountId: S.optional(S.String),
-    MonitorArnList: MonitorArnList,
-    Subscribers: Subscribers,
-    Threshold: S.optional(S.Number),
-    Frequency: AnomalySubscriptionFrequency,
-    SubscriptionName: S.String,
-    ThresholdExpression: S.optional(Expression),
-  }),
-).annotate({ identifier: "AnomalySubscription" }) as any as S.Schema<AnomalySubscription>;
+const AnomalySubscription = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AnomalySubscription>;
 export interface CreateAnomalySubscriptionRequest {
   AnomalySubscription: AnomalySubscription;
   ResourceTags?: ResourceTag[];
 }
-const CreateAnomalySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AnomalySubscription: AnomalySubscription,
-    ResourceTags: S.optional(ResourceTagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateAnomalySubscriptionRequest",
-}) as any as S.Schema<CreateAnomalySubscriptionRequest>;
+const CreateAnomalySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateAnomalySubscriptionRequest>;
 export interface CreateAnomalySubscriptionResponse {
   SubscriptionArn: string;
 }
-const CreateAnomalySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SubscriptionArn: S.String }),
-).annotate({
-  identifier: "CreateAnomalySubscriptionResponse",
-}) as any as S.Schema<CreateAnomalySubscriptionResponse>;
+const CreateAnomalySubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateAnomalySubscriptionResponse>;
 export type ZonedDateTime = string;
 export type CostCategoryRuleVersion = "CostCategoryExpression.v1" | (string & {});
 const CostCategoryRuleVersion = S.String;
@@ -541,14 +475,10 @@ export interface CostCategoryInheritedValueDimension {
   DimensionName?: CostCategoryInheritedValueDimensionName;
   DimensionKey?: string;
 }
-const CostCategoryInheritedValueDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DimensionName: S.optional(CostCategoryInheritedValueDimensionName),
-    DimensionKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CostCategoryInheritedValueDimension",
-}) as any as S.Schema<CostCategoryInheritedValueDimension>;
+const CostCategoryInheritedValueDimension = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CostCategoryInheritedValueDimension>;
 export type CostCategoryRuleType = "REGULAR" | "INHERITED_VALUE" | (string & {});
 const CostCategoryRuleType = S.String;
 
@@ -558,16 +488,9 @@ export interface CostCategoryRule {
   InheritedValue?: CostCategoryInheritedValueDimension;
   Type?: CostCategoryRuleType;
 }
-const CostCategoryRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Value: S.optional(S.String),
-    Rule: S.optional(Expression),
-    InheritedValue: S.optional(CostCategoryInheritedValueDimension),
-    Type: S.optional(CostCategoryRuleType),
-  }),
-).annotate({ identifier: "CostCategoryRule" }) as any as S.Schema<CostCategoryRule>;
+const CostCategoryRule = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CostCategoryRule>;
 export type CostCategoryRulesList = CostCategoryRule[];
-const CostCategoryRulesList = /*@__PURE__*/ S.Array(CostCategoryRule);
+const CostCategoryRulesList = /*@__PURE__*/ __L.at(__c2, 2);
 export type CostCategorySplitChargeRuleTargetsList = string[];
 const CostCategorySplitChargeRuleTargetsList =
   Values as any as S.Schema<CostCategorySplitChargeRuleTargetsList>;
@@ -584,36 +507,24 @@ export interface CostCategorySplitChargeRuleParameter {
   Type: CostCategorySplitChargeRuleParameterType;
   Values: string[];
 }
-const CostCategorySplitChargeRuleParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: CostCategorySplitChargeRuleParameterType,
-    Values: CostCategorySplitChargeRuleParameterValuesList,
-  }),
-).annotate({
-  identifier: "CostCategorySplitChargeRuleParameter",
-}) as any as S.Schema<CostCategorySplitChargeRuleParameter>;
+const CostCategorySplitChargeRuleParameter = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CostCategorySplitChargeRuleParameter>;
 export type CostCategorySplitChargeRuleParametersList = CostCategorySplitChargeRuleParameter[];
-const CostCategorySplitChargeRuleParametersList = /*@__PURE__*/ S.Array(
-  CostCategorySplitChargeRuleParameter,
-);
+const CostCategorySplitChargeRuleParametersList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface CostCategorySplitChargeRule {
   Source: string;
   Targets: string[];
   Method: CostCategorySplitChargeMethod;
   Parameters?: CostCategorySplitChargeRuleParameter[];
 }
-const CostCategorySplitChargeRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Source: S.String,
-    Targets: CostCategorySplitChargeRuleTargetsList,
-    Method: CostCategorySplitChargeMethod,
-    Parameters: S.optional(CostCategorySplitChargeRuleParametersList),
-  }),
-).annotate({
-  identifier: "CostCategorySplitChargeRule",
-}) as any as S.Schema<CostCategorySplitChargeRule>;
+const CostCategorySplitChargeRule = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CostCategorySplitChargeRule>;
 export type CostCategorySplitChargeRulesList = CostCategorySplitChargeRule[];
-const CostCategorySplitChargeRulesList = /*@__PURE__*/ S.Array(CostCategorySplitChargeRule);
+const CostCategorySplitChargeRulesList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateCostCategoryDefinitionRequest {
   Name: string;
   EffectiveStart?: string;
@@ -623,86 +534,65 @@ export interface CreateCostCategoryDefinitionRequest {
   SplitChargeRules?: CostCategorySplitChargeRule[];
   ResourceTags?: ResourceTag[];
 }
-const CreateCostCategoryDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    EffectiveStart: S.optional(S.String),
-    RuleVersion: CostCategoryRuleVersion,
-    Rules: CostCategoryRulesList,
-    DefaultValue: S.optional(S.String),
-    SplitChargeRules: S.optional(CostCategorySplitChargeRulesList),
-    ResourceTags: S.optional(ResourceTagList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateCostCategoryDefinitionRequest",
-}) as any as S.Schema<CreateCostCategoryDefinitionRequest>;
+const CreateCostCategoryDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateCostCategoryDefinitionRequest>;
 export interface CreateCostCategoryDefinitionResponse {
   CostCategoryArn?: string;
   EffectiveStart?: string;
 }
-const CreateCostCategoryDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CostCategoryArn: S.optional(S.String), EffectiveStart: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateCostCategoryDefinitionResponse",
-}) as any as S.Schema<CreateCostCategoryDefinitionResponse>;
+const CreateCostCategoryDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateCostCategoryDefinitionResponse>;
 export interface DeleteAnomalyMonitorRequest {
   MonitorArn: string;
 }
-const DeleteAnomalyMonitorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MonitorArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteAnomalyMonitorRequest",
-}) as any as S.Schema<DeleteAnomalyMonitorRequest>;
+const DeleteAnomalyMonitorRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteAnomalyMonitorRequest>;
 export interface DeleteAnomalyMonitorResponse {}
-const DeleteAnomalyMonitorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAnomalyMonitorResponse",
-}) as any as S.Schema<DeleteAnomalyMonitorResponse>;
+const DeleteAnomalyMonitorResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteAnomalyMonitorResponse>;
 export interface DeleteAnomalySubscriptionRequest {
   SubscriptionArn: string;
 }
-const DeleteAnomalySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SubscriptionArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteAnomalySubscriptionRequest",
-}) as any as S.Schema<DeleteAnomalySubscriptionRequest>;
+const DeleteAnomalySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteAnomalySubscriptionRequest>;
 export interface DeleteAnomalySubscriptionResponse {}
-const DeleteAnomalySubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAnomalySubscriptionResponse",
-}) as any as S.Schema<DeleteAnomalySubscriptionResponse>;
+const DeleteAnomalySubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteAnomalySubscriptionResponse>;
 export interface DeleteCostCategoryDefinitionRequest {
   CostCategoryArn: string;
 }
-const DeleteCostCategoryDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CostCategoryArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteCostCategoryDefinitionRequest",
-}) as any as S.Schema<DeleteCostCategoryDefinitionRequest>;
+const DeleteCostCategoryDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteCostCategoryDefinitionRequest>;
 export interface DeleteCostCategoryDefinitionResponse {
   CostCategoryArn?: string;
   EffectiveEnd?: string;
 }
-const DeleteCostCategoryDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CostCategoryArn: S.optional(S.String), EffectiveEnd: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteCostCategoryDefinitionResponse",
-}) as any as S.Schema<DeleteCostCategoryDefinitionResponse>;
+const DeleteCostCategoryDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteCostCategoryDefinitionResponse>;
 export interface DescribeCostCategoryDefinitionRequest {
   CostCategoryArn: string;
   EffectiveOn?: string;
 }
-const DescribeCostCategoryDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CostCategoryArn: S.String, EffectiveOn: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeCostCategoryDefinitionRequest",
-}) as any as S.Schema<DescribeCostCategoryDefinitionRequest>;
+const DescribeCostCategoryDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DescribeCostCategoryDefinitionRequest>;
 export type CostCategoryStatusComponent = "COST_EXPLORER" | (string & {});
 const CostCategoryStatusComponent = S.String;
 
@@ -713,16 +603,12 @@ export interface CostCategoryProcessingStatus {
   Component?: CostCategoryStatusComponent;
   Status?: CostCategoryStatus;
 }
-const CostCategoryProcessingStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Component: S.optional(CostCategoryStatusComponent),
-    Status: S.optional(CostCategoryStatus),
-  }),
-).annotate({
-  identifier: "CostCategoryProcessingStatus",
-}) as any as S.Schema<CostCategoryProcessingStatus>;
+const CostCategoryProcessingStatus = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CostCategoryProcessingStatus>;
 export type CostCategoryProcessingStatusList = CostCategoryProcessingStatus[];
-const CostCategoryProcessingStatusList = /*@__PURE__*/ S.Array(CostCategoryProcessingStatus);
+const CostCategoryProcessingStatusList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface CostCategory {
   CostCategoryArn: string;
   EffectiveStart: string;
@@ -734,34 +620,19 @@ export interface CostCategory {
   ProcessingStatus?: CostCategoryProcessingStatus[];
   DefaultValue?: string;
 }
-const CostCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostCategoryArn: S.String,
-    EffectiveStart: S.String,
-    EffectiveEnd: S.optional(S.String),
-    Name: S.String,
-    RuleVersion: CostCategoryRuleVersion,
-    Rules: CostCategoryRulesList,
-    SplitChargeRules: S.optional(CostCategorySplitChargeRulesList),
-    ProcessingStatus: S.optional(CostCategoryProcessingStatusList),
-    DefaultValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "CostCategory" }) as any as S.Schema<CostCategory>;
+const CostCategory = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CostCategory>;
 export interface DescribeCostCategoryDefinitionResponse {
   CostCategory?: CostCategory;
 }
-const DescribeCostCategoryDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CostCategory: S.optional(CostCategory) }),
-).annotate({
-  identifier: "DescribeCostCategoryDefinitionResponse",
-}) as any as S.Schema<DescribeCostCategoryDefinitionResponse>;
+const DescribeCostCategoryDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DescribeCostCategoryDefinitionResponse>;
 export interface AnomalyDateInterval {
   StartDate: string;
   EndDate?: string;
 }
-const AnomalyDateInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StartDate: S.String, EndDate: S.optional(S.String) }),
-).annotate({ identifier: "AnomalyDateInterval" }) as any as S.Schema<AnomalyDateInterval>;
+const AnomalyDateInterval = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AnomalyDateInterval>;
 export type AnomalyFeedbackType = "YES" | "NO" | "PLANNED_ACTIVITY" | (string & {});
 const AnomalyFeedbackType = S.String;
 
@@ -780,13 +651,7 @@ export interface TotalImpactFilter {
   StartValue: number;
   EndValue?: number;
 }
-const TotalImpactFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NumericOperator: NumericOperator,
-    StartValue: S.Number,
-    EndValue: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TotalImpactFilter" }) as any as S.Schema<TotalImpactFilter>;
+const TotalImpactFilter = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<TotalImpactFilter>;
 export type NextPageToken = string;
 export type PageSize = number;
 export interface GetAnomaliesRequest {
@@ -797,22 +662,11 @@ export interface GetAnomaliesRequest {
   NextPageToken?: string;
   MaxResults?: number;
 }
-const GetAnomaliesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorArn: S.optional(S.String),
-    DateInterval: AnomalyDateInterval,
-    Feedback: S.optional(AnomalyFeedbackType),
-    TotalImpact: S.optional(TotalImpactFilter),
-    NextPageToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetAnomaliesRequest" }) as any as S.Schema<GetAnomaliesRequest>;
+const GetAnomaliesRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetAnomaliesRequest>;
 export interface RootCauseImpact {
   Contribution: number;
 }
-const RootCauseImpact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Contribution: S.Number }),
-).annotate({ identifier: "RootCauseImpact" }) as any as S.Schema<RootCauseImpact>;
+const RootCauseImpact = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<RootCauseImpact>;
 export interface RootCause {
   Service?: string;
   Region?: string;
@@ -821,25 +675,14 @@ export interface RootCause {
   UsageType?: string;
   Impact?: RootCauseImpact;
 }
-const RootCause = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Service: S.optional(S.String),
-    Region: S.optional(S.String),
-    LinkedAccount: S.optional(S.String),
-    LinkedAccountName: S.optional(S.String),
-    UsageType: S.optional(S.String),
-    Impact: S.optional(RootCauseImpact),
-  }),
-).annotate({ identifier: "RootCause" }) as any as S.Schema<RootCause>;
+const RootCause = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RootCause>;
 export type RootCauses = RootCause[];
-const RootCauses = /*@__PURE__*/ S.Array(RootCause);
+const RootCauses = /*@__PURE__*/ __L.at(__c5, 1);
 export interface AnomalyScore {
   MaxScore: number;
   CurrentScore: number;
 }
-const AnomalyScore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaxScore: S.Number, CurrentScore: S.Number }),
-).annotate({ identifier: "AnomalyScore" }) as any as S.Schema<AnomalyScore>;
+const AnomalyScore = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AnomalyScore>;
 export interface Impact {
   MaxImpact: number;
   TotalImpact?: number;
@@ -847,15 +690,7 @@ export interface Impact {
   TotalExpectedSpend?: number;
   TotalImpactPercentage?: number;
 }
-const Impact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxImpact: S.Number,
-    TotalImpact: S.optional(S.Number),
-    TotalActualSpend: S.optional(S.Number),
-    TotalExpectedSpend: S.optional(S.Number),
-    TotalImpactPercentage: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Impact" }) as any as S.Schema<Impact>;
+const Impact = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Impact>;
 export interface Anomaly {
   AnomalyId: string;
   AnomalyStartDate?: string;
@@ -867,80 +702,53 @@ export interface Anomaly {
   MonitorArn: string;
   Feedback?: AnomalyFeedbackType;
 }
-const Anomaly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AnomalyId: S.String,
-    AnomalyStartDate: S.optional(S.String),
-    AnomalyEndDate: S.optional(S.String),
-    DimensionValue: S.optional(S.String),
-    RootCauses: S.optional(RootCauses),
-    AnomalyScore: AnomalyScore,
-    Impact: Impact,
-    MonitorArn: S.String,
-    Feedback: S.optional(AnomalyFeedbackType),
-  }),
-).annotate({ identifier: "Anomaly" }) as any as S.Schema<Anomaly>;
+const Anomaly = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Anomaly>;
 export type Anomalies = Anomaly[];
-const Anomalies = /*@__PURE__*/ S.Array(Anomaly);
+const Anomalies = /*@__PURE__*/ __L.at(__c5, 5);
 export interface GetAnomaliesResponse {
   Anomalies: Anomaly[];
   NextPageToken?: string;
 }
-const GetAnomaliesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Anomalies: Anomalies, NextPageToken: S.optional(S.String) }),
-).annotate({ identifier: "GetAnomaliesResponse" }) as any as S.Schema<GetAnomaliesResponse>;
+const GetAnomaliesResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetAnomaliesResponse>;
 export interface GetAnomalyMonitorsRequest {
   MonitorArnList?: string[];
   NextPageToken?: string;
   MaxResults?: number;
 }
-const GetAnomalyMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorArnList: S.optional(Values),
-    NextPageToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetAnomalyMonitorsRequest",
-}) as any as S.Schema<GetAnomalyMonitorsRequest>;
+const GetAnomalyMonitorsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetAnomalyMonitorsRequest>;
 export type AnomalyMonitors = AnomalyMonitor[];
-const AnomalyMonitors = /*@__PURE__*/ S.Array(AnomalyMonitor);
+const AnomalyMonitors = /*@__PURE__*/ __L.at(__c6, 0);
 export interface GetAnomalyMonitorsResponse {
   AnomalyMonitors: AnomalyMonitor[];
   NextPageToken?: string;
 }
-const GetAnomalyMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AnomalyMonitors: AnomalyMonitors, NextPageToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetAnomalyMonitorsResponse",
-}) as any as S.Schema<GetAnomalyMonitorsResponse>;
+const GetAnomalyMonitorsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetAnomalyMonitorsResponse>;
 export interface GetAnomalySubscriptionsRequest {
   SubscriptionArnList?: string[];
   MonitorArn?: string;
   NextPageToken?: string;
   MaxResults?: number;
 }
-const GetAnomalySubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubscriptionArnList: S.optional(Values),
-    MonitorArn: S.optional(S.String),
-    NextPageToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetAnomalySubscriptionsRequest",
-}) as any as S.Schema<GetAnomalySubscriptionsRequest>;
+const GetAnomalySubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetAnomalySubscriptionsRequest>;
 export type AnomalySubscriptions = AnomalySubscription[];
-const AnomalySubscriptions = /*@__PURE__*/ S.Array(AnomalySubscription);
+const AnomalySubscriptions = /*@__PURE__*/ __L.at(__c6, 3);
 export interface GetAnomalySubscriptionsResponse {
   AnomalySubscriptions: AnomalySubscription[];
   NextPageToken?: string;
 }
-const GetAnomalySubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AnomalySubscriptions: AnomalySubscriptions, NextPageToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetAnomalySubscriptionsResponse",
-}) as any as S.Schema<GetAnomalySubscriptionsResponse>;
+const GetAnomalySubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetAnomalySubscriptionsResponse>;
 export type Granularity = "DAILY" | "MONTHLY" | "HOURLY" | (string & {});
 const Granularity = S.String;
 
@@ -954,53 +762,35 @@ export interface GetApproximateUsageRecordsRequest {
   Services?: string[];
   ApproximationDimension: ApproximationDimension;
 }
-const GetApproximateUsageRecordsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Granularity: Granularity,
-    Services: S.optional(UsageServices),
-    ApproximationDimension: ApproximationDimension,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetApproximateUsageRecordsRequest",
-}) as any as S.Schema<GetApproximateUsageRecordsRequest>;
+const GetApproximateUsageRecordsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetApproximateUsageRecordsRequest>;
 export type NonNegativeLong = number;
 export type ApproximateUsageRecordsPerService = { [key: string]: number | undefined };
-const ApproximateUsageRecordsPerService = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+const ApproximateUsageRecordsPerService = /*@__PURE__*/ __L.at(__c6, 6);
 export interface DateInterval {
   Start: string;
   End: string;
 }
-const DateInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Start: S.String, End: S.String }),
-).annotate({ identifier: "DateInterval" }) as any as S.Schema<DateInterval>;
+const DateInterval = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DateInterval>;
 export interface GetApproximateUsageRecordsResponse {
   Services?: { [key: string]: number | undefined };
   TotalRecords?: number;
   LookbackPeriod?: DateInterval;
 }
-const GetApproximateUsageRecordsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Services: S.optional(ApproximateUsageRecordsPerService),
-    TotalRecords: S.optional(S.Number),
-    LookbackPeriod: S.optional(DateInterval),
-  }),
-).annotate({
-  identifier: "GetApproximateUsageRecordsResponse",
-}) as any as S.Schema<GetApproximateUsageRecordsResponse>;
+const GetApproximateUsageRecordsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetApproximateUsageRecordsResponse>;
 export type AnalysisId = string;
 export interface GetCommitmentPurchaseAnalysisRequest {
   AnalysisId: string;
 }
-const GetCommitmentPurchaseAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AnalysisId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetCommitmentPurchaseAnalysisRequest",
-}) as any as S.Schema<GetCommitmentPurchaseAnalysisRequest>;
+const GetCommitmentPurchaseAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetCommitmentPurchaseAnalysisRequest>;
 export type AnalysisStatus = "SUCCEEDED" | "PROCESSING" | "FAILED" | (string & {});
 const AnalysisStatus = S.String;
 
@@ -1020,19 +810,12 @@ export interface RecommendationDetailHourlyMetrics {
   EstimatedCoverage?: string;
   EstimatedNewCommitmentUtilization?: string;
 }
-const RecommendationDetailHourlyMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTime: S.optional(S.String),
-    EstimatedOnDemandCost: S.optional(S.String),
-    CurrentCoverage: S.optional(S.String),
-    EstimatedCoverage: S.optional(S.String),
-    EstimatedNewCommitmentUtilization: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecommendationDetailHourlyMetrics",
-}) as any as S.Schema<RecommendationDetailHourlyMetrics>;
+const RecommendationDetailHourlyMetrics = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<RecommendationDetailHourlyMetrics>;
 export type MetricsOverLookbackPeriod = RecommendationDetailHourlyMetrics[];
-const MetricsOverLookbackPeriod = /*@__PURE__*/ S.Array(RecommendationDetailHourlyMetrics);
+const MetricsOverLookbackPeriod = /*@__PURE__*/ __L.at(__c7, 3);
 export interface SavingsPlansPurchaseAnalysisDetails {
   CurrencyCode?: string;
   LookbackPeriodInHours?: string;
@@ -1057,42 +840,14 @@ export interface SavingsPlansPurchaseAnalysisDetails {
   AdditionalMetadata?: string;
   MetricsOverLookbackPeriod?: RecommendationDetailHourlyMetrics[];
 }
-const SavingsPlansPurchaseAnalysisDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CurrencyCode: S.optional(S.String),
-    LookbackPeriodInHours: S.optional(S.String),
-    CurrentAverageCoverage: S.optional(S.String),
-    CurrentAverageHourlyOnDemandSpend: S.optional(S.String),
-    CurrentMaximumHourlyOnDemandSpend: S.optional(S.String),
-    CurrentMinimumHourlyOnDemandSpend: S.optional(S.String),
-    CurrentOnDemandSpend: S.optional(S.String),
-    ExistingHourlyCommitment: S.optional(S.String),
-    HourlyCommitmentToPurchase: S.optional(S.String),
-    EstimatedAverageCoverage: S.optional(S.String),
-    EstimatedAverageUtilization: S.optional(S.String),
-    EstimatedMonthlySavingsAmount: S.optional(S.String),
-    EstimatedOnDemandCost: S.optional(S.String),
-    EstimatedOnDemandCostWithCurrentCommitment: S.optional(S.String),
-    EstimatedROI: S.optional(S.String),
-    EstimatedSavingsAmount: S.optional(S.String),
-    EstimatedSavingsPercentage: S.optional(S.String),
-    EstimatedCommitmentCost: S.optional(S.String),
-    LatestUsageTimestamp: S.optional(S.String),
-    UpfrontCost: S.optional(S.String),
-    AdditionalMetadata: S.optional(S.String),
-    MetricsOverLookbackPeriod: S.optional(MetricsOverLookbackPeriod),
-  }),
-).annotate({
-  identifier: "SavingsPlansPurchaseAnalysisDetails",
-}) as any as S.Schema<SavingsPlansPurchaseAnalysisDetails>;
+const SavingsPlansPurchaseAnalysisDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<SavingsPlansPurchaseAnalysisDetails>;
 export interface AnalysisDetails {
   SavingsPlansPurchaseAnalysisDetails?: SavingsPlansPurchaseAnalysisDetails;
 }
-const AnalysisDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SavingsPlansPurchaseAnalysisDetails: S.optional(SavingsPlansPurchaseAnalysisDetails),
-  }),
-).annotate({ identifier: "AnalysisDetails" }) as any as S.Schema<AnalysisDetails>;
+const AnalysisDetails = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<AnalysisDetails>;
 export type AccountScope = "PAYER" | "LINKED" | (string & {});
 const AccountScope = S.String;
 
@@ -1135,19 +890,9 @@ export interface SavingsPlans {
   SavingsPlansCommitment?: number;
   OfferingId?: string;
 }
-const SavingsPlans = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PaymentOption: S.optional(PaymentOption),
-    SavingsPlansType: S.optional(SupportedSavingsPlansType),
-    Region: S.optional(S.String),
-    InstanceFamily: S.optional(S.String),
-    TermInYears: S.optional(TermInYears),
-    SavingsPlansCommitment: S.optional(S.Number),
-    OfferingId: S.optional(S.String),
-  }),
-).annotate({ identifier: "SavingsPlans" }) as any as S.Schema<SavingsPlans>;
+const SavingsPlans = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SavingsPlans>;
 export type SavingsPlansToAdd = SavingsPlans[];
-const SavingsPlansToAdd = /*@__PURE__*/ S.Array(SavingsPlans);
+const SavingsPlansToAdd = /*@__PURE__*/ __L.at(__c7, 7);
 export type SavingsPlansId = string;
 export type SavingsPlansToExclude = string[];
 const SavingsPlansToExclude = Values as any as S.Schema<SavingsPlansToExclude>;
@@ -1161,31 +906,17 @@ export interface SavingsPlansPurchaseAnalysisConfiguration {
   LookBackTimePeriod: DateInterval;
   SavingsPlansTargetCoverage?: number;
 }
-const SavingsPlansPurchaseAnalysisConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountScope: S.optional(AccountScope),
-    AccountId: S.optional(S.String),
-    AnalysisType: AnalysisType,
-    SavingsPlansToAdd: SavingsPlansToAdd,
-    SavingsPlansToExclude: S.optional(SavingsPlansToExclude),
-    LookBackTimePeriod: DateInterval,
-    SavingsPlansTargetCoverage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SavingsPlansPurchaseAnalysisConfiguration",
-}) as any as S.Schema<SavingsPlansPurchaseAnalysisConfiguration>;
+const SavingsPlansPurchaseAnalysisConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<SavingsPlansPurchaseAnalysisConfiguration>;
 export interface CommitmentPurchaseAnalysisConfiguration {
   SavingsPlansPurchaseAnalysisConfiguration?: SavingsPlansPurchaseAnalysisConfiguration;
 }
-const CommitmentPurchaseAnalysisConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SavingsPlansPurchaseAnalysisConfiguration: S.optional(
-      SavingsPlansPurchaseAnalysisConfiguration,
-    ),
-  }),
-).annotate({
-  identifier: "CommitmentPurchaseAnalysisConfiguration",
-}) as any as S.Schema<CommitmentPurchaseAnalysisConfiguration>;
+const CommitmentPurchaseAnalysisConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CommitmentPurchaseAnalysisConfiguration>;
 export interface GetCommitmentPurchaseAnalysisResponse {
   EstimatedCompletionTime: string;
   AnalysisCompletionTime?: string;
@@ -1196,20 +927,10 @@ export interface GetCommitmentPurchaseAnalysisResponse {
   AnalysisDetails?: AnalysisDetails;
   CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration;
 }
-const GetCommitmentPurchaseAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EstimatedCompletionTime: S.String,
-    AnalysisCompletionTime: S.optional(S.String),
-    AnalysisStartedTime: S.String,
-    AnalysisId: S.String,
-    AnalysisStatus: AnalysisStatus,
-    ErrorCode: S.optional(ErrorCode),
-    AnalysisDetails: S.optional(AnalysisDetails),
-    CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration,
-  }),
-).annotate({
-  identifier: "GetCommitmentPurchaseAnalysisResponse",
-}) as any as S.Schema<GetCommitmentPurchaseAnalysisResponse>;
+const GetCommitmentPurchaseAnalysisResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetCommitmentPurchaseAnalysisResponse>;
 export type MetricName = string;
 export type MetricNames = string[];
 const MetricNames = Values as any as S.Schema<MetricNames>;
@@ -1221,11 +942,9 @@ export interface GroupDefinition {
   Type?: GroupDefinitionType;
   Key?: string;
 }
-const GroupDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(GroupDefinitionType), Key: S.optional(S.String) }),
-).annotate({ identifier: "GroupDefinition" }) as any as S.Schema<GroupDefinition>;
+const GroupDefinition = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GroupDefinition>;
 export type GroupDefinitions = GroupDefinition[];
-const GroupDefinitions = /*@__PURE__*/ S.Array(GroupDefinition);
+const GroupDefinitions = /*@__PURE__*/ __L.at(__c8, 4);
 export type BillingViewArn = string;
 export interface GetCostAndUsageRequest {
   TimePeriod: DateInterval;
@@ -1236,28 +955,19 @@ export interface GetCostAndUsageRequest {
   BillingViewArn?: string;
   NextPageToken?: string;
 }
-const GetCostAndUsageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    Granularity: Granularity,
-    Filter: S.optional(Expression),
-    Metrics: MetricNames,
-    GroupBy: S.optional(GroupDefinitions),
-    BillingViewArn: S.optional(S.String),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetCostAndUsageRequest" }) as any as S.Schema<GetCostAndUsageRequest>;
+const GetCostAndUsageRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetCostAndUsageRequest>;
 export type MetricAmount = string;
 export type MetricUnit = string;
 export interface MetricValue {
   Amount?: string;
   Unit?: string;
 }
-const MetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Amount: S.optional(S.String), Unit: S.optional(S.String) }),
-).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
+const MetricValue = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<MetricValue>;
 export type Metrics = { [key: string]: MetricValue | undefined };
-const Metrics = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ MetricValue.pipe(S.optional));
+const Metrics = /*@__PURE__*/ __L.at(__c8, 7);
 export type Key = string;
 export type Keys = string[];
 const Keys = Values as any as S.Schema<Keys>;
@@ -1265,11 +975,9 @@ export interface Group {
   Keys?: string[];
   Metrics?: { [key: string]: MetricValue | undefined };
 }
-const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Keys: S.optional(Keys), Metrics: S.optional(Metrics) }),
-).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
+const Group = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Group>;
 export type Groups = Group[];
-const Groups = /*@__PURE__*/ S.Array(Group);
+const Groups = /*@__PURE__*/ __L.at(__c9, 1);
 export type Estimated = boolean;
 export interface ResultByTime {
   TimePeriod?: DateInterval;
@@ -1277,45 +985,33 @@ export interface ResultByTime {
   Groups?: Group[];
   Estimated?: boolean;
 }
-const ResultByTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: S.optional(DateInterval),
-    Total: S.optional(Metrics),
-    Groups: S.optional(Groups),
-    Estimated: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ResultByTime" }) as any as S.Schema<ResultByTime>;
+const ResultByTime = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ResultByTime>;
 export type ResultsByTime = ResultByTime[];
-const ResultsByTime = /*@__PURE__*/ S.Array(ResultByTime);
+const ResultsByTime = /*@__PURE__*/ __L.at(__c9, 3);
 export type AttributeType = string;
 export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
-const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Attributes = /*@__PURE__*/ __L.at(__c9, 4);
 export interface DimensionValuesWithAttributes {
   Value?: string;
   Attributes?: { [key: string]: string | undefined };
 }
-const DimensionValuesWithAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.String), Attributes: S.optional(Attributes) }),
-).annotate({
-  identifier: "DimensionValuesWithAttributes",
-}) as any as S.Schema<DimensionValuesWithAttributes>;
+const DimensionValuesWithAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DimensionValuesWithAttributes>;
 export type DimensionValuesWithAttributesList = DimensionValuesWithAttributes[];
-const DimensionValuesWithAttributesList = /*@__PURE__*/ S.Array(DimensionValuesWithAttributes);
+const DimensionValuesWithAttributesList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface GetCostAndUsageResponse {
   NextPageToken?: string;
   GroupDefinitions?: GroupDefinition[];
   ResultsByTime?: ResultByTime[];
   DimensionValueAttributes?: DimensionValuesWithAttributes[];
 }
-const GetCostAndUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextPageToken: S.optional(S.String),
-    GroupDefinitions: S.optional(GroupDefinitions),
-    ResultsByTime: S.optional(ResultsByTime),
-    DimensionValueAttributes: S.optional(DimensionValuesWithAttributesList),
-  }),
-).annotate({ identifier: "GetCostAndUsageResponse" }) as any as S.Schema<GetCostAndUsageResponse>;
+const GetCostAndUsageResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetCostAndUsageResponse>;
 export type CostAndUsageComparisonsMaxResults = number;
 export interface GetCostAndUsageComparisonsRequest {
   BillingViewArn?: string;
@@ -1327,65 +1023,41 @@ export interface GetCostAndUsageComparisonsRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
-const GetCostAndUsageComparisonsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BillingViewArn: S.optional(S.String),
-    BaselineTimePeriod: DateInterval,
-    ComparisonTimePeriod: DateInterval,
-    MetricForComparison: S.String,
-    Filter: S.optional(Expression),
-    GroupBy: S.optional(GroupDefinitions),
-    MaxResults: S.optional(S.Number),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetCostAndUsageComparisonsRequest",
-}) as any as S.Schema<GetCostAndUsageComparisonsRequest>;
+const GetCostAndUsageComparisonsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetCostAndUsageComparisonsRequest>;
 export interface ComparisonMetricValue {
   BaselineTimePeriodAmount?: string;
   ComparisonTimePeriodAmount?: string;
   Difference?: string;
   Unit?: string;
 }
-const ComparisonMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BaselineTimePeriodAmount: S.optional(S.String),
-    ComparisonTimePeriodAmount: S.optional(S.String),
-    Difference: S.optional(S.String),
-    Unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "ComparisonMetricValue" }) as any as S.Schema<ComparisonMetricValue>;
+const ComparisonMetricValue = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ComparisonMetricValue>;
 export type ComparisonMetrics = { [key: string]: ComparisonMetricValue | undefined };
-const ComparisonMetrics = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ ComparisonMetricValue.pipe(S.optional),
-);
+const ComparisonMetrics = /*@__PURE__*/ __L.at(__c10, 2);
 export interface CostAndUsageComparison {
   CostAndUsageSelector?: Expression;
   Metrics?: { [key: string]: ComparisonMetricValue | undefined };
 }
-const CostAndUsageComparison = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostAndUsageSelector: S.optional(Expression),
-    Metrics: S.optional(ComparisonMetrics),
-  }),
-).annotate({ identifier: "CostAndUsageComparison" }) as any as S.Schema<CostAndUsageComparison>;
+const CostAndUsageComparison = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CostAndUsageComparison>;
 export type CostAndUsageComparisons = CostAndUsageComparison[];
-const CostAndUsageComparisons = /*@__PURE__*/ S.Array(CostAndUsageComparison);
+const CostAndUsageComparisons = /*@__PURE__*/ __L.at(__c10, 4);
 export interface GetCostAndUsageComparisonsResponse {
   CostAndUsageComparisons?: CostAndUsageComparison[];
   TotalCostAndUsage?: { [key: string]: ComparisonMetricValue | undefined };
   NextPageToken?: string;
 }
-const GetCostAndUsageComparisonsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostAndUsageComparisons: S.optional(CostAndUsageComparisons),
-    TotalCostAndUsage: S.optional(ComparisonMetrics),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCostAndUsageComparisonsResponse",
-}) as any as S.Schema<GetCostAndUsageComparisonsResponse>;
+const GetCostAndUsageComparisonsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetCostAndUsageComparisonsResponse>;
 export interface GetCostAndUsageWithResourcesRequest {
   TimePeriod: DateInterval;
   Granularity: Granularity;
@@ -1395,35 +1067,20 @@ export interface GetCostAndUsageWithResourcesRequest {
   BillingViewArn?: string;
   NextPageToken?: string;
 }
-const GetCostAndUsageWithResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    Granularity: Granularity,
-    Filter: Expression,
-    Metrics: S.optional(MetricNames),
-    GroupBy: S.optional(GroupDefinitions),
-    BillingViewArn: S.optional(S.String),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetCostAndUsageWithResourcesRequest",
-}) as any as S.Schema<GetCostAndUsageWithResourcesRequest>;
+const GetCostAndUsageWithResourcesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetCostAndUsageWithResourcesRequest>;
 export interface GetCostAndUsageWithResourcesResponse {
   NextPageToken?: string;
   GroupDefinitions?: GroupDefinition[];
   ResultsByTime?: ResultByTime[];
   DimensionValueAttributes?: DimensionValuesWithAttributes[];
 }
-const GetCostAndUsageWithResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextPageToken: S.optional(S.String),
-    GroupDefinitions: S.optional(GroupDefinitions),
-    ResultsByTime: S.optional(ResultsByTime),
-    DimensionValueAttributes: S.optional(DimensionValuesWithAttributesList),
-  }),
-).annotate({
-  identifier: "GetCostAndUsageWithResourcesResponse",
-}) as any as S.Schema<GetCostAndUsageWithResourcesResponse>;
+const GetCostAndUsageWithResourcesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetCostAndUsageWithResourcesResponse>;
 export type SearchString = string;
 export type SortDefinitionKey = string;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
@@ -1433,11 +1090,9 @@ export interface SortDefinition {
   Key: string;
   SortOrder?: SortOrder;
 }
-const SortDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, SortOrder: S.optional(SortOrder) }),
-).annotate({ identifier: "SortDefinition" }) as any as S.Schema<SortDefinition>;
+const SortDefinition = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<SortDefinition>;
 export type SortDefinitions = SortDefinition[];
-const SortDefinitions = /*@__PURE__*/ S.Array(SortDefinition);
+const SortDefinitions = /*@__PURE__*/ __L.at(__c11, 1);
 export type MaxResults = number;
 export interface GetCostCategoriesRequest {
   SearchString?: string;
@@ -1449,18 +1104,10 @@ export interface GetCostCategoriesRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
-const GetCostCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SearchString: S.optional(S.String),
-    TimePeriod: DateInterval,
-    CostCategoryName: S.optional(S.String),
-    Filter: S.optional(Expression),
-    SortBy: S.optional(SortDefinitions),
-    BillingViewArn: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetCostCategoriesRequest" }) as any as S.Schema<GetCostCategoriesRequest>;
+const GetCostCategoriesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetCostCategoriesRequest>;
 export type CostCategoryNamesList = string[];
 const CostCategoryNamesList = Values as any as S.Schema<CostCategoryNamesList>;
 export type CostCategoryValuesList = string[];
@@ -1472,17 +1119,10 @@ export interface GetCostCategoriesResponse {
   ReturnSize: number;
   TotalSize: number;
 }
-const GetCostCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextPageToken: S.optional(S.String),
-    CostCategoryNames: S.optional(CostCategoryNamesList),
-    CostCategoryValues: S.optional(CostCategoryValuesList),
-    ReturnSize: S.Number,
-    TotalSize: S.Number,
-  }),
-).annotate({
-  identifier: "GetCostCategoriesResponse",
-}) as any as S.Schema<GetCostCategoriesResponse>;
+const GetCostCategoriesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetCostCategoriesResponse>;
 export type CostComparisonDriversMaxResults = number;
 export interface GetCostComparisonDriversRequest {
   BillingViewArn?: string;
@@ -1494,60 +1134,37 @@ export interface GetCostComparisonDriversRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
-const GetCostComparisonDriversRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BillingViewArn: S.optional(S.String),
-    BaselineTimePeriod: DateInterval,
-    ComparisonTimePeriod: DateInterval,
-    MetricForComparison: S.String,
-    Filter: S.optional(Expression),
-    GroupBy: S.optional(GroupDefinitions),
-    MaxResults: S.optional(S.Number),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetCostComparisonDriversRequest",
-}) as any as S.Schema<GetCostComparisonDriversRequest>;
+const GetCostComparisonDriversRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetCostComparisonDriversRequest>;
 export interface CostDriver {
   Type?: string;
   Name?: string;
   Metrics?: { [key: string]: ComparisonMetricValue | undefined };
 }
-const CostDriver = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(S.String),
-    Name: S.optional(S.String),
-    Metrics: S.optional(ComparisonMetrics),
-  }),
-).annotate({ identifier: "CostDriver" }) as any as S.Schema<CostDriver>;
+const CostDriver = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<CostDriver>;
 export type CostDrivers = CostDriver[];
-const CostDrivers = /*@__PURE__*/ S.Array(CostDriver);
+const CostDrivers = /*@__PURE__*/ __L.at(__c11, 6);
 export interface CostComparisonDriver {
   CostSelector?: Expression;
   Metrics?: { [key: string]: ComparisonMetricValue | undefined };
   CostDrivers?: CostDriver[];
 }
-const CostComparisonDriver = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostSelector: S.optional(Expression),
-    Metrics: S.optional(ComparisonMetrics),
-    CostDrivers: S.optional(CostDrivers),
-  }),
-).annotate({ identifier: "CostComparisonDriver" }) as any as S.Schema<CostComparisonDriver>;
+const CostComparisonDriver = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<CostComparisonDriver>;
 export type CostComparisonDrivers = CostComparisonDriver[];
-const CostComparisonDrivers = /*@__PURE__*/ S.Array(CostComparisonDriver);
+const CostComparisonDrivers = /*@__PURE__*/ __L.at(__c12, 0);
 export interface GetCostComparisonDriversResponse {
   CostComparisonDrivers?: CostComparisonDriver[];
   NextPageToken?: string;
 }
-const GetCostComparisonDriversResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostComparisonDrivers: S.optional(CostComparisonDrivers),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCostComparisonDriversResponse",
-}) as any as S.Schema<GetCostComparisonDriversResponse>;
+const GetCostComparisonDriversResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetCostComparisonDriversResponse>;
 export type Metric =
   | "BLENDED_COST"
   | "UNBLENDED_COST"
@@ -1568,42 +1185,27 @@ export interface GetCostForecastRequest {
   BillingViewArn?: string;
   PredictionIntervalLevel?: number;
 }
-const GetCostForecastRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    Metric: Metric,
-    Granularity: Granularity,
-    Filter: S.optional(Expression),
-    BillingViewArn: S.optional(S.String),
-    PredictionIntervalLevel: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetCostForecastRequest" }) as any as S.Schema<GetCostForecastRequest>;
+const GetCostForecastRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetCostForecastRequest>;
 export interface ForecastResult {
   TimePeriod?: DateInterval;
   MeanValue?: string;
   PredictionIntervalLowerBound?: string;
   PredictionIntervalUpperBound?: string;
 }
-const ForecastResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: S.optional(DateInterval),
-    MeanValue: S.optional(S.String),
-    PredictionIntervalLowerBound: S.optional(S.String),
-    PredictionIntervalUpperBound: S.optional(S.String),
-  }),
-).annotate({ identifier: "ForecastResult" }) as any as S.Schema<ForecastResult>;
+const ForecastResult = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ForecastResult>;
 export type ForecastResultsByTime = ForecastResult[];
-const ForecastResultsByTime = /*@__PURE__*/ S.Array(ForecastResult);
+const ForecastResultsByTime = /*@__PURE__*/ __L.at(__c12, 4);
 export interface GetCostForecastResponse {
   Total?: MetricValue;
   ForecastResultsByTime?: ForecastResult[];
 }
-const GetCostForecastResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Total: S.optional(MetricValue),
-    ForecastResultsByTime: S.optional(ForecastResultsByTime),
-  }),
-).annotate({ identifier: "GetCostForecastResponse" }) as any as S.Schema<GetCostForecastResponse>;
+const GetCostForecastResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetCostForecastResponse>;
 export type Context = "COST_AND_USAGE" | "RESERVATIONS" | "SAVINGS_PLANS" | (string & {});
 const Context = S.String;
 
@@ -1618,37 +1220,20 @@ export interface GetDimensionValuesRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
-const GetDimensionValuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SearchString: S.optional(S.String),
-    TimePeriod: DateInterval,
-    Dimension: Dimension,
-    Context: S.optional(Context),
-    Filter: S.optional(Expression),
-    SortBy: S.optional(SortDefinitions),
-    BillingViewArn: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetDimensionValuesRequest",
-}) as any as S.Schema<GetDimensionValuesRequest>;
+const GetDimensionValuesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetDimensionValuesRequest>;
 export interface GetDimensionValuesResponse {
   DimensionValues: DimensionValuesWithAttributes[];
   ReturnSize: number;
   TotalSize: number;
   NextPageToken?: string;
 }
-const GetDimensionValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DimensionValues: DimensionValuesWithAttributesList,
-    ReturnSize: S.Number,
-    TotalSize: S.Number,
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDimensionValuesResponse",
-}) as any as S.Schema<GetDimensionValuesResponse>;
+const GetDimensionValuesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetDimensionValuesResponse>;
 export interface GetReservationCoverageRequest {
   TimePeriod: DateInterval;
   GroupBy?: GroupDefinition[];
@@ -1659,20 +1244,10 @@ export interface GetReservationCoverageRequest {
   SortBy?: SortDefinition;
   MaxResults?: number;
 }
-const GetReservationCoverageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    GroupBy: S.optional(GroupDefinitions),
-    Granularity: S.optional(Granularity),
-    Filter: S.optional(Expression),
-    Metrics: S.optional(MetricNames),
-    NextPageToken: S.optional(S.String),
-    SortBy: S.optional(SortDefinition),
-    MaxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetReservationCoverageRequest",
-}) as any as S.Schema<GetReservationCoverageRequest>;
+const GetReservationCoverageRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetReservationCoverageRequest>;
 export type OnDemandHours = string;
 export type ReservedHours = string;
 export type TotalRunningHours = string;
@@ -1683,14 +1258,7 @@ export interface CoverageHours {
   TotalRunningHours?: string;
   CoverageHoursPercentage?: string;
 }
-const CoverageHours = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OnDemandHours: S.optional(S.String),
-    ReservedHours: S.optional(S.String),
-    TotalRunningHours: S.optional(S.String),
-    CoverageHoursPercentage: S.optional(S.String),
-  }),
-).annotate({ identifier: "CoverageHours" }) as any as S.Schema<CoverageHours>;
+const CoverageHours = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<CoverageHours>;
 export type OnDemandNormalizedUnits = string;
 export type ReservedNormalizedUnits = string;
 export type TotalRunningNormalizedUnits = string;
@@ -1701,70 +1269,48 @@ export interface CoverageNormalizedUnits {
   TotalRunningNormalizedUnits?: string;
   CoverageNormalizedUnitsPercentage?: string;
 }
-const CoverageNormalizedUnits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OnDemandNormalizedUnits: S.optional(S.String),
-    ReservedNormalizedUnits: S.optional(S.String),
-    TotalRunningNormalizedUnits: S.optional(S.String),
-    CoverageNormalizedUnitsPercentage: S.optional(S.String),
-  }),
-).annotate({ identifier: "CoverageNormalizedUnits" }) as any as S.Schema<CoverageNormalizedUnits>;
+const CoverageNormalizedUnits = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<CoverageNormalizedUnits>;
 export type OnDemandCost = string;
 export interface CoverageCost {
   OnDemandCost?: string;
 }
-const CoverageCost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OnDemandCost: S.optional(S.String) }),
-).annotate({ identifier: "CoverageCost" }) as any as S.Schema<CoverageCost>;
+const CoverageCost = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<CoverageCost>;
 export interface Coverage {
   CoverageHours?: CoverageHours;
   CoverageNormalizedUnits?: CoverageNormalizedUnits;
   CoverageCost?: CoverageCost;
 }
-const Coverage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoverageHours: S.optional(CoverageHours),
-    CoverageNormalizedUnits: S.optional(CoverageNormalizedUnits),
-    CoverageCost: S.optional(CoverageCost),
-  }),
-).annotate({ identifier: "Coverage" }) as any as S.Schema<Coverage>;
+const Coverage = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Coverage>;
 export interface ReservationCoverageGroup {
   Attributes?: { [key: string]: string | undefined };
   Coverage?: Coverage;
 }
-const ReservationCoverageGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attributes: S.optional(Attributes), Coverage: S.optional(Coverage) }),
-).annotate({ identifier: "ReservationCoverageGroup" }) as any as S.Schema<ReservationCoverageGroup>;
+const ReservationCoverageGroup = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ReservationCoverageGroup>;
 export type ReservationCoverageGroups = ReservationCoverageGroup[];
-const ReservationCoverageGroups = /*@__PURE__*/ S.Array(ReservationCoverageGroup);
+const ReservationCoverageGroups = /*@__PURE__*/ __L.at(__c13, 6);
 export interface CoverageByTime {
   TimePeriod?: DateInterval;
   Groups?: ReservationCoverageGroup[];
   Total?: Coverage;
 }
-const CoverageByTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: S.optional(DateInterval),
-    Groups: S.optional(ReservationCoverageGroups),
-    Total: S.optional(Coverage),
-  }),
-).annotate({ identifier: "CoverageByTime" }) as any as S.Schema<CoverageByTime>;
+const CoverageByTime = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<CoverageByTime>;
 export type CoveragesByTime = CoverageByTime[];
-const CoveragesByTime = /*@__PURE__*/ S.Array(CoverageByTime);
+const CoveragesByTime = /*@__PURE__*/ __L.at(__c14, 0);
 export interface GetReservationCoverageResponse {
   CoveragesByTime: CoverageByTime[];
   Total?: Coverage;
   NextPageToken?: string;
 }
-const GetReservationCoverageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CoveragesByTime: CoveragesByTime,
-    Total: S.optional(Coverage),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReservationCoverageResponse",
-}) as any as S.Schema<GetReservationCoverageResponse>;
+const GetReservationCoverageResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetReservationCoverageResponse>;
 export type LookbackPeriodInDays = "SEVEN_DAYS" | "THIRTY_DAYS" | "SIXTY_DAYS" | (string & {});
 const LookbackPeriodInDays = S.String;
 
@@ -1774,15 +1320,14 @@ const OfferingClass = S.String;
 export interface EC2Specification {
   OfferingClass?: OfferingClass;
 }
-const EC2Specification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OfferingClass: S.optional(OfferingClass) }),
-).annotate({ identifier: "EC2Specification" }) as any as S.Schema<EC2Specification>;
+const EC2Specification = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<EC2Specification>;
 export interface ServiceSpecification {
   EC2Specification?: EC2Specification;
 }
-const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EC2Specification: S.optional(EC2Specification) }),
-).annotate({ identifier: "ServiceSpecification" }) as any as S.Schema<ServiceSpecification>;
+const ServiceSpecification = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ServiceSpecification>;
 export type RecommendationsPageSize = number;
 export interface GetReservationPurchaseRecommendationRequest {
   AccountId?: string;
@@ -1796,36 +1341,19 @@ export interface GetReservationPurchaseRecommendationRequest {
   PageSize?: number;
   NextPageToken?: string;
 }
-const GetReservationPurchaseRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountId: S.optional(S.String),
-    Service: S.String,
-    Filter: S.optional(Expression),
-    AccountScope: S.optional(AccountScope),
-    LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
-    TermInYears: S.optional(TermInYears),
-    PaymentOption: S.optional(PaymentOption),
-    ServiceSpecification: S.optional(ServiceSpecification),
-    PageSize: S.optional(S.Number),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetReservationPurchaseRecommendationRequest",
-}) as any as S.Schema<GetReservationPurchaseRecommendationRequest>;
+const GetReservationPurchaseRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetReservationPurchaseRecommendationRequest>;
 export interface ReservationPurchaseRecommendationMetadata {
   RecommendationId?: string;
   GenerationTimestamp?: string;
   AdditionalMetadata?: string;
 }
-const ReservationPurchaseRecommendationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommendationId: S.optional(S.String),
-    GenerationTimestamp: S.optional(S.String),
-    AdditionalMetadata: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationPurchaseRecommendationMetadata",
-}) as any as S.Schema<ReservationPurchaseRecommendationMetadata>;
+const ReservationPurchaseRecommendationMetadata = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ReservationPurchaseRecommendationMetadata>;
 export interface EC2InstanceDetails {
   Family?: string;
   InstanceType?: string;
@@ -1836,18 +1364,7 @@ export interface EC2InstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
-const EC2InstanceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Family: S.optional(S.String),
-    InstanceType: S.optional(S.String),
-    Region: S.optional(S.String),
-    AvailabilityZone: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Tenancy: S.optional(S.String),
-    CurrentGeneration: S.optional(S.Boolean),
-    SizeFlexEligible: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "EC2InstanceDetails" }) as any as S.Schema<EC2InstanceDetails>;
+const EC2InstanceDetails = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<EC2InstanceDetails>;
 export interface RDSInstanceDetails {
   Family?: string;
   InstanceType?: string;
@@ -1860,20 +1377,7 @@ export interface RDSInstanceDetails {
   SizeFlexEligible?: boolean;
   DeploymentModel?: string;
 }
-const RDSInstanceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Family: S.optional(S.String),
-    InstanceType: S.optional(S.String),
-    Region: S.optional(S.String),
-    DatabaseEngine: S.optional(S.String),
-    DatabaseEdition: S.optional(S.String),
-    DeploymentOption: S.optional(S.String),
-    LicenseModel: S.optional(S.String),
-    CurrentGeneration: S.optional(S.Boolean),
-    SizeFlexEligible: S.optional(S.Boolean),
-    DeploymentModel: S.optional(S.String),
-  }),
-).annotate({ identifier: "RDSInstanceDetails" }) as any as S.Schema<RDSInstanceDetails>;
+const RDSInstanceDetails = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<RDSInstanceDetails>;
 export interface RedshiftInstanceDetails {
   Family?: string;
   NodeType?: string;
@@ -1881,15 +1385,10 @@ export interface RedshiftInstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
-const RedshiftInstanceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Family: S.optional(S.String),
-    NodeType: S.optional(S.String),
-    Region: S.optional(S.String),
-    CurrentGeneration: S.optional(S.Boolean),
-    SizeFlexEligible: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "RedshiftInstanceDetails" }) as any as S.Schema<RedshiftInstanceDetails>;
+const RedshiftInstanceDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<RedshiftInstanceDetails>;
 export interface ElastiCacheInstanceDetails {
   Family?: string;
   NodeType?: string;
@@ -1898,18 +1397,10 @@ export interface ElastiCacheInstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
-const ElastiCacheInstanceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Family: S.optional(S.String),
-    NodeType: S.optional(S.String),
-    Region: S.optional(S.String),
-    ProductDescription: S.optional(S.String),
-    CurrentGeneration: S.optional(S.Boolean),
-    SizeFlexEligible: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ElastiCacheInstanceDetails",
-}) as any as S.Schema<ElastiCacheInstanceDetails>;
+const ElastiCacheInstanceDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ElastiCacheInstanceDetails>;
 export interface ESInstanceDetails {
   InstanceClass?: string;
   InstanceSize?: string;
@@ -1917,15 +1408,7 @@ export interface ESInstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
-const ESInstanceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstanceClass: S.optional(S.String),
-    InstanceSize: S.optional(S.String),
-    Region: S.optional(S.String),
-    CurrentGeneration: S.optional(S.Boolean),
-    SizeFlexEligible: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ESInstanceDetails" }) as any as S.Schema<ESInstanceDetails>;
+const ESInstanceDetails = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ESInstanceDetails>;
 export interface MemoryDBInstanceDetails {
   Family?: string;
   NodeType?: string;
@@ -1942,29 +1425,22 @@ export interface InstanceDetails {
   ESInstanceDetails?: ESInstanceDetails;
   MemoryDBInstanceDetails?: MemoryDBInstanceDetails;
 }
-const InstanceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EC2InstanceDetails: S.optional(EC2InstanceDetails),
-    RDSInstanceDetails: S.optional(RDSInstanceDetails),
-    RedshiftInstanceDetails: S.optional(RedshiftInstanceDetails),
-    ElastiCacheInstanceDetails: S.optional(ElastiCacheInstanceDetails),
-    ESInstanceDetails: S.optional(ESInstanceDetails),
-    MemoryDBInstanceDetails: S.optional(MemoryDBInstanceDetails),
-  }),
-).annotate({ identifier: "InstanceDetails" }) as any as S.Schema<InstanceDetails>;
+const InstanceDetails = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<InstanceDetails>;
 export interface DynamoDBCapacityDetails {
   CapacityUnits?: string;
   Region?: string;
 }
-const DynamoDBCapacityDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CapacityUnits: S.optional(S.String), Region: S.optional(S.String) }),
-).annotate({ identifier: "DynamoDBCapacityDetails" }) as any as S.Schema<DynamoDBCapacityDetails>;
+const DynamoDBCapacityDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DynamoDBCapacityDetails>;
 export interface ReservedCapacityDetails {
   DynamoDBCapacityDetails?: DynamoDBCapacityDetails;
 }
-const ReservedCapacityDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DynamoDBCapacityDetails: S.optional(DynamoDBCapacityDetails) }),
-).annotate({ identifier: "ReservedCapacityDetails" }) as any as S.Schema<ReservedCapacityDetails>;
+const ReservedCapacityDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ReservedCapacityDetails>;
 export interface ReservationPurchaseRecommendationDetail {
   AccountId?: string;
   InstanceDetails?: InstanceDetails;
@@ -1991,54 +1467,21 @@ export interface ReservationPurchaseRecommendationDetail {
   MaximumNumberOfCapacityUnitsUsedPerHour?: string;
   AverageNumberOfCapacityUnitsUsedPerHour?: string;
 }
-const ReservationPurchaseRecommendationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountId: S.optional(S.String),
-    InstanceDetails: S.optional(InstanceDetails),
-    RecommendedNumberOfInstancesToPurchase: S.optional(S.String),
-    RecommendedNormalizedUnitsToPurchase: S.optional(S.String),
-    MinimumNumberOfInstancesUsedPerHour: S.optional(S.String),
-    MinimumNormalizedUnitsUsedPerHour: S.optional(S.String),
-    MaximumNumberOfInstancesUsedPerHour: S.optional(S.String),
-    MaximumNormalizedUnitsUsedPerHour: S.optional(S.String),
-    AverageNumberOfInstancesUsedPerHour: S.optional(S.String),
-    AverageNormalizedUnitsUsedPerHour: S.optional(S.String),
-    AverageUtilization: S.optional(S.String),
-    EstimatedBreakEvenInMonths: S.optional(S.String),
-    CurrencyCode: S.optional(S.String),
-    EstimatedMonthlySavingsAmount: S.optional(S.String),
-    EstimatedMonthlySavingsPercentage: S.optional(S.String),
-    EstimatedMonthlyOnDemandCost: S.optional(S.String),
-    EstimatedReservationCostForLookbackPeriod: S.optional(S.String),
-    UpfrontCost: S.optional(S.String),
-    RecurringStandardMonthlyCost: S.optional(S.String),
-    ReservedCapacityDetails: S.optional(ReservedCapacityDetails),
-    RecommendedNumberOfCapacityUnitsToPurchase: S.optional(S.String),
-    MinimumNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
-    MaximumNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
-    AverageNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationPurchaseRecommendationDetail",
-}) as any as S.Schema<ReservationPurchaseRecommendationDetail>;
+const ReservationPurchaseRecommendationDetail = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ReservationPurchaseRecommendationDetail>;
 export type ReservationPurchaseRecommendationDetails = ReservationPurchaseRecommendationDetail[];
-const ReservationPurchaseRecommendationDetails = /*@__PURE__*/ S.Array(
-  ReservationPurchaseRecommendationDetail,
-);
+const ReservationPurchaseRecommendationDetails = /*@__PURE__*/ __L.at(__c15, 7);
 export interface ReservationPurchaseRecommendationSummary {
   TotalEstimatedMonthlySavingsAmount?: string;
   TotalEstimatedMonthlySavingsPercentage?: string;
   CurrencyCode?: string;
 }
-const ReservationPurchaseRecommendationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TotalEstimatedMonthlySavingsAmount: S.optional(S.String),
-    TotalEstimatedMonthlySavingsPercentage: S.optional(S.String),
-    CurrencyCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationPurchaseRecommendationSummary",
-}) as any as S.Schema<ReservationPurchaseRecommendationSummary>;
+const ReservationPurchaseRecommendationSummary = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ReservationPurchaseRecommendationSummary>;
 export interface ReservationPurchaseRecommendation {
   AccountScope?: AccountScope;
   LookbackPeriodInDays?: LookbackPeriodInDays;
@@ -2048,35 +1491,21 @@ export interface ReservationPurchaseRecommendation {
   RecommendationDetails?: ReservationPurchaseRecommendationDetail[];
   RecommendationSummary?: ReservationPurchaseRecommendationSummary;
 }
-const ReservationPurchaseRecommendation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountScope: S.optional(AccountScope),
-    LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
-    TermInYears: S.optional(TermInYears),
-    PaymentOption: S.optional(PaymentOption),
-    ServiceSpecification: S.optional(ServiceSpecification),
-    RecommendationDetails: S.optional(ReservationPurchaseRecommendationDetails),
-    RecommendationSummary: S.optional(ReservationPurchaseRecommendationSummary),
-  }),
-).annotate({
-  identifier: "ReservationPurchaseRecommendation",
-}) as any as S.Schema<ReservationPurchaseRecommendation>;
+const ReservationPurchaseRecommendation = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ReservationPurchaseRecommendation>;
 export type ReservationPurchaseRecommendations = ReservationPurchaseRecommendation[];
-const ReservationPurchaseRecommendations = /*@__PURE__*/ S.Array(ReservationPurchaseRecommendation);
+const ReservationPurchaseRecommendations = /*@__PURE__*/ __L.at(__c16, 2);
 export interface GetReservationPurchaseRecommendationResponse {
   Metadata?: ReservationPurchaseRecommendationMetadata;
   Recommendations?: ReservationPurchaseRecommendation[];
   NextPageToken?: string;
 }
-const GetReservationPurchaseRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Metadata: S.optional(ReservationPurchaseRecommendationMetadata),
-    Recommendations: S.optional(ReservationPurchaseRecommendations),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReservationPurchaseRecommendationResponse",
-}) as any as S.Schema<GetReservationPurchaseRecommendationResponse>;
+const GetReservationPurchaseRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GetReservationPurchaseRecommendationResponse>;
 export interface GetReservationUtilizationRequest {
   TimePeriod: DateInterval;
   GroupBy?: GroupDefinition[];
@@ -2086,19 +1515,10 @@ export interface GetReservationUtilizationRequest {
   NextPageToken?: string;
   MaxResults?: number;
 }
-const GetReservationUtilizationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    GroupBy: S.optional(GroupDefinitions),
-    Granularity: S.optional(Granularity),
-    Filter: S.optional(Expression),
-    SortBy: S.optional(SortDefinition),
-    NextPageToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetReservationUtilizationRequest",
-}) as any as S.Schema<GetReservationUtilizationRequest>;
+const GetReservationUtilizationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetReservationUtilizationRequest>;
 export type ReservationGroupKey = string;
 export type ReservationGroupValue = string;
 export type UtilizationPercentage = string;
@@ -2137,73 +1557,39 @@ export interface ReservationAggregates {
   RealizedSavings?: string;
   UnrealizedSavings?: string;
 }
-const ReservationAggregates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    UtilizationPercentage: S.optional(S.String),
-    UtilizationPercentageInUnits: S.optional(S.String),
-    PurchasedHours: S.optional(S.String),
-    PurchasedUnits: S.optional(S.String),
-    TotalActualHours: S.optional(S.String),
-    TotalActualUnits: S.optional(S.String),
-    UnusedHours: S.optional(S.String),
-    UnusedUnits: S.optional(S.String),
-    OnDemandCostOfRIHoursUsed: S.optional(S.String),
-    NetRISavings: S.optional(S.String),
-    TotalPotentialRISavings: S.optional(S.String),
-    AmortizedUpfrontFee: S.optional(S.String),
-    AmortizedRecurringFee: S.optional(S.String),
-    TotalAmortizedFee: S.optional(S.String),
-    RICostForUnusedHours: S.optional(S.String),
-    RealizedSavings: S.optional(S.String),
-    UnrealizedSavings: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReservationAggregates" }) as any as S.Schema<ReservationAggregates>;
+const ReservationAggregates = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ReservationAggregates>;
 export interface ReservationUtilizationGroup {
   Key?: string;
   Value?: string;
   Attributes?: { [key: string]: string | undefined };
   Utilization?: ReservationAggregates;
 }
-const ReservationUtilizationGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Value: S.optional(S.String),
-    Attributes: S.optional(Attributes),
-    Utilization: S.optional(ReservationAggregates),
-  }),
-).annotate({
-  identifier: "ReservationUtilizationGroup",
-}) as any as S.Schema<ReservationUtilizationGroup>;
+const ReservationUtilizationGroup = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ReservationUtilizationGroup>;
 export type ReservationUtilizationGroups = ReservationUtilizationGroup[];
-const ReservationUtilizationGroups = /*@__PURE__*/ S.Array(ReservationUtilizationGroup);
+const ReservationUtilizationGroups = /*@__PURE__*/ __L.at(__c16, 7);
 export interface UtilizationByTime {
   TimePeriod?: DateInterval;
   Groups?: ReservationUtilizationGroup[];
   Total?: ReservationAggregates;
 }
-const UtilizationByTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: S.optional(DateInterval),
-    Groups: S.optional(ReservationUtilizationGroups),
-    Total: S.optional(ReservationAggregates),
-  }),
-).annotate({ identifier: "UtilizationByTime" }) as any as S.Schema<UtilizationByTime>;
+const UtilizationByTime = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<UtilizationByTime>;
 export type UtilizationsByTime = UtilizationByTime[];
-const UtilizationsByTime = /*@__PURE__*/ S.Array(UtilizationByTime);
+const UtilizationsByTime = /*@__PURE__*/ __L.at(__c17, 1);
 export interface GetReservationUtilizationResponse {
   UtilizationsByTime: UtilizationByTime[];
   Total?: ReservationAggregates;
   NextPageToken?: string;
 }
-const GetReservationUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    UtilizationsByTime: UtilizationsByTime,
-    Total: S.optional(ReservationAggregates),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReservationUtilizationResponse",
-}) as any as S.Schema<GetReservationUtilizationResponse>;
+const GetReservationUtilizationResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetReservationUtilizationResponse>;
 export type RecommendationTarget = "SAME_INSTANCE_FAMILY" | "CROSS_INSTANCE_FAMILY" | (string & {});
 const RecommendationTarget = S.String;
 
@@ -2211,11 +1597,10 @@ export interface RightsizingRecommendationConfiguration {
   RecommendationTarget: RecommendationTarget;
   BenefitsConsidered: boolean;
 }
-const RightsizingRecommendationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecommendationTarget: RecommendationTarget, BenefitsConsidered: S.Boolean }),
-).annotate({
-  identifier: "RightsizingRecommendationConfiguration",
-}) as any as S.Schema<RightsizingRecommendationConfiguration>;
+const RightsizingRecommendationConfiguration = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<RightsizingRecommendationConfiguration>;
 export interface GetRightsizingRecommendationRequest {
   Filter?: Expression;
   Configuration?: RightsizingRecommendationConfiguration;
@@ -2223,51 +1608,32 @@ export interface GetRightsizingRecommendationRequest {
   PageSize?: number;
   NextPageToken?: string;
 }
-const GetRightsizingRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Filter: S.optional(Expression),
-    Configuration: S.optional(RightsizingRecommendationConfiguration),
-    Service: S.String,
-    PageSize: S.optional(S.Number),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetRightsizingRecommendationRequest",
-}) as any as S.Schema<GetRightsizingRecommendationRequest>;
+const GetRightsizingRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetRightsizingRecommendationRequest>;
 export interface RightsizingRecommendationMetadata {
   RecommendationId?: string;
   GenerationTimestamp?: string;
   LookbackPeriodInDays?: LookbackPeriodInDays;
   AdditionalMetadata?: string;
 }
-const RightsizingRecommendationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommendationId: S.optional(S.String),
-    GenerationTimestamp: S.optional(S.String),
-    LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
-    AdditionalMetadata: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RightsizingRecommendationMetadata",
-}) as any as S.Schema<RightsizingRecommendationMetadata>;
+const RightsizingRecommendationMetadata = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<RightsizingRecommendationMetadata>;
 export interface RightsizingRecommendationSummary {
   TotalRecommendationCount?: string;
   EstimatedTotalMonthlySavingsAmount?: string;
   SavingsCurrencyCode?: string;
   SavingsPercentage?: string;
 }
-const RightsizingRecommendationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TotalRecommendationCount: S.optional(S.String),
-    EstimatedTotalMonthlySavingsAmount: S.optional(S.String),
-    SavingsCurrencyCode: S.optional(S.String),
-    SavingsPercentage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RightsizingRecommendationSummary",
-}) as any as S.Schema<RightsizingRecommendationSummary>;
+const RightsizingRecommendationSummary = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<RightsizingRecommendationSummary>;
 export type TagValuesList = TagValues[];
-const TagValuesList = /*@__PURE__*/ S.Array(TagValues);
+const TagValuesList = /*@__PURE__*/ __L.at(__c17, 7);
 export interface EC2ResourceDetails {
   HourlyOnDemandRate?: string;
   InstanceType?: string;
@@ -2279,69 +1645,41 @@ export interface EC2ResourceDetails {
   Storage?: string;
   Vcpu?: string;
 }
-const EC2ResourceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HourlyOnDemandRate: S.optional(S.String),
-    InstanceType: S.optional(S.String),
-    Platform: S.optional(S.String),
-    Region: S.optional(S.String),
-    Sku: S.optional(S.String),
-    Memory: S.optional(S.String),
-    NetworkPerformance: S.optional(S.String),
-    Storage: S.optional(S.String),
-    Vcpu: S.optional(S.String),
-  }),
-).annotate({ identifier: "EC2ResourceDetails" }) as any as S.Schema<EC2ResourceDetails>;
+const EC2ResourceDetails = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<EC2ResourceDetails>;
 export interface ResourceDetails {
   EC2ResourceDetails?: EC2ResourceDetails;
 }
-const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EC2ResourceDetails: S.optional(EC2ResourceDetails) }),
-).annotate({ identifier: "ResourceDetails" }) as any as S.Schema<ResourceDetails>;
+const ResourceDetails = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ResourceDetails>;
 export interface EBSResourceUtilization {
   EbsReadOpsPerSecond?: string;
   EbsWriteOpsPerSecond?: string;
   EbsReadBytesPerSecond?: string;
   EbsWriteBytesPerSecond?: string;
 }
-const EBSResourceUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EbsReadOpsPerSecond: S.optional(S.String),
-    EbsWriteOpsPerSecond: S.optional(S.String),
-    EbsReadBytesPerSecond: S.optional(S.String),
-    EbsWriteBytesPerSecond: S.optional(S.String),
-  }),
-).annotate({ identifier: "EBSResourceUtilization" }) as any as S.Schema<EBSResourceUtilization>;
+const EBSResourceUtilization = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<EBSResourceUtilization>;
 export interface DiskResourceUtilization {
   DiskReadOpsPerSecond?: string;
   DiskWriteOpsPerSecond?: string;
   DiskReadBytesPerSecond?: string;
   DiskWriteBytesPerSecond?: string;
 }
-const DiskResourceUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DiskReadOpsPerSecond: S.optional(S.String),
-    DiskWriteOpsPerSecond: S.optional(S.String),
-    DiskReadBytesPerSecond: S.optional(S.String),
-    DiskWriteBytesPerSecond: S.optional(S.String),
-  }),
-).annotate({ identifier: "DiskResourceUtilization" }) as any as S.Schema<DiskResourceUtilization>;
+const DiskResourceUtilization = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DiskResourceUtilization>;
 export interface NetworkResourceUtilization {
   NetworkInBytesPerSecond?: string;
   NetworkOutBytesPerSecond?: string;
   NetworkPacketsInPerSecond?: string;
   NetworkPacketsOutPerSecond?: string;
 }
-const NetworkResourceUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NetworkInBytesPerSecond: S.optional(S.String),
-    NetworkOutBytesPerSecond: S.optional(S.String),
-    NetworkPacketsInPerSecond: S.optional(S.String),
-    NetworkPacketsOutPerSecond: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkResourceUtilization",
-}) as any as S.Schema<NetworkResourceUtilization>;
+const NetworkResourceUtilization = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<NetworkResourceUtilization>;
 export interface EC2ResourceUtilization {
   MaxCpuUtilizationPercentage?: string;
   MaxMemoryUtilizationPercentage?: string;
@@ -2350,22 +1688,14 @@ export interface EC2ResourceUtilization {
   DiskResourceUtilization?: DiskResourceUtilization;
   NetworkResourceUtilization?: NetworkResourceUtilization;
 }
-const EC2ResourceUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxCpuUtilizationPercentage: S.optional(S.String),
-    MaxMemoryUtilizationPercentage: S.optional(S.String),
-    MaxStorageUtilizationPercentage: S.optional(S.String),
-    EBSResourceUtilization: S.optional(EBSResourceUtilization),
-    DiskResourceUtilization: S.optional(DiskResourceUtilization),
-    NetworkResourceUtilization: S.optional(NetworkResourceUtilization),
-  }),
-).annotate({ identifier: "EC2ResourceUtilization" }) as any as S.Schema<EC2ResourceUtilization>;
+const EC2ResourceUtilization = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<EC2ResourceUtilization>;
 export interface ResourceUtilization {
   EC2ResourceUtilization?: EC2ResourceUtilization;
 }
-const ResourceUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EC2ResourceUtilization: S.optional(EC2ResourceUtilization) }),
-).annotate({ identifier: "ResourceUtilization" }) as any as S.Schema<ResourceUtilization>;
+const ResourceUtilization = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ResourceUtilization>;
 export interface CurrentInstance {
   ResourceId?: string;
   InstanceName?: string;
@@ -2379,21 +1709,7 @@ export interface CurrentInstance {
   MonthlyCost?: string;
   CurrencyCode?: string;
 }
-const CurrentInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceId: S.optional(S.String),
-    InstanceName: S.optional(S.String),
-    Tags: S.optional(TagValuesList),
-    ResourceDetails: S.optional(ResourceDetails),
-    ResourceUtilization: S.optional(ResourceUtilization),
-    ReservationCoveredHoursInLookbackPeriod: S.optional(S.String),
-    SavingsPlansCoveredHoursInLookbackPeriod: S.optional(S.String),
-    OnDemandHoursInLookbackPeriod: S.optional(S.String),
-    TotalRunningHoursInLookbackPeriod: S.optional(S.String),
-    MonthlyCost: S.optional(S.String),
-    CurrencyCode: S.optional(S.String),
-  }),
-).annotate({ identifier: "CurrentInstance" }) as any as S.Schema<CurrentInstance>;
+const CurrentInstance = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<CurrentInstance>;
 export type RightsizingType = "TERMINATE" | "MODIFY" | (string & {});
 const RightsizingType = S.String;
 
@@ -2415,36 +1731,24 @@ export interface TargetInstance {
   ExpectedResourceUtilization?: ResourceUtilization;
   PlatformDifferences?: PlatformDifference[];
 }
-const TargetInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EstimatedMonthlyCost: S.optional(S.String),
-    EstimatedMonthlySavings: S.optional(S.String),
-    CurrencyCode: S.optional(S.String),
-    DefaultTargetInstance: S.optional(S.Boolean),
-    ResourceDetails: S.optional(ResourceDetails),
-    ExpectedResourceUtilization: S.optional(ResourceUtilization),
-    PlatformDifferences: S.optional(PlatformDifferences),
-  }),
-).annotate({ identifier: "TargetInstance" }) as any as S.Schema<TargetInstance>;
+const TargetInstance = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<TargetInstance>;
 export type TargetInstancesList = TargetInstance[];
-const TargetInstancesList = /*@__PURE__*/ S.Array(TargetInstance);
+const TargetInstancesList = /*@__PURE__*/ __L.at(__c19, 1);
 export interface ModifyRecommendationDetail {
   TargetInstances?: TargetInstance[];
 }
-const ModifyRecommendationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TargetInstances: S.optional(TargetInstancesList) }),
-).annotate({
-  identifier: "ModifyRecommendationDetail",
-}) as any as S.Schema<ModifyRecommendationDetail>;
+const ModifyRecommendationDetail = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ModifyRecommendationDetail>;
 export interface TerminateRecommendationDetail {
   EstimatedMonthlySavings?: string;
   CurrencyCode?: string;
 }
-const TerminateRecommendationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EstimatedMonthlySavings: S.optional(S.String), CurrencyCode: S.optional(S.String) }),
-).annotate({
-  identifier: "TerminateRecommendationDetail",
-}) as any as S.Schema<TerminateRecommendationDetail>;
+const TerminateRecommendationDetail = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<TerminateRecommendationDetail>;
 export type FindingReasonCode =
   | "CPU_OVER_PROVISIONED"
   | "CPU_UNDER_PROVISIONED"
@@ -2473,20 +1777,12 @@ export interface RightsizingRecommendation {
   TerminateRecommendationDetail?: TerminateRecommendationDetail;
   FindingReasonCodes?: FindingReasonCode[];
 }
-const RightsizingRecommendation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountId: S.optional(S.String),
-    CurrentInstance: S.optional(CurrentInstance),
-    RightsizingType: S.optional(RightsizingType),
-    ModifyRecommendationDetail: S.optional(ModifyRecommendationDetail),
-    TerminateRecommendationDetail: S.optional(TerminateRecommendationDetail),
-    FindingReasonCodes: S.optional(FindingReasonCodes),
-  }),
-).annotate({
-  identifier: "RightsizingRecommendation",
-}) as any as S.Schema<RightsizingRecommendation>;
+const RightsizingRecommendation = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<RightsizingRecommendation>;
 export type RightsizingRecommendationList = RightsizingRecommendation[];
-const RightsizingRecommendationList = /*@__PURE__*/ S.Array(RightsizingRecommendation);
+const RightsizingRecommendationList = /*@__PURE__*/ __L.at(__c19, 5);
 export interface GetRightsizingRecommendationResponse {
   Metadata?: RightsizingRecommendationMetadata;
   Summary?: RightsizingRecommendationSummary;
@@ -2494,28 +1790,18 @@ export interface GetRightsizingRecommendationResponse {
   NextPageToken?: string;
   Configuration?: RightsizingRecommendationConfiguration;
 }
-const GetRightsizingRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Metadata: S.optional(RightsizingRecommendationMetadata),
-    Summary: S.optional(RightsizingRecommendationSummary),
-    RightsizingRecommendations: S.optional(RightsizingRecommendationList),
-    NextPageToken: S.optional(S.String),
-    Configuration: S.optional(RightsizingRecommendationConfiguration),
-  }),
-).annotate({
-  identifier: "GetRightsizingRecommendationResponse",
-}) as any as S.Schema<GetRightsizingRecommendationResponse>;
+const GetRightsizingRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<GetRightsizingRecommendationResponse>;
 export type RecommendationDetailId = string;
 export interface GetSavingsPlanPurchaseRecommendationDetailsRequest {
   RecommendationDetailId: string;
 }
-const GetSavingsPlanPurchaseRecommendationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecommendationDetailId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetSavingsPlanPurchaseRecommendationDetailsRequest",
-}) as any as S.Schema<GetSavingsPlanPurchaseRecommendationDetailsRequest>;
+const GetSavingsPlanPurchaseRecommendationDetailsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<GetSavingsPlanPurchaseRecommendationDetailsRequest>;
 export interface RecommendationDetailData {
   AccountScope?: AccountScope;
   LookbackPeriodInDays?: LookbackPeriodInDays;
@@ -2547,51 +1833,18 @@ export interface RecommendationDetailData {
   EstimatedAverageCoverage?: string;
   MetricsOverLookbackPeriod?: RecommendationDetailHourlyMetrics[];
 }
-const RecommendationDetailData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountScope: S.optional(AccountScope),
-    LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
-    SavingsPlansType: S.optional(SupportedSavingsPlansType),
-    TermInYears: S.optional(TermInYears),
-    PaymentOption: S.optional(PaymentOption),
-    AccountId: S.optional(S.String),
-    CurrencyCode: S.optional(S.String),
-    InstanceFamily: S.optional(S.String),
-    Region: S.optional(S.String),
-    OfferingId: S.optional(S.String),
-    GenerationTimestamp: S.optional(S.String),
-    LatestUsageTimestamp: S.optional(S.String),
-    CurrentAverageHourlyOnDemandSpend: S.optional(S.String),
-    CurrentMaximumHourlyOnDemandSpend: S.optional(S.String),
-    CurrentMinimumHourlyOnDemandSpend: S.optional(S.String),
-    EstimatedAverageUtilization: S.optional(S.String),
-    EstimatedMonthlySavingsAmount: S.optional(S.String),
-    EstimatedOnDemandCost: S.optional(S.String),
-    EstimatedOnDemandCostWithCurrentCommitment: S.optional(S.String),
-    EstimatedROI: S.optional(S.String),
-    EstimatedSPCost: S.optional(S.String),
-    EstimatedSavingsAmount: S.optional(S.String),
-    EstimatedSavingsPercentage: S.optional(S.String),
-    ExistingHourlyCommitment: S.optional(S.String),
-    HourlyCommitmentToPurchase: S.optional(S.String),
-    UpfrontCost: S.optional(S.String),
-    CurrentAverageCoverage: S.optional(S.String),
-    EstimatedAverageCoverage: S.optional(S.String),
-    MetricsOverLookbackPeriod: S.optional(MetricsOverLookbackPeriod),
-  }),
-).annotate({ identifier: "RecommendationDetailData" }) as any as S.Schema<RecommendationDetailData>;
+const RecommendationDetailData = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<RecommendationDetailData>;
 export interface GetSavingsPlanPurchaseRecommendationDetailsResponse {
   RecommendationDetailId?: string;
   RecommendationDetailData?: RecommendationDetailData;
 }
-const GetSavingsPlanPurchaseRecommendationDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommendationDetailId: S.optional(S.String),
-    RecommendationDetailData: S.optional(RecommendationDetailData),
-  }),
-).annotate({
-  identifier: "GetSavingsPlanPurchaseRecommendationDetailsResponse",
-}) as any as S.Schema<GetSavingsPlanPurchaseRecommendationDetailsResponse>;
+const GetSavingsPlanPurchaseRecommendationDetailsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GetSavingsPlanPurchaseRecommendationDetailsResponse>;
 export interface GetSavingsPlansCoverageRequest {
   TimePeriod: DateInterval;
   GroupBy?: GroupDefinition[];
@@ -2602,57 +1855,39 @@ export interface GetSavingsPlansCoverageRequest {
   MaxResults?: number;
   SortBy?: SortDefinition;
 }
-const GetSavingsPlansCoverageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    GroupBy: S.optional(GroupDefinitions),
-    Granularity: S.optional(Granularity),
-    Filter: S.optional(Expression),
-    Metrics: S.optional(MetricNames),
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    SortBy: S.optional(SortDefinition),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetSavingsPlansCoverageRequest",
-}) as any as S.Schema<GetSavingsPlansCoverageRequest>;
+const GetSavingsPlansCoverageRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GetSavingsPlansCoverageRequest>;
 export interface SavingsPlansCoverageData {
   SpendCoveredBySavingsPlans?: string;
   OnDemandCost?: string;
   TotalCost?: string;
   CoveragePercentage?: string;
 }
-const SavingsPlansCoverageData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SpendCoveredBySavingsPlans: S.optional(S.String),
-    OnDemandCost: S.optional(S.String),
-    TotalCost: S.optional(S.String),
-    CoveragePercentage: S.optional(S.String),
-  }),
-).annotate({ identifier: "SavingsPlansCoverageData" }) as any as S.Schema<SavingsPlansCoverageData>;
+const SavingsPlansCoverageData = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<SavingsPlansCoverageData>;
 export interface SavingsPlansCoverage {
   Attributes?: { [key: string]: string | undefined };
   Coverage?: SavingsPlansCoverageData;
   TimePeriod?: DateInterval;
 }
-const SavingsPlansCoverage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Attributes: S.optional(Attributes),
-    Coverage: S.optional(SavingsPlansCoverageData),
-    TimePeriod: S.optional(DateInterval),
-  }),
-).annotate({ identifier: "SavingsPlansCoverage" }) as any as S.Schema<SavingsPlansCoverage>;
+const SavingsPlansCoverage = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<SavingsPlansCoverage>;
 export type SavingsPlansCoverages = SavingsPlansCoverage[];
-const SavingsPlansCoverages = /*@__PURE__*/ S.Array(SavingsPlansCoverage);
+const SavingsPlansCoverages = /*@__PURE__*/ __L.at(__c20, 5);
 export interface GetSavingsPlansCoverageResponse {
   SavingsPlansCoverages: SavingsPlansCoverage[];
   NextToken?: string;
 }
-const GetSavingsPlansCoverageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SavingsPlansCoverages: SavingsPlansCoverages, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetSavingsPlansCoverageResponse",
-}) as any as S.Schema<GetSavingsPlansCoverageResponse>;
+const GetSavingsPlansCoverageResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GetSavingsPlansCoverageResponse>;
 export interface GetSavingsPlansPurchaseRecommendationRequest {
   SavingsPlansType: SupportedSavingsPlansType;
   TermInYears: TermInYears;
@@ -2663,20 +1898,10 @@ export interface GetSavingsPlansPurchaseRecommendationRequest {
   LookbackPeriodInDays: LookbackPeriodInDays;
   Filter?: Expression;
 }
-const GetSavingsPlansPurchaseRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SavingsPlansType: SupportedSavingsPlansType,
-    TermInYears: TermInYears,
-    PaymentOption: PaymentOption,
-    AccountScope: S.optional(AccountScope),
-    NextPageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-    LookbackPeriodInDays: LookbackPeriodInDays,
-    Filter: S.optional(Expression),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetSavingsPlansPurchaseRecommendationRequest",
-}) as any as S.Schema<GetSavingsPlansPurchaseRecommendationRequest>;
+const GetSavingsPlansPurchaseRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetSavingsPlansPurchaseRecommendationRequest>;
 export interface SavingsPlansPurchaseRecommendationMetadata {
   RecommendationId?: string;
   GenerationTimestamp?: string;
@@ -2689,13 +1914,7 @@ export interface SavingsPlansDetails {
   InstanceFamily?: string;
   OfferingId?: string;
 }
-const SavingsPlansDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Region: S.optional(S.String),
-    InstanceFamily: S.optional(S.String),
-    OfferingId: S.optional(S.String),
-  }),
-).annotate({ identifier: "SavingsPlansDetails" }) as any as S.Schema<SavingsPlansDetails>;
+const SavingsPlansDetails = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<SavingsPlansDetails>;
 export interface SavingsPlansPurchaseRecommendationDetail {
   SavingsPlansDetails?: SavingsPlansDetails;
   AccountId?: string;
@@ -2715,34 +1934,13 @@ export interface SavingsPlansPurchaseRecommendationDetail {
   CurrentAverageHourlyOnDemandSpend?: string;
   RecommendationDetailId?: string;
 }
-const SavingsPlansPurchaseRecommendationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SavingsPlansDetails: S.optional(SavingsPlansDetails),
-    AccountId: S.optional(S.String),
-    UpfrontCost: S.optional(S.String),
-    EstimatedROI: S.optional(S.String),
-    CurrencyCode: S.optional(S.String),
-    EstimatedSPCost: S.optional(S.String),
-    EstimatedOnDemandCost: S.optional(S.String),
-    EstimatedOnDemandCostWithCurrentCommitment: S.optional(S.String),
-    EstimatedSavingsAmount: S.optional(S.String),
-    EstimatedSavingsPercentage: S.optional(S.String),
-    HourlyCommitmentToPurchase: S.optional(S.String),
-    EstimatedAverageUtilization: S.optional(S.String),
-    EstimatedMonthlySavingsAmount: S.optional(S.String),
-    CurrentMinimumHourlyOnDemandSpend: S.optional(S.String),
-    CurrentMaximumHourlyOnDemandSpend: S.optional(S.String),
-    CurrentAverageHourlyOnDemandSpend: S.optional(S.String),
-    RecommendationDetailId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SavingsPlansPurchaseRecommendationDetail",
-}) as any as S.Schema<SavingsPlansPurchaseRecommendationDetail>;
+const SavingsPlansPurchaseRecommendationDetail = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<SavingsPlansPurchaseRecommendationDetail>;
 export type SavingsPlansPurchaseRecommendationDetailList =
   SavingsPlansPurchaseRecommendationDetail[];
-const SavingsPlansPurchaseRecommendationDetailList = /*@__PURE__*/ S.Array(
-  SavingsPlansPurchaseRecommendationDetail,
-);
+const SavingsPlansPurchaseRecommendationDetailList = /*@__PURE__*/ __L.at(__c21, 2);
 export interface SavingsPlansPurchaseRecommendationSummary {
   EstimatedROI?: string;
   CurrencyCode?: string;
@@ -2756,23 +1954,10 @@ export interface SavingsPlansPurchaseRecommendationSummary {
   EstimatedMonthlySavingsAmount?: string;
   EstimatedOnDemandCostWithCurrentCommitment?: string;
 }
-const SavingsPlansPurchaseRecommendationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EstimatedROI: S.optional(S.String),
-    CurrencyCode: S.optional(S.String),
-    EstimatedTotalCost: S.optional(S.String),
-    CurrentOnDemandSpend: S.optional(S.String),
-    EstimatedSavingsAmount: S.optional(S.String),
-    TotalRecommendationCount: S.optional(S.String),
-    DailyCommitmentToPurchase: S.optional(S.String),
-    HourlyCommitmentToPurchase: S.optional(S.String),
-    EstimatedSavingsPercentage: S.optional(S.String),
-    EstimatedMonthlySavingsAmount: S.optional(S.String),
-    EstimatedOnDemandCostWithCurrentCommitment: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SavingsPlansPurchaseRecommendationSummary",
-}) as any as S.Schema<SavingsPlansPurchaseRecommendationSummary>;
+const SavingsPlansPurchaseRecommendationSummary = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<SavingsPlansPurchaseRecommendationSummary>;
 export interface SavingsPlansPurchaseRecommendation {
   AccountScope?: AccountScope;
   SavingsPlansType?: SupportedSavingsPlansType;
@@ -2782,132 +1967,82 @@ export interface SavingsPlansPurchaseRecommendation {
   SavingsPlansPurchaseRecommendationDetails?: SavingsPlansPurchaseRecommendationDetail[];
   SavingsPlansPurchaseRecommendationSummary?: SavingsPlansPurchaseRecommendationSummary;
 }
-const SavingsPlansPurchaseRecommendation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountScope: S.optional(AccountScope),
-    SavingsPlansType: S.optional(SupportedSavingsPlansType),
-    TermInYears: S.optional(TermInYears),
-    PaymentOption: S.optional(PaymentOption),
-    LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
-    SavingsPlansPurchaseRecommendationDetails: S.optional(
-      SavingsPlansPurchaseRecommendationDetailList,
-    ),
-    SavingsPlansPurchaseRecommendationSummary: S.optional(
-      SavingsPlansPurchaseRecommendationSummary,
-    ),
-  }),
-).annotate({
-  identifier: "SavingsPlansPurchaseRecommendation",
-}) as any as S.Schema<SavingsPlansPurchaseRecommendation>;
+const SavingsPlansPurchaseRecommendation = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<SavingsPlansPurchaseRecommendation>;
 export interface GetSavingsPlansPurchaseRecommendationResponse {
   Metadata?: SavingsPlansPurchaseRecommendationMetadata;
   SavingsPlansPurchaseRecommendation?: SavingsPlansPurchaseRecommendation;
   NextPageToken?: string;
 }
-const GetSavingsPlansPurchaseRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Metadata: S.optional(SavingsPlansPurchaseRecommendationMetadata),
-    SavingsPlansPurchaseRecommendation: S.optional(SavingsPlansPurchaseRecommendation),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSavingsPlansPurchaseRecommendationResponse",
-}) as any as S.Schema<GetSavingsPlansPurchaseRecommendationResponse>;
+const GetSavingsPlansPurchaseRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GetSavingsPlansPurchaseRecommendationResponse>;
 export interface GetSavingsPlansUtilizationRequest {
   TimePeriod: DateInterval;
   Granularity?: Granularity;
   Filter?: Expression;
   SortBy?: SortDefinition;
 }
-const GetSavingsPlansUtilizationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    Granularity: S.optional(Granularity),
-    Filter: S.optional(Expression),
-    SortBy: S.optional(SortDefinition),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetSavingsPlansUtilizationRequest",
-}) as any as S.Schema<GetSavingsPlansUtilizationRequest>;
+const GetSavingsPlansUtilizationRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<GetSavingsPlansUtilizationRequest>;
 export interface SavingsPlansUtilization {
   TotalCommitment?: string;
   UsedCommitment?: string;
   UnusedCommitment?: string;
   UtilizationPercentage?: string;
 }
-const SavingsPlansUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TotalCommitment: S.optional(S.String),
-    UsedCommitment: S.optional(S.String),
-    UnusedCommitment: S.optional(S.String),
-    UtilizationPercentage: S.optional(S.String),
-  }),
-).annotate({ identifier: "SavingsPlansUtilization" }) as any as S.Schema<SavingsPlansUtilization>;
+const SavingsPlansUtilization = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<SavingsPlansUtilization>;
 export interface SavingsPlansSavings {
   NetSavings?: string;
   OnDemandCostEquivalent?: string;
 }
-const SavingsPlansSavings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NetSavings: S.optional(S.String), OnDemandCostEquivalent: S.optional(S.String) }),
-).annotate({ identifier: "SavingsPlansSavings" }) as any as S.Schema<SavingsPlansSavings>;
+const SavingsPlansSavings = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<SavingsPlansSavings>;
 export interface SavingsPlansAmortizedCommitment {
   AmortizedRecurringCommitment?: string;
   AmortizedUpfrontCommitment?: string;
   TotalAmortizedCommitment?: string;
 }
-const SavingsPlansAmortizedCommitment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AmortizedRecurringCommitment: S.optional(S.String),
-    AmortizedUpfrontCommitment: S.optional(S.String),
-    TotalAmortizedCommitment: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SavingsPlansAmortizedCommitment",
-}) as any as S.Schema<SavingsPlansAmortizedCommitment>;
+const SavingsPlansAmortizedCommitment = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<SavingsPlansAmortizedCommitment>;
 export interface SavingsPlansUtilizationByTime {
   TimePeriod: DateInterval;
   Utilization: SavingsPlansUtilization;
   Savings?: SavingsPlansSavings;
   AmortizedCommitment?: SavingsPlansAmortizedCommitment;
 }
-const SavingsPlansUtilizationByTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    Utilization: SavingsPlansUtilization,
-    Savings: S.optional(SavingsPlansSavings),
-    AmortizedCommitment: S.optional(SavingsPlansAmortizedCommitment),
-  }),
-).annotate({
-  identifier: "SavingsPlansUtilizationByTime",
-}) as any as S.Schema<SavingsPlansUtilizationByTime>;
+const SavingsPlansUtilizationByTime = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<SavingsPlansUtilizationByTime>;
 export type SavingsPlansUtilizationsByTime = SavingsPlansUtilizationByTime[];
-const SavingsPlansUtilizationsByTime = /*@__PURE__*/ S.Array(SavingsPlansUtilizationByTime);
+const SavingsPlansUtilizationsByTime = /*@__PURE__*/ __L.at(__c22, 3);
 export interface SavingsPlansUtilizationAggregates {
   Utilization: SavingsPlansUtilization;
   Savings?: SavingsPlansSavings;
   AmortizedCommitment?: SavingsPlansAmortizedCommitment;
 }
-const SavingsPlansUtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Utilization: SavingsPlansUtilization,
-    Savings: S.optional(SavingsPlansSavings),
-    AmortizedCommitment: S.optional(SavingsPlansAmortizedCommitment),
-  }),
-).annotate({
-  identifier: "SavingsPlansUtilizationAggregates",
-}) as any as S.Schema<SavingsPlansUtilizationAggregates>;
+const SavingsPlansUtilizationAggregates = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<SavingsPlansUtilizationAggregates>;
 export interface GetSavingsPlansUtilizationResponse {
   SavingsPlansUtilizationsByTime?: SavingsPlansUtilizationByTime[];
   Total: SavingsPlansUtilizationAggregates;
 }
-const GetSavingsPlansUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SavingsPlansUtilizationsByTime: S.optional(SavingsPlansUtilizationsByTime),
-    Total: SavingsPlansUtilizationAggregates,
-  }),
-).annotate({
-  identifier: "GetSavingsPlansUtilizationResponse",
-}) as any as S.Schema<GetSavingsPlansUtilizationResponse>;
+const GetSavingsPlansUtilizationResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetSavingsPlansUtilizationResponse>;
 export type SavingsPlansDataType =
   | "ATTRIBUTES"
   | "UTILIZATION"
@@ -2924,18 +2059,10 @@ export interface GetSavingsPlansUtilizationDetailsRequest {
   MaxResults?: number;
   SortBy?: SortDefinition;
 }
-const GetSavingsPlansUtilizationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    Filter: S.optional(Expression),
-    DataType: S.optional(SavingsPlansDataTypes),
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    SortBy: S.optional(SortDefinition),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "GetSavingsPlansUtilizationDetailsRequest",
-}) as any as S.Schema<GetSavingsPlansUtilizationDetailsRequest>;
+const GetSavingsPlansUtilizationDetailsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GetSavingsPlansUtilizationDetailsRequest>;
 export type SavingsPlanArn = string;
 export interface SavingsPlansUtilizationDetail {
   SavingsPlanArn?: string;
@@ -2944,35 +2071,22 @@ export interface SavingsPlansUtilizationDetail {
   Savings?: SavingsPlansSavings;
   AmortizedCommitment?: SavingsPlansAmortizedCommitment;
 }
-const SavingsPlansUtilizationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SavingsPlanArn: S.optional(S.String),
-    Attributes: S.optional(Attributes),
-    Utilization: S.optional(SavingsPlansUtilization),
-    Savings: S.optional(SavingsPlansSavings),
-    AmortizedCommitment: S.optional(SavingsPlansAmortizedCommitment),
-  }),
-).annotate({
-  identifier: "SavingsPlansUtilizationDetail",
-}) as any as S.Schema<SavingsPlansUtilizationDetail>;
+const SavingsPlansUtilizationDetail = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<SavingsPlansUtilizationDetail>;
 export type SavingsPlansUtilizationDetails = SavingsPlansUtilizationDetail[];
-const SavingsPlansUtilizationDetails = /*@__PURE__*/ S.Array(SavingsPlansUtilizationDetail);
+const SavingsPlansUtilizationDetails = /*@__PURE__*/ __L.at(__c23, 0);
 export interface GetSavingsPlansUtilizationDetailsResponse {
   SavingsPlansUtilizationDetails: SavingsPlansUtilizationDetail[];
   Total?: SavingsPlansUtilizationAggregates;
   TimePeriod: DateInterval;
   NextToken?: string;
 }
-const GetSavingsPlansUtilizationDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SavingsPlansUtilizationDetails: SavingsPlansUtilizationDetails,
-    Total: S.optional(SavingsPlansUtilizationAggregates),
-    TimePeriod: DateInterval,
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSavingsPlansUtilizationDetailsResponse",
-}) as any as S.Schema<GetSavingsPlansUtilizationDetailsResponse>;
+const GetSavingsPlansUtilizationDetailsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GetSavingsPlansUtilizationDetailsResponse>;
 export interface GetTagsRequest {
   SearchString?: string;
   TimePeriod: DateInterval;
@@ -2983,18 +2097,7 @@ export interface GetTagsRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
-const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SearchString: S.optional(S.String),
-    TimePeriod: DateInterval,
-    TagKey: S.optional(S.String),
-    Filter: S.optional(Expression),
-    SortBy: S.optional(SortDefinitions),
-    BillingViewArn: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetTagsRequest" }) as any as S.Schema<GetTagsRequest>;
+const GetTagsRequest = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<GetTagsRequest>;
 export type Entity = string;
 export type TagList = string[];
 const TagList = Values as any as S.Schema<TagList>;
@@ -3004,14 +2107,7 @@ export interface GetTagsResponse {
   ReturnSize: number;
   TotalSize: number;
 }
-const GetTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextPageToken: S.optional(S.String),
-    Tags: TagList,
-    ReturnSize: S.Number,
-    TotalSize: S.Number,
-  }),
-).annotate({ identifier: "GetTagsResponse" }) as any as S.Schema<GetTagsResponse>;
+const GetTagsResponse = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<GetTagsResponse>;
 export interface GetUsageForecastRequest {
   TimePeriod: DateInterval;
   Metric: Metric;
@@ -3020,16 +2116,10 @@ export interface GetUsageForecastRequest {
   BillingViewArn?: string;
   PredictionIntervalLevel?: number;
 }
-const GetUsageForecastRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TimePeriod: DateInterval,
-    Metric: Metric,
-    Granularity: Granularity,
-    Filter: S.optional(Expression),
-    BillingViewArn: S.optional(S.String),
-    PredictionIntervalLevel: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetUsageForecastRequest" }) as any as S.Schema<GetUsageForecastRequest>;
+const GetUsageForecastRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<GetUsageForecastRequest>;
 export interface GetUsageForecastResponse {
   Total?: MetricValue;
   ForecastResultsByTime?: ForecastResult[];
@@ -3045,16 +2135,10 @@ export interface ListCommitmentPurchaseAnalysesRequest {
   PageSize?: number;
   AnalysisIds?: string[];
 }
-const ListCommitmentPurchaseAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AnalysisStatus: S.optional(AnalysisStatus),
-    NextPageToken: S.optional(S.String),
-    PageSize: S.optional(S.Number),
-    AnalysisIds: S.optional(AnalysisIds),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListCommitmentPurchaseAnalysesRequest",
-}) as any as S.Schema<ListCommitmentPurchaseAnalysesRequest>;
+const ListCommitmentPurchaseAnalysesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ListCommitmentPurchaseAnalysesRequest>;
 export interface AnalysisSummary {
   EstimatedCompletionTime?: string;
   AnalysisCompletionTime?: string;
@@ -3064,43 +2148,26 @@ export interface AnalysisSummary {
   AnalysisId?: string;
   CommitmentPurchaseAnalysisConfiguration?: CommitmentPurchaseAnalysisConfiguration;
 }
-const AnalysisSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EstimatedCompletionTime: S.optional(S.String),
-    AnalysisCompletionTime: S.optional(S.String),
-    AnalysisStartedTime: S.optional(S.String),
-    AnalysisStatus: S.optional(AnalysisStatus),
-    ErrorCode: S.optional(ErrorCode),
-    AnalysisId: S.optional(S.String),
-    CommitmentPurchaseAnalysisConfiguration: S.optional(CommitmentPurchaseAnalysisConfiguration),
-  }),
-).annotate({ identifier: "AnalysisSummary" }) as any as S.Schema<AnalysisSummary>;
+const AnalysisSummary = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<AnalysisSummary>;
 export type AnalysisSummaryList = AnalysisSummary[];
-const AnalysisSummaryList = /*@__PURE__*/ S.Array(AnalysisSummary);
+const AnalysisSummaryList = /*@__PURE__*/ __L.at(__c23, 7);
 export interface ListCommitmentPurchaseAnalysesResponse {
   AnalysisSummaryList?: AnalysisSummary[];
   NextPageToken?: string;
 }
-const ListCommitmentPurchaseAnalysesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AnalysisSummaryList: S.optional(AnalysisSummaryList),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCommitmentPurchaseAnalysesResponse",
-}) as any as S.Schema<ListCommitmentPurchaseAnalysesResponse>;
+const ListCommitmentPurchaseAnalysesResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListCommitmentPurchaseAnalysesResponse>;
 export type CostAllocationTagsMaxResults = number;
 export interface ListCostAllocationTagBackfillHistoryRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCostAllocationTagBackfillHistoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListCostAllocationTagBackfillHistoryRequest",
-}) as any as S.Schema<ListCostAllocationTagBackfillHistoryRequest>;
+const ListCostAllocationTagBackfillHistoryRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListCostAllocationTagBackfillHistoryRequest>;
 export type CostAllocationTagBackfillStatus = "SUCCEEDED" | "PROCESSING" | "FAILED" | (string & {});
 const CostAllocationTagBackfillStatus = S.String;
 
@@ -3111,33 +2178,20 @@ export interface CostAllocationTagBackfillRequest {
   BackfillStatus?: CostAllocationTagBackfillStatus;
   LastUpdatedAt?: string;
 }
-const CostAllocationTagBackfillRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BackfillFrom: S.optional(S.String),
-    RequestedAt: S.optional(S.String),
-    CompletedAt: S.optional(S.String),
-    BackfillStatus: S.optional(CostAllocationTagBackfillStatus),
-    LastUpdatedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CostAllocationTagBackfillRequest",
-}) as any as S.Schema<CostAllocationTagBackfillRequest>;
+const CostAllocationTagBackfillRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<CostAllocationTagBackfillRequest>;
 export type CostAllocationTagBackfillRequestList = CostAllocationTagBackfillRequest[];
-const CostAllocationTagBackfillRequestList = /*@__PURE__*/ S.Array(
-  CostAllocationTagBackfillRequest,
-);
+const CostAllocationTagBackfillRequestList = /*@__PURE__*/ __L.at(__c24, 3);
 export interface ListCostAllocationTagBackfillHistoryResponse {
   BackfillRequests?: CostAllocationTagBackfillRequest[];
   NextToken?: string;
 }
-const ListCostAllocationTagBackfillHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BackfillRequests: S.optional(CostAllocationTagBackfillRequestList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCostAllocationTagBackfillHistoryResponse",
-}) as any as S.Schema<ListCostAllocationTagBackfillHistoryResponse>;
+const ListCostAllocationTagBackfillHistoryResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ListCostAllocationTagBackfillHistoryResponse>;
 export type CostAllocationTagStatus = "Active" | "Inactive" | (string & {});
 const CostAllocationTagStatus = S.String;
 
@@ -3153,17 +2207,10 @@ export interface ListCostAllocationTagsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCostAllocationTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(CostAllocationTagStatus),
-    TagKeys: S.optional(CostAllocationTagKeyList),
-    Type: S.optional(CostAllocationTagType),
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListCostAllocationTagsRequest",
-}) as any as S.Schema<ListCostAllocationTagsRequest>;
+const ListCostAllocationTagsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListCostAllocationTagsRequest>;
 export interface CostAllocationTag {
   TagKey: string;
   Type: CostAllocationTagType;
@@ -3171,29 +2218,17 @@ export interface CostAllocationTag {
   LastUpdatedDate?: string;
   LastUsedDate?: string;
 }
-const CostAllocationTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TagKey: S.String,
-    Type: CostAllocationTagType,
-    Status: CostAllocationTagStatus,
-    LastUpdatedDate: S.optional(S.String),
-    LastUsedDate: S.optional(S.String),
-  }),
-).annotate({ identifier: "CostAllocationTag" }) as any as S.Schema<CostAllocationTag>;
+const CostAllocationTag = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<CostAllocationTag>;
 export type CostAllocationTagList = CostAllocationTag[];
-const CostAllocationTagList = /*@__PURE__*/ S.Array(CostAllocationTag);
+const CostAllocationTagList = /*@__PURE__*/ __L.at(__c24, 7);
 export interface ListCostAllocationTagsResponse {
   CostAllocationTags?: CostAllocationTag[];
   NextToken?: string;
 }
-const ListCostAllocationTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostAllocationTags: S.optional(CostAllocationTagList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCostAllocationTagsResponse",
-}) as any as S.Schema<ListCostAllocationTagsResponse>;
+const ListCostAllocationTagsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ListCostAllocationTagsResponse>;
 export type CostCategoryMaxResults = number;
 export type ResourceType = string;
 export type ResourceTypesFilterInput = string[];
@@ -3204,16 +2239,10 @@ export interface ListCostCategoryDefinitionsRequest {
   MaxResults?: number;
   SupportedResourceTypes?: string[];
 }
-const ListCostCategoryDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EffectiveOn: S.optional(S.String),
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    SupportedResourceTypes: S.optional(ResourceTypesFilterInput),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListCostCategoryDefinitionsRequest",
-}) as any as S.Schema<ListCostCategoryDefinitionsRequest>;
+const ListCostCategoryDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListCostCategoryDefinitionsRequest>;
 export type ResourceTypes = string[];
 const ResourceTypes = Values as any as S.Schema<ResourceTypes>;
 export interface CostCategoryReference {
@@ -3227,76 +2256,49 @@ export interface CostCategoryReference {
   DefaultValue?: string;
   SupportedResourceTypes?: string[];
 }
-const CostCategoryReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostCategoryArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    EffectiveStart: S.optional(S.String),
-    EffectiveEnd: S.optional(S.String),
-    NumberOfRules: S.optional(S.Number),
-    ProcessingStatus: S.optional(CostCategoryProcessingStatusList),
-    Values: S.optional(CostCategoryValuesList),
-    DefaultValue: S.optional(S.String),
-    SupportedResourceTypes: S.optional(ResourceTypes),
-  }),
-).annotate({ identifier: "CostCategoryReference" }) as any as S.Schema<CostCategoryReference>;
+const CostCategoryReference = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<CostCategoryReference>;
 export type CostCategoryReferencesList = CostCategoryReference[];
-const CostCategoryReferencesList = /*@__PURE__*/ S.Array(CostCategoryReference);
+const CostCategoryReferencesList = /*@__PURE__*/ __L.at(__c25, 3);
 export interface ListCostCategoryDefinitionsResponse {
   CostCategoryReferences?: CostCategoryReference[];
   NextToken?: string;
 }
-const ListCostCategoryDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostCategoryReferences: S.optional(CostCategoryReferencesList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCostCategoryDefinitionsResponse",
-}) as any as S.Schema<ListCostCategoryDefinitionsResponse>;
+const ListCostCategoryDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ListCostCategoryDefinitionsResponse>;
 export interface ListCostCategoryResourceAssociationsRequest {
   CostCategoryArn?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListCostCategoryResourceAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostCategoryArn: S.optional(S.String),
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListCostCategoryResourceAssociationsRequest",
-}) as any as S.Schema<ListCostCategoryResourceAssociationsRequest>;
+const ListCostCategoryResourceAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<ListCostCategoryResourceAssociationsRequest>;
 export type GenericArn = string;
 export interface CostCategoryResourceAssociation {
   ResourceArn?: string;
   CostCategoryName?: string;
   CostCategoryArn?: string;
 }
-const CostCategoryResourceAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.optional(S.String),
-    CostCategoryName: S.optional(S.String),
-    CostCategoryArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CostCategoryResourceAssociation",
-}) as any as S.Schema<CostCategoryResourceAssociation>;
+const CostCategoryResourceAssociation = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<CostCategoryResourceAssociation>;
 export type CostCategoryResourceAssociations = CostCategoryResourceAssociation[];
-const CostCategoryResourceAssociations = /*@__PURE__*/ S.Array(CostCategoryResourceAssociation);
+const CostCategoryResourceAssociations = /*@__PURE__*/ __L.at(__c25, 7);
 export interface ListCostCategoryResourceAssociationsResponse {
   CostCategoryResourceAssociations?: CostCategoryResourceAssociation[];
   NextToken?: string;
 }
-const ListCostCategoryResourceAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostCategoryResourceAssociations: S.optional(CostCategoryResourceAssociations),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCostCategoryResourceAssociationsResponse",
-}) as any as S.Schema<ListCostCategoryResourceAssociationsResponse>;
+const ListCostCategoryResourceAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ListCostCategoryResourceAssociationsResponse>;
 export type GenerationStatus = "SUCCEEDED" | "PROCESSING" | "FAILED" | (string & {});
 const GenerationStatus = S.String;
 
@@ -3309,16 +2311,10 @@ export interface ListSavingsPlansPurchaseRecommendationGenerationRequest {
   PageSize?: number;
   NextPageToken?: string;
 }
-const ListSavingsPlansPurchaseRecommendationGenerationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GenerationStatus: S.optional(GenerationStatus),
-    RecommendationIds: S.optional(RecommendationIdList),
-    PageSize: S.optional(S.Number),
-    NextPageToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListSavingsPlansPurchaseRecommendationGenerationRequest",
-}) as any as S.Schema<ListSavingsPlansPurchaseRecommendationGenerationRequest>;
+const ListSavingsPlansPurchaseRecommendationGenerationRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<ListSavingsPlansPurchaseRecommendationGenerationRequest>;
 export interface GenerationSummary {
   RecommendationId?: string;
   GenerationStatus?: GenerationStatus;
@@ -3326,137 +2322,95 @@ export interface GenerationSummary {
   GenerationCompletionTime?: string;
   EstimatedCompletionTime?: string;
 }
-const GenerationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommendationId: S.optional(S.String),
-    GenerationStatus: S.optional(GenerationStatus),
-    GenerationStartedTime: S.optional(S.String),
-    GenerationCompletionTime: S.optional(S.String),
-    EstimatedCompletionTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "GenerationSummary" }) as any as S.Schema<GenerationSummary>;
+const GenerationSummary = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<GenerationSummary>;
 export type GenerationSummaryList = GenerationSummary[];
-const GenerationSummaryList = /*@__PURE__*/ S.Array(GenerationSummary);
+const GenerationSummaryList = /*@__PURE__*/ __L.at(__c26, 3);
 export interface ListSavingsPlansPurchaseRecommendationGenerationResponse {
   GenerationSummaryList?: GenerationSummary[];
   NextPageToken?: string;
 }
-const ListSavingsPlansPurchaseRecommendationGenerationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GenerationSummaryList: S.optional(GenerationSummaryList),
-    NextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSavingsPlansPurchaseRecommendationGenerationResponse",
-}) as any as S.Schema<ListSavingsPlansPurchaseRecommendationGenerationResponse>;
+const ListSavingsPlansPurchaseRecommendationGenerationResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListSavingsPlansPurchaseRecommendationGenerationResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   ResourceTags?: ResourceTag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceTags: S.optional(ResourceTagList) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ProvideAnomalyFeedbackRequest {
   AnomalyId: string;
   Feedback: AnomalyFeedbackType;
 }
-const ProvideAnomalyFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AnomalyId: S.String, Feedback: AnomalyFeedbackType }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ProvideAnomalyFeedbackRequest",
-}) as any as S.Schema<ProvideAnomalyFeedbackRequest>;
+const ProvideAnomalyFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ProvideAnomalyFeedbackRequest>;
 export interface ProvideAnomalyFeedbackResponse {
   AnomalyId: string;
 }
-const ProvideAnomalyFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AnomalyId: S.String }),
-).annotate({
-  identifier: "ProvideAnomalyFeedbackResponse",
-}) as any as S.Schema<ProvideAnomalyFeedbackResponse>;
+const ProvideAnomalyFeedbackResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ProvideAnomalyFeedbackResponse>;
 export interface StartCommitmentPurchaseAnalysisRequest {
   CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration;
 }
-const StartCommitmentPurchaseAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "StartCommitmentPurchaseAnalysisRequest",
-}) as any as S.Schema<StartCommitmentPurchaseAnalysisRequest>;
+const StartCommitmentPurchaseAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<StartCommitmentPurchaseAnalysisRequest>;
 export interface StartCommitmentPurchaseAnalysisResponse {
   AnalysisId: string;
   AnalysisStartedTime: string;
   EstimatedCompletionTime: string;
 }
-const StartCommitmentPurchaseAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AnalysisId: S.String,
-    AnalysisStartedTime: S.String,
-    EstimatedCompletionTime: S.String,
-  }),
-).annotate({
-  identifier: "StartCommitmentPurchaseAnalysisResponse",
-}) as any as S.Schema<StartCommitmentPurchaseAnalysisResponse>;
+const StartCommitmentPurchaseAnalysisResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<StartCommitmentPurchaseAnalysisResponse>;
 export interface StartCostAllocationTagBackfillRequest {
   BackfillFrom: string;
 }
-const StartCostAllocationTagBackfillRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BackfillFrom: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartCostAllocationTagBackfillRequest",
-}) as any as S.Schema<StartCostAllocationTagBackfillRequest>;
+const StartCostAllocationTagBackfillRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<StartCostAllocationTagBackfillRequest>;
 export interface StartCostAllocationTagBackfillResponse {
   BackfillRequest?: CostAllocationTagBackfillRequest;
 }
-const StartCostAllocationTagBackfillResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BackfillRequest: S.optional(CostAllocationTagBackfillRequest) }),
-).annotate({
-  identifier: "StartCostAllocationTagBackfillResponse",
-}) as any as S.Schema<StartCostAllocationTagBackfillResponse>;
+const StartCostAllocationTagBackfillResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<StartCostAllocationTagBackfillResponse>;
 export interface StartSavingsPlansPurchaseRecommendationGenerationRequest {}
-const StartSavingsPlansPurchaseRecommendationGenerationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "StartSavingsPlansPurchaseRecommendationGenerationRequest",
-}) as any as S.Schema<StartSavingsPlansPurchaseRecommendationGenerationRequest>;
+const StartSavingsPlansPurchaseRecommendationGenerationRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<StartSavingsPlansPurchaseRecommendationGenerationRequest>;
 export interface StartSavingsPlansPurchaseRecommendationGenerationResponse {
   RecommendationId?: string;
   GenerationStartedTime?: string;
   EstimatedCompletionTime?: string;
 }
-const StartSavingsPlansPurchaseRecommendationGenerationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommendationId: S.optional(S.String),
-    GenerationStartedTime: S.optional(S.String),
-    EstimatedCompletionTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartSavingsPlansPurchaseRecommendationGenerationResponse",
-}) as any as S.Schema<StartSavingsPlansPurchaseRecommendationGenerationResponse>;
+const StartSavingsPlansPurchaseRecommendationGenerationResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<StartSavingsPlansPurchaseRecommendationGenerationResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   ResourceTags: ResourceTag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, ResourceTags: ResourceTagList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = DeleteAnomalyMonitorResponse as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
@@ -3465,11 +2419,10 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   ResourceTagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, ResourceTagKeys: ResourceTagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse =
   DeleteAnomalyMonitorResponse as any as S.Schema<UntagResourceResponse>;
@@ -3477,13 +2430,10 @@ export interface UpdateAnomalyMonitorRequest {
   MonitorArn: string;
   MonitorName?: string;
 }
-const UpdateAnomalyMonitorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MonitorArn: S.String, MonitorName: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateAnomalyMonitorRequest",
-}) as any as S.Schema<UpdateAnomalyMonitorRequest>;
+const UpdateAnomalyMonitorRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<UpdateAnomalyMonitorRequest>;
 export interface UpdateAnomalyMonitorResponse {
   MonitorArn: string;
 }
@@ -3498,19 +2448,10 @@ export interface UpdateAnomalySubscriptionRequest {
   SubscriptionName?: string;
   ThresholdExpression?: Expression;
 }
-const UpdateAnomalySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubscriptionArn: S.String,
-    Threshold: S.optional(S.Number),
-    Frequency: S.optional(AnomalySubscriptionFrequency),
-    MonitorArnList: S.optional(MonitorArnList),
-    Subscribers: S.optional(Subscribers),
-    SubscriptionName: S.optional(S.String),
-    ThresholdExpression: S.optional(Expression),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateAnomalySubscriptionRequest",
-}) as any as S.Schema<UpdateAnomalySubscriptionRequest>;
+const UpdateAnomalySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<UpdateAnomalySubscriptionRequest>;
 export interface UpdateAnomalySubscriptionResponse {
   SubscriptionArn: string;
 }
@@ -3520,50 +2461,38 @@ export interface CostAllocationTagStatusEntry {
   TagKey: string;
   Status: CostAllocationTagStatus;
 }
-const CostAllocationTagStatusEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagKey: S.String, Status: CostAllocationTagStatus }),
-).annotate({
-  identifier: "CostAllocationTagStatusEntry",
-}) as any as S.Schema<CostAllocationTagStatusEntry>;
+const CostAllocationTagStatusEntry = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<CostAllocationTagStatusEntry>;
 export type CostAllocationTagStatusList = CostAllocationTagStatusEntry[];
-const CostAllocationTagStatusList = /*@__PURE__*/ S.Array(CostAllocationTagStatusEntry);
+const CostAllocationTagStatusList = /*@__PURE__*/ __L.at(__c28, 4);
 export interface UpdateCostAllocationTagsStatusRequest {
   CostAllocationTagsStatus: CostAllocationTagStatusEntry[];
 }
-const UpdateCostAllocationTagsStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CostAllocationTagsStatus: CostAllocationTagStatusList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateCostAllocationTagsStatusRequest",
-}) as any as S.Schema<UpdateCostAllocationTagsStatusRequest>;
+const UpdateCostAllocationTagsStatusRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<UpdateCostAllocationTagsStatusRequest>;
 export type ErrorMessage = string;
 export interface UpdateCostAllocationTagsStatusError_ {
   TagKey?: string;
   Code?: string;
   Message?: string;
 }
-const UpdateCostAllocationTagsStatusError_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TagKey: S.optional(S.String),
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCostAllocationTagsStatusError",
-}) as any as S.Schema<UpdateCostAllocationTagsStatusError_>;
+const UpdateCostAllocationTagsStatusError_ = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<UpdateCostAllocationTagsStatusError_>;
 export type UpdateCostAllocationTagsStatusErrors = UpdateCostAllocationTagsStatusError_[];
-const UpdateCostAllocationTagsStatusErrors = /*@__PURE__*/ S.Array(
-  UpdateCostAllocationTagsStatusError_,
-);
+const UpdateCostAllocationTagsStatusErrors = /*@__PURE__*/ __L.at(__c28, 7);
 export interface UpdateCostAllocationTagsStatusResponse {
   Errors?: UpdateCostAllocationTagsStatusError_[];
 }
-const UpdateCostAllocationTagsStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Errors: S.optional(UpdateCostAllocationTagsStatusErrors) }),
-).annotate({
-  identifier: "UpdateCostAllocationTagsStatusResponse",
-}) as any as S.Schema<UpdateCostAllocationTagsStatusResponse>;
+const UpdateCostAllocationTagsStatusResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<UpdateCostAllocationTagsStatusResponse>;
 export interface UpdateCostCategoryDefinitionRequest {
   CostCategoryArn: string;
   EffectiveStart?: string;
@@ -3572,18 +2501,10 @@ export interface UpdateCostCategoryDefinitionRequest {
   DefaultValue?: string;
   SplitChargeRules?: CostCategorySplitChargeRule[];
 }
-const UpdateCostCategoryDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CostCategoryArn: S.String,
-    EffectiveStart: S.optional(S.String),
-    RuleVersion: CostCategoryRuleVersion,
-    Rules: CostCategoryRulesList,
-    DefaultValue: S.optional(S.String),
-    SplitChargeRules: S.optional(CostCategorySplitChargeRulesList),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "UpdateCostCategoryDefinitionRequest",
-}) as any as S.Schema<UpdateCostCategoryDefinitionRequest>;
+const UpdateCostCategoryDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<UpdateCostCategoryDefinitionRequest>;
 export interface UpdateCostCategoryDefinitionResponse {
   CostCategoryArn?: string;
   EffectiveStart?: string;
@@ -4968,3 +3889,2065 @@ export const updateCostCategoryDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCostCategoryDefinition",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
+          identifier: "Expression",
+        }),
+      );
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.Array(MatchOption);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(Dimension),
+          Values: S.optional(Values),
+          MatchOptions: S.optional(MatchOptions),
+        }),
+      ).annotate({ identifier: "DimensionValues" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Values: S.optional(Values),
+          MatchOptions: S.optional(MatchOptions),
+        }),
+      ).annotate({ identifier: "TagValues" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Or: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
+          And: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
+          Not: S.optional(
+            S.suspend((): S.Schema<Expression> => Expression).annotate({
+              identifier: "Expression",
+            }),
+          ),
+          Dimensions: S.optional(DimensionValues),
+          Tags: S.optional(TagValues),
+          CostCategories: S.optional(CostCategoryValues),
+        }),
+      ).annotate({ identifier: "Expression" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          MonitorArn: S.optional(S.String),
+          MonitorName: S.String,
+          CreationDate: S.optional(S.String),
+          LastUpdatedDate: S.optional(S.String),
+          LastEvaluatedDate: S.optional(S.String),
+          MonitorType: MonitorType,
+          MonitorDimension: S.optional(MonitorDimension),
+          MonitorSpecification: S.optional(Expression),
+          DimensionalValueCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AnomalyMonitor" });
+    case 7:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "ResourceTag",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ResourceTag);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AnomalyMonitor: AnomalyMonitor,
+          ResourceTags: S.optional(ResourceTagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateAnomalyMonitorRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ MonitorArn: S.String })).annotate({
+        identifier: "CreateAnomalyMonitorResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          Type: S.optional(SubscriberType),
+          Status: S.optional(SubscriberStatus),
+        }),
+      ).annotate({ identifier: "Subscriber" });
+    case 4:
+      return S.Array(Subscriber);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          SubscriptionArn: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          MonitorArnList: MonitorArnList,
+          Subscribers: Subscribers,
+          Threshold: S.optional(S.Number),
+          Frequency: AnomalySubscriptionFrequency,
+          SubscriptionName: S.String,
+          ThresholdExpression: S.optional(Expression),
+        }),
+      ).annotate({ identifier: "AnomalySubscription" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AnomalySubscription: AnomalySubscription,
+          ResourceTags: S.optional(ResourceTagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateAnomalySubscriptionRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ SubscriptionArn: S.String })).annotate({
+        identifier: "CreateAnomalySubscriptionResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DimensionName: S.optional(CostCategoryInheritedValueDimensionName),
+          DimensionKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CostCategoryInheritedValueDimension",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Value: S.optional(S.String),
+          Rule: S.optional(Expression),
+          InheritedValue: S.optional(CostCategoryInheritedValueDimension),
+          Type: S.optional(CostCategoryRuleType),
+        }),
+      ).annotate({ identifier: "CostCategoryRule" });
+    case 2:
+      return S.Array(CostCategoryRule);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Type: CostCategorySplitChargeRuleParameterType,
+          Values: CostCategorySplitChargeRuleParameterValuesList,
+        }),
+      ).annotate({
+        identifier: "CostCategorySplitChargeRuleParameter",
+      });
+    case 4:
+      return S.Array(CostCategorySplitChargeRuleParameter);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Source: S.String,
+          Targets: CostCategorySplitChargeRuleTargetsList,
+          Method: CostCategorySplitChargeMethod,
+          Parameters: S.optional(CostCategorySplitChargeRuleParametersList),
+        }),
+      ).annotate({
+        identifier: "CostCategorySplitChargeRule",
+      });
+    case 6:
+      return S.Array(CostCategorySplitChargeRule);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          EffectiveStart: S.optional(S.String),
+          RuleVersion: CostCategoryRuleVersion,
+          Rules: CostCategoryRulesList,
+          DefaultValue: S.optional(S.String),
+          SplitChargeRules: S.optional(CostCategorySplitChargeRulesList),
+          ResourceTags: S.optional(ResourceTagList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateCostCategoryDefinitionRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CostCategoryArn: S.optional(S.String), EffectiveStart: S.optional(S.String) }),
+      ).annotate({
+        identifier: "CreateCostCategoryDefinitionResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ MonitorArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteAnomalyMonitorRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAnomalyMonitorResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ SubscriptionArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteAnomalySubscriptionRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAnomalySubscriptionResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ CostCategoryArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteCostCategoryDefinitionRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ CostCategoryArn: S.optional(S.String), EffectiveEnd: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DeleteCostCategoryDefinitionResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ CostCategoryArn: S.String, EffectiveOn: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeCostCategoryDefinitionRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Component: S.optional(CostCategoryStatusComponent),
+          Status: S.optional(CostCategoryStatus),
+        }),
+      ).annotate({
+        identifier: "CostCategoryProcessingStatus",
+      });
+    case 1:
+      return S.Array(CostCategoryProcessingStatus);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CostCategoryArn: S.String,
+          EffectiveStart: S.String,
+          EffectiveEnd: S.optional(S.String),
+          Name: S.String,
+          RuleVersion: CostCategoryRuleVersion,
+          Rules: CostCategoryRulesList,
+          SplitChargeRules: S.optional(CostCategorySplitChargeRulesList),
+          ProcessingStatus: S.optional(CostCategoryProcessingStatusList),
+          DefaultValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CostCategory" });
+    case 3:
+      return S.suspend(() => S.Struct({ CostCategory: S.optional(CostCategory) })).annotate({
+        identifier: "DescribeCostCategoryDefinitionResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ StartDate: S.String, EndDate: S.optional(S.String) }),
+      ).annotate({ identifier: "AnomalyDateInterval" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          NumericOperator: NumericOperator,
+          StartValue: S.Number,
+          EndValue: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TotalImpactFilter" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          MonitorArn: S.optional(S.String),
+          DateInterval: AnomalyDateInterval,
+          Feedback: S.optional(AnomalyFeedbackType),
+          TotalImpact: S.optional(TotalImpactFilter),
+          NextPageToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetAnomaliesRequest" });
+    case 7:
+      return S.suspend(() => S.Struct({ Contribution: S.Number })).annotate({
+        identifier: "RootCauseImpact",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Service: S.optional(S.String),
+          Region: S.optional(S.String),
+          LinkedAccount: S.optional(S.String),
+          LinkedAccountName: S.optional(S.String),
+          UsageType: S.optional(S.String),
+          Impact: S.optional(RootCauseImpact),
+        }),
+      ).annotate({ identifier: "RootCause" });
+    case 1:
+      return S.Array(RootCause);
+    case 2:
+      return S.suspend(() => S.Struct({ MaxScore: S.Number, CurrentScore: S.Number })).annotate({
+        identifier: "AnomalyScore",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MaxImpact: S.Number,
+          TotalImpact: S.optional(S.Number),
+          TotalActualSpend: S.optional(S.Number),
+          TotalExpectedSpend: S.optional(S.Number),
+          TotalImpactPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Impact" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AnomalyId: S.String,
+          AnomalyStartDate: S.optional(S.String),
+          AnomalyEndDate: S.optional(S.String),
+          DimensionValue: S.optional(S.String),
+          RootCauses: S.optional(RootCauses),
+          AnomalyScore: AnomalyScore,
+          Impact: Impact,
+          MonitorArn: S.String,
+          Feedback: S.optional(AnomalyFeedbackType),
+        }),
+      ).annotate({ identifier: "Anomaly" });
+    case 5:
+      return S.Array(Anomaly);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Anomalies: Anomalies, NextPageToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetAnomaliesResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          MonitorArnList: S.optional(Values),
+          NextPageToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetAnomalyMonitorsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AnomalyMonitor);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AnomalyMonitors: AnomalyMonitors, NextPageToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetAnomalyMonitorsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SubscriptionArnList: S.optional(Values),
+          MonitorArn: S.optional(S.String),
+          NextPageToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetAnomalySubscriptionsRequest",
+      });
+    case 3:
+      return S.Array(AnomalySubscription);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AnomalySubscriptions: AnomalySubscriptions,
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetAnomalySubscriptionsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Granularity: Granularity,
+          Services: S.optional(UsageServices),
+          ApproximationDimension: ApproximationDimension,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetApproximateUsageRecordsRequest",
+      });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 7:
+      return S.suspend(() => S.Struct({ Start: S.String, End: S.String })).annotate({
+        identifier: "DateInterval",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Services: S.optional(ApproximateUsageRecordsPerService),
+          TotalRecords: S.optional(S.Number),
+          LookbackPeriod: S.optional(DateInterval),
+        }),
+      ).annotate({
+        identifier: "GetApproximateUsageRecordsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AnalysisId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetCommitmentPurchaseAnalysisRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StartTime: S.optional(S.String),
+          EstimatedOnDemandCost: S.optional(S.String),
+          CurrentCoverage: S.optional(S.String),
+          EstimatedCoverage: S.optional(S.String),
+          EstimatedNewCommitmentUtilization: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RecommendationDetailHourlyMetrics",
+      });
+    case 3:
+      return S.Array(RecommendationDetailHourlyMetrics);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CurrencyCode: S.optional(S.String),
+          LookbackPeriodInHours: S.optional(S.String),
+          CurrentAverageCoverage: S.optional(S.String),
+          CurrentAverageHourlyOnDemandSpend: S.optional(S.String),
+          CurrentMaximumHourlyOnDemandSpend: S.optional(S.String),
+          CurrentMinimumHourlyOnDemandSpend: S.optional(S.String),
+          CurrentOnDemandSpend: S.optional(S.String),
+          ExistingHourlyCommitment: S.optional(S.String),
+          HourlyCommitmentToPurchase: S.optional(S.String),
+          EstimatedAverageCoverage: S.optional(S.String),
+          EstimatedAverageUtilization: S.optional(S.String),
+          EstimatedMonthlySavingsAmount: S.optional(S.String),
+          EstimatedOnDemandCost: S.optional(S.String),
+          EstimatedOnDemandCostWithCurrentCommitment: S.optional(S.String),
+          EstimatedROI: S.optional(S.String),
+          EstimatedSavingsAmount: S.optional(S.String),
+          EstimatedSavingsPercentage: S.optional(S.String),
+          EstimatedCommitmentCost: S.optional(S.String),
+          LatestUsageTimestamp: S.optional(S.String),
+          UpfrontCost: S.optional(S.String),
+          AdditionalMetadata: S.optional(S.String),
+          MetricsOverLookbackPeriod: S.optional(MetricsOverLookbackPeriod),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansPurchaseAnalysisDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          SavingsPlansPurchaseAnalysisDetails: S.optional(SavingsPlansPurchaseAnalysisDetails),
+        }),
+      ).annotate({ identifier: "AnalysisDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          PaymentOption: S.optional(PaymentOption),
+          SavingsPlansType: S.optional(SupportedSavingsPlansType),
+          Region: S.optional(S.String),
+          InstanceFamily: S.optional(S.String),
+          TermInYears: S.optional(TermInYears),
+          SavingsPlansCommitment: S.optional(S.Number),
+          OfferingId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SavingsPlans" });
+    case 7:
+      return S.Array(SavingsPlans);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountScope: S.optional(AccountScope),
+          AccountId: S.optional(S.String),
+          AnalysisType: AnalysisType,
+          SavingsPlansToAdd: SavingsPlansToAdd,
+          SavingsPlansToExclude: S.optional(SavingsPlansToExclude),
+          LookBackTimePeriod: DateInterval,
+          SavingsPlansTargetCoverage: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansPurchaseAnalysisConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SavingsPlansPurchaseAnalysisConfiguration: S.optional(
+            SavingsPlansPurchaseAnalysisConfiguration,
+          ),
+        }),
+      ).annotate({
+        identifier: "CommitmentPurchaseAnalysisConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EstimatedCompletionTime: S.String,
+          AnalysisCompletionTime: S.optional(S.String),
+          AnalysisStartedTime: S.String,
+          AnalysisId: S.String,
+          AnalysisStatus: AnalysisStatus,
+          ErrorCode: S.optional(ErrorCode),
+          AnalysisDetails: S.optional(AnalysisDetails),
+          CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration,
+        }),
+      ).annotate({
+        identifier: "GetCommitmentPurchaseAnalysisResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Type: S.optional(GroupDefinitionType), Key: S.optional(S.String) }),
+      ).annotate({ identifier: "GroupDefinition" });
+    case 4:
+      return S.Array(GroupDefinition);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          Granularity: Granularity,
+          Filter: S.optional(Expression),
+          Metrics: MetricNames,
+          GroupBy: S.optional(GroupDefinitions),
+          BillingViewArn: S.optional(S.String),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetCostAndUsageRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Amount: S.optional(S.String), Unit: S.optional(S.String) }),
+      ).annotate({ identifier: "MetricValue" });
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ MetricValue.pipe(S.optional));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Keys: S.optional(Keys), Metrics: S.optional(Metrics) }),
+      ).annotate({ identifier: "Group" });
+    case 1:
+      return S.Array(Group);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: S.optional(DateInterval),
+          Total: S.optional(Metrics),
+          Groups: S.optional(Groups),
+          Estimated: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ResultByTime" });
+    case 3:
+      return S.Array(ResultByTime);
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Value: S.optional(S.String), Attributes: S.optional(Attributes) }),
+      ).annotate({
+        identifier: "DimensionValuesWithAttributes",
+      });
+    case 6:
+      return S.Array(DimensionValuesWithAttributes);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          NextPageToken: S.optional(S.String),
+          GroupDefinitions: S.optional(GroupDefinitions),
+          ResultsByTime: S.optional(ResultsByTime),
+          DimensionValueAttributes: S.optional(DimensionValuesWithAttributesList),
+        }),
+      ).annotate({ identifier: "GetCostAndUsageResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BillingViewArn: S.optional(S.String),
+          BaselineTimePeriod: DateInterval,
+          ComparisonTimePeriod: DateInterval,
+          MetricForComparison: S.String,
+          Filter: S.optional(Expression),
+          GroupBy: S.optional(GroupDefinitions),
+          MaxResults: S.optional(S.Number),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetCostAndUsageComparisonsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BaselineTimePeriodAmount: S.optional(S.String),
+          ComparisonTimePeriodAmount: S.optional(S.String),
+          Difference: S.optional(S.String),
+          Unit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComparisonMetricValue" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ ComparisonMetricValue.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CostAndUsageSelector: S.optional(Expression),
+          Metrics: S.optional(ComparisonMetrics),
+        }),
+      ).annotate({ identifier: "CostAndUsageComparison" });
+    case 4:
+      return S.Array(CostAndUsageComparison);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CostAndUsageComparisons: S.optional(CostAndUsageComparisons),
+          TotalCostAndUsage: S.optional(ComparisonMetrics),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetCostAndUsageComparisonsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          Granularity: Granularity,
+          Filter: Expression,
+          Metrics: S.optional(MetricNames),
+          GroupBy: S.optional(GroupDefinitions),
+          BillingViewArn: S.optional(S.String),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetCostAndUsageWithResourcesRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          NextPageToken: S.optional(S.String),
+          GroupDefinitions: S.optional(GroupDefinitions),
+          ResultsByTime: S.optional(ResultsByTime),
+          DimensionValueAttributes: S.optional(DimensionValuesWithAttributesList),
+        }),
+      ).annotate({
+        identifier: "GetCostAndUsageWithResourcesResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.String, SortOrder: S.optional(SortOrder) }),
+      ).annotate({ identifier: "SortDefinition" });
+    case 1:
+      return S.Array(SortDefinition);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SearchString: S.optional(S.String),
+          TimePeriod: DateInterval,
+          CostCategoryName: S.optional(S.String),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinitions),
+          BillingViewArn: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetCostCategoriesRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          NextPageToken: S.optional(S.String),
+          CostCategoryNames: S.optional(CostCategoryNamesList),
+          CostCategoryValues: S.optional(CostCategoryValuesList),
+          ReturnSize: S.Number,
+          TotalSize: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetCostCategoriesResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          BillingViewArn: S.optional(S.String),
+          BaselineTimePeriod: DateInterval,
+          ComparisonTimePeriod: DateInterval,
+          MetricForComparison: S.String,
+          Filter: S.optional(Expression),
+          GroupBy: S.optional(GroupDefinitions),
+          MaxResults: S.optional(S.Number),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetCostComparisonDriversRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(S.String),
+          Name: S.optional(S.String),
+          Metrics: S.optional(ComparisonMetrics),
+        }),
+      ).annotate({ identifier: "CostDriver" });
+    case 6:
+      return S.Array(CostDriver);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CostSelector: S.optional(Expression),
+          Metrics: S.optional(ComparisonMetrics),
+          CostDrivers: S.optional(CostDrivers),
+        }),
+      ).annotate({ identifier: "CostComparisonDriver" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CostComparisonDriver);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CostComparisonDrivers: S.optional(CostComparisonDrivers),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetCostComparisonDriversResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          Metric: Metric,
+          Granularity: Granularity,
+          Filter: S.optional(Expression),
+          BillingViewArn: S.optional(S.String),
+          PredictionIntervalLevel: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetCostForecastRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: S.optional(DateInterval),
+          MeanValue: S.optional(S.String),
+          PredictionIntervalLowerBound: S.optional(S.String),
+          PredictionIntervalUpperBound: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ForecastResult" });
+    case 4:
+      return S.Array(ForecastResult);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Total: S.optional(MetricValue),
+          ForecastResultsByTime: S.optional(ForecastResultsByTime),
+        }),
+      ).annotate({ identifier: "GetCostForecastResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          SearchString: S.optional(S.String),
+          TimePeriod: DateInterval,
+          Dimension: Dimension,
+          Context: S.optional(Context),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinitions),
+          BillingViewArn: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetDimensionValuesRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          DimensionValues: DimensionValuesWithAttributesList,
+          ReturnSize: S.Number,
+          TotalSize: S.Number,
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetDimensionValuesResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          GroupBy: S.optional(GroupDefinitions),
+          Granularity: S.optional(Granularity),
+          Filter: S.optional(Expression),
+          Metrics: S.optional(MetricNames),
+          NextPageToken: S.optional(S.String),
+          SortBy: S.optional(SortDefinition),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetReservationCoverageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          OnDemandHours: S.optional(S.String),
+          ReservedHours: S.optional(S.String),
+          TotalRunningHours: S.optional(S.String),
+          CoverageHoursPercentage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CoverageHours" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          OnDemandNormalizedUnits: S.optional(S.String),
+          ReservedNormalizedUnits: S.optional(S.String),
+          TotalRunningNormalizedUnits: S.optional(S.String),
+          CoverageNormalizedUnitsPercentage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CoverageNormalizedUnits" });
+    case 3:
+      return S.suspend(() => S.Struct({ OnDemandCost: S.optional(S.String) })).annotate({
+        identifier: "CoverageCost",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CoverageHours: S.optional(CoverageHours),
+          CoverageNormalizedUnits: S.optional(CoverageNormalizedUnits),
+          CoverageCost: S.optional(CoverageCost),
+        }),
+      ).annotate({ identifier: "Coverage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Attributes: S.optional(Attributes), Coverage: S.optional(Coverage) }),
+      ).annotate({ identifier: "ReservationCoverageGroup" });
+    case 6:
+      return S.Array(ReservationCoverageGroup);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: S.optional(DateInterval),
+          Groups: S.optional(ReservationCoverageGroups),
+          Total: S.optional(Coverage),
+        }),
+      ).annotate({ identifier: "CoverageByTime" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CoverageByTime);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CoveragesByTime: CoveragesByTime,
+          Total: S.optional(Coverage),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetReservationCoverageResponse",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ OfferingClass: S.optional(OfferingClass) })).annotate({
+        identifier: "EC2Specification",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ EC2Specification: S.optional(EC2Specification) })).annotate(
+        { identifier: "ServiceSpecification" },
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          Service: S.String,
+          Filter: S.optional(Expression),
+          AccountScope: S.optional(AccountScope),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
+          TermInYears: S.optional(TermInYears),
+          PaymentOption: S.optional(PaymentOption),
+          ServiceSpecification: S.optional(ServiceSpecification),
+          PageSize: S.optional(S.Number),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetReservationPurchaseRecommendationRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          RecommendationId: S.optional(S.String),
+          GenerationTimestamp: S.optional(S.String),
+          AdditionalMetadata: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReservationPurchaseRecommendationMetadata",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Family: S.optional(S.String),
+          InstanceType: S.optional(S.String),
+          Region: S.optional(S.String),
+          AvailabilityZone: S.optional(S.String),
+          Platform: S.optional(S.String),
+          Tenancy: S.optional(S.String),
+          CurrentGeneration: S.optional(S.Boolean),
+          SizeFlexEligible: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "EC2InstanceDetails" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Family: S.optional(S.String),
+          InstanceType: S.optional(S.String),
+          Region: S.optional(S.String),
+          DatabaseEngine: S.optional(S.String),
+          DatabaseEdition: S.optional(S.String),
+          DeploymentOption: S.optional(S.String),
+          LicenseModel: S.optional(S.String),
+          CurrentGeneration: S.optional(S.Boolean),
+          SizeFlexEligible: S.optional(S.Boolean),
+          DeploymentModel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RDSInstanceDetails" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Family: S.optional(S.String),
+          NodeType: S.optional(S.String),
+          Region: S.optional(S.String),
+          CurrentGeneration: S.optional(S.Boolean),
+          SizeFlexEligible: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RedshiftInstanceDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Family: S.optional(S.String),
+          NodeType: S.optional(S.String),
+          Region: S.optional(S.String),
+          ProductDescription: S.optional(S.String),
+          CurrentGeneration: S.optional(S.Boolean),
+          SizeFlexEligible: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ElastiCacheInstanceDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceClass: S.optional(S.String),
+          InstanceSize: S.optional(S.String),
+          Region: S.optional(S.String),
+          CurrentGeneration: S.optional(S.Boolean),
+          SizeFlexEligible: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ESInstanceDetails" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EC2InstanceDetails: S.optional(EC2InstanceDetails),
+          RDSInstanceDetails: S.optional(RDSInstanceDetails),
+          RedshiftInstanceDetails: S.optional(RedshiftInstanceDetails),
+          ElastiCacheInstanceDetails: S.optional(ElastiCacheInstanceDetails),
+          ESInstanceDetails: S.optional(ESInstanceDetails),
+          MemoryDBInstanceDetails: S.optional(MemoryDBInstanceDetails),
+        }),
+      ).annotate({ identifier: "InstanceDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ CapacityUnits: S.optional(S.String), Region: S.optional(S.String) }),
+      ).annotate({ identifier: "DynamoDBCapacityDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ DynamoDBCapacityDetails: S.optional(DynamoDBCapacityDetails) }),
+      ).annotate({ identifier: "ReservedCapacityDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          InstanceDetails: S.optional(InstanceDetails),
+          RecommendedNumberOfInstancesToPurchase: S.optional(S.String),
+          RecommendedNormalizedUnitsToPurchase: S.optional(S.String),
+          MinimumNumberOfInstancesUsedPerHour: S.optional(S.String),
+          MinimumNormalizedUnitsUsedPerHour: S.optional(S.String),
+          MaximumNumberOfInstancesUsedPerHour: S.optional(S.String),
+          MaximumNormalizedUnitsUsedPerHour: S.optional(S.String),
+          AverageNumberOfInstancesUsedPerHour: S.optional(S.String),
+          AverageNormalizedUnitsUsedPerHour: S.optional(S.String),
+          AverageUtilization: S.optional(S.String),
+          EstimatedBreakEvenInMonths: S.optional(S.String),
+          CurrencyCode: S.optional(S.String),
+          EstimatedMonthlySavingsAmount: S.optional(S.String),
+          EstimatedMonthlySavingsPercentage: S.optional(S.String),
+          EstimatedMonthlyOnDemandCost: S.optional(S.String),
+          EstimatedReservationCostForLookbackPeriod: S.optional(S.String),
+          UpfrontCost: S.optional(S.String),
+          RecurringStandardMonthlyCost: S.optional(S.String),
+          ReservedCapacityDetails: S.optional(ReservedCapacityDetails),
+          RecommendedNumberOfCapacityUnitsToPurchase: S.optional(S.String),
+          MinimumNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
+          MaximumNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
+          AverageNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReservationPurchaseRecommendationDetail",
+      });
+    case 7:
+      return S.Array(ReservationPurchaseRecommendationDetail);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TotalEstimatedMonthlySavingsAmount: S.optional(S.String),
+          TotalEstimatedMonthlySavingsPercentage: S.optional(S.String),
+          CurrencyCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReservationPurchaseRecommendationSummary",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccountScope: S.optional(AccountScope),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
+          TermInYears: S.optional(TermInYears),
+          PaymentOption: S.optional(PaymentOption),
+          ServiceSpecification: S.optional(ServiceSpecification),
+          RecommendationDetails: S.optional(ReservationPurchaseRecommendationDetails),
+          RecommendationSummary: S.optional(ReservationPurchaseRecommendationSummary),
+        }),
+      ).annotate({
+        identifier: "ReservationPurchaseRecommendation",
+      });
+    case 2:
+      return S.Array(ReservationPurchaseRecommendation);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Metadata: S.optional(ReservationPurchaseRecommendationMetadata),
+          Recommendations: S.optional(ReservationPurchaseRecommendations),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetReservationPurchaseRecommendationResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          GroupBy: S.optional(GroupDefinitions),
+          Granularity: S.optional(Granularity),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinition),
+          NextPageToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetReservationUtilizationRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          UtilizationPercentage: S.optional(S.String),
+          UtilizationPercentageInUnits: S.optional(S.String),
+          PurchasedHours: S.optional(S.String),
+          PurchasedUnits: S.optional(S.String),
+          TotalActualHours: S.optional(S.String),
+          TotalActualUnits: S.optional(S.String),
+          UnusedHours: S.optional(S.String),
+          UnusedUnits: S.optional(S.String),
+          OnDemandCostOfRIHoursUsed: S.optional(S.String),
+          NetRISavings: S.optional(S.String),
+          TotalPotentialRISavings: S.optional(S.String),
+          AmortizedUpfrontFee: S.optional(S.String),
+          AmortizedRecurringFee: S.optional(S.String),
+          TotalAmortizedFee: S.optional(S.String),
+          RICostForUnusedHours: S.optional(S.String),
+          RealizedSavings: S.optional(S.String),
+          UnrealizedSavings: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReservationAggregates" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Value: S.optional(S.String),
+          Attributes: S.optional(Attributes),
+          Utilization: S.optional(ReservationAggregates),
+        }),
+      ).annotate({
+        identifier: "ReservationUtilizationGroup",
+      });
+    case 7:
+      return S.Array(ReservationUtilizationGroup);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: S.optional(DateInterval),
+          Groups: S.optional(ReservationUtilizationGroups),
+          Total: S.optional(ReservationAggregates),
+        }),
+      ).annotate({ identifier: "UtilizationByTime" });
+    case 1:
+      return S.Array(UtilizationByTime);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          UtilizationsByTime: UtilizationsByTime,
+          Total: S.optional(ReservationAggregates),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetReservationUtilizationResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ RecommendationTarget: RecommendationTarget, BenefitsConsidered: S.Boolean }),
+      ).annotate({
+        identifier: "RightsizingRecommendationConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Filter: S.optional(Expression),
+          Configuration: S.optional(RightsizingRecommendationConfiguration),
+          Service: S.String,
+          PageSize: S.optional(S.Number),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetRightsizingRecommendationRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          RecommendationId: S.optional(S.String),
+          GenerationTimestamp: S.optional(S.String),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
+          AdditionalMetadata: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RightsizingRecommendationMetadata",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TotalRecommendationCount: S.optional(S.String),
+          EstimatedTotalMonthlySavingsAmount: S.optional(S.String),
+          SavingsCurrencyCode: S.optional(S.String),
+          SavingsPercentage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RightsizingRecommendationSummary",
+      });
+    case 7:
+      return S.Array(TagValues);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HourlyOnDemandRate: S.optional(S.String),
+          InstanceType: S.optional(S.String),
+          Platform: S.optional(S.String),
+          Region: S.optional(S.String),
+          Sku: S.optional(S.String),
+          Memory: S.optional(S.String),
+          NetworkPerformance: S.optional(S.String),
+          Storage: S.optional(S.String),
+          Vcpu: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EC2ResourceDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EC2ResourceDetails: S.optional(EC2ResourceDetails) }),
+      ).annotate({ identifier: "ResourceDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EbsReadOpsPerSecond: S.optional(S.String),
+          EbsWriteOpsPerSecond: S.optional(S.String),
+          EbsReadBytesPerSecond: S.optional(S.String),
+          EbsWriteBytesPerSecond: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EBSResourceUtilization" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DiskReadOpsPerSecond: S.optional(S.String),
+          DiskWriteOpsPerSecond: S.optional(S.String),
+          DiskReadBytesPerSecond: S.optional(S.String),
+          DiskWriteBytesPerSecond: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskResourceUtilization" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          NetworkInBytesPerSecond: S.optional(S.String),
+          NetworkOutBytesPerSecond: S.optional(S.String),
+          NetworkPacketsInPerSecond: S.optional(S.String),
+          NetworkPacketsOutPerSecond: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkResourceUtilization",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          MaxCpuUtilizationPercentage: S.optional(S.String),
+          MaxMemoryUtilizationPercentage: S.optional(S.String),
+          MaxStorageUtilizationPercentage: S.optional(S.String),
+          EBSResourceUtilization: S.optional(EBSResourceUtilization),
+          DiskResourceUtilization: S.optional(DiskResourceUtilization),
+          NetworkResourceUtilization: S.optional(NetworkResourceUtilization),
+        }),
+      ).annotate({ identifier: "EC2ResourceUtilization" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ EC2ResourceUtilization: S.optional(EC2ResourceUtilization) }),
+      ).annotate({ identifier: "ResourceUtilization" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceId: S.optional(S.String),
+          InstanceName: S.optional(S.String),
+          Tags: S.optional(TagValuesList),
+          ResourceDetails: S.optional(ResourceDetails),
+          ResourceUtilization: S.optional(ResourceUtilization),
+          ReservationCoveredHoursInLookbackPeriod: S.optional(S.String),
+          SavingsPlansCoveredHoursInLookbackPeriod: S.optional(S.String),
+          OnDemandHoursInLookbackPeriod: S.optional(S.String),
+          TotalRunningHoursInLookbackPeriod: S.optional(S.String),
+          MonthlyCost: S.optional(S.String),
+          CurrencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CurrentInstance" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EstimatedMonthlyCost: S.optional(S.String),
+          EstimatedMonthlySavings: S.optional(S.String),
+          CurrencyCode: S.optional(S.String),
+          DefaultTargetInstance: S.optional(S.Boolean),
+          ResourceDetails: S.optional(ResourceDetails),
+          ExpectedResourceUtilization: S.optional(ResourceUtilization),
+          PlatformDifferences: S.optional(PlatformDifferences),
+        }),
+      ).annotate({ identifier: "TargetInstance" });
+    case 1:
+      return S.Array(TargetInstance);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ TargetInstances: S.optional(TargetInstancesList) }),
+      ).annotate({
+        identifier: "ModifyRecommendationDetail",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EstimatedMonthlySavings: S.optional(S.String),
+          CurrencyCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TerminateRecommendationDetail",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          CurrentInstance: S.optional(CurrentInstance),
+          RightsizingType: S.optional(RightsizingType),
+          ModifyRecommendationDetail: S.optional(ModifyRecommendationDetail),
+          TerminateRecommendationDetail: S.optional(TerminateRecommendationDetail),
+          FindingReasonCodes: S.optional(FindingReasonCodes),
+        }),
+      ).annotate({
+        identifier: "RightsizingRecommendation",
+      });
+    case 5:
+      return S.Array(RightsizingRecommendation);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Metadata: S.optional(RightsizingRecommendationMetadata),
+          Summary: S.optional(RightsizingRecommendationSummary),
+          RightsizingRecommendations: S.optional(RightsizingRecommendationList),
+          NextPageToken: S.optional(S.String),
+          Configuration: S.optional(RightsizingRecommendationConfiguration),
+        }),
+      ).annotate({
+        identifier: "GetRightsizingRecommendationResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ RecommendationDetailId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetSavingsPlanPurchaseRecommendationDetailsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountScope: S.optional(AccountScope),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
+          SavingsPlansType: S.optional(SupportedSavingsPlansType),
+          TermInYears: S.optional(TermInYears),
+          PaymentOption: S.optional(PaymentOption),
+          AccountId: S.optional(S.String),
+          CurrencyCode: S.optional(S.String),
+          InstanceFamily: S.optional(S.String),
+          Region: S.optional(S.String),
+          OfferingId: S.optional(S.String),
+          GenerationTimestamp: S.optional(S.String),
+          LatestUsageTimestamp: S.optional(S.String),
+          CurrentAverageHourlyOnDemandSpend: S.optional(S.String),
+          CurrentMaximumHourlyOnDemandSpend: S.optional(S.String),
+          CurrentMinimumHourlyOnDemandSpend: S.optional(S.String),
+          EstimatedAverageUtilization: S.optional(S.String),
+          EstimatedMonthlySavingsAmount: S.optional(S.String),
+          EstimatedOnDemandCost: S.optional(S.String),
+          EstimatedOnDemandCostWithCurrentCommitment: S.optional(S.String),
+          EstimatedROI: S.optional(S.String),
+          EstimatedSPCost: S.optional(S.String),
+          EstimatedSavingsAmount: S.optional(S.String),
+          EstimatedSavingsPercentage: S.optional(S.String),
+          ExistingHourlyCommitment: S.optional(S.String),
+          HourlyCommitmentToPurchase: S.optional(S.String),
+          UpfrontCost: S.optional(S.String),
+          CurrentAverageCoverage: S.optional(S.String),
+          EstimatedAverageCoverage: S.optional(S.String),
+          MetricsOverLookbackPeriod: S.optional(MetricsOverLookbackPeriod),
+        }),
+      ).annotate({ identifier: "RecommendationDetailData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RecommendationDetailId: S.optional(S.String),
+          RecommendationDetailData: S.optional(RecommendationDetailData),
+        }),
+      ).annotate({
+        identifier: "GetSavingsPlanPurchaseRecommendationDetailsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          GroupBy: S.optional(GroupDefinitions),
+          Granularity: S.optional(Granularity),
+          Filter: S.optional(Expression),
+          Metrics: S.optional(MetricNames),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          SortBy: S.optional(SortDefinition),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetSavingsPlansCoverageRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          SpendCoveredBySavingsPlans: S.optional(S.String),
+          OnDemandCost: S.optional(S.String),
+          TotalCost: S.optional(S.String),
+          CoveragePercentage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SavingsPlansCoverageData" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Attributes: S.optional(Attributes),
+          Coverage: S.optional(SavingsPlansCoverageData),
+          TimePeriod: S.optional(DateInterval),
+        }),
+      ).annotate({ identifier: "SavingsPlansCoverage" });
+    case 5:
+      return S.Array(SavingsPlansCoverage);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ SavingsPlansCoverages: SavingsPlansCoverages, NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetSavingsPlansCoverageResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SavingsPlansType: SupportedSavingsPlansType,
+          TermInYears: TermInYears,
+          PaymentOption: PaymentOption,
+          AccountScope: S.optional(AccountScope),
+          NextPageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+          LookbackPeriodInDays: LookbackPeriodInDays,
+          Filter: S.optional(Expression),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetSavingsPlansPurchaseRecommendationRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Region: S.optional(S.String),
+          InstanceFamily: S.optional(S.String),
+          OfferingId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SavingsPlansDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SavingsPlansDetails: S.optional(SavingsPlansDetails),
+          AccountId: S.optional(S.String),
+          UpfrontCost: S.optional(S.String),
+          EstimatedROI: S.optional(S.String),
+          CurrencyCode: S.optional(S.String),
+          EstimatedSPCost: S.optional(S.String),
+          EstimatedOnDemandCost: S.optional(S.String),
+          EstimatedOnDemandCostWithCurrentCommitment: S.optional(S.String),
+          EstimatedSavingsAmount: S.optional(S.String),
+          EstimatedSavingsPercentage: S.optional(S.String),
+          HourlyCommitmentToPurchase: S.optional(S.String),
+          EstimatedAverageUtilization: S.optional(S.String),
+          EstimatedMonthlySavingsAmount: S.optional(S.String),
+          CurrentMinimumHourlyOnDemandSpend: S.optional(S.String),
+          CurrentMaximumHourlyOnDemandSpend: S.optional(S.String),
+          CurrentAverageHourlyOnDemandSpend: S.optional(S.String),
+          RecommendationDetailId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansPurchaseRecommendationDetail",
+      });
+    case 2:
+      return S.Array(SavingsPlansPurchaseRecommendationDetail);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EstimatedROI: S.optional(S.String),
+          CurrencyCode: S.optional(S.String),
+          EstimatedTotalCost: S.optional(S.String),
+          CurrentOnDemandSpend: S.optional(S.String),
+          EstimatedSavingsAmount: S.optional(S.String),
+          TotalRecommendationCount: S.optional(S.String),
+          DailyCommitmentToPurchase: S.optional(S.String),
+          HourlyCommitmentToPurchase: S.optional(S.String),
+          EstimatedSavingsPercentage: S.optional(S.String),
+          EstimatedMonthlySavingsAmount: S.optional(S.String),
+          EstimatedOnDemandCostWithCurrentCommitment: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansPurchaseRecommendationSummary",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AccountScope: S.optional(AccountScope),
+          SavingsPlansType: S.optional(SupportedSavingsPlansType),
+          TermInYears: S.optional(TermInYears),
+          PaymentOption: S.optional(PaymentOption),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
+          SavingsPlansPurchaseRecommendationDetails: S.optional(
+            SavingsPlansPurchaseRecommendationDetailList,
+          ),
+          SavingsPlansPurchaseRecommendationSummary: S.optional(
+            SavingsPlansPurchaseRecommendationSummary,
+          ),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansPurchaseRecommendation",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Metadata: S.optional(SavingsPlansPurchaseRecommendationMetadata),
+          SavingsPlansPurchaseRecommendation: S.optional(SavingsPlansPurchaseRecommendation),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSavingsPlansPurchaseRecommendationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          Granularity: S.optional(Granularity),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinition),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetSavingsPlansUtilizationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          TotalCommitment: S.optional(S.String),
+          UsedCommitment: S.optional(S.String),
+          UnusedCommitment: S.optional(S.String),
+          UtilizationPercentage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SavingsPlansUtilization" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NetSavings: S.optional(S.String),
+          OnDemandCostEquivalent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SavingsPlansSavings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AmortizedRecurringCommitment: S.optional(S.String),
+          AmortizedUpfrontCommitment: S.optional(S.String),
+          TotalAmortizedCommitment: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansAmortizedCommitment",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          Utilization: SavingsPlansUtilization,
+          Savings: S.optional(SavingsPlansSavings),
+          AmortizedCommitment: S.optional(SavingsPlansAmortizedCommitment),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansUtilizationByTime",
+      });
+    case 3:
+      return S.Array(SavingsPlansUtilizationByTime);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Utilization: SavingsPlansUtilization,
+          Savings: S.optional(SavingsPlansSavings),
+          AmortizedCommitment: S.optional(SavingsPlansAmortizedCommitment),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansUtilizationAggregates",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          SavingsPlansUtilizationsByTime: S.optional(SavingsPlansUtilizationsByTime),
+          Total: SavingsPlansUtilizationAggregates,
+        }),
+      ).annotate({
+        identifier: "GetSavingsPlansUtilizationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          Filter: S.optional(Expression),
+          DataType: S.optional(SavingsPlansDataTypes),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          SortBy: S.optional(SortDefinition),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetSavingsPlansUtilizationDetailsRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          SavingsPlanArn: S.optional(S.String),
+          Attributes: S.optional(Attributes),
+          Utilization: S.optional(SavingsPlansUtilization),
+          Savings: S.optional(SavingsPlansSavings),
+          AmortizedCommitment: S.optional(SavingsPlansAmortizedCommitment),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansUtilizationDetail",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SavingsPlansUtilizationDetail);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SavingsPlansUtilizationDetails: SavingsPlansUtilizationDetails,
+          Total: S.optional(SavingsPlansUtilizationAggregates),
+          TimePeriod: DateInterval,
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSavingsPlansUtilizationDetailsResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SearchString: S.optional(S.String),
+          TimePeriod: DateInterval,
+          TagKey: S.optional(S.String),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinitions),
+          BillingViewArn: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetTagsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          NextPageToken: S.optional(S.String),
+          Tags: TagList,
+          ReturnSize: S.Number,
+          TotalSize: S.Number,
+        }),
+      ).annotate({ identifier: "GetTagsResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TimePeriod: DateInterval,
+          Metric: Metric,
+          Granularity: Granularity,
+          Filter: S.optional(Expression),
+          BillingViewArn: S.optional(S.String),
+          PredictionIntervalLevel: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetUsageForecastRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AnalysisStatus: S.optional(AnalysisStatus),
+          NextPageToken: S.optional(S.String),
+          PageSize: S.optional(S.Number),
+          AnalysisIds: S.optional(AnalysisIds),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListCommitmentPurchaseAnalysesRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EstimatedCompletionTime: S.optional(S.String),
+          AnalysisCompletionTime: S.optional(S.String),
+          AnalysisStartedTime: S.optional(S.String),
+          AnalysisStatus: S.optional(AnalysisStatus),
+          ErrorCode: S.optional(ErrorCode),
+          AnalysisId: S.optional(S.String),
+          CommitmentPurchaseAnalysisConfiguration: S.optional(
+            CommitmentPurchaseAnalysisConfiguration,
+          ),
+        }),
+      ).annotate({ identifier: "AnalysisSummary" });
+    case 7:
+      return S.Array(AnalysisSummary);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AnalysisSummaryList: S.optional(AnalysisSummaryList),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCommitmentPurchaseAnalysesResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListCostAllocationTagBackfillHistoryRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          BackfillFrom: S.optional(S.String),
+          RequestedAt: S.optional(S.String),
+          CompletedAt: S.optional(S.String),
+          BackfillStatus: S.optional(CostAllocationTagBackfillStatus),
+          LastUpdatedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CostAllocationTagBackfillRequest",
+      });
+    case 3:
+      return S.Array(CostAllocationTagBackfillRequest);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          BackfillRequests: S.optional(CostAllocationTagBackfillRequestList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCostAllocationTagBackfillHistoryResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(CostAllocationTagStatus),
+          TagKeys: S.optional(CostAllocationTagKeyList),
+          Type: S.optional(CostAllocationTagType),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListCostAllocationTagsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TagKey: S.String,
+          Type: CostAllocationTagType,
+          Status: CostAllocationTagStatus,
+          LastUpdatedDate: S.optional(S.String),
+          LastUsedDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CostAllocationTag" });
+    case 7:
+      return S.Array(CostAllocationTag);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CostAllocationTags: S.optional(CostAllocationTagList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCostAllocationTagsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EffectiveOn: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          SupportedResourceTypes: S.optional(ResourceTypesFilterInput),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListCostCategoryDefinitionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CostCategoryArn: S.optional(S.String),
+          Name: S.optional(S.String),
+          EffectiveStart: S.optional(S.String),
+          EffectiveEnd: S.optional(S.String),
+          NumberOfRules: S.optional(S.Number),
+          ProcessingStatus: S.optional(CostCategoryProcessingStatusList),
+          Values: S.optional(CostCategoryValuesList),
+          DefaultValue: S.optional(S.String),
+          SupportedResourceTypes: S.optional(ResourceTypes),
+        }),
+      ).annotate({ identifier: "CostCategoryReference" });
+    case 3:
+      return S.Array(CostCategoryReference);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CostCategoryReferences: S.optional(CostCategoryReferencesList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCostCategoryDefinitionsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CostCategoryArn: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListCostCategoryResourceAssociationsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.optional(S.String),
+          CostCategoryName: S.optional(S.String),
+          CostCategoryArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CostCategoryResourceAssociation",
+      });
+    case 7:
+      return S.Array(CostCategoryResourceAssociation);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CostCategoryResourceAssociations: S.optional(CostCategoryResourceAssociations),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCostCategoryResourceAssociationsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GenerationStatus: S.optional(GenerationStatus),
+          RecommendationIds: S.optional(RecommendationIdList),
+          PageSize: S.optional(S.Number),
+          NextPageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListSavingsPlansPurchaseRecommendationGenerationRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RecommendationId: S.optional(S.String),
+          GenerationStatus: S.optional(GenerationStatus),
+          GenerationStartedTime: S.optional(S.String),
+          GenerationCompletionTime: S.optional(S.String),
+          EstimatedCompletionTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GenerationSummary" });
+    case 3:
+      return S.Array(GenerationSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          GenerationSummaryList: S.optional(GenerationSummaryList),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListSavingsPlansPurchaseRecommendationGenerationResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ ResourceTags: S.optional(ResourceTagList) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ AnomalyId: S.String, Feedback: AnomalyFeedbackType }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ProvideAnomalyFeedbackRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ AnomalyId: S.String })).annotate({
+        identifier: "ProvideAnomalyFeedbackResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "StartCommitmentPurchaseAnalysisRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AnalysisId: S.String,
+          AnalysisStartedTime: S.String,
+          EstimatedCompletionTime: S.String,
+        }),
+      ).annotate({
+        identifier: "StartCommitmentPurchaseAnalysisResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ BackfillFrom: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StartCostAllocationTagBackfillRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ BackfillRequest: S.optional(CostAllocationTagBackfillRequest) }),
+      ).annotate({
+        identifier: "StartCostAllocationTagBackfillResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StartSavingsPlansPurchaseRecommendationGenerationRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          RecommendationId: S.optional(S.String),
+          GenerationStartedTime: S.optional(S.String),
+          EstimatedCompletionTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StartSavingsPlansPurchaseRecommendationGenerationResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, ResourceTags: ResourceTagList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, ResourceTagKeys: ResourceTagKeyList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ MonitorArn: S.String, MonitorName: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateAnomalyMonitorRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SubscriptionArn: S.String,
+          Threshold: S.optional(S.Number),
+          Frequency: S.optional(AnomalySubscriptionFrequency),
+          MonitorArnList: S.optional(MonitorArnList),
+          Subscribers: S.optional(Subscribers),
+          SubscriptionName: S.optional(S.String),
+          ThresholdExpression: S.optional(Expression),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateAnomalySubscriptionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ TagKey: S.String, Status: CostAllocationTagStatus }),
+      ).annotate({
+        identifier: "CostAllocationTagStatusEntry",
+      });
+    case 4:
+      return S.Array(CostAllocationTagStatusEntry);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ CostAllocationTagsStatus: CostAllocationTagStatusList }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateCostAllocationTagsStatusRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TagKey: S.optional(S.String),
+          Code: S.optional(S.String),
+          Message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateCostAllocationTagsStatusError",
+      });
+    case 7:
+      return S.Array(UpdateCostAllocationTagsStatusError_);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Errors: S.optional(UpdateCostAllocationTagsStatusErrors) }),
+      ).annotate({
+        identifier: "UpdateCostAllocationTagsStatusResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CostCategoryArn: S.String,
+          EffectiveStart: S.optional(S.String),
+          RuleVersion: CostCategoryRuleVersion,
+          Rules: CostCategoryRulesList,
+          DefaultValue: S.optional(S.String),
+          SplitChargeRules: S.optional(CostCategorySplitChargeRulesList),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateCostCategoryDefinitionRequest",
+      });
+  }
+}

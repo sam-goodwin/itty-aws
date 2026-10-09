@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -166,34 +167,22 @@ export interface Tag {
   Key: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface AddTagsToCertificateRequest {
   CertificateArn: string;
   Tags: Tag[];
 }
-const AddTagsToCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "AddTagsToCertificateRequest",
-}) as any as S.Schema<AddTagsToCertificateRequest>;
+const AddTagsToCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddTagsToCertificateRequest>;
 export interface AddTagsToCertificateResponse {}
-const AddTagsToCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AddTagsToCertificateResponse",
-}) as any as S.Schema<AddTagsToCertificateResponse>;
+const AddTagsToCertificateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddTagsToCertificateResponse>;
 export type AcmeEndpointArn = string;
 export type DomainName = string;
 export type DomainScopeOption = "ENABLED" | "DISABLED" | (string & {});
@@ -204,25 +193,18 @@ export interface DomainScope {
   Subdomains?: DomainScopeOption;
   Wildcards?: DomainScopeOption;
 }
-const DomainScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExactDomain: S.optional(DomainScopeOption),
-    Subdomains: S.optional(DomainScopeOption),
-    Wildcards: S.optional(DomainScopeOption),
-  }),
-).annotate({ identifier: "DomainScope" }) as any as S.Schema<DomainScope>;
+const DomainScope = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DomainScope>;
 export type HostedZoneId = string;
 export interface DnsPrevalidationOptions {
   DomainScope?: DomainScope;
   HostedZoneId?: string;
 }
-const DnsPrevalidationOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DomainScope: S.optional(DomainScope), HostedZoneId: S.optional(S.String) }),
-).annotate({ identifier: "DnsPrevalidationOptions" }) as any as S.Schema<DnsPrevalidationOptions>;
+const DnsPrevalidationOptions = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DnsPrevalidationOptions>;
 export type PrevalidationOptions = { DnsPrevalidation: DnsPrevalidationOptions };
-const PrevalidationOptions = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationOptions }),
-]);
+const PrevalidationOptions = /*@__PURE__*/ __L.at(__c0, 6);
 export interface CreateAcmeDomainValidationRequest {
   IdempotencyToken?: string;
   AcmeEndpointArn: string;
@@ -230,36 +212,18 @@ export interface CreateAcmeDomainValidationRequest {
   PrevalidationOptions: PrevalidationOptions;
   Tags?: Tag[];
 }
-const CreateAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    AcmeEndpointArn: S.String,
-    DomainName: S.String,
-    PrevalidationOptions: PrevalidationOptions,
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "CreateAcmeDomainValidationRequest",
-}) as any as S.Schema<CreateAcmeDomainValidationRequest>;
+const CreateAcmeDomainValidationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateAcmeDomainValidationRequest>;
 export type AcmeDomainValidationArn = string;
 export interface CreateAcmeDomainValidationResponse {
   AcmeDomainValidationArn: string;
 }
-const CreateAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeDomainValidationArn: S.String }),
-).annotate({
-  identifier: "CreateAcmeDomainValidationResponse",
-}) as any as S.Schema<CreateAcmeDomainValidationResponse>;
+const CreateAcmeDomainValidationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateAcmeDomainValidationResponse>;
 export type AcmeAuthorizationBehavior = "PRE_APPROVED" | (string & {});
 const AcmeAuthorizationBehavior = S.String;
 
@@ -270,19 +234,16 @@ export type PublicKeyAlgorithm = "RSA_2048" | "EC_prime256v1" | "EC_secp384r1" |
 const PublicKeyAlgorithm = S.String;
 
 export type PublicKeyAlgorithmList = PublicKeyAlgorithm[];
-const PublicKeyAlgorithmList = /*@__PURE__*/ S.Array(PublicKeyAlgorithm);
+const PublicKeyAlgorithmList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface PublicCertificateAuthority {
   AllowedKeyAlgorithms?: PublicKeyAlgorithm[];
 }
-const PublicCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AllowedKeyAlgorithms: S.optional(PublicKeyAlgorithmList) }),
-).annotate({
-  identifier: "PublicCertificateAuthority",
-}) as any as S.Schema<PublicCertificateAuthority>;
+const PublicCertificateAuthority = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PublicCertificateAuthority>;
 export type CertificateAuthority = { PublicCertificateAuthority: PublicCertificateAuthority };
-const CertificateAuthority = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ PublicCertificateAuthority: PublicCertificateAuthority }),
-]);
+const CertificateAuthority = /*@__PURE__*/ __L.at(__c1, 3);
 export interface CreateAcmeEndpointRequest {
   IdempotencyToken?: string;
   AuthorizationBehavior: AcmeAuthorizationBehavior;
@@ -291,36 +252,17 @@ export interface CreateAcmeEndpointRequest {
   Tags?: Tag[];
   CertificateTags?: Tag[];
 }
-const CreateAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    AuthorizationBehavior: AcmeAuthorizationBehavior,
-    Contact: S.optional(AcmeContact),
-    CertificateAuthority: CertificateAuthority,
-    Tags: S.optional(TagList),
-    CertificateTags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "CreateAcmeEndpointRequest",
-}) as any as S.Schema<CreateAcmeEndpointRequest>;
+const CreateAcmeEndpointRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateAcmeEndpointRequest>;
 export interface CreateAcmeEndpointResponse {
   AcmeEndpointArn?: string;
 }
-const CreateAcmeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeEndpointArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateAcmeEndpointResponse",
-}) as any as S.Schema<CreateAcmeEndpointResponse>;
+const CreateAcmeEndpointResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateAcmeEndpointResponse>;
 export type RoleArn = string;
 export type TimeType = "MINUTES" | "HOURS" | "DAYS" | (string & {});
 const TimeType = S.String;
@@ -329,9 +271,7 @@ export interface Expiration {
   Value: number;
   Type: TimeType;
 }
-const Expiration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.Number, Type: TimeType }),
-).annotate({ identifier: "Expiration" }) as any as S.Schema<Expiration>;
+const Expiration = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Expiration>;
 export interface CreateAcmeExternalAccountBindingRequest {
   IdempotencyToken?: string;
   AcmeEndpointArn: string;
@@ -339,27 +279,10 @@ export interface CreateAcmeExternalAccountBindingRequest {
   Expiration?: Expiration;
   Tags?: Tag[];
 }
-const CreateAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    AcmeEndpointArn: S.String,
-    RoleArn: S.String,
-    Expiration: S.optional(Expiration),
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "CreateAcmeExternalAccountBindingRequest",
-}) as any as S.Schema<CreateAcmeExternalAccountBindingRequest>;
+const CreateAcmeExternalAccountBindingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateAcmeExternalAccountBindingRequest>;
 export type AcmeExternalAccountBindingArn = string;
 export interface AcmeExternalAccountBinding {
   AcmeExternalAccountBindingArn?: string;
@@ -371,108 +294,56 @@ export interface AcmeExternalAccountBinding {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeExternalAccountBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcmeExternalAccountBindingArn: S.optional(S.String),
-    AcmeEndpointArn: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUsedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "AcmeExternalAccountBinding",
-}) as any as S.Schema<AcmeExternalAccountBinding>;
+const AcmeExternalAccountBinding = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AcmeExternalAccountBinding>;
 export interface CreateAcmeExternalAccountBindingResponse {
   ExternalAccountBinding?: AcmeExternalAccountBinding;
 }
-const CreateAcmeExternalAccountBindingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExternalAccountBinding: S.optional(AcmeExternalAccountBinding) }),
-).annotate({
-  identifier: "CreateAcmeExternalAccountBindingResponse",
-}) as any as S.Schema<CreateAcmeExternalAccountBindingResponse>;
+const CreateAcmeExternalAccountBindingResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateAcmeExternalAccountBindingResponse>;
 export interface DeleteAcmeDomainValidationRequest {
   AcmeDomainValidationArn: string;
 }
-const DeleteAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeDomainValidationArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAcmeDomainValidationRequest",
-}) as any as S.Schema<DeleteAcmeDomainValidationRequest>;
+const DeleteAcmeDomainValidationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteAcmeDomainValidationRequest>;
 export interface DeleteAcmeDomainValidationResponse {}
-const DeleteAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAcmeDomainValidationResponse",
-}) as any as S.Schema<DeleteAcmeDomainValidationResponse>;
+const DeleteAcmeDomainValidationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteAcmeDomainValidationResponse>;
 export interface DeleteAcmeEndpointRequest {
   AcmeEndpointArn: string;
 }
-const DeleteAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeEndpointArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAcmeEndpointRequest",
-}) as any as S.Schema<DeleteAcmeEndpointRequest>;
+const DeleteAcmeEndpointRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteAcmeEndpointRequest>;
 export interface DeleteAcmeEndpointResponse {}
 const DeleteAcmeEndpointResponse =
   AddTagsToCertificateResponse as any as S.Schema<DeleteAcmeEndpointResponse>;
 export interface DeleteAcmeExternalAccountBindingRequest {
   AcmeExternalAccountBindingArn: string;
 }
-const DeleteAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAcmeExternalAccountBindingRequest",
-}) as any as S.Schema<DeleteAcmeExternalAccountBindingRequest>;
+const DeleteAcmeExternalAccountBindingRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteAcmeExternalAccountBindingRequest>;
 export interface DeleteAcmeExternalAccountBindingResponse {}
 const DeleteAcmeExternalAccountBindingResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<DeleteAcmeExternalAccountBindingResponse>;
 export interface DeleteCertificateRequest {
   CertificateArn: string;
 }
-const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
+const DeleteCertificateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteCertificateRequest>;
 export interface DeleteCertificateResponse {}
 const DeleteCertificateResponse =
   AddTagsToCertificateResponse as any as S.Schema<DeleteCertificateResponse>;
@@ -480,26 +351,15 @@ export interface DescribeAcmeAccountRequest {
   AcmeEndpointArn: string;
   AccountUrl: string;
 }
-const DescribeAcmeAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeEndpointArn: S.String, AccountUrl: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DescribeAcmeAccountRequest",
-}) as any as S.Schema<DescribeAcmeAccountRequest>;
+const DescribeAcmeAccountRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DescribeAcmeAccountRequest>;
 export type AcmeAccountStatus = "VALID" | "DEACTIVATED" | "REVOKED" | (string & {});
 const AcmeAccountStatus = S.String;
 
 export type ContactList = string[];
-const ContactList = /*@__PURE__*/ S.Array(S.String);
+const ContactList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface AcmeAccount {
   AccountUrl?: string;
   PublicKeyThumbprint?: string;
@@ -508,42 +368,21 @@ export interface AcmeAccount {
   AcmeExternalAccountBindingArn?: string;
   Contacts?: string[];
 }
-const AcmeAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountUrl: S.optional(S.String),
-    PublicKeyThumbprint: S.optional(S.String),
-    Status: S.optional(AcmeAccountStatus),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AcmeExternalAccountBindingArn: S.optional(S.String),
-    Contacts: S.optional(ContactList),
-  }),
-).annotate({ identifier: "AcmeAccount" }) as any as S.Schema<AcmeAccount>;
+const AcmeAccount = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AcmeAccount>;
 export interface DescribeAcmeAccountResponse {
   AcmeAccount?: AcmeAccount;
 }
-const DescribeAcmeAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeAccount: S.optional(AcmeAccount) }),
-).annotate({
-  identifier: "DescribeAcmeAccountResponse",
-}) as any as S.Schema<DescribeAcmeAccountResponse>;
+const DescribeAcmeAccountResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DescribeAcmeAccountResponse>;
 export interface DescribeAcmeDomainValidationRequest {
   AcmeDomainValidationArn: string;
 }
-const DescribeAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeDomainValidationArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DescribeAcmeDomainValidationRequest",
-}) as any as S.Schema<DescribeAcmeDomainValidationRequest>;
+const DescribeAcmeDomainValidationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DescribeAcmeDomainValidationRequest>;
 export type PrevalidationType = "DNS_PREVALIDATION" | (string & {});
 const PrevalidationType = S.String;
 
@@ -555,25 +394,18 @@ export interface ResourceRecord {
   Type: RecordType;
   Value: string;
 }
-const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Type: RecordType, Value: S.String }),
-).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
+const ResourceRecord = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ResourceRecord>;
 export interface DnsPrevalidationDetails {
   DomainScope?: DomainScope;
   HostedZoneId?: string;
   ResourceRecord?: ResourceRecord;
 }
-const DnsPrevalidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainScope: S.optional(DomainScope),
-    HostedZoneId: S.optional(S.String),
-    ResourceRecord: S.optional(ResourceRecord),
-  }),
-).annotate({ identifier: "DnsPrevalidationDetails" }) as any as S.Schema<DnsPrevalidationDetails>;
+const DnsPrevalidationDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DnsPrevalidationDetails>;
 export type PrevalidationDetails = { DnsPrevalidation: DnsPrevalidationDetails };
-const PrevalidationDetails = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationDetails }),
-]);
+const PrevalidationDetails = /*@__PURE__*/ __L.at(__c3, 6);
 export type AcmeDomainValidationStatus =
   | "VALIDATING"
   | "VALID"
@@ -599,12 +431,7 @@ export interface FailureDetails {
   Reason?: AcmeDomainValidationFailureReason;
   Message?: string;
 }
-const FailureDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Reason: S.optional(AcmeDomainValidationFailureReason),
-    Message: S.optional(S.String),
-  }),
-).annotate({ identifier: "FailureDetails" }) as any as S.Schema<FailureDetails>;
+const FailureDetails = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<FailureDetails>;
 export interface AcmeDomainValidation {
   AcmeDomainValidationArn?: string;
   AcmeEndpointArn?: string;
@@ -616,45 +443,21 @@ export interface AcmeDomainValidation {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeDomainValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcmeDomainValidationArn: S.optional(S.String),
-    AcmeEndpointArn: S.optional(S.String),
-    DomainName: S.optional(S.String),
-    PrevalidationType: S.optional(PrevalidationType),
-    PrevalidationDetails: S.optional(PrevalidationDetails),
-    Status: S.optional(AcmeDomainValidationStatus),
-    FailureDetails: S.optional(FailureDetails),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "AcmeDomainValidation" }) as any as S.Schema<AcmeDomainValidation>;
+const AcmeDomainValidation = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AcmeDomainValidation>;
 export interface DescribeAcmeDomainValidationResponse {
   AcmeDomainValidation?: AcmeDomainValidation;
 }
-const DescribeAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeDomainValidation: S.optional(AcmeDomainValidation) }),
-).annotate({
-  identifier: "DescribeAcmeDomainValidationResponse",
-}) as any as S.Schema<DescribeAcmeDomainValidationResponse>;
+const DescribeAcmeDomainValidationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DescribeAcmeDomainValidationResponse>;
 export interface DescribeAcmeEndpointRequest {
   AcmeEndpointArn: string;
 }
-const DescribeAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeEndpointArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DescribeAcmeEndpointRequest",
-}) as any as S.Schema<DescribeAcmeEndpointRequest>;
+const DescribeAcmeEndpointRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DescribeAcmeEndpointRequest>;
 export type AcmeEndpointStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED" | (string & {});
 const AcmeEndpointStatus = S.String;
 
@@ -670,46 +473,21 @@ export interface AcmeEndpoint {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcmeEndpointArn: S.optional(S.String),
-    EndpointUrl: S.optional(S.String),
-    Status: S.optional(AcmeEndpointStatus),
-    FailureReason: S.optional(S.String),
-    AuthorizationBehavior: S.optional(AcmeAuthorizationBehavior),
-    Contact: S.optional(AcmeContact),
-    CertificateAuthority: S.optional(CertificateAuthority),
-    CertificateTags: S.optional(TagList),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "AcmeEndpoint" }) as any as S.Schema<AcmeEndpoint>;
+const AcmeEndpoint = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AcmeEndpoint>;
 export interface DescribeAcmeEndpointResponse {
   AcmeEndpoint?: AcmeEndpoint;
 }
-const DescribeAcmeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeEndpoint: S.optional(AcmeEndpoint) }),
-).annotate({
-  identifier: "DescribeAcmeEndpointResponse",
-}) as any as S.Schema<DescribeAcmeEndpointResponse>;
+const DescribeAcmeEndpointResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DescribeAcmeEndpointResponse>;
 export interface DescribeAcmeExternalAccountBindingRequest {
   AcmeExternalAccountBindingArn: string;
 }
-const DescribeAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DescribeAcmeExternalAccountBindingRequest",
-}) as any as S.Schema<DescribeAcmeExternalAccountBindingRequest>;
+const DescribeAcmeExternalAccountBindingRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DescribeAcmeExternalAccountBindingRequest>;
 export interface DescribeAcmeExternalAccountBindingResponse {
   ExternalAccountBinding?: AcmeExternalAccountBinding;
 }
@@ -718,21 +496,10 @@ const DescribeAcmeExternalAccountBindingResponse =
 export interface DescribeCertificateRequest {
   CertificateArn: string;
 }
-const DescribeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "DescribeCertificateRequest",
-}) as any as S.Schema<DescribeCertificateRequest>;
+const DescribeCertificateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DescribeCertificateRequest>;
 export type DomainNameString = string;
 export type DomainList = string[];
 const DomainList = ContactList as any as S.Schema<DomainList>;
@@ -748,9 +515,7 @@ export interface HttpRedirect {
   RedirectFrom?: string;
   RedirectTo?: string;
 }
-const HttpRedirect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RedirectFrom: S.optional(S.String), RedirectTo: S.optional(S.String) }),
-).annotate({ identifier: "HttpRedirect" }) as any as S.Schema<HttpRedirect>;
+const HttpRedirect = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<HttpRedirect>;
 export type ValidationMethod = "EMAIL" | "DNS" | "HTTP" | (string & {});
 const ValidationMethod = S.String;
 
@@ -763,19 +528,9 @@ export interface DomainValidation {
   HttpRedirect?: HttpRedirect;
   ValidationMethod?: ValidationMethod;
 }
-const DomainValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainName: S.String,
-    ValidationEmails: S.optional(ValidationEmailList),
-    ValidationDomain: S.optional(S.String),
-    ValidationStatus: S.optional(DomainStatus),
-    ResourceRecord: S.optional(ResourceRecord),
-    HttpRedirect: S.optional(HttpRedirect),
-    ValidationMethod: S.optional(ValidationMethod),
-  }),
-).annotate({ identifier: "DomainValidation" }) as any as S.Schema<DomainValidation>;
+const DomainValidation = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DomainValidation>;
 export type DomainValidationList = DomainValidation[];
-const DomainValidationList = /*@__PURE__*/ S.Array(DomainValidation);
+const DomainValidationList = /*@__PURE__*/ __L.at(__c5, 1);
 export type CertificateStatus =
   | "PENDING_VALIDATION"
   | "ISSUED"
@@ -853,14 +608,7 @@ export interface RenewalSummary {
   RenewalStatusReason?: FailureReason;
   UpdatedAt: Date;
 }
-const RenewalSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RenewalStatus: RenewalStatus,
-    DomainValidationOptions: DomainValidationList,
-    RenewalStatusReason: S.optional(FailureReason),
-    UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "RenewalSummary" }) as any as S.Schema<RenewalSummary>;
+const RenewalSummary = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<RenewalSummary>;
 export type KeyUsageName =
   | "DIGITAL_SIGNATURE"
   | "NON_REPUDIATION"
@@ -879,11 +627,9 @@ const KeyUsageName = S.String;
 export interface KeyUsage {
   Name?: KeyUsageName;
 }
-const KeyUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(KeyUsageName) }),
-).annotate({ identifier: "KeyUsage" }) as any as S.Schema<KeyUsage>;
+const KeyUsage = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<KeyUsage>;
 export type KeyUsageList = KeyUsage[];
-const KeyUsageList = /*@__PURE__*/ S.Array(KeyUsage);
+const KeyUsageList = /*@__PURE__*/ __L.at(__c5, 4);
 export type ExtendedKeyUsageName =
   | "TLS_WEB_SERVER_AUTHENTICATION"
   | "TLS_WEB_CLIENT_AUTHENTICATION"
@@ -904,11 +650,9 @@ export interface ExtendedKeyUsage {
   Name?: ExtendedKeyUsageName;
   OID?: string;
 }
-const ExtendedKeyUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(ExtendedKeyUsageName), OID: S.optional(S.String) }),
-).annotate({ identifier: "ExtendedKeyUsage" }) as any as S.Schema<ExtendedKeyUsage>;
+const ExtendedKeyUsage = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ExtendedKeyUsage>;
 export type ExtendedKeyUsageList = ExtendedKeyUsage[];
-const ExtendedKeyUsageList = /*@__PURE__*/ S.Array(ExtendedKeyUsage);
+const ExtendedKeyUsageList = /*@__PURE__*/ __L.at(__c5, 6);
 export type RenewalEligibility = "ELIGIBLE" | "INELIGIBLE" | (string & {});
 const RenewalEligibility = S.String;
 
@@ -923,13 +667,7 @@ export interface CertificateOptions {
   Export?: CertificateExport;
   ValidationMethod?: ValidationMethod;
 }
-const CertificateOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateTransparencyLoggingPreference: S.optional(CertificateTransparencyLoggingPreference),
-    Export: S.optional(CertificateExport),
-    ValidationMethod: S.optional(ValidationMethod),
-  }),
-).annotate({ identifier: "CertificateOptions" }) as any as S.Schema<CertificateOptions>;
+const CertificateOptions = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CertificateOptions>;
 export type UpdateStatus = "PENDING_DOMAIN_VALIDATION" | "SUCCESS" | "FAILED" | (string & {});
 const UpdateStatus = S.String;
 
@@ -940,11 +678,10 @@ export interface DomainValidationMethodUpdateSummary {
   From?: ValidationMethod;
   To?: ValidationMethod;
 }
-const DomainValidationMethodUpdateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ From: S.optional(ValidationMethod), To: S.optional(ValidationMethod) }),
-).annotate({
-  identifier: "DomainValidationMethodUpdateSummary",
-}) as any as S.Schema<DomainValidationMethodUpdateSummary>;
+const DomainValidationMethodUpdateSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DomainValidationMethodUpdateSummary>;
 export interface UpdateSummary {
   Status?: UpdateStatus;
   Type?: UpdateType;
@@ -952,15 +689,7 @@ export interface UpdateSummary {
   RequestedAt?: Date;
   UpdatedAt?: Date;
 }
-const UpdateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(UpdateStatus),
-    Type: S.optional(UpdateType),
-    DomainValidationMethodUpdateSummary: S.optional(DomainValidationMethodUpdateSummary),
-    RequestedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "UpdateSummary" }) as any as S.Schema<UpdateSummary>;
+const UpdateSummary = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<UpdateSummary>;
 export type CertificateKeyPairOrigin = "AWS_MANAGED" | "ACME" | "CUSTOMER_PROVIDED" | (string & {});
 const CertificateKeyPairOrigin = S.String;
 
@@ -998,67 +727,23 @@ export interface CertificateDetail {
   AcmeEndpointArn?: string;
   AcmeAccountId?: string;
 }
-const CertificateDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateArn: S.optional(S.String),
-    DomainName: S.optional(S.String),
-    SubjectAlternativeNames: S.optional(DomainList),
-    ManagedBy: S.optional(CertificateManagedBy),
-    DomainValidationOptions: S.optional(DomainValidationList),
-    Serial: S.optional(S.String),
-    Subject: S.optional(S.String),
-    Issuer: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(CertificateStatus),
-    RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RevocationReason: S.optional(RevocationReason),
-    NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    KeyAlgorithm: S.optional(KeyAlgorithm),
-    SignatureAlgorithm: S.optional(S.String),
-    InUseBy: S.optional(InUseList),
-    FailureReason: S.optional(FailureReason),
-    Type: S.optional(CertificateType),
-    RenewalSummary: S.optional(RenewalSummary),
-    KeyUsages: S.optional(KeyUsageList),
-    ExtendedKeyUsages: S.optional(ExtendedKeyUsageList),
-    CertificateAuthorityArn: S.optional(S.String),
-    RenewalEligibility: S.optional(RenewalEligibility),
-    Options: S.optional(CertificateOptions),
-    UpdateSummary: S.optional(UpdateSummary),
-    CertificateKeyPairOrigin: S.optional(CertificateKeyPairOrigin),
-    AcmeEndpointArn: S.optional(S.String),
-    AcmeAccountId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CertificateDetail" }) as any as S.Schema<CertificateDetail>;
+const CertificateDetail = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CertificateDetail>;
 export interface DescribeCertificateResponse {
   Certificate?: CertificateDetail;
 }
-const DescribeCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Certificate: S.optional(CertificateDetail) }),
-).annotate({
-  identifier: "DescribeCertificateResponse",
-}) as any as S.Schema<DescribeCertificateResponse>;
+const DescribeCertificateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DescribeCertificateResponse>;
 export type PassphraseBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface ExportCertificateRequest {
   CertificateArn: string;
   Passphrase: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-const ExportCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String, Passphrase: SensitiveBlob }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({ identifier: "ExportCertificateRequest" }) as any as S.Schema<ExportCertificateRequest>;
+const ExportCertificateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ExportCertificateRequest>;
 export type CertificateBody = string;
 export type CertificateChain = string;
 export type PrivateKey = string | redacted.Redacted<string>;
@@ -1067,99 +752,61 @@ export interface ExportCertificateResponse {
   CertificateChain?: string;
   PrivateKey?: string | redacted.Redacted<string>;
 }
-const ExportCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Certificate: S.optional(S.String),
-    CertificateChain: S.optional(S.String),
-    PrivateKey: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "ExportCertificateResponse",
-}) as any as S.Schema<ExportCertificateResponse>;
+const ExportCertificateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ExportCertificateResponse>;
 export interface GetAccountConfigurationRequest {}
-const GetAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "GetAccountConfigurationRequest",
-}) as any as S.Schema<GetAccountConfigurationRequest>;
+const GetAccountConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetAccountConfigurationRequest>;
 export type PositiveInteger = number;
 export interface ExpiryEventsConfiguration {
   DaysBeforeExpiry?: number;
 }
-const ExpiryEventsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DaysBeforeExpiry: S.optional(S.Number) }),
-).annotate({
-  identifier: "ExpiryEventsConfiguration",
-}) as any as S.Schema<ExpiryEventsConfiguration>;
+const ExpiryEventsConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ExpiryEventsConfiguration>;
 export interface GetAccountConfigurationResponse {
   ExpiryEvents?: ExpiryEventsConfiguration;
 }
-const GetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExpiryEvents: S.optional(ExpiryEventsConfiguration) }),
-).annotate({
-  identifier: "GetAccountConfigurationResponse",
-}) as any as S.Schema<GetAccountConfigurationResponse>;
+const GetAccountConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetAccountConfigurationResponse>;
 export interface GetAcmeExternalAccountBindingCredentialsRequest {
   AcmeExternalAccountBindingArn: string;
 }
-const GetAcmeExternalAccountBindingCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "GetAcmeExternalAccountBindingCredentialsRequest",
-}) as any as S.Schema<GetAcmeExternalAccountBindingCredentialsRequest>;
+const GetAcmeExternalAccountBindingCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetAcmeExternalAccountBindingCredentialsRequest>;
 export type MacKey = string | redacted.Redacted<string>;
 export interface GetAcmeExternalAccountBindingCredentialsResponse {
   KeyId?: string;
   MacKey?: string | redacted.Redacted<string>;
 }
-const GetAcmeExternalAccountBindingCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KeyId: S.optional(S.String), MacKey: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "GetAcmeExternalAccountBindingCredentialsResponse",
-}) as any as S.Schema<GetAcmeExternalAccountBindingCredentialsResponse>;
+const GetAcmeExternalAccountBindingCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetAcmeExternalAccountBindingCredentialsResponse>;
 export interface GetCertificateRequest {
   CertificateArn: string;
 }
-const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({ identifier: "GetCertificateRequest" }) as any as S.Schema<GetCertificateRequest>;
+const GetCertificateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetCertificateRequest>;
 export interface GetCertificateResponse {
   Certificate?: string;
   CertificateChain?: string;
 }
-const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Certificate: S.optional(S.String), CertificateChain: S.optional(S.String) }),
-).annotate({ identifier: "GetCertificateResponse" }) as any as S.Schema<GetCertificateResponse>;
+const GetCertificateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetCertificateResponse>;
 export type CertificateBodyBlob = Uint8Array;
 export type PrivateKeyBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export type CertificateChainBlob = Uint8Array;
@@ -1170,55 +817,26 @@ export interface ImportCertificateRequest {
   CertificateChain?: Uint8Array;
   Tags?: Tag[];
 }
-const ImportCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateArn: S.optional(S.String),
-    Certificate: T.Blob,
-    PrivateKey: SensitiveBlob,
-    CertificateChain: S.optional(T.Blob),
-    Tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({ identifier: "ImportCertificateRequest" }) as any as S.Schema<ImportCertificateRequest>;
+const ImportCertificateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ImportCertificateRequest>;
 export interface ImportCertificateResponse {
   CertificateArn?: string;
 }
-const ImportCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.optional(S.String) }),
-).annotate({
-  identifier: "ImportCertificateResponse",
-}) as any as S.Schema<ImportCertificateResponse>;
+const ImportCertificateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ImportCertificateResponse>;
 export interface ListAcmeAccountsRequest {
   NextToken?: string;
   MaxResults?: number;
   AcmeEndpointArn: string;
 }
-const ListAcmeAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    AcmeEndpointArn: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({ identifier: "ListAcmeAccountsRequest" }) as any as S.Schema<ListAcmeAccountsRequest>;
+const ListAcmeAccountsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListAcmeAccountsRequest>;
 export interface AcmeAccountSummary {
   AccountUrl?: string;
   PublicKeyThumbprint?: string;
@@ -1229,38 +847,24 @@ export interface AcmeAccountSummary {
 }
 const AcmeAccountSummary = AcmeAccount as any as S.Schema<AcmeAccountSummary>;
 export type AcmeAccountList = AcmeAccountSummary[];
-const AcmeAccountList = /*@__PURE__*/ S.Array(AcmeAccountSummary);
+const AcmeAccountList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface ListAcmeAccountsResponse {
   AcmeAccounts?: AcmeAccountSummary[];
   NextToken?: string;
 }
-const ListAcmeAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeAccounts: S.optional(AcmeAccountList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListAcmeAccountsResponse" }) as any as S.Schema<ListAcmeAccountsResponse>;
+const ListAcmeAccountsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListAcmeAccountsResponse>;
 export interface ListAcmeDomainValidationsRequest {
   NextToken?: string;
   MaxResults?: number;
   AcmeEndpointArn: string;
 }
-const ListAcmeDomainValidationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    AcmeEndpointArn: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "ListAcmeDomainValidationsRequest",
-}) as any as S.Schema<ListAcmeDomainValidationsRequest>;
+const ListAcmeDomainValidationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListAcmeDomainValidationsRequest>;
 export interface AcmeDomainValidationSummary {
   AcmeDomainValidationArn?: string;
   AcmeEndpointArn?: string;
@@ -1272,52 +876,28 @@ export interface AcmeDomainValidationSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeDomainValidationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcmeDomainValidationArn: S.optional(S.String),
-    AcmeEndpointArn: S.optional(S.String),
-    DomainName: S.optional(S.String),
-    PrevalidationType: S.optional(PrevalidationType),
-    PrevalidationDetails: S.optional(PrevalidationDetails),
-    Status: S.optional(AcmeDomainValidationStatus),
-    FailureDetails: S.optional(FailureDetails),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "AcmeDomainValidationSummary",
-}) as any as S.Schema<AcmeDomainValidationSummary>;
+const AcmeDomainValidationSummary = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<AcmeDomainValidationSummary>;
 export type AcmeDomainValidationList = AcmeDomainValidationSummary[];
-const AcmeDomainValidationList = /*@__PURE__*/ S.Array(AcmeDomainValidationSummary);
+const AcmeDomainValidationList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface ListAcmeDomainValidationsResponse {
   AcmeDomainValidations?: AcmeDomainValidationSummary[];
   NextToken?: string;
 }
-const ListAcmeDomainValidationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcmeDomainValidations: S.optional(AcmeDomainValidationList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAcmeDomainValidationsResponse",
-}) as any as S.Schema<ListAcmeDomainValidationsResponse>;
+const ListAcmeDomainValidationsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListAcmeDomainValidationsResponse>;
 export interface ListAcmeEndpointsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAcmeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({ identifier: "ListAcmeEndpointsRequest" }) as any as S.Schema<ListAcmeEndpointsRequest>;
+const ListAcmeEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListAcmeEndpointsRequest>;
 export interface AcmeEndpointSummary {
   AcmeEndpointArn?: string;
   EndpointUrl?: string;
@@ -1332,40 +912,24 @@ export interface AcmeEndpointSummary {
 }
 const AcmeEndpointSummary = AcmeEndpoint as any as S.Schema<AcmeEndpointSummary>;
 export type AcmeEndpointList = AcmeEndpointSummary[];
-const AcmeEndpointList = /*@__PURE__*/ S.Array(AcmeEndpointSummary);
+const AcmeEndpointList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface ListAcmeEndpointsResponse {
   AcmeEndpoints?: AcmeEndpointSummary[];
   NextToken?: string;
 }
-const ListAcmeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeEndpoints: S.optional(AcmeEndpointList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAcmeEndpointsResponse",
-}) as any as S.Schema<ListAcmeEndpointsResponse>;
+const ListAcmeEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListAcmeEndpointsResponse>;
 export interface ListAcmeExternalAccountBindingsRequest {
   NextToken?: string;
   MaxResults?: number;
   AcmeEndpointArn: string;
 }
-const ListAcmeExternalAccountBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    AcmeEndpointArn: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "ListAcmeExternalAccountBindingsRequest",
-}) as any as S.Schema<ListAcmeExternalAccountBindingsRequest>;
+const ListAcmeExternalAccountBindingsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListAcmeExternalAccountBindingsRequest>;
 export interface AcmeExternalAccountBindingSummary {
   AcmeExternalAccountBindingArn?: string;
   AcmeEndpointArn?: string;
@@ -1379,19 +943,15 @@ export interface AcmeExternalAccountBindingSummary {
 const AcmeExternalAccountBindingSummary =
   AcmeExternalAccountBinding as any as S.Schema<AcmeExternalAccountBindingSummary>;
 export type AcmeExternalAccountBindingList = AcmeExternalAccountBindingSummary[];
-const AcmeExternalAccountBindingList = /*@__PURE__*/ S.Array(AcmeExternalAccountBindingSummary);
+const AcmeExternalAccountBindingList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface ListAcmeExternalAccountBindingsResponse {
   ExternalAccountBindings?: AcmeExternalAccountBindingSummary[];
   NextToken?: string;
 }
-const ListAcmeExternalAccountBindingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExternalAccountBindings: S.optional(AcmeExternalAccountBindingList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAcmeExternalAccountBindingsResponse",
-}) as any as S.Schema<ListAcmeExternalAccountBindingsResponse>;
+const ListAcmeExternalAccountBindingsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListAcmeExternalAccountBindingsResponse>;
 export type CertificateArn = string;
 export type NextToken = string;
 export type MaxItems = number;
@@ -1400,86 +960,57 @@ export interface ListCertificateDomainValidationsRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-const ListCertificateDomainValidationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateArn: S.String,
-    NextToken: S.optional(S.String),
-    MaxItems: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "ListCertificateDomainValidationsRequest",
-}) as any as S.Schema<ListCertificateDomainValidationsRequest>;
+const ListCertificateDomainValidationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListCertificateDomainValidationsRequest>;
 export interface EmailValidationChallenge {
   ValidationEmails?: string[];
   ValidationDomain?: string;
 }
-const EmailValidationChallenge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ValidationEmails: S.optional(ValidationEmailList),
-    ValidationDomain: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmailValidationChallenge" }) as any as S.Schema<EmailValidationChallenge>;
+const EmailValidationChallenge = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<EmailValidationChallenge>;
 export interface DnsValidationChallenge {
   ResourceRecord?: ResourceRecord;
 }
-const DnsValidationChallenge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceRecord: S.optional(ResourceRecord) }),
-).annotate({ identifier: "DnsValidationChallenge" }) as any as S.Schema<DnsValidationChallenge>;
+const DnsValidationChallenge = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DnsValidationChallenge>;
 export type ValidationChallenge =
   | { EmailValidationChallenge: EmailValidationChallenge; DnsValidationChallenge?: never }
   | { EmailValidationChallenge?: never; DnsValidationChallenge: DnsValidationChallenge };
-const ValidationChallenge = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ EmailValidationChallenge: EmailValidationChallenge }),
-  /*@__PURE__*/ S.Struct({ DnsValidationChallenge: DnsValidationChallenge }),
-]);
+const ValidationChallenge = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ValidationConfiguration {
   ValidationMethod?: ValidationMethod;
   ValidationChallenge?: ValidationChallenge;
   ValidationStatus?: DomainStatus;
 }
-const ValidationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ValidationMethod: S.optional(ValidationMethod),
-    ValidationChallenge: S.optional(ValidationChallenge),
-    ValidationStatus: S.optional(DomainStatus),
-  }),
-).annotate({ identifier: "ValidationConfiguration" }) as any as S.Schema<ValidationConfiguration>;
+const ValidationConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ValidationConfiguration>;
 export interface DomainValidationSummary {
   DomainName: string;
   ActiveValidationConfiguration?: ValidationConfiguration;
   RequestedValidationConfiguration?: ValidationConfiguration;
 }
-const DomainValidationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainName: S.String,
-    ActiveValidationConfiguration: S.optional(ValidationConfiguration),
-    RequestedValidationConfiguration: S.optional(ValidationConfiguration),
-  }),
-).annotate({ identifier: "DomainValidationSummary" }) as any as S.Schema<DomainValidationSummary>;
+const DomainValidationSummary = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DomainValidationSummary>;
 export type DomainValidationSummaryList = DomainValidationSummary[];
-const DomainValidationSummaryList = /*@__PURE__*/ S.Array(DomainValidationSummary);
+const DomainValidationSummaryList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface ListCertificateDomainValidationsResponse {
   DomainValidationSummaryList?: DomainValidationSummary[];
   NextToken?: string;
 }
-const ListCertificateDomainValidationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainValidationSummaryList: S.optional(DomainValidationSummaryList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCertificateDomainValidationsResponse",
-}) as any as S.Schema<ListCertificateDomainValidationsResponse>;
+const ListCertificateDomainValidationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListCertificateDomainValidationsResponse>;
 export type CertificateStatuses = CertificateStatus[];
 const CertificateStatuses = PublicKeyAlgorithmList as any as S.Schema<CertificateStatuses>;
 export type CertificateKeyPairOrigins = CertificateKeyPairOrigin[];
@@ -1499,15 +1030,7 @@ export interface Filters {
   exportOption?: CertificateExport;
   managedBy?: CertificateManagedBy;
 }
-const Filters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extendedKeyUsage: S.optional(ExtendedKeyUsageFilterList),
-    keyUsage: S.optional(KeyUsageFilterList),
-    keyTypes: S.optional(KeyAlgorithmList),
-    exportOption: S.optional(CertificateExport),
-    managedBy: S.optional(CertificateManagedBy),
-  }),
-).annotate({ identifier: "Filters" }) as any as S.Schema<Filters>;
+const Filters = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Filters>;
 export type SortBy = "CREATED_AT" | (string & {});
 const SortBy = S.String;
 
@@ -1523,27 +1046,10 @@ export interface ListCertificatesRequest {
   SortBy?: SortBy;
   SortOrder?: SortOrder;
 }
-const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateStatuses: S.optional(CertificateStatuses),
-    CertificateKeyPairOrigins: S.optional(CertificateKeyPairOrigins),
-    Includes: S.optional(Filters),
-    NextToken: S.optional(S.String),
-    MaxItems: S.optional(S.Number),
-    SortBy: S.optional(SortBy),
-    SortOrder: S.optional(SortOrder),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({ identifier: "ListCertificatesRequest" }) as any as S.Schema<ListCertificatesRequest>;
+const ListCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListCertificatesRequest>;
 export type KeyUsageNames = KeyUsageName[];
 const KeyUsageNames = KeyUsageFilterList as any as S.Schema<KeyUsageNames>;
 export type ExtendedKeyUsageNames = ExtendedKeyUsageName[];
@@ -1571,87 +1077,38 @@ export interface CertificateSummary {
   ManagedBy?: CertificateManagedBy;
   CertificateKeyPairOrigin?: CertificateKeyPairOrigin;
 }
-const CertificateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateArn: S.optional(S.String),
-    DomainName: S.optional(S.String),
-    SubjectAlternativeNameSummaries: S.optional(DomainList),
-    HasAdditionalSubjectAlternativeNames: S.optional(S.Boolean),
-    Status: S.optional(CertificateStatus),
-    Type: S.optional(CertificateType),
-    KeyAlgorithm: S.optional(KeyAlgorithm),
-    KeyUsages: S.optional(KeyUsageNames),
-    ExtendedKeyUsages: S.optional(ExtendedKeyUsageNames),
-    ExportOption: S.optional(CertificateExport),
-    InUse: S.optional(S.Boolean),
-    Exported: S.optional(S.Boolean),
-    RenewalEligibility: S.optional(RenewalEligibility),
-    NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ManagedBy: S.optional(CertificateManagedBy),
-    CertificateKeyPairOrigin: S.optional(CertificateKeyPairOrigin),
-  }),
-).annotate({ identifier: "CertificateSummary" }) as any as S.Schema<CertificateSummary>;
+const CertificateSummary = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<CertificateSummary>;
 export type CertificateSummaryList = CertificateSummary[];
-const CertificateSummaryList = /*@__PURE__*/ S.Array(CertificateSummary);
+const CertificateSummaryList = /*@__PURE__*/ __L.at(__c10, 7);
 export interface ListCertificatesResponse {
   NextToken?: string;
   CertificateSummaryList?: CertificateSummary[];
 }
-const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    CertificateSummaryList: S.optional(CertificateSummaryList),
-  }),
-).annotate({ identifier: "ListCertificatesResponse" }) as any as S.Schema<ListCertificatesResponse>;
+const ListCertificatesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListCertificatesResponse>;
 export interface ListTagsForCertificateRequest {
   CertificateArn: string;
 }
-const ListTagsForCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForCertificateRequest",
-}) as any as S.Schema<ListTagsForCertificateRequest>;
+const ListTagsForCertificateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListTagsForCertificateRequest>;
 export interface ListTagsForCertificateResponse {
   Tags?: Tag[];
 }
-const ListTagsForCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForCertificateResponse",
-}) as any as S.Schema<ListTagsForCertificateResponse>;
+const ListTagsForCertificateResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListTagsForCertificateResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
@@ -1662,66 +1119,33 @@ export interface PutAccountConfigurationRequest {
   ExpiryEvents?: ExpiryEventsConfiguration;
   IdempotencyToken: string;
 }
-const PutAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExpiryEvents: S.optional(ExpiryEventsConfiguration),
-    IdempotencyToken: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "PutAccountConfigurationRequest",
-}) as any as S.Schema<PutAccountConfigurationRequest>;
+const PutAccountConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<PutAccountConfigurationRequest>;
 export interface PutAccountConfigurationResponse {}
-const PutAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutAccountConfigurationResponse",
-}) as any as S.Schema<PutAccountConfigurationResponse>;
+const PutAccountConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<PutAccountConfigurationResponse>;
 export interface RemoveTagsFromCertificateRequest {
   CertificateArn: string;
   Tags: Tag[];
 }
-const RemoveTagsFromCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "RemoveTagsFromCertificateRequest",
-}) as any as S.Schema<RemoveTagsFromCertificateRequest>;
+const RemoveTagsFromCertificateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<RemoveTagsFromCertificateRequest>;
 export interface RemoveTagsFromCertificateResponse {}
 const RemoveTagsFromCertificateResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<RemoveTagsFromCertificateResponse>;
 export interface RenewCertificateRequest {
   CertificateArn: string;
 }
-const RenewCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({ identifier: "RenewCertificateRequest" }) as any as S.Schema<RenewCertificateRequest>;
+const RenewCertificateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<RenewCertificateRequest>;
 export interface RenewCertificateResponse {}
 const RenewCertificateResponse =
   AddTagsToCertificateResponse as any as S.Schema<RenewCertificateResponse>;
@@ -1729,11 +1153,12 @@ export interface DomainValidationOption {
   DomainName: string;
   ValidationDomain: string;
 }
-const DomainValidationOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DomainName: S.String, ValidationDomain: S.String }),
-).annotate({ identifier: "DomainValidationOption" }) as any as S.Schema<DomainValidationOption>;
+const DomainValidationOption = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<DomainValidationOption>;
 export type DomainValidationOptionList = DomainValidationOption[];
-const DomainValidationOptionList = /*@__PURE__*/ S.Array(DomainValidationOption);
+const DomainValidationOptionList = /*@__PURE__*/ __L.at(__c12, 1);
 export type PcaArn = string;
 export interface RequestCertificateRequest {
   DomainName: string;
@@ -1747,32 +1172,10 @@ export interface RequestCertificateRequest {
   KeyAlgorithm?: KeyAlgorithm;
   ManagedBy?: CertificateManagedBy;
 }
-const RequestCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainName: S.String,
-    ValidationMethod: S.optional(ValidationMethod),
-    SubjectAlternativeNames: S.optional(DomainList),
-    IdempotencyToken: S.optional(S.String),
-    DomainValidationOptions: S.optional(DomainValidationOptionList),
-    Options: S.optional(CertificateOptions),
-    CertificateAuthorityArn: S.optional(S.String),
-    Tags: S.optional(TagList),
-    KeyAlgorithm: S.optional(KeyAlgorithm),
-    ManagedBy: S.optional(CertificateManagedBy),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "RequestCertificateRequest",
-}) as any as S.Schema<RequestCertificateRequest>;
+const RequestCertificateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<RequestCertificateRequest>;
 export interface RequestCertificateResponse {
   CertificateArn?: string;
 }
@@ -1783,21 +1186,10 @@ export interface ResendValidationEmailRequest {
   Domain: string;
   ValidationDomain: string;
 }
-const ResendValidationEmailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String, Domain: S.String, ValidationDomain: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "ResendValidationEmailRequest",
-}) as any as S.Schema<ResendValidationEmailRequest>;
+const ResendValidationEmailRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ResendValidationEmailRequest>;
 export interface ResendValidationEmailResponse {}
 const ResendValidationEmailResponse =
   AddTagsToCertificateResponse as any as S.Schema<ResendValidationEmailResponse>;
@@ -1805,40 +1197,20 @@ export interface RevokeAcmeAccountRequest {
   AcmeEndpointArn: string;
   AccountUrl: string;
 }
-const RevokeAcmeAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeEndpointArn: S.String, AccountUrl: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({ identifier: "RevokeAcmeAccountRequest" }) as any as S.Schema<RevokeAcmeAccountRequest>;
+const RevokeAcmeAccountRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<RevokeAcmeAccountRequest>;
 export interface RevokeAcmeAccountResponse {}
 const RevokeAcmeAccountResponse =
   AddTagsToCertificateResponse as any as S.Schema<RevokeAcmeAccountResponse>;
 export interface RevokeAcmeExternalAccountBindingRequest {
   AcmeExternalAccountBindingArn: string;
 }
-const RevokeAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "RevokeAcmeExternalAccountBindingRequest",
-}) as any as S.Schema<RevokeAcmeExternalAccountBindingRequest>;
+const RevokeAcmeExternalAccountBindingRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<RevokeAcmeExternalAccountBindingRequest>;
 export interface RevokeAcmeExternalAccountBindingResponse {}
 const RevokeAcmeExternalAccountBindingResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<RevokeAcmeExternalAccountBindingResponse>;
@@ -1846,29 +1218,19 @@ export interface RevokeCertificateRequest {
   CertificateArn: string;
   RevocationReason: RevocationReason;
 }
-const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String, RevocationReason: RevocationReason }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({ identifier: "RevokeCertificateRequest" }) as any as S.Schema<RevokeCertificateRequest>;
+const RevokeCertificateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<RevokeCertificateRequest>;
 export interface RevokeCertificateResponse {
   CertificateArn?: string;
 }
 const RevokeCertificateResponse =
   ImportCertificateResponse as any as S.Schema<RevokeCertificateResponse>;
 export type CertificateFilterStatementList = CertificateFilterStatement[];
-const CertificateFilterStatementList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => CertificateFilterStatement).annotate({
-    identifier: "CertificateFilterStatement",
-  }),
+const CertificateFilterStatementList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
 ) as any as S.Schema<CertificateFilterStatementList>;
 export type FilterString = string;
 export type ComparisonOperator = "CONTAINS" | "EQUALS" | (string & {});
@@ -1878,33 +1240,22 @@ export interface CommonNameFilter {
   Value: string;
   ComparisonOperator: ComparisonOperator;
 }
-const CommonNameFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.String, ComparisonOperator: ComparisonOperator }),
-).annotate({ identifier: "CommonNameFilter" }) as any as S.Schema<CommonNameFilter>;
+const CommonNameFilter = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<CommonNameFilter>;
 export type SubjectFilter = { CommonName: CommonNameFilter };
-const SubjectFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ CommonName: CommonNameFilter }),
-]);
+const SubjectFilter = /*@__PURE__*/ __L.at(__c13, 1);
 export interface DnsNameFilter {
   Value: string;
   ComparisonOperator: ComparisonOperator;
 }
 const DnsNameFilter = CommonNameFilter as any as S.Schema<DnsNameFilter>;
 export type SubjectAlternativeNameFilter = { DnsName: DnsNameFilter };
-const SubjectAlternativeNameFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ DnsName: DnsNameFilter }),
-]);
+const SubjectAlternativeNameFilter = /*@__PURE__*/ __L.at(__c13, 2);
 export type SerialNumber = string;
 export interface TimestampRange {
   Start?: Date;
   End?: Date;
 }
-const TimestampRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Start: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    End: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "TimestampRange" }) as any as S.Schema<TimestampRange>;
+const TimestampRange = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<TimestampRange>;
 export type X509AttributeFilter =
   | {
       Subject: SubjectFilter;
@@ -1986,16 +1337,7 @@ export type X509AttributeFilter =
       NotAfter?: never;
       NotBefore: TimestampRange;
     };
-const X509AttributeFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Subject: SubjectFilter }),
-  /*@__PURE__*/ S.Struct({ SubjectAlternativeName: SubjectAlternativeNameFilter }),
-  /*@__PURE__*/ S.Struct({ ExtendedKeyUsage: ExtendedKeyUsageName }),
-  /*@__PURE__*/ S.Struct({ KeyUsage: KeyUsageName }),
-  /*@__PURE__*/ S.Struct({ KeyAlgorithm: KeyAlgorithm }),
-  /*@__PURE__*/ S.Struct({ SerialNumber: S.String }),
-  /*@__PURE__*/ S.Struct({ NotAfter: TimestampRange }),
-  /*@__PURE__*/ S.Struct({ NotBefore: TimestampRange }),
-]);
+const X509AttributeFilter = /*@__PURE__*/ __L.at(__c13, 4);
 export type AcmCertificateMetadataFilter =
   | {
       Status: CertificateStatus;
@@ -2140,19 +1482,7 @@ export type AcmCertificateMetadataFilter =
       AcmeEndpointArn?: never;
       AcmeAccountId: string;
     };
-const AcmCertificateMetadataFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ Status: CertificateStatus }),
-  /*@__PURE__*/ S.Struct({ RenewalStatus: RenewalStatus }),
-  /*@__PURE__*/ S.Struct({ Type: CertificateType }),
-  /*@__PURE__*/ S.Struct({ InUse: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ Exported: S.Boolean }),
-  /*@__PURE__*/ S.Struct({ ExportOption: CertificateExport }),
-  /*@__PURE__*/ S.Struct({ ManagedBy: CertificateManagedBy }),
-  /*@__PURE__*/ S.Struct({ ValidationMethod: ValidationMethod }),
-  /*@__PURE__*/ S.Struct({ CertificateKeyPairOrigin: CertificateKeyPairOrigin }),
-  /*@__PURE__*/ S.Struct({ AcmeEndpointArn: S.String }),
-  /*@__PURE__*/ S.Struct({ AcmeAccountId: S.String }),
-]);
+const AcmCertificateMetadataFilter = /*@__PURE__*/ __L.at(__c13, 5);
 export type CertificateFilter =
   | { CertificateArn: string; X509AttributeFilter?: never; AcmCertificateMetadataFilter?: never }
   | {
@@ -2165,34 +1495,16 @@ export type CertificateFilter =
       X509AttributeFilter?: never;
       AcmCertificateMetadataFilter: AcmCertificateMetadataFilter;
     };
-const CertificateFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ CertificateArn: S.String }),
-  /*@__PURE__*/ S.Struct({ X509AttributeFilter: X509AttributeFilter }),
-  /*@__PURE__*/ S.Struct({ AcmCertificateMetadataFilter: AcmCertificateMetadataFilter }),
-]);
+const CertificateFilter = /*@__PURE__*/ __L.at(__c13, 6);
 export type CertificateFilterStatement =
   | { And: CertificateFilterStatement[]; Or?: never; Not?: never; Filter?: never }
   | { And?: never; Or: CertificateFilterStatement[]; Not?: never; Filter?: never }
   | { And?: never; Or?: never; Not: CertificateFilterStatement; Filter?: never }
   | { And?: never; Or?: never; Not?: never; Filter: CertificateFilter };
-const CertificateFilterStatement = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({
-    And: /*@__PURE__*/ S.suspend(() => CertificateFilterStatementList).annotate({
-      identifier: "CertificateFilterStatementList",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    Or: /*@__PURE__*/ S.suspend(() => CertificateFilterStatementList).annotate({
-      identifier: "CertificateFilterStatementList",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    Not: /*@__PURE__*/ S.suspend(() => CertificateFilterStatement).annotate({
-      identifier: "CertificateFilterStatement",
-    }),
-  }),
-  /*@__PURE__*/ S.Struct({ Filter: CertificateFilter }),
-]) as any as S.Schema<CertificateFilterStatement>;
+const CertificateFilterStatement = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<CertificateFilterStatement>;
 export type SearchMaxResults = number;
 export type SearchCertificatesSortBy =
   | "CREATED_AT"
@@ -2229,38 +1541,19 @@ export interface SearchCertificatesRequest {
   SortBy?: SearchCertificatesSortBy;
   SortOrder?: SearchCertificatesSortOrder;
 }
-const SearchCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FilterStatement: S.optional(CertificateFilterStatement),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    SortBy: S.optional(SearchCertificatesSortBy),
-    SortOrder: S.optional(SearchCertificatesSortOrder),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "SearchCertificatesRequest",
-}) as any as S.Schema<SearchCertificatesRequest>;
+const SearchCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<SearchCertificatesRequest>;
 export type DomainComponentList = string[];
 const DomainComponentList = ContactList as any as S.Schema<DomainComponentList>;
 export interface CustomAttribute {
   ObjectIdentifier?: string;
   Value?: string;
 }
-const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ObjectIdentifier: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
+const CustomAttribute = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<CustomAttribute>;
 export type CustomAttributeList = CustomAttribute[];
-const CustomAttributeList = /*@__PURE__*/ S.Array(CustomAttribute);
+const CustomAttributeList = /*@__PURE__*/ __L.at(__c14, 2);
 export interface DistinguishedName {
   CommonName?: string;
   DomainComponents?: string[];
@@ -2279,26 +1572,7 @@ export interface DistinguishedName {
   Surname?: string;
   Title?: string;
 }
-const DistinguishedName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CommonName: S.optional(S.String),
-    DomainComponents: S.optional(DomainComponentList),
-    Country: S.optional(S.String),
-    CustomAttributes: S.optional(CustomAttributeList),
-    DistinguishedNameQualifier: S.optional(S.String),
-    GenerationQualifier: S.optional(S.String),
-    GivenName: S.optional(S.String),
-    Initials: S.optional(S.String),
-    Locality: S.optional(S.String),
-    Organization: S.optional(S.String),
-    OrganizationalUnit: S.optional(S.String),
-    Pseudonym: S.optional(S.String),
-    SerialNumber: S.optional(S.String),
-    State: S.optional(S.String),
-    Surname: S.optional(S.String),
-    Title: S.optional(S.String),
-  }),
-).annotate({ identifier: "DistinguishedName" }) as any as S.Schema<DistinguishedName>;
+const DistinguishedName = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<DistinguishedName>;
 export interface OtherName {
   ObjectIdentifier?: string;
   Value?: string;
@@ -2368,17 +1642,9 @@ export type GeneralName =
       Rfc822Name?: never;
       UniformResourceIdentifier: string;
     };
-const GeneralName = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ DirectoryName: DistinguishedName }),
-  /*@__PURE__*/ S.Struct({ DnsName: S.String }),
-  /*@__PURE__*/ S.Struct({ IpAddress: S.String }),
-  /*@__PURE__*/ S.Struct({ OtherName: OtherName }),
-  /*@__PURE__*/ S.Struct({ RegisteredId: S.String }),
-  /*@__PURE__*/ S.Struct({ Rfc822Name: S.String }),
-  /*@__PURE__*/ S.Struct({ UniformResourceIdentifier: S.String }),
-]);
+const GeneralName = /*@__PURE__*/ __L.at(__c14, 4);
 export type GeneralNameList = GeneralName[];
-const GeneralNameList = /*@__PURE__*/ S.Array(GeneralName);
+const GeneralNameList = /*@__PURE__*/ __L.at(__c14, 5);
 export interface X509Attributes {
   Issuer?: DistinguishedName;
   Subject?: DistinguishedName;
@@ -2390,19 +1656,7 @@ export interface X509Attributes {
   NotAfter?: Date;
   NotBefore?: Date;
 }
-const X509Attributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Issuer: S.optional(DistinguishedName),
-    Subject: S.optional(DistinguishedName),
-    SubjectAlternativeNames: S.optional(GeneralNameList),
-    ExtendedKeyUsages: S.optional(ExtendedKeyUsageNames),
-    KeyAlgorithm: S.optional(KeyAlgorithm),
-    KeyUsages: S.optional(KeyUsageNames),
-    SerialNumber: S.optional(S.String),
-    NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "X509Attributes" }) as any as S.Schema<X509Attributes>;
+const X509Attributes = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<X509Attributes>;
 export interface AcmCertificateMetadata {
   CreatedAt?: Date;
   Exported?: boolean;
@@ -2421,70 +1675,36 @@ export interface AcmCertificateMetadata {
   AcmeEndpointArn?: string;
   AcmeAccountId?: string;
 }
-const AcmCertificateMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Exported: S.optional(S.Boolean),
-    ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    InUse: S.optional(S.Boolean),
-    IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RenewalEligibility: S.optional(RenewalEligibility),
-    RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(CertificateStatus),
-    RenewalStatus: S.optional(RenewalStatus),
-    Type: S.optional(CertificateType),
-    ExportOption: S.optional(CertificateExport),
-    ManagedBy: S.optional(CertificateManagedBy),
-    ValidationMethod: S.optional(ValidationMethod),
-    CertificateKeyPairOrigin: S.optional(CertificateKeyPairOrigin),
-    AcmeEndpointArn: S.optional(S.String),
-    AcmeAccountId: S.optional(S.String),
-  }),
-).annotate({ identifier: "AcmCertificateMetadata" }) as any as S.Schema<AcmCertificateMetadata>;
+const AcmCertificateMetadata = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<AcmCertificateMetadata>;
 export type CertificateMetadata = { AcmCertificateMetadata: AcmCertificateMetadata };
-const CertificateMetadata = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ AcmCertificateMetadata: AcmCertificateMetadata }),
-]);
+const CertificateMetadata = /*@__PURE__*/ __L.at(__c15, 0);
 export interface CertificateSearchResult {
   CertificateArn?: string;
   X509Attributes?: X509Attributes;
   CertificateMetadata?: CertificateMetadata;
 }
-const CertificateSearchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateArn: S.optional(S.String),
-    X509Attributes: S.optional(X509Attributes),
-    CertificateMetadata: S.optional(CertificateMetadata),
-  }),
-).annotate({ identifier: "CertificateSearchResult" }) as any as S.Schema<CertificateSearchResult>;
+const CertificateSearchResult = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<CertificateSearchResult>;
 export type CertificateSearchResultList = CertificateSearchResult[];
-const CertificateSearchResultList = /*@__PURE__*/ S.Array(CertificateSearchResult);
+const CertificateSearchResultList = /*@__PURE__*/ __L.at(__c15, 2);
 export interface SearchCertificatesResponse {
   Results?: CertificateSearchResult[];
   NextToken?: string;
 }
-const SearchCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Results: S.optional(CertificateSearchResultList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "SearchCertificatesResponse",
-}) as any as S.Schema<SearchCertificatesResponse>;
+const SearchCertificatesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<SearchCertificatesResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = AddTagsToCertificateResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -2493,19 +1713,10 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse =
   AddTagsToCertificateResponse as any as S.Schema<UntagResourceResponse>;
@@ -2513,24 +1724,10 @@ export interface UpdateAcmeDomainValidationRequest {
   AcmeDomainValidationArn: string;
   PrevalidationOptions?: PrevalidationOptions;
 }
-const UpdateAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcmeDomainValidationArn: S.String,
-    PrevalidationOptions: S.optional(PrevalidationOptions),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAcmeDomainValidationRequest",
-}) as any as S.Schema<UpdateAcmeDomainValidationRequest>;
+const UpdateAcmeDomainValidationRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<UpdateAcmeDomainValidationRequest>;
 export interface UpdateAcmeDomainValidationResponse {}
 const UpdateAcmeDomainValidationResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<UpdateAcmeDomainValidationResponse>;
@@ -2540,26 +1737,10 @@ export interface UpdateAcmeEndpointRequest {
   Contact?: AcmeContact;
   CertificateAuthority?: CertificateAuthority;
 }
-const UpdateAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AcmeEndpointArn: S.String,
-    AuthorizationBehavior: S.optional(AcmeAuthorizationBehavior),
-    Contact: S.optional(AcmeContact),
-    CertificateAuthority: S.optional(CertificateAuthority),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAcmeEndpointRequest",
-}) as any as S.Schema<UpdateAcmeEndpointRequest>;
+const UpdateAcmeEndpointRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<UpdateAcmeEndpointRequest>;
 export interface UpdateAcmeEndpointResponse {}
 const UpdateAcmeEndpointResponse =
   AddTagsToCertificateResponse as any as S.Schema<UpdateAcmeEndpointResponse>;
@@ -2567,21 +1748,10 @@ export interface UpdateCertificateOptionsRequest {
   CertificateArn: string;
   Options: CertificateOptions;
 }
-const UpdateCertificateOptionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateArn: S.String, Options: CertificateOptions }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-      T.StaticContextParams({ ServiceType: { value: "ACM" } }),
-    ),
-  ),
-).annotate({
-  identifier: "UpdateCertificateOptionsRequest",
-}) as any as S.Schema<UpdateCertificateOptionsRequest>;
+const UpdateCertificateOptionsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<UpdateCertificateOptionsRequest>;
 export interface UpdateCertificateOptionsResponse {}
 const UpdateCertificateOptionsResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<UpdateCertificateOptionsResponse>;
@@ -2592,11 +1762,9 @@ export interface ThrottlingReason {
   reason?: string;
   resource?: string;
 }
-const ThrottlingReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
-).annotate({ identifier: "ThrottlingReason" }) as any as S.Schema<ThrottlingReason>;
+const ThrottlingReason = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ThrottlingReason>;
 export type ThrottlingReasonList = ThrottlingReason[];
-const ThrottlingReasonList = /*@__PURE__*/ S.Array(ThrottlingReason);
+const ThrottlingReasonList = /*@__PURE__*/ __L.at(__c16, 2);
 export type ValidationExceptionMessage = string;
 export type ServiceErrorMessage = string;
 export type AddTagsToCertificateError =
@@ -3884,3 +3052,1381 @@ export const updateCertificateOptions: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCertificateOptions",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(Tag);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "AddTagsToCertificateRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AddTagsToCertificateResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ExactDomain: S.optional(DomainScopeOption),
+          Subdomains: S.optional(DomainScopeOption),
+          Wildcards: S.optional(DomainScopeOption),
+        }),
+      ).annotate({ identifier: "DomainScope" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ DomainScope: S.optional(DomainScope), HostedZoneId: S.optional(S.String) }),
+      ).annotate({ identifier: "DnsPrevalidationOptions" });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationOptions })]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          AcmeEndpointArn: S.String,
+          DomainName: S.String,
+          PrevalidationOptions: PrevalidationOptions,
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateAcmeDomainValidationRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ AcmeDomainValidationArn: S.String })).annotate({
+        identifier: "CreateAcmeDomainValidationResponse",
+      });
+    case 1:
+      return S.Array(PublicKeyAlgorithm);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AllowedKeyAlgorithms: S.optional(PublicKeyAlgorithmList) }),
+      ).annotate({
+        identifier: "PublicCertificateAuthority",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ PublicCertificateAuthority: PublicCertificateAuthority }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          AuthorizationBehavior: AcmeAuthorizationBehavior,
+          Contact: S.optional(AcmeContact),
+          CertificateAuthority: CertificateAuthority,
+          Tags: S.optional(TagList),
+          CertificateTags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateAcmeEndpointRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ AcmeEndpointArn: S.optional(S.String) })).annotate({
+        identifier: "CreateAcmeEndpointResponse",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ Value: S.Number, Type: TimeType })).annotate({
+        identifier: "Expiration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          AcmeEndpointArn: S.String,
+          RoleArn: S.String,
+          Expiration: S.optional(Expiration),
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateAcmeExternalAccountBindingRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcmeExternalAccountBindingArn: S.optional(S.String),
+          AcmeEndpointArn: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUsedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "AcmeExternalAccountBinding",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ExternalAccountBinding: S.optional(AcmeExternalAccountBinding) }),
+      ).annotate({
+        identifier: "CreateAcmeExternalAccountBindingResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AcmeDomainValidationArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAcmeDomainValidationRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAcmeDomainValidationResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AcmeEndpointArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAcmeEndpointRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAcmeExternalAccountBindingRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({ identifier: "DeleteCertificateRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ AcmeEndpointArn: S.String, AccountUrl: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAcmeAccountRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccountUrl: S.optional(S.String),
+          PublicKeyThumbprint: S.optional(S.String),
+          Status: S.optional(AcmeAccountStatus),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AcmeExternalAccountBindingArn: S.optional(S.String),
+          Contacts: S.optional(ContactList),
+        }),
+      ).annotate({ identifier: "AcmeAccount" });
+    case 2:
+      return S.suspend(() => S.Struct({ AcmeAccount: S.optional(AcmeAccount) })).annotate({
+        identifier: "DescribeAcmeAccountResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AcmeDomainValidationArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAcmeDomainValidationRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Type: RecordType, Value: S.String }),
+      ).annotate({ identifier: "ResourceRecord" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DomainScope: S.optional(DomainScope),
+          HostedZoneId: S.optional(S.String),
+          ResourceRecord: S.optional(ResourceRecord),
+        }),
+      ).annotate({ identifier: "DnsPrevalidationDetails" });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationDetails })]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Reason: S.optional(AcmeDomainValidationFailureReason),
+          Message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FailureDetails" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcmeDomainValidationArn: S.optional(S.String),
+          AcmeEndpointArn: S.optional(S.String),
+          DomainName: S.optional(S.String),
+          PrevalidationType: S.optional(PrevalidationType),
+          PrevalidationDetails: S.optional(PrevalidationDetails),
+          Status: S.optional(AcmeDomainValidationStatus),
+          FailureDetails: S.optional(FailureDetails),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "AcmeDomainValidation" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AcmeDomainValidation: S.optional(AcmeDomainValidation) }),
+      ).annotate({
+        identifier: "DescribeAcmeDomainValidationResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AcmeEndpointArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAcmeEndpointRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcmeEndpointArn: S.optional(S.String),
+          EndpointUrl: S.optional(S.String),
+          Status: S.optional(AcmeEndpointStatus),
+          FailureReason: S.optional(S.String),
+          AuthorizationBehavior: S.optional(AcmeAuthorizationBehavior),
+          Contact: S.optional(AcmeContact),
+          CertificateAuthority: S.optional(CertificateAuthority),
+          CertificateTags: S.optional(TagList),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "AcmeEndpoint" });
+    case 4:
+      return S.suspend(() => S.Struct({ AcmeEndpoint: S.optional(AcmeEndpoint) })).annotate({
+        identifier: "DescribeAcmeEndpointResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAcmeExternalAccountBindingRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeCertificateRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ RedirectFrom: S.optional(S.String), RedirectTo: S.optional(S.String) }),
+      ).annotate({ identifier: "HttpRedirect" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DomainName: S.String,
+          ValidationEmails: S.optional(ValidationEmailList),
+          ValidationDomain: S.optional(S.String),
+          ValidationStatus: S.optional(DomainStatus),
+          ResourceRecord: S.optional(ResourceRecord),
+          HttpRedirect: S.optional(HttpRedirect),
+          ValidationMethod: S.optional(ValidationMethod),
+        }),
+      ).annotate({ identifier: "DomainValidation" });
+    case 1:
+      return S.Array(DomainValidation);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RenewalStatus: RenewalStatus,
+          DomainValidationOptions: DomainValidationList,
+          RenewalStatusReason: S.optional(FailureReason),
+          UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "RenewalSummary" });
+    case 3:
+      return S.suspend(() => S.Struct({ Name: S.optional(KeyUsageName) })).annotate({
+        identifier: "KeyUsage",
+      });
+    case 4:
+      return S.Array(KeyUsage);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(ExtendedKeyUsageName), OID: S.optional(S.String) }),
+      ).annotate({ identifier: "ExtendedKeyUsage" });
+    case 6:
+      return S.Array(ExtendedKeyUsage);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateTransparencyLoggingPreference: S.optional(
+            CertificateTransparencyLoggingPreference,
+          ),
+          Export: S.optional(CertificateExport),
+          ValidationMethod: S.optional(ValidationMethod),
+        }),
+      ).annotate({ identifier: "CertificateOptions" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ From: S.optional(ValidationMethod), To: S.optional(ValidationMethod) }),
+      ).annotate({
+        identifier: "DomainValidationMethodUpdateSummary",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(UpdateStatus),
+          Type: S.optional(UpdateType),
+          DomainValidationMethodUpdateSummary: S.optional(DomainValidationMethodUpdateSummary),
+          RequestedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "UpdateSummary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateArn: S.optional(S.String),
+          DomainName: S.optional(S.String),
+          SubjectAlternativeNames: S.optional(DomainList),
+          ManagedBy: S.optional(CertificateManagedBy),
+          DomainValidationOptions: S.optional(DomainValidationList),
+          Serial: S.optional(S.String),
+          Subject: S.optional(S.String),
+          Issuer: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(CertificateStatus),
+          RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RevocationReason: S.optional(RevocationReason),
+          NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          KeyAlgorithm: S.optional(KeyAlgorithm),
+          SignatureAlgorithm: S.optional(S.String),
+          InUseBy: S.optional(InUseList),
+          FailureReason: S.optional(FailureReason),
+          Type: S.optional(CertificateType),
+          RenewalSummary: S.optional(RenewalSummary),
+          KeyUsages: S.optional(KeyUsageList),
+          ExtendedKeyUsages: S.optional(ExtendedKeyUsageList),
+          CertificateAuthorityArn: S.optional(S.String),
+          RenewalEligibility: S.optional(RenewalEligibility),
+          Options: S.optional(CertificateOptions),
+          UpdateSummary: S.optional(UpdateSummary),
+          CertificateKeyPairOrigin: S.optional(CertificateKeyPairOrigin),
+          AcmeEndpointArn: S.optional(S.String),
+          AcmeAccountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateDetail" });
+    case 3:
+      return S.suspend(() => S.Struct({ Certificate: S.optional(CertificateDetail) })).annotate({
+        identifier: "DescribeCertificateResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String, Passphrase: SensitiveBlob }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ExportCertificateRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Certificate: S.optional(S.String),
+          CertificateChain: S.optional(S.String),
+          PrivateKey: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "ExportCertificateResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAccountConfigurationRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ DaysBeforeExpiry: S.optional(S.Number) })).annotate({
+        identifier: "ExpiryEventsConfiguration",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ExpiryEvents: S.optional(ExpiryEventsConfiguration) }),
+      ).annotate({
+        identifier: "GetAccountConfigurationResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAcmeExternalAccountBindingCredentialsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ KeyId: S.optional(S.String), MacKey: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "GetAcmeExternalAccountBindingCredentialsResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({ identifier: "GetCertificateRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Certificate: S.optional(S.String), CertificateChain: S.optional(S.String) }),
+      ).annotate({ identifier: "GetCertificateResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateArn: S.optional(S.String),
+          Certificate: T.Blob,
+          PrivateKey: SensitiveBlob,
+          CertificateChain: S.optional(T.Blob),
+          Tags: S.optional(TagList),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ImportCertificateRequest" });
+    case 6:
+      return S.suspend(() => S.Struct({ CertificateArn: S.optional(S.String) })).annotate({
+        identifier: "ImportCertificateResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          AcmeEndpointArn: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ListAcmeAccountsRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AcmeAccountSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AcmeAccounts: S.optional(AcmeAccountList), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAcmeAccountsResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          AcmeEndpointArn: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAcmeDomainValidationsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AcmeDomainValidationArn: S.optional(S.String),
+          AcmeEndpointArn: S.optional(S.String),
+          DomainName: S.optional(S.String),
+          PrevalidationType: S.optional(PrevalidationType),
+          PrevalidationDetails: S.optional(PrevalidationDetails),
+          Status: S.optional(AcmeDomainValidationStatus),
+          FailureDetails: S.optional(FailureDetails),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "AcmeDomainValidationSummary",
+      });
+    case 4:
+      return S.Array(AcmeDomainValidationSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AcmeDomainValidations: S.optional(AcmeDomainValidationList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAcmeDomainValidationsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ListAcmeEndpointsRequest" });
+    case 7:
+      return S.Array(AcmeEndpointSummary);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AcmeEndpoints: S.optional(AcmeEndpointList), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListAcmeEndpointsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          AcmeEndpointArn: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAcmeExternalAccountBindingsRequest",
+      });
+    case 2:
+      return S.Array(AcmeExternalAccountBindingSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ExternalAccountBindings: S.optional(AcmeExternalAccountBindingList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAcmeExternalAccountBindingsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateArn: S.String,
+          NextToken: S.optional(S.String),
+          MaxItems: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCertificateDomainValidationsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ValidationEmails: S.optional(ValidationEmailList),
+          ValidationDomain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailValidationChallenge" });
+    case 6:
+      return S.suspend(() => S.Struct({ ResourceRecord: S.optional(ResourceRecord) })).annotate({
+        identifier: "DnsValidationChallenge",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ EmailValidationChallenge: EmailValidationChallenge }),
+        /*@__PURE__*/ S.Struct({ DnsValidationChallenge: DnsValidationChallenge }),
+      ]);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ValidationMethod: S.optional(ValidationMethod),
+          ValidationChallenge: S.optional(ValidationChallenge),
+          ValidationStatus: S.optional(DomainStatus),
+        }),
+      ).annotate({ identifier: "ValidationConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DomainName: S.String,
+          ActiveValidationConfiguration: S.optional(ValidationConfiguration),
+          RequestedValidationConfiguration: S.optional(ValidationConfiguration),
+        }),
+      ).annotate({ identifier: "DomainValidationSummary" });
+    case 2:
+      return S.Array(DomainValidationSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DomainValidationSummaryList: S.optional(DomainValidationSummaryList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCertificateDomainValidationsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          extendedKeyUsage: S.optional(ExtendedKeyUsageFilterList),
+          keyUsage: S.optional(KeyUsageFilterList),
+          keyTypes: S.optional(KeyAlgorithmList),
+          exportOption: S.optional(CertificateExport),
+          managedBy: S.optional(CertificateManagedBy),
+        }),
+      ).annotate({ identifier: "Filters" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateStatuses: S.optional(CertificateStatuses),
+          CertificateKeyPairOrigins: S.optional(CertificateKeyPairOrigins),
+          Includes: S.optional(Filters),
+          NextToken: S.optional(S.String),
+          MaxItems: S.optional(S.Number),
+          SortBy: S.optional(SortBy),
+          SortOrder: S.optional(SortOrder),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({ identifier: "ListCertificatesRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateArn: S.optional(S.String),
+          DomainName: S.optional(S.String),
+          SubjectAlternativeNameSummaries: S.optional(DomainList),
+          HasAdditionalSubjectAlternativeNames: S.optional(S.Boolean),
+          Status: S.optional(CertificateStatus),
+          Type: S.optional(CertificateType),
+          KeyAlgorithm: S.optional(KeyAlgorithm),
+          KeyUsages: S.optional(KeyUsageNames),
+          ExtendedKeyUsages: S.optional(ExtendedKeyUsageNames),
+          ExportOption: S.optional(CertificateExport),
+          InUse: S.optional(S.Boolean),
+          Exported: S.optional(S.Boolean),
+          RenewalEligibility: S.optional(RenewalEligibility),
+          NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ManagedBy: S.optional(CertificateManagedBy),
+          CertificateKeyPairOrigin: S.optional(CertificateKeyPairOrigin),
+        }),
+      ).annotate({ identifier: "CertificateSummary" });
+    case 7:
+      return S.Array(CertificateSummary);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          CertificateSummaryList: S.optional(CertificateSummaryList),
+        }),
+      ).annotate({ identifier: "ListCertificatesResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForCertificateRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+        identifier: "ListTagsForCertificateResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ExpiryEvents: S.optional(ExpiryEventsConfiguration),
+          IdempotencyToken: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutAccountConfigurationRequest",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PutAccountConfigurationResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "RemoveTagsFromCertificateRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({ identifier: "RenewCertificateRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String, ValidationDomain: S.String }),
+      ).annotate({ identifier: "DomainValidationOption" });
+    case 1:
+      return S.Array(DomainValidationOption);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DomainName: S.String,
+          ValidationMethod: S.optional(ValidationMethod),
+          SubjectAlternativeNames: S.optional(DomainList),
+          IdempotencyToken: S.optional(S.String),
+          DomainValidationOptions: S.optional(DomainValidationOptionList),
+          Options: S.optional(CertificateOptions),
+          CertificateAuthorityArn: S.optional(S.String),
+          Tags: S.optional(TagList),
+          KeyAlgorithm: S.optional(KeyAlgorithm),
+          ManagedBy: S.optional(CertificateManagedBy),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "RequestCertificateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String, Domain: S.String, ValidationDomain: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ResendValidationEmailRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AcmeEndpointArn: S.String, AccountUrl: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({ identifier: "RevokeAcmeAccountRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "RevokeAcmeExternalAccountBindingRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String, RevocationReason: RevocationReason }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({ identifier: "RevokeCertificateRequest" });
+    case 7:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => CertificateFilterStatement).annotate({
+          identifier: "CertificateFilterStatement",
+        }),
+      );
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Value: S.String, ComparisonOperator: ComparisonOperator }),
+      ).annotate({ identifier: "CommonNameFilter" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ CommonName: CommonNameFilter })]);
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ DnsName: DnsNameFilter })]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Start: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          End: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "TimestampRange" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Subject: SubjectFilter }),
+        /*@__PURE__*/ S.Struct({ SubjectAlternativeName: SubjectAlternativeNameFilter }),
+        /*@__PURE__*/ S.Struct({ ExtendedKeyUsage: ExtendedKeyUsageName }),
+        /*@__PURE__*/ S.Struct({ KeyUsage: KeyUsageName }),
+        /*@__PURE__*/ S.Struct({ KeyAlgorithm: KeyAlgorithm }),
+        /*@__PURE__*/ S.Struct({ SerialNumber: S.String }),
+        /*@__PURE__*/ S.Struct({ NotAfter: TimestampRange }),
+        /*@__PURE__*/ S.Struct({ NotBefore: TimestampRange }),
+      ]);
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Status: CertificateStatus }),
+        /*@__PURE__*/ S.Struct({ RenewalStatus: RenewalStatus }),
+        /*@__PURE__*/ S.Struct({ Type: CertificateType }),
+        /*@__PURE__*/ S.Struct({ InUse: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ Exported: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ ExportOption: CertificateExport }),
+        /*@__PURE__*/ S.Struct({ ManagedBy: CertificateManagedBy }),
+        /*@__PURE__*/ S.Struct({ ValidationMethod: ValidationMethod }),
+        /*@__PURE__*/ S.Struct({ CertificateKeyPairOrigin: CertificateKeyPairOrigin }),
+        /*@__PURE__*/ S.Struct({ AcmeEndpointArn: S.String }),
+        /*@__PURE__*/ S.Struct({ AcmeAccountId: S.String }),
+      ]);
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ CertificateArn: S.String }),
+        /*@__PURE__*/ S.Struct({ X509AttributeFilter: X509AttributeFilter }),
+        /*@__PURE__*/ S.Struct({ AcmCertificateMetadataFilter: AcmCertificateMetadataFilter }),
+      ]);
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          And: /*@__PURE__*/ S.suspend(() => CertificateFilterStatementList).annotate({
+            identifier: "CertificateFilterStatementList",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          Or: /*@__PURE__*/ S.suspend(() => CertificateFilterStatementList).annotate({
+            identifier: "CertificateFilterStatementList",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          Not: /*@__PURE__*/ S.suspend(() => CertificateFilterStatement).annotate({
+            identifier: "CertificateFilterStatement",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({ Filter: CertificateFilter }),
+      ]);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FilterStatement: S.optional(CertificateFilterStatement),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          SortBy: S.optional(SearchCertificatesSortBy),
+          SortOrder: S.optional(SearchCertificatesSortOrder),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "SearchCertificatesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ObjectIdentifier: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "CustomAttribute" });
+    case 2:
+      return S.Array(CustomAttribute);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CommonName: S.optional(S.String),
+          DomainComponents: S.optional(DomainComponentList),
+          Country: S.optional(S.String),
+          CustomAttributes: S.optional(CustomAttributeList),
+          DistinguishedNameQualifier: S.optional(S.String),
+          GenerationQualifier: S.optional(S.String),
+          GivenName: S.optional(S.String),
+          Initials: S.optional(S.String),
+          Locality: S.optional(S.String),
+          Organization: S.optional(S.String),
+          OrganizationalUnit: S.optional(S.String),
+          Pseudonym: S.optional(S.String),
+          SerialNumber: S.optional(S.String),
+          State: S.optional(S.String),
+          Surname: S.optional(S.String),
+          Title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DistinguishedName" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ DirectoryName: DistinguishedName }),
+        /*@__PURE__*/ S.Struct({ DnsName: S.String }),
+        /*@__PURE__*/ S.Struct({ IpAddress: S.String }),
+        /*@__PURE__*/ S.Struct({ OtherName: OtherName }),
+        /*@__PURE__*/ S.Struct({ RegisteredId: S.String }),
+        /*@__PURE__*/ S.Struct({ Rfc822Name: S.String }),
+        /*@__PURE__*/ S.Struct({ UniformResourceIdentifier: S.String }),
+      ]);
+    case 5:
+      return S.Array(GeneralName);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Issuer: S.optional(DistinguishedName),
+          Subject: S.optional(DistinguishedName),
+          SubjectAlternativeNames: S.optional(GeneralNameList),
+          ExtendedKeyUsages: S.optional(ExtendedKeyUsageNames),
+          KeyAlgorithm: S.optional(KeyAlgorithm),
+          KeyUsages: S.optional(KeyUsageNames),
+          SerialNumber: S.optional(S.String),
+          NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "X509Attributes" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Exported: S.optional(S.Boolean),
+          ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          InUse: S.optional(S.Boolean),
+          IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RenewalEligibility: S.optional(RenewalEligibility),
+          RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(CertificateStatus),
+          RenewalStatus: S.optional(RenewalStatus),
+          Type: S.optional(CertificateType),
+          ExportOption: S.optional(CertificateExport),
+          ManagedBy: S.optional(CertificateManagedBy),
+          ValidationMethod: S.optional(ValidationMethod),
+          CertificateKeyPairOrigin: S.optional(CertificateKeyPairOrigin),
+          AcmeEndpointArn: S.optional(S.String),
+          AcmeAccountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AcmCertificateMetadata" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ AcmCertificateMetadata: AcmCertificateMetadata })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateArn: S.optional(S.String),
+          X509Attributes: S.optional(X509Attributes),
+          CertificateMetadata: S.optional(CertificateMetadata),
+        }),
+      ).annotate({ identifier: "CertificateSearchResult" });
+    case 2:
+      return S.Array(CertificateSearchResult);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Results: S.optional(CertificateSearchResultList),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SearchCertificatesResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AcmeDomainValidationArn: S.String,
+          PrevalidationOptions: S.optional(PrevalidationOptions),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateAcmeDomainValidationRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AcmeEndpointArn: S.String,
+          AuthorizationBehavior: S.optional(AcmeAuthorizationBehavior),
+          Contact: S.optional(AcmeContact),
+          CertificateAuthority: S.optional(CertificateAuthority),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM-ACME" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateAcmeEndpointRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String, Options: CertificateOptions }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ ServiceType: { value: "ACM" } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateCertificateOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
+      ).annotate({ identifier: "ThrottlingReason" });
+    case 2:
+      return S.Array(ThrottlingReason);
+  }
+}

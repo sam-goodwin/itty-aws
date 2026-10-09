@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -81,24 +82,10 @@ export interface ApprovePaidSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-const ApprovePaidSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/ApprovePaidSubscription" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ApprovePaidSubscriptionInput",
-}) as any as S.Schema<ApprovePaidSubscriptionInput>;
+const ApprovePaidSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApprovePaidSubscriptionInput>;
 export type ScheduledChangeType = "DOWNGRADE" | "CANCELLATION" | (string & {});
 const ScheduledChangeType = S.String;
 
@@ -108,19 +95,12 @@ export interface ScheduledChange {
   planTier?: string;
   usageLevel?: string;
 }
-const ScheduledChange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changeType: ScheduledChangeType,
-    effectiveDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    planTier: S.optional(S.String),
-    usageLevel: S.optional(S.String),
-  }),
-).annotate({ identifier: "ScheduledChange" }) as any as S.Schema<ScheduledChange>;
+const ScheduledChange = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ScheduledChange>;
 export type Status = "PENDING_APPROVAL" | "ACTIVE" | "SYNC_IN_PROGRESS" | "FAILED" | (string & {});
 const Status = S.String;
 
 export type ResourceArns = string[];
-const ResourceArns = /*@__PURE__*/ S.Array(S.String);
+const ResourceArns = /*@__PURE__*/ __L.at(__c0, 2);
 export interface Subscription {
   arn: string;
   planFamily: string;
@@ -133,57 +113,25 @@ export interface Subscription {
   createdAt: Date;
   updatedAt: Date;
 }
-const Subscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    planFamily: S.String,
-    planTier: S.String,
-    usageLevel: S.optional(S.String),
-    scheduledChange: S.optional(ScheduledChange),
-    status: Status,
-    statusReason: S.optional(S.String),
-    resourceArns: ResourceArns,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
+const Subscription = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Subscription>;
 export interface ApprovePaidSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-const ApprovePaidSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
-    eTag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({
-  identifier: "ApprovePaidSubscriptionOutput",
-}) as any as S.Schema<ApprovePaidSubscriptionOutput>;
+const ApprovePaidSubscriptionOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ApprovePaidSubscriptionOutput>;
 export interface AssociateResourcesToSubscriptionInput {
   arn: string;
   resourceArns: string[];
   ifMatch: string;
   clientToken?: string;
 }
-const AssociateResourcesToSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    resourceArns: ResourceArns,
-    ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/AssociateResourcesToSubscription" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateResourcesToSubscriptionInput",
-}) as any as S.Schema<AssociateResourcesToSubscriptionInput>;
+const AssociateResourcesToSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateResourcesToSubscriptionInput>;
 export interface AssociateResourcesToSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
@@ -195,48 +143,27 @@ export interface CancelSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-const CancelSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/CancelSubscription" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CancelSubscriptionInput" }) as any as S.Schema<CancelSubscriptionInput>;
+const CancelSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CancelSubscriptionInput>;
 export interface CancelSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-const CancelSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
-    eTag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({ identifier: "CancelSubscriptionOutput" }) as any as S.Schema<CancelSubscriptionOutput>;
+const CancelSubscriptionOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CancelSubscriptionOutput>;
 export interface CancelSubscriptionChangeInput {
   arn: string;
   ifMatch: string;
   clientToken?: string;
 }
-const CancelSubscriptionChangeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/CancelSubscriptionChange" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CancelSubscriptionChangeInput",
-}) as any as S.Schema<CancelSubscriptionChangeInput>;
+const CancelSubscriptionChangeInput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CancelSubscriptionChangeInput>;
 export interface CancelSubscriptionChangeOutput {
   subscription: Subscription;
   eTag: string;
@@ -254,18 +181,10 @@ export interface CreateSubscriptionInput {
   approvalMode?: ApprovalMode;
   clientToken?: string;
 }
-const CreateSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    planFamily: S.String,
-    planTier: S.String,
-    usageLevel: S.optional(S.String),
-    resourceArns: ResourceArns,
-    approvalMode: S.optional(ApprovalMode),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/CreateSubscription" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "CreateSubscriptionInput" }) as any as S.Schema<CreateSubscriptionInput>;
+const CreateSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateSubscriptionInput>;
 export interface CreateSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
@@ -278,25 +197,10 @@ export interface DisassociateResourcesFromSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-const DisassociateResourcesFromSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    resourceArns: ResourceArns,
-    ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/DisassociateResourcesFromSubscription" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateResourcesFromSubscriptionInput",
-}) as any as S.Schema<DisassociateResourcesFromSubscriptionInput>;
+const DisassociateResourcesFromSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DisassociateResourcesFromSubscriptionInput>;
 export interface DisassociateResourcesFromSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
@@ -306,11 +210,7 @@ const DisassociateResourcesFromSubscriptionOutput =
 export interface GetSubscriptionInput {
   arn: string;
 }
-const GetSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/GetSubscription" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetSubscriptionInput" }) as any as S.Schema<GetSubscriptionInput>;
+const GetSubscriptionInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetSubscriptionInput>;
 export interface GetSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
@@ -319,11 +219,10 @@ const GetSubscriptionOutput = CancelSubscriptionOutput as any as S.Schema<GetSub
 export interface ListSubscriptionsInput {
   nextToken?: string;
 }
-const ListSubscriptionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/ListSubscriptions" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListSubscriptionsInput" }) as any as S.Schema<ListSubscriptionsInput>;
+const ListSubscriptionsInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListSubscriptionsInput>;
 export interface SubscriptionSummary {
   arn: string;
   planFamily: string;
@@ -337,30 +236,17 @@ export interface SubscriptionSummary {
   updatedAt: Date;
   eTag: string;
 }
-const SubscriptionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    planFamily: S.String,
-    planTier: S.String,
-    usageLevel: S.optional(S.String),
-    scheduledChange: S.optional(ScheduledChange),
-    status: Status,
-    statusReason: S.optional(S.String),
-    resourceArns: ResourceArns,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    eTag: S.String,
-  }),
-).annotate({ identifier: "SubscriptionSummary" }) as any as S.Schema<SubscriptionSummary>;
+const SubscriptionSummary = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SubscriptionSummary>;
 export type SubscriptionSummaryList = SubscriptionSummary[];
-const SubscriptionSummaryList = /*@__PURE__*/ S.Array(SubscriptionSummary);
+const SubscriptionSummaryList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface ListSubscriptionsOutput {
   subscriptionSummaries: SubscriptionSummary[];
   nextToken?: string;
 }
-const ListSubscriptionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ subscriptionSummaries: SubscriptionSummaryList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSubscriptionsOutput" }) as any as S.Schema<ListSubscriptionsOutput>;
+const ListSubscriptionsOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListSubscriptionsOutput>;
 export interface UpdateSubscriptionInput {
   arn: string;
   planTier: string;
@@ -368,17 +254,10 @@ export interface UpdateSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-const UpdateSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    planTier: S.String,
-    usageLevel: S.optional(S.String),
-    ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/v1/UpdateSubscription" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateSubscriptionInput" }) as any as S.Schema<UpdateSubscriptionInput>;
+const UpdateSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<UpdateSubscriptionInput>;
 export interface UpdateSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
@@ -698,3 +577,244 @@ export const updateSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSubscription",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/ApprovePaidSubscription" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ApprovePaidSubscriptionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          changeType: ScheduledChangeType,
+          effectiveDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          planTier: S.optional(S.String),
+          usageLevel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScheduledChange" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          planFamily: S.String,
+          planTier: S.String,
+          usageLevel: S.optional(S.String),
+          scheduledChange: S.optional(ScheduledChange),
+          status: Status,
+          statusReason: S.optional(S.String),
+          resourceArns: ResourceArns,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "Subscription" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
+          eTag: S.String.pipe(T.HttpHeader("ETag")),
+        }),
+      ).annotate({
+        identifier: "ApprovePaidSubscriptionOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          resourceArns: ResourceArns,
+          ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/AssociateResourcesToSubscription" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateResourcesToSubscriptionInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/CancelSubscription" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CancelSubscriptionInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
+          eTag: S.String.pipe(T.HttpHeader("ETag")),
+        }),
+      ).annotate({ identifier: "CancelSubscriptionOutput" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/CancelSubscriptionChange" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelSubscriptionChangeInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          planFamily: S.String,
+          planTier: S.String,
+          usageLevel: S.optional(S.String),
+          resourceArns: ResourceArns,
+          approvalMode: S.optional(ApprovalMode),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/CreateSubscription" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateSubscriptionInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          resourceArns: ResourceArns,
+          ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/DisassociateResourcesFromSubscription" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateResourcesFromSubscriptionInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/GetSubscription" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSubscriptionInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/ListSubscriptions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListSubscriptionsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          planFamily: S.String,
+          planTier: S.String,
+          usageLevel: S.optional(S.String),
+          scheduledChange: S.optional(ScheduledChange),
+          status: Status,
+          statusReason: S.optional(S.String),
+          resourceArns: ResourceArns,
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          eTag: S.String,
+        }),
+      ).annotate({ identifier: "SubscriptionSummary" });
+    case 6:
+      return S.Array(SubscriptionSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionSummaries: SubscriptionSummaryList,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListSubscriptionsOutput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          planTier: S.String,
+          usageLevel: S.optional(S.String),
+          ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/UpdateSubscription" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSubscriptionInput" });
+  }
+}

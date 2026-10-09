@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -126,76 +127,36 @@ export interface CreateEndpointRequest {
   AccessType?: EndpointAccessType;
   CustomerOwnedIpv4Pool?: string;
 }
-const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OutpostId: S.String,
-    SubnetId: S.String,
-    SecurityGroupId: S.String,
-    AccessType: S.optional(EndpointAccessType),
-    CustomerOwnedIpv4Pool: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/S3Outposts/CreateEndpoint" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateEndpointRequest" }) as any as S.Schema<CreateEndpointRequest>;
+const CreateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateEndpointRequest>;
 export type EndpointArn = string;
 export interface CreateEndpointResult {
   EndpointArn?: string;
 }
-const CreateEndpointResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EndpointArn: S.optional(S.String) }),
-).annotate({ identifier: "CreateEndpointResult" }) as any as S.Schema<CreateEndpointResult>;
+const CreateEndpointResult = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateEndpointResult>;
 export type EndpointId = string;
 export interface DeleteEndpointRequest {
   EndpointId: string;
   OutpostId: string;
 }
-const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndpointId: S.String.pipe(T.HttpQuery("endpointId")),
-    OutpostId: S.String.pipe(T.HttpQuery("outpostId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/S3Outposts/DeleteEndpoint" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteEndpointRequest" }) as any as S.Schema<DeleteEndpointRequest>;
+const DeleteEndpointRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteEndpointRequest>;
 export interface DeleteEndpointResponse {}
-const DeleteEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEndpointResponse",
-}) as any as S.Schema<DeleteEndpointResponse>;
+const DeleteEndpointResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteEndpointResponse>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListEndpointsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/S3Outposts/ListEndpoints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListEndpointsRequest" }) as any as S.Schema<ListEndpointsRequest>;
+const ListEndpointsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListEndpointsRequest>;
 export type CidrBlock = string;
 export type EndpointStatus =
   | "Pending"
@@ -211,11 +172,9 @@ export type NetworkInterfaceId = string;
 export interface NetworkInterface {
   NetworkInterfaceId?: string;
 }
-const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NetworkInterfaceId: S.optional(S.String) }),
-).annotate({ identifier: "NetworkInterface" }) as any as S.Schema<NetworkInterface>;
+const NetworkInterface = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaces = NetworkInterface[];
-const NetworkInterfaces = /*@__PURE__*/ S.Array(NetworkInterface);
+const NetworkInterfaces = /*@__PURE__*/ __L.at(__c0, 6);
 export type VpcId = string;
 export type ErrorCode = string;
 export type Message = string;
@@ -223,9 +182,7 @@ export interface FailedReason {
   ErrorCode?: string;
   Message?: string;
 }
-const FailedReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(S.String) }),
-).annotate({ identifier: "FailedReason" }) as any as S.Schema<FailedReason>;
+const FailedReason = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<FailedReason>;
 export interface Endpoint {
   EndpointArn?: string;
   OutpostsId?: string;
@@ -240,52 +197,22 @@ export interface Endpoint {
   CustomerOwnedIpv4Pool?: string;
   FailedReason?: FailedReason;
 }
-const Endpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndpointArn: S.optional(S.String),
-    OutpostsId: S.optional(S.String),
-    CidrBlock: S.optional(S.String),
-    Status: S.optional(EndpointStatus),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    NetworkInterfaces: S.optional(NetworkInterfaces),
-    VpcId: S.optional(S.String),
-    SubnetId: S.optional(S.String),
-    SecurityGroupId: S.optional(S.String),
-    AccessType: S.optional(EndpointAccessType),
-    CustomerOwnedIpv4Pool: S.optional(S.String),
-    FailedReason: S.optional(FailedReason),
-  }),
-).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
+const Endpoint = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Endpoint>;
 export type Endpoints = Endpoint[];
-const Endpoints = /*@__PURE__*/ S.Array(Endpoint);
+const Endpoints = /*@__PURE__*/ __L.at(__c1, 1);
 export interface ListEndpointsResult {
   Endpoints?: Endpoint[];
   NextToken?: string;
 }
-const ListEndpointsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Endpoints: S.optional(Endpoints), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListEndpointsResult" }) as any as S.Schema<ListEndpointsResult>;
+const ListEndpointsResult = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListEndpointsResult>;
 export interface ListOutpostsWithS3Request {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListOutpostsWithS3Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/S3Outposts/ListOutpostsWithS3" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListOutpostsWithS3Request",
-}) as any as S.Schema<ListOutpostsWithS3Request>;
+const ListOutpostsWithS3Request = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListOutpostsWithS3Request>;
 export type OutpostArn = string;
 export type S3OutpostArn = string;
 export type AwsAccountId = string;
@@ -297,56 +224,34 @@ export interface Outpost {
   OwnerId?: string;
   CapacityInBytes?: number;
 }
-const Outpost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OutpostArn: S.optional(S.String),
-    S3OutpostArn: S.optional(S.String),
-    OutpostId: S.optional(S.String),
-    OwnerId: S.optional(S.String),
-    CapacityInBytes: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Outpost" }) as any as S.Schema<Outpost>;
+const Outpost = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Outpost>;
 export type Outposts = Outpost[];
-const Outposts = /*@__PURE__*/ S.Array(Outpost);
+const Outposts = /*@__PURE__*/ __L.at(__c1, 5);
 export interface ListOutpostsWithS3Result {
   Outposts?: Outpost[];
   NextToken?: string;
 }
-const ListOutpostsWithS3Result = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Outposts: S.optional(Outposts), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListOutpostsWithS3Result" }) as any as S.Schema<ListOutpostsWithS3Result>;
+const ListOutpostsWithS3Result = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListOutpostsWithS3Result>;
 export interface ListSharedEndpointsRequest {
   NextToken?: string;
   MaxResults?: number;
   OutpostId: string;
 }
-const ListSharedEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    OutpostId: S.String.pipe(T.HttpQuery("outpostId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/S3Outposts/ListSharedEndpoints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListSharedEndpointsRequest",
-}) as any as S.Schema<ListSharedEndpointsRequest>;
+const ListSharedEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListSharedEndpointsRequest>;
 export interface ListSharedEndpointsResult {
   Endpoints?: Endpoint[];
   NextToken?: string;
 }
-const ListSharedEndpointsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Endpoints: S.optional(Endpoints), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSharedEndpointsResult",
-}) as any as S.Schema<ListSharedEndpointsResult>;
+const ListSharedEndpointsResult = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListSharedEndpointsResult>;
 export type ErrorMessage = string;
 export type CreateEndpointError =
   | AccessDeniedException
@@ -552,3 +457,168 @@ export const listSharedEndpoints: API.PaginatedOperationMethod<
     pageSize: "MaxResults",
   } as const,
 })) as any;
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OutpostId: S.String,
+          SubnetId: S.String,
+          SecurityGroupId: S.String,
+          AccessType: S.optional(EndpointAccessType),
+          CustomerOwnedIpv4Pool: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/S3Outposts/CreateEndpoint" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateEndpointRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ EndpointArn: S.optional(S.String) })).annotate({
+        identifier: "CreateEndpointResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointId: S.String.pipe(T.HttpQuery("endpointId")),
+          OutpostId: S.String.pipe(T.HttpQuery("outpostId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/S3Outposts/DeleteEndpoint" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteEndpointRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteEndpointResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/S3Outposts/ListEndpoints" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListEndpointsRequest" });
+    case 5:
+      return S.suspend(() => S.Struct({ NetworkInterfaceId: S.optional(S.String) })).annotate({
+        identifier: "NetworkInterface",
+      });
+    case 6:
+      return S.Array(NetworkInterface);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(S.String) }),
+      ).annotate({ identifier: "FailedReason" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointArn: S.optional(S.String),
+          OutpostsId: S.optional(S.String),
+          CidrBlock: S.optional(S.String),
+          Status: S.optional(EndpointStatus),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          NetworkInterfaces: S.optional(NetworkInterfaces),
+          VpcId: S.optional(S.String),
+          SubnetId: S.optional(S.String),
+          SecurityGroupId: S.optional(S.String),
+          AccessType: S.optional(EndpointAccessType),
+          CustomerOwnedIpv4Pool: S.optional(S.String),
+          FailedReason: S.optional(FailedReason),
+        }),
+      ).annotate({ identifier: "Endpoint" });
+    case 1:
+      return S.Array(Endpoint);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Endpoints: S.optional(Endpoints), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEndpointsResult" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/S3Outposts/ListOutpostsWithS3" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListOutpostsWithS3Request",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          OutpostArn: S.optional(S.String),
+          S3OutpostArn: S.optional(S.String),
+          OutpostId: S.optional(S.String),
+          OwnerId: S.optional(S.String),
+          CapacityInBytes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Outpost" });
+    case 5:
+      return S.Array(Outpost);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Outposts: S.optional(Outposts), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListOutpostsWithS3Result" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          OutpostId: S.String.pipe(T.HttpQuery("outpostId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/S3Outposts/ListSharedEndpoints" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListSharedEndpointsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Endpoints: S.optional(Endpoints), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListSharedEndpointsResult",
+      });
+  }
+}

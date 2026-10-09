@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -122,56 +123,41 @@ export class ValidationException
   }) {}
 export type Action = string;
 export type Actions = string[];
-const Actions = /*@__PURE__*/ S.Array(S.String);
+const Actions = /*@__PURE__*/ __L.at(__c0, 0);
 export type ActionSet =
   | { allActions: Record<string, never>; actions?: never }
   | { allActions?: never; actions: string[] };
-const ActionSet = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ allActions: /*@__PURE__*/ S.Struct({}) }),
-  /*@__PURE__*/ S.Struct({ actions: Actions }),
-]);
+const ActionSet = /*@__PURE__*/ __L.at(__c0, 1);
 export type Resource = string;
 export type Resources = string[];
 const Resources = Actions as any as S.Schema<Resources>;
 export type ResourceSet =
   | { allResourcesInRegion: Record<string, never>; resources?: never }
   | { allResourcesInRegion?: never; resources: string[] };
-const ResourceSet = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ allResourcesInRegion: /*@__PURE__*/ S.Struct({}) }),
-  /*@__PURE__*/ S.Struct({ resources: Resources }),
-]);
+const ResourceSet = /*@__PURE__*/ __L.at(__c0, 2);
 export type Condition =
   | { allowAfter: Date; allowBefore?: never }
   | { allowAfter?: never; allowBefore: Date };
-const Condition = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({
-    allowAfter: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-  }),
-  /*@__PURE__*/ S.Struct({
-    allowBefore: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-  }),
-]);
+const Condition = /*@__PURE__*/ __L.at(__c0, 3);
 export type Conditions = Condition[];
-const Conditions = /*@__PURE__*/ S.Array(Condition);
+const Conditions = /*@__PURE__*/ __L.at(__c0, 4);
 export interface Permit {
   actions: ActionSet;
   resources: ResourceSet;
   conditions?: Condition[];
 }
-const Permit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actions: ActionSet, resources: ResourceSet, conditions: S.optional(Conditions) }),
-).annotate({ identifier: "Permit" }) as any as S.Schema<Permit>;
+const Permit = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Permit>;
 export type Name = string;
 export type Description = string;
 export type KmsKeyArn = string;
 export type SigningKeyInfo = { kmsKey: string };
-const SigningKeyInfo = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ kmsKey: S.String })]);
+const SigningKeyInfo = /*@__PURE__*/ __L.at(__c0, 6);
 export type SupportCaseDisplayId = string;
 export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ __L.at(__c0, 7);
 export interface CreateSupportPermitInput {
   permit: Permit;
   name: string;
@@ -181,17 +167,10 @@ export interface CreateSupportPermitInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permit: Permit,
-    name: S.String,
-    description: S.optional(S.String),
-    signingKeyInfo: SigningKeyInfo,
-    supportCaseDisplayId: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/support-permits" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateSupportPermitInput" }) as any as S.Schema<CreateSupportPermitInput>;
+const CreateSupportPermitInput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateSupportPermitInput>;
 export type Arn = string;
 export type SupportPermitStatus = "ACTIVE" | "INACTIVE" | "DELETING" | (string & {});
 const SupportPermitStatus = S.String;
@@ -207,36 +186,17 @@ export interface CreateSupportPermitOutput {
   supportCaseDisplayId?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    description: S.optional(S.String),
-    permit: Permit,
-    status: SupportPermitStatus,
-    signingKeyInfo: SigningKeyInfo,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    supportCaseDisplayId: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "CreateSupportPermitOutput",
-}) as any as S.Schema<CreateSupportPermitOutput>;
+const CreateSupportPermitOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateSupportPermitOutput>;
 export interface DeleteSupportPermitInput {
   supportPermitIdentifier: string;
 }
-const DeleteSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ supportPermitIdentifier: S.String.pipe(T.HttpLabel("supportPermitIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/support-permits/{supportPermitIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteSupportPermitInput" }) as any as S.Schema<DeleteSupportPermitInput>;
+const DeleteSupportPermitInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteSupportPermitInput>;
 export interface DeleteSupportPermitOutput {
   name: string;
   arn: string;
@@ -247,28 +207,14 @@ export interface DeleteSupportPermitOutput {
   createdAt: Date;
   supportCaseDisplayId?: string;
 }
-const DeleteSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    description: S.optional(S.String),
-    permit: Permit,
-    status: SupportPermitStatus,
-    signingKeyInfo: SigningKeyInfo,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    supportCaseDisplayId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteSupportPermitOutput",
-}) as any as S.Schema<DeleteSupportPermitOutput>;
+const DeleteSupportPermitOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteSupportPermitOutput>;
 export interface GetActionInput {
   action: string;
 }
-const GetActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ action: S.String.pipe(T.HttpLabel("action")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/actions/{action}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetActionInput" }) as any as S.Schema<GetActionInput>;
+const GetActionInput = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetActionInput>;
 export type Service = string;
 export type ActionDescription = string;
 export interface GetActionOutput {
@@ -276,25 +222,15 @@ export interface GetActionOutput {
   service: string;
   description: string;
 }
-const GetActionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ action: S.String, service: S.String, description: S.String }),
-).annotate({ identifier: "GetActionOutput" }) as any as S.Schema<GetActionOutput>;
+const GetActionOutput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetActionOutput>;
 export type SupportPermitIdentifier = string;
 export interface GetSupportPermitInput {
   supportPermitIdentifier: string;
 }
-const GetSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ supportPermitIdentifier: S.String.pipe(T.HttpLabel("supportPermitIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/support-permits/{supportPermitIdentifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSupportPermitInput" }) as any as S.Schema<GetSupportPermitInput>;
+const GetSupportPermitInput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetSupportPermitInput>;
 export interface GetSupportPermitOutput {
   name: string;
   arn: string;
@@ -306,19 +242,10 @@ export interface GetSupportPermitOutput {
   supportCaseDisplayId?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GetSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    description: S.optional(S.String),
-    permit: Permit,
-    status: SupportPermitStatus,
-    signingKeyInfo: SigningKeyInfo,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    supportCaseDisplayId: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({ identifier: "GetSupportPermitOutput" }) as any as S.Schema<GetSupportPermitOutput>;
+const GetSupportPermitOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetSupportPermitOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListActionsInput {
@@ -326,13 +253,7 @@ export interface ListActionsInput {
   maxResults?: number;
   service: string;
 }
-const ListActionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    service: S.String.pipe(T.HttpQuery("service")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/actions" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListActionsInput" }) as any as S.Schema<ListActionsInput>;
+const ListActionsInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListActionsInput>;
 export interface ActionSummary {
   action: string;
   service: string;
@@ -340,30 +261,21 @@ export interface ActionSummary {
 }
 const ActionSummary = GetActionOutput as any as S.Schema<ActionSummary>;
 export type ActionSummaries = ActionSummary[];
-const ActionSummaries = /*@__PURE__*/ S.Array(ActionSummary);
+const ActionSummaries = /*@__PURE__*/ __L.at(__c2, 1);
 export interface ListActionsOutput {
   actionSummaries: ActionSummary[];
   nextToken?: string;
 }
-const ListActionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actionSummaries: ActionSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListActionsOutput" }) as any as S.Schema<ListActionsOutput>;
+const ListActionsOutput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListActionsOutput>;
 export interface ListSupportPermitRequestsInput {
   nextToken?: string;
   maxResults?: number;
   supportCaseDisplayId?: string;
 }
-const ListSupportPermitRequestsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    supportCaseDisplayId: S.optional(S.String).pipe(T.HttpQuery("supportCaseDisplayId")),
-  }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/support-permit-requests" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListSupportPermitRequestsInput",
-}) as any as S.Schema<ListSupportPermitRequestsInput>;
+const ListSupportPermitRequestsInput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListSupportPermitRequestsInput>;
 export type RequestArn = string;
 export type SupportPermitRequestStatus =
   | "PENDING"
@@ -381,43 +293,28 @@ export interface SupportPermitRequest {
   createdAt: Date;
   updatedAt: Date;
 }
-const SupportPermitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestArn: S.String,
-    permit: Permit,
-    supportCaseDisplayId: S.String,
-    status: SupportPermitRequestStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "SupportPermitRequest" }) as any as S.Schema<SupportPermitRequest>;
+const SupportPermitRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SupportPermitRequest>;
 export type SupportPermitRequests = SupportPermitRequest[];
-const SupportPermitRequests = /*@__PURE__*/ S.Array(SupportPermitRequest);
+const SupportPermitRequests = /*@__PURE__*/ __L.at(__c2, 5);
 export interface ListSupportPermitRequestsOutput {
   supportPermitRequests: SupportPermitRequest[];
   nextToken?: string;
 }
-const ListSupportPermitRequestsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ supportPermitRequests: SupportPermitRequests, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSupportPermitRequestsOutput",
-}) as any as S.Schema<ListSupportPermitRequestsOutput>;
+const ListSupportPermitRequestsOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListSupportPermitRequestsOutput>;
 export type SupportPermitStatuses = SupportPermitStatus[];
-const SupportPermitStatuses = /*@__PURE__*/ S.Array(SupportPermitStatus);
+const SupportPermitStatuses = /*@__PURE__*/ __L.at(__c2, 7);
 export interface ListSupportPermitsInput {
   nextToken?: string;
   maxResults?: number;
   supportPermitStatuses?: SupportPermitStatus[];
 }
-const ListSupportPermitsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    supportPermitStatuses: S.optional(SupportPermitStatuses).pipe(
-      T.HttpQuery("supportPermitStatuses"),
-    ),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/support-permits" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListSupportPermitsInput" }) as any as S.Schema<ListSupportPermitsInput>;
+const ListSupportPermitsInput = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListSupportPermitsInput>;
 export interface SupportPermitSummary {
   name: string;
   arn: string;
@@ -427,105 +324,71 @@ export interface SupportPermitSummary {
   createdAt: Date;
   supportCaseDisplayId?: string;
 }
-const SupportPermitSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    permit: Permit,
-    status: SupportPermitStatus,
-    signingKeyInfo: SigningKeyInfo,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    supportCaseDisplayId: S.optional(S.String),
-  }),
-).annotate({ identifier: "SupportPermitSummary" }) as any as S.Schema<SupportPermitSummary>;
+const SupportPermitSummary = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SupportPermitSummary>;
 export type SupportPermitSummaries = SupportPermitSummary[];
-const SupportPermitSummaries = /*@__PURE__*/ S.Array(SupportPermitSummary);
+const SupportPermitSummaries = /*@__PURE__*/ __L.at(__c3, 2);
 export interface ListSupportPermitsOutput {
   supportPermits: SupportPermitSummary[];
   nextToken?: string;
 }
-const ListSupportPermitsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ supportPermits: SupportPermitSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSupportPermitsOutput" }) as any as S.Schema<ListSupportPermitsOutput>;
+const ListSupportPermitsOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListSupportPermitsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface RejectSupportPermitRequestInput {
   requestArn: string;
 }
-const RejectSupportPermitRequestInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requestArn: S.String.pipe(T.HttpLabel("requestArn")) }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/support-permit-requests/{requestArn}/reject" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RejectSupportPermitRequestInput",
-}) as any as S.Schema<RejectSupportPermitRequestInput>;
+const RejectSupportPermitRequestInput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<RejectSupportPermitRequestInput>;
 export interface RejectSupportPermitRequestOutput {
   requestArn: string;
 }
-const RejectSupportPermitRequestOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requestArn: S.String }),
-).annotate({
-  identifier: "RejectSupportPermitRequestOutput",
-}) as any as S.Schema<RejectSupportPermitRequestOutput>;
+const RejectSupportPermitRequestOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<RejectSupportPermitRequestOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+const TagResourceOutput = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
 const TagKeyList = Actions as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
 const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface ValidationExceptionField {
   path: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ path: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c4, 4);
 export type CreateSupportPermitError =
   | AccessDeniedException
   | ConflictException
@@ -874,3 +737,318 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ allActions: /*@__PURE__*/ S.Struct({}) }),
+        /*@__PURE__*/ S.Struct({ actions: Actions }),
+      ]);
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ allResourcesInRegion: /*@__PURE__*/ S.Struct({}) }),
+        /*@__PURE__*/ S.Struct({ resources: Resources }),
+      ]);
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          allowAfter: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+        /*@__PURE__*/ S.Struct({
+          allowBefore: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+      ]);
+    case 4:
+      return S.Array(Condition);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          actions: ActionSet,
+          resources: ResourceSet,
+          conditions: S.optional(Conditions),
+        }),
+      ).annotate({ identifier: "Permit" });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ kmsKey: S.String })]);
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permit: Permit,
+          name: S.String,
+          description: S.optional(S.String),
+          signingKeyInfo: SigningKeyInfo,
+          supportCaseDisplayId: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(Tags),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/support-permits" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateSupportPermitInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          description: S.optional(S.String),
+          permit: Permit,
+          status: SupportPermitStatus,
+          signingKeyInfo: SigningKeyInfo,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          supportCaseDisplayId: S.optional(S.String),
+          tags: S.optional(Tags),
+        }),
+      ).annotate({
+        identifier: "CreateSupportPermitOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          supportPermitIdentifier: S.String.pipe(T.HttpLabel("supportPermitIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/support-permits/{supportPermitIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSupportPermitInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          description: S.optional(S.String),
+          permit: Permit,
+          status: SupportPermitStatus,
+          signingKeyInfo: SigningKeyInfo,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          supportCaseDisplayId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeleteSupportPermitOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ action: S.String.pipe(T.HttpLabel("action")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/actions/{action}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetActionInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ action: S.String, service: S.String, description: S.String }),
+      ).annotate({ identifier: "GetActionOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          supportPermitIdentifier: S.String.pipe(T.HttpLabel("supportPermitIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/support-permits/{supportPermitIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSupportPermitInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          description: S.optional(S.String),
+          permit: Permit,
+          status: SupportPermitStatus,
+          signingKeyInfo: SigningKeyInfo,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          supportCaseDisplayId: S.optional(S.String),
+          tags: S.optional(Tags),
+        }),
+      ).annotate({ identifier: "GetSupportPermitOutput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          service: S.String.pipe(T.HttpQuery("service")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/actions" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListActionsInput" });
+    case 1:
+      return S.Array(ActionSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ actionSummaries: ActionSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListActionsOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          supportCaseDisplayId: S.optional(S.String).pipe(T.HttpQuery("supportCaseDisplayId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/support-permit-requests" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListSupportPermitRequestsInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          requestArn: S.String,
+          permit: Permit,
+          supportCaseDisplayId: S.String,
+          status: SupportPermitRequestStatus,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "SupportPermitRequest" });
+    case 5:
+      return S.Array(SupportPermitRequest);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ supportPermitRequests: SupportPermitRequests, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListSupportPermitRequestsOutput",
+      });
+    case 7:
+      return S.Array(SupportPermitStatus);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          supportPermitStatuses: S.optional(SupportPermitStatuses).pipe(
+            T.HttpQuery("supportPermitStatuses"),
+          ),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/support-permits" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListSupportPermitsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          permit: Permit,
+          status: SupportPermitStatus,
+          signingKeyInfo: SigningKeyInfo,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          supportCaseDisplayId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SupportPermitSummary" });
+    case 2:
+      return S.Array(SupportPermitSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ supportPermits: SupportPermitSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSupportPermitsOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 5:
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ requestArn: S.String.pipe(T.HttpLabel("requestArn")) }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/support-permit-requests/{requestArn}/reject" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RejectSupportPermitRequestInput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ requestArn: S.String })).annotate({
+        identifier: "RejectSupportPermitRequestOutput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+    case 3:
+      return S.suspend(() => S.Struct({ path: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 4:
+      return S.Array(ValidationExceptionField);
+  }
+}

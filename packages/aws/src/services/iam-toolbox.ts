@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -101,25 +102,12 @@ export interface GetRequestAuthorizationDetailsInput {
   authorizationId: string;
   nextToken?: string;
 }
-const GetRequestAuthorizationDetailsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorizationId: S.String.pipe(T.HttpLabel("authorizationId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/authorization-details/{authorizationId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetRequestAuthorizationDetailsInput",
-}) as any as S.Schema<GetRequestAuthorizationDetailsInput>;
+const GetRequestAuthorizationDetailsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetRequestAuthorizationDetailsInput>;
 export type AuthorizationContext = { [key: string]: any | undefined };
-const AuthorizationContext = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
+const AuthorizationContext = /*@__PURE__*/ __L.at(__c0, 1);
 export type EvaluatedEffect = "ALLOW" | "EXPLICIT_DENY" | "IMPLICIT_DENY" | (string & {});
 const EvaluatedEffect = S.String;
 
@@ -130,20 +118,16 @@ export interface MatchedStatement {
   sid?: string;
   evaluatedEffect?: StatementEffect;
 }
-const MatchedStatement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sid: S.optional(S.String), evaluatedEffect: S.optional(StatementEffect) }),
-).annotate({ identifier: "MatchedStatement" }) as any as S.Schema<MatchedStatement>;
+const MatchedStatement = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<MatchedStatement>;
 export type MatchedStatementList = MatchedStatement[];
-const MatchedStatementList = /*@__PURE__*/ S.Array(MatchedStatement);
+const MatchedStatementList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface MatchedPolicy {
   uri: string;
   matchedStatements?: MatchedStatement[];
 }
-const MatchedPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ uri: S.String, matchedStatements: S.optional(MatchedStatementList) }),
-).annotate({ identifier: "MatchedPolicy" }) as any as S.Schema<MatchedPolicy>;
+const MatchedPolicy = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MatchedPolicy>;
 export type MatchedPolicyList = MatchedPolicy[];
-const MatchedPolicyList = /*@__PURE__*/ S.Array(MatchedPolicy);
+const MatchedPolicyList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface Evaluation {
   action: string;
   resource: string;
@@ -151,17 +135,9 @@ export interface Evaluation {
   evaluatedEffect?: EvaluatedEffect;
   matchedPolicies?: MatchedPolicy[];
 }
-const Evaluation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    resource: S.String,
-    context: S.optional(AuthorizationContext),
-    evaluatedEffect: S.optional(EvaluatedEffect),
-    matchedPolicies: S.optional(MatchedPolicyList),
-  }),
-).annotate({ identifier: "Evaluation" }) as any as S.Schema<Evaluation>;
+const Evaluation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Evaluation>;
 export type Evaluations = Evaluation[];
-const Evaluations = /*@__PURE__*/ S.Array(Evaluation);
+const Evaluations = /*@__PURE__*/ __L.at(__c0, 7);
 export type PolicyType =
   | "IDENTITY_BASED_POLICY"
   | "RESOURCE_BASED_POLICY"
@@ -176,43 +152,28 @@ const PolicyType = S.String;
 export interface AttachedTo {
   arn?: string;
 }
-const AttachedTo = /*@__PURE__*/ S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
-  identifier: "AttachedTo",
-}) as any as S.Schema<AttachedTo>;
+const AttachedTo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AttachedTo>;
 export type AttachedToList = AttachedTo[];
-const AttachedToList = /*@__PURE__*/ S.Array(AttachedTo);
+const AttachedToList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface PolicyInfo {
   type?: PolicyType;
   inline?: boolean;
   uri?: string;
   attachedTo?: AttachedTo[];
 }
-const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(PolicyType),
-    inline: S.optional(S.Boolean),
-    uri: S.optional(S.String),
-    attachedTo: S.optional(AttachedToList),
-  }),
-).annotate({ identifier: "PolicyInfo" }) as any as S.Schema<PolicyInfo>;
+const PolicyInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PolicyInfo>;
 export type PolicyInfoList = PolicyInfo[];
-const PolicyInfoList = /*@__PURE__*/ S.Array(PolicyInfo);
+const PolicyInfoList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface GetRequestAuthorizationDetailsOutput {
   requestContext: { [key: string]: any | undefined };
   evaluations: Evaluation[];
   policies: PolicyInfo[];
   nextToken?: string;
 }
-const GetRequestAuthorizationDetailsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestContext: AuthorizationContext,
-    evaluations: Evaluations,
-    policies: PolicyInfoList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetRequestAuthorizationDetailsOutput",
-}) as any as S.Schema<GetRequestAuthorizationDetailsOutput>;
+const GetRequestAuthorizationDetailsOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetRequestAuthorizationDetailsOutput>;
 export type GetRequestAuthorizationDetailsError =
   | AccessDeniedException
   | InternalServerException
@@ -248,3 +209,85 @@ export const getRequestAuthorizationDetails: API.PaginatedOperationMethod<
   operationName: "GetRequestAuthorizationDetails",
   pagination: { inputToken: "nextToken", outputToken: "nextToken", items: "evaluations" } as const,
 })) as any;
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationId: S.String.pipe(T.HttpLabel("authorizationId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/authorization-details/{authorizationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetRequestAuthorizationDetailsInput",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ sid: S.optional(S.String), evaluatedEffect: S.optional(StatementEffect) }),
+      ).annotate({ identifier: "MatchedStatement" });
+    case 3:
+      return S.Array(MatchedStatement);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ uri: S.String, matchedStatements: S.optional(MatchedStatementList) }),
+      ).annotate({ identifier: "MatchedPolicy" });
+    case 5:
+      return S.Array(MatchedPolicy);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          resource: S.String,
+          context: S.optional(AuthorizationContext),
+          evaluatedEffect: S.optional(EvaluatedEffect),
+          matchedPolicies: S.optional(MatchedPolicyList),
+        }),
+      ).annotate({ identifier: "Evaluation" });
+    case 7:
+      return S.Array(Evaluation);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
+        identifier: "AttachedTo",
+      });
+    case 1:
+      return S.Array(AttachedTo);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(PolicyType),
+          inline: S.optional(S.Boolean),
+          uri: S.optional(S.String),
+          attachedTo: S.optional(AttachedToList),
+        }),
+      ).annotate({ identifier: "PolicyInfo" });
+    case 3:
+      return S.Array(PolicyInfo);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          requestContext: AuthorizationContext,
+          evaluations: Evaluations,
+          policies: PolicyInfoList,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetRequestAuthorizationDetailsOutput",
+      });
+  }
+}

@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -289,13 +290,10 @@ export type RequestToken = string;
 export interface CancelResourceRequestInput {
   RequestToken: string;
 }
-const CancelResourceRequestInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RequestToken: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CancelResourceRequestInput",
-}) as any as S.Schema<CancelResourceRequestInput>;
+const CancelResourceRequestInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelResourceRequestInput>;
 export type TypeName = string;
 export type Identifier = string;
 export type Operation = string;
@@ -316,29 +314,14 @@ export interface ProgressEvent {
   ErrorCode?: string;
   RetryAfter?: Date;
 }
-const ProgressEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TypeName: S.optional(S.String),
-    Identifier: S.optional(S.String),
-    RequestToken: S.optional(S.String),
-    HooksRequestToken: S.optional(S.String),
-    Operation: S.optional(S.String),
-    OperationStatus: S.optional(S.String),
-    EventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ResourceModel: S.optional(SensitiveString),
-    StatusMessage: S.optional(S.String),
-    ErrorCode: S.optional(S.String),
-    RetryAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ProgressEvent" }) as any as S.Schema<ProgressEvent>;
+const ProgressEvent = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ProgressEvent>;
 export interface CancelResourceRequestOutput {
   ProgressEvent?: ProgressEvent;
 }
-const CancelResourceRequestOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
-).annotate({
-  identifier: "CancelResourceRequestOutput",
-}) as any as S.Schema<CancelResourceRequestOutput>;
+const CancelResourceRequestOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CancelResourceRequestOutput>;
 export type TypeVersionId = string;
 export type RoleArn = string;
 export type ClientToken = string;
@@ -349,21 +332,11 @@ export interface CreateResourceInput {
   ClientToken?: string;
   DesiredState: string | redacted.Redacted<string>;
 }
-const CreateResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TypeName: S.String,
-    TypeVersionId: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    DesiredState: SensitiveString,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateResourceInput" }) as any as S.Schema<CreateResourceInput>;
+const CreateResourceInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateResourceInput>;
 export interface CreateResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
-const CreateResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
-).annotate({ identifier: "CreateResourceOutput" }) as any as S.Schema<CreateResourceOutput>;
+const CreateResourceOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateResourceOutput>;
 export interface DeleteResourceInput {
   TypeName: string;
   TypeVersionId?: string;
@@ -371,15 +344,7 @@ export interface DeleteResourceInput {
   ClientToken?: string;
   Identifier: string;
 }
-const DeleteResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TypeName: S.String,
-    TypeVersionId: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Identifier: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "DeleteResourceInput" }) as any as S.Schema<DeleteResourceInput>;
+const DeleteResourceInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteResourceInput>;
 export interface DeleteResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
@@ -390,41 +355,24 @@ export interface GetResourceInput {
   RoleArn?: string;
   Identifier: string;
 }
-const GetResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TypeName: S.String,
-    TypeVersionId: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    Identifier: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetResourceInput" }) as any as S.Schema<GetResourceInput>;
+const GetResourceInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetResourceInput>;
 export interface ResourceDescription {
   Identifier?: string;
   Properties?: string | redacted.Redacted<string>;
 }
-const ResourceDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.optional(S.String), Properties: S.optional(SensitiveString) }),
-).annotate({ identifier: "ResourceDescription" }) as any as S.Schema<ResourceDescription>;
+const ResourceDescription = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ResourceDescription>;
 export interface GetResourceOutput {
   TypeName?: string;
   ResourceDescription?: ResourceDescription;
 }
-const GetResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TypeName: S.optional(S.String),
-    ResourceDescription: S.optional(ResourceDescription),
-  }),
-).annotate({ identifier: "GetResourceOutput" }) as any as S.Schema<GetResourceOutput>;
+const GetResourceOutput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetResourceOutput>;
 export interface GetResourceRequestStatusInput {
   RequestToken: string;
 }
-const GetResourceRequestStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RequestToken: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetResourceRequestStatusInput",
-}) as any as S.Schema<GetResourceRequestStatusInput>;
+const GetResourceRequestStatusInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetResourceRequestStatusInput>;
 export type HookTypeArn = string;
 export type HookInvocationPoint = string;
 export type HookStatus = string;
@@ -439,78 +387,50 @@ export interface HookProgressEvent {
   HookStatusMessage?: string;
   FailureMode?: string;
 }
-const HookProgressEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HookTypeName: S.optional(S.String),
-    HookTypeVersionId: S.optional(S.String),
-    HookTypeArn: S.optional(S.String),
-    InvocationPoint: S.optional(S.String),
-    HookStatus: S.optional(S.String),
-    HookEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    HookStatusMessage: S.optional(S.String),
-    FailureMode: S.optional(S.String),
-  }),
-).annotate({ identifier: "HookProgressEvent" }) as any as S.Schema<HookProgressEvent>;
+const HookProgressEvent = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<HookProgressEvent>;
 export type HooksProgressEvent = HookProgressEvent[];
-const HooksProgressEvent = /*@__PURE__*/ S.Array(HookProgressEvent);
+const HooksProgressEvent = /*@__PURE__*/ __L.at(__c1, 3);
 export interface GetResourceRequestStatusOutput {
   ProgressEvent?: ProgressEvent;
   HooksProgressEvent?: HookProgressEvent[];
 }
-const GetResourceRequestStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProgressEvent: S.optional(ProgressEvent),
-    HooksProgressEvent: S.optional(HooksProgressEvent),
-  }),
-).annotate({
-  identifier: "GetResourceRequestStatusOutput",
-}) as any as S.Schema<GetResourceRequestStatusOutput>;
+const GetResourceRequestStatusOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetResourceRequestStatusOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export type Operations = string[];
-const Operations = /*@__PURE__*/ S.Array(S.String);
+const Operations = /*@__PURE__*/ __L.at(__c1, 5);
 export type OperationStatuses = string[];
 const OperationStatuses = Operations as any as S.Schema<OperationStatuses>;
 export interface ResourceRequestStatusFilter {
   Operations?: string[];
   OperationStatuses?: string[];
 }
-const ResourceRequestStatusFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Operations: S.optional(Operations),
-    OperationStatuses: S.optional(OperationStatuses),
-  }),
-).annotate({
-  identifier: "ResourceRequestStatusFilter",
-}) as any as S.Schema<ResourceRequestStatusFilter>;
+const ResourceRequestStatusFilter = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ResourceRequestStatusFilter>;
 export interface ListResourceRequestsInput {
   MaxResults?: number;
   NextToken?: string;
   ResourceRequestStatusFilter?: ResourceRequestStatusFilter;
 }
-const ListResourceRequestsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    ResourceRequestStatusFilter: S.optional(ResourceRequestStatusFilter),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ListResourceRequestsInput",
-}) as any as S.Schema<ListResourceRequestsInput>;
+const ListResourceRequestsInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListResourceRequestsInput>;
 export type ResourceRequestStatusSummaries = ProgressEvent[];
-const ResourceRequestStatusSummaries = /*@__PURE__*/ S.Array(ProgressEvent);
+const ResourceRequestStatusSummaries = /*@__PURE__*/ __L.at(__c2, 0);
 export interface ListResourceRequestsOutput {
   ResourceRequestStatusSummaries?: ProgressEvent[];
   NextToken?: string;
 }
-const ListResourceRequestsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceRequestStatusSummaries: S.optional(ResourceRequestStatusSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListResourceRequestsOutput",
-}) as any as S.Schema<ListResourceRequestsOutput>;
+const ListResourceRequestsOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListResourceRequestsOutput>;
 export type HandlerNextToken = string;
 export interface ListResourcesInput {
   TypeName: string;
@@ -520,30 +440,15 @@ export interface ListResourcesInput {
   MaxResults?: number;
   ResourceModel?: string | redacted.Redacted<string>;
 }
-const ListResourcesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TypeName: S.String,
-    TypeVersionId: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    ResourceModel: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListResourcesInput" }) as any as S.Schema<ListResourcesInput>;
+const ListResourcesInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListResourcesInput>;
 export type ResourceDescriptions = ResourceDescription[];
-const ResourceDescriptions = /*@__PURE__*/ S.Array(ResourceDescription);
+const ResourceDescriptions = /*@__PURE__*/ __L.at(__c2, 3);
 export interface ListResourcesOutput {
   TypeName?: string;
   ResourceDescriptions?: ResourceDescription[];
   NextToken?: string;
 }
-const ListResourcesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TypeName: S.optional(S.String),
-    ResourceDescriptions: S.optional(ResourceDescriptions),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListResourcesOutput" }) as any as S.Schema<ListResourcesOutput>;
+const ListResourcesOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListResourcesOutput>;
 export type PatchDocument = string | redacted.Redacted<string>;
 export interface UpdateResourceInput {
   TypeName: string;
@@ -553,16 +458,7 @@ export interface UpdateResourceInput {
   Identifier: string;
   PatchDocument: string | redacted.Redacted<string>;
 }
-const UpdateResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TypeName: S.String,
-    TypeVersionId: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Identifier: S.String,
-    PatchDocument: SensitiveString,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateResourceInput" }) as any as S.Schema<UpdateResourceInput>;
+const UpdateResourceInput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<UpdateResourceInput>;
 export interface UpdateResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
@@ -962,3 +858,185 @@ export const updateResource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResource",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RequestToken: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CancelResourceRequestInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TypeName: S.optional(S.String),
+          Identifier: S.optional(S.String),
+          RequestToken: S.optional(S.String),
+          HooksRequestToken: S.optional(S.String),
+          Operation: S.optional(S.String),
+          OperationStatus: S.optional(S.String),
+          EventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ResourceModel: S.optional(SensitiveString),
+          StatusMessage: S.optional(S.String),
+          ErrorCode: S.optional(S.String),
+          RetryAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ProgressEvent" });
+    case 2:
+      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(ProgressEvent) })).annotate({
+        identifier: "CancelResourceRequestOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TypeName: S.String,
+          TypeVersionId: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          DesiredState: SensitiveString,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateResourceInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(ProgressEvent) })).annotate({
+        identifier: "CreateResourceOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TypeName: S.String,
+          TypeVersionId: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Identifier: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteResourceInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          TypeName: S.String,
+          TypeVersionId: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          Identifier: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetResourceInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.optional(S.String), Properties: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "ResourceDescription" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TypeName: S.optional(S.String),
+          ResourceDescription: S.optional(ResourceDescription),
+        }),
+      ).annotate({ identifier: "GetResourceOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ RequestToken: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetResourceRequestStatusInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          HookTypeName: S.optional(S.String),
+          HookTypeVersionId: S.optional(S.String),
+          HookTypeArn: S.optional(S.String),
+          InvocationPoint: S.optional(S.String),
+          HookStatus: S.optional(S.String),
+          HookEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          HookStatusMessage: S.optional(S.String),
+          FailureMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HookProgressEvent" });
+    case 3:
+      return S.Array(HookProgressEvent);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ProgressEvent: S.optional(ProgressEvent),
+          HooksProgressEvent: S.optional(HooksProgressEvent),
+        }),
+      ).annotate({
+        identifier: "GetResourceRequestStatusOutput",
+      });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Operations: S.optional(Operations),
+          OperationStatuses: S.optional(OperationStatuses),
+        }),
+      ).annotate({
+        identifier: "ResourceRequestStatusFilter",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          ResourceRequestStatusFilter: S.optional(ResourceRequestStatusFilter),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListResourceRequestsInput",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ProgressEvent);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceRequestStatusSummaries: S.optional(ResourceRequestStatusSummaries),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListResourceRequestsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TypeName: S.String,
+          TypeVersionId: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          ResourceModel: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListResourcesInput" });
+    case 3:
+      return S.Array(ResourceDescription);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TypeName: S.optional(S.String),
+          ResourceDescriptions: S.optional(ResourceDescriptions),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListResourcesOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TypeName: S.String,
+          TypeVersionId: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Identifier: S.String,
+          PatchDocument: SensitiveString,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateResourceInput" });
+  }
+}

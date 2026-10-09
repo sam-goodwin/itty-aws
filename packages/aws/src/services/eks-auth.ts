@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -125,61 +126,35 @@ export interface AssumeRoleForPodIdentityRequest {
   instanceId?: string;
   zone?: string;
 }
-const AssumeRoleForPodIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterName: S.String.pipe(T.HttpLabel("clusterName")),
-    token: SensitiveString,
-    eksNodeName: S.optional(S.String),
-    instanceId: S.optional(S.String),
-    zone: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/clusters/{clusterName}/assume-role-for-pod-identity" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssumeRoleForPodIdentityRequest",
-}) as any as S.Schema<AssumeRoleForPodIdentityRequest>;
+const AssumeRoleForPodIdentityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssumeRoleForPodIdentityRequest>;
 export interface Subject {
   namespace: string;
   serviceAccount: string;
 }
-const Subject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ namespace: S.String, serviceAccount: S.String }),
-).annotate({ identifier: "Subject" }) as any as S.Schema<Subject>;
+const Subject = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Subject>;
 export interface PodIdentityAssociation {
   associationArn: string;
   associationId: string;
 }
-const PodIdentityAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ associationArn: S.String, associationId: S.String }),
-).annotate({ identifier: "PodIdentityAssociation" }) as any as S.Schema<PodIdentityAssociation>;
+const PodIdentityAssociation = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PodIdentityAssociation>;
 export interface AssumedRoleUser {
   arn: string;
   assumeRoleId: string;
 }
-const AssumedRoleUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, assumeRoleId: S.String }),
-).annotate({ identifier: "AssumedRoleUser" }) as any as S.Schema<AssumedRoleUser>;
+const AssumedRoleUser = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AssumedRoleUser>;
 export interface Credentials {
   sessionToken: string | redacted.Redacted<string>;
   secretAccessKey: string | redacted.Redacted<string>;
   accessKeyId: string;
   expiration: Date;
 }
-const Credentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionToken: SensitiveString,
-    secretAccessKey: SensitiveString,
-    accessKeyId: S.String,
-    expiration: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "Credentials" }) as any as S.Schema<Credentials>;
+const Credentials = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Credentials>;
 export interface AssumeRoleForPodIdentityResponse {
   subject: Subject;
   audience: string;
@@ -187,17 +162,10 @@ export interface AssumeRoleForPodIdentityResponse {
   assumedRoleUser: AssumedRoleUser;
   credentials: Credentials;
 }
-const AssumeRoleForPodIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subject: Subject,
-    audience: S.String,
-    podIdentityAssociation: PodIdentityAssociation,
-    assumedRoleUser: AssumedRoleUser,
-    credentials: Credentials,
-  }),
-).annotate({
-  identifier: "AssumeRoleForPodIdentityResponse",
-}) as any as S.Schema<AssumeRoleForPodIdentityResponse>;
+const AssumeRoleForPodIdentityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssumeRoleForPodIdentityResponse>;
 export type AssumeRoleForPodIdentityError =
   | AccessDeniedException
   | ExpiredTokenException
@@ -237,3 +205,63 @@ export const assumeRoleForPodIdentity: API.OperationMethod<
   retry: Retry,
   operationName: "AssumeRoleForPodIdentity",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterName: S.String.pipe(T.HttpLabel("clusterName")),
+          token: SensitiveString,
+          eksNodeName: S.optional(S.String),
+          instanceId: S.optional(S.String),
+          zone: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/clusters/{clusterName}/assume-role-for-pod-identity" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssumeRoleForPodIdentityRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ namespace: S.String, serviceAccount: S.String })).annotate({
+        identifier: "Subject",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ associationArn: S.String, associationId: S.String }),
+      ).annotate({ identifier: "PodIdentityAssociation" });
+    case 3:
+      return S.suspend(() => S.Struct({ arn: S.String, assumeRoleId: S.String })).annotate({
+        identifier: "AssumedRoleUser",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sessionToken: SensitiveString,
+          secretAccessKey: SensitiveString,
+          accessKeyId: S.String,
+          expiration: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "Credentials" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          subject: Subject,
+          audience: S.String,
+          podIdentityAssociation: PodIdentityAssociation,
+          assumedRoleUser: AssumedRoleUser,
+          credentials: Credentials,
+        }),
+      ).annotate({
+        identifier: "AssumeRoleForPodIdentityResponse",
+      });
+  }
+}

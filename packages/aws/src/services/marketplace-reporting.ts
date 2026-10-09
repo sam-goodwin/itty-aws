@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -102,28 +103,24 @@ export class UnauthorizedException
 export type DashboardIdentifier = string;
 export type EmbeddingDomain = string;
 export type EmbeddingDomains = string[];
-const EmbeddingDomains = /*@__PURE__*/ S.Array(S.String);
+const EmbeddingDomains = /*@__PURE__*/ __L.at(__c0, 0);
 export interface GetBuyerDashboardInput {
   dashboardIdentifier: string;
   embeddingDomains: string[];
 }
-const GetBuyerDashboardInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dashboardIdentifier: S.String, embeddingDomains: EmbeddingDomains }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/getBuyerDashboard" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetBuyerDashboardInput" }) as any as S.Schema<GetBuyerDashboardInput>;
+const GetBuyerDashboardInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetBuyerDashboardInput>;
 export interface GetBuyerDashboardOutput {
   embedUrl: string;
   dashboardIdentifier: string;
   embeddingDomains: string[];
 }
-const GetBuyerDashboardOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    embedUrl: S.String,
-    dashboardIdentifier: S.String,
-    embeddingDomains: EmbeddingDomains,
-  }),
-).annotate({ identifier: "GetBuyerDashboardOutput" }) as any as S.Schema<GetBuyerDashboardOutput>;
+const GetBuyerDashboardOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetBuyerDashboardOutput>;
 export type GetBuyerDashboardError =
   | AccessDeniedException
   | BadRequestException
@@ -161,3 +158,32 @@ export const getBuyerDashboard: API.OperationMethod<
   retry: Retry,
   operationName: "GetBuyerDashboard",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ dashboardIdentifier: S.String, embeddingDomains: EmbeddingDomains }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/getBuyerDashboard" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetBuyerDashboardInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          embedUrl: S.String,
+          dashboardIdentifier: S.String,
+          embeddingDomains: EmbeddingDomains,
+        }),
+      ).annotate({ identifier: "GetBuyerDashboardOutput" });
+  }
+}

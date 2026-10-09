@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -111,24 +112,16 @@ export interface AcceptRule {
   rule?: AcceptRuleBehavior;
   threshold?: number;
 }
-const AcceptRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ rule: S.optional(AcceptRuleBehavior), threshold: S.optional(S.Number) }),
-).annotate({ identifier: "AcceptRule" }) as any as S.Schema<AcceptRule>;
+const AcceptRule = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AcceptRule>;
 export type EditedValue = string | redacted.Redacted<string>;
 export interface AcceptChoice {
   predictionTarget?: string;
   predictionChoice?: number;
   editedValue?: string | redacted.Redacted<string>;
 }
-const AcceptChoice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predictionTarget: S.optional(S.String),
-    predictionChoice: S.optional(S.Number),
-    editedValue: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "AcceptChoice" }) as any as S.Schema<AcceptChoice>;
+const AcceptChoice = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AcceptChoice>;
 export type AcceptChoices = AcceptChoice[];
-const AcceptChoices = /*@__PURE__*/ S.Array(AcceptChoice);
+const AcceptChoices = /*@__PURE__*/ __L.at(__c0, 2);
 export type ClientToken = string;
 export interface AcceptPredictionsInput {
   domainIdentifier: string;
@@ -138,67 +131,46 @@ export interface AcceptPredictionsInput {
   acceptChoices?: AcceptChoice[];
   clientToken?: string;
 }
-const AcceptPredictionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
-    acceptRule: S.optional(AcceptRule),
-    acceptChoices: S.optional(AcceptChoices),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/assets/{identifier}/accept-predictions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "AcceptPredictionsInput" }) as any as S.Schema<AcceptPredictionsInput>;
+const AcceptPredictionsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AcceptPredictionsInput>;
 export type AssetId = string;
 export interface AcceptPredictionsOutput {
   domainId: string;
   assetId: string;
   revision: string;
 }
-const AcceptPredictionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainId: S.String, assetId: S.String, revision: S.String }),
-).annotate({ identifier: "AcceptPredictionsOutput" }) as any as S.Schema<AcceptPredictionsOutput>;
+const AcceptPredictionsOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AcceptPredictionsOutput>;
 export type SubscriptionRequestId = string;
 export type DecisionComment = string | redacted.Redacted<string>;
 export type FilterId = string;
 export type FilterIds = string[];
-const FilterIds = /*@__PURE__*/ S.Array(S.String);
+const FilterIds = /*@__PURE__*/ __L.at(__c0, 5);
 export interface AcceptedAssetScope {
   assetId: string;
   filterIds: string[];
 }
-const AcceptedAssetScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ assetId: S.String, filterIds: FilterIds }),
-).annotate({ identifier: "AcceptedAssetScope" }) as any as S.Schema<AcceptedAssetScope>;
+const AcceptedAssetScope = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AcceptedAssetScope>;
 export type AcceptedAssetScopes = AcceptedAssetScope[];
-const AcceptedAssetScopes = /*@__PURE__*/ S.Array(AcceptedAssetScope);
+const AcceptedAssetScopes = /*@__PURE__*/ __L.at(__c0, 7);
 export type S3Permission = "READ" | "WRITE" | (string & {});
 const S3Permission = S.String;
 
 export type S3Permissions = S3Permission[];
-const S3Permissions = /*@__PURE__*/ S.Array(S3Permission);
+const S3Permissions = /*@__PURE__*/ __L.at(__c1, 0);
 export type Permissions = { s3: S3Permission[] };
-const Permissions = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ s3: S3Permissions })]);
+const Permissions = /*@__PURE__*/ __L.at(__c1, 1);
 export interface AssetPermission {
   assetId: string;
   permissions: Permissions;
 }
-const AssetPermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ assetId: S.String, permissions: Permissions }),
-).annotate({ identifier: "AssetPermission" }) as any as S.Schema<AssetPermission>;
+const AssetPermission = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AssetPermission>;
 export type AssetPermissions = AssetPermission[];
-const AssetPermissions = /*@__PURE__*/ S.Array(AssetPermission);
+const AssetPermissions = /*@__PURE__*/ __L.at(__c1, 3);
 export interface AcceptSubscriptionRequestInput {
   domainIdentifier: string;
   identifier: string;
@@ -206,29 +178,10 @@ export interface AcceptSubscriptionRequestInput {
   assetScopes?: AcceptedAssetScope[];
   assetPermissions?: AssetPermission[];
 }
-const AcceptSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    decisionComment: S.optional(SensitiveString),
-    assetScopes: S.optional(AcceptedAssetScopes),
-    assetPermissions: S.optional(AssetPermissions),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/accept",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AcceptSubscriptionRequestInput",
-}) as any as S.Schema<AcceptSubscriptionRequestInput>;
+const AcceptSubscriptionRequestInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AcceptSubscriptionRequestInput>;
 export type CreatedBy = string;
 export type UpdatedBy = string;
 export type SubscriptionRequestStatus = "PENDING" | "ACCEPTED" | "REJECTED" | (string & {});
@@ -243,9 +196,7 @@ export interface SubscribedProject {
   id?: string;
   name?: string | redacted.Redacted<string>;
 }
-const SubscribedProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), name: S.optional(SensitiveString) }),
-).annotate({ identifier: "SubscribedProject" }) as any as S.Schema<SubscribedProject>;
+const SubscribedProject = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SubscribedProject>;
 export type UserProfileId = string;
 export interface IamUserProfileDetails {
   arn?: string;
@@ -253,14 +204,10 @@ export interface IamUserProfileDetails {
   sessionName?: string;
   groupProfileId?: string;
 }
-const IamUserProfileDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    principalId: S.optional(S.String),
-    sessionName: S.optional(S.String),
-    groupProfileId: S.optional(S.String),
-  }),
-).annotate({ identifier: "IamUserProfileDetails" }) as any as S.Schema<IamUserProfileDetails>;
+const IamUserProfileDetails = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<IamUserProfileDetails>;
 export type UserProfileName = string | redacted.Redacted<string>;
 export type FirstName = string | redacted.Redacted<string>;
 export type LastName = string | redacted.Redacted<string>;
@@ -269,27 +216,19 @@ export interface SsoUserProfileDetails {
   firstName?: string | redacted.Redacted<string>;
   lastName?: string | redacted.Redacted<string>;
 }
-const SsoUserProfileDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    username: S.optional(SensitiveString),
-    firstName: S.optional(SensitiveString),
-    lastName: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "SsoUserProfileDetails" }) as any as S.Schema<SsoUserProfileDetails>;
+const SsoUserProfileDetails = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SsoUserProfileDetails>;
 export type UserProfileDetails =
   | { iam: IamUserProfileDetails; sso?: never }
   | { iam?: never; sso: SsoUserProfileDetails };
-const UserProfileDetails = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ iam: IamUserProfileDetails }),
-  /*@__PURE__*/ S.Struct({ sso: SsoUserProfileDetails }),
-]);
+const UserProfileDetails = /*@__PURE__*/ __L.at(__c2, 0);
 export interface SubscribedUser {
   id?: string;
   details?: UserProfileDetails;
 }
-const SubscribedUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), details: S.optional(UserProfileDetails) }),
-).annotate({ identifier: "SubscribedUser" }) as any as S.Schema<SubscribedUser>;
+const SubscribedUser = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SubscribedUser>;
 export type GroupProfileId = string;
 export type GroupProfileName = string | redacted.Redacted<string>;
 export interface SubscribedGroup {
@@ -301,22 +240,18 @@ export type IamPrincipalArn = string;
 export interface SubscribedIamPrincipal {
   principalArn?: string;
 }
-const SubscribedIamPrincipal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalArn: S.optional(S.String) }),
-).annotate({ identifier: "SubscribedIamPrincipal" }) as any as S.Schema<SubscribedIamPrincipal>;
+const SubscribedIamPrincipal = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<SubscribedIamPrincipal>;
 export type SubscribedPrincipal =
   | { project: SubscribedProject; user?: never; group?: never; iam?: never }
   | { project?: never; user: SubscribedUser; group?: never; iam?: never }
   | { project?: never; user?: never; group: SubscribedGroup; iam?: never }
   | { project?: never; user?: never; group?: never; iam: SubscribedIamPrincipal };
-const SubscribedPrincipal = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ project: SubscribedProject }),
-  /*@__PURE__*/ S.Struct({ user: SubscribedUser }),
-  /*@__PURE__*/ S.Struct({ group: SubscribedGroup }),
-  /*@__PURE__*/ S.Struct({ iam: SubscribedIamPrincipal }),
-]);
+const SubscribedPrincipal = /*@__PURE__*/ __L.at(__c2, 3);
 export type SubscribedPrincipals = SubscribedPrincipal[];
-const SubscribedPrincipals = /*@__PURE__*/ S.Array(SubscribedPrincipal);
+const SubscribedPrincipals = /*@__PURE__*/ __L.at(__c2, 4);
 export type ListingId = string;
 export type ListingName = string;
 export type Description = string | redacted.Redacted<string>;
@@ -328,11 +263,9 @@ export interface DetailedGlossaryTerm {
   name?: string | redacted.Redacted<string>;
   shortDescription?: string | redacted.Redacted<string>;
 }
-const DetailedGlossaryTerm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(SensitiveString), shortDescription: S.optional(SensitiveString) }),
-).annotate({ identifier: "DetailedGlossaryTerm" }) as any as S.Schema<DetailedGlossaryTerm>;
+const DetailedGlossaryTerm = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DetailedGlossaryTerm>;
 export type DetailedGlossaryTerms = DetailedGlossaryTerm[];
-const DetailedGlossaryTerms = /*@__PURE__*/ S.Array(DetailedGlossaryTerm);
+const DetailedGlossaryTerms = /*@__PURE__*/ __L.at(__c2, 6);
 export interface AssetScope {
   assetId: string;
   filterIds: string[];
@@ -340,15 +273,7 @@ export interface AssetScope {
   scopeName?: string;
   errorMessage?: string;
 }
-const AssetScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assetId: S.String,
-    filterIds: FilterIds,
-    status: S.String,
-    scopeName: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "AssetScope" }) as any as S.Schema<AssetScope>;
+const AssetScope = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AssetScope>;
 export interface SubscribedAssetListing {
   entityId?: string;
   entityRevision?: string;
@@ -358,33 +283,21 @@ export interface SubscribedAssetListing {
   assetScope?: AssetScope;
   permissions?: Permissions;
 }
-const SubscribedAssetListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityId: S.optional(S.String),
-    entityRevision: S.optional(S.String),
-    entityType: S.optional(S.String),
-    forms: S.optional(S.String),
-    glossaryTerms: S.optional(DetailedGlossaryTerms),
-    assetScope: S.optional(AssetScope),
-    permissions: S.optional(Permissions),
-  }),
-).annotate({ identifier: "SubscribedAssetListing" }) as any as S.Schema<SubscribedAssetListing>;
+const SubscribedAssetListing = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<SubscribedAssetListing>;
 export interface AssetInDataProductListingItem {
   entityId?: string;
   entityRevision?: string;
   entityType?: string;
 }
-const AssetInDataProductListingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityId: S.optional(S.String),
-    entityRevision: S.optional(S.String),
-    entityType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AssetInDataProductListingItem",
-}) as any as S.Schema<AssetInDataProductListingItem>;
+const AssetInDataProductListingItem = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<AssetInDataProductListingItem>;
 export type AssetInDataProductListingItems = AssetInDataProductListingItem[];
-const AssetInDataProductListingItems = /*@__PURE__*/ S.Array(AssetInDataProductListingItem);
+const AssetInDataProductListingItems = /*@__PURE__*/ __L.at(__c3, 2);
 export interface SubscribedProductListing {
   entityId?: string;
   entityRevision?: string;
@@ -393,23 +306,14 @@ export interface SubscribedProductListing {
   description?: string;
   assetListings?: AssetInDataProductListingItem[];
 }
-const SubscribedProductListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityId: S.optional(S.String),
-    entityRevision: S.optional(S.String),
-    glossaryTerms: S.optional(DetailedGlossaryTerms),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    assetListings: S.optional(AssetInDataProductListingItems),
-  }),
-).annotate({ identifier: "SubscribedProductListing" }) as any as S.Schema<SubscribedProductListing>;
+const SubscribedProductListing = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<SubscribedProductListing>;
 export type SubscribedListingItem =
   | { assetListing: SubscribedAssetListing; productListing?: never }
   | { assetListing?: never; productListing: SubscribedProductListing };
-const SubscribedListingItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ assetListing: SubscribedAssetListing }),
-  /*@__PURE__*/ S.Struct({ productListing: SubscribedProductListing }),
-]);
+const SubscribedListingItem = /*@__PURE__*/ __L.at(__c3, 4);
 export interface SubscribedListing {
   id: string;
   revision?: string;
@@ -419,19 +323,9 @@ export interface SubscribedListing {
   ownerProjectId: string;
   ownerProjectName?: string;
 }
-const SubscribedListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    revision: S.optional(S.String),
-    name: S.String,
-    description: SensitiveString,
-    item: SubscribedListingItem,
-    ownerProjectId: S.String,
-    ownerProjectName: S.optional(S.String),
-  }),
-).annotate({ identifier: "SubscribedListing" }) as any as S.Schema<SubscribedListing>;
+const SubscribedListing = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SubscribedListing>;
 export type SubscribedListings = SubscribedListing[];
-const SubscribedListings = /*@__PURE__*/ S.Array(SubscribedListing);
+const SubscribedListings = /*@__PURE__*/ __L.at(__c3, 6);
 export type SubscriptionId = string;
 export type FormName = string;
 export type FormTypeName = string | redacted.Redacted<string>;
@@ -441,16 +335,9 @@ export interface FormOutput {
   typeRevision?: string;
   content?: string;
 }
-const FormOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formName: S.String,
-    typeName: S.optional(SensitiveString),
-    typeRevision: S.optional(S.String),
-    content: S.optional(S.String),
-  }),
-).annotate({ identifier: "FormOutput" }) as any as S.Schema<FormOutput>;
+const FormOutput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<FormOutput>;
 export type MetadataForms = FormOutput[];
-const MetadataForms = /*@__PURE__*/ S.Array(FormOutput);
+const MetadataForms = /*@__PURE__*/ __L.at(__c4, 0);
 export interface AcceptSubscriptionRequestOutput {
   id: string;
   createdBy: string;
@@ -467,26 +354,10 @@ export interface AcceptSubscriptionRequestOutput {
   existingSubscriptionId?: string;
   metadataForms?: FormOutput[];
 }
-const AcceptSubscriptionRequestOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdBy: S.String,
-    updatedBy: S.optional(S.String),
-    domainId: S.String,
-    status: SubscriptionRequestStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    requestReason: SensitiveString,
-    subscribedPrincipals: SubscribedPrincipals,
-    subscribedListings: SubscribedListings,
-    reviewerId: S.optional(S.String),
-    decisionComment: S.optional(SensitiveString),
-    existingSubscriptionId: S.optional(S.String),
-    metadataForms: S.optional(MetadataForms),
-  }),
-).annotate({
-  identifier: "AcceptSubscriptionRequestOutput",
-}) as any as S.Schema<AcceptSubscriptionRequestOutput>;
+const AcceptSubscriptionRequestOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<AcceptSubscriptionRequestOutput>;
 export type DataZoneEntityType = "DOMAIN_UNIT" | (string & {});
 const DataZoneEntityType = S.String;
 
@@ -494,23 +365,16 @@ export type UserIdentifier = string;
 export interface OwnerUserProperties {
   userIdentifier: string;
 }
-const OwnerUserProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ userIdentifier: S.String }),
-).annotate({ identifier: "OwnerUserProperties" }) as any as S.Schema<OwnerUserProperties>;
+const OwnerUserProperties = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<OwnerUserProperties>;
 export type GroupIdentifier = string;
 export interface OwnerGroupProperties {
   groupIdentifier: string;
 }
-const OwnerGroupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupIdentifier: S.String }),
-).annotate({ identifier: "OwnerGroupProperties" }) as any as S.Schema<OwnerGroupProperties>;
+const OwnerGroupProperties = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<OwnerGroupProperties>;
 export type OwnerProperties =
   | { user: OwnerUserProperties; group?: never }
   | { user?: never; group: OwnerGroupProperties };
-const OwnerProperties = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ user: OwnerUserProperties }),
-  /*@__PURE__*/ S.Struct({ group: OwnerGroupProperties }),
-]);
+const OwnerProperties = /*@__PURE__*/ __L.at(__c4, 4);
 export interface AddEntityOwnerInput {
   domainIdentifier: string;
   entityType: DataZoneEntityType;
@@ -518,31 +382,9 @@ export interface AddEntityOwnerInput {
   owner: OwnerProperties;
   clientToken?: string;
 }
-const AddEntityOwnerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityType: DataZoneEntityType.pipe(T.HttpLabel("entityType")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    owner: OwnerProperties,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/addOwner",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "AddEntityOwnerInput" }) as any as S.Schema<AddEntityOwnerInput>;
+const AddEntityOwnerInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<AddEntityOwnerInput>;
 export interface AddEntityOwnerOutput {}
-const AddEntityOwnerOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AddEntityOwnerOutput",
-}) as any as S.Schema<AddEntityOwnerOutput>;
+const AddEntityOwnerOutput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AddEntityOwnerOutput>;
 export type TargetEntityType =
   | "DOMAIN_UNIT"
   | "ENVIRONMENT_BLUEPRINT_CONFIGURATION"
@@ -574,14 +416,9 @@ const AllUsersGrantFilter = AddEntityOwnerOutput as any as S.Schema<AllUsersGran
 export type UserPolicyGrantPrincipal =
   | { userIdentifier: string; allUsersGrantFilter?: never }
   | { userIdentifier?: never; allUsersGrantFilter: AllUsersGrantFilter };
-const UserPolicyGrantPrincipal = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ userIdentifier: S.String }),
-  /*@__PURE__*/ S.Struct({ allUsersGrantFilter: AllUsersGrantFilter }),
-]);
+const UserPolicyGrantPrincipal = /*@__PURE__*/ __L.at(__c4, 7);
 export type GroupPolicyGrantPrincipal = { groupIdentifier: string };
-const GroupPolicyGrantPrincipal = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ groupIdentifier: S.String }),
-]);
+const GroupPolicyGrantPrincipal = /*@__PURE__*/ __L.at(__c5, 0);
 export type ProjectDesignation =
   | "OWNER"
   | "CONTRIBUTOR"
@@ -594,29 +431,21 @@ export interface DomainUnitFilterForProject {
   domainUnit: string;
   includeChildDomainUnits?: boolean;
 }
-const DomainUnitFilterForProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainUnit: S.String, includeChildDomainUnits: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "DomainUnitFilterForProject",
-}) as any as S.Schema<DomainUnitFilterForProject>;
+const DomainUnitFilterForProject = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DomainUnitFilterForProject>;
 export type ProjectGrantFilter = { domainUnitFilter: DomainUnitFilterForProject };
-const ProjectGrantFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ domainUnitFilter: DomainUnitFilterForProject }),
-]);
+const ProjectGrantFilter = /*@__PURE__*/ __L.at(__c5, 2);
 export interface ProjectPolicyGrantPrincipal {
   projectDesignation: ProjectDesignation;
   projectIdentifier?: string;
   projectGrantFilter?: ProjectGrantFilter;
 }
-const ProjectPolicyGrantPrincipal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectDesignation: ProjectDesignation,
-    projectIdentifier: S.optional(S.String),
-    projectGrantFilter: S.optional(ProjectGrantFilter),
-  }),
-).annotate({
-  identifier: "ProjectPolicyGrantPrincipal",
-}) as any as S.Schema<ProjectPolicyGrantPrincipal>;
+const ProjectPolicyGrantPrincipal = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ProjectPolicyGrantPrincipal>;
 export type DomainUnitDesignation = "OWNER" | (string & {});
 const DomainUnitDesignation = S.String;
 
@@ -624,42 +453,29 @@ export interface AllDomainUnitsGrantFilter {}
 const AllDomainUnitsGrantFilter =
   AddEntityOwnerOutput as any as S.Schema<AllDomainUnitsGrantFilter>;
 export type DomainUnitGrantFilter = { allDomainUnitsGrantFilter: AllDomainUnitsGrantFilter };
-const DomainUnitGrantFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ allDomainUnitsGrantFilter: AllDomainUnitsGrantFilter }),
-]);
+const DomainUnitGrantFilter = /*@__PURE__*/ __L.at(__c5, 4);
 export interface DomainUnitPolicyGrantPrincipal {
   domainUnitDesignation: DomainUnitDesignation;
   domainUnitIdentifier?: string;
   domainUnitGrantFilter?: DomainUnitGrantFilter;
 }
-const DomainUnitPolicyGrantPrincipal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainUnitDesignation: DomainUnitDesignation,
-    domainUnitIdentifier: S.optional(S.String),
-    domainUnitGrantFilter: S.optional(DomainUnitGrantFilter),
-  }),
-).annotate({
-  identifier: "DomainUnitPolicyGrantPrincipal",
-}) as any as S.Schema<DomainUnitPolicyGrantPrincipal>;
+const DomainUnitPolicyGrantPrincipal = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DomainUnitPolicyGrantPrincipal>;
 export type PolicyGrantPrincipal =
   | { user: UserPolicyGrantPrincipal; group?: never; project?: never; domainUnit?: never }
   | { user?: never; group: GroupPolicyGrantPrincipal; project?: never; domainUnit?: never }
   | { user?: never; group?: never; project: ProjectPolicyGrantPrincipal; domainUnit?: never }
   | { user?: never; group?: never; project?: never; domainUnit: DomainUnitPolicyGrantPrincipal };
-const PolicyGrantPrincipal = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ user: UserPolicyGrantPrincipal }),
-  /*@__PURE__*/ S.Struct({ group: GroupPolicyGrantPrincipal }),
-  /*@__PURE__*/ S.Struct({ project: ProjectPolicyGrantPrincipal }),
-  /*@__PURE__*/ S.Struct({ domainUnit: DomainUnitPolicyGrantPrincipal }),
-]);
+const PolicyGrantPrincipal = /*@__PURE__*/ __L.at(__c5, 6);
 export interface CreateDomainUnitPolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
-const CreateDomainUnitPolicyGrantDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "CreateDomainUnitPolicyGrantDetail",
-}) as any as S.Schema<CreateDomainUnitPolicyGrantDetail>;
+const CreateDomainUnitPolicyGrantDetail = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateDomainUnitPolicyGrantDetail>;
 export interface OverrideDomainUnitOwnersPolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
@@ -698,11 +514,10 @@ const CreateProjectPolicyGrantDetail =
 export interface CreateEnvironmentProfilePolicyGrantDetail {
   domainUnitId?: string;
 }
-const CreateEnvironmentProfilePolicyGrantDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainUnitId: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateEnvironmentProfilePolicyGrantDetail",
-}) as any as S.Schema<CreateEnvironmentProfilePolicyGrantDetail>;
+const CreateEnvironmentProfilePolicyGrantDetail = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateEnvironmentProfilePolicyGrantDetail>;
 export interface Unit {}
 const Unit = AddEntityOwnerOutput as any as S.Schema<Unit>;
 export type ProjectProfileList = string[];
@@ -711,14 +526,10 @@ export interface CreateProjectFromProjectProfilePolicyGrantDetail {
   includeChildDomainUnits?: boolean;
   projectProfiles?: string[];
 }
-const CreateProjectFromProjectProfilePolicyGrantDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeChildDomainUnits: S.optional(S.Boolean),
-    projectProfiles: S.optional(ProjectProfileList),
-  }),
-).annotate({
-  identifier: "CreateProjectFromProjectProfilePolicyGrantDetail",
-}) as any as S.Schema<CreateProjectFromProjectProfilePolicyGrantDetail>;
+const CreateProjectFromProjectProfilePolicyGrantDetail = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateProjectFromProjectProfilePolicyGrantDetail>;
 export interface UseAssetTypePolicyGrantDetail {
   domainUnitId?: string;
 }
@@ -949,24 +760,7 @@ export type PolicyGrantDetail =
       createProjectFromProjectProfile?: never;
       useAssetType: UseAssetTypePolicyGrantDetail;
     };
-const PolicyGrantDetail = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ createDomainUnit: CreateDomainUnitPolicyGrantDetail }),
-  /*@__PURE__*/ S.Struct({ overrideDomainUnitOwners: OverrideDomainUnitOwnersPolicyGrantDetail }),
-  /*@__PURE__*/ S.Struct({ addToProjectMemberPool: AddToProjectMemberPoolPolicyGrantDetail }),
-  /*@__PURE__*/ S.Struct({ overrideProjectOwners: OverrideProjectOwnersPolicyGrantDetail }),
-  /*@__PURE__*/ S.Struct({ createGlossary: CreateGlossaryPolicyGrantDetail }),
-  /*@__PURE__*/ S.Struct({ createFormType: CreateFormTypePolicyGrantDetail }),
-  /*@__PURE__*/ S.Struct({ createAssetType: CreateAssetTypePolicyGrantDetail }),
-  /*@__PURE__*/ S.Struct({ createProject: CreateProjectPolicyGrantDetail }),
-  /*@__PURE__*/ S.Struct({ createEnvironmentProfile: CreateEnvironmentProfilePolicyGrantDetail }),
-  /*@__PURE__*/ S.Struct({ delegateCreateEnvironmentProfile: Unit }),
-  /*@__PURE__*/ S.Struct({ createEnvironment: Unit }),
-  /*@__PURE__*/ S.Struct({ createEnvironmentFromBlueprint: Unit }),
-  /*@__PURE__*/ S.Struct({
-    createProjectFromProjectProfile: CreateProjectFromProjectProfilePolicyGrantDetail,
-  }),
-  /*@__PURE__*/ S.Struct({ useAssetType: UseAssetTypePolicyGrantDetail }),
-]);
+const PolicyGrantDetail = /*@__PURE__*/ __L.at(__c6, 2);
 export interface AddPolicyGrantInput {
   domainIdentifier: string;
   entityType: TargetEntityType;
@@ -976,63 +770,22 @@ export interface AddPolicyGrantInput {
   detail: PolicyGrantDetail;
   clientToken?: string;
 }
-const AddPolicyGrantInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityType: TargetEntityType.pipe(T.HttpLabel("entityType")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    policyType: ManagedPolicyType,
-    principal: PolicyGrantPrincipal,
-    detail: PolicyGrantDetail,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/policies/managed/{entityType}/{entityIdentifier}/addGrant",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "AddPolicyGrantInput" }) as any as S.Schema<AddPolicyGrantInput>;
+const AddPolicyGrantInput = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<AddPolicyGrantInput>;
 export type GrantIdentifier = string;
 export interface AddPolicyGrantOutput {
   grantId?: string;
 }
-const AddPolicyGrantOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ grantId: S.optional(S.String) }),
-).annotate({ identifier: "AddPolicyGrantOutput" }) as any as S.Schema<AddPolicyGrantOutput>;
+const AddPolicyGrantOutput = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<AddPolicyGrantOutput>;
 export type EnvironmentId = string;
 export interface AssociateEnvironmentRoleInput {
   domainIdentifier: string;
   environmentIdentifier: string;
   environmentRoleArn: string;
 }
-const AssociateEnvironmentRoleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    environmentRoleArn: S.String.pipe(T.HttpLabel("environmentRoleArn")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateEnvironmentRoleInput",
-}) as any as S.Schema<AssociateEnvironmentRoleInput>;
+const AssociateEnvironmentRoleInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<AssociateEnvironmentRoleInput>;
 export interface AssociateEnvironmentRoleOutput {}
 const AssociateEnvironmentRoleOutput =
   AddEntityOwnerOutput as any as S.Schema<AssociateEnvironmentRoleOutput>;
@@ -1049,28 +802,10 @@ export interface AssociateGovernedTermsInput {
   entityType: GovernedEntityType;
   governedGlossaryTerms: string[];
 }
-const AssociateGovernedTermsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    entityType: GovernedEntityType.pipe(T.HttpLabel("entityType")),
-    governedGlossaryTerms: GovernedGlossaryTerms,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/associate-governed-terms",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateGovernedTermsInput",
-}) as any as S.Schema<AssociateGovernedTermsInput>;
+const AssociateGovernedTermsInput = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<AssociateGovernedTermsInput>;
 export interface AssociateGovernedTermsOutput {}
 const AssociateGovernedTermsOutput =
   AddEntityOwnerOutput as any as S.Schema<AssociateGovernedTermsOutput>;
@@ -1088,59 +823,38 @@ export interface BatchGetAttributesMetadataInput {
   entityRevision?: string;
   attributeIdentifiers: string[];
 }
-const BatchGetAttributesMetadataInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityType: AttributeEntityType.pipe(T.HttpLabel("entityType")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    entityRevision: S.optional(S.String).pipe(T.HttpQuery("entityRevision")),
-    attributeIdentifiers: AttributesList.pipe(T.HttpQuery("attributeIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/attributes-metadata",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchGetAttributesMetadataInput",
-}) as any as S.Schema<BatchGetAttributesMetadataInput>;
+const BatchGetAttributesMetadataInput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<BatchGetAttributesMetadataInput>;
 export type FormOutputList = FormOutput[];
 const FormOutputList = MetadataForms as any as S.Schema<FormOutputList>;
 export interface BatchGetAttributeOutput {
   attributeIdentifier: string;
   forms?: FormOutput[];
 }
-const BatchGetAttributeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributeIdentifier: S.String, forms: S.optional(FormOutputList) }),
-).annotate({ identifier: "BatchGetAttributeOutput" }) as any as S.Schema<BatchGetAttributeOutput>;
+const BatchGetAttributeOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<BatchGetAttributeOutput>;
 export type BatchGetAttributeItems = BatchGetAttributeOutput[];
-const BatchGetAttributeItems = /*@__PURE__*/ S.Array(BatchGetAttributeOutput);
+const BatchGetAttributeItems = /*@__PURE__*/ __L.at(__c7, 1);
 export interface AttributeError {
   attributeIdentifier: string;
   code: string;
   message: string;
 }
-const AttributeError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributeIdentifier: S.String, code: S.String, message: S.String }),
-).annotate({ identifier: "AttributeError" }) as any as S.Schema<AttributeError>;
+const AttributeError = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AttributeError>;
 export type AttributesErrors = AttributeError[];
-const AttributesErrors = /*@__PURE__*/ S.Array(AttributeError);
+const AttributesErrors = /*@__PURE__*/ __L.at(__c7, 3);
 export interface BatchGetAttributesMetadataOutput {
   attributes?: BatchGetAttributeOutput[];
   errors: AttributeError[];
 }
-const BatchGetAttributesMetadataOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributes: S.optional(BatchGetAttributeItems), errors: AttributesErrors }),
-).annotate({
-  identifier: "BatchGetAttributesMetadataOutput",
-}) as any as S.Schema<BatchGetAttributesMetadataOutput>;
+const BatchGetAttributesMetadataOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<BatchGetAttributesMetadataOutput>;
 export type FormTypeIdentifier = string;
 export type RevisionInput = string;
 export interface FormInput {
@@ -1149,25 +863,16 @@ export interface FormInput {
   typeRevision?: string;
   content?: string;
 }
-const FormInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formName: S.String,
-    typeIdentifier: S.optional(S.String),
-    typeRevision: S.optional(S.String),
-    content: S.optional(S.String),
-  }),
-).annotate({ identifier: "FormInput" }) as any as S.Schema<FormInput>;
+const FormInput = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<FormInput>;
 export type FormInputList = FormInput[];
-const FormInputList = /*@__PURE__*/ S.Array(FormInput);
+const FormInputList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface AttributeInput {
   attributeIdentifier: string;
   forms: FormInput[];
 }
-const AttributeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributeIdentifier: S.String, forms: FormInputList }),
-).annotate({ identifier: "AttributeInput" }) as any as S.Schema<AttributeInput>;
+const AttributeInput = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<AttributeInput>;
 export type Attributes = AttributeInput[];
-const Attributes = /*@__PURE__*/ S.Array(AttributeInput);
+const Attributes = /*@__PURE__*/ __L.at(__c8, 0);
 export interface BatchPutAttributesMetadataInput {
   domainIdentifier: string;
   entityType: AttributeEntityType;
@@ -1175,100 +880,49 @@ export interface BatchPutAttributesMetadataInput {
   clientToken?: string;
   attributes: AttributeInput[];
 }
-const BatchPutAttributesMetadataInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityType: AttributeEntityType.pipe(T.HttpLabel("entityType")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    attributes: Attributes,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/attributes-metadata",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchPutAttributesMetadataInput",
-}) as any as S.Schema<BatchPutAttributesMetadataInput>;
+const BatchPutAttributesMetadataInput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<BatchPutAttributesMetadataInput>;
 export interface BatchPutAttributeOutput {
   attributeIdentifier: string;
 }
-const BatchPutAttributeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributeIdentifier: S.String }),
-).annotate({ identifier: "BatchPutAttributeOutput" }) as any as S.Schema<BatchPutAttributeOutput>;
+const BatchPutAttributeOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<BatchPutAttributeOutput>;
 export type BatchPutAttributeItems = BatchPutAttributeOutput[];
-const BatchPutAttributeItems = /*@__PURE__*/ S.Array(BatchPutAttributeOutput);
+const BatchPutAttributeItems = /*@__PURE__*/ __L.at(__c8, 3);
 export interface BatchPutAttributesMetadataOutput {
   errors?: AttributeError[];
   attributes?: BatchPutAttributeOutput[];
 }
-const BatchPutAttributesMetadataOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(AttributesErrors),
-    attributes: S.optional(BatchPutAttributeItems),
-  }),
-).annotate({
-  identifier: "BatchPutAttributesMetadataOutput",
-}) as any as S.Schema<BatchPutAttributesMetadataOutput>;
+const BatchPutAttributesMetadataOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<BatchPutAttributesMetadataOutput>;
 export type MetadataGenerationRunIdentifier = string;
 export interface CancelMetadataGenerationRunInput {
   domainIdentifier: string;
   identifier: string;
 }
-const CancelMetadataGenerationRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}/cancel",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CancelMetadataGenerationRunInput",
-}) as any as S.Schema<CancelMetadataGenerationRunInput>;
+const CancelMetadataGenerationRunInput = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<CancelMetadataGenerationRunInput>;
 export interface CancelMetadataGenerationRunOutput {}
-const CancelMetadataGenerationRunOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelMetadataGenerationRunOutput",
-}) as any as S.Schema<CancelMetadataGenerationRunOutput>;
+const CancelMetadataGenerationRunOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CancelMetadataGenerationRunOutput>;
 export interface CancelSubscriptionInput {
   domainIdentifier: string;
   identifier: string;
 }
-const CancelSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/subscriptions/{identifier}/cancel",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CancelSubscriptionInput" }) as any as S.Schema<CancelSubscriptionInput>;
+const CancelSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CancelSubscriptionInput>;
 export type SubscriptionStatus = "APPROVED" | "REVOKED" | "CANCELLED" | (string & {});
 const SubscriptionStatus = S.String;
 
@@ -1285,21 +939,10 @@ export interface CancelSubscriptionOutput {
   subscriptionRequestId?: string;
   retainPermissions?: boolean;
 }
-const CancelSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdBy: S.String,
-    updatedBy: S.optional(S.String),
-    domainId: S.String,
-    status: SubscriptionStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    subscribedPrincipal: SubscribedPrincipal,
-    subscribedListing: SubscribedListing,
-    subscriptionRequestId: S.optional(S.String),
-    retainPermissions: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "CancelSubscriptionOutput" }) as any as S.Schema<CancelSubscriptionOutput>;
+const CancelSubscriptionOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<CancelSubscriptionOutput>;
 export type AccountPoolName = string | redacted.Redacted<string>;
 export type ResolutionStrategy = "MANUAL" | (string & {});
 const ResolutionStrategy = S.String;
@@ -1314,31 +957,23 @@ export interface AccountInfo {
   supportedRegions: string[];
   awsAccountName?: string | redacted.Redacted<string>;
 }
-const AccountInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    awsAccountId: S.String,
-    supportedRegions: AwsRegionList,
-    awsAccountName: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "AccountInfo" }) as any as S.Schema<AccountInfo>;
+const AccountInfo = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<AccountInfo>;
 export type AccountInfoList = AccountInfo[];
-const AccountInfoList = /*@__PURE__*/ S.Array(AccountInfo);
+const AccountInfoList = /*@__PURE__*/ __L.at(__c9, 2);
 export type LambdaFunctionArn = string;
 export type LambdaExecutionRoleArn = string;
 export interface CustomAccountPoolHandler {
   lambdaFunctionArn: string;
   lambdaExecutionRoleArn?: string;
 }
-const CustomAccountPoolHandler = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lambdaFunctionArn: S.String, lambdaExecutionRoleArn: S.optional(S.String) }),
-).annotate({ identifier: "CustomAccountPoolHandler" }) as any as S.Schema<CustomAccountPoolHandler>;
+const CustomAccountPoolHandler = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CustomAccountPoolHandler>;
 export type AccountSource =
   | { accounts: AccountInfo[]; customAccountPoolHandler?: never }
   | { accounts?: never; customAccountPoolHandler: CustomAccountPoolHandler };
-const AccountSource = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ accounts: AccountInfoList }),
-  /*@__PURE__*/ S.Struct({ customAccountPoolHandler: CustomAccountPoolHandler }),
-]);
+const AccountSource = /*@__PURE__*/ __L.at(__c9, 4);
 export interface CreateAccountPoolInput {
   domainIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -1346,24 +981,10 @@ export interface CreateAccountPoolInput {
   resolutionStrategy: ResolutionStrategy;
   accountSource: AccountSource;
 }
-const CreateAccountPoolInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    resolutionStrategy: ResolutionStrategy,
-    accountSource: AccountSource,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/account-pools" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateAccountPoolInput" }) as any as S.Schema<CreateAccountPoolInput>;
+const CreateAccountPoolInput = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<CreateAccountPoolInput>;
 export type AccountPoolId = string;
 export interface CreateAccountPoolOutput {
   domainId?: string;
@@ -1378,21 +999,10 @@ export interface CreateAccountPoolOutput {
   updatedBy?: string;
   domainUnitId?: string;
 }
-const CreateAccountPoolOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    name: S.optional(SensitiveString),
-    id: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    resolutionStrategy: S.optional(ResolutionStrategy),
-    accountSource: AccountSource,
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedBy: S.optional(S.String),
-    domainUnitId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateAccountPoolOutput" }) as any as S.Schema<CreateAccountPoolOutput>;
+const CreateAccountPoolOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<CreateAccountPoolOutput>;
 export type AssetName = string | redacted.Redacted<string>;
 export type ExternalIdentifier = string;
 export type AssetTypeIdentifier = string;
@@ -1401,17 +1011,17 @@ const GlossaryTerms = FilterIds as any as S.Schema<GlossaryTerms>;
 export interface BusinessNameGenerationConfiguration {
   enabled?: boolean;
 }
-const BusinessNameGenerationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "BusinessNameGenerationConfiguration",
-}) as any as S.Schema<BusinessNameGenerationConfiguration>;
+const BusinessNameGenerationConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<BusinessNameGenerationConfiguration>;
 export interface PredictionConfiguration {
   businessNameGeneration?: BusinessNameGenerationConfiguration;
 }
-const PredictionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ businessNameGeneration: S.optional(BusinessNameGenerationConfiguration) }),
-).annotate({ identifier: "PredictionConfiguration" }) as any as S.Schema<PredictionConfiguration>;
+const PredictionConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PredictionConfiguration>;
 export interface CreateAssetInput {
   name: string | redacted.Redacted<string>;
   domainIdentifier: string;
@@ -1425,30 +1035,7 @@ export interface CreateAssetInput {
   predictionConfiguration?: PredictionConfiguration;
   clientToken?: string;
 }
-const CreateAssetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    externalIdentifier: S.optional(S.String),
-    typeIdentifier: S.String,
-    typeRevision: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    glossaryTerms: S.optional(GlossaryTerms),
-    formsInput: S.optional(FormInputList),
-    owningProjectIdentifier: S.String,
-    predictionConfiguration: S.optional(PredictionConfiguration),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/assets" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateAssetInput" }) as any as S.Schema<CreateAssetInput>;
+const CreateAssetInput = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<CreateAssetInput>;
 export type ListingStatus = "CREATING" | "ACTIVE" | "INACTIVE" | (string & {});
 const ListingStatus = S.String;
 
@@ -1456,9 +1043,7 @@ export interface AssetListingDetails {
   listingId: string;
   listingStatus: ListingStatus;
 }
-const AssetListingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ listingId: S.String, listingStatus: ListingStatus }),
-).annotate({ identifier: "AssetListingDetails" }) as any as S.Schema<AssetListingDetails>;
+const AssetListingDetails = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<AssetListingDetails>;
 export type TimeSeriesFormName = string;
 export type DataPointIdentifier = string;
 export interface TimeSeriesDataPointSummaryFormOutput {
@@ -1469,22 +1054,12 @@ export interface TimeSeriesDataPointSummaryFormOutput {
   contentSummary?: string;
   id?: string;
 }
-const TimeSeriesDataPointSummaryFormOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formName: S.String,
-    typeIdentifier: S.String,
-    typeRevision: S.optional(S.String),
-    timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    contentSummary: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TimeSeriesDataPointSummaryFormOutput",
-}) as any as S.Schema<TimeSeriesDataPointSummaryFormOutput>;
+const TimeSeriesDataPointSummaryFormOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<TimeSeriesDataPointSummaryFormOutput>;
 export type TimeSeriesDataPointSummaryFormOutputList = TimeSeriesDataPointSummaryFormOutput[];
-const TimeSeriesDataPointSummaryFormOutputList = /*@__PURE__*/ S.Array(
-  TimeSeriesDataPointSummaryFormOutput,
-);
+const TimeSeriesDataPointSummaryFormOutputList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface CreateAssetOutput {
   id: string;
   name: string | redacted.Redacted<string>;
@@ -1507,48 +1082,22 @@ export interface CreateAssetOutput {
   latestTimeSeriesDataPointFormsOutput?: TimeSeriesDataPointSummaryFormOutput[];
   predictionConfiguration?: PredictionConfiguration;
 }
-const CreateAssetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: SensitiveString,
-    typeIdentifier: S.String,
-    typeRevision: S.String,
-    externalIdentifier: S.optional(S.String),
-    revision: S.String,
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    firstRevisionCreatedBy: S.optional(S.String),
-    glossaryTerms: S.optional(GlossaryTerms),
-    governedGlossaryTerms: S.optional(GovernedGlossaryTerms),
-    owningProjectId: S.String,
-    domainId: S.String,
-    listing: S.optional(AssetListingDetails),
-    formsOutput: FormOutputList,
-    readOnlyFormsOutput: S.optional(FormOutputList),
-    latestTimeSeriesDataPointFormsOutput: S.optional(TimeSeriesDataPointSummaryFormOutputList),
-    predictionConfiguration: S.optional(PredictionConfiguration),
-  }),
-).annotate({ identifier: "CreateAssetOutput" }) as any as S.Schema<CreateAssetOutput>;
+const CreateAssetOutput = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<CreateAssetOutput>;
 export type FilterName = string | redacted.Redacted<string>;
 export type ColumnNameList = string[];
 const ColumnNameList = FilterIds as any as S.Schema<ColumnNameList>;
 export interface ColumnFilterConfiguration {
   includedColumnNames?: string[];
 }
-const ColumnFilterConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ includedColumnNames: S.optional(ColumnNameList) }),
-).annotate({
-  identifier: "ColumnFilterConfiguration",
-}) as any as S.Schema<ColumnFilterConfiguration>;
+const ColumnFilterConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ColumnFilterConfiguration>;
 export interface EqualToExpression {
   columnName: string;
   value: string;
 }
-const EqualToExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ columnName: S.String, value: S.String }),
-).annotate({ identifier: "EqualToExpression" }) as any as S.Schema<EqualToExpression>;
+const EqualToExpression = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<EqualToExpression>;
 export interface NotEqualToExpression {
   columnName: string;
   value: string;
@@ -1568,11 +1117,10 @@ export interface GreaterThanOrEqualToExpression {
   columnName: string;
   value: string;
 }
-const GreaterThanOrEqualToExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ columnName: S.String, value: S.String }),
-).annotate({
-  identifier: "GreaterThanOrEqualToExpression",
-}) as any as S.Schema<GreaterThanOrEqualToExpression>;
+const GreaterThanOrEqualToExpression = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GreaterThanOrEqualToExpression>;
 export interface LessThanOrEqualToExpression {
   columnName: string;
   value: string;
@@ -1582,9 +1130,7 @@ const LessThanOrEqualToExpression =
 export interface IsNullExpression {
   columnName: string;
 }
-const IsNullExpression = /*@__PURE__*/ S.suspend(() => S.Struct({ columnName: S.String })).annotate(
-  { identifier: "IsNullExpression" },
-) as any as S.Schema<IsNullExpression>;
+const IsNullExpression = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<IsNullExpression>;
 export interface IsNotNullExpression {
   columnName: string;
 }
@@ -1595,9 +1141,7 @@ export interface InExpression {
   columnName: string;
   values: string[];
 }
-const InExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ columnName: S.String, values: StringList }),
-).annotate({ identifier: "InExpression" }) as any as S.Schema<InExpression>;
+const InExpression = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<InExpression>;
 export interface NotInExpression {
   columnName: string;
   values: string[];
@@ -1782,51 +1326,26 @@ export type RowFilterExpression =
       like?: never;
       notLike: NotLikeExpression;
     };
-const RowFilterExpression = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ equalTo: EqualToExpression }),
-  /*@__PURE__*/ S.Struct({ notEqualTo: NotEqualToExpression }),
-  /*@__PURE__*/ S.Struct({ greaterThan: GreaterThanExpression }),
-  /*@__PURE__*/ S.Struct({ lessThan: LessThanExpression }),
-  /*@__PURE__*/ S.Struct({ greaterThanOrEqualTo: GreaterThanOrEqualToExpression }),
-  /*@__PURE__*/ S.Struct({ lessThanOrEqualTo: LessThanOrEqualToExpression }),
-  /*@__PURE__*/ S.Struct({ isNull: IsNullExpression }),
-  /*@__PURE__*/ S.Struct({ isNotNull: IsNotNullExpression }),
-  /*@__PURE__*/ S.Struct({ in: InExpression }),
-  /*@__PURE__*/ S.Struct({ notIn: NotInExpression }),
-  /*@__PURE__*/ S.Struct({ like: LikeExpression }),
-  /*@__PURE__*/ S.Struct({ notLike: NotLikeExpression }),
-]);
+const RowFilterExpression = /*@__PURE__*/ __L.at(__c11, 3);
 export type RowFilterList = RowFilter[];
-const RowFilterList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => RowFilter).annotate({ identifier: "RowFilter" }),
-) as any as S.Schema<RowFilterList>;
+const RowFilterList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<RowFilterList>;
 export type RowFilter =
   | { expression: RowFilterExpression; and?: never; or?: never }
   | { expression?: never; and: RowFilter[]; or?: never }
   | { expression?: never; and?: never; or: RowFilter[] };
-const RowFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ expression: RowFilterExpression }),
-  /*@__PURE__*/ S.Struct({
-    and: /*@__PURE__*/ S.suspend(() => RowFilterList).annotate({ identifier: "RowFilterList" }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    or: /*@__PURE__*/ S.suspend(() => RowFilterList).annotate({ identifier: "RowFilterList" }),
-  }),
-]) as any as S.Schema<RowFilter>;
+const RowFilter = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<RowFilter>;
 export interface RowFilterConfiguration {
   rowFilter: RowFilter;
   sensitive?: boolean;
 }
-const RowFilterConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ rowFilter: RowFilter, sensitive: S.optional(S.Boolean) }),
-).annotate({ identifier: "RowFilterConfiguration" }) as any as S.Schema<RowFilterConfiguration>;
+const RowFilterConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<RowFilterConfiguration>;
 export type AssetFilterConfiguration =
   | { columnConfiguration: ColumnFilterConfiguration; rowConfiguration?: never }
   | { columnConfiguration?: never; rowConfiguration: RowFilterConfiguration };
-const AssetFilterConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ columnConfiguration: ColumnFilterConfiguration }),
-  /*@__PURE__*/ S.Struct({ rowConfiguration: RowFilterConfiguration }),
-]);
+const AssetFilterConfiguration = /*@__PURE__*/ __L.at(__c11, 7);
 export interface CreateAssetFilterInput {
   domainIdentifier: string;
   assetIdentifier: string;
@@ -1835,28 +1354,10 @@ export interface CreateAssetFilterInput {
   configuration: AssetFilterConfiguration;
   clientToken?: string;
 }
-const CreateAssetFilterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    configuration: AssetFilterConfiguration,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateAssetFilterInput" }) as any as S.Schema<CreateAssetFilterInput>;
+const CreateAssetFilterInput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<CreateAssetFilterInput>;
 export type FilterStatus = "VALID" | "INVALID" | (string & {});
 const FilterStatus = S.String;
 
@@ -1873,21 +1374,10 @@ export interface CreateAssetFilterOutput {
   effectiveColumnNames?: string[];
   effectiveRowFilter?: string;
 }
-const CreateAssetFilterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    assetId: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    status: S.optional(FilterStatus),
-    configuration: AssetFilterConfiguration,
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    errorMessage: S.optional(S.String),
-    effectiveColumnNames: S.optional(ColumnNameList),
-    effectiveRowFilter: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateAssetFilterOutput" }) as any as S.Schema<CreateAssetFilterOutput>;
+const CreateAssetFilterOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CreateAssetFilterOutput>;
 export interface CreateAssetRevisionInput {
   name: string | redacted.Redacted<string>;
   domainIdentifier: string;
@@ -1899,31 +1389,10 @@ export interface CreateAssetRevisionInput {
   predictionConfiguration?: PredictionConfiguration;
   clientToken?: string;
 }
-const CreateAssetRevisionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    typeRevision: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    glossaryTerms: S.optional(GlossaryTerms),
-    formsInput: S.optional(FormInputList),
-    predictionConfiguration: S.optional(PredictionConfiguration),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/assets/{identifier}/revisions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateAssetRevisionInput" }) as any as S.Schema<CreateAssetRevisionInput>;
+const CreateAssetRevisionInput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CreateAssetRevisionInput>;
 export interface CreateAssetRevisionOutput {
   id: string;
   name: string | redacted.Redacted<string>;
@@ -1946,45 +1415,18 @@ export interface CreateAssetRevisionOutput {
   latestTimeSeriesDataPointFormsOutput?: TimeSeriesDataPointSummaryFormOutput[];
   predictionConfiguration?: PredictionConfiguration;
 }
-const CreateAssetRevisionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: SensitiveString,
-    typeIdentifier: S.String,
-    typeRevision: S.String,
-    externalIdentifier: S.optional(S.String),
-    revision: S.String,
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    firstRevisionCreatedBy: S.optional(S.String),
-    glossaryTerms: S.optional(GlossaryTerms),
-    governedGlossaryTerms: S.optional(GovernedGlossaryTerms),
-    owningProjectId: S.String,
-    domainId: S.String,
-    listing: S.optional(AssetListingDetails),
-    formsOutput: FormOutputList,
-    readOnlyFormsOutput: S.optional(FormOutputList),
-    latestTimeSeriesDataPointFormsOutput: S.optional(TimeSeriesDataPointSummaryFormOutputList),
-    predictionConfiguration: S.optional(PredictionConfiguration),
-  }),
-).annotate({
-  identifier: "CreateAssetRevisionOutput",
-}) as any as S.Schema<CreateAssetRevisionOutput>;
+const CreateAssetRevisionOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<CreateAssetRevisionOutput>;
 export interface FormEntryInput {
   typeIdentifier: string;
   typeRevision: string;
   required?: boolean;
 }
-const FormEntryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ typeIdentifier: S.String, typeRevision: S.String, required: S.optional(S.Boolean) }),
-).annotate({ identifier: "FormEntryInput" }) as any as S.Schema<FormEntryInput>;
+const FormEntryInput = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<FormEntryInput>;
 export type FormsInputMap = { [key: string]: FormEntryInput | undefined };
-const FormsInputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ FormEntryInput.pipe(S.optional),
-);
+const FormsInputMap = /*@__PURE__*/ __L.at(__c12, 5);
 export interface CreateAssetTypeInput {
   domainIdentifier: string;
   name: string;
@@ -1992,37 +1434,18 @@ export interface CreateAssetTypeInput {
   formsInput: { [key: string]: FormEntryInput | undefined };
   owningProjectIdentifier: string;
 }
-const CreateAssetTypeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: S.String,
-    description: S.optional(SensitiveString),
-    formsInput: FormsInputMap,
-    owningProjectIdentifier: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/asset-types" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateAssetTypeInput" }) as any as S.Schema<CreateAssetTypeInput>;
+const CreateAssetTypeInput = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<CreateAssetTypeInput>;
 export interface FormEntryOutput {
   typeName: string | redacted.Redacted<string>;
   typeRevision: string;
   required?: boolean;
 }
-const FormEntryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ typeName: SensitiveString, typeRevision: S.String, required: S.optional(S.Boolean) }),
-).annotate({ identifier: "FormEntryOutput" }) as any as S.Schema<FormEntryOutput>;
+const FormEntryOutput = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<FormEntryOutput>;
 export type FormsOutputMap = { [key: string]: FormEntryOutput | undefined };
-const FormsOutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ FormEntryOutput.pipe(S.optional),
-);
+const FormsOutputMap = /*@__PURE__*/ __L.at(__c13, 0);
 export interface CreateAssetTypeOutput {
   domainId: string;
   name: string;
@@ -2037,22 +1460,10 @@ export interface CreateAssetTypeOutput {
   updatedAt?: Date;
   updatedBy?: string;
 }
-const CreateAssetTypeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    name: S.String,
-    revision: S.String,
-    description: S.optional(SensitiveString),
-    formsOutput: FormsOutputMap,
-    owningProjectId: S.optional(S.String),
-    originDomainId: S.optional(S.String),
-    originProjectId: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateAssetTypeOutput" }) as any as S.Schema<CreateAssetTypeOutput>;
+const CreateAssetTypeOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<CreateAssetTypeOutput>;
 export type ConnectionId = string;
 export interface AwsLocation {
   accessRole?: string;
@@ -2060,32 +1471,24 @@ export interface AwsLocation {
   awsRegion?: string;
   iamConnectionId?: string;
 }
-const AwsLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessRole: S.optional(S.String),
-    awsAccountId: S.optional(S.String),
-    awsRegion: S.optional(S.String),
-    iamConnectionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "AwsLocation" }) as any as S.Schema<AwsLocation>;
+const AwsLocation = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<AwsLocation>;
 export type PropertyMap = { [key: string]: string | undefined };
-const PropertyMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const PropertyMap = /*@__PURE__*/ __L.at(__c13, 3);
 export interface Configuration {
   classification?: string;
   properties?: { [key: string]: string | undefined };
 }
-const Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ classification: S.optional(S.String), properties: S.optional(PropertyMap) }),
-).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
+const Configuration = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Configuration>;
 export type Configurations = Configuration[];
-const Configurations = /*@__PURE__*/ S.Array(Configuration);
+const Configurations = /*@__PURE__*/ __L.at(__c13, 5);
 export type ConnectionName = string;
 export interface AthenaPropertiesInput {
   workgroupName?: string;
 }
-const AthenaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workgroupName: S.optional(S.String) }),
-).annotate({ identifier: "AthenaPropertiesInput" }) as any as S.Schema<AthenaPropertiesInput>;
+const AthenaPropertiesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<AthenaPropertiesInput>;
 export type ConnectionProperties = { [key: string]: string | undefined };
 const ConnectionProperties = PropertyMap as any as S.Schema<ConnectionProperties>;
 export type SubnetId = string;
@@ -2099,16 +1502,10 @@ export interface PhysicalConnectionRequirements {
   securityGroupIdList?: string[];
   availabilityZone?: string;
 }
-const PhysicalConnectionRequirements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subnetId: S.optional(S.String),
-    subnetIdList: S.optional(SubnetIdList),
-    securityGroupIdList: S.optional(SecurityGroupIdList),
-    availabilityZone: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PhysicalConnectionRequirements",
-}) as any as S.Schema<PhysicalConnectionRequirements>;
+const PhysicalConnectionRequirements = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<PhysicalConnectionRequirements>;
 export type GlueConnectionType =
   | "SNOWFLAKE"
   | "BIGQUERY"
@@ -2143,37 +1540,30 @@ export interface OAuth2ClientApplication {
   userManagedClientApplicationClientId?: string;
   aWSManagedClientApplicationReference?: string;
 }
-const OAuth2ClientApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userManagedClientApplicationClientId: S.optional(S.String),
-    aWSManagedClientApplicationReference: S.optional(S.String),
-  }),
-).annotate({ identifier: "OAuth2ClientApplication" }) as any as S.Schema<OAuth2ClientApplication>;
+const OAuth2ClientApplication = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<OAuth2ClientApplication>;
 export type TokenUrlParametersMap = { [key: string]: string | undefined };
 const TokenUrlParametersMap = PropertyMap as any as S.Schema<TokenUrlParametersMap>;
 export interface AuthorizationCodeProperties {
   authorizationCode?: string;
   redirectUri?: string;
 }
-const AuthorizationCodeProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ authorizationCode: S.optional(S.String), redirectUri: S.optional(S.String) }),
-).annotate({
-  identifier: "AuthorizationCodeProperties",
-}) as any as S.Schema<AuthorizationCodeProperties>;
+const AuthorizationCodeProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<AuthorizationCodeProperties>;
 export interface GlueOAuth2Credentials {
   userManagedClientApplicationClientSecret?: string;
   accessToken?: string;
   refreshToken?: string;
   jwtToken?: string;
 }
-const GlueOAuth2Credentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userManagedClientApplicationClientSecret: S.optional(S.String),
-    accessToken: S.optional(S.String),
-    refreshToken: S.optional(S.String),
-    jwtToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "GlueOAuth2Credentials" }) as any as S.Schema<GlueOAuth2Credentials>;
+const GlueOAuth2Credentials = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GlueOAuth2Credentials>;
 export interface OAuth2Properties {
   oAuth2GrantType?: OAuth2GrantType;
   oAuth2ClientApplication?: OAuth2ClientApplication;
@@ -2182,25 +1572,15 @@ export interface OAuth2Properties {
   authorizationCodeProperties?: AuthorizationCodeProperties;
   oAuth2Credentials?: GlueOAuth2Credentials;
 }
-const OAuth2Properties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oAuth2GrantType: S.optional(OAuth2GrantType),
-    oAuth2ClientApplication: S.optional(OAuth2ClientApplication),
-    tokenUrl: S.optional(S.String),
-    tokenUrlParametersMap: S.optional(TokenUrlParametersMap),
-    authorizationCodeProperties: S.optional(AuthorizationCodeProperties),
-    oAuth2Credentials: S.optional(GlueOAuth2Credentials),
-  }),
-).annotate({ identifier: "OAuth2Properties" }) as any as S.Schema<OAuth2Properties>;
+const OAuth2Properties = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<OAuth2Properties>;
 export interface BasicAuthenticationCredentials {
   userName?: string;
   password?: string;
 }
-const BasicAuthenticationCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ userName: S.optional(S.String), password: S.optional(S.String) }),
-).annotate({
-  identifier: "BasicAuthenticationCredentials",
-}) as any as S.Schema<BasicAuthenticationCredentials>;
+const BasicAuthenticationCredentials = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<BasicAuthenticationCredentials>;
 export type CredentialMap = { [key: string]: string | undefined };
 const CredentialMap = PropertyMap as any as S.Schema<CredentialMap>;
 export interface AuthenticationConfigurationInput {
@@ -2211,18 +1591,10 @@ export interface AuthenticationConfigurationInput {
   basicAuthenticationCredentials?: BasicAuthenticationCredentials;
   customAuthenticationCredentials?: { [key: string]: string | undefined };
 }
-const AuthenticationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authenticationType: S.optional(AuthenticationType),
-    oAuth2Properties: S.optional(OAuth2Properties),
-    secretArn: S.optional(S.String),
-    kmsKeyArn: S.optional(S.String),
-    basicAuthenticationCredentials: S.optional(BasicAuthenticationCredentials),
-    customAuthenticationCredentials: S.optional(CredentialMap),
-  }),
-).annotate({
-  identifier: "AuthenticationConfigurationInput",
-}) as any as S.Schema<AuthenticationConfigurationInput>;
+const AuthenticationConfigurationInput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<AuthenticationConfigurationInput>;
 export interface GlueConnectionInput {
   connectionProperties?: { [key: string]: string | undefined };
   physicalConnectionRequirements?: PhysicalConnectionRequirements;
@@ -2237,80 +1609,51 @@ export interface GlueConnectionInput {
   pythonProperties?: { [key: string]: string | undefined };
   authenticationConfiguration?: AuthenticationConfigurationInput;
 }
-const GlueConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionProperties: S.optional(ConnectionProperties),
-    physicalConnectionRequirements: S.optional(PhysicalConnectionRequirements),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    connectionType: S.optional(GlueConnectionType),
-    matchCriteria: S.optional(S.String),
-    validateCredentials: S.optional(S.Boolean),
-    validateForComputeEnvironments: S.optional(ComputeEnvironmentsList),
-    sparkProperties: S.optional(PropertyMap),
-    athenaProperties: S.optional(PropertyMap),
-    pythonProperties: S.optional(PropertyMap),
-    authenticationConfiguration: S.optional(AuthenticationConfigurationInput),
-  }),
-).annotate({ identifier: "GlueConnectionInput" }) as any as S.Schema<GlueConnectionInput>;
+const GlueConnectionInput = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<GlueConnectionInput>;
 export interface GluePropertiesInput {
   glueConnectionInput?: GlueConnectionInput;
 }
-const GluePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ glueConnectionInput: S.optional(GlueConnectionInput) }),
-).annotate({ identifier: "GluePropertiesInput" }) as any as S.Schema<GluePropertiesInput>;
+const GluePropertiesInput = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<GluePropertiesInput>;
 export interface HyperPodPropertiesInput {
   clusterName: string;
 }
-const HyperPodPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ clusterName: S.String }),
-).annotate({ identifier: "HyperPodPropertiesInput" }) as any as S.Schema<HyperPodPropertiesInput>;
+const HyperPodPropertiesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<HyperPodPropertiesInput>;
 export type RoleArn = string;
 export interface IamPropertiesInput {
   glueLineageSyncEnabled?: boolean;
   roleArn?: string;
 }
-const IamPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ glueLineageSyncEnabled: S.optional(S.Boolean), roleArn: S.optional(S.String) }),
-).annotate({ identifier: "IamPropertiesInput" }) as any as S.Schema<IamPropertiesInput>;
+const IamPropertiesInput = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<IamPropertiesInput>;
 export type RedshiftStorageProperties =
   | { clusterName: string; workgroupName?: never }
   | { clusterName?: never; workgroupName: string };
-const RedshiftStorageProperties = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ clusterName: S.String }),
-  /*@__PURE__*/ S.Struct({ workgroupName: S.String }),
-]);
+const RedshiftStorageProperties = /*@__PURE__*/ __L.at(__c15, 2);
 export type Password = string | redacted.Redacted<string>;
 export type Username = string;
 export interface UsernamePassword {
   password: string | redacted.Redacted<string>;
   username: string;
 }
-const UsernamePassword = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ password: SensitiveString, username: S.String }),
-).annotate({ identifier: "UsernamePassword" }) as any as S.Schema<UsernamePassword>;
+const UsernamePassword = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<UsernamePassword>;
 export type RedshiftCredentials =
   | { secretArn: string; usernamePassword?: never }
   | { secretArn?: never; usernamePassword: UsernamePassword };
-const RedshiftCredentials = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ secretArn: S.String }),
-  /*@__PURE__*/ S.Struct({ usernamePassword: UsernamePassword }),
-]);
+const RedshiftCredentials = /*@__PURE__*/ __L.at(__c15, 4);
 export interface LineageSyncSchedule {
   schedule?: string;
 }
-const LineageSyncSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ schedule: S.optional(S.String) }),
-).annotate({ identifier: "LineageSyncSchedule" }) as any as S.Schema<LineageSyncSchedule>;
+const LineageSyncSchedule = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<LineageSyncSchedule>;
 export interface RedshiftLineageSyncConfigurationInput {
   enabled?: boolean;
   schedule?: LineageSyncSchedule;
 }
-const RedshiftLineageSyncConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ enabled: S.optional(S.Boolean), schedule: S.optional(LineageSyncSchedule) }),
-).annotate({
-  identifier: "RedshiftLineageSyncConfigurationInput",
-}) as any as S.Schema<RedshiftLineageSyncConfigurationInput>;
+const RedshiftLineageSyncConfigurationInput = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<RedshiftLineageSyncConfigurationInput>;
 export interface RedshiftPropertiesInput {
   storage?: RedshiftStorageProperties;
   databaseName?: string;
@@ -2319,16 +1662,10 @@ export interface RedshiftPropertiesInput {
   credentials?: RedshiftCredentials;
   lineageSync?: RedshiftLineageSyncConfigurationInput;
 }
-const RedshiftPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storage: S.optional(RedshiftStorageProperties),
-    databaseName: S.optional(S.String),
-    host: S.optional(S.String),
-    port: S.optional(S.Number),
-    credentials: S.optional(RedshiftCredentials),
-    lineageSync: S.optional(RedshiftLineageSyncConfigurationInput),
-  }),
-).annotate({ identifier: "RedshiftPropertiesInput" }) as any as S.Schema<RedshiftPropertiesInput>;
+const RedshiftPropertiesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<RedshiftPropertiesInput>;
 export interface SparkEmrPropertiesInput {
   computeArn?: string;
   instanceProfileArn?: string;
@@ -2339,24 +1676,14 @@ export interface SparkEmrPropertiesInput {
   trustedCertificatesS3Uri?: string;
   managedEndpointArn?: string;
 }
-const SparkEmrPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    computeArn: S.optional(S.String),
-    instanceProfileArn: S.optional(S.String),
-    javaVirtualEnv: S.optional(S.String),
-    logUri: S.optional(S.String),
-    pythonVirtualEnv: S.optional(S.String),
-    runtimeRole: S.optional(S.String),
-    trustedCertificatesS3Uri: S.optional(S.String),
-    managedEndpointArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "SparkEmrPropertiesInput" }) as any as S.Schema<SparkEmrPropertiesInput>;
+const SparkEmrPropertiesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<SparkEmrPropertiesInput>;
 export interface SparkGlueArgs {
   connection?: string;
 }
-const SparkGlueArgs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.optional(S.String) }),
-).annotate({ identifier: "SparkGlueArgs" }) as any as S.Schema<SparkGlueArgs>;
+const SparkGlueArgs = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<SparkGlueArgs>;
 export type GlueConnectionName = string;
 export type GlueConnectionNames = string[];
 const GlueConnectionNames = FilterIds as any as S.Schema<GlueConnectionNames>;
@@ -2371,19 +1698,10 @@ export interface SparkGluePropertiesInput {
   pythonVirtualEnv?: string;
   workerType?: string;
 }
-const SparkGluePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalArgs: S.optional(SparkGlueArgs),
-    glueConnectionName: S.optional(S.String),
-    glueConnectionNames: S.optional(GlueConnectionNames),
-    glueVersion: S.optional(S.String),
-    idleTimeout: S.optional(S.Number),
-    javaVirtualEnv: S.optional(S.String),
-    numberOfWorkers: S.optional(S.Number),
-    pythonVirtualEnv: S.optional(S.String),
-    workerType: S.optional(S.String),
-  }),
-).annotate({ identifier: "SparkGluePropertiesInput" }) as any as S.Schema<SparkGluePropertiesInput>;
+const SparkGluePropertiesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<SparkGluePropertiesInput>;
 export type S3Uri = string;
 export type S3AccessGrantLocationId = string;
 export interface S3PropertiesInput {
@@ -2391,13 +1709,7 @@ export interface S3PropertiesInput {
   s3AccessGrantLocationId?: string;
   registerS3AccessGrantLocation?: boolean;
 }
-const S3PropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    s3Uri: S.String,
-    s3AccessGrantLocationId: S.optional(S.String),
-    registerS3AccessGrantLocation: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "S3PropertiesInput" }) as any as S.Schema<S3PropertiesInput>;
+const S3PropertiesInput = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<S3PropertiesInput>;
 export interface ConnectivityProperties {
   connectionProperties?: { [key: string]: string | undefined };
   physicalConnectionRequirements?: PhysicalConnectionRequirements;
@@ -2410,28 +1722,16 @@ export interface ConnectivityProperties {
   pythonProperties?: { [key: string]: string | undefined };
   authenticationConfiguration?: AuthenticationConfigurationInput;
 }
-const ConnectivityProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionProperties: S.optional(ConnectionProperties),
-    physicalConnectionRequirements: S.optional(PhysicalConnectionRequirements),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    validateCredentials: S.optional(S.Boolean),
-    validateForComputeEnvironments: S.optional(ComputeEnvironmentsList),
-    sparkProperties: S.optional(PropertyMap),
-    athenaProperties: S.optional(PropertyMap),
-    pythonProperties: S.optional(PropertyMap),
-    authenticationConfiguration: S.optional(AuthenticationConfigurationInput),
-  }),
-).annotate({ identifier: "ConnectivityProperties" }) as any as S.Schema<ConnectivityProperties>;
+const ConnectivityProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ConnectivityProperties>;
 export type SnowflakeRole = string;
 export interface IdentityMapping {
   usernameAttribute: string;
   prefix?: string;
 }
-const IdentityMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ usernameAttribute: S.String, prefix: S.optional(S.String) }),
-).annotate({ identifier: "IdentityMapping" }) as any as S.Schema<IdentityMapping>;
+const IdentityMapping = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<IdentityMapping>;
 export type Timezone =
   | "UTC"
   | "AFRICA_JOHANNESBURG"
@@ -2506,58 +1806,50 @@ export interface LineageSyncInput {
   enabled: boolean;
   schedule?: string;
 }
-const LineageSyncInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ timezone: S.optional(Timezone), enabled: S.Boolean, schedule: S.optional(S.String) }),
-).annotate({ identifier: "LineageSyncInput" }) as any as S.Schema<LineageSyncInput>;
+const LineageSyncInput = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<LineageSyncInput>;
 export interface SnowflakePropertiesInput {
   connectivityProperties?: ConnectivityProperties;
   snowflakeRole: string;
   identityMapping: IdentityMapping;
   lineageSync?: LineageSyncInput;
 }
-const SnowflakePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectivityProperties: S.optional(ConnectivityProperties),
-    snowflakeRole: S.String,
-    identityMapping: IdentityMapping,
-    lineageSync: S.optional(LineageSyncInput),
-  }),
-).annotate({ identifier: "SnowflakePropertiesInput" }) as any as S.Schema<SnowflakePropertiesInput>;
+const SnowflakePropertiesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<SnowflakePropertiesInput>;
 export interface AmazonQPropertiesInput {
   isEnabled: boolean;
   profileArn?: string;
   authMode?: string;
 }
-const AmazonQPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isEnabled: S.Boolean,
-    profileArn: S.optional(S.String),
-    authMode: S.optional(S.String),
-  }),
-).annotate({ identifier: "AmazonQPropertiesInput" }) as any as S.Schema<AmazonQPropertiesInput>;
+const AmazonQPropertiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<AmazonQPropertiesInput>;
 export interface MlflowPropertiesInput {
   trackingServerArn?: string;
 }
-const MlflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trackingServerArn: S.optional(S.String) }),
-).annotate({ identifier: "MlflowPropertiesInput" }) as any as S.Schema<MlflowPropertiesInput>;
+const MlflowPropertiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<MlflowPropertiesInput>;
 export interface WorkflowsMwaaPropertiesInput {
   mwaaEnvironmentName?: string;
 }
-const WorkflowsMwaaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ mwaaEnvironmentName: S.optional(S.String) }),
-).annotate({
-  identifier: "WorkflowsMwaaPropertiesInput",
-}) as any as S.Schema<WorkflowsMwaaPropertiesInput>;
+const WorkflowsMwaaPropertiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<WorkflowsMwaaPropertiesInput>;
 export interface WorkflowsServerlessPropertiesInput {}
 const WorkflowsServerlessPropertiesInput =
   CancelMetadataGenerationRunOutput as any as S.Schema<WorkflowsServerlessPropertiesInput>;
 export interface LakehousePropertiesInput {
   glueLineageSyncEnabled?: boolean;
 }
-const LakehousePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ glueLineageSyncEnabled: S.optional(S.Boolean) }),
-).annotate({ identifier: "LakehousePropertiesInput" }) as any as S.Schema<LakehousePropertiesInput>;
+const LakehousePropertiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<LakehousePropertiesInput>;
 export type VpcId = string;
 export type VpcConnectionSubnetIdList = string[];
 const VpcConnectionSubnetIdList = FilterIds as any as S.Schema<VpcConnectionSubnetIdList>;
@@ -2567,21 +1859,13 @@ export interface VpcPropertiesInput {
   subnetIds: string[];
   securityGroupId?: string;
 }
-const VpcPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpcId: S.String,
-    subnetIds: VpcConnectionSubnetIdList,
-    securityGroupId: S.optional(S.String),
-  }),
-).annotate({ identifier: "VpcPropertiesInput" }) as any as S.Schema<VpcPropertiesInput>;
+const VpcPropertiesInput = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<VpcPropertiesInput>;
 export interface GitPropertiesInput {
   codeConnectionArn: string;
   repositoryId: string;
   defaultBranch: string;
 }
-const GitPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ codeConnectionArn: S.String, repositoryId: S.String, defaultBranch: S.String }),
-).annotate({ identifier: "GitPropertiesInput" }) as any as S.Schema<GitPropertiesInput>;
+const GitPropertiesInput = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<GitPropertiesInput>;
 export type ConnectionPropertiesInput =
   | {
       athenaProperties: AthenaPropertiesInput;
@@ -2871,24 +2155,7 @@ export type ConnectionPropertiesInput =
       vpcProperties?: never;
       gitProperties: GitPropertiesInput;
     };
-const ConnectionPropertiesInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ athenaProperties: AthenaPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ glueProperties: GluePropertiesInput }),
-  /*@__PURE__*/ S.Struct({ hyperPodProperties: HyperPodPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ iamProperties: IamPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ redshiftProperties: RedshiftPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ sparkEmrProperties: SparkEmrPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ sparkGlueProperties: SparkGluePropertiesInput }),
-  /*@__PURE__*/ S.Struct({ s3Properties: S3PropertiesInput }),
-  /*@__PURE__*/ S.Struct({ snowflakeProperties: SnowflakePropertiesInput }),
-  /*@__PURE__*/ S.Struct({ amazonQProperties: AmazonQPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ mlflowProperties: MlflowPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ workflowsServerlessProperties: WorkflowsServerlessPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ lakehouseProperties: LakehousePropertiesInput }),
-  /*@__PURE__*/ S.Struct({ vpcProperties: VpcPropertiesInput }),
-  /*@__PURE__*/ S.Struct({ gitProperties: GitPropertiesInput }),
-]);
+const ConnectionPropertiesInput = /*@__PURE__*/ __L.at(__c17, 6);
 export type ConnectionScope = "DOMAIN" | "PROJECT" | (string & {});
 const ConnectionScope = S.String;
 
@@ -2904,29 +2171,10 @@ export interface CreateConnectionInput {
   enableTrustedIdentityPropagation?: boolean;
   scope?: ConnectionScope;
 }
-const CreateConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    awsLocation: S.optional(AwsLocation),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    configurations: S.optional(Configurations),
-    description: S.optional(SensitiveString),
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.optional(S.String),
-    name: S.String,
-    props: S.optional(ConnectionPropertiesInput),
-    enableTrustedIdentityPropagation: S.optional(S.Boolean),
-    scope: S.optional(ConnectionScope),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/connections" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateConnectionInput" }) as any as S.Schema<CreateConnectionInput>;
+const CreateConnectionInput = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<CreateConnectionInput>;
 export type ConnectionType =
   | "ATHENA"
   | "BIGQUERY"
@@ -2974,15 +2222,10 @@ export interface AuthenticationConfiguration {
   secretArn?: string;
   oAuth2Properties?: OAuth2Properties;
 }
-const AuthenticationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authenticationType: S.optional(AuthenticationType),
-    secretArn: S.optional(S.String),
-    oAuth2Properties: S.optional(OAuth2Properties),
-  }),
-).annotate({
-  identifier: "AuthenticationConfiguration",
-}) as any as S.Schema<AuthenticationConfiguration>;
+const AuthenticationConfiguration = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<AuthenticationConfiguration>;
 export interface GlueConnection {
   name?: string;
   description?: string;
@@ -3003,28 +2246,7 @@ export interface GlueConnection {
   connectionSchemaVersion?: number;
   compatibleComputeEnvironments?: ComputeEnvironments[];
 }
-const GlueConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    connectionType: S.optional(ConnectionType),
-    matchCriteria: S.optional(MatchCriteria),
-    connectionProperties: S.optional(ConnectionProperties),
-    sparkProperties: S.optional(PropertyMap),
-    athenaProperties: S.optional(PropertyMap),
-    pythonProperties: S.optional(PropertyMap),
-    physicalConnectionRequirements: S.optional(PhysicalConnectionRequirements),
-    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedBy: S.optional(S.String),
-    status: S.optional(ConnectionStatus),
-    statusReason: S.optional(S.String),
-    lastConnectionValidationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    authenticationConfiguration: S.optional(AuthenticationConfiguration),
-    connectionSchemaVersion: S.optional(S.Number),
-    compatibleComputeEnvironments: S.optional(ComputeEnvironmentsList),
-  }),
-).annotate({ identifier: "GlueConnection" }) as any as S.Schema<GlueConnection>;
+const GlueConnection = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<GlueConnection>;
 export type Protocol =
   | "ATHENA"
   | "GLUE_INTERACTIVE_SESSION"
@@ -3047,21 +2269,9 @@ export interface PhysicalEndpoint {
   protocol?: Protocol;
   stage?: string;
 }
-const PhysicalEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    awsLocation: S.optional(AwsLocation),
-    glueConnectionName: S.optional(S.String),
-    glueConnectionNames: S.optional(GlueConnectionNames),
-    glueConnection: S.optional(GlueConnection),
-    enableTrustedIdentityPropagation: S.optional(S.Boolean),
-    host: S.optional(S.String),
-    port: S.optional(S.Number),
-    protocol: S.optional(Protocol),
-    stage: S.optional(S.String),
-  }),
-).annotate({ identifier: "PhysicalEndpoint" }) as any as S.Schema<PhysicalEndpoint>;
+const PhysicalEndpoint = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<PhysicalEndpoint>;
 export type PhysicalEndpoints = PhysicalEndpoint[];
-const PhysicalEndpoints = /*@__PURE__*/ S.Array(PhysicalEndpoint);
+const PhysicalEndpoints = /*@__PURE__*/ __L.at(__c18, 3);
 export interface AthenaPropertiesOutput {
   workgroupName?: string;
 }
@@ -3070,9 +2280,10 @@ export interface GluePropertiesOutput {
   status?: ConnectionStatus;
   errorMessage?: string;
 }
-const GluePropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(ConnectionStatus), errorMessage: S.optional(S.String) }),
-).annotate({ identifier: "GluePropertiesOutput" }) as any as S.Schema<GluePropertiesOutput>;
+const GluePropertiesOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GluePropertiesOutput>;
 export type HyperPodOrchestrator = "EKS" | "SLURM" | (string & {});
 const HyperPodOrchestrator = S.String;
 
@@ -3081,34 +2292,24 @@ export interface HyperPodPropertiesOutput {
   clusterArn?: string;
   orchestrator?: HyperPodOrchestrator;
 }
-const HyperPodPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterName: S.String,
-    clusterArn: S.optional(S.String),
-    orchestrator: S.optional(HyperPodOrchestrator),
-  }),
-).annotate({ identifier: "HyperPodPropertiesOutput" }) as any as S.Schema<HyperPodPropertiesOutput>;
+const HyperPodPropertiesOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<HyperPodPropertiesOutput>;
 export interface IamPropertiesOutput {
   environmentId?: string;
   glueLineageSyncEnabled?: boolean;
 }
-const IamPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentId: S.optional(S.String), glueLineageSyncEnabled: S.optional(S.Boolean) }),
-).annotate({ identifier: "IamPropertiesOutput" }) as any as S.Schema<IamPropertiesOutput>;
+const IamPropertiesOutput = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<IamPropertiesOutput>;
 export interface RedshiftLineageSyncConfigurationOutput {
   lineageJobId?: string;
   enabled?: boolean;
   schedule?: LineageSyncSchedule;
 }
-const RedshiftLineageSyncConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lineageJobId: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    schedule: S.optional(LineageSyncSchedule),
-  }),
-).annotate({
-  identifier: "RedshiftLineageSyncConfigurationOutput",
-}) as any as S.Schema<RedshiftLineageSyncConfigurationOutput>;
+const RedshiftLineageSyncConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<RedshiftLineageSyncConfigurationOutput>;
 export interface RedshiftPropertiesOutput {
   storage?: RedshiftStorageProperties;
   credentials?: RedshiftCredentials;
@@ -3120,19 +2321,10 @@ export interface RedshiftPropertiesOutput {
   status?: ConnectionStatus;
   databaseName?: string;
 }
-const RedshiftPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storage: S.optional(RedshiftStorageProperties),
-    credentials: S.optional(RedshiftCredentials),
-    isProvisionedSecret: S.optional(S.Boolean),
-    jdbcIamUrl: S.optional(S.String),
-    jdbcUrl: S.optional(S.String),
-    redshiftTempDir: S.optional(S.String),
-    lineageSync: S.optional(RedshiftLineageSyncConfigurationOutput),
-    status: S.optional(ConnectionStatus),
-    databaseName: S.optional(S.String),
-  }),
-).annotate({ identifier: "RedshiftPropertiesOutput" }) as any as S.Schema<RedshiftPropertiesOutput>;
+const RedshiftPropertiesOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<RedshiftPropertiesOutput>;
 export type GovernanceType = "AWS_MANAGED" | "USER_MANAGED" | (string & {});
 const GovernanceType = S.String;
 
@@ -3140,11 +2332,10 @@ export interface ManagedEndpointCredentials {
   id?: string;
   token?: string;
 }
-const ManagedEndpointCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), token: S.optional(S.String) }),
-).annotate({
-  identifier: "ManagedEndpointCredentials",
-}) as any as S.Schema<ManagedEndpointCredentials>;
+const ManagedEndpointCredentials = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ManagedEndpointCredentials>;
 export interface SparkEmrPropertiesOutput {
   computeArn?: string;
   credentials?: UsernamePassword;
@@ -3161,24 +2352,10 @@ export interface SparkEmrPropertiesOutput {
   managedEndpointArn?: string;
   managedEndpointCredentials?: ManagedEndpointCredentials;
 }
-const SparkEmrPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    computeArn: S.optional(S.String),
-    credentials: S.optional(UsernamePassword),
-    credentialsExpiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    governanceType: S.optional(GovernanceType),
-    instanceProfileArn: S.optional(S.String),
-    javaVirtualEnv: S.optional(S.String),
-    livyEndpoint: S.optional(S.String),
-    logUri: S.optional(S.String),
-    pythonVirtualEnv: S.optional(S.String),
-    runtimeRole: S.optional(S.String),
-    trustedCertificatesS3Uri: S.optional(S.String),
-    certificateData: S.optional(S.String),
-    managedEndpointArn: S.optional(S.String),
-    managedEndpointCredentials: S.optional(ManagedEndpointCredentials),
-  }),
-).annotate({ identifier: "SparkEmrPropertiesOutput" }) as any as S.Schema<SparkEmrPropertiesOutput>;
+const SparkEmrPropertiesOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<SparkEmrPropertiesOutput>;
 export interface SparkGluePropertiesOutput {
   additionalArgs?: SparkGlueArgs;
   glueConnectionName?: string;
@@ -3190,21 +2367,10 @@ export interface SparkGluePropertiesOutput {
   pythonVirtualEnv?: string;
   workerType?: string;
 }
-const SparkGluePropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalArgs: S.optional(SparkGlueArgs),
-    glueConnectionName: S.optional(S.String),
-    glueConnectionNames: S.optional(GlueConnectionNames),
-    glueVersion: S.optional(S.String),
-    idleTimeout: S.optional(S.Number),
-    javaVirtualEnv: S.optional(S.String),
-    numberOfWorkers: S.optional(S.Number),
-    pythonVirtualEnv: S.optional(S.String),
-    workerType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SparkGluePropertiesOutput",
-}) as any as S.Schema<SparkGluePropertiesOutput>;
+const SparkGluePropertiesOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<SparkGluePropertiesOutput>;
 export interface S3PropertiesOutput {
   s3Uri: string;
   s3AccessGrantLocationId?: string;
@@ -3212,29 +2378,14 @@ export interface S3PropertiesOutput {
   status?: ConnectionStatus;
   errorMessage?: string;
 }
-const S3PropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    s3Uri: S.String,
-    s3AccessGrantLocationId: S.optional(S.String),
-    registerS3AccessGrantLocation: S.optional(S.Boolean),
-    status: S.optional(ConnectionStatus),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "S3PropertiesOutput" }) as any as S.Schema<S3PropertiesOutput>;
+const S3PropertiesOutput = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<S3PropertiesOutput>;
 export interface LineageSyncOutput {
   lineageJobId?: string;
   timezone?: Timezone;
   enabled?: boolean;
   schedule?: string;
 }
-const LineageSyncOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lineageJobId: S.optional(S.String),
-    timezone: S.optional(Timezone),
-    enabled: S.optional(S.Boolean),
-    schedule: S.optional(S.String),
-  }),
-).annotate({ identifier: "LineageSyncOutput" }) as any as S.Schema<LineageSyncOutput>;
+const LineageSyncOutput = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<LineageSyncOutput>;
 export interface SnowflakePropertiesOutput {
   snowflakeRole: string;
   identityMapping: IdentityMapping;
@@ -3242,17 +2393,10 @@ export interface SnowflakePropertiesOutput {
   status: ConnectionStatus;
   errorMessage?: string;
 }
-const SnowflakePropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snowflakeRole: S.String,
-    identityMapping: IdentityMapping,
-    lineageSync: LineageSyncOutput,
-    status: ConnectionStatus,
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SnowflakePropertiesOutput",
-}) as any as S.Schema<SnowflakePropertiesOutput>;
+const SnowflakePropertiesOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<SnowflakePropertiesOutput>;
 export interface AmazonQPropertiesOutput {
   isEnabled: boolean;
   profileArn?: string;
@@ -3274,11 +2418,10 @@ const WorkflowsServerlessPropertiesOutput =
 export interface LakehousePropertiesOutput {
   glueLineageSyncEnabled?: boolean;
 }
-const LakehousePropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ glueLineageSyncEnabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "LakehousePropertiesOutput",
-}) as any as S.Schema<LakehousePropertiesOutput>;
+const LakehousePropertiesOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<LakehousePropertiesOutput>;
 export interface VpcPropertiesOutput {
   vpcId: string;
   subnetIds: string[];
@@ -3286,15 +2429,7 @@ export interface VpcPropertiesOutput {
   securityGroupId?: string;
   glueConnectionNames?: string[];
 }
-const VpcPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpcId: S.String,
-    subnetIds: VpcConnectionSubnetIdList,
-    status: ConnectionStatus,
-    securityGroupId: S.optional(S.String),
-    glueConnectionNames: S.optional(GlueConnectionNames),
-  }),
-).annotate({ identifier: "VpcPropertiesOutput" }) as any as S.Schema<VpcPropertiesOutput>;
+const VpcPropertiesOutput = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<VpcPropertiesOutput>;
 export interface GitPropertiesOutput {
   codeConnectionArn: string;
   repositoryId: string;
@@ -3302,15 +2437,7 @@ export interface GitPropertiesOutput {
   status?: ConnectionStatus;
   errorMessage?: string;
 }
-const GitPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeConnectionArn: S.String,
-    repositoryId: S.String,
-    defaultBranch: S.String,
-    status: S.optional(ConnectionStatus),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "GitPropertiesOutput" }) as any as S.Schema<GitPropertiesOutput>;
+const GitPropertiesOutput = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<GitPropertiesOutput>;
 export type ConnectionPropertiesOutput =
   | {
       athenaProperties: AthenaPropertiesOutput;
@@ -3600,24 +2727,7 @@ export type ConnectionPropertiesOutput =
       vpcProperties?: never;
       gitProperties: GitPropertiesOutput;
     };
-const ConnectionPropertiesOutput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ athenaProperties: AthenaPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ glueProperties: GluePropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ hyperPodProperties: HyperPodPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ iamProperties: IamPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ redshiftProperties: RedshiftPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ sparkEmrProperties: SparkEmrPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ sparkGlueProperties: SparkGluePropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ s3Properties: S3PropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ snowflakeProperties: SnowflakePropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ amazonQProperties: AmazonQPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ mlflowProperties: MlflowPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ workflowsServerlessProperties: WorkflowsServerlessPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ lakehouseProperties: LakehousePropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ vpcProperties: VpcPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ gitProperties: GitPropertiesOutput }),
-]);
+const ConnectionPropertiesOutput = /*@__PURE__*/ __L.at(__c20, 2);
 export interface CreateConnectionOutput {
   connectionId: string;
   configurations?: Configuration[];
@@ -3632,22 +2742,10 @@ export interface CreateConnectionOutput {
   type: ConnectionType;
   scope?: ConnectionScope;
 }
-const CreateConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionId: S.String,
-    configurations: S.optional(Configurations),
-    description: S.optional(SensitiveString),
-    domainId: S.String,
-    domainUnitId: S.String,
-    environmentId: S.optional(S.String),
-    name: S.String,
-    physicalEndpoints: PhysicalEndpoints,
-    projectId: S.optional(S.String),
-    props: S.optional(ConnectionPropertiesOutput),
-    type: ConnectionType,
-    scope: S.optional(ConnectionScope),
-  }),
-).annotate({ identifier: "CreateConnectionOutput" }) as any as S.Schema<CreateConnectionOutput>;
+const CreateConnectionOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<CreateConnectionOutput>;
 export type DataProductName = string | redacted.Redacted<string>;
 export type DataProductDescription = string | redacted.Redacted<string>;
 export type DataProductItemType = "ASSET" | (string & {});
@@ -3661,16 +2759,9 @@ export interface DataProductItem {
   revision?: string;
   glossaryTerms?: string[];
 }
-const DataProductItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemType: DataProductItemType,
-    identifier: S.String,
-    revision: S.optional(S.String),
-    glossaryTerms: S.optional(ItemGlossaryTerms),
-  }),
-).annotate({ identifier: "DataProductItem" }) as any as S.Schema<DataProductItem>;
+const DataProductItem = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<DataProductItem>;
 export type DataProductItems = DataProductItem[];
-const DataProductItems = /*@__PURE__*/ S.Array(DataProductItem);
+const DataProductItems = /*@__PURE__*/ __L.at(__c20, 5);
 export interface CreateDataProductInput {
   domainIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -3681,27 +2772,10 @@ export interface CreateDataProductInput {
   items?: DataProductItem[];
   clientToken?: string;
 }
-const CreateDataProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: SensitiveString,
-    owningProjectIdentifier: S.String,
-    description: S.optional(SensitiveString),
-    glossaryTerms: S.optional(GlossaryTerms),
-    formsInput: S.optional(FormInputList),
-    items: S.optional(DataProductItems),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/data-products" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateDataProductInput" }) as any as S.Schema<CreateDataProductInput>;
+const CreateDataProductInput = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<CreateDataProductInput>;
 export type DataProductId = string;
 export type DataProductStatus = "CREATED" | "CREATING" | "CREATE_FAILED" | (string & {});
 const DataProductStatus = S.String;
@@ -3722,24 +2796,10 @@ export interface CreateDataProductOutput {
   firstRevisionCreatedAt?: Date;
   firstRevisionCreatedBy?: string;
 }
-const CreateDataProductOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    revision: S.String,
-    owningProjectId: S.String,
-    name: SensitiveString,
-    status: DataProductStatus,
-    description: S.optional(SensitiveString),
-    glossaryTerms: S.optional(GlossaryTerms),
-    items: S.optional(DataProductItems),
-    formsOutput: S.optional(FormOutputList),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    firstRevisionCreatedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateDataProductOutput" }) as any as S.Schema<CreateDataProductOutput>;
+const CreateDataProductOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<CreateDataProductOutput>;
 export interface CreateDataProductRevisionInput {
   domainIdentifier: string;
   identifier: string;
@@ -3750,32 +2810,10 @@ export interface CreateDataProductRevisionInput {
   formsInput?: FormInput[];
   clientToken?: string;
 }
-const CreateDataProductRevisionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    glossaryTerms: S.optional(GlossaryTerms),
-    items: S.optional(DataProductItems),
-    formsInput: S.optional(FormInputList),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateDataProductRevisionInput",
-}) as any as S.Schema<CreateDataProductRevisionInput>;
+const CreateDataProductRevisionInput = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<CreateDataProductRevisionInput>;
 export interface CreateDataProductRevisionOutput {
   domainId: string;
   id: string;
@@ -3792,26 +2830,10 @@ export interface CreateDataProductRevisionOutput {
   firstRevisionCreatedAt?: Date;
   firstRevisionCreatedBy?: string;
 }
-const CreateDataProductRevisionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    revision: S.String,
-    owningProjectId: S.String,
-    name: SensitiveString,
-    status: DataProductStatus,
-    description: S.optional(SensitiveString),
-    glossaryTerms: S.optional(GlossaryTerms),
-    items: S.optional(DataProductItems),
-    formsOutput: S.optional(FormOutputList),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    firstRevisionCreatedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDataProductRevisionOutput",
-}) as any as S.Schema<CreateDataProductRevisionOutput>;
+const CreateDataProductRevisionOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<CreateDataProductRevisionOutput>;
 export type Name = string | redacted.Redacted<string>;
 export type DataSourceType = string;
 export type FilterExpressionType = "INCLUDE" | "EXCLUDE" | (string & {});
@@ -3821,51 +2843,37 @@ export interface FilterExpression {
   type: FilterExpressionType;
   expression: string;
 }
-const FilterExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: FilterExpressionType, expression: S.String }),
-).annotate({ identifier: "FilterExpression" }) as any as S.Schema<FilterExpression>;
+const FilterExpression = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<FilterExpression>;
 export type FilterExpressions = FilterExpression[];
-const FilterExpressions = /*@__PURE__*/ S.Array(FilterExpression);
+const FilterExpressions = /*@__PURE__*/ __L.at(__c21, 3);
 export interface RelationalFilterConfiguration {
   databaseName: string;
   schemaName?: string;
   filterExpressions?: FilterExpression[];
 }
-const RelationalFilterConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseName: S.String,
-    schemaName: S.optional(S.String),
-    filterExpressions: S.optional(FilterExpressions),
-  }),
-).annotate({
-  identifier: "RelationalFilterConfiguration",
-}) as any as S.Schema<RelationalFilterConfiguration>;
+const RelationalFilterConfiguration = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<RelationalFilterConfiguration>;
 export type RelationalFilterConfigurations = RelationalFilterConfiguration[];
-const RelationalFilterConfigurations = /*@__PURE__*/ S.Array(RelationalFilterConfiguration);
+const RelationalFilterConfigurations = /*@__PURE__*/ __L.at(__c21, 5);
 export interface GlueRunConfigurationInput {
   dataAccessRole?: string;
   relationalFilterConfigurations: RelationalFilterConfiguration[];
   autoImportDataQualityResult?: boolean;
   catalogName?: string;
 }
-const GlueRunConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataAccessRole: S.optional(S.String),
-    relationalFilterConfigurations: RelationalFilterConfigurations,
-    autoImportDataQualityResult: S.optional(S.Boolean),
-    catalogName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GlueRunConfigurationInput",
-}) as any as S.Schema<GlueRunConfigurationInput>;
+const GlueRunConfigurationInput = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<GlueRunConfigurationInput>;
 export interface RedshiftCredentialConfiguration {
   secretManagerArn: string;
 }
-const RedshiftCredentialConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ secretManagerArn: S.String }),
-).annotate({
-  identifier: "RedshiftCredentialConfiguration",
-}) as any as S.Schema<RedshiftCredentialConfiguration>;
+const RedshiftCredentialConfiguration = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<RedshiftCredentialConfiguration>;
 export interface RedshiftClusterStorage {
   clusterName: string;
 }
@@ -3873,51 +2881,37 @@ const RedshiftClusterStorage = HyperPodPropertiesInput as any as S.Schema<Redshi
 export interface RedshiftServerlessStorage {
   workgroupName: string;
 }
-const RedshiftServerlessStorage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workgroupName: S.String }),
-).annotate({
-  identifier: "RedshiftServerlessStorage",
-}) as any as S.Schema<RedshiftServerlessStorage>;
+const RedshiftServerlessStorage = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<RedshiftServerlessStorage>;
 export type RedshiftStorage =
   | { redshiftClusterSource: RedshiftClusterStorage; redshiftServerlessSource?: never }
   | { redshiftClusterSource?: never; redshiftServerlessSource: RedshiftServerlessStorage };
-const RedshiftStorage = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ redshiftClusterSource: RedshiftClusterStorage }),
-  /*@__PURE__*/ S.Struct({ redshiftServerlessSource: RedshiftServerlessStorage }),
-]);
+const RedshiftStorage = /*@__PURE__*/ __L.at(__c22, 1);
 export interface RedshiftRunConfigurationInput {
   dataAccessRole?: string;
   relationalFilterConfigurations: RelationalFilterConfiguration[];
   redshiftCredentialConfiguration?: RedshiftCredentialConfiguration;
   redshiftStorage?: RedshiftStorage;
 }
-const RedshiftRunConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataAccessRole: S.optional(S.String),
-    relationalFilterConfigurations: RelationalFilterConfigurations,
-    redshiftCredentialConfiguration: S.optional(RedshiftCredentialConfiguration),
-    redshiftStorage: S.optional(RedshiftStorage),
-  }),
-).annotate({
-  identifier: "RedshiftRunConfigurationInput",
-}) as any as S.Schema<RedshiftRunConfigurationInput>;
+const RedshiftRunConfigurationInput = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<RedshiftRunConfigurationInput>;
 export type SageMakerAssetType = string;
 export type SageMakerResourceArn = string;
 export type TrackingAssetArns = string[];
 const TrackingAssetArns = FilterIds as any as S.Schema<TrackingAssetArns>;
 export type TrackingAssets = { [key: string]: string[] | undefined };
-const TrackingAssets = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ TrackingAssetArns.pipe(S.optional),
-);
+const TrackingAssets = /*@__PURE__*/ __L.at(__c22, 3);
 export interface SageMakerRunConfigurationInput {
   trackingAssets: { [key: string]: string[] | undefined };
 }
-const SageMakerRunConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trackingAssets: TrackingAssets }),
-).annotate({
-  identifier: "SageMakerRunConfigurationInput",
-}) as any as S.Schema<SageMakerRunConfigurationInput>;
+const SageMakerRunConfigurationInput = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<SageMakerRunConfigurationInput>;
 export type DataSourceConfigurationInput =
   | {
       glueRunConfiguration: GlueRunConfigurationInput;
@@ -3934,19 +2928,14 @@ export type DataSourceConfigurationInput =
       redshiftRunConfiguration?: never;
       sageMakerRunConfiguration: SageMakerRunConfigurationInput;
     };
-const DataSourceConfigurationInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ glueRunConfiguration: GlueRunConfigurationInput }),
-  /*@__PURE__*/ S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationInput }),
-  /*@__PURE__*/ S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationInput }),
-]);
+const DataSourceConfigurationInput = /*@__PURE__*/ __L.at(__c22, 5);
 export interface RecommendationConfiguration {
   enableBusinessNameGeneration?: boolean;
 }
-const RecommendationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ enableBusinessNameGeneration: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "RecommendationConfiguration",
-}) as any as S.Schema<RecommendationConfiguration>;
+const RecommendationConfiguration = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<RecommendationConfiguration>;
 export type EnableSetting = "ENABLED" | "DISABLED" | (string & {});
 const EnableSetting = S.String;
 
@@ -3955,9 +2944,10 @@ export interface ScheduleConfiguration {
   timezone?: Timezone;
   schedule?: string;
 }
-const ScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ timezone: S.optional(Timezone), schedule: S.optional(S.String) }),
-).annotate({ identifier: "ScheduleConfiguration" }) as any as S.Schema<ScheduleConfiguration>;
+const ScheduleConfiguration = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ScheduleConfiguration>;
 export interface CreateDataSourceInput {
   name: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
@@ -3974,33 +2964,10 @@ export interface CreateDataSourceInput {
   assetFormsInput?: FormInput[];
   clientToken?: string;
 }
-const CreateDataSourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    projectIdentifier: S.String,
-    environmentIdentifier: S.optional(S.String),
-    connectionIdentifier: S.optional(S.String),
-    type: S.String,
-    configuration: S.optional(DataSourceConfigurationInput),
-    recommendation: S.optional(RecommendationConfiguration),
-    enableSetting: S.optional(EnableSetting),
-    schedule: S.optional(ScheduleConfiguration),
-    publishOnImport: S.optional(S.Boolean),
-    assetFormsInput: S.optional(FormInputList),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/data-sources" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateDataSourceInput" }) as any as S.Schema<CreateDataSourceInput>;
+const CreateDataSourceInput = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<CreateDataSourceInput>;
 export type DataSourceId = string;
 export type DataSourceStatus =
   | "CREATING"
@@ -4022,18 +2989,10 @@ export interface GlueRunConfigurationOutput {
   autoImportDataQualityResult?: boolean;
   catalogName?: string;
 }
-const GlueRunConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    region: S.optional(S.String),
-    dataAccessRole: S.optional(S.String),
-    relationalFilterConfigurations: RelationalFilterConfigurations,
-    autoImportDataQualityResult: S.optional(S.Boolean),
-    catalogName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GlueRunConfigurationOutput",
-}) as any as S.Schema<GlueRunConfigurationOutput>;
+const GlueRunConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GlueRunConfigurationOutput>;
 export interface RedshiftRunConfigurationOutput {
   accountId?: string;
   region?: string;
@@ -4042,32 +3001,19 @@ export interface RedshiftRunConfigurationOutput {
   redshiftCredentialConfiguration?: RedshiftCredentialConfiguration;
   redshiftStorage: RedshiftStorage;
 }
-const RedshiftRunConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    region: S.optional(S.String),
-    dataAccessRole: S.optional(S.String),
-    relationalFilterConfigurations: RelationalFilterConfigurations,
-    redshiftCredentialConfiguration: S.optional(RedshiftCredentialConfiguration),
-    redshiftStorage: RedshiftStorage,
-  }),
-).annotate({
-  identifier: "RedshiftRunConfigurationOutput",
-}) as any as S.Schema<RedshiftRunConfigurationOutput>;
+const RedshiftRunConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<RedshiftRunConfigurationOutput>;
 export interface SageMakerRunConfigurationOutput {
   accountId?: string;
   region?: string;
   trackingAssets: { [key: string]: string[] | undefined };
 }
-const SageMakerRunConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.optional(S.String),
-    region: S.optional(S.String),
-    trackingAssets: TrackingAssets,
-  }),
-).annotate({
-  identifier: "SageMakerRunConfigurationOutput",
-}) as any as S.Schema<SageMakerRunConfigurationOutput>;
+const SageMakerRunConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<SageMakerRunConfigurationOutput>;
 export type DataSourceConfigurationOutput =
   | {
       glueRunConfiguration: GlueRunConfigurationOutput;
@@ -4084,11 +3030,7 @@ export type DataSourceConfigurationOutput =
       redshiftRunConfiguration?: never;
       sageMakerRunConfiguration: SageMakerRunConfigurationOutput;
     };
-const DataSourceConfigurationOutput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ glueRunConfiguration: GlueRunConfigurationOutput }),
-  /*@__PURE__*/ S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationOutput }),
-  /*@__PURE__*/ S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationOutput }),
-]);
+const DataSourceConfigurationOutput = /*@__PURE__*/ __L.at(__c23, 4);
 export type DataSourceRunStatus =
   | "REQUESTED"
   | "RUNNING"
@@ -4113,9 +3055,10 @@ export interface DataSourceErrorMessage {
   errorType: DataSourceErrorType;
   errorDetail?: string;
 }
-const DataSourceErrorMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorType: DataSourceErrorType, errorDetail: S.optional(S.String) }),
-).annotate({ identifier: "DataSourceErrorMessage" }) as any as S.Schema<DataSourceErrorMessage>;
+const DataSourceErrorMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<DataSourceErrorMessage>;
 export interface CreateDataSourceOutput {
   id: string;
   status?: DataSourceStatus;
@@ -4139,31 +3082,10 @@ export interface CreateDataSourceOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const CreateDataSourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: S.optional(DataSourceStatus),
-    type: S.optional(S.String),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    domainId: S.String,
-    projectId: S.String,
-    environmentId: S.optional(S.String),
-    connectionId: S.optional(S.String),
-    configuration: S.optional(DataSourceConfigurationOutput),
-    recommendation: S.optional(RecommendationConfiguration),
-    enableSetting: S.optional(EnableSetting),
-    publishOnImport: S.optional(S.Boolean),
-    assetFormsOutput: S.optional(FormOutputList),
-    schedule: S.optional(ScheduleConfiguration),
-    lastRunStatus: S.optional(DataSourceRunStatus),
-    lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastRunErrorMessage: S.optional(DataSourceErrorMessage),
-    errorMessage: S.optional(DataSourceErrorMessage),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "CreateDataSourceOutput" }) as any as S.Schema<CreateDataSourceOutput>;
+const CreateDataSourceOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<CreateDataSourceOutput>;
 export type AuthType = "IAM_IDC" | "DISABLED" | (string & {});
 const AuthType = S.String;
 
@@ -4175,18 +3097,12 @@ export interface SingleSignOn {
   userAssignment?: UserAssignment;
   idcInstanceArn?: string;
 }
-const SingleSignOn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AuthType),
-    userAssignment: S.optional(UserAssignment),
-    idcInstanceArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "SingleSignOn" }) as any as S.Schema<SingleSignOn>;
+const SingleSignOn = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<SingleSignOn>;
 export type KmsKeyArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ __L.at(__c24, 0);
 export type DomainVersion = "V1" | "V2" | (string & {});
 const DomainVersion = S.String;
 
@@ -4201,19 +3117,7 @@ export interface CreateDomainInput {
   serviceRole?: string;
   clientToken?: string;
 }
-const CreateDomainInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    singleSignOn: S.optional(SingleSignOn),
-    domainExecutionRole: S.optional(S.String),
-    kmsKeyIdentifier: S.optional(S.String),
-    tags: S.optional(Tags),
-    domainVersion: S.optional(DomainVersion),
-    serviceRole: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/v2/domains" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateDomainInput" }) as any as S.Schema<CreateDomainInput>;
+const CreateDomainInput = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<CreateDomainInput>;
 export type DomainStatus =
   | "CREATING"
   | "AVAILABLE"
@@ -4239,23 +3143,7 @@ export interface CreateDomainOutput {
   domainVersion?: DomainVersion;
   serviceRole?: string;
 }
-const CreateDomainOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    rootDomainUnitId: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    singleSignOn: S.optional(SingleSignOn),
-    domainExecutionRole: S.optional(S.String),
-    arn: S.optional(S.String),
-    kmsKeyIdentifier: S.optional(S.String),
-    status: S.optional(DomainStatus),
-    portalUrl: S.optional(S.String),
-    tags: S.optional(Tags),
-    domainVersion: S.optional(DomainVersion),
-    serviceRole: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateDomainOutput" }) as any as S.Schema<CreateDomainOutput>;
+const CreateDomainOutput = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<CreateDomainOutput>;
 export type DomainUnitName = string | redacted.Redacted<string>;
 export type DomainUnitDescription = string | redacted.Redacted<string>;
 export interface CreateDomainUnitInput {
@@ -4265,47 +3153,30 @@ export interface CreateDomainUnitInput {
   description?: string | redacted.Redacted<string>;
   clientToken?: string;
 }
-const CreateDomainUnitInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: SensitiveString,
-    parentDomainUnitIdentifier: S.String,
-    description: S.optional(SensitiveString),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/domain-units" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateDomainUnitInput" }) as any as S.Schema<CreateDomainUnitInput>;
+const CreateDomainUnitInput = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<CreateDomainUnitInput>;
 export interface DomainUnitUserProperties {
   userId?: string;
 }
-const DomainUnitUserProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ userId: S.optional(S.String) }),
-).annotate({ identifier: "DomainUnitUserProperties" }) as any as S.Schema<DomainUnitUserProperties>;
+const DomainUnitUserProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<DomainUnitUserProperties>;
 export interface DomainUnitGroupProperties {
   groupId?: string;
 }
-const DomainUnitGroupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupId: S.optional(S.String) }),
-).annotate({
-  identifier: "DomainUnitGroupProperties",
-}) as any as S.Schema<DomainUnitGroupProperties>;
+const DomainUnitGroupProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<DomainUnitGroupProperties>;
 export type DomainUnitOwnerProperties =
   | { user: DomainUnitUserProperties; group?: never }
   | { user?: never; group: DomainUnitGroupProperties };
-const DomainUnitOwnerProperties = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ user: DomainUnitUserProperties }),
-  /*@__PURE__*/ S.Struct({ group: DomainUnitGroupProperties }),
-]);
+const DomainUnitOwnerProperties = /*@__PURE__*/ __L.at(__c24, 6);
 export type DomainUnitOwners = DomainUnitOwnerProperties[];
-const DomainUnitOwners = /*@__PURE__*/ S.Array(DomainUnitOwnerProperties);
+const DomainUnitOwners = /*@__PURE__*/ __L.at(__c24, 7);
 export type DomainUnitIds = string[];
 const DomainUnitIds = FilterIds as any as S.Schema<DomainUnitIds>;
 export interface CreateDomainUnitOutput {
@@ -4319,29 +3190,21 @@ export interface CreateDomainUnitOutput {
   createdAt?: Date;
   createdBy?: string;
 }
-const CreateDomainUnitOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    name: SensitiveString,
-    parentDomainUnitId: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    owners: DomainUnitOwners,
-    ancestorDomainUnitIds: DomainUnitIds,
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateDomainUnitOutput" }) as any as S.Schema<CreateDomainUnitOutput>;
+const CreateDomainUnitOutput = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<CreateDomainUnitOutput>;
 export type EnvironmentProfileId = string;
 export interface EnvironmentParameter {
   name?: string;
   value?: string;
 }
-const EnvironmentParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({ identifier: "EnvironmentParameter" }) as any as S.Schema<EnvironmentParameter>;
+const EnvironmentParameter = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<EnvironmentParameter>;
 export type EnvironmentParametersList = EnvironmentParameter[];
-const EnvironmentParametersList = /*@__PURE__*/ S.Array(EnvironmentParameter);
+const EnvironmentParametersList = /*@__PURE__*/ __L.at(__c25, 2);
 export type EnvironmentConfigurationName = string | redacted.Redacted<string>;
 export interface CreateEnvironmentInput {
   projectIdentifier: string;
@@ -4358,32 +3221,10 @@ export interface CreateEnvironmentInput {
   environmentConfigurationId?: string;
   environmentConfigurationName?: string | redacted.Redacted<string>;
 }
-const CreateEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectIdentifier: S.String,
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    description: S.optional(S.String),
-    name: S.String,
-    environmentProfileIdentifier: S.optional(S.String),
-    userParameters: S.optional(EnvironmentParametersList),
-    glossaryTerms: S.optional(GlossaryTerms),
-    environmentAccountIdentifier: S.optional(S.String),
-    environmentAccountRegion: S.optional(S.String),
-    environmentBlueprintIdentifier: S.optional(S.String),
-    deploymentOrder: S.optional(S.Number),
-    environmentConfigurationId: S.optional(S.String),
-    environmentConfigurationName: S.optional(SensitiveString),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/environments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateEnvironmentInput" }) as any as S.Schema<CreateEnvironmentInput>;
+const CreateEnvironmentInput = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<CreateEnvironmentInput>;
 export type EnvironmentName = string | redacted.Redacted<string>;
 export interface Resource {
   provider?: string;
@@ -4391,16 +3232,9 @@ export interface Resource {
   value: string;
   type: string;
 }
-const Resource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    name: S.optional(S.String),
-    value: S.String,
-    type: S.String,
-  }),
-).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
+const Resource = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
-const ResourceList = /*@__PURE__*/ S.Array(Resource);
+const ResourceList = /*@__PURE__*/ __L.at(__c25, 5);
 export type EnvironmentStatus =
   | "ACTIVE"
   | "CREATING"
@@ -4425,29 +3259,23 @@ export interface ConfigurableActionParameter {
   key?: string;
   value?: string;
 }
-const ConfigurableActionParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-).annotate({
-  identifier: "ConfigurableActionParameter",
-}) as any as S.Schema<ConfigurableActionParameter>;
+const ConfigurableActionParameter = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ConfigurableActionParameter>;
 export type ConfigurableActionParameterList = ConfigurableActionParameter[];
-const ConfigurableActionParameterList = /*@__PURE__*/ S.Array(ConfigurableActionParameter);
+const ConfigurableActionParameterList = /*@__PURE__*/ __L.at(__c25, 7);
 export interface ConfigurableEnvironmentAction {
   type: string;
   auth?: ConfigurableActionTypeAuthorization;
   parameters: ConfigurableActionParameter[];
 }
-const ConfigurableEnvironmentAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    auth: S.optional(ConfigurableActionTypeAuthorization),
-    parameters: ConfigurableActionParameterList,
-  }),
-).annotate({
-  identifier: "ConfigurableEnvironmentAction",
-}) as any as S.Schema<ConfigurableEnvironmentAction>;
+const ConfigurableEnvironmentAction = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ConfigurableEnvironmentAction>;
 export type EnvironmentActionList = ConfigurableEnvironmentAction[];
-const EnvironmentActionList = /*@__PURE__*/ S.Array(ConfigurableEnvironmentAction);
+const EnvironmentActionList = /*@__PURE__*/ __L.at(__c26, 1);
 export interface CustomParameter {
   keyName: string;
   description?: string | redacted.Redacted<string>;
@@ -4457,19 +3285,9 @@ export interface CustomParameter {
   isOptional?: boolean;
   isUpdateSupported?: boolean;
 }
-const CustomParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyName: S.String,
-    description: S.optional(SensitiveString),
-    fieldType: S.String,
-    defaultValue: S.optional(S.String),
-    isEditable: S.optional(S.Boolean),
-    isOptional: S.optional(S.Boolean),
-    isUpdateSupported: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "CustomParameter" }) as any as S.Schema<CustomParameter>;
+const CustomParameter = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<CustomParameter>;
 export type CustomParameterList = CustomParameter[];
-const CustomParameterList = /*@__PURE__*/ S.Array(CustomParameter);
+const CustomParameterList = /*@__PURE__*/ __L.at(__c26, 3);
 export type DeploymentType = "CREATE" | "UPDATE" | "DELETE" | (string & {});
 const DeploymentType = S.String;
 
@@ -4485,9 +3303,7 @@ export interface EnvironmentError {
   code?: string;
   message: string;
 }
-const EnvironmentError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(S.String), message: S.String }),
-).annotate({ identifier: "EnvironmentError" }) as any as S.Schema<EnvironmentError>;
+const EnvironmentError = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<EnvironmentError>;
 export type DeploymentMessage = string;
 export type DeploymentMessagesList = string[];
 const DeploymentMessagesList = FilterIds as any as S.Schema<DeploymentMessagesList>;
@@ -4499,36 +3315,26 @@ export interface Deployment {
   messages?: string[];
   isDeploymentComplete?: boolean;
 }
-const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.optional(S.String),
-    deploymentType: S.optional(DeploymentType),
-    deploymentStatus: S.optional(DeploymentStatus),
-    failureReason: S.optional(EnvironmentError),
-    messages: S.optional(DeploymentMessagesList),
-    isDeploymentComplete: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
+const Deployment = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<Deployment>;
 export interface CloudFormationProperties {
   templateUrl: string;
 }
-const CloudFormationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ templateUrl: S.String }),
-).annotate({ identifier: "CloudFormationProperties" }) as any as S.Schema<CloudFormationProperties>;
+const CloudFormationProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<CloudFormationProperties>;
 export type ProvisioningProperties =
   | { cloudFormation: CloudFormationProperties; manual?: never }
   | { cloudFormation?: never; manual: Record<string, never> };
-const ProvisioningProperties = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cloudFormation: CloudFormationProperties }),
-  /*@__PURE__*/ S.Struct({ manual: /*@__PURE__*/ S.Struct({}) }),
-]);
+const ProvisioningProperties = /*@__PURE__*/ __L.at(__c26, 7);
 export interface DeploymentProperties {
   startTimeoutMinutes?: number;
   endTimeoutMinutes?: number;
 }
-const DeploymentProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ startTimeoutMinutes: S.optional(S.Number), endTimeoutMinutes: S.optional(S.Number) }),
-).annotate({ identifier: "DeploymentProperties" }) as any as S.Schema<DeploymentProperties>;
+const DeploymentProperties = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<DeploymentProperties>;
 export type EnvironmentBlueprintId = string;
 export type EnvironmentConfigurationId = string | redacted.Redacted<string>;
 export interface CreateEnvironmentOutput {
@@ -4556,43 +3362,19 @@ export interface CreateEnvironmentOutput {
   environmentConfigurationId?: string | redacted.Redacted<string>;
   environmentConfigurationName?: string | redacted.Redacted<string>;
 }
-const CreateEnvironmentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    id: S.optional(S.String),
-    domainId: S.String,
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    environmentProfileId: S.optional(S.String),
-    awsAccountId: S.optional(S.String),
-    awsAccountRegion: S.optional(S.String),
-    provider: S.String,
-    provisionedResources: S.optional(ResourceList),
-    status: S.optional(EnvironmentStatus),
-    environmentActions: S.optional(EnvironmentActionList),
-    glossaryTerms: S.optional(GlossaryTerms),
-    userParameters: S.optional(CustomParameterList),
-    lastDeployment: S.optional(Deployment),
-    provisioningProperties: S.optional(ProvisioningProperties),
-    deploymentProperties: S.optional(DeploymentProperties),
-    environmentBlueprintId: S.optional(S.String),
-    environmentConfigurationId: S.optional(SensitiveString),
-    environmentConfigurationName: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "CreateEnvironmentOutput" }) as any as S.Schema<CreateEnvironmentOutput>;
+const CreateEnvironmentOutput = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<CreateEnvironmentOutput>;
 export interface AwsConsoleLinkParameters {
   uri?: string;
 }
-const AwsConsoleLinkParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ uri: S.optional(S.String) }),
-).annotate({ identifier: "AwsConsoleLinkParameters" }) as any as S.Schema<AwsConsoleLinkParameters>;
+const AwsConsoleLinkParameters = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<AwsConsoleLinkParameters>;
 export type ActionParameters = { awsConsoleLink: AwsConsoleLinkParameters };
-const ActionParameters = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ awsConsoleLink: AwsConsoleLinkParameters }),
-]);
+const ActionParameters = /*@__PURE__*/ __L.at(__c27, 3);
 export interface CreateEnvironmentActionInput {
   domainIdentifier: string;
   environmentIdentifier: string;
@@ -4600,29 +3382,10 @@ export interface CreateEnvironmentActionInput {
   parameters: ActionParameters;
   description?: string;
 }
-const CreateEnvironmentActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    name: S.String,
-    parameters: ActionParameters,
-    description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateEnvironmentActionInput",
-}) as any as S.Schema<CreateEnvironmentActionInput>;
+const CreateEnvironmentActionInput = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<CreateEnvironmentActionInput>;
 export type EnvironmentActionId = string;
 export interface CreateEnvironmentActionOutput {
   domainId: string;
@@ -4632,18 +3395,10 @@ export interface CreateEnvironmentActionOutput {
   parameters: ActionParameters;
   description?: string;
 }
-const CreateEnvironmentActionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    environmentId: S.String,
-    id: S.String,
-    name: S.String,
-    parameters: ActionParameters,
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateEnvironmentActionOutput",
-}) as any as S.Schema<CreateEnvironmentActionOutput>;
+const CreateEnvironmentActionOutput = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<CreateEnvironmentActionOutput>;
 export type EnvironmentBlueprintName = string;
 export type BlueprintCategory = "TOOLING" | (string & {});
 const BlueprintCategory = S.String;
@@ -4656,27 +3411,10 @@ export interface CreateEnvironmentBlueprintInput {
   userParameters?: CustomParameter[];
   blueprintCategory?: BlueprintCategory;
 }
-const CreateEnvironmentBlueprintInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: S.String,
-    description: S.optional(SensitiveString),
-    provisioningProperties: ProvisioningProperties,
-    userParameters: S.optional(CustomParameterList),
-    blueprintCategory: S.optional(BlueprintCategory),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/environment-blueprints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateEnvironmentBlueprintInput",
-}) as any as S.Schema<CreateEnvironmentBlueprintInput>;
+const CreateEnvironmentBlueprintInput = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<CreateEnvironmentBlueprintInput>;
 export interface CreateEnvironmentBlueprintOutput {
   id: string;
   name: string;
@@ -4690,23 +3428,10 @@ export interface CreateEnvironmentBlueprintOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const CreateEnvironmentBlueprintOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(SensitiveString),
-    provider: S.String,
-    provisioningProperties: ProvisioningProperties,
-    deploymentProperties: S.optional(DeploymentProperties),
-    userParameters: S.optional(CustomParameterList),
-    glossaryTerms: S.optional(GlossaryTerms),
-    blueprintCategory: S.optional(BlueprintCategory),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "CreateEnvironmentBlueprintOutput",
-}) as any as S.Schema<CreateEnvironmentBlueprintOutput>;
+const CreateEnvironmentBlueprintOutput = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<CreateEnvironmentBlueprintOutput>;
 export type EnvironmentProfileName = string | redacted.Redacted<string>;
 export interface CreateEnvironmentProfileInput {
   domainIdentifier: string;
@@ -4718,29 +3443,10 @@ export interface CreateEnvironmentProfileInput {
   awsAccountId?: string;
   awsAccountRegion?: string;
 }
-const CreateEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    environmentBlueprintIdentifier: S.String,
-    projectIdentifier: S.String,
-    userParameters: S.optional(EnvironmentParametersList),
-    awsAccountId: S.optional(S.String),
-    awsAccountRegion: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/environment-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateEnvironmentProfileInput",
-}) as any as S.Schema<CreateEnvironmentProfileInput>;
+const CreateEnvironmentProfileInput = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<CreateEnvironmentProfileInput>;
 export interface CreateEnvironmentProfileOutput {
   id: string;
   domainId: string;
@@ -4755,27 +3461,13 @@ export interface CreateEnvironmentProfileOutput {
   projectId?: string;
   userParameters?: CustomParameter[];
 }
-const CreateEnvironmentProfileOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    awsAccountId: S.optional(S.String),
-    awsAccountRegion: S.optional(S.String),
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    environmentBlueprintId: S.String,
-    projectId: S.optional(S.String),
-    userParameters: S.optional(CustomParameterList),
-  }),
-).annotate({
-  identifier: "CreateEnvironmentProfileOutput",
-}) as any as S.Schema<CreateEnvironmentProfileOutput>;
+const CreateEnvironmentProfileOutput = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<CreateEnvironmentProfileOutput>;
 export type Smithy = string;
 export type Model = { smithy: string };
-const Model = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ smithy: S.String })]);
+const Model = /*@__PURE__*/ __L.at(__c28, 2);
 export type FormTypeStatus = "ENABLED" | "DISABLED" | (string & {});
 const FormTypeStatus = S.String;
 
@@ -4787,25 +3479,7 @@ export interface CreateFormTypeInput {
   status?: FormTypeStatus;
   description?: string | redacted.Redacted<string>;
 }
-const CreateFormTypeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: SensitiveString,
-    model: Model,
-    owningProjectIdentifier: S.String,
-    status: S.optional(FormTypeStatus),
-    description: S.optional(SensitiveString),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/form-types" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateFormTypeInput" }) as any as S.Schema<CreateFormTypeInput>;
+const CreateFormTypeInput = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<CreateFormTypeInput>;
 export interface CreateFormTypeOutput {
   domainId: string;
   name: string | redacted.Redacted<string>;
@@ -4815,17 +3489,10 @@ export interface CreateFormTypeOutput {
   originDomainId?: string;
   originProjectId?: string;
 }
-const CreateFormTypeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    name: SensitiveString,
-    revision: S.String,
-    description: S.optional(SensitiveString),
-    owningProjectId: S.optional(S.String),
-    originDomainId: S.optional(S.String),
-    originProjectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateFormTypeOutput" }) as any as S.Schema<CreateFormTypeOutput>;
+const CreateFormTypeOutput = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<CreateFormTypeOutput>;
 export type GlossaryName = string | redacted.Redacted<string>;
 export type GlossaryDescription = string | redacted.Redacted<string>;
 export type GlossaryStatus = "DISABLED" | "ENABLED" | (string & {});
@@ -4843,26 +3510,7 @@ export interface CreateGlossaryInput {
   usageRestrictions?: GlossaryUsageRestriction[];
   clientToken?: string;
 }
-const CreateGlossaryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: SensitiveString,
-    owningProjectIdentifier: S.String,
-    description: S.optional(SensitiveString),
-    status: S.optional(GlossaryStatus),
-    usageRestrictions: S.optional(GlossaryUsageRestrictions),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/glossaries" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateGlossaryInput" }) as any as S.Schema<CreateGlossaryInput>;
+const CreateGlossaryInput = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<CreateGlossaryInput>;
 export type GlossaryId = string;
 export interface CreateGlossaryOutput {
   domainId: string;
@@ -4873,17 +3521,10 @@ export interface CreateGlossaryOutput {
   status?: GlossaryStatus;
   usageRestrictions?: GlossaryUsageRestriction[];
 }
-const CreateGlossaryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    owningProjectId: S.String,
-    description: S.optional(SensitiveString),
-    status: S.optional(GlossaryStatus),
-    usageRestrictions: S.optional(GlossaryUsageRestrictions),
-  }),
-).annotate({ identifier: "CreateGlossaryOutput" }) as any as S.Schema<CreateGlossaryOutput>;
+const CreateGlossaryOutput = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<CreateGlossaryOutput>;
 export type GlossaryTermStatus = "ENABLED" | "DISABLED" | (string & {});
 const GlossaryTermStatus = S.String;
 
@@ -4892,9 +3533,7 @@ export interface TermRelations {
   isA?: string[];
   classifies?: string[];
 }
-const TermRelations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ isA: S.optional(GlossaryTerms), classifies: S.optional(GlossaryTerms) }),
-).annotate({ identifier: "TermRelations" }) as any as S.Schema<TermRelations>;
+const TermRelations = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<TermRelations>;
 export interface CreateGlossaryTermInput {
   domainIdentifier: string;
   glossaryIdentifier: string;
@@ -4905,27 +3544,10 @@ export interface CreateGlossaryTermInput {
   termRelations?: TermRelations;
   clientToken?: string;
 }
-const CreateGlossaryTermInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    glossaryIdentifier: S.String,
-    name: SensitiveString,
-    status: S.optional(GlossaryTermStatus),
-    shortDescription: S.optional(SensitiveString),
-    longDescription: S.optional(SensitiveString),
-    termRelations: S.optional(TermRelations),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/glossary-terms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateGlossaryTermInput" }) as any as S.Schema<CreateGlossaryTermInput>;
+const CreateGlossaryTermInput = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<CreateGlossaryTermInput>;
 export interface CreateGlossaryTermOutput {
   id: string;
   domainId: string;
@@ -4937,42 +3559,20 @@ export interface CreateGlossaryTermOutput {
   termRelations?: TermRelations;
   usageRestrictions?: GlossaryUsageRestriction[];
 }
-const CreateGlossaryTermOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    glossaryId: S.String,
-    name: SensitiveString,
-    status: GlossaryTermStatus,
-    shortDescription: S.optional(SensitiveString),
-    longDescription: S.optional(SensitiveString),
-    termRelations: S.optional(TermRelations),
-    usageRestrictions: S.optional(GlossaryUsageRestrictions),
-  }),
-).annotate({ identifier: "CreateGlossaryTermOutput" }) as any as S.Schema<CreateGlossaryTermOutput>;
+const CreateGlossaryTermOutput = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<CreateGlossaryTermOutput>;
 export interface CreateGroupProfileInput {
   domainIdentifier: string;
   groupIdentifier?: string;
   rolePrincipalArn?: string;
   clientToken?: string;
 }
-const CreateGroupProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    groupIdentifier: S.optional(S.String),
-    rolePrincipalArn: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/group-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateGroupProfileInput" }) as any as S.Schema<CreateGroupProfileInput>;
+const CreateGroupProfileInput = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<CreateGroupProfileInput>;
 export type GroupProfileStatus = "ASSIGNED" | "NOT_ASSIGNED" | (string & {});
 const GroupProfileStatus = S.String;
 
@@ -4984,16 +3584,10 @@ export interface CreateGroupProfileOutput {
   rolePrincipalArn?: string;
   rolePrincipalId?: string;
 }
-const CreateGroupProfileOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    id: S.optional(S.String),
-    status: S.optional(GroupProfileStatus),
-    groupName: S.optional(SensitiveString),
-    rolePrincipalArn: S.optional(S.String),
-    rolePrincipalId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateGroupProfileOutput" }) as any as S.Schema<CreateGroupProfileOutput>;
+const CreateGroupProfileOutput = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<CreateGroupProfileOutput>;
 export type EntityType = "ASSET" | "DATA_PRODUCT" | (string & {});
 const EntityType = S.String;
 
@@ -5008,37 +3602,19 @@ export interface CreateListingChangeSetInput {
   action: ChangeAction;
   clientToken?: string;
 }
-const CreateListingChangeSetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityIdentifier: S.String,
-    entityType: EntityType,
-    entityRevision: S.optional(S.String),
-    action: ChangeAction,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/listings/change-set" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateListingChangeSetInput",
-}) as any as S.Schema<CreateListingChangeSetInput>;
+const CreateListingChangeSetInput = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<CreateListingChangeSetInput>;
 export interface CreateListingChangeSetOutput {
   listingId: string;
   listingRevision: string;
   status: ListingStatus;
 }
-const CreateListingChangeSetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ listingId: S.String, listingRevision: S.String, status: ListingStatus }),
-).annotate({
-  identifier: "CreateListingChangeSetOutput",
-}) as any as S.Schema<CreateListingChangeSetOutput>;
+const CreateListingChangeSetOutput = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<CreateListingChangeSetOutput>;
 export type NotebookName = string | redacted.Redacted<string>;
 export type NotebookType = "DATA" | "SQL" | (string & {});
 const NotebookType = S.String;
@@ -5046,7 +3622,7 @@ const NotebookType = S.String;
 export type MetadataKey = string;
 export type MetadataValue = string | redacted.Redacted<string>;
 export type Metadata = { [key: string]: string | redacted.Redacted<string> | undefined };
-const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+const Metadata = /*@__PURE__*/ __L.at(__c29, 6);
 export type ParameterKey = string;
 export type ParameterValue = string;
 export type Parameters = { [key: string]: string | undefined };
@@ -5061,32 +3637,12 @@ export interface CreateNotebookInput {
   parameters?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-const CreateNotebookInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    owningProjectIdentifier: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    type: S.optional(NotebookType),
-    metadata: S.optional(Metadata),
-    parameters: S.optional(Parameters),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebooks" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateNotebookInput" }) as any as S.Schema<CreateNotebookInput>;
+const CreateNotebookInput = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<CreateNotebookInput>;
 export type NotebookId = string;
 export interface CellInformation {}
 const CellInformation = AddEntityOwnerOutput as any as S.Schema<CellInformation>;
 export type CellOrder = CellInformation[];
-const CellOrder = /*@__PURE__*/ S.Array(CellInformation);
+const CellOrder = /*@__PURE__*/ __L.at(__c30, 0);
 export type NotebookStatus =
   | "ACTIVE"
   | "ARCHIVED"
@@ -5103,22 +3659,16 @@ export interface PackageConfig {
   packageManager: PackageManager;
   packageSpecification?: string;
 }
-const PackageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packageManager: PackageManager, packageSpecification: S.optional(S.String) }),
-).annotate({ identifier: "PackageConfig" }) as any as S.Schema<PackageConfig>;
+const PackageConfig = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<PackageConfig>;
 export interface EnvironmentConfig {
   imageVersion?: string;
   packageConfig?: PackageConfig;
 }
-const EnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ imageVersion: S.optional(S.String), packageConfig: S.optional(PackageConfig) }),
-).annotate({ identifier: "EnvironmentConfig" }) as any as S.Schema<EnvironmentConfig>;
+const EnvironmentConfig = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<EnvironmentConfig>;
 export interface NotebookError {
   message: string;
 }
-const NotebookError = /*@__PURE__*/ S.suspend(() => S.Struct({ message: S.String })).annotate({
-  identifier: "NotebookError",
-}) as any as S.Schema<NotebookError>;
+const NotebookError = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<NotebookError>;
 export type GitConnectionId = string;
 export type GitRepository = string | redacted.Redacted<string>;
 export type GitBranch = string | redacted.Redacted<string>;
@@ -5134,17 +3684,7 @@ export interface GitMetadata {
   committedAt?: Date;
   commitMessage?: string | redacted.Redacted<string>;
 }
-const GitMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionId: S.String,
-    repository: SensitiveString,
-    branch: SensitiveString,
-    commitHash: S.String,
-    fileName: S.optional(S.String),
-    committedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    commitMessage: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "GitMetadata" }) as any as S.Schema<GitMetadata>;
+const GitMetadata = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<GitMetadata>;
 export interface CreateNotebookOutput {
   id: string;
   name: string | redacted.Redacted<string>;
@@ -5168,73 +3708,36 @@ export interface CreateNotebookOutput {
   error?: NotebookError;
   gitMetadata?: GitMetadata;
 }
-const CreateNotebookOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: SensitiveString,
-    owningProjectId: S.String,
-    domainId: S.String,
-    cellOrder: CellOrder,
-    status: NotebookStatus,
-    type: S.optional(NotebookType),
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    lockedBy: S.optional(S.String),
-    lockedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lockExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    computeId: S.optional(S.String),
-    metadata: S.optional(Metadata),
-    parameters: S.optional(Parameters),
-    environmentConfiguration: S.optional(EnvironmentConfig),
-    error: S.optional(NotebookError),
-    gitMetadata: S.optional(GitMetadata),
-  }),
-).annotate({ identifier: "CreateNotebookOutput" }) as any as S.Schema<CreateNotebookOutput>;
+const CreateNotebookOutput = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<CreateNotebookOutput>;
 export type ProjectProfileId = string;
 export interface EnvironmentResolvedAccount {
   awsAccountId: string;
   regionName: string;
   sourceAccountPoolId?: string;
 }
-const EnvironmentResolvedAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    awsAccountId: S.String,
-    regionName: S.String,
-    sourceAccountPoolId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentResolvedAccount",
-}) as any as S.Schema<EnvironmentResolvedAccount>;
+const EnvironmentResolvedAccount = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<EnvironmentResolvedAccount>;
 export interface EnvironmentConfigurationUserParameter {
   environmentId?: string;
   environmentResolvedAccount?: EnvironmentResolvedAccount;
   environmentConfigurationName?: string | redacted.Redacted<string>;
   environmentParameters?: EnvironmentParameter[];
 }
-const EnvironmentConfigurationUserParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.String),
-    environmentResolvedAccount: S.optional(EnvironmentResolvedAccount),
-    environmentConfigurationName: S.optional(SensitiveString),
-    environmentParameters: S.optional(EnvironmentParametersList),
-  }),
-).annotate({
-  identifier: "EnvironmentConfigurationUserParameter",
-}) as any as S.Schema<EnvironmentConfigurationUserParameter>;
+const EnvironmentConfigurationUserParameter = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<EnvironmentConfigurationUserParameter>;
 export type EnvironmentConfigurationUserParametersList = EnvironmentConfigurationUserParameter[];
-const EnvironmentConfigurationUserParametersList = /*@__PURE__*/ S.Array(
-  EnvironmentConfigurationUserParameter,
-);
+const EnvironmentConfigurationUserParametersList = /*@__PURE__*/ __L.at(__c31, 0);
 export type Member =
   | { userIdentifier: string; groupIdentifier?: never }
   | { userIdentifier?: never; groupIdentifier: string };
-const Member = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ userIdentifier: S.String }),
-  /*@__PURE__*/ S.Struct({ groupIdentifier: S.String }),
-]);
+const Member = /*@__PURE__*/ __L.at(__c31, 1);
 export type UserDesignation =
   | "PROJECT_OWNER"
   | "PROJECT_CONTRIBUTOR"
@@ -5248,13 +3751,12 @@ export interface ProjectMembershipAssignment {
   member: Member;
   designation: UserDesignation;
 }
-const ProjectMembershipAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ member: Member, designation: UserDesignation }),
-).annotate({
-  identifier: "ProjectMembershipAssignment",
-}) as any as S.Schema<ProjectMembershipAssignment>;
+const ProjectMembershipAssignment = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<ProjectMembershipAssignment>;
 export type ProjectMembershipAssignments = ProjectMembershipAssignment[];
-const ProjectMembershipAssignments = /*@__PURE__*/ S.Array(ProjectMembershipAssignment);
+const ProjectMembershipAssignments = /*@__PURE__*/ __L.at(__c31, 3);
 export interface CreateProjectInput {
   domainIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -5268,30 +3770,7 @@ export interface CreateProjectInput {
   projectExecutionRole?: string;
   membershipAssignments?: ProjectMembershipAssignment[];
 }
-const CreateProjectInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    resourceTags: S.optional(Tags),
-    glossaryTerms: S.optional(GlossaryTerms),
-    domainUnitId: S.optional(S.String),
-    projectProfileId: S.optional(S.String),
-    userParameters: S.optional(EnvironmentConfigurationUserParametersList),
-    projectCategory: S.optional(S.String),
-    projectExecutionRole: S.optional(S.String),
-    membershipAssignments: S.optional(ProjectMembershipAssignments),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/projects" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateProjectInput" }) as any as S.Schema<CreateProjectInput>;
+const CreateProjectInput = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<CreateProjectInput>;
 export type ProjectStatus =
   | "ACTIVE"
   | "DELETING"
@@ -5306,11 +3785,12 @@ export interface ProjectDeletionError {
   code?: string;
   message?: string;
 }
-const ProjectDeletionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
-).annotate({ identifier: "ProjectDeletionError" }) as any as S.Schema<ProjectDeletionError>;
+const ProjectDeletionError = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<ProjectDeletionError>;
 export type FailureReasons = ProjectDeletionError[];
-const FailureReasons = /*@__PURE__*/ S.Array(ProjectDeletionError);
+const FailureReasons = /*@__PURE__*/ __L.at(__c31, 6);
 export type ResourceTagSource = "PROJECT" | "PROJECT_PROFILE" | (string & {});
 const ResourceTagSource = S.String;
 
@@ -5319,11 +3799,9 @@ export interface ResourceTag {
   value: string;
   source: ResourceTagSource;
 }
-const ResourceTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.String, source: ResourceTagSource }),
-).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
+const ResourceTag = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<ResourceTag>;
 export type ResourceTags = ResourceTag[];
-const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
+const ResourceTags = /*@__PURE__*/ __L.at(__c32, 0);
 export type OverallDeploymentStatus =
   | "PENDING_DEPLOYMENT"
   | "IN_PROGRESS"
@@ -5334,24 +3812,17 @@ export type OverallDeploymentStatus =
 const OverallDeploymentStatus = S.String;
 
 export type EnvironmentFailureReasonsList = EnvironmentError[];
-const EnvironmentFailureReasonsList = /*@__PURE__*/ S.Array(EnvironmentError);
+const EnvironmentFailureReasonsList = /*@__PURE__*/ __L.at(__c32, 1);
 export type EnvironmentFailureReasons = { [key: string]: EnvironmentError[] | undefined };
-const EnvironmentFailureReasons = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ EnvironmentFailureReasonsList.pipe(S.optional),
-);
+const EnvironmentFailureReasons = /*@__PURE__*/ __L.at(__c32, 2);
 export interface EnvironmentDeploymentDetails {
   overallDeploymentStatus?: OverallDeploymentStatus;
   environmentFailureReasons?: { [key: string]: EnvironmentError[] | undefined };
 }
-const EnvironmentDeploymentDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    overallDeploymentStatus: S.optional(OverallDeploymentStatus),
-    environmentFailureReasons: S.optional(EnvironmentFailureReasons),
-  }),
-).annotate({
-  identifier: "EnvironmentDeploymentDetails",
-}) as any as S.Schema<EnvironmentDeploymentDetails>;
+const EnvironmentDeploymentDetails = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<EnvironmentDeploymentDetails>;
 export interface CreateProjectOutput {
   domainId: string;
   id: string;
@@ -5370,54 +3841,17 @@ export interface CreateProjectOutput {
   environmentDeploymentDetails?: EnvironmentDeploymentDetails;
   projectCategory?: string;
 }
-const CreateProjectOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    projectStatus: S.optional(ProjectStatus),
-    failureReasons: S.optional(FailureReasons),
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    resourceTags: S.optional(ResourceTags),
-    glossaryTerms: S.optional(GlossaryTerms),
-    domainUnitId: S.optional(S.String),
-    projectProfileId: S.optional(S.String),
-    userParameters: S.optional(EnvironmentConfigurationUserParametersList),
-    environmentDeploymentDetails: S.optional(EnvironmentDeploymentDetails),
-    projectCategory: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateProjectOutput" }) as any as S.Schema<CreateProjectOutput>;
+const CreateProjectOutput = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<CreateProjectOutput>;
 export interface CreateProjectMembershipInput {
   domainIdentifier: string;
   projectIdentifier: string;
   member: Member;
   designation: UserDesignation;
 }
-const CreateProjectMembershipInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
-    member: Member,
-    designation: UserDesignation,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/createMembership",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateProjectMembershipInput",
-}) as any as S.Schema<CreateProjectMembershipInput>;
+const CreateProjectMembershipInput = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<CreateProjectMembershipInput>;
 export interface CreateProjectMembershipOutput {}
 const CreateProjectMembershipOutput =
   AddEntityOwnerOutput as any as S.Schema<CreateProjectMembershipOutput>;
@@ -5430,11 +3864,12 @@ export interface ResourceTagParameter {
   value: string;
   isValueEditable: boolean;
 }
-const ResourceTagParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.String, isValueEditable: S.Boolean }),
-).annotate({ identifier: "ResourceTagParameter" }) as any as S.Schema<ResourceTagParameter>;
+const ResourceTagParameter = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ResourceTagParameter>;
 export type ProjectResourceTagParameters = ResourceTagParameter[];
-const ProjectResourceTagParameters = /*@__PURE__*/ S.Array(ResourceTagParameter);
+const ProjectResourceTagParameters = /*@__PURE__*/ __L.at(__c32, 7);
 export type DeploymentMode = "ON_CREATE" | "ON_DEMAND" | (string & {});
 const DeploymentMode = S.String;
 
@@ -5445,50 +3880,32 @@ export interface EnvironmentConfigurationParameter {
   value?: string;
   isEditable?: boolean;
 }
-const EnvironmentConfigurationParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-    isEditable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EnvironmentConfigurationParameter",
-}) as any as S.Schema<EnvironmentConfigurationParameter>;
+const EnvironmentConfigurationParameter = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<EnvironmentConfigurationParameter>;
 export type EnvironmentConfigurationParametersList = EnvironmentConfigurationParameter[];
-const EnvironmentConfigurationParametersList = /*@__PURE__*/ S.Array(
-  EnvironmentConfigurationParameter,
-);
+const EnvironmentConfigurationParametersList = /*@__PURE__*/ __L.at(__c33, 1);
 export interface EnvironmentConfigurationParametersDetails {
   ssmPath?: string;
   parameterOverrides?: EnvironmentConfigurationParameter[];
   resolvedParameters?: EnvironmentConfigurationParameter[];
 }
-const EnvironmentConfigurationParametersDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ssmPath: S.optional(S.String),
-    parameterOverrides: S.optional(EnvironmentConfigurationParametersList),
-    resolvedParameters: S.optional(EnvironmentConfigurationParametersList),
-  }),
-).annotate({
-  identifier: "EnvironmentConfigurationParametersDetails",
-}) as any as S.Schema<EnvironmentConfigurationParametersDetails>;
+const EnvironmentConfigurationParametersDetails = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<EnvironmentConfigurationParametersDetails>;
 export type AwsAccount =
   | { awsAccountId: string; awsAccountIdPath?: never }
   | { awsAccountId?: never; awsAccountIdPath: string };
-const AwsAccount = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ awsAccountId: S.String }),
-  /*@__PURE__*/ S.Struct({ awsAccountIdPath: S.String }),
-]);
+const AwsAccount = /*@__PURE__*/ __L.at(__c33, 3);
 export type AccountPoolList = string[];
 const AccountPoolList = FilterIds as any as S.Schema<AccountPoolList>;
 export type RegionName = string;
 export type Region =
   | { regionName: string; regionNamePath?: never }
   | { regionName?: never; regionNamePath: string };
-const Region = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ regionName: S.String }),
-  /*@__PURE__*/ S.Struct({ regionNamePath: S.String }),
-]);
+const Region = /*@__PURE__*/ __L.at(__c33, 4);
 export type DeploymentOrder = number;
 export interface EnvironmentConfiguration {
   name: string | redacted.Redacted<string>;
@@ -5502,22 +3919,12 @@ export interface EnvironmentConfiguration {
   awsRegion?: Region;
   deploymentOrder?: number;
 }
-const EnvironmentConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    id: S.optional(SensitiveString),
-    environmentBlueprintId: S.String,
-    description: S.optional(SensitiveString),
-    deploymentMode: S.optional(DeploymentMode),
-    configurationParameters: S.optional(EnvironmentConfigurationParametersDetails),
-    awsAccount: S.optional(AwsAccount),
-    accountPools: S.optional(AccountPoolList),
-    awsRegion: S.optional(Region),
-    deploymentOrder: S.optional(S.Number),
-  }),
-).annotate({ identifier: "EnvironmentConfiguration" }) as any as S.Schema<EnvironmentConfiguration>;
+const EnvironmentConfiguration = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<EnvironmentConfiguration>;
 export type EnvironmentConfigurationsList = EnvironmentConfiguration[];
-const EnvironmentConfigurationsList = /*@__PURE__*/ S.Array(EnvironmentConfiguration);
+const EnvironmentConfigurationsList = /*@__PURE__*/ __L.at(__c33, 6);
 export interface CreateProjectProfileInput {
   domainIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -5529,30 +3936,10 @@ export interface CreateProjectProfileInput {
   environmentConfigurations?: EnvironmentConfiguration[];
   domainUnitIdentifier?: string;
 }
-const CreateProjectProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    status: S.optional(Status),
-    projectResourceTags: S.optional(ProjectResourceTagParameters),
-    allowCustomProjectResourceTags: S.optional(S.Boolean),
-    projectResourceTagsDescription: S.optional(SensitiveString),
-    environmentConfigurations: S.optional(EnvironmentConfigurationsList),
-    domainUnitIdentifier: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/project-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateProjectProfileInput",
-}) as any as S.Schema<CreateProjectProfileInput>;
+const CreateProjectProfileInput = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<CreateProjectProfileInput>;
 export interface CreateProjectProfileOutput {
   domainId: string;
   id: string;
@@ -5568,37 +3955,18 @@ export interface CreateProjectProfileOutput {
   lastUpdatedAt?: Date;
   domainUnitId?: string;
 }
-const CreateProjectProfileOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    status: S.optional(Status),
-    projectResourceTags: S.optional(ProjectResourceTagParameters),
-    allowCustomProjectResourceTags: S.optional(S.Boolean),
-    projectResourceTagsDescription: S.optional(SensitiveString),
-    environmentConfigurations: S.optional(EnvironmentConfigurationsList),
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    domainUnitId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateProjectProfileOutput",
-}) as any as S.Schema<CreateProjectProfileOutput>;
+const CreateProjectProfileOutput = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<CreateProjectProfileOutput>;
 export type RuleName = string | redacted.Redacted<string>;
 export interface DomainUnitTarget {
   domainUnitId: string;
   includeChildDomainUnits?: boolean;
 }
-const DomainUnitTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainUnitId: S.String, includeChildDomainUnits: S.optional(S.Boolean) }),
-).annotate({ identifier: "DomainUnitTarget" }) as any as S.Schema<DomainUnitTarget>;
+const DomainUnitTarget = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<DomainUnitTarget>;
 export type RuleTarget = { domainUnitTarget: DomainUnitTarget };
-const RuleTarget = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ domainUnitTarget: DomainUnitTarget }),
-]);
+const RuleTarget = /*@__PURE__*/ __L.at(__c34, 2);
 export type RuleAction =
   | "CREATE_LISTING_CHANGE_SET"
   | "CREATE_SUBSCRIPTION_REQUEST"
@@ -5614,63 +3982,46 @@ export interface AssetTypesForRule {
   selectionMode: RuleScopeSelectionMode;
   specificAssetTypes?: string[];
 }
-const AssetTypesForRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selectionMode: RuleScopeSelectionMode,
-    specificAssetTypes: S.optional(RuleAssetTypeList),
-  }),
-).annotate({ identifier: "AssetTypesForRule" }) as any as S.Schema<AssetTypesForRule>;
+const AssetTypesForRule = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<AssetTypesForRule>;
 export type RuleProjectIdentifierList = string[];
 const RuleProjectIdentifierList = FilterIds as any as S.Schema<RuleProjectIdentifierList>;
 export interface ProjectsForRule {
   selectionMode: RuleScopeSelectionMode;
   specificProjects?: string[];
 }
-const ProjectsForRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selectionMode: RuleScopeSelectionMode,
-    specificProjects: S.optional(RuleProjectIdentifierList),
-  }),
-).annotate({ identifier: "ProjectsForRule" }) as any as S.Schema<ProjectsForRule>;
+const ProjectsForRule = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<ProjectsForRule>;
 export interface RuleScope {
   assetType?: AssetTypesForRule;
   dataProduct?: boolean;
   project?: ProjectsForRule;
 }
-const RuleScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assetType: S.optional(AssetTypesForRule),
-    dataProduct: S.optional(S.Boolean),
-    project: S.optional(ProjectsForRule),
-  }),
-).annotate({ identifier: "RuleScope" }) as any as S.Schema<RuleScope>;
+const RuleScope = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<RuleScope>;
 export interface MetadataFormReference {
   typeIdentifier: string;
   typeRevision: string;
 }
-const MetadataFormReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ typeIdentifier: S.String, typeRevision: S.String }),
-).annotate({ identifier: "MetadataFormReference" }) as any as S.Schema<MetadataFormReference>;
+const MetadataFormReference = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<MetadataFormReference>;
 export type RequiredMetadataFormList = MetadataFormReference[];
-const RequiredMetadataFormList = /*@__PURE__*/ S.Array(MetadataFormReference);
+const RequiredMetadataFormList = /*@__PURE__*/ __L.at(__c34, 7);
 export interface MetadataFormEnforcementDetail {
   requiredMetadataForms?: MetadataFormReference[];
 }
-const MetadataFormEnforcementDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requiredMetadataForms: S.optional(RequiredMetadataFormList) }),
-).annotate({
-  identifier: "MetadataFormEnforcementDetail",
-}) as any as S.Schema<MetadataFormEnforcementDetail>;
+const MetadataFormEnforcementDetail = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<MetadataFormEnforcementDetail>;
 export type GlossaryTermIdentifiers = string[];
 const GlossaryTermIdentifiers = FilterIds as any as S.Schema<GlossaryTermIdentifiers>;
 export interface GlossaryTermEnforcementDetail {
   requiredGlossaryTermIds?: string[];
 }
-const GlossaryTermEnforcementDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requiredGlossaryTermIds: S.optional(GlossaryTermIdentifiers) }),
-).annotate({
-  identifier: "GlossaryTermEnforcementDetail",
-}) as any as S.Schema<GlossaryTermEnforcementDetail>;
+const GlossaryTermEnforcementDetail = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<GlossaryTermEnforcementDetail>;
 export type RuleDetail =
   | {
       metadataFormEnforcementDetail: MetadataFormEnforcementDetail;
@@ -5680,10 +4031,7 @@ export type RuleDetail =
       metadataFormEnforcementDetail?: never;
       glossaryTermEnforcementDetail: GlossaryTermEnforcementDetail;
     };
-const RuleDetail = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ metadataFormEnforcementDetail: MetadataFormEnforcementDetail }),
-  /*@__PURE__*/ S.Struct({ glossaryTermEnforcementDetail: GlossaryTermEnforcementDetail }),
-]);
+const RuleDetail = /*@__PURE__*/ __L.at(__c35, 2);
 export interface CreateRuleInput {
   domainIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -5694,27 +4042,7 @@ export interface CreateRuleInput {
   description?: string | redacted.Redacted<string>;
   clientToken?: string;
 }
-const CreateRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: SensitiveString,
-    target: RuleTarget,
-    action: RuleAction,
-    scope: RuleScope,
-    detail: RuleDetail,
-    description: S.optional(SensitiveString),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/rules" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateRuleInput" }) as any as S.Schema<CreateRuleInput>;
+const CreateRuleInput = /*@__PURE__*/ __L.at(__c35, 3) as any as S.Schema<CreateRuleInput>;
 export type RuleId = string;
 export type RuleType = "METADATA_FORM_ENFORCEMENT" | "GLOSSARY_TERM_ENFORCEMENT" | (string & {});
 const RuleType = S.String;
@@ -5735,42 +4063,25 @@ export interface CreateRuleOutput {
   createdAt: Date;
   createdBy: string;
 }
-const CreateRuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    name: SensitiveString,
-    ruleType: RuleType,
-    target: RuleTarget,
-    action: RuleAction,
-    scope: RuleScope,
-    detail: RuleDetail,
-    targetType: S.optional(RuleTargetType),
-    description: S.optional(SensitiveString),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    createdBy: S.String,
-  }),
-).annotate({ identifier: "CreateRuleOutput" }) as any as S.Schema<CreateRuleOutput>;
+const CreateRuleOutput = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<CreateRuleOutput>;
 export type SubscriptionTargetId = string;
 export interface ListingRevisionInput {
   identifier: string;
   revision: string;
 }
-const ListingRevisionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String, revision: S.String }),
-).annotate({ identifier: "ListingRevisionInput" }) as any as S.Schema<ListingRevisionInput>;
+const ListingRevisionInput = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ListingRevisionInput>;
 export type GrantedEntityInput = { listing: ListingRevisionInput };
-const GrantedEntityInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ listing: ListingRevisionInput }),
-]);
+const GrantedEntityInput = /*@__PURE__*/ __L.at(__c35, 6);
 export interface AssetTargetNameMap {
   assetId: string;
   targetName: string;
 }
-const AssetTargetNameMap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ assetId: S.String, targetName: S.String }),
-).annotate({ identifier: "AssetTargetNameMap" }) as any as S.Schema<AssetTargetNameMap>;
+const AssetTargetNameMap = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<AssetTargetNameMap>;
 export type AssetTargetNames = AssetTargetNameMap[];
-const AssetTargetNames = /*@__PURE__*/ S.Array(AssetTargetNameMap);
+const AssetTargetNames = /*@__PURE__*/ __L.at(__c36, 0);
 export interface CreateSubscriptionGrantInput {
   domainIdentifier: string;
   environmentIdentifier: string;
@@ -5779,37 +4090,18 @@ export interface CreateSubscriptionGrantInput {
   assetTargetNames?: AssetTargetNameMap[];
   clientToken?: string;
 }
-const CreateSubscriptionGrantInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String,
-    subscriptionTargetIdentifier: S.optional(S.String),
-    grantedEntity: GrantedEntityInput,
-    assetTargetNames: S.optional(AssetTargetNames),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/subscription-grants" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateSubscriptionGrantInput",
-}) as any as S.Schema<CreateSubscriptionGrantInput>;
+const CreateSubscriptionGrantInput = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<CreateSubscriptionGrantInput>;
 export type SubscriptionGrantId = string;
 export interface ListingRevision {
   id: string;
   revision: string;
 }
-const ListingRevision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String, revision: S.String }),
-).annotate({ identifier: "ListingRevision" }) as any as S.Schema<ListingRevision>;
+const ListingRevision = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<ListingRevision>;
 export type GrantedEntity = { listing: ListingRevision };
-const GrantedEntity = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ listing: ListingRevision })]);
+const GrantedEntity = /*@__PURE__*/ __L.at(__c36, 3);
 export type SubscriptionGrantOverallStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -5836,9 +4128,7 @@ const SubscriptionGrantStatus = S.String;
 export interface FailureCause {
   message?: string;
 }
-const FailureCause = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({ identifier: "FailureCause" }) as any as S.Schema<FailureCause>;
+const FailureCause = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<FailureCause>;
 export interface SubscribedAsset {
   assetId: string;
   assetRevision: string;
@@ -5850,21 +4140,9 @@ export interface SubscribedAsset {
   assetScope?: AssetScope;
   permissions?: Permissions;
 }
-const SubscribedAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assetId: S.String,
-    assetRevision: S.String,
-    status: SubscriptionGrantStatus,
-    targetName: S.optional(S.String),
-    failureCause: S.optional(FailureCause),
-    grantedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    failureTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    assetScope: S.optional(AssetScope),
-    permissions: S.optional(Permissions),
-  }),
-).annotate({ identifier: "SubscribedAsset" }) as any as S.Schema<SubscribedAsset>;
+const SubscribedAsset = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<SubscribedAsset>;
 export type SubscribedAssets = SubscribedAsset[];
-const SubscribedAssets = /*@__PURE__*/ S.Array(SubscribedAsset);
+const SubscribedAssets = /*@__PURE__*/ __L.at(__c36, 6);
 export interface CreateSubscriptionGrantOutput {
   id: string;
   createdBy: string;
@@ -5879,30 +4157,17 @@ export interface CreateSubscriptionGrantOutput {
   assets?: SubscribedAsset[];
   subscriptionId?: string;
 }
-const CreateSubscriptionGrantOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdBy: S.String,
-    updatedBy: S.optional(S.String),
-    domainId: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    environmentId: S.optional(S.String),
-    subscriptionTargetId: S.String,
-    grantedEntity: GrantedEntity,
-    status: SubscriptionGrantOverallStatus,
-    assets: S.optional(SubscribedAssets),
-    subscriptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSubscriptionGrantOutput",
-}) as any as S.Schema<CreateSubscriptionGrantOutput>;
+const CreateSubscriptionGrantOutput = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<CreateSubscriptionGrantOutput>;
 export interface SubscribedProjectInput {
   identifier?: string;
 }
-const SubscribedProjectInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.optional(S.String) }),
-).annotate({ identifier: "SubscribedProjectInput" }) as any as S.Schema<SubscribedProjectInput>;
+const SubscribedProjectInput = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<SubscribedProjectInput>;
 export interface SubscribedUserInput {
   identifier?: string;
 }
@@ -5914,32 +4179,27 @@ const SubscribedGroupInput = SubscribedProjectInput as any as S.Schema<Subscribe
 export interface SubscribedIamPrincipalInput {
   identifier?: string;
 }
-const SubscribedIamPrincipalInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.optional(S.String) }),
-).annotate({
-  identifier: "SubscribedIamPrincipalInput",
-}) as any as S.Schema<SubscribedIamPrincipalInput>;
+const SubscribedIamPrincipalInput = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<SubscribedIamPrincipalInput>;
 export type SubscribedPrincipalInput =
   | { project: SubscribedProjectInput; user?: never; group?: never; iam?: never }
   | { project?: never; user: SubscribedUserInput; group?: never; iam?: never }
   | { project?: never; user?: never; group: SubscribedGroupInput; iam?: never }
   | { project?: never; user?: never; group?: never; iam: SubscribedIamPrincipalInput };
-const SubscribedPrincipalInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ project: SubscribedProjectInput }),
-  /*@__PURE__*/ S.Struct({ user: SubscribedUserInput }),
-  /*@__PURE__*/ S.Struct({ group: SubscribedGroupInput }),
-  /*@__PURE__*/ S.Struct({ iam: SubscribedIamPrincipalInput }),
-]);
+const SubscribedPrincipalInput = /*@__PURE__*/ __L.at(__c37, 2);
 export type SubscribedPrincipalInputs = SubscribedPrincipalInput[];
-const SubscribedPrincipalInputs = /*@__PURE__*/ S.Array(SubscribedPrincipalInput);
+const SubscribedPrincipalInputs = /*@__PURE__*/ __L.at(__c37, 3);
 export interface SubscribedListingInput {
   identifier: string;
 }
-const SubscribedListingInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String }),
-).annotate({ identifier: "SubscribedListingInput" }) as any as S.Schema<SubscribedListingInput>;
+const SubscribedListingInput = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<SubscribedListingInput>;
 export type SubscribedListingInputs = SubscribedListingInput[];
-const SubscribedListingInputs = /*@__PURE__*/ S.Array(SubscribedListingInput);
+const SubscribedListingInputs = /*@__PURE__*/ __L.at(__c37, 5);
 export type MetadataFormInputs = FormInput[];
 const MetadataFormInputs = FormInputList as any as S.Schema<MetadataFormInputs>;
 export interface CreateSubscriptionRequestInput {
@@ -5952,29 +4212,10 @@ export interface CreateSubscriptionRequestInput {
   assetPermissions?: AssetPermission[];
   assetScopes?: AcceptedAssetScope[];
 }
-const CreateSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    subscribedPrincipals: SubscribedPrincipalInputs,
-    subscribedListings: SubscribedListingInputs,
-    requestReason: SensitiveString,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    metadataForms: S.optional(MetadataFormInputs),
-    assetPermissions: S.optional(AssetPermissions),
-    assetScopes: S.optional(AcceptedAssetScopes),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/subscription-requests" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateSubscriptionRequestInput",
-}) as any as S.Schema<CreateSubscriptionRequestInput>;
+const CreateSubscriptionRequestInput = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<CreateSubscriptionRequestInput>;
 export interface CreateSubscriptionRequestOutput {
   id: string;
   createdBy: string;
@@ -5998,11 +4239,12 @@ export interface SubscriptionTargetForm {
   formName: string;
   content: string;
 }
-const SubscriptionTargetForm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ formName: S.String, content: S.String }),
-).annotate({ identifier: "SubscriptionTargetForm" }) as any as S.Schema<SubscriptionTargetForm>;
+const SubscriptionTargetForm = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<SubscriptionTargetForm>;
 export type SubscriptionTargetForms = SubscriptionTargetForm[];
-const SubscriptionTargetForms = /*@__PURE__*/ S.Array(SubscriptionTargetForm);
+const SubscriptionTargetForms = /*@__PURE__*/ __L.at(__c38, 0);
 export type AuthorizedPrincipalIdentifier = string;
 export type AuthorizedPrincipalIdentifiers = string[];
 const AuthorizedPrincipalIdentifiers = FilterIds as any as S.Schema<AuthorizedPrincipalIdentifiers>;
@@ -6025,35 +4267,10 @@ export interface CreateSubscriptionTargetInput {
   clientToken?: string;
   subscriptionGrantCreationMode?: SubscriptionGrantCreationMode;
 }
-const CreateSubscriptionTargetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    name: SensitiveString,
-    type: S.String,
-    subscriptionTargetConfig: SubscriptionTargetForms,
-    authorizedPrincipals: AuthorizedPrincipalIdentifiers,
-    manageAccessRole: S.String,
-    applicableAssetTypes: ApplicableAssetTypes,
-    provider: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateSubscriptionTargetInput",
-}) as any as S.Schema<CreateSubscriptionTargetInput>;
+const CreateSubscriptionTargetInput = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<CreateSubscriptionTargetInput>;
 export interface CreateSubscriptionTargetOutput {
   id: string;
   authorizedPrincipals: string[];
@@ -6072,28 +4289,10 @@ export interface CreateSubscriptionTargetOutput {
   provider: string;
   subscriptionGrantCreationMode?: SubscriptionGrantCreationMode;
 }
-const CreateSubscriptionTargetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    authorizedPrincipals: AuthorizedPrincipalIdentifiers,
-    domainId: S.String,
-    projectId: S.String,
-    environmentId: S.String,
-    name: SensitiveString,
-    type: S.String,
-    createdBy: S.String,
-    updatedBy: S.optional(S.String),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    manageAccessRole: S.optional(S.String),
-    applicableAssetTypes: ApplicableAssetTypes,
-    subscriptionTargetConfig: SubscriptionTargetForms,
-    provider: S.String,
-    subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
-  }),
-).annotate({
-  identifier: "CreateSubscriptionTargetOutput",
-}) as any as S.Schema<CreateSubscriptionTargetOutput>;
+const CreateSubscriptionTargetOutput = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<CreateSubscriptionTargetOutput>;
 export type UserType = "IAM_USER" | "IAM_ROLE" | "SSO_USER" | "IAM_ROLE_SESSION" | (string & {});
 const UserType = S.String;
 
@@ -6104,24 +4303,10 @@ export interface CreateUserProfileInput {
   sessionName?: string;
   clientToken?: string;
 }
-const CreateUserProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    userIdentifier: S.String,
-    userType: S.optional(UserType),
-    sessionName: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/user-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "CreateUserProfileInput" }) as any as S.Schema<CreateUserProfileInput>;
+const CreateUserProfileInput = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<CreateUserProfileInput>;
 export type UserProfileType = "IAM" | "SSO" | (string & {});
 const UserProfileType = S.String;
 
@@ -6140,58 +4325,25 @@ export interface CreateUserProfileOutput {
   status?: UserProfileStatus;
   details?: UserProfileDetails;
 }
-const CreateUserProfileOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    id: S.optional(S.String),
-    type: S.optional(UserProfileType),
-    status: S.optional(UserProfileStatus),
-    details: S.optional(UserProfileDetails),
-  }),
-).annotate({ identifier: "CreateUserProfileOutput" }) as any as S.Schema<CreateUserProfileOutput>;
+const CreateUserProfileOutput = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<CreateUserProfileOutput>;
 export interface DeleteAccountPoolInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteAccountPoolInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteAccountPoolInput" }) as any as S.Schema<DeleteAccountPoolInput>;
+const DeleteAccountPoolInput = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<DeleteAccountPoolInput>;
 export interface DeleteAccountPoolOutput {}
 const DeleteAccountPoolOutput = AddEntityOwnerOutput as any as S.Schema<DeleteAccountPoolOutput>;
 export interface DeleteAssetInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteAssetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/assets/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteAssetInput" }) as any as S.Schema<DeleteAssetInput>;
+const DeleteAssetInput = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<DeleteAssetInput>;
 export interface DeleteAssetOutput {}
 const DeleteAssetOutput = AddEntityOwnerOutput as any as S.Schema<DeleteAssetOutput>;
 export interface DeleteAssetFilterInput {
@@ -6199,25 +4351,10 @@ export interface DeleteAssetFilterInput {
   assetIdentifier: string;
   identifier: string;
 }
-const DeleteAssetFilterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteAssetFilterInput" }) as any as S.Schema<DeleteAssetFilterInput>;
+const DeleteAssetFilterInput = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<DeleteAssetFilterInput>;
 export interface DeleteAssetFilterResponse {}
 const DeleteAssetFilterResponse =
   AddEntityOwnerOutput as any as S.Schema<DeleteAssetFilterResponse>;
@@ -6225,65 +4362,34 @@ export interface DeleteAssetTypeInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteAssetTypeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/asset-types/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteAssetTypeInput" }) as any as S.Schema<DeleteAssetTypeInput>;
+const DeleteAssetTypeInput = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<DeleteAssetTypeInput>;
 export interface DeleteAssetTypeOutput {}
 const DeleteAssetTypeOutput = AddEntityOwnerOutput as any as S.Schema<DeleteAssetTypeOutput>;
 export interface DeleteConnectionInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/connections/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteConnectionInput" }) as any as S.Schema<DeleteConnectionInput>;
+const DeleteConnectionInput = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<DeleteConnectionInput>;
 export interface DeleteConnectionOutput {
   status?: string;
 }
-const DeleteConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.optional(S.String) }),
-).annotate({ identifier: "DeleteConnectionOutput" }) as any as S.Schema<DeleteConnectionOutput>;
+const DeleteConnectionOutput = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<DeleteConnectionOutput>;
 export interface DeleteDataExportConfigurationInput {
   domainIdentifier: string;
 }
-const DeleteDataExportConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/data-export-configuration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteDataExportConfigurationInput",
-}) as any as S.Schema<DeleteDataExportConfigurationInput>;
+const DeleteDataExportConfigurationInput = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<DeleteDataExportConfigurationInput>;
 export interface DeleteDataExportConfigurationOutput {}
 const DeleteDataExportConfigurationOutput =
   CancelMetadataGenerationRunOutput as any as S.Schema<DeleteDataExportConfigurationOutput>;
@@ -6291,24 +4397,10 @@ export interface DeleteDataProductInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteDataProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteDataProductInput" }) as any as S.Schema<DeleteDataProductInput>;
+const DeleteDataProductInput = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<DeleteDataProductInput>;
 export interface DeleteDataProductOutput {}
 const DeleteDataProductOutput = AddEntityOwnerOutput as any as S.Schema<DeleteDataProductOutput>;
 export interface DeleteDataSourceInput {
@@ -6317,25 +4409,10 @@ export interface DeleteDataSourceInput {
   clientToken?: string;
   retainPermissionsOnRevokeFailure?: boolean;
 }
-const DeleteDataSourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-    retainPermissionsOnRevokeFailure: S.optional(S.Boolean).pipe(
-      T.HttpQuery("retainPermissionsOnRevokeFailure"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/data-sources/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteDataSourceInput" }) as any as S.Schema<DeleteDataSourceInput>;
+const DeleteDataSourceInput = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<DeleteDataSourceInput>;
 export type SelfGrantStatus =
   | "GRANT_PENDING"
   | "REVOKE_PENDING"
@@ -6353,24 +4430,19 @@ export interface SelfGrantStatusDetail {
   status: SelfGrantStatus;
   failureCause?: string;
 }
-const SelfGrantStatusDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseName: S.String,
-    schemaName: S.optional(S.String),
-    status: SelfGrantStatus,
-    failureCause: S.optional(S.String),
-  }),
-).annotate({ identifier: "SelfGrantStatusDetail" }) as any as S.Schema<SelfGrantStatusDetail>;
+const SelfGrantStatusDetail = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<SelfGrantStatusDetail>;
 export type SelfGrantStatusDetails = SelfGrantStatusDetail[];
-const SelfGrantStatusDetails = /*@__PURE__*/ S.Array(SelfGrantStatusDetail);
+const SelfGrantStatusDetails = /*@__PURE__*/ __L.at(__c39, 7);
 export interface GlueSelfGrantStatusOutput {
   selfGrantStatusDetails: SelfGrantStatusDetail[];
 }
-const GlueSelfGrantStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ selfGrantStatusDetails: SelfGrantStatusDetails }),
-).annotate({
-  identifier: "GlueSelfGrantStatusOutput",
-}) as any as S.Schema<GlueSelfGrantStatusOutput>;
+const GlueSelfGrantStatusOutput = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<GlueSelfGrantStatusOutput>;
 export interface RedshiftSelfGrantStatusOutput {
   selfGrantStatusDetails: SelfGrantStatusDetail[];
 }
@@ -6379,10 +4451,7 @@ const RedshiftSelfGrantStatusOutput =
 export type SelfGrantStatusOutput =
   | { glueSelfGrantStatus: GlueSelfGrantStatusOutput; redshiftSelfGrantStatus?: never }
   | { glueSelfGrantStatus?: never; redshiftSelfGrantStatus: RedshiftSelfGrantStatusOutput };
-const SelfGrantStatusOutput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ glueSelfGrantStatus: GlueSelfGrantStatusOutput }),
-  /*@__PURE__*/ S.Struct({ redshiftSelfGrantStatus: RedshiftSelfGrantStatusOutput }),
-]);
+const SelfGrantStatusOutput = /*@__PURE__*/ __L.at(__c40, 1);
 export interface DeleteDataSourceOutput {
   id: string;
   status?: DataSourceStatus;
@@ -6407,101 +4476,39 @@ export interface DeleteDataSourceOutput {
   selfGrantStatus?: SelfGrantStatusOutput;
   retainPermissionsOnRevokeFailure?: boolean;
 }
-const DeleteDataSourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: S.optional(DataSourceStatus),
-    type: S.optional(S.String),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    domainId: S.String,
-    projectId: S.String,
-    environmentId: S.optional(S.String),
-    connectionId: S.optional(S.String),
-    configuration: S.optional(DataSourceConfigurationOutput),
-    enableSetting: S.optional(EnableSetting),
-    publishOnImport: S.optional(S.Boolean),
-    assetFormsOutput: S.optional(FormOutputList),
-    schedule: S.optional(ScheduleConfiguration),
-    lastRunStatus: S.optional(DataSourceRunStatus),
-    lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastRunErrorMessage: S.optional(DataSourceErrorMessage),
-    errorMessage: S.optional(DataSourceErrorMessage),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    selfGrantStatus: S.optional(SelfGrantStatusOutput),
-    retainPermissionsOnRevokeFailure: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DeleteDataSourceOutput" }) as any as S.Schema<DeleteDataSourceOutput>;
+const DeleteDataSourceOutput = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<DeleteDataSourceOutput>;
 export interface DeleteDomainInput {
   identifier: string;
   clientToken?: string;
   skipDeletionCheck?: boolean;
   cascadeDelete?: boolean;
 }
-const DeleteDomainInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-    skipDeletionCheck: S.optional(S.Boolean).pipe(T.HttpQuery("skipDeletionCheck")),
-    cascadeDelete: S.optional(S.Boolean).pipe(T.HttpQuery("cascadeDelete")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteDomainInput" }) as any as S.Schema<DeleteDomainInput>;
+const DeleteDomainInput = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<DeleteDomainInput>;
 export interface DeleteDomainOutput {
   status: DomainStatus;
 }
-const DeleteDomainOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: DomainStatus }),
-).annotate({ identifier: "DeleteDomainOutput" }) as any as S.Schema<DeleteDomainOutput>;
+const DeleteDomainOutput = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<DeleteDomainOutput>;
 export interface DeleteDomainUnitInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteDomainUnitInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/domain-units/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteDomainUnitInput" }) as any as S.Schema<DeleteDomainUnitInput>;
+const DeleteDomainUnitInput = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<DeleteDomainUnitInput>;
 export interface DeleteDomainUnitOutput {}
 const DeleteDomainUnitOutput = AddEntityOwnerOutput as any as S.Schema<DeleteDomainUnitOutput>;
 export interface DeleteEnvironmentInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/environments/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteEnvironmentInput" }) as any as S.Schema<DeleteEnvironmentInput>;
+const DeleteEnvironmentInput = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<DeleteEnvironmentInput>;
 export interface DeleteEnvironmentResponse {}
 const DeleteEnvironmentResponse =
   AddEntityOwnerOutput as any as S.Schema<DeleteEnvironmentResponse>;
@@ -6510,55 +4517,23 @@ export interface DeleteEnvironmentActionInput {
   environmentIdentifier: string;
   identifier: string;
 }
-const DeleteEnvironmentActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteEnvironmentActionInput",
-}) as any as S.Schema<DeleteEnvironmentActionInput>;
+const DeleteEnvironmentActionInput = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<DeleteEnvironmentActionInput>;
 export interface DeleteEnvironmentActionResponse {}
-const DeleteEnvironmentActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentActionResponse",
-}) as any as S.Schema<DeleteEnvironmentActionResponse>;
+const DeleteEnvironmentActionResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<DeleteEnvironmentActionResponse>;
 export interface DeleteEnvironmentBlueprintInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteEnvironmentBlueprintInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteEnvironmentBlueprintInput",
-}) as any as S.Schema<DeleteEnvironmentBlueprintInput>;
+const DeleteEnvironmentBlueprintInput = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<DeleteEnvironmentBlueprintInput>;
 export interface DeleteEnvironmentBlueprintResponse {}
 const DeleteEnvironmentBlueprintResponse =
   CancelMetadataGenerationRunOutput as any as S.Schema<DeleteEnvironmentBlueprintResponse>;
@@ -6566,26 +4541,10 @@ export interface DeleteEnvironmentBlueprintConfigurationInput {
   domainIdentifier: string;
   environmentBlueprintIdentifier: string;
 }
-const DeleteEnvironmentBlueprintConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentBlueprintIdentifier: S.String.pipe(T.HttpLabel("environmentBlueprintIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/environment-blueprint-configurations/{environmentBlueprintIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteEnvironmentBlueprintConfigurationInput",
-}) as any as S.Schema<DeleteEnvironmentBlueprintConfigurationInput>;
+const DeleteEnvironmentBlueprintConfigurationInput = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<DeleteEnvironmentBlueprintConfigurationInput>;
 export interface DeleteEnvironmentBlueprintConfigurationOutput {}
 const DeleteEnvironmentBlueprintConfigurationOutput =
   CancelMetadataGenerationRunOutput as any as S.Schema<DeleteEnvironmentBlueprintConfigurationOutput>;
@@ -6593,26 +4552,10 @@ export interface DeleteEnvironmentProfileInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteEnvironmentProfileInput",
-}) as any as S.Schema<DeleteEnvironmentProfileInput>;
+const DeleteEnvironmentProfileInput = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<DeleteEnvironmentProfileInput>;
 export interface DeleteEnvironmentProfileResponse {}
 const DeleteEnvironmentProfileResponse =
   CancelMetadataGenerationRunOutput as any as S.Schema<DeleteEnvironmentProfileResponse>;
@@ -6620,69 +4563,24 @@ export interface DeleteFormTypeInput {
   domainIdentifier: string;
   formTypeIdentifier: string;
 }
-const DeleteFormTypeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    formTypeIdentifier: S.String.pipe(T.HttpLabel("formTypeIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/form-types/{formTypeIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteFormTypeInput" }) as any as S.Schema<DeleteFormTypeInput>;
+const DeleteFormTypeInput = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<DeleteFormTypeInput>;
 export interface DeleteFormTypeOutput {}
 const DeleteFormTypeOutput = AddEntityOwnerOutput as any as S.Schema<DeleteFormTypeOutput>;
 export interface DeleteGlossaryInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteGlossaryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/glossaries/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteGlossaryInput" }) as any as S.Schema<DeleteGlossaryInput>;
+const DeleteGlossaryInput = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<DeleteGlossaryInput>;
 export interface DeleteGlossaryOutput {}
 const DeleteGlossaryOutput = AddEntityOwnerOutput as any as S.Schema<DeleteGlossaryOutput>;
 export interface DeleteGlossaryTermInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteGlossaryTermInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/glossary-terms/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteGlossaryTermInput" }) as any as S.Schema<DeleteGlossaryTermInput>;
+const DeleteGlossaryTermInput = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<DeleteGlossaryTermInput>;
 export interface DeleteGlossaryTermOutput {}
 const DeleteGlossaryTermOutput = AddEntityOwnerOutput as any as S.Schema<DeleteGlossaryTermOutput>;
 export type LineageEventIdentifier = string;
@@ -6690,24 +4588,10 @@ export interface DeleteLineageEventInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteLineageEventInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/lineage/events/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteLineageEventInput" }) as any as S.Schema<DeleteLineageEventInput>;
+const DeleteLineageEventInput = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<DeleteLineageEventInput>;
 export type LineageEventProcessingStatus =
   | "REQUESTED"
   | "PROCESSING"
@@ -6721,53 +4605,22 @@ export interface DeleteLineageEventOutput {
   domainId?: string;
   processingStatus?: LineageEventProcessingStatus;
 }
-const DeleteLineageEventOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    domainId: S.optional(S.String),
-    processingStatus: S.optional(LineageEventProcessingStatus),
-  }),
-).annotate({ identifier: "DeleteLineageEventOutput" }) as any as S.Schema<DeleteLineageEventOutput>;
+const DeleteLineageEventOutput = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<DeleteLineageEventOutput>;
 export interface DeleteListingInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteListingInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/listings/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteListingInput" }) as any as S.Schema<DeleteListingInput>;
+const DeleteListingInput = /*@__PURE__*/ __L.at(__c42, 1) as any as S.Schema<DeleteListingInput>;
 export interface DeleteListingOutput {}
 const DeleteListingOutput = AddEntityOwnerOutput as any as S.Schema<DeleteListingOutput>;
 export interface DeleteNotebookInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteNotebookInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/notebooks/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteNotebookInput" }) as any as S.Schema<DeleteNotebookInput>;
+const DeleteNotebookInput = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<DeleteNotebookInput>;
 export interface DeleteNotebookOutput {}
 const DeleteNotebookOutput = AddEntityOwnerOutput as any as S.Schema<DeleteNotebookOutput>;
 export interface DeleteProjectInput {
@@ -6775,22 +4628,7 @@ export interface DeleteProjectInput {
   identifier: string;
   skipDeletionCheck?: boolean;
 }
-const DeleteProjectInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    skipDeletionCheck: S.optional(S.Boolean).pipe(T.HttpQuery("skipDeletionCheck")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/projects/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteProjectInput" }) as any as S.Schema<DeleteProjectInput>;
+const DeleteProjectInput = /*@__PURE__*/ __L.at(__c42, 3) as any as S.Schema<DeleteProjectInput>;
 export interface DeleteProjectOutput {}
 const DeleteProjectOutput = AddEntityOwnerOutput as any as S.Schema<DeleteProjectOutput>;
 export interface DeleteProjectMembershipInput {
@@ -6798,27 +4636,10 @@ export interface DeleteProjectMembershipInput {
   projectIdentifier: string;
   member: Member;
 }
-const DeleteProjectMembershipInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
-    member: Member,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/deleteMembership",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteProjectMembershipInput",
-}) as any as S.Schema<DeleteProjectMembershipInput>;
+const DeleteProjectMembershipInput = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<DeleteProjectMembershipInput>;
 export interface DeleteProjectMembershipOutput {}
 const DeleteProjectMembershipOutput =
   AddEntityOwnerOutput as any as S.Schema<DeleteProjectMembershipOutput>;
@@ -6826,26 +4647,10 @@ export interface DeleteProjectProfileInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteProjectProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/project-profiles/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteProjectProfileInput",
-}) as any as S.Schema<DeleteProjectProfileInput>;
+const DeleteProjectProfileInput = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<DeleteProjectProfileInput>;
 export interface DeleteProjectProfileOutput {}
 const DeleteProjectProfileOutput =
   AddEntityOwnerOutput as any as S.Schema<DeleteProjectProfileOutput>;
@@ -6853,47 +4658,17 @@ export interface DeleteRuleInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/rules/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "DeleteRuleInput" }) as any as S.Schema<DeleteRuleInput>;
+const DeleteRuleInput = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<DeleteRuleInput>;
 export interface DeleteRuleOutput {}
 const DeleteRuleOutput = AddEntityOwnerOutput as any as S.Schema<DeleteRuleOutput>;
 export interface DeleteSubscriptionGrantInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteSubscriptionGrantInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteSubscriptionGrantInput",
-}) as any as S.Schema<DeleteSubscriptionGrantInput>;
+const DeleteSubscriptionGrantInput = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<DeleteSubscriptionGrantInput>;
 export interface DeleteSubscriptionGrantOutput {
   id: string;
   createdBy: string;
@@ -6914,26 +4689,10 @@ export interface DeleteSubscriptionRequestInput {
   domainIdentifier: string;
   identifier: string;
 }
-const DeleteSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteSubscriptionRequestInput",
-}) as any as S.Schema<DeleteSubscriptionRequestInput>;
+const DeleteSubscriptionRequestInput = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<DeleteSubscriptionRequestInput>;
 export interface DeleteSubscriptionRequestResponse {}
 const DeleteSubscriptionRequestResponse =
   CancelMetadataGenerationRunOutput as any as S.Schema<DeleteSubscriptionRequestResponse>;
@@ -6942,27 +4701,10 @@ export interface DeleteSubscriptionTargetInput {
   environmentIdentifier: string;
   identifier: string;
 }
-const DeleteSubscriptionTargetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteSubscriptionTargetInput",
-}) as any as S.Schema<DeleteSubscriptionTargetInput>;
+const DeleteSubscriptionTargetInput = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<DeleteSubscriptionTargetInput>;
 export interface DeleteSubscriptionTargetResponse {}
 const DeleteSubscriptionTargetResponse =
   CancelMetadataGenerationRunOutput as any as S.Schema<DeleteSubscriptionTargetResponse>;
@@ -6976,29 +4718,10 @@ export interface DeleteTimeSeriesDataPointsInput {
   formName: string;
   clientToken?: string;
 }
-const DeleteTimeSeriesDataPointsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
-    formName: S.String.pipe(T.HttpQuery("formName")),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteTimeSeriesDataPointsInput",
-}) as any as S.Schema<DeleteTimeSeriesDataPointsInput>;
+const DeleteTimeSeriesDataPointsInput = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<DeleteTimeSeriesDataPointsInput>;
 export interface DeleteTimeSeriesDataPointsOutput {}
 const DeleteTimeSeriesDataPointsOutput =
   CancelMetadataGenerationRunOutput as any as S.Schema<DeleteTimeSeriesDataPointsOutput>;
@@ -7007,27 +4730,10 @@ export interface DisassociateEnvironmentRoleInput {
   environmentIdentifier: string;
   environmentRoleArn: string;
 }
-const DisassociateEnvironmentRoleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    environmentRoleArn: S.String.pipe(T.HttpLabel("environmentRoleArn")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateEnvironmentRoleInput",
-}) as any as S.Schema<DisassociateEnvironmentRoleInput>;
+const DisassociateEnvironmentRoleInput = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<DisassociateEnvironmentRoleInput>;
 export interface DisassociateEnvironmentRoleOutput {}
 const DisassociateEnvironmentRoleOutput =
   CancelMetadataGenerationRunOutput as any as S.Schema<DisassociateEnvironmentRoleOutput>;
@@ -7037,28 +4743,10 @@ export interface DisassociateGovernedTermsInput {
   entityType: GovernedEntityType;
   governedGlossaryTerms: string[];
 }
-const DisassociateGovernedTermsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    entityType: GovernedEntityType.pipe(T.HttpLabel("entityType")),
-    governedGlossaryTerms: GovernedGlossaryTerms,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/disassociate-governed-terms",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateGovernedTermsInput",
-}) as any as S.Schema<DisassociateGovernedTermsInput>;
+const DisassociateGovernedTermsInput = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<DisassociateGovernedTermsInput>;
 export interface DisassociateGovernedTermsOutput {}
 const DisassociateGovernedTermsOutput =
   DeleteEnvironmentActionResponse as any as S.Schema<DisassociateGovernedTermsOutput>;
@@ -7066,21 +4754,7 @@ export interface GetAccountPoolInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetAccountPoolInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetAccountPoolInput" }) as any as S.Schema<GetAccountPoolInput>;
+const GetAccountPoolInput = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<GetAccountPoolInput>;
 export interface GetAccountPoolOutput {
   domainId?: string;
   name?: string | redacted.Redacted<string>;
@@ -7100,22 +4774,7 @@ export interface GetAssetInput {
   identifier: string;
   revision?: string;
 }
-const GetAssetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/assets/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetAssetInput" }) as any as S.Schema<GetAssetInput>;
+const GetAssetInput = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<GetAssetInput>;
 export interface GetAssetOutput {
   id: string;
   name: string | redacted.Redacted<string>;
@@ -7137,53 +4796,13 @@ export interface GetAssetOutput {
   readOnlyFormsOutput?: FormOutput[];
   latestTimeSeriesDataPointFormsOutput?: TimeSeriesDataPointSummaryFormOutput[];
 }
-const GetAssetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: SensitiveString,
-    typeIdentifier: S.String,
-    typeRevision: S.String,
-    externalIdentifier: S.optional(S.String),
-    revision: S.String,
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    firstRevisionCreatedBy: S.optional(S.String),
-    glossaryTerms: S.optional(GlossaryTerms),
-    governedGlossaryTerms: S.optional(GovernedGlossaryTerms),
-    owningProjectId: S.String,
-    domainId: S.String,
-    listing: S.optional(AssetListingDetails),
-    formsOutput: FormOutputList,
-    readOnlyFormsOutput: S.optional(FormOutputList),
-    latestTimeSeriesDataPointFormsOutput: S.optional(TimeSeriesDataPointSummaryFormOutputList),
-  }),
-).annotate({ identifier: "GetAssetOutput" }) as any as S.Schema<GetAssetOutput>;
+const GetAssetOutput = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<GetAssetOutput>;
 export interface GetAssetFilterInput {
   domainIdentifier: string;
   assetIdentifier: string;
   identifier: string;
 }
-const GetAssetFilterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetAssetFilterInput" }) as any as S.Schema<GetAssetFilterInput>;
+const GetAssetFilterInput = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<GetAssetFilterInput>;
 export interface GetAssetFilterOutput {
   id: string;
   domainId: string;
@@ -7203,22 +4822,7 @@ export interface GetAssetTypeInput {
   identifier: string;
   revision?: string;
 }
-const GetAssetTypeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/asset-types/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetAssetTypeInput" }) as any as S.Schema<GetAssetTypeInput>;
+const GetAssetTypeInput = /*@__PURE__*/ __L.at(__c44, 1) as any as S.Schema<GetAssetTypeInput>;
 export interface GetAssetTypeOutput {
   domainId: string;
   name: string;
@@ -7233,57 +4837,23 @@ export interface GetAssetTypeOutput {
   updatedAt?: Date;
   updatedBy?: string;
 }
-const GetAssetTypeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    name: S.String,
-    revision: S.String,
-    description: S.optional(SensitiveString),
-    formsOutput: FormsOutputMap,
-    owningProjectId: S.String,
-    originDomainId: S.optional(S.String),
-    originProjectId: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetAssetTypeOutput" }) as any as S.Schema<GetAssetTypeOutput>;
+const GetAssetTypeOutput = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<GetAssetTypeOutput>;
 export interface GetConnectionInput {
   domainIdentifier: string;
   identifier: string;
   withSecret?: boolean;
 }
-const GetConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    withSecret: S.optional(S.Boolean).pipe(T.HttpQuery("withSecret")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/connections/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetConnectionInput" }) as any as S.Schema<GetConnectionInput>;
+const GetConnectionInput = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<GetConnectionInput>;
 export interface ConnectionCredentials {
   accessKeyId?: string;
   secretAccessKey?: string | redacted.Redacted<string>;
   sessionToken?: string | redacted.Redacted<string>;
   expiration?: Date;
 }
-const ConnectionCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKeyId: S.optional(S.String),
-    secretAccessKey: S.optional(SensitiveString),
-    sessionToken: S.optional(SensitiveString),
-    expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "ConnectionCredentials" }) as any as S.Schema<ConnectionCredentials>;
+const ConnectionCredentials = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<ConnectionCredentials>;
 export interface GetConnectionOutput {
   connectionCredentials?: ConnectionCredentials;
   configurations?: Configuration[];
@@ -7300,41 +4870,14 @@ export interface GetConnectionOutput {
   type: ConnectionType;
   scope?: ConnectionScope;
 }
-const GetConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionCredentials: S.optional(ConnectionCredentials),
-    configurations: S.optional(Configurations),
-    connectionId: S.String,
-    description: S.optional(SensitiveString),
-    domainId: S.String,
-    domainUnitId: S.String,
-    environmentId: S.optional(S.String),
-    environmentUserRole: S.optional(S.String),
-    name: S.String,
-    physicalEndpoints: PhysicalEndpoints,
-    projectId: S.optional(S.String),
-    props: S.optional(ConnectionPropertiesOutput),
-    type: ConnectionType,
-    scope: S.optional(ConnectionScope),
-  }),
-).annotate({ identifier: "GetConnectionOutput" }) as any as S.Schema<GetConnectionOutput>;
+const GetConnectionOutput = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<GetConnectionOutput>;
 export interface GetDataExportConfigurationInput {
   domainIdentifier: string;
 }
-const GetDataExportConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/data-export-configuration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetDataExportConfigurationInput",
-}) as any as S.Schema<GetDataExportConfigurationInput>;
+const GetDataExportConfigurationInput = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<GetDataExportConfigurationInput>;
 export type ConfigurationStatus = "COMPLETED" | "FAILED" | (string & {});
 const ConfigurationStatus = S.String;
 
@@ -7342,9 +4885,10 @@ export interface EncryptionConfiguration {
   kmsKeyArn?: string;
   sseAlgorithm?: string;
 }
-const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ kmsKeyArn: S.optional(S.String), sseAlgorithm: S.optional(S.String) }),
-).annotate({ identifier: "EncryptionConfiguration" }) as any as S.Schema<EncryptionConfiguration>;
+const EncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<EncryptionConfiguration>;
 export interface GetDataExportConfigurationOutput {
   isExportEnabled?: boolean;
   status?: ConfigurationStatus;
@@ -7353,39 +4897,16 @@ export interface GetDataExportConfigurationOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const GetDataExportConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isExportEnabled: S.optional(S.Boolean),
-    status: S.optional(ConfigurationStatus),
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-    s3TableBucketArn: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "GetDataExportConfigurationOutput",
-}) as any as S.Schema<GetDataExportConfigurationOutput>;
+const GetDataExportConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<GetDataExportConfigurationOutput>;
 export interface GetDataProductInput {
   domainIdentifier: string;
   identifier: string;
   revision?: string;
 }
-const GetDataProductInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetDataProductInput" }) as any as S.Schema<GetDataProductInput>;
+const GetDataProductInput = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<GetDataProductInput>;
 export interface GetDataProductOutput {
   domainId: string;
   id: string;
@@ -7407,21 +4928,7 @@ export interface GetDataSourceInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetDataSourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/data-sources/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetDataSourceInput" }) as any as S.Schema<GetDataSourceInput>;
+const GetDataSourceInput = /*@__PURE__*/ __L.at(__c45, 2) as any as S.Schema<GetDataSourceInput>;
 export interface GetDataSourceOutput {
   id: string;
   status?: DataSourceStatus;
@@ -7447,56 +4954,16 @@ export interface GetDataSourceOutput {
   updatedAt?: Date;
   selfGrantStatus?: SelfGrantStatusOutput;
 }
-const GetDataSourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: S.optional(DataSourceStatus),
-    type: S.optional(S.String),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    domainId: S.String,
-    projectId: S.String,
-    environmentId: S.optional(S.String),
-    connectionId: S.optional(S.String),
-    configuration: S.optional(DataSourceConfigurationOutput),
-    recommendation: S.optional(RecommendationConfiguration),
-    enableSetting: S.optional(EnableSetting),
-    publishOnImport: S.optional(S.Boolean),
-    assetFormsOutput: S.optional(FormOutputList),
-    schedule: S.optional(ScheduleConfiguration),
-    lastRunStatus: S.optional(DataSourceRunStatus),
-    lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastRunErrorMessage: S.optional(DataSourceErrorMessage),
-    lastRunAssetCount: S.optional(S.Number),
-    errorMessage: S.optional(DataSourceErrorMessage),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    selfGrantStatus: S.optional(SelfGrantStatusOutput),
-  }),
-).annotate({ identifier: "GetDataSourceOutput" }) as any as S.Schema<GetDataSourceOutput>;
+const GetDataSourceOutput = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<GetDataSourceOutput>;
 export type DataSourceRunId = string;
 export interface GetDataSourceRunInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetDataSourceRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/data-source-runs/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetDataSourceRunInput" }) as any as S.Schema<GetDataSourceRunInput>;
+const GetDataSourceRunInput = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<GetDataSourceRunInput>;
 export type DataSourceRunType = "PRIORITIZED" | "SCHEDULED" | (string & {});
 const DataSourceRunType = S.String;
 
@@ -7507,15 +4974,10 @@ export interface RunStatisticsForAssets {
   skipped?: number;
   failed?: number;
 }
-const RunStatisticsForAssets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    added: S.optional(S.Number),
-    updated: S.optional(S.Number),
-    unchanged: S.optional(S.Number),
-    skipped: S.optional(S.Number),
-    failed: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RunStatisticsForAssets" }) as any as S.Schema<RunStatisticsForAssets>;
+const RunStatisticsForAssets = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<RunStatisticsForAssets>;
 export type LineageImportStatus =
   | "IN_PROGRESS"
   | "SUCCESS"
@@ -7527,11 +4989,10 @@ const LineageImportStatus = S.String;
 export interface DataSourceRunLineageSummary {
   importStatus?: LineageImportStatus;
 }
-const DataSourceRunLineageSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ importStatus: S.optional(LineageImportStatus) }),
-).annotate({
-  identifier: "DataSourceRunLineageSummary",
-}) as any as S.Schema<DataSourceRunLineageSummary>;
+const DataSourceRunLineageSummary = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<DataSourceRunLineageSummary>;
 export interface GetDataSourceRunOutput {
   domainId: string;
   dataSourceId: string;
@@ -7548,47 +5009,25 @@ export interface GetDataSourceRunOutput {
   startedAt?: Date;
   stoppedAt?: Date;
 }
-const GetDataSourceRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    dataSourceId: S.String,
-    id: S.String,
-    projectId: S.String,
-    status: DataSourceRunStatus,
-    type: DataSourceRunType,
-    dataSourceConfigurationSnapshot: S.optional(S.String),
-    runStatisticsForAssets: S.optional(RunStatisticsForAssets),
-    lineageSummary: S.optional(DataSourceRunLineageSummary),
-    errorMessage: S.optional(DataSourceErrorMessage),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    stoppedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "GetDataSourceRunOutput" }) as any as S.Schema<GetDataSourceRunOutput>;
+const GetDataSourceRunOutput = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<GetDataSourceRunOutput>;
 export interface GetDomainInput {
   identifier: string;
 }
-const GetDomainInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/v2/domains/{identifier}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetDomainInput" }) as any as S.Schema<GetDomainInput>;
+const GetDomainInput = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<GetDomainInput>;
 export interface FailureReason {
   id?: string;
   message?: string;
 }
-const FailureReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), message: S.optional(S.String) }),
-).annotate({ identifier: "FailureReason" }) as any as S.Schema<FailureReason>;
+const FailureReason = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<FailureReason>;
 export type FailureReasonsList = FailureReason[];
-const FailureReasonsList = /*@__PURE__*/ S.Array(FailureReason);
+const FailureReasonsList = /*@__PURE__*/ __L.at(__c46, 2);
 export interface DeleteProgress {
   successfullyDeletedProjectCount?: number;
 }
-const DeleteProgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ successfullyDeletedProjectCount: S.optional(S.Number) }),
-).annotate({ identifier: "DeleteProgress" }) as any as S.Schema<DeleteProgress>;
+const DeleteProgress = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<DeleteProgress>;
 export interface GetDomainOutput {
   id: string;
   rootDomainUnitId?: string;
@@ -7608,46 +5047,12 @@ export interface GetDomainOutput {
   failureReasons?: FailureReason[];
   deleteProgress?: DeleteProgress;
 }
-const GetDomainOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    rootDomainUnitId: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    singleSignOn: S.optional(SingleSignOn),
-    domainExecutionRole: S.String,
-    arn: S.optional(S.String),
-    kmsKeyIdentifier: S.optional(S.String),
-    status: DomainStatus,
-    portalUrl: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    tags: S.optional(Tags),
-    domainVersion: S.optional(DomainVersion),
-    serviceRole: S.optional(S.String),
-    failureReasons: S.optional(FailureReasonsList),
-    deleteProgress: S.optional(DeleteProgress),
-  }),
-).annotate({ identifier: "GetDomainOutput" }) as any as S.Schema<GetDomainOutput>;
+const GetDomainOutput = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<GetDomainOutput>;
 export interface GetDomainUnitInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetDomainUnitInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/domain-units/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetDomainUnitInput" }) as any as S.Schema<GetDomainUnitInput>;
+const GetDomainUnitInput = /*@__PURE__*/ __L.at(__c46, 5) as any as S.Schema<GetDomainUnitInput>;
 export interface GetDomainUnitOutput {
   id: string;
   domainId: string;
@@ -7660,39 +5065,12 @@ export interface GetDomainUnitOutput {
   createdBy?: string;
   lastUpdatedBy?: string;
 }
-const GetDomainUnitOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    name: SensitiveString,
-    parentDomainUnitId: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    owners: DomainUnitOwners,
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    lastUpdatedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetDomainUnitOutput" }) as any as S.Schema<GetDomainUnitOutput>;
+const GetDomainUnitOutput = /*@__PURE__*/ __L.at(__c46, 6) as any as S.Schema<GetDomainUnitOutput>;
 export interface GetEnvironmentInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/environments/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetEnvironmentInput" }) as any as S.Schema<GetEnvironmentInput>;
+const GetEnvironmentInput = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<GetEnvironmentInput>;
 export interface GetEnvironmentOutput {
   projectId: string;
   id?: string;
@@ -7724,27 +5102,10 @@ export interface GetEnvironmentActionInput {
   environmentIdentifier: string;
   identifier: string;
 }
-const GetEnvironmentActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetEnvironmentActionInput",
-}) as any as S.Schema<GetEnvironmentActionInput>;
+const GetEnvironmentActionInput = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<GetEnvironmentActionInput>;
 export interface GetEnvironmentActionOutput {
   domainId: string;
   environmentId: string;
@@ -7759,26 +5120,10 @@ export interface GetEnvironmentBlueprintInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetEnvironmentBlueprintInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetEnvironmentBlueprintInput",
-}) as any as S.Schema<GetEnvironmentBlueprintInput>;
+const GetEnvironmentBlueprintInput = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<GetEnvironmentBlueprintInput>;
 export interface GetEnvironmentBlueprintOutput {
   id: string;
   name: string;
@@ -7798,26 +5143,10 @@ export interface GetEnvironmentBlueprintConfigurationInput {
   domainIdentifier: string;
   environmentBlueprintIdentifier: string;
 }
-const GetEnvironmentBlueprintConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentBlueprintIdentifier: S.String.pipe(T.HttpLabel("environmentBlueprintIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/environment-blueprint-configurations/{environmentBlueprintIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetEnvironmentBlueprintConfigurationInput",
-}) as any as S.Schema<GetEnvironmentBlueprintConfigurationInput>;
+const GetEnvironmentBlueprintConfigurationInput = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<GetEnvironmentBlueprintConfigurationInput>;
 export type PolicyArn = string;
 export type EnabledRegionList = string[];
 const EnabledRegionList = FilterIds as any as S.Schema<EnabledRegionList>;
@@ -7826,10 +5155,7 @@ const RegionalParameter = PropertyMap as any as S.Schema<RegionalParameter>;
 export type RegionalParameterMap = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
-const RegionalParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ RegionalParameter.pipe(S.optional),
-);
+const RegionalParameterMap = /*@__PURE__*/ __L.at(__c47, 3);
 export type ResourceConfigurationParameterMap = { [key: string]: string | undefined };
 const ResourceConfigurationParameterMap =
   PropertyMap as any as S.Schema<ResourceConfigurationParameterMap>;
@@ -7840,17 +5166,12 @@ export interface ResourceConfiguration {
   region: string;
   parameters: { [key: string]: string | undefined };
 }
-const ResourceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    region: S.String,
-    parameters: ResourceConfigurationParameterMap,
-  }),
-).annotate({ identifier: "ResourceConfiguration" }) as any as S.Schema<ResourceConfiguration>;
+const ResourceConfiguration = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<ResourceConfiguration>;
 export type ResourceConfigurations = ResourceConfiguration[];
-const ResourceConfigurations = /*@__PURE__*/ S.Array(ResourceConfiguration);
+const ResourceConfigurations = /*@__PURE__*/ __L.at(__c47, 5);
 export type S3Location = string;
 export type S3LocationList = string[];
 const S3LocationList = FilterIds as any as S.Schema<S3LocationList>;
@@ -7858,20 +5179,14 @@ export interface LakeFormationConfiguration {
   locationRegistrationRole?: string;
   locationRegistrationExcludeS3Locations?: string[];
 }
-const LakeFormationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationRegistrationRole: S.optional(S.String),
-    locationRegistrationExcludeS3Locations: S.optional(S3LocationList),
-  }),
-).annotate({
-  identifier: "LakeFormationConfiguration",
-}) as any as S.Schema<LakeFormationConfiguration>;
+const LakeFormationConfiguration = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<LakeFormationConfiguration>;
 export type ProvisioningConfiguration = { lakeFormationConfiguration: LakeFormationConfiguration };
-const ProvisioningConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ lakeFormationConfiguration: LakeFormationConfiguration }),
-]);
+const ProvisioningConfiguration = /*@__PURE__*/ __L.at(__c47, 7);
 export type ProvisioningConfigurationList = ProvisioningConfiguration[];
-const ProvisioningConfigurationList = /*@__PURE__*/ S.Array(ProvisioningConfiguration);
+const ProvisioningConfigurationList = /*@__PURE__*/ __L.at(__c48, 0);
 export interface GetEnvironmentBlueprintConfigurationOutput {
   domainId: string;
   environmentBlueprintId: string;
@@ -7886,88 +5201,36 @@ export interface GetEnvironmentBlueprintConfigurationOutput {
   resourceConfigurations?: ResourceConfiguration[];
   provisioningConfigurations?: ProvisioningConfiguration[];
 }
-const GetEnvironmentBlueprintConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    environmentBlueprintId: S.String,
-    provisioningRoleArn: S.optional(S.String),
-    environmentRolePermissionBoundary: S.optional(S.String),
-    manageAccessRoleArn: S.optional(S.String),
-    enabledRegions: S.optional(EnabledRegionList),
-    regionalParameters: S.optional(RegionalParameterMap),
-    allowUserProvidedConfigurations: S.optional(S.Boolean),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    resourceConfigurations: S.optional(ResourceConfigurations),
-    provisioningConfigurations: S.optional(ProvisioningConfigurationList),
-  }),
-).annotate({
-  identifier: "GetEnvironmentBlueprintConfigurationOutput",
-}) as any as S.Schema<GetEnvironmentBlueprintConfigurationOutput>;
+const GetEnvironmentBlueprintConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<GetEnvironmentBlueprintConfigurationOutput>;
 export interface GetEnvironmentCredentialsInput {
   domainIdentifier: string;
   environmentIdentifier: string;
 }
-const GetEnvironmentCredentialsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/credentials",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetEnvironmentCredentialsInput",
-}) as any as S.Schema<GetEnvironmentCredentialsInput>;
+const GetEnvironmentCredentialsInput = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<GetEnvironmentCredentialsInput>;
 export interface GetEnvironmentCredentialsOutput {
   accessKeyId?: string;
   secretAccessKey?: string | redacted.Redacted<string>;
   sessionToken?: string | redacted.Redacted<string>;
   expiration?: Date;
 }
-const GetEnvironmentCredentialsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessKeyId: S.optional(S.String),
-    secretAccessKey: S.optional(SensitiveString),
-    sessionToken: S.optional(SensitiveString),
-    expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "GetEnvironmentCredentialsOutput",
-}) as any as S.Schema<GetEnvironmentCredentialsOutput>;
+const GetEnvironmentCredentialsOutput = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<GetEnvironmentCredentialsOutput>;
 export interface GetEnvironmentProfileInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetEnvironmentProfileInput",
-}) as any as S.Schema<GetEnvironmentProfileInput>;
+const GetEnvironmentProfileInput = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<GetEnvironmentProfileInput>;
 export interface GetEnvironmentProfileOutput {
   id: string;
   domainId: string;
@@ -7989,34 +5252,14 @@ export interface GetFormTypeInput {
   formTypeIdentifier: string;
   revision?: string;
 }
-const GetFormTypeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    formTypeIdentifier: S.String.pipe(T.HttpLabel("formTypeIdentifier")),
-    revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/form-types/{formTypeIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetFormTypeInput" }) as any as S.Schema<GetFormTypeInput>;
+const GetFormTypeInput = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<GetFormTypeInput>;
 export interface Import {
   name: string | redacted.Redacted<string>;
   revision: string;
 }
-const Import = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: SensitiveString, revision: S.String }),
-).annotate({ identifier: "Import" }) as any as S.Schema<Import>;
+const Import = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<Import>;
 export type ImportList = Import[];
-const ImportList = /*@__PURE__*/ S.Array(Import);
+const ImportList = /*@__PURE__*/ __L.at(__c48, 7);
 export interface GetFormTypeOutput {
   domainId: string;
   name: string | redacted.Redacted<string>;
@@ -8031,41 +5274,12 @@ export interface GetFormTypeOutput {
   description?: string | redacted.Redacted<string>;
   imports?: Import[];
 }
-const GetFormTypeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    name: SensitiveString,
-    revision: S.String,
-    model: Model,
-    owningProjectId: S.optional(S.String),
-    originDomainId: S.optional(S.String),
-    originProjectId: S.optional(S.String),
-    status: S.optional(FormTypeStatus),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    imports: S.optional(ImportList),
-  }),
-).annotate({ identifier: "GetFormTypeOutput" }) as any as S.Schema<GetFormTypeOutput>;
+const GetFormTypeOutput = /*@__PURE__*/ __L.at(__c49, 0) as any as S.Schema<GetFormTypeOutput>;
 export interface GetGlossaryInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetGlossaryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/glossaries/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetGlossaryInput" }) as any as S.Schema<GetGlossaryInput>;
+const GetGlossaryInput = /*@__PURE__*/ __L.at(__c49, 1) as any as S.Schema<GetGlossaryInput>;
 export interface GetGlossaryOutput {
   domainId: string;
   id: string;
@@ -8079,40 +5293,15 @@ export interface GetGlossaryOutput {
   updatedBy?: string;
   usageRestrictions?: GlossaryUsageRestriction[];
 }
-const GetGlossaryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    owningProjectId: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    status: GlossaryStatus,
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    usageRestrictions: S.optional(GlossaryUsageRestrictions),
-  }),
-).annotate({ identifier: "GetGlossaryOutput" }) as any as S.Schema<GetGlossaryOutput>;
+const GetGlossaryOutput = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<GetGlossaryOutput>;
 export interface GetGlossaryTermInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetGlossaryTermInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/glossary-terms/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetGlossaryTermInput" }) as any as S.Schema<GetGlossaryTermInput>;
+const GetGlossaryTermInput = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<GetGlossaryTermInput>;
 export interface GetGlossaryTermOutput {
   domainId: string;
   glossaryId: string;
@@ -8128,45 +5317,18 @@ export interface GetGlossaryTermOutput {
   updatedBy?: string;
   usageRestrictions?: GlossaryUsageRestriction[];
 }
-const GetGlossaryTermOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    glossaryId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    shortDescription: S.optional(SensitiveString),
-    longDescription: S.optional(SensitiveString),
-    termRelations: S.optional(TermRelations),
-    status: GlossaryTermStatus,
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    usageRestrictions: S.optional(GlossaryUsageRestrictions),
-  }),
-).annotate({ identifier: "GetGlossaryTermOutput" }) as any as S.Schema<GetGlossaryTermOutput>;
+const GetGlossaryTermOutput = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<GetGlossaryTermOutput>;
 export interface GetGroupProfileInput {
   domainIdentifier: string;
   groupIdentifier: string;
 }
-const GetGroupProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    groupIdentifier: S.String.pipe(T.HttpLabel("groupIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/group-profiles/{groupIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetGroupProfileInput" }) as any as S.Schema<GetGroupProfileInput>;
+const GetGroupProfileInput = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<GetGroupProfileInput>;
 export interface GetGroupProfileOutput {
   domainId?: string;
   id?: string;
@@ -8179,49 +5341,24 @@ const GetGroupProfileOutput = CreateGroupProfileOutput as any as S.Schema<GetGro
 export interface GetIamPortalLoginUrlInput {
   domainIdentifier: string;
 }
-const GetIamPortalLoginUrlInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/get-portal-login-url" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetIamPortalLoginUrlInput",
-}) as any as S.Schema<GetIamPortalLoginUrlInput>;
+const GetIamPortalLoginUrlInput = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<GetIamPortalLoginUrlInput>;
 export interface GetIamPortalLoginUrlOutput {
   authCodeUrl?: string;
   userProfileId: string;
 }
-const GetIamPortalLoginUrlOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ authCodeUrl: S.optional(S.String), userProfileId: S.String }),
-).annotate({
-  identifier: "GetIamPortalLoginUrlOutput",
-}) as any as S.Schema<GetIamPortalLoginUrlOutput>;
+const GetIamPortalLoginUrlOutput = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<GetIamPortalLoginUrlOutput>;
 export type RunIdentifier = string;
 export interface GetJobRunInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetJobRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/jobRuns/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetJobRunInput" }) as any as S.Schema<GetJobRunInput>;
+const GetJobRunInput = /*@__PURE__*/ __L.at(__c50, 0) as any as S.Schema<GetJobRunInput>;
 export type JobType = "LINEAGE" | (string & {});
 const JobType = S.String;
 
@@ -8238,27 +5375,16 @@ export interface LineageSqlQueryRunDetails {
   numQueriesFailed?: number;
   errorMessages?: string[];
 }
-const LineageSqlQueryRunDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queryStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    queryEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    totalQueriesProcessed: S.optional(S.Number),
-    numQueriesFailed: S.optional(S.Number),
-    errorMessages: S.optional(FailedQueryProcessingErrorMessages),
-  }),
-).annotate({
-  identifier: "LineageSqlQueryRunDetails",
-}) as any as S.Schema<LineageSqlQueryRunDetails>;
+const LineageSqlQueryRunDetails = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<LineageSqlQueryRunDetails>;
 export interface LineageRunDetails {
   sqlQueryRunDetails?: LineageSqlQueryRunDetails;
 }
-const LineageRunDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sqlQueryRunDetails: S.optional(LineageSqlQueryRunDetails) }),
-).annotate({ identifier: "LineageRunDetails" }) as any as S.Schema<LineageRunDetails>;
+const LineageRunDetails = /*@__PURE__*/ __L.at(__c50, 2) as any as S.Schema<LineageRunDetails>;
 export type JobRunDetails = { lineageRunDetails: LineageRunDetails };
-const JobRunDetails = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ lineageRunDetails: LineageRunDetails }),
-]);
+const JobRunDetails = /*@__PURE__*/ __L.at(__c50, 3);
 export type JobRunStatus =
   | "SCHEDULED"
   | "IN_PROGRESS"
@@ -8274,9 +5400,7 @@ const JobRunStatus = S.String;
 export interface JobRunError {
   message: string;
 }
-const JobRunError = /*@__PURE__*/ S.suspend(() => S.Struct({ message: S.String })).annotate({
-  identifier: "JobRunError",
-}) as any as S.Schema<JobRunError>;
+const JobRunError = /*@__PURE__*/ __L.at(__c50, 4) as any as S.Schema<JobRunError>;
 export interface GetJobRunOutput {
   domainId?: string;
   id?: string;
@@ -8291,41 +5415,15 @@ export interface GetJobRunOutput {
   startTime?: Date;
   endTime?: Date;
 }
-const GetJobRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    id: S.optional(S.String),
-    jobId: S.optional(S.String),
-    jobType: S.optional(JobType),
-    runMode: S.optional(JobRunMode),
-    details: S.optional(JobRunDetails),
-    status: S.optional(JobRunStatus),
-    error: S.optional(JobRunError),
-    createdBy: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "GetJobRunOutput" }) as any as S.Schema<GetJobRunOutput>;
+const GetJobRunOutput = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<GetJobRunOutput>;
 export interface GetLineageEventInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetLineageEventInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/lineage/events/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetLineageEventInput" }) as any as S.Schema<GetLineageEventInput>;
+const GetLineageEventInput = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<GetLineageEventInput>;
 export interface GetLineageEventOutput {
   domainId?: string;
   id?: string;
@@ -8335,60 +5433,28 @@ export interface GetLineageEventOutput {
   eventTime?: Date;
   createdAt?: Date;
 }
-const GetLineageEventOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String).pipe(T.HttpHeader("Domain-Id")),
-    id: S.optional(S.String).pipe(T.HttpHeader("Id")),
-    event: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-    createdBy: S.optional(S.String).pipe(T.HttpHeader("Created-By")),
-    processingStatus: S.optional(LineageEventProcessingStatus).pipe(
-      T.HttpHeader("Processing-Status"),
-    ),
-    eventTime: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-      T.HttpHeader("Event-Time"),
-    ),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-      T.HttpHeader("Created-At"),
-    ),
-  }),
-).annotate({ identifier: "GetLineageEventOutput" }) as any as S.Schema<GetLineageEventOutput>;
+const GetLineageEventOutput = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<GetLineageEventOutput>;
 export type LineageNodeIdentifier = string;
 export interface GetLineageNodeInput {
   domainIdentifier: string;
   identifier: string;
   eventTimestamp?: Date;
 }
-const GetLineageNodeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("timestamp"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/lineage/nodes/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetLineageNodeInput" }) as any as S.Schema<GetLineageNodeInput>;
+const GetLineageNodeInput = /*@__PURE__*/ __L.at(__c51, 0) as any as S.Schema<GetLineageNodeInput>;
 export type LineageNodeId = string;
 export interface LineageNodeReference {
   id?: string;
   eventTimestamp?: Date;
 }
-const LineageNodeReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "LineageNodeReference" }) as any as S.Schema<LineageNodeReference>;
+const LineageNodeReference = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<LineageNodeReference>;
 export type LineageNodeReferenceList = LineageNodeReference[];
-const LineageNodeReferenceList = /*@__PURE__*/ S.Array(LineageNodeReference);
+const LineageNodeReferenceList = /*@__PURE__*/ __L.at(__c51, 2);
 export interface GetLineageNodeOutput {
   domainId: string;
   name?: string;
@@ -8406,46 +5472,16 @@ export interface GetLineageNodeOutput {
   upstreamNodes?: LineageNodeReference[];
   downstreamNodes?: LineageNodeReference[];
 }
-const GetLineageNodeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    id: S.String,
-    typeName: S.String,
-    typeRevision: S.optional(S.String),
-    sourceIdentifier: S.optional(S.String),
-    eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    formsOutput: S.optional(FormOutputList),
-    upstreamNodes: S.optional(LineageNodeReferenceList),
-    downstreamNodes: S.optional(LineageNodeReferenceList),
-  }),
-).annotate({ identifier: "GetLineageNodeOutput" }) as any as S.Schema<GetLineageNodeOutput>;
+const GetLineageNodeOutput = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<GetLineageNodeOutput>;
 export interface GetListingInput {
   domainIdentifier: string;
   identifier: string;
   listingRevision?: string;
 }
-const GetListingInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    listingRevision: S.optional(S.String).pipe(T.HttpQuery("listingRevision")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/listings/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetListingInput" }) as any as S.Schema<GetListingInput>;
+const GetListingInput = /*@__PURE__*/ __L.at(__c51, 4) as any as S.Schema<GetListingInput>;
 export interface AssetListing {
   assetId?: string;
   assetRevision?: string;
@@ -8457,33 +5493,15 @@ export interface AssetListing {
   governedGlossaryTerms?: DetailedGlossaryTerm[];
   owningProjectId?: string;
 }
-const AssetListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assetId: S.optional(S.String),
-    assetRevision: S.optional(S.String),
-    assetType: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    forms: S.optional(S.String),
-    latestTimeSeriesDataPointForms: S.optional(TimeSeriesDataPointSummaryFormOutputList),
-    glossaryTerms: S.optional(DetailedGlossaryTerms),
-    governedGlossaryTerms: S.optional(DetailedGlossaryTerms),
-    owningProjectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "AssetListing" }) as any as S.Schema<AssetListing>;
+const AssetListing = /*@__PURE__*/ __L.at(__c51, 5) as any as S.Schema<AssetListing>;
 export interface ListingSummary {
   listingId?: string;
   listingRevision?: string;
   glossaryTerms?: DetailedGlossaryTerm[];
 }
-const ListingSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listingId: S.optional(S.String),
-    listingRevision: S.optional(S.String),
-    glossaryTerms: S.optional(DetailedGlossaryTerms),
-  }),
-).annotate({ identifier: "ListingSummary" }) as any as S.Schema<ListingSummary>;
+const ListingSummary = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<ListingSummary>;
 export type ListingSummaries = ListingSummary[];
-const ListingSummaries = /*@__PURE__*/ S.Array(ListingSummary);
+const ListingSummaries = /*@__PURE__*/ __L.at(__c51, 7);
 export interface DataProductListing {
   dataProductId?: string;
   dataProductRevision?: string;
@@ -8493,24 +5511,11 @@ export interface DataProductListing {
   owningProjectId?: string;
   items?: ListingSummary[];
 }
-const DataProductListing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataProductId: S.optional(S.String),
-    dataProductRevision: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    forms: S.optional(S.String),
-    glossaryTerms: S.optional(DetailedGlossaryTerms),
-    owningProjectId: S.optional(S.String),
-    items: S.optional(ListingSummaries),
-  }),
-).annotate({ identifier: "DataProductListing" }) as any as S.Schema<DataProductListing>;
+const DataProductListing = /*@__PURE__*/ __L.at(__c52, 0) as any as S.Schema<DataProductListing>;
 export type ListingItem =
   | { assetListing: AssetListing; dataProductListing?: never }
   | { assetListing?: never; dataProductListing: DataProductListing };
-const ListingItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ assetListing: AssetListing }),
-  /*@__PURE__*/ S.Struct({ dataProductListing: DataProductListing }),
-]);
+const ListingItem = /*@__PURE__*/ __L.at(__c52, 1);
 export interface GetListingOutput {
   domainId: string;
   id: string;
@@ -8524,21 +5529,7 @@ export interface GetListingOutput {
   description?: string | redacted.Redacted<string>;
   status?: ListingStatus;
 }
-const GetListingOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    listingRevision: S.String,
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedBy: S.optional(S.String),
-    item: S.optional(ListingItem),
-    name: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    status: S.optional(ListingStatus),
-  }),
-).annotate({ identifier: "GetListingOutput" }) as any as S.Schema<GetListingOutput>;
+const GetListingOutput = /*@__PURE__*/ __L.at(__c52, 2) as any as S.Schema<GetListingOutput>;
 export type MetadataGenerationRunType =
   | "BUSINESS_DESCRIPTIONS"
   | "BUSINESS_NAMES"
@@ -8551,27 +5542,10 @@ export interface GetMetadataGenerationRunInput {
   identifier: string;
   type?: MetadataGenerationRunType;
 }
-const GetMetadataGenerationRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    type: S.optional(MetadataGenerationRunType).pipe(T.HttpQuery("type")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetMetadataGenerationRunInput",
-}) as any as S.Schema<GetMetadataGenerationRunInput>;
+const GetMetadataGenerationRunInput = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<GetMetadataGenerationRunInput>;
 export type MetadataGenerationTargetType = "ASSET" | (string & {});
 const MetadataGenerationTargetType = S.String;
 
@@ -8580,15 +5554,10 @@ export interface MetadataGenerationRunTarget {
   identifier: string;
   revision?: string;
 }
-const MetadataGenerationRunTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: MetadataGenerationTargetType,
-    identifier: S.String,
-    revision: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MetadataGenerationRunTarget",
-}) as any as S.Schema<MetadataGenerationRunTarget>;
+const MetadataGenerationRunTarget = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<MetadataGenerationRunTarget>;
 export type MetadataGenerationRunStatus =
   | "SUBMITTED"
   | "IN_PROGRESS"
@@ -8606,17 +5575,12 @@ export interface MetadataGenerationRunTypeStat {
   status: MetadataGenerationRunStatus;
   errorMessage?: string;
 }
-const MetadataGenerationRunTypeStat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: MetadataGenerationRunType,
-    status: MetadataGenerationRunStatus,
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MetadataGenerationRunTypeStat",
-}) as any as S.Schema<MetadataGenerationRunTypeStat>;
+const MetadataGenerationRunTypeStat = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<MetadataGenerationRunTypeStat>;
 export type MetadataGenerationRunTypeStats = MetadataGenerationRunTypeStat[];
-const MetadataGenerationRunTypeStats = /*@__PURE__*/ S.Array(MetadataGenerationRunTypeStat);
+const MetadataGenerationRunTypeStats = /*@__PURE__*/ __L.at(__c52, 6);
 export interface GetMetadataGenerationRunOutput {
   domainId: string;
   id: string;
@@ -8629,41 +5593,15 @@ export interface GetMetadataGenerationRunOutput {
   owningProjectId: string;
   typeStats?: MetadataGenerationRunTypeStat[];
 }
-const GetMetadataGenerationRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    target: S.optional(MetadataGenerationRunTarget),
-    status: S.optional(MetadataGenerationRunStatus),
-    type: S.optional(MetadataGenerationRunType),
-    types: S.optional(MetadataGenerationRunTypes),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    owningProjectId: S.String,
-    typeStats: S.optional(MetadataGenerationRunTypeStats),
-  }),
-).annotate({
-  identifier: "GetMetadataGenerationRunOutput",
-}) as any as S.Schema<GetMetadataGenerationRunOutput>;
+const GetMetadataGenerationRunOutput = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<GetMetadataGenerationRunOutput>;
 export interface GetNotebookInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetNotebookInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/notebooks/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetNotebookInput" }) as any as S.Schema<GetNotebookInput>;
+const GetNotebookInput = /*@__PURE__*/ __L.at(__c53, 0) as any as S.Schema<GetNotebookInput>;
 export interface GetNotebookOutput {
   id: string;
   name: string | redacted.Redacted<string>;
@@ -8693,24 +5631,10 @@ export interface GetNotebookExportInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetNotebookExportInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/notebook-exports/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetNotebookExportInput" }) as any as S.Schema<GetNotebookExportInput>;
+const GetNotebookExportInput = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<GetNotebookExportInput>;
 export type FileFormat = "PDF" | "IPYNB" | (string & {});
 const FileFormat = S.String;
 
@@ -8721,11 +5645,9 @@ export type NotebookS3Uri = string | redacted.Redacted<string>;
 export interface S3Destination {
   uri?: string | redacted.Redacted<string>;
 }
-const S3Destination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ uri: S.optional(SensitiveString) }),
-).annotate({ identifier: "S3Destination" }) as any as S.Schema<S3Destination>;
+const S3Destination = /*@__PURE__*/ __L.at(__c53, 2) as any as S.Schema<S3Destination>;
 export type OutputLocation = { s3: S3Destination };
-const OutputLocation = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ s3: S3Destination })]);
+const OutputLocation = /*@__PURE__*/ __L.at(__c53, 3);
 export interface NotebookExportError {
   message: string;
 }
@@ -8744,41 +5666,16 @@ export interface GetNotebookExportOutput {
   createdAt?: Date;
   createdBy?: string;
 }
-const GetNotebookExportOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    owningProjectId: S.String,
-    notebookId: S.String,
-    fileFormat: FileFormat,
-    status: NotebookExportStatus,
-    outputLocation: S.optional(OutputLocation),
-    error: S.optional(NotebookExportError),
-    completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetNotebookExportOutput" }) as any as S.Schema<GetNotebookExportOutput>;
+const GetNotebookExportOutput = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<GetNotebookExportOutput>;
 export type NotebookRunId = string;
 export interface GetNotebookRunInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetNotebookRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/notebook-runs/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetNotebookRunInput" }) as any as S.Schema<GetNotebookRunInput>;
+const GetNotebookRunInput = /*@__PURE__*/ __L.at(__c53, 5) as any as S.Schema<GetNotebookRunInput>;
 export type ScheduleId = string;
 export type NotebookRunStatus =
   | "QUEUED"
@@ -8796,9 +5693,7 @@ export interface ComputeConfig {
   instanceType?: string;
   environmentVersion?: string;
 }
-const ComputeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceType: S.optional(S.String), environmentVersion: S.optional(S.String) }),
-).annotate({ identifier: "ComputeConfig" }) as any as S.Schema<ComputeConfig>;
+const ComputeConfig = /*@__PURE__*/ __L.at(__c53, 6) as any as S.Schema<ComputeConfig>;
 export type NetworkAccessType = "PUBLIC_INTERNET_ONLY" | "VPC_ONLY" | (string & {});
 const NetworkAccessType = S.String;
 
@@ -8812,28 +5707,17 @@ export interface NetworkConfig {
   subnetIds?: string[];
   securityGroupIds?: string[];
 }
-const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkAccessType: NetworkAccessType,
-    vpcId: S.optional(S.String),
-    subnetIds: S.optional(SubnetIds),
-    securityGroupIds: S.optional(SecurityGroupIds),
-  }),
-).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
+const NetworkConfig = /*@__PURE__*/ __L.at(__c53, 7) as any as S.Schema<NetworkConfig>;
 export interface TimeoutConfig {
   runTimeoutInMinutes?: number;
 }
-const TimeoutConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ runTimeoutInMinutes: S.optional(S.Number) }),
-).annotate({ identifier: "TimeoutConfig" }) as any as S.Schema<TimeoutConfig>;
+const TimeoutConfig = /*@__PURE__*/ __L.at(__c54, 0) as any as S.Schema<TimeoutConfig>;
 export type S3Path = string;
 export interface StorageConfig {
   projectS3Path?: string;
   kmsKeyArn?: string;
 }
-const StorageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ projectS3Path: S.optional(S.String), kmsKeyArn: S.optional(S.String) }),
-).annotate({ identifier: "StorageConfig" }) as any as S.Schema<StorageConfig>;
+const StorageConfig = /*@__PURE__*/ __L.at(__c54, 1) as any as S.Schema<StorageConfig>;
 export type NotifyOnState =
   | "SUCCEEDED"
   | "FAILED"
@@ -8848,9 +5732,7 @@ const NotifyOnStates = S3Permissions as any as S.Schema<NotifyOnStates>;
 export interface NotificationConfig {
   notifyOn: NotifyOnState[];
 }
-const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ notifyOn: NotifyOnStates }),
-).annotate({ identifier: "NotificationConfig" }) as any as S.Schema<NotificationConfig>;
+const NotificationConfig = /*@__PURE__*/ __L.at(__c54, 2) as any as S.Schema<NotificationConfig>;
 export type TriggerSourceType = "MANUAL" | "SCHEDULED" | "WORKFLOW" | (string & {});
 const TriggerSourceType = S.String;
 
@@ -8858,9 +5740,7 @@ export interface TriggerSource {
   type?: TriggerSourceType;
   name?: string;
 }
-const TriggerSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: S.optional(TriggerSourceType), name: S.optional(S.String) }),
-).annotate({ identifier: "TriggerSource" }) as any as S.Schema<TriggerSource>;
+const TriggerSource = /*@__PURE__*/ __L.at(__c54, 3) as any as S.Schema<TriggerSource>;
 export interface NotebookRunError {
   message: string;
 }
@@ -8890,52 +5770,15 @@ export interface GetNotebookRunOutput {
   startedAt?: Date;
   completedAt?: Date;
 }
-const GetNotebookRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    owningProjectId: S.String,
-    notebookId: S.String,
-    scheduleId: S.optional(S.String),
-    status: NotebookRunStatus,
-    cellOrder: S.optional(CellOrder),
-    metadata: S.optional(Metadata),
-    parameters: S.optional(Parameters),
-    computeConfiguration: S.optional(ComputeConfig),
-    networkConfiguration: S.optional(NetworkConfig),
-    timeoutConfiguration: S.optional(TimeoutConfig),
-    environmentConfiguration: S.optional(EnvironmentConfig),
-    storageConfiguration: S.optional(StorageConfig),
-    notificationConfiguration: S.optional(NotificationConfig),
-    triggerSource: S.optional(TriggerSource),
-    error: S.optional(NotebookRunError),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "GetNotebookRunOutput" }) as any as S.Schema<GetNotebookRunOutput>;
+const GetNotebookRunOutput = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<GetNotebookRunOutput>;
 export interface GetProjectInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetProjectInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/projects/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetProjectInput" }) as any as S.Schema<GetProjectInput>;
+const GetProjectInput = /*@__PURE__*/ __L.at(__c54, 5) as any as S.Schema<GetProjectInput>;
 export interface GetProjectOutput {
   domainId: string;
   id: string;
@@ -8959,24 +5802,10 @@ export interface GetProjectProfileInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetProjectProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/project-profiles/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetProjectProfileInput" }) as any as S.Schema<GetProjectProfileInput>;
+const GetProjectProfileInput = /*@__PURE__*/ __L.at(
+  __c54,
+  6,
+) as any as S.Schema<GetProjectProfileInput>;
 export interface GetProjectProfileOutput {
   domainId: string;
   id: string;
@@ -8992,44 +5821,16 @@ export interface GetProjectProfileOutput {
   lastUpdatedAt?: Date;
   domainUnitId?: string;
 }
-const GetProjectProfileOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    status: S.optional(Status),
-    projectResourceTags: S.optional(ProjectResourceTagParameters),
-    allowCustomProjectResourceTags: S.optional(S.Boolean),
-    projectResourceTagsDescription: S.optional(SensitiveString),
-    environmentConfigurations: S.optional(EnvironmentConfigurationsList),
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    domainUnitId: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetProjectProfileOutput" }) as any as S.Schema<GetProjectProfileOutput>;
+const GetProjectProfileOutput = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<GetProjectProfileOutput>;
 export interface GetRuleInput {
   domainIdentifier: string;
   identifier: string;
   revision?: string;
 }
-const GetRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/rules/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetRuleInput" }) as any as S.Schema<GetRuleInput>;
+const GetRuleInput = /*@__PURE__*/ __L.at(__c55, 0) as any as S.Schema<GetRuleInput>;
 export interface GetRuleOutput {
   identifier: string;
   revision: string;
@@ -9046,43 +5847,15 @@ export interface GetRuleOutput {
   createdBy: string;
   lastUpdatedBy: string;
 }
-const GetRuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    revision: S.String,
-    name: SensitiveString,
-    ruleType: RuleType,
-    target: RuleTarget,
-    action: RuleAction,
-    scope: RuleScope,
-    detail: RuleDetail,
-    targetType: S.optional(RuleTargetType),
-    description: S.optional(SensitiveString),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    createdBy: S.String,
-    lastUpdatedBy: S.String,
-  }),
-).annotate({ identifier: "GetRuleOutput" }) as any as S.Schema<GetRuleOutput>;
+const GetRuleOutput = /*@__PURE__*/ __L.at(__c55, 1) as any as S.Schema<GetRuleOutput>;
 export interface GetSubscriptionInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/subscriptions/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetSubscriptionInput" }) as any as S.Schema<GetSubscriptionInput>;
+const GetSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<GetSubscriptionInput>;
 export interface GetSubscriptionOutput {
   id: string;
   createdBy: string;
@@ -9101,26 +5874,10 @@ export interface GetSubscriptionGrantInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetSubscriptionGrantInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSubscriptionGrantInput",
-}) as any as S.Schema<GetSubscriptionGrantInput>;
+const GetSubscriptionGrantInput = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<GetSubscriptionGrantInput>;
 export interface GetSubscriptionGrantOutput {
   id: string;
   createdBy: string;
@@ -9141,26 +5898,10 @@ export interface GetSubscriptionRequestDetailsInput {
   domainIdentifier: string;
   identifier: string;
 }
-const GetSubscriptionRequestDetailsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSubscriptionRequestDetailsInput",
-}) as any as S.Schema<GetSubscriptionRequestDetailsInput>;
+const GetSubscriptionRequestDetailsInput = /*@__PURE__*/ __L.at(
+  __c55,
+  4,
+) as any as S.Schema<GetSubscriptionRequestDetailsInput>;
 export interface GetSubscriptionRequestDetailsOutput {
   id: string;
   createdBy: string;
@@ -9184,27 +5925,10 @@ export interface GetSubscriptionTargetInput {
   environmentIdentifier: string;
   identifier: string;
 }
-const GetSubscriptionTargetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSubscriptionTargetInput",
-}) as any as S.Schema<GetSubscriptionTargetInput>;
+const GetSubscriptionTargetInput = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<GetSubscriptionTargetInput>;
 export interface GetSubscriptionTargetOutput {
   id: string;
   authorizedPrincipals: string[];
@@ -9233,29 +5957,10 @@ export interface GetTimeSeriesDataPointInput {
   identifier: string;
   formName: string;
 }
-const GetTimeSeriesDataPointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    formName: S.String.pipe(T.HttpQuery("formName")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTimeSeriesDataPointInput",
-}) as any as S.Schema<GetTimeSeriesDataPointInput>;
+const GetTimeSeriesDataPointInput = /*@__PURE__*/ __L.at(
+  __c55,
+  6,
+) as any as S.Schema<GetTimeSeriesDataPointInput>;
 export interface TimeSeriesDataPointFormOutput {
   formName: string;
   typeIdentifier: string;
@@ -9264,18 +5969,10 @@ export interface TimeSeriesDataPointFormOutput {
   content?: string;
   id?: string;
 }
-const TimeSeriesDataPointFormOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formName: S.String,
-    typeIdentifier: S.String,
-    typeRevision: S.optional(S.String),
-    timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    content: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TimeSeriesDataPointFormOutput",
-}) as any as S.Schema<TimeSeriesDataPointFormOutput>;
+const TimeSeriesDataPointFormOutput = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<TimeSeriesDataPointFormOutput>;
 export interface GetTimeSeriesDataPointOutput {
   domainId?: string;
   entityId?: string;
@@ -9283,43 +5980,17 @@ export interface GetTimeSeriesDataPointOutput {
   formName?: string;
   form?: TimeSeriesDataPointFormOutput;
 }
-const GetTimeSeriesDataPointOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    entityId: S.optional(S.String),
-    entityType: S.optional(TimeSeriesEntityType),
-    formName: S.optional(S.String),
-    form: S.optional(TimeSeriesDataPointFormOutput),
-  }),
-).annotate({
-  identifier: "GetTimeSeriesDataPointOutput",
-}) as any as S.Schema<GetTimeSeriesDataPointOutput>;
+const GetTimeSeriesDataPointOutput = /*@__PURE__*/ __L.at(
+  __c56,
+  0,
+) as any as S.Schema<GetTimeSeriesDataPointOutput>;
 export interface GetUserProfileInput {
   domainIdentifier: string;
   userIdentifier: string;
   type?: UserProfileType;
   sessionName?: string;
 }
-const GetUserProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    userIdentifier: S.String.pipe(T.HttpLabel("userIdentifier")),
-    type: S.optional(UserProfileType).pipe(T.HttpQuery("type")),
-    sessionName: S.optional(S.String).pipe(T.HttpQuery("sessionName")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/user-profiles/{userIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetUserProfileInput" }) as any as S.Schema<GetUserProfileInput>;
+const GetUserProfileInput = /*@__PURE__*/ __L.at(__c56, 1) as any as S.Schema<GetUserProfileInput>;
 export interface GetUserProfileOutput {
   domainId?: string;
   id?: string;
@@ -9344,25 +6015,10 @@ export interface ListAccountPoolsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListAccountPoolsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
-    sortBy: S.optional(SortFieldAccountPool).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/account-pools" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListAccountPoolsInput" }) as any as S.Schema<ListAccountPoolsInput>;
+const ListAccountPoolsInput = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<ListAccountPoolsInput>;
 export interface AccountPoolSummary {
   domainId?: string;
   id?: string;
@@ -9372,63 +6028,35 @@ export interface AccountPoolSummary {
   createdBy?: string;
   updatedBy?: string;
 }
-const AccountPoolSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(SensitiveString),
-    resolutionStrategy: S.optional(ResolutionStrategy),
-    domainUnitId: S.optional(S.String),
-    createdBy: S.optional(S.String),
-    updatedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "AccountPoolSummary" }) as any as S.Schema<AccountPoolSummary>;
+const AccountPoolSummary = /*@__PURE__*/ __L.at(__c56, 3) as any as S.Schema<AccountPoolSummary>;
 export type AccountPoolSummaries = AccountPoolSummary[];
-const AccountPoolSummaries = /*@__PURE__*/ S.Array(AccountPoolSummary);
+const AccountPoolSummaries = /*@__PURE__*/ __L.at(__c56, 4);
 export interface ListAccountPoolsOutput {
   items?: AccountPoolSummary[];
   nextToken?: string;
 }
-const ListAccountPoolsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(AccountPoolSummaries), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListAccountPoolsOutput" }) as any as S.Schema<ListAccountPoolsOutput>;
+const ListAccountPoolsOutput = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<ListAccountPoolsOutput>;
 export interface ListAccountsInAccountPoolInput {
   domainIdentifier: string;
   identifier: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAccountsInAccountPoolInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}/accounts",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAccountsInAccountPoolInput",
-}) as any as S.Schema<ListAccountsInAccountPoolInput>;
+const ListAccountsInAccountPoolInput = /*@__PURE__*/ __L.at(
+  __c56,
+  6,
+) as any as S.Schema<ListAccountsInAccountPoolInput>;
 export interface ListAccountsInAccountPoolOutput {
   items?: AccountInfo[];
   nextToken?: string;
 }
-const ListAccountsInAccountPoolOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(AccountInfoList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAccountsInAccountPoolOutput",
-}) as any as S.Schema<ListAccountsInAccountPoolOutput>;
+const ListAccountsInAccountPoolOutput = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<ListAccountsInAccountPoolOutput>;
 export interface ListAssetFiltersInput {
   domainIdentifier: string;
   assetIdentifier: string;
@@ -9436,27 +6064,10 @@ export interface ListAssetFiltersInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssetFiltersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
-    status: S.optional(FilterStatus).pipe(T.HttpQuery("status")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListAssetFiltersInput" }) as any as S.Schema<ListAssetFiltersInput>;
+const ListAssetFiltersInput = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<ListAssetFiltersInput>;
 export interface AssetFilterSummary {
   id: string;
   domainId: string;
@@ -9469,55 +6080,27 @@ export interface AssetFilterSummary {
   createdAt?: Date;
   errorMessage?: string;
 }
-const AssetFilterSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    assetId: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    status: S.optional(FilterStatus),
-    effectiveColumnNames: S.optional(ColumnNameList),
-    effectiveRowFilter: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "AssetFilterSummary" }) as any as S.Schema<AssetFilterSummary>;
+const AssetFilterSummary = /*@__PURE__*/ __L.at(__c57, 1) as any as S.Schema<AssetFilterSummary>;
 export type AssetFilters = AssetFilterSummary[];
-const AssetFilters = /*@__PURE__*/ S.Array(AssetFilterSummary);
+const AssetFilters = /*@__PURE__*/ __L.at(__c57, 2);
 export interface ListAssetFiltersOutput {
   items: AssetFilterSummary[];
   nextToken?: string;
 }
-const ListAssetFiltersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: AssetFilters, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListAssetFiltersOutput" }) as any as S.Schema<ListAssetFiltersOutput>;
+const ListAssetFiltersOutput = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<ListAssetFiltersOutput>;
 export interface ListAssetRevisionsInput {
   domainIdentifier: string;
   identifier: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssetRevisionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/assets/{identifier}/revisions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListAssetRevisionsInput" }) as any as S.Schema<ListAssetRevisionsInput>;
+const ListAssetRevisionsInput = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<ListAssetRevisionsInput>;
 export interface AssetRevision {
   domainId?: string;
   id?: string;
@@ -9525,24 +6108,17 @@ export interface AssetRevision {
   createdBy?: string;
   createdAt?: Date;
 }
-const AssetRevision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    id: S.optional(S.String),
-    revision: S.optional(S.String),
-    createdBy: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "AssetRevision" }) as any as S.Schema<AssetRevision>;
+const AssetRevision = /*@__PURE__*/ __L.at(__c57, 5) as any as S.Schema<AssetRevision>;
 export type AssetRevisions = AssetRevision[];
-const AssetRevisions = /*@__PURE__*/ S.Array(AssetRevision);
+const AssetRevisions = /*@__PURE__*/ __L.at(__c57, 6);
 export interface ListAssetRevisionsOutput {
   items?: AssetRevision[];
   nextToken?: string;
 }
-const ListAssetRevisionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(AssetRevisions), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListAssetRevisionsOutput" }) as any as S.Schema<ListAssetRevisionsOutput>;
+const ListAssetRevisionsOutput = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<ListAssetRevisionsOutput>;
 export type SortFieldConnection = "NAME" | (string & {});
 const SortFieldConnection = S.String;
 
@@ -9558,29 +6134,10 @@ export interface ListConnectionsInput {
   type?: ConnectionType;
   scope?: ConnectionScope;
 }
-const ListConnectionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortFieldConnection).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    name: S.optional(S.String).pipe(T.HttpQuery("name")),
-    environmentIdentifier: S.optional(S.String).pipe(T.HttpQuery("environmentIdentifier")),
-    projectIdentifier: S.optional(S.String).pipe(T.HttpQuery("projectIdentifier")),
-    type: S.optional(ConnectionType).pipe(T.HttpQuery("type")),
-    scope: S.optional(ConnectionScope).pipe(T.HttpQuery("scope")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/connections" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListConnectionsInput" }) as any as S.Schema<ListConnectionsInput>;
+const ListConnectionsInput = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<ListConnectionsInput>;
 export interface ConnectionSummary {
   configurations?: Configuration[];
   connectionId: string;
@@ -9594,58 +6151,27 @@ export interface ConnectionSummary {
   type: ConnectionType;
   scope?: ConnectionScope;
 }
-const ConnectionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurations: S.optional(Configurations),
-    connectionId: S.String,
-    domainId: S.String,
-    domainUnitId: S.String,
-    environmentId: S.optional(S.String),
-    name: S.String,
-    physicalEndpoints: PhysicalEndpoints,
-    projectId: S.optional(S.String),
-    props: S.optional(ConnectionPropertiesOutput),
-    type: ConnectionType,
-    scope: S.optional(ConnectionScope),
-  }),
-).annotate({ identifier: "ConnectionSummary" }) as any as S.Schema<ConnectionSummary>;
+const ConnectionSummary = /*@__PURE__*/ __L.at(__c58, 1) as any as S.Schema<ConnectionSummary>;
 export type ConnectionSummaries = ConnectionSummary[];
-const ConnectionSummaries = /*@__PURE__*/ S.Array(ConnectionSummary);
+const ConnectionSummaries = /*@__PURE__*/ __L.at(__c58, 2);
 export interface ListConnectionsOutput {
   items: ConnectionSummary[];
   nextToken?: string;
 }
-const ListConnectionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: ConnectionSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListConnectionsOutput" }) as any as S.Schema<ListConnectionsOutput>;
+const ListConnectionsOutput = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<ListConnectionsOutput>;
 export interface ListDataProductRevisionsInput {
   domainIdentifier: string;
   identifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListDataProductRevisionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDataProductRevisionsInput",
-}) as any as S.Schema<ListDataProductRevisionsInput>;
+const ListDataProductRevisionsInput = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<ListDataProductRevisionsInput>;
 export interface DataProductRevision {
   domainId?: string;
   id?: string;
@@ -9653,26 +6179,17 @@ export interface DataProductRevision {
   createdAt?: Date;
   createdBy?: string;
 }
-const DataProductRevision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    id: S.optional(S.String),
-    revision: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataProductRevision" }) as any as S.Schema<DataProductRevision>;
+const DataProductRevision = /*@__PURE__*/ __L.at(__c58, 5) as any as S.Schema<DataProductRevision>;
 export type DataProductRevisions = DataProductRevision[];
-const DataProductRevisions = /*@__PURE__*/ S.Array(DataProductRevision);
+const DataProductRevisions = /*@__PURE__*/ __L.at(__c58, 6);
 export interface ListDataProductRevisionsOutput {
   items: DataProductRevision[];
   nextToken?: string;
 }
-const ListDataProductRevisionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: DataProductRevisions, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDataProductRevisionsOutput",
-}) as any as S.Schema<ListDataProductRevisionsOutput>;
+const ListDataProductRevisionsOutput = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<ListDataProductRevisionsOutput>;
 export type DataAssetActivityStatus =
   | "FAILED"
   | "PUBLISHING_FAILED"
@@ -9692,42 +6209,17 @@ export interface ListDataSourceRunActivitiesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDataSourceRunActivitiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    status: S.optional(DataAssetActivityStatus).pipe(T.HttpQuery("status")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/data-source-runs/{identifier}/activities",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDataSourceRunActivitiesInput",
-}) as any as S.Schema<ListDataSourceRunActivitiesInput>;
+const ListDataSourceRunActivitiesInput = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<ListDataSourceRunActivitiesInput>;
 export type LineageEventErrorMessage = string;
 export interface LineageInfo {
   eventId?: string;
   eventStatus?: LineageEventProcessingStatus;
   errorMessage?: string;
 }
-const LineageInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventId: S.optional(S.String),
-    eventStatus: S.optional(LineageEventProcessingStatus),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "LineageInfo" }) as any as S.Schema<LineageInfo>;
+const LineageInfo = /*@__PURE__*/ __L.at(__c59, 1) as any as S.Schema<LineageInfo>;
 export interface DataSourceRunActivity {
   database: string | redacted.Redacted<string>;
   dataSourceRunId: string;
@@ -9741,32 +6233,20 @@ export interface DataSourceRunActivity {
   createdAt: Date;
   updatedAt: Date;
 }
-const DataSourceRunActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: SensitiveString,
-    dataSourceRunId: S.String,
-    technicalName: SensitiveString,
-    dataAssetStatus: DataAssetActivityStatus,
-    projectId: S.String,
-    dataAssetId: S.optional(S.String),
-    technicalDescription: S.optional(SensitiveString),
-    errorMessage: S.optional(DataSourceErrorMessage),
-    lineageSummary: S.optional(LineageInfo),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "DataSourceRunActivity" }) as any as S.Schema<DataSourceRunActivity>;
+const DataSourceRunActivity = /*@__PURE__*/ __L.at(
+  __c59,
+  2,
+) as any as S.Schema<DataSourceRunActivity>;
 export type DataSourceRunActivities = DataSourceRunActivity[];
-const DataSourceRunActivities = /*@__PURE__*/ S.Array(DataSourceRunActivity);
+const DataSourceRunActivities = /*@__PURE__*/ __L.at(__c59, 3);
 export interface ListDataSourceRunActivitiesOutput {
   items: DataSourceRunActivity[];
   nextToken?: string;
 }
-const ListDataSourceRunActivitiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: DataSourceRunActivities, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDataSourceRunActivitiesOutput",
-}) as any as S.Schema<ListDataSourceRunActivitiesOutput>;
+const ListDataSourceRunActivitiesOutput = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<ListDataSourceRunActivitiesOutput>;
 export interface ListDataSourceRunsInput {
   domainIdentifier: string;
   dataSourceIdentifier: string;
@@ -9774,27 +6254,10 @@ export interface ListDataSourceRunsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDataSourceRunsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    dataSourceIdentifier: S.String.pipe(T.HttpLabel("dataSourceIdentifier")),
-    status: S.optional(DataSourceRunStatus).pipe(T.HttpQuery("status")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/data-sources/{dataSourceIdentifier}/runs",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListDataSourceRunsInput" }) as any as S.Schema<ListDataSourceRunsInput>;
+const ListDataSourceRunsInput = /*@__PURE__*/ __L.at(
+  __c59,
+  5,
+) as any as S.Schema<ListDataSourceRunsInput>;
 export interface DataSourceRunSummary {
   id: string;
   dataSourceId: string;
@@ -9809,31 +6272,20 @@ export interface DataSourceRunSummary {
   stoppedAt?: Date;
   lineageSummary?: DataSourceRunLineageSummary;
 }
-const DataSourceRunSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    dataSourceId: S.String,
-    type: DataSourceRunType,
-    status: DataSourceRunStatus,
-    projectId: S.String,
-    runStatisticsForAssets: S.optional(RunStatisticsForAssets),
-    errorMessage: S.optional(DataSourceErrorMessage),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    stoppedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lineageSummary: S.optional(DataSourceRunLineageSummary),
-  }),
-).annotate({ identifier: "DataSourceRunSummary" }) as any as S.Schema<DataSourceRunSummary>;
+const DataSourceRunSummary = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<DataSourceRunSummary>;
 export type DataSourceRunSummaries = DataSourceRunSummary[];
-const DataSourceRunSummaries = /*@__PURE__*/ S.Array(DataSourceRunSummary);
+const DataSourceRunSummaries = /*@__PURE__*/ __L.at(__c59, 7);
 export interface ListDataSourceRunsOutput {
   items: DataSourceRunSummary[];
   nextToken?: string;
 }
-const ListDataSourceRunsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: DataSourceRunSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListDataSourceRunsOutput" }) as any as S.Schema<ListDataSourceRunsOutput>;
+const ListDataSourceRunsOutput = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<ListDataSourceRunsOutput>;
 export interface ListDataSourcesInput {
   domainIdentifier: string;
   projectIdentifier: string;
@@ -9845,28 +6297,10 @@ export interface ListDataSourcesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDataSourcesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    projectIdentifier: S.String.pipe(T.HttpQuery("projectIdentifier")),
-    environmentIdentifier: S.optional(S.String).pipe(T.HttpQuery("environmentIdentifier")),
-    connectionIdentifier: S.optional(S.String).pipe(T.HttpQuery("connectionIdentifier")),
-    type: S.optional(S.String).pipe(T.HttpQuery("type")),
-    status: S.optional(DataSourceStatus).pipe(T.HttpQuery("status")),
-    name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/data-sources" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListDataSourcesInput" }) as any as S.Schema<ListDataSourcesInput>;
+const ListDataSourcesInput = /*@__PURE__*/ __L.at(
+  __c60,
+  1,
+) as any as S.Schema<ListDataSourcesInput>;
 export interface DataSourceSummary {
   domainId: string;
   environmentId?: string;
@@ -9885,48 +6319,24 @@ export interface DataSourceSummary {
   updatedAt?: Date;
   description?: string | redacted.Redacted<string>;
 }
-const DataSourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    environmentId: S.optional(S.String),
-    connectionId: S.optional(S.String),
-    dataSourceId: S.String,
-    name: SensitiveString,
-    type: S.String,
-    status: DataSourceStatus,
-    enableSetting: S.optional(EnableSetting),
-    schedule: S.optional(ScheduleConfiguration),
-    lastRunStatus: S.optional(DataSourceRunStatus),
-    lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastRunErrorMessage: S.optional(DataSourceErrorMessage),
-    lastRunAssetCount: S.optional(S.Number),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    description: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "DataSourceSummary" }) as any as S.Schema<DataSourceSummary>;
+const DataSourceSummary = /*@__PURE__*/ __L.at(__c60, 2) as any as S.Schema<DataSourceSummary>;
 export type DataSourceSummaries = DataSourceSummary[];
-const DataSourceSummaries = /*@__PURE__*/ S.Array(DataSourceSummary);
+const DataSourceSummaries = /*@__PURE__*/ __L.at(__c60, 3);
 export interface ListDataSourcesOutput {
   items: DataSourceSummary[];
   nextToken?: string;
 }
-const ListDataSourcesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: DataSourceSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListDataSourcesOutput" }) as any as S.Schema<ListDataSourcesOutput>;
+const ListDataSourcesOutput = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<ListDataSourcesOutput>;
 export type MaxResultsForListDomains = number;
 export interface ListDomainsInput {
   status?: DomainStatus;
   maxResults?: number;
   nextToken?: string;
 }
-const ListDomainsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(DomainStatus).pipe(T.HttpQuery("status")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(T.all(T.Http({ method: "GET", uri: "/v2/domains" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListDomainsInput" }) as any as S.Schema<ListDomainsInput>;
+const ListDomainsInput = /*@__PURE__*/ __L.at(__c60, 5) as any as S.Schema<ListDomainsInput>;
 export type DomainName = string | redacted.Redacted<string>;
 export type DomainDescription = string | redacted.Redacted<string>;
 export interface DomainSummary {
@@ -9941,72 +6351,39 @@ export interface DomainSummary {
   lastUpdatedAt?: Date;
   domainVersion?: DomainVersion;
 }
-const DomainSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    arn: S.String,
-    managedAccountId: S.String,
-    status: DomainStatus,
-    portalUrl: S.optional(S.String),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    domainVersion: S.optional(DomainVersion),
-  }),
-).annotate({ identifier: "DomainSummary" }) as any as S.Schema<DomainSummary>;
+const DomainSummary = /*@__PURE__*/ __L.at(__c60, 6) as any as S.Schema<DomainSummary>;
 export type DomainSummaries = DomainSummary[];
-const DomainSummaries = /*@__PURE__*/ S.Array(DomainSummary);
+const DomainSummaries = /*@__PURE__*/ __L.at(__c60, 7);
 export interface ListDomainsOutput {
   items: DomainSummary[];
   nextToken?: string;
 }
-const ListDomainsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: DomainSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListDomainsOutput" }) as any as S.Schema<ListDomainsOutput>;
+const ListDomainsOutput = /*@__PURE__*/ __L.at(__c61, 0) as any as S.Schema<ListDomainsOutput>;
 export interface ListDomainUnitsForParentInput {
   domainIdentifier: string;
   parentDomainUnitIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListDomainUnitsForParentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    parentDomainUnitIdentifier: S.String.pipe(T.HttpQuery("parentDomainUnitIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/domain-units" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDomainUnitsForParentInput",
-}) as any as S.Schema<ListDomainUnitsForParentInput>;
+const ListDomainUnitsForParentInput = /*@__PURE__*/ __L.at(
+  __c61,
+  1,
+) as any as S.Schema<ListDomainUnitsForParentInput>;
 export interface DomainUnitSummary {
   name: string;
   id: string;
 }
-const DomainUnitSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, id: S.String }),
-).annotate({ identifier: "DomainUnitSummary" }) as any as S.Schema<DomainUnitSummary>;
+const DomainUnitSummary = /*@__PURE__*/ __L.at(__c61, 2) as any as S.Schema<DomainUnitSummary>;
 export type DomainUnitSummaries = DomainUnitSummary[];
-const DomainUnitSummaries = /*@__PURE__*/ S.Array(DomainUnitSummary);
+const DomainUnitSummaries = /*@__PURE__*/ __L.at(__c61, 3);
 export interface ListDomainUnitsForParentOutput {
   items: DomainUnitSummary[];
   nextToken?: string;
 }
-const ListDomainUnitsForParentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: DomainUnitSummaries, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDomainUnitsForParentOutput",
-}) as any as S.Schema<ListDomainUnitsForParentOutput>;
+const ListDomainUnitsForParentOutput = /*@__PURE__*/ __L.at(
+  __c61,
+  4,
+) as any as S.Schema<ListDomainUnitsForParentOutput>;
 export interface ListEntityOwnersInput {
   domainIdentifier: string;
   entityType: DataZoneEntityType;
@@ -10014,35 +6391,17 @@ export interface ListEntityOwnersInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListEntityOwnersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityType: DataZoneEntityType.pipe(T.HttpLabel("entityType")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/owners",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListEntityOwnersInput" }) as any as S.Schema<ListEntityOwnersInput>;
+const ListEntityOwnersInput = /*@__PURE__*/ __L.at(
+  __c61,
+  5,
+) as any as S.Schema<ListEntityOwnersInput>;
 export interface OwnerUserPropertiesOutput {
   userId?: string;
 }
-const OwnerUserPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ userId: S.optional(S.String) }),
-).annotate({
-  identifier: "OwnerUserPropertiesOutput",
-}) as any as S.Schema<OwnerUserPropertiesOutput>;
+const OwnerUserPropertiesOutput = /*@__PURE__*/ __L.at(
+  __c61,
+  6,
+) as any as S.Schema<OwnerUserPropertiesOutput>;
 export interface OwnerGroupPropertiesOutput {
   groupId?: string;
 }
@@ -10051,47 +6410,27 @@ const OwnerGroupPropertiesOutput =
 export type OwnerPropertiesOutput =
   | { user: OwnerUserPropertiesOutput; group?: never }
   | { user?: never; group: OwnerGroupPropertiesOutput };
-const OwnerPropertiesOutput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ user: OwnerUserPropertiesOutput }),
-  /*@__PURE__*/ S.Struct({ group: OwnerGroupPropertiesOutput }),
-]);
+const OwnerPropertiesOutput = /*@__PURE__*/ __L.at(__c61, 7);
 export type EntityOwners = OwnerPropertiesOutput[];
-const EntityOwners = /*@__PURE__*/ S.Array(OwnerPropertiesOutput);
+const EntityOwners = /*@__PURE__*/ __L.at(__c62, 0);
 export interface ListEntityOwnersOutput {
   owners: OwnerPropertiesOutput[];
   nextToken?: string;
 }
-const ListEntityOwnersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ owners: EntityOwners, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListEntityOwnersOutput" }) as any as S.Schema<ListEntityOwnersOutput>;
+const ListEntityOwnersOutput = /*@__PURE__*/ __L.at(
+  __c62,
+  1,
+) as any as S.Schema<ListEntityOwnersOutput>;
 export interface ListEnvironmentActionsInput {
   domainIdentifier: string;
   environmentIdentifier: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListEnvironmentActionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEnvironmentActionsInput",
-}) as any as S.Schema<ListEnvironmentActionsInput>;
+const ListEnvironmentActionsInput = /*@__PURE__*/ __L.at(
+  __c62,
+  2,
+) as any as S.Schema<ListEnvironmentActionsInput>;
 export interface EnvironmentActionSummary {
   domainId: string;
   environmentId: string;
@@ -10100,53 +6439,29 @@ export interface EnvironmentActionSummary {
   parameters: ActionParameters;
   description?: string;
 }
-const EnvironmentActionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    environmentId: S.String,
-    id: S.String,
-    name: S.String,
-    parameters: ActionParameters,
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnvironmentActionSummary" }) as any as S.Schema<EnvironmentActionSummary>;
+const EnvironmentActionSummary = /*@__PURE__*/ __L.at(
+  __c62,
+  3,
+) as any as S.Schema<EnvironmentActionSummary>;
 export type ListEnvironmentActionSummaries = EnvironmentActionSummary[];
-const ListEnvironmentActionSummaries = /*@__PURE__*/ S.Array(EnvironmentActionSummary);
+const ListEnvironmentActionSummaries = /*@__PURE__*/ __L.at(__c62, 4);
 export interface ListEnvironmentActionsOutput {
   items?: EnvironmentActionSummary[];
   nextToken?: string;
 }
-const ListEnvironmentActionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(ListEnvironmentActionSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListEnvironmentActionsOutput",
-}) as any as S.Schema<ListEnvironmentActionsOutput>;
+const ListEnvironmentActionsOutput = /*@__PURE__*/ __L.at(
+  __c62,
+  5,
+) as any as S.Schema<ListEnvironmentActionsOutput>;
 export interface ListEnvironmentBlueprintConfigurationsInput {
   domainIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListEnvironmentBlueprintConfigurationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/environment-blueprint-configurations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEnvironmentBlueprintConfigurationsInput",
-}) as any as S.Schema<ListEnvironmentBlueprintConfigurationsInput>;
+const ListEnvironmentBlueprintConfigurationsInput = /*@__PURE__*/ __L.at(
+  __c62,
+  6,
+) as any as S.Schema<ListEnvironmentBlueprintConfigurationsInput>;
 export interface EnvironmentBlueprintConfigurationItem {
   domainId: string;
   environmentBlueprintId: string;
@@ -10164,21 +6479,15 @@ export interface EnvironmentBlueprintConfigurationItem {
 const EnvironmentBlueprintConfigurationItem =
   GetEnvironmentBlueprintConfigurationOutput as any as S.Schema<EnvironmentBlueprintConfigurationItem>;
 export type EnvironmentBlueprintConfigurations = EnvironmentBlueprintConfigurationItem[];
-const EnvironmentBlueprintConfigurations = /*@__PURE__*/ S.Array(
-  EnvironmentBlueprintConfigurationItem,
-);
+const EnvironmentBlueprintConfigurations = /*@__PURE__*/ __L.at(__c62, 7);
 export interface ListEnvironmentBlueprintConfigurationsOutput {
   items?: EnvironmentBlueprintConfigurationItem[];
   nextToken?: string;
 }
-const ListEnvironmentBlueprintConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(EnvironmentBlueprintConfigurations),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEnvironmentBlueprintConfigurationsOutput",
-}) as any as S.Schema<ListEnvironmentBlueprintConfigurationsOutput>;
+const ListEnvironmentBlueprintConfigurationsOutput = /*@__PURE__*/ __L.at(
+  __c63,
+  0,
+) as any as S.Schema<ListEnvironmentBlueprintConfigurationsOutput>;
 export interface ListEnvironmentBlueprintsInput {
   domainIdentifier: string;
   maxResults?: number;
@@ -10186,26 +6495,10 @@ export interface ListEnvironmentBlueprintsInput {
   name?: string;
   managed?: boolean;
 }
-const ListEnvironmentBlueprintsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    name: S.optional(S.String).pipe(T.HttpQuery("name")),
-    managed: S.optional(S.Boolean).pipe(T.HttpQuery("managed")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/environment-blueprints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEnvironmentBlueprintsInput",
-}) as any as S.Schema<ListEnvironmentBlueprintsInput>;
+const ListEnvironmentBlueprintsInput = /*@__PURE__*/ __L.at(
+  __c63,
+  1,
+) as any as S.Schema<ListEnvironmentBlueprintsInput>;
 export interface EnvironmentBlueprintSummary {
   id: string;
   name: string;
@@ -10216,31 +6509,20 @@ export interface EnvironmentBlueprintSummary {
   updatedAt?: Date;
   blueprintCategory?: BlueprintCategory;
 }
-const EnvironmentBlueprintSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(SensitiveString),
-    provider: S.String,
-    provisioningProperties: ProvisioningProperties,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    blueprintCategory: S.optional(BlueprintCategory),
-  }),
-).annotate({
-  identifier: "EnvironmentBlueprintSummary",
-}) as any as S.Schema<EnvironmentBlueprintSummary>;
+const EnvironmentBlueprintSummary = /*@__PURE__*/ __L.at(
+  __c63,
+  2,
+) as any as S.Schema<EnvironmentBlueprintSummary>;
 export type EnvironmentBlueprintSummaries = EnvironmentBlueprintSummary[];
-const EnvironmentBlueprintSummaries = /*@__PURE__*/ S.Array(EnvironmentBlueprintSummary);
+const EnvironmentBlueprintSummaries = /*@__PURE__*/ __L.at(__c63, 3);
 export interface ListEnvironmentBlueprintsOutput {
   items: EnvironmentBlueprintSummary[];
   nextToken?: string;
 }
-const ListEnvironmentBlueprintsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: EnvironmentBlueprintSummaries, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListEnvironmentBlueprintsOutput",
-}) as any as S.Schema<ListEnvironmentBlueprintsOutput>;
+const ListEnvironmentBlueprintsOutput = /*@__PURE__*/ __L.at(
+  __c63,
+  4,
+) as any as S.Schema<ListEnvironmentBlueprintsOutput>;
 export interface ListEnvironmentProfilesInput {
   domainIdentifier: string;
   awsAccountId?: string;
@@ -10251,31 +6533,10 @@ export interface ListEnvironmentProfilesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListEnvironmentProfilesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    awsAccountId: S.optional(S.String).pipe(T.HttpQuery("awsAccountId")),
-    awsAccountRegion: S.optional(S.String).pipe(T.HttpQuery("awsAccountRegion")),
-    environmentBlueprintIdentifier: S.optional(S.String).pipe(
-      T.HttpQuery("environmentBlueprintIdentifier"),
-    ),
-    projectIdentifier: S.optional(S.String).pipe(T.HttpQuery("projectIdentifier")),
-    name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/environment-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEnvironmentProfilesInput",
-}) as any as S.Schema<ListEnvironmentProfilesInput>;
+const ListEnvironmentProfilesInput = /*@__PURE__*/ __L.at(
+  __c63,
+  5,
+) as any as S.Schema<ListEnvironmentProfilesInput>;
 export interface EnvironmentProfileSummary {
   id: string;
   domainId: string;
@@ -10289,34 +6550,20 @@ export interface EnvironmentProfileSummary {
   environmentBlueprintId: string;
   projectId?: string;
 }
-const EnvironmentProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    awsAccountId: S.optional(S.String),
-    awsAccountRegion: S.optional(S.String),
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    environmentBlueprintId: S.String,
-    projectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentProfileSummary",
-}) as any as S.Schema<EnvironmentProfileSummary>;
+const EnvironmentProfileSummary = /*@__PURE__*/ __L.at(
+  __c63,
+  6,
+) as any as S.Schema<EnvironmentProfileSummary>;
 export type EnvironmentProfileSummaries = EnvironmentProfileSummary[];
-const EnvironmentProfileSummaries = /*@__PURE__*/ S.Array(EnvironmentProfileSummary);
+const EnvironmentProfileSummaries = /*@__PURE__*/ __L.at(__c63, 7);
 export interface ListEnvironmentProfilesOutput {
   items: EnvironmentProfileSummary[];
   nextToken?: string;
 }
-const ListEnvironmentProfilesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: EnvironmentProfileSummaries, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListEnvironmentProfilesOutput",
-}) as any as S.Schema<ListEnvironmentProfilesOutput>;
+const ListEnvironmentProfilesOutput = /*@__PURE__*/ __L.at(
+  __c64,
+  0,
+) as any as S.Schema<ListEnvironmentProfilesOutput>;
 export interface ListEnvironmentsInput {
   domainIdentifier: string;
   awsAccountId?: string;
@@ -10330,34 +6577,10 @@ export interface ListEnvironmentsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListEnvironmentsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    awsAccountId: S.optional(S.String).pipe(T.HttpQuery("awsAccountId")),
-    status: S.optional(EnvironmentStatus).pipe(T.HttpQuery("status")),
-    awsAccountRegion: S.optional(S.String).pipe(T.HttpQuery("awsAccountRegion")),
-    projectIdentifier: S.String.pipe(T.HttpQuery("projectIdentifier")),
-    environmentProfileIdentifier: S.optional(S.String).pipe(
-      T.HttpQuery("environmentProfileIdentifier"),
-    ),
-    environmentBlueprintIdentifier: S.optional(S.String).pipe(
-      T.HttpQuery("environmentBlueprintIdentifier"),
-    ),
-    provider: S.optional(S.String).pipe(T.HttpQuery("provider")),
-    name: S.optional(S.String).pipe(T.HttpQuery("name")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/environments" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListEnvironmentsInput" }) as any as S.Schema<ListEnvironmentsInput>;
+const ListEnvironmentsInput = /*@__PURE__*/ __L.at(
+  __c64,
+  1,
+) as any as S.Schema<ListEnvironmentsInput>;
 export interface EnvironmentSummary {
   projectId: string;
   id?: string;
@@ -10375,34 +6598,17 @@ export interface EnvironmentSummary {
   environmentConfigurationId?: string | redacted.Redacted<string>;
   environmentConfigurationName?: string | redacted.Redacted<string>;
 }
-const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.String,
-    id: S.optional(S.String),
-    domainId: S.String,
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    environmentProfileId: S.optional(S.String),
-    awsAccountId: S.optional(S.String),
-    awsAccountRegion: S.optional(S.String),
-    provider: S.String,
-    status: S.optional(EnvironmentStatus),
-    environmentConfigurationId: S.optional(SensitiveString),
-    environmentConfigurationName: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "EnvironmentSummary" }) as any as S.Schema<EnvironmentSummary>;
+const EnvironmentSummary = /*@__PURE__*/ __L.at(__c64, 2) as any as S.Schema<EnvironmentSummary>;
 export type EnvironmentSummaries = EnvironmentSummary[];
-const EnvironmentSummaries = /*@__PURE__*/ S.Array(EnvironmentSummary);
+const EnvironmentSummaries = /*@__PURE__*/ __L.at(__c64, 3);
 export interface ListEnvironmentsOutput {
   items: EnvironmentSummary[];
   nextToken?: string;
 }
-const ListEnvironmentsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: EnvironmentSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListEnvironmentsOutput" }) as any as S.Schema<ListEnvironmentsOutput>;
+const ListEnvironmentsOutput = /*@__PURE__*/ __L.at(
+  __c64,
+  4,
+) as any as S.Schema<ListEnvironmentsOutput>;
 export interface ListJobRunsInput {
   domainIdentifier: string;
   jobIdentifier: string;
@@ -10411,25 +6617,7 @@ export interface ListJobRunsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListJobRunsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")),
-    status: S.optional(JobRunStatus).pipe(T.HttpQuery("status")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/jobs/{jobIdentifier}/runs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListJobRunsInput" }) as any as S.Schema<ListJobRunsInput>;
+const ListJobRunsInput = /*@__PURE__*/ __L.at(__c64, 5) as any as S.Schema<ListJobRunsInput>;
 export interface JobRunSummary {
   domainId?: string;
   jobId?: string;
@@ -10443,30 +6631,14 @@ export interface JobRunSummary {
   startTime?: Date;
   endTime?: Date;
 }
-const JobRunSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    jobId: S.optional(S.String),
-    jobType: S.optional(JobType),
-    runId: S.optional(S.String),
-    runMode: S.optional(JobRunMode),
-    status: S.optional(JobRunStatus),
-    error: S.optional(JobRunError),
-    createdBy: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "JobRunSummary" }) as any as S.Schema<JobRunSummary>;
+const JobRunSummary = /*@__PURE__*/ __L.at(__c64, 6) as any as S.Schema<JobRunSummary>;
 export type JobRunSummaries = JobRunSummary[];
-const JobRunSummaries = /*@__PURE__*/ S.Array(JobRunSummary);
+const JobRunSummaries = /*@__PURE__*/ __L.at(__c64, 7);
 export interface ListJobRunsOutput {
   items?: JobRunSummary[];
   nextToken?: string;
 }
-const ListJobRunsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(JobRunSummaries), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListJobRunsOutput" }) as any as S.Schema<ListJobRunsOutput>;
+const ListJobRunsOutput = /*@__PURE__*/ __L.at(__c65, 0) as any as S.Schema<ListJobRunsOutput>;
 export interface ListLineageEventsInput {
   domainIdentifier: string;
   maxResults?: number;
@@ -10476,32 +6648,10 @@ export interface ListLineageEventsInput {
   sortOrder?: SortOrder;
   nextToken?: string;
 }
-const ListLineageEventsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    timestampAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("timestampAfter"),
-    ),
-    timestampBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("timestampBefore"),
-    ),
-    processingStatus: S.optional(LineageEventProcessingStatus).pipe(
-      T.HttpQuery("processingStatus"),
-    ),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/lineage/events" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListLineageEventsInput" }) as any as S.Schema<ListLineageEventsInput>;
+const ListLineageEventsInput = /*@__PURE__*/ __L.at(
+  __c65,
+  1,
+) as any as S.Schema<ListLineageEventsInput>;
 export type OpenLineageRunState =
   | "START"
   | "RUNNING"
@@ -10516,11 +6666,9 @@ export interface NameIdentifier {
   name?: string;
   namespace?: string;
 }
-const NameIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), namespace: S.optional(S.String) }),
-).annotate({ identifier: "NameIdentifier" }) as any as S.Schema<NameIdentifier>;
+const NameIdentifier = /*@__PURE__*/ __L.at(__c65, 2) as any as S.Schema<NameIdentifier>;
 export type NameIdentifiers = NameIdentifier[];
-const NameIdentifiers = /*@__PURE__*/ S.Array(NameIdentifier);
+const NameIdentifiers = /*@__PURE__*/ __L.at(__c65, 3);
 export interface OpenLineageRunEventSummary {
   eventType?: OpenLineageRunState;
   runId?: string;
@@ -10528,21 +6676,12 @@ export interface OpenLineageRunEventSummary {
   inputs?: NameIdentifier[];
   outputs?: NameIdentifier[];
 }
-const OpenLineageRunEventSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventType: S.optional(OpenLineageRunState),
-    runId: S.optional(S.String),
-    job: S.optional(NameIdentifier),
-    inputs: S.optional(NameIdentifiers),
-    outputs: S.optional(NameIdentifiers),
-  }),
-).annotate({
-  identifier: "OpenLineageRunEventSummary",
-}) as any as S.Schema<OpenLineageRunEventSummary>;
+const OpenLineageRunEventSummary = /*@__PURE__*/ __L.at(
+  __c65,
+  4,
+) as any as S.Schema<OpenLineageRunEventSummary>;
 export type EventSummary = { openLineageRunEventSummary: OpenLineageRunEventSummary };
-const EventSummary = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ openLineageRunEventSummary: OpenLineageRunEventSummary }),
-]);
+const EventSummary = /*@__PURE__*/ __L.at(__c65, 5);
 export interface LineageEventSummary {
   id?: string;
   domainId?: string;
@@ -10552,26 +6691,17 @@ export interface LineageEventSummary {
   createdBy?: string;
   createdAt?: Date;
 }
-const LineageEventSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    domainId: S.optional(S.String),
-    processingStatus: S.optional(LineageEventProcessingStatus),
-    eventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    eventSummary: S.optional(EventSummary),
-    createdBy: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "LineageEventSummary" }) as any as S.Schema<LineageEventSummary>;
+const LineageEventSummary = /*@__PURE__*/ __L.at(__c65, 6) as any as S.Schema<LineageEventSummary>;
 export type LineageEventSummaries = LineageEventSummary[];
-const LineageEventSummaries = /*@__PURE__*/ S.Array(LineageEventSummary);
+const LineageEventSummaries = /*@__PURE__*/ __L.at(__c65, 7);
 export interface ListLineageEventsOutput {
   items?: LineageEventSummary[];
   nextToken?: string;
 }
-const ListLineageEventsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(LineageEventSummaries), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListLineageEventsOutput" }) as any as S.Schema<ListLineageEventsOutput>;
+const ListLineageEventsOutput = /*@__PURE__*/ __L.at(
+  __c66,
+  0,
+) as any as S.Schema<ListLineageEventsOutput>;
 export type EdgeDirection = "UPSTREAM" | "DOWNSTREAM" | (string & {});
 const EdgeDirection = S.String;
 
@@ -10585,36 +6715,10 @@ export interface ListLineageNodeHistoryInput {
   eventTimestampLTE?: Date;
   sortOrder?: SortOrder;
 }
-const ListLineageNodeHistoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    direction: S.optional(EdgeDirection).pipe(T.HttpQuery("direction")),
-    eventTimestampGTE: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("timestampGTE"),
-    ),
-    eventTimestampLTE: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("timestampLTE"),
-    ),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/lineage/nodes/{identifier}/history",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListLineageNodeHistoryInput",
-}) as any as S.Schema<ListLineageNodeHistoryInput>;
+const ListLineageNodeHistoryInput = /*@__PURE__*/ __L.at(
+  __c66,
+  1,
+) as any as S.Schema<ListLineageNodeHistoryInput>;
 export interface LineageNodeSummary {
   domainId: string;
   name?: string;
@@ -10629,33 +6733,17 @@ export interface LineageNodeSummary {
   sourceIdentifier?: string;
   eventTimestamp?: Date;
 }
-const LineageNodeSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    id: S.String,
-    typeName: S.String,
-    typeRevision: S.optional(S.String),
-    sourceIdentifier: S.optional(S.String),
-    eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "LineageNodeSummary" }) as any as S.Schema<LineageNodeSummary>;
+const LineageNodeSummary = /*@__PURE__*/ __L.at(__c66, 2) as any as S.Schema<LineageNodeSummary>;
 export type LineageNodeSummaries = LineageNodeSummary[];
-const LineageNodeSummaries = /*@__PURE__*/ S.Array(LineageNodeSummary);
+const LineageNodeSummaries = /*@__PURE__*/ __L.at(__c66, 3);
 export interface ListLineageNodeHistoryOutput {
   nodes?: LineageNodeSummary[];
   nextToken?: string;
 }
-const ListLineageNodeHistoryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nodes: S.optional(LineageNodeSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListLineageNodeHistoryOutput",
-}) as any as S.Schema<ListLineageNodeHistoryOutput>;
+const ListLineageNodeHistoryOutput = /*@__PURE__*/ __L.at(
+  __c66,
+  4,
+) as any as S.Schema<ListLineageNodeHistoryOutput>;
 export interface ListMetadataGenerationRunsInput {
   domainIdentifier: string;
   status?: MetadataGenerationRunStatus;
@@ -10664,27 +6752,10 @@ export interface ListMetadataGenerationRunsInput {
   maxResults?: number;
   targetIdentifier?: string;
 }
-const ListMetadataGenerationRunsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    status: S.optional(MetadataGenerationRunStatus).pipe(T.HttpQuery("status")),
-    type: S.optional(MetadataGenerationRunType).pipe(T.HttpQuery("type")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    targetIdentifier: S.optional(S.String).pipe(T.HttpQuery("targetIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListMetadataGenerationRunsInput",
-}) as any as S.Schema<ListMetadataGenerationRunsInput>;
+const ListMetadataGenerationRunsInput = /*@__PURE__*/ __L.at(
+  __c66,
+  5,
+) as any as S.Schema<ListMetadataGenerationRunsInput>;
 export interface MetadataGenerationRunItem {
   domainId: string;
   id: string;
@@ -10696,32 +6767,20 @@ export interface MetadataGenerationRunItem {
   createdBy?: string;
   owningProjectId: string;
 }
-const MetadataGenerationRunItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    target: S.optional(MetadataGenerationRunTarget),
-    status: S.optional(MetadataGenerationRunStatus),
-    type: S.optional(MetadataGenerationRunType),
-    types: S.optional(MetadataGenerationRunTypes),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    owningProjectId: S.String,
-  }),
-).annotate({
-  identifier: "MetadataGenerationRunItem",
-}) as any as S.Schema<MetadataGenerationRunItem>;
+const MetadataGenerationRunItem = /*@__PURE__*/ __L.at(
+  __c66,
+  6,
+) as any as S.Schema<MetadataGenerationRunItem>;
 export type MetadataGenerationRuns = MetadataGenerationRunItem[];
-const MetadataGenerationRuns = /*@__PURE__*/ S.Array(MetadataGenerationRunItem);
+const MetadataGenerationRuns = /*@__PURE__*/ __L.at(__c66, 7);
 export interface ListMetadataGenerationRunsOutput {
   items?: MetadataGenerationRunItem[];
   nextToken?: string;
 }
-const ListMetadataGenerationRunsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(MetadataGenerationRuns), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListMetadataGenerationRunsOutput",
-}) as any as S.Schema<ListMetadataGenerationRunsOutput>;
+const ListMetadataGenerationRunsOutput = /*@__PURE__*/ __L.at(
+  __c67,
+  0,
+) as any as S.Schema<ListMetadataGenerationRunsOutput>;
 export interface ListNotebookRunsInput {
   domainIdentifier: string;
   owningProjectIdentifier: string;
@@ -10732,27 +6791,10 @@ export interface ListNotebookRunsInput {
   sortOrder?: SortOrder;
   nextToken?: string;
 }
-const ListNotebookRunsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    owningProjectIdentifier: S.String.pipe(T.HttpQuery("owningProjectIdentifier")),
-    notebookIdentifier: S.optional(S.String).pipe(T.HttpQuery("notebookIdentifier")),
-    status: S.optional(NotebookRunStatus).pipe(T.HttpQuery("status")),
-    scheduleIdentifier: S.optional(S.String).pipe(T.HttpQuery("scheduleIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/notebook-runs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListNotebookRunsInput" }) as any as S.Schema<ListNotebookRunsInput>;
+const ListNotebookRunsInput = /*@__PURE__*/ __L.at(
+  __c67,
+  1,
+) as any as S.Schema<ListNotebookRunsInput>;
 export interface NotebookRunSummary {
   id: string;
   domainId: string;
@@ -10768,32 +6810,17 @@ export interface NotebookRunSummary {
   startedAt?: Date;
   completedAt?: Date;
 }
-const NotebookRunSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    owningProjectId: S.String,
-    notebookId: S.String,
-    scheduleId: S.optional(S.String),
-    status: NotebookRunStatus,
-    triggerSource: S.optional(TriggerSource),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "NotebookRunSummary" }) as any as S.Schema<NotebookRunSummary>;
+const NotebookRunSummary = /*@__PURE__*/ __L.at(__c67, 2) as any as S.Schema<NotebookRunSummary>;
 export type NotebookRunSummaryList = NotebookRunSummary[];
-const NotebookRunSummaryList = /*@__PURE__*/ S.Array(NotebookRunSummary);
+const NotebookRunSummaryList = /*@__PURE__*/ __L.at(__c67, 3);
 export interface ListNotebookRunsOutput {
   items?: NotebookRunSummary[];
   nextToken?: string;
 }
-const ListNotebookRunsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(NotebookRunSummaryList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListNotebookRunsOutput" }) as any as S.Schema<ListNotebookRunsOutput>;
+const ListNotebookRunsOutput = /*@__PURE__*/ __L.at(
+  __c67,
+  4,
+) as any as S.Schema<ListNotebookRunsOutput>;
 export type SortKey = "CREATED_AT" | "UPDATED_AT" | (string & {});
 const SortKey = S.String;
 
@@ -10807,27 +6834,7 @@ export interface ListNotebooksInput {
   type?: NotebookType;
   nextToken?: string;
 }
-const ListNotebooksInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    owningProjectIdentifier: S.String.pipe(T.HttpQuery("owningProjectIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
-    status: S.optional(NotebookStatus).pipe(T.HttpQuery("status")),
-    type: S.optional(NotebookType).pipe(T.HttpQuery("type")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/notebooks" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListNotebooksInput" }) as any as S.Schema<ListNotebooksInput>;
+const ListNotebooksInput = /*@__PURE__*/ __L.at(__c67, 5) as any as S.Schema<ListNotebooksInput>;
 export interface NotebookSummary {
   id: string;
   name: string | redacted.Redacted<string>;
@@ -10841,30 +6848,14 @@ export interface NotebookSummary {
   updatedAt?: Date;
   updatedBy?: string;
 }
-const NotebookSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: SensitiveString,
-    owningProjectId: S.String,
-    domainId: S.String,
-    status: NotebookStatus,
-    type: S.optional(NotebookType),
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "NotebookSummary" }) as any as S.Schema<NotebookSummary>;
+const NotebookSummary = /*@__PURE__*/ __L.at(__c67, 6) as any as S.Schema<NotebookSummary>;
 export type NotebookSummaryList = NotebookSummary[];
-const NotebookSummaryList = /*@__PURE__*/ S.Array(NotebookSummary);
+const NotebookSummaryList = /*@__PURE__*/ __L.at(__c67, 7);
 export interface ListNotebooksOutput {
   items?: NotebookSummary[];
   nextToken?: string;
 }
-const ListNotebooksOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(NotebookSummaryList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListNotebooksOutput" }) as any as S.Schema<ListNotebooksOutput>;
+const ListNotebooksOutput = /*@__PURE__*/ __L.at(__c68, 0) as any as S.Schema<ListNotebooksOutput>;
 export type NotificationType = "TASK" | "EVENT" | (string & {});
 const NotificationType = S.String;
 
@@ -10883,31 +6874,10 @@ export interface ListNotificationsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListNotificationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    type: NotificationType.pipe(T.HttpQuery("type")),
-    afterTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("afterTimestamp"),
-    ),
-    beforeTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("beforeTimestamp"),
-    ),
-    subjects: S.optional(NotificationSubjects).pipe(T.HttpQuery("subjects")),
-    taskStatus: S.optional(TaskStatus).pipe(T.HttpQuery("taskStatus")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/notifications" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListNotificationsInput" }) as any as S.Schema<ListNotificationsInput>;
+const ListNotificationsInput = /*@__PURE__*/ __L.at(
+  __c68,
+  1,
+) as any as S.Schema<ListNotificationsInput>;
 export type TaskId = string;
 export type NotificationResourceType = "PROJECT" | (string & {});
 const NotificationResourceType = S.String;
@@ -10917,9 +6887,10 @@ export interface NotificationResource {
   id: string;
   name?: string;
 }
-const NotificationResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: NotificationResourceType, id: S.String, name: S.optional(S.String) }),
-).annotate({ identifier: "NotificationResource" }) as any as S.Schema<NotificationResource>;
+const NotificationResource = /*@__PURE__*/ __L.at(
+  __c68,
+  2,
+) as any as S.Schema<NotificationResource>;
 export type NotificationRole =
   | "PROJECT_OWNER"
   | "PROJECT_CONTRIBUTOR"
@@ -10934,9 +6905,7 @@ export interface Topic {
   resource: NotificationResource;
   role: NotificationRole;
 }
-const Topic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ subject: S.String, resource: NotificationResource, role: NotificationRole }),
-).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
+const Topic = /*@__PURE__*/ __L.at(__c68, 3) as any as S.Schema<Topic>;
 export type Title = string | redacted.Redacted<string>;
 export type Message = string | redacted.Redacted<string>;
 export type ActionLink = string | redacted.Redacted<string>;
@@ -10955,30 +6924,17 @@ export interface NotificationOutput {
   lastUpdatedTimestamp: Date;
   metadata?: { [key: string]: string | undefined };
 }
-const NotificationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    domainIdentifier: S.String,
-    type: NotificationType,
-    topic: Topic,
-    title: SensitiveString,
-    message: SensitiveString,
-    status: S.optional(TaskStatus),
-    actionLink: SensitiveString,
-    creationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    metadata: S.optional(MetadataMap),
-  }),
-).annotate({ identifier: "NotificationOutput" }) as any as S.Schema<NotificationOutput>;
+const NotificationOutput = /*@__PURE__*/ __L.at(__c68, 4) as any as S.Schema<NotificationOutput>;
 export type NotificationsList = NotificationOutput[];
-const NotificationsList = /*@__PURE__*/ S.Array(NotificationOutput);
+const NotificationsList = /*@__PURE__*/ __L.at(__c68, 5);
 export interface ListNotificationsOutput {
   notifications?: NotificationOutput[];
   nextToken?: string;
 }
-const ListNotificationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ notifications: S.optional(NotificationsList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListNotificationsOutput" }) as any as S.Schema<ListNotificationsOutput>;
+const ListNotificationsOutput = /*@__PURE__*/ __L.at(
+  __c68,
+  6,
+) as any as S.Schema<ListNotificationsOutput>;
 export interface ListPolicyGrantsInput {
   domainIdentifier: string;
   entityType: TargetEntityType;
@@ -10987,28 +6943,10 @@ export interface ListPolicyGrantsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListPolicyGrantsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityType: TargetEntityType.pipe(T.HttpLabel("entityType")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    policyType: ManagedPolicyType.pipe(T.HttpQuery("policyType")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/policies/managed/{entityType}/{entityIdentifier}/grants",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListPolicyGrantsInput" }) as any as S.Schema<ListPolicyGrantsInput>;
+const ListPolicyGrantsInput = /*@__PURE__*/ __L.at(
+  __c68,
+  7,
+) as any as S.Schema<ListPolicyGrantsInput>;
 export interface PolicyGrantMember {
   principal?: PolicyGrantPrincipal;
   detail?: PolicyGrantDetail;
@@ -11016,24 +6954,17 @@ export interface PolicyGrantMember {
   createdBy?: string;
   grantId?: string;
 }
-const PolicyGrantMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principal: S.optional(PolicyGrantPrincipal),
-    detail: S.optional(PolicyGrantDetail),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    grantId: S.optional(S.String),
-  }),
-).annotate({ identifier: "PolicyGrantMember" }) as any as S.Schema<PolicyGrantMember>;
+const PolicyGrantMember = /*@__PURE__*/ __L.at(__c69, 0) as any as S.Schema<PolicyGrantMember>;
 export type PolicyGrantList = PolicyGrantMember[];
-const PolicyGrantList = /*@__PURE__*/ S.Array(PolicyGrantMember);
+const PolicyGrantList = /*@__PURE__*/ __L.at(__c69, 1);
 export interface ListPolicyGrantsOutput {
   grantList: PolicyGrantMember[];
   nextToken?: string;
 }
-const ListPolicyGrantsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ grantList: PolicyGrantList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListPolicyGrantsOutput" }) as any as S.Schema<ListPolicyGrantsOutput>;
+const ListPolicyGrantsOutput = /*@__PURE__*/ __L.at(
+  __c69,
+  2,
+) as any as S.Schema<ListPolicyGrantsOutput>;
 export type SortFieldProject = "NAME" | (string & {});
 const SortFieldProject = S.String;
 
@@ -11045,67 +6976,37 @@ export interface ListProjectMembershipsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListProjectMembershipsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
-    sortBy: S.optional(SortFieldProject).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/memberships",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListProjectMembershipsInput",
-}) as any as S.Schema<ListProjectMembershipsInput>;
+const ListProjectMembershipsInput = /*@__PURE__*/ __L.at(
+  __c69,
+  3,
+) as any as S.Schema<ListProjectMembershipsInput>;
 export interface UserDetails {
   userId: string;
 }
-const UserDetails = /*@__PURE__*/ S.suspend(() => S.Struct({ userId: S.String })).annotate({
-  identifier: "UserDetails",
-}) as any as S.Schema<UserDetails>;
+const UserDetails = /*@__PURE__*/ __L.at(__c69, 4) as any as S.Schema<UserDetails>;
 export interface GroupDetails {
   groupId: string;
 }
-const GroupDetails = /*@__PURE__*/ S.suspend(() => S.Struct({ groupId: S.String })).annotate({
-  identifier: "GroupDetails",
-}) as any as S.Schema<GroupDetails>;
+const GroupDetails = /*@__PURE__*/ __L.at(__c69, 5) as any as S.Schema<GroupDetails>;
 export type MemberDetails =
   | { user: UserDetails; group?: never }
   | { user?: never; group: GroupDetails };
-const MemberDetails = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ user: UserDetails }),
-  /*@__PURE__*/ S.Struct({ group: GroupDetails }),
-]);
+const MemberDetails = /*@__PURE__*/ __L.at(__c69, 6);
 export interface ProjectMember {
   memberDetails: MemberDetails;
   designation: UserDesignation;
 }
-const ProjectMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memberDetails: MemberDetails, designation: UserDesignation }),
-).annotate({ identifier: "ProjectMember" }) as any as S.Schema<ProjectMember>;
+const ProjectMember = /*@__PURE__*/ __L.at(__c69, 7) as any as S.Schema<ProjectMember>;
 export type ProjectMembers = ProjectMember[];
-const ProjectMembers = /*@__PURE__*/ S.Array(ProjectMember);
+const ProjectMembers = /*@__PURE__*/ __L.at(__c70, 0);
 export interface ListProjectMembershipsOutput {
   members: ProjectMember[];
   nextToken?: string;
 }
-const ListProjectMembershipsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ members: ProjectMembers, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListProjectMembershipsOutput",
-}) as any as S.Schema<ListProjectMembershipsOutput>;
+const ListProjectMembershipsOutput = /*@__PURE__*/ __L.at(
+  __c70,
+  1,
+) as any as S.Schema<ListProjectMembershipsOutput>;
 export interface ListProjectProfilesInput {
   domainIdentifier: string;
   name?: string | redacted.Redacted<string>;
@@ -11114,25 +7015,10 @@ export interface ListProjectProfilesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListProjectProfilesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
-    sortBy: S.optional(SortFieldProject).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/project-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListProjectProfilesInput" }) as any as S.Schema<ListProjectProfilesInput>;
+const ListProjectProfilesInput = /*@__PURE__*/ __L.at(
+  __c70,
+  2,
+) as any as S.Schema<ListProjectProfilesInput>;
 export interface ProjectProfileSummary {
   domainId: string;
   id: string;
@@ -11144,30 +7030,20 @@ export interface ProjectProfileSummary {
   lastUpdatedAt?: Date;
   domainUnitId?: string;
 }
-const ProjectProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    status: S.optional(Status),
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    domainUnitId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProjectProfileSummary" }) as any as S.Schema<ProjectProfileSummary>;
+const ProjectProfileSummary = /*@__PURE__*/ __L.at(
+  __c70,
+  3,
+) as any as S.Schema<ProjectProfileSummary>;
 export type ProjectProfileSummaries = ProjectProfileSummary[];
-const ProjectProfileSummaries = /*@__PURE__*/ S.Array(ProjectProfileSummary);
+const ProjectProfileSummaries = /*@__PURE__*/ __L.at(__c70, 4);
 export interface ListProjectProfilesOutput {
   items?: ProjectProfileSummary[];
   nextToken?: string;
 }
-const ListProjectProfilesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(ProjectProfileSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListProjectProfilesOutput",
-}) as any as S.Schema<ListProjectProfilesOutput>;
+const ListProjectProfilesOutput = /*@__PURE__*/ __L.at(
+  __c70,
+  5,
+) as any as S.Schema<ListProjectProfilesOutput>;
 export interface ListProjectsInput {
   domainIdentifier: string;
   userIdentifier?: string;
@@ -11177,26 +7053,7 @@ export interface ListProjectsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListProjectsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    userIdentifier: S.optional(S.String).pipe(T.HttpQuery("userIdentifier")),
-    groupIdentifier: S.optional(S.String).pipe(T.HttpQuery("groupIdentifier")),
-    name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
-    projectCategory: S.optional(S.String).pipe(T.HttpQuery("projectCategory")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/projects" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListProjectsInput" }) as any as S.Schema<ListProjectsInput>;
+const ListProjectsInput = /*@__PURE__*/ __L.at(__c70, 6) as any as S.Schema<ListProjectsInput>;
 export interface ProjectSummary {
   domainId: string;
   id: string;
@@ -11210,30 +7067,14 @@ export interface ProjectSummary {
   domainUnitId?: string;
   projectCategory?: string;
 }
-const ProjectSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    projectStatus: S.optional(ProjectStatus),
-    failureReasons: S.optional(FailureReasons),
-    createdBy: S.String,
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    domainUnitId: S.optional(S.String),
-    projectCategory: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProjectSummary" }) as any as S.Schema<ProjectSummary>;
+const ProjectSummary = /*@__PURE__*/ __L.at(__c70, 7) as any as S.Schema<ProjectSummary>;
 export type ProjectSummaries = ProjectSummary[];
-const ProjectSummaries = /*@__PURE__*/ S.Array(ProjectSummary);
+const ProjectSummaries = /*@__PURE__*/ __L.at(__c71, 0);
 export interface ListProjectsOutput {
   items?: ProjectSummary[];
   nextToken?: string;
 }
-const ListProjectsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(ProjectSummaries), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListProjectsOutput" }) as any as S.Schema<ListProjectsOutput>;
+const ListProjectsOutput = /*@__PURE__*/ __L.at(__c71, 1) as any as S.Schema<ListProjectsOutput>;
 export type ProjectIds = string[];
 const ProjectIds = FilterIds as any as S.Schema<ProjectIds>;
 export type AssetTypeIdentifiers = string[];
@@ -11251,33 +7092,7 @@ export interface ListRulesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListRulesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    targetType: RuleTargetType.pipe(T.HttpLabel("targetType")),
-    targetIdentifier: S.String.pipe(T.HttpLabel("targetIdentifier")),
-    ruleType: S.optional(RuleType).pipe(T.HttpQuery("ruleType")),
-    action: S.optional(RuleAction).pipe(T.HttpQuery("ruleAction")),
-    projectIds: S.optional(ProjectIds).pipe(T.HttpQuery("projectIds")),
-    assetTypes: S.optional(AssetTypeIdentifiers).pipe(T.HttpQuery("assetTypes")),
-    dataProduct: S.optional(S.Boolean).pipe(T.HttpQuery("dataProduct")),
-    includeCascaded: S.optional(S.Boolean).pipe(T.HttpQuery("includeCascaded")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/list-rules/{targetType}/{targetIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListRulesInput" }) as any as S.Schema<ListRulesInput>;
+const ListRulesInput = /*@__PURE__*/ __L.at(__c71, 2) as any as S.Schema<ListRulesInput>;
 export interface RuleSummary {
   identifier?: string;
   revision?: string;
@@ -11290,29 +7105,14 @@ export interface RuleSummary {
   updatedAt?: Date;
   lastUpdatedBy?: string;
 }
-const RuleSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.optional(S.String),
-    revision: S.optional(S.String),
-    ruleType: S.optional(RuleType),
-    name: S.optional(SensitiveString),
-    targetType: S.optional(RuleTargetType),
-    target: S.optional(RuleTarget),
-    action: S.optional(RuleAction),
-    scope: S.optional(RuleScope),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "RuleSummary" }) as any as S.Schema<RuleSummary>;
+const RuleSummary = /*@__PURE__*/ __L.at(__c71, 3) as any as S.Schema<RuleSummary>;
 export type RuleSummaries = RuleSummary[];
-const RuleSummaries = /*@__PURE__*/ S.Array(RuleSummary);
+const RuleSummaries = /*@__PURE__*/ __L.at(__c71, 4);
 export interface ListRulesOutput {
   items: RuleSummary[];
   nextToken?: string;
 }
-const ListRulesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: RuleSummaries, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListRulesOutput" }) as any as S.Schema<ListRulesOutput>;
+const ListRulesOutput = /*@__PURE__*/ __L.at(__c71, 5) as any as S.Schema<ListRulesOutput>;
 export interface ListSubscriptionGrantsInput {
   domainIdentifier: string;
   environmentId?: string;
@@ -11328,34 +7128,10 @@ export interface ListSubscriptionGrantsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListSubscriptionGrantsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentId: S.optional(S.String).pipe(T.HttpQuery("environmentId")),
-    subscriptionTargetId: S.optional(S.String).pipe(T.HttpQuery("subscriptionTargetId")),
-    subscribedListingId: S.optional(S.String).pipe(T.HttpQuery("subscribedListingId")),
-    subscriptionId: S.optional(S.String).pipe(T.HttpQuery("subscriptionId")),
-    owningProjectId: S.optional(S.String).pipe(T.HttpQuery("owningProjectId")),
-    owningIamPrincipalArn: S.optional(S.String).pipe(T.HttpQuery("owningIamPrincipalArn")),
-    owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
-    owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
-    sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/subscription-grants" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListSubscriptionGrantsInput",
-}) as any as S.Schema<ListSubscriptionGrantsInput>;
+const ListSubscriptionGrantsInput = /*@__PURE__*/ __L.at(
+  __c71,
+  6,
+) as any as S.Schema<ListSubscriptionGrantsInput>;
 export interface SubscriptionGrantSummary {
   id: string;
   createdBy: string;
@@ -11370,33 +7146,20 @@ export interface SubscriptionGrantSummary {
   assets?: SubscribedAsset[];
   subscriptionId?: string;
 }
-const SubscriptionGrantSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdBy: S.String,
-    updatedBy: S.optional(S.String),
-    domainId: S.String,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    environmentId: S.optional(S.String),
-    subscriptionTargetId: S.String,
-    grantedEntity: GrantedEntity,
-    status: SubscriptionGrantOverallStatus,
-    assets: S.optional(SubscribedAssets),
-    subscriptionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "SubscriptionGrantSummary" }) as any as S.Schema<SubscriptionGrantSummary>;
+const SubscriptionGrantSummary = /*@__PURE__*/ __L.at(
+  __c71,
+  7,
+) as any as S.Schema<SubscriptionGrantSummary>;
 export type SubscriptionGrants = SubscriptionGrantSummary[];
-const SubscriptionGrants = /*@__PURE__*/ S.Array(SubscriptionGrantSummary);
+const SubscriptionGrants = /*@__PURE__*/ __L.at(__c72, 0);
 export interface ListSubscriptionGrantsOutput {
   items: SubscriptionGrantSummary[];
   nextToken?: string;
 }
-const ListSubscriptionGrantsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: SubscriptionGrants, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSubscriptionGrantsOutput",
-}) as any as S.Schema<ListSubscriptionGrantsOutput>;
+const ListSubscriptionGrantsOutput = /*@__PURE__*/ __L.at(
+  __c72,
+  1,
+) as any as S.Schema<ListSubscriptionGrantsOutput>;
 export interface ListSubscriptionRequestsInput {
   domainIdentifier: string;
   status?: SubscriptionRequestStatus;
@@ -11411,43 +7174,18 @@ export interface ListSubscriptionRequestsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListSubscriptionRequestsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    status: S.optional(SubscriptionRequestStatus).pipe(T.HttpQuery("status")),
-    subscribedListingId: S.optional(S.String).pipe(T.HttpQuery("subscribedListingId")),
-    owningProjectId: S.optional(S.String).pipe(T.HttpQuery("owningProjectId")),
-    owningIamPrincipalArn: S.optional(S.String).pipe(T.HttpQuery("owningIamPrincipalArn")),
-    approverProjectId: S.optional(S.String).pipe(T.HttpQuery("approverProjectId")),
-    owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
-    owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
-    sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/subscription-requests" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListSubscriptionRequestsInput",
-}) as any as S.Schema<ListSubscriptionRequestsInput>;
+const ListSubscriptionRequestsInput = /*@__PURE__*/ __L.at(
+  __c72,
+  2,
+) as any as S.Schema<ListSubscriptionRequestsInput>;
 export interface MetadataFormSummary {
   formName?: string;
   typeName: string | redacted.Redacted<string>;
   typeRevision: string;
 }
-const MetadataFormSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ formName: S.optional(S.String), typeName: SensitiveString, typeRevision: S.String }),
-).annotate({ identifier: "MetadataFormSummary" }) as any as S.Schema<MetadataFormSummary>;
+const MetadataFormSummary = /*@__PURE__*/ __L.at(__c72, 3) as any as S.Schema<MetadataFormSummary>;
 export type MetadataFormsSummary = MetadataFormSummary[];
-const MetadataFormsSummary = /*@__PURE__*/ S.Array(MetadataFormSummary);
+const MetadataFormsSummary = /*@__PURE__*/ __L.at(__c72, 4);
 export interface SubscriptionRequestSummary {
   id: string;
   createdBy: string;
@@ -11464,37 +7202,20 @@ export interface SubscriptionRequestSummary {
   existingSubscriptionId?: string;
   metadataFormsSummary?: MetadataFormSummary[];
 }
-const SubscriptionRequestSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdBy: S.String,
-    updatedBy: S.optional(S.String),
-    domainId: S.String,
-    status: SubscriptionRequestStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    requestReason: SensitiveString,
-    subscribedPrincipals: SubscribedPrincipals,
-    subscribedListings: SubscribedListings,
-    reviewerId: S.optional(S.String),
-    decisionComment: S.optional(SensitiveString),
-    existingSubscriptionId: S.optional(S.String),
-    metadataFormsSummary: S.optional(MetadataFormsSummary),
-  }),
-).annotate({
-  identifier: "SubscriptionRequestSummary",
-}) as any as S.Schema<SubscriptionRequestSummary>;
+const SubscriptionRequestSummary = /*@__PURE__*/ __L.at(
+  __c72,
+  5,
+) as any as S.Schema<SubscriptionRequestSummary>;
 export type SubscriptionRequests = SubscriptionRequestSummary[];
-const SubscriptionRequests = /*@__PURE__*/ S.Array(SubscriptionRequestSummary);
+const SubscriptionRequests = /*@__PURE__*/ __L.at(__c72, 6);
 export interface ListSubscriptionRequestsOutput {
   items: SubscriptionRequestSummary[];
   nextToken?: string;
 }
-const ListSubscriptionRequestsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: SubscriptionRequests, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSubscriptionRequestsOutput",
-}) as any as S.Schema<ListSubscriptionRequestsOutput>;
+const ListSubscriptionRequestsOutput = /*@__PURE__*/ __L.at(
+  __c72,
+  7,
+) as any as S.Schema<ListSubscriptionRequestsOutput>;
 export interface ListSubscriptionsInput {
   domainIdentifier: string;
   subscriptionRequestIdentifier?: string;
@@ -11510,34 +7231,10 @@ export interface ListSubscriptionsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListSubscriptionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    subscriptionRequestIdentifier: S.optional(S.String).pipe(
-      T.HttpQuery("subscriptionRequestIdentifier"),
-    ),
-    status: S.optional(SubscriptionStatus).pipe(T.HttpQuery("status")),
-    subscribedListingId: S.optional(S.String).pipe(T.HttpQuery("subscribedListingId")),
-    owningProjectId: S.optional(S.String).pipe(T.HttpQuery("owningProjectId")),
-    owningIamPrincipalArn: S.optional(S.String).pipe(T.HttpQuery("owningIamPrincipalArn")),
-    owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
-    owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
-    approverProjectId: S.optional(S.String).pipe(T.HttpQuery("approverProjectId")),
-    sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/subscriptions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListSubscriptionsInput" }) as any as S.Schema<ListSubscriptionsInput>;
+const ListSubscriptionsInput = /*@__PURE__*/ __L.at(
+  __c73,
+  0,
+) as any as S.Schema<ListSubscriptionsInput>;
 export interface SubscriptionSummary {
   id: string;
   createdBy: string;
@@ -11553,14 +7250,15 @@ export interface SubscriptionSummary {
 }
 const SubscriptionSummary = CancelSubscriptionOutput as any as S.Schema<SubscriptionSummary>;
 export type Subscriptions = SubscriptionSummary[];
-const Subscriptions = /*@__PURE__*/ S.Array(SubscriptionSummary);
+const Subscriptions = /*@__PURE__*/ __L.at(__c73, 1);
 export interface ListSubscriptionsOutput {
   items: SubscriptionSummary[];
   nextToken?: string;
 }
-const ListSubscriptionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: Subscriptions, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSubscriptionsOutput" }) as any as S.Schema<ListSubscriptionsOutput>;
+const ListSubscriptionsOutput = /*@__PURE__*/ __L.at(
+  __c73,
+  2,
+) as any as S.Schema<ListSubscriptionsOutput>;
 export interface ListSubscriptionTargetsInput {
   domainIdentifier: string;
   environmentIdentifier: string;
@@ -11569,30 +7267,10 @@ export interface ListSubscriptionTargetsInput {
   maxResults?: number;
   nextToken?: string;
 }
-const ListSubscriptionTargetsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListSubscriptionTargetsInput",
-}) as any as S.Schema<ListSubscriptionTargetsInput>;
+const ListSubscriptionTargetsInput = /*@__PURE__*/ __L.at(
+  __c73,
+  3,
+) as any as S.Schema<ListSubscriptionTargetsInput>;
 export interface SubscriptionTargetSummary {
   id: string;
   authorizedPrincipals: string[];
@@ -11614,34 +7292,29 @@ export interface SubscriptionTargetSummary {
 const SubscriptionTargetSummary =
   CreateSubscriptionTargetOutput as any as S.Schema<SubscriptionTargetSummary>;
 export type SubscriptionTargets = SubscriptionTargetSummary[];
-const SubscriptionTargets = /*@__PURE__*/ S.Array(SubscriptionTargetSummary);
+const SubscriptionTargets = /*@__PURE__*/ __L.at(__c73, 4);
 export interface ListSubscriptionTargetsOutput {
   items: SubscriptionTargetSummary[];
   nextToken?: string;
 }
-const ListSubscriptionTargetsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: SubscriptionTargets, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSubscriptionTargetsOutput",
-}) as any as S.Schema<ListSubscriptionTargetsOutput>;
+const ListSubscriptionTargetsOutput = /*@__PURE__*/ __L.at(
+  __c73,
+  5,
+) as any as S.Schema<ListSubscriptionTargetsOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c73,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTimeSeriesDataPointsInput {
   domainIdentifier: string;
   entityIdentifier: string;
@@ -11652,76 +7325,35 @@ export interface ListTimeSeriesDataPointsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListTimeSeriesDataPointsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
-    formName: S.String.pipe(T.HttpQuery("formName")),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("startedAt"),
-    ),
-    endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-      T.HttpQuery("endedAt"),
-    ),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTimeSeriesDataPointsInput",
-}) as any as S.Schema<ListTimeSeriesDataPointsInput>;
+const ListTimeSeriesDataPointsInput = /*@__PURE__*/ __L.at(
+  __c74,
+  0,
+) as any as S.Schema<ListTimeSeriesDataPointsInput>;
 export interface ListTimeSeriesDataPointsOutput {
   items?: TimeSeriesDataPointSummaryFormOutput[];
   nextToken?: string;
 }
-const ListTimeSeriesDataPointsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(TimeSeriesDataPointSummaryFormOutputList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListTimeSeriesDataPointsOutput",
-}) as any as S.Schema<ListTimeSeriesDataPointsOutput>;
+const ListTimeSeriesDataPointsOutput = /*@__PURE__*/ __L.at(
+  __c74,
+  1,
+) as any as S.Schema<ListTimeSeriesDataPointsOutput>;
 export interface PostLineageEventInput {
   domainIdentifier: string;
   event: T.StreamingInputBody;
   clientToken?: string;
 }
-const PostLineageEventInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    event: T.StreamingInput.pipe(T.HttpPayload()),
-    clientToken: S.optional(S.String).pipe(T.HttpHeader("Client-Token"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/lineage/events" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "PostLineageEventInput" }) as any as S.Schema<PostLineageEventInput>;
+const PostLineageEventInput = /*@__PURE__*/ __L.at(
+  __c74,
+  2,
+) as any as S.Schema<PostLineageEventInput>;
 export interface PostLineageEventOutput {
   id?: string;
   domainId?: string;
 }
-const PostLineageEventOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), domainId: S.optional(S.String) }),
-).annotate({ identifier: "PostLineageEventOutput" }) as any as S.Schema<PostLineageEventOutput>;
+const PostLineageEventOutput = /*@__PURE__*/ __L.at(
+  __c74,
+  3,
+) as any as S.Schema<PostLineageEventOutput>;
 export interface TimeSeriesDataPointFormInput {
   formName: string;
   typeIdentifier: string;
@@ -11729,19 +7361,12 @@ export interface TimeSeriesDataPointFormInput {
   timestamp: Date;
   content?: string;
 }
-const TimeSeriesDataPointFormInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formName: S.String,
-    typeIdentifier: S.String,
-    typeRevision: S.optional(S.String),
-    timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    content: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TimeSeriesDataPointFormInput",
-}) as any as S.Schema<TimeSeriesDataPointFormInput>;
+const TimeSeriesDataPointFormInput = /*@__PURE__*/ __L.at(
+  __c74,
+  4,
+) as any as S.Schema<TimeSeriesDataPointFormInput>;
 export type TimeSeriesDataPointFormInputList = TimeSeriesDataPointFormInput[];
-const TimeSeriesDataPointFormInputList = /*@__PURE__*/ S.Array(TimeSeriesDataPointFormInput);
+const TimeSeriesDataPointFormInputList = /*@__PURE__*/ __L.at(__c74, 5);
 export interface PostTimeSeriesDataPointsInput {
   domainIdentifier: string;
   entityIdentifier: string;
@@ -11749,72 +7374,32 @@ export interface PostTimeSeriesDataPointsInput {
   forms: TimeSeriesDataPointFormInput[];
   clientToken?: string;
 }
-const PostTimeSeriesDataPointsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
-    forms: TimeSeriesDataPointFormInputList,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PostTimeSeriesDataPointsInput",
-}) as any as S.Schema<PostTimeSeriesDataPointsInput>;
+const PostTimeSeriesDataPointsInput = /*@__PURE__*/ __L.at(
+  __c74,
+  6,
+) as any as S.Schema<PostTimeSeriesDataPointsInput>;
 export type TimeSeriesDataPointFormOutputList = TimeSeriesDataPointFormOutput[];
-const TimeSeriesDataPointFormOutputList = /*@__PURE__*/ S.Array(TimeSeriesDataPointFormOutput);
+const TimeSeriesDataPointFormOutputList = /*@__PURE__*/ __L.at(__c74, 7);
 export interface PostTimeSeriesDataPointsOutput {
   domainId?: string;
   entityId?: string;
   entityType?: TimeSeriesEntityType;
   forms?: TimeSeriesDataPointFormOutput[];
 }
-const PostTimeSeriesDataPointsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.optional(S.String),
-    entityId: S.optional(S.String),
-    entityType: S.optional(TimeSeriesEntityType),
-    forms: S.optional(TimeSeriesDataPointFormOutputList),
-  }),
-).annotate({
-  identifier: "PostTimeSeriesDataPointsOutput",
-}) as any as S.Schema<PostTimeSeriesDataPointsOutput>;
+const PostTimeSeriesDataPointsOutput = /*@__PURE__*/ __L.at(
+  __c75,
+  0,
+) as any as S.Schema<PostTimeSeriesDataPointsOutput>;
 export interface PutDataExportConfigurationInput {
   domainIdentifier: string;
   enableExport: boolean;
   encryptionConfiguration?: EncryptionConfiguration;
   clientToken?: string;
 }
-const PutDataExportConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    enableExport: S.Boolean,
-    encryptionConfiguration: S.optional(EncryptionConfiguration),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v2/domains/{domainIdentifier}/data-export-configuration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutDataExportConfigurationInput",
-}) as any as S.Schema<PutDataExportConfigurationInput>;
+const PutDataExportConfigurationInput = /*@__PURE__*/ __L.at(
+  __c75,
+  1,
+) as any as S.Schema<PutDataExportConfigurationInput>;
 export interface PutDataExportConfigurationOutput {}
 const PutDataExportConfigurationOutput =
   CancelMetadataGenerationRunOutput as any as S.Schema<PutDataExportConfigurationOutput>;
@@ -11824,16 +7409,12 @@ export interface PutResourceConfiguration {
   region: string;
   parameters: { [key: string]: string | undefined };
 }
-const PutResourceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    region: S.String,
-    parameters: ResourceConfigurationParameterMap,
-  }),
-).annotate({ identifier: "PutResourceConfiguration" }) as any as S.Schema<PutResourceConfiguration>;
+const PutResourceConfiguration = /*@__PURE__*/ __L.at(
+  __c75,
+  2,
+) as any as S.Schema<PutResourceConfiguration>;
 export type PutResourceConfigurations = PutResourceConfiguration[];
-const PutResourceConfigurations = /*@__PURE__*/ S.Array(PutResourceConfiguration);
+const PutResourceConfigurations = /*@__PURE__*/ __L.at(__c75, 3);
 export type GlobalParameterMap = { [key: string]: string | undefined };
 const GlobalParameterMap = PropertyMap as any as S.Schema<GlobalParameterMap>;
 export interface PutEnvironmentBlueprintConfigurationInput {
@@ -11849,35 +7430,10 @@ export interface PutEnvironmentBlueprintConfigurationInput {
   globalParameters?: { [key: string]: string | undefined };
   provisioningConfigurations?: ProvisioningConfiguration[];
 }
-const PutEnvironmentBlueprintConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentBlueprintIdentifier: S.String.pipe(T.HttpLabel("environmentBlueprintIdentifier")),
-    provisioningRoleArn: S.optional(S.String),
-    manageAccessRoleArn: S.optional(S.String),
-    environmentRolePermissionBoundary: S.optional(S.String),
-    enabledRegions: EnabledRegionList,
-    regionalParameters: S.optional(RegionalParameterMap),
-    resourceConfigurations: S.optional(PutResourceConfigurations),
-    allowUserProvidedConfigurations: S.optional(S.Boolean),
-    globalParameters: S.optional(GlobalParameterMap),
-    provisioningConfigurations: S.optional(ProvisioningConfigurationList),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/environment-blueprint-configurations/{environmentBlueprintIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutEnvironmentBlueprintConfigurationInput",
-}) as any as S.Schema<PutEnvironmentBlueprintConfigurationInput>;
+const PutEnvironmentBlueprintConfigurationInput = /*@__PURE__*/ __L.at(
+  __c75,
+  4,
+) as any as S.Schema<PutEnvironmentBlueprintConfigurationInput>;
 export interface PutEnvironmentBlueprintConfigurationOutput {
   domainId: string;
   environmentBlueprintId: string;
@@ -11905,13 +7461,7 @@ export interface RelationPattern {
   relationDirection: RelationDirection;
   maxPathLength?: number;
 }
-const RelationPattern = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relationType: RelationType,
-    relationDirection: RelationDirection,
-    maxPathLength: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RelationPattern" }) as any as S.Schema<RelationPattern>;
+const RelationPattern = /*@__PURE__*/ __L.at(__c75, 5) as any as S.Schema<RelationPattern>;
 export type GraphEntityType = "LINEAGE_NODE" | (string & {});
 const GraphEntityType = S.String;
 
@@ -11925,60 +7475,35 @@ export interface Filter {
   intValue?: number;
   operator?: FilterOperator;
 }
-const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.String,
-    value: S.optional(S.String),
-    intValue: S.optional(S.Number),
-    operator: S.optional(FilterOperator),
-  }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+const Filter = /*@__PURE__*/ __L.at(__c75, 6) as any as S.Schema<Filter>;
 export type FilterList = FilterClause[];
-const FilterList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => FilterClause).annotate({ identifier: "FilterClause" }),
-) as any as S.Schema<FilterList>;
+const FilterList = /*@__PURE__*/ __L.at(__c75, 7) as any as S.Schema<FilterList>;
 export type FilterClause =
   | { filter: Filter; and?: never; or?: never }
   | { filter?: never; and: FilterClause[]; or?: never }
   | { filter?: never; and?: never; or: FilterClause[] };
-const FilterClause = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ filter: Filter }),
-  /*@__PURE__*/ S.Struct({
-    and: /*@__PURE__*/ S.suspend(() => FilterList).annotate({ identifier: "FilterList" }),
-  }),
-  /*@__PURE__*/ S.Struct({
-    or: /*@__PURE__*/ S.suspend(() => FilterList).annotate({ identifier: "FilterList" }),
-  }),
-]) as any as S.Schema<FilterClause>;
+const FilterClause = /*@__PURE__*/ __L.at(__c76, 0) as any as S.Schema<FilterClause>;
 export interface EntityPattern {
   entityType: GraphEntityType;
   identifier: string;
   filters?: FilterClause;
 }
-const EntityPattern = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entityType: GraphEntityType,
-    identifier: S.String,
-    filters: S.optional(FilterClause),
-  }),
-).annotate({ identifier: "EntityPattern" }) as any as S.Schema<EntityPattern>;
+const EntityPattern = /*@__PURE__*/ __L.at(__c76, 1) as any as S.Schema<EntityPattern>;
 export type MatchClause =
   | { relationPattern: RelationPattern; entityPattern?: never }
   | { relationPattern?: never; entityPattern: EntityPattern };
-const MatchClause = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ relationPattern: RelationPattern }),
-  /*@__PURE__*/ S.Struct({ entityPattern: EntityPattern }),
-]);
+const MatchClause = /*@__PURE__*/ __L.at(__c76, 2);
 export type MatchClauses = MatchClause[];
-const MatchClauses = /*@__PURE__*/ S.Array(MatchClause);
+const MatchClauses = /*@__PURE__*/ __L.at(__c76, 3);
 export type FormNameList = string[];
 const FormNameList = FilterIds as any as S.Schema<FormNameList>;
 export interface AdditionalAttributes {
   formNames?: string[];
 }
-const AdditionalAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ formNames: S.optional(FormNameList) }),
-).annotate({ identifier: "AdditionalAttributes" }) as any as S.Schema<AdditionalAttributes>;
+const AdditionalAttributes = /*@__PURE__*/ __L.at(
+  __c76,
+  4,
+) as any as S.Schema<AdditionalAttributes>;
 export interface QueryGraphInput {
   domainIdentifier: string;
   match: MatchClause[];
@@ -11986,24 +7511,7 @@ export interface QueryGraphInput {
   nextToken?: string;
   additionalAttributes?: AdditionalAttributes;
 }
-const QueryGraphInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    match: MatchClauses,
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    additionalAttributes: S.optional(AdditionalAttributes),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/graph/query" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "QueryGraphInput" }) as any as S.Schema<QueryGraphInput>;
+const QueryGraphInput = /*@__PURE__*/ __L.at(__c76, 5) as any as S.Schema<QueryGraphInput>;
 export type LineageNodeIds = string[];
 const LineageNodeIds = FilterIds as any as S.Schema<LineageNodeIds>;
 export interface LineageNodeItem {
@@ -12023,38 +7531,16 @@ export interface LineageNodeItem {
   upstreamLineageNodeIds?: string[];
   downstreamLineageNodeIds?: string[];
 }
-const LineageNodeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    id: S.String,
-    typeName: S.String,
-    typeRevision: S.optional(S.String),
-    sourceIdentifier: S.optional(S.String),
-    eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    formsOutput: S.optional(FormOutputList),
-    upstreamLineageNodeIds: S.optional(LineageNodeIds),
-    downstreamLineageNodeIds: S.optional(LineageNodeIds),
-  }),
-).annotate({ identifier: "LineageNodeItem" }) as any as S.Schema<LineageNodeItem>;
+const LineageNodeItem = /*@__PURE__*/ __L.at(__c76, 6) as any as S.Schema<LineageNodeItem>;
 export type ResultItem = { lineageNode: LineageNodeItem };
-const ResultItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ lineageNode: LineageNodeItem }),
-]);
+const ResultItem = /*@__PURE__*/ __L.at(__c76, 7);
 export type ResultItemList = ResultItem[];
-const ResultItemList = /*@__PURE__*/ S.Array(ResultItem);
+const ResultItemList = /*@__PURE__*/ __L.at(__c77, 0);
 export interface QueryGraphOutput {
   items?: ResultItem[];
   nextToken?: string;
 }
-const QueryGraphOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(ResultItemList), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "QueryGraphOutput" }) as any as S.Schema<QueryGraphOutput>;
+const QueryGraphOutput = /*@__PURE__*/ __L.at(__c77, 1) as any as S.Schema<QueryGraphOutput>;
 export type RejectRuleBehavior = "ALL" | "NONE" | (string & {});
 export interface RejectRule {
   rule?: RejectRuleBehavior;
@@ -12062,19 +7548,14 @@ export interface RejectRule {
 }
 const RejectRule = AcceptRule as any as S.Schema<RejectRule>;
 export type PredictionChoices = number[];
-const PredictionChoices = /*@__PURE__*/ S.Array(S.Number);
+const PredictionChoices = /*@__PURE__*/ __L.at(__c77, 2);
 export interface RejectChoice {
   predictionTarget?: string;
   predictionChoices?: number[];
 }
-const RejectChoice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    predictionTarget: S.optional(S.String),
-    predictionChoices: S.optional(PredictionChoices),
-  }),
-).annotate({ identifier: "RejectChoice" }) as any as S.Schema<RejectChoice>;
+const RejectChoice = /*@__PURE__*/ __L.at(__c77, 3) as any as S.Schema<RejectChoice>;
 export type RejectChoices = RejectChoice[];
-const RejectChoices = /*@__PURE__*/ S.Array(RejectChoice);
+const RejectChoices = /*@__PURE__*/ __L.at(__c77, 4);
 export interface RejectPredictionsInput {
   domainIdentifier: string;
   identifier: string;
@@ -12083,62 +7564,28 @@ export interface RejectPredictionsInput {
   rejectChoices?: RejectChoice[];
   clientToken?: string;
 }
-const RejectPredictionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
-    rejectRule: S.optional(RejectRule),
-    rejectChoices: S.optional(RejectChoices),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/assets/{identifier}/reject-predictions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "RejectPredictionsInput" }) as any as S.Schema<RejectPredictionsInput>;
+const RejectPredictionsInput = /*@__PURE__*/ __L.at(
+  __c77,
+  5,
+) as any as S.Schema<RejectPredictionsInput>;
 export interface RejectPredictionsOutput {
   domainId: string;
   assetId: string;
   assetRevision: string;
 }
-const RejectPredictionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainId: S.String, assetId: S.String, assetRevision: S.String }),
-).annotate({ identifier: "RejectPredictionsOutput" }) as any as S.Schema<RejectPredictionsOutput>;
+const RejectPredictionsOutput = /*@__PURE__*/ __L.at(
+  __c77,
+  6,
+) as any as S.Schema<RejectPredictionsOutput>;
 export interface RejectSubscriptionRequestInput {
   domainIdentifier: string;
   identifier: string;
   decisionComment?: string | redacted.Redacted<string>;
 }
-const RejectSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    decisionComment: S.optional(SensitiveString),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/reject",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RejectSubscriptionRequestInput",
-}) as any as S.Schema<RejectSubscriptionRequestInput>;
+const RejectSubscriptionRequestInput = /*@__PURE__*/ __L.at(
+  __c77,
+  7,
+) as any as S.Schema<RejectSubscriptionRequestInput>;
 export interface RejectSubscriptionRequestOutput {
   id: string;
   createdBy: string;
@@ -12164,27 +7611,10 @@ export interface RemoveEntityOwnerInput {
   owner: OwnerProperties;
   clientToken?: string;
 }
-const RemoveEntityOwnerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityType: DataZoneEntityType.pipe(T.HttpLabel("entityType")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    owner: OwnerProperties,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/removeOwner",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "RemoveEntityOwnerInput" }) as any as S.Schema<RemoveEntityOwnerInput>;
+const RemoveEntityOwnerInput = /*@__PURE__*/ __L.at(
+  __c78,
+  0,
+) as any as S.Schema<RemoveEntityOwnerInput>;
 export interface RemoveEntityOwnerOutput {}
 const RemoveEntityOwnerOutput = AddEntityOwnerOutput as any as S.Schema<RemoveEntityOwnerOutput>;
 export interface RemovePolicyGrantInput {
@@ -12196,29 +7626,10 @@ export interface RemovePolicyGrantInput {
   grantIdentifier?: string;
   clientToken?: string;
 }
-const RemovePolicyGrantInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    entityType: TargetEntityType.pipe(T.HttpLabel("entityType")),
-    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-    policyType: ManagedPolicyType,
-    principal: PolicyGrantPrincipal,
-    grantIdentifier: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/policies/managed/{entityType}/{entityIdentifier}/removeGrant",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "RemovePolicyGrantInput" }) as any as S.Schema<RemovePolicyGrantInput>;
+const RemovePolicyGrantInput = /*@__PURE__*/ __L.at(
+  __c78,
+  1,
+) as any as S.Schema<RemovePolicyGrantInput>;
 export interface RemovePolicyGrantOutput {}
 const RemovePolicyGrantOutput = AddEntityOwnerOutput as any as S.Schema<RemovePolicyGrantOutput>;
 export interface RevokeSubscriptionInput {
@@ -12226,25 +7637,10 @@ export interface RevokeSubscriptionInput {
   identifier: string;
   retainPermissions?: boolean;
 }
-const RevokeSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    retainPermissions: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/subscriptions/{identifier}/revoke",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "RevokeSubscriptionInput" }) as any as S.Schema<RevokeSubscriptionInput>;
+const RevokeSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c78,
+  2,
+) as any as S.Schema<RevokeSubscriptionInput>;
 export interface RevokeSubscriptionOutput {
   id: string;
   createdBy: string;
@@ -12272,18 +7668,14 @@ export type SearchText = string;
 export interface SearchInItem {
   attribute: string;
 }
-const SearchInItem = /*@__PURE__*/ S.suspend(() => S.Struct({ attribute: S.String })).annotate({
-  identifier: "SearchInItem",
-}) as any as S.Schema<SearchInItem>;
+const SearchInItem = /*@__PURE__*/ __L.at(__c78, 3) as any as S.Schema<SearchInItem>;
 export type SearchInList = SearchInItem[];
-const SearchInList = /*@__PURE__*/ S.Array(SearchInItem);
+const SearchInList = /*@__PURE__*/ __L.at(__c78, 4);
 export interface SearchSort {
   attribute: string;
   order?: SortOrder;
 }
-const SearchSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: S.String, order: S.optional(SortOrder) }),
-).annotate({ identifier: "SearchSort" }) as any as S.Schema<SearchSort>;
+const SearchSort = /*@__PURE__*/ __L.at(__c78, 5) as any as S.Schema<SearchSort>;
 export type SearchOutputAdditionalAttribute =
   | "FORMS"
   | "TIME_SERIES_DATA_POINT_FORMS"
@@ -12292,7 +7684,7 @@ export type SearchOutputAdditionalAttribute =
 const SearchOutputAdditionalAttribute = S.String;
 
 export type SearchOutputAdditionalAttributes = SearchOutputAdditionalAttribute[];
-const SearchOutputAdditionalAttributes = /*@__PURE__*/ S.Array(SearchOutputAdditionalAttribute);
+const SearchOutputAdditionalAttributes = /*@__PURE__*/ __L.at(__c78, 6);
 export interface SearchInput {
   domainIdentifier: string;
   owningProjectIdentifier?: string;
@@ -12305,66 +7697,33 @@ export interface SearchInput {
   sort?: SearchSort;
   additionalAttributes?: SearchOutputAdditionalAttribute[];
 }
-const SearchInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    owningProjectIdentifier: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    searchScope: InventorySearchScope,
-    searchText: S.optional(S.String),
-    searchIn: S.optional(SearchInList),
-    filters: S.optional(FilterClause),
-    sort: S.optional(SearchSort),
-    additionalAttributes: S.optional(SearchOutputAdditionalAttributes),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/search" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SearchInput" }) as any as S.Schema<SearchInput>;
+const SearchInput = /*@__PURE__*/ __L.at(__c78, 7) as any as S.Schema<SearchInput>;
 export interface MatchOffset {
   startOffset?: number;
   endOffset?: number;
 }
-const MatchOffset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ startOffset: S.optional(S.Number), endOffset: S.optional(S.Number) }),
-).annotate({ identifier: "MatchOffset" }) as any as S.Schema<MatchOffset>;
+const MatchOffset = /*@__PURE__*/ __L.at(__c79, 0) as any as S.Schema<MatchOffset>;
 export type MatchOffsets = MatchOffset[];
-const MatchOffsets = /*@__PURE__*/ S.Array(MatchOffset);
+const MatchOffsets = /*@__PURE__*/ __L.at(__c79, 1);
 export interface TextMatchItem {
   attribute?: string;
   text?: string;
   matchOffsets?: MatchOffset[];
 }
-const TextMatchItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(S.String),
-    text: S.optional(S.String),
-    matchOffsets: S.optional(MatchOffsets),
-  }),
-).annotate({ identifier: "TextMatchItem" }) as any as S.Schema<TextMatchItem>;
+const TextMatchItem = /*@__PURE__*/ __L.at(__c79, 2) as any as S.Schema<TextMatchItem>;
 export type TextMatches = TextMatchItem[];
-const TextMatches = /*@__PURE__*/ S.Array(TextMatchItem);
+const TextMatches = /*@__PURE__*/ __L.at(__c79, 3);
 export type MatchRationaleItem = { textMatches: TextMatchItem[] };
-const MatchRationaleItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ textMatches: TextMatches }),
-]);
+const MatchRationaleItem = /*@__PURE__*/ __L.at(__c79, 4);
 export type MatchRationale = MatchRationaleItem[];
-const MatchRationale = /*@__PURE__*/ S.Array(MatchRationaleItem);
+const MatchRationale = /*@__PURE__*/ __L.at(__c79, 5);
 export interface GlossaryItemAdditionalAttributes {
   matchRationale?: MatchRationaleItem[];
 }
-const GlossaryItemAdditionalAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ matchRationale: S.optional(MatchRationale) }),
-).annotate({
-  identifier: "GlossaryItemAdditionalAttributes",
-}) as any as S.Schema<GlossaryItemAdditionalAttributes>;
+const GlossaryItemAdditionalAttributes = /*@__PURE__*/ __L.at(
+  __c79,
+  6,
+) as any as S.Schema<GlossaryItemAdditionalAttributes>;
 export interface GlossaryItem {
   domainId: string;
   id: string;
@@ -12379,22 +7738,7 @@ export interface GlossaryItem {
   updatedBy?: string;
   additionalAttributes?: GlossaryItemAdditionalAttributes;
 }
-const GlossaryItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    owningProjectId: S.String,
-    description: S.optional(SensitiveString),
-    status: GlossaryStatus,
-    usageRestrictions: S.optional(GlossaryUsageRestrictions),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    additionalAttributes: S.optional(GlossaryItemAdditionalAttributes),
-  }),
-).annotate({ identifier: "GlossaryItem" }) as any as S.Schema<GlossaryItem>;
+const GlossaryItem = /*@__PURE__*/ __L.at(__c79, 7) as any as S.Schema<GlossaryItem>;
 export interface GlossaryTermItemAdditionalAttributes {
   matchRationale?: MatchRationaleItem[];
 }
@@ -12416,40 +7760,17 @@ export interface GlossaryTermItem {
   updatedBy?: string;
   additionalAttributes?: GlossaryTermItemAdditionalAttributes;
 }
-const GlossaryTermItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    glossaryId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    shortDescription: S.optional(SensitiveString),
-    usageRestrictions: S.optional(GlossaryUsageRestrictions),
-    longDescription: S.optional(SensitiveString),
-    termRelations: S.optional(TermRelations),
-    status: GlossaryTermStatus,
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    additionalAttributes: S.optional(GlossaryTermItemAdditionalAttributes),
-  }),
-).annotate({ identifier: "GlossaryTermItem" }) as any as S.Schema<GlossaryTermItem>;
+const GlossaryTermItem = /*@__PURE__*/ __L.at(__c80, 0) as any as S.Schema<GlossaryTermItem>;
 export interface AssetItemAdditionalAttributes {
   formsOutput?: FormOutput[];
   readOnlyFormsOutput?: FormOutput[];
   latestTimeSeriesDataPointFormsOutput?: TimeSeriesDataPointSummaryFormOutput[];
   matchRationale?: MatchRationaleItem[];
 }
-const AssetItemAdditionalAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formsOutput: S.optional(FormOutputList),
-    readOnlyFormsOutput: S.optional(FormOutputList),
-    latestTimeSeriesDataPointFormsOutput: S.optional(TimeSeriesDataPointSummaryFormOutputList),
-    matchRationale: S.optional(MatchRationale),
-  }),
-).annotate({
-  identifier: "AssetItemAdditionalAttributes",
-}) as any as S.Schema<AssetItemAdditionalAttributes>;
+const AssetItemAdditionalAttributes = /*@__PURE__*/ __L.at(
+  __c80,
+  1,
+) as any as S.Schema<AssetItemAdditionalAttributes>;
 export interface AssetItem {
   domainId: string;
   identifier: string;
@@ -12467,25 +7788,7 @@ export interface AssetItem {
   additionalAttributes?: AssetItemAdditionalAttributes;
   governedGlossaryTerms?: string[];
 }
-const AssetItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    identifier: S.String,
-    name: SensitiveString,
-    typeIdentifier: S.String,
-    typeRevision: S.String,
-    externalIdentifier: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    firstRevisionCreatedBy: S.optional(S.String),
-    glossaryTerms: S.optional(GlossaryTerms),
-    owningProjectId: S.String,
-    additionalAttributes: S.optional(AssetItemAdditionalAttributes),
-    governedGlossaryTerms: S.optional(GovernedGlossaryTerms),
-  }),
-).annotate({ identifier: "AssetItem" }) as any as S.Schema<AssetItem>;
+const AssetItem = /*@__PURE__*/ __L.at(__c80, 2) as any as S.Schema<AssetItem>;
 export interface DataProductItemAdditionalAttributes {
   matchRationale?: MatchRationaleItem[];
 }
@@ -12504,21 +7807,10 @@ export interface DataProductResultItem {
   firstRevisionCreatedBy?: string;
   additionalAttributes?: DataProductItemAdditionalAttributes;
 }
-const DataProductResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    name: SensitiveString,
-    owningProjectId: S.String,
-    description: S.optional(SensitiveString),
-    glossaryTerms: S.optional(GlossaryTerms),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    firstRevisionCreatedBy: S.optional(S.String),
-    additionalAttributes: S.optional(DataProductItemAdditionalAttributes),
-  }),
-).annotate({ identifier: "DataProductResultItem" }) as any as S.Schema<DataProductResultItem>;
+const DataProductResultItem = /*@__PURE__*/ __L.at(
+  __c80,
+  3,
+) as any as S.Schema<DataProductResultItem>;
 export type SearchInventoryResultItem =
   | {
       glossaryItem: GlossaryItem;
@@ -12544,26 +7836,15 @@ export type SearchInventoryResultItem =
       assetItem?: never;
       dataProductItem: DataProductResultItem;
     };
-const SearchInventoryResultItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ glossaryItem: GlossaryItem }),
-  /*@__PURE__*/ S.Struct({ glossaryTermItem: GlossaryTermItem }),
-  /*@__PURE__*/ S.Struct({ assetItem: AssetItem }),
-  /*@__PURE__*/ S.Struct({ dataProductItem: DataProductResultItem }),
-]);
+const SearchInventoryResultItem = /*@__PURE__*/ __L.at(__c80, 4);
 export type SearchInventoryResultItems = SearchInventoryResultItem[];
-const SearchInventoryResultItems = /*@__PURE__*/ S.Array(SearchInventoryResultItem);
+const SearchInventoryResultItems = /*@__PURE__*/ __L.at(__c80, 5);
 export interface SearchOutput {
   items?: SearchInventoryResultItem[];
   nextToken?: string;
   totalMatchCount?: number;
 }
-const SearchOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(SearchInventoryResultItems),
-    nextToken: S.optional(S.String),
-    totalMatchCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SearchOutput" }) as any as S.Schema<SearchOutput>;
+const SearchOutput = /*@__PURE__*/ __L.at(__c80, 6) as any as S.Schema<SearchOutput>;
 export type GroupSearchType =
   | "SSO_GROUP"
   | "DATAZONE_SSO_GROUP"
@@ -12579,24 +7860,10 @@ export interface SearchGroupProfilesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const SearchGroupProfilesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    groupType: GroupSearchType,
-    searchText: S.optional(SensitiveString),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/search-group-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SearchGroupProfilesInput" }) as any as S.Schema<SearchGroupProfilesInput>;
+const SearchGroupProfilesInput = /*@__PURE__*/ __L.at(
+  __c80,
+  7,
+) as any as S.Schema<SearchGroupProfilesInput>;
 export interface GroupProfileSummary {
   domainId?: string;
   id?: string;
@@ -12607,26 +7874,23 @@ export interface GroupProfileSummary {
 }
 const GroupProfileSummary = CreateGroupProfileOutput as any as S.Schema<GroupProfileSummary>;
 export type GroupProfileSummaries = GroupProfileSummary[];
-const GroupProfileSummaries = /*@__PURE__*/ S.Array(GroupProfileSummary);
+const GroupProfileSummaries = /*@__PURE__*/ __L.at(__c81, 0);
 export interface SearchGroupProfilesOutput {
   items?: GroupProfileSummary[];
   nextToken?: string;
 }
-const SearchGroupProfilesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(GroupProfileSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "SearchGroupProfilesOutput",
-}) as any as S.Schema<SearchGroupProfilesOutput>;
+const SearchGroupProfilesOutput = /*@__PURE__*/ __L.at(
+  __c81,
+  1,
+) as any as S.Schema<SearchGroupProfilesOutput>;
 export type AggregationDisplayValue = string;
 export interface AggregationListItem {
   attribute: string;
   displayValue?: string;
 }
-const AggregationListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attribute: S.String, displayValue: S.optional(S.String) }),
-).annotate({ identifier: "AggregationListItem" }) as any as S.Schema<AggregationListItem>;
+const AggregationListItem = /*@__PURE__*/ __L.at(__c81, 2) as any as S.Schema<AggregationListItem>;
 export type AggregationList = AggregationListItem[];
-const AggregationList = /*@__PURE__*/ S.Array(AggregationListItem);
+const AggregationList = /*@__PURE__*/ __L.at(__c81, 3);
 export interface SearchListingsInput {
   domainIdentifier: string;
   searchText?: string;
@@ -12638,42 +7902,16 @@ export interface SearchListingsInput {
   sort?: SearchSort;
   additionalAttributes?: SearchOutputAdditionalAttribute[];
 }
-const SearchListingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    searchText: S.optional(S.String),
-    searchIn: S.optional(SearchInList),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    filters: S.optional(FilterClause),
-    aggregations: S.optional(AggregationList),
-    sort: S.optional(SearchSort),
-    additionalAttributes: S.optional(SearchOutputAdditionalAttributes),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/listings/search" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SearchListingsInput" }) as any as S.Schema<SearchListingsInput>;
+const SearchListingsInput = /*@__PURE__*/ __L.at(__c81, 4) as any as S.Schema<SearchListingsInput>;
 export interface AssetListingItemAdditionalAttributes {
   forms?: string;
   matchRationale?: MatchRationaleItem[];
   latestTimeSeriesDataPointForms?: TimeSeriesDataPointSummaryFormOutput[];
 }
-const AssetListingItemAdditionalAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    forms: S.optional(S.String),
-    matchRationale: S.optional(MatchRationale),
-    latestTimeSeriesDataPointForms: S.optional(TimeSeriesDataPointSummaryFormOutputList),
-  }),
-).annotate({
-  identifier: "AssetListingItemAdditionalAttributes",
-}) as any as S.Schema<AssetListingItemAdditionalAttributes>;
+const AssetListingItemAdditionalAttributes = /*@__PURE__*/ __L.at(
+  __c81,
+  5,
+) as any as S.Schema<AssetListingItemAdditionalAttributes>;
 export interface AssetListingItem {
   listingId?: string;
   listingRevision?: string;
@@ -12690,33 +7928,15 @@ export interface AssetListingItem {
   owningProjectId?: string;
   additionalAttributes?: AssetListingItemAdditionalAttributes;
 }
-const AssetListingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listingId: S.optional(S.String),
-    listingRevision: S.optional(S.String),
-    name: S.optional(SensitiveString),
-    entityId: S.optional(S.String),
-    entityRevision: S.optional(S.String),
-    entityType: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    listingCreatedBy: S.optional(S.String),
-    listingUpdatedBy: S.optional(S.String),
-    glossaryTerms: S.optional(DetailedGlossaryTerms),
-    governedGlossaryTerms: S.optional(DetailedGlossaryTerms),
-    owningProjectId: S.optional(S.String),
-    additionalAttributes: S.optional(AssetListingItemAdditionalAttributes),
-  }),
-).annotate({ identifier: "AssetListingItem" }) as any as S.Schema<AssetListingItem>;
+const AssetListingItem = /*@__PURE__*/ __L.at(__c81, 6) as any as S.Schema<AssetListingItem>;
 export interface DataProductListingItemAdditionalAttributes {
   forms?: string;
   matchRationale?: MatchRationaleItem[];
 }
-const DataProductListingItemAdditionalAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ forms: S.optional(S.String), matchRationale: S.optional(MatchRationale) }),
-).annotate({
-  identifier: "DataProductListingItemAdditionalAttributes",
-}) as any as S.Schema<DataProductListingItemAdditionalAttributes>;
+const DataProductListingItemAdditionalAttributes = /*@__PURE__*/ __L.at(
+  __c81,
+  7,
+) as any as S.Schema<DataProductListingItemAdditionalAttributes>;
 export interface ListingSummaryItem {
   listingId?: string;
   listingRevision?: string;
@@ -12739,32 +7959,16 @@ export interface DataProductListingItem {
   additionalAttributes?: DataProductListingItemAdditionalAttributes;
   items?: ListingSummaryItem[];
 }
-const DataProductListingItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listingId: S.optional(S.String),
-    listingRevision: S.optional(S.String),
-    name: S.optional(SensitiveString),
-    entityId: S.optional(S.String),
-    entityRevision: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    listingCreatedBy: S.optional(S.String),
-    listingUpdatedBy: S.optional(S.String),
-    glossaryTerms: S.optional(DetailedGlossaryTerms),
-    owningProjectId: S.optional(S.String),
-    additionalAttributes: S.optional(DataProductListingItemAdditionalAttributes),
-    items: S.optional(ListingSummaryItems),
-  }),
-).annotate({ identifier: "DataProductListingItem" }) as any as S.Schema<DataProductListingItem>;
+const DataProductListingItem = /*@__PURE__*/ __L.at(
+  __c82,
+  0,
+) as any as S.Schema<DataProductListingItem>;
 export type SearchResultItem =
   | { assetListing: AssetListingItem; dataProductListing?: never }
   | { assetListing?: never; dataProductListing: DataProductListingItem };
-const SearchResultItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ assetListing: AssetListingItem }),
-  /*@__PURE__*/ S.Struct({ dataProductListing: DataProductListingItem }),
-]);
+const SearchResultItem = /*@__PURE__*/ __L.at(__c82, 1);
 export type SearchResultItems = SearchResultItem[];
-const SearchResultItems = /*@__PURE__*/ S.Array(SearchResultItem);
+const SearchResultItems = /*@__PURE__*/ __L.at(__c82, 2);
 export type AggregationAttributeValue = string;
 export type AggregationAttributeDisplayValue = string;
 export interface AggregationOutputItem {
@@ -12772,43 +7976,30 @@ export interface AggregationOutputItem {
   count?: number;
   displayValue?: string;
 }
-const AggregationOutputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    count: S.optional(S.Number),
-    displayValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "AggregationOutputItem" }) as any as S.Schema<AggregationOutputItem>;
+const AggregationOutputItem = /*@__PURE__*/ __L.at(
+  __c82,
+  3,
+) as any as S.Schema<AggregationOutputItem>;
 export type AggregationOutputItems = AggregationOutputItem[];
-const AggregationOutputItems = /*@__PURE__*/ S.Array(AggregationOutputItem);
+const AggregationOutputItems = /*@__PURE__*/ __L.at(__c82, 4);
 export interface AggregationOutput {
   attribute?: string;
   displayValue?: string;
   items?: AggregationOutputItem[];
 }
-const AggregationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(S.String),
-    displayValue: S.optional(S.String),
-    items: S.optional(AggregationOutputItems),
-  }),
-).annotate({ identifier: "AggregationOutput" }) as any as S.Schema<AggregationOutput>;
+const AggregationOutput = /*@__PURE__*/ __L.at(__c82, 5) as any as S.Schema<AggregationOutput>;
 export type AggregationOutputList = AggregationOutput[];
-const AggregationOutputList = /*@__PURE__*/ S.Array(AggregationOutput);
+const AggregationOutputList = /*@__PURE__*/ __L.at(__c82, 6);
 export interface SearchListingsOutput {
   items?: SearchResultItem[];
   nextToken?: string;
   totalMatchCount?: number;
   aggregates?: AggregationOutput[];
 }
-const SearchListingsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(SearchResultItems),
-    nextToken: S.optional(S.String),
-    totalMatchCount: S.optional(S.Number),
-    aggregates: S.optional(AggregationOutputList),
-  }),
-).annotate({ identifier: "SearchListingsOutput" }) as any as S.Schema<SearchListingsOutput>;
+const SearchListingsOutput = /*@__PURE__*/ __L.at(
+  __c82,
+  7,
+) as any as S.Schema<SearchListingsOutput>;
 export type TypesSearchScope = "ASSET_TYPE" | "FORM_TYPE" | "LINEAGE_NODE_TYPE" | (string & {});
 const TypesSearchScope = S.String;
 
@@ -12823,28 +8014,7 @@ export interface SearchTypesInput {
   sort?: SearchSort;
   managed: boolean;
 }
-const SearchTypesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-    searchScope: TypesSearchScope,
-    searchText: S.optional(S.String),
-    searchIn: S.optional(SearchInList),
-    filters: S.optional(FilterClause),
-    sort: S.optional(SearchSort),
-    managed: S.Boolean,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/types-search" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SearchTypesInput" }) as any as S.Schema<SearchTypesInput>;
+const SearchTypesInput = /*@__PURE__*/ __L.at(__c83, 0) as any as S.Schema<SearchTypesInput>;
 export interface AssetTypeItem {
   domainId: string;
   name: string;
@@ -12874,22 +8044,7 @@ export interface FormTypeData {
   description?: string | redacted.Redacted<string>;
   imports?: Import[];
 }
-const FormTypeData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    name: SensitiveString,
-    revision: S.String,
-    model: S.optional(Model),
-    status: S.optional(FormTypeStatus),
-    owningProjectId: S.optional(S.String),
-    originDomainId: S.optional(S.String),
-    originProjectId: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    imports: S.optional(ImportList),
-  }),
-).annotate({ identifier: "FormTypeData" }) as any as S.Schema<FormTypeData>;
+const FormTypeData = /*@__PURE__*/ __L.at(__c83, 1) as any as S.Schema<FormTypeData>;
 export interface LineageNodeTypeItem {
   domainId: string;
   name?: string;
@@ -12901,42 +8056,20 @@ export interface LineageNodeTypeItem {
   revision: string;
   formsOutput: { [key: string]: FormEntryOutput | undefined };
 }
-const LineageNodeTypeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedBy: S.optional(S.String),
-    revision: S.String,
-    formsOutput: FormsOutputMap,
-  }),
-).annotate({ identifier: "LineageNodeTypeItem" }) as any as S.Schema<LineageNodeTypeItem>;
+const LineageNodeTypeItem = /*@__PURE__*/ __L.at(__c83, 2) as any as S.Schema<LineageNodeTypeItem>;
 export type SearchTypesResultItem =
   | { assetTypeItem: AssetTypeItem; formTypeItem?: never; lineageNodeTypeItem?: never }
   | { assetTypeItem?: never; formTypeItem: FormTypeData; lineageNodeTypeItem?: never }
   | { assetTypeItem?: never; formTypeItem?: never; lineageNodeTypeItem: LineageNodeTypeItem };
-const SearchTypesResultItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ assetTypeItem: AssetTypeItem }),
-  /*@__PURE__*/ S.Struct({ formTypeItem: FormTypeData }),
-  /*@__PURE__*/ S.Struct({ lineageNodeTypeItem: LineageNodeTypeItem }),
-]);
+const SearchTypesResultItem = /*@__PURE__*/ __L.at(__c83, 3);
 export type SearchTypesResultItems = SearchTypesResultItem[];
-const SearchTypesResultItems = /*@__PURE__*/ S.Array(SearchTypesResultItem);
+const SearchTypesResultItems = /*@__PURE__*/ __L.at(__c83, 4);
 export interface SearchTypesOutput {
   items?: SearchTypesResultItem[];
   nextToken?: string;
   totalMatchCount?: number;
 }
-const SearchTypesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(SearchTypesResultItems),
-    nextToken: S.optional(S.String),
-    totalMatchCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SearchTypesOutput" }) as any as S.Schema<SearchTypesOutput>;
+const SearchTypesOutput = /*@__PURE__*/ __L.at(__c83, 5) as any as S.Schema<SearchTypesOutput>;
 export type UserSearchType =
   | "SSO_USER"
   | "DATAZONE_USER"
@@ -12953,24 +8086,10 @@ export interface SearchUserProfilesInput {
   maxResults?: number;
   nextToken?: string;
 }
-const SearchUserProfilesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    userType: UserSearchType,
-    searchText: S.optional(SensitiveString),
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/search-user-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "SearchUserProfilesInput" }) as any as S.Schema<SearchUserProfilesInput>;
+const SearchUserProfilesInput = /*@__PURE__*/ __L.at(
+  __c83,
+  6,
+) as any as S.Schema<SearchUserProfilesInput>;
 export interface UserProfileSummary {
   domainId?: string;
   id?: string;
@@ -12980,38 +8099,24 @@ export interface UserProfileSummary {
 }
 const UserProfileSummary = CreateUserProfileOutput as any as S.Schema<UserProfileSummary>;
 export type UserProfileSummaries = UserProfileSummary[];
-const UserProfileSummaries = /*@__PURE__*/ S.Array(UserProfileSummary);
+const UserProfileSummaries = /*@__PURE__*/ __L.at(__c83, 7);
 export interface SearchUserProfilesOutput {
   items?: UserProfileSummary[];
   nextToken?: string;
 }
-const SearchUserProfilesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: S.optional(UserProfileSummaries), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "SearchUserProfilesOutput" }) as any as S.Schema<SearchUserProfilesOutput>;
+const SearchUserProfilesOutput = /*@__PURE__*/ __L.at(
+  __c84,
+  0,
+) as any as S.Schema<SearchUserProfilesOutput>;
 export interface StartDataSourceRunInput {
   domainIdentifier: string;
   dataSourceIdentifier: string;
   clientToken?: string;
 }
-const StartDataSourceRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    dataSourceIdentifier: S.String.pipe(T.HttpLabel("dataSourceIdentifier")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v2/domains/{domainIdentifier}/data-sources/{dataSourceIdentifier}/runs",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartDataSourceRunInput" }) as any as S.Schema<StartDataSourceRunInput>;
+const StartDataSourceRunInput = /*@__PURE__*/ __L.at(
+  __c84,
+  1,
+) as any as S.Schema<StartDataSourceRunInput>;
 export interface StartDataSourceRunOutput {
   domainId: string;
   dataSourceId: string;
@@ -13027,23 +8132,10 @@ export interface StartDataSourceRunOutput {
   startedAt?: Date;
   stoppedAt?: Date;
 }
-const StartDataSourceRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    dataSourceId: S.String,
-    id: S.String,
-    projectId: S.String,
-    status: DataSourceRunStatus,
-    type: DataSourceRunType,
-    dataSourceConfigurationSnapshot: S.optional(S.String),
-    runStatisticsForAssets: S.optional(RunStatisticsForAssets),
-    errorMessage: S.optional(DataSourceErrorMessage),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    stoppedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "StartDataSourceRunOutput" }) as any as S.Schema<StartDataSourceRunOutput>;
+const StartDataSourceRunOutput = /*@__PURE__*/ __L.at(
+  __c84,
+  2,
+) as any as S.Schema<StartDataSourceRunOutput>;
 export interface StartMetadataGenerationRunInput {
   domainIdentifier: string;
   type?: MetadataGenerationRunType;
@@ -13052,27 +8144,10 @@ export interface StartMetadataGenerationRunInput {
   clientToken?: string;
   owningProjectIdentifier: string;
 }
-const StartMetadataGenerationRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    type: S.optional(MetadataGenerationRunType),
-    types: S.optional(MetadataGenerationRunTypes),
-    target: MetadataGenerationRunTarget,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    owningProjectIdentifier: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartMetadataGenerationRunInput",
-}) as any as S.Schema<StartMetadataGenerationRunInput>;
+const StartMetadataGenerationRunInput = /*@__PURE__*/ __L.at(
+  __c84,
+  3,
+) as any as S.Schema<StartMetadataGenerationRunInput>;
 export interface StartMetadataGenerationRunOutput {
   domainId: string;
   id: string;
@@ -13083,20 +8158,10 @@ export interface StartMetadataGenerationRunOutput {
   createdBy?: string;
   owningProjectId?: string;
 }
-const StartMetadataGenerationRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    id: S.String,
-    status: S.optional(MetadataGenerationRunStatus),
-    type: S.optional(MetadataGenerationRunType),
-    types: S.optional(MetadataGenerationRunTypes),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    owningProjectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartMetadataGenerationRunOutput",
-}) as any as S.Schema<StartMetadataGenerationRunOutput>;
+const StartMetadataGenerationRunOutput = /*@__PURE__*/ __L.at(
+  __c84,
+  4,
+) as any as S.Schema<StartMetadataGenerationRunOutput>;
 export interface StartNotebookExportInput {
   domainIdentifier: string;
   notebookIdentifier: string;
@@ -13104,24 +8169,10 @@ export interface StartNotebookExportInput {
   fileFormat: FileFormat;
   clientToken?: string;
 }
-const StartNotebookExportInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    notebookIdentifier: S.String,
-    owningProjectIdentifier: S.String,
-    fileFormat: FileFormat,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebook-exports" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartNotebookExportInput" }) as any as S.Schema<StartNotebookExportInput>;
+const StartNotebookExportInput = /*@__PURE__*/ __L.at(
+  __c84,
+  5,
+) as any as S.Schema<StartNotebookExportInput>;
 export interface StartNotebookExportOutput {
   id: string;
   domainId: string;
@@ -13132,23 +8183,13 @@ export interface StartNotebookExportOutput {
   createdAt?: Date;
   createdBy?: string;
 }
-const StartNotebookExportOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    owningProjectId: S.String,
-    notebookId: S.String,
-    fileFormat: FileFormat,
-    status: NotebookExportStatus,
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartNotebookExportOutput",
-}) as any as S.Schema<StartNotebookExportOutput>;
+const StartNotebookExportOutput = /*@__PURE__*/ __L.at(
+  __c84,
+  6,
+) as any as S.Schema<StartNotebookExportOutput>;
 export type S3SourceLocation = string | redacted.Redacted<string>;
 export type SourceLocation = { s3: string | redacted.Redacted<string> };
-const SourceLocation = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ s3: SensitiveString })]);
+const SourceLocation = /*@__PURE__*/ __L.at(__c84, 7);
 export interface StartNotebookImportInput {
   domainIdentifier: string;
   owningProjectIdentifier: string;
@@ -13157,25 +8198,10 @@ export interface StartNotebookImportInput {
   description?: string | redacted.Redacted<string>;
   clientToken?: string;
 }
-const StartNotebookImportInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    owningProjectIdentifier: S.String,
-    sourceLocation: SourceLocation,
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebook-imports" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartNotebookImportInput" }) as any as S.Schema<StartNotebookImportInput>;
+const StartNotebookImportInput = /*@__PURE__*/ __L.at(
+  __c85,
+  0,
+) as any as S.Schema<StartNotebookImportInput>;
 export interface StartNotebookImportOutput {
   notebookId?: string;
   status?: NotebookStatus;
@@ -13187,21 +8213,10 @@ export interface StartNotebookImportOutput {
   createdAt?: Date;
   createdBy?: string;
 }
-const StartNotebookImportOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notebookId: S.optional(S.String),
-    status: S.optional(NotebookStatus),
-    domainId: S.optional(S.String),
-    owningProjectId: S.optional(S.String),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    sourceLocation: S.optional(SourceLocation),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartNotebookImportOutput",
-}) as any as S.Schema<StartNotebookImportOutput>;
+const StartNotebookImportOutput = /*@__PURE__*/ __L.at(
+  __c85,
+  1,
+) as any as S.Schema<StartNotebookImportOutput>;
 export interface StartNotebookRunInput {
   domainIdentifier: string;
   owningProjectIdentifier: string;
@@ -13216,31 +8231,10 @@ export interface StartNotebookRunInput {
   parameters?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-const StartNotebookRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    owningProjectIdentifier: S.String,
-    notebookIdentifier: S.String,
-    scheduleIdentifier: S.optional(S.String),
-    computeConfiguration: S.optional(ComputeConfig),
-    networkConfiguration: S.optional(NetworkConfig),
-    timeoutConfiguration: S.optional(TimeoutConfig),
-    notificationConfiguration: S.optional(NotificationConfig),
-    triggerSource: S.optional(TriggerSource),
-    metadata: S.optional(Metadata),
-    parameters: S.optional(Parameters),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebook-runs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartNotebookRunInput" }) as any as S.Schema<StartNotebookRunInput>;
+const StartNotebookRunInput = /*@__PURE__*/ __L.at(
+  __c85,
+  2,
+) as any as S.Schema<StartNotebookRunInput>;
 export interface StartNotebookRunOutput {
   id: string;
   domainId: string;
@@ -13277,27 +8271,10 @@ export interface StartNotebookSyncInput {
   description?: string | redacted.Redacted<string>;
   clientToken?: string;
 }
-const StartNotebookSyncInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    owningProjectIdentifier: S.String,
-    sourceLocation: SourceLocation,
-    gitMetadata: S.optional(GitMetadata),
-    notebookId: S.optional(S.String),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebook-syncs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StartNotebookSyncInput" }) as any as S.Schema<StartNotebookSyncInput>;
+const StartNotebookSyncInput = /*@__PURE__*/ __L.at(
+  __c85,
+  3,
+) as any as S.Schema<StartNotebookSyncInput>;
 export interface StartNotebookSyncOutput {
   notebookId?: string;
   status?: NotebookStatus;
@@ -13310,67 +8287,34 @@ export interface StartNotebookSyncOutput {
   createdAt?: Date;
   createdBy?: string;
 }
-const StartNotebookSyncOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notebookId: S.optional(S.String),
-    status: S.optional(NotebookStatus),
-    domainId: S.optional(S.String),
-    owningProjectId: S.optional(S.String),
-    sourceLocation: S.optional(SourceLocation),
-    gitMetadata: S.optional(GitMetadata),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "StartNotebookSyncOutput" }) as any as S.Schema<StartNotebookSyncOutput>;
+const StartNotebookSyncOutput = /*@__PURE__*/ __L.at(
+  __c85,
+  4,
+) as any as S.Schema<StartNotebookSyncOutput>;
 export interface StopNotebookRunInput {
   domainIdentifier: string;
   identifier: string;
   clientToken?: string;
 }
-const StopNotebookRunInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/notebook-runs/{identifier}/stop",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StopNotebookRunInput" }) as any as S.Schema<StopNotebookRunInput>;
+const StopNotebookRunInput = /*@__PURE__*/ __L.at(
+  __c85,
+  5,
+) as any as S.Schema<StopNotebookRunInput>;
 export interface StopNotebookRunOutput {
   id: string;
   domainId: string;
   owningProjectId: string;
   status: NotebookRunStatus;
 }
-const StopNotebookRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    owningProjectId: S.String,
-    status: NotebookRunStatus,
-  }),
-).annotate({ identifier: "StopNotebookRunOutput" }) as any as S.Schema<StopNotebookRunOutput>;
+const StopNotebookRunOutput = /*@__PURE__*/ __L.at(
+  __c85,
+  6,
+) as any as S.Schema<StopNotebookRunOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c85, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
 const TagResourceResponse = AddEntityOwnerOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
@@ -13379,14 +8323,10 @@ export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c86,
+  0,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
 const UntagResourceResponse = AddEntityOwnerOutput as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccountPoolInput {
@@ -13397,25 +8337,10 @@ export interface UpdateAccountPoolInput {
   resolutionStrategy?: ResolutionStrategy;
   accountSource?: AccountSource;
 }
-const UpdateAccountPoolInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    resolutionStrategy: S.optional(ResolutionStrategy),
-    accountSource: S.optional(AccountSource),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateAccountPoolInput" }) as any as S.Schema<UpdateAccountPoolInput>;
+const UpdateAccountPoolInput = /*@__PURE__*/ __L.at(
+  __c86,
+  1,
+) as any as S.Schema<UpdateAccountPoolInput>;
 export interface UpdateAccountPoolOutput {
   domainId?: string;
   name?: string | redacted.Redacted<string>;
@@ -13438,28 +8363,10 @@ export interface UpdateAssetFilterInput {
   description?: string | redacted.Redacted<string>;
   configuration?: AssetFilterConfiguration;
 }
-const UpdateAssetFilterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    configuration: S.optional(AssetFilterConfiguration),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateAssetFilterInput" }) as any as S.Schema<UpdateAssetFilterInput>;
+const UpdateAssetFilterInput = /*@__PURE__*/ __L.at(
+  __c86,
+  2,
+) as any as S.Schema<UpdateAssetFilterInput>;
 export interface UpdateAssetFilterOutput {
   id: string;
   domainId: string;
@@ -13482,32 +8389,20 @@ export interface AuthenticationConfigurationPatch {
   secretArn?: string;
   basicAuthenticationCredentials?: BasicAuthenticationCredentials;
 }
-const AuthenticationConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secretArn: S.optional(S.String),
-    basicAuthenticationCredentials: S.optional(BasicAuthenticationCredentials),
-  }),
-).annotate({
-  identifier: "AuthenticationConfigurationPatch",
-}) as any as S.Schema<AuthenticationConfigurationPatch>;
+const AuthenticationConfigurationPatch = /*@__PURE__*/ __L.at(
+  __c86,
+  3,
+) as any as S.Schema<AuthenticationConfigurationPatch>;
 export interface GlueConnectionPatch {
   description?: string;
   connectionProperties?: { [key: string]: string | undefined };
   authenticationConfiguration?: AuthenticationConfigurationPatch;
 }
-const GlueConnectionPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    connectionProperties: S.optional(ConnectionProperties),
-    authenticationConfiguration: S.optional(AuthenticationConfigurationPatch),
-  }),
-).annotate({ identifier: "GlueConnectionPatch" }) as any as S.Schema<GlueConnectionPatch>;
+const GlueConnectionPatch = /*@__PURE__*/ __L.at(__c86, 4) as any as S.Schema<GlueConnectionPatch>;
 export interface GluePropertiesPatch {
   glueConnectionInput?: GlueConnectionPatch;
 }
-const GluePropertiesPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ glueConnectionInput: S.optional(GlueConnectionPatch) }),
-).annotate({ identifier: "GluePropertiesPatch" }) as any as S.Schema<GluePropertiesPatch>;
+const GluePropertiesPatch = /*@__PURE__*/ __L.at(__c86, 5) as any as S.Schema<GluePropertiesPatch>;
 export interface IamPropertiesPatch {
   glueLineageSyncEnabled?: boolean;
 }
@@ -13543,27 +8438,19 @@ export interface ConnectivityPropertiesPatch {
   connectionProperties?: { [key: string]: string | undefined };
   authenticationConfiguration?: AuthenticationConfigurationPatch;
 }
-const ConnectivityPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    connectionProperties: S.optional(ConnectionProperties),
-    authenticationConfiguration: S.optional(AuthenticationConfigurationPatch),
-  }),
-).annotate({
-  identifier: "ConnectivityPropertiesPatch",
-}) as any as S.Schema<ConnectivityPropertiesPatch>;
+const ConnectivityPropertiesPatch = /*@__PURE__*/ __L.at(
+  __c86,
+  6,
+) as any as S.Schema<ConnectivityPropertiesPatch>;
 export interface SnowflakePropertiesPatch {
   connectivityPropertiesPatch?: ConnectivityPropertiesPatch;
   snowflakeRole?: string;
   lineageSync?: LineageSyncInput;
 }
-const SnowflakePropertiesPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectivityPropertiesPatch: S.optional(ConnectivityPropertiesPatch),
-    snowflakeRole: S.optional(S.String),
-    lineageSync: S.optional(LineageSyncInput),
-  }),
-).annotate({ identifier: "SnowflakePropertiesPatch" }) as any as S.Schema<SnowflakePropertiesPatch>;
+const SnowflakePropertiesPatch = /*@__PURE__*/ __L.at(
+  __c86,
+  7,
+) as any as S.Schema<SnowflakePropertiesPatch>;
 export interface AmazonQPropertiesPatch {
   isEnabled: boolean;
   profileArn?: string;
@@ -13584,20 +8471,12 @@ export interface VpcPropertiesPatch {
   subnetIds?: string[];
   securityGroupId?: string;
 }
-const VpcPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpcId: S.optional(S.String),
-    subnetIds: S.optional(VpcConnectionSubnetIdList),
-    securityGroupId: S.optional(S.String),
-  }),
-).annotate({ identifier: "VpcPropertiesPatch" }) as any as S.Schema<VpcPropertiesPatch>;
+const VpcPropertiesPatch = /*@__PURE__*/ __L.at(__c87, 0) as any as S.Schema<VpcPropertiesPatch>;
 export interface GitPropertiesPatch {
   codeConnectionArn?: string;
   defaultBranch?: string;
 }
-const GitPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ codeConnectionArn: S.optional(S.String), defaultBranch: S.optional(S.String) }),
-).annotate({ identifier: "GitPropertiesPatch" }) as any as S.Schema<GitPropertiesPatch>;
+const GitPropertiesPatch = /*@__PURE__*/ __L.at(__c87, 1) as any as S.Schema<GitPropertiesPatch>;
 export type ConnectionPropertiesPatch =
   | {
       athenaProperties: AthenaPropertiesPatch;
@@ -13767,20 +8646,7 @@ export type ConnectionPropertiesPatch =
       vpcProperties?: never;
       gitProperties: GitPropertiesPatch;
     };
-const ConnectionPropertiesPatch = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ athenaProperties: AthenaPropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ glueProperties: GluePropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ iamProperties: IamPropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ redshiftProperties: RedshiftPropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ sparkEmrProperties: SparkEmrPropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ s3Properties: S3PropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ snowflakeProperties: SnowflakePropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ amazonQProperties: AmazonQPropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ mlflowProperties: MlflowPropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ lakehouseProperties: LakehousePropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ vpcProperties: VpcPropertiesPatch }),
-  /*@__PURE__*/ S.Struct({ gitProperties: GitPropertiesPatch }),
-]);
+const ConnectionPropertiesPatch = /*@__PURE__*/ __L.at(__c87, 2);
 export interface UpdateConnectionInput {
   configurations?: Configuration[];
   domainIdentifier: string;
@@ -13789,25 +8655,10 @@ export interface UpdateConnectionInput {
   awsLocation?: AwsLocation;
   props?: ConnectionPropertiesPatch;
 }
-const UpdateConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurations: S.optional(Configurations),
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    description: S.optional(SensitiveString),
-    awsLocation: S.optional(AwsLocation),
-    props: S.optional(ConnectionPropertiesPatch),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/connections/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateConnectionInput" }) as any as S.Schema<UpdateConnectionInput>;
+const UpdateConnectionInput = /*@__PURE__*/ __L.at(
+  __c87,
+  3,
+) as any as S.Schema<UpdateConnectionInput>;
 export interface UpdateConnectionOutput {
   configurations?: Configuration[];
   connectionId: string;
@@ -13822,22 +8673,10 @@ export interface UpdateConnectionOutput {
   type: ConnectionType;
   scope?: ConnectionScope;
 }
-const UpdateConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurations: S.optional(Configurations),
-    connectionId: S.String,
-    description: S.optional(SensitiveString),
-    domainId: S.String,
-    domainUnitId: S.String,
-    environmentId: S.optional(S.String),
-    name: S.String,
-    physicalEndpoints: PhysicalEndpoints,
-    projectId: S.optional(S.String),
-    props: S.optional(ConnectionPropertiesOutput),
-    type: ConnectionType,
-    scope: S.optional(ConnectionScope),
-  }),
-).annotate({ identifier: "UpdateConnectionOutput" }) as any as S.Schema<UpdateConnectionOutput>;
+const UpdateConnectionOutput = /*@__PURE__*/ __L.at(
+  __c87,
+  4,
+) as any as S.Schema<UpdateConnectionOutput>;
 export interface UpdateDataSourceInput {
   domainIdentifier: string;
   identifier: string;
@@ -13851,30 +8690,10 @@ export interface UpdateDataSourceInput {
   recommendation?: RecommendationConfiguration;
   retainPermissionsOnRevokeFailure?: boolean;
 }
-const UpdateDataSourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    enableSetting: S.optional(EnableSetting),
-    publishOnImport: S.optional(S.Boolean),
-    assetFormsInput: S.optional(FormInputList),
-    schedule: S.optional(ScheduleConfiguration),
-    configuration: S.optional(DataSourceConfigurationInput),
-    recommendation: S.optional(RecommendationConfiguration),
-    retainPermissionsOnRevokeFailure: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/data-sources/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateDataSourceInput" }) as any as S.Schema<UpdateDataSourceInput>;
+const UpdateDataSourceInput = /*@__PURE__*/ __L.at(
+  __c87,
+  5,
+) as any as S.Schema<UpdateDataSourceInput>;
 export interface UpdateDataSourceOutput {
   id: string;
   status?: DataSourceStatus;
@@ -13900,33 +8719,10 @@ export interface UpdateDataSourceOutput {
   selfGrantStatus?: SelfGrantStatusOutput;
   retainPermissionsOnRevokeFailure?: boolean;
 }
-const UpdateDataSourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: S.optional(DataSourceStatus),
-    type: S.optional(S.String),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    domainId: S.String,
-    projectId: S.String,
-    environmentId: S.optional(S.String),
-    connectionId: S.optional(S.String),
-    configuration: S.optional(DataSourceConfigurationOutput),
-    recommendation: S.optional(RecommendationConfiguration),
-    enableSetting: S.optional(EnableSetting),
-    publishOnImport: S.optional(S.Boolean),
-    assetFormsOutput: S.optional(FormOutputList),
-    schedule: S.optional(ScheduleConfiguration),
-    lastRunStatus: S.optional(DataSourceRunStatus),
-    lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    lastRunErrorMessage: S.optional(DataSourceErrorMessage),
-    errorMessage: S.optional(DataSourceErrorMessage),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    selfGrantStatus: S.optional(SelfGrantStatusOutput),
-    retainPermissionsOnRevokeFailure: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UpdateDataSourceOutput" }) as any as S.Schema<UpdateDataSourceOutput>;
+const UpdateDataSourceOutput = /*@__PURE__*/ __L.at(
+  __c87,
+  6,
+) as any as S.Schema<UpdateDataSourceOutput>;
 export interface UpdateDomainInput {
   identifier: string;
   description?: string;
@@ -13936,19 +8732,7 @@ export interface UpdateDomainInput {
   name?: string;
   clientToken?: string;
 }
-const UpdateDomainInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    description: S.optional(S.String),
-    singleSignOn: S.optional(SingleSignOn),
-    domainExecutionRole: S.optional(S.String),
-    serviceRole: S.optional(S.String),
-    name: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "PUT", uri: "/v2/domains/{identifier}" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UpdateDomainInput" }) as any as S.Schema<UpdateDomainInput>;
+const UpdateDomainInput = /*@__PURE__*/ __L.at(__c87, 7) as any as S.Schema<UpdateDomainInput>;
 export interface UpdateDomainOutput {
   id: string;
   rootDomainUnitId?: string;
@@ -13959,41 +8743,17 @@ export interface UpdateDomainOutput {
   name?: string;
   lastUpdatedAt?: Date;
 }
-const UpdateDomainOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    rootDomainUnitId: S.optional(S.String),
-    description: S.optional(S.String),
-    singleSignOn: S.optional(SingleSignOn),
-    domainExecutionRole: S.optional(S.String),
-    serviceRole: S.optional(S.String),
-    name: S.optional(S.String),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "UpdateDomainOutput" }) as any as S.Schema<UpdateDomainOutput>;
+const UpdateDomainOutput = /*@__PURE__*/ __L.at(__c88, 0) as any as S.Schema<UpdateDomainOutput>;
 export interface UpdateDomainUnitInput {
   domainIdentifier: string;
   identifier: string;
   description?: string | redacted.Redacted<string>;
   name?: string | redacted.Redacted<string>;
 }
-const UpdateDomainUnitInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    description: S.optional(SensitiveString),
-    name: S.optional(SensitiveString),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/v2/domains/{domainIdentifier}/domain-units/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateDomainUnitInput" }) as any as S.Schema<UpdateDomainUnitInput>;
+const UpdateDomainUnitInput = /*@__PURE__*/ __L.at(
+  __c88,
+  1,
+) as any as S.Schema<UpdateDomainUnitInput>;
 export interface UpdateDomainUnitOutput {
   id: string;
   domainId: string;
@@ -14006,20 +8766,10 @@ export interface UpdateDomainUnitOutput {
   createdBy?: string;
   lastUpdatedBy?: string;
 }
-const UpdateDomainUnitOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domainId: S.String,
-    name: SensitiveString,
-    owners: DomainUnitOwners,
-    description: S.optional(SensitiveString),
-    parentDomainUnitId: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    createdBy: S.optional(S.String),
-    lastUpdatedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateDomainUnitOutput" }) as any as S.Schema<UpdateDomainUnitOutput>;
+const UpdateDomainUnitOutput = /*@__PURE__*/ __L.at(
+  __c88,
+  2,
+) as any as S.Schema<UpdateDomainUnitOutput>;
 export interface UpdateEnvironmentInput {
   domainIdentifier: string;
   identifier: string;
@@ -14030,27 +8780,10 @@ export interface UpdateEnvironmentInput {
   userParameters?: EnvironmentParameter[];
   environmentConfigurationName?: string | redacted.Redacted<string>;
 }
-const UpdateEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    glossaryTerms: S.optional(GlossaryTerms),
-    blueprintVersion: S.optional(S.String),
-    userParameters: S.optional(EnvironmentParametersList),
-    environmentConfigurationName: S.optional(SensitiveString),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/environments/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateEnvironmentInput" }) as any as S.Schema<UpdateEnvironmentInput>;
+const UpdateEnvironmentInput = /*@__PURE__*/ __L.at(
+  __c88,
+  3,
+) as any as S.Schema<UpdateEnvironmentInput>;
 export interface UpdateEnvironmentOutput {
   projectId: string;
   id?: string;
@@ -14085,30 +8818,10 @@ export interface UpdateEnvironmentActionInput {
   name?: string;
   description?: string;
 }
-const UpdateEnvironmentActionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    parameters: S.optional(ActionParameters),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateEnvironmentActionInput",
-}) as any as S.Schema<UpdateEnvironmentActionInput>;
+const UpdateEnvironmentActionInput = /*@__PURE__*/ __L.at(
+  __c88,
+  4,
+) as any as S.Schema<UpdateEnvironmentActionInput>;
 export interface UpdateEnvironmentActionOutput {
   domainId: string;
   environmentId: string;
@@ -14127,30 +8840,10 @@ export interface UpdateEnvironmentBlueprintInput {
   userParameters?: CustomParameter[];
   blueprintCategory?: BlueprintCategory;
 }
-const UpdateEnvironmentBlueprintInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    description: S.optional(S.String),
-    provisioningProperties: S.optional(ProvisioningProperties),
-    userParameters: S.optional(CustomParameterList),
-    blueprintCategory: S.optional(BlueprintCategory),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateEnvironmentBlueprintInput",
-}) as any as S.Schema<UpdateEnvironmentBlueprintInput>;
+const UpdateEnvironmentBlueprintInput = /*@__PURE__*/ __L.at(
+  __c88,
+  5,
+) as any as S.Schema<UpdateEnvironmentBlueprintInput>;
 export interface UpdateEnvironmentBlueprintOutput {
   id: string;
   name: string;
@@ -14175,31 +8868,10 @@ export interface UpdateEnvironmentProfileInput {
   awsAccountId?: string;
   awsAccountRegion?: string;
 }
-const UpdateEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(SensitiveString),
-    description: S.optional(S.String),
-    userParameters: S.optional(EnvironmentParametersList),
-    awsAccountId: S.optional(S.String),
-    awsAccountRegion: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateEnvironmentProfileInput",
-}) as any as S.Schema<UpdateEnvironmentProfileInput>;
+const UpdateEnvironmentProfileInput = /*@__PURE__*/ __L.at(
+  __c88,
+  6,
+) as any as S.Schema<UpdateEnvironmentProfileInput>;
 export interface UpdateEnvironmentProfileOutput {
   id: string;
   domainId: string;
@@ -14224,25 +8896,7 @@ export interface UpdateGlossaryInput {
   status?: GlossaryStatus;
   clientToken?: string;
 }
-const UpdateGlossaryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    status: S.optional(GlossaryStatus),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/glossaries/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateGlossaryInput" }) as any as S.Schema<UpdateGlossaryInput>;
+const UpdateGlossaryInput = /*@__PURE__*/ __L.at(__c88, 7) as any as S.Schema<UpdateGlossaryInput>;
 export interface UpdateGlossaryOutput {
   domainId: string;
   id: string;
@@ -14263,30 +8917,10 @@ export interface UpdateGlossaryTermInput {
   termRelations?: TermRelations;
   status?: GlossaryTermStatus;
 }
-const UpdateGlossaryTermInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    glossaryIdentifier: S.optional(S.String),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(SensitiveString),
-    shortDescription: S.optional(SensitiveString),
-    longDescription: S.optional(SensitiveString),
-    termRelations: S.optional(TermRelations),
-    status: S.optional(GlossaryTermStatus),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/glossary-terms/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateGlossaryTermInput" }) as any as S.Schema<UpdateGlossaryTermInput>;
+const UpdateGlossaryTermInput = /*@__PURE__*/ __L.at(
+  __c89,
+  0,
+) as any as S.Schema<UpdateGlossaryTermInput>;
 export interface UpdateGlossaryTermOutput {
   id: string;
   domainId: string;
@@ -14305,25 +8939,10 @@ export interface UpdateGroupProfileInput {
   groupIdentifier: string;
   status: GroupProfileStatus;
 }
-const UpdateGroupProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    groupIdentifier: S.String.pipe(T.HttpLabel("groupIdentifier")),
-    status: GroupProfileStatus,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/group-profiles/{groupIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateGroupProfileInput" }) as any as S.Schema<UpdateGroupProfileInput>;
+const UpdateGroupProfileInput = /*@__PURE__*/ __L.at(
+  __c89,
+  1,
+) as any as S.Schema<UpdateGroupProfileInput>;
 export interface UpdateGroupProfileOutput {
   domainId?: string;
   id?: string;
@@ -14347,30 +8966,7 @@ export interface UpdateNotebookInput {
   environmentConfiguration?: EnvironmentConfig;
   clientToken?: string;
 }
-const UpdateNotebookInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    description: S.optional(SensitiveString),
-    status: S.optional(NotebookStatus),
-    name: S.optional(SensitiveString),
-    cellOrder: S.optional(CellOrder),
-    type: S.optional(NotebookType),
-    metadata: S.optional(Metadata),
-    parameters: S.optional(Parameters),
-    environmentConfiguration: S.optional(EnvironmentConfig),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/notebooks/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateNotebookInput" }) as any as S.Schema<UpdateNotebookInput>;
+const UpdateNotebookInput = /*@__PURE__*/ __L.at(__c89, 2) as any as S.Schema<UpdateNotebookInput>;
 export interface UpdateNotebookOutput {
   id: string;
   name: string | redacted.Redacted<string>;
@@ -14407,29 +9003,7 @@ export interface UpdateProjectInput {
   userParameters?: EnvironmentConfigurationUserParameter[];
   projectProfileVersion?: string;
 }
-const UpdateProjectInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    resourceTags: S.optional(Tags),
-    glossaryTerms: S.optional(GlossaryTerms),
-    domainUnitId: S.optional(S.String),
-    environmentDeploymentDetails: S.optional(EnvironmentDeploymentDetails),
-    userParameters: S.optional(EnvironmentConfigurationUserParametersList),
-    projectProfileVersion: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/projects/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateProjectInput" }) as any as S.Schema<UpdateProjectInput>;
+const UpdateProjectInput = /*@__PURE__*/ __L.at(__c89, 3) as any as S.Schema<UpdateProjectInput>;
 export interface UpdateProjectOutput {
   domainId: string;
   id: string;
@@ -14461,34 +9035,10 @@ export interface UpdateProjectProfileInput {
   environmentConfigurations?: EnvironmentConfiguration[];
   domainUnitIdentifier?: string;
 }
-const UpdateProjectProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    status: S.optional(Status),
-    projectResourceTags: S.optional(ProjectResourceTagParameters),
-    allowCustomProjectResourceTags: S.optional(S.Boolean),
-    projectResourceTagsDescription: S.optional(SensitiveString),
-    environmentConfigurations: S.optional(EnvironmentConfigurationsList),
-    domainUnitIdentifier: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/project-profiles/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateProjectProfileInput",
-}) as any as S.Schema<UpdateProjectProfileInput>;
+const UpdateProjectProfileInput = /*@__PURE__*/ __L.at(
+  __c89,
+  4,
+) as any as S.Schema<UpdateProjectProfileInput>;
 export interface UpdateProjectProfileOutput {
   domainId: string;
   id: string;
@@ -14512,25 +9062,10 @@ export interface UpdateRootDomainUnitOwnerInput {
   newOwner: string;
   clientToken?: string;
 }
-const UpdateRootDomainUnitOwnerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    currentOwner: S.String,
-    newOwner: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/root-domain-unit-owner" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateRootDomainUnitOwnerInput",
-}) as any as S.Schema<UpdateRootDomainUnitOwnerInput>;
+const UpdateRootDomainUnitOwnerInput = /*@__PURE__*/ __L.at(
+  __c89,
+  5,
+) as any as S.Schema<UpdateRootDomainUnitOwnerInput>;
 export interface UpdateRootDomainUnitOwnerOutput {}
 const UpdateRootDomainUnitOwnerOutput =
   DeleteEnvironmentActionResponse as any as S.Schema<UpdateRootDomainUnitOwnerOutput>;
@@ -14543,26 +9078,7 @@ export interface UpdateRuleInput {
   detail?: RuleDetail;
   includeChildDomainUnits?: boolean;
 }
-const UpdateRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    scope: S.optional(RuleScope),
-    detail: S.optional(RuleDetail),
-    includeChildDomainUnits: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/rules/{identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateRuleInput" }) as any as S.Schema<UpdateRuleInput>;
+const UpdateRuleInput = /*@__PURE__*/ __L.at(__c89, 6) as any as S.Schema<UpdateRuleInput>;
 export interface UpdateRuleOutput {
   identifier: string;
   revision: string;
@@ -14578,23 +9094,7 @@ export interface UpdateRuleOutput {
   createdBy: string;
   lastUpdatedBy: string;
 }
-const UpdateRuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    revision: S.String,
-    name: SensitiveString,
-    ruleType: RuleType,
-    target: RuleTarget,
-    action: RuleAction,
-    scope: RuleScope,
-    detail: RuleDetail,
-    description: S.optional(SensitiveString),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    createdBy: S.String,
-    lastUpdatedBy: S.String,
-  }),
-).annotate({ identifier: "UpdateRuleOutput" }) as any as S.Schema<UpdateRuleOutput>;
+const UpdateRuleOutput = /*@__PURE__*/ __L.at(__c89, 7) as any as S.Schema<UpdateRuleOutput>;
 export interface UpdateSubscriptionGrantStatusInput {
   domainIdentifier: string;
   identifier: string;
@@ -14603,30 +9103,10 @@ export interface UpdateSubscriptionGrantStatusInput {
   failureCause?: FailureCause;
   targetName?: string;
 }
-const UpdateSubscriptionGrantStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
-    status: SubscriptionGrantStatus,
-    failureCause: S.optional(FailureCause),
-    targetName: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}/status/{assetIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateSubscriptionGrantStatusInput",
-}) as any as S.Schema<UpdateSubscriptionGrantStatusInput>;
+const UpdateSubscriptionGrantStatusInput = /*@__PURE__*/ __L.at(
+  __c90,
+  0,
+) as any as S.Schema<UpdateSubscriptionGrantStatusInput>;
 export interface UpdateSubscriptionGrantStatusOutput {
   id: string;
   createdBy: string;
@@ -14648,27 +9128,10 @@ export interface UpdateSubscriptionRequestInput {
   identifier: string;
   requestReason: string | redacted.Redacted<string>;
 }
-const UpdateSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    requestReason: SensitiveString,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateSubscriptionRequestInput",
-}) as any as S.Schema<UpdateSubscriptionRequestInput>;
+const UpdateSubscriptionRequestInput = /*@__PURE__*/ __L.at(
+  __c90,
+  1,
+) as any as S.Schema<UpdateSubscriptionRequestInput>;
 export interface UpdateSubscriptionRequestOutput {
   id: string;
   createdBy: string;
@@ -14699,34 +9162,10 @@ export interface UpdateSubscriptionTargetInput {
   provider?: string;
   subscriptionGrantCreationMode?: SubscriptionGrantCreationMode;
 }
-const UpdateSubscriptionTargetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
-    identifier: S.String.pipe(T.HttpLabel("identifier")),
-    name: S.optional(SensitiveString),
-    authorizedPrincipals: S.optional(AuthorizedPrincipalIdentifiers),
-    applicableAssetTypes: S.optional(ApplicableAssetTypes),
-    subscriptionTargetConfig: S.optional(SubscriptionTargetForms),
-    manageAccessRole: S.optional(S.String),
-    provider: S.optional(S.String),
-    subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateSubscriptionTargetInput",
-}) as any as S.Schema<UpdateSubscriptionTargetInput>;
+const UpdateSubscriptionTargetInput = /*@__PURE__*/ __L.at(
+  __c90,
+  2,
+) as any as S.Schema<UpdateSubscriptionTargetInput>;
 export interface UpdateSubscriptionTargetOutput {
   id: string;
   authorizedPrincipals: string[];
@@ -14754,27 +9193,10 @@ export interface UpdateUserProfileInput {
   status: UserProfileStatus;
   sessionName?: string;
 }
-const UpdateUserProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    userIdentifier: S.String.pipe(T.HttpLabel("userIdentifier")),
-    type: S.optional(UserProfileType),
-    status: UserProfileStatus,
-    sessionName: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/v2/domains/{domainIdentifier}/user-profiles/{userIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "UpdateUserProfileInput" }) as any as S.Schema<UpdateUserProfileInput>;
+const UpdateUserProfileInput = /*@__PURE__*/ __L.at(
+  __c90,
+  3,
+) as any as S.Schema<UpdateUserProfileInput>;
 export interface UpdateUserProfileOutput {
   domainId?: string;
   id?: string;
@@ -21359,3 +15781,8594 @@ export const updateUserProfile: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUserProfile",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ rule: S.optional(AcceptRuleBehavior), threshold: S.optional(S.Number) }),
+      ).annotate({ identifier: "AcceptRule" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          predictionTarget: S.optional(S.String),
+          predictionChoice: S.optional(S.Number),
+          editedValue: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "AcceptChoice" });
+    case 2:
+      return S.Array(AcceptChoice);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
+          acceptRule: S.optional(AcceptRule),
+          acceptChoices: S.optional(AcceptChoices),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/assets/{identifier}/accept-predictions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AcceptPredictionsInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ domainId: S.String, assetId: S.String, revision: S.String }),
+      ).annotate({ identifier: "AcceptPredictionsOutput" });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() => S.Struct({ assetId: S.String, filterIds: FilterIds })).annotate({
+        identifier: "AcceptedAssetScope",
+      });
+    case 7:
+      return S.Array(AcceptedAssetScope);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S3Permission);
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3: S3Permissions })]);
+    case 2:
+      return S.suspend(() => S.Struct({ assetId: S.String, permissions: Permissions })).annotate({
+        identifier: "AssetPermission",
+      });
+    case 3:
+      return S.Array(AssetPermission);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          decisionComment: S.optional(SensitiveString),
+          assetScopes: S.optional(AcceptedAssetScopes),
+          assetPermissions: S.optional(AssetPermissions),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/accept",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AcceptSubscriptionRequestInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), name: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "SubscribedProject" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          principalId: S.optional(S.String),
+          sessionName: S.optional(S.String),
+          groupProfileId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamUserProfileDetails" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(SensitiveString),
+          firstName: S.optional(SensitiveString),
+          lastName: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "SsoUserProfileDetails" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ iam: IamUserProfileDetails }),
+        /*@__PURE__*/ S.Struct({ sso: SsoUserProfileDetails }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), details: S.optional(UserProfileDetails) }),
+      ).annotate({ identifier: "SubscribedUser" });
+    case 2:
+      return S.suspend(() => S.Struct({ principalArn: S.optional(S.String) })).annotate({
+        identifier: "SubscribedIamPrincipal",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ project: SubscribedProject }),
+        /*@__PURE__*/ S.Struct({ user: SubscribedUser }),
+        /*@__PURE__*/ S.Struct({ group: SubscribedGroup }),
+        /*@__PURE__*/ S.Struct({ iam: SubscribedIamPrincipal }),
+      ]);
+    case 4:
+      return S.Array(SubscribedPrincipal);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(SensitiveString),
+          shortDescription: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "DetailedGlossaryTerm" });
+    case 6:
+      return S.Array(DetailedGlossaryTerm);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String,
+          filterIds: FilterIds,
+          status: S.String,
+          scopeName: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetScope" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.optional(S.String),
+          entityRevision: S.optional(S.String),
+          entityType: S.optional(S.String),
+          forms: S.optional(S.String),
+          glossaryTerms: S.optional(DetailedGlossaryTerms),
+          assetScope: S.optional(AssetScope),
+          permissions: S.optional(Permissions),
+        }),
+      ).annotate({ identifier: "SubscribedAssetListing" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.optional(S.String),
+          entityRevision: S.optional(S.String),
+          entityType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AssetInDataProductListingItem",
+      });
+    case 2:
+      return S.Array(AssetInDataProductListingItem);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.optional(S.String),
+          entityRevision: S.optional(S.String),
+          glossaryTerms: S.optional(DetailedGlossaryTerms),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          assetListings: S.optional(AssetInDataProductListingItems),
+        }),
+      ).annotate({ identifier: "SubscribedProductListing" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ assetListing: SubscribedAssetListing }),
+        /*@__PURE__*/ S.Struct({ productListing: SubscribedProductListing }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          revision: S.optional(S.String),
+          name: S.String,
+          description: SensitiveString,
+          item: SubscribedListingItem,
+          ownerProjectId: S.String,
+          ownerProjectName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubscribedListing" });
+    case 6:
+      return S.Array(SubscribedListing);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          formName: S.String,
+          typeName: S.optional(SensitiveString),
+          typeRevision: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FormOutput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(FormOutput);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdBy: S.String,
+          updatedBy: S.optional(S.String),
+          domainId: S.String,
+          status: SubscriptionRequestStatus,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          requestReason: SensitiveString,
+          subscribedPrincipals: SubscribedPrincipals,
+          subscribedListings: SubscribedListings,
+          reviewerId: S.optional(S.String),
+          decisionComment: S.optional(SensitiveString),
+          existingSubscriptionId: S.optional(S.String),
+          metadataForms: S.optional(MetadataForms),
+        }),
+      ).annotate({
+        identifier: "AcceptSubscriptionRequestOutput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ userIdentifier: S.String })).annotate({
+        identifier: "OwnerUserProperties",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ groupIdentifier: S.String })).annotate({
+        identifier: "OwnerGroupProperties",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ user: OwnerUserProperties }),
+        /*@__PURE__*/ S.Struct({ group: OwnerGroupProperties }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityType: DataZoneEntityType.pipe(T.HttpLabel("entityType")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          owner: OwnerProperties,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/addOwner",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AddEntityOwnerInput" });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AddEntityOwnerOutput",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ userIdentifier: S.String }),
+        /*@__PURE__*/ S.Struct({ allUsersGrantFilter: AllUsersGrantFilter }),
+      ]);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ groupIdentifier: S.String })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ domainUnit: S.String, includeChildDomainUnits: S.optional(S.Boolean) }),
+      ).annotate({
+        identifier: "DomainUnitFilterForProject",
+      });
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ domainUnitFilter: DomainUnitFilterForProject })]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          projectDesignation: ProjectDesignation,
+          projectIdentifier: S.optional(S.String),
+          projectGrantFilter: S.optional(ProjectGrantFilter),
+        }),
+      ).annotate({
+        identifier: "ProjectPolicyGrantPrincipal",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ allDomainUnitsGrantFilter: AllDomainUnitsGrantFilter }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainUnitDesignation: DomainUnitDesignation,
+          domainUnitIdentifier: S.optional(S.String),
+          domainUnitGrantFilter: S.optional(DomainUnitGrantFilter),
+        }),
+      ).annotate({
+        identifier: "DomainUnitPolicyGrantPrincipal",
+      });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ user: UserPolicyGrantPrincipal }),
+        /*@__PURE__*/ S.Struct({ group: GroupPolicyGrantPrincipal }),
+        /*@__PURE__*/ S.Struct({ project: ProjectPolicyGrantPrincipal }),
+        /*@__PURE__*/ S.Struct({ domainUnit: DomainUnitPolicyGrantPrincipal }),
+      ]);
+    case 7:
+      return S.suspend(() => S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) })).annotate(
+        {
+          identifier: "CreateDomainUnitPolicyGrantDetail",
+        },
+      );
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ domainUnitId: S.optional(S.String) })).annotate({
+        identifier: "CreateEnvironmentProfilePolicyGrantDetail",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          includeChildDomainUnits: S.optional(S.Boolean),
+          projectProfiles: S.optional(ProjectProfileList),
+        }),
+      ).annotate({
+        identifier: "CreateProjectFromProjectProfilePolicyGrantDetail",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ createDomainUnit: CreateDomainUnitPolicyGrantDetail }),
+        /*@__PURE__*/ S.Struct({
+          overrideDomainUnitOwners: OverrideDomainUnitOwnersPolicyGrantDetail,
+        }),
+        /*@__PURE__*/ S.Struct({ addToProjectMemberPool: AddToProjectMemberPoolPolicyGrantDetail }),
+        /*@__PURE__*/ S.Struct({ overrideProjectOwners: OverrideProjectOwnersPolicyGrantDetail }),
+        /*@__PURE__*/ S.Struct({ createGlossary: CreateGlossaryPolicyGrantDetail }),
+        /*@__PURE__*/ S.Struct({ createFormType: CreateFormTypePolicyGrantDetail }),
+        /*@__PURE__*/ S.Struct({ createAssetType: CreateAssetTypePolicyGrantDetail }),
+        /*@__PURE__*/ S.Struct({ createProject: CreateProjectPolicyGrantDetail }),
+        /*@__PURE__*/ S.Struct({
+          createEnvironmentProfile: CreateEnvironmentProfilePolicyGrantDetail,
+        }),
+        /*@__PURE__*/ S.Struct({ delegateCreateEnvironmentProfile: Unit }),
+        /*@__PURE__*/ S.Struct({ createEnvironment: Unit }),
+        /*@__PURE__*/ S.Struct({ createEnvironmentFromBlueprint: Unit }),
+        /*@__PURE__*/ S.Struct({
+          createProjectFromProjectProfile: CreateProjectFromProjectProfilePolicyGrantDetail,
+        }),
+        /*@__PURE__*/ S.Struct({ useAssetType: UseAssetTypePolicyGrantDetail }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityType: TargetEntityType.pipe(T.HttpLabel("entityType")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          policyType: ManagedPolicyType,
+          principal: PolicyGrantPrincipal,
+          detail: PolicyGrantDetail,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/policies/managed/{entityType}/{entityIdentifier}/addGrant",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AddPolicyGrantInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ grantId: S.optional(S.String) })).annotate({
+        identifier: "AddPolicyGrantOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          environmentRoleArn: S.String.pipe(T.HttpLabel("environmentRoleArn")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateEnvironmentRoleInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          entityType: GovernedEntityType.pipe(T.HttpLabel("entityType")),
+          governedGlossaryTerms: GovernedGlossaryTerms,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/associate-governed-terms",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateGovernedTermsInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityType: AttributeEntityType.pipe(T.HttpLabel("entityType")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          entityRevision: S.optional(S.String).pipe(T.HttpQuery("entityRevision")),
+          attributeIdentifiers: AttributesList.pipe(T.HttpQuery("attributeIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/attributes-metadata",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetAttributesMetadataInput",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ attributeIdentifier: S.String, forms: S.optional(FormOutputList) }),
+      ).annotate({ identifier: "BatchGetAttributeOutput" });
+    case 1:
+      return S.Array(BatchGetAttributeOutput);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ attributeIdentifier: S.String, code: S.String, message: S.String }),
+      ).annotate({ identifier: "AttributeError" });
+    case 3:
+      return S.Array(AttributeError);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ attributes: S.optional(BatchGetAttributeItems), errors: AttributesErrors }),
+      ).annotate({
+        identifier: "BatchGetAttributesMetadataOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          formName: S.String,
+          typeIdentifier: S.optional(S.String),
+          typeRevision: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FormInput" });
+    case 6:
+      return S.Array(FormInput);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ attributeIdentifier: S.String, forms: FormInputList }),
+      ).annotate({ identifier: "AttributeInput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AttributeInput);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityType: AttributeEntityType.pipe(T.HttpLabel("entityType")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          attributes: Attributes,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/attributes-metadata",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchPutAttributesMetadataInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ attributeIdentifier: S.String })).annotate({
+        identifier: "BatchPutAttributeOutput",
+      });
+    case 3:
+      return S.Array(BatchPutAttributeOutput);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(AttributesErrors),
+          attributes: S.optional(BatchPutAttributeItems),
+        }),
+      ).annotate({
+        identifier: "BatchPutAttributesMetadataOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}/cancel",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelMetadataGenerationRunInput",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelMetadataGenerationRunOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/subscriptions/{identifier}/cancel",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CancelSubscriptionInput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdBy: S.String,
+          updatedBy: S.optional(S.String),
+          domainId: S.String,
+          status: SubscriptionStatus,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          subscribedPrincipal: SubscribedPrincipal,
+          subscribedListing: SubscribedListing,
+          subscriptionRequestId: S.optional(S.String),
+          retainPermissions: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CancelSubscriptionOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          awsAccountId: S.String,
+          supportedRegions: AwsRegionList,
+          awsAccountName: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "AccountInfo" });
+    case 2:
+      return S.Array(AccountInfo);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ lambdaFunctionArn: S.String, lambdaExecutionRoleArn: S.optional(S.String) }),
+      ).annotate({ identifier: "CustomAccountPoolHandler" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ accounts: AccountInfoList }),
+        /*@__PURE__*/ S.Struct({ customAccountPoolHandler: CustomAccountPoolHandler }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          resolutionStrategy: ResolutionStrategy,
+          accountSource: AccountSource,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/account-pools" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateAccountPoolInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          name: S.optional(SensitiveString),
+          id: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          resolutionStrategy: S.optional(ResolutionStrategy),
+          accountSource: AccountSource,
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedBy: S.optional(S.String),
+          domainUnitId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateAccountPoolOutput" });
+    case 7:
+      return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "BusinessNameGenerationConfiguration",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ businessNameGeneration: S.optional(BusinessNameGenerationConfiguration) }),
+      ).annotate({ identifier: "PredictionConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          externalIdentifier: S.optional(S.String),
+          typeIdentifier: S.String,
+          typeRevision: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          glossaryTerms: S.optional(GlossaryTerms),
+          formsInput: S.optional(FormInputList),
+          owningProjectIdentifier: S.String,
+          predictionConfiguration: S.optional(PredictionConfiguration),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/assets" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateAssetInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ listingId: S.String, listingStatus: ListingStatus }),
+      ).annotate({ identifier: "AssetListingDetails" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          formName: S.String,
+          typeIdentifier: S.String,
+          typeRevision: S.optional(S.String),
+          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          contentSummary: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TimeSeriesDataPointSummaryFormOutput",
+      });
+    case 4:
+      return S.Array(TimeSeriesDataPointSummaryFormOutput);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: SensitiveString,
+          typeIdentifier: S.String,
+          typeRevision: S.String,
+          externalIdentifier: S.optional(S.String),
+          revision: S.String,
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          firstRevisionCreatedBy: S.optional(S.String),
+          glossaryTerms: S.optional(GlossaryTerms),
+          governedGlossaryTerms: S.optional(GovernedGlossaryTerms),
+          owningProjectId: S.String,
+          domainId: S.String,
+          listing: S.optional(AssetListingDetails),
+          formsOutput: FormOutputList,
+          readOnlyFormsOutput: S.optional(FormOutputList),
+          latestTimeSeriesDataPointFormsOutput: S.optional(
+            TimeSeriesDataPointSummaryFormOutputList,
+          ),
+          predictionConfiguration: S.optional(PredictionConfiguration),
+        }),
+      ).annotate({ identifier: "CreateAssetOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ includedColumnNames: S.optional(ColumnNameList) }),
+      ).annotate({
+        identifier: "ColumnFilterConfiguration",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ columnName: S.String, value: S.String })).annotate({
+        identifier: "EqualToExpression",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ columnName: S.String, value: S.String })).annotate({
+        identifier: "GreaterThanOrEqualToExpression",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ columnName: S.String })).annotate({
+        identifier: "IsNullExpression",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ columnName: S.String, values: StringList })).annotate({
+        identifier: "InExpression",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ equalTo: EqualToExpression }),
+        /*@__PURE__*/ S.Struct({ notEqualTo: NotEqualToExpression }),
+        /*@__PURE__*/ S.Struct({ greaterThan: GreaterThanExpression }),
+        /*@__PURE__*/ S.Struct({ lessThan: LessThanExpression }),
+        /*@__PURE__*/ S.Struct({ greaterThanOrEqualTo: GreaterThanOrEqualToExpression }),
+        /*@__PURE__*/ S.Struct({ lessThanOrEqualTo: LessThanOrEqualToExpression }),
+        /*@__PURE__*/ S.Struct({ isNull: IsNullExpression }),
+        /*@__PURE__*/ S.Struct({ isNotNull: IsNotNullExpression }),
+        /*@__PURE__*/ S.Struct({ in: InExpression }),
+        /*@__PURE__*/ S.Struct({ notIn: NotInExpression }),
+        /*@__PURE__*/ S.Struct({ like: LikeExpression }),
+        /*@__PURE__*/ S.Struct({ notLike: NotLikeExpression }),
+      ]);
+    case 4:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => RowFilter).annotate({ identifier: "RowFilter" }),
+      );
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ expression: RowFilterExpression }),
+        /*@__PURE__*/ S.Struct({
+          and: /*@__PURE__*/ S.suspend(() => RowFilterList).annotate({
+            identifier: "RowFilterList",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          or: /*@__PURE__*/ S.suspend(() => RowFilterList).annotate({
+            identifier: "RowFilterList",
+          }),
+        }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ rowFilter: RowFilter, sensitive: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "RowFilterConfiguration" });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ columnConfiguration: ColumnFilterConfiguration }),
+        /*@__PURE__*/ S.Struct({ rowConfiguration: RowFilterConfiguration }),
+      ]);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          configuration: AssetFilterConfiguration,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateAssetFilterInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          assetId: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          status: S.optional(FilterStatus),
+          configuration: AssetFilterConfiguration,
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          errorMessage: S.optional(S.String),
+          effectiveColumnNames: S.optional(ColumnNameList),
+          effectiveRowFilter: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateAssetFilterOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          typeRevision: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          glossaryTerms: S.optional(GlossaryTerms),
+          formsInput: S.optional(FormInputList),
+          predictionConfiguration: S.optional(PredictionConfiguration),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/assets/{identifier}/revisions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateAssetRevisionInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: SensitiveString,
+          typeIdentifier: S.String,
+          typeRevision: S.String,
+          externalIdentifier: S.optional(S.String),
+          revision: S.String,
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          firstRevisionCreatedBy: S.optional(S.String),
+          glossaryTerms: S.optional(GlossaryTerms),
+          governedGlossaryTerms: S.optional(GovernedGlossaryTerms),
+          owningProjectId: S.String,
+          domainId: S.String,
+          listing: S.optional(AssetListingDetails),
+          formsOutput: FormOutputList,
+          readOnlyFormsOutput: S.optional(FormOutputList),
+          latestTimeSeriesDataPointFormsOutput: S.optional(
+            TimeSeriesDataPointSummaryFormOutputList,
+          ),
+          predictionConfiguration: S.optional(PredictionConfiguration),
+        }),
+      ).annotate({
+        identifier: "CreateAssetRevisionOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          typeIdentifier: S.String,
+          typeRevision: S.String,
+          required: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FormEntryInput" });
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ FormEntryInput.pipe(S.optional));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: S.String,
+          description: S.optional(SensitiveString),
+          formsInput: FormsInputMap,
+          owningProjectIdentifier: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/asset-types" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateAssetTypeInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          typeName: SensitiveString,
+          typeRevision: S.String,
+          required: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FormEntryOutput" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ FormEntryOutput.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          name: S.String,
+          revision: S.String,
+          description: S.optional(SensitiveString),
+          formsOutput: FormsOutputMap,
+          owningProjectId: S.optional(S.String),
+          originDomainId: S.optional(S.String),
+          originProjectId: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateAssetTypeOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accessRole: S.optional(S.String),
+          awsAccountId: S.optional(S.String),
+          awsRegion: S.optional(S.String),
+          iamConnectionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsLocation" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ classification: S.optional(S.String), properties: S.optional(PropertyMap) }),
+      ).annotate({ identifier: "Configuration" });
+    case 5:
+      return S.Array(Configuration);
+    case 6:
+      return S.suspend(() => S.Struct({ workgroupName: S.optional(S.String) })).annotate({
+        identifier: "AthenaPropertiesInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          subnetId: S.optional(S.String),
+          subnetIdList: S.optional(SubnetIdList),
+          securityGroupIdList: S.optional(SecurityGroupIdList),
+          availabilityZone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PhysicalConnectionRequirements",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userManagedClientApplicationClientId: S.optional(S.String),
+          aWSManagedClientApplicationReference: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuth2ClientApplication" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ authorizationCode: S.optional(S.String), redirectUri: S.optional(S.String) }),
+      ).annotate({
+        identifier: "AuthorizationCodeProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userManagedClientApplicationClientSecret: S.optional(S.String),
+          accessToken: S.optional(S.String),
+          refreshToken: S.optional(S.String),
+          jwtToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GlueOAuth2Credentials" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          oAuth2GrantType: S.optional(OAuth2GrantType),
+          oAuth2ClientApplication: S.optional(OAuth2ClientApplication),
+          tokenUrl: S.optional(S.String),
+          tokenUrlParametersMap: S.optional(TokenUrlParametersMap),
+          authorizationCodeProperties: S.optional(AuthorizationCodeProperties),
+          oAuth2Credentials: S.optional(GlueOAuth2Credentials),
+        }),
+      ).annotate({ identifier: "OAuth2Properties" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ userName: S.optional(S.String), password: S.optional(S.String) }),
+      ).annotate({
+        identifier: "BasicAuthenticationCredentials",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          authenticationType: S.optional(AuthenticationType),
+          oAuth2Properties: S.optional(OAuth2Properties),
+          secretArn: S.optional(S.String),
+          kmsKeyArn: S.optional(S.String),
+          basicAuthenticationCredentials: S.optional(BasicAuthenticationCredentials),
+          customAuthenticationCredentials: S.optional(CredentialMap),
+        }),
+      ).annotate({
+        identifier: "AuthenticationConfigurationInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          connectionProperties: S.optional(ConnectionProperties),
+          physicalConnectionRequirements: S.optional(PhysicalConnectionRequirements),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          connectionType: S.optional(GlueConnectionType),
+          matchCriteria: S.optional(S.String),
+          validateCredentials: S.optional(S.Boolean),
+          validateForComputeEnvironments: S.optional(ComputeEnvironmentsList),
+          sparkProperties: S.optional(PropertyMap),
+          athenaProperties: S.optional(PropertyMap),
+          pythonProperties: S.optional(PropertyMap),
+          authenticationConfiguration: S.optional(AuthenticationConfigurationInput),
+        }),
+      ).annotate({ identifier: "GlueConnectionInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ glueConnectionInput: S.optional(GlueConnectionInput) }),
+      ).annotate({ identifier: "GluePropertiesInput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ clusterName: S.String })).annotate({
+        identifier: "HyperPodPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ glueLineageSyncEnabled: S.optional(S.Boolean), roleArn: S.optional(S.String) }),
+      ).annotate({ identifier: "IamPropertiesInput" });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ clusterName: S.String }),
+        /*@__PURE__*/ S.Struct({ workgroupName: S.String }),
+      ]);
+    case 3:
+      return S.suspend(() => S.Struct({ password: SensitiveString, username: S.String })).annotate({
+        identifier: "UsernamePassword",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ secretArn: S.String }),
+        /*@__PURE__*/ S.Struct({ usernamePassword: UsernamePassword }),
+      ]);
+    case 5:
+      return S.suspend(() => S.Struct({ schedule: S.optional(S.String) })).annotate({
+        identifier: "LineageSyncSchedule",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ enabled: S.optional(S.Boolean), schedule: S.optional(LineageSyncSchedule) }),
+      ).annotate({
+        identifier: "RedshiftLineageSyncConfigurationInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          storage: S.optional(RedshiftStorageProperties),
+          databaseName: S.optional(S.String),
+          host: S.optional(S.String),
+          port: S.optional(S.Number),
+          credentials: S.optional(RedshiftCredentials),
+          lineageSync: S.optional(RedshiftLineageSyncConfigurationInput),
+        }),
+      ).annotate({ identifier: "RedshiftPropertiesInput" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computeArn: S.optional(S.String),
+          instanceProfileArn: S.optional(S.String),
+          javaVirtualEnv: S.optional(S.String),
+          logUri: S.optional(S.String),
+          pythonVirtualEnv: S.optional(S.String),
+          runtimeRole: S.optional(S.String),
+          trustedCertificatesS3Uri: S.optional(S.String),
+          managedEndpointArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SparkEmrPropertiesInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ connection: S.optional(S.String) })).annotate({
+        identifier: "SparkGlueArgs",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          additionalArgs: S.optional(SparkGlueArgs),
+          glueConnectionName: S.optional(S.String),
+          glueConnectionNames: S.optional(GlueConnectionNames),
+          glueVersion: S.optional(S.String),
+          idleTimeout: S.optional(S.Number),
+          javaVirtualEnv: S.optional(S.String),
+          numberOfWorkers: S.optional(S.Number),
+          pythonVirtualEnv: S.optional(S.String),
+          workerType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SparkGluePropertiesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          s3Uri: S.String,
+          s3AccessGrantLocationId: S.optional(S.String),
+          registerS3AccessGrantLocation: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "S3PropertiesInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          connectionProperties: S.optional(ConnectionProperties),
+          physicalConnectionRequirements: S.optional(PhysicalConnectionRequirements),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          validateCredentials: S.optional(S.Boolean),
+          validateForComputeEnvironments: S.optional(ComputeEnvironmentsList),
+          sparkProperties: S.optional(PropertyMap),
+          athenaProperties: S.optional(PropertyMap),
+          pythonProperties: S.optional(PropertyMap),
+          authenticationConfiguration: S.optional(AuthenticationConfigurationInput),
+        }),
+      ).annotate({ identifier: "ConnectivityProperties" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ usernameAttribute: S.String, prefix: S.optional(S.String) }),
+      ).annotate({ identifier: "IdentityMapping" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          timezone: S.optional(Timezone),
+          enabled: S.Boolean,
+          schedule: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LineageSyncInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          connectivityProperties: S.optional(ConnectivityProperties),
+          snowflakeRole: S.String,
+          identityMapping: IdentityMapping,
+          lineageSync: S.optional(LineageSyncInput),
+        }),
+      ).annotate({ identifier: "SnowflakePropertiesInput" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isEnabled: S.Boolean,
+          profileArn: S.optional(S.String),
+          authMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AmazonQPropertiesInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ trackingServerArn: S.optional(S.String) })).annotate({
+        identifier: "MlflowPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ mwaaEnvironmentName: S.optional(S.String) })).annotate({
+        identifier: "WorkflowsMwaaPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ glueLineageSyncEnabled: S.optional(S.Boolean) })).annotate({
+        identifier: "LakehousePropertiesInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          vpcId: S.String,
+          subnetIds: VpcConnectionSubnetIdList,
+          securityGroupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VpcPropertiesInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ codeConnectionArn: S.String, repositoryId: S.String, defaultBranch: S.String }),
+      ).annotate({ identifier: "GitPropertiesInput" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ athenaProperties: AthenaPropertiesInput }),
+        /*@__PURE__*/ S.Struct({ glueProperties: GluePropertiesInput }),
+        /*@__PURE__*/ S.Struct({ hyperPodProperties: HyperPodPropertiesInput }),
+        /*@__PURE__*/ S.Struct({ iamProperties: IamPropertiesInput }),
+        /*@__PURE__*/ S.Struct({ redshiftProperties: RedshiftPropertiesInput }),
+        /*@__PURE__*/ S.Struct({ sparkEmrProperties: SparkEmrPropertiesInput }),
+        /*@__PURE__*/ S.Struct({ sparkGlueProperties: SparkGluePropertiesInput }),
+        /*@__PURE__*/ S.Struct({ s3Properties: S3PropertiesInput }),
+        /*@__PURE__*/ S.Struct({ snowflakeProperties: SnowflakePropertiesInput }),
+        /*@__PURE__*/ S.Struct({ amazonQProperties: AmazonQPropertiesInput }),
+        /*@__PURE__*/ S.Struct({ mlflowProperties: MlflowPropertiesInput }),
+        /*@__PURE__*/ S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesInput }),
+        /*@__PURE__*/ S.Struct({
+          workflowsServerlessProperties: WorkflowsServerlessPropertiesInput,
+        }),
+        /*@__PURE__*/ S.Struct({ lakehouseProperties: LakehousePropertiesInput }),
+        /*@__PURE__*/ S.Struct({ vpcProperties: VpcPropertiesInput }),
+        /*@__PURE__*/ S.Struct({ gitProperties: GitPropertiesInput }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          awsLocation: S.optional(AwsLocation),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          configurations: S.optional(Configurations),
+          description: S.optional(SensitiveString),
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.optional(S.String),
+          name: S.String,
+          props: S.optional(ConnectionPropertiesInput),
+          enableTrustedIdentityPropagation: S.optional(S.Boolean),
+          scope: S.optional(ConnectionScope),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/connections" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateConnectionInput" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authenticationType: S.optional(AuthenticationType),
+          secretArn: S.optional(S.String),
+          oAuth2Properties: S.optional(OAuth2Properties),
+        }),
+      ).annotate({
+        identifier: "AuthenticationConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          connectionType: S.optional(ConnectionType),
+          matchCriteria: S.optional(MatchCriteria),
+          connectionProperties: S.optional(ConnectionProperties),
+          sparkProperties: S.optional(PropertyMap),
+          athenaProperties: S.optional(PropertyMap),
+          pythonProperties: S.optional(PropertyMap),
+          physicalConnectionRequirements: S.optional(PhysicalConnectionRequirements),
+          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedBy: S.optional(S.String),
+          status: S.optional(ConnectionStatus),
+          statusReason: S.optional(S.String),
+          lastConnectionValidationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          authenticationConfiguration: S.optional(AuthenticationConfiguration),
+          connectionSchemaVersion: S.optional(S.Number),
+          compatibleComputeEnvironments: S.optional(ComputeEnvironmentsList),
+        }),
+      ).annotate({ identifier: "GlueConnection" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          awsLocation: S.optional(AwsLocation),
+          glueConnectionName: S.optional(S.String),
+          glueConnectionNames: S.optional(GlueConnectionNames),
+          glueConnection: S.optional(GlueConnection),
+          enableTrustedIdentityPropagation: S.optional(S.Boolean),
+          host: S.optional(S.String),
+          port: S.optional(S.Number),
+          protocol: S.optional(Protocol),
+          stage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhysicalEndpoint" });
+    case 3:
+      return S.Array(PhysicalEndpoint);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ status: S.optional(ConnectionStatus), errorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "GluePropertiesOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          clusterName: S.String,
+          clusterArn: S.optional(S.String),
+          orchestrator: S.optional(HyperPodOrchestrator),
+        }),
+      ).annotate({ identifier: "HyperPodPropertiesOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String),
+          glueLineageSyncEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "IamPropertiesOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          lineageJobId: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          schedule: S.optional(LineageSyncSchedule),
+        }),
+      ).annotate({
+        identifier: "RedshiftLineageSyncConfigurationOutput",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storage: S.optional(RedshiftStorageProperties),
+          credentials: S.optional(RedshiftCredentials),
+          isProvisionedSecret: S.optional(S.Boolean),
+          jdbcIamUrl: S.optional(S.String),
+          jdbcUrl: S.optional(S.String),
+          redshiftTempDir: S.optional(S.String),
+          lineageSync: S.optional(RedshiftLineageSyncConfigurationOutput),
+          status: S.optional(ConnectionStatus),
+          databaseName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RedshiftPropertiesOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), token: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ManagedEndpointCredentials",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          computeArn: S.optional(S.String),
+          credentials: S.optional(UsernamePassword),
+          credentialsExpiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          governanceType: S.optional(GovernanceType),
+          instanceProfileArn: S.optional(S.String),
+          javaVirtualEnv: S.optional(S.String),
+          livyEndpoint: S.optional(S.String),
+          logUri: S.optional(S.String),
+          pythonVirtualEnv: S.optional(S.String),
+          runtimeRole: S.optional(S.String),
+          trustedCertificatesS3Uri: S.optional(S.String),
+          certificateData: S.optional(S.String),
+          managedEndpointArn: S.optional(S.String),
+          managedEndpointCredentials: S.optional(ManagedEndpointCredentials),
+        }),
+      ).annotate({ identifier: "SparkEmrPropertiesOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          additionalArgs: S.optional(SparkGlueArgs),
+          glueConnectionName: S.optional(S.String),
+          glueConnectionNames: S.optional(GlueConnectionNames),
+          glueVersion: S.optional(S.String),
+          idleTimeout: S.optional(S.Number),
+          javaVirtualEnv: S.optional(S.String),
+          numberOfWorkers: S.optional(S.Number),
+          pythonVirtualEnv: S.optional(S.String),
+          workerType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SparkGluePropertiesOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          s3Uri: S.String,
+          s3AccessGrantLocationId: S.optional(S.String),
+          registerS3AccessGrantLocation: S.optional(S.Boolean),
+          status: S.optional(ConnectionStatus),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3PropertiesOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          lineageJobId: S.optional(S.String),
+          timezone: S.optional(Timezone),
+          enabled: S.optional(S.Boolean),
+          schedule: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LineageSyncOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          snowflakeRole: S.String,
+          identityMapping: IdentityMapping,
+          lineageSync: LineageSyncOutput,
+          status: ConnectionStatus,
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SnowflakePropertiesOutput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ glueLineageSyncEnabled: S.optional(S.Boolean) })).annotate({
+        identifier: "LakehousePropertiesOutput",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vpcId: S.String,
+          subnetIds: VpcConnectionSubnetIdList,
+          status: ConnectionStatus,
+          securityGroupId: S.optional(S.String),
+          glueConnectionNames: S.optional(GlueConnectionNames),
+        }),
+      ).annotate({ identifier: "VpcPropertiesOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          codeConnectionArn: S.String,
+          repositoryId: S.String,
+          defaultBranch: S.String,
+          status: S.optional(ConnectionStatus),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GitPropertiesOutput" });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ athenaProperties: AthenaPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ glueProperties: GluePropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ hyperPodProperties: HyperPodPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ iamProperties: IamPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ redshiftProperties: RedshiftPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ sparkEmrProperties: SparkEmrPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ sparkGlueProperties: SparkGluePropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ s3Properties: S3PropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ snowflakeProperties: SnowflakePropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ amazonQProperties: AmazonQPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ mlflowProperties: MlflowPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ workflowsMwaaProperties: WorkflowsMwaaPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({
+          workflowsServerlessProperties: WorkflowsServerlessPropertiesOutput,
+        }),
+        /*@__PURE__*/ S.Struct({ lakehouseProperties: LakehousePropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ vpcProperties: VpcPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ gitProperties: GitPropertiesOutput }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          connectionId: S.String,
+          configurations: S.optional(Configurations),
+          description: S.optional(SensitiveString),
+          domainId: S.String,
+          domainUnitId: S.String,
+          environmentId: S.optional(S.String),
+          name: S.String,
+          physicalEndpoints: PhysicalEndpoints,
+          projectId: S.optional(S.String),
+          props: S.optional(ConnectionPropertiesOutput),
+          type: ConnectionType,
+          scope: S.optional(ConnectionScope),
+        }),
+      ).annotate({ identifier: "CreateConnectionOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          itemType: DataProductItemType,
+          identifier: S.String,
+          revision: S.optional(S.String),
+          glossaryTerms: S.optional(ItemGlossaryTerms),
+        }),
+      ).annotate({ identifier: "DataProductItem" });
+    case 5:
+      return S.Array(DataProductItem);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: SensitiveString,
+          owningProjectIdentifier: S.String,
+          description: S.optional(SensitiveString),
+          glossaryTerms: S.optional(GlossaryTerms),
+          formsInput: S.optional(FormInputList),
+          items: S.optional(DataProductItems),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/data-products" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateDataProductInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          revision: S.String,
+          owningProjectId: S.String,
+          name: SensitiveString,
+          status: DataProductStatus,
+          description: S.optional(SensitiveString),
+          glossaryTerms: S.optional(GlossaryTerms),
+          items: S.optional(DataProductItems),
+          formsOutput: S.optional(FormOutputList),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          firstRevisionCreatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateDataProductOutput" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          glossaryTerms: S.optional(GlossaryTerms),
+          items: S.optional(DataProductItems),
+          formsInput: S.optional(FormInputList),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDataProductRevisionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          revision: S.String,
+          owningProjectId: S.String,
+          name: SensitiveString,
+          status: DataProductStatus,
+          description: S.optional(SensitiveString),
+          glossaryTerms: S.optional(GlossaryTerms),
+          items: S.optional(DataProductItems),
+          formsOutput: S.optional(FormOutputList),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          firstRevisionCreatedBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDataProductRevisionOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ type: FilterExpressionType, expression: S.String }),
+      ).annotate({ identifier: "FilterExpression" });
+    case 3:
+      return S.Array(FilterExpression);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          databaseName: S.String,
+          schemaName: S.optional(S.String),
+          filterExpressions: S.optional(FilterExpressions),
+        }),
+      ).annotate({
+        identifier: "RelationalFilterConfiguration",
+      });
+    case 5:
+      return S.Array(RelationalFilterConfiguration);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dataAccessRole: S.optional(S.String),
+          relationalFilterConfigurations: RelationalFilterConfigurations,
+          autoImportDataQualityResult: S.optional(S.Boolean),
+          catalogName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GlueRunConfigurationInput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ secretManagerArn: S.String })).annotate({
+        identifier: "RedshiftCredentialConfiguration",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ workgroupName: S.String })).annotate({
+        identifier: "RedshiftServerlessStorage",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ redshiftClusterSource: RedshiftClusterStorage }),
+        /*@__PURE__*/ S.Struct({ redshiftServerlessSource: RedshiftServerlessStorage }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataAccessRole: S.optional(S.String),
+          relationalFilterConfigurations: RelationalFilterConfigurations,
+          redshiftCredentialConfiguration: S.optional(RedshiftCredentialConfiguration),
+          redshiftStorage: S.optional(RedshiftStorage),
+        }),
+      ).annotate({
+        identifier: "RedshiftRunConfigurationInput",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ TrackingAssetArns.pipe(S.optional));
+    case 4:
+      return S.suspend(() => S.Struct({ trackingAssets: TrackingAssets })).annotate({
+        identifier: "SageMakerRunConfigurationInput",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ glueRunConfiguration: GlueRunConfigurationInput }),
+        /*@__PURE__*/ S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationInput }),
+        /*@__PURE__*/ S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationInput }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ enableBusinessNameGeneration: S.optional(S.Boolean) }),
+      ).annotate({
+        identifier: "RecommendationConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ timezone: S.optional(Timezone), schedule: S.optional(S.String) }),
+      ).annotate({ identifier: "ScheduleConfiguration" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          projectIdentifier: S.String,
+          environmentIdentifier: S.optional(S.String),
+          connectionIdentifier: S.optional(S.String),
+          type: S.String,
+          configuration: S.optional(DataSourceConfigurationInput),
+          recommendation: S.optional(RecommendationConfiguration),
+          enableSetting: S.optional(EnableSetting),
+          schedule: S.optional(ScheduleConfiguration),
+          publishOnImport: S.optional(S.Boolean),
+          assetFormsInput: S.optional(FormInputList),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/data-sources" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateDataSourceInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          region: S.optional(S.String),
+          dataAccessRole: S.optional(S.String),
+          relationalFilterConfigurations: RelationalFilterConfigurations,
+          autoImportDataQualityResult: S.optional(S.Boolean),
+          catalogName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GlueRunConfigurationOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          region: S.optional(S.String),
+          dataAccessRole: S.optional(S.String),
+          relationalFilterConfigurations: RelationalFilterConfigurations,
+          redshiftCredentialConfiguration: S.optional(RedshiftCredentialConfiguration),
+          redshiftStorage: RedshiftStorage,
+        }),
+      ).annotate({
+        identifier: "RedshiftRunConfigurationOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          region: S.optional(S.String),
+          trackingAssets: TrackingAssets,
+        }),
+      ).annotate({
+        identifier: "SageMakerRunConfigurationOutput",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ glueRunConfiguration: GlueRunConfigurationOutput }),
+        /*@__PURE__*/ S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationOutput }),
+        /*@__PURE__*/ S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationOutput }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ errorType: DataSourceErrorType, errorDetail: S.optional(S.String) }),
+      ).annotate({ identifier: "DataSourceErrorMessage" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.optional(DataSourceStatus),
+          type: S.optional(S.String),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          domainId: S.String,
+          projectId: S.String,
+          environmentId: S.optional(S.String),
+          connectionId: S.optional(S.String),
+          configuration: S.optional(DataSourceConfigurationOutput),
+          recommendation: S.optional(RecommendationConfiguration),
+          enableSetting: S.optional(EnableSetting),
+          publishOnImport: S.optional(S.Boolean),
+          assetFormsOutput: S.optional(FormOutputList),
+          schedule: S.optional(ScheduleConfiguration),
+          lastRunStatus: S.optional(DataSourceRunStatus),
+          lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastRunErrorMessage: S.optional(DataSourceErrorMessage),
+          errorMessage: S.optional(DataSourceErrorMessage),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CreateDataSourceOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(AuthType),
+          userAssignment: S.optional(UserAssignment),
+          idcInstanceArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SingleSignOn" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          singleSignOn: S.optional(SingleSignOn),
+          domainExecutionRole: S.optional(S.String),
+          kmsKeyIdentifier: S.optional(S.String),
+          tags: S.optional(Tags),
+          domainVersion: S.optional(DomainVersion),
+          serviceRole: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v2/domains" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateDomainInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          rootDomainUnitId: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          singleSignOn: S.optional(SingleSignOn),
+          domainExecutionRole: S.optional(S.String),
+          arn: S.optional(S.String),
+          kmsKeyIdentifier: S.optional(S.String),
+          status: S.optional(DomainStatus),
+          portalUrl: S.optional(S.String),
+          tags: S.optional(Tags),
+          domainVersion: S.optional(DomainVersion),
+          serviceRole: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateDomainOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: SensitiveString,
+          parentDomainUnitIdentifier: S.String,
+          description: S.optional(SensitiveString),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/domain-units" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateDomainUnitInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ userId: S.optional(S.String) })).annotate({
+        identifier: "DomainUnitUserProperties",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ groupId: S.optional(S.String) })).annotate({
+        identifier: "DomainUnitGroupProperties",
+      });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ user: DomainUnitUserProperties }),
+        /*@__PURE__*/ S.Struct({ group: DomainUnitGroupProperties }),
+      ]);
+    case 7:
+      return S.Array(DomainUnitOwnerProperties);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          name: SensitiveString,
+          parentDomainUnitId: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          owners: DomainUnitOwners,
+          ancestorDomainUnitIds: DomainUnitIds,
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateDomainUnitOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "EnvironmentParameter" });
+    case 2:
+      return S.Array(EnvironmentParameter);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          projectIdentifier: S.String,
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          description: S.optional(S.String),
+          name: S.String,
+          environmentProfileIdentifier: S.optional(S.String),
+          userParameters: S.optional(EnvironmentParametersList),
+          glossaryTerms: S.optional(GlossaryTerms),
+          environmentAccountIdentifier: S.optional(S.String),
+          environmentAccountRegion: S.optional(S.String),
+          environmentBlueprintIdentifier: S.optional(S.String),
+          deploymentOrder: S.optional(S.Number),
+          environmentConfigurationId: S.optional(S.String),
+          environmentConfigurationName: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/environments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateEnvironmentInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          name: S.optional(S.String),
+          value: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "Resource" });
+    case 5:
+      return S.Array(Resource);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ConfigurableActionParameter",
+      });
+    case 7:
+      return S.Array(ConfigurableActionParameter);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          auth: S.optional(ConfigurableActionTypeAuthorization),
+          parameters: ConfigurableActionParameterList,
+        }),
+      ).annotate({
+        identifier: "ConfigurableEnvironmentAction",
+      });
+    case 1:
+      return S.Array(ConfigurableEnvironmentAction);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keyName: S.String,
+          description: S.optional(SensitiveString),
+          fieldType: S.String,
+          defaultValue: S.optional(S.String),
+          isEditable: S.optional(S.Boolean),
+          isOptional: S.optional(S.Boolean),
+          isUpdateSupported: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CustomParameter" });
+    case 3:
+      return S.Array(CustomParameter);
+    case 4:
+      return S.suspend(() => S.Struct({ code: S.optional(S.String), message: S.String })).annotate({
+        identifier: "EnvironmentError",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          deploymentType: S.optional(DeploymentType),
+          deploymentStatus: S.optional(DeploymentStatus),
+          failureReason: S.optional(EnvironmentError),
+          messages: S.optional(DeploymentMessagesList),
+          isDeploymentComplete: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Deployment" });
+    case 6:
+      return S.suspend(() => S.Struct({ templateUrl: S.String })).annotate({
+        identifier: "CloudFormationProperties",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ cloudFormation: CloudFormationProperties }),
+        /*@__PURE__*/ S.Struct({ manual: /*@__PURE__*/ S.Struct({}) }),
+      ]);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTimeoutMinutes: S.optional(S.Number),
+          endTimeoutMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeploymentProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String,
+          id: S.optional(S.String),
+          domainId: S.String,
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          environmentProfileId: S.optional(S.String),
+          awsAccountId: S.optional(S.String),
+          awsAccountRegion: S.optional(S.String),
+          provider: S.String,
+          provisionedResources: S.optional(ResourceList),
+          status: S.optional(EnvironmentStatus),
+          environmentActions: S.optional(EnvironmentActionList),
+          glossaryTerms: S.optional(GlossaryTerms),
+          userParameters: S.optional(CustomParameterList),
+          lastDeployment: S.optional(Deployment),
+          provisioningProperties: S.optional(ProvisioningProperties),
+          deploymentProperties: S.optional(DeploymentProperties),
+          environmentBlueprintId: S.optional(S.String),
+          environmentConfigurationId: S.optional(SensitiveString),
+          environmentConfigurationName: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "CreateEnvironmentOutput" });
+    case 2:
+      return S.suspend(() => S.Struct({ uri: S.optional(S.String) })).annotate({
+        identifier: "AwsConsoleLinkParameters",
+      });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ awsConsoleLink: AwsConsoleLinkParameters })]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          name: S.String,
+          parameters: ActionParameters,
+          description: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateEnvironmentActionInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          environmentId: S.String,
+          id: S.String,
+          name: S.String,
+          parameters: ActionParameters,
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateEnvironmentActionOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: S.String,
+          description: S.optional(SensitiveString),
+          provisioningProperties: ProvisioningProperties,
+          userParameters: S.optional(CustomParameterList),
+          blueprintCategory: S.optional(BlueprintCategory),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/environment-blueprints",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateEnvironmentBlueprintInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          description: S.optional(SensitiveString),
+          provider: S.String,
+          provisioningProperties: ProvisioningProperties,
+          deploymentProperties: S.optional(DeploymentProperties),
+          userParameters: S.optional(CustomParameterList),
+          glossaryTerms: S.optional(GlossaryTerms),
+          blueprintCategory: S.optional(BlueprintCategory),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "CreateEnvironmentBlueprintOutput",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          environmentBlueprintIdentifier: S.String,
+          projectIdentifier: S.String,
+          userParameters: S.optional(EnvironmentParametersList),
+          awsAccountId: S.optional(S.String),
+          awsAccountRegion: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/environment-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateEnvironmentProfileInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          awsAccountId: S.optional(S.String),
+          awsAccountRegion: S.optional(S.String),
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          environmentBlueprintId: S.String,
+          projectId: S.optional(S.String),
+          userParameters: S.optional(CustomParameterList),
+        }),
+      ).annotate({
+        identifier: "CreateEnvironmentProfileOutput",
+      });
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ smithy: S.String })]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: SensitiveString,
+          model: Model,
+          owningProjectIdentifier: S.String,
+          status: S.optional(FormTypeStatus),
+          description: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/form-types" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateFormTypeInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          name: SensitiveString,
+          revision: S.String,
+          description: S.optional(SensitiveString),
+          owningProjectId: S.optional(S.String),
+          originDomainId: S.optional(S.String),
+          originProjectId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateFormTypeOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: SensitiveString,
+          owningProjectIdentifier: S.String,
+          description: S.optional(SensitiveString),
+          status: S.optional(GlossaryStatus),
+          usageRestrictions: S.optional(GlossaryUsageRestrictions),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/glossaries" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateGlossaryInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          owningProjectId: S.String,
+          description: S.optional(SensitiveString),
+          status: S.optional(GlossaryStatus),
+          usageRestrictions: S.optional(GlossaryUsageRestrictions),
+        }),
+      ).annotate({ identifier: "CreateGlossaryOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ isA: S.optional(GlossaryTerms), classifies: S.optional(GlossaryTerms) }),
+      ).annotate({ identifier: "TermRelations" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          glossaryIdentifier: S.String,
+          name: SensitiveString,
+          status: S.optional(GlossaryTermStatus),
+          shortDescription: S.optional(SensitiveString),
+          longDescription: S.optional(SensitiveString),
+          termRelations: S.optional(TermRelations),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/glossary-terms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateGlossaryTermInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          glossaryId: S.String,
+          name: SensitiveString,
+          status: GlossaryTermStatus,
+          shortDescription: S.optional(SensitiveString),
+          longDescription: S.optional(SensitiveString),
+          termRelations: S.optional(TermRelations),
+          usageRestrictions: S.optional(GlossaryUsageRestrictions),
+        }),
+      ).annotate({ identifier: "CreateGlossaryTermOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          groupIdentifier: S.optional(S.String),
+          rolePrincipalArn: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/group-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateGroupProfileInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          id: S.optional(S.String),
+          status: S.optional(GroupProfileStatus),
+          groupName: S.optional(SensitiveString),
+          rolePrincipalArn: S.optional(S.String),
+          rolePrincipalId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateGroupProfileOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityIdentifier: S.String,
+          entityType: EntityType,
+          entityRevision: S.optional(S.String),
+          action: ChangeAction,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/listings/change-set" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateListingChangeSetInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ listingId: S.String, listingRevision: S.String, status: ListingStatus }),
+      ).annotate({
+        identifier: "CreateListingChangeSetOutput",
+      });
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          owningProjectIdentifier: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          type: S.optional(NotebookType),
+          metadata: S.optional(Metadata),
+          parameters: S.optional(Parameters),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebooks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateNotebookInput" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(CellInformation);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ packageManager: PackageManager, packageSpecification: S.optional(S.String) }),
+      ).annotate({ identifier: "PackageConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ imageVersion: S.optional(S.String), packageConfig: S.optional(PackageConfig) }),
+      ).annotate({ identifier: "EnvironmentConfig" });
+    case 3:
+      return S.suspend(() => S.Struct({ message: S.String })).annotate({
+        identifier: "NotebookError",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          connectionId: S.String,
+          repository: SensitiveString,
+          branch: SensitiveString,
+          commitHash: S.String,
+          fileName: S.optional(S.String),
+          committedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          commitMessage: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "GitMetadata" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: SensitiveString,
+          owningProjectId: S.String,
+          domainId: S.String,
+          cellOrder: CellOrder,
+          status: NotebookStatus,
+          type: S.optional(NotebookType),
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          lockedBy: S.optional(S.String),
+          lockedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lockExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          computeId: S.optional(S.String),
+          metadata: S.optional(Metadata),
+          parameters: S.optional(Parameters),
+          environmentConfiguration: S.optional(EnvironmentConfig),
+          error: S.optional(NotebookError),
+          gitMetadata: S.optional(GitMetadata),
+        }),
+      ).annotate({ identifier: "CreateNotebookOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          awsAccountId: S.String,
+          regionName: S.String,
+          sourceAccountPoolId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnvironmentResolvedAccount",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String),
+          environmentResolvedAccount: S.optional(EnvironmentResolvedAccount),
+          environmentConfigurationName: S.optional(SensitiveString),
+          environmentParameters: S.optional(EnvironmentParametersList),
+        }),
+      ).annotate({
+        identifier: "EnvironmentConfigurationUserParameter",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(EnvironmentConfigurationUserParameter);
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ userIdentifier: S.String }),
+        /*@__PURE__*/ S.Struct({ groupIdentifier: S.String }),
+      ]);
+    case 2:
+      return S.suspend(() => S.Struct({ member: Member, designation: UserDesignation })).annotate({
+        identifier: "ProjectMembershipAssignment",
+      });
+    case 3:
+      return S.Array(ProjectMembershipAssignment);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          resourceTags: S.optional(Tags),
+          glossaryTerms: S.optional(GlossaryTerms),
+          domainUnitId: S.optional(S.String),
+          projectProfileId: S.optional(S.String),
+          userParameters: S.optional(EnvironmentConfigurationUserParametersList),
+          projectCategory: S.optional(S.String),
+          projectExecutionRole: S.optional(S.String),
+          membershipAssignments: S.optional(ProjectMembershipAssignments),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/projects" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateProjectInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
+      ).annotate({ identifier: "ProjectDeletionError" });
+    case 6:
+      return S.Array(ProjectDeletionError);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ key: S.String, value: S.String, source: ResourceTagSource }),
+      ).annotate({ identifier: "ResourceTag" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ResourceTag);
+    case 1:
+      return S.Array(EnvironmentError);
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ EnvironmentFailureReasonsList.pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          overallDeploymentStatus: S.optional(OverallDeploymentStatus),
+          environmentFailureReasons: S.optional(EnvironmentFailureReasons),
+        }),
+      ).annotate({
+        identifier: "EnvironmentDeploymentDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          projectStatus: S.optional(ProjectStatus),
+          failureReasons: S.optional(FailureReasons),
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          resourceTags: S.optional(ResourceTags),
+          glossaryTerms: S.optional(GlossaryTerms),
+          domainUnitId: S.optional(S.String),
+          projectProfileId: S.optional(S.String),
+          userParameters: S.optional(EnvironmentConfigurationUserParametersList),
+          environmentDeploymentDetails: S.optional(EnvironmentDeploymentDetails),
+          projectCategory: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateProjectOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
+          member: Member,
+          designation: UserDesignation,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/createMembership",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateProjectMembershipInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ key: S.String, value: S.String, isValueEditable: S.Boolean }),
+      ).annotate({ identifier: "ResourceTagParameter" });
+    case 7:
+      return S.Array(ResourceTagParameter);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+          isEditable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EnvironmentConfigurationParameter",
+      });
+    case 1:
+      return S.Array(EnvironmentConfigurationParameter);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ssmPath: S.optional(S.String),
+          parameterOverrides: S.optional(EnvironmentConfigurationParametersList),
+          resolvedParameters: S.optional(EnvironmentConfigurationParametersList),
+        }),
+      ).annotate({
+        identifier: "EnvironmentConfigurationParametersDetails",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ awsAccountId: S.String }),
+        /*@__PURE__*/ S.Struct({ awsAccountIdPath: S.String }),
+      ]);
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ regionName: S.String }),
+        /*@__PURE__*/ S.Struct({ regionNamePath: S.String }),
+      ]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          id: S.optional(SensitiveString),
+          environmentBlueprintId: S.String,
+          description: S.optional(SensitiveString),
+          deploymentMode: S.optional(DeploymentMode),
+          configurationParameters: S.optional(EnvironmentConfigurationParametersDetails),
+          awsAccount: S.optional(AwsAccount),
+          accountPools: S.optional(AccountPoolList),
+          awsRegion: S.optional(Region),
+          deploymentOrder: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EnvironmentConfiguration" });
+    case 6:
+      return S.Array(EnvironmentConfiguration);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          status: S.optional(Status),
+          projectResourceTags: S.optional(ProjectResourceTagParameters),
+          allowCustomProjectResourceTags: S.optional(S.Boolean),
+          projectResourceTagsDescription: S.optional(SensitiveString),
+          environmentConfigurations: S.optional(EnvironmentConfigurationsList),
+          domainUnitIdentifier: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/project-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateProjectProfileInput",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          status: S.optional(Status),
+          projectResourceTags: S.optional(ProjectResourceTagParameters),
+          allowCustomProjectResourceTags: S.optional(S.Boolean),
+          projectResourceTagsDescription: S.optional(SensitiveString),
+          environmentConfigurations: S.optional(EnvironmentConfigurationsList),
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          domainUnitId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectProfileOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ domainUnitId: S.String, includeChildDomainUnits: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "DomainUnitTarget" });
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ domainUnitTarget: DomainUnitTarget })]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          selectionMode: RuleScopeSelectionMode,
+          specificAssetTypes: S.optional(RuleAssetTypeList),
+        }),
+      ).annotate({ identifier: "AssetTypesForRule" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          selectionMode: RuleScopeSelectionMode,
+          specificProjects: S.optional(RuleProjectIdentifierList),
+        }),
+      ).annotate({ identifier: "ProjectsForRule" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          assetType: S.optional(AssetTypesForRule),
+          dataProduct: S.optional(S.Boolean),
+          project: S.optional(ProjectsForRule),
+        }),
+      ).annotate({ identifier: "RuleScope" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ typeIdentifier: S.String, typeRevision: S.String }),
+      ).annotate({ identifier: "MetadataFormReference" });
+    case 7:
+      return S.Array(MetadataFormReference);
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ requiredMetadataForms: S.optional(RequiredMetadataFormList) }),
+      ).annotate({
+        identifier: "MetadataFormEnforcementDetail",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ requiredGlossaryTermIds: S.optional(GlossaryTermIdentifiers) }),
+      ).annotate({
+        identifier: "GlossaryTermEnforcementDetail",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ metadataFormEnforcementDetail: MetadataFormEnforcementDetail }),
+        /*@__PURE__*/ S.Struct({ glossaryTermEnforcementDetail: GlossaryTermEnforcementDetail }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: SensitiveString,
+          target: RuleTarget,
+          action: RuleAction,
+          scope: RuleScope,
+          detail: RuleDetail,
+          description: S.optional(SensitiveString),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/rules" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateRuleInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          name: SensitiveString,
+          ruleType: RuleType,
+          target: RuleTarget,
+          action: RuleAction,
+          scope: RuleScope,
+          detail: RuleDetail,
+          targetType: S.optional(RuleTargetType),
+          description: S.optional(SensitiveString),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          createdBy: S.String,
+        }),
+      ).annotate({ identifier: "CreateRuleOutput" });
+    case 5:
+      return S.suspend(() => S.Struct({ identifier: S.String, revision: S.String })).annotate({
+        identifier: "ListingRevisionInput",
+      });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ listing: ListingRevisionInput })]);
+    case 7:
+      return S.suspend(() => S.Struct({ assetId: S.String, targetName: S.String })).annotate({
+        identifier: "AssetTargetNameMap",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(AssetTargetNameMap);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String,
+          subscriptionTargetIdentifier: S.optional(S.String),
+          grantedEntity: GrantedEntityInput,
+          assetTargetNames: S.optional(AssetTargetNames),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/subscription-grants" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateSubscriptionGrantInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ id: S.String, revision: S.String })).annotate({
+        identifier: "ListingRevision",
+      });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ listing: ListingRevision })]);
+    case 4:
+      return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
+        identifier: "FailureCause",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String,
+          assetRevision: S.String,
+          status: SubscriptionGrantStatus,
+          targetName: S.optional(S.String),
+          failureCause: S.optional(FailureCause),
+          grantedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          assetScope: S.optional(AssetScope),
+          permissions: S.optional(Permissions),
+        }),
+      ).annotate({ identifier: "SubscribedAsset" });
+    case 6:
+      return S.Array(SubscribedAsset);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdBy: S.String,
+          updatedBy: S.optional(S.String),
+          domainId: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          environmentId: S.optional(S.String),
+          subscriptionTargetId: S.String,
+          grantedEntity: GrantedEntity,
+          status: SubscriptionGrantOverallStatus,
+          assets: S.optional(SubscribedAssets),
+          subscriptionId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateSubscriptionGrantOutput",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ identifier: S.optional(S.String) })).annotate({
+        identifier: "SubscribedProjectInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ identifier: S.optional(S.String) })).annotate({
+        identifier: "SubscribedIamPrincipalInput",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ project: SubscribedProjectInput }),
+        /*@__PURE__*/ S.Struct({ user: SubscribedUserInput }),
+        /*@__PURE__*/ S.Struct({ group: SubscribedGroupInput }),
+        /*@__PURE__*/ S.Struct({ iam: SubscribedIamPrincipalInput }),
+      ]);
+    case 3:
+      return S.Array(SubscribedPrincipalInput);
+    case 4:
+      return S.suspend(() => S.Struct({ identifier: S.String })).annotate({
+        identifier: "SubscribedListingInput",
+      });
+    case 5:
+      return S.Array(SubscribedListingInput);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          subscribedPrincipals: SubscribedPrincipalInputs,
+          subscribedListings: SubscribedListingInputs,
+          requestReason: SensitiveString,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          metadataForms: S.optional(MetadataFormInputs),
+          assetPermissions: S.optional(AssetPermissions),
+          assetScopes: S.optional(AcceptedAssetScopes),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/subscription-requests" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateSubscriptionRequestInput",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ formName: S.String, content: S.String })).annotate({
+        identifier: "SubscriptionTargetForm",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SubscriptionTargetForm);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          name: SensitiveString,
+          type: S.String,
+          subscriptionTargetConfig: SubscriptionTargetForms,
+          authorizedPrincipals: AuthorizedPrincipalIdentifiers,
+          manageAccessRole: S.String,
+          applicableAssetTypes: ApplicableAssetTypes,
+          provider: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateSubscriptionTargetInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          authorizedPrincipals: AuthorizedPrincipalIdentifiers,
+          domainId: S.String,
+          projectId: S.String,
+          environmentId: S.String,
+          name: SensitiveString,
+          type: S.String,
+          createdBy: S.String,
+          updatedBy: S.optional(S.String),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          manageAccessRole: S.optional(S.String),
+          applicableAssetTypes: ApplicableAssetTypes,
+          subscriptionTargetConfig: SubscriptionTargetForms,
+          provider: S.String,
+          subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
+        }),
+      ).annotate({
+        identifier: "CreateSubscriptionTargetOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          userIdentifier: S.String,
+          userType: S.optional(UserType),
+          sessionName: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/user-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateUserProfileInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          id: S.optional(S.String),
+          type: S.optional(UserProfileType),
+          status: S.optional(UserProfileStatus),
+          details: S.optional(UserProfileDetails),
+        }),
+      ).annotate({ identifier: "CreateUserProfileOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAccountPoolInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/assets/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAssetInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAssetFilterInput" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/asset-types/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAssetTypeInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/connections/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteConnectionInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
+        identifier: "DeleteConnectionOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")) }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/data-export-configuration",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteDataExportConfigurationInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDataProductInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+          retainPermissionsOnRevokeFailure: S.optional(S.Boolean).pipe(
+            T.HttpQuery("retainPermissionsOnRevokeFailure"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/data-sources/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDataSourceInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          databaseName: S.String,
+          schemaName: S.optional(S.String),
+          status: SelfGrantStatus,
+          failureCause: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SelfGrantStatusDetail" });
+    case 7:
+      return S.Array(SelfGrantStatusDetail);
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ selfGrantStatusDetails: SelfGrantStatusDetails })).annotate(
+        {
+          identifier: "GlueSelfGrantStatusOutput",
+        },
+      );
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ glueSelfGrantStatus: GlueSelfGrantStatusOutput }),
+        /*@__PURE__*/ S.Struct({ redshiftSelfGrantStatus: RedshiftSelfGrantStatusOutput }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.optional(DataSourceStatus),
+          type: S.optional(S.String),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          domainId: S.String,
+          projectId: S.String,
+          environmentId: S.optional(S.String),
+          connectionId: S.optional(S.String),
+          configuration: S.optional(DataSourceConfigurationOutput),
+          enableSetting: S.optional(EnableSetting),
+          publishOnImport: S.optional(S.Boolean),
+          assetFormsOutput: S.optional(FormOutputList),
+          schedule: S.optional(ScheduleConfiguration),
+          lastRunStatus: S.optional(DataSourceRunStatus),
+          lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastRunErrorMessage: S.optional(DataSourceErrorMessage),
+          errorMessage: S.optional(DataSourceErrorMessage),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          selfGrantStatus: S.optional(SelfGrantStatusOutput),
+          retainPermissionsOnRevokeFailure: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DeleteDataSourceOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+          skipDeletionCheck: S.optional(S.Boolean).pipe(T.HttpQuery("skipDeletionCheck")),
+          cascadeDelete: S.optional(S.Boolean).pipe(T.HttpQuery("cascadeDelete")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v2/domains/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDomainInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ status: DomainStatus })).annotate({
+        identifier: "DeleteDomainOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/domain-units/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDomainUnitInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/environments/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteEnvironmentInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvironmentActionInput",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteEnvironmentActionResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvironmentBlueprintInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentBlueprintIdentifier: S.String.pipe(
+            T.HttpLabel("environmentBlueprintIdentifier"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/environment-blueprint-configurations/{environmentBlueprintIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvironmentBlueprintConfigurationInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteEnvironmentProfileInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          formTypeIdentifier: S.String.pipe(T.HttpLabel("formTypeIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/form-types/{formTypeIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteFormTypeInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/glossaries/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteGlossaryInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/glossary-terms/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteGlossaryTermInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/lineage/events/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteLineageEventInput" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          domainId: S.optional(S.String),
+          processingStatus: S.optional(LineageEventProcessingStatus),
+        }),
+      ).annotate({ identifier: "DeleteLineageEventOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/listings/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteListingInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/notebooks/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteNotebookInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          skipDeletionCheck: S.optional(S.Boolean).pipe(T.HttpQuery("skipDeletionCheck")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/projects/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteProjectInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
+          member: Member,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/deleteMembership",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectMembershipInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/project-profiles/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectProfileInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v2/domains/{domainIdentifier}/rules/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteRuleInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteSubscriptionGrantInput",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteSubscriptionRequestInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteSubscriptionTargetInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
+          formName: S.String.pipe(T.HttpQuery("formName")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteTimeSeriesDataPointsInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          environmentRoleArn: S.String.pipe(T.HttpLabel("environmentRoleArn")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateEnvironmentRoleInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          entityType: GovernedEntityType.pipe(T.HttpLabel("entityType")),
+          governedGlossaryTerms: GovernedGlossaryTerms,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/disassociate-governed-terms",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateGovernedTermsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAccountPoolInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/assets/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAssetInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: SensitiveString,
+          typeIdentifier: S.String,
+          typeRevision: S.String,
+          externalIdentifier: S.optional(S.String),
+          revision: S.String,
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          firstRevisionCreatedBy: S.optional(S.String),
+          glossaryTerms: S.optional(GlossaryTerms),
+          governedGlossaryTerms: S.optional(GovernedGlossaryTerms),
+          owningProjectId: S.String,
+          domainId: S.String,
+          listing: S.optional(AssetListingDetails),
+          formsOutput: FormOutputList,
+          readOnlyFormsOutput: S.optional(FormOutputList),
+          latestTimeSeriesDataPointFormsOutput: S.optional(
+            TimeSeriesDataPointSummaryFormOutputList,
+          ),
+        }),
+      ).annotate({ identifier: "GetAssetOutput" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAssetFilterInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/asset-types/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAssetTypeInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          name: S.String,
+          revision: S.String,
+          description: S.optional(SensitiveString),
+          formsOutput: FormsOutputMap,
+          owningProjectId: S.String,
+          originDomainId: S.optional(S.String),
+          originProjectId: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetAssetTypeOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          withSecret: S.optional(S.Boolean).pipe(T.HttpQuery("withSecret")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/connections/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetConnectionInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accessKeyId: S.optional(S.String),
+          secretAccessKey: S.optional(SensitiveString),
+          sessionToken: S.optional(SensitiveString),
+          expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ConnectionCredentials" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          connectionCredentials: S.optional(ConnectionCredentials),
+          configurations: S.optional(Configurations),
+          connectionId: S.String,
+          description: S.optional(SensitiveString),
+          domainId: S.String,
+          domainUnitId: S.String,
+          environmentId: S.optional(S.String),
+          environmentUserRole: S.optional(S.String),
+          name: S.String,
+          physicalEndpoints: PhysicalEndpoints,
+          projectId: S.optional(S.String),
+          props: S.optional(ConnectionPropertiesOutput),
+          type: ConnectionType,
+          scope: S.optional(ConnectionScope),
+        }),
+      ).annotate({ identifier: "GetConnectionOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")) }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/data-export-configuration",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetDataExportConfigurationInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ kmsKeyArn: S.optional(S.String), sseAlgorithm: S.optional(S.String) }),
+      ).annotate({ identifier: "EncryptionConfiguration" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isExportEnabled: S.optional(S.Boolean),
+          status: S.optional(ConfigurationStatus),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          s3TableBucketArn: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "GetDataExportConfigurationOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDataProductInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/data-sources/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDataSourceInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.optional(DataSourceStatus),
+          type: S.optional(S.String),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          domainId: S.String,
+          projectId: S.String,
+          environmentId: S.optional(S.String),
+          connectionId: S.optional(S.String),
+          configuration: S.optional(DataSourceConfigurationOutput),
+          recommendation: S.optional(RecommendationConfiguration),
+          enableSetting: S.optional(EnableSetting),
+          publishOnImport: S.optional(S.Boolean),
+          assetFormsOutput: S.optional(FormOutputList),
+          schedule: S.optional(ScheduleConfiguration),
+          lastRunStatus: S.optional(DataSourceRunStatus),
+          lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastRunErrorMessage: S.optional(DataSourceErrorMessage),
+          lastRunAssetCount: S.optional(S.Number),
+          errorMessage: S.optional(DataSourceErrorMessage),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          selfGrantStatus: S.optional(SelfGrantStatusOutput),
+        }),
+      ).annotate({ identifier: "GetDataSourceOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/data-source-runs/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDataSourceRunInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          added: S.optional(S.Number),
+          updated: S.optional(S.Number),
+          unchanged: S.optional(S.Number),
+          skipped: S.optional(S.Number),
+          failed: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RunStatisticsForAssets" });
+    case 6:
+      return S.suspend(() => S.Struct({ importStatus: S.optional(LineageImportStatus) })).annotate({
+        identifier: "DataSourceRunLineageSummary",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          dataSourceId: S.String,
+          id: S.String,
+          projectId: S.String,
+          status: DataSourceRunStatus,
+          type: DataSourceRunType,
+          dataSourceConfigurationSnapshot: S.optional(S.String),
+          runStatisticsForAssets: S.optional(RunStatisticsForAssets),
+          lineageSummary: S.optional(DataSourceRunLineageSummary),
+          errorMessage: S.optional(DataSourceErrorMessage),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          stoppedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "GetDataSourceRunOutput" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ identifier: S.String.pipe(T.HttpLabel("identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDomainInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), message: S.optional(S.String) }),
+      ).annotate({ identifier: "FailureReason" });
+    case 2:
+      return S.Array(FailureReason);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ successfullyDeletedProjectCount: S.optional(S.Number) }),
+      ).annotate({ identifier: "DeleteProgress" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          rootDomainUnitId: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          singleSignOn: S.optional(SingleSignOn),
+          domainExecutionRole: S.String,
+          arn: S.optional(S.String),
+          kmsKeyIdentifier: S.optional(S.String),
+          status: DomainStatus,
+          portalUrl: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(Tags),
+          domainVersion: S.optional(DomainVersion),
+          serviceRole: S.optional(S.String),
+          failureReasons: S.optional(FailureReasonsList),
+          deleteProgress: S.optional(DeleteProgress),
+        }),
+      ).annotate({ identifier: "GetDomainOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/domain-units/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDomainUnitInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          name: SensitiveString,
+          parentDomainUnitId: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          owners: DomainUnitOwners,
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          lastUpdatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDomainUnitOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environments/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetEnvironmentInput" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetEnvironmentActionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetEnvironmentBlueprintInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentBlueprintIdentifier: S.String.pipe(
+            T.HttpLabel("environmentBlueprintIdentifier"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environment-blueprint-configurations/{environmentBlueprintIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetEnvironmentBlueprintConfigurationInput",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ RegionalParameter.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          region: S.String,
+          parameters: ResourceConfigurationParameterMap,
+        }),
+      ).annotate({ identifier: "ResourceConfiguration" });
+    case 5:
+      return S.Array(ResourceConfiguration);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          locationRegistrationRole: S.optional(S.String),
+          locationRegistrationExcludeS3Locations: S.optional(S3LocationList),
+        }),
+      ).annotate({
+        identifier: "LakeFormationConfiguration",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ lakeFormationConfiguration: LakeFormationConfiguration }),
+      ]);
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ProvisioningConfiguration);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          environmentBlueprintId: S.String,
+          provisioningRoleArn: S.optional(S.String),
+          environmentRolePermissionBoundary: S.optional(S.String),
+          manageAccessRoleArn: S.optional(S.String),
+          enabledRegions: S.optional(EnabledRegionList),
+          regionalParameters: S.optional(RegionalParameterMap),
+          allowUserProvidedConfigurations: S.optional(S.Boolean),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          resourceConfigurations: S.optional(ResourceConfigurations),
+          provisioningConfigurations: S.optional(ProvisioningConfigurationList),
+        }),
+      ).annotate({
+        identifier: "GetEnvironmentBlueprintConfigurationOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/credentials",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetEnvironmentCredentialsInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accessKeyId: S.optional(S.String),
+          secretAccessKey: S.optional(SensitiveString),
+          sessionToken: S.optional(SensitiveString),
+          expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "GetEnvironmentCredentialsOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetEnvironmentProfileInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          formTypeIdentifier: S.String.pipe(T.HttpLabel("formTypeIdentifier")),
+          revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/form-types/{formTypeIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetFormTypeInput" });
+    case 6:
+      return S.suspend(() => S.Struct({ name: SensitiveString, revision: S.String })).annotate({
+        identifier: "Import",
+      });
+    case 7:
+      return S.Array(Import);
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          name: SensitiveString,
+          revision: S.String,
+          model: Model,
+          owningProjectId: S.optional(S.String),
+          originDomainId: S.optional(S.String),
+          originProjectId: S.optional(S.String),
+          status: S.optional(FormTypeStatus),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          imports: S.optional(ImportList),
+        }),
+      ).annotate({ identifier: "GetFormTypeOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/glossaries/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetGlossaryInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          owningProjectId: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          status: GlossaryStatus,
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          usageRestrictions: S.optional(GlossaryUsageRestrictions),
+        }),
+      ).annotate({ identifier: "GetGlossaryOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/glossary-terms/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetGlossaryTermInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          glossaryId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          shortDescription: S.optional(SensitiveString),
+          longDescription: S.optional(SensitiveString),
+          termRelations: S.optional(TermRelations),
+          status: GlossaryTermStatus,
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          usageRestrictions: S.optional(GlossaryUsageRestrictions),
+        }),
+      ).annotate({ identifier: "GetGlossaryTermOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          groupIdentifier: S.String.pipe(T.HttpLabel("groupIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/group-profiles/{groupIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetGroupProfileInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/get-portal-login-url" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetIamPortalLoginUrlInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ authCodeUrl: S.optional(S.String), userProfileId: S.String }),
+      ).annotate({
+        identifier: "GetIamPortalLoginUrlOutput",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/jobRuns/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetJobRunInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          queryStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          queryEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          totalQueriesProcessed: S.optional(S.Number),
+          numQueriesFailed: S.optional(S.Number),
+          errorMessages: S.optional(FailedQueryProcessingErrorMessages),
+        }),
+      ).annotate({
+        identifier: "LineageSqlQueryRunDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ sqlQueryRunDetails: S.optional(LineageSqlQueryRunDetails) }),
+      ).annotate({ identifier: "LineageRunDetails" });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ lineageRunDetails: LineageRunDetails })]);
+    case 4:
+      return S.suspend(() => S.Struct({ message: S.String })).annotate({
+        identifier: "JobRunError",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          id: S.optional(S.String),
+          jobId: S.optional(S.String),
+          jobType: S.optional(JobType),
+          runMode: S.optional(JobRunMode),
+          details: S.optional(JobRunDetails),
+          status: S.optional(JobRunStatus),
+          error: S.optional(JobRunError),
+          createdBy: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "GetJobRunOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/lineage/events/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetLineageEventInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String).pipe(T.HttpHeader("Domain-Id")),
+          id: S.optional(S.String).pipe(T.HttpHeader("Id")),
+          event: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+          createdBy: S.optional(S.String).pipe(T.HttpHeader("Created-By")),
+          processingStatus: S.optional(LineageEventProcessingStatus).pipe(
+            T.HttpHeader("Processing-Status"),
+          ),
+          eventTime: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("Event-Time"),
+          ),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("Created-At"),
+          ),
+        }),
+      ).annotate({ identifier: "GetLineageEventOutput" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("timestamp"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/lineage/nodes/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetLineageNodeInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "LineageNodeReference" });
+    case 2:
+      return S.Array(LineageNodeReference);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          id: S.String,
+          typeName: S.String,
+          typeRevision: S.optional(S.String),
+          sourceIdentifier: S.optional(S.String),
+          eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          formsOutput: S.optional(FormOutputList),
+          upstreamNodes: S.optional(LineageNodeReferenceList),
+          downstreamNodes: S.optional(LineageNodeReferenceList),
+        }),
+      ).annotate({ identifier: "GetLineageNodeOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          listingRevision: S.optional(S.String).pipe(T.HttpQuery("listingRevision")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/listings/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetListingInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.optional(S.String),
+          assetRevision: S.optional(S.String),
+          assetType: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          forms: S.optional(S.String),
+          latestTimeSeriesDataPointForms: S.optional(TimeSeriesDataPointSummaryFormOutputList),
+          glossaryTerms: S.optional(DetailedGlossaryTerms),
+          governedGlossaryTerms: S.optional(DetailedGlossaryTerms),
+          owningProjectId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetListing" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          listingId: S.optional(S.String),
+          listingRevision: S.optional(S.String),
+          glossaryTerms: S.optional(DetailedGlossaryTerms),
+        }),
+      ).annotate({ identifier: "ListingSummary" });
+    case 7:
+      return S.Array(ListingSummary);
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataProductId: S.optional(S.String),
+          dataProductRevision: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          forms: S.optional(S.String),
+          glossaryTerms: S.optional(DetailedGlossaryTerms),
+          owningProjectId: S.optional(S.String),
+          items: S.optional(ListingSummaries),
+        }),
+      ).annotate({ identifier: "DataProductListing" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ assetListing: AssetListing }),
+        /*@__PURE__*/ S.Struct({ dataProductListing: DataProductListing }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          listingRevision: S.String,
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedBy: S.optional(S.String),
+          item: S.optional(ListingItem),
+          name: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          status: S.optional(ListingStatus),
+        }),
+      ).annotate({ identifier: "GetListingOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          type: S.optional(MetadataGenerationRunType).pipe(T.HttpQuery("type")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetMetadataGenerationRunInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: MetadataGenerationTargetType,
+          identifier: S.String,
+          revision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MetadataGenerationRunTarget",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: MetadataGenerationRunType,
+          status: MetadataGenerationRunStatus,
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MetadataGenerationRunTypeStat",
+      });
+    case 6:
+      return S.Array(MetadataGenerationRunTypeStat);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          target: S.optional(MetadataGenerationRunTarget),
+          status: S.optional(MetadataGenerationRunStatus),
+          type: S.optional(MetadataGenerationRunType),
+          types: S.optional(MetadataGenerationRunTypes),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          owningProjectId: S.String,
+          typeStats: S.optional(MetadataGenerationRunTypeStats),
+        }),
+      ).annotate({
+        identifier: "GetMetadataGenerationRunOutput",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/notebooks/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetNotebookInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/notebook-exports/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetNotebookExportInput" });
+    case 2:
+      return S.suspend(() => S.Struct({ uri: S.optional(SensitiveString) })).annotate({
+        identifier: "S3Destination",
+      });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3: S3Destination })]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          owningProjectId: S.String,
+          notebookId: S.String,
+          fileFormat: FileFormat,
+          status: NotebookExportStatus,
+          outputLocation: S.optional(OutputLocation),
+          error: S.optional(NotebookExportError),
+          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetNotebookExportOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/notebook-runs/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetNotebookRunInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ instanceType: S.optional(S.String), environmentVersion: S.optional(S.String) }),
+      ).annotate({ identifier: "ComputeConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          networkAccessType: NetworkAccessType,
+          vpcId: S.optional(S.String),
+          subnetIds: S.optional(SubnetIds),
+          securityGroupIds: S.optional(SecurityGroupIds),
+        }),
+      ).annotate({ identifier: "NetworkConfig" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ runTimeoutInMinutes: S.optional(S.Number) })).annotate({
+        identifier: "TimeoutConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ projectS3Path: S.optional(S.String), kmsKeyArn: S.optional(S.String) }),
+      ).annotate({ identifier: "StorageConfig" });
+    case 2:
+      return S.suspend(() => S.Struct({ notifyOn: NotifyOnStates })).annotate({
+        identifier: "NotificationConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(TriggerSourceType), name: S.optional(S.String) }),
+      ).annotate({ identifier: "TriggerSource" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          owningProjectId: S.String,
+          notebookId: S.String,
+          scheduleId: S.optional(S.String),
+          status: NotebookRunStatus,
+          cellOrder: S.optional(CellOrder),
+          metadata: S.optional(Metadata),
+          parameters: S.optional(Parameters),
+          computeConfiguration: S.optional(ComputeConfig),
+          networkConfiguration: S.optional(NetworkConfig),
+          timeoutConfiguration: S.optional(TimeoutConfig),
+          environmentConfiguration: S.optional(EnvironmentConfig),
+          storageConfiguration: S.optional(StorageConfig),
+          notificationConfiguration: S.optional(NotificationConfig),
+          triggerSource: S.optional(TriggerSource),
+          error: S.optional(NotebookRunError),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "GetNotebookRunOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/projects/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetProjectInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/project-profiles/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetProjectProfileInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          status: S.optional(Status),
+          projectResourceTags: S.optional(ProjectResourceTagParameters),
+          allowCustomProjectResourceTags: S.optional(S.Boolean),
+          projectResourceTagsDescription: S.optional(SensitiveString),
+          environmentConfigurations: S.optional(EnvironmentConfigurationsList),
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          domainUnitId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetProjectProfileOutput" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/rules/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetRuleInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          revision: S.String,
+          name: SensitiveString,
+          ruleType: RuleType,
+          target: RuleTarget,
+          action: RuleAction,
+          scope: RuleScope,
+          detail: RuleDetail,
+          targetType: S.optional(RuleTargetType),
+          description: S.optional(SensitiveString),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          createdBy: S.String,
+          lastUpdatedBy: S.String,
+        }),
+      ).annotate({ identifier: "GetRuleOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/subscriptions/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSubscriptionInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSubscriptionGrantInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSubscriptionRequestDetailsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSubscriptionTargetInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          formName: S.String.pipe(T.HttpQuery("formName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTimeSeriesDataPointInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          formName: S.String,
+          typeIdentifier: S.String,
+          typeRevision: S.optional(S.String),
+          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          content: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TimeSeriesDataPointFormOutput",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          entityId: S.optional(S.String),
+          entityType: S.optional(TimeSeriesEntityType),
+          formName: S.optional(S.String),
+          form: S.optional(TimeSeriesDataPointFormOutput),
+        }),
+      ).annotate({
+        identifier: "GetTimeSeriesDataPointOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          userIdentifier: S.String.pipe(T.HttpLabel("userIdentifier")),
+          type: S.optional(UserProfileType).pipe(T.HttpQuery("type")),
+          sessionName: S.optional(S.String).pipe(T.HttpQuery("sessionName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/user-profiles/{userIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetUserProfileInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
+          sortBy: S.optional(SortFieldAccountPool).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/account-pools" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListAccountPoolsInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(SensitiveString),
+          resolutionStrategy: S.optional(ResolutionStrategy),
+          domainUnitId: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          updatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountPoolSummary" });
+    case 4:
+      return S.Array(AccountPoolSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(AccountPoolSummaries), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAccountPoolsOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}/accounts",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAccountsInAccountPoolInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(AccountInfoList), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListAccountsInAccountPoolOutput",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
+          status: S.optional(FilterStatus).pipe(T.HttpQuery("status")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListAssetFiltersInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          assetId: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          status: S.optional(FilterStatus),
+          effectiveColumnNames: S.optional(ColumnNameList),
+          effectiveRowFilter: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetFilterSummary" });
+    case 2:
+      return S.Array(AssetFilterSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ items: AssetFilters, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAssetFiltersOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/assets/{identifier}/revisions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListAssetRevisionsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          id: S.optional(S.String),
+          revision: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "AssetRevision" });
+    case 6:
+      return S.Array(AssetRevision);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(AssetRevisions), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAssetRevisionsOutput" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          sortBy: S.optional(SortFieldConnection).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          name: S.optional(S.String).pipe(T.HttpQuery("name")),
+          environmentIdentifier: S.optional(S.String).pipe(T.HttpQuery("environmentIdentifier")),
+          projectIdentifier: S.optional(S.String).pipe(T.HttpQuery("projectIdentifier")),
+          type: S.optional(ConnectionType).pipe(T.HttpQuery("type")),
+          scope: S.optional(ConnectionScope).pipe(T.HttpQuery("scope")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/connections" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListConnectionsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          configurations: S.optional(Configurations),
+          connectionId: S.String,
+          domainId: S.String,
+          domainUnitId: S.String,
+          environmentId: S.optional(S.String),
+          name: S.String,
+          physicalEndpoints: PhysicalEndpoints,
+          projectId: S.optional(S.String),
+          props: S.optional(ConnectionPropertiesOutput),
+          type: ConnectionType,
+          scope: S.optional(ConnectionScope),
+        }),
+      ).annotate({ identifier: "ConnectionSummary" });
+    case 2:
+      return S.Array(ConnectionSummary);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ items: ConnectionSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListConnectionsOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListDataProductRevisionsInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          id: S.optional(S.String),
+          revision: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataProductRevision" });
+    case 6:
+      return S.Array(DataProductRevision);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ items: DataProductRevisions, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListDataProductRevisionsOutput",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          status: S.optional(DataAssetActivityStatus).pipe(T.HttpQuery("status")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/data-source-runs/{identifier}/activities",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListDataSourceRunActivitiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          eventId: S.optional(S.String),
+          eventStatus: S.optional(LineageEventProcessingStatus),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LineageInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          database: SensitiveString,
+          dataSourceRunId: S.String,
+          technicalName: SensitiveString,
+          dataAssetStatus: DataAssetActivityStatus,
+          projectId: S.String,
+          dataAssetId: S.optional(S.String),
+          technicalDescription: S.optional(SensitiveString),
+          errorMessage: S.optional(DataSourceErrorMessage),
+          lineageSummary: S.optional(LineageInfo),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "DataSourceRunActivity" });
+    case 3:
+      return S.Array(DataSourceRunActivity);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ items: DataSourceRunActivities, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListDataSourceRunActivitiesOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          dataSourceIdentifier: S.String.pipe(T.HttpLabel("dataSourceIdentifier")),
+          status: S.optional(DataSourceRunStatus).pipe(T.HttpQuery("status")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/data-sources/{dataSourceIdentifier}/runs",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListDataSourceRunsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          dataSourceId: S.String,
+          type: DataSourceRunType,
+          status: DataSourceRunStatus,
+          projectId: S.String,
+          runStatisticsForAssets: S.optional(RunStatisticsForAssets),
+          errorMessage: S.optional(DataSourceErrorMessage),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          stoppedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lineageSummary: S.optional(DataSourceRunLineageSummary),
+        }),
+      ).annotate({ identifier: "DataSourceRunSummary" });
+    case 7:
+      return S.Array(DataSourceRunSummary);
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ items: DataSourceRunSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDataSourceRunsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          projectIdentifier: S.String.pipe(T.HttpQuery("projectIdentifier")),
+          environmentIdentifier: S.optional(S.String).pipe(T.HttpQuery("environmentIdentifier")),
+          connectionIdentifier: S.optional(S.String).pipe(T.HttpQuery("connectionIdentifier")),
+          type: S.optional(S.String).pipe(T.HttpQuery("type")),
+          status: S.optional(DataSourceStatus).pipe(T.HttpQuery("status")),
+          name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/data-sources" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListDataSourcesInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          environmentId: S.optional(S.String),
+          connectionId: S.optional(S.String),
+          dataSourceId: S.String,
+          name: SensitiveString,
+          type: S.String,
+          status: DataSourceStatus,
+          enableSetting: S.optional(EnableSetting),
+          schedule: S.optional(ScheduleConfiguration),
+          lastRunStatus: S.optional(DataSourceRunStatus),
+          lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastRunErrorMessage: S.optional(DataSourceErrorMessage),
+          lastRunAssetCount: S.optional(S.Number),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          description: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "DataSourceSummary" });
+    case 3:
+      return S.Array(DataSourceSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ items: DataSourceSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDataSourcesOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(DomainStatus).pipe(T.HttpQuery("status")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/v2/domains" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDomainsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          arn: S.String,
+          managedAccountId: S.String,
+          status: DomainStatus,
+          portalUrl: S.optional(S.String),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          domainVersion: S.optional(DomainVersion),
+        }),
+      ).annotate({ identifier: "DomainSummary" });
+    case 7:
+      return S.Array(DomainSummary);
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ items: DomainSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDomainsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          parentDomainUnitIdentifier: S.String.pipe(T.HttpQuery("parentDomainUnitIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/domain-units" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListDomainUnitsForParentInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ name: S.String, id: S.String })).annotate({
+        identifier: "DomainUnitSummary",
+      });
+    case 3:
+      return S.Array(DomainUnitSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ items: DomainUnitSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListDomainUnitsForParentOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityType: DataZoneEntityType.pipe(T.HttpLabel("entityType")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/owners",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListEntityOwnersInput" });
+    case 6:
+      return S.suspend(() => S.Struct({ userId: S.optional(S.String) })).annotate({
+        identifier: "OwnerUserPropertiesOutput",
+      });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ user: OwnerUserPropertiesOutput }),
+        /*@__PURE__*/ S.Struct({ group: OwnerGroupPropertiesOutput }),
+      ]);
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(OwnerPropertiesOutput);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ owners: EntityOwners, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEntityOwnersOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEnvironmentActionsInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          environmentId: S.String,
+          id: S.String,
+          name: S.String,
+          parameters: ActionParameters,
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentActionSummary" });
+    case 4:
+      return S.Array(EnvironmentActionSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(ListEnvironmentActionSummaries),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEnvironmentActionsOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environment-blueprint-configurations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEnvironmentBlueprintConfigurationsInput",
+      });
+    case 7:
+      return S.Array(EnvironmentBlueprintConfigurationItem);
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(EnvironmentBlueprintConfigurations),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEnvironmentBlueprintConfigurationsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          name: S.optional(S.String).pipe(T.HttpQuery("name")),
+          managed: S.optional(S.Boolean).pipe(T.HttpQuery("managed")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/environment-blueprints" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEnvironmentBlueprintsInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          description: S.optional(SensitiveString),
+          provider: S.String,
+          provisioningProperties: ProvisioningProperties,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          blueprintCategory: S.optional(BlueprintCategory),
+        }),
+      ).annotate({
+        identifier: "EnvironmentBlueprintSummary",
+      });
+    case 3:
+      return S.Array(EnvironmentBlueprintSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ items: EnvironmentBlueprintSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListEnvironmentBlueprintsOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          awsAccountId: S.optional(S.String).pipe(T.HttpQuery("awsAccountId")),
+          awsAccountRegion: S.optional(S.String).pipe(T.HttpQuery("awsAccountRegion")),
+          environmentBlueprintIdentifier: S.optional(S.String).pipe(
+            T.HttpQuery("environmentBlueprintIdentifier"),
+          ),
+          projectIdentifier: S.optional(S.String).pipe(T.HttpQuery("projectIdentifier")),
+          name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/environment-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListEnvironmentProfilesInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          awsAccountId: S.optional(S.String),
+          awsAccountRegion: S.optional(S.String),
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          environmentBlueprintId: S.String,
+          projectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnvironmentProfileSummary",
+      });
+    case 7:
+      return S.Array(EnvironmentProfileSummary);
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ items: EnvironmentProfileSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListEnvironmentProfilesOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          awsAccountId: S.optional(S.String).pipe(T.HttpQuery("awsAccountId")),
+          status: S.optional(EnvironmentStatus).pipe(T.HttpQuery("status")),
+          awsAccountRegion: S.optional(S.String).pipe(T.HttpQuery("awsAccountRegion")),
+          projectIdentifier: S.String.pipe(T.HttpQuery("projectIdentifier")),
+          environmentProfileIdentifier: S.optional(S.String).pipe(
+            T.HttpQuery("environmentProfileIdentifier"),
+          ),
+          environmentBlueprintIdentifier: S.optional(S.String).pipe(
+            T.HttpQuery("environmentBlueprintIdentifier"),
+          ),
+          provider: S.optional(S.String).pipe(T.HttpQuery("provider")),
+          name: S.optional(S.String).pipe(T.HttpQuery("name")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/environments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListEnvironmentsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String,
+          id: S.optional(S.String),
+          domainId: S.String,
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          environmentProfileId: S.optional(S.String),
+          awsAccountId: S.optional(S.String),
+          awsAccountRegion: S.optional(S.String),
+          provider: S.String,
+          status: S.optional(EnvironmentStatus),
+          environmentConfigurationId: S.optional(SensitiveString),
+          environmentConfigurationName: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "EnvironmentSummary" });
+    case 3:
+      return S.Array(EnvironmentSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ items: EnvironmentSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEnvironmentsOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")),
+          status: S.optional(JobRunStatus).pipe(T.HttpQuery("status")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/jobs/{jobIdentifier}/runs",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListJobRunsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          jobId: S.optional(S.String),
+          jobType: S.optional(JobType),
+          runId: S.optional(S.String),
+          runMode: S.optional(JobRunMode),
+          status: S.optional(JobRunStatus),
+          error: S.optional(JobRunError),
+          createdBy: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "JobRunSummary" });
+    case 7:
+      return S.Array(JobRunSummary);
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(JobRunSummaries), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListJobRunsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          timestampAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("timestampAfter"),
+          ),
+          timestampBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("timestampBefore"),
+          ),
+          processingStatus: S.optional(LineageEventProcessingStatus).pipe(
+            T.HttpQuery("processingStatus"),
+          ),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/lineage/events" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListLineageEventsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), namespace: S.optional(S.String) }),
+      ).annotate({ identifier: "NameIdentifier" });
+    case 3:
+      return S.Array(NameIdentifier);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          eventType: S.optional(OpenLineageRunState),
+          runId: S.optional(S.String),
+          job: S.optional(NameIdentifier),
+          inputs: S.optional(NameIdentifiers),
+          outputs: S.optional(NameIdentifiers),
+        }),
+      ).annotate({
+        identifier: "OpenLineageRunEventSummary",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ openLineageRunEventSummary: OpenLineageRunEventSummary }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          domainId: S.optional(S.String),
+          processingStatus: S.optional(LineageEventProcessingStatus),
+          eventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          eventSummary: S.optional(EventSummary),
+          createdBy: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "LineageEventSummary" });
+    case 7:
+      return S.Array(LineageEventSummary);
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(LineageEventSummaries), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListLineageEventsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          direction: S.optional(EdgeDirection).pipe(T.HttpQuery("direction")),
+          eventTimestampGTE: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("timestampGTE"),
+          ),
+          eventTimestampLTE: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("timestampLTE"),
+          ),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/lineage/nodes/{identifier}/history",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListLineageNodeHistoryInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          id: S.String,
+          typeName: S.String,
+          typeRevision: S.optional(S.String),
+          sourceIdentifier: S.optional(S.String),
+          eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "LineageNodeSummary" });
+    case 3:
+      return S.Array(LineageNodeSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nodes: S.optional(LineageNodeSummaries), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListLineageNodeHistoryOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          status: S.optional(MetadataGenerationRunStatus).pipe(T.HttpQuery("status")),
+          type: S.optional(MetadataGenerationRunType).pipe(T.HttpQuery("type")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          targetIdentifier: S.optional(S.String).pipe(T.HttpQuery("targetIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListMetadataGenerationRunsInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          target: S.optional(MetadataGenerationRunTarget),
+          status: S.optional(MetadataGenerationRunStatus),
+          type: S.optional(MetadataGenerationRunType),
+          types: S.optional(MetadataGenerationRunTypes),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          owningProjectId: S.String,
+        }),
+      ).annotate({
+        identifier: "MetadataGenerationRunItem",
+      });
+    case 7:
+      return S.Array(MetadataGenerationRunItem);
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(MetadataGenerationRuns), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListMetadataGenerationRunsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          owningProjectIdentifier: S.String.pipe(T.HttpQuery("owningProjectIdentifier")),
+          notebookIdentifier: S.optional(S.String).pipe(T.HttpQuery("notebookIdentifier")),
+          status: S.optional(NotebookRunStatus).pipe(T.HttpQuery("status")),
+          scheduleIdentifier: S.optional(S.String).pipe(T.HttpQuery("scheduleIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/notebook-runs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListNotebookRunsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          owningProjectId: S.String,
+          notebookId: S.String,
+          scheduleId: S.optional(S.String),
+          status: NotebookRunStatus,
+          triggerSource: S.optional(TriggerSource),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "NotebookRunSummary" });
+    case 3:
+      return S.Array(NotebookRunSummary);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(NotebookRunSummaryList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNotebookRunsOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          owningProjectIdentifier: S.String.pipe(T.HttpQuery("owningProjectIdentifier")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
+          status: S.optional(NotebookStatus).pipe(T.HttpQuery("status")),
+          type: S.optional(NotebookType).pipe(T.HttpQuery("type")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/notebooks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListNotebooksInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: SensitiveString,
+          owningProjectId: S.String,
+          domainId: S.String,
+          status: NotebookStatus,
+          type: S.optional(NotebookType),
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NotebookSummary" });
+    case 7:
+      return S.Array(NotebookSummary);
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(NotebookSummaryList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNotebooksOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          type: NotificationType.pipe(T.HttpQuery("type")),
+          afterTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("afterTimestamp"),
+          ),
+          beforeTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("beforeTimestamp"),
+          ),
+          subjects: S.optional(NotificationSubjects).pipe(T.HttpQuery("subjects")),
+          taskStatus: S.optional(TaskStatus).pipe(T.HttpQuery("taskStatus")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/notifications" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListNotificationsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ type: NotificationResourceType, id: S.String, name: S.optional(S.String) }),
+      ).annotate({ identifier: "NotificationResource" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ subject: S.String, resource: NotificationResource, role: NotificationRole }),
+      ).annotate({ identifier: "Topic" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          domainIdentifier: S.String,
+          type: NotificationType,
+          topic: Topic,
+          title: SensitiveString,
+          message: SensitiveString,
+          status: S.optional(TaskStatus),
+          actionLink: SensitiveString,
+          creationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastUpdatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          metadata: S.optional(MetadataMap),
+        }),
+      ).annotate({ identifier: "NotificationOutput" });
+    case 5:
+      return S.Array(NotificationOutput);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ notifications: S.optional(NotificationsList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListNotificationsOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityType: TargetEntityType.pipe(T.HttpLabel("entityType")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          policyType: ManagedPolicyType.pipe(T.HttpQuery("policyType")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/policies/managed/{entityType}/{entityIdentifier}/grants",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListPolicyGrantsInput" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principal: S.optional(PolicyGrantPrincipal),
+          detail: S.optional(PolicyGrantDetail),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          grantId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PolicyGrantMember" });
+    case 1:
+      return S.Array(PolicyGrantMember);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ grantList: PolicyGrantList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListPolicyGrantsOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
+          sortBy: S.optional(SortFieldProject).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/memberships",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListProjectMembershipsInput",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ userId: S.String })).annotate({
+        identifier: "UserDetails",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ groupId: S.String })).annotate({
+        identifier: "GroupDetails",
+      });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ user: UserDetails }),
+        /*@__PURE__*/ S.Struct({ group: GroupDetails }),
+      ]);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ memberDetails: MemberDetails, designation: UserDesignation }),
+      ).annotate({ identifier: "ProjectMember" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ProjectMember);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ members: ProjectMembers, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListProjectMembershipsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
+          sortBy: S.optional(SortFieldProject).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/project-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListProjectProfilesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          status: S.optional(Status),
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          domainUnitId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectProfileSummary" });
+    case 4:
+      return S.Array(ProjectProfileSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(ProjectProfileSummaries), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListProjectProfilesOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          userIdentifier: S.optional(S.String).pipe(T.HttpQuery("userIdentifier")),
+          groupIdentifier: S.optional(S.String).pipe(T.HttpQuery("groupIdentifier")),
+          name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
+          projectCategory: S.optional(S.String).pipe(T.HttpQuery("projectCategory")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/projects" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListProjectsInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          projectStatus: S.optional(ProjectStatus),
+          failureReasons: S.optional(FailureReasons),
+          createdBy: S.String,
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          domainUnitId: S.optional(S.String),
+          projectCategory: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectSummary" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ProjectSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(ProjectSummaries), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListProjectsOutput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          targetType: RuleTargetType.pipe(T.HttpLabel("targetType")),
+          targetIdentifier: S.String.pipe(T.HttpLabel("targetIdentifier")),
+          ruleType: S.optional(RuleType).pipe(T.HttpQuery("ruleType")),
+          action: S.optional(RuleAction).pipe(T.HttpQuery("ruleAction")),
+          projectIds: S.optional(ProjectIds).pipe(T.HttpQuery("projectIds")),
+          assetTypes: S.optional(AssetTypeIdentifiers).pipe(T.HttpQuery("assetTypes")),
+          dataProduct: S.optional(S.Boolean).pipe(T.HttpQuery("dataProduct")),
+          includeCascaded: S.optional(S.Boolean).pipe(T.HttpQuery("includeCascaded")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/list-rules/{targetType}/{targetIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListRulesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.optional(S.String),
+          revision: S.optional(S.String),
+          ruleType: S.optional(RuleType),
+          name: S.optional(SensitiveString),
+          targetType: S.optional(RuleTargetType),
+          target: S.optional(RuleTarget),
+          action: S.optional(RuleAction),
+          scope: S.optional(RuleScope),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuleSummary" });
+    case 4:
+      return S.Array(RuleSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ items: RuleSummaries, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRulesOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentId: S.optional(S.String).pipe(T.HttpQuery("environmentId")),
+          subscriptionTargetId: S.optional(S.String).pipe(T.HttpQuery("subscriptionTargetId")),
+          subscribedListingId: S.optional(S.String).pipe(T.HttpQuery("subscribedListingId")),
+          subscriptionId: S.optional(S.String).pipe(T.HttpQuery("subscriptionId")),
+          owningProjectId: S.optional(S.String).pipe(T.HttpQuery("owningProjectId")),
+          owningIamPrincipalArn: S.optional(S.String).pipe(T.HttpQuery("owningIamPrincipalArn")),
+          owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
+          owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
+          sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/subscription-grants" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListSubscriptionGrantsInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdBy: S.String,
+          updatedBy: S.optional(S.String),
+          domainId: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          environmentId: S.optional(S.String),
+          subscriptionTargetId: S.String,
+          grantedEntity: GrantedEntity,
+          status: SubscriptionGrantOverallStatus,
+          assets: S.optional(SubscribedAssets),
+          subscriptionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubscriptionGrantSummary" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SubscriptionGrantSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ items: SubscriptionGrants, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListSubscriptionGrantsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          status: S.optional(SubscriptionRequestStatus).pipe(T.HttpQuery("status")),
+          subscribedListingId: S.optional(S.String).pipe(T.HttpQuery("subscribedListingId")),
+          owningProjectId: S.optional(S.String).pipe(T.HttpQuery("owningProjectId")),
+          owningIamPrincipalArn: S.optional(S.String).pipe(T.HttpQuery("owningIamPrincipalArn")),
+          approverProjectId: S.optional(S.String).pipe(T.HttpQuery("approverProjectId")),
+          owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
+          owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
+          sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/subscription-requests" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListSubscriptionRequestsInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          formName: S.optional(S.String),
+          typeName: SensitiveString,
+          typeRevision: S.String,
+        }),
+      ).annotate({ identifier: "MetadataFormSummary" });
+    case 4:
+      return S.Array(MetadataFormSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdBy: S.String,
+          updatedBy: S.optional(S.String),
+          domainId: S.String,
+          status: SubscriptionRequestStatus,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          requestReason: SensitiveString,
+          subscribedPrincipals: SubscribedPrincipals,
+          subscribedListings: SubscribedListings,
+          reviewerId: S.optional(S.String),
+          decisionComment: S.optional(SensitiveString),
+          existingSubscriptionId: S.optional(S.String),
+          metadataFormsSummary: S.optional(MetadataFormsSummary),
+        }),
+      ).annotate({
+        identifier: "SubscriptionRequestSummary",
+      });
+    case 6:
+      return S.Array(SubscriptionRequestSummary);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ items: SubscriptionRequests, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListSubscriptionRequestsOutput",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          subscriptionRequestIdentifier: S.optional(S.String).pipe(
+            T.HttpQuery("subscriptionRequestIdentifier"),
+          ),
+          status: S.optional(SubscriptionStatus).pipe(T.HttpQuery("status")),
+          subscribedListingId: S.optional(S.String).pipe(T.HttpQuery("subscribedListingId")),
+          owningProjectId: S.optional(S.String).pipe(T.HttpQuery("owningProjectId")),
+          owningIamPrincipalArn: S.optional(S.String).pipe(T.HttpQuery("owningIamPrincipalArn")),
+          owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
+          owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
+          approverProjectId: S.optional(S.String).pipe(T.HttpQuery("approverProjectId")),
+          sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v2/domains/{domainIdentifier}/subscriptions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListSubscriptionsInput" });
+    case 1:
+      return S.Array(SubscriptionSummary);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ items: Subscriptions, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSubscriptionsOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListSubscriptionTargetsInput",
+      });
+    case 4:
+      return S.Array(SubscriptionTargetSummary);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ items: SubscriptionTargets, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListSubscriptionTargetsOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
+          formName: S.String.pipe(T.HttpQuery("formName")),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("startedAt"),
+          ),
+          endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("endedAt"),
+          ),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTimeSeriesDataPointsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(TimeSeriesDataPointSummaryFormOutputList),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListTimeSeriesDataPointsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          event: T.StreamingInput.pipe(T.HttpPayload()),
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/lineage/events" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PostLineageEventInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), domainId: S.optional(S.String) }),
+      ).annotate({ identifier: "PostLineageEventOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          formName: S.String,
+          typeIdentifier: S.String,
+          typeRevision: S.optional(S.String),
+          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TimeSeriesDataPointFormInput",
+      });
+    case 5:
+      return S.Array(TimeSeriesDataPointFormInput);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
+          forms: TimeSeriesDataPointFormInputList,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PostTimeSeriesDataPointsInput",
+      });
+    case 7:
+      return S.Array(TimeSeriesDataPointFormOutput);
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+          entityId: S.optional(S.String),
+          entityType: S.optional(TimeSeriesEntityType),
+          forms: S.optional(TimeSeriesDataPointFormOutputList),
+        }),
+      ).annotate({
+        identifier: "PostTimeSeriesDataPointsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          enableExport: S.Boolean,
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/data-export-configuration",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutDataExportConfigurationInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          region: S.String,
+          parameters: ResourceConfigurationParameterMap,
+        }),
+      ).annotate({ identifier: "PutResourceConfiguration" });
+    case 3:
+      return S.Array(PutResourceConfiguration);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentBlueprintIdentifier: S.String.pipe(
+            T.HttpLabel("environmentBlueprintIdentifier"),
+          ),
+          provisioningRoleArn: S.optional(S.String),
+          manageAccessRoleArn: S.optional(S.String),
+          environmentRolePermissionBoundary: S.optional(S.String),
+          enabledRegions: EnabledRegionList,
+          regionalParameters: S.optional(RegionalParameterMap),
+          resourceConfigurations: S.optional(PutResourceConfigurations),
+          allowUserProvidedConfigurations: S.optional(S.Boolean),
+          globalParameters: S.optional(GlobalParameterMap),
+          provisioningConfigurations: S.optional(ProvisioningConfigurationList),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/environment-blueprint-configurations/{environmentBlueprintIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutEnvironmentBlueprintConfigurationInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          relationType: RelationType,
+          relationDirection: RelationDirection,
+          maxPathLength: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RelationPattern" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          attribute: S.String,
+          value: S.optional(S.String),
+          intValue: S.optional(S.Number),
+          operator: S.optional(FilterOperator),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 7:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => FilterClause).annotate({ identifier: "FilterClause" }),
+      );
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ filter: Filter }),
+        /*@__PURE__*/ S.Struct({
+          and: /*@__PURE__*/ S.suspend(() => FilterList).annotate({ identifier: "FilterList" }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          or: /*@__PURE__*/ S.suspend(() => FilterList).annotate({ identifier: "FilterList" }),
+        }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          entityType: GraphEntityType,
+          identifier: S.String,
+          filters: S.optional(FilterClause),
+        }),
+      ).annotate({ identifier: "EntityPattern" });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ relationPattern: RelationPattern }),
+        /*@__PURE__*/ S.Struct({ entityPattern: EntityPattern }),
+      ]);
+    case 3:
+      return S.Array(MatchClause);
+    case 4:
+      return S.suspend(() => S.Struct({ formNames: S.optional(FormNameList) })).annotate({
+        identifier: "AdditionalAttributes",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          match: MatchClauses,
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          additionalAttributes: S.optional(AdditionalAttributes),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/graph/query" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "QueryGraphInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          id: S.String,
+          typeName: S.String,
+          typeRevision: S.optional(S.String),
+          sourceIdentifier: S.optional(S.String),
+          eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          formsOutput: S.optional(FormOutputList),
+          upstreamLineageNodeIds: S.optional(LineageNodeIds),
+          downstreamLineageNodeIds: S.optional(LineageNodeIds),
+        }),
+      ).annotate({ identifier: "LineageNodeItem" });
+    case 7:
+      return S.Union([/*@__PURE__*/ S.Struct({ lineageNode: LineageNodeItem })]);
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(ResultItem);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(ResultItemList), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "QueryGraphOutput" });
+    case 2:
+      return S.Array(S.Number);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          predictionTarget: S.optional(S.String),
+          predictionChoices: S.optional(PredictionChoices),
+        }),
+      ).annotate({ identifier: "RejectChoice" });
+    case 4:
+      return S.Array(RejectChoice);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          revision: S.optional(S.String).pipe(T.HttpQuery("revision")),
+          rejectRule: S.optional(RejectRule),
+          rejectChoices: S.optional(RejectChoices),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/assets/{identifier}/reject-predictions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "RejectPredictionsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ domainId: S.String, assetId: S.String, assetRevision: S.String }),
+      ).annotate({ identifier: "RejectPredictionsOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          decisionComment: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/reject",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RejectSubscriptionRequestInput",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityType: DataZoneEntityType.pipe(T.HttpLabel("entityType")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          owner: OwnerProperties,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/removeOwner",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "RemoveEntityOwnerInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          entityType: TargetEntityType.pipe(T.HttpLabel("entityType")),
+          entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+          policyType: ManagedPolicyType,
+          principal: PolicyGrantPrincipal,
+          grantIdentifier: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/policies/managed/{entityType}/{entityIdentifier}/removeGrant",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "RemovePolicyGrantInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          retainPermissions: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/subscriptions/{identifier}/revoke",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "RevokeSubscriptionInput" });
+    case 3:
+      return S.suspend(() => S.Struct({ attribute: S.String })).annotate({
+        identifier: "SearchInItem",
+      });
+    case 4:
+      return S.Array(SearchInItem);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ attribute: S.String, order: S.optional(SortOrder) }),
+      ).annotate({ identifier: "SearchSort" });
+    case 6:
+      return S.Array(SearchOutputAdditionalAttribute);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          owningProjectIdentifier: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          searchScope: InventorySearchScope,
+          searchText: S.optional(S.String),
+          searchIn: S.optional(SearchInList),
+          filters: S.optional(FilterClause),
+          sort: S.optional(SearchSort),
+          additionalAttributes: S.optional(SearchOutputAdditionalAttributes),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/search" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SearchInput" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ startOffset: S.optional(S.Number), endOffset: S.optional(S.Number) }),
+      ).annotate({ identifier: "MatchOffset" });
+    case 1:
+      return S.Array(MatchOffset);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attribute: S.optional(S.String),
+          text: S.optional(S.String),
+          matchOffsets: S.optional(MatchOffsets),
+        }),
+      ).annotate({ identifier: "TextMatchItem" });
+    case 3:
+      return S.Array(TextMatchItem);
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ textMatches: TextMatches })]);
+    case 5:
+      return S.Array(MatchRationaleItem);
+    case 6:
+      return S.suspend(() => S.Struct({ matchRationale: S.optional(MatchRationale) })).annotate({
+        identifier: "GlossaryItemAdditionalAttributes",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          owningProjectId: S.String,
+          description: S.optional(SensitiveString),
+          status: GlossaryStatus,
+          usageRestrictions: S.optional(GlossaryUsageRestrictions),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          additionalAttributes: S.optional(GlossaryItemAdditionalAttributes),
+        }),
+      ).annotate({ identifier: "GlossaryItem" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          glossaryId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          shortDescription: S.optional(SensitiveString),
+          usageRestrictions: S.optional(GlossaryUsageRestrictions),
+          longDescription: S.optional(SensitiveString),
+          termRelations: S.optional(TermRelations),
+          status: GlossaryTermStatus,
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          additionalAttributes: S.optional(GlossaryTermItemAdditionalAttributes),
+        }),
+      ).annotate({ identifier: "GlossaryTermItem" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          formsOutput: S.optional(FormOutputList),
+          readOnlyFormsOutput: S.optional(FormOutputList),
+          latestTimeSeriesDataPointFormsOutput: S.optional(
+            TimeSeriesDataPointSummaryFormOutputList,
+          ),
+          matchRationale: S.optional(MatchRationale),
+        }),
+      ).annotate({
+        identifier: "AssetItemAdditionalAttributes",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          identifier: S.String,
+          name: SensitiveString,
+          typeIdentifier: S.String,
+          typeRevision: S.String,
+          externalIdentifier: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          firstRevisionCreatedBy: S.optional(S.String),
+          glossaryTerms: S.optional(GlossaryTerms),
+          owningProjectId: S.String,
+          additionalAttributes: S.optional(AssetItemAdditionalAttributes),
+          governedGlossaryTerms: S.optional(GovernedGlossaryTerms),
+        }),
+      ).annotate({ identifier: "AssetItem" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          name: SensitiveString,
+          owningProjectId: S.String,
+          description: S.optional(SensitiveString),
+          glossaryTerms: S.optional(GlossaryTerms),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          firstRevisionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          firstRevisionCreatedBy: S.optional(S.String),
+          additionalAttributes: S.optional(DataProductItemAdditionalAttributes),
+        }),
+      ).annotate({ identifier: "DataProductResultItem" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ glossaryItem: GlossaryItem }),
+        /*@__PURE__*/ S.Struct({ glossaryTermItem: GlossaryTermItem }),
+        /*@__PURE__*/ S.Struct({ assetItem: AssetItem }),
+        /*@__PURE__*/ S.Struct({ dataProductItem: DataProductResultItem }),
+      ]);
+    case 5:
+      return S.Array(SearchInventoryResultItem);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(SearchInventoryResultItems),
+          nextToken: S.optional(S.String),
+          totalMatchCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SearchOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          groupType: GroupSearchType,
+          searchText: S.optional(SensitiveString),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/search-group-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SearchGroupProfilesInput" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(GroupProfileSummary);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(GroupProfileSummaries), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "SearchGroupProfilesOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ attribute: S.String, displayValue: S.optional(S.String) }),
+      ).annotate({ identifier: "AggregationListItem" });
+    case 3:
+      return S.Array(AggregationListItem);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          searchText: S.optional(S.String),
+          searchIn: S.optional(SearchInList),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          filters: S.optional(FilterClause),
+          aggregations: S.optional(AggregationList),
+          sort: S.optional(SearchSort),
+          additionalAttributes: S.optional(SearchOutputAdditionalAttributes),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/listings/search" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SearchListingsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          forms: S.optional(S.String),
+          matchRationale: S.optional(MatchRationale),
+          latestTimeSeriesDataPointForms: S.optional(TimeSeriesDataPointSummaryFormOutputList),
+        }),
+      ).annotate({
+        identifier: "AssetListingItemAdditionalAttributes",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          listingId: S.optional(S.String),
+          listingRevision: S.optional(S.String),
+          name: S.optional(SensitiveString),
+          entityId: S.optional(S.String),
+          entityRevision: S.optional(S.String),
+          entityType: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          listingCreatedBy: S.optional(S.String),
+          listingUpdatedBy: S.optional(S.String),
+          glossaryTerms: S.optional(DetailedGlossaryTerms),
+          governedGlossaryTerms: S.optional(DetailedGlossaryTerms),
+          owningProjectId: S.optional(S.String),
+          additionalAttributes: S.optional(AssetListingItemAdditionalAttributes),
+        }),
+      ).annotate({ identifier: "AssetListingItem" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ forms: S.optional(S.String), matchRationale: S.optional(MatchRationale) }),
+      ).annotate({
+        identifier: "DataProductListingItemAdditionalAttributes",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          listingId: S.optional(S.String),
+          listingRevision: S.optional(S.String),
+          name: S.optional(SensitiveString),
+          entityId: S.optional(S.String),
+          entityRevision: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          listingCreatedBy: S.optional(S.String),
+          listingUpdatedBy: S.optional(S.String),
+          glossaryTerms: S.optional(DetailedGlossaryTerms),
+          owningProjectId: S.optional(S.String),
+          additionalAttributes: S.optional(DataProductListingItemAdditionalAttributes),
+          items: S.optional(ListingSummaryItems),
+        }),
+      ).annotate({ identifier: "DataProductListingItem" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ assetListing: AssetListingItem }),
+        /*@__PURE__*/ S.Struct({ dataProductListing: DataProductListingItem }),
+      ]);
+    case 2:
+      return S.Array(SearchResultItem);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          count: S.optional(S.Number),
+          displayValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AggregationOutputItem" });
+    case 4:
+      return S.Array(AggregationOutputItem);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          attribute: S.optional(S.String),
+          displayValue: S.optional(S.String),
+          items: S.optional(AggregationOutputItems),
+        }),
+      ).annotate({ identifier: "AggregationOutput" });
+    case 6:
+      return S.Array(AggregationOutput);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(SearchResultItems),
+          nextToken: S.optional(S.String),
+          totalMatchCount: S.optional(S.Number),
+          aggregates: S.optional(AggregationOutputList),
+        }),
+      ).annotate({ identifier: "SearchListingsOutput" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+          searchScope: TypesSearchScope,
+          searchText: S.optional(S.String),
+          searchIn: S.optional(SearchInList),
+          filters: S.optional(FilterClause),
+          sort: S.optional(SearchSort),
+          managed: S.Boolean,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/types-search" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SearchTypesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          name: SensitiveString,
+          revision: S.String,
+          model: S.optional(Model),
+          status: S.optional(FormTypeStatus),
+          owningProjectId: S.optional(S.String),
+          originDomainId: S.optional(S.String),
+          originProjectId: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          imports: S.optional(ImportList),
+        }),
+      ).annotate({ identifier: "FormTypeData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedBy: S.optional(S.String),
+          revision: S.String,
+          formsOutput: FormsOutputMap,
+        }),
+      ).annotate({ identifier: "LineageNodeTypeItem" });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ assetTypeItem: AssetTypeItem }),
+        /*@__PURE__*/ S.Struct({ formTypeItem: FormTypeData }),
+        /*@__PURE__*/ S.Struct({ lineageNodeTypeItem: LineageNodeTypeItem }),
+      ]);
+    case 4:
+      return S.Array(SearchTypesResultItem);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(SearchTypesResultItems),
+          nextToken: S.optional(S.String),
+          totalMatchCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SearchTypesOutput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          userType: UserSearchType,
+          searchText: S.optional(SensitiveString),
+          maxResults: S.optional(S.Number),
+          nextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/search-user-profiles" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SearchUserProfilesInput" });
+    case 7:
+      return S.Array(UserProfileSummary);
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ items: S.optional(UserProfileSummaries), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchUserProfilesOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          dataSourceIdentifier: S.String.pipe(T.HttpLabel("dataSourceIdentifier")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/data-sources/{dataSourceIdentifier}/runs",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartDataSourceRunInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          dataSourceId: S.String,
+          id: S.String,
+          projectId: S.String,
+          status: DataSourceRunStatus,
+          type: DataSourceRunType,
+          dataSourceConfigurationSnapshot: S.optional(S.String),
+          runStatisticsForAssets: S.optional(RunStatisticsForAssets),
+          errorMessage: S.optional(DataSourceErrorMessage),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          stoppedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "StartDataSourceRunOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          type: S.optional(MetadataGenerationRunType),
+          types: S.optional(MetadataGenerationRunTypes),
+          target: MetadataGenerationRunTarget,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          owningProjectIdentifier: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartMetadataGenerationRunInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          id: S.String,
+          status: S.optional(MetadataGenerationRunStatus),
+          type: S.optional(MetadataGenerationRunType),
+          types: S.optional(MetadataGenerationRunTypes),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          owningProjectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StartMetadataGenerationRunOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          notebookIdentifier: S.String,
+          owningProjectIdentifier: S.String,
+          fileFormat: FileFormat,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebook-exports" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartNotebookExportInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          owningProjectId: S.String,
+          notebookId: S.String,
+          fileFormat: FileFormat,
+          status: NotebookExportStatus,
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StartNotebookExportOutput",
+      });
+    case 7:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3: SensitiveString })]);
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          owningProjectIdentifier: S.String,
+          sourceLocation: SourceLocation,
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebook-imports" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartNotebookImportInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          notebookId: S.optional(S.String),
+          status: S.optional(NotebookStatus),
+          domainId: S.optional(S.String),
+          owningProjectId: S.optional(S.String),
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          sourceLocation: S.optional(SourceLocation),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StartNotebookImportOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          owningProjectIdentifier: S.String,
+          notebookIdentifier: S.String,
+          scheduleIdentifier: S.optional(S.String),
+          computeConfiguration: S.optional(ComputeConfig),
+          networkConfiguration: S.optional(NetworkConfig),
+          timeoutConfiguration: S.optional(TimeoutConfig),
+          notificationConfiguration: S.optional(NotificationConfig),
+          triggerSource: S.optional(TriggerSource),
+          metadata: S.optional(Metadata),
+          parameters: S.optional(Parameters),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebook-runs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartNotebookRunInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          owningProjectIdentifier: S.String,
+          sourceLocation: SourceLocation,
+          gitMetadata: S.optional(GitMetadata),
+          notebookId: S.optional(S.String),
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/domains/{domainIdentifier}/notebook-syncs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartNotebookSyncInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          notebookId: S.optional(S.String),
+          status: S.optional(NotebookStatus),
+          domainId: S.optional(S.String),
+          owningProjectId: S.optional(S.String),
+          sourceLocation: S.optional(SourceLocation),
+          gitMetadata: S.optional(GitMetadata),
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StartNotebookSyncOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/notebook-runs/{identifier}/stop",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopNotebookRunInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          owningProjectId: S.String,
+          status: NotebookRunStatus,
+        }),
+      ).annotate({ identifier: "StopNotebookRunOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          resolutionStrategy: S.optional(ResolutionStrategy),
+          accountSource: S.optional(AccountSource),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateAccountPoolInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          configuration: S.optional(AssetFilterConfiguration),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateAssetFilterInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          secretArn: S.optional(S.String),
+          basicAuthenticationCredentials: S.optional(BasicAuthenticationCredentials),
+        }),
+      ).annotate({
+        identifier: "AuthenticationConfigurationPatch",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          connectionProperties: S.optional(ConnectionProperties),
+          authenticationConfiguration: S.optional(AuthenticationConfigurationPatch),
+        }),
+      ).annotate({ identifier: "GlueConnectionPatch" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ glueConnectionInput: S.optional(GlueConnectionPatch) }),
+      ).annotate({ identifier: "GluePropertiesPatch" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          connectionProperties: S.optional(ConnectionProperties),
+          authenticationConfiguration: S.optional(AuthenticationConfigurationPatch),
+        }),
+      ).annotate({
+        identifier: "ConnectivityPropertiesPatch",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          connectivityPropertiesPatch: S.optional(ConnectivityPropertiesPatch),
+          snowflakeRole: S.optional(S.String),
+          lineageSync: S.optional(LineageSyncInput),
+        }),
+      ).annotate({ identifier: "SnowflakePropertiesPatch" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vpcId: S.optional(S.String),
+          subnetIds: S.optional(VpcConnectionSubnetIdList),
+          securityGroupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VpcPropertiesPatch" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ codeConnectionArn: S.optional(S.String), defaultBranch: S.optional(S.String) }),
+      ).annotate({ identifier: "GitPropertiesPatch" });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ athenaProperties: AthenaPropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ glueProperties: GluePropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ iamProperties: IamPropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ redshiftProperties: RedshiftPropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ sparkEmrProperties: SparkEmrPropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ s3Properties: S3PropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ snowflakeProperties: SnowflakePropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ amazonQProperties: AmazonQPropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ mlflowProperties: MlflowPropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ lakehouseProperties: LakehousePropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ vpcProperties: VpcPropertiesPatch }),
+        /*@__PURE__*/ S.Struct({ gitProperties: GitPropertiesPatch }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          configurations: S.optional(Configurations),
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          description: S.optional(SensitiveString),
+          awsLocation: S.optional(AwsLocation),
+          props: S.optional(ConnectionPropertiesPatch),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/connections/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateConnectionInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          configurations: S.optional(Configurations),
+          connectionId: S.String,
+          description: S.optional(SensitiveString),
+          domainId: S.String,
+          domainUnitId: S.String,
+          environmentId: S.optional(S.String),
+          name: S.String,
+          physicalEndpoints: PhysicalEndpoints,
+          projectId: S.optional(S.String),
+          props: S.optional(ConnectionPropertiesOutput),
+          type: ConnectionType,
+          scope: S.optional(ConnectionScope),
+        }),
+      ).annotate({ identifier: "UpdateConnectionOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          enableSetting: S.optional(EnableSetting),
+          publishOnImport: S.optional(S.Boolean),
+          assetFormsInput: S.optional(FormInputList),
+          schedule: S.optional(ScheduleConfiguration),
+          configuration: S.optional(DataSourceConfigurationInput),
+          recommendation: S.optional(RecommendationConfiguration),
+          retainPermissionsOnRevokeFailure: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/data-sources/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateDataSourceInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.optional(DataSourceStatus),
+          type: S.optional(S.String),
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          domainId: S.String,
+          projectId: S.String,
+          environmentId: S.optional(S.String),
+          connectionId: S.optional(S.String),
+          configuration: S.optional(DataSourceConfigurationOutput),
+          recommendation: S.optional(RecommendationConfiguration),
+          enableSetting: S.optional(EnableSetting),
+          publishOnImport: S.optional(S.Boolean),
+          assetFormsOutput: S.optional(FormOutputList),
+          schedule: S.optional(ScheduleConfiguration),
+          lastRunStatus: S.optional(DataSourceRunStatus),
+          lastRunAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastRunErrorMessage: S.optional(DataSourceErrorMessage),
+          errorMessage: S.optional(DataSourceErrorMessage),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          selfGrantStatus: S.optional(SelfGrantStatusOutput),
+          retainPermissionsOnRevokeFailure: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UpdateDataSourceOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          description: S.optional(S.String),
+          singleSignOn: S.optional(SingleSignOn),
+          domainExecutionRole: S.optional(S.String),
+          serviceRole: S.optional(S.String),
+          name: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/domains/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateDomainInput" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          rootDomainUnitId: S.optional(S.String),
+          description: S.optional(S.String),
+          singleSignOn: S.optional(SingleSignOn),
+          domainExecutionRole: S.optional(S.String),
+          serviceRole: S.optional(S.String),
+          name: S.optional(S.String),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "UpdateDomainOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          description: S.optional(SensitiveString),
+          name: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/domain-units/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateDomainUnitInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          domainId: S.String,
+          name: SensitiveString,
+          owners: DomainUnitOwners,
+          description: S.optional(SensitiveString),
+          parentDomainUnitId: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          createdBy: S.optional(S.String),
+          lastUpdatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateDomainUnitOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          glossaryTerms: S.optional(GlossaryTerms),
+          blueprintVersion: S.optional(S.String),
+          userParameters: S.optional(EnvironmentParametersList),
+          environmentConfigurationName: S.optional(SensitiveString),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/environments/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateEnvironmentInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          parameters: S.optional(ActionParameters),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEnvironmentActionInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          description: S.optional(S.String),
+          provisioningProperties: S.optional(ProvisioningProperties),
+          userParameters: S.optional(CustomParameterList),
+          blueprintCategory: S.optional(BlueprintCategory),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEnvironmentBlueprintInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(SensitiveString),
+          description: S.optional(S.String),
+          userParameters: S.optional(EnvironmentParametersList),
+          awsAccountId: S.optional(S.String),
+          awsAccountRegion: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEnvironmentProfileInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          status: S.optional(GlossaryStatus),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/glossaries/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateGlossaryInput" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          glossaryIdentifier: S.optional(S.String),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(SensitiveString),
+          shortDescription: S.optional(SensitiveString),
+          longDescription: S.optional(SensitiveString),
+          termRelations: S.optional(TermRelations),
+          status: S.optional(GlossaryTermStatus),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/glossary-terms/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateGlossaryTermInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          groupIdentifier: S.String.pipe(T.HttpLabel("groupIdentifier")),
+          status: GroupProfileStatus,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/group-profiles/{groupIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateGroupProfileInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          description: S.optional(SensitiveString),
+          status: S.optional(NotebookStatus),
+          name: S.optional(SensitiveString),
+          cellOrder: S.optional(CellOrder),
+          type: S.optional(NotebookType),
+          metadata: S.optional(Metadata),
+          parameters: S.optional(Parameters),
+          environmentConfiguration: S.optional(EnvironmentConfig),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/notebooks/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateNotebookInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          resourceTags: S.optional(Tags),
+          glossaryTerms: S.optional(GlossaryTerms),
+          domainUnitId: S.optional(S.String),
+          environmentDeploymentDetails: S.optional(EnvironmentDeploymentDetails),
+          userParameters: S.optional(EnvironmentConfigurationUserParametersList),
+          projectProfileVersion: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/projects/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateProjectInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          status: S.optional(Status),
+          projectResourceTags: S.optional(ProjectResourceTagParameters),
+          allowCustomProjectResourceTags: S.optional(S.Boolean),
+          projectResourceTagsDescription: S.optional(SensitiveString),
+          environmentConfigurations: S.optional(EnvironmentConfigurationsList),
+          domainUnitIdentifier: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/project-profiles/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateProjectProfileInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          currentOwner: S.String,
+          newOwner: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/root-domain-unit-owner",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateRootDomainUnitOwnerInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(SensitiveString),
+          description: S.optional(SensitiveString),
+          scope: S.optional(RuleScope),
+          detail: S.optional(RuleDetail),
+          includeChildDomainUnits: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/v2/domains/{domainIdentifier}/rules/{identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateRuleInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          revision: S.String,
+          name: SensitiveString,
+          ruleType: RuleType,
+          target: RuleTarget,
+          action: RuleAction,
+          scope: RuleScope,
+          detail: RuleDetail,
+          description: S.optional(SensitiveString),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          createdBy: S.String,
+          lastUpdatedBy: S.String,
+        }),
+      ).annotate({ identifier: "UpdateRuleOutput" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
+          status: SubscriptionGrantStatus,
+          failureCause: S.optional(FailureCause),
+          targetName: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}/status/{assetIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateSubscriptionGrantStatusInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          requestReason: SensitiveString,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateSubscriptionRequestInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+          identifier: S.String.pipe(T.HttpLabel("identifier")),
+          name: S.optional(SensitiveString),
+          authorizedPrincipals: S.optional(AuthorizedPrincipalIdentifiers),
+          applicableAssetTypes: S.optional(ApplicableAssetTypes),
+          subscriptionTargetConfig: S.optional(SubscriptionTargetForms),
+          manageAccessRole: S.optional(S.String),
+          provider: S.optional(S.String),
+          subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateSubscriptionTargetInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+          userIdentifier: S.String.pipe(T.HttpLabel("userIdentifier")),
+          type: S.optional(UserProfileType),
+          status: UserProfileStatus,
+          sessionName: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/domains/{domainIdentifier}/user-profiles/{userIdentifier}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateUserProfileInput" });
+  }
+}

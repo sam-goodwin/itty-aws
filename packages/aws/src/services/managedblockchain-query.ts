@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as C from "../category.ts";
@@ -152,58 +153,33 @@ export interface TokenIdentifier {
   contractAddress?: string;
   tokenId?: string;
 }
-const TokenIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.String,
-    contractAddress: S.optional(S.String),
-    tokenId: S.optional(S.String),
-  }),
-).annotate({ identifier: "TokenIdentifier" }) as any as S.Schema<TokenIdentifier>;
+const TokenIdentifier = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TokenIdentifier>;
 export interface OwnerIdentifier {
   address: string;
 }
-const OwnerIdentifier = /*@__PURE__*/ S.suspend(() => S.Struct({ address: S.String })).annotate({
-  identifier: "OwnerIdentifier",
-}) as any as S.Schema<OwnerIdentifier>;
+const OwnerIdentifier = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<OwnerIdentifier>;
 export interface BlockchainInstant {
   time?: Date;
 }
-const BlockchainInstant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))) }),
-).annotate({ identifier: "BlockchainInstant" }) as any as S.Schema<BlockchainInstant>;
+const BlockchainInstant = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BlockchainInstant>;
 export interface BatchGetTokenBalanceInputItem {
   tokenIdentifier: TokenIdentifier;
   ownerIdentifier: OwnerIdentifier;
   atBlockchainInstant?: BlockchainInstant;
 }
-const BatchGetTokenBalanceInputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenIdentifier: TokenIdentifier,
-    ownerIdentifier: OwnerIdentifier,
-    atBlockchainInstant: S.optional(BlockchainInstant),
-  }),
-).annotate({
-  identifier: "BatchGetTokenBalanceInputItem",
-}) as any as S.Schema<BatchGetTokenBalanceInputItem>;
+const BatchGetTokenBalanceInputItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BatchGetTokenBalanceInputItem>;
 export type GetTokenBalanceInputList = BatchGetTokenBalanceInputItem[];
-const GetTokenBalanceInputList = /*@__PURE__*/ S.Array(BatchGetTokenBalanceInputItem);
+const GetTokenBalanceInputList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface BatchGetTokenBalanceInput {
   getTokenBalanceInputs?: BatchGetTokenBalanceInputItem[];
 }
-const BatchGetTokenBalanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ getTokenBalanceInputs: S.optional(GetTokenBalanceInputList) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/batch-get-token-balance" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "BatchGetTokenBalanceInput",
-}) as any as S.Schema<BatchGetTokenBalanceInput>;
+const BatchGetTokenBalanceInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BatchGetTokenBalanceInput>;
 export interface BatchGetTokenBalanceOutputItem {
   ownerIdentifier?: OwnerIdentifier;
   tokenIdentifier?: TokenIdentifier;
@@ -211,19 +187,12 @@ export interface BatchGetTokenBalanceOutputItem {
   atBlockchainInstant: BlockchainInstant;
   lastUpdatedTime?: BlockchainInstant;
 }
-const BatchGetTokenBalanceOutputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerIdentifier: S.optional(OwnerIdentifier),
-    tokenIdentifier: S.optional(TokenIdentifier),
-    balance: S.String,
-    atBlockchainInstant: BlockchainInstant,
-    lastUpdatedTime: S.optional(BlockchainInstant),
-  }),
-).annotate({
-  identifier: "BatchGetTokenBalanceOutputItem",
-}) as any as S.Schema<BatchGetTokenBalanceOutputItem>;
+const BatchGetTokenBalanceOutputItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchGetTokenBalanceOutputItem>;
 export type BatchGetTokenBalanceOutputList = BatchGetTokenBalanceOutputItem[];
-const BatchGetTokenBalanceOutputList = /*@__PURE__*/ S.Array(BatchGetTokenBalanceOutputItem);
+const BatchGetTokenBalanceOutputList = /*@__PURE__*/ __L.at(__c0, 7);
 export type ErrorType = string;
 export interface BatchGetTokenBalanceErrorItem {
   tokenIdentifier?: TokenIdentifier;
@@ -233,85 +202,55 @@ export interface BatchGetTokenBalanceErrorItem {
   errorMessage: string;
   errorType: string;
 }
-const BatchGetTokenBalanceErrorItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenIdentifier: S.optional(TokenIdentifier),
-    ownerIdentifier: S.optional(OwnerIdentifier),
-    atBlockchainInstant: S.optional(BlockchainInstant),
-    errorCode: S.String,
-    errorMessage: S.String,
-    errorType: S.String,
-  }),
-).annotate({
-  identifier: "BatchGetTokenBalanceErrorItem",
-}) as any as S.Schema<BatchGetTokenBalanceErrorItem>;
+const BatchGetTokenBalanceErrorItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchGetTokenBalanceErrorItem>;
 export type BatchGetTokenBalanceErrors = BatchGetTokenBalanceErrorItem[];
-const BatchGetTokenBalanceErrors = /*@__PURE__*/ S.Array(BatchGetTokenBalanceErrorItem);
+const BatchGetTokenBalanceErrors = /*@__PURE__*/ __L.at(__c1, 1);
 export interface BatchGetTokenBalanceOutput {
   tokenBalances: BatchGetTokenBalanceOutputItem[];
   errors: BatchGetTokenBalanceErrorItem[];
 }
-const BatchGetTokenBalanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tokenBalances: BatchGetTokenBalanceOutputList, errors: BatchGetTokenBalanceErrors }),
-).annotate({
-  identifier: "BatchGetTokenBalanceOutput",
-}) as any as S.Schema<BatchGetTokenBalanceOutput>;
+const BatchGetTokenBalanceOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BatchGetTokenBalanceOutput>;
 export interface ContractIdentifier {
   network: string;
   contractAddress: string;
 }
-const ContractIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ network: S.String, contractAddress: S.String }),
-).annotate({ identifier: "ContractIdentifier" }) as any as S.Schema<ContractIdentifier>;
+const ContractIdentifier = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ContractIdentifier>;
 export interface GetAssetContractInput {
   contractIdentifier: ContractIdentifier;
 }
-const GetAssetContractInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ contractIdentifier: ContractIdentifier }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/get-asset-contract" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetAssetContractInput" }) as any as S.Schema<GetAssetContractInput>;
+const GetAssetContractInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetAssetContractInput>;
 export type QueryTokenStandard = string;
 export interface ContractMetadata {
   name?: string;
   symbol?: string;
   decimals?: number;
 }
-const ContractMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    symbol: S.optional(S.String),
-    decimals: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ContractMetadata" }) as any as S.Schema<ContractMetadata>;
+const ContractMetadata = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ContractMetadata>;
 export interface GetAssetContractOutput {
   contractIdentifier: ContractIdentifier;
   tokenStandard: string;
   deployerAddress: string;
   metadata?: ContractMetadata;
 }
-const GetAssetContractOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contractIdentifier: ContractIdentifier,
-    tokenStandard: S.String,
-    deployerAddress: S.String,
-    metadata: S.optional(ContractMetadata),
-  }),
-).annotate({ identifier: "GetAssetContractOutput" }) as any as S.Schema<GetAssetContractOutput>;
+const GetAssetContractOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetAssetContractOutput>;
 export interface GetTokenBalanceInput {
   tokenIdentifier: TokenIdentifier;
   ownerIdentifier: OwnerIdentifier;
   atBlockchainInstant?: BlockchainInstant;
 }
-const GetTokenBalanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenIdentifier: TokenIdentifier,
-    ownerIdentifier: OwnerIdentifier,
-    atBlockchainInstant: S.optional(BlockchainInstant),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/get-token-balance" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetTokenBalanceInput" }) as any as S.Schema<GetTokenBalanceInput>;
+const GetTokenBalanceInput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetTokenBalanceInput>;
 export interface GetTokenBalanceOutput {
   ownerIdentifier?: OwnerIdentifier;
   tokenIdentifier?: TokenIdentifier;
@@ -319,15 +258,10 @@ export interface GetTokenBalanceOutput {
   atBlockchainInstant: BlockchainInstant;
   lastUpdatedTime?: BlockchainInstant;
 }
-const GetTokenBalanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerIdentifier: S.optional(OwnerIdentifier),
-    tokenIdentifier: S.optional(TokenIdentifier),
-    balance: S.String,
-    atBlockchainInstant: BlockchainInstant,
-    lastUpdatedTime: S.optional(BlockchainInstant),
-  }),
-).annotate({ identifier: "GetTokenBalanceOutput" }) as any as S.Schema<GetTokenBalanceOutput>;
+const GetTokenBalanceOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetTokenBalanceOutput>;
 export type QueryTransactionHash = string;
 export type QueryTransactionId = string;
 export interface GetTransactionInput {
@@ -335,13 +269,7 @@ export interface GetTransactionInput {
   transactionId?: string;
   network: string;
 }
-const GetTransactionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionHash: S.optional(S.String),
-    transactionId: S.optional(S.String),
-    network: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/get-transaction" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "GetTransactionInput" }) as any as S.Schema<GetTransactionInput>;
+const GetTransactionInput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetTransactionInput>;
 export type BlockHash = string;
 export type ConfirmationStatus = string;
 export type ExecutionStatus = string;
@@ -367,121 +295,81 @@ export interface Transaction {
   confirmationStatus?: string;
   executionStatus?: string;
 }
-const Transaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.String,
-    blockHash: S.optional(S.String),
-    transactionHash: S.String,
-    blockNumber: S.optional(S.String),
-    transactionTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    transactionIndex: S.Number,
-    numberOfTransactions: S.Number,
-    to: S.String,
-    from: S.optional(S.String),
-    contractAddress: S.optional(S.String),
-    gasUsed: S.optional(S.String),
-    cumulativeGasUsed: S.optional(S.String),
-    effectiveGasPrice: S.optional(S.String),
-    signatureV: S.optional(S.Number),
-    signatureR: S.optional(S.String),
-    signatureS: S.optional(S.String),
-    transactionFee: S.optional(S.String),
-    transactionId: S.optional(S.String),
-    confirmationStatus: S.optional(S.String),
-    executionStatus: S.optional(S.String),
-  }),
-).annotate({ identifier: "Transaction" }) as any as S.Schema<Transaction>;
+const Transaction = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Transaction>;
 export interface GetTransactionOutput {
   transaction: Transaction;
 }
-const GetTransactionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ transaction: Transaction }),
-).annotate({ identifier: "GetTransactionOutput" }) as any as S.Schema<GetTransactionOutput>;
+const GetTransactionOutput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetTransactionOutput>;
 export interface ContractFilter {
   network: string;
   tokenStandard: string;
   deployerAddress: string;
 }
-const ContractFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ network: S.String, tokenStandard: S.String, deployerAddress: S.String }),
-).annotate({ identifier: "ContractFilter" }) as any as S.Schema<ContractFilter>;
+const ContractFilter = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ContractFilter>;
 export type NextToken = string;
 export interface ListAssetContractsInput {
   contractFilter: ContractFilter;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssetContractsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contractFilter: ContractFilter,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/list-asset-contracts" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListAssetContractsInput" }) as any as S.Schema<ListAssetContractsInput>;
+const ListAssetContractsInput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListAssetContractsInput>;
 export interface AssetContract {
   contractIdentifier: ContractIdentifier;
   tokenStandard: string;
   deployerAddress: string;
 }
-const AssetContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contractIdentifier: ContractIdentifier,
-    tokenStandard: S.String,
-    deployerAddress: S.String,
-  }),
-).annotate({ identifier: "AssetContract" }) as any as S.Schema<AssetContract>;
+const AssetContract = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AssetContract>;
 export type AssetContractList = AssetContract[];
-const AssetContractList = /*@__PURE__*/ S.Array(AssetContract);
+const AssetContractList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface ListAssetContractsOutput {
   contracts: AssetContract[];
   nextToken?: string;
 }
-const ListAssetContractsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ contracts: AssetContractList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListAssetContractsOutput" }) as any as S.Schema<ListAssetContractsOutput>;
+const ListAssetContractsOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListAssetContractsOutput>;
 export type ChainAddresses = string[];
-const ChainAddresses = /*@__PURE__*/ S.Array(S.String);
+const ChainAddresses = /*@__PURE__*/ __L.at(__c3, 1);
 export interface AddressIdentifierFilter {
   transactionEventToAddress: string[];
 }
-const AddressIdentifierFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ transactionEventToAddress: ChainAddresses }),
-).annotate({ identifier: "AddressIdentifierFilter" }) as any as S.Schema<AddressIdentifierFilter>;
+const AddressIdentifierFilter = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<AddressIdentifierFilter>;
 export interface TimeFilter {
   from?: BlockchainInstant;
   to?: BlockchainInstant;
 }
-const TimeFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ from: S.optional(BlockchainInstant), to: S.optional(BlockchainInstant) }),
-).annotate({ identifier: "TimeFilter" }) as any as S.Schema<TimeFilter>;
+const TimeFilter = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<TimeFilter>;
 export interface VoutFilter {
   voutSpent: boolean;
 }
-const VoutFilter = /*@__PURE__*/ S.suspend(() => S.Struct({ voutSpent: S.Boolean })).annotate({
-  identifier: "VoutFilter",
-}) as any as S.Schema<VoutFilter>;
+const VoutFilter = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<VoutFilter>;
 export type ConfirmationStatusIncludeList = string[];
 const ConfirmationStatusIncludeList =
   ChainAddresses as any as S.Schema<ConfirmationStatusIncludeList>;
 export interface ConfirmationStatusFilter {
   include: string[];
 }
-const ConfirmationStatusFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ include: ConfirmationStatusIncludeList }),
-).annotate({ identifier: "ConfirmationStatusFilter" }) as any as S.Schema<ConfirmationStatusFilter>;
+const ConfirmationStatusFilter = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ConfirmationStatusFilter>;
 export type ListFilteredTransactionEventsSortBy = string;
 export type SortOrder = string;
 export interface ListFilteredTransactionEventsSort {
   sortBy?: string;
   sortOrder?: string;
 }
-const ListFilteredTransactionEventsSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
-).annotate({
-  identifier: "ListFilteredTransactionEventsSort",
-}) as any as S.Schema<ListFilteredTransactionEventsSort>;
+const ListFilteredTransactionEventsSort = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListFilteredTransactionEventsSort>;
 export interface ListFilteredTransactionEventsInput {
   network: string;
   addressIdentifierFilter: AddressIdentifierFilter;
@@ -492,29 +380,10 @@ export interface ListFilteredTransactionEventsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListFilteredTransactionEventsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.String,
-    addressIdentifierFilter: AddressIdentifierFilter,
-    timeFilter: S.optional(TimeFilter),
-    voutFilter: S.optional(VoutFilter),
-    confirmationStatusFilter: S.optional(ConfirmationStatusFilter),
-    sort: S.optional(ListFilteredTransactionEventsSort),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/list-filtered-transaction-events" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListFilteredTransactionEventsInput",
-}) as any as S.Schema<ListFilteredTransactionEventsInput>;
+const ListFilteredTransactionEventsInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListFilteredTransactionEventsInput>;
 export type QueryTransactionEventType = string;
 export interface TransactionEvent {
   network: string;
@@ -534,43 +403,21 @@ export interface TransactionEvent {
   blockchainInstant?: BlockchainInstant;
   confirmationStatus?: string;
 }
-const TransactionEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.String,
-    transactionHash: S.String,
-    eventType: S.String,
-    from: S.optional(S.String),
-    to: S.optional(S.String),
-    value: S.optional(S.String),
-    contractAddress: S.optional(S.String),
-    tokenId: S.optional(S.String),
-    transactionId: S.optional(S.String),
-    voutIndex: S.optional(S.Number),
-    voutSpent: S.optional(S.Boolean),
-    spentVoutTransactionId: S.optional(S.String),
-    spentVoutTransactionHash: S.optional(S.String),
-    spentVoutIndex: S.optional(S.Number),
-    blockchainInstant: S.optional(BlockchainInstant),
-    confirmationStatus: S.optional(S.String),
-  }),
-).annotate({ identifier: "TransactionEvent" }) as any as S.Schema<TransactionEvent>;
+const TransactionEvent = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TransactionEvent>;
 export type TransactionEventList = TransactionEvent[];
-const TransactionEventList = /*@__PURE__*/ S.Array(TransactionEvent);
+const TransactionEventList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ListFilteredTransactionEventsOutput {
   events: TransactionEvent[];
   nextToken?: string;
 }
-const ListFilteredTransactionEventsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ events: TransactionEventList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListFilteredTransactionEventsOutput",
-}) as any as S.Schema<ListFilteredTransactionEventsOutput>;
+const ListFilteredTransactionEventsOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListFilteredTransactionEventsOutput>;
 export interface OwnerFilter {
   address: string;
 }
-const OwnerFilter = /*@__PURE__*/ S.suspend(() => S.Struct({ address: S.String })).annotate({
-  identifier: "OwnerFilter",
-}) as any as S.Schema<OwnerFilter>;
+const OwnerFilter = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<OwnerFilter>;
 export interface TokenFilter {
   network: string;
   contractAddress?: string;
@@ -583,16 +430,10 @@ export interface ListTokenBalancesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListTokenBalancesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerFilter: S.optional(OwnerFilter),
-    tokenFilter: TokenFilter,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/list-token-balances" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTokenBalancesInput" }) as any as S.Schema<ListTokenBalancesInput>;
+const ListTokenBalancesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListTokenBalancesInput>;
 export interface TokenBalance {
   ownerIdentifier?: OwnerIdentifier;
   tokenIdentifier?: TokenIdentifier;
@@ -602,14 +443,15 @@ export interface TokenBalance {
 }
 const TokenBalance = GetTokenBalanceOutput as any as S.Schema<TokenBalance>;
 export type TokenBalanceList = TokenBalance[];
-const TokenBalanceList = /*@__PURE__*/ S.Array(TokenBalance);
+const TokenBalanceList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface ListTokenBalancesOutput {
   tokenBalances: TokenBalance[];
   nextToken?: string;
 }
-const ListTokenBalancesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tokenBalances: TokenBalanceList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListTokenBalancesOutput" }) as any as S.Schema<ListTokenBalancesOutput>;
+const ListTokenBalancesOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListTokenBalancesOutput>;
 export interface ListTransactionEventsInput {
   transactionHash?: string;
   transactionId?: string;
@@ -617,26 +459,10 @@ export interface ListTransactionEventsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListTransactionEventsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionHash: S.optional(S.String),
-    transactionId: S.optional(S.String),
-    network: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/list-transaction-events" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTransactionEventsInput",
-}) as any as S.Schema<ListTransactionEventsInput>;
+const ListTransactionEventsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListTransactionEventsInput>;
 export interface ListTransactionEventsOutput {
   events: TransactionEvent[];
   nextToken?: string;
@@ -648,9 +474,7 @@ export interface ListTransactionsSort {
   sortBy?: string;
   sortOrder?: string;
 }
-const ListTransactionsSort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
-).annotate({ identifier: "ListTransactionsSort" }) as any as S.Schema<ListTransactionsSort>;
+const ListTransactionsSort = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ListTransactionsSort>;
 export interface ListTransactionsInput {
   address: string;
   network: string;
@@ -661,20 +485,10 @@ export interface ListTransactionsInput {
   maxResults?: number;
   confirmationStatusFilter?: ConfirmationStatusFilter;
 }
-const ListTransactionsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.String,
-    network: S.String,
-    fromBlockchainInstant: S.optional(BlockchainInstant),
-    toBlockchainInstant: S.optional(BlockchainInstant),
-    sort: S.optional(ListTransactionsSort),
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-    confirmationStatusFilter: S.optional(ConfirmationStatusFilter),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/list-transactions" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTransactionsInput" }) as any as S.Schema<ListTransactionsInput>;
+const ListTransactionsInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListTransactionsInput>;
 export interface TransactionOutputItem {
   transactionHash: string;
   transactionId?: string;
@@ -682,24 +496,20 @@ export interface TransactionOutputItem {
   transactionTimestamp: Date;
   confirmationStatus?: string;
 }
-const TransactionOutputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionHash: S.String,
-    transactionId: S.optional(S.String),
-    network: S.String,
-    transactionTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    confirmationStatus: S.optional(S.String),
-  }),
-).annotate({ identifier: "TransactionOutputItem" }) as any as S.Schema<TransactionOutputItem>;
+const TransactionOutputItem = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<TransactionOutputItem>;
 export type TransactionOutputList = TransactionOutputItem[];
-const TransactionOutputList = /*@__PURE__*/ S.Array(TransactionOutputItem);
+const TransactionOutputList = /*@__PURE__*/ __L.at(__c5, 3);
 export interface ListTransactionsOutput {
   transactions: TransactionOutputItem[];
   nextToken?: string;
 }
-const ListTransactionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ transactions: TransactionOutputList, nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListTransactionsOutput" }) as any as S.Schema<ListTransactionsOutput>;
+const ListTransactionsOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListTransactionsOutput>;
 export type ExceptionMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;
@@ -710,11 +520,12 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c5, 6);
 export type BatchGetTokenBalanceError =
   | AccessDeniedException
   | InternalServerException
@@ -1064,3 +875,419 @@ export const listTransactions: API.PaginatedOperationMethod<
     pageSize: "maxResults",
   } as const,
 })) as any;
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.String,
+          contractAddress: S.optional(S.String),
+          tokenId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TokenIdentifier" });
+    case 1:
+      return S.suspend(() => S.Struct({ address: S.String })).annotate({
+        identifier: "OwnerIdentifier",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))) }),
+      ).annotate({ identifier: "BlockchainInstant" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          tokenIdentifier: TokenIdentifier,
+          ownerIdentifier: OwnerIdentifier,
+          atBlockchainInstant: S.optional(BlockchainInstant),
+        }),
+      ).annotate({
+        identifier: "BatchGetTokenBalanceInputItem",
+      });
+    case 4:
+      return S.Array(BatchGetTokenBalanceInputItem);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ getTokenBalanceInputs: S.optional(GetTokenBalanceInputList) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/batch-get-token-balance" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetTokenBalanceInput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ownerIdentifier: S.optional(OwnerIdentifier),
+          tokenIdentifier: S.optional(TokenIdentifier),
+          balance: S.String,
+          atBlockchainInstant: BlockchainInstant,
+          lastUpdatedTime: S.optional(BlockchainInstant),
+        }),
+      ).annotate({
+        identifier: "BatchGetTokenBalanceOutputItem",
+      });
+    case 7:
+      return S.Array(BatchGetTokenBalanceOutputItem);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tokenIdentifier: S.optional(TokenIdentifier),
+          ownerIdentifier: S.optional(OwnerIdentifier),
+          atBlockchainInstant: S.optional(BlockchainInstant),
+          errorCode: S.String,
+          errorMessage: S.String,
+          errorType: S.String,
+        }),
+      ).annotate({
+        identifier: "BatchGetTokenBalanceErrorItem",
+      });
+    case 1:
+      return S.Array(BatchGetTokenBalanceErrorItem);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tokenBalances: BatchGetTokenBalanceOutputList,
+          errors: BatchGetTokenBalanceErrors,
+        }),
+      ).annotate({
+        identifier: "BatchGetTokenBalanceOutput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ network: S.String, contractAddress: S.String })).annotate({
+        identifier: "ContractIdentifier",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ contractIdentifier: ContractIdentifier }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/get-asset-contract" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAssetContractInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          symbol: S.optional(S.String),
+          decimals: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ContractMetadata" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          contractIdentifier: ContractIdentifier,
+          tokenStandard: S.String,
+          deployerAddress: S.String,
+          metadata: S.optional(ContractMetadata),
+        }),
+      ).annotate({ identifier: "GetAssetContractOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          tokenIdentifier: TokenIdentifier,
+          ownerIdentifier: OwnerIdentifier,
+          atBlockchainInstant: S.optional(BlockchainInstant),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/get-token-balance" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetTokenBalanceInput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerIdentifier: S.optional(OwnerIdentifier),
+          tokenIdentifier: S.optional(TokenIdentifier),
+          balance: S.String,
+          atBlockchainInstant: BlockchainInstant,
+          lastUpdatedTime: S.optional(BlockchainInstant),
+        }),
+      ).annotate({ identifier: "GetTokenBalanceOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          transactionHash: S.optional(S.String),
+          transactionId: S.optional(S.String),
+          network: S.String,
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/get-transaction" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetTransactionInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.String,
+          blockHash: S.optional(S.String),
+          transactionHash: S.String,
+          blockNumber: S.optional(S.String),
+          transactionTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          transactionIndex: S.Number,
+          numberOfTransactions: S.Number,
+          to: S.String,
+          from: S.optional(S.String),
+          contractAddress: S.optional(S.String),
+          gasUsed: S.optional(S.String),
+          cumulativeGasUsed: S.optional(S.String),
+          effectiveGasPrice: S.optional(S.String),
+          signatureV: S.optional(S.Number),
+          signatureR: S.optional(S.String),
+          signatureS: S.optional(S.String),
+          transactionFee: S.optional(S.String),
+          transactionId: S.optional(S.String),
+          confirmationStatus: S.optional(S.String),
+          executionStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Transaction" });
+    case 3:
+      return S.suspend(() => S.Struct({ transaction: Transaction })).annotate({
+        identifier: "GetTransactionOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ network: S.String, tokenStandard: S.String, deployerAddress: S.String }),
+      ).annotate({ identifier: "ContractFilter" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          contractFilter: ContractFilter,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-asset-contracts" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListAssetContractsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          contractIdentifier: ContractIdentifier,
+          tokenStandard: S.String,
+          deployerAddress: S.String,
+        }),
+      ).annotate({ identifier: "AssetContract" });
+    case 7:
+      return S.Array(AssetContract);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ contracts: AssetContractList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAssetContractsOutput" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() => S.Struct({ transactionEventToAddress: ChainAddresses })).annotate({
+        identifier: "AddressIdentifierFilter",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ from: S.optional(BlockchainInstant), to: S.optional(BlockchainInstant) }),
+      ).annotate({ identifier: "TimeFilter" });
+    case 4:
+      return S.suspend(() => S.Struct({ voutSpent: S.Boolean })).annotate({
+        identifier: "VoutFilter",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ include: ConfirmationStatusIncludeList })).annotate({
+        identifier: "ConfirmationStatusFilter",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListFilteredTransactionEventsSort",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.String,
+          addressIdentifierFilter: AddressIdentifierFilter,
+          timeFilter: S.optional(TimeFilter),
+          voutFilter: S.optional(VoutFilter),
+          confirmationStatusFilter: S.optional(ConfirmationStatusFilter),
+          sort: S.optional(ListFilteredTransactionEventsSort),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-filtered-transaction-events" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListFilteredTransactionEventsInput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.String,
+          transactionHash: S.String,
+          eventType: S.String,
+          from: S.optional(S.String),
+          to: S.optional(S.String),
+          value: S.optional(S.String),
+          contractAddress: S.optional(S.String),
+          tokenId: S.optional(S.String),
+          transactionId: S.optional(S.String),
+          voutIndex: S.optional(S.Number),
+          voutSpent: S.optional(S.Boolean),
+          spentVoutTransactionId: S.optional(S.String),
+          spentVoutTransactionHash: S.optional(S.String),
+          spentVoutIndex: S.optional(S.Number),
+          blockchainInstant: S.optional(BlockchainInstant),
+          confirmationStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransactionEvent" });
+    case 1:
+      return S.Array(TransactionEvent);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ events: TransactionEventList, nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListFilteredTransactionEventsOutput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ address: S.String })).annotate({
+        identifier: "OwnerFilter",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ownerFilter: S.optional(OwnerFilter),
+          tokenFilter: TokenFilter,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-token-balances" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTokenBalancesInput" });
+    case 5:
+      return S.Array(TokenBalance);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ tokenBalances: TokenBalanceList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTokenBalancesOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          transactionHash: S.optional(S.String),
+          transactionId: S.optional(S.String),
+          network: S.String,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-transaction-events" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTransactionEventsInput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTransactionsSort" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.String,
+          network: S.String,
+          fromBlockchainInstant: S.optional(BlockchainInstant),
+          toBlockchainInstant: S.optional(BlockchainInstant),
+          sort: S.optional(ListTransactionsSort),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          confirmationStatusFilter: S.optional(ConfirmationStatusFilter),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/list-transactions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTransactionsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          transactionHash: S.String,
+          transactionId: S.optional(S.String),
+          network: S.String,
+          transactionTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          confirmationStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransactionOutputItem" });
+    case 3:
+      return S.Array(TransactionOutputItem);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ transactions: TransactionOutputList, nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTransactionsOutput" });
+    case 5:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 6:
+      return S.Array(ValidationExceptionField);
+  }
+}

@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -234,7 +235,7 @@ export type AuthCode = string;
 export type RefreshToken = string | redacted.Redacted<string>;
 export type Scope = string;
 export type Scopes = string[];
-const Scopes = /*@__PURE__*/ S.Array(S.String);
+const Scopes = /*@__PURE__*/ __L.at(__c0, 0);
 export type URI = string;
 export type CodeVerifier = string | redacted.Redacted<string>;
 export interface CreateTokenRequest {
@@ -248,19 +249,7 @@ export interface CreateTokenRequest {
   redirectUri?: string;
   codeVerifier?: string | redacted.Redacted<string>;
 }
-const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: SensitiveString,
-    grantType: S.String,
-    deviceCode: S.optional(S.String),
-    code: S.optional(S.String),
-    refreshToken: S.optional(SensitiveString),
-    scope: S.optional(Scopes),
-    redirectUri: S.optional(S.String),
-    codeVerifier: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/token" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateTokenRequest" }) as any as S.Schema<CreateTokenRequest>;
+const CreateTokenRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateTokenRequest>;
 export type AccessToken = string | redacted.Redacted<string>;
 export type TokenType = string;
 export type ExpirationInSeconds = number;
@@ -272,15 +261,7 @@ export interface CreateTokenResponse {
   refreshToken?: string | redacted.Redacted<string>;
   idToken?: string | redacted.Redacted<string>;
 }
-const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessToken: S.optional(SensitiveString),
-    tokenType: S.optional(S.String),
-    expiresIn: S.optional(S.Number),
-    refreshToken: S.optional(SensitiveString),
-    idToken: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "CreateTokenResponse" }) as any as S.Schema<CreateTokenResponse>;
+const CreateTokenResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateTokenResponse>;
 export type Assertion = string | redacted.Redacted<string>;
 export type SubjectToken = string | redacted.Redacted<string>;
 export type TokenTypeURI = string;
@@ -297,30 +278,15 @@ export interface CreateTokenWithIAMRequest {
   requestedTokenType?: string;
   codeVerifier?: string | redacted.Redacted<string>;
 }
-const CreateTokenWithIAMRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    grantType: S.String,
-    code: S.optional(S.String),
-    refreshToken: S.optional(SensitiveString),
-    assertion: S.optional(SensitiveString),
-    scope: S.optional(Scopes),
-    redirectUri: S.optional(S.String),
-    subjectToken: S.optional(SensitiveString),
-    subjectTokenType: S.optional(S.String),
-    requestedTokenType: S.optional(S.String),
-    codeVerifier: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/token?aws_iam=t" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "CreateTokenWithIAMRequest",
-}) as any as S.Schema<CreateTokenWithIAMRequest>;
+const CreateTokenWithIAMRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateTokenWithIAMRequest>;
 export type IdentityContext = string;
 export interface AwsAdditionalDetails {
   identityContext?: string;
 }
-const AwsAdditionalDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identityContext: S.optional(S.String) }),
-).annotate({ identifier: "AwsAdditionalDetails" }) as any as S.Schema<AwsAdditionalDetails>;
+const AwsAdditionalDetails = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AwsAdditionalDetails>;
 export interface CreateTokenWithIAMResponse {
   accessToken?: string | redacted.Redacted<string>;
   tokenType?: string;
@@ -331,20 +297,10 @@ export interface CreateTokenWithIAMResponse {
   scope?: string[];
   awsAdditionalDetails?: AwsAdditionalDetails;
 }
-const CreateTokenWithIAMResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessToken: S.optional(SensitiveString),
-    tokenType: S.optional(S.String),
-    expiresIn: S.optional(S.Number),
-    refreshToken: S.optional(SensitiveString),
-    idToken: S.optional(SensitiveString),
-    issuedTokenType: S.optional(S.String),
-    scope: S.optional(Scopes),
-    awsAdditionalDetails: S.optional(AwsAdditionalDetails),
-  }),
-).annotate({
-  identifier: "CreateTokenWithIAMResponse",
-}) as any as S.Schema<CreateTokenWithIAMResponse>;
+const CreateTokenWithIAMResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateTokenWithIAMResponse>;
 export type ClientName = string;
 export type ClientType = string;
 export type RedirectUris = string[];
@@ -361,17 +317,10 @@ export interface RegisterClientRequest {
   issuerUrl?: string;
   entitledApplicationArn?: string;
 }
-const RegisterClientRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientName: S.String,
-    clientType: S.String,
-    scopes: S.optional(Scopes),
-    redirectUris: S.optional(RedirectUris),
-    grantTypes: S.optional(GrantTypes),
-    issuerUrl: S.optional(S.String),
-    entitledApplicationArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/client/register" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "RegisterClientRequest" }) as any as S.Schema<RegisterClientRequest>;
+const RegisterClientRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<RegisterClientRequest>;
 export type LongTimeStampType = number;
 export interface RegisterClientResponse {
   clientId?: string;
@@ -381,28 +330,19 @@ export interface RegisterClientResponse {
   authorizationEndpoint?: string;
   tokenEndpoint?: string;
 }
-const RegisterClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.optional(S.String),
-    clientSecret: S.optional(SensitiveString),
-    clientIdIssuedAt: S.optional(S.Number),
-    clientSecretExpiresAt: S.optional(S.Number),
-    authorizationEndpoint: S.optional(S.String),
-    tokenEndpoint: S.optional(S.String),
-  }),
-).annotate({ identifier: "RegisterClientResponse" }) as any as S.Schema<RegisterClientResponse>;
+const RegisterClientResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<RegisterClientResponse>;
 export interface StartDeviceAuthorizationRequest {
   clientId: string;
   clientSecret: string | redacted.Redacted<string>;
   startUrl: string;
 }
-const StartDeviceAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ clientId: S.String, clientSecret: SensitiveString, startUrl: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/device_authorization" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartDeviceAuthorizationRequest",
-}) as any as S.Schema<StartDeviceAuthorizationRequest>;
+const StartDeviceAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<StartDeviceAuthorizationRequest>;
 export type UserCode = string;
 export type IntervalInSeconds = number;
 export interface StartDeviceAuthorizationResponse {
@@ -413,18 +353,10 @@ export interface StartDeviceAuthorizationResponse {
   expiresIn?: number;
   interval?: number;
 }
-const StartDeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceCode: S.optional(S.String),
-    userCode: S.optional(S.String),
-    verificationUri: S.optional(S.String),
-    verificationUriComplete: S.optional(S.String),
-    expiresIn: S.optional(S.Number),
-    interval: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StartDeviceAuthorizationResponse",
-}) as any as S.Schema<StartDeviceAuthorizationResponse>;
+const StartDeviceAuthorizationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<StartDeviceAuthorizationResponse>;
 export type AccessDeniedExceptionReason = "KMS_AccessDeniedException" | (string & {});
 const AccessDeniedExceptionReason = S.String;
 
@@ -599,3 +531,131 @@ export const startDeviceAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "StartDeviceAuthorization",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String,
+          clientSecret: SensitiveString,
+          grantType: S.String,
+          deviceCode: S.optional(S.String),
+          code: S.optional(S.String),
+          refreshToken: S.optional(SensitiveString),
+          scope: S.optional(Scopes),
+          redirectUri: S.optional(S.String),
+          codeVerifier: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/token" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTokenRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accessToken: S.optional(SensitiveString),
+          tokenType: S.optional(S.String),
+          expiresIn: S.optional(S.Number),
+          refreshToken: S.optional(SensitiveString),
+          idToken: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "CreateTokenResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String,
+          grantType: S.String,
+          code: S.optional(S.String),
+          refreshToken: S.optional(SensitiveString),
+          assertion: S.optional(SensitiveString),
+          scope: S.optional(Scopes),
+          redirectUri: S.optional(S.String),
+          subjectToken: S.optional(SensitiveString),
+          subjectTokenType: S.optional(S.String),
+          requestedTokenType: S.optional(S.String),
+          codeVerifier: S.optional(SensitiveString),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/token?aws_iam=t" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateTokenWithIAMRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ identityContext: S.optional(S.String) })).annotate({
+        identifier: "AwsAdditionalDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accessToken: S.optional(SensitiveString),
+          tokenType: S.optional(S.String),
+          expiresIn: S.optional(S.Number),
+          refreshToken: S.optional(SensitiveString),
+          idToken: S.optional(SensitiveString),
+          issuedTokenType: S.optional(S.String),
+          scope: S.optional(Scopes),
+          awsAdditionalDetails: S.optional(AwsAdditionalDetails),
+        }),
+      ).annotate({
+        identifier: "CreateTokenWithIAMResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientName: S.String,
+          clientType: S.String,
+          scopes: S.optional(Scopes),
+          redirectUris: S.optional(RedirectUris),
+          grantTypes: S.optional(GrantTypes),
+          issuerUrl: S.optional(S.String),
+          entitledApplicationArn: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/client/register" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "RegisterClientRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          clientSecret: S.optional(SensitiveString),
+          clientIdIssuedAt: S.optional(S.Number),
+          clientSecretExpiresAt: S.optional(S.Number),
+          authorizationEndpoint: S.optional(S.String),
+          tokenEndpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegisterClientResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ clientId: S.String, clientSecret: SensitiveString, startUrl: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/device_authorization" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartDeviceAuthorizationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deviceCode: S.optional(S.String),
+          userCode: S.optional(S.String),
+          verificationUri: S.optional(S.String),
+          verificationUriComplete: S.optional(S.String),
+          expiresIn: S.optional(S.Number),
+          interval: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "StartDeviceAuthorizationResponse",
+      });
+  }
+}

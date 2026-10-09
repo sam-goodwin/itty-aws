@@ -1,4 +1,5 @@
 import * as API from "@distilled.cloud/core/api";
+import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import * as HttpClient from "effect/http/HttpClient";
 import * as redacted from "effect/Redacted";
@@ -108,21 +109,17 @@ export interface AssociateGatewayToServerInput {
   GatewayArn: string;
   ServerArn: string;
 }
-const AssociateGatewayToServerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.String, ServerArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "AssociateGatewayToServerInput",
-}) as any as S.Schema<AssociateGatewayToServerInput>;
+const AssociateGatewayToServerInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateGatewayToServerInput>;
 export interface AssociateGatewayToServerOutput {
   GatewayArn?: string;
 }
-const AssociateGatewayToServerOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.optional(S.String) }),
-).annotate({
-  identifier: "AssociateGatewayToServerOutput",
-}) as any as S.Schema<AssociateGatewayToServerOutput>;
+const AssociateGatewayToServerOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateGatewayToServerOutput>;
 export type ActivationKey = string;
 export type Name = string;
 export type GatewayType = string;
@@ -132,39 +129,24 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-  identifier: "Tag",
-}) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-const Tags = /*@__PURE__*/ S.Array(Tag);
+const Tags = /*@__PURE__*/ __L.at(__c0, 3);
 export interface CreateGatewayInput {
   ActivationKey: string;
   GatewayDisplayName: string;
   GatewayType: string;
   Tags?: Tag[];
 }
-const CreateGatewayInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActivationKey: S.String,
-    GatewayDisplayName: S.String,
-    GatewayType: S.String,
-    Tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "CreateGatewayInput" }) as any as S.Schema<CreateGatewayInput>;
+const CreateGatewayInput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateGatewayInput>;
 export interface CreateGatewayOutput {
   GatewayArn?: string;
 }
-const CreateGatewayOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.optional(S.String) }),
-).annotate({ identifier: "CreateGatewayOutput" }) as any as S.Schema<CreateGatewayOutput>;
+const CreateGatewayOutput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateGatewayOutput>;
 export interface DeleteGatewayInput {
   GatewayArn: string;
 }
-const DeleteGatewayInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteGatewayInput" }) as any as S.Schema<DeleteGatewayInput>;
+const DeleteGatewayInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteGatewayInput>;
 export interface DeleteGatewayOutput {
   GatewayArn?: string;
 }
@@ -172,27 +154,24 @@ const DeleteGatewayOutput = CreateGatewayOutput as any as S.Schema<DeleteGateway
 export interface DeleteHypervisorInput {
   HypervisorArn: string;
 }
-const DeleteHypervisorInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HypervisorArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "DeleteHypervisorInput" }) as any as S.Schema<DeleteHypervisorInput>;
+const DeleteHypervisorInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteHypervisorInput>;
 export interface DeleteHypervisorOutput {
   HypervisorArn?: string;
 }
-const DeleteHypervisorOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HypervisorArn: S.optional(S.String) }),
-).annotate({ identifier: "DeleteHypervisorOutput" }) as any as S.Schema<DeleteHypervisorOutput>;
+const DeleteHypervisorOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteHypervisorOutput>;
 export interface DisassociateGatewayFromServerInput {
   GatewayArn: string;
 }
-const DisassociateGatewayFromServerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DisassociateGatewayFromServerInput",
-}) as any as S.Schema<DisassociateGatewayFromServerInput>;
+const DisassociateGatewayFromServerInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DisassociateGatewayFromServerInput>;
 export interface DisassociateGatewayFromServerOutput {
   GatewayArn?: string;
 }
@@ -201,19 +180,16 @@ const DisassociateGatewayFromServerOutput =
 export interface GetBandwidthRateLimitScheduleInput {
   GatewayArn: string;
 }
-const GetBandwidthRateLimitScheduleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetBandwidthRateLimitScheduleInput",
-}) as any as S.Schema<GetBandwidthRateLimitScheduleInput>;
+const GetBandwidthRateLimitScheduleInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetBandwidthRateLimitScheduleInput>;
 export type AverageUploadRateLimit = number;
 export type HourOfDay = number;
 export type MinuteOfHour = number;
 export type DayOfWeek = number;
 export type DaysOfWeek = number[];
-const DaysOfWeek = /*@__PURE__*/ S.Array(S.Number);
+const DaysOfWeek = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BandwidthRateLimitInterval {
   AverageUploadRateLimitInBitsPerSec?: number;
   StartHourOfDay: number;
@@ -222,40 +198,24 @@ export interface BandwidthRateLimitInterval {
   EndMinuteOfHour: number;
   DaysOfWeek: number[];
 }
-const BandwidthRateLimitInterval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AverageUploadRateLimitInBitsPerSec: S.optional(S.Number),
-    StartHourOfDay: S.Number,
-    EndHourOfDay: S.Number,
-    StartMinuteOfHour: S.Number,
-    EndMinuteOfHour: S.Number,
-    DaysOfWeek: DaysOfWeek,
-  }),
-).annotate({
-  identifier: "BandwidthRateLimitInterval",
-}) as any as S.Schema<BandwidthRateLimitInterval>;
+const BandwidthRateLimitInterval = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BandwidthRateLimitInterval>;
 export type BandwidthRateLimitIntervals = BandwidthRateLimitInterval[];
-const BandwidthRateLimitIntervals = /*@__PURE__*/ S.Array(BandwidthRateLimitInterval);
+const BandwidthRateLimitIntervals = /*@__PURE__*/ __L.at(__c1, 5);
 export interface GetBandwidthRateLimitScheduleOutput {
   GatewayArn?: string;
   BandwidthRateLimitIntervals?: BandwidthRateLimitInterval[];
 }
-const GetBandwidthRateLimitScheduleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GatewayArn: S.optional(S.String),
-    BandwidthRateLimitIntervals: S.optional(BandwidthRateLimitIntervals),
-  }),
-).annotate({
-  identifier: "GetBandwidthRateLimitScheduleOutput",
-}) as any as S.Schema<GetBandwidthRateLimitScheduleOutput>;
+const GetBandwidthRateLimitScheduleOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetBandwidthRateLimitScheduleOutput>;
 export interface GetGatewayInput {
   GatewayArn: string;
 }
-const GetGatewayInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetGatewayInput" }) as any as S.Schema<GetGatewayInput>;
+const GetGatewayInput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetGatewayInput>;
 export type HypervisorId = string;
 export type DayOfMonth = number;
 export interface MaintenanceStartTime {
@@ -264,14 +224,7 @@ export interface MaintenanceStartTime {
   HourOfDay: number;
   MinuteOfHour: number;
 }
-const MaintenanceStartTime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DayOfMonth: S.optional(S.Number),
-    DayOfWeek: S.optional(S.Number),
-    HourOfDay: S.Number,
-    MinuteOfHour: S.Number,
-  }),
-).annotate({ identifier: "MaintenanceStartTime" }) as any as S.Schema<MaintenanceStartTime>;
+const MaintenanceStartTime = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<MaintenanceStartTime>;
 export type VpcEndpoint = string;
 export interface GatewayDetails {
   GatewayArn?: string;
@@ -285,34 +238,15 @@ export interface GatewayDetails {
   DeprecationDate?: Date;
   SoftwareVersion?: string;
 }
-const GatewayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GatewayArn: S.optional(S.String),
-    GatewayDisplayName: S.optional(S.String),
-    GatewayType: S.optional(S.String),
-    HypervisorId: S.optional(S.String),
-    LastSeenTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    MaintenanceStartTime: S.optional(MaintenanceStartTime),
-    NextUpdateAvailabilityTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    VpcEndpoint: S.optional(S.String),
-    DeprecationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    SoftwareVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "GatewayDetails" }) as any as S.Schema<GatewayDetails>;
+const GatewayDetails = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GatewayDetails>;
 export interface GetGatewayOutput {
   Gateway?: GatewayDetails;
 }
-const GetGatewayOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Gateway: S.optional(GatewayDetails) }),
-).annotate({ identifier: "GetGatewayOutput" }) as any as S.Schema<GetGatewayOutput>;
+const GetGatewayOutput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetGatewayOutput>;
 export interface GetHypervisorInput {
   HypervisorArn: string;
 }
-const GetHypervisorInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HypervisorArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetHypervisorInput" }) as any as S.Schema<GetHypervisorInput>;
+const GetHypervisorInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetHypervisorInput>;
 export type Host = string;
 export type KmsKeyArn = string;
 export type LogGroupArn = string;
@@ -329,35 +263,18 @@ export interface HypervisorDetails {
   LatestMetadataSyncStatusMessage?: string;
   LatestMetadataSyncStatus?: string;
 }
-const HypervisorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Host: S.optional(S.String),
-    HypervisorArn: S.optional(S.String),
-    KmsKeyArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    LogGroupArn: S.optional(S.String),
-    State: S.optional(S.String),
-    LastSuccessfulMetadataSyncTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LatestMetadataSyncStatusMessage: S.optional(S.String),
-    LatestMetadataSyncStatus: S.optional(S.String),
-  }),
-).annotate({ identifier: "HypervisorDetails" }) as any as S.Schema<HypervisorDetails>;
+const HypervisorDetails = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<HypervisorDetails>;
 export interface GetHypervisorOutput {
   Hypervisor?: HypervisorDetails;
 }
-const GetHypervisorOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Hypervisor: S.optional(HypervisorDetails) }),
-).annotate({ identifier: "GetHypervisorOutput" }) as any as S.Schema<GetHypervisorOutput>;
+const GetHypervisorOutput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetHypervisorOutput>;
 export interface GetHypervisorPropertyMappingsInput {
   HypervisorArn: string;
 }
-const GetHypervisorPropertyMappingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HypervisorArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetHypervisorPropertyMappingsInput",
-}) as any as S.Schema<GetHypervisorPropertyMappingsInput>;
+const GetHypervisorPropertyMappingsInput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetHypervisorPropertyMappingsInput>;
 export type VmwareCategory = string;
 export type VmwareTagName = string;
 export interface VmwareToAwsTagMapping {
@@ -366,55 +283,39 @@ export interface VmwareToAwsTagMapping {
   AwsTagKey: string;
   AwsTagValue: string;
 }
-const VmwareToAwsTagMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VmwareCategory: S.String,
-    VmwareTagName: S.String,
-    AwsTagKey: S.String,
-    AwsTagValue: S.String,
-  }),
-).annotate({ identifier: "VmwareToAwsTagMapping" }) as any as S.Schema<VmwareToAwsTagMapping>;
+const VmwareToAwsTagMapping = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<VmwareToAwsTagMapping>;
 export type VmwareToAwsTagMappings = VmwareToAwsTagMapping[];
-const VmwareToAwsTagMappings = /*@__PURE__*/ S.Array(VmwareToAwsTagMapping);
+const VmwareToAwsTagMappings = /*@__PURE__*/ __L.at(__c3, 0);
 export type IamRoleArn = string;
 export interface GetHypervisorPropertyMappingsOutput {
   HypervisorArn?: string;
   VmwareToAwsTagMappings?: VmwareToAwsTagMapping[];
   IamRoleArn?: string;
 }
-const GetHypervisorPropertyMappingsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HypervisorArn: S.optional(S.String),
-    VmwareToAwsTagMappings: S.optional(VmwareToAwsTagMappings),
-    IamRoleArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetHypervisorPropertyMappingsOutput",
-}) as any as S.Schema<GetHypervisorPropertyMappingsOutput>;
+const GetHypervisorPropertyMappingsOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetHypervisorPropertyMappingsOutput>;
 export type ResourceArn = string;
 export interface GetVirtualMachineInput {
   ResourceArn: string;
 }
-const GetVirtualMachineInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "GetVirtualMachineInput" }) as any as S.Schema<GetVirtualMachineInput>;
+const GetVirtualMachineInput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetVirtualMachineInput>;
 export type Path = string;
 export interface VmwareTag {
   VmwareCategory?: string;
   VmwareTagName?: string;
   VmwareTagDescription?: string;
 }
-const VmwareTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VmwareCategory: S.optional(S.String),
-    VmwareTagName: S.optional(S.String),
-    VmwareTagDescription: S.optional(S.String),
-  }),
-).annotate({ identifier: "VmwareTag" }) as any as S.Schema<VmwareTag>;
+const VmwareTag = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<VmwareTag>;
 export type VmwareTags = VmwareTag[];
-const VmwareTags = /*@__PURE__*/ S.Array(VmwareTag);
+const VmwareTags = /*@__PURE__*/ __L.at(__c3, 4);
 export interface VirtualMachineDetails {
   HostName?: string;
   HypervisorId?: string;
@@ -424,23 +325,17 @@ export interface VirtualMachineDetails {
   LastBackupDate?: Date;
   VmwareTags?: VmwareTag[];
 }
-const VirtualMachineDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostName: S.optional(S.String),
-    HypervisorId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Path: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    LastBackupDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    VmwareTags: S.optional(VmwareTags),
-  }),
-).annotate({ identifier: "VirtualMachineDetails" }) as any as S.Schema<VirtualMachineDetails>;
+const VirtualMachineDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<VirtualMachineDetails>;
 export interface GetVirtualMachineOutput {
   VirtualMachine?: VirtualMachineDetails;
 }
-const GetVirtualMachineOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VirtualMachine: S.optional(VirtualMachineDetails) }),
-).annotate({ identifier: "GetVirtualMachineOutput" }) as any as S.Schema<GetVirtualMachineOutput>;
+const GetVirtualMachineOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetVirtualMachineOutput>;
 export type Username = string | redacted.Redacted<string>;
 export type Password = string | redacted.Redacted<string>;
 export interface ImportHypervisorConfigurationInput {
@@ -451,37 +346,24 @@ export interface ImportHypervisorConfigurationInput {
   KmsKeyArn?: string;
   Tags?: Tag[];
 }
-const ImportHypervisorConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Host: S.String,
-    Username: S.optional(SensitiveString),
-    Password: S.optional(SensitiveString),
-    KmsKeyArn: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "ImportHypervisorConfigurationInput",
-}) as any as S.Schema<ImportHypervisorConfigurationInput>;
+const ImportHypervisorConfigurationInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ImportHypervisorConfigurationInput>;
 export interface ImportHypervisorConfigurationOutput {
   HypervisorArn?: string;
 }
-const ImportHypervisorConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HypervisorArn: S.optional(S.String) }),
-).annotate({
-  identifier: "ImportHypervisorConfigurationOutput",
-}) as any as S.Schema<ImportHypervisorConfigurationOutput>;
+const ImportHypervisorConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ImportHypervisorConfigurationOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListGatewaysInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListGatewaysInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListGatewaysInput" }) as any as S.Schema<ListGatewaysInput>;
+const ListGatewaysInput = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListGatewaysInput>;
 export interface Gateway {
   GatewayArn?: string;
   GatewayDisplayName?: string;
@@ -489,33 +371,19 @@ export interface Gateway {
   HypervisorId?: string;
   LastSeenTime?: Date;
 }
-const Gateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GatewayArn: S.optional(S.String),
-    GatewayDisplayName: S.optional(S.String),
-    GatewayType: S.optional(S.String),
-    HypervisorId: S.optional(S.String),
-    LastSeenTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "Gateway" }) as any as S.Schema<Gateway>;
+const Gateway = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Gateway>;
 export type Gateways = Gateway[];
-const Gateways = /*@__PURE__*/ S.Array(Gateway);
+const Gateways = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ListGatewaysOutput {
   Gateways?: Gateway[];
   NextToken?: string;
 }
-const ListGatewaysOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Gateways: S.optional(Gateways), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListGatewaysOutput" }) as any as S.Schema<ListGatewaysOutput>;
+const ListGatewaysOutput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListGatewaysOutput>;
 export interface ListHypervisorsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListHypervisorsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListHypervisorsInput" }) as any as S.Schema<ListHypervisorsInput>;
+const ListHypervisorsInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListHypervisorsInput>;
 export interface Hypervisor {
   Host?: string;
   HypervisorArn?: string;
@@ -523,53 +391,41 @@ export interface Hypervisor {
   Name?: string;
   State?: string;
 }
-const Hypervisor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Host: S.optional(S.String),
-    HypervisorArn: S.optional(S.String),
-    KmsKeyArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    State: S.optional(S.String),
-  }),
-).annotate({ identifier: "Hypervisor" }) as any as S.Schema<Hypervisor>;
+const Hypervisor = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Hypervisor>;
 export type Hypervisors = Hypervisor[];
-const Hypervisors = /*@__PURE__*/ S.Array(Hypervisor);
+const Hypervisors = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ListHypervisorsOutput {
   Hypervisors?: Hypervisor[];
   NextToken?: string;
 }
-const ListHypervisorsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Hypervisors: S.optional(Hypervisors), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListHypervisorsOutput" }) as any as S.Schema<ListHypervisorsOutput>;
+const ListHypervisorsOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListHypervisorsOutput>;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "ListTagsForResourceInput" }) as any as S.Schema<ListTagsForResourceInput>;
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   ResourceArn?: string;
   Tags?: Tag[];
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface ListVirtualMachinesInput {
   HypervisorArn?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListVirtualMachinesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HypervisorArn: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "ListVirtualMachinesInput" }) as any as S.Schema<ListVirtualMachinesInput>;
+const ListVirtualMachinesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListVirtualMachinesInput>;
 export interface VirtualMachine {
   HostName?: string;
   HypervisorId?: string;
@@ -578,38 +434,25 @@ export interface VirtualMachine {
   ResourceArn?: string;
   LastBackupDate?: Date;
 }
-const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HostName: S.optional(S.String),
-    HypervisorId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Path: S.optional(S.String),
-    ResourceArn: S.optional(S.String),
-    LastBackupDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "VirtualMachine" }) as any as S.Schema<VirtualMachine>;
+const VirtualMachine = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<VirtualMachine>;
 export type VirtualMachines = VirtualMachine[];
-const VirtualMachines = /*@__PURE__*/ S.Array(VirtualMachine);
+const VirtualMachines = /*@__PURE__*/ __L.at(__c5, 5);
 export interface ListVirtualMachinesOutput {
   VirtualMachines?: VirtualMachine[];
   NextToken?: string;
 }
-const ListVirtualMachinesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VirtualMachines: S.optional(VirtualMachines), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListVirtualMachinesOutput",
-}) as any as S.Schema<ListVirtualMachinesOutput>;
+const ListVirtualMachinesOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListVirtualMachinesOutput>;
 export interface PutBandwidthRateLimitScheduleInput {
   GatewayArn: string;
   BandwidthRateLimitIntervals: BandwidthRateLimitInterval[];
 }
-const PutBandwidthRateLimitScheduleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.String, BandwidthRateLimitIntervals: BandwidthRateLimitIntervals }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutBandwidthRateLimitScheduleInput",
-}) as any as S.Schema<PutBandwidthRateLimitScheduleInput>;
+const PutBandwidthRateLimitScheduleInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<PutBandwidthRateLimitScheduleInput>;
 export interface PutBandwidthRateLimitScheduleOutput {
   GatewayArn?: string;
 }
@@ -620,15 +463,10 @@ export interface PutHypervisorPropertyMappingsInput {
   VmwareToAwsTagMappings: VmwareToAwsTagMapping[];
   IamRoleArn: string;
 }
-const PutHypervisorPropertyMappingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HypervisorArn: S.String,
-    VmwareToAwsTagMappings: VmwareToAwsTagMappings,
-    IamRoleArn: S.String,
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "PutHypervisorPropertyMappingsInput",
-}) as any as S.Schema<PutHypervisorPropertyMappingsInput>;
+const PutHypervisorPropertyMappingsInput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PutHypervisorPropertyMappingsInput>;
 export interface PutHypervisorPropertyMappingsOutput {
   HypervisorArn?: string;
 }
@@ -641,17 +479,10 @@ export interface PutMaintenanceStartTimeInput {
   DayOfWeek?: number;
   DayOfMonth?: number;
 }
-const PutMaintenanceStartTimeInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GatewayArn: S.String,
-    HourOfDay: S.Number,
-    MinuteOfHour: S.Number,
-    DayOfWeek: S.optional(S.Number),
-    DayOfMonth: S.optional(S.Number),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "PutMaintenanceStartTimeInput",
-}) as any as S.Schema<PutMaintenanceStartTimeInput>;
+const PutMaintenanceStartTimeInput = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PutMaintenanceStartTimeInput>;
 export interface PutMaintenanceStartTimeOutput {
   GatewayArn?: string;
 }
@@ -660,13 +491,10 @@ const PutMaintenanceStartTimeOutput =
 export interface StartVirtualMachinesMetadataSyncInput {
   HypervisorArn: string;
 }
-const StartVirtualMachinesMetadataSyncInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HypervisorArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "StartVirtualMachinesMetadataSyncInput",
-}) as any as S.Schema<StartVirtualMachinesMetadataSyncInput>;
+const StartVirtualMachinesMetadataSyncInput = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<StartVirtualMachinesMetadataSyncInput>;
 export interface StartVirtualMachinesMetadataSyncOutput {
   HypervisorArn?: string;
 }
@@ -676,48 +504,33 @@ export interface TagResourceInput {
   ResourceARN: string;
   Tags: Tag[];
 }
-const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, Tags: Tags }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
+const TagResourceInput = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {
   ResourceARN?: string;
 }
-const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.optional(S.String) }),
-).annotate({ identifier: "TagResourceOutput" }) as any as S.Schema<TagResourceOutput>;
+const TagResourceOutput = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TagResourceOutput>;
 export interface TestHypervisorConfigurationInput {
   GatewayArn: string;
   Host: string;
   Username?: string | redacted.Redacted<string>;
   Password?: string | redacted.Redacted<string>;
 }
-const TestHypervisorConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GatewayArn: S.String,
-    Host: S.String,
-    Username: S.optional(SensitiveString),
-    Password: S.optional(SensitiveString),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({
-  identifier: "TestHypervisorConfigurationInput",
-}) as any as S.Schema<TestHypervisorConfigurationInput>;
+const TestHypervisorConfigurationInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<TestHypervisorConfigurationInput>;
 export interface TestHypervisorConfigurationOutput {}
-const TestHypervisorConfigurationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TestHypervisorConfigurationOutput",
-}) as any as S.Schema<TestHypervisorConfigurationOutput>;
+const TestHypervisorConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<TestHypervisorConfigurationOutput>;
 export type TagKeys = string[];
-const TagKeys = /*@__PURE__*/ S.Array(S.String);
+const TagKeys = /*@__PURE__*/ __L.at(__c6, 7);
 export interface UntagResourceInput {
   ResourceARN: string;
   TagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, TagKeys: TagKeys }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {
   ResourceARN?: string;
 }
@@ -726,13 +539,10 @@ export interface UpdateGatewayInformationInput {
   GatewayArn: string;
   GatewayDisplayName?: string;
 }
-const UpdateGatewayInformationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.String, GatewayDisplayName: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateGatewayInformationInput",
-}) as any as S.Schema<UpdateGatewayInformationInput>;
+const UpdateGatewayInformationInput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<UpdateGatewayInformationInput>;
 export interface UpdateGatewayInformationOutput {
   GatewayArn?: string;
 }
@@ -741,13 +551,10 @@ const UpdateGatewayInformationOutput =
 export interface UpdateGatewaySoftwareNowInput {
   GatewayArn: string;
 }
-const UpdateGatewaySoftwareNowInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateGatewaySoftwareNowInput",
-}) as any as S.Schema<UpdateGatewaySoftwareNowInput>;
+const UpdateGatewaySoftwareNowInput = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<UpdateGatewaySoftwareNowInput>;
 export interface UpdateGatewaySoftwareNowOutput {
   GatewayArn?: string;
 }
@@ -761,16 +568,10 @@ export interface UpdateHypervisorInput {
   Name?: string;
   LogGroupArn?: string;
 }
-const UpdateHypervisorInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HypervisorArn: S.String,
-    Host: S.optional(S.String),
-    Username: S.optional(SensitiveString),
-    Password: S.optional(SensitiveString),
-    Name: S.optional(S.String),
-    LogGroupArn: S.optional(S.String),
-  }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-).annotate({ identifier: "UpdateHypervisorInput" }) as any as S.Schema<UpdateHypervisorInput>;
+const UpdateHypervisorInput = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<UpdateHypervisorInput>;
 export interface UpdateHypervisorOutput {
   HypervisorArn?: string;
 }
@@ -1277,3 +1078,446 @@ export const updateHypervisor: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateHypervisor",
 }));
+
+// Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ GatewayArn: S.String, ServerArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AssociateGatewayToServerInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ GatewayArn: S.optional(S.String) })).annotate({
+        identifier: "AssociateGatewayToServerOutput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 3:
+      return S.Array(Tag);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ActivationKey: S.String,
+          GatewayDisplayName: S.String,
+          GatewayType: S.String,
+          Tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateGatewayInput" });
+    case 5:
+      return S.suspend(() => S.Struct({ GatewayArn: S.optional(S.String) })).annotate({
+        identifier: "CreateGatewayOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ GatewayArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteGatewayInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ HypervisorArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteHypervisorInput" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ HypervisorArn: S.optional(S.String) })).annotate({
+        identifier: "DeleteHypervisorOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ GatewayArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisassociateGatewayFromServerInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ GatewayArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetBandwidthRateLimitScheduleInput",
+      });
+    case 3:
+      return S.Array(S.Number);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AverageUploadRateLimitInBitsPerSec: S.optional(S.Number),
+          StartHourOfDay: S.Number,
+          EndHourOfDay: S.Number,
+          StartMinuteOfHour: S.Number,
+          EndMinuteOfHour: S.Number,
+          DaysOfWeek: DaysOfWeek,
+        }),
+      ).annotate({
+        identifier: "BandwidthRateLimitInterval",
+      });
+    case 5:
+      return S.Array(BandwidthRateLimitInterval);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          GatewayArn: S.optional(S.String),
+          BandwidthRateLimitIntervals: S.optional(BandwidthRateLimitIntervals),
+        }),
+      ).annotate({
+        identifier: "GetBandwidthRateLimitScheduleOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ GatewayArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetGatewayInput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DayOfMonth: S.optional(S.Number),
+          DayOfWeek: S.optional(S.Number),
+          HourOfDay: S.Number,
+          MinuteOfHour: S.Number,
+        }),
+      ).annotate({ identifier: "MaintenanceStartTime" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GatewayArn: S.optional(S.String),
+          GatewayDisplayName: S.optional(S.String),
+          GatewayType: S.optional(S.String),
+          HypervisorId: S.optional(S.String),
+          LastSeenTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          MaintenanceStartTime: S.optional(MaintenanceStartTime),
+          NextUpdateAvailabilityTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          VpcEndpoint: S.optional(S.String),
+          DeprecationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SoftwareVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GatewayDetails" });
+    case 2:
+      return S.suspend(() => S.Struct({ Gateway: S.optional(GatewayDetails) })).annotate({
+        identifier: "GetGatewayOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ HypervisorArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetHypervisorInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Host: S.optional(S.String),
+          HypervisorArn: S.optional(S.String),
+          KmsKeyArn: S.optional(S.String),
+          Name: S.optional(S.String),
+          LogGroupArn: S.optional(S.String),
+          State: S.optional(S.String),
+          LastSuccessfulMetadataSyncTime: S.optional(
+            S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ),
+          LatestMetadataSyncStatusMessage: S.optional(S.String),
+          LatestMetadataSyncStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HypervisorDetails" });
+    case 5:
+      return S.suspend(() => S.Struct({ Hypervisor: S.optional(HypervisorDetails) })).annotate({
+        identifier: "GetHypervisorOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ HypervisorArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetHypervisorPropertyMappingsInput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          VmwareCategory: S.String,
+          VmwareTagName: S.String,
+          AwsTagKey: S.String,
+          AwsTagValue: S.String,
+        }),
+      ).annotate({ identifier: "VmwareToAwsTagMapping" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(VmwareToAwsTagMapping);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          HypervisorArn: S.optional(S.String),
+          VmwareToAwsTagMappings: S.optional(VmwareToAwsTagMappings),
+          IamRoleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetHypervisorPropertyMappingsOutput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetVirtualMachineInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          VmwareCategory: S.optional(S.String),
+          VmwareTagName: S.optional(S.String),
+          VmwareTagDescription: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VmwareTag" });
+    case 4:
+      return S.Array(VmwareTag);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          HostName: S.optional(S.String),
+          HypervisorId: S.optional(S.String),
+          Name: S.optional(S.String),
+          Path: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          LastBackupDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          VmwareTags: S.optional(VmwareTags),
+        }),
+      ).annotate({ identifier: "VirtualMachineDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ VirtualMachine: S.optional(VirtualMachineDetails) }),
+      ).annotate({ identifier: "GetVirtualMachineOutput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Host: S.String,
+          Username: S.optional(SensitiveString),
+          Password: S.optional(SensitiveString),
+          KmsKeyArn: S.optional(S.String),
+          Tags: S.optional(Tags),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ImportHypervisorConfigurationInput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ HypervisorArn: S.optional(S.String) })).annotate({
+        identifier: "ImportHypervisorConfigurationOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListGatewaysInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          GatewayArn: S.optional(S.String),
+          GatewayDisplayName: S.optional(S.String),
+          GatewayType: S.optional(S.String),
+          HypervisorId: S.optional(S.String),
+          LastSeenTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "Gateway" });
+    case 3:
+      return S.Array(Gateway);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Gateways: S.optional(Gateways), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListGatewaysOutput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListHypervisorsInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Host: S.optional(S.String),
+          HypervisorArn: S.optional(S.String),
+          KmsKeyArn: S.optional(S.String),
+          Name: S.optional(S.String),
+          State: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Hypervisor" });
+    case 7:
+      return S.Array(Hypervisor);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Hypervisors: S.optional(Hypervisors), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListHypervisorsOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(Tags) }),
+      ).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          HypervisorArn: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListVirtualMachinesInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          HostName: S.optional(S.String),
+          HypervisorId: S.optional(S.String),
+          Name: S.optional(S.String),
+          Path: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          LastBackupDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "VirtualMachine" });
+    case 5:
+      return S.Array(VirtualMachine);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ VirtualMachines: S.optional(VirtualMachines), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListVirtualMachinesOutput",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          GatewayArn: S.String,
+          BandwidthRateLimitIntervals: BandwidthRateLimitIntervals,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "PutBandwidthRateLimitScheduleInput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HypervisorArn: S.String,
+          VmwareToAwsTagMappings: VmwareToAwsTagMappings,
+          IamRoleArn: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "PutHypervisorPropertyMappingsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GatewayArn: S.String,
+          HourOfDay: S.Number,
+          MinuteOfHour: S.Number,
+          DayOfWeek: S.optional(S.Number),
+          DayOfMonth: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "PutMaintenanceStartTimeInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ HypervisorArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "StartVirtualMachinesMetadataSyncInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, Tags: Tags }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+    case 4:
+      return S.suspend(() => S.Struct({ ResourceARN: S.optional(S.String) })).annotate({
+        identifier: "TagResourceOutput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          GatewayArn: S.String,
+          Host: S.String,
+          Username: S.optional(SensitiveString),
+          Password: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "TestHypervisorConfigurationInput",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TestHypervisorConfigurationOutput",
+      });
+    case 7:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeys }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ GatewayArn: S.String, GatewayDisplayName: S.optional(S.String) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateGatewayInformationInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ GatewayArn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateGatewaySoftwareNowInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          HypervisorArn: S.String,
+          Host: S.optional(S.String),
+          Username: S.optional(SensitiveString),
+          Password: S.optional(SensitiveString),
+          Name: S.optional(S.String),
+          LogGroupArn: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateHypervisorInput" });
+  }
+}
