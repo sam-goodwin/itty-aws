@@ -22,6 +22,7 @@ import { formatGenerated } from "./format.ts";
 import { stampGeneratedAt } from "./generated-at.ts";
 import { generateService, type SdkSpec } from "./generator.ts";
 import { toLatin1 } from "./latin1.ts";
+import { privatizeSchemas } from "./privatize.ts";
 import { annotateNestedCalls } from "./pure.ts";
 
 export interface GeneratorCliOptions {
@@ -192,11 +193,13 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           // Every nested call in a top-level initializer gets a PURE marker,
           // so one unused schema cannot pin others in a consumer's bundle.
           // Latin-1-only source halves the heap V8 keeps for the module text.
-          // Structurally identical schemas become aliases of one schema.
+          // Structurally identical schemas become aliases of one schema, and
+          // schema consts become module-private (types stay exported).
+          const resourceFile = `${resource}.ts`;
+          const marked = annotateNestedCalls(generated.code, resourceFile);
           const code = toLatin1(
-            dedupeSchemas(annotateNestedCalls(generated.code, `${resource}.ts`), `${resource}.ts`)
-              .code,
-            `${resource}.ts`,
+            privatizeSchemas(dedupeSchemas(marked, resourceFile).code, resourceFile).code,
+            resourceFile,
           );
 
           yield* fs.writeFileString(path.join(outDir, `${resource}.ts`), code);

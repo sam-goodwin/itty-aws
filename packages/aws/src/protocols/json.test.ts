@@ -129,7 +129,7 @@ const collectText = async (stream: unknown) => {
 describe("awsJson request serialization", () => {
   test("DynamoDB GetItem: POST / with X-Amz-Target and a JSON 1.0 body", async () => {
     const handler = awsJson1_0Protocol(
-      op(DynamoDB.GetItemInput, DynamoDB.GetItemOutput, "GetItem"),
+      op(DynamoDB.getItem.input, DynamoDB.getItem.output, "GetItem"),
     );
     const request = await run(
       handler.serializeRequest({
@@ -160,7 +160,7 @@ describe("awsJson request serialization", () => {
   });
 
   test("KMS Encrypt: JSON 1.1 content type and base64 blob members", async () => {
-    const handler = awsJson1_1Protocol(op(KMS.EncryptRequest, KMS.EncryptResponse, "Encrypt"));
+    const handler = awsJson1_1Protocol(op(KMS.encrypt.input, KMS.encrypt.output, "Encrypt"));
     const request = await run(
       handler.serializeRequest({
         KeyId: "alias/example",
@@ -268,7 +268,7 @@ describe("awsJson request serialization", () => {
 
   test("reports schema encode failures as ParseError", async () => {
     const handler = awsJson1_0Protocol(
-      op(DynamoDB.GetItemInput, DynamoDB.GetItemOutput, "GetItem"),
+      op(DynamoDB.getItem.input, DynamoDB.getItem.output, "GetItem"),
     );
     const error = await run(Effect.flip(handler.serializeRequest({ Key: {} })));
     expect(error).toBeInstanceOf(ParseError);
@@ -276,7 +276,9 @@ describe("awsJson request serialization", () => {
 });
 
 describe("awsJson response deserialization", () => {
-  const handler = awsJson1_0Protocol(op(DynamoDB.GetItemInput, DynamoDB.GetItemOutput, "GetItem"));
+  const handler = awsJson1_0Protocol(
+    op(DynamoDB.getItem.input, DynamoDB.getItem.output, "GetItem"),
+  );
 
   test("returns the parsed JSON document with nulls dropped", async () => {
     const body = JSON.stringify({
@@ -320,7 +322,7 @@ describe("awsJson response deserialization", () => {
 
   test("Kinesis SubscribeToShard: decodes events through the event schema", async () => {
     const handler = awsJson1_1Protocol(
-      op(Kinesis.SubscribeToShardInput, Kinesis.SubscribeToShardOutput, "SubscribeToShard"),
+      op(Kinesis.subscribeToShard.input, Kinesis.subscribeToShard.output, "SubscribeToShard"),
     );
     const frames = await Promise.all([
       eventFrame(
@@ -373,7 +375,9 @@ describe("awsJson response deserialization", () => {
 });
 
 describe("awsJson error deserialization", () => {
-  const handler = awsJson1_0Protocol(op(DynamoDB.GetItemInput, DynamoDB.GetItemOutput, "GetItem"));
+  const handler = awsJson1_0Protocol(
+    op(DynamoDB.getItem.input, DynamoDB.getItem.output, "GetItem"),
+  );
   const error = (body: string, headers: Record<string, string> = {}) =>
     run(handler.deserializeError(response(body, { status: 400, headers })));
 
@@ -478,7 +482,7 @@ describe("awsJson error deserialization", () => {
 
 describe("restJson1 request serialization: HTTP bindings", () => {
   test("Lambda Invoke: label, headers, query, and a streaming payload", async () => {
-    const handler = restJson1Protocol(op(Lambda.InvocationRequest, Lambda.InvocationResponse));
+    const handler = restJson1Protocol(op(Lambda.invoke.input, Lambda.invoke.output));
     const request = await run(
       handler.serializeRequest({
         FunctionName: "arn:aws:lambda:us-east-1:123456789012:function:my-function",
@@ -503,7 +507,7 @@ describe("restJson1 request serialization: HTTP bindings", () => {
   });
 
   test("Lambda Invoke: streaming payloads keep bytes and convert Effect streams", async () => {
-    const handler = restJson1Protocol(op(Lambda.InvocationRequest, Lambda.InvocationResponse));
+    const handler = restJson1Protocol(op(Lambda.invoke.input, Lambda.invoke.output));
     const payload = bytes("{}");
     const fromBytes = await run(handler.serializeRequest({ FunctionName: "f", Payload: payload }));
     expect(fromBytes.body).toBe(payload);
@@ -518,7 +522,7 @@ describe("restJson1 request serialization: HTTP bindings", () => {
   });
 
   test("Lambda Invoke without a payload sends no body", async () => {
-    const handler = restJson1Protocol(op(Lambda.InvocationRequest, Lambda.InvocationResponse));
+    const handler = restJson1Protocol(op(Lambda.invoke.input, Lambda.invoke.output));
     const request = await run(handler.serializeRequest({ FunctionName: "f" }));
     expect(request.body).toBeUndefined();
     expect(request.headers).toEqual({ "Content-Type": "application/json" });
@@ -645,7 +649,7 @@ describe("restJson1 request serialization: HTTP bindings", () => {
 
   test("DataExchange SendApiAsset: prefix headers, query map, and a raw string payload", async () => {
     const handler = restJson1Protocol(
-      op(DataExchange.SendApiAssetRequest, DataExchange.SendApiAssetResponse),
+      op(DataExchange.sendApiAsset.input, DataExchange.sendApiAsset.output),
     );
     const request = await run(
       handler.serializeRequest({
@@ -686,7 +690,7 @@ describe("restJson1 request serialization: HTTP bindings", () => {
   });
 
   test("reports schema encode failures as ParseError", async () => {
-    const handler = restJson1Protocol(op(Lambda.InvocationRequest, Lambda.InvocationResponse));
+    const handler = restJson1Protocol(op(Lambda.invoke.input, Lambda.invoke.output));
     expect(await run(Effect.flip(handler.serializeRequest({ Qualifier: "1" })))).toBeInstanceOf(
       ParseError,
     );
@@ -733,7 +737,7 @@ describe("restJson1 request serialization: bodies", () => {
   });
 
   test("sends no body when every member is bound outside the body (GeoMaps GetTile)", async () => {
-    const handler = restJson1Protocol(op(GeoMaps.GetTileRequest, GeoMaps.GetTileResponse));
+    const handler = restJson1Protocol(op(GeoMaps.getTile.input, GeoMaps.getTile.output));
     const request = await run(
       handler.serializeRequest({
         Tileset: "vector.basemap",
@@ -872,7 +876,7 @@ describe("restJson1 request serialization: input event streams", () => {
   });
 
   test("Transcribe StartStreamTranscription: AudioEvent is a raw octet-stream frame", async () => {
-    const handler = restJson1Protocol(op(TranscribeStreaming.StartStreamTranscriptionRequest));
+    const handler = restJson1Protocol(op(TranscribeStreaming.startStreamTranscription.input));
     const audio = Uint8Array.of(0x70, 0x00, 0xff, 0x80, 0x01);
     const request = await run(
       handler.serializeRequest({
@@ -916,7 +920,7 @@ describe("restJson1 request serialization: input event streams", () => {
   });
 
   test("Lex StartConversation: an event without eventPayload stays JSON with base64 blobs", async () => {
-    const handler = restJson1Protocol(op(LexRuntimeV2.StartConversationRequest));
+    const handler = restJson1Protocol(op(LexRuntimeV2.startConversation.input));
     const request = await run(
       handler.serializeRequest({
         botId: "b",
@@ -948,7 +952,7 @@ describe("restJson1 request serialization: input event streams", () => {
   });
 
   test("Bedrock InvokeModelWithBidirectionalStream: sensitive blob member is base64 JSON", async () => {
-    const handler = restJson1Protocol(op(BedrockRuntime.InvokeModelWithBidirectionalStreamRequest));
+    const handler = restJson1Protocol(op(BedrockRuntime.invokeModelWithBidirectionalStream.input));
     const request = await run(
       handler.serializeRequest({
         modelId: "m",
@@ -964,7 +968,7 @@ describe("restJson1 request serialization: input event streams", () => {
 
   test("SageMaker bidirectional stream: eventHeader members become frame headers", async () => {
     const handler = restJson1Protocol(
-      op(SageMakerRuntimeHttp2.InvokeEndpointWithBidirectionalStreamInput),
+      op(SageMakerRuntimeHttp2.invokeEndpointWithBidirectionalStream.input),
     );
     const request = await run(
       handler.serializeRequest({
@@ -1035,7 +1039,7 @@ describe("restJson1 request serialization: input event streams", () => {
 
 describe("restJson1 response deserialization", () => {
   test("Lambda Invoke: status code, headers, and a streaming payload", async () => {
-    const handler = restJson1Protocol(op(Lambda.InvocationRequest, Lambda.InvocationResponse));
+    const handler = restJson1Protocol(op(Lambda.invoke.input, Lambda.invoke.output));
     const result = (await run(
       handler.deserializeResponse(
         response(chunked('{"statusCode":200}'), {
@@ -1065,7 +1069,7 @@ describe("restJson1 response deserialization", () => {
   });
 
   test("Lambda Invoke: a string body becomes a one-chunk stream", async () => {
-    const handler = restJson1Protocol(op(Lambda.InvocationRequest, Lambda.InvocationResponse));
+    const handler = restJson1Protocol(op(Lambda.invoke.input, Lambda.invoke.output));
     const result = (await run(
       handler.deserializeResponse(response("null", { status: 202 })),
     )) as Record<string, unknown>;
@@ -1075,7 +1079,7 @@ describe("restJson1 response deserialization", () => {
 
   test("Lambda InvokeWithResponseStream: event payload chunks bind to the payload member", async () => {
     const handler = restJson1Protocol(
-      op(Lambda.InvokeWithResponseStreamRequest, Lambda.InvokeWithResponseStreamResponse),
+      op(Lambda.invokeWithResponseStream.input, Lambda.invokeWithResponseStream.output),
     );
     const frames = await Promise.all([
       eventFrame({ ":message-type": "event", ":event-type": "PayloadChunk" }, '{"partial":'),
@@ -1164,7 +1168,7 @@ describe("restJson1 response deserialization", () => {
 
   test("DataExchange SendApiAsset: a string payload is the body as-is in both modes", async () => {
     const handler = restJson1Protocol(
-      op(DataExchange.SendApiAssetRequest, DataExchange.SendApiAssetResponse),
+      op(DataExchange.sendApiAsset.input, DataExchange.sendApiAsset.output),
     );
     const headers = { "content-type": "text/plain", "x-request-id": "r-1" };
     for (const body of ["plain text, not JSON", '{"x":1}', "[1,2]"]) {
@@ -1178,13 +1182,13 @@ describe("restJson1 response deserialization", () => {
 
   test("DataExchange SendApiAsset: an empty string payload is omitted", async () => {
     const handler = restJson1Protocol(
-      op(DataExchange.SendApiAssetRequest, DataExchange.SendApiAssetResponse),
+      op(DataExchange.sendApiAsset.input, DataExchange.sendApiAsset.output),
     );
     expect(await runStrict(handler.deserializeResponse(response("")))).toEqual({});
   });
 
   test("GeoMaps GetTile: a blob payload is re-encoded to base64", async () => {
-    const handler = restJson1Protocol(op(GeoMaps.GetTileRequest, GeoMaps.GetTileResponse));
+    const handler = restJson1Protocol(op(GeoMaps.getTile.input, GeoMaps.getTile.output));
     const tile = Uint8Array.of(0x1a, 0x00, 0xff, 0x80);
     expect(
       await run(
@@ -1205,7 +1209,7 @@ describe("restJson1 response deserialization", () => {
   });
 
   test("GeoMaps GetTile: an empty blob payload is omitted", async () => {
-    const handler = restJson1Protocol(op(GeoMaps.GetTileRequest, GeoMaps.GetTileResponse));
+    const handler = restJson1Protocol(op(GeoMaps.getTile.input, GeoMaps.getTile.output));
     expect(
       await run(
         handler.deserializeResponse(
@@ -1244,7 +1248,7 @@ describe("restJson1 response deserialization", () => {
 });
 
 describe("restJson1 error deserialization", () => {
-  const handler = restJson1Protocol(op(Lambda.InvocationRequest, Lambda.InvocationResponse));
+  const handler = restJson1Protocol(op(Lambda.invoke.input, Lambda.invoke.output));
   const error = (body: string, headers: Record<string, string> = {}, status = 400) =>
     run(handler.deserializeError(response(body, { status, headers })));
 

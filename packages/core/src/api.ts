@@ -103,7 +103,18 @@ export type OperationMethod<I, O, E, R> = Effect.Effect<
   never,
   R
 > &
-  ((input: I) => Effect.Effect<O, E, R>);
+  ((input: I) => Effect.Effect<O, E, R>) &
+  OperationSchemas<I, O>;
+
+/**
+ * An operation's request and response schemas, built on first access.
+ * Generated modules export operations, errors and types; the schemas
+ * themselves are module-private, so this is how to reach them as values.
+ */
+export interface OperationSchemas<I, O> {
+  readonly input: S.Codec<I, any>;
+  readonly output: S.Codec<O, any>;
+}
 
 // NOTE: request/response ASTs are handed to the protocol RAW (Suspend nodes
 // included). Pre-resolving Suspends here would drop annotations that sit on
@@ -403,7 +414,8 @@ export type PaginatedOperationMethod<I, O, E, R, Item = PaginatedItem<O>> = Effe
   never,
   R
 > &
-  PaginatedCall<I, O, E, R, Item>;
+  PaginatedCall<I, O, E, R, Item> &
+  OperationSchemas<I, O>;
 
 export interface PaginatedOperationConfig<
   I extends S.Top,
